@@ -69,6 +69,13 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
+      - name: Verify static export output
+        run: |
+          test -d ./out
+          test -f ./out/index.html
+          ls -la ./out
+      - name: Disable Jekyll (allow _next)
+        run: touch ./out/.nojekyll
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

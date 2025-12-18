@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+body { 
+  font-family: 'Inter', sans-serif; 
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { 
+  width: 8px; 
+}
+::-webkit-scrollbar-track { 
+  background: transparent; 
+}
+::-webkit-scrollbar-thumb { 
+  background: #d6d3d1; 
+  border-radius: 4px; 
+}
+.dark ::-webkit-scrollbar-thumb { 
+  background: #57534e; 
+}
+::-webkit-scrollbar-thumb:hover { 
+  background: #a8a29e; 
+}
+
+/* Interactive Diagram Styles */
+.flow-node {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.flow-node:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border-color: #f97316;
+}
+.flow-node.active {
+  border-color: #f97316;
+  background-color: #fff7ed;
+}
+.dark .flow-node.active {
+  background-color: #431407; /* dark orange bg */
+  border-color: #f97316;
+}
+
+/* Chart Container Specifics */
+.chart-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: 300px;
+  max-height: 400px;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .chart-container { height: 350px; }
+}
+
+/* Animations */
+.tab-content {
+  display: none;
+  animation: fadeIn 0.3s ease-in-out;
+}
+.tab-content.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* AI Loading Animation */
+.typing-dot {
+  animation: typing 1.4s infinite ease-in-out both;
+}
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes typing {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+
+/* Dojo Flashcard Flip */
+.perspective { perspective: 1000px; }
+.rotate-y-180 { transform: rotateY(180deg); }
+.transform-style-3d { transform-style: preserve-3d; }
+.backface-hidden { backface-visibility: hidden; }
+
+/* Accordion animations */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease;
+}
+.accordion-content.open {
+  max-height: 200px;
+  opacity: 1;
+}
+
+/* Animation classes */
+.animate-fade {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Utility classes for animations */
+.rotate-45 {
+  transform: rotate(45deg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .mobile-menu-open {
+    transform: translateX(0);
+  }
+  .mobile-menu-closed {
+    transform: translateX(-100%);
+  }
+}

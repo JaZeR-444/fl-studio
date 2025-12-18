@@ -58,9 +58,9 @@ const FLStudioHubContent = () => {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row h-screen bg-stone-50 dark:bg-zinc-900 text-stone-800 dark:text-zinc-300 antialiased overflow-hidden">
+      <div className="flex flex-col md:flex-row min-h-dvh text-stone-800 dark:text-zinc-300 antialiased overflow-hidden bg-transparent">
         {/* Mobile Header */}
-        <div className="md:hidden fixed w-full bg-white dark:bg-zinc-800 border-b border-stone-200 dark:border-zinc-700 z-50 flex items-center justify-between p-4">
+        <div className="md:hidden fixed w-full bg-white/70 dark:bg-zinc-900/60 backdrop-blur-xl border-b border-stone-200/60 dark:border-zinc-700/60 z-50 flex items-center justify-between p-4">
           <h1 className="font-bold text-lg text-orange-600">FL Studio Hub</h1>
           <button
             onClick={toggleMobileMenu}
@@ -82,7 +82,7 @@ const FLStudioHubContent = () => {
         />
 
         {/* Main Content Area */}
-        <main className="flex-1 h-full overflow-y-auto bg-stone-50 dark:bg-zinc-900 pt-16 md:pt-0">
+        <main className="flex-1 h-full overflow-y-auto bg-transparent pt-16 md:pt-0">
           <div className="max-w-5xl mx-auto p-6 md:p-12">
             {/* Mental Model Section */}
             {state.activeSection === 'home' && <MentalModelSection />}

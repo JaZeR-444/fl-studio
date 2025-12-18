@@ -50,7 +50,7 @@ export const Sidebar = ({
   return (
     <aside 
       id="sidebar" 
-      className={`transform ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 transition-transform duration-300 fixed md:static inset-y-0 left-0 w-64 bg-white dark:bg-zinc-800 border-r border-stone-200 dark:border-zinc-700 flex flex-col z-40 shadow-lg md:shadow-none`}
+      className={`transform ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 transition-transform duration-300 fixed md:static inset-y-0 left-0 w-64 bg-white/75 dark:bg-zinc-950/50 backdrop-blur-xl border-r border-stone-200/60 dark:border-zinc-700/60 flex flex-col z-40 shadow-lg md:shadow-none`}
     >
       <div className="p-6 border-b border-stone-100 dark:border-zinc-700 hidden md:flex justify-between items-center">
         <div>

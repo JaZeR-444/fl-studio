@@ -55,7 +55,7 @@ export const AudioAnalysisSection = () => {
   };
 
   const waveformData = {
-    labels: Array.from({ length: 50 }, (_, i) => i + 1),
+    labels: Array.from({ length: 50 }, (_, i) => String(i + 1)),
     datasets: [
       {
         label: 'Amplitude',

@@ -6,7 +6,9 @@ import { CapabilityFilter } from '@/components/ui/CapabilityFilter';
 
 // Import plugin data
 import pluginTaxonomy from '@/data/plugins/taxonomy.json';
-import searchIndex from '@/data/plugins/searchIndex.json';
+import searchIndexData from '@/data/plugins/searchIndex.json';
+
+const searchIndex = searchIndexData as unknown as PluginSearchIndex[];
 
 interface PluginsDatabaseProps {}
 

@@ -1,6 +1,6 @@
+'use client';
+
 import { useState } from 'react';
-import { useRouter } from 'next/router';
-import Head from 'next/head';
 import { AppProvider, useAppContext } from '@/context/AppContext';
 
 // Import components
@@ -28,14 +28,13 @@ import { SettingsPanel } from '@/components/SettingsPanel';
 
 // Inner component that consumes the context
 const FLStudioHubContent = () => {
-  const router = useRouter();
   const { state, dispatch } = useAppContext();
   const [showSettings, setShowSettings] = useState(false);
 
   // Handle section navigation
   const navigateToSection = (sectionId: string) => {
     dispatch({ type: 'SET_ACTIVE_SECTION', payload: sectionId });
-    router.push(`#${sectionId}`, undefined, { shallow: true });
+    window.history.pushState(null, '', `#${sectionId}`);
     // Close mobile menu if open
     if (window.innerWidth < 768) {
       dispatch({ type: 'SET_MOBILE_MENU', payload: false });
@@ -59,14 +58,6 @@ const FLStudioHubContent = () => {
 
   return (
     <>
-      <Head>
-        <title>FL Studio Master Reference Hub</title>
-        <meta name="description" content="Master FL Studio with this comprehensive reference hub" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
-      </Head>
-
       <div className="flex flex-col md:flex-row h-screen bg-stone-50 dark:bg-zinc-900 text-stone-800 dark:text-zinc-300 antialiased overflow-hidden">
         {/* Mobile Header */}
         <div className="md:hidden fixed w-full bg-white dark:bg-zinc-800 border-b border-stone-200 dark:border-zinc-700 z-50 flex items-center justify-between p-4">

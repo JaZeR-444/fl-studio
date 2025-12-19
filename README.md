@@ -8,6 +8,9 @@ Comprehensive reference hub for FL Studio with workflows, tutorials, and music p
 - Music production techniques
 - Feature comparison tables
 
+## GitHub Page
+Explore the GitHub Page for this project [here](https://JaZeR-444.github.io/fl-studio/)!
+
 ## Getting Started
 
 ```bash

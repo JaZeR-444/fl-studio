@@ -49,20 +49,20 @@ export const ModulesSection = () => {
   return (
     <section id="modules" className="page-section">
       <div className="mb-6">
-        <h2 className="text-3xl font-bold text-stone-900 dark:text-white mb-4">Core UI Modules (The Big 5)</h2>
-        <p className="text-stone-600 dark:text-zinc-400">The essential windows you will spend 90% of your time in.</p>
+        <h2 className="text-3xl font-bold text-white mb-4">Core UI Modules <span className="text-gradient">(The Big 5)</span></h2>
+        <p className="text-purple-primary-300">The essential windows you will spend 90% of your time in.</p>
       </div>
 
       {/* Tab Navigation */}
-      <div className="flex space-x-1 bg-stone-200 dark:bg-zinc-800 p-1 rounded-lg mb-6 overflow-x-auto">
+      <div className="flex space-x-1 glass-card p-1 mb-6 overflow-x-auto">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`module-tab flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+            className={`module-tab flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-200 ${
               activeTab === tab.id
-                ? 'bg-white dark:bg-zinc-700 text-stone-900 dark:text-white shadow-sm'
-                : 'text-stone-600 hover:text-stone-900'
+                ? 'bg-purple-primary-700/40 text-purple-primary-200 shadow-purple-glow'
+                : 'text-purple-primary-300 hover:text-purple-primary-100 hover:bg-purple-primary-700/20'
             }`}
           >
             {tab.label}
@@ -71,19 +71,19 @@ export const ModulesSection = () => {
       </div>
 
       {/* Tab Content */}
-      <div className="bg-white dark:bg-zinc-800 rounded-xl shadow-sm border border-stone-200 dark:border-zinc-700 p-6 md:p-8">
+      <div className="content-card p-6 md:p-8">
         <div className="tab-content active animate-fade">
-          <h3 className="text-2xl font-bold text-stone-800 dark:text-white mb-2">
+          <h3 className="text-2xl font-bold text-white mb-2">
             {moduleContent[activeTab as keyof typeof moduleContent].title}
           </h3>
-          <p className="text-stone-600 dark:text-zinc-400 mb-4">
+          <p className="text-purple-primary-300 mb-4">
             {moduleContent[activeTab as keyof typeof moduleContent].desc}
           </p>
           <div className="space-y-2">
             {moduleContent[activeTab as keyof typeof moduleContent].features.map((feature, idx) => (
               <div key={idx} className="flex items-start">
-                <span className="text-orange-500 mr-2">✓</span>
-                <p className="text-stone-700 dark:text-zinc-300 text-sm">{feature}</p>
+                <span className="text-purple-primary-500 mr-2">✓</span>
+                <p className="text-purple-primary-200 text-sm">{feature}</p>
               </div>
             ))}
           </div>

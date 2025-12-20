@@ -48,19 +48,19 @@ export const Sidebar = ({
   }, {} as Record<string, typeof navItems>);
 
   return (
-    <aside 
-      id="sidebar" 
-      className={`transform ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 transition-transform duration-300 fixed md:static inset-y-0 left-0 w-64 bg-white dark:bg-zinc-800 border-r border-stone-200 dark:border-zinc-700 flex flex-col z-40 shadow-lg md:shadow-none`}
+    <aside
+      id="sidebar"
+      className={`transform ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 transition-transform duration-300 fixed md:static inset-y-0 left-0 w-64 glass-sidebar flex flex-col z-40 shadow-lg md:shadow-none`}
     >
-      <div className="p-6 border-b border-stone-100 dark:border-zinc-700 hidden md:flex justify-between items-center">
+      <div className="p-6 border-b border-purple-primary-700/30 hidden md:flex justify-between items-center">
         <div>
-          <h1 className="text-2xl font-bold text-stone-900 dark:text-white tracking-tight">FL Studio <span className="text-orange-500">Hub</span></h1>
-          <p className="text-xs text-stone-500 dark:text-zinc-500 mt-1">Master Reference v21+</p>
+          <h1 className="text-2xl font-bold text-white tracking-tight">FL Studio <span className="text-gradient">Hub</span></h1>
+          <p className="text-xs text-purple-primary-300 mt-1">Master Reference v21+</p>
         </div>
         {/* Dark Mode Toggle Desktop */}
-        <button 
-          onClick={toggleDarkMode} 
-          className="p-2 rounded-full hover:bg-stone-100 dark:hover:bg-zinc-700 transition-colors" 
+        <button
+          onClick={toggleDarkMode}
+          className="p-2 rounded-full hover:bg-purple-primary-700/20 transition-colors"
           title="Toggle Dark Mode"
         >
           <span id="theme-icon" className="text-xl">{darkMode ? '☀️' : '🌙'}</span>
@@ -70,7 +70,7 @@ export const Sidebar = ({
       <nav className="flex-1 overflow-y-auto p-4 space-y-1">
         {Object.entries(navGroups).map(([category, items]) => (
           <div key={category}>
-            <div className="px-2 mb-2 text-xs font-semibold text-stone-400 dark:text-zinc-500 uppercase tracking-wider">
+            <div className="px-2 mb-2 text-xs font-semibold text-purple-primary-400 uppercase tracking-wider">
               {category}
             </div>
             {items.map((item) => (
@@ -80,10 +80,10 @@ export const Sidebar = ({
                   navigateToSection(item.id);
                   setMobileMenuOpen(false);
                 }}
-                className={`nav-item w-full text-left px-3 py-2 rounded-lg text-sm font-medium hover:bg-orange-50 dark:hover:bg-zinc-700 hover:text-orange-600 transition-colors ${
-                  activeSection === item.id 
-                    ? 'bg-orange-50 dark:bg-zinc-700 text-orange-600 dark:text-orange-400' 
-                    : ''
+                className={`nav-item w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  activeSection === item.id
+                    ? 'bg-purple-primary-700/40 text-purple-primary-200 border border-purple-primary-600/50 shadow-purple-glow'
+                    : 'text-purple-primary-300 hover:bg-purple-primary-700/20 hover:text-purple-primary-100 hover:border hover:border-purple-primary-600/30'
                 }`}
               >
                 {item.label}
@@ -93,13 +93,13 @@ export const Sidebar = ({
         ))}
       </nav>
 
-      <div className="p-4 border-t border-stone-100 dark:border-zinc-700 bg-stone-50 dark:bg-zinc-900">
-        <div className="text-xs text-stone-500 dark:text-zinc-500">
-          <p><strong>System:</strong> FL Studio 21+</p>
+      <div className="p-4 border-t border-purple-primary-700/30 bg-purple-dark-800/50">
+        <div className="text-xs text-purple-primary-300">
+          <p><strong className="text-purple-primary-200">System:</strong> FL Studio 21+</p>
           <div className="flex items-center mt-2 md:hidden">
             <button
               onClick={toggleDarkMode}
-              className="text-xs border border-stone-300 dark:border-zinc-600 rounded px-2 py-1 mr-2"
+              className="text-xs border border-purple-primary-600/40 rounded px-2 py-1 mr-2 hover:bg-purple-primary-700/20 transition-colors"
             >
               Toggle Theme
             </button>
@@ -107,7 +107,7 @@ export const Sidebar = ({
           <div className="mt-1">
             <button
               onClick={toggleSettings}
-              className="text-xs border border-stone-300 dark:border-zinc-600 rounded px-2 py-1"
+              className="text-xs btn-glass w-full"
             >
               Settings
             </button>

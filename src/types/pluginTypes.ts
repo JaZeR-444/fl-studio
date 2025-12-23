@@ -83,6 +83,15 @@ export interface ExtendedPlugin {
 }
 
 
+export interface WorkflowTemplate {
+  id: string;
+  name: string;
+  plugins: WorkflowStep[];
+  nativeBenefits: string;
+  breaksIfSwapped: string;
+  genre: string;
+}
+
 export interface WorkflowStep {
   id: string;
   role: string;

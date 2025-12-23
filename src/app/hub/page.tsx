@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AppProvider, useAppContext } from '@/context/AppContext';
 
 // Import components
@@ -26,21 +26,65 @@ import { NativeAdvantages } from '@/components/sections/NativeAdvantages';
 import { WorkflowChains } from '@/components/sections/WorkflowChains';
 import { SynthesisHistory } from '@/components/sections/SynthesisHistory';
 import { SettingsPanel } from '@/components/SettingsPanel';
+import { CommandPalette } from '@/components/CommandPalette';
 
 // Inner component that consumes the context
 const FLStudioHubContent = () => {
   const { state, dispatch } = useAppContext();
   const [showSettings, setShowSettings] = useState(false);
+  const [showCommandPalette, setShowCommandPalette] = useState(false);
 
-  // Handle section navigation
+  // Handle section navigation with history support
   const navigateToSection = (sectionId: string) => {
+    if (state.activeSection === sectionId) return;
     dispatch({ type: 'SET_ACTIVE_SECTION', payload: sectionId });
-    window.history.pushState(null, '', `#${sectionId}`);
+    window.history.pushState({ sectionId }, '', `#${sectionId}`);
+    
     // Close mobile menu if open
     if (window.innerWidth < 768) {
       dispatch({ type: 'SET_MOBILE_MENU', payload: false });
     }
   };
+
+  // Global Keyboard Shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setShowCommandPalette(true);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  // Sync state with URL hash on mount and handle back/forward navigation
+  useEffect(() => {
+    // 1. Handle initial hash
+    const handleHashChange = () => {
+      const hash = window.location.hash.slice(1); // Remove '#'
+      if (hash && hash !== state.activeSection) {
+        dispatch({ type: 'SET_ACTIVE_SECTION', payload: hash });
+      }
+    };
+
+    // Run on mount
+    handleHashChange();
+
+    // 2. Handle browser back/forward buttons
+    const handlePopState = (event: PopStateEvent) => {
+      if (event.state?.sectionId) {
+        dispatch({ type: 'SET_ACTIVE_SECTION', payload: event.state.sectionId });
+      } else {
+        // Fallback to hash if state is missing (e.g. external link)
+        handleHashChange();
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []); // Empty dependency array = run once on mount (plus cleanup)
 
   // Toggle dark mode
   const toggleDarkMode = () => {
@@ -72,6 +116,7 @@ const FLStudioHubContent = () => {
           mobileMenuOpen={state.mobileMenuOpen}
           setMobileMenuOpen={(open: boolean) => dispatch({ type: 'SET_MOBILE_MENU', payload: open })}
           toggleSettings={toggleSettings}
+          onOpenCommandPalette={() => setShowCommandPalette(true)}
         />
 
         {/* Main Content Area */}
@@ -160,6 +205,13 @@ const FLStudioHubContent = () => {
       <SettingsPanel
         isOpen={showSettings}
         onClose={() => setShowSettings(false)}
+      />
+
+      {/* Command Palette */}
+      <CommandPalette 
+        isOpen={showCommandPalette}
+        onClose={() => setShowCommandPalette(false)}
+        navigateToSection={navigateToSection}
       />
 
       {/* Mobile Overlay */}

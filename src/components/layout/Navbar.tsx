@@ -34,16 +34,17 @@ export const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative w-8 h-8 group-hover:scale-110 transition-transform">
+        <Link href="/" className="flex items-center gap-3 group relative cursor-pointer">
+          <div className="absolute inset-0 bg-purple-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
+          <div className="relative w-8 h-8 group-hover:scale-110 transition-transform duration-300">
             <Image 
                src="/images/branding/icon.svg" 
                alt="FL Studio Hub Icon" 
                fill
-               className="object-contain drop-shadow-[0_0_10px_rgba(255,165,0,0.5)]"
+               className="object-contain drop-shadow-[0_0_15px_rgba(124,58,237,0.5)]"
             />
           </div>
-          <div className="relative h-6 w-32">
+          <div className="relative h-6 w-32 transition-opacity duration-300">
              <Image 
                src="/images/branding/logo.svg" 
                alt="FL Studio Hub Logo" 
@@ -54,31 +55,36 @@ export const Navbar = () => {
         </Link>
 
         {/* Desktop Links */}
-        {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-1 bg-white/5 p-1 rounded-full border border-white/5 backdrop-blur-md">
+        <div className="hidden md:flex items-center p-1 rounded-full border border-white/5 bg-white/5 backdrop-blur-md relative">
           {navLinks.map((link) => {
              const isActive = pathname === link.href || (pathname?.startsWith(link.href) && link.href !== '/');
              return (
               <Link 
                 key={link.href}
                 href={link.href}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 relative overflow-hidden group ${
+                className={`relative px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 overflow-hidden group ${
                   isActive 
-                    ? 'text-white shadow-[0_0_20px_rgba(124,58,237,0.3)]' 
-                    : 'text-[var(--text-muted)] hover:text-white'
+                    ? 'text-white' 
+                    : 'text-gray-400 hover:text-white'
                 }`}
               >
-                {/* Active Background Pill */}
-                {isActive && (
-                  <span className="absolute inset-0 bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] opacity-100 -z-10" />
-                )}
+                {/* Active Background - Gradient */}
+                <span className={`absolute inset-0 bg-gradient-to-r from-violet-600 to-indigo-600 opacity-0 transition-opacity duration-300 ${isActive ? 'opacity-100' : 'group-hover:opacity-10'}`} />
                 
-                {/* Hover Glow (only if not active) */}
+                {/* Subtle Border Glow on Hover */}
                 {!isActive && (
-                  <span className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 rounded-full" />
+                   <span className="absolute inset-0 rounded-full border border-white/10 group-hover:border-white/20 transition-colors pointer-events-none" />
                 )}
+
+                <span className="relative z-10 flex items-center gap-2">
+                  {link.label}
+                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />}
+                </span>
                 
-                <span className="relative z-10">{link.label}</span>
+                {/* Bottom Shine for Active */}
+                {isActive && (
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent" />
+                )}
               </Link>
              );
           })}

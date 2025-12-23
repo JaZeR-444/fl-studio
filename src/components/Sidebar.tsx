@@ -10,6 +10,7 @@ interface SidebarProps {
   mobileMenuOpen: boolean;
   setMobileMenuOpen: (open: boolean) => void;
   toggleSettings?: () => void;
+  onOpenCommandPalette: () => void;
 }
 
 interface NavItem {
@@ -25,10 +26,11 @@ export const Sidebar = ({
   navigateToSection,
   mobileMenuOpen,
   setMobileMenuOpen,
-  toggleSettings
+  toggleSettings,
+  onOpenCommandPalette
 }: SidebarProps) => {
-  const [searchQuery, setSearchQuery] = useState('');
-
+  // Local search removed in favor of global command palette
+  // Group navigation items by category
   const navItems: NavItem[] = [
     { id: 'home', label: 'All Tools', category: 'Browse', icon: '🎹', count: 50 },
     { id: 'plugins', label: 'Instruments & Synths', category: 'Browse', icon: '🎹', count: 20 },
@@ -62,24 +64,31 @@ export const Sidebar = ({
     }, {} as Record<string, NavItem[]>);
   }, []);
 
-  // Filter items based on search
-  const filteredGroups = useMemo(() => {
-    if (!searchQuery.trim()) return navGroups;
-    
-    const query = searchQuery.toLowerCase();
-    const filtered: Record<string, NavItem[]> = {};
-    
-    Object.entries(navGroups).forEach(([category, items]) => {
-      const matchingItems = items.filter(
-        item => item.label.toLowerCase().includes(query)
-      );
-      if (matchingItems.length > 0) {
-        filtered[category] = matchingItems;
-      }
-    });
-    
-    return filtered;
-  }, [navGroups, searchQuery]);
+  // Accordion State
+  const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({
+    'Browse': true, // Default open
+    'Workflow': true
+  });
+
+  // Auto-expand category when active section changes
+  useMemo(() => {
+    const activeItem = navItems.find(item => item.id === activeSection);
+    if (activeItem) {
+      setExpandedCategories(prev => ({
+        ...prev,
+        [activeItem.category]: true
+      }));
+    }
+  }, [activeSection]);
+
+  const toggleCategory = (category: string) => {
+    setExpandedCategories(prev => ({
+      ...prev,
+      [category]: !prev[category]
+    }));
+  };
+
+
 
   return (
     <aside 
@@ -98,33 +107,42 @@ export const Sidebar = ({
           </span>
         </div>
 
-        {/* Search Bar */}
-        <div className="search-bar">
-          <svg className="w-4 h-4 text-[var(--text-dim)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        {/* Search Bar - Trigger Command Palette */}
+        <button 
+          onClick={onOpenCommandPalette}
+          className="search-bar w-full cursor-pointer hover:border-[var(--accent-secondary)] group"
+        >
+          <svg className="w-4 h-4 text-[var(--text-dim)] group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
-          <input
-            type="text"
-            placeholder="Search tools..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="flex-1"
-          />
-          <div className="search-shortcut">
-            <span>⌘</span>
+          <span className="flex-1 text-left text-sm text-[var(--text-dim)]">Search...</span>
+          <div className="search-shortcut group-hover:bg-white/10 transition-colors">
+            <span>Ctrl</span>
             <span>K</span>
           </div>
-        </div>
+        </button>
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 overflow-y-auto p-3 space-y-4">
-        {Object.entries(filteredGroups).map(([category, items]) => (
-          <div key={category}>
-            <div className="px-3 mb-2 text-[10px] font-semibold text-[var(--text-dim)] uppercase tracking-wider">
-              {category}
-            </div>
-            <div className="space-y-1">
+      <nav className="flex-1 overflow-y-auto p-3 space-y-2">
+        {Object.entries(navGroups).map(([category, items]) => (
+          <div key={category} className="mb-2">
+            <button 
+              onClick={() => toggleCategory(category)}
+              className="w-full flex items-center justify-between px-3 py-2 text-[10px] font-semibold text-[var(--text-dim)] uppercase tracking-wider hover:text-white transition-colors group"
+            >
+              <span>{category}</span>
+              <svg 
+                className={`w-3 h-3 transition-transform duration-200 ${expandedCategories[category] ? 'rotate-180' : ''} text-[var(--text-dim)] group-hover:text-white`} 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            
+            <div className={`space-y-1 overflow-hidden transition-all duration-300 ${expandedCategories[category] ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
               {items.map((item) => (
                 <button
                   key={item.id}
@@ -132,8 +150,8 @@ export const Sidebar = ({
                     navigateToSection(item.id);
                     setMobileMenuOpen(false);
                   }}
-                  className={`nav-item w-full text-left ${
-                    activeSection === item.id ? 'active' : ''
+                  className={`nav-item w-full text-left ml-2 border-l border-white/5 ${
+                    activeSection === item.id ? 'active border-l-2 !border-l-[var(--accent-primary)]' : ''
                   }`}
                 >
                   <div className="flex items-center gap-2">

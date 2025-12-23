@@ -192,19 +192,48 @@ export const PluginsDatabase = () => {
             />
           ))
         ) : (
-          <div className="col-span-full text-center py-12">
-            <div className="text-4xl mb-4">🔍</div>
-            <p className="text-[var(--text-muted)]">No plugins found matching your criteria</p>
-            <button 
-              onClick={() => {
-                setSearchTerm('');
-                setSelectedFamily('all');
-                setSelectedEdition('all');
-              }}
-              className="mt-4 text-[var(--accent-tertiary)] hover:text-[var(--accent-secondary)]"
-            >
-              Clear filters
-            </button>
+          <div className="col-span-full py-16 px-6 text-center border-2 border-dashed border-white/5 rounded-2xl bg-white/[0.02]">
+            <div className="text-6xl mb-6 opacity-50">🔍</div>
+            <h3 className="text-xl font-bold mb-2">No plugins found</h3>
+            <p className="text-[var(--text-muted)] mb-8 max-w-md mx-auto">
+              We couldn't find any plugins matching "{searchTerm}" {selectedFamily !== 'all' ? `in ${selectedFamily}` : ''}.
+              Try adjusting your search or filters.
+            </p>
+            
+            <div className="flex flex-wrap gap-4 justify-center">
+               <button 
+                 onClick={() => {
+                   setSearchTerm('');
+                   setSelectedFamily('all');
+                   setSelectedEdition('all');
+                 }}
+                 className="px-6 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors font-medium border border-white/5"
+               >
+                 Clear All Filters
+               </button>
+               
+               <button 
+                  onClick={() => {
+                    setSearchTerm('');
+                    setSelectedFamily('Controller');
+                    setSelectedEdition('all');
+                  }}
+                  className="px-6 py-2 rounded-full bg-[var(--accent-primary)]/10 hover:bg-[var(--accent-primary)]/20 text-[var(--accent-tertiary)] border border-[var(--accent-primary)]/20 transition-colors font-medium"
+               >
+                  Show Controllers
+               </button>
+               
+               <button 
+                  onClick={() => {
+                    setSearchTerm('');
+                    setSelectedFamily('Synth');
+                    setSelectedEdition('all');
+                  }}
+                  className="px-6 py-2 rounded-full bg-[var(--accent-secondary)]/10 hover:bg-[var(--accent-secondary)]/20 text-[var(--accent-secondary)] border border-[var(--accent-secondary)]/20 transition-colors font-medium"
+               >
+                  Show Synths
+               </button>
+            </div>
           </div>
         )}
       </div>

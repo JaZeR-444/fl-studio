@@ -37,7 +37,7 @@ export const PluginCard = ({ plugin, onClick, showDetails = true }: PluginCardPr
   return (
     <Link
       href={`/plugins/${plugin.id}`}
-      className="tool-card block hover:scale-[1.02] transition-transform duration-300"
+      className="tool-card block hover:scale-[1.02] transition-transform duration-300 group"
       onClick={onClick}
     >
       {/* Header */}
@@ -59,7 +59,7 @@ export const PluginCard = ({ plugin, onClick, showDetails = true }: PluginCardPr
       </div>
       
       {showDetails && (
-        <>
+        <div className="transition-all duration-300 opacity-50 grayscale group-hover:opacity-100 group-hover:grayscale-0 group-hover:blur-0 blur-[0.5px]">
           {/* Edition Badges */}
           <div className="flex flex-wrap gap-1 mb-3">
             {pricing && (
@@ -117,7 +117,7 @@ export const PluginCard = ({ plugin, onClick, showDetails = true }: PluginCardPr
               View Details →
             </div>
           </div>
-        </>
+        </div>
       )}
     </Link>
   );

@@ -26,8 +26,10 @@ export const Navbar = () => {
 
   return (
     <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
-        scrolled ? 'bg-black/80 backdrop-blur-lg border-white/5 py-3' : 'bg-transparent border-transparent py-5'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${
+        scrolled 
+          ? 'bg-black/60 backdrop-blur-2xl border-white/10 py-3 shadow-[0_4px_30px_rgba(0,0,0,0.5)]' 
+          : 'bg-transparent border-transparent py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -52,20 +54,31 @@ export const Navbar = () => {
         </Link>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-1">
+        {/* Desktop Links */}
+        <div className="hidden md:flex items-center gap-1 bg-white/5 p-1 rounded-full border border-white/5 backdrop-blur-md">
           {navLinks.map((link) => {
              const isActive = pathname === link.href || (pathname?.startsWith(link.href) && link.href !== '/');
              return (
               <Link 
                 key={link.href}
                 href={link.href}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 relative overflow-hidden group ${
                   isActive 
-                    ? 'text-white bg-white/10' 
-                    : 'text-[var(--text-muted)] hover:text-white hover:bg-white/5'
+                    ? 'text-white shadow-[0_0_20px_rgba(124,58,237,0.3)]' 
+                    : 'text-[var(--text-muted)] hover:text-white'
                 }`}
               >
-                {link.label}
+                {/* Active Background Pill */}
+                {isActive && (
+                  <span className="absolute inset-0 bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] opacity-100 -z-10" />
+                )}
+                
+                {/* Hover Glow (only if not active) */}
+                {!isActive && (
+                  <span className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 rounded-full" />
+                )}
+                
+                <span className="relative z-10">{link.label}</span>
               </Link>
              );
           })}

@@ -84,7 +84,7 @@ export const Sidebar = ({
   return (
     <aside 
       id="sidebar" 
-      className={`transform ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 transition-transform duration-300 fixed md:sticky top-0 inset-y-0 left-0 w-64 h-screen glass-sidebar flex flex-col z-40`}
+      className={`transform ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 transition-transform duration-300 fixed md:sticky top-20 inset-y-0 left-0 w-64 h-[calc(100vh-5rem)] glass-sidebar flex flex-col z-40`}
     >
       {/* Header with Logo */}
       <div className="p-5 border-b border-[var(--glass-border)]">

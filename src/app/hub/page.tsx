@@ -59,21 +59,7 @@ const FLStudioHubContent = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Mobile Header */}
-      <div className="md:hidden fixed top-0 left-0 right-0 glass-topnav z-50 flex items-center justify-between px-4 h-14">
-        <h1 className="font-bold text-lg">
-          <span className="text-white">FL</span>
-          <span className="text-gradient">Studio</span>
-        </h1>
-        <button
-          onClick={toggleMobileMenu}
-          className="p-2 text-[var(--text-secondary)] hover:text-white focus:outline-none"
-        >
-          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </div>
+
 
       {/* Main Layout */}
       <div className="flex">
@@ -89,7 +75,7 @@ const FLStudioHubContent = () => {
         />
 
         {/* Main Content Area */}
-        <main className="flex-1 min-h-screen pt-14 md:pt-0">
+        <main className="flex-1 min-h-screen pt-24 md:pt-20">
           <div className="max-w-6xl mx-auto px-4 md:px-8 py-6 md:py-10">
             {/* Hero Section for Home */}
             {state.activeSection === 'home' && (

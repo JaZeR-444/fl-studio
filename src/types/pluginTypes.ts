@@ -69,7 +69,7 @@ export interface ExtendedPlugin {
   icon: string;
   rating: number;
   tags: Tag[];
-  pricingBadge: 'all-plugins' | 'producer' | 'signature' | 'fruity';
+  pricingBadge: 'all-plugins' | 'producer' | 'signature' | 'fruity' | 'free';
   views: number;
   saves: number;
   date: string;

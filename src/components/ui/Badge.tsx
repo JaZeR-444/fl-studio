@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 
 interface BadgeProps {
   children: ReactNode;
-  variant?: 'purple' | 'blue' | 'cyan' | 'green' | 'orange' | 'pink' | 'red' | 'sponsored' | 'premium' | 'rating';
+  variant?: 'purple' | 'blue' | 'cyan' | 'green' | 'orange' | 'pink' | 'red' | 'sponsored' | 'premium' | 'rating' | 'outline';
   className?: string;
 }
 
@@ -20,6 +20,7 @@ export const Badge = ({ children, variant = 'purple', className = '' }: BadgePro
     sponsored: 'badge-sponsored',
     premium: 'badge-premium',
     rating: 'badge-rating',
+    outline: 'badge-outline',
   };
 
   return (

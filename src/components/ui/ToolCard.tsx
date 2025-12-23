@@ -1,10 +1,11 @@
+import Link from 'next/link';
 'use client';
 
 import { ReactNode } from 'react';
 
 
 export interface ToolCardProps {
-  id: string;
+  id?: string;
   name: string;
   description: string;
   category: string;
@@ -17,6 +18,7 @@ export interface ToolCardProps {
   isFeatured?: boolean;
   views?: number;
   saves?: number;
+  href?: string;
   onClick?: () => void;
 }
 
@@ -33,7 +35,8 @@ export const ToolCard = ({
   isFeatured = false,
   views = 0,
   saves = 0,
-  onClick
+  onClick,
+  href
 }: ToolCardProps) => {
   const getPricingBadge = () => {
     switch (pricingBadge) {
@@ -60,10 +63,10 @@ export const ToolCard = ({
     return num.toString();
   };
 
-  return (
+  const CardContent = (
     <div
-      onClick={onClick}
-      className={`tool-card cursor-pointer ${isFeatured ? 'animate-pulse-glow' : ''}`}
+      onClick={!href ? onClick : undefined}
+      className={`tool-card cursor-pointer group ${isFeatured ? 'animate-pulse-glow' : ''}`}
     >
       {/* Sponsored Badge */}
       {isSponsored && (
@@ -139,13 +142,26 @@ export const ToolCard = ({
           </svg>
         </div>
         <div className="tool-stats-item">
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-          </svg>
+           <span className="text-[var(--accent-tertiary)] hover:text-[var(--accent-secondary)] transition-colors text-xs flex items-center gap-1">
+             View Details
+             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+             </svg>
+           </span>
         </div>
       </div>
     </div>
   );
+
+  if (href) {
+    return (
+      <Link href={href} className="block group w-full h-full">
+        {CardContent}
+      </Link>
+    );
+  }
+
+  return CardContent;
 };
 
 // Simpler Tool Card for listing views
@@ -157,17 +173,18 @@ export const ToolCardCompact = ({
   date,
   tags = [],
   pricingBadge,
-  onClick
+  onClick,
+  href
 }: {
   name: string;
   description: string;
   category: string;
   icon?: ReactNode;
   date?: string;
-
   tags?: { label: string; color: 'purple' | 'blue' | 'cyan' | 'green' | 'orange' | 'pink' | 'red' }[];
   pricingBadge?: 'free' | 'producer' | 'signature' | 'all-plugins' | 'fruity';
   onClick?: () => void;
+  href?: string;
 }) => {
   const getPricingBadge = () => {
     switch (pricingBadge) {
@@ -188,8 +205,8 @@ export const ToolCardCompact = ({
 
   const pricing = getPricingBadge();
 
-  return (
-    <div onClick={onClick} className="tool-card cursor-pointer">
+  const CardContent = (
+    <div onClick={!href ? onClick : undefined} className="tool-card cursor-pointer group h-full flex flex-col relative">
       {/* Date Badge */}
       {date && (
         <div className="absolute top-3 right-3">
@@ -214,7 +231,7 @@ export const ToolCardCompact = ({
       </div>
 
       {/* Description */}
-      <p className="text-sm text-[var(--text-muted)] mb-4 line-clamp-2">
+      <p className="text-sm text-[var(--text-muted)] mb-4 line-clamp-2 flex-grow">
         {description}
       </p>
 
@@ -233,14 +250,24 @@ export const ToolCardCompact = ({
       </div>
 
       {/* View Details Link */}
-      <div className="flex items-center justify-between text-xs text-[var(--text-dim)]">
-        <span className="text-[var(--accent-tertiary)] hover:text-[var(--accent-secondary)] transition-colors">
+      <div className="flex items-center justify-between text-xs text-[var(--text-dim)] mt-auto pt-3 border-t border-[var(--glass-border)]">
+        <span className="text-[var(--accent-tertiary)] group-hover:text-[var(--accent-secondary)] transition-colors">
           View Details
         </span>
-        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 17L17 7M17 7H7M17 7v10" />
         </svg>
       </div>
     </div>
   );
+
+  if (href) {
+    return (
+      <Link href={href} className="block group w-full h-full">
+        {CardContent}
+      </Link>
+    );
+  }
+
+  return CardContent;
 };

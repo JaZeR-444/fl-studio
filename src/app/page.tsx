@@ -1,197 +1,82 @@
 'use client';
 
-import { useState } from 'react';
-import { AppProvider, useAppContext } from '@/context/AppContext';
+import Link from 'next/link';
+import { Badge } from '@/components/ui/Badge';
 
-// Import components
-import { Sidebar } from '@/components/Sidebar';
-import { TopNav } from '@/components/TopNav';
-import { HeroSection } from '@/components/HeroSection';
-import { MentalModelSection } from '@/components/sections/MentalModel';
-import { ModulesSection } from '@/components/sections/Modules';
-import { DojoSection } from '@/components/sections/Dojo';
-import { TemplatesSection } from '@/components/sections/Templates';
-import { AudioSection } from '@/components/sections/Audio';
-import { UtilitiesSection } from '@/components/sections/Utilities';
-import { PluginsSection } from '@/components/sections/Plugins';
-import { AIAssistantSection } from '@/components/sections/AIAssistant';
-import { MixingSection } from '@/components/sections/Mixing';
-import { ExportSection } from '@/components/sections/Export';
-import { TroubleshootSection } from '@/components/sections/Troubleshoot';
-import { ProjectTemplatesSection } from '@/components/sections/ProjectTemplates';
-import { WorkflowVisualizationsSection } from '@/components/sections/WorkflowVisualizations';
-import { MidiMappingReference } from '@/components/sections/MidiMappingReference';
-import { AudioAnalysisSection } from '@/components/sections/AudioAnalysis';
-import { PluginsDatabase } from '@/components/sections/PluginsDatabase';
-import { NativeAdvantages } from '@/components/sections/NativeAdvantages';
-import { WorkflowChains } from '@/components/sections/WorkflowChains';
-import { SynthesisHistory } from '@/components/sections/SynthesisHistory';
-import { SettingsPanel } from '@/components/SettingsPanel';
-
-// Inner component that consumes the context
-const FLStudioHubContent = () => {
-  const { state, dispatch } = useAppContext();
-  const [showSettings, setShowSettings] = useState(false);
-
-  // Handle section navigation
-  const navigateToSection = (sectionId: string) => {
-    dispatch({ type: 'SET_ACTIVE_SECTION', payload: sectionId });
-    window.history.pushState(null, '', `#${sectionId}`);
-    // Close mobile menu if open
-    if (window.innerWidth < 768) {
-      dispatch({ type: 'SET_MOBILE_MENU', payload: false });
-    }
-  };
-
-  // Toggle dark mode
-  const toggleDarkMode = () => {
-    dispatch({ type: 'TOGGLE_DARK_MODE' });
-  };
-
-  // Toggle mobile menu
-  const toggleMobileMenu = () => {
-    dispatch({ type: 'TOGGLE_MOBILE_MENU' });
-  };
-
-  // Toggle settings panel
-  const toggleSettings = () => {
-    setShowSettings(!showSettings);
-  };
-
+export default function HomePage() {
   return (
-    <div className="min-h-screen">
-      {/* Mobile Header */}
-      <div className="md:hidden fixed top-0 left-0 right-0 glass-topnav z-50 flex items-center justify-between px-4 h-14">
-        <h1 className="font-bold text-lg">
-          <span className="text-white">FL</span>
-          <span className="text-gradient">Studio</span>
-        </h1>
-        <button
-          onClick={toggleMobileMenu}
-          className="p-2 text-[var(--text-secondary)] hover:text-white focus:outline-none"
-        >
-          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
+    <div className="min-h-screen bg-[var(--bg-app)] text-white overflow-hidden relative">
+      {/* Background Ambience */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[var(--primary)] rounded-full blur-[120px] opacity-20 animate-pulse-glow" />
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[var(--secondary)] rounded-full blur-[120px] opacity-20 animate-pulse-glow delay-1000" />
       </div>
 
-      {/* Main Layout */}
-      <div className="flex">
-        {/* Sidebar */}
-        <Sidebar
-          activeSection={state.activeSection}
-          navigateToSection={navigateToSection}
-          darkMode={state.darkMode}
-          toggleDarkMode={toggleDarkMode}
-          mobileMenuOpen={state.mobileMenuOpen}
-          setMobileMenuOpen={(open: boolean) => dispatch({ type: 'SET_MOBILE_MENU', payload: open })}
-          toggleSettings={toggleSettings}
-        />
+      <main className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 text-center">
+        
+        {/* Hero Content */}
+        <div className="space-y-8 max-w-4xl mx-auto animate-fade-in-up">
+          <Badge variant="premium" className="mb-4 text-lg py-2 px-4 shadow-[0_0_20px_rgba(255,165,0,0.3)]">
+            FL Studio Master Hub
+          </Badge>
 
-        {/* Main Content Area */}
-        <main className="flex-1 min-h-screen pt-14 md:pt-0">
-          <div className="max-w-6xl mx-auto px-4 md:px-8 py-6 md:py-10">
-            {/* Hero Section for Home */}
-            {state.activeSection === 'home' && (
-              <HeroSection
-                onExploreTools={() => navigateToSection('plugins')}
-                totalPlugins={50}
-                totalWorkflows={25}
-                totalTemplates={30}
-              />
-            )}
+          <h1 className="text-6xl md:text-8xl font-black tracking-tight leading-tight">
+            <span className="text-white block">Master Your</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] block mt-2 filter drop-shadow-2xl">
+              Sound Identity
+            </span>
+          </h1>
 
-            {/* Sponsored/Featured Section for Home */}
-            {state.activeSection === 'home' && (
-              <div className="mt-12">
-                <div className="flex items-center gap-3 mb-6">
-                  <h2 className="text-2xl font-bold text-white">Sponsored Listings</h2>
-                  <span className="text-sm text-[var(--text-muted)]">Featured FL Studio tools and services</span>
-                  <span className="badge badge-premium ml-auto">Premium</span>
-                </div>
-                <MentalModelSection />
-              </div>
-            )}
+          <p className="text-xl md:text-2xl text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed">
+             The ultimate resource for workflow mastery, plugin deep-dives, and native synthesis techniques.
+          </p>
 
-            {/* Modules Section */}
-            {state.activeSection === 'modules' && <ModulesSection />}
-
-            {/* Dojo Section */}
-            {state.activeSection === 'dojo' && <DojoSection />}
-
-            {/* Templates Section */}
-            {state.activeSection === 'templates' && <TemplatesSection />}
-
-            {/* Audio Section */}
-            {state.activeSection === 'audio' && <AudioSection />}
-
-            {/* Utilities Section */}
-            {state.activeSection === 'utilities' && <UtilitiesSection />}
-
-            {/* Plugins Section */}
-            {state.activeSection === 'plugins' && <PluginsSection />}
-
-            {/* AI Assistant Section */}
-            {state.activeSection === 'ai-assistant' && <AIAssistantSection />}
-
-            {/* Mixing Section */}
-            {state.activeSection === 'mixing' && <MixingSection />}
-
-            {/* Export Section */}
-            {state.activeSection === 'export' && <ExportSection />}
-
-            {/* Troubleshoot Section */}
-            {state.activeSection === 'troubleshoot' && <TroubleshootSection />}
-
-            {/* Project Templates Section */}
-            {state.activeSection === 'project-templates' && <ProjectTemplatesSection />}
-
-            {/* Workflow Visualizations Section */}
-            {state.activeSection === 'workflow-visualizations' && <WorkflowVisualizationsSection />}
-
-            {/* MIDI Mapping Reference Section */}
-            {state.activeSection === 'midi-mapping' && <MidiMappingReference />}
-
-            {/* Audio Analysis Section */}
-            {state.activeSection === 'audio-analysis' && <AudioAnalysisSection />}
-
-            {/* Plugins Database Section */}
-            {state.activeSection === 'plugins-database' && <PluginsDatabase />}
-
-            {/* Native Advantages Section */}
-            {state.activeSection === 'native-advantages' && <NativeAdvantages />}
-
-            {/* Workflow Chains Section */}
-            {state.activeSection === 'workflow-chains' && <WorkflowChains />}
-
-            {/* Synthesis History Section */}
-            {state.activeSection === 'synthesis-history' && <SynthesisHistory />}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
+            <Link 
+              href="/hub" 
+              className="group relative px-8 py-4 bg-[var(--primary)] hover:bg-[var(--primary-light)] text-white font-bold text-lg rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(255,165,0,0.4)] flex items-center justify-center gap-3 overflow-hidden"
+            >
+              <span className="relative z-10">Enter Studio</span>
+              <svg className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:animate-shine" />
+            </Link>
+            
+            <Link 
+              href="/hub#plugins"
+              className="px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white font-bold text-lg rounded-xl transition-all duration-300 backdrop-blur-sm"
+            >
+              Explore Plugins
+            </Link>
           </div>
-        </main>
-      </div>
+        </div>
 
-      {/* Settings Panel */}
-      <SettingsPanel
-        isOpen={showSettings}
-        onClose={() => setShowSettings(false)}
-      />
+        {/* Feature Grid Preview */}
+        <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl w-full text-left animate-fade-in-up delay-200">
+           {/* Card 1 */}
+           <div className="bg-white/5 border border-white/10 p-6 rounded-2xl hover:bg-white/10 transition-colors backdrop-blur-md">
+             <div className="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center text-2xl mb-4 text-purple-400">🎹</div>
+             <h3 className="text-xl font-bold mb-2">100+ Native Plugins</h3>
+             <p className="text-[var(--text-muted)]">Detailed stats, CPU usage, and pro tips for every stock instrument and effect.</p>
+           </div>
+           
+           {/* Card 2 */}
+            <div className="bg-white/5 border border-white/10 p-6 rounded-2xl hover:bg-white/10 transition-colors backdrop-blur-md">
+             <div className="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center text-2xl mb-4 text-blue-400">⚡</div>
+             <h3 className="text-xl font-bold mb-2">Workflow Chains</h3>
+             <p className="text-[var(--text-muted)]">Pre-built effect chains and mixing templates to speed up your production.</p>
+           </div>
+           
+           {/* Card 3 */}
+            <div className="bg-white/5 border border-white/10 p-6 rounded-2xl hover:bg-white/10 transition-colors backdrop-blur-md">
+             <div className="w-12 h-12 rounded-lg bg-orange-500/20 flex items-center justify-center text-2xl mb-4 text-orange-400">🧠</div>
+             <h3 className="text-xl font-bold mb-2">Native Advantage</h3>
+             <p className="text-[var(--text-muted)]">Learn why stock plugins offer superior performance and integration.</p>
+           </div>
+        </div>
 
-      {/* Mobile Overlay */}
-      {state.mobileMenuOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 md:hidden"
-          onClick={() => dispatch({ type: 'SET_MOBILE_MENU', payload: false })}
-        />
-      )}
+      </main>
     </div>
-  );
-};
-
-export default function FLStudioHub() {
-  return (
-    <AppProvider>
-      <FLStudioHubContent />
-    </AppProvider>
   );
 }

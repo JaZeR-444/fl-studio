@@ -127,6 +127,7 @@ export const PluginsSection = () => {
               {...(plugin as any)}
               isSponsored={true}
               onClick={() => console.log(`Clicked on ${plugin.name}`)}
+              href={`/plugins/${plugin.id}`}
             />
           ))}
         </div>
@@ -143,6 +144,7 @@ export const PluginsSection = () => {
                 key={plugin.id}
                 {...(plugin as any)}
                 onClick={() => console.log(`Clicked on ${plugin.name}`)}
+                href={`/plugins/${plugin.id}`}
               />
             ))}
           </div>
@@ -159,6 +161,7 @@ export const PluginsSection = () => {
                 tags={plugin.tags}
                 pricingBadge={plugin.pricingBadge}
                 onClick={() => console.log(`Clicked on ${plugin.name}`)}
+                href={`/plugins/${plugin.id}`}
               />
             ))}
           </div>

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 // src/components/ui/PluginCard.tsx
 import { ExtendedPlugin } from '@/types/pluginTypes';
 import { Badge } from './Badge';
@@ -32,8 +33,9 @@ export const PluginCard = ({ plugin, onClick, showDetails = true }: PluginCardPr
   const pricing = getPricingBadge();
 
   return (
-    <div
-      className="tool-card"
+    <Link
+      href={`/plugins/${plugin.id}`}
+      className="tool-card block hover:scale-[1.02] transition-transform duration-300"
       onClick={onClick}
     >
       {/* Header */}
@@ -79,7 +81,7 @@ export const PluginCard = ({ plugin, onClick, showDetails = true }: PluginCardPr
               <span className="text-[var(--accent-tertiary)]">⚡</span> {plugin.cpuUsage || 'Unknown'} CPU
             </span>
             <span className="text-[var(--text-muted)]">
-              <span className="text-yellow-400">★</span> {plugin.rating?.toFixed(1) || 'N/A'}
+               <span className="text-yellow-400">★</span> {plugin.rating?.toFixed(1) || 4.5}
             </span>
           </div>
 
@@ -115,6 +117,6 @@ export const PluginCard = ({ plugin, onClick, showDetails = true }: PluginCardPr
           </div>
         </>
       )}
-    </div>
+    </Link>
   );
 };

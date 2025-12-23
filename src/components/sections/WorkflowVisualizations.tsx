@@ -1,6 +1,7 @@
-// components/sections/WorkflowVisualizations.tsx
+'use client';
+
 import { useState } from 'react';
-import { Chart as ChartJS, LineController, LineElement, PointElement, LinearScale, Title, CategoryScale } from 'chart.js';
+import { Chart as ChartJS, LineController, LineElement, PointElement, LinearScale, Title, CategoryScale, Filler } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
 // Register Chart.js components
@@ -10,7 +11,8 @@ ChartJS.register(
   PointElement,
   LinearScale,
   Title,
-  CategoryScale
+  CategoryScale,
+  Filler
 );
 
 export const WorkflowVisualizationsSection = () => {
@@ -18,354 +20,222 @@ export const WorkflowVisualizationsSection = () => {
 
   // Common workflow visualizations
   const visualizations = [
-    { id: 'basic', title: 'Basic Workflow', description: 'The fundamental FL Studio workflow from idea to export' },
-    { id: 'songwriting', title: 'Songwriting Flow', description: 'Workflow for writing complete songs in FL Studio' },
-    { id: 'beatmaking', title: 'Beat Making Process', description: 'Step-by-step beat creation process' },
-    { id: 'mixing', title: 'Mixing Workflow', description: 'Professional mixing approach in FL Studio' },
-    { id: 'sounddesign', title: 'Sound Design Flow', description: 'Process for creating custom sounds' }
+    { id: 'basic', title: 'Basic Workflow', icon: '🎯', description: 'The fundamental FL Studio workflow from idea to export', color: '#8b5cf6' },
+    { id: 'songwriting', title: 'Songwriting', icon: '🎼', description: 'Workflow for writing complete songs', color: '#06b6d4' },
+    { id: 'beatmaking', title: 'Beat Making', icon: '🥁', description: 'Step-by-step beat creation process', color: '#f97316' },
+    { id: 'mixing', title: 'Mixing', icon: '🎚️', description: 'Professional mixing approach', color: '#10b981' },
+    { id: 'sounddesign', title: 'Sound Design', icon: '🔊', description: 'Process for creating custom sounds', color: '#ec4899' }
   ];
 
-  // Data for the basic workflow chart
-  const basicWorkflowData = {
-    labels: ['Idea', 'Basic Pattern', 'Arrangement', 'Sound Design', 'Mixing', 'Export'],
+  // Chart data for each workflow
+  const workflowChartData: { [key: string]: { labels: string[]; color: string; data: number[] } } = {
+    basic: { labels: ['Idea', 'Pattern', 'Arrange', 'Sound', 'Mix', 'Export'], color: '#8b5cf6', data: [10, 30, 50, 70, 90, 100] },
+    songwriting: { labels: ['Concept', 'Chords', 'Melody', 'Structure', 'Refine', 'Produce'], color: '#06b6d4', data: [10, 25, 40, 60, 80, 100] },
+    beatmaking: { labels: ['Tempo', 'Drums', 'Bass', 'Melody', 'Arrange', 'Final'], color: '#f97316', data: [10, 30, 50, 70, 90, 100] },
+    mixing: { labels: ['Balance', 'EQ', 'Compress', 'Effects', 'Automate', 'Master'], color: '#10b981', data: [20, 40, 60, 80, 90, 100] },
+    sounddesign: { labels: ['Idea', 'Plugin', 'Params', 'Layer', 'Process', 'Final'], color: '#ec4899', data: [10, 30, 50, 70, 90, 100] }
+  };
+
+  const currentWorkflow = workflowChartData[activeVisualization];
+  const currentVis = visualizations.find(v => v.id === activeVisualization);
+
+  const chartData = {
+    labels: currentWorkflow.labels,
     datasets: [
       {
         label: 'Progress',
-        data: [10, 30, 50, 70, 90, 100],
-        borderColor: '#f97316',
-        backgroundColor: 'rgba(249, 115, 22, 0.1)',
+        data: currentWorkflow.data,
+        borderColor: currentWorkflow.color,
+        backgroundColor: `${currentWorkflow.color}20`,
         tension: 0.4,
-        fill: true
+        fill: true,
+        pointBackgroundColor: currentWorkflow.color,
+        pointBorderColor: '#fff',
+        pointBorderWidth: 2,
+        pointRadius: 5
       }
     ]
-  };
-
-  // Data for the songwriting workflow chart
-  const songwritingWorkflowData = {
-    labels: ['Concept', 'Chord Progression', 'Melody', 'Structure', 'Refinement', 'Production'],
-    datasets: [
-      {
-        label: 'Progress',
-        data: [10, 25, 40, 60, 80, 100],
-        borderColor: '#0ea5e9',
-        backgroundColor: 'rgba(14, 165, 233, 0.1)',
-        tension: 0.4,
-        fill: true
-      }
-    ]
-  };
-
-  // Data for the beatmaking workflow chart
-  const beatmakingWorkflowData = {
-    labels: ['Tempo/Key', 'Drums', 'Bass', 'Melody', 'Arrangement', 'Final'],
-    datasets: [
-      {
-        label: 'Progress',
-        data: [10, 30, 50, 70, 90, 100],
-        borderColor: '#8b5cf6',
-        backgroundColor: 'rgba(139, 92, 246, 0.1)',
-        tension: 0.4,
-        fill: true
-      }
-    ]
-  };
-
-  // Data for the mixing workflow chart
-  const mixingWorkflowData = {
-    labels: ['Balance', 'EQ', 'Compression', 'Effects', 'Automation', 'Final Mix'],
-    datasets: [
-      {
-        label: 'Progress',
-        data: [20, 40, 60, 80, 90, 100],
-        borderColor: '#10b981',
-        backgroundColor: 'rgba(16, 185, 129, 0.1)',
-        tension: 0.4,
-        fill: true
-      }
-    ]
-  };
-
-  // Data for the sound design workflow chart
-  const sounddesignWorkflowData = {
-    labels: ['Idea', 'Plugin Selection', 'Parameter Adjustment', 'Layering', 'Processing', 'Final Sound'],
-    datasets: [
-      {
-        label: 'Progress',
-        data: [10, 30, 50, 70, 90, 100],
-        borderColor: '#f43f5e',
-        backgroundColor: 'rgba(244, 63, 94, 0.1)',
-        tension: 0.4,
-        fill: true
-      }
-    ]
-  };
-
-  // Get the data for the active visualization
-  const getChartData = () => {
-    switch (activeVisualization) {
-      case 'basic':
-        return basicWorkflowData;
-      case 'songwriting':
-        return songwritingWorkflowData;
-      case 'beatmaking':
-        return beatmakingWorkflowData;
-      case 'mixing':
-        return mixingWorkflowData;
-      case 'sounddesign':
-        return sounddesignWorkflowData;
-      default:
-        return basicWorkflowData;
-    }
   };
 
   const chartOptions = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
-      legend: {
-        display: false,
-      },
-      title: {
-        display: true,
-        text: visualizations.find(v => v.id === activeVisualization)?.title || 'Workflow Visualization',
-        color: '#1e293b', // text-stone-800
-      },
+      legend: { display: false },
+      title: { display: false }
     },
     scales: {
       y: {
         beginAtZero: true,
         max: 100,
-        grid: {
-          color: () => {
-            return document.documentElement.classList.contains('dark') ? '#52525b' : '#e5e7eb';
-          }
-        },
-        ticks: {
-          color: () => {
-            return document.documentElement.classList.contains('dark') ? '#d4d4d4' : '#52525b';
-          }
-        }
+        grid: { color: 'rgba(139, 92, 246, 0.1)' },
+        ticks: { color: '#a78bfa' }
       },
       x: {
         grid: { display: false },
-        ticks: {
-          color: () => {
-            return document.documentElement.classList.contains('dark') ? '#d4d4d4' : '#52525b';
-          }
-        }
+        ticks: { color: '#a78bfa' }
       }
     }
   };
 
+  // Workflow steps for each type
+  const workflowSteps: { [key: string]: { step: string; desc: string }[] } = {
+    basic: [
+      { step: 'Idea Generation', desc: 'Start with a musical concept or sound' },
+      { step: 'Pattern Creation', desc: 'Create your foundational pattern in the Channel Rack' },
+      { step: 'Arrangement', desc: 'Structure your song using the Playlist' }
+    ],
+    songwriting: [
+      { step: 'Concept & Theme', desc: 'Define the mood, message, and structure' },
+      { step: 'Chord Progression', desc: 'Establish the harmonic foundation' },
+      { step: 'Melody Creation', desc: 'Develop the main vocal or instrumental melody' }
+    ],
+    beatmaking: [
+      { step: 'Tempo & Key', desc: 'Choose the foundational parameters' },
+      { step: 'Drum Programming', desc: 'Create your drum pattern and sounds' },
+      { step: 'Bass Line', desc: 'Add the foundational bass element' }
+    ],
+    mixing: [
+      { step: 'Gain Staging', desc: 'Set initial volume balance between tracks' },
+      { step: 'EQ & Cleanup', desc: 'Remove unwanted frequencies and shape tone' },
+      { step: 'Dynamics', desc: 'Apply compression and limiting as needed' }
+    ],
+    sounddesign: [
+      { step: 'Concept', desc: 'Define the sound you want to create' },
+      { step: 'Plugin Selection', desc: 'Choose the right synth or sampler' },
+      { step: 'Parameter Tweaking', desc: 'Adjust parameters to achieve your sound' }
+    ]
+  };
+
+  const currentSteps = workflowSteps[activeVisualization];
+
   return (
-    <section id="workflow-visualizations" className="page-section">
+    <section id="workflow-visualizations" className="page-section animate-fade">
+      {/* Header */}
       <div className="mb-8">
-        <h2 className="text-3xl font-bold text-stone-900 dark:text-white mb-6">Workflow Visualizations</h2>
+        <h2 className="text-3xl font-bold mb-2">
+          <span className="text-gradient">Workflow</span>
+          <span className="text-white"> Visualizations</span>
+        </h2>
+        <p className="text-[var(--text-muted)]">
+          Interactive visualizations to help you understand different production workflows.
+        </p>
+      </div>
+
+      {/* Workflow Type Selector */}
+      <div className="mb-8">
+        <div className="flex flex-wrap gap-2">
+          {visualizations.map((vis) => (
+            <button
+              key={vis.id}
+              onClick={() => setActiveVisualization(vis.id)}
+              className={`px-4 py-2 rounded-lg font-medium transition-all flex items-center gap-2 ${
+                activeVisualization === vis.id
+                  ? 'text-white'
+                  : 'bg-[var(--glass-bg)] text-[var(--text-muted)] hover:text-white hover:bg-[var(--glass-bg-hover)] border border-[var(--glass-border)]'
+              }`}
+              style={activeVisualization === vis.id ? { backgroundColor: vis.color } : {}}
+            >
+              <span>{vis.icon}</span>
+              <span>{vis.title}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Chart Card */}
+      <div className="content-card p-6 mb-8">
+        <div className="flex justify-between items-start mb-4">
+          <div>
+            <h3 className="text-xl font-bold text-white">{currentVis?.title} Progress</h3>
+            <p className="text-sm text-[var(--text-muted)]">{currentVis?.description}</p>
+          </div>
+          <span className="badge badge-purple">{currentVis?.icon}</span>
+        </div>
         
-        <div className="mb-8">
-          <h3 className="text-xl font-bold text-stone-800 dark:text-white mb-4">Visualization Types</h3>
-          <div className="flex flex-wrap gap-3">
-            {visualizations.map((vis) => (
-              <button
-                key={vis.id}
-                onClick={() => setActiveVisualization(vis.id)}
-                className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                  activeVisualization === vis.id
-                    ? 'bg-orange-600 text-white'
-                    : 'bg-stone-200 dark:bg-zinc-700 text-stone-700 dark:text-zinc-300 hover:bg-stone-300 dark:hover:bg-zinc-600'
-                }`}
-              >
-                {vis.title}
-              </button>
+        <div className="h-64">
+          <Line data={chartData} options={chartOptions} />
+        </div>
+
+        {/* Steps Breakdown */}
+        <div className="mt-6 pt-6 border-t border-[var(--glass-border)]">
+          <h4 className="font-bold text-white mb-4">Key Steps</h4>
+          <div className="space-y-3">
+            {currentSteps.map((item, index) => (
+              <div key={index} className="flex items-start">
+                <div 
+                  className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-white font-bold text-sm"
+                  style={{ backgroundColor: currentWorkflow.color }}
+                >
+                  {index + 1}
+                </div>
+                <div>
+                  <h5 className="font-bold text-white">{item.step}</h5>
+                  <p className="text-sm text-[var(--text-muted)]">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Interactive Timeline */}
+      <div className="content-card p-6">
+        <h3 className="text-xl font-bold text-white mb-6">Interactive Workflow Timeline</h3>
+        
+        {/* Horizontal Timeline */}
+        <div className="relative mb-8">
+          <div className="flex justify-between relative">
+            <div className="absolute top-5 left-0 right-0 h-1 bg-[var(--glass-border)]"></div>
+            <div 
+              className="absolute top-5 left-0 h-1 transition-all duration-500"
+              style={{ 
+                width: '100%', 
+                background: `linear-gradient(90deg, ${currentWorkflow.color}, transparent)`,
+                opacity: 0.5
+              }}
+            ></div>
+            {[
+              { num: 1, title: 'Idea', sub: 'Concept' },
+              { num: 2, title: 'Creation', sub: 'Pattern/Track' },
+              { num: 3, title: 'Arrangement', sub: 'Structure' },
+              { num: 4, title: 'Polish', sub: 'Mix/Effects' },
+              { num: 5, title: 'Export', sub: 'Delivery' }
+            ].map((step, idx) => (
+              <div key={idx} className="flex-1 text-center relative z-10">
+                <div 
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold mx-auto mb-2"
+                  style={{ backgroundColor: currentWorkflow.color }}
+                >
+                  {step.num}
+                </div>
+                <h4 className="font-bold text-white text-sm">{step.title}</h4>
+                <p className="text-xs text-[var(--text-dim)]">{step.sub}</p>
+              </div>
             ))}
           </div>
         </div>
 
-        <div className="bg-white dark:bg-zinc-800 rounded-xl shadow-sm border border-stone-200 dark:border-zinc-700 p-6 mb-8">
-          <div className="h-80">
-            <Line data={getChartData()} options={chartOptions} />
-          </div>
-          
-          <div className="mt-6">
-            <h4 className="font-bold text-stone-800 dark:text-white mb-2">
-              {visualizations.find(v => v.id === activeVisualization)?.title}
-            </h4>
-            <p className="text-stone-600 dark:text-zinc-400 mb-4">
-              {visualizations.find(v => v.id === activeVisualization)?.description}
-            </p>
-            
-            {activeVisualization === 'basic' && (
-              <div className="space-y-3">
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center mr-3">
-                    <span className="text-orange-600 dark:text-orange-400 font-bold">1</span>
-                  </div>
-                  <div>
-                    <h5 className="font-bold text-stone-800 dark:text-white">Idea Generation</h5>
-                    <p className="text-stone-600 dark:text-zinc-400 text-sm">Start with a musical concept or sound</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center mr-3">
-                    <span className="text-orange-600 dark:text-orange-400 font-bold">2</span>
-                  </div>
-                  <div>
-                    <h5 className="font-bold text-stone-800 dark:text-white">Basic Pattern Creation</h5>
-                    <p className="text-stone-600 dark:text-zinc-400 text-sm">Create your foundational pattern in the Channel Rack</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center mr-3">
-                    <span className="text-orange-600 dark:text-orange-400 font-bold">3</span>
-                  </div>
-                  <div>
-                    <h5 className="font-bold text-stone-800 dark:text-white">Arrangement in Playlist</h5>
-                    <p className="text-stone-600 dark:text-zinc-400 text-sm">Structure your song using the Playlist</p>
-                  </div>
-                </div>
-              </div>
-            )}
-            
-            {activeVisualization === 'songwriting' && (
-              <div className="space-y-3">
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center mr-3">
-                    <span className="text-sky-600 dark:text-sky-400 font-bold">1</span>
-                  </div>
-                  <div>
-                    <h5 className="font-bold text-stone-800 dark:text-white">Concept & Theme</h5>
-                    <p className="text-stone-600 dark:text-zinc-400 text-sm">Define the mood, message, and structure</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center mr-3">
-                    <span className="text-sky-600 dark:text-sky-400 font-bold">2</span>
-                  </div>
-                  <div>
-                    <h5 className="font-bold text-stone-800 dark:text-white">Chord Progression</h5>
-                    <p className="text-stone-600 dark:text-zinc-400 text-sm">Establish the harmonic foundation</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center mr-3">
-                    <span className="text-sky-600 dark:text-sky-400 font-bold">3</span>
-                  </div>
-                  <div>
-                    <h5 className="font-bold text-stone-800 dark:text-white">Melody Creation</h5>
-                    <p className="text-stone-600 dark:text-zinc-400 text-sm">Develop the main vocal or instrumental melody</p>
-                  </div>
-                </div>
-              </div>
-            )}
-            
-            {activeVisualization === 'beatmaking' && (
-              <div className="space-y-3">
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center mr-3">
-                    <span className="text-violet-600 dark:text-violet-400 font-bold">1</span>
-                  </div>
-                  <div>
-                    <h5 className="font-bold text-stone-800 dark:text-white">Tempo & Key Selection</h5>
-                    <p className="text-stone-600 dark:text-zinc-400 text-sm">Choose the foundational parameters</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center mr-3">
-                    <span className="text-violet-600 dark:text-violet-400 font-bold">2</span>
-                  </div>
-                  <div>
-                    <h5 className="font-bold text-stone-800 dark:text-white">Drum Programming</h5>
-                    <p className="text-stone-600 dark:text-zinc-400 text-sm">Create your drum pattern and sounds</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center mr-3">
-                    <span className="text-violet-600 dark:text-violet-400 font-bold">3</span>
-                  </div>
-                  <div>
-                    <h5 className="font-bold text-stone-800 dark:text-white">Bass Line</h5>
-                    <p className="text-stone-600 dark:text-zinc-400 text-sm">Add the foundational bass element</p>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
+        {/* Module Cards */}
+        <div className="grid grid-cols-5 gap-4">
+          {[
+            { title: 'Browser', desc: 'Samples, Plugins' },
+            { title: 'Channel Rack', desc: 'Step Sequencer' },
+            { title: 'Playlist', desc: 'Arrangement' },
+            { title: 'Mixer', desc: 'Processing' },
+            { title: 'Export', desc: 'Render' }
+          ].map((module, idx) => (
+            <div key={idx} className="glass-card p-4 text-center">
+              <h4 className="font-bold text-white mb-1 text-sm">{module.title}</h4>
+              <p className="text-xs text-[var(--text-dim)]">{module.desc}</p>
+            </div>
+          ))}
         </div>
 
-        {/* Interactive Workflow Diagram */}
-        <div className="bg-white dark:bg-zinc-800 rounded-xl shadow-sm border border-stone-200 dark:border-zinc-700 p-6">
-          <h3 className="text-xl font-bold text-stone-800 dark:text-white mb-4">Interactive Workflow Diagram</h3>
-          
-          <div className="relative">
-            {/* Horizontal timeline */}
-            <div className="flex justify-between mb-8 relative">
-              <div className="absolute top-5 left-0 right-0 h-1 bg-stone-200 dark:bg-zinc-700"></div>
-              <div className="flex-1 text-center relative">
-                <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold mx-auto mb-2 relative z-10">
-                  1
-                </div>
-                <h4 className="font-bold text-stone-800 dark:text-white">Idea</h4>
-                <p className="text-xs text-stone-500 dark:text-zinc-400 mt-1">Concept</p>
-              </div>
-              <div className="flex-1 text-center relative">
-                <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold mx-auto mb-2 relative z-10">
-                  2
-                </div>
-                <h4 className="font-bold text-stone-800 dark:text-white">Creation</h4>
-                <p className="text-xs text-stone-500 dark:text-zinc-400 mt-1">Pattern/Track</p>
-              </div>
-              <div className="flex-1 text-center relative">
-                <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold mx-auto mb-2 relative z-10">
-                  3
-                </div>
-                <h4 className="font-bold text-stone-800 dark:text-white">Arrangement</h4>
-                <p className="text-xs text-stone-500 dark:text-zinc-400 mt-1">Structure</p>
-              </div>
-              <div className="flex-1 text-center relative">
-                <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold mx-auto mb-2 relative z-10">
-                  4
-                </div>
-                <h4 className="font-bold text-stone-800 dark:text-white">Polish</h4>
-                <p className="text-xs text-stone-500 dark:text-zinc-400 mt-1">Mix/Effects</p>
-              </div>
-              <div className="flex-1 text-center relative">
-                <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold mx-auto mb-2 relative z-10">
-                  5
-                </div>
-                <h4 className="font-bold text-stone-800 dark:text-white">Export</h4>
-                <p className="text-xs text-stone-500 dark:text-zinc-400 mt-1">Delivery</p>
-              </div>
-            </div>
-
-            {/* Module connections */}
-            <div className="grid grid-cols-5 gap-4 mt-8">
-              <div className="bg-stone-100 dark:bg-zinc-700 p-4 rounded-lg border-2 border-stone-200 dark:border-zinc-600">
-                <h4 className="font-bold text-stone-800 dark:text-white mb-2">Browser</h4>
-                <p className="text-sm text-stone-600 dark:text-zinc-400">Samples, Plugins</p>
-              </div>
-              <div className="bg-stone-100 dark:bg-zinc-700 p-4 rounded-lg border-2 border-stone-200 dark:border-zinc-600">
-                <h4 className="font-bold text-stone-800 dark:text-white mb-2">Channel Rack</h4>
-                <p className="text-sm text-stone-600 dark:text-zinc-400">Step Sequencer</p>
-              </div>
-              <div className="bg-stone-100 dark:bg-zinc-700 p-4 rounded-lg border-2 border-stone-200 dark:border-zinc-600">
-                <h4 className="font-bold text-stone-800 dark:text-white mb-2">Playlist</h4>
-                <p className="text-sm text-stone-600 dark:text-zinc-400">Arrangement</p>
-              </div>
-              <div className="bg-stone-100 dark:bg-zinc-700 p-4 rounded-lg border-2 border-stone-200 dark:border-zinc-600">
-                <h4 className="font-bold text-stone-800 dark:text-white mb-2">Mixer</h4>
-                <p className="text-sm text-stone-600 dark:text-zinc-400">Processing</p>
-              </div>
-              <div className="bg-stone-100 dark:bg-zinc-700 p-4 rounded-lg border-2 border-stone-200 dark:border-zinc-600">
-                <h4 className="font-bold text-stone-800 dark:text-white mb-2">Export</h4>
-                <p className="text-sm text-stone-600 dark:text-zinc-400">Render</p>
-              </div>
-            </div>
-
-            <div className="mt-6 text-center">
-              <p className="text-stone-600 dark:text-zinc-400">
-                Click on any step in the workflow to learn more about that stage of the process.
-              </p>
-            </div>
-          </div>
+        <div className="mt-6 text-center">
+          <p className="text-[var(--text-muted)] text-sm">
+            Each stage flows into the next, creating a seamless production workflow.
+          </p>
         </div>
       </div>
     </section>

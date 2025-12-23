@@ -53,14 +53,35 @@ export interface PluginDetail {
   capabilities: PluginCapability;
 }
 
-export interface WorkflowTemplate {
+
+export interface Tag {
+  label: string;
+  color: 'purple' | 'blue' | 'cyan' | 'green' | 'orange' | 'pink' | 'red';
+}
+
+export interface ExtendedPlugin {
   id: string;
   name: string;
-  plugins: WorkflowStep[];
-  nativeBenefits: string;
-  breaksIfSwapped: string;
-  genre: string;
+  description: string;
+  category: string;
+  family: string;
+  pluginType: string;
+  icon: string;
+  rating: number;
+  tags: Tag[];
+  pricingBadge: 'all-plugins' | 'producer' | 'signature' | 'fruity';
+  views: number;
+  saves: number;
+  date: string;
+  
+  // Extended fields
+  nativeStatus: string;
+  bestUsedFor: string[];
+  soundCharacter: string;
+  cpuUsage: string;
+  proTips: string[];
 }
+
 
 export interface WorkflowStep {
   id: string;

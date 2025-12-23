@@ -56,8 +56,8 @@ export const DesignShowcase = () => {
           <Badge variant="purple">Purple Badge</Badge>
           <Badge variant="blue">Blue Badge</Badge>
           <Badge variant="premium">Premium</Badge>
-          <Badge variant="paid">Paid</Badge>
-          <Badge variant="free">Free</Badge>
+          <Badge variant="orange">Paid</Badge>
+          <Badge variant="green">Free</Badge>
         </div>
       </GlassCard>
 

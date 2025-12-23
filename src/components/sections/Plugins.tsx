@@ -1,261 +1,178 @@
-import { useState, useEffect, useRef } from 'react';
-import { Plugin } from '@/types';
+'use client';
+
+import { useState } from 'react';
+import { ToolCard, ToolCardCompact } from '@/components/ui/ToolCard';
+
+
+import { ExtendedPlugin } from '@/types/pluginTypes';
+import allPluginsData from '@/data/plugins/allPlugins.json';
+
+const allPlugins: ExtendedPlugin[] = allPluginsData as unknown as ExtendedPlugin[];
+
+// Calculate category counts dynamically
+const getCategoryCount = (keyword: string) => 
+  keyword === 'all' 
+    ? allPlugins.length 
+    : allPlugins.filter(p => p.category.toLowerCase().includes(keyword) || p.tags.some(t => t.label.toLowerCase().includes(keyword))).length;
+
+const categories = [
+  { id: 'all', label: 'All Plugins', count: getCategoryCount('all') },
+  { id: 'synths', label: 'Synthesizers', count: allPlugins.filter(p => p.pluginType === 'Synthesizer').length },
+  { id: 'effects', label: 'Effects', count: allPlugins.filter(p => p.pluginType === 'Effect' || p.category.includes('FX') || p.category.includes('Mastering')).length },
+  { id: 'mastering', label: 'Mastering', count: allPlugins.filter(p => p.category.toLowerCase().includes('mastering') || p.tags.some(t => t.label === 'Mastering')).length },
+  { id: 'creative', label: 'Creative FX', count: allPlugins.filter(p => p.category.includes('Creative') || p.tags.some(t => t.label === 'Creative')).length },
+];
+
+
 
 export const PluginsSection = () => {
-  const [activeTab, setActiveTab] = useState('plugins');
-  const chartRef = useRef<HTMLCanvasElement>(null);
+  const [activeCategory, setActiveCategory] = useState('all');
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [visibleCount, setVisibleCount] = useState(12);
 
-  // Plugin data
-  const plugins: Plugin[] = [
-    {
-      name: 'Sytrus',
-      type: 'FM / Subtractive',
-      description: 'The modulation monster. Use for growls and pads.',
-      ratings: {
-        soundDesign: 10,
-        ease: 3,
-        cpu: 8,
-        organic: 4,
-        bass: 7
-      }
-    },
-    {
-      name: 'FLEX',
-      type: 'Rompler',
-      description: 'Instant gratification. Best for "bread and butter" sounds.',
-      ratings: {
-        soundDesign: 7,
-        ease: 9,
-        cpu: 5,
-        organic: 6,
-        bass: 5
-      }
-    },
-    {
-      name: 'GMS',
-      type: 'Granular',
-      description: 'Unique granular synthesis for atmospheric textures.',
-      ratings: {
-        soundDesign: 8,
-        ease: 6,
-        cpu: 7,
-        organic: 9,
-        bass: 4
-      }
+  const getFilteredPlugins = () => {
+    switch (activeCategory) {
+      case 'synths':
+        return allPlugins.filter(p => p.pluginType === 'Synthesizer');
+      case 'effects':
+        return allPlugins.filter(p => p.pluginType === 'Effect' || p.category.includes('FX') || p.category.includes('Mastering'));
+      case 'mastering':
+        return allPlugins.filter(p => p.category.toLowerCase().includes('mastering') || p.tags.some(t => t.label === 'Mastering'));
+      case 'creative':
+        return allPlugins.filter(p => p.category.includes('Creative') || p.tags.some(t => t.label === 'Creative'));
+      default:
+        return allPlugins;
     }
-  ];
+  };
 
-  // Initialize chart when component mounts
-  useEffect(() => {
-    const canvas = chartRef.current;
-    if (!canvas) return;
-
-    // Check if Chart.js is available
-    // @ts-ignore - Chart is loaded via CDN in _document.tsx
-    if (typeof Chart === 'undefined') {
-      console.warn('Chart.js not available');
-      return;
-    }
-
-    // @ts-ignore - Chart is loaded via CDN in _document.tsx
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    // @ts-ignore - Chart is loaded via CDN in _document.tsx
-    new Chart(ctx, {
-      type: 'radar',
-      data: {
-        labels: ['Sound Design', 'Ease', 'CPU', 'Organic', 'Bass'],
-        datasets: [
-          {
-            label: 'Sytrus',
-            data: [10, 3, 8, 4, 7],
-            borderColor: '#f97316',
-            backgroundColor: 'rgba(249, 115, 22, 0.2)',
-            pointBackgroundColor: '#f97316',
-            pointBorderColor: '#ffffff',
-            pointHoverBackgroundColor: '#ffffff',
-            pointHoverBorderColor: '#f97316'
-          },
-          {
-            label: 'FLEX',
-            data: [7, 9, 5, 6, 5],
-            borderColor: '#0ea5e9',
-            backgroundColor: 'rgba(14, 165, 233, 0.2)',
-            pointBackgroundColor: '#0ea5e9',
-            pointBorderColor: '#ffffff',
-            pointHoverBackgroundColor: '#ffffff',
-            pointHoverBorderColor: '#0ea5e9'
-          },
-          {
-            label: 'GMS',
-            data: [8, 6, 7, 9, 4],
-            borderColor: '#8b5cf6',
-            backgroundColor: 'rgba(139, 92, 246, 0.2)',
-            pointBackgroundColor: '#8b5cf6',
-            pointBorderColor: '#ffffff',
-            pointHoverBackgroundColor: '#ffffff',
-            pointHoverBorderColor: '#8b5cf6'
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          r: {
-            grid: {
-              color: () => {
-                return document.documentElement.classList.contains('dark') ? '#52525b' : '#e5e7eb';
-              }
-            },
-            pointLabels: {
-              color: () => {
-                return document.documentElement.classList.contains('dark') ? '#d4d4d4' : '#52525b';
-              }
-            },
-            ticks: {
-              display: false
-            },
-            suggestedMin: 0,
-            suggestedMax: 10
-          }
-        },
-        plugins: {
-          legend: {
-            position: 'top',
-            labels: {
-              color: () => {
-                return document.documentElement.classList.contains('dark') ? '#d4d4d4' : '#52525b';
-              },
-              font: {
-                size: 12
-              }
-            }
-          },
-          tooltip: {
-            titleColor: () => {
-              return document.documentElement.classList.contains('dark') ? '#d4d4d4' : '#52525b';
-            },
-            bodyColor: () => {
-              return document.documentElement.classList.contains('dark') ? '#d4d4d4' : '#52525b';
-            },
-            backgroundColor: () => {
-              return document.documentElement.classList.contains('dark') ? 'rgba(39, 39, 42, 0.8)' : 'rgba(255, 255, 255, 0.8)';
-            }
-          }
-        }
-      }
-    });
-
-    // Cleanup function to destroy chart when component unmounts
-    return () => {
-      // @ts-ignore - Chart is loaded via CDN in _document.tsx
-      if (Chart.getChart(canvas)) {
-        // @ts-ignore - Chart is loaded via CDN in _document.tsx
-        Chart.getChart(canvas)?.destroy();
-      }
-    };
-  }, []);
+  const filteredPlugins = getFilteredPlugins();
+  const displayedPlugins = filteredPlugins.slice(0, visibleCount);
 
   return (
-    <section id="plugins" className="page-section">
+    <section id="plugins" className="page-section animate-fade">
+      {/* Header */}
       <div className="mb-8">
-        <h2 className="text-3xl font-bold text-white mb-4"><span className="text-gradient">Instruments</span> & Sound Design</h2>
-        <p className="text-purple-primary-300">FL Studio comes with powerful stock plugins.</p>
+        <h2 className="text-3xl font-bold mb-2">
+          <span className="text-gradient">Instruments</span>
+          <span className="text-white"> & Sound Design</span>
+        </h2>
+        <p className="text-[var(--text-muted)]">
+          FL Studio comes with powerful stock plugins. Explore the complete collection.
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-        {/* Plugin Radar Chart */}
-        <div className="content-card p-6">
-          <h3 className="text-sm font-bold text-purple-primary-400 uppercase mb-4 text-center">Stock Synth Comparison</h3>
-          <div className="chart-container">
-            <canvas id="pluginChart" ref={chartRef}></canvas>
-          </div>
+      {/* Filters Row */}
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+        {/* Category Tabs */}
+        <div className="flex flex-wrap gap-2">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => {
+                setActiveCategory(cat.id);
+                setVisibleCount(12);
+              }}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                activeCategory === cat.id
+                  ? 'bg-[var(--accent-primary)] text-white'
+                  : 'bg-[var(--glass-bg)] text-[var(--text-muted)] hover:text-white hover:bg-[var(--glass-bg-hover)] border border-[var(--glass-border)]'
+              }`}
+            >
+              {cat.label}
+              <span className="ml-2 text-xs opacity-70">({cat.count})</span>
+            </button>
+          ))}
         </div>
 
-        {/* Plugin Decision List */}
-        <div className="space-y-4">
-          {plugins.map((plugin, index) => (
-            <div key={index} className="content-card p-4">
-              <h4 className="font-bold text-purple-primary-200">{plugin.name}</h4>
-              <p className="text-xs text-purple-primary-400 mb-2">{plugin.type}</p>
-              <p className="text-sm text-purple-primary-300">{plugin.description}</p>
-            </div>
+        {/* View Mode Toggle */}
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setViewMode('grid')}
+            className={`p-2 rounded-lg transition-all ${
+              viewMode === 'grid'
+                ? 'bg-[var(--accent-primary)] text-white'
+                : 'bg-[var(--glass-bg)] text-[var(--text-dim)] hover:text-white border border-[var(--glass-border)]'
+            }`}
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+            </svg>
+          </button>
+          <button
+            onClick={() => setViewMode('list')}
+            className={`p-2 rounded-lg transition-all ${
+              viewMode === 'list'
+                ? 'bg-[var(--accent-primary)] text-white'
+                : 'bg-[var(--glass-bg)] text-[var(--text-dim)] hover:text-white border border-[var(--glass-border)]'
+            }`}
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {/* Sponsored Section */}
+      <div className="mb-8">
+        <div className="flex items-center gap-3 mb-4">
+          <h3 className="text-lg font-bold text-white">Featured Plugins</h3>
+          <span className="badge badge-premium">Premium</span>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {displayedPlugins.slice(0, 3).map((plugin) => (
+            <ToolCard
+              key={plugin.id}
+              {...(plugin as any)}
+              isSponsored={true}
+              onClick={() => console.log(`Clicked on ${plugin.name}`)}
+            />
           ))}
         </div>
       </div>
 
-      {/* Plugin Details */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div className="content-card p-6">
-          <h3 className="font-bold text-white mb-2">Sytrus</h3>
-          <p className="text-sm text-purple-primary-300 mb-4">FM synthesis powerhouse with 6 operators</p>
-          <div className="space-y-2">
-            <div className="flex justify-between">
-              <span className="text-xs text-purple-primary-400">Sound Design</span>
-              <span className="text-xs font-bold text-purple-primary-200">10/10</span>
-            </div>
-            <div className="w-full bg-purple-primary-900/30 rounded-full h-1.5">
-              <div className="bg-purple-primary-500 h-1.5 rounded-full" style={{ width: '100%' }}></div>
-            </div>
+      {/* All Plugins Grid */}
+      <div>
+        <h3 className="text-lg font-bold text-white mb-4">All Plugins</h3>
+        
+        {viewMode === 'grid' ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {displayedPlugins.map((plugin) => (
+              <ToolCard
+                key={plugin.id}
+                {...(plugin as any)}
+                onClick={() => console.log(`Clicked on ${plugin.name}`)}
+              />
+            ))}
           </div>
-          <div className="space-y-2 mt-2">
-            <div className="flex justify-between">
-              <span className="text-xs text-purple-primary-400">Ease of Use</span>
-              <span className="text-xs font-bold text-purple-primary-200">3/10</span>
-            </div>
-            <div className="w-full bg-purple-primary-900/30 rounded-full h-1.5">
-              <div className="bg-purple-primary-500 h-1.5 rounded-full" style={{ width: '30%' }}></div>
-            </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {displayedPlugins.map((plugin) => (
+              <ToolCardCompact
+                key={plugin.id}
+                name={plugin.name}
+                description={plugin.description}
+                category={plugin.category}
+                icon={plugin.icon}
+                date={plugin.date}
+                tags={plugin.tags}
+                pricingBadge={plugin.pricingBadge}
+                onClick={() => console.log(`Clicked on ${plugin.name}`)}
+              />
+            ))}
           </div>
-        </div>
+        )}
+      </div>
 
-        <div className="content-card p-6">
-          <h3 className="font-bold text-white mb-2">FLEX</h3>
-          <p className="text-sm text-purple-primary-300 mb-4">Sample-based rompler with curated content</p>
-          <div className="space-y-2">
-            <div className="flex justify-between">
-              <span className="text-xs text-purple-primary-400">Sound Design</span>
-              <span className="text-xs font-bold text-purple-primary-200">7/10</span>
-            </div>
-            <div className="w-full bg-purple-primary-900/30 rounded-full h-1.5">
-              <div className="bg-purple-primary-500 h-1.5 rounded-full" style={{ width: '70%' }}></div>
-            </div>
-          </div>
-          <div className="space-y-2 mt-2">
-            <div className="flex justify-between">
-              <span className="text-xs text-purple-primary-400">Ease of Use</span>
-              <span className="text-xs font-bold text-purple-primary-200">9/10</span>
-            </div>
-            <div className="w-full bg-purple-primary-900/30 rounded-full h-1.5">
-              <div className="bg-purple-primary-500 h-1.5 rounded-full" style={{ width: '90%' }}></div>
-            </div>
-          </div>
-        </div>
 
-        <div className="content-card p-6">
-          <h3 className="font-bold text-white mb-2">GMS</h3>
-          <p className="text-sm text-purple-primary-300 mb-4">Granular synthesis for atmospheric textures</p>
-          <div className="space-y-2">
-            <div className="flex justify-between">
-              <span className="text-xs text-purple-primary-400">Sound Design</span>
-              <span className="text-xs font-bold text-purple-primary-200">8/10</span>
-            </div>
-            <div className="w-full bg-purple-primary-900/30 rounded-full h-1.5">
-              <div className="bg-purple-primary-500 h-1.5 rounded-full" style={{ width: '80%' }}></div>
-            </div>
-          </div>
-          <div className="space-y-2 mt-2">
-            <div className="flex justify-between">
-              <span className="text-xs text-purple-primary-400">Organic</span>
-              <span className="text-xs font-bold text-purple-primary-200">9/10</span>
-            </div>
-            <div className="w-full bg-purple-primary-900/30 rounded-full h-1.5">
-              <div className="bg-purple-primary-500 h-1.5 rounded-full" style={{ width: '90%' }}></div>
-            </div>
-          </div>
-        </div>
+      {/* Load More */}
+      <div className="flex justify-center mt-8">
+        <button className="btn-secondary px-8">
+          Load More Plugins
+          <svg className="inline-block w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
       </div>
     </section>
   );

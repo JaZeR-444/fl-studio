@@ -5,6 +5,8 @@ import { AppProvider, useAppContext } from '@/context/AppContext';
 
 // Import components
 import { Sidebar } from '@/components/Sidebar';
+import { TopNav } from '@/components/TopNav';
+import { HeroSection } from '@/components/HeroSection';
 import { MentalModelSection } from '@/components/sections/MentalModel';
 import { ModulesSection } from '@/components/sections/Modules';
 import { DojoSection } from '@/components/sections/Dojo';
@@ -57,35 +59,60 @@ const FLStudioHubContent = () => {
   };
 
   return (
-<>
-  <div className="flex flex-col md:flex-row min-h-dvh text-stone-800 dark:text-zinc-300 antialiased overflow-hidden bg-transparent">
-    {/* Mobile Header */}
-    <div className="md:hidden fixed w-full bg-white/70 dark:bg-zinc-900/60 backdrop-blur-xl border-b border-stone-200/60 dark:border-zinc-700/60 z-50 flex items-center justify-between p-4">
-      <h1 className="font-bold text-lg text-orange-600">FL Studio Hub</h1>
-      <button
-        onClick={toggleMobileMenu}
-        className="p-2 text-purple-primary-300 hover:text-purple-primary-100 focus:outline-none"
-      >
-        <span className="text-2xl">☰</span>
-      </button>
-    </div>
+    <div className="min-h-screen">
+      {/* Mobile Header */}
+      <div className="md:hidden fixed top-0 left-0 right-0 glass-topnav z-50 flex items-center justify-between px-4 h-14">
+        <h1 className="font-bold text-lg">
+          <span className="text-white">FL</span>
+          <span className="text-gradient">Studio</span>
+        </h1>
+        <button
+          onClick={toggleMobileMenu}
+          className="p-2 text-[var(--text-secondary)] hover:text-white focus:outline-none"
+        >
+          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
 
-    {/* Sidebar */}
-    <Sidebar
-      activeSection={state.activeSection}
-      navigateToSection={navigateToSection}
-      darkMode={state.darkMode}
-      toggleDarkMode={toggleDarkMode}
-      mobileMenuOpen={state.mobileMenuOpen}
-      setMobileMenuOpen={(open: boolean) => dispatch({ type: 'SET_MOBILE_MENU', payload: open })}
-      toggleSettings={toggleSettings}
-    />
+      {/* Main Layout */}
+      <div className="flex">
+        {/* Sidebar */}
+        <Sidebar
+          activeSection={state.activeSection}
+          navigateToSection={navigateToSection}
+          darkMode={state.darkMode}
+          toggleDarkMode={toggleDarkMode}
+          mobileMenuOpen={state.mobileMenuOpen}
+          setMobileMenuOpen={(open: boolean) => dispatch({ type: 'SET_MOBILE_MENU', payload: open })}
+          toggleSettings={toggleSettings}
+        />
 
-    {/* Main Content Area */}
-    <main className="flex-1 h-full overflow-y-auto bg-transparent pt-16 md:pt-0">
-      <div className="max-w-5xl mx-auto p-6 md:p-12">
-        {/* Mental Model Section */}
-        {state.activeSection === 'home' && <MentalModelSection />}
+        {/* Main Content Area */}
+        <main className="flex-1 min-h-screen pt-14 md:pt-0">
+          <div className="max-w-6xl mx-auto px-4 md:px-8 py-6 md:py-10">
+            {/* Hero Section for Home */}
+            {state.activeSection === 'home' && (
+              <HeroSection
+                onExploreTools={() => navigateToSection('plugins')}
+                totalPlugins={50}
+                totalWorkflows={25}
+                totalTemplates={30}
+              />
+            )}
+
+            {/* Sponsored/Featured Section for Home */}
+            {state.activeSection === 'home' && (
+              <div className="mt-12">
+                <div className="flex items-center gap-3 mb-6">
+                  <h2 className="text-2xl font-bold text-white">Sponsored Listings</h2>
+                  <span className="text-sm text-[var(--text-muted)]">Featured FL Studio tools and services</span>
+                  <span className="badge badge-premium ml-auto">Premium</span>
+                </div>
+                <MentalModelSection />
+              </div>
+            )}
 
             {/* Modules Section */}
             {state.activeSection === 'modules' && <ModulesSection />}
@@ -142,14 +169,22 @@ const FLStudioHubContent = () => {
             {state.activeSection === 'synthesis-history' && <SynthesisHistory />}
           </div>
         </main>
-
-        {/* Settings Panel */}
-        <SettingsPanel
-          isOpen={showSettings}
-          onClose={() => setShowSettings(false)}
-        />
       </div>
-    </>
+
+      {/* Settings Panel */}
+      <SettingsPanel
+        isOpen={showSettings}
+        onClose={() => setShowSettings(false)}
+      />
+
+      {/* Mobile Overlay */}
+      {state.mobileMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 md:hidden"
+          onClick={() => dispatch({ type: 'SET_MOBILE_MENU', payload: false })}
+        />
+      )}
+    </div>
   );
 };
 

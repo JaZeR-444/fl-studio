@@ -49,13 +49,13 @@ export const TroubleshootSection = () => {
   return (
     <section id="troubleshoot" className="page-section">
       <div className="mb-8">
-        <h2 className="text-3xl font-bold text-stone-900 dark:text-white mb-4">Troubleshooting</h2>
-        <div className="bg-white dark:bg-zinc-800 rounded-xl border border-stone-200 dark:border-zinc-700 p-8 shadow-sm">
+        <h2 className="text-3xl font-bold text-white mb-4"><span className="text-gradient">Troubleshooting</span></h2>
+        <div className="content-card p-8">
           <select
             id="symptom-select"
             value={selectedSymptom}
             onChange={(e) => setSelectedSymptom(e.target.value)}
-            className="w-full p-3 border border-stone-300 dark:border-zinc-600 dark:bg-zinc-700 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 bg-white"
+            className="w-full p-3 border border-purple-primary-600/30 bg-purple-primary-900/30 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-primary-500"
           >
             {symptoms.map((symptom) => (
               <option key={symptom.value} value={symptom.value}>
@@ -64,8 +64,8 @@ export const TroubleshootSection = () => {
             ))}
           </select>
           {selectedSymptom && (
-            <div className="border-t border-stone-100 dark:border-zinc-700 pt-6 mt-6">
-              <ul id="fixes-list" className="list-disc pl-5 text-sm text-stone-700 dark:text-zinc-300 space-y-2">
+            <div className="border-t border-purple-primary-600/30 pt-6 mt-6">
+              <ul id="fixes-list" className="list-disc pl-5 text-sm text-purple-primary-300 space-y-2">
                 {troubleshootingData[selectedSymptom]?.map((fix, index) => (
                   <li key={index} className="ml-5">{fix}</li>
                 ))}
@@ -75,45 +75,45 @@ export const TroubleshootSection = () => {
         </div>
 
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white dark:bg-zinc-800 p-5 rounded-lg border border-stone-200 dark:border-zinc-700">
-            <h3 className="font-bold text-stone-800 dark:text-zinc-200 mb-3">Performance Tips</h3>
-            <ul className="space-y-2 text-stone-600 dark:text-zinc-400">
+          <div className="content-card p-5">
+            <h3 className="font-bold text-white mb-3">Performance Tips</h3>
+            <ul className="space-y-2 text-purple-primary-300">
               <li className="flex items-start">
-                <span className="text-orange-500 mr-2">•</span>
+                <span className="text-purple-primary-400 mr-2">•</span>
                 <span>Use F9 to disable channels not currently being worked on</span>
               </li>
               <li className="flex items-start">
-                <span className="text-orange-500 mr-2">•</span>
+                <span className="text-purple-primary-400 mr-2">•</span>
                 <span>Freeze tracks that are CPU intensive with many plugins</span>
               </li>
               <li className="flex items-start">
-                <span className="text-orange-500 mr-2">•</span>
+                <span className="text-purple-primary-400 mr-2">•</span>
                 <span>Use lower sample quality during composition (switch to high for export)</span>
               </li>
               <li className="flex items-start">
-                <span className="text-orange-500 mr-2">•</span>
+                <span className="text-purple-primary-400 mr-2">•</span>
                 <span>Enable "Low quality preview" when working with many tracks</span>
               </li>
             </ul>
           </div>
 
-          <div className="bg-white dark:bg-zinc-800 p-5 rounded-lg border border-stone-200 dark:border-zinc-700">
-            <h3 className="font-bold text-stone-800 dark:text-zinc-200 mb-3">Common Issues</h3>
-            <ul className="space-y-2 text-stone-600 dark:text-zinc-400">
+          <div className="content-card p-5">
+            <h3 className="font-bold text-white mb-3">Common Issues</h3>
+            <ul className="space-y-2 text-purple-primary-300">
               <li className="flex items-start">
-                <span className="text-orange-500 mr-2">•</span>
+                <span className="text-purple-primary-400 mr-2">•</span>
                 <span>MIDI not responding: Check MIDI settings and device configuration</span>
               </li>
               <li className="flex items-start">
-                <span className="text-orange-500 mr-2">•</span>
+                <span className="text-purple-primary-400 mr-2">•</span>
                 <span>Patterns not triggering: Verify correct routing and note events</span>
               </li>
               <li className="flex items-start">
-                <span className="text-orange-500 mr-2">•</span>
+                <span className="text-purple-primary-400 mr-2">•</span>
                 <span>Plugin latency: Enable PDC and check plugin settings</span>
               </li>
               <li className="flex items-start">
-                <span className="text-orange-500 mr-2">•</span>
+                <span className="text-purple-primary-400 mr-2">•</span>
                 <span>Memory issues: Close unused projects and freeze tracks</span>
               </li>
             </ul>

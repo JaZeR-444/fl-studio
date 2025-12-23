@@ -25,55 +25,55 @@ export const UtilitiesSection = () => {
   return (
     <section id="utilities" className="page-section">
       <div className="mb-8">
-        <h2 className="text-3xl font-bold text-stone-900 dark:text-white mb-4">Studio Tools</h2>
-        <p className="text-stone-600 dark:text-zinc-400 mb-6">Calculators for delay times, reverb settings, and frequency mapping.</p>
+        <h2 className="text-3xl font-bold text-white mb-4"><span className="text-gradient">Studio</span> Tools</h2>
+        <p className="text-purple-primary-300 mb-6">Calculators for delay times, reverb settings, and frequency mapping.</p>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
           {/* Tool 1: Delay, Reverb & Hz */}
-          <div className="bg-white dark:bg-zinc-800 rounded-xl shadow-sm border border-stone-200 dark:border-zinc-700 p-6">
-            <h3 className="font-bold text-stone-800 dark:text-zinc-200 border-b border-stone-100 dark:border-zinc-700 pb-2 mb-4">Timing Calculator</h3>
+          <div className="content-card p-6">
+            <h3 className="font-bold text-white border-b border-purple-primary-600/30 pb-2 mb-4">Timing Calculator</h3>
 
             <div className="flex items-center space-x-4 mb-6">
-              <label className="text-stone-600 dark:text-zinc-400 font-bold">Project BPM:</label>
-              <input 
-                type="number" 
+              <label className="text-purple-primary-300 font-bold">Project BPM:</label>
+              <input
+                type="number"
                 value={bpm}
                 onChange={(e) => setBpm(Number(e.target.value))}
-                className="w-24 p-2 border border-stone-300 dark:border-zinc-600 dark:bg-zinc-900 dark:text-white rounded font-mono text-center focus:ring-2 focus:ring-orange-500 outline-none" 
+                className="w-24 p-2 border border-purple-primary-600/30 bg-purple-primary-900/30 text-white rounded font-mono text-center focus:ring-2 focus:ring-purple-primary-500 outline-none"
               />
             </div>
 
             <div className="grid grid-cols-2 gap-4 mb-4">
               <div>
-                <h4 className="text-xs font-bold text-stone-400 uppercase mb-2">Delay Times</h4>
+                <h4 className="text-xs font-bold text-purple-primary-400 uppercase mb-2">Delay Times</h4>
                 <div className="space-y-2">
-                  <div className="flex justify-between items-center bg-stone-50 dark:bg-zinc-700/50 p-2 rounded">
-                    <span className="text-xs font-medium text-stone-600 dark:text-zinc-400">1/4 Note</span>
-                    <span className="font-mono text-sm font-bold text-orange-600 dark:text-orange-400">
+                  <div className="flex justify-between items-center bg-purple-primary-900/20 p-2 rounded">
+                    <span className="text-xs font-medium text-purple-primary-300">1/4 Note</span>
+                    <span className="font-mono text-sm font-bold text-purple-primary-200">
                       {quarterNote} ms
                     </span>
                   </div>
-                  <div className="flex justify-between items-center bg-stone-50 dark:bg-zinc-700/50 p-2 rounded">
-                    <span className="text-xs font-medium text-stone-600 dark:text-zinc-400">1/8 Note</span>
-                    <span className="font-mono text-sm font-bold text-orange-600 dark:text-orange-400">
+                  <div className="flex justify-between items-center bg-purple-primary-900/20 p-2 rounded">
+                    <span className="text-xs font-medium text-purple-primary-300">1/8 Note</span>
+                    <span className="font-mono text-sm font-bold text-purple-primary-200">
                       {eighthNote} ms
                     </span>
                   </div>
                 </div>
               </div>
               <div>
-                <h4 className="text-xs font-bold text-stone-400 uppercase mb-2">Reverb (Approx)</h4>
+                <h4 className="text-xs font-bold text-purple-primary-400 uppercase mb-2">Reverb (Approx)</h4>
                 <div className="space-y-2">
-                  <div className="flex justify-between items-center bg-stone-50 dark:bg-zinc-700/50 p-2 rounded">
-                    <span className="text-xs font-medium text-stone-600 dark:text-zinc-400">Pre-Delay (1/64)</span>
-                    <span className="font-mono text-sm font-bold text-blue-600 dark:text-blue-400">
+                  <div className="flex justify-between items-center bg-purple-primary-900/20 p-2 rounded">
+                    <span className="text-xs font-medium text-purple-primary-300">Pre-Delay (1/64)</span>
+                    <span className="font-mono text-sm font-bold text-purple-primary-200">
                       {preDelay} ms
                     </span>
                   </div>
-                  <div className="flex justify-between items-center bg-stone-50 dark:bg-zinc-700/50 p-2 rounded">
-                    <span className="text-xs font-medium text-stone-600 dark:text-zinc-400">Decay (1 Bar)</span>
-                    <span className="font-mono text-sm font-bold text-blue-600 dark:text-blue-400">
+                  <div className="flex justify-between items-center bg-purple-primary-900/20 p-2 rounded">
+                    <span className="text-xs font-medium text-purple-primary-300">Decay (1 Bar)</span>
+                    <span className="font-mono text-sm font-bold text-purple-primary-200">
                       {decay} ms
                     </span>
                   </div>
@@ -83,46 +83,46 @@ export const UtilitiesSection = () => {
           </div>
 
           {/* Tool 2: Frequency Mixing Map */}
-          <div className="bg-white dark:bg-zinc-800 rounded-xl shadow-sm border border-stone-200 dark:border-zinc-700 p-6">
-            <h3 className="font-bold text-stone-800 dark:text-zinc-200 border-b border-stone-100 dark:border-zinc-700 pb-2 mb-4">Mixing Frequency Map</h3>
+          <div className="content-card p-6">
+            <h3 className="font-bold text-white border-b border-purple-primary-600/30 pb-2 mb-4">Mixing Frequency Map</h3>
 
             <div className="space-y-6">
               <div className="freq-row group">
                 <div className="flex justify-between text-xs mb-1">
-                  <span className="freq-label font-bold text-stone-500 dark:text-zinc-500 group-hover:text-stone-800 dark:group-hover:text-zinc-200 transition-colors">Sub Bass (20-60Hz)</span>
-                  <span className="text-stone-400">Feel, don't hear</span>
+                  <span className="freq-label font-bold text-purple-primary-400 group-hover:text-purple-primary-200 transition-colors">Sub Bass (20-60Hz)</span>
+                  <span className="text-purple-primary-400">Feel, don't hear</span>
                 </div>
-                <div className="w-full bg-stone-100 dark:bg-zinc-700 h-3 rounded-full overflow-hidden">
-                  <div className="bg-purple-500 h-full w-[20%] opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div className="w-full bg-purple-primary-900/30 h-3 rounded-full overflow-hidden">
+                  <div className="bg-purple-primary-500 h-full w-[20%] opacity-50 group-hover:opacity-100 transition-opacity"></div>
                 </div>
               </div>
-              
+
               <div className="freq-row group">
                 <div className="flex justify-between text-xs mb-1">
-                  <span className="freq-label font-bold text-stone-500 dark:text-zinc-500 group-hover:text-stone-800 dark:group-hover:text-zinc-200 transition-colors">Kick Body (60-250Hz)</span>
-                  <span className="text-stone-400">The Power</span>
+                  <span className="freq-label font-bold text-purple-primary-400 group-hover:text-purple-primary-200 transition-colors">Kick Body (60-250Hz)</span>
+                  <span className="text-purple-primary-400">The Power</span>
                 </div>
-                <div className="w-full bg-stone-100 dark:bg-zinc-700 h-3 rounded-full overflow-hidden relative">
+                <div className="w-full bg-purple-primary-900/30 h-3 rounded-full overflow-hidden relative">
                   <div className="bg-blue-500 h-full absolute left-[15%] w-[25%] opacity-50 group-hover:opacity-100 transition-opacity"></div>
                 </div>
               </div>
-              
+
               <div className="freq-row group">
                 <div className="flex justify-between text-xs mb-1">
-                  <span className="freq-label font-bold text-stone-500 dark:text-zinc-500 group-hover:text-stone-800 dark:group-hover:text-zinc-200 transition-colors">Presence (2k-5kHz)</span>
-                  <span className="text-stone-400">Vocals & Snares</span>
+                  <span className="freq-label font-bold text-purple-primary-400 group-hover:text-purple-primary-200 transition-colors">Presence (2k-5kHz)</span>
+                  <span className="text-purple-primary-400">Vocals & Snares</span>
                 </div>
-                <div className="w-full bg-stone-100 dark:bg-zinc-700 h-3 rounded-full overflow-hidden relative">
+                <div className="w-full bg-purple-primary-900/30 h-3 rounded-full overflow-hidden relative">
                   <div className="bg-green-500 h-full absolute left-[60%] w-[25%] opacity-50 group-hover:opacity-100 transition-opacity"></div>
                 </div>
               </div>
-              
+
               <div className="freq-row group">
                 <div className="flex justify-between text-xs mb-1">
-                  <span className="freq-label font-bold text-stone-500 dark:text-zinc-500 group-hover:text-stone-800 dark:group-hover:text-zinc-200 transition-colors">Air (10k-20kHz)</span>
-                  <span className="text-stone-400">Sparkle & Clarity</span>
+                  <span className="freq-label font-bold text-purple-primary-400 group-hover:text-purple-primary-200 transition-colors">Air (10k-20kHz)</span>
+                  <span className="text-purple-primary-400">Sparkle & Clarity</span>
                 </div>
-                <div className="w-full bg-stone-100 dark:bg-zinc-700 h-3 rounded-full overflow-hidden relative">
+                <div className="w-full bg-purple-primary-900/30 h-3 rounded-full overflow-hidden relative">
                   <div className="bg-pink-500 h-full absolute left-[85%] w-[15%] opacity-50 group-hover:opacity-100 transition-opacity"></div>
                 </div>
               </div>

@@ -1255,8 +1255,8 @@ export const TemplatesSection = () => {
   return (
     <section id="templates" className="page-section">
       <div className="mb-8">
-        <h2 className="text-3xl font-bold text-stone-900 dark:text-white mb-4">Song Templates 🎵</h2>
-        <p className="text-stone-600 dark:text-zinc-400 mb-6">
+        <h2 className="text-3xl font-bold text-white mb-4">Song <span className="text-gradient">Templates</span> 🎵</h2>
+        <p className="text-purple-primary-300 mb-6">
           Production templates showing the essential layers and elements for different genres. Each template breaks down the drums, bass, melody, harmony, FX, and vocal components you need to build professional-sounding tracks.
         </p>
 
@@ -1266,10 +1266,10 @@ export const TemplatesSection = () => {
             <button
               key={genre}
               onClick={() => setCurrentFilter(genre)}
-              className={`template-filter px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+              className={`template-filter px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
                 currentFilter === genre
-                  ? 'bg-orange-500 text-white'
-                  : 'bg-stone-200 dark:bg-zinc-700 text-stone-700 dark:text-zinc-300 hover:bg-stone-300 dark:hover:bg-zinc-600'
+                  ? 'bg-purple-primary-700/40 text-purple-primary-200 shadow-purple-glow'
+                  : 'bg-purple-primary-700/20 text-purple-primary-300 hover:bg-purple-primary-700/30 hover:text-purple-primary-100'
               }`}
             >
               {genre === 'all' ? 'All Templates' : genre.charAt(0).toUpperCase() + genre.slice(1)}
@@ -1280,22 +1280,22 @@ export const TemplatesSection = () => {
         {/* Templates Grid */}
         <div id="templates-container" className="space-y-8">
           {filteredTemplates.map((template) => (
-            <div key={template.id} className="bg-white dark:bg-zinc-800 rounded-xl shadow-lg border border-stone-200 dark:border-zinc-700 overflow-hidden">
+            <div key={template.id} className="content-card overflow-hidden">
               {/* Header */}
-              <div className="bg-gradient-to-r from-orange-500 to-orange-600 p-6">
+              <div className="bg-gradient-button p-6 shadow-purple-glow">
                 <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
                   <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-white">{template.name}</h3>
-                    <p className="text-orange-100 text-sm mt-1 uppercase tracking-wide">{template.genre}</p>
-                    <p className="text-orange-100 text-sm mt-2 opacity-90">{template.description}</p>
+                    <h3 className="text-2xl font-bold text-white glow-text">{template.name}</h3>
+                    <p className="text-purple-primary-200 text-sm mt-1 uppercase tracking-wide">{template.genre}</p>
+                    <p className="text-purple-primary-200 text-sm mt-2 opacity-90">{template.description}</p>
                   </div>
                   <div className="flex gap-4">
-                    <div className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2">
-                      <span className="text-orange-100 text-xs">BPM</span>
+                    <div className="bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/20">
+                      <span className="text-purple-primary-200 text-xs">BPM</span>
                       <div className="text-white font-mono text-2xl font-bold">{template.bpm}</div>
                     </div>
-                    <div className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2">
-                      <span className="text-orange-100 text-xs">Key</span>
+                    <div className="bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/20">
+                      <span className="text-purple-primary-200 text-xs">Key</span>
                       <div className="text-white font-bold">{template.key}</div>
                     </div>
                   </div>
@@ -1304,10 +1304,10 @@ export const TemplatesSection = () => {
 
               {/* Production Layers */}
               <div className="p-6">
-                <h4 className="text-xs font-bold text-stone-400 dark:text-zinc-500 uppercase mb-4">Production Elements</h4>
+                <h4 className="text-xs font-bold text-purple-primary-400 uppercase mb-4">Production Elements</h4>
                 <div className="space-y-4">
                   {template.layers.map((layer, index) => (
-                    <div key={index} className="border border-stone-200 dark:border-zinc-700 rounded-lg overflow-hidden">
+                    <div key={index} className="border border-purple-primary-600/30 rounded-lg overflow-hidden">
                       {/* Category Header */}
                       <div className={`${layer.color} px-4 py-3 flex items-center justify-between`}>
                         <h5 className="font-bold text-white uppercase tracking-wide text-sm">{layer.category}</h5>
@@ -1315,10 +1315,10 @@ export const TemplatesSection = () => {
                       </div>
 
                       {/* Elements List */}
-                      <div className="p-4 bg-stone-50 dark:bg-zinc-700/30">
+                      <div className="p-4 bg-purple-dark-800/30">
                         <div className="flex flex-wrap gap-2">
                           {layer.elements.map((element, idx) => (
-                            <span key={idx} className="inline-flex items-center px-3 py-1.5 bg-white dark:bg-zinc-700 border border-stone-200 dark:border-zinc-600 rounded-md text-xs font-medium text-stone-700 dark:text-zinc-300 hover:shadow-md transition-shadow">
+                            <span key={idx} className="badge badge-purple">
                               {element}
                             </span>
                           ))}
@@ -1334,40 +1334,40 @@ export const TemplatesSection = () => {
       </div>
 
       {/* Category Color Legend */}
-      <div className="mt-12 bg-white dark:bg-zinc-800 rounded-lg border border-stone-200 dark:border-zinc-700 p-6">
-        <h3 className="font-bold text-stone-800 dark:text-white mb-4">Category Color Guide</h3>
+      <div className="mt-12 content-card">
+        <h3 className="font-bold text-white mb-4">Category Color Guide</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded bg-red-500"></div>
-            <span className="text-sm text-stone-700 dark:text-zinc-300">Drums</span>
+            <div className="w-6 h-6 rounded bg-red-500 shadow-sm"></div>
+            <span className="text-sm text-purple-primary-300">Drums</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded bg-purple-500"></div>
-            <span className="text-sm text-stone-700 dark:text-zinc-300">Bass</span>
+            <div className="w-6 h-6 rounded bg-purple-500 shadow-sm"></div>
+            <span className="text-sm text-purple-primary-300">Bass</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded bg-blue-500"></div>
-            <span className="text-sm text-stone-700 dark:text-zinc-300">Melody</span>
+            <div className="w-6 h-6 rounded bg-blue-500 shadow-sm"></div>
+            <span className="text-sm text-purple-primary-300">Melody</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded bg-green-500"></div>
-            <span className="text-sm text-stone-700 dark:text-zinc-300">Harmony</span>
+            <div className="w-6 h-6 rounded bg-green-500 shadow-sm"></div>
+            <span className="text-sm text-purple-primary-300">Harmony</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded bg-yellow-500"></div>
-            <span className="text-sm text-stone-700 dark:text-zinc-300">FX / Effects</span>
+            <div className="w-6 h-6 rounded bg-yellow-500 shadow-sm"></div>
+            <span className="text-sm text-purple-primary-300">FX / Effects</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded bg-pink-500"></div>
-            <span className="text-sm text-stone-700 dark:text-zinc-300">Vocals</span>
+            <div className="w-6 h-6 rounded bg-pink-500 shadow-sm"></div>
+            <span className="text-sm text-purple-primary-300">Vocals</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded bg-indigo-500"></div>
-            <span className="text-sm text-stone-700 dark:text-zinc-300">Ambient</span>
+            <div className="w-6 h-6 rounded bg-indigo-500 shadow-sm"></div>
+            <span className="text-sm text-purple-primary-300">Ambient</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded bg-orange-500"></div>
-            <span className="text-sm text-stone-700 dark:text-zinc-300">Groove Elements</span>
+            <div className="w-6 h-6 rounded bg-purple-primary-600 shadow-sm"></div>
+            <span className="text-sm text-purple-primary-300">Groove Elements</span>
           </div>
         </div>
       </div>

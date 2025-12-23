@@ -161,14 +161,14 @@ export const PluginsSection = () => {
   return (
     <section id="plugins" className="page-section">
       <div className="mb-8">
-        <h2 className="text-3xl font-bold text-stone-900 dark:text-white mb-4">Instruments & Sound Design</h2>
-        <p className="text-stone-600 dark:text-zinc-400">FL Studio comes with powerful stock plugins.</p>
+        <h2 className="text-3xl font-bold text-white mb-4"><span className="text-gradient">Instruments</span> & Sound Design</h2>
+        <p className="text-purple-primary-300">FL Studio comes with powerful stock plugins.</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
         {/* Plugin Radar Chart */}
-        <div className="bg-white dark:bg-zinc-800 p-6 rounded-lg border border-stone-200 dark:border-zinc-700">
-          <h3 className="text-sm font-bold text-stone-400 dark:text-zinc-500 uppercase mb-4 text-center">Stock Synth Comparison</h3>
+        <div className="content-card p-6">
+          <h3 className="text-sm font-bold text-purple-primary-400 uppercase mb-4 text-center">Stock Synth Comparison</h3>
           <div className="chart-container">
             <canvas id="pluginChart" ref={chartRef}></canvas>
           </div>
@@ -177,10 +177,10 @@ export const PluginsSection = () => {
         {/* Plugin Decision List */}
         <div className="space-y-4">
           {plugins.map((plugin, index) => (
-            <div key={index} className="bg-white dark:bg-zinc-800 border border-stone-200 dark:border-zinc-700 rounded-lg p-4">
-              <h4 className="font-bold text-orange-600">{plugin.name}</h4>
-              <p className="text-xs text-stone-500 dark:text-zinc-400 mb-2">{plugin.type}</p>
-              <p className="text-sm text-stone-700 dark:text-zinc-300">{plugin.description}</p>
+            <div key={index} className="content-card p-4">
+              <h4 className="font-bold text-purple-primary-200">{plugin.name}</h4>
+              <p className="text-xs text-purple-primary-400 mb-2">{plugin.type}</p>
+              <p className="text-sm text-purple-primary-300">{plugin.description}</p>
             </div>
           ))}
         </div>
@@ -188,71 +188,71 @@ export const PluginsSection = () => {
 
       {/* Plugin Details */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div className="bg-white dark:bg-zinc-800 p-6 rounded-lg border border-stone-200 dark:border-zinc-700">
-          <h3 className="font-bold text-stone-800 dark:text-white mb-2">Sytrus</h3>
-          <p className="text-sm text-stone-600 dark:text-zinc-400 mb-4">FM synthesis powerhouse with 6 operators</p>
+        <div className="content-card p-6">
+          <h3 className="font-bold text-white mb-2">Sytrus</h3>
+          <p className="text-sm text-purple-primary-300 mb-4">FM synthesis powerhouse with 6 operators</p>
           <div className="space-y-2">
             <div className="flex justify-between">
-              <span className="text-xs text-stone-500 dark:text-zinc-400">Sound Design</span>
-              <span className="text-xs font-bold text-orange-600">10/10</span>
+              <span className="text-xs text-purple-primary-400">Sound Design</span>
+              <span className="text-xs font-bold text-purple-primary-200">10/10</span>
             </div>
-            <div className="w-full bg-stone-200 dark:bg-zinc-700 rounded-full h-1.5">
-              <div className="bg-orange-500 h-1.5 rounded-full" style={{ width: '100%' }}></div>
+            <div className="w-full bg-purple-primary-900/30 rounded-full h-1.5">
+              <div className="bg-purple-primary-500 h-1.5 rounded-full" style={{ width: '100%' }}></div>
             </div>
           </div>
           <div className="space-y-2 mt-2">
             <div className="flex justify-between">
-              <span className="text-xs text-stone-500 dark:text-zinc-400">Ease of Use</span>
-              <span className="text-xs font-bold text-orange-600">3/10</span>
+              <span className="text-xs text-purple-primary-400">Ease of Use</span>
+              <span className="text-xs font-bold text-purple-primary-200">3/10</span>
             </div>
-            <div className="w-full bg-stone-200 dark:bg-zinc-700 rounded-full h-1.5">
-              <div className="bg-orange-500 h-1.5 rounded-full" style={{ width: '30%' }}></div>
+            <div className="w-full bg-purple-primary-900/30 rounded-full h-1.5">
+              <div className="bg-purple-primary-500 h-1.5 rounded-full" style={{ width: '30%' }}></div>
             </div>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-zinc-800 p-6 rounded-lg border border-stone-200 dark:border-zinc-700">
-          <h3 className="font-bold text-stone-800 dark:text-white mb-2">FLEX</h3>
-          <p className="text-sm text-stone-600 dark:text-zinc-400 mb-4">Sample-based rompler with curated content</p>
+        <div className="content-card p-6">
+          <h3 className="font-bold text-white mb-2">FLEX</h3>
+          <p className="text-sm text-purple-primary-300 mb-4">Sample-based rompler with curated content</p>
           <div className="space-y-2">
             <div className="flex justify-between">
-              <span className="text-xs text-stone-500 dark:text-zinc-400">Sound Design</span>
-              <span className="text-xs font-bold text-orange-600">7/10</span>
+              <span className="text-xs text-purple-primary-400">Sound Design</span>
+              <span className="text-xs font-bold text-purple-primary-200">7/10</span>
             </div>
-            <div className="w-full bg-stone-200 dark:bg-zinc-700 rounded-full h-1.5">
-              <div className="bg-orange-500 h-1.5 rounded-full" style={{ width: '70%' }}></div>
+            <div className="w-full bg-purple-primary-900/30 rounded-full h-1.5">
+              <div className="bg-purple-primary-500 h-1.5 rounded-full" style={{ width: '70%' }}></div>
             </div>
           </div>
           <div className="space-y-2 mt-2">
             <div className="flex justify-between">
-              <span className="text-xs text-stone-500 dark:text-zinc-400">Ease of Use</span>
-              <span className="text-xs font-bold text-orange-600">9/10</span>
+              <span className="text-xs text-purple-primary-400">Ease of Use</span>
+              <span className="text-xs font-bold text-purple-primary-200">9/10</span>
             </div>
-            <div className="w-full bg-stone-200 dark:bg-zinc-700 rounded-full h-1.5">
-              <div className="bg-orange-500 h-1.5 rounded-full" style={{ width: '90%' }}></div>
+            <div className="w-full bg-purple-primary-900/30 rounded-full h-1.5">
+              <div className="bg-purple-primary-500 h-1.5 rounded-full" style={{ width: '90%' }}></div>
             </div>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-zinc-800 p-6 rounded-lg border border-stone-200 dark:border-zinc-700">
-          <h3 className="font-bold text-stone-800 dark:text-white mb-2">GMS</h3>
-          <p className="text-sm text-stone-600 dark:text-zinc-400 mb-4">Granular synthesis for atmospheric textures</p>
+        <div className="content-card p-6">
+          <h3 className="font-bold text-white mb-2">GMS</h3>
+          <p className="text-sm text-purple-primary-300 mb-4">Granular synthesis for atmospheric textures</p>
           <div className="space-y-2">
             <div className="flex justify-between">
-              <span className="text-xs text-stone-500 dark:text-zinc-400">Sound Design</span>
-              <span className="text-xs font-bold text-orange-600">8/10</span>
+              <span className="text-xs text-purple-primary-400">Sound Design</span>
+              <span className="text-xs font-bold text-purple-primary-200">8/10</span>
             </div>
-            <div className="w-full bg-stone-200 dark:bg-zinc-700 rounded-full h-1.5">
-              <div className="bg-orange-500 h-1.5 rounded-full" style={{ width: '80%' }}></div>
+            <div className="w-full bg-purple-primary-900/30 rounded-full h-1.5">
+              <div className="bg-purple-primary-500 h-1.5 rounded-full" style={{ width: '80%' }}></div>
             </div>
           </div>
           <div className="space-y-2 mt-2">
             <div className="flex justify-between">
-              <span className="text-xs text-stone-500 dark:text-zinc-400">Organic</span>
-              <span className="text-xs font-bold text-orange-600">9/10</span>
+              <span className="text-xs text-purple-primary-400">Organic</span>
+              <span className="text-xs font-bold text-purple-primary-200">9/10</span>
             </div>
-            <div className="w-full bg-stone-200 dark:bg-zinc-700 rounded-full h-1.5">
-              <div className="bg-orange-500 h-1.5 rounded-full" style={{ width: '90%' }}></div>
+            <div className="w-full bg-purple-primary-900/30 rounded-full h-1.5">
+              <div className="bg-purple-primary-500 h-1.5 rounded-full" style={{ width: '90%' }}></div>
             </div>
           </div>
         </div>

@@ -41,14 +41,14 @@ export const SettingsPanel = ({ isOpen, onClose }: SettingsPanelProps) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white dark:bg-zinc-800 rounded-xl shadow-xl border border-stone-200 dark:border-zinc-700 w-full max-w-md">
+    <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+      <div className="content-card w-full max-w-md shadow-purple-glow-lg">
         <div className="p-6">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-xl font-bold text-stone-900 dark:text-white">Settings</h3>
-            <button 
+            <h3 className="text-xl font-bold text-white">Settings</h3>
+            <button
               onClick={onClose}
-              className="text-stone-500 hover:text-stone-700 dark:text-zinc-400 dark:hover:text-zinc-200"
+              className="text-purple-primary-300 hover:text-purple-primary-100 transition-colors"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -58,7 +58,7 @@ export const SettingsPanel = ({ isOpen, onClose }: SettingsPanelProps) => {
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-stone-700 dark:text-zinc-300 mb-2">
+              <label className="block text-sm font-medium text-purple-primary-200 mb-2">
                 Gemini API Key
               </label>
               <div className="flex space-x-2">
@@ -67,24 +67,24 @@ export const SettingsPanel = ({ isOpen, onClose }: SettingsPanelProps) => {
                   value={apiKey}
                   onChange={(e) => setApiKey(e.target.value)}
                   placeholder="Enter your Gemini API key"
-                  className="flex-1 p-3 border border-stone-300 dark:border-zinc-600 dark:bg-zinc-700 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="flex-1 p-3 border border-purple-primary-600/30 bg-purple-dark-800/30 text-white placeholder-purple-primary-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-primary-500"
                 />
                 <button
                   type="button"
                   onClick={() => setShowApiKey(!showApiKey)}
-                  className="px-4 py-2 border border-stone-300 dark:border-zinc-600 rounded-lg text-sm font-medium text-stone-700 dark:text-zinc-300 hover:bg-stone-50 dark:hover:bg-zinc-700"
+                  className="btn-glass px-4 py-2"
                 >
                   {showApiKey ? 'Hide' : 'Show'}
                 </button>
               </div>
-              <p className="mt-2 text-xs text-stone-500 dark:text-zinc-400">
+              <p className="mt-2 text-xs text-purple-primary-400">
                 Your API key is stored locally and never sent to any server except Google's Gemini API.
               </p>
             </div>
 
             {aiService.hasApiKey() && (
-              <div className="p-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
-                <p className="text-sm text-amber-700 dark:text-amber-300">
+              <div className="p-3 bg-purple-primary-700/20 border border-purple-primary-600/30 rounded-lg">
+                <p className="text-sm text-purple-primary-200">
                   API key is currently configured. You can clear it to disable API calls.
                 </p>
               </div>
@@ -94,7 +94,7 @@ export const SettingsPanel = ({ isOpen, onClose }: SettingsPanelProps) => {
               {aiService.hasApiKey() && (
                 <button
                   onClick={handleClear}
-                  className="px-4 py-2 border border-stone-300 dark:border-zinc-600 rounded-lg text-sm font-medium text-stone-700 dark:text-zinc-300 hover:bg-stone-50 dark:hover:bg-zinc-700"
+                  className="btn-glass px-4 py-2"
                 >
                   Clear Key
                 </button>
@@ -102,10 +102,8 @@ export const SettingsPanel = ({ isOpen, onClose }: SettingsPanelProps) => {
               <button
                 onClick={handleSave}
                 disabled={saveStatus === 'saving'}
-                className={`px-4 py-2 rounded-lg text-sm font-medium text-white ${
-                  saveStatus === 'saving' 
-                    ? 'bg-orange-400' 
-                    : 'bg-orange-600 hover:bg-orange-700'
+                className={`btn-gradient px-4 py-2 ${
+                  saveStatus === 'saving' ? 'opacity-50 cursor-not-allowed' : ''
                 }`}
               >
                 {saveStatus === 'saving' ? 'Saving...' : 'Save Key'}
@@ -113,16 +111,16 @@ export const SettingsPanel = ({ isOpen, onClose }: SettingsPanelProps) => {
             </div>
 
             {saveStatus === 'saved' && (
-              <div className="p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
-                <p className="text-sm text-green-700 dark:text-green-300">
+              <div className="p-3 bg-green-500/20 border border-green-500/30 rounded-lg">
+                <p className="text-sm text-green-300">
                   API key saved successfully! The AI Assistant will now use the real Gemini API.
                 </p>
               </div>
             )}
 
             {saveStatus === 'error' && (
-              <div className="p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
-                <p className="text-sm text-red-700 dark:text-red-300">
+              <div className="p-3 bg-red-500/20 border border-red-500/30 rounded-lg">
+                <p className="text-sm text-red-300">
                   Please enter a valid API key.
                 </p>
               </div>

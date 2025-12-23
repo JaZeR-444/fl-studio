@@ -129,35 +129,35 @@ export const ProjectTemplatesSection = () => {
     <section id="project-templates" className="page-section">
       <div className="mb-8">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-3xl font-bold text-stone-900 dark:text-white">Project Templates</h2>
+          <h2 className="text-3xl font-bold text-white">Project <span className="text-gradient">Templates</span></h2>
           <button
             onClick={() => setShowCreateForm(!showCreateForm)}
-            className="px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-medium transition-colors"
+            className="btn-gradient"
           >
             {showCreateForm ? 'Cancel' : 'Create Template'}
           </button>
         </div>
 
         {showCreateForm && (
-          <div className="bg-white dark:bg-zinc-800 rounded-xl shadow-sm border border-stone-200 dark:border-zinc-700 p-6 mb-8">
-            <h3 className="text-lg font-bold text-stone-800 dark:text-white mb-4">Create New Template</h3>
+          <div className="content-card p-6 mb-8">
+            <h3 className="text-lg font-bold text-white mb-4">Create New Template</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-stone-700 dark:text-zinc-300 mb-1">Name</label>
+                <label className="block text-sm font-medium text-purple-primary-300 mb-1">Name</label>
                 <input
                   type="text"
                   value={newTemplateName}
                   onChange={(e) => setNewTemplateName(e.target.value)}
-                  className="w-full p-2 border border-stone-300 dark:border-zinc-600 dark:bg-zinc-700 dark:text-white rounded focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full p-2 border border-purple-primary-600/30 bg-purple-primary-900/20 text-white rounded focus:outline-none focus:ring-2 focus:ring-purple-primary-500"
                   placeholder="Template name"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-stone-700 dark:text-zinc-300 mb-1">Genre</label>
+                <label className="block text-sm font-medium text-purple-primary-300 mb-1">Genre</label>
                 <select
                   value={newTemplateGenre}
                   onChange={(e) => setNewTemplateGenre(e.target.value)}
-                  className="w-full p-2 border border-stone-300 dark:border-zinc-600 dark:bg-zinc-700 dark:text-white rounded focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full p-2 border border-purple-primary-600/30 bg-purple-primary-900/20 text-white rounded focus:outline-none focus:ring-2 focus:ring-purple-primary-500"
                 >
                   {genres.map(genre => (
                     <option key={genre} value={genre}>{genre.charAt(0).toUpperCase() + genre.slice(1)}</option>
@@ -165,22 +165,22 @@ export const ProjectTemplatesSection = () => {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-stone-700 dark:text-zinc-300 mb-1">BPM</label>
+                <label className="block text-sm font-medium text-purple-primary-300 mb-1">BPM</label>
                 <input
                   type="number"
                   value={newTemplateBpm}
                   onChange={(e) => setNewTemplateBpm(Number(e.target.value))}
-                  className="w-full p-2 border border-stone-300 dark:border-zinc-600 dark:bg-zinc-700 dark:text-white rounded focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full p-2 border border-purple-primary-600/30 bg-purple-primary-900/20 text-white rounded focus:outline-none focus:ring-2 focus:ring-purple-primary-500"
                   min="1"
                   max="300"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-stone-700 dark:text-zinc-300 mb-1">Key</label>
+                <label className="block text-sm font-medium text-purple-primary-300 mb-1">Key</label>
                 <select
                   value={newTemplateKey}
                   onChange={(e) => setNewTemplateKey(e.target.value)}
-                  className="w-full p-2 border border-stone-300 dark:border-zinc-600 dark:bg-zinc-700 dark:text-white rounded focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full p-2 border border-purple-primary-600/30 bg-purple-primary-900/20 text-white rounded focus:outline-none focus:ring-2 focus:ring-purple-primary-500"
                 >
                   {keys.map(key => (
                     <option key={key} value={key}>{key}</option>
@@ -188,11 +188,11 @@ export const ProjectTemplatesSection = () => {
                 </select>
               </div>
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-stone-700 dark:text-zinc-300 mb-1">Description</label>
+                <label className="block text-sm font-medium text-purple-primary-300 mb-1">Description</label>
                 <textarea
                   value={newTemplateDescription}
                   onChange={(e) => setNewTemplateDescription(e.target.value)}
-                  className="w-full p-2 border border-stone-300 dark:border-zinc-600 dark:bg-zinc-700 dark:text-white rounded focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="w-full p-2 border border-purple-primary-600/30 bg-purple-primary-900/20 text-white rounded focus:outline-none focus:ring-2 focus:ring-purple-primary-500"
                   placeholder="Describe your template..."
                   rows={3}
                 />
@@ -201,7 +201,7 @@ export const ProjectTemplatesSection = () => {
             <div className="mt-4 flex justify-end">
               <button
                 onClick={handleCreateTemplate}
-                className="px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg font-medium transition-colors"
+                className="btn-gradient"
               >
                 Create Template
               </button>
@@ -213,34 +213,34 @@ export const ProjectTemplatesSection = () => {
           {templates.map(template => (
             <div
               key={template.id}
-              className={`bg-white dark:bg-zinc-800 rounded-xl shadow-md border-2 ${
+              className={`content-card rounded-xl shadow-md border-2 ${
                 selectedTemplate?.id === template.id
-                  ? 'border-orange-500'
-                  : 'border-stone-200 dark:border-zinc-700'
+                  ? 'border-purple-primary-500'
+                  : 'border-purple-primary-600/30'
               } overflow-hidden transition-all hover:shadow-lg cursor-pointer`}
               onClick={() => handleTemplateSelect(template)}
             >
               <div className="p-5">
                 <div className="flex justify-between items-start">
-                  <h3 className="font-bold text-stone-800 dark:text-white truncate">{template.name}</h3>
-                  <span className="text-xs px-2 py-1 bg-stone-100 dark:bg-zinc-700 text-stone-600 dark:text-zinc-300 rounded">
+                  <h3 className="font-bold text-white truncate">{template.name}</h3>
+                  <span className="text-xs px-2 py-1 bg-purple-primary-900/20 text-purple-primary-300 rounded">
                     {template.genre}
                   </span>
                 </div>
-                <p className="text-sm text-stone-600 dark:text-zinc-400 mt-2 line-clamp-2">{template.description}</p>
+                <p className="text-sm text-purple-primary-300 mt-2 line-clamp-2">{template.description}</p>
 
                 <div className="flex justify-between mt-4 text-sm">
-                  <span className="text-stone-500 dark:text-zinc-400">{template.bpm} BPM</span>
-                  <span className="text-stone-500 dark:text-zinc-400">{template.key}</span>
+                  <span className="text-purple-primary-400">{template.bpm} BPM</span>
+                  <span className="text-purple-primary-400">{template.key}</span>
                 </div>
 
-                <div className="mt-4 pt-4 border-t border-stone-100 dark:border-zinc-700 flex justify-between">
+                <div className="mt-4 pt-4 border-t border-purple-primary-600/30 flex justify-between">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       handleExportTemplate(template.id);
                     }}
-                    className="text-xs text-stone-500 dark:text-zinc-400 hover:text-stone-700 dark:hover:text-zinc-300"
+                    className="text-xs text-purple-primary-400 hover:text-purple-primary-200"
                   >
                     Export
                   </button>
@@ -250,7 +250,7 @@ export const ProjectTemplatesSection = () => {
                         e.stopPropagation();
                         handleEditTemplate(template);
                       }}
-                      className="text-xs bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 px-2 py-1 rounded hover:bg-orange-200 dark:hover:bg-orange-800/40"
+                      className="text-xs badge badge-purple px-2 py-1 rounded hover:bg-purple-primary-600/40"
                     >
                       Edit
                     </button>
@@ -260,7 +260,7 @@ export const ProjectTemplatesSection = () => {
                         // For now, just alert that the template would be loaded
                         alert(`Would load template: ${template.name}\n\nThis would open FL Studio and load this template structure.`);
                       }}
-                      className="text-xs bg-stone-200 dark:bg-zinc-700 text-stone-700 dark:text-zinc-300 px-2 py-1 rounded hover:bg-stone-300 dark:hover:bg-zinc-600"
+                      className="text-xs btn-glass px-2 py-1 rounded"
                     >
                       Load
                     </button>
@@ -269,7 +269,7 @@ export const ProjectTemplatesSection = () => {
                         e.stopPropagation();
                         handleDeleteTemplate(template.id);
                       }}
-                      className="text-xs bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 px-2 py-1 rounded hover:bg-red-200 dark:hover:bg-red-800/40"
+                      className="text-xs bg-red-900/30 text-red-400 px-2 py-1 rounded hover:bg-red-800/40"
                     >
                       Delete
                     </button>
@@ -282,41 +282,41 @@ export const ProjectTemplatesSection = () => {
 
         {templates.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-stone-600 dark:text-zinc-400">No templates created yet. Create your first template to get started!</p>
+            <p className="text-purple-primary-300">No templates created yet. Create your first template to get started!</p>
           </div>
         )}
 
         {/* Import Template Section */}
-        <div className="bg-white dark:bg-zinc-800 rounded-xl shadow-sm border border-stone-200 dark:border-zinc-700 p-6">
-          <h3 className="text-lg font-bold text-stone-800 dark:text-white mb-4">Import Template</h3>
+        <div className="content-card p-6">
+          <h3 className="text-lg font-bold text-white mb-4">Import <span className="text-gradient">Template</span></h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-stone-700 dark:text-zinc-300 mb-1">
+              <label className="block text-sm font-medium text-purple-primary-300 mb-1">
                 Paste Template JSON
               </label>
               <textarea
                 value={importJson}
                 onChange={(e) => setImportJson(e.target.value)}
-                className="w-full p-3 border border-stone-300 dark:border-zinc-600 dark:bg-zinc-700 dark:text-white rounded focus:outline-none focus:ring-2 focus:ring-orange-500 font-mono text-xs"
+                className="w-full p-3 border border-purple-primary-600/30 bg-purple-primary-900/20 text-white rounded focus:outline-none focus:ring-2 focus:ring-purple-primary-500 font-mono text-xs"
                 placeholder="Paste exported template JSON here..."
                 rows={6}
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-stone-700 dark:text-zinc-300 mb-1">
+              <label className="block text-sm font-medium text-purple-primary-300 mb-1">
                 How to Import
               </label>
-              <ul className="text-sm text-stone-600 dark:text-zinc-400 space-y-2">
+              <ul className="text-sm text-purple-primary-300 space-y-2">
                 <li className="flex items-start">
-                  <span className="text-orange-500 mr-2">•</span>
+                  <span className="text-purple-primary-200 mr-2">•</span>
                   <span>Export a template from another instance</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-orange-500 mr-2">•</span>
+                  <span className="text-purple-primary-200 mr-2">•</span>
                   <span>Paste the JSON in the field</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-orange-500 mr-2">•</span>
+                  <span className="text-purple-primary-200 mr-2">•</span>
                   <span>Click Import to add to your templates</span>
                 </li>
               </ul>
@@ -325,8 +325,8 @@ export const ProjectTemplatesSection = () => {
                 disabled={!importJson.trim()}
                 className={`mt-4 px-4 py-2 rounded-lg font-medium transition-colors ${
                   importJson.trim()
-                    ? 'bg-orange-600 hover:bg-orange-700 text-white'
-                    : 'bg-stone-200 dark:bg-zinc-700 text-stone-500 dark:text-zinc-400 cursor-not-allowed'
+                    ? 'btn-gradient'
+                    : 'bg-purple-primary-900/20 text-purple-primary-400 cursor-not-allowed'
                 }`}
               >
                 Import Template

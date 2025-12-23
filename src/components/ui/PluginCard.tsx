@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 // src/components/ui/PluginCard.tsx
 import { ExtendedPlugin } from '@/types/pluginTypes';

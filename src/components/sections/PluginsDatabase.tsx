@@ -1,28 +1,27 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
-import { PluginFamily, PluginSearchIndex } from '@/types/pluginTypes';
+import { ExtendedPlugin, PluginFamily } from '@/types/pluginTypes';
 import { PluginCard } from '@/components/ui/PluginCard';
 import { CapabilityFilter } from '@/components/ui/CapabilityFilter';
 
 // Import plugin data
-import pluginTaxonomy from '@/data/plugins/taxonomy.json';
-import searchIndexData from '@/data/plugins/searchIndex.json';
+import allPluginsData from '@/data/plugins/allPlugins.json';
 
-const searchIndex = searchIndexData as unknown as PluginSearchIndex[];
+const allPlugins: ExtendedPlugin[] = allPluginsData as unknown as ExtendedPlugin[];
 
 export const PluginsDatabase = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedFamily, setSelectedFamily] = useState<PluginFamily | 'all'>('all');
-  const [selectedEdition, setSelectedEdition] = useState<'all' | 'All Plugins' | 'Signature+' | 'Producer+'>('all');
-  const [sortBy, setSortBy] = useState<'name' | 'family' | 'edition'>('name');
+  const [selectedFamily, setSelectedFamily] = useState<string>('all');
+  const [selectedEdition, setSelectedEdition] = useState<'all' | 'all-plugins' | 'signature' | 'producer'>('all');
+  const [sortBy, setSortBy] = useState<'name' | 'family' | 'rating'>('name');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
-  const [filteredPlugins, setFilteredPlugins] = useState<PluginSearchIndex[]>(searchIndex);
-  const [displayedPlugins, setDisplayedPlugins] = useState<PluginSearchIndex[]>(searchIndex);
+  const [displayedPlugins, setDisplayedPlugins] = useState<ExtendedPlugin[]>(allPlugins);
 
   // Apply filters and sorting
   useEffect(() => {
-    let result = [...searchIndex];
+    let result = [...allPlugins];
 
     // Apply search term filter
     if (searchTerm) {
@@ -30,32 +29,24 @@ export const PluginsDatabase = () => {
       result = result.filter(plugin =>
         plugin.name.toLowerCase().includes(term) ||
         plugin.family.toLowerCase().includes(term) ||
-        plugin.tags.some(tag => tag.toLowerCase().includes(term)) ||
-        plugin.primaryUseCases.some(useCase => useCase.toLowerCase().includes(term))
+        plugin.tags.some(tag => tag.label.toLowerCase().includes(term)) ||
+        plugin.bestUsedFor.some(useCase => useCase.toLowerCase().includes(term))
       );
     }
 
     // Apply family filter
     if (selectedFamily !== 'all') {
-      result = result.filter(plugin => plugin.family === selectedFamily);
+      result = result.filter(plugin => plugin.category === selectedFamily || plugin.family === selectedFamily);
     }
 
     // Apply edition filter
     if (selectedEdition !== 'all') {
-      if (selectedEdition === 'All Plugins') {
-        result = result.filter(plugin => plugin.exclusivityFlags.includes('All Plugins Edition'));
-      } else if (selectedEdition === 'Signature+') {
-        result = result.filter(plugin =>
-          plugin.exclusivityFlags.includes('Signature+ Edition') ||
-          plugin.exclusivityFlags.includes('All Plugins Edition')
-        );
-      } else if (selectedEdition === 'Producer+') {
-        result = result.filter(plugin =>
-          plugin.exclusivityFlags.includes('Producer+ Edition') ||
-          plugin.exclusivityFlags.includes('Signature+ Edition') ||
-          plugin.exclusivityFlags.includes('All Plugins Edition')
-        );
-      }
+      result = result.filter(plugin => {
+        if (selectedEdition === 'all-plugins') return plugin.pricingBadge === 'all-plugins';
+        if (selectedEdition === 'signature') return ['signature', 'all-plugins'].includes(plugin.pricingBadge);
+        if (selectedEdition === 'producer') return ['producer', 'signature', 'all-plugins'].includes(plugin.pricingBadge);
+        return true;
+      });
     }
 
     // Apply sorting
@@ -66,24 +57,18 @@ export const PluginsDatabase = () => {
         comparison = a.name.localeCompare(b.name);
       } else if (sortBy === 'family') {
         comparison = a.family.localeCompare(b.family);
-      } else if (sortBy === 'edition') {
-        comparison = a.edition.localeCompare(b.edition);
+      } else if (sortBy === 'rating') {
+        comparison = a.rating - b.rating;
       }
 
       return sortOrder === 'asc' ? comparison : -comparison;
     });
 
-    setFilteredPlugins(result);
     setDisplayedPlugins(result);
   }, [searchTerm, selectedFamily, selectedEdition, sortBy, sortOrder]);
 
-  // Handler for capability filter changes
-  const handleCapabilityFilterChange = (filtered: PluginSearchIndex[]) => {
-    setDisplayedPlugins(filtered);
-  };
-
   // Get all unique families for the filter
-  const allFamilies = Object.values(PluginFamily);
+  const allFamilies = Array.from(new Set(allPlugins.map(p => p.category))).sort();
 
   return (
     <section id="plugins-database" className="page-section animate-fade">
@@ -120,13 +105,13 @@ export const PluginsDatabase = () => {
 
           {/* Family Filter */}
           <div>
-            <label className="block text-xs font-medium text-[var(--text-muted)] mb-2 uppercase tracking-wider">Family</label>
+            <label className="block text-xs font-medium text-[var(--text-muted)] mb-2 uppercase tracking-wider">Category</label>
             <select
               value={selectedFamily}
-              onChange={(e) => setSelectedFamily(e.target.value as PluginFamily | 'all')}
+              onChange={(e) => setSelectedFamily(e.target.value)}
               className="glass-input w-full px-3 py-2.5"
             >
-              <option value="all">All Families</option>
+              <option value="all">All Categories</option>
               {allFamilies.map(family => (
                 <option key={family} value={family}>{family}</option>
               ))}
@@ -138,13 +123,13 @@ export const PluginsDatabase = () => {
             <label className="block text-xs font-medium text-[var(--text-muted)] mb-2 uppercase tracking-wider">Edition</label>
             <select
               value={selectedEdition}
-              onChange={(e) => setSelectedEdition(e.target.value as typeof selectedEdition)}
+              onChange={(e) => setSelectedEdition(e.target.value as any)}
               className="glass-input w-full px-3 py-2.5"
             >
               <option value="all">All Editions</option>
-              <option value="All Plugins">All Plugins</option>
-              <option value="Signature+">Signature+</option>
-              <option value="Producer+">Producer+</option>
+              <option value="all-plugins">All Plugins Bundle</option>
+              <option value="signature">Signature+</option>
+              <option value="producer">Producer+</option>
             </select>
           </div>
 
@@ -153,12 +138,12 @@ export const PluginsDatabase = () => {
             <label className="block text-xs font-medium text-[var(--text-muted)] mb-2 uppercase tracking-wider">Sort By</label>
             <select
               value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as 'name' | 'family' | 'edition')}
+              onChange={(e) => setSortBy(e.target.value as any)}
               className="glass-input w-full px-3 py-2.5"
             >
               <option value="name">Name</option>
-              <option value="family">Family</option>
-              <option value="edition">Edition</option>
+              <option value="family">Category</option>
+              <option value="rating">Rating</option>
             </select>
           </div>
 
@@ -167,7 +152,7 @@ export const PluginsDatabase = () => {
             <label className="block text-xs font-medium text-[var(--text-muted)] mb-2 uppercase tracking-wider">Order</label>
             <select
               value={sortOrder}
-              onChange={(e) => setSortOrder(e.target.value as 'asc' | 'desc')}
+              onChange={(e) => setSortOrder(e.target.value as any)}
               className="glass-input w-full px-3 py-2.5"
             >
               <option value="asc">Ascending</option>
@@ -179,7 +164,7 @@ export const PluginsDatabase = () => {
         {/* Results Count */}
         <div className="mt-4 pt-4 border-t border-[var(--glass-border)] flex justify-between items-center">
           <span className="text-sm text-[var(--text-muted)]">
-            Showing <span className="text-white font-bold">{displayedPlugins.length}</span> of <span className="text-white font-bold">{searchIndex.length}</span> plugins
+            Showing <span className="text-white font-bold">{displayedPlugins.length}</span> of <span className="text-white font-bold">{allPlugins.length}</span> plugins
           </span>
           <button 
             onClick={() => {
@@ -195,12 +180,6 @@ export const PluginsDatabase = () => {
           </button>
         </div>
       </div>
-
-      {/* Capability Filter */}
-      <CapabilityFilter
-        plugins={filteredPlugins}
-        onFilterChange={handleCapabilityFilterChange}
-      />
 
       {/* Plugin Results */}
       <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -232,3 +211,4 @@ export const PluginsDatabase = () => {
     </section>
   );
 };
+

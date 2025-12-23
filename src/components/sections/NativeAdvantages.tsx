@@ -61,56 +61,25 @@ const nativeFeatures = [
   }
 ];
 
-const pluginAdvantages: { [key: string]: string[] } = {
-  "Harmor": [
-    "Per-note slide data interpretation",
-    "Direct image-to-spectrum conversion", 
-    "516 partials per note",
-    "Prism and Blur effects at synthesis level"
-  ],
-  "Sytrus": [
-    "6x6 modulation matrix access to internal sources",
-    "Up to 64x oversampling efficiency",
-    "Triple filter architecture"
-  ],
-  "Sakura": [
-    "5-stage physical modeling (Hanami method)",
-    "Dual string interaction simulation",
-    "8-resonator body simulation"
-  ],
-  "Gross Beat": [
-    "2-bar rolling buffer synchronization",
-    "36 time and volume envelopes in DAW sequence",
-    "Tempo-synced manipulation"
-  ],
-  "Transporter": [
-    "Transient detection within DAW signal flow",
-    "Playlist integration for pattern-based triggering",
-    "Real-time performance manipulation"
-  ],
-  "NewTone": [
-    "Full playlist integration",
-    "MIDI data derivation from audio",
-    "Note-based editing in piano roll"
-  ],
-  "LuxeVerb": [
-    "Pitch feedback in reverb tail",
-    "Auto-ducking envelope linked to DAW transport",
-    "Real-time modulation from internal sources"
-  ],
-  "Patcher": [
-    "Preset saving across plugin chains",
-    "Control Surface integration",
-    "Custom GUI design linking to DAW parameters"
-  ]
-};
+import { ExtendedPlugin } from '@/types/pluginTypes';
+import allPluginsData from '@/data/plugins/allPlugins.json';
+
+const allPlugins: ExtendedPlugin[] = allPluginsData as unknown as ExtendedPlugin[];
+
+// Generate advantages map from data
+const pluginAdvantages = allPlugins.reduce((acc, plugin) => {
+  if (plugin.nativeStatus && plugin.proTips && plugin.proTips.length > 0) {
+    acc[plugin.name] = plugin.proTips;
+  }
+  return acc;
+}, {} as { [key: string]: string[] });
 
 export const NativeAdvantages = () => {
   const [activeTab, setActiveTab] = useState('features');
   const [selectedPlugin, setSelectedPlugin] = useState<string | null>(null);
 
   // Get all plugins that have native advantages
-  const pluginsWithAdvantages = Object.keys(pluginAdvantages);
+  const pluginsWithAdvantages = Object.keys(pluginAdvantages).sort();
 
   return (
     <section id="native-advantages" className="page-section animate-fade">

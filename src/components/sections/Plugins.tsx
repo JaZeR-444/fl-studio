@@ -61,8 +61,9 @@ export const PluginsSection = () => {
         </p>
       </div>
 
+
       {/* Filters Row */}
-      <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
         {/* Category Tabs */}
         <div className="flex flex-wrap gap-2">
           {categories.map((cat) => (
@@ -166,14 +167,22 @@ export const PluginsSection = () => {
 
 
       {/* Load More */}
-      <div className="flex justify-center mt-8">
-        <button className="btn-secondary px-8">
-          Load More Plugins
-          <svg className="inline-block w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-      </div>
+
+      {/* Load More */}
+      {displayedPlugins.length < filteredPlugins.length && (
+        <div className="flex justify-center mt-8">
+          <button 
+            onClick={() => setVisibleCount(prev => prev + 12)}
+            className="btn-secondary px-8 hover:scale-105 transition-transform"
+          >
+            Load More Plugins ({filteredPlugins.length - displayedPlugins.length} remaining)
+            <svg className="inline-block w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
+      )}
+
     </section>
   );
 };

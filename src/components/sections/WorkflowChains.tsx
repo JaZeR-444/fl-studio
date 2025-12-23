@@ -27,8 +27,9 @@ export const WorkflowChains = () => {
     const workflow: WorkflowTemplate = workflows[selectedWorkflow as keyof typeof workflows];
 
     return (
+
       <div className="content-card p-6">
-        <div className="flex justify-between items-start mb-6">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-6">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center text-2xl">
               🔗

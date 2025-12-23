@@ -4,7 +4,11 @@ export const toggleDarkMode = () => {
     const html = document.documentElement;
     html.classList.toggle('dark');
     const isDark = html.classList.contains('dark');
-    localStorage.setItem('darkMode', isDark.toString());
+    try {
+      localStorage.setItem('darkMode', isDark.toString());
+    } catch {
+      // ignore (storage may be unavailable)
+    }
     
     // Update theme icon if it exists
     const themeIcon = document.getElementById('theme-icon');
@@ -19,8 +23,24 @@ export const toggleDarkMode = () => {
 
 export const initializeTheme = () => {
   if (typeof document !== 'undefined') {
-    const isDark = localStorage.getItem('darkMode') === 'true' || 
-      (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    const safeGetItem = (key: string) => {
+      try {
+        return localStorage.getItem(key);
+      } catch {
+        return null;
+      }
+    };
+
+    const safePrefersDark = () => {
+      try {
+        return window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+      } catch {
+        return false;
+      }
+    };
+
+    const stored = safeGetItem('darkMode');
+    const isDark = stored === 'true' || (stored === null && safePrefersDark());
     
     if (isDark) {
       document.documentElement.classList.add('dark');

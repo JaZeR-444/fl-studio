@@ -1,6 +1,6 @@
+'use client';
+
 import { useState } from 'react';
-import { useRouter } from 'next/router';
-import Head from 'next/head';
 import { AppProvider, useAppContext } from '@/context/AppContext';
 
 // Import components
@@ -28,14 +28,13 @@ import { SettingsPanel } from '@/components/SettingsPanel';
 
 // Inner component that consumes the context
 const FLStudioHubContent = () => {
-  const router = useRouter();
   const { state, dispatch } = useAppContext();
   const [showSettings, setShowSettings] = useState(false);
 
   // Handle section navigation
   const navigateToSection = (sectionId: string) => {
     dispatch({ type: 'SET_ACTIVE_SECTION', payload: sectionId });
-    router.push(`#${sectionId}`, undefined, { shallow: true });
+    window.history.pushState(null, '', `#${sectionId}`);
     // Close mobile menu if open
     if (window.innerWidth < 768) {
       dispatch({ type: 'SET_MOBILE_MENU', payload: false });
@@ -59,6 +58,7 @@ const FLStudioHubContent = () => {
 
   return (
     <>
+<<<<<<< HEAD
       <Head>
         <title>FL Studio Master Reference Hub</title>
         <meta name="description" content="Master FL Studio with this comprehensive reference hub" />
@@ -71,6 +71,12 @@ const FLStudioHubContent = () => {
         {/* Mobile Header */}
         <div className="md:hidden fixed w-full glass-sidebar border-b border-purple-primary-700/30 z-50 flex items-center justify-between p-4">
           <h1 className="font-bold text-lg text-gradient">FL Studio Hub</h1>
+=======
+      <div className="flex flex-col md:flex-row min-h-dvh text-stone-800 dark:text-zinc-300 antialiased overflow-hidden bg-transparent">
+        {/* Mobile Header */}
+        <div className="md:hidden fixed w-full bg-white/70 dark:bg-zinc-900/60 backdrop-blur-xl border-b border-stone-200/60 dark:border-zinc-700/60 z-50 flex items-center justify-between p-4">
+          <h1 className="font-bold text-lg text-orange-600">FL Studio Hub</h1>
+>>>>>>> 7821acb99cfc55dad0de1f4bb224c88aa5ffbce1
           <button
             onClick={toggleMobileMenu}
             className="p-2 text-purple-primary-300 hover:text-purple-primary-100 focus:outline-none"
@@ -91,7 +97,11 @@ const FLStudioHubContent = () => {
         />
 
         {/* Main Content Area */}
+<<<<<<< HEAD
         <main className="flex-1 h-full overflow-y-auto pt-16 md:pt-0 relative z-10">
+=======
+        <main className="flex-1 h-full overflow-y-auto bg-transparent pt-16 md:pt-0">
+>>>>>>> 7821acb99cfc55dad0de1f4bb224c88aa5ffbce1
           <div className="max-w-5xl mx-auto p-6 md:p-12">
             {/* Mental Model Section */}
             {state.activeSection === 'home' && <MentalModelSection />}

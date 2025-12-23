@@ -2,6 +2,38 @@
 import React, { createContext, useContext, useReducer, ReactNode } from 'react';
 import { Theme } from '../types';
 
+const safeLocalStorage = {
+  getItem(key: string) {
+    try {
+      return typeof window !== 'undefined' ? window.localStorage.getItem(key) : null;
+    } catch {
+      return null;
+    }
+  },
+  setItem(key: string, value: string) {
+    try {
+      if (typeof window !== 'undefined') window.localStorage.setItem(key, value);
+    } catch {
+      // ignore (storage may be unavailable in some privacy modes)
+    }
+  },
+  removeItem(key: string) {
+    try {
+      if (typeof window !== 'undefined') window.localStorage.removeItem(key);
+    } catch {
+      // ignore
+    }
+  },
+};
+
+const safePrefersDark = () => {
+  try {
+    return typeof window !== 'undefined' && window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+  } catch {
+    return false;
+  }
+};
+
 // Define the application state type
 interface AppState {
   darkMode: boolean;
@@ -25,10 +57,12 @@ interface AppContextType {
 
 // Initial state
 const initialState: AppState = {
-  darkMode: typeof window !== 'undefined' 
-    ? localStorage.getItem('darkMode') === 'true' ||
-      (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-    : false,
+  darkMode: (() => {
+    const stored = safeLocalStorage.getItem('darkMode');
+    if (stored === 'true') return true;
+    if (stored === 'false') return false;
+    return safePrefersDark();
+  })(),
   activeSection: 'home',
   mobileMenuOpen: false,
 };
@@ -41,10 +75,10 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
       if (typeof document !== 'undefined') {
         if (newDarkMode) {
           document.documentElement.classList.add('dark');
-          localStorage.setItem('darkMode', 'true');
+          safeLocalStorage.setItem('darkMode', 'true');
         } else {
           document.documentElement.classList.remove('dark');
-          localStorage.setItem('darkMode', 'false');
+          safeLocalStorage.setItem('darkMode', 'false');
         }
       }
       return {
@@ -95,7 +129,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
         document.documentElement.classList.remove('dark');
       }
     }
-  }, []);
+  }, [state.darkMode]);
 
   return (
     <AppContext.Provider value={{ state, dispatch }}>

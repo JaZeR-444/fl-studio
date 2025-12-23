@@ -7,8 +7,24 @@ export const useDarkModeWithCharts = (initialCharts: any[] = []) => {
 
   // Initialize dark mode based on system preference
   useEffect(() => {
-    const isDark = localStorage.getItem('darkMode') === 'true' ||
-      (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    const safeGetItem = (key: string) => {
+      try {
+        return window.localStorage.getItem(key);
+      } catch {
+        return null;
+      }
+    };
+
+    const safePrefersDark = () => {
+      try {
+        return window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+      } catch {
+        return false;
+      }
+    };
+
+    const stored = safeGetItem('darkMode');
+    const isDark = stored === 'true' || (stored === null && safePrefersDark());
     setDarkMode(isDark);
   }, []);
 
@@ -17,10 +33,18 @@ export const useDarkModeWithCharts = (initialCharts: any[] = []) => {
     if (typeof document !== 'undefined') {
       if (darkMode) {
         document.documentElement.classList.add('dark');
-        localStorage.setItem('darkMode', 'true');
+        try {
+          window.localStorage.setItem('darkMode', 'true');
+        } catch {
+          // ignore
+        }
       } else {
         document.documentElement.classList.remove('dark');
-        localStorage.setItem('darkMode', 'false');
+        try {
+          window.localStorage.setItem('darkMode', 'false');
+        } catch {
+          // ignore
+        }
       }
       
       // Update all charts with new theme

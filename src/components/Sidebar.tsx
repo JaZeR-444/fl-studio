@@ -48,9 +48,15 @@ export const Sidebar = ({
   }, {} as Record<string, typeof navItems>);
 
   return (
+<<<<<<< HEAD
     <aside
       id="sidebar"
       className={`transform ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 transition-transform duration-300 fixed md:static inset-y-0 left-0 w-64 glass-sidebar flex flex-col z-40 shadow-lg md:shadow-none`}
+=======
+    <aside 
+      id="sidebar" 
+      className={`transform ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 transition-transform duration-300 fixed md:static inset-y-0 left-0 w-64 bg-white/75 dark:bg-zinc-950/50 backdrop-blur-xl border-r border-stone-200/60 dark:border-zinc-700/60 flex flex-col z-40 shadow-lg md:shadow-none`}
+>>>>>>> 7821acb99cfc55dad0de1f4bb224c88aa5ffbce1
     >
       <div className="p-6 border-b border-purple-primary-700/30 hidden md:flex justify-between items-center">
         <div>

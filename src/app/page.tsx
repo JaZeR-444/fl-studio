@@ -57,54 +57,35 @@ const FLStudioHubContent = () => {
   };
 
   return (
-    <>
-<<<<<<< HEAD
-      <Head>
-        <title>FL Studio Master Reference Hub</title>
-        <meta name="description" content="Master FL Studio with this comprehensive reference hub" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
-      </Head>
+<>
+  <div className="flex flex-col md:flex-row min-h-dvh text-stone-800 dark:text-zinc-300 antialiased overflow-hidden bg-transparent">
+    {/* Mobile Header */}
+    <div className="md:hidden fixed w-full bg-white/70 dark:bg-zinc-900/60 backdrop-blur-xl border-b border-stone-200/60 dark:border-zinc-700/60 z-50 flex items-center justify-between p-4">
+      <h1 className="font-bold text-lg text-orange-600">FL Studio Hub</h1>
+      <button
+        onClick={toggleMobileMenu}
+        className="p-2 text-purple-primary-300 hover:text-purple-primary-100 focus:outline-none"
+      >
+        <span className="text-2xl">☰</span>
+      </button>
+    </div>
 
-      <div className="flex flex-col md:flex-row h-screen text-white antialiased overflow-hidden relative">
-        {/* Mobile Header */}
-        <div className="md:hidden fixed w-full glass-sidebar border-b border-purple-primary-700/30 z-50 flex items-center justify-between p-4">
-          <h1 className="font-bold text-lg text-gradient">FL Studio Hub</h1>
-=======
-      <div className="flex flex-col md:flex-row min-h-dvh text-stone-800 dark:text-zinc-300 antialiased overflow-hidden bg-transparent">
-        {/* Mobile Header */}
-        <div className="md:hidden fixed w-full bg-white/70 dark:bg-zinc-900/60 backdrop-blur-xl border-b border-stone-200/60 dark:border-zinc-700/60 z-50 flex items-center justify-between p-4">
-          <h1 className="font-bold text-lg text-orange-600">FL Studio Hub</h1>
->>>>>>> 7821acb99cfc55dad0de1f4bb224c88aa5ffbce1
-          <button
-            onClick={toggleMobileMenu}
-            className="p-2 text-purple-primary-300 hover:text-purple-primary-100 focus:outline-none"
-          >
-            <span className="text-2xl">☰</span>
-          </button>
-        </div>
+    {/* Sidebar */}
+    <Sidebar
+      activeSection={state.activeSection}
+      navigateToSection={navigateToSection}
+      darkMode={state.darkMode}
+      toggleDarkMode={toggleDarkMode}
+      mobileMenuOpen={state.mobileMenuOpen}
+      setMobileMenuOpen={(open: boolean) => dispatch({ type: 'SET_MOBILE_MENU', payload: open })}
+      toggleSettings={toggleSettings}
+    />
 
-        {/* Sidebar */}
-        <Sidebar
-          activeSection={state.activeSection}
-          navigateToSection={navigateToSection}
-          darkMode={state.darkMode}
-          toggleDarkMode={toggleDarkMode}
-          mobileMenuOpen={state.mobileMenuOpen}
-          setMobileMenuOpen={(open: boolean) => dispatch({ type: 'SET_MOBILE_MENU', payload: open })}
-          toggleSettings={toggleSettings}
-        />
-
-        {/* Main Content Area */}
-<<<<<<< HEAD
-        <main className="flex-1 h-full overflow-y-auto pt-16 md:pt-0 relative z-10">
-=======
-        <main className="flex-1 h-full overflow-y-auto bg-transparent pt-16 md:pt-0">
->>>>>>> 7821acb99cfc55dad0de1f4bb224c88aa5ffbce1
-          <div className="max-w-5xl mx-auto p-6 md:p-12">
-            {/* Mental Model Section */}
-            {state.activeSection === 'home' && <MentalModelSection />}
+    {/* Main Content Area */}
+    <main className="flex-1 h-full overflow-y-auto bg-transparent pt-16 md:pt-0">
+      <div className="max-w-5xl mx-auto p-6 md:p-12">
+        {/* Mental Model Section */}
+        {state.activeSection === 'home' && <MentalModelSection />}
 
             {/* Modules Section */}
             {state.activeSection === 'modules' && <ModulesSection />}

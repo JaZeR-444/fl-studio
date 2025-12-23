@@ -114,27 +114,19 @@ export const AudioAnalysisSection = () => {
         beginAtZero: true,
         max: 100,
         grid: {
-          color: () => {
-            return document.documentElement.classList.contains('dark') ? '#52525b' : '#e5e7eb';
-          }
+          color: '#52525b'
         },
         ticks: {
-          color: () => {
-            return document.documentElement.classList.contains('dark') ? '#d4d4d4' : '#52525b';
-          }
+          color: '#d4d4d4'
         }
       },
       x: {
         grid: { 
           display: false,
-          color: () => {
-            return document.documentElement.classList.contains('dark') ? '#52525b' : '#e5e7eb';
-          }
+          color: '#52525b'
         },
         ticks: {
-          color: () => {
-            return document.documentElement.classList.contains('dark') ? '#d4d4d4' : '#52525b';
-          }
+          color: '#d4d4d4'
         }
       }
     }

@@ -5,6 +5,9 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
+// Get basePath for GitHub Pages compatibility
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 export const Navbar = () => {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -38,7 +41,7 @@ export const Navbar = () => {
           <div className="absolute inset-0 bg-purple-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
           <div className="relative h-10 w-48 group-hover:scale-105 transition-transform duration-300">
              <Image 
-               src="/images/branding/logo-white.svg" 
+               src={`${basePath}/images/branding/logo-white.svg`} 
                alt="FL Studio Master Hub" 
                fill
                className="object-contain object-left drop-shadow-[0_0_15px_rgba(124,58,237,0.5)]"

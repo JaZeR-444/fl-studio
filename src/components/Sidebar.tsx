@@ -2,6 +2,10 @@
 
 import { useState, useMemo, ReactNode } from 'react';
 import Image from 'next/image';
+
+// Get basePath for GitHub Pages compatibility
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 import {
   LayoutGrid,
   Piano,
@@ -130,7 +134,7 @@ export const Sidebar = ({
         <div className="flex items-center justify-between mb-4">
           <div className="relative h-8 w-40">
             <Image 
-              src="/images/branding/logo-white.svg" 
+              src={`${basePath}/images/branding/logo-white.svg`} 
               alt="FL Studio Master Hub" 
               fill
               className="object-contain object-left drop-shadow-[0_0_15px_rgba(124,58,237,0.3)]"
@@ -208,7 +212,7 @@ export const Sidebar = ({
           <div className="flex items-center gap-2">
             <div className="relative w-8 h-8 rounded-full overflow-hidden">
               <Image 
-                src="/images/branding/icon.svg" 
+                src={`${basePath}/images/branding/icon.svg`} 
                 alt="FL Studio Icon" 
                 fill
                 className="object-contain drop-shadow-[0_0_8px_rgba(124,58,237,0.4)]"

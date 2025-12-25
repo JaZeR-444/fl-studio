@@ -140,8 +140,16 @@ export const MixerTemplatesSection = () => {
 
   return (
     <section className="space-y-8">
-      
-
+      {/* Header */}
+      <div className="mb-8">
+        <h2 className="text-3xl font-bold mb-2">
+          <span className="text-gradient">Mixer</span>
+          <span className="text-white"> Templates</span>
+        </h2>
+        <p className="text-[var(--text-muted)]">
+          Pre-configured mixing chains for professional sound.
+        </p>
+      </div>
 
       {/* Hero Card */}
       <div className="mb-8 p-6 rounded-xl bg-gradient-to-r from-violet-900/40 to-purple-900/40 border border-violet-500/20 backdrop-blur-sm">

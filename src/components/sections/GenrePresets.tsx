@@ -185,8 +185,16 @@ export const GenrePresetsSection = () => {
 
   return (
     <section className="space-y-8">
-      
-
+      {/* Header */}
+      <div className="mb-8">
+        <h2 className="text-3xl font-bold mb-2">
+          <span className="text-gradient">Genre</span>
+          <span className="text-white"> Presets</span>
+        </h2>
+        <p className="text-[var(--text-muted)]">
+          Starting points and recommended settings for popular genres.
+        </p>
+      </div>
 
       {/* Hero Card */}
       <div className="mb-8 p-6 rounded-xl bg-gradient-to-r from-orange-900/40 to-red-900/40 border border-orange-500/20 backdrop-blur-sm">

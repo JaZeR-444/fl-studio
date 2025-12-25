@@ -119,8 +119,16 @@ export const QuickStartGuidesSection = () => {
 
   return (
     <section className="space-y-8">
-      
-
+      {/* Header */}
+      <div className="mb-8">
+        <h2 className="text-3xl font-bold mb-2">
+          <span className="text-gradient">Quick Start</span>
+          <span className="text-white"> Guides</span>
+        </h2>
+        <p className="text-[var(--text-muted)]">
+          Follow these interactive paths to master the basics in minutes.
+        </p>
+      </div>
 
       {/* Hero Card */}
       <div className="mb-8 p-6 rounded-xl bg-gradient-to-r from-blue-900/40 to-cyan-900/40 border border-blue-500/20 backdrop-blur-sm">

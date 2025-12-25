@@ -54,7 +54,7 @@ const quickAccessSections: { id: string; label: string; Icon: React.ComponentTyp
 const FLStudioHubContent = () => {
   const { state, dispatch } = useAppContext();
   const [showSettings, setShowSettings] = useState(false);
-  const [showCommandPalette, setShowCommandPalette] = useState(false);
+  // Note: showCommandPalette now comes from context (state.showCommandPalette)
 
   // Handle section navigation with history support
   const navigateToSection = (sectionId: string) => {
@@ -68,18 +68,7 @@ const FLStudioHubContent = () => {
     }
   };
 
-  // Global Keyboard Shortcuts
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-        e.preventDefault();
-        setShowCommandPalette(true);
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  // Note: Keyboard shortcut for command palette is now handled in Navbar
 
   // Sync state with URL hash on mount and handle back/forward navigation
   useEffect(() => {
@@ -131,7 +120,7 @@ const FLStudioHubContent = () => {
           mobileMenuOpen={state.mobileMenuOpen}
           setMobileMenuOpen={(open: boolean) => dispatch({ type: 'SET_MOBILE_MENU', payload: open })}
           toggleSettings={toggleSettings}
-          onOpenCommandPalette={() => setShowCommandPalette(true)}
+          onOpenCommandPalette={() => dispatch({ type: 'SET_COMMAND_PALETTE', payload: true })}
         />
 
         {/* Main Content Area */}
@@ -261,8 +250,8 @@ const FLStudioHubContent = () => {
 
       {/* Command Palette */}
       <CommandPalette 
-        isOpen={showCommandPalette}
-        onClose={() => setShowCommandPalette(false)}
+        isOpen={state.showCommandPalette}
+        onClose={() => dispatch({ type: 'SET_COMMAND_PALETTE', payload: false })}
         navigateToSection={navigateToSection}
       />
 

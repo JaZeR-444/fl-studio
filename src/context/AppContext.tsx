@@ -39,6 +39,7 @@ interface AppState {
   darkMode: boolean;
   activeSection: string;
   mobileMenuOpen: boolean;
+  showCommandPalette: boolean;
   // Add more state properties as needed
 }
 
@@ -47,7 +48,9 @@ type AppAction =
   | { type: 'TOGGLE_DARK_MODE' }
   | { type: 'SET_ACTIVE_SECTION'; payload: string }
   | { type: 'TOGGLE_MOBILE_MENU' }
-  | { type: 'SET_MOBILE_MENU'; payload: boolean };
+  | { type: 'SET_MOBILE_MENU'; payload: boolean }
+  | { type: 'TOGGLE_COMMAND_PALETTE' }
+  | { type: 'SET_COMMAND_PALETTE'; payload: boolean };
 
 // Define the context type
 interface AppContextType {
@@ -65,6 +68,7 @@ const initialState: AppState = {
   })(),
   activeSection: 'home',
   mobileMenuOpen: false,
+  showCommandPalette: false,
 };
 
 // Reducer function
@@ -102,6 +106,18 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
       return {
         ...state,
         mobileMenuOpen: action.payload,
+      };
+
+    case 'TOGGLE_COMMAND_PALETTE':
+      return {
+        ...state,
+        showCommandPalette: !state.showCommandPalette,
+      };
+
+    case 'SET_COMMAND_PALETTE':
+      return {
+        ...state,
+        showCommandPalette: action.payload,
       };
       
     default:

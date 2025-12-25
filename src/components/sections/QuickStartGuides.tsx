@@ -120,15 +120,40 @@ export const QuickStartGuidesSection = () => {
   return (
     <section className="space-y-8">
       {/* Header */}
-      <div className="flex items-center gap-4">
-        <div className="p-3 rounded-xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-green-500/30">
-          <Rocket className="w-8 h-8 text-green-400" />
-        </div>
-        <div>
-          <h1 className="text-3xl font-bold text-white">Quick Start Guides</h1>
-          <p className="text-[var(--text-muted)]">
-            Get up and running with FL Studio in minutes, not hours.
-          </p>
+      <div className="mb-8">
+        <h2 className="text-3xl font-bold mb-2">
+          <span className="text-gradient">Quick Start</span>
+          <span className="text-white"> Guides</span>
+        </h2>
+        <p className="text-[var(--text-muted)]">
+          Follow these interactive paths to master the basics in minutes.
+        </p>
+      </div>
+
+      {/* Hero Card */}
+      <div className="mb-8 p-6 rounded-xl bg-gradient-to-r from-blue-900/40 to-cyan-900/40 border border-blue-500/20 backdrop-blur-sm">
+        <div className="flex flex-col md:flex-row md:items-center gap-6">
+          <div className="flex-shrink-0">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+              <Rocket className="w-8 h-8 text-white" />
+            </div>
+          </div>
+          <div className="flex-grow">
+            <h3 className="text-xl font-bold text-white mb-2">Fast Track Your Production</h3>
+            <p className="text-blue-200/80 mb-3">
+              Don't get overwhelmed. These curated guides will take you from "No Sound" to "Finished Track" in under an hour.
+            </p>
+            <div className="flex flex-wrap gap-4 text-sm">
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold text-white">3</span>
+                <span className="text-blue-200/60">Core Guides</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold text-white">1hr</span>
+                <span className="text-blue-200/60">Total Time</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

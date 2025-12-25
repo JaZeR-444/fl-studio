@@ -273,12 +273,39 @@ export const DojoSection = () => {
       {/* Header */}
       <div className="mb-8">
         <h2 className="text-3xl font-bold mb-2">
-          <span className="text-gradient">FL Studio</span>
-          <span className="text-white"> Keyboard Shortcuts 🥋</span>
+          <span className="text-gradient">Shortcut</span>
+          <span className="text-white"> Dojo</span>
         </h2>
         <p className="text-[var(--text-muted)]">
-          All Plugins Edition · Windows · Complete Reference — <span className="text-white font-bold">{totalShortcuts}</span> shortcuts
+          Master the keyboard to speed up your workflow 10x.
         </p>
+      </div>
+
+      {/* Hero Card */}
+      <div className="mb-8 p-6 rounded-xl bg-gradient-to-r from-purple-900/40 to-indigo-900/40 border border-purple-500/20 backdrop-blur-sm">
+        <div className="flex flex-col md:flex-row md:items-center gap-6">
+          <div className="flex-shrink-0">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-indigo-500 flex items-center justify-center">
+              <span className="text-3xl">🥋</span>
+            </div>
+          </div>
+          <div className="flex-grow">
+            <h3 className="text-xl font-bold text-white mb-2">Become a Speed Demon</h3>
+            <p className="text-purple-200/80 mb-3">
+              Every second saved on a click is a second gained for creativity. Learn the key commands used by power users.
+            </p>
+            <div className="flex flex-wrap gap-4 text-sm">
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold text-white">{totalShortcuts}</span>
+                <span className="text-purple-200/60">Total Shortcuts</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold text-white">12</span>
+                <span className="text-purple-200/60">Categories</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Search */}

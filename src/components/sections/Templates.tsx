@@ -1254,11 +1254,43 @@ export const TemplatesSection = () => {
 
   return (
     <section id="templates" className="page-section">
+      {/* Header */}
       <div className="mb-8">
-        <h2 className="text-3xl font-bold text-white mb-4">Song <span className="text-gradient">Templates</span></h2>
-        <p className="text-purple-primary-300 mb-6">
-          Production templates showing the essential layers and elements for different genres. Each template breaks down the drums, bass, melody, harmony, FX, and vocal components you need to build professional-sounding tracks.
+        <h2 className="text-3xl font-bold mb-2">
+          <span className="text-gradient">Song</span>
+          <span className="text-white"> Templates</span>
+        </h2>
+        <p className="text-[var(--text-muted)]">
+          Jumpstart your creativity with genre-specific starting points.
         </p>
+      </div>
+
+      {/* Hero Card */}
+      <div className="mb-8 p-6 rounded-xl bg-gradient-to-r from-blue-900/40 to-cyan-900/40 border border-blue-500/20 backdrop-blur-sm">
+        <div className="flex flex-col md:flex-row md:items-center gap-6">
+          <div className="flex-shrink-0">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+              <span className="text-3xl">🎵</span>
+            </div>
+          </div>
+          <div className="flex-grow">
+            <h3 className="text-xl font-bold text-white mb-2">Instant Inspiration</h3>
+            <p className="text-blue-200/80 mb-3">
+              Don't stare at a blank project. These templates come pre-loaded with channel racks, mixer routing, and essential plugins for your genre.
+            </p>
+            <div className="flex flex-wrap gap-4 text-sm">
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold text-white">{songTemplates.length}</span>
+                <span className="text-blue-200/60">Blueprints</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold text-white">4</span>
+                <span className="text-blue-200/60">Core Genres</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
         {/* Genre Filter Buttons */}
         <div className="flex flex-wrap gap-2 mb-8">
@@ -1276,6 +1308,9 @@ export const TemplatesSection = () => {
             </button>
           ))}
         </div>
+
+        {/* Template Editor Modal */}
+      {/* (Modal logic would go here if implemented for Song Templates) */}
 
         {/* Templates Grid */}
         <div id="templates-container" className="space-y-8">
@@ -1331,7 +1366,8 @@ export const TemplatesSection = () => {
             </div>
           ))}
         </div>
-      </div>
+      
+
 
       {/* Category Color Legend */}
       <div className="mt-12 content-card">

@@ -127,16 +127,49 @@ export const ProjectTemplatesSection = () => {
 
   return (
     <section id="project-templates" className="page-section">
+      {/* Header */}
       <div className="mb-8">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-3xl font-bold text-white">Project <span className="text-gradient">Templates</span></h2>
-          <button
-            onClick={() => setShowCreateForm(!showCreateForm)}
-            className="btn-gradient"
-          >
-            {showCreateForm ? 'Cancel' : 'Create Template'}
-          </button>
+        <h2 className="text-3xl font-bold mb-2">
+          <span className="text-gradient">Project</span>
+          <span className="text-white"> Templates</span>
+        </h2>
+        <p className="text-[var(--text-muted)]">
+          Manage your custom project starting points.
+        </p>
+      </div>
+
+      {/* Hero Card */}
+      <div className="mb-8 p-6 rounded-xl bg-gradient-to-r from-purple-900/40 to-indigo-900/40 border border-purple-500/20 backdrop-blur-sm">
+        <div className="flex flex-col md:flex-row md:items-center gap-6">
+          <div className="flex-shrink-0">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-indigo-500 flex items-center justify-center">
+              <span className="text-3xl">📁</span>
+            </div>
+          </div>
+          <div className="flex-grow">
+            <h3 className="text-xl font-bold text-white mb-2">Your Production Hub</h3>
+            <p className="text-purple-200/80 mb-3">
+              Save time on setup by creating templates for your most frequent workflows. 
+              Organize by genre, client, or project type.
+            </p>
+            <div className="flex flex-wrap gap-4 text-sm">
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold text-white">{templates.length}</span>
+                <span className="text-purple-200/60">My Templates</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setShowCreateForm(!showCreateForm)}
+                  className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white font-medium transition-colors border border-white/10"
+                >
+                  {showCreateForm ? 'Cancel Creation' : '+ New Template'}
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+
 
         {showCreateForm && (
           <div className="content-card p-6 mb-8">
@@ -334,7 +367,8 @@ export const ProjectTemplatesSection = () => {
             </div>
           </div>
         </div>
-      </div>
+      
+
 
       {/* Template Editor Modal */}
       {showEditor && selectedTemplate && (

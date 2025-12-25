@@ -117,12 +117,39 @@ export const MidiMappingReference = () => {
       {/* Header */}
       <div className="mb-8">
         <h2 className="text-3xl font-bold mb-2">
-          <span className="text-gradient">MIDI Mapping</span>
-          <span className="text-white"> Reference</span>
+          <span className="text-gradient">MIDI</span>
+          <span className="text-white"> Mapping</span>
         </h2>
         <p className="text-[var(--text-muted)]">
-          Complete guide to MIDI controllers, CC messages, and drum mapping.
+          Connect your hardware and take control of FL Studio.
         </p>
+      </div>
+
+      {/* Hero Card */}
+      <div className="mb-8 p-6 rounded-xl bg-gradient-to-r from-pink-900/40 to-rose-900/40 border border-pink-500/20 backdrop-blur-sm">
+        <div className="flex flex-col md:flex-row md:items-center gap-6">
+          <div className="flex-shrink-0">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center">
+              <Piano className="w-8 h-8 text-white" />
+            </div>
+          </div>
+          <div className="flex-grow">
+            <h3 className="text-xl font-bold text-white mb-2">Hands-On Control</h3>
+            <p className="text-pink-200/80 mb-3">
+              Stop clicking and start playing. Mapping your hardware controller unlocks the true expressive potential of FL Studio.
+            </p>
+            <div className="flex flex-wrap gap-4 text-sm">
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold text-white">{controllers.length}</span>
+                <span className="text-pink-200/60">Supported Types</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold text-white">Infinite</span>
+                <span className="text-pink-200/60">Possibilities</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       
       {/* Tab Navigation */}

@@ -161,16 +161,8 @@ export const SamplePackReference = () => {
 
   return (
     <section className="space-y-8">
-      {/* Header */}
-      <div className="mb-8">
-        <h2 className="text-3xl font-bold mb-2">
-          <span className="text-gradient">Sample</span>
-          <span className="text-white"> Packs</span>
-        </h2>
-        <p className="text-[var(--text-muted)]">
-          Explore all included samples and learn where to find them.
-        </p>
-      </div>
+      
+
 
       {/* Hero Card */}
       <div className="mb-8 p-6 rounded-xl bg-gradient-to-r from-emerald-900/40 to-teal-900/40 border border-emerald-500/20 backdrop-blur-sm">

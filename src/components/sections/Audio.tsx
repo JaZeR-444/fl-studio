@@ -147,16 +147,8 @@ export const AudioSection = () => {
 
   return (
     <section id="audio" className="page-section animate-fade">
-      {/* Header */}
-      <div className="mb-8">
-        <h2 className="text-3xl font-bold mb-2">
-          <span className="text-gradient">Audio</span>
-          <span className="text-white"> Workflow & Recording</span>
-        </h2>
-        <p className="text-[var(--text-muted)]">
-          Managing latency, buffers, and recording paths is critical for stability.
-        </p>
-      </div>
+      
+
 
       {/* Hero Card */}
       <div className="mb-8 p-6 rounded-xl bg-gradient-to-r from-cyan-900/40 to-blue-900/40 border border-cyan-500/20 backdrop-blur-sm">

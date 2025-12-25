@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { useAppContext } from '@/context/AppContext';
+import { useAppContextSafe } from '@/context/AppContext';
 
 // Get basePath for GitHub Pages compatibility
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
@@ -13,7 +13,15 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 export const Navbar = () => {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-  const { state, dispatch } = useAppContext();
+  
+  // Use safe hook - returns undefined when outside AppProvider
+  const appContext = useAppContextSafe();
+  
+  // Local state for mobile menu when outside AppProvider (non-hub pages)
+  const [localMobileMenuOpen, setLocalMobileMenuOpen] = useState(false);
+  
+  // Use context state if available, otherwise use local state
+  const mobileMenuOpen = appContext?.state.mobileMenuOpen ?? localMobileMenuOpen;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,7 +41,11 @@ export const Navbar = () => {
   const isHubPage = pathname?.startsWith('/hub');
 
   const toggleMobileMenu = () => {
-    dispatch({ type: 'TOGGLE_MOBILE_MENU' });
+    if (appContext) {
+      appContext.dispatch({ type: 'TOGGLE_MOBILE_MENU' });
+    } else {
+      setLocalMobileMenuOpen(prev => !prev);
+    }
   };
 
   return (
@@ -50,9 +62,9 @@ export const Navbar = () => {
           <button
             onClick={toggleMobileMenu}
             className="md:hidden p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors mr-3"
-            aria-label={state.mobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
           >
-            {state.mobileMenuOpen ? (
+            {mobileMenuOpen ? (
               <X className="w-5 h-5 text-white" />
             ) : (
               <Menu className="w-5 h-5 text-white" />

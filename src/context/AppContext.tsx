@@ -146,3 +146,8 @@ export const useAppContext = () => {
   }
   return context;
 };
+
+// Safe version that returns undefined when outside provider (for components used in root layout)
+export const useAppContextSafe = () => {
+  return useContext(AppContext);
+};

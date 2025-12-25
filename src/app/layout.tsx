@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import { Inter } from 'next/font/google';
 
 import '../styles/globals.css';
+import { Providers } from './providers';
 
 export const metadata = {
   title: 'FL Studio Master Reference Hub',
@@ -15,14 +16,13 @@ const inter = Inter({
   display: 'swap',
 });
 
-import { Navbar } from '@/components/layout/Navbar';
-
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar />
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

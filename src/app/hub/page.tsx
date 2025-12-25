@@ -278,9 +278,5 @@ const FLStudioHubContent = () => {
 };
 
 export default function FLStudioHub() {
-  return (
-    <AppProvider>
-      <FLStudioHubContent />
-    </AppProvider>
-  );
+  return <FLStudioHubContent />;
 }

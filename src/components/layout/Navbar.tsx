@@ -34,22 +34,14 @@ export const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group relative cursor-pointer">
+        <Link href="/" className="flex items-center group relative cursor-pointer">
           <div className="absolute inset-0 bg-purple-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
-          <div className="relative w-8 h-8 group-hover:scale-110 transition-transform duration-300">
-            <Image 
-               src="/images/branding/icon.svg" 
-               alt="FL Studio Hub Icon" 
-               fill
-               className="object-contain drop-shadow-[0_0_15px_rgba(124,58,237,0.5)]"
-            />
-          </div>
-          <div className="relative h-6 w-32 transition-opacity duration-300">
+          <div className="relative h-10 w-48 group-hover:scale-105 transition-transform duration-300">
              <Image 
-               src="/images/branding/logo.svg" 
-               alt="FL Studio Hub Logo" 
+               src="/images/branding/logo-white.svg" 
+               alt="FL Studio Master Hub" 
                fill
-               className="object-contain object-left"
+               className="object-contain object-left drop-shadow-[0_0_15px_rgba(124,58,237,0.5)]"
             />
           </div>
         </Link>

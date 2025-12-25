@@ -4,6 +4,7 @@ import Link from 'next/link';
 // src/components/ui/PluginCard.tsx
 import { ExtendedPlugin } from '@/types/pluginTypes';
 import { Badge } from './Badge';
+import { Piano, Zap } from 'lucide-react';
 
 interface PluginCardProps {
   plugin: ExtendedPlugin;
@@ -44,7 +45,7 @@ export const PluginCard = ({ plugin, onClick, showDetails = true }: PluginCardPr
       <div className="flex justify-between items-start mb-3">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center text-lg">
-            {plugin.icon || '🎹'}
+            {plugin.icon || <Piano className="w-5 h-5 text-white" />}
           </div>
           <div>
             <h3 className="font-bold text-white max-w-[150px] truncate">{plugin.name}</h3>
@@ -80,7 +81,7 @@ export const PluginCard = ({ plugin, onClick, showDetails = true }: PluginCardPr
           {/* Stats Row */}
           <div className="flex justify-between text-xs mb-3 p-2 rounded-lg bg-[var(--glass-bg)]">
             <span className="text-[var(--text-muted)]">
-              <span className="text-[var(--accent-tertiary)]">⚡</span> {plugin.cpuUsage || 'Unknown'} CPU
+              <Zap className="w-3 h-3 text-[var(--accent-tertiary)] inline" /> {plugin.cpuUsage || 'Unknown'} CPU
             </span>
             <span className="text-[var(--text-muted)]">
                <span className="text-yellow-400">★</span> {plugin.rating?.toFixed(1) || 4.5}

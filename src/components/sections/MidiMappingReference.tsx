@@ -1,6 +1,16 @@
 'use client';
 
 import { useState } from 'react';
+import { 
+  Piano, 
+  SlidersHorizontal, 
+  Flame, 
+  Square, 
+  Keyboard,
+  Hash,
+  Drum,
+  Lightbulb
+} from 'lucide-react';
 
 export const MidiMappingReference = () => {
   const [activeTab, setActiveTab] = useState('controllers');
@@ -13,7 +23,7 @@ export const MidiMappingReference = () => {
       name: 'Akai MPK Mini',
       manufacturer: 'Akai',
       type: 'MIDI Controller',
-      icon: '🎹',
+      Icon: Piano,
       description: 'Compact keyboard controller with pads and knobs',
       commonMappings: [
         { control: 'Knob 1', function: 'Channel Volume', defaultParam: 'Volume' },
@@ -27,7 +37,7 @@ export const MidiMappingReference = () => {
       name: 'Novation Launchkey',
       manufacturer: 'Novation',
       type: 'MIDI Controller',
-      icon: '🎛️',
+      Icon: SlidersHorizontal,
       description: 'Designed specifically for FL Studio integration',
       commonMappings: [
         { control: 'Knob 1-8', function: 'Mixer Track Volume', defaultParam: 'Volume' },
@@ -41,7 +51,7 @@ export const MidiMappingReference = () => {
       name: 'Akai Fire',
       manufacturer: 'Akai',
       type: 'Drum Controller',
-      icon: '🔥',
+      Icon: Flame,
       description: 'Designed specifically for FL Studio with Fire mode',
       commonMappings: [
         { control: 'Pad 1-16', function: 'Drum Sounds', defaultParam: 'Note' },
@@ -55,7 +65,7 @@ export const MidiMappingReference = () => {
       name: 'Ableton Push',
       manufacturer: 'Ableton',
       type: 'Advanced Controller',
-      icon: '⬛',
+      Icon: Square,
       description: 'Can be used with FL Studio via custom mappings',
       commonMappings: [
         { control: 'Pad 1-64', function: 'Step Sequencer', defaultParam: 'Step' },
@@ -97,9 +107,9 @@ export const MidiMappingReference = () => {
   ];
 
   const tabs = [
-    { id: 'controllers', label: 'Controllers', icon: '🎹' },
-    { id: 'cc-messages', label: 'CC Messages', icon: '🔢' },
-    { id: 'drum-notes', label: 'Drum Notes', icon: '🥁' }
+    { id: 'controllers', label: 'Controllers', Icon: Keyboard },
+    { id: 'cc-messages', label: 'CC Messages', Icon: Hash },
+    { id: 'drum-notes', label: 'Drum Notes', Icon: Drum }
   ];
 
   return (
@@ -130,7 +140,7 @@ export const MidiMappingReference = () => {
               setSelectedController(null);
             }}
           >
-            <span>{tab.icon}</span>
+            <tab.Icon className="w-4 h-4" />
             <span>{tab.label}</span>
           </button>
         ))}
@@ -157,8 +167,8 @@ export const MidiMappingReference = () => {
                   <div>
                     {/* Controller Header */}
                     <div className="flex items-start gap-4 mb-6">
-                      <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center text-3xl">
-                        {controller.icon}
+                      <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center">
+                        <controller.Icon className="w-8 h-8 text-white" />
                       </div>
                       <div>
                         <h3 className="text-2xl font-bold text-white">{controller.name}</h3>
@@ -217,8 +227,8 @@ export const MidiMappingReference = () => {
                     onClick={() => setSelectedController(controller.id)}
                   >
                     <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center text-2xl shrink-0">
-                        {controller.icon}
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center shrink-0">
+                        <controller.Icon className="w-6 h-6 text-white" />
                       </div>
                       <div className="flex-1">
                         <h4 className="font-bold text-white">{controller.name}</h4>
@@ -383,7 +393,7 @@ export const MidiMappingReference = () => {
             {/* Tip */}
             <div className="mt-6 p-4 rounded-lg bg-[rgba(59,130,246,0.1)] border border-[rgba(59,130,246,0.2)]">
               <h5 className="font-bold text-blue-300 mb-2 flex items-center gap-2">
-                <span>💡</span> Tip
+                <Lightbulb className="w-4 h-4" /> Tip
               </h5>
               <p className="text-sm text-blue-200/80">
                 When creating your own drum kits, stick to these standard mappings so your kits work with 

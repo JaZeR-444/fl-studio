@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-
 import { ReactNode } from 'react';
+import { Piano } from 'lucide-react';
 
 
 export interface ToolCardProps {
@@ -80,7 +80,7 @@ export const ToolCard = ({
       <div className="flex items-start gap-3 mb-3">
         {/* Icon */}
         <div className="w-12 h-12 rounded-xl bg-[var(--bg-card)] border border-[var(--glass-border)] flex items-center justify-center text-2xl shrink-0">
-          {icon || '🎹'}
+          {icon || <Piano className="w-5 h-5 text-[var(--accent-tertiary)]" />}
         </div>
 
         {/* Title & Rating */}
@@ -218,7 +218,7 @@ export const ToolCardCompact = ({
       {/* Header */}
       <div className="flex items-start gap-3 mb-3">
         <div className="w-10 h-10 rounded-lg bg-[var(--bg-card)] border border-[var(--glass-border)] flex items-center justify-center text-xl shrink-0">
-          {icon || '🎹'}
+          {icon || <Piano className="w-5 h-5 text-[var(--accent-tertiary)]" />}
         </div>
         <div className="flex-1 min-w-0">
           <h3 className="font-bold text-white truncate">{name}</h3>

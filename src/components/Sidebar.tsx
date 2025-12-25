@@ -1,6 +1,32 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, ReactNode } from 'react';
+import Image from 'next/image';
+import {
+  LayoutGrid,
+  Piano,
+  Plug,
+  Zap,
+  RefreshCw,
+  BarChart3,
+  BookOpen,
+  Mic,
+  SlidersHorizontal,
+  TrendingUp,
+  Music,
+  FolderOpen,
+  Sword,
+  Keyboard,
+  Monitor,
+  Calculator,
+  Wrench,
+  Sparkles,
+  Upload,
+  LucideIcon,
+  Rocket,
+  Disc3,
+  Library
+} from 'lucide-react';
 
 interface SidebarProps {
   activeSection: string;
@@ -17,7 +43,7 @@ interface NavItem {
   id: string;
   label: string;
   category: string;
-  icon?: string;
+  Icon: LucideIcon;
   count?: number;
 }
 
@@ -30,27 +56,31 @@ export const Sidebar = ({
   onOpenCommandPalette
 }: SidebarProps) => {
   // Local search removed in favor of global command palette
-  // Group navigation items by category
+  // Navigation items with professional Lucide SVG icons
   const navItems: NavItem[] = [
-    { id: 'home', label: 'All Tools', category: 'Browse', icon: '🎹', count: 50 },
-    { id: 'plugins', label: 'Instruments & Synths', category: 'Browse', icon: '🎹', count: 20 },
-    { id: 'plugins-database', label: 'Plugin Database', category: 'Browse', icon: '🔌', count: 35 },
-    { id: 'native-advantages', label: 'Native Advantages', category: 'Browse', icon: '⚡', count: 15 },
-    { id: 'workflow-chains', label: 'Workflow Chains', category: 'Workflow', icon: '🔄', count: 12 },
-    { id: 'workflow-visualizations', label: 'Workflow Visuals', category: 'Workflow', icon: '📊', count: 8 },
-    { id: 'synthesis-history', label: 'Synthesis History', category: 'Workflow', icon: '📚', count: 10 },
-    { id: 'audio', label: 'Audio & Recording', category: 'Production', icon: '🎤', count: 6 },
-    { id: 'mixing', label: 'Mixing & Mastering', category: 'Production', icon: '🎚️', count: 8 },
-    { id: 'audio-analysis', label: 'Audio Analysis', category: 'Production', icon: '📈', count: 4 },
-    { id: 'templates', label: 'Song Templates', category: 'Templates', icon: '🎵', count: 15 },
-    { id: 'project-templates', label: 'Project Templates', category: 'Templates', icon: '💾', count: 12 },
-    { id: 'dojo', label: 'Shortcut Dojo', category: 'Learning', icon: '🥋', count: 47 },
-    { id: 'midi-mapping', label: 'MIDI Mapping', category: 'Learning', icon: '🎹', count: 10 },
-    { id: 'modules', label: 'The Big 5 (UI)', category: 'Learning', icon: '🖥️', count: 5 },
-    { id: 'utilities', label: 'Studio Calculator', category: 'Tools', icon: '🧮', count: 3 },
-    { id: 'troubleshoot', label: 'Troubleshooting', category: 'Tools', icon: '🔧', count: 8 },
-    { id: 'ai-assistant', label: 'AI Assistant', category: 'Smart', icon: '✨', count: 1 },
-    { id: 'export', label: 'Export Guide', category: 'Tools', icon: '📤', count: 4 },
+    { id: 'home', label: 'All Tools', category: 'Browse', Icon: LayoutGrid, count: 50 },
+    { id: 'plugins', label: 'Instruments & Synths', category: 'Browse', Icon: Piano, count: 20 },
+    { id: 'plugins-database', label: 'Plugin Database', category: 'Browse', Icon: Plug, count: 35 },
+    { id: 'native-advantages', label: 'Native Advantages', category: 'Browse', Icon: Zap, count: 15 },
+    { id: 'workflow-chains', label: 'Workflow Chains', category: 'Workflow', Icon: RefreshCw, count: 12 },
+    { id: 'workflow-visualizations', label: 'Workflow Visuals', category: 'Workflow', Icon: BarChart3, count: 8 },
+    { id: 'synthesis-history', label: 'Synthesis History', category: 'Workflow', Icon: BookOpen, count: 10 },
+    { id: 'audio', label: 'Audio & Recording', category: 'Production', Icon: Mic, count: 6 },
+    { id: 'mixing', label: 'Mixing & Mastering', category: 'Production', Icon: SlidersHorizontal, count: 8 },
+    { id: 'audio-analysis', label: 'Audio Analysis', category: 'Production', Icon: TrendingUp, count: 4 },
+    { id: 'genre-presets', label: 'Genre Presets', category: 'Production', Icon: Disc3, count: 6 },
+    { id: 'sample-packs', label: 'Sample Pack Reference', category: 'Production', Icon: Library, count: 6 },
+    { id: 'templates', label: 'Song Templates', category: 'Templates', Icon: Music, count: 15 },
+    { id: 'project-templates', label: 'Project Templates', category: 'Templates', Icon: FolderOpen, count: 12 },
+    { id: 'mixer-templates', label: 'Mixer Templates', category: 'Templates', Icon: SlidersHorizontal, count: 6 },
+    { id: 'quick-start', label: 'Quick Start Guides', category: 'Learning', Icon: Rocket, count: 5 },
+    { id: 'dojo', label: 'Shortcut Dojo', category: 'Learning', Icon: Sword, count: 47 },
+    { id: 'midi-mapping', label: 'MIDI Mapping', category: 'Learning', Icon: Keyboard, count: 10 },
+    { id: 'modules', label: 'The Big 5 (UI)', category: 'Learning', Icon: Monitor, count: 5 },
+    { id: 'utilities', label: 'Studio Calculator', category: 'Tools', Icon: Calculator, count: 3 },
+    { id: 'troubleshoot', label: 'Troubleshooting', category: 'Tools', Icon: Wrench, count: 8 },
+    { id: 'ai-assistant', label: 'AI Assistant', category: 'Smart', Icon: Sparkles, count: 1 },
+    { id: 'export', label: 'Export Guide', category: 'Tools', Icon: Upload, count: 4 },
   ];
 
   // Group navigation items by category
@@ -98,10 +128,14 @@ export const Sidebar = ({
       {/* Header with Logo */}
       <div className="p-5 border-b border-[var(--glass-border)]">
         <div className="flex items-center justify-between mb-4">
-          <h1 className="text-xl font-bold tracking-tight">
-            <span className="text-white">FL Studio</span>{' '}
-            <span className="text-gradient">Hub</span>
-          </h1>
+          <div className="relative h-8 w-40">
+            <Image 
+              src="/images/branding/logo-white.svg" 
+              alt="FL Studio Master Hub" 
+              fill
+              className="object-contain object-left drop-shadow-[0_0_15px_rgba(124,58,237,0.3)]"
+            />
+          </div>
           <span className="text-[10px] text-[var(--text-dim)] bg-[var(--glass-bg)] px-2 py-1 rounded">
             v21+
           </span>
@@ -155,7 +189,7 @@ export const Sidebar = ({
                   }`}
                 >
                   <div className="flex items-center gap-2">
-                    <span className="text-sm">{item.icon}</span>
+                    <item.Icon className="w-4 h-4 text-[var(--accent-tertiary)]" />
                     <span className="truncate">{item.label}</span>
                   </div>
                   {item.count && (
@@ -172,8 +206,13 @@ export const Sidebar = ({
       <div className="p-4 border-t border-[var(--glass-border)] bg-[var(--bg-secondary)]">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center text-sm">
-              🎵
+            <div className="relative w-8 h-8 rounded-full overflow-hidden">
+              <Image 
+                src="/images/branding/icon.svg" 
+                alt="FL Studio Icon" 
+                fill
+                className="object-contain drop-shadow-[0_0_8px_rgba(124,58,237,0.4)]"
+              />
             </div>
             <div>
               <p className="text-xs font-medium text-white">FL Studio</p>

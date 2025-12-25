@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { ExtendedPlugin, PluginFamily } from '@/types/pluginTypes';
 import { PluginCard } from '@/components/ui/PluginCard';
 import { CapabilityFilter } from '@/components/ui/CapabilityFilter';
+import { Search } from 'lucide-react';
 
 // Import plugin data
 import allPluginsData from '@/data/plugins/allPlugins.json';
@@ -193,7 +194,7 @@ export const PluginsDatabase = () => {
           ))
         ) : (
           <div className="col-span-full py-16 px-6 text-center border-2 border-dashed border-white/5 rounded-2xl bg-white/[0.02]">
-            <div className="text-6xl mb-6 opacity-50">🔍</div>
+            <div className="text-6xl mb-6 opacity-50"><Search className="w-16 h-16 text-[var(--text-dim)]" /></div>
             <h3 className="text-xl font-bold mb-2">No plugins found</h3>
             <p className="text-[var(--text-muted)] mb-8 max-w-md mx-auto">
               We couldn't find any plugins matching "{searchTerm}" {selectedFamily !== 'all' ? `in ${selectedFamily}` : ''}.

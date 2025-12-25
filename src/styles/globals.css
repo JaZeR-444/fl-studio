@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 
 /* ============================================
    FL Studio Hub - STACKA-Inspired Design System
@@ -16,7 +16,7 @@
   --bg-tertiary: #1a0a2e;
   --bg-card: rgba(15, 10, 26, 0.6);
   --bg-card-hover: rgba(20, 12, 35, 0.8);
-  
+
   /* Purple Accent Colors */
   --purple-50: #faf5ff;
   --purple-100: #f3e8ff;
@@ -28,7 +28,7 @@
   --purple-700: #7c3aed;
   --purple-800: #6b21a8;
   --purple-900: #581c87;
-  
+
   /* Accent Colors */
   --accent-primary: #7c3aed;
   --accent-secondary: #8b5cf6;
@@ -39,40 +39,40 @@
   --green-accent: #10b981;
   --orange-accent: #f97316;
   --pink-accent: #ec4899;
-  
+
   /* Text Colors */
   --text-primary: #ffffff;
   --text-secondary: #c4b5fd;
   --text-tertiary: #a78bfa;
   --text-muted: #8b7faa;
   --text-dim: #6b5f8a;
-  
+
   /* Glass Effects */
   --glass-bg: rgba(255, 255, 255, 0.03);
   --glass-bg-hover: rgba(255, 255, 255, 0.06);
   --glass-border: rgba(139, 92, 246, 0.15);
   --glass-border-hover: rgba(139, 92, 246, 0.3);
   --glass-border-active: rgba(139, 92, 246, 0.5);
-  
+
   /* Glow Effects */
   --glow-purple: rgba(124, 58, 237, 0.4);
   --glow-purple-strong: rgba(124, 58, 237, 0.6);
   --glow-blue: rgba(59, 130, 246, 0.4);
   --glow-cyan: rgba(6, 182, 212, 0.4);
-  
+
   /* Shadows */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
   --shadow-glow: 0 0 20px var(--glow-purple), 0 0 40px rgba(124, 58, 237, 0.2);
-  
+
   /* Border Radius */
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;
   --radius-xl: 20px;
   --radius-2xl: 24px;
-  
+
   /* Transitions */
   --transition-fast: 150ms ease;
   --transition-base: 200ms ease;
@@ -90,7 +90,12 @@ body {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
   background: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
@@ -100,17 +105,34 @@ body {
 
 /* Animated Background Gradient */
 body::before {
-  content: '';
+  content: "";
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: 
-    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(124, 58, 237, 0.25) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 40% at 80% 10%, rgba(59, 130, 246, 0.15) 0%, transparent 40%),
-    radial-gradient(ellipse 50% 50% at 50% 100%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
-    linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
+  background:
+    radial-gradient(
+      ellipse 80% 50% at 20% -10%,
+      rgba(124, 58, 237, 0.25) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 80% 10%,
+      rgba(59, 130, 246, 0.15) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse 50% 50% at 50% 100%,
+      rgba(124, 58, 237, 0.1) 0%,
+      transparent 50%
+    ),
+    linear-gradient(
+      180deg,
+      var(--bg-primary) 0%,
+      var(--bg-secondary) 50%,
+      var(--bg-primary) 100%
+    );
   pointer-events: none;
   z-index: 0;
 }
@@ -202,13 +224,17 @@ body::before {
 }
 
 .tool-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--accent-primary), var(--accent-tertiary));
+  background: linear-gradient(
+    90deg,
+    var(--accent-primary),
+    var(--accent-tertiary)
+  );
   opacity: 0;
   transition: opacity var(--transition-base);
 }
@@ -243,7 +269,11 @@ body::before {
    ============================================ */
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--accent-primary) 0%,
+    var(--accent-secondary) 100%
+  );
   color: white;
   padding: 10px 24px;
   border-radius: var(--radius-md);
@@ -302,7 +332,11 @@ body::before {
 }
 
 .btn-gradient {
-  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--blue-accent) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--accent-primary) 0%,
+    var(--blue-accent) 100%
+  );
   color: white;
   padding: 10px 24px;
   border-radius: var(--radius-md);
@@ -370,13 +404,21 @@ body::before {
 }
 
 .badge-sponsored {
-  background: linear-gradient(135deg, rgba(249, 115, 22, 0.3), rgba(236, 72, 153, 0.3));
+  background: linear-gradient(
+    135deg,
+    rgba(249, 115, 22, 0.3),
+    rgba(236, 72, 153, 0.3)
+  );
   border: 1px solid rgba(249, 115, 22, 0.4);
   color: #fbbf24;
 }
 
 .badge-premium {
-  background: linear-gradient(135deg, rgba(124, 58, 237, 0.3), rgba(139, 92, 246, 0.3));
+  background: linear-gradient(
+    135deg,
+    rgba(124, 58, 237, 0.3),
+    rgba(139, 92, 246, 0.3)
+  );
   border: 1px solid rgba(139, 92, 246, 0.4);
   color: var(--purple-200);
 }
@@ -392,14 +434,23 @@ body::before {
    ============================================ */
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--accent-tertiary) 0%, var(--blue-accent) 50%, var(--cyan-accent) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--accent-tertiary) 0%,
+    var(--blue-accent) 50%,
+    var(--cyan-accent) 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-purple {
-  background: linear-gradient(135deg, var(--purple-300) 0%, var(--purple-500) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--purple-300) 0%,
+    var(--purple-500) 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -407,7 +458,9 @@ body::before {
 
 .glow-text {
   color: var(--purple-200);
-  text-shadow: 0 0 10px rgba(167, 139, 250, 0.5), 0 0 20px rgba(167, 139, 250, 0.3);
+  text-shadow:
+    0 0 10px rgba(167, 139, 250, 0.5),
+    0 0 20px rgba(167, 139, 250, 0.3);
 }
 
 /* ============================================
@@ -415,11 +468,15 @@ body::before {
    ============================================ */
 
 .purple-glow {
-  box-shadow: 0 0 20px var(--glow-purple), 0 0 40px rgba(124, 58, 237, 0.2);
+  box-shadow:
+    0 0 20px var(--glow-purple),
+    0 0 40px rgba(124, 58, 237, 0.2);
 }
 
 .purple-glow-hover:hover {
-  box-shadow: 0 0 25px var(--glow-purple-strong), 0 0 50px rgba(124, 58, 237, 0.3);
+  box-shadow:
+    0 0 25px var(--glow-purple-strong),
+    0 0 50px rgba(124, 58, 237, 0.3);
 }
 
 .shadow-purple-glow {
@@ -468,6 +525,42 @@ body::before {
 .nav-item.active .nav-count {
   background: rgba(124, 58, 237, 0.3);
   color: var(--purple-300);
+}
+
+/* Focus States for Accessibility (WCAG 2.1 AA) */
+.nav-item:focus-visible {
+  outline: 2px solid var(--accent-secondary);
+  outline-offset: 2px;
+  background: rgba(124, 58, 237, 0.15);
+}
+
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.btn-glass:focus-visible,
+.btn-gradient:focus-visible {
+  outline: 2px solid var(--accent-tertiary);
+  outline-offset: 2px;
+}
+
+.glass-input:focus-visible {
+  outline: 2px solid var(--accent-secondary);
+  outline-offset: 1px;
+}
+
+.tool-card:focus-visible,
+.content-card:focus-visible {
+  outline: 2px solid var(--accent-secondary);
+  outline-offset: 2px;
+}
+
+/* Remove default focus outlines since we have custom ones */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--accent-secondary);
+  outline-offset: 2px;
 }
 
 /* ============================================
@@ -629,7 +722,8 @@ body::before {
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
   }
   50% {
@@ -682,7 +776,9 @@ body::before {
 }
 
 @keyframes typing {
-  0%, 80%, 100% {
+  0%,
+  80%,
+  100% {
     transform: scale(0);
   }
   40% {
@@ -697,7 +793,9 @@ body::before {
 .accordion-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height var(--transition-slow), opacity var(--transition-base);
+  transition:
+    max-height var(--transition-slow),
+    opacity var(--transition-base);
   opacity: 0;
 }
 
@@ -738,11 +836,11 @@ body::before {
   .mobile-menu-closed {
     transform: translateX(-100%);
   }
-  
+
   .tool-card {
     padding: 14px;
   }
-  
+
   .content-card {
     padding: 16px;
   }

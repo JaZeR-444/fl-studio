@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { WorkflowTemplate } from '@/types/pluginTypes';
+import { Link2, CheckCircle, AlertTriangle, Zap, Maximize2, Piano, Lightbulb } from 'lucide-react';
 
 // Import workflow data
 import workflows from '@/data/plugins/workflows.json';
@@ -32,7 +33,7 @@ export const WorkflowChains = () => {
         <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-6">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center text-2xl">
-              🔗
+              <Link2 className="w-6 h-6 text-white" />
             </div>
             <div>
               <h3 className="text-2xl font-bold text-white">{workflow.name}</h3>
@@ -50,7 +51,7 @@ export const WorkflowChains = () => {
         {/* Native Benefits */}
         <div className="mb-6 p-4 rounded-lg bg-[rgba(16,185,129,0.1)] border border-[rgba(16,185,129,0.2)]">
           <h4 className="font-bold text-green-300 mb-2 flex items-center gap-2">
-            <span>✓</span> Native Benefits
+            <CheckCircle className="w-4 h-4" /> Native Benefits
           </h4>
           <p className="text-green-200/80">{workflow.nativeBenefits}</p>
         </div>
@@ -58,7 +59,7 @@ export const WorkflowChains = () => {
         {/* What Breaks */}
         <div className="mb-6 p-4 rounded-lg bg-[rgba(239,68,68,0.1)] border border-[rgba(239,68,68,0.2)]">
           <h4 className="font-bold text-red-300 mb-2 flex items-center gap-2">
-            <span>⚠️</span> What Breaks If Swapped
+            <AlertTriangle className="w-4 h-4" /> What Breaks If Swapped
           </h4>
           <p className="text-red-200/80">{workflow.breaksIfSwapped}</p>
         </div>
@@ -66,7 +67,7 @@ export const WorkflowChains = () => {
         {/* Plugin Chain */}
         <div>
           <h4 className="font-bold text-white mb-4 flex items-center gap-2">
-            <span>🔗</span> Plugin Chain
+            <Link2 className="w-5 h-5 text-[var(--accent-tertiary)]" /> Plugin Chain
           </h4>
           <div className="space-y-3">
             {workflow.plugins.map((plugin, index) => (
@@ -140,7 +141,7 @@ export const WorkflowChains = () => {
                   <div className="flex justify-between items-start mb-3">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center text-lg">
-                        🔗
+                        <Link2 className="w-5 h-5 text-white" />
                       </div>
                       <h3 className="font-bold text-white">{workflow.name}</h3>
                     </div>
@@ -171,7 +172,7 @@ export const WorkflowChains = () => {
           {/* Native Ecosystem Benefits */}
           <div className="mt-12 content-card p-6">
             <h3 className="font-bold text-white mb-4 flex items-center gap-2">
-              <span>⚡</span>
+              <Zap className="w-5 h-5 text-[var(--accent-tertiary)]" />
               Native Ecosystem Benefits
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

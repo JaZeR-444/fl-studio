@@ -1,6 +1,20 @@
 'use client';
 
 import { useState } from 'react';
+import { 
+  Piano, 
+  Volume2, 
+  SlidersHorizontal, 
+  Waves, 
+  Music2,
+  Scroll,
+  Lightbulb,
+  CheckCircle,
+  Zap,
+  Link,
+  SlidersVertical,
+  Shuffle
+} from 'lucide-react';
 
 export const SynthesisHistory = () => {
   const [activeTab, setActiveTab] = useState('additive');
@@ -9,7 +23,7 @@ export const SynthesisHistory = () => {
     {
       id: 'additive',
       name: 'Additive Synthesis',
-      icon: '🎹',
+      Icon: Piano,
       description: 'Creation of timbre by stacking individual sine waves (partials)',
       history: 'Originating from Fourier analysis in the 1800s, additive synthesis became practical in the digital age. Unlike subtractive synthesis that starts with harmonically rich waveforms and filters them, additive synthesis builds sounds from individual frequency components.',
       flPlugins: ['Harmor', 'Morphine', 'Ogun'],
@@ -27,7 +41,7 @@ export const SynthesisHistory = () => {
     {
       id: 'fm',
       name: 'FM Synthesis',
-      icon: '🔊',
+      Icon: Volume2,
       description: 'Creating complex timbres by modulating the frequency of one oscillator with another',
       history: 'Developed by John Chowning in the 1960s-70s and popularized by Yamaha DX7 in 1983. FM synthesis creates harmonically rich and metallic sounds impossible with subtractive methods.',
       flPlugins: ['Sytrus', 'Toxic Biohazard'],
@@ -45,7 +59,7 @@ export const SynthesisHistory = () => {
     {
       id: 'subtractive',
       name: 'Subtractive',
-      icon: '🎚️',
+      Icon: SlidersHorizontal,
       description: 'Starting with harmonically rich waveforms and filtering out frequencies',
       history: 'The foundation of most classic analog synthesizers from Moog, ARP, and Roland. This method shaped popular music from the 1960s through today.',
       flPlugins: ['Sawer', 'Transistor Bass', 'Kepler Exo'],
@@ -63,7 +77,7 @@ export const SynthesisHistory = () => {
     {
       id: 'wavetable',
       name: 'Wavetable',
-      icon: '🌊',
+      Icon: Waves,
       description: 'Cycling through a bank of single-cycle waveforms over time',
       history: 'Pioneered by PPG Wave in the early 1980s, wavetable synthesis bridged analog and digital. Modern implementations blend with other synthesis methods.',
       flPlugins: ['Toxic Biohazard', 'Harmor', 'Sawer'],
@@ -81,7 +95,7 @@ export const SynthesisHistory = () => {
     {
       id: 'physical',
       name: 'Physical Modeling',
-      icon: '🎻',
+      Icon: Music2,
       description: 'Mathematical equations simulating physical properties of instruments',
       history: 'Emerging in the 1990s, physical modeling offered expressive realism that sampling couldn\'t achieve. The behavior changes with velocity and articulation.',
       flPlugins: ['Sakura', 'Drumaxx'],
@@ -127,7 +141,7 @@ export const SynthesisHistory = () => {
                   : 'bg-[var(--glass-bg)] text-[var(--text-muted)] hover:text-white hover:bg-[var(--glass-bg-hover)] border border-[var(--glass-border)]'
               }`}
             >
-              <span>{method.icon}</span>
+              <method.Icon className="w-4 h-4" />
               <span>{method.name}</span>
             </button>
           ))}
@@ -138,8 +152,8 @@ export const SynthesisHistory = () => {
       <div className="content-card p-6 mb-8">
         {/* Method Header */}
         <div className="flex items-start gap-4 mb-6">
-          <div className="w-14 h-14 rounded-xl bg-[var(--glass-bg)] border border-[var(--glass-border)] flex items-center justify-center text-3xl shrink-0">
-            {currentMethod.icon}
+          <div className="w-14 h-14 rounded-xl bg-[var(--glass-bg)] border border-[var(--glass-border)] flex items-center justify-center shrink-0">
+            <currentMethod.Icon className="w-7 h-7 text-[var(--accent-tertiary)]" />
           </div>
           <div>
             <h3 className="text-2xl font-bold text-white mb-1">{currentMethod.name}</h3>
@@ -150,7 +164,7 @@ export const SynthesisHistory = () => {
         {/* Historical Context */}
         <div className="mb-6 p-4 rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)]">
           <h4 className="font-bold text-white mb-2 flex items-center gap-2">
-            <span className="text-[var(--accent-tertiary)]">📜</span>
+            <Scroll className="w-4 h-4 text-[var(--accent-tertiary)]" />
             Historical Context
           </h4>
           <p className="text-[var(--text-muted)]">{currentMethod.history}</p>
@@ -160,7 +174,7 @@ export const SynthesisHistory = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="p-4 rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)]">
             <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-              <span className="text-[var(--accent-tertiary)]">💡</span>
+              <Lightbulb className="w-4 h-4 text-[var(--accent-tertiary)]" />
               Key Concepts
             </h4>
             <ul className="space-y-2">
@@ -175,13 +189,13 @@ export const SynthesisHistory = () => {
 
           <div className="p-4 rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)]">
             <h4 className="font-bold text-white mb-3 flex items-center gap-2">
-              <span className="text-[var(--green-accent)]">✓</span>
+              <CheckCircle className="w-4 h-4 text-green-400" />
               Advantages
             </h4>
             <ul className="space-y-2">
               {currentMethod.advantages.map((advantage, idx) => (
                 <li key={idx} className="flex items-start">
-                  <span className="text-[var(--green-accent)] mr-2">•</span>
+                  <span className="text-green-400 mr-2">•</span>
                   <span className="text-[var(--text-secondary)]">{advantage}</span>
                 </li>
               ))}
@@ -193,7 +207,7 @@ export const SynthesisHistory = () => {
       {/* FL Studio Native Implementations */}
       <div className="content-card p-6">
         <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-          <span>🎹</span>
+          <Piano className="w-5 h-5 text-[var(--accent-tertiary)]" />
           FL Studio Native Implementations
         </h3>
         
@@ -204,8 +218,8 @@ export const SynthesisHistory = () => {
               className="tool-card"
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center text-white text-lg">
-                  🎹
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center">
+                  <Piano className="w-5 h-5 text-white" />
                 </div>
                 <div>
                   <h4 className="font-bold text-white">{plugin}</h4>
@@ -227,7 +241,7 @@ export const SynthesisHistory = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="p-4 rounded-lg bg-[rgba(251,191,36,0.1)] border border-[rgba(251,191,36,0.2)]">
               <h5 className="font-bold text-yellow-300 mb-2 flex items-center gap-2">
-                <span>⚡</span> CPU Efficiency
+                <Zap className="w-4 h-4" /> CPU Efficiency
               </h5>
               <p className="text-sm text-yellow-200/80">
                 Native integration reduces processing overhead compared to VST implementations
@@ -235,7 +249,7 @@ export const SynthesisHistory = () => {
             </div>
             <div className="p-4 rounded-lg bg-[rgba(59,130,246,0.1)] border border-[rgba(59,130,246,0.2)]">
               <h5 className="font-bold text-blue-300 mb-2 flex items-center gap-2">
-                <span>🔗</span> Workflow Integration
+                <Link className="w-4 h-4" /> Workflow Integration
               </h5>
               <p className="text-sm text-blue-200/80">
                 Seamless integration with Piano Roll, Mixer, and internal modulation
@@ -243,7 +257,7 @@ export const SynthesisHistory = () => {
             </div>
             <div className="p-4 rounded-lg bg-[rgba(139,92,246,0.1)] border border-[rgba(139,92,246,0.2)]">
               <h5 className="font-bold text-purple-300 mb-2 flex items-center gap-2">
-                <span>🎛️</span> Advanced Controls
+                <SlidersVertical className="w-4 h-4" /> Advanced Controls
               </h5>
               <p className="text-sm text-purple-200/80">
                 Access to internal parameters not available through standard plugin interfaces
@@ -256,7 +270,7 @@ export const SynthesisHistory = () => {
       {/* Cross-Synthesis Possibilities */}
       <div className="mt-8 content-card p-6">
         <h3 className="font-bold text-white mb-4 flex items-center gap-2">
-          <span>🔀</span>
+          <Shuffle className="w-5 h-5 text-[var(--accent-tertiary)]" />
           Cross-Synthesis Possibilities
         </h3>
         <p className="text-[var(--text-muted)] mb-4">

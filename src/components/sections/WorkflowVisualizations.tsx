@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Chart as ChartJS, LineController, LineElement, PointElement, LinearScale, Title, CategoryScale, Filler } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { Target, Music, Drum, SlidersHorizontal, Volume2, LucideIcon } from 'lucide-react';
 
 // Register Chart.js components
 ChartJS.register(
@@ -19,12 +20,12 @@ export const WorkflowVisualizationsSection = () => {
   const [activeVisualization, setActiveVisualization] = useState('basic');
 
   // Common workflow visualizations
-  const visualizations = [
-    { id: 'basic', title: 'Basic Workflow', icon: '🎯', description: 'The fundamental FL Studio workflow from idea to export', color: '#8b5cf6' },
-    { id: 'songwriting', title: 'Songwriting', icon: '🎼', description: 'Workflow for writing complete songs', color: '#06b6d4' },
-    { id: 'beatmaking', title: 'Beat Making', icon: '🥁', description: 'Step-by-step beat creation process', color: '#f97316' },
-    { id: 'mixing', title: 'Mixing', icon: '🎚️', description: 'Professional mixing approach', color: '#10b981' },
-    { id: 'sounddesign', title: 'Sound Design', icon: '🔊', description: 'Process for creating custom sounds', color: '#ec4899' }
+  const visualizations: { id: string; title: string; Icon: LucideIcon; description: string; color: string }[] = [
+    { id: 'basic', title: 'Basic Workflow', Icon: Target, description: 'The fundamental FL Studio workflow from idea to export', color: '#8b5cf6' },
+    { id: 'songwriting', title: 'Songwriting', Icon: Music, description: 'Workflow for writing complete songs', color: '#06b6d4' },
+    { id: 'beatmaking', title: 'Beat Making', Icon: Drum, description: 'Step-by-step beat creation process', color: '#f97316' },
+    { id: 'mixing', title: 'Mixing', Icon: SlidersHorizontal, description: 'Professional mixing approach', color: '#10b981' },
+    { id: 'sounddesign', title: 'Sound Design', Icon: Volume2, description: 'Process for creating custom sounds', color: '#ec4899' }
   ];
 
   // Chart data for each workflow
@@ -136,7 +137,7 @@ export const WorkflowVisualizationsSection = () => {
               }`}
               style={activeVisualization === vis.id ? { backgroundColor: vis.color } : {}}
             >
-              <span>{vis.icon}</span>
+              <vis.Icon className="w-4 h-4" />
               <span>{vis.title}</span>
             </button>
           ))}
@@ -150,7 +151,7 @@ export const WorkflowVisualizationsSection = () => {
             <h3 className="text-xl font-bold text-white">{currentVis?.title} Progress</h3>
             <p className="text-sm text-[var(--text-muted)]">{currentVis?.description}</p>
           </div>
-          <span className="badge badge-purple">{currentVis?.icon}</span>
+          <span className="badge badge-purple">{currentVis && <currentVis.Icon className="w-4 h-4" />}</span>
         </div>
         
         <div className="h-64">

@@ -1,8 +1,30 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import { ExtendedPlugin } from '@/types/pluginTypes';
+import {
+  LayoutGrid,
+  Piano,
+  Plug,
+  Zap,
+  RefreshCw,
+  BarChart3,
+  BookOpen,
+  Mic,
+  SlidersHorizontal,
+  TrendingUp,
+  Music,
+  FolderOpen,
+  Sword,
+  Keyboard,
+  Monitor,
+  Calculator,
+  Wrench,
+  Sparkles,
+  Upload,
+  LucideIcon
+} from 'lucide-react';
 
 // Import plugin data directly
 import allPluginsData from '@/data/plugins/allPlugins.json';
@@ -19,9 +41,9 @@ interface SearchResult {
   type: 'section' | 'plugin';
   label: string;
   sublabel?: string;
-  icon?: string;
-  sectionId: string; // Destination section
-  pluginId?: string; // For specific filtering if needed
+  Icon: LucideIcon;
+  sectionId: string;
+  pluginId?: string;
 }
 
 export const CommandPalette = ({ isOpen, onClose, navigateToSection }: CommandPaletteProps) => {
@@ -30,15 +52,33 @@ export const CommandPalette = ({ isOpen, onClose, navigateToSection }: CommandPa
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
-  // Navigation Items Definition (mirroring Sidebar structure for search)
+  // Navigation Items with Lucide Icons (FULLY SYNCED with Sidebar.tsx)
   const navItems: SearchResult[] = [
-    { id: 'home', type: 'section', label: 'All Tools', sectionId: 'home', icon: '🎹' },
-    { id: 'plugins', type: 'section', label: 'Instruments & Synths', sectionId: 'plugins', icon: '🎹' },
-    { id: 'plugins-database', type: 'section', label: 'Plugin Database', sectionId: 'plugins-database', icon: '🔌' },
-    { id: 'workflow-chains', type: 'section', label: 'Workflow Chains', sectionId: 'workflow-chains', icon: '🔄' },
-    { id: 'mixing', type: 'section', label: 'Mixing & Mastering', sectionId: 'mixing', icon: '🎚️' },
-    { id: 'audio', type: 'section', label: 'Audio & Recording', sectionId: 'audio', icon: '🎤' },
-    { id: 'dojo', type: 'section', label: 'Shortcut Dojo', sectionId: 'dojo', icon: '🥋' },
+    // Browse
+    { id: 'home', type: 'section', label: 'All Tools', sectionId: 'home', Icon: LayoutGrid, sublabel: 'Browse' },
+    { id: 'plugins', type: 'section', label: 'Instruments & Synths', sectionId: 'plugins', Icon: Piano, sublabel: 'Browse' },
+    { id: 'plugins-database', type: 'section', label: 'Plugin Database', sectionId: 'plugins-database', Icon: Plug, sublabel: 'Browse' },
+    { id: 'native-advantages', type: 'section', label: 'Native Advantages', sectionId: 'native-advantages', Icon: Zap, sublabel: 'Browse' },
+    // Workflow
+    { id: 'workflow-chains', type: 'section', label: 'Workflow Chains', sectionId: 'workflow-chains', Icon: RefreshCw, sublabel: 'Workflow' },
+    { id: 'workflow-visualizations', type: 'section', label: 'Workflow Visuals', sectionId: 'workflow-visualizations', Icon: BarChart3, sublabel: 'Workflow' },
+    { id: 'synthesis-history', type: 'section', label: 'Synthesis History', sectionId: 'synthesis-history', Icon: BookOpen, sublabel: 'Workflow' },
+    // Production
+    { id: 'audio', type: 'section', label: 'Audio & Recording', sectionId: 'audio', Icon: Mic, sublabel: 'Production' },
+    { id: 'mixing', type: 'section', label: 'Mixing & Mastering', sectionId: 'mixing', Icon: SlidersHorizontal, sublabel: 'Production' },
+    { id: 'audio-analysis', type: 'section', label: 'Audio Analysis', sectionId: 'audio-analysis', Icon: TrendingUp, sublabel: 'Production' },
+    // Templates
+    { id: 'templates', type: 'section', label: 'Song Templates', sectionId: 'templates', Icon: Music, sublabel: 'Templates' },
+    { id: 'project-templates', type: 'section', label: 'Project Templates', sectionId: 'project-templates', Icon: FolderOpen, sublabel: 'Templates' },
+    // Learning
+    { id: 'dojo', type: 'section', label: 'Shortcut Dojo', sectionId: 'dojo', Icon: Sword, sublabel: 'Learning' },
+    { id: 'midi-mapping', type: 'section', label: 'MIDI Mapping', sectionId: 'midi-mapping', Icon: Keyboard, sublabel: 'Learning' },
+    { id: 'modules', type: 'section', label: 'The Big 5 (UI)', sectionId: 'modules', Icon: Monitor, sublabel: 'Learning' },
+    // Tools
+    { id: 'utilities', type: 'section', label: 'Studio Calculator', sectionId: 'utilities', Icon: Calculator, sublabel: 'Tools' },
+    { id: 'troubleshoot', type: 'section', label: 'Troubleshooting', sectionId: 'troubleshoot', Icon: Wrench, sublabel: 'Tools' },
+    { id: 'ai-assistant', type: 'section', label: 'AI Assistant', sectionId: 'ai-assistant', Icon: Sparkles, sublabel: 'Smart' },
+    { id: 'export', type: 'section', label: 'Export Guide', sectionId: 'export', Icon: Upload, sublabel: 'Tools' },
   ];
 
   // Derive results
@@ -60,14 +100,14 @@ export const CommandPalette = ({ isOpen, onClose, navigateToSection }: CommandPa
     // 2. Filter Plugins
     const pluginResults = allPlugins
       .filter(p => p.name.toLowerCase().includes(lowerQuery) || p.tags.some(t => t.label.toLowerCase().includes(lowerQuery)))
-      .slice(0, 5) // Limit plugin results
+      .slice(0, 10)
       .map(p => ({
         id: `plugin-${p.id}`,
         type: 'plugin' as const,
         label: p.name,
         sublabel: p.category,
-        icon: '🔌',
-        sectionId: 'plugins-database', // Go to DB
+        Icon: Plug,
+        sectionId: 'plugins-database',
         pluginId: p.id
       }));
 
@@ -114,13 +154,7 @@ export const CommandPalette = ({ isOpen, onClose, navigateToSection }: CommandPa
     if (result.type === 'section') {
       navigateToSection(result.sectionId);
     } else if (result.type === 'plugin') {
-      // For now, allow simple navigation to the DB section
-      // In a more advanced version, we could inject the search term into the DB component
       navigateToSection('plugins-database');
-      // Hacky? Maybe trigger a global event or update context to filter the DB?
-      // For now, let's just go there.
-      // Ideally, we'd route to /plugins/[id] directly if it's a detail page app
-      // But based on the existing app structure, let's link to the detail page!
       if (result.pluginId) {
          router.push(`/plugins/${result.pluginId}`);
       }
@@ -166,7 +200,7 @@ export const CommandPalette = ({ isOpen, onClose, navigateToSection }: CommandPa
 
           {query !== '' && results.length === 0 && (
             <div className="p-8 text-center text-[var(--text-muted)]">
-               No results found for "{query}"
+               No results found for &quot;{query}&quot;
             </div>
           )}
 
@@ -181,7 +215,7 @@ export const CommandPalette = ({ isOpen, onClose, navigateToSection }: CommandPa
               }`}
               onMouseEnter={() => setSelectedIndex(index)}
             >
-              <span className="text-xl">{result.icon}</span>
+              <result.Icon className="w-5 h-5 text-[var(--accent-tertiary)]" />
               <div className="flex-1">
                 <div className="text-sm font-medium">{result.label}</div>
                 {result.sublabel && (

@@ -1255,7 +1255,7 @@ export const TemplatesSection = () => {
   return (
     <section id="templates" className="page-section">
       <div className="mb-8">
-        <h2 className="text-3xl font-bold text-white mb-4">Song <span className="text-gradient">Templates</span> 🎵</h2>
+        <h2 className="text-3xl font-bold text-white mb-4">Song <span className="text-gradient">Templates</span></h2>
         <p className="text-purple-primary-300 mb-6">
           Production templates showing the essential layers and elements for different genres. Each template breaks down the drums, bass, melody, harmony, FX, and vocal components you need to build professional-sounding tracks.
         </p>

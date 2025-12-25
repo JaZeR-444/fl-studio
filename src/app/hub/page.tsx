@@ -1,7 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ReactNode } from 'react';
 import { AppProvider, useAppContext } from '@/context/AppContext';
+import { 
+  Search, 
+  RefreshCw, 
+  Mic, 
+  FolderOpen, 
+  GraduationCap, 
+  Wrench 
+} from 'lucide-react';
 
 // Import components
 import { Sidebar } from '@/components/Sidebar';
@@ -25,8 +33,22 @@ import { PluginsDatabase } from '@/components/sections/PluginsDatabase';
 import { NativeAdvantages } from '@/components/sections/NativeAdvantages';
 import { WorkflowChains } from '@/components/sections/WorkflowChains';
 import { SynthesisHistory } from '@/components/sections/SynthesisHistory';
+import { QuickStartGuidesSection } from '@/components/sections/QuickStartGuides';
+import { MixerTemplatesSection } from '@/components/sections/MixerTemplates';
+import { GenrePresetsSection } from '@/components/sections/GenrePresets';
+import { SamplePackReference } from '@/components/sections/SamplePackReference';
 import { SettingsPanel } from '@/components/SettingsPanel';
 import { CommandPalette } from '@/components/CommandPalette';
+
+// Quick Access section configuration with Lucide icons
+const quickAccessSections: { id: string; label: string; Icon: React.ComponentType<{ className?: string }>; desc: string }[] = [
+  { id: 'plugins', label: 'Browse', Icon: Search, desc: 'Explore all tools' },
+  { id: 'workflow-chains', label: 'Workflow', Icon: RefreshCw, desc: 'Production chains' },
+  { id: 'audio', label: 'Production', Icon: Mic, desc: 'Recording & mixing' },
+  { id: 'templates', label: 'Templates', Icon: FolderOpen, desc: 'Project starters' },
+  { id: 'quick-start', label: 'Learning', Icon: GraduationCap, desc: 'Guides & tutorials' },
+  { id: 'utilities', label: 'Tools', Icon: Wrench, desc: 'Calculators & utils' },
+];
 
 // Inner component that consumes the context
 const FLStudioHubContent = () => {
@@ -91,11 +113,6 @@ const FLStudioHubContent = () => {
     dispatch({ type: 'TOGGLE_DARK_MODE' });
   };
 
-  // Toggle mobile menu
-  const toggleMobileMenu = () => {
-    dispatch({ type: 'TOGGLE_MOBILE_MENU' });
-  };
-
   // Toggle settings panel
   const toggleSettings = () => {
     setShowSettings(!showSettings);
@@ -103,8 +120,6 @@ const FLStudioHubContent = () => {
 
   return (
     <div className="min-h-screen">
-
-
       {/* Main Layout */}
       <div className="flex">
         {/* Sidebar */}
@@ -126,19 +141,44 @@ const FLStudioHubContent = () => {
             {state.activeSection === 'home' && (
               <HeroSection
                 onExploreTools={() => navigateToSection('plugins')}
+                onQuickStart={() => navigateToSection('quick-start')}
                 totalPlugins={50}
                 totalWorkflows={25}
                 totalTemplates={30}
               />
             )}
 
-            {/* Sponsored/Featured Section for Home */}
+            {/* Quick Access Section Cards */}
+            {state.activeSection === 'home' && (
+              <div className="mt-8">
+                <h2 className="text-xl font-bold text-white mb-4">Jump To Section</h2>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                  {quickAccessSections.map((section) => (
+                    <button
+                      key={section.id}
+                      onClick={() => navigateToSection(section.id)}
+                      className="p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-[var(--accent-primary)]/50 transition-all group text-left"
+                    >
+                      <div className="mb-2">
+                        <section.Icon className="w-6 h-6 text-[var(--accent-tertiary)]" />
+                      </div>
+                      <h3 className="font-semibold text-white text-sm group-hover:text-[var(--accent-primary)] transition-colors">
+                        {section.label}
+                      </h3>
+                      <p className="text-xs text-[var(--text-muted)] mt-1">{section.desc}</p>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Featured Tools Section for Home */}
             {state.activeSection === 'home' && (
               <div className="mt-12">
                 <div className="flex items-center gap-3 mb-6">
-                  <h2 className="text-2xl font-bold text-white">Sponsored Listings</h2>
-                  <span className="text-sm text-[var(--text-muted)]">Featured FL Studio tools and services</span>
-                  <span className="badge badge-premium ml-auto">Premium</span>
+                  <h2 className="text-2xl font-bold text-white">Featured Tools</h2>
+                  <span className="text-sm text-[var(--text-muted)]">Curated FL Studio essentials</span>
+                  <span className="badge badge-premium ml-auto">Editor&apos;s Pick</span>
                 </div>
                 <MentalModelSection />
               </div>
@@ -197,6 +237,18 @@ const FLStudioHubContent = () => {
 
             {/* Synthesis History Section */}
             {state.activeSection === 'synthesis-history' && <SynthesisHistory />}
+
+            {/* Quick Start Guides Section */}
+            {state.activeSection === 'quick-start' && <QuickStartGuidesSection />}
+
+            {/* Mixer Templates Section */}
+            {state.activeSection === 'mixer-templates' && <MixerTemplatesSection />}
+
+            {/* Genre Presets Section */}
+            {state.activeSection === 'genre-presets' && <GenrePresetsSection />}
+
+            {/* Sample Pack Reference Section */}
+            {state.activeSection === 'sample-packs' && <SamplePackReference />}
           </div>
         </main>
       </div>

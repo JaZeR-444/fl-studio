@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import allPluginsData from '@/data/plugins/allPlugins.json';
 import { ExtendedPlugin } from '@/types/pluginTypes';
 import { Badge } from '@/components/ui/Badge';
+import { PluginBreadcrumb } from '@/components/ui/Breadcrumb';
 
 const allPlugins: ExtendedPlugin[] = allPluginsData as unknown as ExtendedPlugin[];
 
@@ -22,13 +23,10 @@ export default function PluginDetailPage({ params }: { params: { id: string } })
 
   return (
     <div className="min-h-screen pt-24 pb-20 container mx-auto px-4 sm:px-6">
-      <Link 
-        href="/#plugins" 
-        className="inline-flex items-center text-[var(--text-muted)] hover:text-white transition-colors mb-8 group"
-      >
-        <span className="mr-2 group-hover:-translate-x-1 transition-transform">←</span>
-        Back to Hub
-      </Link>
+      {/* Professional Breadcrumb Navigation */}
+      <div className="mb-8">
+        <PluginBreadcrumb pluginName={plugin.name} category={plugin.category} />
+      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left Column - Key Info */}

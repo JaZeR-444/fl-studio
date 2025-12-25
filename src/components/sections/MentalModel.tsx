@@ -1,15 +1,28 @@
 'use client';
 
 import { ToolCard } from '@/components/ui/ToolCard';
+import { 
+  Piano, 
+  Volume2, 
+  Clock, 
+  BarChart3, 
+  Music, 
+  Layers, 
+  RefreshCw, 
+  SlidersHorizontal,
+  Rocket,
+  Users,
+  Star
+} from 'lucide-react';
 
-// Featured tools data
+// Featured tools data - using Lucide icons
 const featuredTools = [
   {
     id: 'harmor',
     name: 'Harmor',
     description: 'Flagship additive synthesizer with resynthesis capabilities. Generates sounds directly from frequency spectra.',
     category: 'Additive Synthesis',
-    icon: '🎹',
+    Icon: Piano,
     rating: 4.8,
     isSponsored: true,
     tags: [
@@ -25,7 +38,7 @@ const featuredTools = [
     name: 'Sytrus',
     description: 'FM/RM and Subtractive hybrid synth with 6x6 modulation matrix. Perfect for complex sound design.',
     category: 'FM Synthesis',
-    icon: '🔊',
+    Icon: Volume2,
     rating: 4.9,
     isSponsored: true,
     tags: [
@@ -41,7 +54,7 @@ const featuredTools = [
     name: 'Gross Beat',
     description: 'Real-time time and volume manipulation with 36 envelopes. Essential for Trap half-speed effects.',
     category: 'Time & Pitch',
-    icon: '⏱️',
+    Icon: Clock,
     rating: 4.8,
     isSponsored: true,
     tags: [
@@ -57,7 +70,7 @@ const featuredTools = [
     name: 'Maximus',
     description: 'Multiband compressor/limiter/gate with custom curve drawing. Linear phase filtering for mastering.',
     category: 'Dynamics/Mastering',
-    icon: '📊',
+    Icon: BarChart3,
     rating: 4.7,
     isSponsored: true,
     tags: [
@@ -73,7 +86,7 @@ const featuredTools = [
     name: 'FLEX',
     description: 'Sample-based rompler with curated content. Instant gratification for bread and butter sounds.',
     category: 'Rompler',
-    icon: '🎼',
+    Icon: Music,
     rating: 4.6,
     tags: [
       { label: 'Preset-Based', color: 'cyan' as const },
@@ -85,27 +98,27 @@ const featuredTools = [
   },
 ];
 
-// Mental Model concepts
+// Mental Model concepts with Lucide icons
 const mentalModelConcepts = [
   {
     title: 'Pattern-Based Workflow',
     description: 'FL Studio uses patterns as building blocks. Think of patterns like musical LEGO pieces.',
-    icon: '🧱',
+    Icon: Layers,
   },
   {
     title: 'Non-Destructive Editing',
     description: 'Everything can be undone. Experiment freely without fear of losing your work.',
-    icon: '🔄',
+    Icon: RefreshCw,
   },
   {
     title: 'Piano Roll Mastery',
     description: 'The heart of melody creation. Learn shortcuts to work 10x faster.',
-    icon: '🎹',
+    Icon: Piano,
   },
   {
     title: 'Mixer Routing',
     description: 'Understand signal flow from channels to mixer tracks to master output.',
-    icon: '🎚️',
+    Icon: SlidersHorizontal,
   },
 ];
 
@@ -117,7 +130,17 @@ export const MentalModelSection = () => {
         {featuredTools.map((tool) => (
           <ToolCard
             key={tool.id}
-            {...tool}
+            id={tool.id}
+            name={tool.name}
+            description={tool.description}
+            category={tool.category}
+            icon={<tool.Icon className="w-5 h-5 text-[var(--accent-tertiary)]" />}
+            rating={tool.rating}
+            isSponsored={tool.isSponsored}
+            tags={tool.tags}
+            pricingBadge={tool.pricingBadge}
+            views={tool.views}
+            saves={tool.saves}
             onClick={() => console.log(`Clicked on ${tool.name}`)}
           />
         ))}
@@ -134,11 +157,11 @@ export const MentalModelSection = () => {
           </div>
         </div>
 
-        {/* Stats Row */}
+        {/* Stats Row with Lucide icons */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
           <div className="stat-card flex items-center gap-4">
             <div className="w-10 h-10 rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] flex items-center justify-center">
-              🚀
+              <Rocket className="w-5 h-5 text-[var(--accent-tertiary)]" />
             </div>
             <div>
               <p className="text-2xl font-bold text-white">50+</p>
@@ -147,7 +170,7 @@ export const MentalModelSection = () => {
           </div>
           <div className="stat-card flex items-center gap-4">
             <div className="w-10 h-10 rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] flex items-center justify-center">
-              👥
+              <Users className="w-5 h-5 text-[var(--accent-tertiary)]" />
             </div>
             <div>
               <p className="text-2xl font-bold text-white">10K+</p>
@@ -156,7 +179,7 @@ export const MentalModelSection = () => {
           </div>
           <div className="stat-card flex items-center gap-4">
             <div className="w-10 h-10 rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] flex items-center justify-center">
-              ⭐
+              <Star className="w-5 h-5 text-[var(--accent-tertiary)]" />
             </div>
             <div>
               <p className="text-2xl font-bold text-white">5K+</p>
@@ -177,8 +200,8 @@ export const MentalModelSection = () => {
           {mentalModelConcepts.map((concept, index) => (
             <div key={index} className="content-card">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-[var(--glass-bg)] border border-[var(--glass-border)] flex items-center justify-center text-2xl shrink-0">
-                  {concept.icon}
+                <div className="w-12 h-12 rounded-xl bg-[var(--glass-bg)] border border-[var(--glass-border)] flex items-center justify-center shrink-0">
+                  <concept.Icon className="w-6 h-6 text-[var(--accent-tertiary)]" />
                 </div>
                 <div>
                   <h3 className="font-bold text-white mb-1">{concept.title}</h3>

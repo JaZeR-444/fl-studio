@@ -26,7 +26,7 @@ export const GlassCard = ({
 interface StatCardProps {
   value: string;
   label: string;
-  icon?: string;
+  icon?: ReactNode;
   className?: string;
 }
 
@@ -35,7 +35,7 @@ export const StatCard = ({ value, label, icon, className = '' }: StatCardProps) 
     <div className={`stat-card ${className}`}>
       <div className="flex items-center gap-3">
         {icon && (
-          <div className="w-10 h-10 rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] flex items-center justify-center text-xl">
+          <div className="w-10 h-10 rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] flex items-center justify-center">
             {icon}
           </div>
         )}
@@ -51,7 +51,7 @@ export const StatCard = ({ value, label, icon, className = '' }: StatCardProps) 
 interface SectionCardProps {
   title: string;
   description?: string;
-  icon?: string;
+  icon?: ReactNode;
   children?: ReactNode;
   className?: string;
   badge?: string;
@@ -70,7 +70,7 @@ export const SectionCard = ({
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-3">
           {icon && (
-            <div className="w-10 h-10 rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] flex items-center justify-center text-xl">
+            <div className="w-10 h-10 rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] flex items-center justify-center">
               {icon}
             </div>
           )}

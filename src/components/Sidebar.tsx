@@ -29,7 +29,8 @@ import {
   LucideIcon,
   Rocket,
   Disc3,
-  Library
+  Library,
+  X
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -125,25 +126,45 @@ export const Sidebar = ({
 
 
   return (
-    <aside 
-      id="sidebar" 
-      className={`transform ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 transition-transform duration-300 fixed md:sticky top-20 inset-y-0 left-0 w-64 h-[calc(100vh-5rem)] glass-sidebar flex flex-col z-40`}
-    >
-      {/* Header with Logo */}
-      <div className="p-5 border-b border-[var(--glass-border)]">
-        <div className="flex items-center justify-between mb-4">
-          <div className="relative h-8 w-40">
-            <Image 
-              src={`${basePath}/images/branding/logo-white.svg`} 
-              alt="FL Studio Master Hub" 
-              fill
-              className="object-contain object-left drop-shadow-[0_0_15px_rgba(124,58,237,0.3)]"
-            />
+    <>
+      {/* Mobile Backdrop Overlay */}
+      {mobileMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-30 md:hidden"
+          onClick={() => setMobileMenuOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+      
+      <aside 
+        id="sidebar" 
+        className={`transform ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 transition-transform duration-300 fixed md:sticky top-20 inset-y-0 left-0 w-64 h-[calc(100vh-5rem)] glass-sidebar flex flex-col z-40`}
+      >
+        {/* Header with Logo */}
+        <div className="p-5 border-b border-[var(--glass-border)]">
+          <div className="flex items-center justify-between mb-4">
+            <div className="relative h-8 w-32">
+              <Image 
+                src={`${basePath}/images/branding/logo-white.svg`} 
+                alt="FL Studio Master Hub" 
+                fill
+                className="object-contain object-left drop-shadow-[0_0_15px_rgba(124,58,237,0.3)]"
+              />
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] text-[var(--text-dim)] bg-[var(--glass-bg)] px-2 py-1 rounded">
+                v21+
+              </span>
+              {/* Mobile Close Button */}
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="md:hidden p-1.5 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+                aria-label="Close menu"
+              >
+                <X className="w-4 h-4 text-white" />
+              </button>
+            </div>
           </div>
-          <span className="text-[10px] text-[var(--text-dim)] bg-[var(--glass-bg)] px-2 py-1 rounded">
-            v21+
-          </span>
-        </div>
 
         {/* Search Bar - Trigger Command Palette */}
         <button 
@@ -239,5 +260,6 @@ export const Sidebar = ({
         </button>
       </div>
     </aside>
+    </>
   );
 };

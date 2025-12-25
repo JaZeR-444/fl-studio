@@ -1,101 +1,38 @@
 'use client';
 
+import { useState, useMemo } from 'react';
 import { ToolCard } from '@/components/ui/ToolCard';
 import { 
   Piano, 
-  Volume2, 
-  Clock, 
-  BarChart3, 
-  Music, 
   Layers, 
   RefreshCw, 
   SlidersHorizontal,
   Rocket,
   Users,
-  Star
+  Star,
+  Sparkles,
+  Wand2
 } from 'lucide-react';
 
-// Featured tools data - using Lucide icons
-const featuredTools = [
-  {
-    id: 'harmor',
-    name: 'Harmor',
-    description: 'Flagship additive synthesizer with resynthesis capabilities. Generates sounds directly from frequency spectra.',
-    category: 'Additive Synthesis',
-    Icon: Piano,
-    rating: 4.8,
-    isSponsored: true,
-    tags: [
-      { label: 'Additive', color: 'purple' as const },
-      { label: 'Resynthesis', color: 'cyan' as const },
-    ],
-    pricingBadge: 'all-plugins' as const,
-    views: 50000,
-    saves: 1250,
-  },
-  {
-    id: 'sytrus',
-    name: 'Sytrus',
-    description: 'FM/RM and Subtractive hybrid synth with 6x6 modulation matrix. Perfect for complex sound design.',
-    category: 'FM Synthesis',
-    Icon: Volume2,
-    rating: 4.9,
-    isSponsored: true,
-    tags: [
-      { label: 'FM Synthesis', color: 'orange' as const },
-      { label: 'Hybrid', color: 'blue' as const },
-    ],
-    pricingBadge: 'producer' as const,
-    views: 45000,
-    saves: 1100,
-  },
-  {
-    id: 'gross-beat',
-    name: 'Gross Beat',
-    description: 'Real-time time and volume manipulation with 36 envelopes. Essential for Trap half-speed effects.',
-    category: 'Time & Pitch',
-    Icon: Clock,
-    rating: 4.8,
-    isSponsored: true,
-    tags: [
-      { label: 'Time Stretch', color: 'green' as const },
-      { label: 'Effects', color: 'pink' as const },
-    ],
-    pricingBadge: 'signature' as const,
-    views: 60000,
-    saves: 1500,
-  },
-  {
-    id: 'maximus',
-    name: 'Maximus',
-    description: 'Multiband compressor/limiter/gate with custom curve drawing. Linear phase filtering for mastering.',
-    category: 'Dynamics/Mastering',
-    Icon: BarChart3,
-    rating: 4.7,
-    isSponsored: true,
-    tags: [
-      { label: 'Mastering', color: 'purple' as const },
-      { label: 'Dynamics', color: 'blue' as const },
-    ],
-    pricingBadge: 'all-plugins' as const,
-    views: 40000,
-    saves: 980,
-  },
-  {
-    id: 'flex',
-    name: 'FLEX',
-    description: 'Sample-based rompler with curated content. Instant gratification for bread and butter sounds.',
-    category: 'Rompler',
-    Icon: Music,
-    rating: 4.6,
-    tags: [
-      { label: 'Preset-Based', color: 'cyan' as const },
-      { label: 'Easy', color: 'green' as const },
-    ],
-    pricingBadge: 'free' as const,
-    views: 70000,
-    saves: 2000,
-  },
+import { ExtendedPlugin } from '@/types/pluginTypes';
+import allPluginsData from '@/data/plugins/allPlugins.json';
+
+const allPlugins: ExtendedPlugin[] = allPluginsData as unknown as ExtendedPlugin[];
+
+// Dynamic featured tools - pick top-rated native plugins
+const getFeaturedPlugins = () => {
+  return allPlugins
+    .filter(p => p.nativeStatus)
+    .sort((a, b) => b.rating - a.rating)
+    .slice(0, 6);
+};
+
+// Quick filter options
+const filterOptions = [
+  { id: 'all', label: 'All Tools' },
+  { id: 'synths', label: 'Synths' },
+  { id: 'effects', label: 'Effects' },
+  { id: 'dynamics', label: 'Dynamics' },
 ];
 
 // Mental Model concepts with Lucide icons
@@ -122,59 +59,118 @@ const mentalModelConcepts = [
   },
 ];
 
+// Calculate dynamic stats
+const getDynamicStats = () => {
+  const totalPlugins = allPlugins.length;
+  const nativePlugins = allPlugins.filter(p => p.nativeStatus).length;
+  const avgRating = (allPlugins.reduce((a, p) => a + p.rating, 0) / allPlugins.length).toFixed(1);
+  const categories = new Set(allPlugins.map(p => p.category)).size;
+  
+  return { totalPlugins, nativePlugins, avgRating, categories };
+};
+
 export const MentalModelSection = () => {
+  const [activeFilter, setActiveFilter] = useState('all');
+  
+  const stats = useMemo(() => getDynamicStats(), []);
+  
+  const filteredPlugins = useMemo(() => {
+    const featured = getFeaturedPlugins();
+    
+    if (activeFilter === 'all') return featured;
+    if (activeFilter === 'synths') return featured.filter(p => p.pluginType === 'Synthesizer');
+    if (activeFilter === 'effects') return featured.filter(p => p.pluginType === 'Effect' || p.category.includes('FX'));
+    if (activeFilter === 'dynamics') return featured.filter(p => p.category.includes('Dynamics') || p.category.includes('Mastering'));
+    
+    return featured;
+  }, [activeFilter]);
+
   return (
     <section id="mental-model" className="page-section animate-fade">
+      {/* Featured Tools Header */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+        <div>
+          <h2 className="text-2xl font-bold text-gradient mb-1">Featured Tools</h2>
+          <p className="text-sm text-[var(--text-muted)]">
+            Top-rated native plugins for your productions
+          </p>
+        </div>
+        
+        {/* Quick Filter Pills */}
+        <div className="flex flex-wrap gap-2">
+          {filterOptions.map((option) => (
+            <button
+              key={option.id}
+              onClick={() => setActiveFilter(option.id)}
+              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
+                activeFilter === option.id
+                  ? 'bg-[var(--accent-primary)] text-white'
+                  : 'bg-[var(--glass-bg)] text-[var(--text-muted)] border border-[var(--glass-border)] hover:text-white hover:bg-[var(--glass-bg-hover)]'
+              }`}
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
+      </div>
+      
       {/* Featured Tools Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-12">
-        {featuredTools.map((tool) => (
-          <ToolCard
-            key={tool.id}
-            id={tool.id}
-            name={tool.name}
-            description={tool.description}
-            category={tool.category}
-            icon={<tool.Icon className="w-5 h-5 text-[var(--accent-tertiary)]" />}
-            rating={tool.rating}
-            isSponsored={tool.isSponsored}
-            tags={tool.tags}
-            pricingBadge={tool.pricingBadge}
-            views={tool.views}
-            saves={tool.saves}
-            onClick={() => console.log(`Clicked on ${tool.name}`)}
-          />
-        ))}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 mb-12">
+        {filteredPlugins.length > 0 ? (
+          filteredPlugins.map((plugin) => (
+            <ToolCard
+              key={plugin.id}
+              id={plugin.id}
+              name={plugin.name}
+              description={plugin.description}
+              category={plugin.category}
+              icon={<Wand2 className="w-5 h-5 text-[var(--accent-tertiary)]" />}
+              rating={plugin.rating}
+              isSponsored={true}
+              tags={plugin.tags}
+              pricingBadge={plugin.pricingBadge}
+              views={plugin.views}
+              saves={plugin.saves}
+              onClick={() => console.log(`Clicked on ${plugin.name}`)}
+              href={`/plugins/${plugin.id}`}
+            />
+          ))
+        ) : (
+          <div className="col-span-full text-center py-8 text-[var(--text-muted)]">
+            No plugins found in this category
+          </div>
+        )}
       </div>
 
-      {/* Latest Launches Section */}
+      {/* Dynamic Stats Section */}
       <div className="mb-12">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h2 className="text-2xl font-bold text-gradient mb-1">Latest Tool Launches</h2>
+            <h2 className="text-2xl font-bold text-gradient mb-1">Plugin Collection</h2>
             <p className="text-sm text-[var(--text-muted)]">
-              Discover the newest FL Studio tools and innovations
+              FL Studio's powerful native toolkit at a glance
             </p>
           </div>
         </div>
 
-        {/* Stats Row with Lucide icons */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        {/* Stats Row with dynamic data */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           <div className="stat-card flex items-center gap-4">
             <div className="w-10 h-10 rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] flex items-center justify-center">
               <Rocket className="w-5 h-5 text-[var(--accent-tertiary)]" />
             </div>
             <div>
-              <p className="text-2xl font-bold text-white">50+</p>
-              <p className="text-xs text-[var(--text-muted)]">Launches This Month</p>
+              <p className="text-2xl font-bold text-white">{stats.totalPlugins}</p>
+              <p className="text-xs text-[var(--text-muted)]">Total Plugins</p>
             </div>
           </div>
           <div className="stat-card flex items-center gap-4">
             <div className="w-10 h-10 rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] flex items-center justify-center">
-              <Users className="w-5 h-5 text-[var(--accent-tertiary)]" />
+              <Sparkles className="w-5 h-5 text-[var(--accent-tertiary)]" />
             </div>
             <div>
-              <p className="text-2xl font-bold text-white">10K+</p>
-              <p className="text-xs text-[var(--text-muted)]">Active Users</p>
+              <p className="text-2xl font-bold text-white">{stats.nativePlugins}</p>
+              <p className="text-xs text-[var(--text-muted)]">Native Plugins</p>
             </div>
           </div>
           <div className="stat-card flex items-center gap-4">
@@ -182,8 +178,17 @@ export const MentalModelSection = () => {
               <Star className="w-5 h-5 text-[var(--accent-tertiary)]" />
             </div>
             <div>
-              <p className="text-2xl font-bold text-white">5K+</p>
-              <p className="text-xs text-[var(--text-muted)]">Community Reviews</p>
+              <p className="text-2xl font-bold text-white">{stats.avgRating}</p>
+              <p className="text-xs text-[var(--text-muted)]">Avg. Rating</p>
+            </div>
+          </div>
+          <div className="stat-card flex items-center gap-4">
+            <div className="w-10 h-10 rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] flex items-center justify-center">
+              <Layers className="w-5 h-5 text-[var(--accent-tertiary)]" />
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-white">{stats.categories}</p>
+              <p className="text-xs text-[var(--text-muted)]">Categories</p>
             </div>
           </div>
         </div>

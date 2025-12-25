@@ -1,22 +1,33 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { 
   Piano, 
-  Link, 
+  Link as LinkIcon, 
   Zap, 
   Waves, 
   Sparkles, 
   Image, 
   Maximize2, 
   SlidersHorizontal,
-  Lightbulb
+  Lightbulb,
+  Check,
+  X,
+  ArrowRight,
+  Shield
 } from 'lucide-react';
 
 import { ExtendedPlugin } from '@/types/pluginTypes';
 import allPluginsData from '@/data/plugins/allPlugins.json';
 
 const allPlugins: ExtendedPlugin[] = allPluginsData as unknown as ExtendedPlugin[];
+
+// Helper to get plugin ID by name for linking
+const getPluginId = (pluginName: string): string | null => {
+  const plugin = allPlugins.find(p => p.name.toLowerCase() === pluginName.toLowerCase());
+  return plugin?.id || null;
+};
 
 const nativeFeatures = [
   {
@@ -28,7 +39,7 @@ const nativeFeatures = [
   },
   {
     title: "Internal Modulation Sources Exposure",
-    Icon: Link,
+    Icon: LinkIcon,
     description: "Native parameters are exposed directly to FL Studio's internal modulation engines (Formula Controller, Peak Controller, Envelope Controller) without the MIDI Learn wrapper required for VSTs.",
     plugins: ["All Native Plugins"],
     benefit: "More responsive and CPU-efficient modulation compared to external plugins."
@@ -77,6 +88,16 @@ const nativeFeatures = [
   }
 ];
 
+// Comparison data for Native vs VST
+const comparisonData = [
+  { feature: "Per-Note Modulation", native: true, vst: false },
+  { feature: "Internal Modulation Routing", native: true, vst: false },
+  { feature: "Vector UI Scaling", native: true, vst: "partial" },
+  { feature: "CPU Efficiency", native: "optimized", vst: "varies" },
+  { feature: "Lifetime Free Updates", native: true, vst: false },
+  { feature: "Piano Roll Integration", native: true, vst: false },
+];
+
 // Generate advantages map from data
 const pluginAdvantages = allPlugins.reduce((acc, plugin) => {
   if (plugin.nativeStatus && plugin.proTips && plugin.proTips.length > 0) {
@@ -84,6 +105,28 @@ const pluginAdvantages = allPlugins.reduce((acc, plugin) => {
   }
   return acc;
 }, {} as { [key: string]: string[] });
+
+// Plugin Link Component
+const PluginLink = ({ name }: { name: string }) => {
+  const pluginId = getPluginId(name);
+  
+  if (pluginId) {
+    return (
+      <Link 
+        href={`/plugins/${pluginId}`}
+        className="badge badge-purple text-xs hover:bg-purple-500/30 transition-colors cursor-pointer"
+      >
+        {name}
+      </Link>
+    );
+  }
+  
+  return (
+    <span className="badge badge-purple text-xs">
+      {name}
+    </span>
+  );
+};
 
 export const NativeAdvantages = () => {
   const [activeTab, setActiveTab] = useState('features');
@@ -104,10 +147,44 @@ export const NativeAdvantages = () => {
           Discover the exclusive capabilities that only FL Studio native plugins can provide.
         </p>
       </div>
+
+      {/* Why Native? Hero Card */}
+      <div className="mb-8 p-6 rounded-xl bg-gradient-to-r from-violet-900/40 to-indigo-900/40 border border-violet-500/20 backdrop-blur-sm">
+        <div className="flex flex-col md:flex-row md:items-center gap-6">
+          <div className="flex-shrink-0">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-500 to-indigo-500 flex items-center justify-center">
+              <Shield className="w-8 h-8 text-white" />
+            </div>
+          </div>
+          <div className="flex-grow">
+            <h3 className="text-xl font-bold text-white mb-2">Why Go Native?</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
+              <div className="flex items-center gap-2 text-sm">
+                <Check className="w-4 h-4 text-green-400" />
+                <span className="text-gray-300">Exclusive FL Studio integrations</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <Check className="w-4 h-4 text-green-400" />
+                <span className="text-gray-300">Lifetime free updates</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <Check className="w-4 h-4 text-green-400" />
+                <span className="text-gray-300">~30% lower CPU in most cases</span>
+              </div>
+            </div>
+            <Link 
+              href="#native-comparison"
+              className="inline-flex items-center gap-2 text-sm text-violet-400 hover:text-violet-300 transition-colors"
+            >
+              See the full comparison <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </div>
       
       {/* Tab Navigation */}
       <div className="mb-8">
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <button
             className={`px-6 py-3 rounded-lg font-medium transition-all ${
               activeTab === 'features'
@@ -131,6 +208,16 @@ export const NativeAdvantages = () => {
           >
             Plugin-Specific Benefits
           </button>
+          <button
+            className={`px-6 py-3 rounded-lg font-medium transition-all ${
+              activeTab === 'comparison'
+                ? 'bg-[var(--accent-primary)] text-white'
+                : 'bg-[var(--glass-bg)] text-[var(--text-muted)] border border-[var(--glass-border)] hover:text-white'
+            }`}
+            onClick={() => setActiveTab('comparison')}
+          >
+            Native vs VST
+          </button>
         </div>
       </div>
 
@@ -150,12 +237,7 @@ export const NativeAdvantages = () => {
                   <h3 className="text-lg font-bold text-white mb-1">{feature.title}</h3>
                   <div className="flex flex-wrap gap-1">
                     {feature.plugins.map((plugin, idx) => (
-                      <span 
-                        key={idx} 
-                        className="badge badge-purple text-xs"
-                      >
-                        {plugin}
-                      </span>
+                      <PluginLink key={idx} name={plugin} />
                     ))}
                   </div>
                 </div>
@@ -173,6 +255,47 @@ export const NativeAdvantages = () => {
         </div>
       )}
 
+      {/* Comparison Tab */}
+      {activeTab === 'comparison' && (
+        <div id="native-comparison" className="content-card p-6">
+          <h3 className="text-xl font-bold text-white mb-6">Native vs Third-Party VST Comparison</h3>
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-[var(--glass-border)]">
+                  <th className="text-left py-3 px-4 text-[var(--text-muted)] font-medium">Capability</th>
+                  <th className="text-center py-3 px-4 text-violet-400 font-medium">Native</th>
+                  <th className="text-center py-3 px-4 text-gray-400 font-medium">VST</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonData.map((row, idx) => (
+                  <tr key={idx} className="border-b border-[var(--glass-border)]/50">
+                    <td className="py-3 px-4 text-white">{row.feature}</td>
+                    <td className="py-3 px-4 text-center">
+                      {row.native === true ? (
+                        <Check className="w-5 h-5 text-green-400 mx-auto" />
+                      ) : (
+                        <span className="text-green-400 text-sm">{row.native}</span>
+                      )}
+                    </td>
+                    <td className="py-3 px-4 text-center">
+                      {row.vst === false ? (
+                        <X className="w-5 h-5 text-red-400 mx-auto" />
+                      ) : row.vst === "partial" ? (
+                        <span className="text-yellow-400 text-sm">Partial</span>
+                      ) : (
+                        <span className="text-gray-400 text-sm">{row.vst}</span>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
       {/* Plugins Tab */}
       {activeTab === 'plugins' && (
         <div>
@@ -180,39 +303,52 @@ export const NativeAdvantages = () => {
           <div className="mb-6">
             <h3 className="text-lg font-bold text-white mb-4">Select a Plugin to View Native Advantages</h3>
             <div className="flex flex-wrap gap-2">
-              {pluginsWithAdvantages.map(plugin => (
-                <button
-                  key={plugin}
-                  onClick={() => setSelectedPlugin(plugin)}
-                  className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                    selectedPlugin === plugin
-                      ? 'bg-[var(--accent-primary)] text-white'
-                      : 'bg-[var(--glass-bg)] text-[var(--text-muted)] border border-[var(--glass-border)] hover:text-white hover:bg-[var(--glass-bg-hover)]'
-                  }`}
-                >
-                  {plugin}
-                </button>
-              ))}
+              {pluginsWithAdvantages.map(plugin => {
+                const pluginId = getPluginId(plugin);
+                return (
+                  <button
+                    key={plugin}
+                    onClick={() => setSelectedPlugin(plugin)}
+                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                      selectedPlugin === plugin
+                        ? 'bg-[var(--accent-primary)] text-white'
+                        : 'bg-[var(--glass-bg)] text-[var(--text-muted)] border border-[var(--glass-border)] hover:text-white hover:bg-[var(--glass-bg-hover)]'
+                    }`}
+                  >
+                    {plugin}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
           {/* Selected Plugin Details */}
           {selectedPlugin && (
             <div className="content-card p-6">
-              <div className="flex justify-between items-center mb-6">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
                 <div className="flex items-center gap-4">
                   <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center">
                     <Piano className="w-7 h-7 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-white">{selectedPlugin} Advantages</h3>
                 </div>
-                <span className="badge badge-green">Native Only</span>
+                <div className="flex items-center gap-2">
+                  <span className="badge badge-green">Native Only</span>
+                  {getPluginId(selectedPlugin) && (
+                    <Link 
+                      href={`/plugins/${getPluginId(selectedPlugin)}`}
+                      className="btn-secondary text-sm py-1.5 px-3"
+                    >
+                      View Plugin Details
+                    </Link>
+                  )}
+                </div>
               </div>
               
               <ul className="space-y-3 mb-6">
                 {pluginAdvantages[selectedPlugin].map((advantage, idx) => (
                   <li key={idx} className="flex items-start p-3 rounded-lg bg-[var(--glass-bg)]">
-                    <span className="text-[var(--accent-secondary)] mr-3 mt-0.5">✓</span>
+                    <Check className="w-5 h-5 text-green-400 mr-3 mt-0.5 shrink-0" />
                     <span className="text-[var(--text-secondary)]">{advantage}</span>
                   </li>
                 ))}

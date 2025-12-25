@@ -127,8 +127,36 @@ export const AudioAnalysisSection = () => {
         </p>
       </div>
 
+      {/* Hero Card */}
+      <div className="mb-8 p-6 rounded-xl bg-gradient-to-r from-violet-900/40 to-fuchsia-900/40 border border-violet-500/20 backdrop-blur-sm">
+        <div className="flex flex-col md:flex-row md:items-center gap-6">
+          <div className="flex-shrink-0">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center">
+              <span className="text-3xl">📊</span>
+            </div>
+          </div>
+          <div className="flex-grow">
+            <h3 className="text-xl font-bold text-white mb-2">Visual Mixing Mastery</h3>
+            <p className="text-violet-200/80 mb-3">
+              Trust your ears, but use your eyes to confirm frequency balance and phase issues.
+            </p>
+            <div className="flex flex-wrap gap-4 text-sm">
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold text-white">3</span>
+                <span className="text-violet-200/60">Analysis Types</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold text-white text-lg">🍬</span>
+                <span className="text-violet-200/60">Wave Candy Included</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Analysis Type Selector */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+
         {analysisTypes.map((type) => (
           <button
             key={type.id}

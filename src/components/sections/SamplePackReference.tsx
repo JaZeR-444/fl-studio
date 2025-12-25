@@ -162,15 +162,40 @@ export const SamplePackReference = () => {
   return (
     <section className="space-y-8">
       {/* Header */}
-      <div className="flex items-center gap-4">
-        <div className="p-3 rounded-xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border border-emerald-500/30">
-          <FolderOpen className="w-8 h-8 text-emerald-400" />
-        </div>
-        <div>
-          <h1 className="text-3xl font-bold text-white">Sample Pack Reference</h1>
-          <p className="text-[var(--text-muted)]">
-            Explore all included samples and learn where to find them.
-          </p>
+      <div className="mb-8">
+        <h2 className="text-3xl font-bold mb-2">
+          <span className="text-gradient">Sample</span>
+          <span className="text-white"> Packs</span>
+        </h2>
+        <p className="text-[var(--text-muted)]">
+          Explore all included samples and learn where to find them.
+        </p>
+      </div>
+
+      {/* Hero Card */}
+      <div className="mb-8 p-6 rounded-xl bg-gradient-to-r from-emerald-900/40 to-teal-900/40 border border-emerald-500/20 backdrop-blur-sm">
+        <div className="flex flex-col md:flex-row md:items-center gap-6">
+          <div className="flex-shrink-0">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center">
+              <FolderOpen className="w-8 h-8 text-white" />
+            </div>
+          </div>
+          <div className="flex-grow">
+            <h3 className="text-xl font-bold text-white mb-2">The Sounds of FL Studio</h3>
+            <p className="text-emerald-200/80 mb-3">
+              Included content gives you thousands of royalty-free samples. Learn where they live in your browser.
+            </p>
+            <div className="flex flex-wrap gap-4 text-sm">
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold text-white">{samplePacks.length}</span>
+                <span className="text-emerald-200/60">Collections</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Search className="w-4 h-4 text-emerald-400" />
+                <span className="text-emerald-200/60">Searchable</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

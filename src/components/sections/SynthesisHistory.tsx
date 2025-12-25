@@ -16,6 +16,7 @@ import {
   Shuffle
 } from 'lucide-react';
 
+
 export const SynthesisHistory = () => {
   const [activeTab, setActiveTab] = useState('additive');
 
@@ -127,6 +128,34 @@ export const SynthesisHistory = () => {
           Explore the evolution of sound synthesis and how FL Studio implements each method.
         </p>
       </div>
+
+      {/* Hero Card */}
+      <div className="mb-8 p-6 rounded-xl bg-gradient-to-r from-indigo-900/40 to-purple-900/40 border border-indigo-500/20 backdrop-blur-sm">
+        <div className="flex flex-col md:flex-row md:items-center gap-6">
+          <div className="flex-shrink-0">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center">
+              <Piano className="w-8 h-8 text-white" />
+            </div>
+          </div>
+          <div className="flex-grow">
+            <h3 className="text-xl font-bold text-white mb-2">Sound Synthesis Fundamentals</h3>
+            <p className="text-indigo-200/80 mb-3">
+              Understanding how sound is created digitally helps you choose the right tools for your productions.
+            </p>
+            <div className="flex flex-wrap gap-4 text-sm">
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold text-white">{synthesisMethods.length}</span>
+                <span className="text-indigo-200/60">Methods</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Zap className="w-4 h-4 text-indigo-400" />
+                <span className="text-indigo-200/60">Native implementations</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
       {/* Tabs */}
       <div className="mb-8">

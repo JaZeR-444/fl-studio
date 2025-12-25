@@ -127,6 +127,33 @@ export const WorkflowChains = () => {
       
       {!selectedWorkflow ? (
         <>
+          {/* Hero Card */}
+          <div className="mb-8 p-6 rounded-xl bg-gradient-to-r from-orange-900/40 to-amber-900/40 border border-orange-500/20 backdrop-blur-sm">
+            <div className="flex flex-col md:flex-row md:items-center gap-6">
+              <div className="flex-shrink-0">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
+                  <Link2 className="w-8 h-8 text-white" />
+                </div>
+              </div>
+              <div className="flex-grow">
+                <h3 className="text-xl font-bold text-white mb-2">Pre-Built Signal Chains</h3>
+                <p className="text-orange-200/80 mb-3">
+                  These workflows leverage native-only features that cannot be replicated with third-party plugins.
+                </p>
+                <div className="flex flex-wrap gap-4 text-sm">
+                  <div className="flex items-center gap-2">
+                    <span className="text-2xl font-bold text-white">{workflowIds.length}</span>
+                    <span className="text-orange-200/60">Workflows</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Maximize2 className="w-4 h-4 text-orange-400" />
+                    <span className="text-orange-200/60">Native-optimized</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Workflow Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {workflowIds.map(workflowId => {
@@ -177,13 +204,13 @@ export const WorkflowChains = () => {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {[
-                { title: 'Efficiency', icon: '⚡', desc: 'Native plugins share internal code structure, reducing CPU overhead' },
-                { title: 'Integration', icon: '🔗', desc: 'Access to internal modulation sources and event systems' },
-                { title: 'Scalability', icon: '📐', desc: 'Vector interfaces scale perfectly to any resolution' },
-                { title: 'Workflow', icon: '🎹', desc: 'Deep integration with Piano Roll, Playlist, and Mixer' }
+                { title: 'Efficiency', Icon: Zap, desc: 'Native plugins share internal code structure, reducing CPU overhead' },
+                { title: 'Integration', Icon: Link2, desc: 'Access to internal modulation sources and event systems' },
+                { title: 'Scalability', Icon: Maximize2, desc: 'Vector interfaces scale perfectly to any resolution' },
+                { title: 'Workflow', Icon: Piano, desc: 'Deep integration with Piano Roll, Playlist, and Mixer' }
               ].map((benefit, idx) => (
                 <div key={idx} className="p-4 rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)]">
-                  <div className="text-2xl mb-2">{benefit.icon}</div>
+                  <benefit.Icon className="w-6 h-6 text-[var(--accent-tertiary)] mb-2" />
                   <h4 className="font-bold text-white mb-1">{benefit.title}</h4>
                   <p className="text-xs text-[var(--text-muted)]">{benefit.desc}</p>
                 </div>

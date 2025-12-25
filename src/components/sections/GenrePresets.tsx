@@ -186,15 +186,40 @@ export const GenrePresetsSection = () => {
   return (
     <section className="space-y-8">
       {/* Header */}
-      <div className="flex items-center gap-4">
-        <div className="p-3 rounded-xl bg-gradient-to-br from-orange-500/20 to-red-500/20 border border-orange-500/30">
-          <Disc3 className="w-8 h-8 text-orange-400" />
-        </div>
-        <div>
-          <h1 className="text-3xl font-bold text-white">Genre Presets</h1>
-          <p className="text-[var(--text-muted)]">
-            Genre-specific starting points with recommended settings and techniques.
-          </p>
+      <div className="mb-8">
+        <h2 className="text-3xl font-bold mb-2">
+          <span className="text-gradient">Genre</span>
+          <span className="text-white"> Presets</span>
+        </h2>
+        <p className="text-[var(--text-muted)]">
+          Starting points and recommended settings for popular genres.
+        </p>
+      </div>
+
+      {/* Hero Card */}
+      <div className="mb-8 p-6 rounded-xl bg-gradient-to-r from-orange-900/40 to-red-900/40 border border-orange-500/20 backdrop-blur-sm">
+        <div className="flex flex-col md:flex-row md:items-center gap-6">
+          <div className="flex-shrink-0">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center">
+              <Disc3 className="w-8 h-8 text-white" />
+            </div>
+          </div>
+          <div className="flex-grow">
+            <h3 className="text-xl font-bold text-white mb-2">Instant Genre Blueprints</h3>
+            <p className="text-orange-200/80 mb-3">
+              Don't start from scratch. These presets provide a solid foundation for your track including BPM, key, and mixing chains.
+            </p>
+            <div className="flex flex-wrap gap-4 text-sm">
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold text-white">{genrePresets.length}</span>
+                <span className="text-orange-200/60">Genres</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Download className="w-4 h-4 text-orange-400" />
+                <span className="text-orange-200/60">Downloadable JSON</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

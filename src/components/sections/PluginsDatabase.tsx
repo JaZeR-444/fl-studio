@@ -75,14 +75,23 @@ export const PluginsDatabase = () => {
     <section id="plugins-database" className="page-section animate-fade">
       {/* Header */}
       <div className="mb-8">
-        <h2 className="text-3xl font-bold mb-2">
-          <span className="text-gradient">FL Studio</span>
-          <span className="text-white"> Plugin Database</span>
-        </h2>
-        <p className="text-[var(--text-muted)]">
-          Browse and filter the complete collection of FL Studio native plugins.
-        </p>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <h2 className="text-3xl font-bold mb-2">
+              <span className="text-gradient">FL Studio</span>
+              <span className="text-white"> Plugin Database</span>
+            </h2>
+            <p className="text-[var(--text-muted)]">
+              Browse and filter the complete collection of FL Studio native plugins.
+            </p>
+          </div>
+          <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)]">
+            <span className="text-2xl font-bold text-white">{displayedPlugins.length}</span>
+            <span className="text-sm text-[var(--text-muted)]">of {allPlugins.length} plugins</span>
+          </div>
+        </div>
       </div>
+
 
       {/* Filters Card */}
       <div className="content-card p-6 mb-8">

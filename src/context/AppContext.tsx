@@ -64,7 +64,8 @@ const initialState: AppState = {
     const stored = safeLocalStorage.getItem('darkMode');
     if (stored === 'true') return true;
     if (stored === 'false') return false;
-    return safePrefersDark();
+    // Default to dark mode for this app's design
+    return true;
   })(),
   activeSection: 'home',
   mobileMenuOpen: false,

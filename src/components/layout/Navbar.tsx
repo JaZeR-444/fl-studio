@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import { Menu, X, Search, Moon, Sun } from 'lucide-react';
+import { Menu, X, Search } from 'lucide-react';
 import { useAppContext } from '@/context/AppContext';
 
 // Get basePath for GitHub Pages compatibility
@@ -46,9 +46,7 @@ export const Navbar = () => {
     dispatch({ type: 'TOGGLE_MOBILE_MENU' });
   };
 
-  const toggleDarkMode = () => {
-    dispatch({ type: 'TOGGLE_DARK_MODE' });
-  };
+
 
   const openCommandPalette = () => {
     dispatch({ type: 'SET_COMMAND_PALETTE', payload: true });
@@ -159,19 +157,7 @@ export const Navbar = () => {
             </button>
           )}
 
-          {/* Theme Toggle */}
-          <button
-            onClick={toggleDarkMode}
-            className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all"
-            aria-label={state.darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-            title={state.darkMode ? 'Light mode' : 'Dark mode'}
-          >
-            {state.darkMode ? (
-              <Sun className="w-4 h-4 text-amber-400" />
-            ) : (
-              <Moon className="w-4 h-4 text-indigo-400" />
-            )}
-          </button>
+
 
           {/* External Link - Official FL Studio */}
           <Link 

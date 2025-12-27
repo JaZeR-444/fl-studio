@@ -166,20 +166,6 @@ export const Sidebar = ({
             </div>
           </div>
 
-        {/* Search Bar - Trigger Command Palette */}
-        <button 
-          onClick={onOpenCommandPalette}
-          className="search-bar w-full cursor-pointer hover:border-[var(--accent-secondary)] group"
-        >
-          <svg className="w-4 h-4 text-[var(--text-dim)] group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
-          <span className="flex-1 text-left text-sm text-[var(--text-dim)]">Search...</span>
-          <div className="search-shortcut group-hover:bg-white/10 transition-colors">
-            <span>Ctrl</span>
-            <span>K</span>
-          </div>
-        </button>
       </div>
 
       {/* Navigation */}

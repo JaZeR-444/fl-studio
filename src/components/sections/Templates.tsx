@@ -1,8 +1,92 @@
-import { useState } from 'react';
-import { SongTemplate } from '@/types';
+import { useState, useEffect } from 'react';
+import { SongTemplate, Difficulty, GenreColor } from '@/types';
+import { Heart, ChevronDown, ChevronUp, Download, Lightbulb, Plug, ChevronsUpDown } from 'lucide-react';
+
+// Genre color mapping for gradient backgrounds
+const genreColors: Record<string, GenreColor> = {
+  edm: { from: '#3B82F6', to: '#06B6D4' },
+  trap: { from: '#A855F7', to: '#EC4899' },
+  hiphop: { from: '#F97316', to: '#EAB308' },
+  pop: { from: '#EC4899', to: '#F43F5E' },
+  rock: { from: '#EF4444', to: '#F97316' },
+  lofi: { from: '#6366F1', to: '#A855F7' },
+  rnb: { from: '#8B5CF6', to: '#D946EF' },
+};
+
+// Difficulty colors
+const difficultyConfig: Record<Difficulty, { label: string; color: string; bg: string }> = {
+  beginner: { label: 'Beginner', color: 'text-green-400', bg: 'bg-green-500/20 border-green-500/30' },
+  intermediate: { label: 'Intermediate', color: 'text-yellow-400', bg: 'bg-yellow-500/20 border-yellow-500/30' },
+  advanced: { label: 'Advanced', color: 'text-red-400', bg: 'bg-red-500/20 border-red-500/30' },
+};
 
 export const TemplatesSection = () => {
   const [currentFilter, setCurrentFilter] = useState('all');
+  const [bpmFilter, setBpmFilter] = useState('all');
+  const [keyFilter, setKeyFilter] = useState('all');
+  const [difficultyFilter, setDifficultyFilter] = useState<Difficulty | 'all'>('all');
+  const [favorites, setFavorites] = useState<number[]>([]);
+  const [expandedCards, setExpandedCards] = useState<Record<number, boolean>>({});
+  const [allExpanded, setAllExpanded] = useState(false); // Start collapsed
+  const [expandedLayers, setExpandedLayers] = useState<Record<string, boolean>>({});
+
+  // Load favorites from localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem('fl-template-favorites');
+    if (saved) setFavorites(JSON.parse(saved));
+  }, []);
+
+  // Save favorites to localStorage
+  useEffect(() => {
+    localStorage.setItem('fl-template-favorites', JSON.stringify(favorites));
+  }, [favorites]);
+
+  const toggleFavorite = (id: number) => {
+    setFavorites(prev => prev.includes(id) ? prev.filter(f => f !== id) : [...prev, id]);
+  };
+
+  const toggleCard = (id: number) => {
+    const currentState = expandedCards[id] !== undefined ? expandedCards[id] : allExpanded;
+    setExpandedCards(prev => ({ ...prev, [id]: !currentState }));
+  };
+
+  const expandAllCards = () => {
+    setAllExpanded(true);
+    setExpandedCards({});
+  };
+
+  const collapseAllCards = () => {
+    setAllExpanded(false);
+    setExpandedCards({});
+  };
+
+  const toggleLayer = (key: string) => {
+    setExpandedLayers(prev => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  const handleDownload = (name: string) => {
+    alert(`🎵 "${name}.flp" template download coming soon!\n\nThis feature will provide FL Studio project files.`);
+  };
+
+  // Helper to enrich templates with default values
+  const getDifficulty = (bpm: number, layerCount: number): Difficulty => {
+    if (bpm < 100 && layerCount <= 5) return 'beginner';
+    if (bpm > 140 || layerCount > 6) return 'advanced';
+    return 'intermediate';
+  };
+
+  const getMixingTips = (genre: string): string[] => {
+    const tips: Record<string, string[]> = {
+      edm: ['Sidechain bass to kick at -4 to -6dB', 'Keep sub bass mono below 120Hz', 'Use stereo widening on leads above 200Hz'],
+      trap: ['Layer 808s with clean sub for punch', 'High-pass hi-hats at 300Hz', 'Use saturation on snares for presence'],
+      hiphop: ['Keep vocals 3-6dB above mix', 'Compress drums parallel for punch', 'Use subtle tape saturation for warmth'],
+      pop: ['Reference commercial tracks for loudness', 'Automate reverb for verse/chorus contrast', 'De-ess vocals at 5-8kHz'],
+      rock: ['Room mics add depth to drums', 'Double-track guitars for width', 'High-pass bass at 40Hz for clarity'],
+      lofi: ['Add subtle tape wobble for character', 'Roll off highs above 12kHz', 'Use vinyl crackle sparingly'],
+      rnb: ['Warm up vocals with subtle saturation', 'Use 1/4 note delays on vocals', 'Keep bass smooth with light compression'],
+    };
+    return tips[genre] || ['Balance all elements carefully', 'Use reference tracks'];
+  };
 
   // Song templates data
   const songTemplates: SongTemplate[] = [
@@ -1247,10 +1331,43 @@ export const TemplatesSection = () => {
   ];
 
   const genres = ['all', 'edm', 'trap', 'hiphop', 'pop', 'rock', 'lofi', 'rnb'];
+  const bpmRanges = [
+    { value: 'all', label: 'All BPM' },
+    { value: 'slow', label: 'Slow (60-99)' },
+    { value: 'medium', label: 'Medium (100-129)' },
+    { value: 'fast', label: 'Fast (130+)' },
+  ];
+  const keyTypes = [
+    { value: 'all', label: 'All Keys' },
+    { value: 'major', label: 'Major' },
+    { value: 'minor', label: 'Minor' },
+  ];
+  const difficulties: Array<{ value: Difficulty | 'all'; label: string }> = [
+    { value: 'all', label: 'All Levels' },
+    { value: 'beginner', label: 'Beginner' },
+    { value: 'intermediate', label: 'Intermediate' },
+    { value: 'advanced', label: 'Advanced' },
+  ];
+
+  // Enrich templates with computed values
+  const enrichedTemplates = songTemplates.map(t => ({
+    ...t,
+    difficulty: t.difficulty || getDifficulty(t.bpm, t.layers.length),
+    genreColor: t.genreColor || genreColors[t.genre] || genreColors.edm,
+    mixingTips: t.mixingTips || getMixingTips(t.genre),
+  }));
   
-  const filteredTemplates = currentFilter === 'all' 
-    ? songTemplates 
-    : songTemplates.filter(t => t.genre === currentFilter);
+  // Apply all filters
+  const filteredTemplates = enrichedTemplates.filter(t => {
+    if (currentFilter !== 'all' && t.genre !== currentFilter) return false;
+    if (bpmFilter === 'slow' && t.bpm >= 100) return false;
+    if (bpmFilter === 'medium' && (t.bpm < 100 || t.bpm >= 130)) return false;
+    if (bpmFilter === 'fast' && t.bpm < 130) return false;
+    if (keyFilter === 'major' && !t.key.toLowerCase().includes('major')) return false;
+    if (keyFilter === 'minor' && !t.key.toLowerCase().includes('minor')) return false;
+    if (difficultyFilter !== 'all' && t.difficulty !== difficultyFilter) return false;
+    return true;
+  });
 
   return (
     <section id="templates" className="page-section">
@@ -1292,79 +1409,231 @@ export const TemplatesSection = () => {
         </div>
       </div>
 
-        {/* Genre Filter Buttons */}
-        <div className="flex flex-wrap gap-2 mb-8">
-          {genres.map((genre) => (
-            <button
-              key={genre}
-              onClick={() => setCurrentFilter(genre)}
-              className={`template-filter px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
-                currentFilter === genre
-                  ? 'bg-purple-primary-700/40 text-purple-primary-200 shadow-purple-glow'
-                  : 'bg-purple-primary-700/20 text-purple-primary-300 hover:bg-purple-primary-700/30 hover:text-purple-primary-100'
-              }`}
+        {/* Enhanced Filter Bar */}
+        <div className="mb-8 space-y-4">
+          {/* Genre Buttons */}
+          <div className="flex flex-wrap gap-2">
+            {genres.map((genre) => (
+              <button
+                key={genre}
+                onClick={() => setCurrentFilter(genre)}
+                className={`template-filter px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+                  currentFilter === genre
+                    ? 'bg-purple-primary-700/40 text-purple-primary-200 shadow-purple-glow'
+                    : 'bg-purple-primary-700/20 text-purple-primary-300 hover:bg-purple-primary-700/30 hover:text-purple-primary-100'
+                }`}
+              >
+                {genre === 'all' ? 'All Templates' : genre.charAt(0).toUpperCase() + genre.slice(1)}
+              </button>
+            ))}
+          </div>
+          
+          {/* Advanced Filters */}
+          <div className="flex flex-wrap gap-3">
+            <select
+              value={bpmFilter}
+              onChange={(e) => setBpmFilter(e.target.value)}
+              className="px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm focus:border-purple-500 focus:outline-none"
             >
-              {genre === 'all' ? 'All Templates' : genre.charAt(0).toUpperCase() + genre.slice(1)}
+              {bpmRanges.map(opt => <option key={opt.value} value={opt.value} className="bg-gray-900">{opt.label}</option>)}
+            </select>
+            <select
+              value={keyFilter}
+              onChange={(e) => setKeyFilter(e.target.value)}
+              className="px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm focus:border-purple-500 focus:outline-none"
+            >
+              {keyTypes.map(opt => <option key={opt.value} value={opt.value} className="bg-gray-900">{opt.label}</option>)}
+            </select>
+            <select
+              value={difficultyFilter}
+              onChange={(e) => setDifficultyFilter(e.target.value as Difficulty | 'all')}
+              className="px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white text-sm focus:border-purple-500 focus:outline-none"
+            >
+              {difficulties.map(opt => <option key={opt.value} value={opt.value} className="bg-gray-900">{opt.label}</option>)}
+            </select>
+            <span className="text-sm text-white/50 self-center ml-2">
+              {filteredTemplates.length} template{filteredTemplates.length !== 1 ? 's' : ''}
+            </span>
+            <button
+              onClick={allExpanded ? collapseAllCards : expandAllCards}
+              className="ml-auto flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 text-sm transition-colors"
+            >
+              <ChevronsUpDown className="w-4 h-4" />
+              {allExpanded ? 'Collapse All' : 'Expand All'}
             </button>
-          ))}
+          </div>
         </div>
 
-        {/* Template Editor Modal */}
-      {/* (Modal logic would go here if implemented for Song Templates) */}
 
         {/* Templates Grid */}
         <div id="templates-container" className="space-y-8">
-          {filteredTemplates.map((template) => (
-            <div key={template.id} className="content-card overflow-hidden">
-              {/* Header */}
-              <div className="bg-gradient-button p-6 shadow-purple-glow">
-                <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-white glow-text">{template.name}</h3>
-                    <p className="text-purple-primary-200 text-sm mt-1 uppercase tracking-wide">{template.genre}</p>
-                    <p className="text-purple-primary-200 text-sm mt-2 opacity-90">{template.description}</p>
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/20">
-                      <span className="text-purple-primary-200 text-xs">BPM</span>
-                      <div className="text-white font-mono text-2xl font-bold">{template.bpm}</div>
-                    </div>
-                    <div className="bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/20">
-                      <span className="text-purple-primary-200 text-xs">Key</span>
-                      <div className="text-white font-bold">{template.key}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Production Layers */}
-              <div className="p-6">
-                <h4 className="text-xs font-bold text-purple-primary-400 uppercase mb-4">Production Elements</h4>
-                <div className="space-y-4">
-                  {template.layers.map((layer, index) => (
-                    <div key={index} className="border border-purple-primary-600/30 rounded-lg overflow-hidden">
-                      {/* Category Header */}
-                      <div className={`${layer.color} px-4 py-3 flex items-center justify-between`}>
-                        <h5 className="font-bold text-white uppercase tracking-wide text-sm">{layer.category}</h5>
-                        <span className="text-white/80 text-xs font-mono">{layer.elements.length} elements</span>
+          {filteredTemplates.map((template) => {
+            // Default to allExpanded, but individual toggle overrides
+            const isExpanded = expandedCards[template.id] !== undefined ? expandedCards[template.id] : allExpanded;
+            const diffConfig = difficultyConfig[template.difficulty];
+            
+            return (
+              <div 
+                key={template.id} 
+                className="content-card overflow-hidden transition-all duration-300"
+                style={{
+                  background: `linear-gradient(135deg, ${template.genreColor.from}15 0%, ${template.genreColor.to}15 100%)`,
+                  borderColor: `${template.genreColor.from}40`,
+                }}
+              >
+                {/* Header with gradient based on genre */}
+                <div 
+                  className="p-6 relative"
+                  style={{
+                    background: `linear-gradient(135deg, ${template.genreColor.from}40 0%, ${template.genreColor.to}40 100%)`,
+                  }}
+                >
+                  <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-2">
+                        <h3 className="text-2xl font-bold text-white">{template.name}</h3>
+                        <span className={`px-2 py-0.5 text-xs font-medium rounded border ${diffConfig.bg} ${diffConfig.color}`}>
+                          {diffConfig.label}
+                        </span>
                       </div>
+                      <p className="text-white/70 text-sm uppercase tracking-wide">{template.genre}</p>
+                      <p className="text-white/80 text-sm mt-2">{template.description}</p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      {/* Favorite Button */}
+                      <button
+                        onClick={() => toggleFavorite(template.id)}
+                        className={`p-2 rounded-lg transition-all ${
+                          favorites.includes(template.id)
+                            ? 'bg-pink-500/30 text-pink-400'
+                            : 'bg-white/10 text-white/50 hover:text-pink-400'
+                        }`}
+                        title={favorites.includes(template.id) ? 'Remove from favorites' : 'Add to favorites'}
+                      >
+                        <Heart className={`w-5 h-5 ${favorites.includes(template.id) ? 'fill-current' : ''}`} />
+                      </button>
+                      {/* BPM & Key */}
+                      <div className="bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/20">
+                        <span className="text-white/60 text-xs">BPM</span>
+                        <div className="text-white font-mono text-2xl font-bold">{template.bpm}</div>
+                      </div>
+                      <div className="bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/20">
+                        <span className="text-white/60 text-xs">Key</span>
+                        <div className="text-white font-bold">{template.key}</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Expand/Collapse Button */}
+                  <button
+                    onClick={() => toggleCard(template.id)}
+                    className="absolute bottom-2 right-4 text-white/50 hover:text-white flex items-center gap-1 text-xs"
+                  >
+                    {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                    {isExpanded ? 'Collapse' : 'Expand'}
+                  </button>
+                </div>
 
-                      {/* Elements List */}
-                      <div className="p-4 bg-purple-dark-800/30">
-                        <div className="flex flex-wrap gap-2">
-                          {layer.elements.map((element, idx) => (
-                            <span key={idx} className="badge badge-purple">
-                              {element}
-                            </span>
+                {/* Collapsible Content */}
+                <div className={`transition-all duration-300 overflow-hidden ${isExpanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                  {/* Channel Rack Style Layers */}
+                  <div className="p-6 pt-4">
+                    <div className="flex items-center justify-between mb-4">
+                      <h4 className="text-xs font-bold text-white/60 uppercase flex items-center gap-2">
+                        <span className="w-3 h-3 rounded bg-gradient-to-r from-purple-500 to-pink-500"></span>
+                        Channel Rack
+                      </h4>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => {
+                            const newState: Record<string, boolean> = {};
+                            template.layers.forEach((_, idx) => { newState[`${template.id}-${idx}`] = true; });
+                            setExpandedLayers(prev => ({ ...prev, ...newState }));
+                          }}
+                          className="text-xs text-white/50 hover:text-white px-2 py-1 rounded bg-white/5 hover:bg-white/10 transition-colors"
+                        >
+                          Expand All
+                        </button>
+                        <button
+                          onClick={() => {
+                            const newState: Record<string, boolean> = {};
+                            template.layers.forEach((_, idx) => { newState[`${template.id}-${idx}`] = false; });
+                            setExpandedLayers(prev => ({ ...prev, ...newState }));
+                          }}
+                          className="text-xs text-white/50 hover:text-white px-2 py-1 rounded bg-white/5 hover:bg-white/10 transition-colors"
+                        >
+                          Collapse All
+                        </button>
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      {template.layers.map((layer, index) => {
+                        const layerKey = `${template.id}-${index}`;
+                        const isLayerExpanded = expandedLayers[layerKey];
+                        
+                        return (
+                          <div key={index} className="group">
+                            {/* Channel Rack Bar */}
+                            <button
+                              onClick={() => toggleLayer(layerKey)}
+                              className="w-full flex items-center gap-3 p-2 rounded-lg bg-black/20 hover:bg-black/30 transition-colors"
+                            >
+                              <div className={`w-4 h-8 rounded ${layer.color}`}></div>
+                              <span className="text-white font-medium text-sm flex-1 text-left">{layer.category}</span>
+                              <span className="text-white/50 text-xs font-mono">{layer.elements.length}</span>
+                              {isLayerExpanded ? <ChevronUp className="w-4 h-4 text-white/50" /> : <ChevronDown className="w-4 h-4 text-white/50" />}
+                            </button>
+                            
+                            {/* Expanded Elements */}
+                            <div className={`transition-all duration-200 overflow-hidden ${isLayerExpanded ? 'max-h-40 mt-2' : 'max-h-0'}`}>
+                              <div className="pl-7 flex flex-wrap gap-2">
+                                {layer.elements.map((element, idx) => (
+                                  <span key={idx} className="px-2 py-1 text-xs rounded bg-white/10 text-white/80">
+                                    {element}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Mixing Tips */}
+                  {template.mixingTips && template.mixingTips.length > 0 && (
+                    <div className="px-6 pb-4">
+                      <div className="p-4 rounded-lg bg-amber-500/10 border border-amber-500/20">
+                        <h4 className="text-xs font-bold text-amber-400 uppercase mb-2 flex items-center gap-2">
+                          <Lightbulb className="w-4 h-4" />
+                          Mixing Tips
+                        </h4>
+                        <ul className="space-y-1">
+                          {template.mixingTips.map((tip, idx) => (
+                            <li key={idx} className="text-sm text-amber-200/80 flex items-start gap-2">
+                              <span className="text-amber-400">•</span>
+                              {tip}
+                            </li>
                           ))}
-                        </div>
+                        </ul>
                       </div>
                     </div>
-                  ))}
+                  )}
+
+                  {/* Download Button */}
+                  <div className="px-6 pb-6">
+                    <button
+                      onClick={() => handleDownload(template.name)}
+                      className="w-full py-3 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-medium flex items-center justify-center gap-2 transition-all"
+                    >
+                      <Download className="w-5 h-5" />
+                      Download {template.name}.flp
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       
 

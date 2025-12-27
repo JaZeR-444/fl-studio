@@ -18,6 +18,18 @@ export interface Flashcard {
 }
 
 // Song template types
+export type Difficulty = 'beginner' | 'intermediate' | 'advanced';
+
+export interface GenreColor {
+  from: string;
+  to: string;
+}
+
+export interface RecommendedPlugin {
+  name: string;
+  pluginId?: string; // Optional link to plugin database
+}
+
 export interface SongTemplate {
   id: number;
   genre: string;
@@ -26,12 +38,17 @@ export interface SongTemplate {
   key: string;
   description: string;
   layers: Layer[];
+  difficulty?: Difficulty;
+  mixingTips?: string[];
+  genreColor?: GenreColor;
+  downloadUrl?: string;
 }
 
 export interface Layer {
   category: string;
   color: string;
   elements: string[];
+  recommendedPlugins?: RecommendedPlugin[];
 }
 
 // Plugin types

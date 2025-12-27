@@ -82,7 +82,7 @@ FL Studio Master Hub provides a centralized intelligence platform that enables p
 - **Routing Diagrams** with detailed explanations
 
 ### 🎨 **Downloadable Project Templates**
-- **31 Song Blueprints** with pre-configured channels, mixer tracks, and routing
+- **45 Song Blueprints** with pre-configured channels, mixer tracks, and routing
 - **Smart Download System** - Real .flp files with JSON fallback
 - **BPM & Key Presets** aligned with genre conventions (70-174 BPM range)
 - **Layered Structure Visualization** for understanding arrangement patterns

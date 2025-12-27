@@ -1405,10 +1405,485 @@ export const TemplatesSection = () => {
           elements: ['Lead Vocal', 'Vocal Layers', 'Harmonies', 'Ad-libs']
         }
       ]
+    },
+    {
+      id: 32,
+      genre: 'edm',
+      name: 'Synthwave',
+      bpm: 100,
+      key: 'E Minor',
+      description: 'Retro 80s synthwave with lush analog pads and driving basslines',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Gated Reverb Snare', 'Four-on-Floor Kick', 'Tom Fills', 'Closed Hi-Hat']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Analog Bass', 'Sub Layer']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Lead Synth (saw/square)', 'Arpeggio', 'Synth Bell']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['Lush Pad', 'Strings', 'Brass Stabs']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Tape Delay', 'Reverb Wash', 'Vinyl Crackle']
+        }
+      ]
+    },
+    {
+      id: 33,
+      genre: 'edm',
+      name: 'Bass House',
+      bpm: 126,
+      key: 'G Minor',
+      description: 'Heavy bass house with wobble bass and punchy drums',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Punchy Kick', 'Clap', 'Closed Hi-Hat', 'Open Hi-Hat', 'Shaker']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Wobble Bass', 'Sub Bass', 'Bass Stab']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Vocal Sample', 'Stab Synth', 'Lead Hook']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['White Noise Build', 'Downlifter', 'Impact']
+        }
+      ]
+    },
+    {
+      id: 34,
+      genre: 'edm',
+      name: 'Hardstyle',
+      bpm: 150,
+      key: 'D Minor',
+      description: 'Hard-hitting hardstyle with reverse bass and euphoric leads',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Distorted Kick', 'Reverse Bass Kick', 'Clap', 'Ride Cymbal', 'Crash']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Screeching Bass', 'Sub Bass']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Euphoric Lead', 'Pitched Kick', 'Vocal Chops']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['Pad', 'Atmospheric Layer']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Buildup Riser', 'Alarm', 'Siren FX']
+        }
+      ]
+    },
+    {
+      id: 35,
+      genre: 'afrobeats',
+      name: 'Afrobeats',
+      bpm: 102,
+      key: 'C Major',
+      description: 'Infectious afrobeats with log drums and percussion',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Kick', 'Snare/Rim', 'Log Drum', 'Shekere', 'Conga', 'Hi-Hat']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Sub Bass', 'Melodic Bass']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Synth Lead', 'Keys', 'Kalimba', 'Guitar Lick']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['Pad', 'Horn Section', 'Strings']
+        },
+        {
+          category: 'Vocals',
+          color: 'bg-pink-500',
+          elements: ['Lead Vocal', 'Backing Vocals', 'Ad-libs']
+        }
+      ]
+    },
+    {
+      id: 36,
+      genre: 'reggaeton',
+      name: 'Reggaeton',
+      bpm: 95,
+      key: 'A Minor',
+      description: 'Classic reggaeton with dembow rhythm and Latin percussion',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Kick (dembow pattern)', 'Snare', 'Timbale', 'Bongo', 'Hi-Hat']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['808 Bass', 'Sub Bass']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Synth Lead', 'Piano', 'Pluck']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['Pad', 'Brass', 'String Stabs']
+        },
+        {
+          category: 'Vocals',
+          color: 'bg-pink-500',
+          elements: ['Lead Vocal (Spanish)', 'Backing Vocals', 'Ad-libs', 'Shouts']
+        }
+      ]
+    },
+    {
+      id: 37,
+      genre: 'club',
+      name: 'Jersey Club',
+      bpm: 140,
+      key: 'F# Minor',
+      description: 'High-energy Jersey club with chopped vocals and bed squeaks',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Kick', 'Snare', 'Bed Squeak', 'Hi-Hat', 'Percussion']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Sub Bass', '808 Bass']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Chopped Vocal', 'Synth Stab', 'Lead']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Airhorn', 'Siren', 'Vocal Chops']
+        }
+      ]
+    },
+    {
+      id: 38,
+      genre: 'phonk',
+      name: 'Phonk',
+      bpm: 130,
+      key: 'G# Minor',
+      description: 'Dark phonk with Memphis samples and cowbell',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Kick', 'Snare', 'Cowbell', 'Hi-Hat Rolls', 'Cymbal']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['808 Bass (distorted)', 'Sub Bass']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Memphis Sample', 'Dark Bell', 'Synth Lead']
+        },
+        {
+          category: 'Vocals',
+          color: 'bg-pink-500',
+          elements: ['Vocal Sample (pitched down)', 'Three 6 Mafia Sample']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Vinyl Crackle', 'Tape Stop', 'Reverb Wash']
+        }
+      ]
+    },
+    {
+      id: 39,
+      genre: 'pop',
+      name: 'Hyperpop',
+      bpm: 170,
+      key: 'B Major',
+      description: 'Maximalist hyperpop with pitch-shifted vocals and distorted bass',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Distorted Kick', 'Clap', 'Hi-Hat (double-time)', 'Percussion']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Distorted Bass', 'Sub Bass', 'Bass Glitch']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Hypersaw Lead', 'Pitched Vocal Chops', 'Synth Bell']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['Supersaw Pad', 'Detuned Synth']
+        },
+        {
+          category: 'Vocals',
+          color: 'bg-pink-500',
+          elements: ['Pitch-Shifted Vocal', 'Harmonies', 'Vocal Chops']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Glitch FX', 'Bitcrush', 'Reverb', 'Distortion']
+        }
+      ]
+    },
+    {
+      id: 40,
+      genre: 'breakbeat',
+      name: 'Breakbeat',
+      bpm: 138,
+      key: 'E Minor',
+      description: 'Funky breakbeat with chopped drum loops and bass',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Amen Break', 'Additional Kick', 'Snare Layer', 'Cymbal']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Reese Bass', 'Sub Bass']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Synth Stab', 'Lead', 'Vocal Sample']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Scratch FX', 'Siren', 'Reverse Cymbal']
+        }
+      ]
+    },
+    {
+      id: 41,
+      genre: 'edm',
+      name: 'Psytrance',
+      bpm: 145,
+      key: 'D Minor',
+      description: 'Psychedelic trance with rolling bassline and trippy FX',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Kick', 'Hi-Hat (16th triplets)', 'Percussion Loop', 'Cymbal']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Rolling Bassline', 'Sub Bass']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Acid Lead', 'Pluck Sequence', 'Synth Riff']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Psychedelic FX', 'Laser', 'Reverse Sweep', 'Voice Sample']
+        }
+      ]
+    },
+    {
+      id: 42,
+      genre: 'ambient',
+      name: 'Ambient',
+      bpm: 80,
+      key: 'C Major',
+      description: 'Atmospheric ambient with evolving pads and field recordings',
+      layers: [
+        {
+          category: 'Pads',
+          color: 'bg-purple-500',
+          elements: ['Evolving Pad', 'Granular Texture', 'Drone', 'String Layer']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Sparse Piano', 'Synth Bell', 'Melodic Texture']
+        },
+        {
+          category: 'Atmosphere',
+          color: 'bg-green-500',
+          elements: ['Field Recording', 'Nature Sounds', 'Rain', 'Wind']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Reverb Tail', 'Delay Wash', 'Granular Glitch']
+        }
+      ]
+    },
+    {
+      id: 43,
+      genre: 'vaporwave',
+      name: 'Vaporwave',
+      bpm: 70,
+      key: 'F# Major',
+      description: 'Nostalgic vaporwave with slowed samples and dreamy aesthetics',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Slow Kick', 'Snare', 'Hi-Hat']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Sub Bass', 'Synth Bass']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Slowed Sample', 'Chopped Vocal', 'Synth Lead', 'Elevator Music']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['Dreamy Pad', 'Detuned Synth', 'FM Rhodes']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Vinyl Noise', 'Bitcrush', 'VHS Glitch', 'Reverb Wash']
+        }
+      ]
+    },
+    {
+      id: 44,
+      genre: 'trap',
+      name: 'Latin Trap',
+      bpm: 96,
+      key: 'B Minor',
+      description: 'Latin trap with reggaeton influence and Spanish vocals',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['808 Kick', 'Snare', 'Hi-Hat Rolls', 'Timbale', 'Rim Click']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['808 Bass (sliding)', 'Sub Bass']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Flute', 'Guitar', 'Piano', 'Synth Lead']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['Pad', 'Strings']
+        },
+        {
+          category: 'Vocals',
+          color: 'bg-pink-500',
+          elements: ['Spanish Vocal', 'Harmonies', 'Ad-libs']
+        }
+      ]
+    },
+    {
+      id: 45,
+      genre: 'garage',
+      name: 'UK Garage',
+      bpm: 130,
+      key: 'G Minor',
+      description: '2-step UK garage with shuffled drums and soulful vocals',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Kick (2-step pattern)', 'Snare', 'Shuffled Hi-Hat', 'Rim', 'Percussion']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Sub Bass', 'Wobble Bass']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Vocal Chops', 'Rhodes Piano', 'Organ']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['Pad', 'Strings']
+        },
+        {
+          category: 'Vocals',
+          color: 'bg-pink-500',
+          elements: ['Soulful Vocal', 'Harmonies', 'Vocal Sample']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Reverb', 'Delay', 'Vinyl Crackle']
+        }
+      ]
     }
   ];
 
-  const genres = ['all', 'edm', 'trap', 'hiphop', 'pop', 'rock', 'lofi', 'rnb'];
+  const genres = ['all', 'edm', 'trap', 'hiphop', 'pop', 'rock', 'lofi', 'rnb', 'afrobeats', 'reggaeton', 'club', 'phonk', 'breakbeat', 'ambient', 'vaporwave', 'garage'];
   const bpmRanges = [
     { value: 'all', label: 'All BPM' },
     { value: 'slow', label: 'Slow (60-99)' },

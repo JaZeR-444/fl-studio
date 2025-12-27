@@ -16,7 +16,7 @@ const generateSlug = (genre, name) => {
   return `${genre}-${cleanName}`;
 };
 
-// Sample templates (in production, this would parse Templates.tsx)
+// All 45 templates from Templates.tsx
 const templates = [
   { genre: 'edm', name: 'Progressive House' },
   { genre: 'edm', name: 'Melodic Dubstep' },
@@ -49,6 +49,20 @@ const templates = [
   { genre: 'rnb', name: 'Neo Soul' },
   { genre: 'rnb', name: 'Alternative R&B' },
   { genre: 'rnb', name: 'Trap Soul' },
+  { genre: 'edm', name: 'Synthwave' },
+  { genre: 'edm', name: 'Bass House' },
+  { genre: 'edm', name: 'Hardstyle' },
+  { genre: 'afrobeats', name: 'Afrobeats' },
+  { genre: 'reggaeton', name: 'Reggaeton' },
+  { genre: 'club', name: 'Jersey Club' },
+  { genre: 'phonk', name: 'Phonk' },
+  { genre: 'pop', name: 'Hyperpop' },
+  { genre: 'breakbeat', name: 'Breakbeat' },
+  { genre: 'edm', name: 'Psytrance' },
+  { genre: 'ambient', name: 'Ambient' },
+  { genre: 'vaporwave', name: 'Vaporwave' },
+  { genre: 'trap', name: 'Latin Trap' },
+  { genre: 'garage', name: 'UK Garage' },
 ];
 
 // Generate list

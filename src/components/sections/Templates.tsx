@@ -64,8 +64,86 @@ export const TemplatesSection = () => {
     setExpandedLayers(prev => ({ ...prev, [key]: !prev[key] }));
   };
 
-  const handleDownload = (name: string) => {
-    alert(`🎵 "${name}.flp" template download coming soon!\n\nThis feature will provide FL Studio project files.`);
+  // Generate filename slug from template name and genre
+  const generateSlug = (genre: string, name: string): string => {
+    const cleanName = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    return `${genre}-${cleanName}`;
+  };
+
+  // Download template as .flp file or JSON fallback
+  const handleDownload = (template: SongTemplate) => {
+    const slug = generateSlug(template.genre, template.name);
+    const flpFilename = `${slug}.flp`;
+    const flpPath = `/templates/${flpFilename}`;
+
+    // Try to download .flp file first
+    fetch(flpPath, { method: 'HEAD' })
+      .then(response => {
+        if (response.ok) {
+          // .flp file exists, download it
+          const link = document.createElement('a');
+          link.href = flpPath;
+          link.download = flpFilename;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        } else {
+          // .flp file doesn't exist, offer JSON export instead
+          downloadTemplateJSON(template, slug);
+        }
+      })
+      .catch(() => {
+        // Network error or file doesn't exist, use JSON fallback
+        downloadTemplateJSON(template, slug);
+      });
+  };
+
+  // Export template configuration as JSON
+  const downloadTemplateJSON = (template: SongTemplate, slug: string) => {
+    const templateData = {
+      ...template,
+      exportedFrom: 'FL Studio Master Hub',
+      exportDate: new Date().toISOString(),
+      instructions: [
+        '1. Open FL Studio and create a new project',
+        `2. Set BPM to ${template.bpm} and key to ${template.key}`,
+        '3. Create the following channels/layers:',
+        ...template.layers.flatMap((layer, idx) =>
+          [`   ${idx + 1}. ${layer.category}:`, ...layer.elements.map(e => `      - ${e}`)]
+        ),
+        '4. Route channels to mixer tracks and color-code them',
+        '5. Save your project and start producing!',
+      ],
+      mixingTips: getMixingTips(template.genre),
+      recommendedPlugins: template.layers.flatMap(layer =>
+        layer.recommendedPlugins || []
+      ).filter((plugin, index, self) =>
+        index === self.findIndex(p => p.name === plugin.name)
+      ),
+    };
+
+    const jsonString = JSON.stringify(templateData, null, 2);
+    const blob = new Blob([jsonString], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `${slug}-template.json`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+
+    // Show helpful message
+    alert(
+      `📋 Template Configuration Downloaded\n\n` +
+      `The .flp file for "${template.name}" is not yet available.\n\n` +
+      `Instead, we've downloaded a JSON file with:\n` +
+      `• Complete layer structure\n` +
+      `• Step-by-step setup instructions\n` +
+      `• Mixing tips for ${template.genre}\n` +
+      `• Recommended plugins\n\n` +
+      `Use this as a blueprint to set up the template manually in FL Studio.`
+    );
   };
 
   // Helper to enrich templates with default values
@@ -1623,11 +1701,11 @@ export const TemplatesSection = () => {
                   {/* Download Button */}
                   <div className="px-6 pb-6">
                     <button
-                      onClick={() => handleDownload(template.name)}
-                      className="w-full py-3 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-medium flex items-center justify-center gap-2 transition-all"
+                      onClick={() => handleDownload(template)}
+                      className="w-full py-3 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-medium flex items-center justify-center gap-2 transition-all hover:scale-[1.02]"
                     >
                       <Download className="w-5 h-5" />
-                      Download {template.name}.flp
+                      Download Template
                     </button>
                   </div>
                 </div>

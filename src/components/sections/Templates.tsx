@@ -1880,6 +1880,721 @@ export const TemplatesSection = () => {
           elements: ['Reverb', 'Delay', 'Vinyl Crackle']
         }
       ]
+    },
+    {
+      id: 46,
+      genre: 'trap',
+      name: 'Sad Trap',
+      bpm: 140,
+      key: 'D Minor',
+      description: 'Emotional trap with melancholic melodies and reverb-drenched vocals',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Soft Kick', 'Layered Snare', 'Hi-Hat Rolls', 'Rim Click']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['808 Bass (sustained)', 'Sub Bass']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Sad Piano', 'Guitar', 'Bell']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['Lush Pad', 'Strings', 'Ambient Texture']
+        },
+        {
+          category: 'Vocals',
+          color: 'bg-pink-500',
+          elements: ['Vocal (heavy reverb)', 'Harmonies', 'Vocal Chops']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Rain FX', 'Reverb Tail', 'Vinyl Crackle']
+        }
+      ]
+    },
+    {
+      id: 47,
+      genre: 'trap',
+      name: 'Heavy Trap',
+      bpm: 145,
+      key: 'E Minor',
+      description: 'Aggressive trap with distorted 808s and hard-hitting drums',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Hard Kick', 'Layered Clap', 'Hi-Hat Rolls (1/32)', 'Crash']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Distorted 808', 'Sub Bass (compressed)']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Dark Synth', 'Brass Stab', 'Lead']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Riser', 'Impact', 'Glitch FX', 'Siren']
+        }
+      ]
+    },
+    {
+      id: 48,
+      genre: 'trap',
+      name: 'Drill',
+      bpm: 140,
+      key: 'C# Minor',
+      description: 'Chicago/Brooklyn drill with sliding 808s and ominous piano',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Punchy Kick', 'Snare', 'Hi-Hat (double-time)', 'Cymbal']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Sliding 808', 'Sub Bass']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Dark Piano', 'Bell', 'String Pluck']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['Pad', 'Choir']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Gunshot', 'Reverse Cymbal', 'Riser']
+        }
+      ]
+    },
+    {
+      id: 49,
+      genre: 'trap',
+      name: 'Plugg',
+      bpm: 135,
+      key: 'F# Major',
+      description: 'Melodic plugg trap with dreamy bells and airy hi-hats',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Soft Kick', 'Clap', 'Airy Hi-Hat', 'Shaker']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['808 Bass (melodic)', 'Sub Layer']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Bell', 'Flute', 'Music Box', 'Guitar']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['Dreamy Pad', 'Ambient Texture']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Vinyl Noise', 'Reverb Wash', 'Delay']
+        }
+      ]
+    },
+    {
+      id: 50,
+      genre: 'hiphop',
+      name: 'NY Drill',
+      bpm: 140,
+      key: 'A Minor',
+      description: 'New York drill with aggressive sliding 808s and dark samples',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Heavy Kick', 'Clap', 'Hi-Hat (triplet rolls)', 'Snare Roll']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Sliding 808 (aggressive)', 'Distorted Sub']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Dark Sample', 'Piano Stab', 'String']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Vocal Tag', 'Gunshot', 'Siren', 'Reverse']
+        }
+      ]
+    },
+    {
+      id: 51,
+      genre: 'hiphop',
+      name: 'West Coast',
+      bpm: 90,
+      key: 'G Major',
+      description: 'Classic West Coast hip hop with funk bassline and synth leads',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Kick', 'Snare (layered)', 'Hi-Hat (swung)', 'Tambourine']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Funk Bass', 'Sub Layer']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Synth Lead', 'Rhodes', 'Whistle']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['Pad', 'Organ', 'Strings']
+        },
+        {
+          category: 'Vocals',
+          color: 'bg-pink-500',
+          elements: ['Vocal', 'Harmonies', 'Ad-libs']
+        }
+      ]
+    },
+    {
+      id: 52,
+      genre: 'hiphop',
+      name: 'Southern Hip Hop',
+      bpm: 75,
+      key: 'E Minor',
+      description: 'Southern bounce with heavy 808s and brass stabs',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Kick', 'Snare', 'Hi-Hat (bouncing pattern)', 'Rim', 'Cowbell']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Heavy 808', 'Sub Bass']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Brass Stab', 'Piano', 'Organ']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['Strings', 'Choir']
+        },
+        {
+          category: 'Vocals',
+          color: 'bg-pink-500',
+          elements: ['Vocal', 'Call & Response', 'Ad-libs']
+        }
+      ]
+    },
+    {
+      id: 53,
+      genre: 'hiphop',
+      name: 'Jazz Rap',
+      bpm: 88,
+      key: 'Bb Major',
+      description: 'Jazz-influenced hip hop with live instrumentation feel',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Kick (acoustic)', 'Snare (brush)', 'Hi-Hat (swung)', 'Cymbal Ride']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Upright Bass', 'Sub Layer']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Saxophone', 'Trumpet', 'Rhodes Piano', 'Guitar']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['Jazz Chords', 'Strings']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Vinyl Crackle', 'Tape Hiss', 'Record Scratch']
+        }
+      ]
+    },
+    {
+      id: 54,
+      genre: 'pop',
+      name: 'K-Pop',
+      bpm: 130,
+      key: 'C Major',
+      description: 'High-energy K-Pop with layered vocals and dynamic production',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Punchy Kick', 'Snare/Clap', 'Hi-Hat', 'Percussion', 'Handclap']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Synth Bass', 'Sub Bass']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Synth Lead', 'Bell', 'Pluck', 'Brass Stab']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['Pad', 'Strings', 'Choir']
+        },
+        {
+          category: 'Vocals',
+          color: 'bg-pink-500',
+          elements: ['Lead Vocal', 'Harmonies (3-4 layers)', 'Rap Section', 'Ad-libs']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Riser', 'Impact', 'Vocal Chops', 'Glitch FX']
+        }
+      ]
+    },
+    {
+      id: 55,
+      genre: 'pop',
+      name: 'Alt Pop',
+      bpm: 110,
+      key: 'A Minor',
+      description: 'Alternative pop with experimental production and moody vibes',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Processed Kick', 'Snare (reverb)', 'Hi-Hat (glitchy)', 'Percussion']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Sub Bass', 'Distorted Bass']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Detuned Synth', 'Guitar', 'Piano']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['Dark Pad', 'Strings', 'Ambient Layer']
+        },
+        {
+          category: 'Vocals',
+          color: 'bg-pink-500',
+          elements: ['Vocal (processed)', 'Harmonies', 'Vocal Chops']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Glitch', 'Bitcrush', 'Reverb', 'Delay']
+        }
+      ]
+    },
+    {
+      id: 56,
+      genre: 'pop',
+      name: 'Dream Pop',
+      bpm: 115,
+      key: 'E Major',
+      description: 'Ethereal dream pop with reverb-soaked guitars and ambient textures',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Soft Kick', 'Snare (distant)', 'Hi-Hat', 'Shaker']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Bass Guitar (reverb)', 'Sub Layer']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Reverb Guitar', 'Synth Lead', 'Bell']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['Lush Pad', 'Strings', 'Choir', 'Ambient Texture']
+        },
+        {
+          category: 'Vocals',
+          color: 'bg-pink-500',
+          elements: ['Ethereal Vocal', 'Harmonies (layered)', 'Vocal Pad']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Reverb Wash', 'Delay', 'Shimmer']
+        }
+      ]
+    },
+    {
+      id: 57,
+      genre: 'pop',
+      name: 'Bedroom Pop',
+      bpm: 100,
+      key: 'G Major',
+      description: 'Lo-fi bedroom pop with intimate vocals and DIY production aesthetic',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Soft Kick', 'Snare (lo-fi)', 'Hi-Hat', 'Shaker', 'Tambourine']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Bass Guitar', 'Sub Layer']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Guitar (DI)', 'Synth', 'Piano', 'Ukulele']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['Pad', 'Ambient Guitar']
+        },
+        {
+          category: 'Vocals',
+          color: 'bg-pink-500',
+          elements: ['Intimate Vocal', 'Harmonies', 'Whisper Layer']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Vinyl Noise', 'Tape Warble', 'Room Reverb']
+        }
+      ]
+    },
+    {
+      id: 58,
+      genre: 'rock',
+      name: 'Punk Rock',
+      bpm: 180,
+      key: 'D Major',
+      description: 'Fast-paced punk rock with distorted guitars and driving drums',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Kick (fast)', 'Snare (punchy)', 'Hi-Hat (8th notes)', 'Crash', 'Ride']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Bass Guitar (distorted)', 'Root Notes']
+        },
+        {
+          category: 'Guitar',
+          color: 'bg-blue-500',
+          elements: ['Rhythm Guitar (power chords)', 'Lead Guitar', 'Palm Mute']
+        },
+        {
+          category: 'Vocals',
+          color: 'bg-pink-500',
+          elements: ['Raw Vocal', 'Gang Vocals', 'Shouts']
+        }
+      ]
+    },
+    {
+      id: 59,
+      genre: 'rock',
+      name: 'Post-Punk',
+      bpm: 140,
+      key: 'A Minor',
+      description: 'Dark post-punk with angular guitars and driving bass',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Kick', 'Snare (reverb)', 'Hi-Hat', 'Tom Fills']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Bass Guitar (prominent)', 'Melodic Bassline']
+        },
+        {
+          category: 'Guitar',
+          color: 'bg-blue-500',
+          elements: ['Angular Guitar', 'Tremolo Guitar', 'Reverb Guitar']
+        },
+        {
+          category: 'Synth',
+          color: 'bg-green-500',
+          elements: ['Synth Pad', 'Synth Bass']
+        },
+        {
+          category: 'Vocals',
+          color: 'bg-pink-500',
+          elements: ['Baritone Vocal', 'Harmonies', 'Spoken Word']
+        }
+      ]
+    },
+    {
+      id: 60,
+      genre: 'rock',
+      name: 'Emo',
+      bpm: 155,
+      key: 'E Minor',
+      description: 'Emotional emo rock with dynamic shifts and passionate vocals',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Kick (dynamic)', 'Snare', 'Hi-Hat', 'Crash (emotional hits)', 'Tom Fills']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Bass Guitar', 'Root Notes']
+        },
+        {
+          category: 'Guitar',
+          color: 'bg-blue-500',
+          elements: ['Clean Arpeggios', 'Distorted Power Chords', 'Lead Guitar', 'Tapping']
+        },
+        {
+          category: 'Vocals',
+          color: 'bg-pink-500',
+          elements: ['Emotional Vocal', 'Screams', 'Harmonies', 'Gang Vocals']
+        }
+      ]
+    },
+    {
+      id: 61,
+      genre: 'rock',
+      name: 'Grunge',
+      bpm: 120,
+      key: 'E Minor',
+      description: 'Raw grunge with heavy distortion and dropped-D tuning',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Kick', 'Snare (heavy)', 'Hi-Hat', 'Crash', 'Ride']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Bass Guitar (fuzz)', 'Dropped Tuning']
+        },
+        {
+          category: 'Guitar',
+          color: 'bg-blue-500',
+          elements: ['Distorted Rhythm (dropped-D)', 'Lead Guitar', 'Feedback']
+        },
+        {
+          category: 'Vocals',
+          color: 'bg-pink-500',
+          elements: ['Raw Vocal', 'Harmonies', 'Screams']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Guitar Feedback', 'Amp Noise']
+        }
+      ]
+    },
+    {
+      id: 62,
+      genre: 'lofi',
+      name: 'Lo-Fi Trap',
+      bpm: 140,
+      key: 'C Minor',
+      description: 'Lo-fi meets trap with dusty samples and hard-hitting 808s',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Kick (dusty)', 'Snare', 'Hi-Hat Rolls', 'Vinyl Drums']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['808 Bass', 'Sub Bass']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Dusty Piano', 'Guitar Sample', 'Bell']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['Warm Pad', 'String Sample']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Vinyl Crackle', 'Tape Hiss', 'Bitcrush']
+        }
+      ]
+    },
+    {
+      id: 63,
+      genre: 'lofi',
+      name: 'Study Beats',
+      bpm: 75,
+      key: 'F Major',
+      description: 'Minimal lo-fi study beats with soft drums and warm textures',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Soft Kick', 'Snare (brushed)', 'Hi-Hat (closed)', 'Shaker']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Sub Bass (warm)', 'Bass Guitar']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Rhodes Piano', 'Guitar (mellow)', 'Kalimba']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['Pad', 'Strings (soft)']
+        },
+        {
+          category: 'Ambient',
+          color: 'bg-indigo-500',
+          elements: ['Rain', 'Café Ambience', 'Page Turning']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Vinyl Noise', 'Tape Warble']
+        }
+      ]
+    },
+    {
+      id: 64,
+      genre: 'lofi',
+      name: 'Dusty Vinyl',
+      bpm: 82,
+      key: 'D Minor',
+      description: 'Classic dusty lo-fi with heavy vinyl texture and soul samples',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Kick (dusty)', 'Snare (vintage)', 'Hi-Hat', 'Vinyl Break']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Bass Sample', 'Sub Layer']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Soul Sample', 'Piano (degraded)', 'Guitar', 'Horn']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['String Sample', 'Choir Sample']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Heavy Vinyl Crackle', 'Tape Hiss', 'Record Pop', 'Dust']
+        }
+      ]
+    },
+    {
+      id: 65,
+      genre: 'lofi',
+      name: 'Bedroom Lo-Fi',
+      bpm: 78,
+      key: 'A Minor',
+      description: 'Intimate bedroom lo-fi with live instrumentation feel',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Kick (lo-fi)', 'Snare', 'Brush Hi-Hat', 'Finger Snap']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Bass Guitar (DI)', 'Sub Layer']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Guitar (fingerpicked)', 'Rhodes', 'Toy Piano']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['Pad', 'Humming Layer']
+        },
+        {
+          category: 'Ambient',
+          color: 'bg-indigo-500',
+          elements: ['Room Tone', 'Birds', 'Distant Traffic']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Tape Warble', 'Vinyl Crackle', 'Cassette Hiss']
+        }
+      ]
     }
   ];
 

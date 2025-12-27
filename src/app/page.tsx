@@ -161,7 +161,7 @@ export default function HomePage() {
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed mb-8">
             Comprehensive documentation for all 128 native FL Studio plugins, 12 professional signal chains,
-            and 65 genre-specific templates to accelerate your workflow.
+            and 63 genre-specific templates to accelerate your workflow.
           </p>
 
           {/* CTAs */}
@@ -222,7 +222,7 @@ export default function HomePage() {
               <div className="text-sm text-[var(--text-muted)]">Signal Chains</div>
             </div>
             <div>
-              <div className="text-4xl md:text-5xl font-black text-white mb-1">65</div>
+              <div className="text-4xl md:text-5xl font-black text-white mb-1">63</div>
               <div className="text-sm text-[var(--text-muted)]">Song Templates</div>
             </div>
             <div>
@@ -279,7 +279,7 @@ export default function HomePage() {
                 <Target className="w-7 h-7 text-green-400 animate-icon-target" />
               </div>
               <h3 className="text-xl font-bold text-white mb-2 group-hover:text-green-400 transition-colors">Song Blueprints</h3>
-              <p className="text-[var(--text-muted)] mb-4">65 genre-specific project templates with pre-routed mixer tracks, instrument selections, and tempo/key configurations.</p>
+              <p className="text-[var(--text-muted)] mb-4">63 genre-specific project templates with pre-routed mixer tracks, instrument selections, and tempo/key configurations.</p>
               <div className="flex items-center text-green-400 font-medium text-sm">
                 <span>Get templates</span>
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -347,7 +347,7 @@ export default function HomePage() {
                 <span className="text-2xl font-black text-purple-400">1</span>
               </div>
               <h3 className="text-lg font-bold text-white mb-2">Access the Database</h3>
-              <p className="text-[var(--text-muted)] text-sm">Browse 128 plugin specifications, 12 signal chains, and 65 production templates—all organized by category and use case.</p>
+              <p className="text-[var(--text-muted)] text-sm">Browse 128 plugin specifications, 12 signal chains, and 63 production templates—all organized by category and use case.</p>
             </div>
 
             <div className="text-center">

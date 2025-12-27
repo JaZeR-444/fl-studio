@@ -2159,46 +2159,6 @@ export const TemplatesSection = () => {
     {
       id: 54,
       genre: 'pop',
-      name: 'K-Pop',
-      bpm: 130,
-      key: 'C Major',
-      description: 'High-energy K-Pop with layered vocals and dynamic production',
-      layers: [
-        {
-          category: 'Drums',
-          color: 'bg-red-500',
-          elements: ['Punchy Kick', 'Snare/Clap', 'Hi-Hat', 'Percussion', 'Handclap']
-        },
-        {
-          category: 'Bass',
-          color: 'bg-purple-500',
-          elements: ['Synth Bass', 'Sub Bass']
-        },
-        {
-          category: 'Melody',
-          color: 'bg-blue-500',
-          elements: ['Synth Lead', 'Bell', 'Pluck', 'Brass Stab']
-        },
-        {
-          category: 'Harmony',
-          color: 'bg-green-500',
-          elements: ['Pad', 'Strings', 'Choir']
-        },
-        {
-          category: 'Vocals',
-          color: 'bg-pink-500',
-          elements: ['Lead Vocal', 'Harmonies (3-4 layers)', 'Rap Section', 'Ad-libs']
-        },
-        {
-          category: 'FX',
-          color: 'bg-yellow-500',
-          elements: ['Riser', 'Impact', 'Vocal Chops', 'Glitch FX']
-        }
-      ]
-    },
-    {
-      id: 55,
-      genre: 'pop',
       name: 'Alt Pop',
       bpm: 110,
       key: 'A Minor',
@@ -2237,7 +2197,7 @@ export const TemplatesSection = () => {
       ]
     },
     {
-      id: 56,
+      id: 55,
       genre: 'pop',
       name: 'Dream Pop',
       bpm: 115,
@@ -2277,7 +2237,7 @@ export const TemplatesSection = () => {
       ]
     },
     {
-      id: 57,
+      id: 56,
       genre: 'pop',
       name: 'Bedroom Pop',
       bpm: 100,
@@ -2317,37 +2277,7 @@ export const TemplatesSection = () => {
       ]
     },
     {
-      id: 58,
-      genre: 'rock',
-      name: 'Punk Rock',
-      bpm: 180,
-      key: 'D Major',
-      description: 'Fast-paced punk rock with distorted guitars and driving drums',
-      layers: [
-        {
-          category: 'Drums',
-          color: 'bg-red-500',
-          elements: ['Kick (fast)', 'Snare (punchy)', 'Hi-Hat (8th notes)', 'Crash', 'Ride']
-        },
-        {
-          category: 'Bass',
-          color: 'bg-purple-500',
-          elements: ['Bass Guitar (distorted)', 'Root Notes']
-        },
-        {
-          category: 'Guitar',
-          color: 'bg-blue-500',
-          elements: ['Rhythm Guitar (power chords)', 'Lead Guitar', 'Palm Mute']
-        },
-        {
-          category: 'Vocals',
-          color: 'bg-pink-500',
-          elements: ['Raw Vocal', 'Gang Vocals', 'Shouts']
-        }
-      ]
-    },
-    {
-      id: 59,
+      id: 57,
       genre: 'rock',
       name: 'Post-Punk',
       bpm: 140,
@@ -2382,7 +2312,7 @@ export const TemplatesSection = () => {
       ]
     },
     {
-      id: 60,
+      id: 58,
       genre: 'rock',
       name: 'Emo',
       bpm: 155,
@@ -2412,7 +2342,7 @@ export const TemplatesSection = () => {
       ]
     },
     {
-      id: 61,
+      id: 59,
       genre: 'rock',
       name: 'Grunge',
       bpm: 120,
@@ -2447,7 +2377,7 @@ export const TemplatesSection = () => {
       ]
     },
     {
-      id: 62,
+      id: 60,
       genre: 'lofi',
       name: 'Lo-Fi Trap',
       bpm: 140,
@@ -2482,7 +2412,7 @@ export const TemplatesSection = () => {
       ]
     },
     {
-      id: 63,
+      id: 61,
       genre: 'lofi',
       name: 'Study Beats',
       bpm: 75,
@@ -2522,7 +2452,7 @@ export const TemplatesSection = () => {
       ]
     },
     {
-      id: 64,
+      id: 62,
       genre: 'lofi',
       name: 'Dusty Vinyl',
       bpm: 82,
@@ -2557,7 +2487,7 @@ export const TemplatesSection = () => {
       ]
     },
     {
-      id: 65,
+      id: 63,
       genre: 'lofi',
       name: 'Bedroom Lo-Fi',
       bpm: 78,

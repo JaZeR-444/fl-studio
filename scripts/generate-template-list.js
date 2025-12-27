@@ -16,7 +16,7 @@ const generateSlug = (genre, name) => {
   return `${genre}-${cleanName}`;
 };
 
-// All 65 templates from Templates.tsx
+// All 63 templates from Templates.tsx
 const templates = [
   { genre: 'edm', name: 'Progressive House' },
   { genre: 'edm', name: 'Melodic Dubstep' },
@@ -71,11 +71,9 @@ const templates = [
   { genre: 'hiphop', name: 'West Coast' },
   { genre: 'hiphop', name: 'Southern Hip Hop' },
   { genre: 'hiphop', name: 'Jazz Rap' },
-  { genre: 'pop', name: 'K-Pop' },
   { genre: 'pop', name: 'Alt Pop' },
   { genre: 'pop', name: 'Dream Pop' },
   { genre: 'pop', name: 'Bedroom Pop' },
-  { genre: 'rock', name: 'Punk Rock' },
   { genre: 'rock', name: 'Post-Punk' },
   { genre: 'rock', name: 'Emo' },
   { genre: 'rock', name: 'Grunge' },

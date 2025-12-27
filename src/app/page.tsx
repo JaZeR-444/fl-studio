@@ -28,52 +28,52 @@ export default function HomePage() {
   const genres = [
     {
       name: 'Trap',
-      description: 'Hard-hitting drums, rolling hi-hats, and deep bass',
+      description: '808 sub-bass, rapid hi-hat rolls (1/32 triplets), half-time snares',
       color: 'from-purple-500 to-pink-500',
       plugins: [
-        { name: 'Gross Beat', use: 'Time manipulation' },
-        { name: 'Maximus', use: 'Master compression' },
-        { name: '3xOSC', use: 'Bass synthesis' },
+        { name: 'Gross Beat', use: 'Half-speed & stutter FX' },
+        { name: 'Maximus', use: 'Sidechain compression' },
+        { name: '3xOSC', use: '808 sub-bass' },
       ],
     },
     {
       name: 'House',
-      description: 'Four-on-the-floor grooves and infectious rhythms',
+      description: '4/4 kick pattern at 120-128 BPM, filtered disco loops, sidechain pump',
       color: 'from-blue-500 to-cyan-500',
       plugins: [
-        { name: 'FLEX', use: 'Melodic leads' },
-        { name: 'Fruity Reverb 2', use: 'Spacious vocals' },
-        { name: 'Parametric EQ 2', use: 'Frequency shaping' },
+        { name: 'FLEX', use: 'Piano stabs & chords' },
+        { name: 'Fruity Reverb 2', use: 'Vocal ambience' },
+        { name: 'Parametric EQ 2', use: 'Filter sweeps' },
       ],
     },
     {
       name: 'Lo-Fi Hip Hop',
-      description: 'Chill beats with warm, nostalgic textures',
+      description: 'Dusty samples, vinyl crackle, tape wobble, 70-90 BPM swing',
       color: 'from-amber-500 to-orange-500',
       plugins: [
-        { name: 'Vintage Chorus', use: 'Warm modulation' },
-        { name: 'Effector', use: 'Tape saturation' },
-        { name: 'Sytrus', use: 'Rhodes piano' },
+        { name: 'Vintage Chorus', use: 'Tape warble effect' },
+        { name: 'Effector', use: 'Bit-crushing & saturation' },
+        { name: 'Sytrus', use: 'Electric piano tones' },
       ],
     },
     {
       name: 'Dubstep',
-      description: 'Aggressive bass and intricate sound design',
+      description: 'LFO wobble bass at 140 BPM, heavy resampling, aggressive midrange',
       color: 'from-green-500 to-teal-500',
       plugins: [
-        { name: 'Harmor', use: 'Bass wobbles' },
-        { name: 'Vocodex', use: 'Vocal processing' },
-        { name: 'Fruity Love Philter', use: 'Filter sweeps' },
+        { name: 'Harmor', use: 'Resynthesized bass wobbles' },
+        { name: 'Vocodex', use: 'Robotic vocals & growls' },
+        { name: 'Fruity Love Philter', use: 'LFO-modulated filtering' },
       ],
     },
     {
       name: 'Ambient',
-      description: 'Atmospheric soundscapes and evolving textures',
+      description: 'Evolving pads, granular textures, reverb decay >5s, no transients',
       color: 'from-indigo-500 to-purple-500',
       plugins: [
-        { name: 'Harmless', use: 'Pad synthesis' },
-        { name: 'Fruity Reverb 2', use: 'Long reverbs' },
-        { name: 'Delay Bank', use: 'Ping pong delays' },
+        { name: 'Harmless', use: 'Additive pad layers' },
+        { name: 'Fruity Reverb 2', use: 'Algorithmic reverb tails' },
+        { name: 'Delay Bank', use: 'Stereo ping-pong delays' },
       ],
     },
   ];
@@ -86,11 +86,11 @@ export default function HomePage() {
     setCurrentGenre((prev) => (prev - 1 + genres.length) % genres.length);
   };
   return (
-    <div className="min-h-screen bg-[var(--bg-app)] text-white overflow-hidden relative">
+    <div className="min-h-screen bg-[var(--bg-primary)] text-white overflow-hidden relative">
       {/* Background Ambience */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[var(--primary)] rounded-full blur-[120px] opacity-20 animate-pulse-glow" />
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[var(--secondary)] rounded-full blur-[120px] opacity-20 animate-pulse-glow delay-1000" />
+        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-purple-600 rounded-full blur-[120px] opacity-20 animate-pulse-glow" />
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-500 rounded-full blur-[120px] opacity-20 animate-pulse-glow delay-1000" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-600/10 rounded-full blur-[150px]" />
       </div>
 
@@ -151,17 +151,17 @@ export default function HomePage() {
 
           {/* Headline */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] mb-6">
-            <span className="text-white">The Complete</span>
+            <span className="text-white">Professional</span>
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] via-purple-400 to-[var(--secondary)]">
-              FL Studio Reference
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-purple-300 to-blue-400">
+              FL Studio Production Guide
             </span>
           </h1>
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed mb-8">
-            Deep-dive into 50+ native plugins, master professional workflows, 
-            and accelerate your music production with curated templates and guides.
+            Comprehensive documentation for all 128 native FL Studio plugins, 12 professional signal chains,
+            and 31 genre-specific templates to accelerate your workflow.
           </p>
 
           {/* CTAs */}
@@ -171,16 +171,16 @@ export default function HomePage() {
               className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 via-purple-500 to-blue-500 hover:from-purple-500 hover:via-purple-400 hover:to-blue-400 text-white font-bold text-lg rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_50px_rgba(124,58,237,0.5)] flex items-center justify-center gap-3 overflow-hidden"
             >
               <Play className="w-5 h-5 fill-current" />
-              <span>Enter the Hub</span>
+              <span>View Plugin Database</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
-            
-            <Link 
-              href="/hub#plugins"
+
+            <Link
+              href="/hub#workflow-chains"
               className="px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/20 hover:border-[var(--accent-primary)]/50 text-white font-semibold text-lg rounded-xl transition-all duration-300 backdrop-blur-sm flex items-center justify-center gap-3"
             >
-              <Music className="w-5 h-5" />
-              Browse All Plugins
+              <Zap className="w-5 h-5" />
+              Browse Signal Chains
             </Link>
           </div>
 
@@ -188,15 +188,15 @@ export default function HomePage() {
           <div className="flex flex-wrap justify-center gap-6 text-sm text-[var(--text-muted)]">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-green-400" />
-              <span>100% Free</span>
+              <span>100% Native Plugins</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-green-400" />
-              <span>Always Updated</span>
+              <span>128 Plugin Specs</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-green-400" />
-              <span>Made for Producers</span>
+              <span>Production-Ready</span>
             </div>
           </div>
         </div>
@@ -214,20 +214,20 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-4xl md:text-5xl font-black text-white mb-1">50+</div>
-              <div className="text-sm text-[var(--text-muted)]">Native Plugins</div>
+              <div className="text-4xl md:text-5xl font-black text-white mb-1">128</div>
+              <div className="text-sm text-[var(--text-muted)]">Stock Plugins</div>
             </div>
             <div>
-              <div className="text-4xl md:text-5xl font-black text-white mb-1">25+</div>
-              <div className="text-sm text-[var(--text-muted)]">Workflow Chains</div>
+              <div className="text-4xl md:text-5xl font-black text-white mb-1">12</div>
+              <div className="text-sm text-[var(--text-muted)]">Signal Chains</div>
             </div>
             <div>
-              <div className="text-4xl md:text-5xl font-black text-white mb-1">30+</div>
-              <div className="text-sm text-[var(--text-muted)]">Templates</div>
+              <div className="text-4xl md:text-5xl font-black text-white mb-1">31</div>
+              <div className="text-sm text-[var(--text-muted)]">Song Templates</div>
             </div>
             <div>
-              <div className="text-4xl md:text-5xl font-black text-white mb-1">∞</div>
-              <div className="text-sm text-[var(--text-muted)]">Possibilities</div>
+              <div className="text-4xl md:text-5xl font-black text-white mb-1">100%</div>
+              <div className="text-sm text-[var(--text-muted)]">Native Workflow</div>
             </div>
           </div>
         </div>
@@ -237,9 +237,9 @@ export default function HomePage() {
       <section className="relative z-10 py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">What&apos;s Inside</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Comprehensive Production Resources</h2>
             <p className="text-[var(--text-muted)] max-w-xl mx-auto">
-              Everything you need to master FL Studio&apos;s native toolkit
+              Professional-grade reference materials for FL Studio&apos;s complete native plugin suite
             </p>
           </div>
 
@@ -253,7 +253,7 @@ export default function HomePage() {
                 <Layers className="w-7 h-7 text-purple-400 animate-icon-layers" />
               </div>
               <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">Plugin Database</h3>
-              <p className="text-[var(--text-muted)] mb-4">Complete documentation for every native synth and effect. CPU stats, pro tips, and use cases.</p>
+              <p className="text-[var(--text-muted)] mb-4">Deep-dive specifications for all 128 stock instruments and effects—parameter breakdowns, CPU benchmarks, and production techniques.</p>
               <div className="flex items-center text-purple-400 font-medium text-sm">
                 <span>Explore plugins</span>
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -265,8 +265,8 @@ export default function HomePage() {
               <div className="w-14 h-14 rounded-xl bg-blue-500/20 flex items-center justify-center mb-4">
                 <Zap className="w-7 h-7 text-blue-400 animate-icon-zap" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">Workflow Chains</h3>
-              <p className="text-[var(--text-muted)] mb-4">Pre-built effect chains for vocals, drums, and mastering. Copy-paste into your projects.</p>
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">Signal Chains</h3>
+              <p className="text-[var(--text-muted)] mb-4">12 studio-tested processing chains for vocals, drums, and mastering—with routing diagrams and parameter settings.</p>
               <div className="flex items-center text-blue-400 font-medium text-sm">
                 <span>View chains</span>
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -278,8 +278,8 @@ export default function HomePage() {
               <div className="w-14 h-14 rounded-xl bg-green-500/20 flex items-center justify-center mb-4">
                 <Target className="w-7 h-7 text-green-400 animate-icon-target" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-green-400 transition-colors">Project Templates</h3>
-              <p className="text-[var(--text-muted)] mb-4">Genre-specific starter projects. Skip the setup and start creating immediately.</p>
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-green-400 transition-colors">Song Blueprints</h3>
+              <p className="text-[var(--text-muted)] mb-4">31 genre-specific project templates with pre-routed mixer tracks, instrument selections, and tempo/key configurations.</p>
               <div className="flex items-center text-green-400 font-medium text-sm">
                 <span>Get templates</span>
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -295,7 +295,7 @@ export default function HomePage() {
                 <BookOpen className="w-7 h-7 text-amber-400 animate-icon-book" />
               </div>
               <h3 className="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">Quick Start Guides</h3>
-              <p className="text-[var(--text-muted)] mb-4">Step-by-step tutorials to get you producing music in minutes, not hours.</p>
+              <p className="text-[var(--text-muted)] mb-4">Structured tutorials covering core DAW concepts—MIDI programming, mixer routing, automation, and arrangement workflow.</p>
               <div className="flex items-center text-amber-400 font-medium text-sm">
                 <span>Start learning</span>
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -308,7 +308,7 @@ export default function HomePage() {
                 <TrendingUp className="w-7 h-7 text-pink-400 animate-icon-trending" />
               </div>
               <h3 className="text-xl font-bold text-white mb-2 group-hover:text-pink-400 transition-colors">Mixing & Mastering</h3>
-              <p className="text-[var(--text-muted)] mb-4">Professional mixing techniques using only FL Studio&apos;s native tools.</p>
+              <p className="text-[var(--text-muted)] mb-4">Studio-standard mixing workflows using exclusively native plugins—EQ curves, compression ratios, and stereo imaging techniques.</p>
               <div className="flex items-center text-pink-400 font-medium text-sm">
                 <span>Learn mixing</span>
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -320,8 +320,8 @@ export default function HomePage() {
               <div className="w-14 h-14 rounded-xl bg-cyan-500/20 flex items-center justify-center mb-4">
                 <Clock className="w-7 h-7 text-cyan-400 animate-icon-clock" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">Shortcut Dojo</h3>
-              <p className="text-[var(--text-muted)] mb-4">Master 47+ keyboard shortcuts. Practice mode included to build muscle memory.</p>
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">Keyboard Mastery</h3>
+              <p className="text-[var(--text-muted)] mb-4">Interactive training for 47+ essential keyboard shortcuts—pattern editor, playlist, mixer, and piano roll navigation.</p>
               <div className="flex items-center text-cyan-400 font-medium text-sm">
                 <span>Train shortcuts</span>
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -335,9 +335,9 @@ export default function HomePage() {
       <section className="relative z-10 py-20 px-4 bg-white/[0.02]">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">How It Works</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Streamlined Learning Path</h2>
             <p className="text-[var(--text-muted)] max-w-xl mx-auto">
-              Three simple steps to level up your FL Studio skills
+              Structured approach to mastering FL Studio&apos;s native production environment
             </p>
           </div>
 
@@ -346,24 +346,24 @@ export default function HomePage() {
               <div className="w-16 h-16 rounded-full bg-purple-600/20 border-2 border-purple-500 flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-black text-purple-400">1</span>
               </div>
-              <h3 className="text-lg font-bold text-white mb-2">Enter the Hub</h3>
-              <p className="text-[var(--text-muted)] text-sm">Access the complete FL Studio reference — plugins, workflows, and tutorials all in one place.</p>
+              <h3 className="text-lg font-bold text-white mb-2">Access the Database</h3>
+              <p className="text-[var(--text-muted)] text-sm">Browse 128 plugin specifications, 12 signal chains, and 31 production templates—all organized by category and use case.</p>
             </div>
 
             <div className="text-center">
               <div className="w-16 h-16 rounded-full bg-purple-500/20 border-2 border-purple-500 flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-black text-purple-400">2</span>
               </div>
-              <h3 className="text-lg font-bold text-white mb-2">Learn & Explore</h3>
-              <p className="text-[var(--text-muted)] text-sm">Deep-dive into native plugins, discover pro tips, and find the perfect tools for your sound.</p>
+              <h3 className="text-lg font-bold text-white mb-2">Study the Techniques</h3>
+              <p className="text-[var(--text-muted)] text-sm">Deep-dive into parameter settings, routing configurations, and studio workflows optimized for native FL plugins.</p>
             </div>
 
             <div className="text-center">
               <div className="w-16 h-16 rounded-full bg-green-500/20 border-2 border-green-500 flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-black text-green-400">3</span>
               </div>
-              <h3 className="text-lg font-bold text-white mb-2">Create Better Music</h3>
-              <p className="text-[var(--text-muted)] text-sm">Apply what you learn. Work faster, sound better, and unlock your creative potential.</p>
+              <h3 className="text-lg font-bold text-white mb-2">Implement in Projects</h3>
+              <p className="text-[var(--text-muted)] text-sm">Apply production techniques, copy signal chain configurations, and adapt templates to your creative workflow.</p>
             </div>
           </div>
         </div>
@@ -373,9 +373,9 @@ export default function HomePage() {
       <section className="relative z-10 py-20 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Producer Favorites</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Essential Stock Plugins</h2>
             <p className="text-[var(--text-muted)] max-w-xl mx-auto">
-              The most-used native plugins by FL Studio producers
+              Industry-standard native instruments used in professional productions
             </p>
           </div>
 
@@ -403,9 +403,9 @@ export default function HomePage() {
       <section className="relative z-10 py-20 px-4 bg-white/[0.02]">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Genre Spotlight</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Genre-Specific Toolkits</h2>
             <p className="text-[var(--text-muted)] max-w-xl mx-auto">
-              Curated plugin recommendations for your favorite genres
+              Native plugin combinations optimized for specific production styles and workflows
             </p>
           </div>
 
@@ -505,19 +505,19 @@ export default function HomePage() {
           <div className="mb-6">
             <Award className="w-12 h-12 text-purple-400 mx-auto mb-4" />
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Master FL Studio?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Build Professional Tracks with Stock Plugins</h2>
           <p className="text-lg text-[var(--text-muted)] mb-8">
-            Join thousands of producers who use the Master Hub to unlock their full potential.
+            Comprehensive reference documentation for FL Studio&apos;s complete native production suite—no third-party plugins required.
           </p>
           <Link
             href="/hub"
             className="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-500 hover:to-blue-400 text-white font-bold text-lg rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_50px_rgba(124,58,237,0.5)]"
           >
-            <span>Enter the Hub</span>
+            <span>Access Full Database</span>
             <ArrowRight className="w-5 h-5" />
           </Link>
           <p className="mt-6 text-sm text-[var(--text-muted)]">
-            Free forever • No signup required
+            Instant access • No registration • Always free
           </p>
         </div>
       </section>
@@ -530,8 +530,8 @@ export default function HomePage() {
             <span>FL Studio Master Hub</span>
           </div>
           <div className="flex items-center gap-6">
-            <a href="https://www.image-line.com/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Official FL Studio</a>
-            <Link href="/hub" className="hover:text-white transition-colors">Enter Hub</Link>
+            <a href="https://www.image-line.com/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Official FL Studio Site</a>
+            <Link href="/hub" className="hover:text-white transition-colors">Plugin Database</Link>
           </div>
         </div>
       </footer>

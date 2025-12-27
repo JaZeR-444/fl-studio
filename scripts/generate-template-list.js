@@ -16,7 +16,7 @@ const generateSlug = (genre, name) => {
   return `${genre}-${cleanName}`;
 };
 
-// All 45 templates from Templates.tsx
+// All 65 templates from Templates.tsx
 const templates = [
   { genre: 'edm', name: 'Progressive House' },
   { genre: 'edm', name: 'Melodic Dubstep' },
@@ -63,6 +63,26 @@ const templates = [
   { genre: 'vaporwave', name: 'Vaporwave' },
   { genre: 'trap', name: 'Latin Trap' },
   { genre: 'garage', name: 'UK Garage' },
+  { genre: 'trap', name: 'Sad Trap' },
+  { genre: 'trap', name: 'Heavy Trap' },
+  { genre: 'trap', name: 'Drill' },
+  { genre: 'trap', name: 'Plugg' },
+  { genre: 'hiphop', name: 'NY Drill' },
+  { genre: 'hiphop', name: 'West Coast' },
+  { genre: 'hiphop', name: 'Southern Hip Hop' },
+  { genre: 'hiphop', name: 'Jazz Rap' },
+  { genre: 'pop', name: 'K-Pop' },
+  { genre: 'pop', name: 'Alt Pop' },
+  { genre: 'pop', name: 'Dream Pop' },
+  { genre: 'pop', name: 'Bedroom Pop' },
+  { genre: 'rock', name: 'Punk Rock' },
+  { genre: 'rock', name: 'Post-Punk' },
+  { genre: 'rock', name: 'Emo' },
+  { genre: 'rock', name: 'Grunge' },
+  { genre: 'lofi', name: 'Lo-Fi Trap' },
+  { genre: 'lofi', name: 'Study Beats' },
+  { genre: 'lofi', name: 'Dusty Vinyl' },
+  { genre: 'lofi', name: 'Bedroom Lo-Fi' },
 ];
 
 // Generate list

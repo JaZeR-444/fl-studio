@@ -803,6 +803,133 @@ body::before {
   }
 }
 
+/* Audio Waveform Animation */
+@keyframes waveform {
+  0%,
+  100% {
+    transform: scaleY(0.3);
+  }
+  50% {
+    transform: scaleY(1.5);
+  }
+}
+
+.animate-waveform {
+  animation: waveform 1.2s ease-in-out infinite;
+}
+
+/* Floating Musical Notes */
+@keyframes floatNote {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.animate-float-note {
+  animation: floatNote 20s linear infinite;
+}
+
+/* Feature Card Icon Animations */
+@keyframes iconLayers {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes iconZap {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+    filter: drop-shadow(0 0 0 rgba(59, 130, 246, 0));
+  }
+  50% {
+    transform: rotate(-10deg) scale(1.1);
+    filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.6));
+  }
+}
+
+@keyframes iconTarget {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+@keyframes iconBookFlip {
+  0%,
+  100% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(15deg);
+  }
+}
+
+@keyframes iconTrending {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-5px) translateX(3px);
+  }
+}
+
+@keyframes iconClock {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+}
+
+.group:hover .animate-icon-layers {
+  animation: iconLayers 0.6s ease-in-out;
+}
+
+.group:hover .animate-icon-zap {
+  animation: iconZap 0.6s ease-in-out;
+}
+
+.group:hover .animate-icon-target {
+  animation: iconTarget 0.6s ease-in-out;
+}
+
+.group:hover .animate-icon-book {
+  animation: iconBookFlip 0.6s ease-in-out;
+}
+
+.group:hover .animate-icon-trending {
+  animation: iconTrending 0.6s ease-in-out;
+}
+
+.group:hover .animate-icon-clock {
+  animation: iconClock 0.6s ease-in-out;
+}
+
 /* ============================================
    Accordion
    ============================================ */

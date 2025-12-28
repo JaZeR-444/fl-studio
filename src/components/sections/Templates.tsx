@@ -2525,6 +2525,361 @@ export const TemplatesSection = () => {
           elements: ['Tape Warble', 'Vinyl Crackle', 'Cassette Hiss']
         }
       ]
+    },
+    {
+      id: 64,
+      genre: 'trap',
+      name: 'Flute Trap',
+      bpm: 138,
+      key: 'E Minor',
+      description: 'Melodic trap featuring prominent flute melodies and lush atmospheres',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Kick', 'Snare', 'Hi-Hat Rolls', 'Rim Click', 'Shaker']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['808 Bass', 'Sub Bass']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Flute Lead', 'Flute Harmonies', 'Bell', 'Piano']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['Pad', 'Strings', 'Choir']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Riser', 'Reverb Tail', 'Vocal Chop']
+        }
+      ]
+    },
+    {
+      id: 65,
+      genre: 'trap',
+      name: 'Ambient Trap',
+      bpm: 135,
+      key: 'C# Minor',
+      description: 'Atmospheric trap with spacious production and ethereal textures',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Soft Kick', 'Clap', 'Hi-Hat (sparse)', 'Shaker']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['808 Bass (long decay)', 'Sub Bass']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Synth Lead (detuned)', 'Bell', 'Arp']
+        },
+        {
+          category: 'Atmosphere',
+          color: 'bg-green-500',
+          elements: ['Ambient Pad', 'Drone', 'Texture Layer', 'Vocal Pad']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Reverb Wash', 'Delay', 'Granular FX', 'Field Recording']
+        }
+      ]
+    },
+    {
+      id: 66,
+      genre: 'trap',
+      name: 'Soul Trap',
+      bpm: 142,
+      key: 'F Minor',
+      description: 'Soulful trap with sampled vocals and warm organic textures',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Kick', 'Snare', 'Hi-Hat Rolls', 'Shaker', 'Tambourine']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['808 Bass', 'Sub Bass']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Soul Sample', 'Rhodes Piano', 'Guitar', 'Vinyl Keys']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['String Sample', 'Pad', 'Choir Sample']
+        },
+        {
+          category: 'Vocals',
+          color: 'bg-pink-500',
+          elements: ['Vocal Sample (chopped)', 'Vocal Harmony', 'Ad-libs']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Vinyl Crackle', 'Tape Warble', 'Record Scratch']
+        }
+      ]
+    },
+    {
+      id: 67,
+      genre: 'trap',
+      name: 'Detroit Trap',
+      bpm: 144,
+      key: 'Bb Minor',
+      description: 'Detroit-style trap with aggressive drums and dark synths',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Hard Kick', 'Snare/Clap', 'Hi-Hat Rolls (fast)', 'Cymbal']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Distorted 808', 'Sub Bass (heavy)']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Dark Synth', 'Bell', 'Lead']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['Pad', 'Strings (minor)']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Siren', 'Alarm', 'Impact', 'Vocal Tag']
+        }
+      ]
+    },
+    {
+      id: 68,
+      genre: 'trap',
+      name: 'Spacey Trap',
+      bpm: 137,
+      key: 'G# Minor',
+      description: 'Futuristic trap with synth-heavy production and cosmic atmospheres',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Kick', 'Snare (reverb)', 'Hi-Hat', 'Rim', 'Laser FX']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['808 Bass', 'Synth Bass', 'Sub Layer']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Spacey Synth Lead', 'Arp (cosmic)', 'Bell', 'Pluck']
+        },
+        {
+          category: 'Atmosphere',
+          color: 'bg-green-500',
+          elements: ['Sci-Fi Pad', 'Space Drone', 'Ambient Texture']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Laser', 'Riser', 'Downlifter', 'Glitch']
+        }
+      ]
+    },
+    {
+      id: 69,
+      genre: 'hiphop',
+      name: 'East Coast',
+      bpm: 92,
+      key: 'D Minor',
+      description: 'Classic East Coast hip hop with boom bap drums and jazz samples',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Kick (punchy)', 'Snare (crisp)', 'Hi-Hat (closed)', 'Cymbal']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Bass Sample', 'Sub Layer']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Jazz Sample', 'Piano Loop', 'Horn Stab', 'Guitar']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['String Sample', 'Vinyl Keys']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Vinyl Crackle', 'Scratch FX', 'Record Pop']
+        }
+      ]
+    },
+    {
+      id: 70,
+      genre: 'hiphop',
+      name: 'Atlanta Hip Hop',
+      bpm: 78,
+      key: 'A Minor',
+      description: 'Modern Atlanta style with bouncy drums and melodic elements',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Kick', 'Snare', 'Hi-Hat (triplets)', 'Rim', 'Shaker']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['808 Bass (melodic)', 'Sub Bass']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Piano', 'Bell', 'Synth Lead', 'Flute']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['Pad', 'Strings']
+        },
+        {
+          category: 'Vocals',
+          color: 'bg-pink-500',
+          elements: ['Vocal', 'Ad-libs', 'Vocal Chops']
+        }
+      ]
+    },
+    {
+      id: 71,
+      genre: 'hiphop',
+      name: 'Memphis Hip Hop',
+      bpm: 72,
+      key: 'F# Minor',
+      description: 'Memphis style with lo-fi drums, cowbell, and dark samples',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Kick', 'Snare (vintage)', 'Hi-Hat', 'Cowbell', 'Cymbal']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['808 Bass', 'Sub Bass']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Dark Sample', 'Piano (detuned)', 'Synth Bell']
+        },
+        {
+          category: 'Vocals',
+          color: 'bg-pink-500',
+          elements: ['Vocal Sample (pitched)', 'Vocal Chant', 'Shouts']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Tape Hiss', 'Vinyl Crackle', 'Record Pop']
+        }
+      ]
+    },
+    {
+      id: 72,
+      genre: 'hiphop',
+      name: 'Abstract Hip Hop',
+      bpm: 86,
+      key: 'Eb Minor',
+      description: 'Experimental hip hop with unconventional samples and textures',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Kick (processed)', 'Snare (glitchy)', 'Hi-Hat', 'Percussion (found sounds)']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Bass (distorted)', 'Sub Layer']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Obscure Sample', 'Synth (detuned)', 'Field Recording', 'Voice Sample']
+        },
+        {
+          category: 'Texture',
+          color: 'bg-green-500',
+          elements: ['Ambient Noise', 'Drone', 'Granular Texture']
+        },
+        {
+          category: 'FX',
+          color: 'bg-yellow-500',
+          elements: ['Glitch', 'Bitcrush', 'Reverse', 'Delay Wash']
+        }
+      ]
+    },
+    {
+      id: 73,
+      genre: 'hiphop',
+      name: 'Conscious Hip Hop',
+      bpm: 90,
+      key: 'C Minor',
+      description: 'Conscious hip hop with live instrumentation and positive vibes',
+      layers: [
+        {
+          category: 'Drums',
+          color: 'bg-red-500',
+          elements: ['Kick (acoustic)', 'Snare', 'Hi-Hat (swung)', 'Shaker', 'Tambourine']
+        },
+        {
+          category: 'Bass',
+          color: 'bg-purple-500',
+          elements: ['Bass Guitar', 'Sub Layer']
+        },
+        {
+          category: 'Melody',
+          color: 'bg-blue-500',
+          elements: ['Guitar (clean)', 'Piano', 'Horn Section', 'Organ']
+        },
+        {
+          category: 'Harmony',
+          color: 'bg-green-500',
+          elements: ['Strings', 'Choir', 'Pad']
+        },
+        {
+          category: 'Vocals',
+          color: 'bg-pink-500',
+          elements: ['Vocal', 'Backing Vocals', 'Spoken Word']
+        }
+      ]
     }
   ];
 

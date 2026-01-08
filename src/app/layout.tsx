@@ -8,6 +8,11 @@ import { Providers } from './providers';
 export const metadata = {
   title: 'FL Studio Master Reference Hub',
   description: 'Master FL Studio with this comprehensive reference hub',
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 };
 
 const inter = Inter({

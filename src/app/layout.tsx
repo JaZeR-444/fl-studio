@@ -5,13 +5,15 @@ import { Inter } from 'next/font/google';
 import '../styles/globals.css';
 import { Providers } from './providers';
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 export const metadata = {
   title: 'FL Studio Master Reference Hub',
   description: 'Master FL Studio with this comprehensive reference hub',
   icons: {
-    icon: '/favicon.svg',
-    shortcut: '/favicon.svg',
-    apple: '/favicon.svg',
+    icon: `${basePath}/favicon.svg`,
+    shortcut: `${basePath}/favicon.svg`,
+    apple: `${basePath}/favicon.svg`,
   },
 };
 

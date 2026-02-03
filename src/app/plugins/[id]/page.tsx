@@ -1,26 +1,30 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
+import Image from 'next/image';
 import allPluginsData from '@/data/plugins/allPlugins.json';
 import { ExtendedPlugin } from '@/types/pluginTypes';
 import { Badge } from '@/components/ui/Badge';
 import { PluginBreadcrumb } from '@/components/ui/Breadcrumb';
-import { 
-  ActionPanel, 
-  RecipeCard, 
-  ControlsMap, 
-  TroubleshootingGuide 
+import { PluginPageSidebar } from '@/components/plugins/PluginPageSidebar';
+import {
+  ActionPanel,
+  RecipeCard,
+  ControlsMap,
+  TroubleshootingGuide
 } from '@/components/plugins/PluginComponents';
-import { 
-  CheckCircle, 
-  XCircle, 
-  Layers, 
-  TrendingUp, 
-  ListMusic, 
+import {
+  CheckCircle,
+  XCircle,
+  Layers,
+  TrendingUp,
+  ListMusic,
   Wrench,
   Info
 } from 'lucide-react';
 
 const allPlugins: ExtendedPlugin[] = allPluginsData as unknown as ExtendedPlugin[];
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 export function generateStaticParams() {
   return allPlugins.map((plugin) => ({
@@ -36,8 +40,72 @@ export default function PluginDetailPage({ params }: { params: { id: string } })
   }
 
   return (
-    <div className="min-h-screen pt-24 pb-20 container mx-auto px-4 sm:px-6">
-      
+    <div className="min-h-screen w-full overflow-hidden font-sans bg-slate-950 dark:bg-slate-950 relative">
+      {/* ANIMATED BACKGROUND LAYER */}
+      <div
+        className="fixed inset-0 z-0 pointer-events-none overflow-hidden"
+        style={{
+          backgroundImage: `url(${basePath}/fl-studio-test-new-background.svg)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: 0.25,
+          filter: 'blur(1px)',
+        }}
+      >
+        <div
+          className="absolute inset-0 animate-slow-drift"
+          style={{
+            backgroundImage: `url(${basePath}/fl-studio-test-new-background.svg)`,
+            backgroundSize: '110%',
+            backgroundPosition: 'center',
+          }}
+        />
+      </div>
+
+      {/* MAIN CONTAINER */}
+      <div className="w-full min-h-screen flex flex-col bg-slate-900/50 dark:bg-slate-900/50 relative z-10">
+
+        {/* TOP NAVIGATION BAR */}
+        <div className="h-14 border-b flex items-center justify-between px-4 shrink-0 z-30 select-none bg-slate-950 dark:bg-slate-950 border-white/10">
+          {/* Left: Icon */}
+          <Link href="/hub" className="flex items-center hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 rounded">
+            <Image
+              src={`${basePath}/images/branding/icon.svg`}
+              alt="FL Studio"
+              width={32}
+              height={32}
+              className="object-contain"
+            />
+          </Link>
+
+          {/* Center: Toggle Pill */}
+          <div className="flex items-center rounded-full p-1 border bg-slate-800 dark:bg-slate-800 border-white/10">
+            <Link
+              href="/"
+              className="px-4 py-1.5 rounded-full text-xs font-bold transition-all text-gray-400 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500"
+            >
+              Home
+            </Link>
+            <Link
+              href="/hub"
+              className="px-4 py-1.5 rounded-full text-xs font-bold transition-all text-gray-400 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500"
+            >
+              Studio Hub
+            </Link>
+          </div>
+
+          {/* Right: Spacer to balance layout */}
+          <div className="w-32"></div>
+        </div>
+
+        {/* MAIN APP BODY */}
+        <div className="flex flex-1 overflow-hidden relative">
+          {/* RETRACTABLE SIDEBAR */}
+          <PluginPageSidebar pluginName={plugin.name} />
+
+          {/* MAIN CONTENT */}
+          <div className="flex-1 overflow-y-auto pt-10 pb-20 px-4 sm:px-6">
+
       {/* 1. Header Section */}
       <div className="mb-10 relative">
         <div className="absolute top-0 right-0 p-64 bg-[var(--primary)] blur-[150px] opacity-10 pointer-events-none rounded-full translate-x-1/2 -translate-y-1/2" />
@@ -209,6 +277,8 @@ export default function PluginDetailPage({ params }: { params: { id: string } })
             </section>
           )}
 
+          </div>
+        </div>
         </div>
       </div>
     </div>

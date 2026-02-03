@@ -1,10 +1,52 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Star, Printer, Keyboard } from 'lucide-react';
 
 export const DojoSection = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
+  const [favorites, setFavorites] = useState<string[]>([]);
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
+
+  // Load/save favorites from localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem('fl-dojo-favorites');
+    if (saved) setFavorites(JSON.parse(saved));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('fl-dojo-favorites', JSON.stringify(favorites));
+  }, [favorites]);
+
+  const toggleFavorite = (action: string) => {
+    setFavorites(prev => prev.includes(action) ? prev.filter(f => f !== action) : [...prev, action]);
+  };
+
+  // Render color-coded key caps
+  const renderKeyCombo = (keyString: string) => {
+    const parts = keyString.split(' + ');
+    return (
+      <span className="inline-flex items-center gap-1 flex-wrap">
+        {parts.map((part, idx) => {
+          const key = part.trim();
+          let colors = 'bg-[var(--glass-bg)] text-[var(--accent-tertiary)] border-[var(--glass-border)]';
+          
+          if (key === 'Ctrl') colors = 'bg-blue-500/20 text-blue-400 border-blue-500/30';
+          else if (key === 'Shift') colors = 'bg-green-500/20 text-green-400 border-green-500/30';
+          else if (key === 'Alt') colors = 'bg-orange-500/20 text-orange-400 border-orange-500/30';
+          else if (/^F\d+$/.test(key)) colors = 'bg-purple-500/20 text-purple-400 border-purple-500/30';
+          
+          return (
+            <span key={idx} className="inline-flex items-center">
+              <kbd className={`px-2 py-1 rounded border font-mono text-xs font-medium ${colors}`}>{key}</kbd>
+              {idx < parts.length - 1 && <span className="text-[var(--text-dim)] mx-0.5">+</span>}
+            </span>
+          );
+        })}
+      </span>
+    );
+  };
 
   // Complete FL Studio keyboard shortcuts reference
   const shortcutCategories = [
@@ -262,6 +304,11 @@ export const DojoSection = () => {
       );
     }
 
+    // Filter by favorites
+    if (showFavoritesOnly) {
+      shortcuts = shortcuts.filter(s => favorites.includes(s.action));
+    }
+
     return shortcuts;
   };
 
@@ -330,9 +377,35 @@ export const DojoSection = () => {
               )}
             </div>
           </div>
-          <div className="flex items-center text-sm text-[var(--text-muted)]">
-            <span className="text-white font-bold">{filteredShortcuts.length}</span>
-            <span className="ml-1">shortcuts</span>
+          <div className="flex items-center gap-3">
+            {/* Favorites Toggle */}
+            <button
+              onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
+              className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                showFavoritesOnly 
+                  ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30' 
+                  : 'bg-[var(--glass-bg)] text-[var(--text-muted)] border border-[var(--glass-border)] hover:text-white'
+              }`}
+            >
+              <Star className={`w-4 h-4 ${showFavoritesOnly ? 'fill-yellow-400' : ''}`} />
+              <span className="hidden sm:inline">Favorites</span>
+              {favorites.length > 0 && (
+                <span className="bg-yellow-500/30 text-yellow-400 px-1.5 py-0.5 rounded text-xs">{favorites.length}</span>
+              )}
+            </button>
+            {/* Print Button */}
+            <button
+              onClick={() => window.print()}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium bg-[var(--glass-bg)] text-[var(--text-muted)] border border-[var(--glass-border)] hover:text-white transition-all"
+            >
+              <Printer className="w-4 h-4" />
+              <span className="hidden sm:inline">Print</span>
+            </button>
+            {/* Count */}
+            <div className="flex items-center text-sm text-[var(--text-muted)] px-2">
+              <span className="text-white font-bold">{filteredShortcuts.length}</span>
+              <span className="ml-1 hidden sm:inline">shortcuts</span>
+            </div>
           </div>
         </div>
       </div>
@@ -371,29 +444,47 @@ export const DojoSection = () => {
         {/* Table Header */}
         <div className="grid grid-cols-12 gap-4 px-4 py-3 bg-[var(--glass-bg)] border-b border-[var(--glass-border)] text-xs font-medium text-[var(--text-muted)] uppercase tracking-wider">
           <div className="col-span-1"></div>
-          <div className="col-span-6 md:col-span-5">Action</div>
+          <div className="col-span-5 md:col-span-5">Action</div>
           <div className="col-span-5 md:col-span-4">Shortcut</div>
-          <div className="col-span-2 hidden md:block">Category</div>
+          <div className="col-span-1 hidden md:block text-center">⭐</div>
         </div>
 
         {/* Shortcuts */}
         <div className="divide-y divide-[var(--glass-border)] max-h-[600px] overflow-y-auto">
           {filteredShortcuts.length > 0 ? (
-            filteredShortcuts.map((shortcut, idx) => (
-              <div 
-                key={idx} 
-                className="grid grid-cols-12 gap-4 px-4 py-3 hover:bg-[var(--glass-bg-hover)] transition-colors items-center"
-              >
-                <div className="col-span-1 text-lg">{shortcut.icon}</div>
-                <div className="col-span-6 md:col-span-5 text-white">{shortcut.action}</div>
-                <div className="col-span-5 md:col-span-4">
-                  <kbd className="inline-flex items-center px-2 py-1 rounded bg-[var(--glass-bg)] border border-[var(--glass-border)] text-[var(--accent-tertiary)] font-mono text-xs">
-                    {shortcut.key}
-                  </kbd>
+            filteredShortcuts.map((shortcut, idx) => {
+              const isFavorite = favorites.includes(shortcut.action);
+              const isMatch = searchTerm && (
+                shortcut.action.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                shortcut.key.toLowerCase().includes(searchTerm.toLowerCase())
+              );
+              return (
+                <div 
+                  key={idx} 
+                  className={`grid grid-cols-12 gap-4 px-4 py-3 hover:bg-[var(--glass-bg-hover)] transition-all items-center ${
+                    isMatch ? 'bg-purple-500/10 ring-1 ring-purple-500/30' : ''
+                  }`}
+                >
+                  <div className="col-span-1 text-lg">{shortcut.icon}</div>
+                  <div className="col-span-5 md:col-span-5 text-white font-medium">{shortcut.action}</div>
+                  <div className="col-span-5 md:col-span-4">
+                    {renderKeyCombo(shortcut.key)}
+                  </div>
+                  <div className="col-span-1 hidden md:flex justify-center">
+                    <button
+                      onClick={() => toggleFavorite(shortcut.action)}
+                      className={`p-1 rounded transition-all ${
+                        isFavorite 
+                          ? 'text-yellow-400 hover:text-yellow-300' 
+                          : 'text-[var(--text-dim)] hover:text-yellow-400'
+                      }`}
+                    >
+                      <Star className={`w-4 h-4 ${isFavorite ? 'fill-yellow-400' : ''}`} />
+                    </button>
+                  </div>
                 </div>
-                <div className="col-span-2 hidden md:block text-xs text-[var(--text-dim)]">{shortcut.category}</div>
-              </div>
-            ))
+              );
+            })
           ) : (
             <div className="py-12 text-center">
               <div className="text-4xl mb-4">🔍</div>

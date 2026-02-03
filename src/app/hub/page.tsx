@@ -2,14 +2,21 @@
 
 import { useState, useEffect, ReactNode } from 'react';
 import { AppProvider, useAppContext } from '@/context/AppContext';
-import { 
-  Search, 
-  RefreshCw, 
-  Mic, 
-  FolderOpen, 
-  GraduationCap, 
-  Wrench 
+import Link from 'next/link';
+import Image from 'next/image';
+import {
+  Search,
+  RefreshCw,
+  Mic,
+  FolderOpen,
+  GraduationCap,
+  Wrench,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
+
+// Get basePath for GitHub Pages compatibility
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 // Import components
 import { Sidebar } from '@/components/Sidebar';
@@ -54,6 +61,8 @@ const quickAccessSections: { id: string; label: string; Icon: React.ComponentTyp
 const FLStudioHubContent = () => {
   const { state, dispatch } = useAppContext();
   const [showSettings, setShowSettings] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   // Note: showCommandPalette now comes from context (state.showCommandPalette)
 
   // Handle section navigation with history support
@@ -61,7 +70,7 @@ const FLStudioHubContent = () => {
     if (state.activeSection === sectionId) return;
     dispatch({ type: 'SET_ACTIVE_SECTION', payload: sectionId });
     window.history.pushState({ sectionId }, '', `#${sectionId}`);
-    
+
     // Close mobile menu if open
     if (window.innerWidth < 768) {
       dispatch({ type: 'SET_MOBILE_MENU', payload: false });
@@ -108,138 +117,236 @@ const FLStudioHubContent = () => {
   };
 
   return (
-    <div className="min-h-screen">
-      {/* Main Layout */}
-      <div className="flex">
-        {/* Sidebar */}
-        <Sidebar
-          activeSection={state.activeSection}
-          navigateToSection={navigateToSection}
-          darkMode={state.darkMode}
-          toggleDarkMode={toggleDarkMode}
-          mobileMenuOpen={state.mobileMenuOpen}
-          setMobileMenuOpen={(open: boolean) => dispatch({ type: 'SET_MOBILE_MENU', payload: open })}
-          toggleSettings={toggleSettings}
-          onOpenCommandPalette={() => dispatch({ type: 'SET_COMMAND_PALETTE', payload: true })}
+    <div className="min-h-screen w-full overflow-hidden font-sans bg-slate-950 dark:bg-slate-950 relative">
+      {/* ANIMATED BACKGROUND LAYER */}
+      <div
+        className="fixed inset-0 z-0 pointer-events-none overflow-hidden"
+        style={{
+          backgroundImage: `url(${basePath}/fl-studio-test-new-background.svg)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: 0.25,
+          filter: 'blur(1px)',
+        }}
+      >
+        <div
+          className="absolute inset-0 animate-slow-drift"
+          style={{
+            backgroundImage: `url(${basePath}/fl-studio-test-new-background.svg)`,
+            backgroundSize: '110%',
+            backgroundPosition: 'center',
+          }}
         />
+      </div>
 
-        {/* Main Content Area */}
-        <main className="flex-1 min-h-screen pt-24 md:pt-20">
-          <div className="max-w-6xl mx-auto px-4 md:px-8 py-6 md:py-10">
-            {/* Hero Section for Home */}
-            {state.activeSection === 'home' && (
-              <HeroSection
-                onExploreTools={() => navigateToSection('plugins')}
-                onQuickStart={() => navigateToSection('quick-start')}
-                totalPlugins={50}
-                totalWorkflows={25}
-                totalTemplates={30}
-              />
-            )}
+      {/* MAIN CONTAINER - Full Screen */}
+      <div className="w-full h-screen flex flex-col bg-slate-900/50 dark:bg-slate-900/50 relative z-10">
 
-            {/* Quick Access Section Cards */}
-            {state.activeSection === 'home' && (
-              <div className="mt-8">
-                <h2 className="text-xl font-bold text-white mb-4">Jump To Section</h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-                  {quickAccessSections.map((section) => (
-                    <button
-                      key={section.id}
-                      onClick={() => navigateToSection(section.id)}
-                      className="p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-[var(--accent-primary)]/50 transition-all group text-left"
-                    >
-                      <div className="mb-2">
-                        <section.Icon className="w-6 h-6 text-[var(--accent-tertiary)]" />
-                      </div>
-                      <h3 className="font-semibold text-white text-sm group-hover:text-[var(--accent-primary)] transition-colors">
-                        {section.label}
-                      </h3>
-                      <p className="text-xs text-[var(--text-muted)] mt-1">{section.desc}</p>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
+        {/* TOP NAVIGATION BAR */}
+        <div className="h-14 border-b flex items-center justify-between px-4 shrink-0 z-30 select-none bg-slate-950 dark:bg-slate-950 border-white/10">
+          {/* Left: Icon */}
+          <Link href="/" className="flex items-center hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 rounded">
+            <Image
+              src={`${basePath}/images/branding/icon.svg`}
+              alt="FL Studio"
+              width={32}
+              height={32}
+              className="object-contain"
+            />
+          </Link>
 
-            {/* Featured Tools Section for Home */}
-            {state.activeSection === 'home' && (
-              <div className="mt-12">
-                <div className="flex items-center gap-3 mb-6">
-                  <h2 className="text-2xl font-bold text-white">Featured Tools</h2>
-                  <span className="text-sm text-[var(--text-muted)]">Curated FL Studio essentials</span>
-                  <span className="badge badge-premium ml-auto">Editor&apos;s Pick</span>
-                </div>
-                <MentalModelSection />
-              </div>
-            )}
-
-            {/* Modules Section */}
-            {state.activeSection === 'modules' && <ModulesSection />}
-
-            {/* Dojo Section */}
-            {state.activeSection === 'dojo' && <DojoSection />}
-
-            {/* Templates Section */}
-            {state.activeSection === 'templates' && <TemplatesSection />}
-
-            {/* Audio Section */}
-            {state.activeSection === 'audio' && <AudioSection />}
-
-            {/* Utilities Section */}
-            {state.activeSection === 'utilities' && <UtilitiesSection />}
-
-            {/* Plugins Section */}
-            {state.activeSection === 'plugins' && <PluginsSection />}
-
-            {/* AI Assistant Section */}
-            {state.activeSection === 'ai-assistant' && <AIAssistantSection />}
-
-            {/* Mixing Section */}
-            {state.activeSection === 'mixing' && <MixingSection />}
-
-            {/* Export Section */}
-            {state.activeSection === 'export' && <ExportSection />}
-
-            {/* Troubleshoot Section */}
-            {state.activeSection === 'troubleshoot' && <TroubleshootSection />}
-
-            {/* Project Templates Section */}
-            {state.activeSection === 'project-templates' && <ProjectTemplatesSection />}
-
-            {/* Workflow Visualizations Section */}
-            {state.activeSection === 'workflow-visualizations' && <WorkflowVisualizationsSection />}
-
-            {/* MIDI Mapping Reference Section */}
-            {state.activeSection === 'midi-mapping' && <MidiMappingReference />}
-
-            {/* Audio Analysis Section */}
-            {state.activeSection === 'audio-analysis' && <AudioAnalysisSection />}
-
-            {/* Plugins Database Section */}
-            {state.activeSection === 'plugins-database' && <PluginsDatabase />}
-
-            {/* Native Advantages Section */}
-            {state.activeSection === 'native-advantages' && <NativeAdvantages />}
-
-            {/* Workflow Chains Section */}
-            {state.activeSection === 'workflow-chains' && <WorkflowChains />}
-
-            {/* Synthesis History Section */}
-            {state.activeSection === 'synthesis-history' && <SynthesisHistory />}
-
-            {/* Quick Start Guides Section */}
-            {state.activeSection === 'quick-start' && <QuickStartGuidesSection />}
-
-            {/* Mixer Templates Section */}
-            {state.activeSection === 'mixer-templates' && <MixerTemplatesSection />}
-
-            {/* Genre Presets Section */}
-            {state.activeSection === 'genre-presets' && <GenrePresetsSection />}
-
-            {/* Sample Pack Reference Section */}
-            {state.activeSection === 'sample-packs' && <SamplePackReference />}
+          {/* Center: Toggle Pill */}
+          <div className="flex items-center rounded-full p-1 border bg-slate-800 dark:bg-slate-800 border-white/10">
+            <Link
+              href="/"
+              className="px-4 py-1.5 rounded-full text-xs font-bold transition-all text-gray-400 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500"
+            >
+              Home
+            </Link>
+            <button
+              className="px-4 py-1.5 rounded-full text-xs font-bold text-white shadow-md transition-all bg-purple-600 hover:bg-purple-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500"
+            >
+              Studio Hub
+            </button>
           </div>
-        </main>
+
+          {/* Right: Search */}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setSearchOpen(!searchOpen)}
+              className="p-2 transition-colors text-gray-400 hover:text-white rounded-lg hover:bg-white/5 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500"
+              aria-label="Toggle search"
+            >
+              <Search className="w-5 h-5" />
+            </button>
+            {searchOpen && (
+              <div className="flex items-center rounded-lg border bg-slate-800 border-white/10 px-3">
+                <input
+                  type="text"
+                  className="w-64 bg-transparent border-none text-sm focus:outline-none py-2 text-white placeholder:text-gray-500"
+                  placeholder="Search..."
+                  autoFocus
+                />
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* MAIN APP BODY */}
+        <div className="flex flex-1 overflow-hidden relative">
+          {/* RETRACTABLE SIDEBAR */}
+          <div className={`border-r flex flex-col shrink-0 transition-all duration-300 ease-in-out z-20 pt-6 relative bg-slate-950 dark:bg-slate-950 border-white/10 ${sidebarCollapsed ? 'w-16' : 'w-64'}`}>
+            {/* Old Sidebar component content here - will be replaced next */}
+            <Sidebar
+              activeSection={state.activeSection}
+              navigateToSection={navigateToSection}
+              darkMode={state.darkMode}
+              toggleDarkMode={toggleDarkMode}
+              mobileMenuOpen={state.mobileMenuOpen}
+              setMobileMenuOpen={(open: boolean) => dispatch({ type: 'SET_MOBILE_MENU', payload: open })}
+              toggleSettings={toggleSettings}
+              onOpenCommandPalette={() => dispatch({ type: 'SET_COMMAND_PALETTE', payload: true })}
+              collapsed={sidebarCollapsed}
+            />
+
+            {/* Sidebar Toggle Button */}
+            <div className="mt-auto border-t p-4 border-white/10">
+              <button
+                onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+                className="w-full border rounded-lg py-2 flex items-center justify-center gap-2 transition-all group bg-white/10 border-white/10 text-gray-400 hover:text-white hover:bg-white/15 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500"
+              >
+                {sidebarCollapsed ? (
+                  <>
+                    <ChevronRight className="w-4 h-4" />
+                  </>
+                ) : (
+                  <>
+                    <ChevronLeft className="w-4 h-4" />
+                    <span className="text-xs font-bold">COLLAPSE</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* MAIN CONTENT AREA */}
+          <main className="flex-1 overflow-y-auto">
+            <div className="w-full px-4 py-6 md:py-10">
+              {/* Hero Section for Home */}
+              {state.activeSection === 'home' && (
+                <HeroSection
+                  onExploreTools={() => navigateToSection('plugins')}
+                  onQuickStart={() => navigateToSection('quick-start')}
+                  totalPlugins={50}
+                  totalWorkflows={25}
+                  totalTemplates={30}
+                />
+              )}
+
+              {/* Quick Access Section Cards */}
+              {state.activeSection === 'home' && (
+                <div className="mt-8">
+                  <h2 className="text-xl font-bold text-white mb-4">Jump To Section</h2>
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                    {quickAccessSections.map((section) => (
+                      <button
+                        key={section.id}
+                        onClick={() => navigateToSection(section.id)}
+                        className="p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-[var(--accent-primary)]/50 transition-all group text-left"
+                      >
+                        <div className="mb-2">
+                          <section.Icon className="w-6 h-6 text-[var(--accent-tertiary)]" />
+                        </div>
+                        <h3 className="font-semibold text-white text-sm group-hover:text-[var(--accent-primary)] transition-colors">
+                          {section.label}
+                        </h3>
+                        <p className="text-xs text-[var(--text-muted)] mt-1">{section.desc}</p>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Featured Tools Section for Home */}
+              {state.activeSection === 'home' && (
+                <div className="mt-12">
+                  <div className="flex items-center gap-3 mb-6">
+                    <h2 className="text-2xl font-bold text-white">Featured Tools</h2>
+                    <span className="text-sm text-[var(--text-muted)]">Curated FL Studio essentials</span>
+                    <span className="badge badge-premium ml-auto">Editor&apos;s Pick</span>
+                  </div>
+                  <MentalModelSection />
+                </div>
+              )}
+
+              {/* Modules Section */}
+              {state.activeSection === 'modules' && <ModulesSection />}
+
+              {/* Dojo Section */}
+              {state.activeSection === 'dojo' && <DojoSection />}
+
+              {/* Templates Section */}
+              {state.activeSection === 'templates' && <TemplatesSection />}
+
+              {/* Audio Section */}
+              {state.activeSection === 'audio' && <AudioSection />}
+
+              {/* Utilities Section */}
+              {state.activeSection === 'utilities' && <UtilitiesSection />}
+
+              {/* Plugins Section */}
+              {state.activeSection === 'plugins' && <PluginsSection />}
+
+              {/* AI Assistant Section */}
+              {state.activeSection === 'ai-assistant' && <AIAssistantSection />}
+
+              {/* Mixing Section */}
+              {state.activeSection === 'mixing' && <MixingSection />}
+
+              {/* Export Section */}
+              {state.activeSection === 'export' && <ExportSection />}
+
+              {/* Troubleshoot Section */}
+              {state.activeSection === 'troubleshoot' && <TroubleshootSection />}
+
+              {/* Project Templates Section */}
+              {state.activeSection === 'project-templates' && <ProjectTemplatesSection />}
+
+              {/* Workflow Visualizations Section */}
+              {state.activeSection === 'workflow-visualizations' && <WorkflowVisualizationsSection />}
+
+              {/* MIDI Mapping Reference Section */}
+              {state.activeSection === 'midi-mapping' && <MidiMappingReference />}
+
+              {/* Audio Analysis Section */}
+              {state.activeSection === 'audio-analysis' && <AudioAnalysisSection />}
+
+              {/* Plugins Database Section */}
+              {state.activeSection === 'plugins-database' && <PluginsDatabase />}
+
+              {/* Native Advantages Section */}
+              {state.activeSection === 'native-advantages' && <NativeAdvantages />}
+
+              {/* Workflow Chains Section */}
+              {state.activeSection === 'workflow-chains' && <WorkflowChains />}
+
+              {/* Synthesis History Section */}
+              {state.activeSection === 'synthesis-history' && <SynthesisHistory />}
+
+              {/* Quick Start Guides Section */}
+              {state.activeSection === 'quick-start' && <QuickStartGuidesSection />}
+
+              {/* Mixer Templates Section */}
+              {state.activeSection === 'mixer-templates' && <MixerTemplatesSection />}
+
+              {/* Genre Presets Section */}
+              {state.activeSection === 'genre-presets' && <GenrePresetsSection />}
+
+              {/* Sample Pack Reference Section */}
+              {state.activeSection === 'sample-packs' && <SamplePackReference />}
+            </div>
+          </main>
+        </div>
       </div>
 
       {/* Settings Panel */}
@@ -249,7 +356,7 @@ const FLStudioHubContent = () => {
       />
 
       {/* Command Palette */}
-      <CommandPalette 
+      <CommandPalette
         isOpen={state.showCommandPalette}
         onClose={() => dispatch({ type: 'SET_COMMAND_PALETTE', payload: false })}
         navigateToSection={navigateToSection}

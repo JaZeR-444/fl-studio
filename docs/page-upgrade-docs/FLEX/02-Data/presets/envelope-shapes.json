@@ -1,0 +1,400 @@
+{
+  "envelopeShapes": {
+    "description": "Standard ADSR (Attack, Hold, Decay, Sustain, Release) configurations for common sound types. Apply these to the Volume Envelope sliders in FLEX.",
+    "version": "1.1",
+    "envelope_basics": {
+      "Attack": "Time from 0% to 100% volume after key press",
+      "Hold": "Time at 100% volume before decay starts",
+      "Decay": "Time from 100% down to Sustain level",
+      "Sustain": "Volume level held while key is pressed",
+      "Release": "Time from current level to 0% after key release"
+    },
+    "percentage_to_time_guide": {
+      "0%": "Instant / 0ms",
+      "10%": "~10-30ms (Very fast)",
+      "25%": "~50-100ms (Fast)",
+      "50%": "~200-500ms (Medium)",
+      "75%": "~1-2s (Slow)",
+      "100%": "~3-5s+ (Very slow)"
+    },
+    "shapes": [
+      {
+        "name": "Sharp Pluck",
+        "instrument_type": "Lead, Bell, Guitar, Marimba",
+        "description": "Immediate impact with no sustain. Sounds like a string being plucked.",
+        "visual_ascii": "|\n|\\___",
+        "settings": {
+          "Attack": "0%",
+          "Hold": "0%",
+          "Decay": "30%",
+          "Sustain": "0%",
+          "Release": "15%"
+        },
+        "sound_character": "Percussive, defined transient, natural decay",
+        "use_cases": [
+          "Plucked strings and guitars",
+          "Bells and metallic sounds",
+          "Pizzicato strings",
+          "Short synth leads"
+        ],
+        "common_problems": [
+          {
+            "symptom": "Sound cuts off too quickly",
+            "solution": "Increase Release to 20-30%"
+          },
+          {
+            "symptom": "Sound has click at start",
+            "solution": "Increase Attack slightly to 2-5%"
+          }
+        ],
+        "velocity_interaction": "High velocity should trigger brighter tone - check if Macro controls velocity sensitivity",
+        "mix_tips": [
+          "Perfect for rhythmic patterns",
+          "Works great with short reverbs (0.5-1s)",
+          "Layer with longer release for sustained chords"
+        ]
+      },
+      {
+        "name": "Atmospheric Pad",
+        "instrument_type": "Pad, Drone, Texture",
+        "description": "Slow fade-in and long fade-out. No sudden movements.",
+        "visual_ascii": "    ___\n  /     \\\n /       \\___",
+        "settings": {
+          "Attack": "70%",
+          "Hold": "20%",
+          "Decay": "0%",
+          "Sustain": "100%",
+          "Release": "70%"
+        },
+        "sound_character": "Swelling, evolving, cinematic, no transients",
+        "use_cases": [
+          "Cinematic background textures",
+          "Ambient music foundations",
+          "Film score swells",
+          "Trance breakdowns"
+        ],
+        "common_problems": [
+          {
+            "symptom": "Takes too long to hear the sound",
+            "solution": "Reduce Attack to 40-50%"
+          },
+          {
+            "symptom": "Sounds muddy in the mix",
+            "solution": "Use High Pass filter or reduce Release to 50%"
+          }
+        ],
+        "velocity_interaction": "Low velocity sensitivity - pads should be consistent",
+        "mix_tips": [
+          "Use long reverbs (3-5s decay)",
+          "Automate Filter Cutoff for movement",
+          "Layer multiple instances with different Attack times"
+        ]
+      },
+      {
+        "name": "Punchy Bass / 808",
+        "instrument_type": "Bass, Sub Bass, 808",
+        "description": "Hard hit that sustains fully, but stops immediately when key is released (to avoid mud).",
+        "visual_ascii": "|‾‾‾‾‾\n|",
+        "settings": {
+          "Attack": "0%",
+          "Hold": "10%",
+          "Decay": "20%",
+          "Sustain": "85%",
+          "Release": "8%"
+        },
+        "sound_character": "Tight, punchy, controlled, no bleed",
+        "use_cases": [
+          "Trap and hip-hop 808s",
+          "EDM sub bass",
+          "Kick bass hybrids",
+          "Modern pop bass"
+        ],
+        "common_problems": [
+          {
+            "symptom": "Bass notes run into each other",
+            "solution": "Reduce Release to 3-5%"
+          },
+          {
+            "symptom": "Bass has click at start",
+            "solution": "Increase Attack to 2-3%"
+          },
+          {
+            "symptom": "Bass cuts off too abruptly",
+            "solution": "Increase Release to 12-15%"
+          }
+        ],
+        "velocity_interaction": "Should respond to velocity for dynamic expression",
+        "mix_tips": [
+          "Keep completely dry (0% reverb)",
+          "Use Limiter 'Distortion' mode for grit",
+          "Sidechain to kick for cleaner mix"
+        ]
+      },
+      {
+        "name": "Orchestral Strings (Legato)",
+        "instrument_type": "Violin, Cello, Viola",
+        "description": "Natural bow movement. Not instant, but not a slow pad.",
+        "visual_ascii": "  /‾‾‾‾\n /     \\__",
+        "settings": {
+          "Attack": "25%",
+          "Hold": "0%",
+          "Decay": "0%",
+          "Sustain": "100%",
+          "Release": "35%"
+        },
+        "sound_character": "Natural, organic swell, realistic bow articulation",
+        "use_cases": [
+          "Orchestral arrangements",
+          "Film scoring",
+          "Classical music",
+          "Emotional ballads"
+        ],
+        "common_problems": [
+          {
+            "symptom": "Sounds too synth-like",
+            "solution": "Add slight random variation to Attack times (layer multiple instances)"
+          },
+          {
+            "symptom": "Notes don't connect smoothly",
+            "solution": "Increase Release or use portamento/glide"
+          }
+        ],
+        "velocity_interaction": "Critical - high velocity = louder and brighter",
+        "mix_tips": [
+          "Use medium reverb (1.5-2.5s)",
+          "Slight Attack variation adds realism",
+          "Layer with different velocities for depth"
+        ]
+      },
+      {
+        "name": "Percussive Hit / Stab",
+        "instrument_type": "Drum, Stab, Impact",
+        "description": "One-shot sound. Key hold duration doesn't matter.",
+        "visual_ascii": "|\\\n| \\___",
+        "settings": {
+          "Attack": "0%",
+          "Hold": "0%",
+          "Decay": "40%",
+          "Sustain": "0%",
+          "Release": "40%"
+        },
+        "sound_character": "Percussive, one-shot, impact sound",
+        "use_cases": [
+          "Drum hits",
+          "Synth stabs",
+          "Sound effects",
+          "Orchestral hits"
+        ],
+        "common_problems": [
+          {
+            "symptom": "Sound is too short",
+            "solution": "Increase Decay and Release to 60-80%"
+          },
+          {
+            "symptom": "Multiple hits blend together",
+            "solution": "Reduce Release to 20-30%"
+          }
+        ],
+        "velocity_interaction": "Should be highly velocity-sensitive",
+        "mix_tips": [
+          "Short reverbs work best (0.5-1s)",
+          "Use Limiter 'Heating' for more punch",
+          "Perfect for rhythmic patterns"
+        ]
+      },
+      {
+        "name": "Smooth Organ",
+        "instrument_type": "Organ, Sustained Keys",
+        "description": "Instant on, instant off. Like turning a switch.",
+        "visual_ascii": " ‾‾‾‾‾\n|     |\n",
+        "settings": {
+          "Attack": "0%",
+          "Hold": "0%",
+          "Decay": "0%",
+          "Sustain": "100%",
+          "Release": "5%"
+        },
+        "sound_character": "Immediate, sustained, no dynamics",
+        "use_cases": [
+          "Organ sounds",
+          "Accordion",
+          "Harmonium",
+          "Square wave leads"
+        ],
+        "common_problems": [
+          {
+            "symptom": "Click at note start",
+            "solution": "Add minimal Attack (2-3%)"
+          },
+          {
+            "symptom": "Click at note end",
+            "solution": "Increase Release to 8-10%"
+          }
+        ],
+        "velocity_interaction": "Minimal - organs maintain constant volume",
+        "mix_tips": [
+          "Works with medium reverbs",
+          "Add rotary speaker effect for authentic sound",
+          "Great for sustained chords"
+        ]
+      },
+      {
+        "name": "Piano (Acoustic)",
+        "instrument_type": "Piano, Acoustic Keys",
+        "description": "Fast attack with long, natural decay that fades out even while held.",
+        "visual_ascii": "|\\\n| \\\n|  \\___",
+        "settings": {
+          "Attack": "0%",
+          "Hold": "0%",
+          "Decay": "55%",
+          "Sustain": "35%",
+          "Release": "45%"
+        },
+        "sound_character": "Natural piano decay, percussive start, long tail",
+        "use_cases": [
+          "Acoustic piano",
+          "Electric piano",
+          "Clavinet",
+          "Harpsichord"
+        ],
+        "common_problems": [
+          {
+            "symptom": "Sound cuts off when held",
+            "solution": "Increase Sustain to 50-60%"
+          },
+          {
+            "symptom": "Too much sustain - not natural",
+            "solution": "Reduce Sustain to 20-30%"
+          }
+        ],
+        "velocity_interaction": "Critical for expressiveness - map velocity to filter and volume",
+        "mix_tips": [
+          "Medium reverb with short pre-delay",
+          "Slight compression for evenness",
+          "High velocity sensitivity essential"
+        ]
+      },
+      {
+        "name": "Brass Swell",
+        "instrument_type": "Trumpet, Trombone, French Horn",
+        "description": "Medium attack with full sustain - mimics breath control.",
+        "visual_ascii": "  /‾‾‾‾‾\n /       \\",
+        "settings": {
+          "Attack": "30%",
+          "Hold": "10%",
+          "Decay": "10%",
+          "Sustain": "95%",
+          "Release": "25%"
+        },
+        "sound_character": "Breath-like swell, powerful sustain, controlled release",
+        "use_cases": [
+          "Brass sections",
+          "Solo trumpet/trombone",
+          "Big band arrangements",
+          "Film score brass"
+        ],
+        "common_problems": [
+          {
+            "symptom": "Attack too slow for fast passages",
+            "solution": "Create separate preset with Attack at 10-15%"
+          },
+          {
+            "symptom": "Sounds too synth-like",
+            "solution": "Automate Macro 1 for vibrato/expression"
+          }
+        ],
+        "velocity_interaction": "High velocity = louder and brighter brass tone",
+        "mix_tips": [
+          "Medium reverb with natural room sound",
+          "Automate expression for realism",
+          "Layer multiple takes for section sound"
+        ]
+      },
+      {
+        "name": "Synthesizer Lead (Short)",
+        "instrument_type": "EDM Lead, Synth Solo",
+        "description": "Fast attack, short decay - aggressive and cutting.",
+        "visual_ascii": "|\\__\n|",
+        "settings": {
+          "Attack": "0%",
+          "Hold": "5%",
+          "Decay": "25%",
+          "Sustain": "50%",
+          "Release": "20%"
+        },
+        "sound_character": "Punchy, articulate, defined notes",
+        "use_cases": [
+          "EDM leads",
+          "House synth riffs",
+          "Techno sequences",
+          "Trance leads"
+        ],
+        "common_problems": [
+          {
+            "symptom": "Notes blend together",
+            "solution": "Reduce Release to 10%"
+          },
+          {
+            "symptom": "Too short and choppy",
+            "solution": "Increase Sustain to 70%"
+          }
+        ],
+        "velocity_interaction": "Medium sensitivity for dynamic playing",
+        "mix_tips": [
+          "Use Ping Pong delay for width",
+          "Short reverbs (0.5-1s)",
+          "Automate filter cutoff for movement"
+        ]
+      },
+      {
+        "name": "Synthesizer Lead (Long)",
+        "instrument_type": "Trance Lead, Progressive Lead",
+        "description": "Medium attack with long sustain - soaring and epic.",
+        "visual_ascii": "   /‾‾‾‾‾‾\n  /        \\\n /          \\__",
+        "settings": {
+          "Attack": "35%",
+          "Hold": "15%",
+          "Decay": "15%",
+          "Sustain": "90%",
+          "Release": "50%"
+        },
+        "sound_character": "Soaring, epic, emotional build",
+        "use_cases": [
+          "Trance leads",
+          "Progressive house leads",
+          "Melodic techno",
+          "Emotional breakdowns"
+        ],
+        "common_problems": [
+          {
+            "symptom": "Takes too long to start",
+            "solution": "Reduce Attack to 20-25%"
+          },
+          {
+            "symptom": "Too much overlap between notes",
+            "solution": "Reduce Release to 30-35%"
+          }
+        ],
+        "velocity_interaction": "Low sensitivity - consistent melody volume",
+        "mix_tips": [
+          "Large reverbs (3-5s)",
+          "Delay with high feedback",
+          "Automate attack time for variation"
+        ]
+      }
+    ],
+    "envelope_application_tips": [
+      "Start with a preset close to your target sound",
+      "Adjust one parameter at a time and listen",
+      "Use automation clips to vary envelopes over time",
+      "Check envelope behavior at different velocities"
+    ],
+    "genre_specific_approaches": {
+      "EDM": "Fast attacks, medium releases - keep it punchy",
+      "Ambient": "Long attacks and releases - create evolving textures",
+      "Hip-Hop": "Sharp attacks, short releases - tight and controlled",
+      "Classical": "Natural attacks and releases - mimic real instruments",
+      "Trap": "Instant attacks, varies releases - bass short, leads medium"
+    }
+  }
+}

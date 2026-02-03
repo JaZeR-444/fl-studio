@@ -42,6 +42,7 @@ interface SidebarProps {
   setMobileMenuOpen: (open: boolean) => void;
   toggleSettings?: () => void;
   onOpenCommandPalette: () => void;
+  collapsed?: boolean;
 }
 
 interface NavItem {
@@ -58,6 +59,7 @@ export const Sidebar = ({
   mobileMenuOpen,
   setMobileMenuOpen,
   toggleSettings,
+  collapsed = false,
   onOpenCommandPalette
 }: SidebarProps) => {
   // Local search removed in favor of global command palette
@@ -201,9 +203,9 @@ export const Sidebar = ({
                 >
                   <div className="flex items-center gap-2">
                     <item.Icon className="w-4 h-4 text-[var(--accent-tertiary)]" />
-                    <span className="truncate">{item.label}</span>
+                    {!collapsed && <span className="truncate">{item.label}</span>}
                   </div>
-                  {item.count && (
+                  {!collapsed && item.count && (
                     <span className="nav-count">{item.count}</span>
                   )}
                 </button>

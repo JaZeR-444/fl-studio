@@ -1,0 +1,290 @@
+{
+  "dynamicsPresets": {
+    "description": "Recipes for the Limiter section (Bottom Right) to achieve different dynamic characters and saturation colors.",
+    "version": "1.1",
+    "limiter_types_explained": {
+      "Limiter": "Clean, transparent peak limiting - no coloration",
+      "Warming": "Soft-knee compression with mild saturation - analog warmth",
+      "Heating": "Harder compression with noticeable saturation - aggressive",
+      "Distortion": "Hard clipping and overdrive - heavy coloration",
+      "Custom": "Preset-defined curve - varies by sound designer"
+    },
+    "parameter_ranges": {
+      "Pre": "0-100% (Input gain into limiter)",
+      "Mix": "0-100% (Blend between dry and processed signal)"
+    },
+    "presets": [
+      {
+        "name": "Transparent Safety",
+        "use_case": "Standard Mixing, Mastering, Clean Sounds",
+        "description": "Catches peaks without coloring the sound. Default behavior.",
+        "sonic_character": "Invisible limiting, maintains dynamic range, no harmonics added",
+        "cpu_impact": "Low",
+        "settings": {
+          "Type": "Limiter",
+          "Pre": "0%",
+          "Mix": "100%"
+        },
+        "when_to_use": [
+          "When you need peak protection only",
+          "Preserving transients on drums",
+          "Clean digital production",
+          "Classical and acoustic music"
+        ],
+        "tips": [
+          "Increase Pre slightly (5-10%) if preset is too quiet",
+          "This is the default for a reason - start here"
+        ],
+        "genre_fit": ["All genres", "Classical", "Jazz", "Acoustic"]
+      },
+      {
+        "name": "Analog Warmth",
+        "use_case": "Pads, Keys, Vintage Synths, Lo-Fi",
+        "description": "Subtle saturation that thickens the sound, similar to tube gear.",
+        "sonic_character": "Warm, slightly compressed, adds even harmonics, glues elements together",
+        "cpu_impact": "Low-Medium",
+        "settings": {
+          "Type": "Warming",
+          "Pre": "30%",
+          "Mix": "100%"
+        },
+        "when_to_use": [
+          "Adding vintage character to digital sounds",
+          "Warming up cold synth presets",
+          "Creating lo-fi aesthetics",
+          "Gluing chord layers together"
+        ],
+        "tips": [
+          "Push Pre to 40-50% for more obvious warmth",
+          "Combine with Master Filter Low Pass for vintage vibe",
+          "Works great on Rhodes, Wurlitzer, and organ sounds"
+        ],
+        "before_after": "Before: Crisp, digital. After: Warm, slightly compressed, cohesive",
+        "genre_fit": ["Lo-Fi Hip Hop", "R&B", "Neo-Soul", "Synthwave", "Deep House"]
+      },
+      {
+        "name": "Hard Drive / Fuzz",
+        "use_case": "Aggressive Bass, Rock Leads, Industrial",
+        "description": "Heavy distortion that obliterates dynamics for maximum loudness.",
+        "sonic_character": "Distorted, saturated, aggressive, adds odd harmonics, compressed",
+        "cpu_impact": "Medium",
+        "settings": {
+          "Type": "Distortion",
+          "Pre": "85%",
+          "Mix": "100%"
+        },
+        "when_to_use": [
+          "Aggressive trap 808s",
+          "Dubstep/riddim bass",
+          "Industrial techno leads",
+          "Rock and metal tones"
+        ],
+        "tips": [
+          "Crank Pre to 100% for maximum destruction",
+          "Use High Pass filter before this to avoid mud",
+          "Combine with resonant filter for acid sounds"
+        ],
+        "before_after": "Before: Clean bass. After: Aggressive, distorted, cuts through mix",
+        "genre_fit": ["Trap", "Dubstep", "Industrial", "Hard Techno", "Metal"],
+        "warning": "Can be very loud - adjust mixer level accordingly"
+      },
+      {
+        "name": "Parallel Glue",
+        "use_case": "Drum Loops, Pluck Chords, Dynamic Layers",
+        "description": "Mixes a heavily compressed signal with the clean signal for punch + transients.",
+        "sonic_character": "Punchy transients with added body and sustain",
+        "cpu_impact": "Medium",
+        "settings": {
+          "Type": "Heating",
+          "Pre": "55%",
+          "Mix": "45%"
+        },
+        "when_to_use": [
+          "Adding body to drums without losing punch",
+          "Thickening pluck chords",
+          "Making sustained notes punchier",
+          "Gluing layers together"
+        ],
+        "tips": [
+          "Mix at 30-50% for best results",
+          "Too much Mix loses transients",
+          "Great on chord stabs and plucks"
+        ],
+        "before_after": "Before: Punchy but thin. After: Punchy AND thick",
+        "genre_fit": ["House", "Techno", "EDM", "Pop", "Hip-Hop"]
+      },
+      {
+        "name": "Lo-Fi Crush",
+        "use_case": "Hip Hop, Experimental, Lo-Fi Aesthetics",
+        "description": "Destructive artifacting for vintage/degraded character.",
+        "sonic_character": "Crunchy, aliased, degraded, nostalgic",
+        "cpu_impact": "Medium",
+        "settings": {
+          "Type": "Distortion",
+          "Pre": "100%",
+          "Mix": "25%"
+        },
+        "when_to_use": [
+          "Creating lo-fi hip hop textures",
+          "Adding grit to clean samples",
+          "Vintage tape emulation",
+          "Experimental sound design"
+        ],
+        "tips": [
+          "Low Mix (20-30%) works best",
+          "Combine with Master Filter Low Pass @ 3-5kHz",
+          "Add noise/vinyl crackle macros if available"
+        ],
+        "before_after": "Before: Clean, digital. After: Degraded, vintage, lo-fi",
+        "genre_fit": ["Lo-Fi Hip Hop", "Vaporwave", "Experimental", "Chillwave"]
+      },
+      {
+        "name": "Vocal Shine",
+        "use_case": "Vocal Presets, Leads, Solo Instruments",
+        "description": "Gentle compression that brings vocals/leads forward without harshness.",
+        "sonic_character": "Present, upfront, polished, controlled dynamics",
+        "cpu_impact": "Low-Medium",
+        "settings": {
+          "Type": "Warming",
+          "Pre": "25%",
+          "Mix": "100%"
+        },
+        "when_to_use": [
+          "Vocal samples in FLEX",
+          "Lead synths that need to cut through",
+          "Solo instruments",
+          "Elements that need presence"
+        ],
+        "tips": [
+          "Keep Pre moderate (20-30%)",
+          "Too much Pre causes harshness",
+          "Combine with short reverb for depth"
+        ],
+        "before_after": "Before: Buried in mix. After: Upfront and present",
+        "genre_fit": ["Pop", "R&B", "EDM", "House", "Trance"]
+      },
+      {
+        "name": "Soft Tape Saturation",
+        "use_case": "Full Mixes, Busses, Vintage Vibes",
+        "description": "Emulates analog tape saturation with soft knee compression.",
+        "sonic_character": "Smooth, analog, glues elements, adds weight",
+        "cpu_impact": "Medium",
+        "settings": {
+          "Type": "Warming",
+          "Pre": "40%",
+          "Mix": "85%"
+        },
+        "when_to_use": [
+          "Adding analog character to full arrangements",
+          "Gluing multiple FLEX instances together",
+          "Vintage production aesthetics",
+          "Smoothing digital harshness"
+        ],
+        "tips": [
+          "Use on busses/groups rather than individual sounds",
+          "Mix at 70-90% for tape blend",
+          "Pair with vintage-style reverbs"
+        ],
+        "before_after": "Before: Clean but separate elements. After: Cohesive, warm, analog",
+        "genre_fit": ["Lo-Fi", "Synthwave", "R&B", "Deep House", "Organic Electronic"]
+      },
+      {
+        "name": "Aggressive Pump",
+        "use_case": "EDM Leads, Synth Stabs, High-Energy Elements",
+        "description": "Hard compression for maximum impact and energy.",
+        "sonic_character": "Loud, aggressive, compressed, energetic, in-your-face",
+        "cpu_impact": "Medium",
+        "settings": {
+          "Type": "Heating",
+          "Pre": "70%",
+          "Mix": "100%"
+        },
+        "when_to_use": [
+          "EDM drop elements",
+          "Aggressive synth leads",
+          "Stab chords",
+          "Maximum impact sounds"
+        ],
+        "tips": [
+          "Reduce Pre if it clips (causing artifacts)",
+          "Works great with bright, cutting sounds",
+          "May need to reduce mixer level"
+        ],
+        "before_after": "Before: Dynamic. After: Compressed, loud, aggressive",
+        "genre_fit": ["Big Room", "Electro House", "Hardstyle", "Dubstep"],
+        "warning": "Very aggressive - can cause ear fatigue"
+      },
+      {
+        "name": "Subtle Enhancement",
+        "use_case": "Acoustic Instruments, Delicate Sounds",
+        "description": "Barely-there warmth that adds polish without obvious processing.",
+        "sonic_character": "Natural, slightly enhanced, maintains dynamics",
+        "cpu_impact": "Low",
+        "settings": {
+          "Type": "Warming",
+          "Pre": "15%",
+          "Mix": "100%"
+        },
+        "when_to_use": [
+          "Acoustic piano and strings",
+          "Natural instrument samples",
+          "When you need transparency with slight warmth",
+          "Classical and acoustic genres"
+        ],
+        "tips": [
+          "Very subtle - A/B test to hear difference",
+          "Don't push Pre above 20%",
+          "Great for adding \"glue\" without coloration"
+        ],
+        "before_after": "Before: Pristine. After: Slightly more cohesive",
+        "genre_fit": ["Classical", "Jazz", "Acoustic", "Singer-Songwriter"]
+      },
+      {
+        "name": "Bass Thickener",
+        "use_case": "808s, Sub Bass, Bass Synths",
+        "description": "Adds weight and harmonics to bass sounds without losing punch.",
+        "sonic_character": "Thick, punchy, adds harmonics for clarity on small speakers",
+        "cpu_impact": "Medium",
+        "settings": {
+          "Type": "Heating",
+          "Pre": "50%",
+          "Mix": "100%"
+        },
+        "when_to_use": [
+          "Trap 808s that need more presence",
+          "Deep house bass",
+          "Sub bass that disappears on laptop speakers",
+          "Bass that needs more body"
+        ],
+        "tips": [
+          "Check in mono - bass should stay tight",
+          "Combine with Distortion type for aggressive bass",
+          "Keep bass completely dry (0% reverb)"
+        ],
+        "before_after": "Before: Clean but thin bass. After: Thick, punchy, audible on all systems",
+        "genre_fit": ["Trap", "Hip-Hop", "Deep House", "UK Garage", "Drum & Bass"]
+      }
+    ],
+    "workflow_tips": [
+      "Start with 'Transparent Safety' and only add character if needed",
+      "Use Warming for vintage/organic genres",
+      "Use Heating/Distortion for aggressive electronic genres",
+      "Parallel compression (low Mix %) preserves transients",
+      "Higher Pre = more saturation/distortion",
+      "Always A/B test - your ears might be fatigued"
+    ],
+    "common_mistakes": [
+      "Using Distortion on everything - causes ear fatigue",
+      "Not adjusting mixer level after heavy limiting",
+      "Forgetting to check mono compatibility after saturation",
+      "Too much Pre causing unwanted clipping artifacts"
+    ],
+    "genre_quick_reference": {
+      "Lo-Fi/Vintage": "Warming @ 30-40% Pre",
+      "Clean/Digital": "Limiter @ 0-15% Pre",
+      "Aggressive/Heavy": "Distortion @ 70-100% Pre or Heating @ 50-70% Pre",
+      "Glue/Cohesion": "Warming @ 20-30% Pre, Mix 70-85%",
+      "Maximum Impact": "Heating @ 70% Pre, Mix 100%"
+    }
+  }
+}

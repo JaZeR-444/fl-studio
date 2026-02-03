@@ -3,6 +3,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/Badge';
+
+// Get basePath for GitHub Pages compatibility
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 import {
   ArrowRight,
   Zap,
@@ -87,6 +90,27 @@ export default function HomePage() {
   };
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] text-white overflow-hidden relative">
+      {/* ANIMATED BACKGROUND LAYER */}
+      <div
+        className="fixed inset-0 z-0 pointer-events-none overflow-hidden"
+        style={{
+          backgroundImage: `url(${basePath}/fl-studio-test-new-background.svg)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: 0.25,
+          filter: 'blur(1px)',
+        }}
+      >
+        <div
+          className="absolute inset-0 animate-slow-drift"
+          style={{
+            backgroundImage: `url(${basePath}/fl-studio-test-new-background.svg)`,
+            backgroundSize: '110%',
+            backgroundPosition: 'center',
+          }}
+        />
+      </div>
+
       {/* Background Ambience */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-purple-600 rounded-full blur-[120px] opacity-20 animate-pulse-glow" />

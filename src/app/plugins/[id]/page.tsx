@@ -1,8 +1,9 @@
-import React from 'react';
-import { notFound } from 'next/navigation';
-import Link from 'next/link';
-import Image from 'next/image';
-import allPluginsData from '@/data/plugins/allPlugins.json';
+'use client';
+
+export default function PluginDetailPage() {
+  return <div>Plugin Page</div>;
+}
+
 import { ExtendedPlugin } from '@/types/pluginTypes';
 import { Badge } from '@/components/ui/Badge';
 import { PluginBreadcrumb } from '@/components/ui/Breadcrumb';
@@ -26,17 +27,11 @@ import {
 const allPlugins: ExtendedPlugin[] = allPluginsData as unknown as ExtendedPlugin[];
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
-export function generateStaticParams() {
-  return allPlugins.map((plugin) => ({
-    id: plugin.id,
-  }));
-}
-
 export default function PluginDetailPage({ params }: { params: { id: string } }) {
   const plugin = allPlugins.find((p) => p.id === params.id);
 
   if (!plugin) {
-    notFound();
+    return null;
   }
 
   return (

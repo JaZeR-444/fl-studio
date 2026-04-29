@@ -73,32 +73,33 @@ export interface ExtendedPlugin {
   views: number;
   saves: number;
   date: string;
-  
+
   // Extended fields
   nativeStatus: string;
   bestUsedFor: string[];
   soundCharacter: string;
   cpuUsage: string;
+  brandColor?: string; // Hex color for specific branding (e.g. Sytrus Orange)
   proTips: string[];
-  
+
   // Pro Guide Fields (Phase 5)
-  scenarios?: { 
-    whenToUse: string[]; 
-    whenNotToUse: string[]; 
+  scenarios?: {
+    whenToUse: string[];
+    whenNotToUse: string[];
   };
-  controls?: Array<{ 
-    label: string; 
-    description: string; 
+  controls?: Array<{
+    label: string;
+    description: string;
     listenFor: string; // Ear training cue
   }>;
-  recipes?: Array<{ 
-    name: string; 
-    description: string; 
+  recipes?: Array<{
+    name: string;
+    description: string;
     settings: Record<string, string>; // e.g. {"Attack": "10ms", "Ratio": "4:1"}
   }>;
-  troubleshooting?: Array<{ 
-    issue: string; 
-    solution: string; 
+  troubleshooting?: Array<{
+    issue: string;
+    solution: string;
   }>;
   workflow?: {
     pairsWith: string[]; // IDs of other plugins

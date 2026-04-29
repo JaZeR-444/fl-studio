@@ -46,6 +46,7 @@ interface AppState {
 // Define the actions that can be dispatched
 type AppAction =
   | { type: 'TOGGLE_DARK_MODE' }
+  | { type: 'SET_DARK_MODE'; payload: boolean }
   | { type: 'SET_ACTIVE_SECTION'; payload: string }
   | { type: 'TOGGLE_MOBILE_MENU' }
   | { type: 'SET_MOBILE_MENU'; payload: boolean }
@@ -60,13 +61,7 @@ interface AppContextType {
 
 // Initial state
 const initialState: AppState = {
-  darkMode: (() => {
-    const stored = safeLocalStorage.getItem('darkMode');
-    if (stored === 'true') return true;
-    if (stored === 'false') return false;
-    // Default to dark mode for this app's design
-    return true;
-  })(),
+  darkMode: true, // Default to dark mode for this app's design, stable for hydration
   activeSection: 'home',
   mobileMenuOpen: false,
   showCommandPalette: false,
@@ -90,7 +85,20 @@ const appReducer = (state: AppState, action: AppAction): AppState => {
         ...state,
         darkMode: newDarkMode,
       };
-      
+
+    case 'SET_DARK_MODE':
+      if (typeof document !== 'undefined') {
+        if (action.payload) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      }
+      return {
+        ...state,
+        darkMode: action.payload,
+      };
+
     case 'SET_ACTIVE_SECTION':
       return {
         ...state,
@@ -137,7 +145,18 @@ interface AppProviderProps {
 export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
 
-  // Apply dark mode class to document on initial load
+  // Load initial dark mode from localStorage on mount (client-only)
+  React.useEffect(() => {
+    const stored = safeLocalStorage.getItem('darkMode');
+    if (stored !== null) {
+      const isDark = stored === 'true';
+      if (isDark !== state.darkMode) {
+        dispatch({ type: 'SET_DARK_MODE', payload: isDark });
+      }
+    }
+  }, []);
+
+  // Apply dark mode class to document on state change
   React.useEffect(() => {
     if (typeof document !== 'undefined') {
       if (state.darkMode) {

@@ -30,7 +30,7 @@ export const usePluginSearch = ({ searchTerm, filters, sortBy, sortOrder }: UseP
         setLoading(true);
         
         // Set the plugins in the service
-        pluginSearchService.setPlugins(searchIndex as PluginSearchIndex[]);
+        pluginSearchService.setPlugins(searchIndex as any as PluginSearchIndex[]);
         
         // Perform search with filters
         const searchResults = pluginSearchService.search(searchTerm, {

@@ -27,7 +27,7 @@ import { DojoSection } from '@/components/sections/Dojo';
 import { TemplatesSection } from '@/components/sections/Templates';
 import { AudioSection } from '@/components/sections/Audio';
 import { UtilitiesSection } from '@/components/sections/Utilities';
-import { PluginsSection } from '@/components/sections/Plugins';
+
 import { AIAssistantSection } from '@/components/sections/AIAssistant';
 import { MixingSection } from '@/components/sections/Mixing';
 import { ExportSection } from '@/components/sections/Export';
@@ -46,10 +46,11 @@ import { GenrePresetsSection } from '@/components/sections/GenrePresets';
 import { SamplePackReference } from '@/components/sections/SamplePackReference';
 import { SettingsPanel } from '@/components/SettingsPanel';
 import { CommandPalette } from '@/components/CommandPalette';
+import { MobileBottomNav } from '@/components/MobileBottomNav';
 
 // Quick Access section configuration with Lucide icons
 const quickAccessSections: { id: string; label: string; Icon: React.ComponentType<{ className?: string }>; desc: string }[] = [
-  { id: 'plugins', label: 'Browse', Icon: Search, desc: 'Explore all tools' },
+  { id: 'plugins-database', label: 'Browse', Icon: Search, desc: 'Explore all tools' },
   { id: 'workflow-chains', label: 'Workflow', Icon: RefreshCw, desc: 'Production chains' },
   { id: 'audio', label: 'Production', Icon: Mic, desc: 'Recording & mixing' },
   { id: 'templates', label: 'Templates', Icon: FolderOpen, desc: 'Project starters' },
@@ -194,8 +195,8 @@ const FLStudioHubContent = () => {
 
         {/* MAIN APP BODY */}
         <div className="flex flex-1 overflow-hidden relative">
-          {/* RETRACTABLE SIDEBAR */}
-          <div className={`border-r flex flex-col shrink-0 transition-all duration-300 ease-in-out z-20 pt-6 relative bg-slate-950 dark:bg-slate-950 border-white/10 ${sidebarCollapsed ? 'w-16' : 'w-64'}`}>
+          {/* RETRACTABLE SIDEBAR - Hidden on mobile, uses bottom nav instead */}
+          <div className={`hidden md:flex border-r flex-col shrink-0 transition-all duration-300 ease-in-out z-20 pt-6 relative bg-slate-950 dark:bg-slate-950 border-white/10 ${sidebarCollapsed ? 'w-16' : 'w-64'}`}>
             {/* Old Sidebar component content here - will be replaced next */}
             <Sidebar
               activeSection={state.activeSection}
@@ -207,35 +208,17 @@ const FLStudioHubContent = () => {
               toggleSettings={toggleSettings}
               onOpenCommandPalette={() => dispatch({ type: 'SET_COMMAND_PALETTE', payload: true })}
               collapsed={sidebarCollapsed}
+              onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
             />
-
-            {/* Sidebar Toggle Button */}
-            <div className="mt-auto border-t p-4 border-white/10">
-              <button
-                onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-                className="w-full border rounded-lg py-2 flex items-center justify-center gap-2 transition-all group bg-white/10 border-white/10 text-gray-400 hover:text-white hover:bg-white/15 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500"
-              >
-                {sidebarCollapsed ? (
-                  <>
-                    <ChevronRight className="w-4 h-4" />
-                  </>
-                ) : (
-                  <>
-                    <ChevronLeft className="w-4 h-4" />
-                    <span className="text-xs font-bold">COLLAPSE</span>
-                  </>
-                )}
-              </button>
-            </div>
           </div>
 
           {/* MAIN CONTENT AREA */}
-          <main className="flex-1 overflow-y-auto">
+          <main className="flex-1 overflow-y-auto pb-20 md:pb-0">
             <div className="w-full px-4 py-6 md:py-10">
               {/* Hero Section for Home */}
               {state.activeSection === 'home' && (
                 <HeroSection
-                  onExploreTools={() => navigateToSection('plugins')}
+                  onExploreTools={() => navigateToSection('plugins-database')}
                   onQuickStart={() => navigateToSection('quick-start')}
                   totalPlugins={50}
                   totalWorkflows={25}
@@ -294,8 +277,7 @@ const FLStudioHubContent = () => {
               {/* Utilities Section */}
               {state.activeSection === 'utilities' && <UtilitiesSection />}
 
-              {/* Plugins Section */}
-              {state.activeSection === 'plugins' && <PluginsSection />}
+
 
               {/* AI Assistant Section */}
               {state.activeSection === 'ai-assistant' && <AIAssistantSection />}
@@ -369,6 +351,13 @@ const FLStudioHubContent = () => {
           onClick={() => dispatch({ type: 'SET_MOBILE_MENU', payload: false })}
         />
       )}
+
+      {/* Mobile Bottom Navigation */}
+      <MobileBottomNav
+        activeSection={state.activeSection}
+        navigateToSection={navigateToSection}
+        onOpenSearch={() => dispatch({ type: 'SET_COMMAND_PALETTE', payload: true })}
+      />
     </div>
   );
 };

@@ -25,7 +25,9 @@ export const WorkflowChains = () => {
   const renderSelectedWorkflow = () => {
     if (!selectedWorkflow) return null;
 
-    const workflow: WorkflowTemplate = workflows[selectedWorkflow as keyof typeof workflows];
+    const workflow: WorkflowTemplate = (workflows as any)[selectedWorkflow];
+
+    if (!workflow) return null;
 
     return (
 
@@ -157,7 +159,8 @@ export const WorkflowChains = () => {
           {/* Workflow Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {workflowIds.map(workflowId => {
-              const workflow: WorkflowTemplate = workflows[workflowId as keyof typeof workflows];
+              const workflow: WorkflowTemplate = (workflows as any)[workflowId];
+              if (!workflow || typeof workflow === 'string') return null;
               return (
                 <div 
                   key={workflowId} 
@@ -173,7 +176,7 @@ export const WorkflowChains = () => {
                       <h3 className="font-bold text-white">{workflow.name}</h3>
                     </div>
                     <span className="badge badge-orange text-xs">
-                      {workflow.genre.split(',')[0]}
+                      {workflow.genre ? workflow.genre.split(',')[0] : 'General'}
                     </span>
                   </div>
                   

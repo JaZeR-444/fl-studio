@@ -4,9 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev --port 3003",
+    "prebuild": "node scripts/aggregate-plugin-data.js",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "aggregate": "node scripts/aggregate-plugin-data.js",
+    "enhance": "node scripts/enhance-manifests.js",
+    "data:refresh": "npm run enhance && npm run aggregate",
+    "fix-pages": "node scripts/fix-plugin-pages.js"
   },
   "dependencies": {
     "chart.js": "^4.5.1",

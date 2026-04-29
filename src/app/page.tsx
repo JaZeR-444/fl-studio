@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/Badge';
 
@@ -27,6 +27,11 @@ import {
 
 export default function HomePage() {
   const [currentGenre, setCurrentGenre] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const genres = [
     {
@@ -120,7 +125,7 @@ export default function HomePage() {
 
       {/* ===== MUSICAL NOTES PARTICLE SYSTEM ===== */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        {[...Array(12)].map((_, i) => (
+        {isMounted && [...Array(12)].map((_, i) => (
           <div
             key={i}
             className="absolute text-purple-500/20 animate-float-note"

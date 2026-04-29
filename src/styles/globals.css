@@ -1125,3 +1125,168 @@ body::before {
   white-space: nowrap;
   border-width: 0;
 }
+
+/* ============================================
+   Staggered Animations
+   ============================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+
+/* ============================================
+   Smooth Collapse
+   ============================================ */
+
+.collapse-content {
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, padding 0.3s ease;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.collapse-content.open {
+  max-height: 500px; /* Arbitrary large height */
+  opacity: 1;
+}
+
+/* ============================================
+   Toast Notification Animation
+   ============================================ */
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.3s ease-out;
+}
+
+/* ============================================
+   Hidden Scrollbar (for horizontal carousels)
+   ============================================ */
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============================================
+   Featured Section Glow Effect
+   ============================================ */
+
+.featured-glow {
+  position: relative;
+}
+
+.featured-glow::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    135deg,
+    rgba(251, 191, 36, 0.3) 0%,
+    rgba(249, 115, 22, 0.2) 50%,
+    rgba(124, 58, 237, 0.3) 100%
+  );
+  border-radius: inherit;
+  z-index: -1;
+  filter: blur(12px);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.featured-glow:hover::before {
+  opacity: 1;
+}
+
+/* ============================================
+   Quick Filter Pills
+   ============================================ */
+
+.filter-pill {
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.filter-pill:hover {
+  background: rgba(124, 58, 237, 0.15);
+  border-color: var(--accent-secondary);
+  color: var(--text-primary);
+}
+
+.filter-pill.active {
+  background: rgba(124, 58, 237, 0.25);
+  border-color: var(--accent-secondary);
+  color: var(--text-primary);
+  box-shadow: 0 0 12px rgba(124, 58, 237, 0.2);
+}
+
+/* ============================================
+   CPU Usage Meter
+   ============================================ */
+
+.cpu-meter {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cpu-meter-bar {
+  width: 40px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.cpu-meter-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.cpu-meter-fill.low {
+  width: 25%;
+  background: linear-gradient(90deg, #10b981, #34d399);
+}
+
+.cpu-meter-fill.medium {
+  width: 50%;
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+}
+
+.cpu-meter-fill.high {
+  width: 85%;
+  background: linear-gradient(90deg, #ef4444, #f87171);
+}

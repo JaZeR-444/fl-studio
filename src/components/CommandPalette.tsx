@@ -56,7 +56,6 @@ export const CommandPalette = ({ isOpen, onClose, navigateToSection }: CommandPa
   const navItems: SearchResult[] = [
     // Browse
     { id: 'home', type: 'section', label: 'All Tools', sectionId: 'home', Icon: LayoutGrid, sublabel: 'Browse' },
-    { id: 'plugins', type: 'section', label: 'Instruments & Synths', sectionId: 'plugins', Icon: Piano, sublabel: 'Browse' },
     { id: 'plugins-database', type: 'section', label: 'Plugin Database', sectionId: 'plugins-database', Icon: Plug, sublabel: 'Browse' },
     { id: 'native-advantages', type: 'section', label: 'Native Advantages', sectionId: 'native-advantages', Icon: Zap, sublabel: 'Browse' },
     // Workflow
@@ -93,7 +92,7 @@ export const CommandPalette = ({ isOpen, onClose, navigateToSection }: CommandPa
     const lowerQuery = query.toLowerCase();
 
     // 1. Filter Navigation
-    const navResults = navItems.filter(item => 
+    const navResults = navItems.filter(item =>
       item.label.toLowerCase().includes(lowerQuery)
     );
 
@@ -138,7 +137,7 @@ export const CommandPalette = ({ isOpen, onClose, navigateToSection }: CommandPa
       } else if (e.key === 'Enter') {
         e.preventDefault();
         if (results[selectedIndex]) {
-           handleSelect(results[selectedIndex]);
+          handleSelect(results[selectedIndex]);
         }
       } else if (e.key === 'Escape') {
         e.preventDefault();
@@ -156,7 +155,7 @@ export const CommandPalette = ({ isOpen, onClose, navigateToSection }: CommandPa
     } else if (result.type === 'plugin') {
       navigateToSection('plugins-database');
       if (result.pluginId) {
-         router.push(`/plugins/${result.pluginId}`);
+        router.push(`/plugins/${result.pluginId}`);
       }
     }
     onClose();
@@ -167,8 +166,8 @@ export const CommandPalette = ({ isOpen, onClose, navigateToSection }: CommandPa
   return (
     <div className="fixed inset-0 z-[100] flex items-start justify-center pt-[20vh] px-4">
       {/* Backdrop */}
-      <div 
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" 
+      <div
+        className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
         onClick={onClose}
       />
 
@@ -200,7 +199,7 @@ export const CommandPalette = ({ isOpen, onClose, navigateToSection }: CommandPa
 
           {query !== '' && results.length === 0 && (
             <div className="p-8 text-center text-[var(--text-muted)]">
-               No results found for &quot;{query}&quot;
+              No results found for &quot;{query}&quot;
             </div>
           )}
 
@@ -208,11 +207,10 @@ export const CommandPalette = ({ isOpen, onClose, navigateToSection }: CommandPa
             <button
               key={result.id}
               onClick={() => handleSelect(result)}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-colors ${
-                index === selectedIndex 
-                  ? 'bg-[var(--accent-primary)]/20 text-white' 
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-colors ${index === selectedIndex
+                  ? 'bg-[var(--accent-primary)]/20 text-white'
                   : 'text-[var(--text-secondary)] hover:bg-white/5'
-              }`}
+                }`}
               onMouseEnter={() => setSelectedIndex(index)}
             >
               <result.Icon className="w-5 h-5 text-[var(--accent-tertiary)]" />
@@ -223,18 +221,18 @@ export const CommandPalette = ({ isOpen, onClose, navigateToSection }: CommandPa
                 )}
               </div>
               {index === selectedIndex && (
-                 <svg className="w-4 h-4 text-[var(--accent-tertiary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                 </svg>
+                <svg className="w-4 h-4 text-[var(--accent-tertiary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
               )}
             </button>
           ))}
         </div>
-        
+
         {/* Footer */}
         <div className="px-4 py-2 border-t border-[var(--glass-border)] bg-black/20 text-[10px] text-[var(--text-dim)] flex justify-between">
-           <span>Pro Tip: Use arrow keys to navigate</span>
-           <span>FL Studio Hub v2.1</span>
+          <span>Pro Tip: Use arrow keys to navigate</span>
+          <span>FL Studio Hub v2.1</span>
         </div>
       </div>
     </div>

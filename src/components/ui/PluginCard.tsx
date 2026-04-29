@@ -1,27 +1,38 @@
 'use client';
 
 import Link from 'next/link';
-// src/components/ui/PluginCard.tsx
 import { ExtendedPlugin } from '@/types/pluginTypes';
 import { Badge } from './Badge';
-import { Piano, Zap } from 'lucide-react';
+import { Piano, Zap, Heart, Link2, Cpu } from 'lucide-react';
+import { getCategoryColor } from '@/lib/categoryColors';
 
 interface PluginCardProps {
   plugin: ExtendedPlugin;
   onClick?: () => void;
   showDetails?: boolean;
+  isInToolkit?: boolean;
+  onToggleToolkit?: (pluginId: string) => void;
 }
 
-export const PluginCard = ({ plugin, onClick, showDetails = true }: PluginCardProps) => {
-  // Determine category color based on family
-  const getCategoryColor = (family: string): 'purple' | 'blue' | 'cyan' | 'green' | 'orange' | 'pink' => {
-    // Simple heuristic for category colors
-    if (family?.includes('Synth')) return 'purple';
-    if (family?.includes('Effect')) return 'cyan';
-    if (family?.includes('Dynamics')) return 'orange';
-    if (family?.includes('Delay') || family?.includes('Reverb')) return 'blue';
-    return 'green';
-  };
+// Helper to parse CPU usage level
+const getCPULevel = (cpuUsage: string | undefined): 'low' | 'medium' | 'high' => {
+  if (!cpuUsage) return 'low';
+  const lower = cpuUsage.toLowerCase();
+  if (lower.includes('very low') || lower.includes('extremely low') || lower.includes('low')) return 'low';
+  if (lower.includes('moderate') || lower.includes('medium')) return 'medium';
+  if (lower.includes('high') || lower.includes('heavy')) return 'high';
+  return 'low';
+};
+
+export const PluginCard = ({
+  plugin,
+  onClick,
+  showDetails = true,
+  isInToolkit = false,
+  onToggleToolkit
+}: PluginCardProps) => {
+  const colors = getCategoryColor(plugin.category, plugin.brandColor);
+  const cpuLevel = getCPULevel(plugin.cpuUsage);
 
   const getPricingBadge = () => {
     switch (plugin.pricingBadge) {
@@ -35,32 +46,57 @@ export const PluginCard = ({ plugin, onClick, showDetails = true }: PluginCardPr
 
   const pricing = getPricingBadge();
 
+  const handleToolkitClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onToggleToolkit?.(plugin.id);
+  };
+
+  // Get related plugins for display
+  const relatedPlugins = plugin.workflow?.pairsWith?.slice(0, 3) || [];
+
   return (
     <Link
       href={`/plugins/${plugin.id}`}
-      className="tool-card block hover:scale-[1.02] transition-transform duration-300 group"
+      className={`tool-card block hover:scale-[1.02] transition-transform duration-300 group relative overflow-hidden border-l-4 ${colors.border} cursor-pointer`}
       onClick={onClick}
     >
+      {/* Toolkit Button - Always visible with subtle styling when not active */}
+      {onToggleToolkit && (
+        <button
+          onClick={handleToolkitClick}
+          className={`absolute top-3 right-3 z-10 p-2 rounded-lg transition-all duration-200 ${isInToolkit
+            ? 'bg-pink-500/30 text-pink-400 shadow-lg shadow-pink-500/20'
+            : 'bg-white/5 text-gray-600 border border-white/10 hover:text-pink-400 hover:bg-pink-500/20 hover:border-pink-500/30'
+            }`}
+          title={isInToolkit ? 'Remove from Toolkit' : 'Add to Toolkit'}
+          aria-label={isInToolkit ? 'Remove from Toolkit' : 'Add to Toolkit'}
+        >
+          <Heart className={`w-4 h-4 ${isInToolkit ? 'fill-current' : ''}`} />
+        </button>
+      )}
+
       {/* Header */}
-      <div className="flex justify-between items-start mb-3">
+      <div className="flex justify-between items-start mb-3 pr-10">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center text-lg">
-            {plugin.icon || <Piano className="w-5 h-5 text-white" />}
+          {/* SVG Icon instead of emoji */}
+          <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${colors.gradient} flex items-center justify-center shadow-lg`}>
+            <Piano className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h3 className="font-bold text-white max-w-[150px] truncate">{plugin.name}</h3>
-            <p className="text-xs text-[var(--text-dim)] truncate max-w-[150px]">{plugin.category}</p>
+            <h3 className="font-bold text-white max-w-[150px] truncate group-hover:text-purple-300 transition-colors">{plugin.name}</h3>
+            <p className={`text-xs ${colors.text} truncate max-w-[150px]`}>{plugin.category}</p>
           </div>
         </div>
         {plugin.nativeStatus && (
-          <Badge variant="premium">
+          <Badge variant="premium" className="hidden sm:flex">
             Native
           </Badge>
         )}
       </div>
-      
+
       {showDetails && (
-        <div className="transition-all duration-300 opacity-50 grayscale group-hover:opacity-100 group-hover:grayscale-0 group-hover:blur-0 blur-[0.5px]">
+        <div className="transition-all duration-300">
           {/* Edition Badges */}
           <div className="flex flex-wrap gap-1 mb-3">
             {pricing && (
@@ -68,7 +104,7 @@ export const PluginCard = ({ plugin, onClick, showDetails = true }: PluginCardPr
                 {pricing.label}
               </Badge>
             )}
-             {plugin.tags?.slice(0, 2).map((tag, index) => (
+            {plugin.tags?.slice(0, 2).map((tag, index) => (
               <Badge
                 key={index}
                 variant={tag.color}
@@ -78,45 +114,66 @@ export const PluginCard = ({ plugin, onClick, showDetails = true }: PluginCardPr
             ))}
           </div>
 
-          {/* Stats Row */}
-          <div className="flex justify-between text-xs mb-3 p-2 rounded-lg bg-[var(--glass-bg)]">
-            <span className="text-[var(--text-muted)]">
-              <Zap className="w-3 h-3 text-[var(--accent-tertiary)] inline" /> {plugin.cpuUsage || 'Unknown'} CPU
-            </span>
-            <span className="text-[var(--text-muted)]">
-               <span className="text-yellow-400">★</span> {plugin.rating?.toFixed(1) || 4.5}
+          {/* Stats Row with Visual CPU Meter */}
+          <div className="flex justify-between items-center text-xs mb-3 p-2.5 rounded-lg bg-white/[0.03] border border-white/5">
+            {/* CPU Usage with Visual Meter */}
+            <div className="cpu-meter">
+              <Cpu className="w-3 h-3 text-cyan-400" />
+              <div className="cpu-meter-bar">
+                <div className={`cpu-meter-fill ${cpuLevel}`} />
+              </div>
+              <span className="text-[10px] text-gray-500 uppercase">{cpuLevel}</span>
+            </div>
+
+            {/* Rating */}
+            <span className="text-[var(--text-muted)] flex items-center gap-1">
+              <span className="text-yellow-400">★</span>
+              <span className="font-medium text-white">{plugin.rating?.toFixed(1) || '4.5'}</span>
             </span>
           </div>
 
           {/* Best Used For */}
           {plugin.bestUsedFor && plugin.bestUsedFor.length > 0 && (
             <div>
-              <p className="text-xs text-[var(--text-dim)] mb-2">Best used for:</p>
+              <p className="text-[10px] text-gray-500 mb-1.5 uppercase tracking-wide">Best for</p>
               <div className="flex flex-wrap gap-1">
-                {plugin.bestUsedFor.slice(0, 3).map((useCase, index) => (
-                  <Badge
+                {plugin.bestUsedFor.slice(0, 2).map((useCase, index) => (
+                  <span
                     key={index}
-                    variant="blue"
+                    className="text-[10px] px-2 py-1 rounded-md bg-blue-500/10 text-blue-400 border border-blue-500/20"
                   >
-                    {useCase}
-                  </Badge>
+                    {useCase.length > 25 ? useCase.slice(0, 25) + '...' : useCase}
+                  </span>
                 ))}
               </div>
             </div>
           )}
 
-          {/* Footer Stats */}
-          <div className="tool-stats mt-3 pt-3 border-t border-[var(--glass-border)]">
-            <div className="tool-stats-item">
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-              </svg>
-              <span>View</span>
+          {/* Related Plugins (Works With) */}
+          {relatedPlugins.length > 0 && (
+            <div className="mt-3 pt-3 border-t border-white/5">
+              <div className="flex items-center gap-1 text-[10px] text-gray-500 mb-1.5 uppercase tracking-wide">
+                <Link2 className="w-3 h-3" />
+                <span>Pairs with</span>
+              </div>
+              <div className="flex flex-wrap gap-1">
+                {relatedPlugins.map((pluginId, index) => (
+                  <span
+                    key={index}
+                    className="text-[10px] px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20"
+                  >
+                    {pluginId.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()).slice(0, 15)}
+                  </span>
+                ))}
+              </div>
             </div>
-            <div className="tool-stats-item ml-auto text-[var(--accent-secondary)] text-xs cursor-pointer hover:underline">
+          )}
+
+          {/* Footer - View Details */}
+          <div className="mt-3 pt-3 border-t border-white/5 flex justify-end">
+            <span className="text-xs text-purple-400 group-hover:text-purple-300 transition-colors">
               View Details →
-            </div>
+            </span>
           </div>
         </div>
       )}

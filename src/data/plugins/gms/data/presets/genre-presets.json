@@ -1,0 +1,234 @@
+{
+  "description": "Complete GMS patches for specific genres and applications",
+  "usage": "Load these as starting points or complete solutions for common production needs",
+  "presets": [
+    {
+      "name": "EDM Festival Lead",
+      "category": "EDM/Trance",
+      "description": "Big room lead with supersaw stack",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Sawtooth", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Sawtooth", "pitch": 0, "fine": 8 },
+          "osc3": { "wave": "Sawtooth", "pitch": 0, "fine": -8 }
+        },
+        "mix": { "osc2": 100, "osc3": 70, "noise": 0 },
+        "unisono": { "voices": 8, "stereo": 80, "detune": 55 },
+        "filter": { "type": "LP", "cutoff": 85, "res": 18, "kbd": 20 },
+        "envelope1": { "dest": "CUTOFF", "attack": 0, "decay": 40, "amount": 25 },
+        "levelEg": { "attack": 0, "decay": 25, "sustain": 95, "release": 35 }
+      },
+      "fxEnabled": ["FLNG", "RVRB"],
+      "fxSettings": {
+        "FLNG": { "x": 45, "y": 35 },
+        "RVRB": { "x": 50, "y": 30 }
+      }
+    },
+    {
+      "name": "Trap 808 Sub",
+      "category": "Trap/Hip-Hop",
+      "description": "Deep sub bass with FM character",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Sine", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Sine", "pitch": 24, "fine": 0 },
+          "osc3": { "wave": "Sine", "pitch": -12, "fine": 0 }
+        },
+        "modulation": { "mode": "2 to 1 FM", "amount": 40 },
+        "mix": { "osc2": 100, "osc3": 50, "noise": 8 },
+        "unisono": { "voices": 1, "stereo": 0, "detune": 0 },
+        "filter": { "type": "LP", "cutoff": 45, "res": 5 },
+        "envelope1": { "dest": "PITCH", "attack": 0, "decay": 30, "amount": -35 },
+        "levelEg": { "attack": 0, "decay": 15, "sustain": 65, "release": 35 }
+      },
+      "fxEnabled": ["DIST"],
+      "fxSettings": {
+        "DIST": { "x": 18, "y": 85 }
+      }
+    },
+    {
+      "name": "Modern Pop Brass",
+      "category": "Pop",
+      "description": "Bright brassy lead for hooks",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Sawtooth", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Square", "pitch": 12, "fine": 0 },
+          "osc3": { "wave": "Sawtooth", "pitch": -12, "fine": 0 }
+        },
+        "mix": { "osc2": 80, "osc3": 40, "noise": 0 },
+        "unisono": { "voices": 5, "stereo": 60, "detune": 45 },
+        "filter": { "type": "LP", "cutoff": 75, "res": 22 },
+        "envelope1": { "dest": "CUTOFF", "attack": 5, "decay": 35, "amount": 35 },
+        "levelEg": { "attack": 5, "decay": 25, "sustain": 90, "release": 30 }
+      },
+      "fxEnabled": ["DIST", "ECHO"],
+      "fxSettings": {
+        "DIST": { "x": 25, "y": 75 },
+        "ECHO": { "x": 25, "y": 60 }
+      }
+    },
+    {
+      "name": "Cinematic Pad",
+      "category": "Ambient/Cinematic",
+      "description": "Evolving atmospheric pad",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Sawtooth", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Triangle", "pitch": 7, "fine": 5 },
+          "osc3": { "wave": "Triangle", "pitch": -7, "fine": -5 }
+        },
+        "mix": { "osc2": 75, "osc3": 65, "noise": 5 },
+        "unisono": { "voices": 12, "stereo": 100, "detune": 65 },
+        "filter": { "type": "LP", "cutoff": 60, "res": 15 },
+        "lfo1": { "dest": "CUTOFF", "rate": 15, "amount": 20, "shape": "Sine" },
+        "lfo2": { "dest": "PAN", "rate": 10, "amount": 80, "shape": "Sine" },
+        "envelope1": { "dest": "AMOUNT", "attack": 60, "decay": 50, "amount": 30 },
+        "levelEg": { "attack": 80, "decay": 60, "sustain": 98, "release": 70 }
+      },
+      "fxEnabled": ["PHSR", "ECHO", "RVRB"],
+      "fxSettings": {
+        "PHSR": { "x": 40, "y": 30 },
+        "ECHO": { "x": 50, "y": 55 },
+        "RVRB": { "x": 65, "y": 45 }
+      }
+    },
+    {
+      "name": "FM Bell Pluck",
+      "category": "Percussion/Melodic",
+      "description": "Bell-like pluck for melodies",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Sine", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Sine", "pitch": 12, "fine": 0 },
+          "osc3": { "wave": "Sine", "pitch": 24, "fine": 0 }
+        },
+        "modulation": { "mode": "2 to 1 FM", "amount": 65 },
+        "mix": { "osc2": 100, "osc3": 35, "noise": 0 },
+        "unisono": { "voices": 3, "stereo": 50, "detune": 30 },
+        "filter": { "type": "LP", "cutoff": 95, "res": 10 },
+        "levelEg": { "attack": 0, "decay": 25, "sustain": 15, "release": 30 }
+      },
+      "fxEnabled": ["ECHO", "RVRB"],
+      "fxSettings": {
+        "ECHO": { "x": 40, "y": 65 },
+        "RVRB": { "x": 35, "y": 25 }
+      }
+    },
+    {
+      "name": "Growl Bass",
+      "category": "Dubstep/EDM",
+      "description": "Aggressive growl bass with sync",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Sawtooth", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Sawtooth", "pitch": 12, "fine": 0 },
+          "osc3": { "wave": "Sawtooth", "pitch": 24, "fine": 0 }
+        },
+        "modulation": { "mode": "1 SYNC", "amount": 70 },
+        "mix": { "osc2": 100, "osc3": 60, "noise": 10 },
+        "unisono": { "voices": 4, "stereo": 30, "detune": 40 },
+        "filter": { "type": "LP", "cutoff": 65, "res": 40 },
+        "envelope1": { "dest": "OSC2 PITCH", "attack": 0, "decay": 40, "amount": 50 },
+        "lfo1": { "dest": "CUTOFF", "rate": 55, "amount": 40, "shape": "Saw" },
+        "levelEg": { "attack": 0, "decay": 35, "sustain": 80, "release": 25 }
+      },
+      "fxEnabled": ["DIST", "HPF"],
+      "fxSettings": {
+        "DIST": { "x": 45, "y": 55 },
+        "HPF": { "x": 20, "y": 10 }
+      }
+    },
+    {
+      "name": "Trance Gate Lead",
+      "category": "Trance",
+      "description": "Lead with built-in trance gate",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Sawtooth", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Sawtooth", "pitch": 0, "fine": 6 },
+          "osc3": { "wave": "Sawtooth", "pitch": 0, "fine": -6 }
+        },
+        "mix": { "osc2": 100, "osc3": 80, "noise": 0 },
+        "unisono": { "voices": 6, "stereo": 70, "detune": 50 },
+        "filter": { "type": "LP", "cutoff": 80, "res": 15 },
+        "levelEg": { "attack": 0, "decay": 20, "sustain": 95, "release": 30 }
+      },
+      "fxEnabled": ["FLNG", "RVRB", "TRNC"],
+      "fxSettings": {
+        "FLNG": { "x": 35, "y": 30 },
+        "RVRB": { "x": 45, "y": 35 },
+        "TRNC": { "x": 25, "y": 75 }
+      }
+    },
+    {
+      "name": "Lo-Fi Keys",
+      "category": "Hip-Hop/Lo-Fi",
+      "description": "Warming keys with bit crush",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Triangle", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Pulse", "pitch": 12, "fine": 0 },
+          "osc3": { "wave": "Sine", "pitch": -12, "fine": 0 }
+        },
+        "mix": { "osc2": 70, "osc3": 60, "noise": 15 },
+        "unisono": { "voices": 3, "stereo": 40, "detune": 35 },
+        "filter": { "type": "LP", "cutoff": 70, "res": 10 },
+        "lfo1": { "dest": "CUTOFF", "rate": 8, "amount": 15, "shape": "Sine" },
+        "levelEg": { "attack": 5, "decay": 30, "sustain": 85, "release": 35 }
+      },
+      "fxEnabled": ["CRSH", "LPF", "ECHO"],
+      "fxSettings": {
+        "CRSH": { "x": 25, "y": 65 },
+        "LPF": { "x": 70, "y": 15 },
+        "ECHO": { "x": 30, "y": 60 }
+      }
+    },
+    {
+      "name": "Industrial Stab",
+      "category": "Industrial/Techno",
+      "description": "Aggressive inharmonic stab",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Sawtooth", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Square", "pitch": 7, "fine": 0 },
+          "osc3": { "wave": "Noise", "pitch": 0, "fine": 0 }
+        },
+        "modulation": { "mode": "2 to 1 RM", "amount": 80 },
+        "mix": { "osc2": 100, "osc3": 50, "noise": 25 },
+        "unisono": { "voices": 2, "stereo": 60, "detune": 20 },
+        "filter": { "type": "LP", "cutoff": 75, "res": 35 },
+        "envelope1": { "dest": "CUTOFF", "attack": 0, "decay": 15, "amount": 60 },
+        "levelEg": { "attack": 0, "decay": 20, "sustain": 20, "release": 25 }
+      },
+      "fxEnabled": ["DIST", "HPF", "ECHO"],
+      "fxSettings": {
+        "DIST": { "x": 55, "y": 50 },
+        "HPF": { "x": 30, "y": 20 },
+        "ECHO": { "x": 35, "y": 40 }
+      }
+    },
+    {
+      "name": "Reso Pluck",
+      "category": "EDM/Pop",
+      "description": "Resonant pluck for melodic lines",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Sawtooth", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Square", "pitch": 12, "fine": 3 },
+          "osc3": { "wave": "None", "pitch": 0, "fine": 0 }
+        },
+        "mix": { "osc2": 75, "osc3": 0, "noise": 0 },
+        "unisono": { "voices": 4, "stereo": 45, "detune": 35 },
+        "filter": { "type": "LP", "cutoff": 50, "res": 55 },
+        "envelope1": { "dest": "CUTOFF", "attack": 0, "decay": 25, "amount": 70 },
+        "levelEg": { "attack": 0, "decay": 20, "sustain": 30, "release": 25 }
+      },
+      "fxEnabled": ["ECHO", "RVRB"],
+      "fxSettings": {
+        "ECHO": { "x": 35, "y": 70 },
+        "RVRB": { "x": 30, "y": 25 }
+      }
+    }
+  ]
+}

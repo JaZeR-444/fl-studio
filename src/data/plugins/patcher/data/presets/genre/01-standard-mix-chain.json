@@ -1,0 +1,44 @@
+{
+  "name": "Standard Mix Chain",
+  "genre": "universal",
+  "mood": "upbeat",
+  "description": "Standard EQ → Compression → Limiting chain for general mixing",
+  "parameters": {
+    "chain": [
+      {
+        "slot": 1,
+        "type": "EQ",
+        "plugin": "Fruity Parametric EQ 2"
+      },
+      {
+        "slot": 2,
+        "type": "Compressor",
+        "plugin": "Fruity Compressor"
+      },
+      {
+        "slot": 3,
+        "type": "Limiter",
+        "plugin": "Fruity Limiter"
+      }
+    ],
+    "routing": "Series",
+    "parallelPaths": 0
+  },
+  "workflow": {
+    "useCase": "General mix chain",
+    "steps": [
+      "Load EQ for corrective shaping",
+      "Add compression for dynamics",
+      "Apply limiting for safety",
+      "Adjust order as needed"
+    ],
+    "troubleshooting": [
+      { "issue": "No effect", "fix": "Check plugin order" },
+      { "issue": "Distortion", "fix": "Check limiter threshold" }
+    ]
+  },
+  "abTest": {
+    "listenFor": "Clean, balanced signal",
+    "duration": "Full mix"
+  }
+}

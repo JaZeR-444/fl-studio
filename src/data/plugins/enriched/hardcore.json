@@ -1,0 +1,2113 @@
+{
+  "id": "hardcore",
+  "name": "Hardcore",
+  "category": "Distortion",
+  "tier": "Premium",
+  "type": "Distortion",
+  "description": "Hardcore - Distortion",
+  "tags": [],
+  "capabilities": [
+    "distortion",
+    "saturation",
+    "fx",
+    "audio"
+  ],
+  "icon": "/plugins/hardcore-icon.svg",
+  "color": "#DC2626",
+  "version": "1.0",
+  "data_dir": "plugins\\hardcore",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "main-parameters": {
+      "pluginName": "Hardcore",
+      "pluginType": "Amp Simulator / Multi-FX Rack",
+      "version": "FL Studio Native",
+      "dataSource": "IL-MAN",
+      "mainSections": {
+        "inputStage": {
+          "name": "Input Stage",
+          "description": "Initial gain staging and routing",
+          "parameters": [
+            {
+              "name": "Input Gain",
+              "range": "-12 to +12 dB",
+              "default": 0,
+              "description": "Adjusts level hitting the first stompbox",
+              "tips": "Higher input = more saturation in distortion pedals"
+            },
+            {
+              "name": "Input Routing",
+              "range": "Left / Right / Stereo / Mid/Side",
+              "default": "Stereo",
+              "description": "How the input signal is processed",
+              "tips": "Use Mono for guitar sources, Stereo for drums/synths"
+            }
+          ]
+        },
+        "stompboxChain": {
+          "name": "Stompbox Chain",
+          "description": "11 configurable effect slots",
+          "parameters": [
+            {
+              "name": "Effect Position",
+              "range": "1-11",
+              "description": "Drag and drop to reorder effects",
+              "tips": "Order dramatically affects the final tone"
+            },
+            {
+              "name": "Effect Toggle",
+              "range": "On/Off",
+              "default": "Off",
+              "description": "Enable/disable individual stompboxes",
+              "tips": "Disable unused effects to save CPU"
+            }
+          ]
+        },
+        "masterSection": {
+          "name": "Master Section",
+          "description": "Final tone shaping before output",
+          "parameters": [
+            {
+              "name": "Master 8-Band EQ",
+              "type": "graphic",
+              "bands": [
+                {
+                  "band": 1,
+                  "frequency": "60 Hz",
+                  "range": "-12 to +12 dB",
+                  "default": 0,
+                  "function": "Sub-bass control"
+                },
+                {
+                  "band": 2,
+                  "frequency": "170 Hz",
+                  "range": "-12 to +12 dB",
+                  "default": 0,
+                  "function": "Bass punch and kick body"
+                },
+                {
+                  "band": 3,
+                  "frequency": "310 Hz",
+                  "range": "-12 to +12 dB",
+                  "default": 0,
+                  "function": "Low-mids and warmth"
+                },
+                {
+                  "band": 4,
+                  "frequency": "600 Hz",
+                  "range": "-12 to +12 dB",
+                  "default": 0,
+                  "function": "Midrange body"
+                },
+                {
+                  "band": 5,
+                  "frequency": "1 kHz",
+                  "range": "-12 to +12 dB",
+                  "default": 0,
+                  "function": "Presence and vocal clarity"
+                },
+                {
+                  "band": 6,
+                  "frequency": "3 kHz",
+                  "range": "-12 to +12 dB",
+                  "default": 0,
+                  "function": "Attack and upper-mid presence"
+                },
+                {
+                  "band": 7,
+                  "frequency": "6 kHz",
+                  "range": "-12 to +12 dB",
+                  "default": 0,
+                  "function": "High-mid bite and sibilance control"
+                },
+                {
+                  "band": 8,
+                  "frequency": "12 kHz",
+                  "range": "-12 to +12 dB",
+                  "default": 0,
+                  "function": "Air and brightness"
+                }
+              ],
+              "tips": "Use cuts for problem frequencies, boosts for enhancement"
+            },
+            {
+              "name": "Cabinet Model",
+              "range": "Cabinet 1-5",
+              "default": 1,
+              "options": [
+                {
+                  "id": 1,
+                  "name": "Bright/Modern",
+                  "character": "Extended highs, tight lows, forward mids"
+                },
+                {
+                  "id": 2,
+                  "name": "Vintage/Classic",
+                  "character": "Warm, rounded highs, pronounced body"
+                },
+                {
+                  "id": 3,
+                  "name": "British/Crunch",
+                  "character": "Mid-forward, aggressive upper-mids"
+                },
+                {
+                  "id": 4,
+                  "name": "American/Smooth",
+                  "character": "Balanced, scooped mids, extended range"
+                },
+                {
+                  "id": 5,
+                  "name": "Small/Practice",
+                  "character": "Boxy, limited range, compressed"
+                }
+              ],
+              "tips": "Cabinet acts as final tone-shaping filter"
+            },
+            {
+              "name": "Cabinet Mix",
+              "range": "0-100%",
+              "default": 100,
+              "description": "Blend of cabinet simulation",
+              "tips": "Reduce for cleaner sound, 100% for full speaker emulation"
+            }
+          ]
+        },
+        "outputStage": {
+          "name": "Output Stage",
+          "description": "Final output control",
+          "parameters": [
+            {
+              "name": "Output Gain",
+              "range": "-12 to +12 dB",
+              "default": 0,
+              "description": "Final level adjustment before leaving plugin",
+              "tips": "Adjust to match input level for unity gain"
+            },
+            {
+              "name": "Mix",
+              "range": "0-100% (Dry/Wet)",
+              "default": 100,
+              "description": "Global dry/wet blend",
+              "tips": "Use parallel send routing for better control than this mix knob"
+            }
+          ]
+        }
+      },
+      "globalControls": {
+        "presetManagement": {
+          "load": "Click preset name in top bar",
+          "save": "Menu → Save preset as",
+          "browser": "Drag from FL Studio browser",
+          "randomize": "Menu → Randomize (experimental)"
+        },
+        "automation": {
+          "method": "Right-click parameter → Create automation clip",
+          "parametersAvailable": "All stompbox and master parameters",
+          "tips": "Automate wah position, distortion drive, or cabinet selection"
+        },
+        "midiControl": {
+          "method": "Right-click parameter → Link to controller",
+          "ccSupport": "Full MIDI CC mapping",
+          "tips": "Use expression pedal for wah control"
+        }
+      }
+    },
+    "stompbox-parameters": {
+      "pluginName": "Hardcore",
+      "stompboxEffects": {
+        "distortion": {
+          "name": "Distortion",
+          "type": "Saturation/Distortion",
+          "description": "Adds harmonics and grit to signal",
+          "controls": {
+            "drive": {
+              "name": "Drive",
+              "range": "0-100%",
+              "default": 30,
+              "function": "Amount of saturation/distortion",
+              "tips": "Low values = subtle warmth, high values = aggressive dirt"
+            },
+            "tone": {
+              "name": "Tone",
+              "range": "-50 to +50",
+              "default": 0,
+              "function": "Brightness/darkness tilt",
+              "tips": "Positive = brighter, negative = darker"
+            },
+            "level": {
+              "name": "Level",
+              "range": "0-100%",
+              "default": 80,
+              "function": "Output gain compensation",
+              "tips": "Adjust to maintain consistent volume when toggling"
+            }
+          },
+          "hipHopUses": [
+            "Drum punch and aggression",
+            "Bass saturation and harmonics",
+            "Vocal edge and character",
+            "Synth grit and bite"
+          ]
+        },
+        "chorus": {
+          "name": "Chorus",
+          "type": "Modulation",
+          "description": "Creates thickening and doubling via pitch modulation",
+          "controls": {
+            "rate": {
+              "name": "Rate",
+              "range": "0.1-10 Hz",
+              "default": 0.5,
+              "function": "LFO modulation speed",
+              "tips": "Slower = more subtle, faster = more obvious"
+            },
+            "depth": {
+              "name": "Depth",
+              "range": "0-100%",
+              "default": 40,
+              "function": "Modulation amount/intensity",
+              "tips": "Higher depth = more pronounced effect"
+            },
+            "level": {
+              "name": "Level",
+              "range": "0-100%",
+              "default": 50,
+              "function": "Effect mix amount",
+              "tips": "100% for full effect, lower for subtle doubling"
+            }
+          },
+          "hipHopUses": [
+            "Vocal doubling and thickening",
+            "Synth widening",
+            "Drum width enhancement",
+            "Guitar spaciousness"
+          ]
+        },
+        "flanger": {
+          "name": "Flanger",
+          "type": "Modulation",
+          "description": "Sweeping comb filter creating jet-plane effect",
+          "controls": {
+            "rate": {
+              "name": "Rate",
+              "range": "0.1-10 Hz",
+              "default": 0.3,
+              "function": "Sweep speed",
+              "tips": "0.1-0.5Hz for slow sweep, 2-5Hz for vibrato effect"
+            },
+            "depth": {
+              "name": "Depth",
+              "range": "0-100%",
+              "default": 50,
+              "function": "Sweep range",
+              "tips": "Controls how far the comb filter sweeps"
+            },
+            "feedback": {
+              "name": "Feedback",
+              "range": "-100 to +100%",
+              "default": 30,
+              "function": "Resonance amount and polarity",
+              "tips": "Positive = sharper resonance, negative = hollow"
+            },
+            "level": {
+              "name": "Level",
+              "range": "0-100%",
+              "default": 50,
+              "function": "Mix amount",
+              "tips": "Balance between dry and flanged signal"
+            }
+          },
+          "hipHopUses": [
+            "Dramatic transition effects",
+            "Vocal psychedelia",
+            "Drum movement and texture",
+            "Sci-fi sound design"
+          ]
+        },
+        "phaser": {
+          "name": "Phaser",
+          "type": "Modulation",
+          "description": "All-pass filter sweep creating notches in frequency",
+          "controls": {
+            "rate": {
+              "name": "Rate",
+              "range": "0.1-10 Hz",
+              "default": 0.3,
+              "function": "Notch sweep speed",
+              "tips": "Slower rates for subtle movement"
+            },
+            "depth": {
+              "name": "Depth",
+              "range": "0-100%",
+              "default": 40,
+              "function": "Notch depth",
+              "tips": "Deeper notches = more pronounced effect"
+            },
+            "stages": {
+              "name": "Stages",
+              "range": "2, 4, 6, 8",
+              "default": 4,
+              "function": "Number of all-pass filter stages",
+              "tips": "More stages = deeper, more notches"
+            },
+            "level": {
+              "name": "Level",
+              "range": "0-100%",
+              "default": 50,
+              "function": "Mix amount",
+              "tips": "Balance with dry signal"
+            }
+          },
+          "hipHopUses": [
+            "Funky drum movement",
+            "Liquid synth textures",
+            "Subtle vocal enhancement",
+            "Retro psychedelic effects"
+          ]
+        },
+        "reverb": {
+          "name": "Reverb",
+          "type": "Time-based",
+          "description": "Room simulation and space creation",
+          "controls": {
+            "size": {
+              "name": "Size",
+              "range": "0-100%",
+              "default": 50,
+              "function": "Simulated room size",
+              "tips": "Low = small room, high = large hall"
+            },
+            "damp": {
+              "name": "Damp",
+              "range": "0-100%",
+              "default": 50,
+              "function": "High-frequency decay",
+              "tips": "Higher = darker, more muffled reverb"
+            },
+            "mix": {
+              "name": "Mix",
+              "range": "0-100%",
+              "default": 30,
+              "function": "Wet/dry balance",
+              "tips": "Use as send effect with 100% wet, adjust track fader"
+            },
+            "level": {
+              "name": "Level",
+              "range": "0-100%",
+              "default": 80,
+              "function": "Output gain",
+              "tips": "Compensate for wet signal volume"
+            }
+          },
+          "hipHopUses": [
+            "Vocal space and depth",
+            "Drum room sound",
+            "Ambient textures",
+            "Transition effects"
+          ]
+        },
+        "delay": {
+          "name": "Delay",
+          "type": "Time-based",
+          "description": "Echo generation with feedback",
+          "controls": {
+            "time": {
+              "name": "Time",
+              "range": "1-2000ms",
+              "default": 300,
+              "function": "Delay length",
+              "tips": "80-120ms for slapback, 300-600ms for rhythmic"
+            },
+            "feedback": {
+              "name": "Feedback",
+              "range": "0-100%",
+              "default": 30,
+              "function": "Repeat decay amount",
+              "tips": "Higher = more echoes, risk of runaway feedback"
+            },
+            "mix": {
+              "name": "Mix",
+              "range": "0-100%",
+              "default": 35,
+              "function": "Wet/dry balance",
+              "tips": "Lower for subtle echo, higher for prominent effect"
+            },
+            "level": {
+              "name": "Level",
+              "range": "0-100%",
+              "default": 80,
+              "function": "Output gain",
+              "tips": "Match volume with dry signal"
+            }
+          },
+          "hipHopUses": [
+            "Vocal slapback",
+            "Rhythmic doubling",
+            "Drum echo effects",
+            "Atmospheric space"
+          ]
+        },
+        "noiseGate": {
+          "name": "Noise Gate",
+          "type": "Dynamics",
+          "description": "Eliminates signal below threshold",
+          "controls": {
+            "threshold": {
+              "name": "Threshold",
+              "range": "-60 to 0 dB",
+              "default": -30,
+              "function": "Activation level",
+              "tips": "Set just above noise floor, below desired signal"
+            },
+            "attack": {
+              "name": "Attack",
+              "range": "0-100ms",
+              "default": 5,
+              "function": "Opening speed",
+              "tips": "Fast for drums, slower for natural sounds"
+            },
+            "hold": {
+              "name": "Hold",
+              "range": "0-500ms",
+              "default": 50,
+              "function": "Minimum open time",
+              "tips": "Prevents chattering on decaying sounds"
+            },
+            "release": {
+              "name": "Release",
+              "range": "10-1000ms",
+              "default": 100,
+              "function": "Closing speed",
+              "tips": "Match to source decay characteristic"
+            }
+          },
+          "hipHopUses": [
+            "Tight drum truncation",
+            "Vocal breath removal",
+            "Lo-fi abrupt cuts",
+            "Noise reduction"
+          ]
+        },
+        "eqStompbox": {
+          "name": "EQ (Stompbox)",
+          "type": "Filtering",
+          "description": "3-band parametric EQ for chain positioning",
+          "controls": {
+            "lowFreq": {
+              "name": "Low Frequency",
+              "range": "80-250 Hz",
+              "default": 120,
+              "function": "Low band center frequency"
+            },
+            "lowGain": {
+              "name": "Low Gain",
+              "range": "-15 to +15 dB",
+              "default": 0,
+              "function": "Low band cut/boost"
+            },
+            "midFreq": {
+              "name": "Mid Frequency",
+              "range": "250Hz-4kHz",
+              "default": 1000,
+              "function": "Mid band center frequency"
+            },
+            "midGain": {
+              "name": "Mid Gain",
+              "range": "-15 to +15 dB",
+              "default": 0,
+              "function": "Mid band cut/boost"
+            },
+            "highFreq": {
+              "name": "High Frequency",
+              "range": "2-12 kHz",
+              "default": 5000,
+              "function": "High band center frequency"
+            },
+            "highGain": {
+              "name": "High Gain",
+              "range": "-15 to +15 dB",
+              "default": 0,
+              "function": "High band cut/boost"
+            }
+          },
+          "hipHopUses": [
+            "Pre-distortion frequency shaping",
+            "Problem frequency correction",
+            "Tone matching",
+            "High-pass filtering for lo-fi"
+          ]
+        },
+        "compressor": {
+          "name": "Compressor",
+          "type": "Dynamics",
+          "description": "Reduces dynamic range above threshold",
+          "controls": {
+            "threshold": {
+              "name": "Threshold",
+              "range": "-60 to 0 dB",
+              "default": -18,
+              "function": "Compression start point",
+              "tips": "Lower threshold = more compression"
+            },
+            "ratio": {
+              "name": "Ratio",
+              "range": "1:1 to 20:1",
+              "default": 4,
+              "function": "Compression intensity",
+              "tips": "Higher ratio = more aggressive limiting"
+            },
+            "attack": {
+              "name": "Attack",
+              "range": "0.1-100ms",
+              "default": 10,
+              "function": "Reaction speed",
+              "tips": "Fast attack = less transient, slow = more punch"
+            },
+            "release": {
+              "name": "Release",
+              "range": "10-1000ms",
+              "default": 200,
+              "function": "Recovery speed",
+              "tips": "Match to source rhythm for natural sound"
+            },
+            "makeup": {
+              "name": "Makeup Gain",
+              "range": "0-24 dB",
+              "default": 6,
+              "function": "Output compensation",
+              "tips": "Compensate for volume lost to compression"
+            }
+          },
+          "hipHopUses": [
+            "Drum punch and control",
+            "Vocal consistency",
+            "Bass sustain",
+            "Parallel New York compression"
+          ]
+        },
+        "modulator": {
+          "name": "Modulator",
+          "type": "Specialized Modulation",
+          "description": "Tremolo, vibrato, and ring modulation",
+          "controls": {
+            "mode": {
+              "name": "Mode",
+              "range": "Tremolo / Vibrato / Ring Mod",
+              "default": "Tremolo",
+              "function": "Modulation type",
+              "tips": "Tremolo = amplitude, Vibrato = pitch, Ring = frequency multiplication"
+            },
+            "rate": {
+              "name": "Rate",
+              "range": "0.1-20 Hz",
+              "default": 2,
+              "function": "Modulation speed",
+              "tips": "2-8Hz for tremolo chops, 0.5Hz for vibrato drift"
+            },
+            "depth": {
+              "name": "Depth",
+              "range": "0-100%",
+              "default": 70,
+              "function": "Effect intensity",
+              "tips": "100% for extreme, 30% for subtle"
+            },
+            "level": {
+              "name": "Level",
+              "range": "0-100%",
+              "default": 80,
+              "function": "Output gain",
+              "tips": "Adjust for unity gain"
+            }
+          },
+          "hipHopUses": [
+            "Tremolo chop effects",
+            "Pitch drift and detune",
+            "Ring mod destruction",
+            "Special FX and textures"
+          ]
+        },
+        "wah": {
+          "name": "Wah",
+          "type": "Filtering",
+          "description": "Vocal envelope filter effect",
+          "controls": {
+            "manual": {
+              "name": "Manual",
+              "range": "0-100%",
+              "default": 50,
+              "function": "Filter frequency (manual mode)",
+              "tips": "Sweep to find vocal vowel sounds (A-E-I-O-U)"
+            },
+            "close": {
+              "name": "Close",
+              "range": "0-100%",
+              "default": 50,
+              "function": "Envelope sensitivity (auto mode)",
+              "tips": "Higher = more responsive to input dynamics"
+            },
+            "range": {
+              "name": "Range",
+              "range": "0-100%",
+              "default": 60,
+              "function": "Sweep width",
+              "tips": "Controls how far the filter travels"
+            },
+            "level": {
+              "name": "Level",
+              "range": "0-100%",
+              "default": 85,
+              "function": "Output gain",
+              "tips": "Wah can have resonant peaks, adjust to avoid clipping"
+            }
+          },
+          "hipHopUses": [
+            "Vocal vowel filtering",
+            "Funky rhythmic effects",
+            "Filter sweeps",
+            "Envelope-controlled filtering"
+          ]
+        }
+      }
+    }
+  },
+  "presets": {
+    "hip-hop-presets": {
+      "plugin": "Hardcore",
+      "category": "Hip-Hop Presets",
+      "dataSource": "IL-MAN",
+      "presets": [
+        {
+          "name": "Drum Destruction - Aggressive",
+          "description": "Heavy saturation for modern trap drums",
+          "chain": {
+            "distortion": {
+              "enabled": true,
+              "drive": 65,
+              "tone": 15,
+              "level": 85
+            },
+            "compressor": {
+              "enabled": true,
+              "threshold": -15,
+              "ratio": 5,
+              "attack": 5,
+              "release": 100,
+              "makeup": 8
+            },
+            "noiseGate": {
+              "enabled": true,
+              "threshold": -28,
+              "attack": 3,
+              "hold": 40,
+              "release": 80
+            },
+            "cabinet": 1,
+            "masterEQ": {
+              "band1": 2,
+              "band2": 3,
+              "band3": -2,
+              "band4": 0,
+              "band5": 1,
+              "band6": 3,
+              "band7": 0,
+              "band8": 1
+            }
+          },
+          "useCase": "Drum bus processing for trap and modern hip-hop"
+        },
+        {
+          "name": "Drum Destruction - Lo-Fi",
+          "description": "Warm, dusty character for vintage samples",
+          "chain": {
+            "distortion": {
+              "enabled": true,
+              "drive": 35,
+              "tone": -10,
+              "level": 80
+            },
+            "compressor": {
+              "enabled": true,
+              "threshold": -20,
+              "ratio": 3,
+              "attack": 10,
+              "release": 250,
+              "makeup": 5
+            },
+            "cabinet": 2,
+            "masterEQ": {
+              "band1": -2,
+              "band2": 0,
+              "band3": 2,
+              "band4": 1,
+              "band5": 0,
+              "band6": -2,
+              "band7": -3,
+              "band8": -5
+            }
+          },
+          "useCase": "Boom-bap drums, vintage samples, lo-fi aesthetic"
+        },
+        {
+          "name": "Vocal Lo-Fi",
+          "description": "Dusty, degraded vocal character",
+          "chain": {
+            "modulator": {
+              "enabled": true,
+              "mode": "vibrato",
+              "rate": 0.4,
+              "depth": 35,
+              "level": 60
+            },
+            "distortion": {
+              "enabled": true,
+              "drive": 30,
+              "tone": 0,
+              "level": 75
+            },
+            "delay": {
+              "enabled": true,
+              "time": 100,
+              "feedback": 15,
+              "mix": 25,
+              "level": 80
+            },
+            "cabinet": 5,
+            "masterEQ": {
+              "band1": -4,
+              "band2": -2,
+              "band3": 2,
+              "band4": 0,
+              "band5": 0,
+              "band6": -3,
+              "band7": -4,
+              "band8": -6
+            }
+          },
+          "useCase": "Lo-fi vocals, intros, verses, vintage aesthetic"
+        },
+        {
+          "name": "Vocal Radio",
+          "description": "Radio/megaphone telephone effect",
+          "chain": {
+            "eqStompbox": {
+              "enabled": true,
+              "lowFreq": 200,
+              "lowGain": -12,
+              "midFreq": 2500,
+              "midGain": 6,
+              "highFreq": 3000,
+              "highGain": -8
+            },
+            "distortion": {
+              "enabled": true,
+              "drive": 25,
+              "tone": 25,
+              "level": 85
+            },
+            "compressor": {
+              "enabled": true,
+              "threshold": -12,
+              "ratio": 8,
+              "attack": 2,
+              "release": 150,
+              "makeup": 6
+            },
+            "cabinet": 5,
+            "masterEQ": {
+              "band1": -6,
+              "band2": -4,
+              "band3": 0,
+              "band4": 3,
+              "band5": 5,
+              "band6": 2,
+              "band7": -2,
+              "band8": -8
+            }
+          },
+          "useCase": "Radio hooks, megaphone effects, telephone vocals"
+        },
+        {
+          "name": "Bass Grit",
+          "description": "Controlled saturation for 808s and bass",
+          "chain": {
+            "distortion": {
+              "enabled": true,
+              "drive": 40,
+              "tone": -15,
+              "level": 90
+            },
+            "compressor": {
+              "enabled": true,
+              "threshold": -14,
+              "ratio": 6,
+              "attack": 8,
+              "release": 300,
+              "makeup": 7
+            },
+            "cabinet": 3,
+            "masterEQ": {
+              "band1": 3,
+              "band2": 2,
+              "band3": 0,
+              "band4": -3,
+              "band5": 0,
+              "band6": 2,
+              "band7": 1,
+              "band8": -2
+            }
+          },
+          "useCase": "808 bass lines, synth bass, aggressive low-end"
+        },
+        {
+          "name": "Bass Warmth",
+          "description": "Subtle warmth and harmonics for bass",
+          "chain": {
+            "distortion": {
+              "enabled": true,
+              "drive": 20,
+              "tone": -5,
+              "level": 85
+            },
+            "compressor": {
+              "enabled": true,
+              "threshold": -18,
+              "ratio": 3,
+              "attack": 12,
+              "release": 400,
+              "makeup": 4
+            },
+            "cabinet": 2,
+            "masterEQ": {
+              "band1": 2,
+              "band2": 1,
+              "band3": 0,
+              "band4": -1,
+              "band5": 0,
+              "band6": 1,
+              "band7": 0,
+              "band8": -1
+            }
+          },
+          "useCase": "Warm bass guitar, subtle 808 enhancement, vintage character"
+        },
+        {
+          "name": "Industrial Vocal",
+          "description": "Harsh, aggressive industrial character",
+          "chain": {
+            "distortion": {
+              "enabled": true,
+              "drive": 80,
+              "tone": 30,
+              "level": 70
+            },
+            "modulator": {
+              "enabled": true,
+              "mode": "ring mod",
+              "rate": 8,
+              "depth": 70,
+              "level": 65
+            },
+            "noiseGate": {
+              "enabled": true,
+              "threshold": -22,
+              "attack": 1,
+              "hold": 20,
+              "release": 50
+            },
+            "compressor": {
+              "enabled": true,
+              "threshold": -10,
+              "ratio": 10,
+              "attack": 3,
+              "release": 80,
+              "makeup": 5
+            },
+            "cabinet": 5,
+            "masterEQ": {
+              "band1": -2,
+              "band2": 1,
+              "band3": 3,
+              "band4": 4,
+              "band5": 2,
+              "band6": -1,
+              "band7": -3,
+              "band8": -5
+            }
+          },
+          "useCase": "Industrial rap, aggressive hooks, experimental vocals"
+        },
+        {
+          "name": "Synth Wide",
+          "description": "Spatial enhancement for synth leads and pads",
+          "chain": {
+            "chorus": {
+              "enabled": true,
+              "rate": 0.3,
+              "depth": 45,
+              "level": 50
+            },
+            "phaser": {
+              "enabled": true,
+              "rate": 0.15,
+              "depth": 35,
+              "stages": 6,
+              "level": 40
+            },
+            "reverb": {
+              "enabled": true,
+              "size": 60,
+              "damp": 55,
+              "mix": 30,
+              "level": 80
+            },
+            "cabinet": 4,
+            "masterEQ": {
+              "band1": 1,
+              "band2": 0,
+              "band3": -1,
+              "band4": 0,
+              "band5": 0,
+              "band6": 2,
+              "band7": 3,
+              "band8": 4
+            }
+          },
+          "useCase": "Lead synths, pads, atmospheric textures"
+        },
+        {
+          "name": "Drum Punch - Parallel",
+          "description": "For use on send track with parallel processing",
+          "chain": {
+            "distortion": {
+              "enabled": true,
+              "drive": 70,
+              "tone": 10,
+              "level": 100
+            },
+            "compressor": {
+              "enabled": true,
+              "threshold": -12,
+              "ratio": 8,
+              "attack": 3,
+              "release": 60,
+              "makeup": 0
+            },
+            "noiseGate": {
+              "enabled": true,
+              "threshold": -35,
+              "attack": 2,
+              "hold": 30,
+              "release": 70
+            },
+            "cabinet": 1,
+            "masterEQ": {
+              "band1": 0,
+              "band2": 2,
+              "band3": -1,
+              "band4": 0,
+              "band5": 1,
+              "band6": 4,
+              "band7": 2,
+              "band8": 1
+            }
+          },
+          "useCase": "Create send track, route drums to it, blend 20-30% with dry",
+          "note": "Designed for parallel processing - use on send only"
+        },
+        {
+          "name": "Tape Saturation",
+          "description": "Subtle tape-style saturation for warmth",
+          "chain": {
+            "distortion": {
+              "enabled": true,
+              "drive": 15,
+              "tone": -5,
+              "level": 90
+            },
+            "compressor": {
+              "enabled": true,
+              "threshold": -22,
+              "ratio": 2,
+              "attack": 15,
+              "release": 350,
+              "makeup": 3
+            },
+            "cabinet": 2,
+            "masterEQ": {
+              "band1": 0,
+              "band2": 1,
+              "band3": 1,
+              "band4": 0,
+              "band5": 0,
+              "band6": 0,
+              "band7": -2,
+              "band8": -3
+            }
+          },
+          "useCase": "Master bus, drum bus, individual tracks needing warmth"
+        }
+      ]
+    },
+    "metal-presets": {
+      "plugin": "Hardcore",
+      "category": "Metal Presets",
+      "dataSource": "IL-MAN",
+      "presets": [
+        {
+          "name": "Metal Rhythm - Tight",
+          "description": "Tight, aggressive rhythm guitar tone",
+          "chain": {
+            "noiseGate": {
+              "enabled": true,
+              "threshold": -35,
+              "attack": 1,
+              "hold": 25,
+              "release": 60
+            },
+            "compressor": {
+              "enabled": true,
+              "threshold": -16,
+              "ratio": 4,
+              "attack": 5,
+              "release": 120,
+              "makeup": 6
+            },
+            "distortion": {
+              "enabled": true,
+              "drive": 75,
+              "tone": 15,
+              "level": 85
+            },
+            "eqStompbox": {
+              "enabled": true,
+              "lowFreq": 100,
+              "lowGain": -3,
+              "midFreq": 800,
+              "midGain": -2,
+              "highFreq": 4000,
+              "highGain": 2
+            },
+            "cabinet": 1,
+            "masterEQ": {
+              "band1": -1,
+              "band2": 1,
+              "band3": -2,
+              "band4": -3,
+              "band5": -1,
+              "band6": 2,
+              "band7": 3,
+              "band8": 1
+            }
+          },
+          "useCase": "Rhythm guitars, djent, modern metal chugging"
+        },
+        {
+          "name": "Metal Lead - Screaming",
+          "description": "Singing lead tone with sustain",
+          "chain": {
+            "compressor": {
+              "enabled": true,
+              "threshold": -14,
+              "ratio": 5,
+              "attack": 8,
+              "release": 200,
+              "makeup": 7
+            },
+            "distortion": {
+              "enabled": true,
+              "drive": 65,
+              "tone": 25,
+              "level": 80
+            },
+            "delay": {
+              "enabled": true,
+              "time": 350,
+              "feedback": 25,
+              "mix": 30,
+              "level": 85
+            },
+            "reverb": {
+              "enabled": true,
+              "size": 45,
+              "damp": 60,
+              "mix": 25,
+              "level": 80
+            },
+            "cabinet": 3,
+            "masterEQ": {
+              "band1": 0,
+              "band2": 0,
+              "band3": -1,
+              "band4": 0,
+              "band5": 2,
+              "band6": 4,
+              "band7": 2,
+              "band8": 1
+            }
+          },
+          "useCase": "Lead guitars, solos, melodic passages"
+        },
+        {
+          "name": "Metal Doom - Heavy",
+          "description": "Slow, crushing doom/stoner tone",
+          "chain": {
+            "distortion": {
+              "enabled": true,
+              "drive": 85,
+              "tone": -10,
+              "level": 90
+            },
+            "compressor": {
+              "enabled": true,
+              "threshold": -12,
+              "ratio": 6,
+              "attack": 12,
+              "release": 400,
+              "makeup": 8
+            },
+            "chorus": {
+              "enabled": true,
+              "rate": 0.2,
+              "depth": 30,
+              "level": 35
+            },
+            "cabinet": 2,
+            "masterEQ": {
+              "band1": 3,
+              "band2": 2,
+              "band3": 0,
+              "band4": -2,
+              "band5": 0,
+              "band6": 1,
+              "band7": 0,
+              "band8": -1
+            }
+          },
+          "useCase": "Doom metal, stoner rock, slow heavy riffs"
+        },
+        {
+          "name": "Metal Thrash - Fast",
+          "description": "Aggressive fast picking tone",
+          "chain": {
+            "noiseGate": {
+              "enabled": true,
+              "threshold": -40,
+              "attack": 1,
+              "hold": 20,
+              "release": 50
+            },
+            "distortion": {
+              "enabled": true,
+              "drive": 70,
+              "tone": 20,
+              "level": 85
+            },
+            "compressor": {
+              "enabled": true,
+              "threshold": -15,
+              "ratio": 4,
+              "attack": 3,
+              "release": 80,
+              "makeup": 6
+            },
+            "cabinet": 1,
+            "masterEQ": {
+              "band1": 0,
+              "band2": 2,
+              "band3": -1,
+              "band4": -2,
+              "band5": 1,
+              "band6": 3,
+              "band7": 2,
+              "band8": 0
+            }
+          },
+          "useCase": "Thrash metal, fast rhythms, precise picking"
+        },
+        {
+          "name": "Metal Shoegaze - Textured",
+          "description": "Wall-of-sound texture with modulation",
+          "chain": {
+            "distortion": {
+              "enabled": true,
+              "drive": 50,
+              "tone": 10,
+              "level": 80
+            },
+            "chorus": {
+              "enabled": true,
+              "rate": 0.4,
+              "depth": 55,
+              "level": 60
+            },
+            "flanger": {
+              "enabled": true,
+              "rate": 0.1,
+              "depth": 40,
+              "feedback": 20,
+              "level": 45
+            },
+            "phaser": {
+              "enabled": true,
+              "rate": 0.2,
+              "depth": 35,
+              "stages": 6,
+              "level": 40
+            },
+            "reverb": {
+              "enabled": true,
+              "size": 70,
+              "damp": 45,
+              "mix": 40,
+              "level": 85
+            },
+            "cabinet": 4,
+            "masterEQ": {
+              "band1": 1,
+              "band2": 0,
+              "band3": -1,
+              "band4": 0,
+              "band5": 1,
+              "band6": 2,
+              "band7": 3,
+              "band8": 2
+            }
+          },
+          "useCase": "Shoegaze, dream pop, atmospheric metal"
+        }
+      ]
+    },
+    "utility-presets": {
+      "plugin": "Hardcore",
+      "category": "Utility Presets",
+      "dataSource": "IL-MAN",
+      "presets": [
+        {
+          "name": "Clean Cabinet Only",
+          "description": "Cabinet simulation without stompboxes",
+          "chain": {
+            "distortion": {
+              "enabled": false
+            },
+            "chorus": {
+              "enabled": false
+            },
+            "flanger": {
+              "enabled": false
+            },
+            "phaser": {
+              "enabled": false
+            },
+            "reverb": {
+              "enabled": false
+            },
+            "delay": {
+              "enabled": false
+            },
+            "noiseGate": {
+              "enabled": false
+            },
+            "eqStompbox": {
+              "enabled": false
+            },
+            "compressor": {
+              "enabled": false
+            },
+            "modulator": {
+              "enabled": false
+            },
+            "wah": {
+              "enabled": false
+            },
+            "cabinet": 4,
+            "cabinetMix": 100,
+            "masterEQ": {
+              "band1": 0,
+              "band2": 0,
+              "band3": 0,
+              "band4": 0,
+              "band5": 0,
+              "band6": 0,
+              "band7": 0,
+              "band8": 0
+            }
+          },
+          "useCase": "Subtle speaker emulation, general-purpose tone shaping"
+        },
+        {
+          "name": "Noise Gate Only",
+          "description": "Clean noise gate for removing unwanted noise",
+          "chain": {
+            "noiseGate": {
+              "enabled": true,
+              "threshold": -35,
+              "attack": 5,
+              "hold": 50,
+              "release": 100
+            },
+            "cabinet": 4,
+            "masterEQ": {
+              "band1": 0,
+              "band2": 0,
+              "band3": 0,
+              "band4": 0,
+              "band5": 0,
+              "band6": 0,
+              "band7": 0,
+              "band8": 0
+            }
+          },
+          "useCase": "Guitar recordings, noisy sources, cleaning up tracks"
+        },
+        {
+          "name": "High-Pass Filter",
+          "description": "Remove low-end rumble",
+          "chain": {
+            "eqStompbox": {
+              "enabled": true,
+              "lowFreq": 80,
+              "lowGain": -15,
+              "midFreq": 1000,
+              "midGain": 0,
+              "highFreq": 5000,
+              "highGain": 0
+            },
+            "cabinet": 4,
+            "masterEQ": {
+              "band1": -12,
+              "band2": 0,
+              "band3": 0,
+              "band4": 0,
+              "band5": 0,
+              "band6": 0,
+              "band7": 0,
+              "band8": 0
+            }
+          },
+          "useCase": "Remove rumble from vocals, clean up muddy recordings"
+        },
+        {
+          "name": "Low-Pass Filter",
+          "description": "Remove high-end harshness",
+          "chain": {
+            "eqStompbox": {
+              "enabled": true,
+              "lowFreq": 100,
+              "lowGain": 0,
+              "midFreq": 1000,
+              "midGain": 0,
+              "highFreq": 4000,
+              "highGain": -15
+            },
+            "cabinet": 2,
+            "masterEQ": {
+              "band1": 0,
+              "band2": 0,
+              "band3": 0,
+              "band4": 0,
+              "band5": 0,
+              "band6": 0,
+              "band7": -6,
+              "band8": -12
+            }
+          },
+          "useCase": "Tame harsh highs, create lo-fi effect, vintage character"
+        },
+        {
+          "name": "Mid-Scoop Modern",
+          "description": "V-shaped EQ for modern productions",
+          "chain": {
+            "cabinet": 4,
+            "masterEQ": {
+              "band1": 2,
+              "band2": 1,
+              "band3": -2,
+              "band4": -3,
+              "band5": -2,
+              "band6": 0,
+              "band7": 2,
+              "band8": 3
+            }
+          },
+          "useCase": "Modern mixes, EDM, contemporary productions"
+        },
+        {
+          "name": "Mid-Boost Vintage",
+          "description": "Forward mids for vintage/retro character",
+          "chain": {
+            "cabinet": 2,
+            "masterEQ": {
+              "band1": 0,
+              "band2": 0,
+              "band3": 1,
+              "band4": 2,
+              "band5": 3,
+              "band6": 2,
+              "band7": 1,
+              "band8": 0
+            }
+          },
+          "useCase": "Classic rock, vintage hip-hop, retro aesthetic"
+        },
+        {
+          "name": "Subtle Saturation",
+          "description": "Light warmth without obvious distortion",
+          "chain": {
+            "distortion": {
+              "enabled": true,
+              "drive": 12,
+              "tone": 0,
+              "level": 95
+            },
+            "compressor": {
+              "enabled": true,
+              "threshold": -24,
+              "ratio": 2,
+              "attack": 20,
+              "release": 300,
+              "makeup": 2
+            },
+            "cabinet": 4,
+            "masterEQ": {
+              "band1": 0,
+              "band2": 0,
+              "band3": 0,
+              "band4": 0,
+              "band5": 0,
+              "band6": 0,
+              "band7": 0,
+              "band8": 0
+            }
+          },
+          "useCase": "Master bus, subtle enhancement, analog warmth"
+        },
+        {
+          "name": "Telephone Effect",
+          "description": "Classic telephone/bandpass sound",
+          "chain": {
+            "eqStompbox": {
+              "enabled": true,
+              "lowFreq": 300,
+              "lowGain": -15,
+              "midFreq": 2500,
+              "midGain": 4,
+              "highFreq": 3500,
+              "highGain": -12
+            },
+            "distortion": {
+              "enabled": true,
+              "drive": 20,
+              "tone": 0,
+              "level": 85
+            },
+            "compressor": {
+              "enabled": true,
+              "threshold": -15,
+              "ratio": 6,
+              "attack": 2,
+              "release": 100,
+              "makeup": 5
+            },
+            "cabinet": 5,
+            "masterEQ": {
+              "band1": -12,
+              "band2": -8,
+              "band3": 0,
+              "band4": 3,
+              "band5": 5,
+              "band6": 2,
+              "band7": -4,
+              "band8": -10
+            }
+          },
+          "useCase": "Telephone vocals, radio effects, filtered sounds"
+        },
+        {
+          "name": "Slapback Delay",
+          "description": "Classic rockabilly slapback",
+          "chain": {
+            "delay": {
+              "enabled": true,
+              "time": 100,
+              "feedback": 8,
+              "mix": 35,
+              "level": 85
+            },
+            "cabinet": 2,
+            "masterEQ": {
+              "band1": 0,
+              "band2": 0,
+              "band3": 0,
+              "band4": 0,
+              "band5": 0,
+              "band6": 0,
+              "band7": 0,
+              "band8": 0
+            }
+          },
+          "useCase": "Rockabilly, country, vocal slapback, guitar ambience"
+        },
+        {
+          "name": "Room Ambience",
+          "description": "Short room reverb simulation",
+          "chain": {
+            "reverb": {
+              "enabled": true,
+              "size": 35,
+              "damp": 70,
+              "mix": 25,
+              "level": 80
+            },
+            "cabinet": 4,
+            "masterEQ": {
+              "band1": 0,
+              "band2": 0,
+              "band3": 0,
+              "band4": 0,
+              "band5": 0,
+              "band6": 0,
+              "band7": 0,
+              "band8": 0
+            }
+          },
+          "useCase": "Drum room sound, vocal space, subtle ambience"
+        }
+      ]
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Hardcore\n\n## The 60-Second Mental Model\nHardcore is a **Virtual Guitar Rack**. Imagine a floor covered in 11 different effects pedals (Stompboxes), plugged into a guitar amplifier and a speaker cabinet. You can pick which pedals to turn on and in what order, and then choose which speaker (Cabinet) the sound comes out of. [SRC: IL-MAN]\n\n## Purpose & Identity\n*   **Identity:** A multi-FX suite for distortion, modulation, and spatial simulation.\n*   **Where it fits:** It's an Effect plugin. While built for guitars, it's a powerful tool for adding \"analog\" grit to vocals, synths, and drums.\n\n## Hip-Hop / R&B Context\n*   **Industrial Vocals:** Create the \"megaphone\" or \"distorted\" vocal sound common in aggressive trap.\n*   **Lo-Fi Guitar:** Get that dusty, \"bedroom\" guitar sound for lo-fi hip-hop by using the Chorus and a dark Cabinet simulation.\n*   **Synth Thickening:** Use the built-in Flanger and Phaser to add movement to boring digital synth pads.\n*   **Electric Bass:** Add \"Growl\" to a DI bass guitar or a clean synth bass using the Distortion and Compressor pedals.\n\n## When To Use\n*   When you want a **vintage, analog feel** without loading 10 separate plugins.\n*   When you need a **Noise Gate** and **Distortion** to work together (it's built in).\n*   When you want to simulate the sound of a sound \"being in a room\" (via the Cabinet simulation).\n\n## When NOT To Use\n*   **Clean Digital Mixing:** If you want a perfectly transparent reverb or delay, use **Fruity Reeverb 2** instead. Hardcore's effects are \"colored\" and meant to sound like hardware pedals.\n*   **High-End Precision:** The Graphic EQ in Hardcore is broad. For surgical cutting, use **Fruity Parametric EQ 2**.\n",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Hardcore\n\n## UI Tour\n1.  **The Pedalboard:** The central area where you see the 11 pedals. Double-click to turn them on/off.\n2.  **Pedal Controls:** Each pedal has its own knobs (Gain, Speed, Depth, etc.).\n3.  **Graphic EQ:** An 8-band EQ at the top for final tone shaping.\n4.  **Cabinet Selector:** A dropdown/selector for the 5 speaker simulations.\n5.  **Output Master:** Controls the final volume. [SRC: IL-MAN]\n\n## Signal Flow\n1.  **Input:** Audio enters the rack.\n2.  **Stompboxes:** The sound passes through the pedals in the order they appear on screen (usually Left to Right, but can be reordered).\n3.  **Graphic EQ:** The entire processed signal is EQ'd.\n4.  **Cabinet Simulation:** The sound is \"filtered\" to sound like it's coming out of a speaker. **This is critical** for removing the harsh \"fizz\" of distortion.\n5.  **Output:** Final audio.\n\n## The 11 Pedals\n*   **Distortion:** From light overdrive to heavy fuzz.\n*   **Chorus/Flanger/Phaser:** Modulation for width and movement.\n*   **Reverb/Delay:** Spatial effects.\n*   **Noise Gate:** Cuts the silence to remove hiss.\n*   **Compressor:** Levels out the volume.\n*   **Modulator:** Complex ring-modulation/tremolo.\n*   **Wah:** A frequency-sweeping filter.\n\n## Things Beginners Misunderstand\n*   **\"Why is it so buzzy?\":** If you turn on Distortion without a **Cabinet** selected, it will sound like harsh digital static. The Cabinet simulates the natural high-end roll-off of a real speaker.\n*   **Noise Gate Placement:** The Noise Gate works best when placed **first** in the chain to stop the noise *before* it gets distorted.\n*   **EQ as a Filter:** You can use the Graphic EQ to radically change the \"Vibe\" of the amp (e.g., cutting all bass for a \"radio\" effect). [SRC: REPUTABLE]\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Hardcore\n\n## Moody (Dark, Isolated, Emotional)\n*   **Production Levers:**\n    *   **Cabinet:** Select **Cabinet 2** (Dark/Mellow).\n    *   **Pedals:** Use **Noise Gate** (high threshold) + **Reverb** (High Mix).\n    *   **EQ:** Pull down the 4kHz and 8kHz sliders to remove brightness.\n*   **Don't Do This:** Avoid harsh Distortion or Flanger.\n\n## Upbeat (Funky, Rhythmic, Pop)\n*   **Production Levers:**\n    *   **Cabinet:** Select **Cabinet 4** (Bright/Punchy).\n    *   **Pedals:** **Compressor** (Fast) + **Chorus** (Slow/Wide) + **Wah** (Auto).\n    *   **EQ:** Boost the 1kHz and 2kHz for \"honky\" presence.\n*   **Don't Do This:** Don't over-saturate; keep the transients clean.\n\n## Psychedelic (Trippy, Swirling, Spacey)\n*   **Production Levers:**\n    *   **Pedals:** **Phaser** + **Flanger** + **Modulator**.\n    *   **Sequence:** Put the Phaser *after* the Reverb for a \"melting\" space effect.\n    *   **Wah:** Automate the Wah pedal with a slow LFO.\n*   **Don't Do This:** Avoid a static sound; keep at least two modulation pedals moving.\n\n## Jazzy (Neo-Soul, Warm, Smooth)\n*   **Production Levers:**\n    *   **Cabinet:** **Cabinet 1** (Classic Clean).\n    *   **Pedals:** **Chorus** (Depth 20%) + **Compressor** (Subtle).\n    *   **EQ:** Boost the 250Hz and 500Hz for a \"woody\" tone.\n*   **Don't Do This:** Never use the Distortion pedal for jazz; use the Gain on the Compressor if you need a tiny bit of \"hair.\"\n\n## Vibey (Lo-Fi, Dusty, R&B)\n*   **Production Levers:**\n    *   **Cabinet:** **Cabinet 5** (Small/Boxy).\n    *   **Pedals:** **Distortion** (Gain at 10%) + **Delay** (Tape-style feedback).\n    *   **EQ:** Drastic High-Cut and Low-Cut (Bandpass style).\n*   **Don't Do This:** Avoid \"High-Fidelity\" settings. Emulate the sound of a cheap amp. [SRC: REPUTABLE]\n",
+      "cabinet-simulation-guide": "# Cabinet Simulation Guide\n\n## Understanding Cabinet Models\n\nHardcore includes 5 cabinet simulations that model the frequency response and character of physical guitar speaker enclosures. Each cabinet acts as a complex EQ curve, dramatically shaping the final tone. [SRC: IL-MAN]\n\n## Cabinet 1: Bright/Modern\n\n**Character:** Extended high-frequency response, tight low end, forward midrange presence\n**Best for:** Modern metal, djent, aggressive hip-hop drums, cutting lead tones\n**Frequency profile:**\n- Strong 3-5kHz presence boost\n- Tight 100Hz low end (not flabby)\n- Extended treble to 8kHz+\n- Slight 200Hz scoop\n\n**Hip-hop applications:**\n- Drum bus for modern trap aggression\n- 808s that need to cut through mix\n- Synth leads requiring bite\n\n## Cabinet 2: Vintage/Classic\n\n**Character:** Warm, rounded highs, pronounced midrange, softer attack\n**Best for:** Classic rock, lo-fi aesthetics, vocal warmth, retro drums\n**Frequency profile:**\n- Rolled-off highs above 6kHz\n- Strong 200-400Hz \"body\" region\n- Moderate 1-2kHz presence\n- Soft low-end bump around 80Hz\n\n**Hip-hop applications:**\n- Vocal warmth and vintage character\n- Drum samples needing \"tape\" vibe\n- Bass guitar saturation with controlled highs\n\n## Cabinet 3: British/Crunch\n\n**Character:** Mid-forward, aggressive upper-mids, compressed dynamics\n**Best for:** British invasion tones, punk, garage rock, gritty vocals\n**Frequency profile:**\n- Aggressive 1-2.5kHz midrange push\n- Slightly boxy 300-500Hz character\n- Controlled, present 5-6kHz range\n- Moderate low-end (80-120Hz)\n\n**Hip-hop applications:**\n- Vocals needing \"radio\" presence\n- Drum room mics emulation\n- Gritty synth bass\n\n## Cabinet 4: American/Smooth\n\n**Character:** Balanced, scooped mids, extended frequency range\n**Best for:** Clean tones, jazz, R&B, subtle processing, general-purpose\n**Frequency profile:**\n- Scooped 300-800Hz (less honk)\n- Extended, smooth highs to 10kHz\n- Balanced low-mid and high-mid response\n- Natural, uncolored character\n\n**Hip-hop applications:**\n- Clean vocal processing\n- Subtle drum enhancement\n- Bass guitar enhancement without aggression\n- Synth pads requiring space\n\n## Cabinet 5: Small/Practice Amp\n\n**Character:** Boxy, limited frequency range, compressed, immediate\n**Best for:** Lo-fi, punk, practice amp vibes, megaphone effects, telephone tones\n**Frequency profile:**\n- Strong midrange focus (500Hz-3kHz)\n- Severe rolloff below 100Hz and above 5kHz\n- Boxy 200-400Hz character\n- Limited dynamic range\n\n**Hip-hop applications:**\n- Radio/megaphone vocal effects\n- Lo-fi drum destruction\n- Telephone/filter effects\n- Budget equipment emulation\n- Industrial textures\n\n## Cabinet Selection Strategy\n\n### For Drums\n- **Modern productions:** Cabinet 1 (tight, bright) or Cabinet 4 (balanced)\n- **Lo-fi/vintage:** Cabinet 2 (warm, rolled-off) or Cabinet 5 (boxy, limited)\n- **Aggressive genres:** Cabinet 1 or Cabinet 3 (mid-forward)\n\n### For Vocals\n- **Clean/transparent:** Cabinet 4 (balanced, uncolored)\n- **Warm/vintage:** Cabinet 2 (rounded, classic)\n- **Radio/megaphone:** Cabinet 5 (small, boxy) + high-pass filtering\n- **Aggressive/rap:** Cabinet 3 (mid-forward presence)\n\n### For Bass\n- **Modern/sub-heavy:** Cabinet 1 (tight low-end)\n- **Classic/vintage:** Cabinet 2 (warm, soft)\n- **Gritty/aggressive:** Cabinet 3 (mid-forward) or Cabinet 5 (compressed)\n\n### For Synths\n- **Leads:** Cabinet 1 (bright, cutting) or Cabinet 3 (presence)\n- **Pads:** Cabinet 2 (warm, space) or Cabinet 4 (balanced)\n- **Basses:** Match to genre (see Bass section above)\n- **FX/Textures:** Cabinet 5 (characterful, limited)\n\n## Combining Cabinets with Stompboxes\n\n**Bright cabinet + heavy distortion:** Aggressive modern metal tone\n**Vintage cabinet + light distortion:** Classic rock warmth\n**Small cabinet + heavy distortion:** Lo-fi punk/industrial\n**American cabinet + chorus:** Clean, spacious jazz/R&B\n\n## Master EQ Interaction\n\nThe 8-band Graphic EQ sits before the cabinet simulation. This ordering is intentional:\n\n1. Shape tone with EQ (broad strokes)\n2. Cabinet filters the result (final character)\n\n**Strategy:** Use EQ to compensate for cabinet characteristics:\n- Bright cabinet too harsh? Cut 3-5kHz in EQ\n- Vintage cabinet too dark? Boost 5-8kHz in EQ\n- Small cabinet too boxy? Cut 200-400Hz in EQ\n\n## Cabinet as Effect\n\nDon't think of cabinet as just \"amp simulation\"—it's a powerful tone-shaping tool:\n- Use Cabinet 5 on clean drums for instant lo-fi character\n- Use Cabinet 2 on vocals for vintage warmth\n- Use Cabinet 1 on synth bass for modern aggression\n- Use any cabinet at low mix levels for subtle speaker emulation\n\n---\n\n*Source: Image-Line FL Studio Hardcore Manual [SRC: IL-MAN]*\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Hardcore\r\n\r\n## What It Is\r\nHardcore is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "core-concepts": "# Hardcore Core Concepts\n\n## Plugin Identity\nHardcore is a virtual guitar pedalboard and amp rig designed for comprehensive tone shaping through a flexible modular signal chain. [SRC: IL-MAN]\n\n## Signal Flow Architecture\n\n### Modular Stompbox Chain\nHardcore processes audio through 11 interchangeable stompbox effects arranged in any order. Each stompbox can be toggled on/off independently, enabling complex parallel-style processing within a single plugin instance.\n\n**Chain Position Matters:** Effects early in the chain shape the foundation; later positions add polish or destruction. Distortion at the start drives all subsequent effects; reverb at the end creates space after distortion.\n\n### Three-Stage Processing\n\n1. **Input Stage** - Initial gain staging and noise gate\n2. **Stompbox Chain** - 11 configurable effect slots\n3. **Master Section** - 8-band Graphic EQ + Cabinet simulation\n\n## The Virtual Pedalboard Philosophy\n\nHardcore replicates the tactile experience of physical guitar pedals while extending capabilities impossible in hardware:\n- **Instant preset recall** - Switch entire pedalboard configurations\n- **Impossible routings** - Any effect order, any combination\n- **Precision control** - Exact parameter values, not approximate knob positions\n- **Zero noise floor** - No cable hiss or power supply hum\n\n## Cabinet Simulation Fundamentals\n\nCabinet simulators (cabs) model the frequency response of physical guitar speaker enclosures. Hardcore includes 5 distinct cabinet models, each with characteristic frequency curves affecting:\n- Low-end resonance (50-200 Hz)\n- Midrange presence (1-4 kHz)\n- High-end rolloff (above 5 kHz)\n\n**Key Insight:** Cabs are filters. They don't add distortion; they shape the tone coming before them. [SRC: IL-MAN]\n\n## Hip-Hop Relevance\n\nWhile designed for guitars, Hardcore's architecture makes it exceptionally powerful for hip-hop production:\n\n- **Drum destruction** - Saturation and distortion add harmonics to flat drum samples\n- **Vocal character** - Pedal effects create unique vocal textures impossible with standard plugins\n- **Lo-fi aesthetic** - Cabinet simulation + noise gate = instant cassette/vinyl character\n- **Bass saturation** - Controlled distortion adds upper harmonics to sub-bass\n\n## Gain Staging Philosophy\n\nHardcore requires mindful gain staging across three levels:\n1. **Input gain** - Sets how hard you hit the first stompbox\n2. **Per-pedal levels** - Each effect has input/output controls\n3. **Master output** - Final level before leaving the plugin\n\n**Golden Rule:** Aim for consistent perceived loudness when toggling effects on/off. This ensures your changes are tonal, not just louder. [SRC: IL-MAN]\n\n## CPU Considerations\n\nEach active stompbox consumes CPU. For maximum efficiency:\n- Disable unused effects rather than leaving them bypassed\n- Consider freezing tracks with heavy Hardcore chains\n- Use Hardcore as a send effect for multiple tracks sharing the same processing\n\n---\n\n*Source: Image-Line FL Studio Hardcore Manual [SRC: IL-MAN]*\n",
+      "signal-chain-theory": "# Signal Chain Theory\n\n## Understanding Effect Order\n\nThe sequence of stompboxes in Hardcore dramatically affects the final sound. This guide explains the theory behind positioning decisions. [SRC: IL-MAN]\n\n## Classic Signal Chain Templates\n\n### Standard Guitar Chain\n```\nNoise Gate → Compressor → Wah → Distortion → EQ (stomp) → Chorus/Flanger/Phaser → Delay → Reverb\n```\n**Why it works:** Gate cleans signal before compression, compression evens dynamics for distortion, modulation adds movement after dirt, time-based effects create space last.\n\n### Drum Destruction Chain\n```\nDistortion → Compressor → EQ (stomp) → Noise Gate → Cabinet\n```\n**Why it works:** Distortion first adds harmonics, compression controls dynamics, EQ shapes tone, gate truncates tails for tightness, cabinet rolls off harsh highs.\n\n### Vocal Lo-Fi Chain\n```\nModulator → Distortion → Cabinet → Delay → Reverb\n```\n**Why it works:** Modulator adds subtle detune/doubling, distortion grimes the signal, cabinet creates distance, delay/reverb add space.\n\n## Effect Category Theory\n\n### Dynamics (Noise Gate, Compressor)\n**Best position:** Early in chain (positions 1-3)\n**Why:** Controlling dynamics before they hit distortion prevents unpredictable gain staging. A compressor after distortion is a limiter; before distortion, it shapes how the distortion reacts.\n\n### Filtering/Wah (Wah, EQ stompbox)\n**Best position:** Before or after distortion (positions 2-4)\n**Before distortion:** Wah sweeps which frequencies get distorted, creating vocal-like \"talking\" effects\n**After distortion:** Wah sweeps the tone of already-distorted signal\n\n### Distortion\n**Best position:** Middle of chain (positions 3-6)\n**Why:** Putting distortion first means every subsequent effect processes distorted signal. This creates rich, saturated textures but reduces clarity. Placing it later preserves transients in earlier effects.\n\n### Modulation (Chorus, Flanger, Phaser, Modulator)\n**Best position:** After distortion (positions 5-8)\n**Why:** Modulation effects create movement by slightly detuning delayed copies. Feeding them distorted signal means the modulation affects harmonics too, creating richer textures. Before distortion, modulation can sound subtle or get lost.\n\n### Time-Based (Delay, Reverb)\n**Best position:** Late in chain (positions 9-11)\n**Why:** Time-based effects create echoes and space. If you put distortion after delay, each echo gets re-distorted, creating cascading chaos. Generally, put time effects last for cleaner results.\n\n## Parallel Processing Theory\n\nHardcore doesn't have a built-in parallel mixer, but you can achieve parallel effects using track routing:\n\n### Send/Return Method\n1. Create a send track with Hardcore\n2. Blend dry signal with processed signal using track faders\n3. Use 100% wet effects in Hardcore (no dry signal mixed in)\n\n**Applications:**\n- **Parallel distortion:** Heavy distortion blended with clean drums preserves transients while adding grit\n- **Parallel reverb:** Short, gated reverb on send adds space without washing out punch\n- **Parallel cabinet:** Cabinet simulation on send only adds speaker character without affecting dry tone\n\n### Insert Method\nHardcore placed directly on instrument track (100% wet).\n\n**Best for:**\n- Total transformation of source material\n- Creating print-and-commit tones\n- Consistent processing across multiple takes\n\n## Master EQ Positioning\n\nThe 8-band Graphic EQ sits after the stompbox chain but before the cabinet simulation.\n\n**Strategic use:**\n- Cut problem frequencies accumulated across the chain\n- Boost presence before cabinet rolloff\n- Create \"smile curve\" for vintage character\n- Scoop mids for modern metal tones [SRC: IL-MAN]\n\n## Cabinet Position\n\nCabinet simulation always comes last in the internal signal flow.\n\n**Impact:** Everything before the cabinet gets filtered by the speaker model. This is critical for realistic amp simulation—the cabinet shapes the final output regardless of what precedes it.\n\n## Common Chain Mistakes\n\n1. **Reverb → Distortion:** Creates messy, undefined distortion\n2. **Gate at end:** Chokes off reverb tails and delay repeats\n3. **Multiple distortions:** Unless intentional, redundant distortion stages can create harsh, uncontrollable saturation\n4. **EQ before distortion:** Any cuts reduce what gets distorted; any boosts increase distortion at those frequencies\n\n## Advanced: Split Chains\n\nFor complex production, use multiple Hardcore instances:\n\n**Example - Bass:**\n- Instance 1 (lows chain): High-pass everything above 120Hz, subtle compression, clean cabinet\n- Instance 2 (highs chain): High-pass below 120Hz, heavy distortion, aggressive EQ, different cabinet\n- Blend both instances for full, controlled bass tone\n\n---\n\n*Source: Image-Line FL Studio Hardcore Manual [SRC: IL-MAN]*\n",
+      "signal-flow": "# Signal Flow: Hardcore\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n",
+      "stompbox-overview": "# Stompbox Overview\n\n## The 11 Stompbox Effects\n\nHardcore includes 11 virtual stompbox effects, each modeled after classic guitar pedals but optimized for modern production workflows. This overview explains each effect's core function and character. [SRC: IL-MAN]\n\n## 1. Distortion\n**Type:** Saturation/overdrive/distortion\n**Core function:** Add harmonics and grit to signal\n**Controls:** Drive (saturation amount), Tone (EQ tilt), Level (output gain)\n**Character:** Gritty, aggressive, harmonic-rich\n**Best for:** Drum punch, vocal edge, bass saturation, synth aggression\n\n## 2. Chorus\n**Type:** Modulation (pitch + delay)\n**Core function:** Create thickening and doubling effect\n**Controls:** Rate (LFO speed), Depth (modulation amount), Level (mix)\n**Character:** Shimmering, wide, 80s/90s vibe\n**Best for:** Vocal doubling, synth widening, guitar spaciousness\n\n## 3. Flanger\n**Type:** Modulation (sweeping comb filter)\n**Core function:** Create jet-plane whoosh and metallic resonance\n**Controls:** Rate (sweep speed), Depth (sweep range), Feedback (resonance), Level\n**Character:** Swirling, metallic, dramatic\n**Best for:** Drum transition effects, vocal psychedelia, sci-fi textures\n\n## 4. Phaser\n**Type:** Modulation (all-pass filter sweep)\n**Core function:** Create subtle-to-extreme phase shifting\n**Controls:** Rate (sweep speed), Depth (notch depth), Stages (complexity), Level\n**Character:** Liquid, swirling, funky\n**Best for:** Funk guitar, drum movement, vocal subtle modulation\n\n## 5. Reverb\n**Type:** Time-based (room simulation)\n**Core function:** Add space and dimension\n**Controls:** Size (room size), Damp (high-frequency decay), Mix (wet/dry), Level\n**Character:** Atmospheric, spatial, depth-adding\n**Best for:** Vocal space, drum room sound, ambient synths\n\n## 6. Delay\n**Type:** Time-based (echo generation)\n**Core function:** Create rhythmic repeats and slapback\n**Controls:** Time (delay length), Feedback (repeat decay), Mix, Level\n**Character:** Rhythmic, repeating, temporal\n**Best for:** Vocal slapback, drum rhythm doubling, guitar atmosphere\n\n## 7. Noise Gate\n**Type:** Dynamics (threshold-based muting)\n**Core function:** Eliminate noise below threshold, truncate tails\n**Controls:** Threshold (activation level), Attack (opening speed), Hold, Release\n**Character:** Tightening, cleaning, truncating\n**Best for:** Tight drums, vocal breath removal, lo-fi abrupt cuts\n\n## 8. EQ (Stompbox)\n**Type:** Filtering (parametric shelving)\n**Core function:** Tone shaping within the chain\n**Controls:** Low/Mid/High bands with frequency and gain\n**Character:** Surgical, flexible, corrective\n**Best for:** Pre-distortion shaping, problem frequency fixing, tone matching\n\n## 9. Compressor\n**Type:** Dynamics (level reduction above threshold)\n**Core function:** Control dynamics, add sustain, even out levels\n**Controls:** Threshold, Ratio, Attack, Release, Makeup gain\n**Character:** Squashing, leveling, punch-adding\n**Best for:** Vocal consistency, drum punch, bass sustain, general dynamics control\n\n## 10. Modulator\n**Type:** Specialized modulation (ring mod, tremolo, vibrato)\n**Core function:** Extreme pitch/amplitude modulation effects\n**Controls:** Mode (tremolo/vibrato/ring mod), Rate, Depth, Level\n**Character:** Weird, extreme, synthetic\n**Best for:** Special FX, vocal destruction, sci-fi drums, experimental textures\n\n## 11. Wah\n**Type:** Filtering (bandpass sweep)\n**Core function:** Vocal \"wah-wah\" filtering effect\n**Controls:** Manual/Close (envelope or LFO control), Range (sweep width), Level\n**Character:** Vocal, expressive, funky\n**Best for:** Funk guitar, vocal filtering, rhythmic wah effects\n\n## Effect Categories for Decision Making\n\n### Distortion-Type (Harmonic Addition)\n- Distortion\n\nThese add new frequencies through saturation. Use them when you need grit, harmonics, or aggression.\n\n### Modulation-Type (Movement)\n- Chorus\n- Flanger\n- Phaser\n- Wah\n- Modulator\n\nThese create movement and dimension. Use them when you need width, space, or rhythmic variation.\n\n### Time-Type (Space & Echo)\n- Reverb\n- Delay\n\nThese add temporal dimension. Use them when you need depth, room, or rhythmic patterns.\n\n### Dynamics-Type (Control)\n- Noise Gate\n- Compressor\n\nThese control levels and shape transients. Use them when you need tightening, noise removal, or dynamic consistency.\n\n### Filtering-Type (Tone)\n- EQ (stompbox)\n- Wah\n\nThese shape frequency content. Use them when you need tone adjustments or frequency-specific processing.\n\n## Quick Selection Guide\n\n| Effect | Hip-Hop Use | Guitar Use | Best Chain Position |\n|--------|-------------|------------|---------------------|\n| Distortion | Drum destruction, bass saturation | Overdrive, dirt | Middle (3-6) |\n| Chorus | Vocal doubling, synth width | Clean lushness | After distortion (5-8) |\n| Flanger | Transition effects, psychedelia | Jet sound | After distortion (5-8) |\n| Phaser | Drum movement, subtle modulation | Funk texture | After distortion (5-8) |\n| Reverb | Vocal space, drum room | Ambience, room | Late (9-11) |\n| Delay | Slapback, rhythmic doubling | Echo, slapback | Late (9-11) |\n| Noise Gate | Tight drums, lo-fi cuts | Noise removal, tightness | Early (1-3) or late |\n| EQ | Pre-distortion shaping | Tone matching | Any position |\n| Compressor | Punch, sustain, consistency | Sustain, dynamics | Early (1-3) |\n| Modulator | Special FX, destruction | Experimental | After distortion (5-8) |\n| Wah | Filtering, funk | Expression | Before or after distortion |\n\n## Stompbox Combinations\n\n**Classic Rock:** Distortion → Chorus → Delay\n**Modern Metal:** Noise Gate → Distortion → EQ → Cabinet\n**Lo-Fi Hip-Hop:** Modulator → Distortion → Cabinet → Delay\n**Funk:** Wah → Distortion → Phaser\n**Psychedelic:** Flanger → Phaser → Chorus → Reverb\n**Industrial:** Noise Gate → Heavy Distortion → Modulator → Cabinet 5\n\n---\n\n*Source: Image-Line FL Studio Hardcore Manual [SRC: IL-MAN]*\n"
+    },
+    "Quick-Reference": {
+      "11-stompbox-cheat-sheet": "# 11 Stompbox Cheat Sheet\n\nQuick reference for all 11 Hardcore stompboxes with key settings and hip-hop applications. [SRC: IL-MAN]\n\n## Distortion\n```\nDrive: 0-100%  → Saturation amount\nTone:  -50/+50 → Bright/dark tilt\nLevel: 0-100%  → Output gain\n\nHip-Hop Presets:\nDrum Punch:     Drive 60%, Tone +20, Level 85%\nBass Warmth:    Drive 30%, Tone -10, Level 90%\nVocal Edge:     Drive 45%, Tone +30, Level 75%\nSynth Grit:     Drive 70%, Tone 0, Level 80%\n```\n\n## Chorus\n```\nRate:  0.1-10 Hz → Modulation speed\nDepth: 0-100%    → Effect intensity\nLevel: 0-100%    → Mix amount\n\nHip-Hop Presets:\nSubtle Double:  Rate 0.5Hz, Depth 30%, Level 40%\nWide Synth:     Rate 0.3Hz, Depth 50%, Level 60%\nVocal Lush:     Rate 0.8Hz, Depth 40%, Level 35%\nDrum Width:     Rate 0.2Hz, Depth 25%, Level 30%\n```\n\n## Flanger\n```\nRate:     0.1-10 Hz   → Sweep speed\nDepth:    0-100%      → Sweep range\nFeedback: -100/+100%  → Resonance (positive/negative)\nLevel:    0-100%      → Mix amount\n\nHip-Hop Presets:\nSubtle Movement:  Rate 0.2Hz, Depth 30%, Feedback 20%, Level 40%\nJet Whoosh:       Rate 0.5Hz, Depth 70%, Feedback 50%, Level 50%\nSpace Drums:      Rate 0.1Hz, Depth 60%, Feedback 30%, Level 35%\n```\n\n## Phaser\n```\nRate:   0.1-10 Hz → Notch sweep speed\nDepth:  0-100%    → Notch depth/intensity\nStages: 2, 4, 6, 8 → Complexity (more = deeper)\nLevel:  0-100%    → Mix amount\n\nHip-Hop Presets:\nFunky Drums:  Rate 0.3Hz, Depth 40%, Stages 4, Level 45%\nLiquid Synth: Rate 0.1Hz, Depth 60%, Stages 6, Level 50%\nSubtle Vocal: Rate 0.2Hz, Depth 25%, Stages 2, Level 30%\n```\n\n## Reverb\n```\nSize:  0-100% → Room size/simulation\nDamp:  0-100% → High-frequency decay (lower = brighter)\nMix:   0-100% → Wet/dry balance\nLevel: 0-100% → Output gain\n\nHip-Hop Presets:\nTight Room:   Size 30%, Damp 70%, Mix 25%, Level 85%\nDrum Room:    Size 50%, Damp 60%, Mix 20%, Level 90%\nVocal Space:  Size 40%, Damp 50%, Mix 35%, Level 80%\nAmbient Wash: Size 80%, Damp 40%, Mix 45%, Level 75%\n```\n\n## Delay\n```\nTime:     1-2000ms → Delay length\nFeedback: 0-100%   → Repeat decay\nMix:      0-100%   → Wet/dry balance\nLevel:    0-100%   → Output gain\n\nHip-Hop Presets:\nSlapback:      Time 80-120ms, Feedback 10%, Mix 30%, Level 90%\nPing-Pong:     Time 250-400ms, Feedback 35%, Mix 40%, Level 85%\nRhythmic:      Time 1/8 note synced, Feedback 25%, Mix 35%, Level 80%\nSpace Echo:    Time 400-600ms, Feedback 50%, Mix 45%, Level 75%\n```\n\n## Noise Gate\n```\nThreshold: -60 to 0 dB → Activation level\nAttack:    0-100ms    → Opening speed\nHold:      0-500ms     → Minimum open time\nRelease:   10-1000ms   → Closing speed\n\nHip-Hop Presets:\nTight Drums:  Threshold -30dB, Attack 5ms, Hold 50ms, Release 100ms\nVocal Gate:   Threshold -25dB, Attack 10ms, Hold 100ms, Release 200ms\nLo-Fi Cut:    Threshold -20dB, Attack 1ms, Hold 20ms, Release 50ms\n```\n\n## EQ (Stompbox)\n```\nLow Freq:   80-250 Hz  → Bass control\nLow Gain:   -15/+15 dB → Cut/boost\nMid Freq:   250Hz-4kHz → Midrange control\nMid Gain:   -15/+15 dB → Cut/boost\nHigh Freq:  2-12 kHz   → Treble control\nHigh Gain:  -15/+15 dB → Cut/boost\n\nHip-Hop Presets:\nDrum Punch:   Low +3dB @120Hz, Mid +2dB @800Hz, High +1dB @5kHz\nVocal Clarity: Low -2dB @150Hz, Mid +3dB @2.5kHz, High +2dB @8kHz\nBass Focus:   Low +4dB @100Hz, Mid -3dB @400Hz, High 0dB\n```\n\n## Compressor\n```\nThreshold: -60 to 0 dB → Compression start point\nRatio:     1:1 to 20:1 → Compression intensity\nAttack:    0.1-100ms   → Reaction speed\nRelease:   10-1000ms   → Recovery speed\nMakeup:    0-24 dB     → Output compensation\n\nHip-Hop Presets:\nDrum Punch:   Threshold -15dB, Ratio 4:1, Attack 5ms, Release 100ms\nVocal Consistency: Threshold -18dB, Ratio 3:1, Attack 10ms, Release 200ms\nBass Sustain: Threshold -12dB, Ratio 6:1, Attack 8ms, Release 300ms\n```\n\n## Modulator\n```\nMode:  Tremolo / Vibrato / Ring Mod\nRate:  0.1-20 Hz    → Modulation speed\nDepth: 0-100%       → Effect intensity\nLevel: 0-100%       → Output gain\n\nHip-Hop Presets:\nTremolo Chops: Mode Tremolo, Rate 2Hz, Depth 70%, Level 80%\nVibrato Drift: Mode Vibrato, Rate 0.5Hz, Depth 40%, Level 60%\nRing Destruction: Mode Ring Mod, Rate 5Hz, Depth 80%, Level 70%\n```\n\n## Wah\n```\nManual: 0-100%      → Filter frequency (manual mode)\nClose:  0-100%      → Envelope sensitivity (auto mode)\nRange:  0-100%      → Sweep width\nLevel:  0-100%      → Output gain\n\nHip-Hop Presets:\nManual Filter: Mode Manual, Position 60%, Range 70%, Level 90%\nAuto Wah:      Mode Auto, Sensitivity 50%, Range 60%, Level 85%\nVowel Sound:   Mode Manual, Position 45%, Range 50%, Level 95%\n```\n\n---\n\n*Source: Image-Line FL Studio Hardcore Manual [SRC: IL-MAN]*\n",
+      "cabinet-quick-pick": "# Cabinet Quick Pick Guide\n\nOne-page reference for selecting the right cabinet model for your sound. [SRC: IL-MAN]\n\n## Cabinet Selector Matrix\n\n| Need This Sound | Use This Cabinet | Hip-Hop Application |\n|-----------------|------------------|---------------------|\n| Modern, bright, tight | Cabinet 1 | Trap drums, 808s, modern production |\n| Warm, vintage, round | Cabinet 2 | Lo-fi, classic samples, vocal warmth |\n| Mid-forward, aggressive | Cabinet 3 | Rap vocals, radio presence, gritty drums |\n| Balanced, transparent | Cabinet 4 | Clean processing, subtle enhancement |\n| Boxy, lo-fi, limited | Cabinet 5 | Radio effects, telephone, punk, industrial |\n\n## Cabinet 1: Bright/Modern\n```\nCharacter: Extended highs, tight lows, forward mids\nBest for: Modern genres, aggressive drums, cutting leads\n\nFrequency Profile:\n- Strong 3-5kHz presence\n- Tight 100Hz low end\n- Extended treble to 8kHz+\n- Slight 200Hz scoop\n\nHip-Hop Uses:\n✓ Drum bus for trap aggression\n✓ 808s that cut through mix\n✓ Synth leads with bite\n✓ Modern vocal treatment\n\nWhen to use: Need clarity, modern sheen, punchy transients\n```\n\n## Cabinet 2: Vintage/Classic\n```\nCharacter: Warm, rounded, pronounced body, soft attack\nBest for: Classic rock, lo-fi, retro drums, warmth\n\nFrequency Profile:\n- Rolled-off highs above 6kHz\n- Strong 200-400Hz \"body\"\n- Moderate 1-2kHz presence\n- Soft low-end around 80Hz\n\nHip-Hop Uses:\n✓ Vocal vintage warmth\n✓ \"Tape\" drum character\n✓ Bass saturation with controlled highs\n✓ Classic sample treatment\n\nWhen to use: Need warmth, vintage vibe, softening harsh sources\n```\n\n## Cabinet 3: British/Crunch\n```\nCharacter: Mid-forward, aggressive upper-mids, compressed\nBest for: British invasion, punk, gritty vocals, presence\n\nFrequency Profile:\n- Aggressive 1-2.5kHz mid push\n- Boxy 300-500Hz character\n- Controlled 5-6kHz range\n- Moderate low-end\n\nHip-Hop Uses:\n✓ Rap vocals needing radio presence\n✓ Drum room mic emulation\n✓ Gritty synth bass\n✓ Aggressive lead treatment\n\nWhen to use: Need presence, aggression, \"radio\" vocal character\n```\n\n## Cabinet 4: American/Smooth\n```\nCharacter: Balanced, scooped mids, extended range\nBest for: Clean tones, jazz, R&B, subtle processing\n\nFrequency Profile:\n- Scooped 300-800Hz (less honk)\n- Extended smooth highs to 10kHz\n- Balanced low-mid/high-mid\n- Natural uncolored character\n\nHip-Hop Uses:\n✓ Clean vocal processing\n✓ Subtle drum enhancement\n✓ Bass enhancement without aggression\n✓ Synth pad space\n\nWhen to use: Need transparency, balance, subtle speaker emulation\n```\n\n## Cabinet 5: Small/Practice Amp\n```\nCharacter: Boxy, limited range, compressed, immediate\nBest for: Lo-fi, punk, megaphone, telephone effects\n\nFrequency Profile:\n- Strong midrange focus (500Hz-3kHz)\n- Severe rolloff <100Hz and >5kHz\n- Boxy 200-400Hz character\n- Limited dynamic range\n\nHip-Hop Uses:\n✓ Radio/megaphone vocal effects\n✓ Lo-fi drum destruction\n✓ Telephone/filter effects\n✓ Industrial textures\n✓ Budget equipment emulation\n\nWhen to use: Need character, lo-fi texture, telephone/radio simulation\n```\n\n## Quick Decision Flowchart\n\n```\nNeed modern/aggressive?\n  YES → Cabinet 1 (Bright/Modern)\n  NO → Continue...\n\nNeed warmth/vintage?\n  YES → Cabinet 2 (Vintage/Classic)\n  NO → Continue...\n\nNeed presence/grit?\n  YES → Cabinet 3 (British/Crunch)\n  NO → Continue...\n\nNeed lo-fi/boxy character?\n  YES → Cabinet 5 (Small)\n  NO → Cabinet 4 (American/Balanced) ← Default choice\n```\n\n## Cabinet Combinations with Stompboxes\n\n**For Maximum Brightness:**\nCabinet 1 + Boost high frequencies in stompbox EQ\n\n**For Maximum Warmth:**\nCabinet 2 + Cut highs in stompbox EQ + Low distortion\n\n**For Radio Effect:**\nCabinet 5 + High-pass everything below 200Hz + Boost 1-3kHz\n\n**For Modern Punch:**\nCabinet 1 + Moderate distortion + Noise gate\n\n**For Vintage Tape:**\nCabinet 2 + Light chorus + Subtle saturation\n\n## Cabinet as EQ\n\nRemember: cabinets are complex EQ curves. You can use them purely as tone shaping:\n\n- **Cabinet 5 on clean drums** = instant lo-fi bandpass filter\n- **Cabinet 1 on vocals** = de-esser (natural high-end rolloff above 8kHz)\n- **Cabinet 3 on bass** = presence boost without harshness\n- **Cabinet 2 on synths** = tape-style warmth without plugins\n\n---\n\n*Source: Image-Line FL Studio Hardcore Manual [SRC: IL-MAN]*\n",
+      "eq-cheat-sheet": "# Master 8-Band EQ Cheat Sheet\n\nQuick reference for the master graphic EQ section in Hardcore. [SRC: IL-MAN]\n\n## EQ Bands Overview\n\nHardcore's master section includes an 8-band graphic EQ for final tone shaping before the cabinet simulation.\n\n```\nBand 1: 60 Hz      → Sub-bass / low-end foundation\nBand 2: 170 Hz     → Bass punch / kick body\nBand 3: 310 Hz     → Low-mids / warmth / mud\nBand 4: 600 Hz     → Low-mids / body / honk control\nBand 5: 1 kHz      → Mids / presence / vocal clarity\nBand 6: 3 kHz      → Upper-mids / attack / presence\nBand 7: 6 kHz      → High-mids / bite / sibilance\nBand 8: 12 kHz     → Highs / air / brightness\n```\n\n## Quick Start Presets\n\n### Hip-Hop Drum Bus\n```\nBand 1 (60Hz):   +2 dB   → Sub reinforcement\nBand 2 (170Hz):  +3 dB   → Kick punch\nBand 3 (310Hz):  -2 dB   → Remove mud\nBand 4 (600Hz):  0 dB    → Keep neutral\nBand 5 (1kHz):   +1 dB   → Snare body\nBand 6 (3kHz):   +2 dB   → Attack clarity\nBand 7 (6kHz):   0 dB    → Keep neutral\nBand 8 (12kHz):  +1 dB   → Air and presence\n```\n**Result:** Punchy, clear drums with controlled lows and defined highs.\n\n### Rap Vocal Clarity\n```\nBand 1 (60Hz):   -3 dB   → Remove rumble\nBand 2 (170Hz):  -2 dB   → Reduce boominess\nBand 3 (310Hz):  -1 dB   → Tighten lows\nBand 4 (600Hz):  0 dB    → Keep body\nBand 5 (1kHz):   +2 dB   → Presence boost\nBand 6 (3kHz):   +3 dB   → Clarity and intelligibility\nBand 7 (6kHz):   -2 dB   → De-ess (reduce sibilance)\nBand 8 (12kHz):  +2 dB   → Air and sheen\n```\n**Result:** Clear, present vocals that cut through the mix.\n\n### Lo-Fi Dust\n```\nBand 1 (60Hz):   -4 dB   → Remove sub\nBand 2 (170Hz):  0 dB    → Keep some bass\nBand 3 (310Hz):  +2 dB   → Add warmth/mud\nBand 4 (600Hz):  +1 dB   → Mid push\nBand 5 (1kHz):   0 dB    → Keep neutral\nBand 6 (3kHz):   -3 dB   → Reduce clarity\nBand 7 (6kHz):   -4 dB   → Reduce brightness\nBand 8 (12kHz):  -6 dB   → Heavy air cut\n```\n**Result:** Warm, rolled-off, vintage character.\n\n### Bass Guitar Focus\n```\nBand 1 (60Hz):   +3 dB   → Sub-bass weight\nBand 2 (170Hz):  +2 dB   → Low-mid punch\nBand 3 (310Hz):  0 dB    → Neutral\nBand 4 (600Hz):  -3 dB   → Remove honk\nBand 5 (1kHz):   0 dB    → Neutral\nBand 6 (3kHz):   +2 dB   → Pick attack\nBand 7 (6kHz):   +1 dB   → String clarity\nBand 8 (12kHz):  -2 dB   → Tame harshness\n```\n**Result:** Full, punchy bass with controlled mids and defined attack.\n\n### Synth Wide\n```\nBand 1 (60Hz):   +2 dB   → Weight\nBand 2 (170Hz):  0 dB    → Neutral\nBand 3 (310Hz):  -2 dB   → Remove mud\nBand 4 (600Hz):  -1 dB   → Slight scoop\nBand 5 (1kHz):   0 dB    → Neutral\nBand 6 (3kHz):   +2 dB   → Presence\nBand 7 (6kHz):   +3 dB   → Sparkle\nBand 8 (12kHz):  +4 dB   → Maximum air\n```\n**Result:** Wide, bright, spacious synth tone.\n\n## Problem Solving with EQ\n\n### Fix: Boomy/Kick Drum Overpowering\n```\nCut: Band 2 (170Hz) -3 to -4 dB\nCut: Band 1 (60Hz) -2 dB (if too sub-heavy)\n```\n\n### Fix: Harsh/Sibilant Vocals\n```\nCut: Band 7 (6kHz) -3 to -4 dB\nCut: Band 6 (3kHz) -2 dB (if still harsh)\n```\n\n### Fix: Muddy/Low-End Buildup\n```\nCut: Band 3 (310Hz) -3 to -4 dB\nCut: Band 4 (600Hz) -2 dB\nHigh-pass in stompbox EQ if needed\n```\n\n### Fix: Thin/Weak Drums\n```\nBoost: Band 1 (60Hz) +2 to +3 dB\nBoost: Band 2 (170Hz) +2 to +4 dB\nBoost: Band 6 (3kHz) +2 dB for attack\n```\n\n### Fix: Boxy/Cardboard Sound\n```\nCut: Band 4 (600Hz) -2 to -3 dB\nCut: Band 3 (310Hz) -1 to -2 dB\nBoost: Band 5 (1kHz) +1 dB for presence\n```\n\n## Cabinet Interaction\n\nRemember: The master EQ feeds INTO the cabinet simulation.\n\n**If using Cabinet 1 (Bright):**\n- May need to cut 6kHz and 12kHz slightly\n- Can boost 3kHz for presence without harshness\n\n**If using Cabinet 2 (Vintage):**\n- Boost 12kHz to compensate for natural rolloff\n- Can be more aggressive with 60-170Hz range\n\n**If using Cabinet 5 (Boxy):**\n- Cut 310Hz and 600Hz to reduce boxiness\n- Cabinet will naturally roll off highs, so don't over-boost 12kHz\n\n## EQ Tips\n\n**Start flat:** Begin with all bands at 0 dB, then adjust as needed.\n\n**Cut more than boost:** Cutting problem frequencies is often more transparent than boosting everything else.\n\n**Use narrow cuts, wide boosts:** When cutting, be surgical. When boosting, be broader for natural sound.\n\n**Trust your ears:** Numbers are guidelines. If it sounds good, it is good.\n\n**A/B frequently:** Toggle the EQ on/off to ensure you're improving, not just changing.\n\n---\n\n*Source: Image-Line FL Studio Hardcore Manual [SRC: IL-MAN]*\n",
+      "hip-hop-shortcuts": "# Hip-Hop Production Shortcuts\n\nQuick keyboard shortcuts and workflow tips for hip-hop producers using Hardcore. [SRC: IL-MAN]\n\n## Essential Shortcuts\n\n### FL Studio Integration\n```\nCtrl + Click on parameter: Reset to default\nShift + Click + Drag: Fine adjustment\nRight-click on parameter: Create automation clip\nMiddle-click: Toggle parameter on/off\nAlt + Click: Solo parameter effect (temporarily disable others)\n```\n\n### Browser Integration\n```\nDrag preset from browser: Load instantly\nRight-click plugin slot: Save preset to browser\nF8: Open plugin picker\nF12: Close all plugin windows\n```\n\n## Hip-Hop Quick Chains\n\n### One-Click Drum Destruction\n1. Load Hardcore on drum bus\n2. Enable: Distortion (Drive 50%, Tone +10)\n3. Enable: Compressor (Ratio 4:1, Threshold -15dB)\n4. Enable: Noise Gate (Threshold -25dB)\n5. Set Cabinet: 1 (Bright/Modern)\n6. Master EQ: Boost 170Hz +3dB, 3kHz +2dB\n**Result:** Instant aggressive drum processing\n\n### One-Click Vocal Lo-Fi\n1. Load Hardcore on vocal track\n2. Enable: Modulator (Vibrato, Rate 0.5Hz, Depth 40%)\n3. Enable: Distortion (Drive 30%, Tone 0)\n4. Set Cabinet: 5 (Small/Boxy)\n5. Master EQ: Cut 60Hz -4dB, 12kHz -6dB, Boost 310Hz +2dB\n6. Enable: Delay (Slapback 100ms, Mix 25%)\n**Result:** Instant lo-fi vocal character\n\n### One-Click Bass Saturation\n1. Load Hardcore on bass track\n2. Enable: Distortion (Drive 40%, Tone -10)\n3. Enable: Compressor (Ratio 6:1, Threshold -12dB)\n4. Set Cabinet: 3 (British/Crunch)\n5. Master EQ: Boost 60Hz +3dB, Cut 600Hz -2dB, Boost 3kHz +2dB\n**Result:** Gritty, present bass with controlled lows\n\n### One-Click Radio Effect\n1. Load Hardcore on vocal track\n2. Enable: EQ (stomp) - High-pass 300Hz +12dB/octave\n3. Enable: Distortion (Drive 25%, Tone +20)\n4. Enable: Compressor (Ratio 8:1, Threshold -10dB)\n5. Set Cabinet: 5 (Small/Boxy)\n6. Master EQ: Boost 1-3kHz +4dB, Cut 60Hz -6dB, Cut 12kHz -8dB\n**Result:** Instant radio/megaphone vocal effect\n\n## Parallel Processing Quick Setup\n\n### Method 1: Send Track\n```\nStep 1: Create send track (Ctrl + L)\nStep 2: Load Hardcore on send\nStep 3: Route source track to send (right-click send knob)\nStep 4: Set Hardcore to 100% wet (Mix controls at max)\nStep 5: Blend with dry using send level\n```\n\n### Method 2: Patcher (Advanced)\n```\nStep 1: Replace Hardcore with Patcher\nStep 2: Add Hardcore module in Patcher\nStep 3: Create parallel signal path\nStep 4: Blend wet/dry with separate controls\n```\n\n### Method 3: Duplicate Track\n```\nStep 1: Clone track (Alt + C, Alt + V)\nStep 2: Put Hardcore on clone only\nStep 3: Mute effects on original (keep dry)\nStep 4: Blend volumes in mixer\n```\n\n## Preset Management\n\n### Saving Custom Hip-Hop Presets\n```\n1. Dial in your settings\n2. Click plugin menu (top-left arrow)\n3. Save preset as... → Choose location\n4. Name format: \"HipHop_[Type]_[Style]\" \n   Example: \"HipHop_Drums_Aggressive\"\n5. Save to: ...\\Hardcore\\02-Data\\presets\\\n```\n\n### Organizing Presets\n```\nFolder structure suggestion:\n/Hip-Hop/\n  /Drums/\n    - Aggressive.fxp\n    - Lo-Fi.fxp\n    - Punchy.fxp\n  /Vocals/\n    - Lo-Fi.fxp\n    - Radio.fxp\n    - Double.fxp\n  /Bass/\n    - Gritty.fxp\n    - Warm.fxp\n  /Synths/\n    - Wide.fxp\n    - Lead.fxp\n```\n\n## CPU Optimization\n\n### Reduce CPU Usage\n```\nDisable unused stompboxes: Click pedal icon to toggle off\nFreeze tracks: Alt + Click freeze button on mixer channel\nBounce to audio: Alt + R to render and replace\nUse sends: One Hardcore instance for multiple tracks\n```\n\n### Track Freeze Strategy\n```\nWhen Hardcore chain is finalized:\n1. Select track in playlist\n2. Alt + R (Render to audio)\n3. Choose \"Replace\" option\n4. Disable original plugin chain\n5. Keep original muted for future edits\n```\n\n## Common Hip-Hop Scenarios\n\n### Scenario: Kick Drum Not Punching\n**Quick fix:** Enable Compressor (Ratio 4:1, Attack 5ms, Release 100ms) + Enable Distortion (Drive 20%, Tone 0)\n\n### Scenario: Vocals Too Harsh\n**Quick fix:** Enable EQ (stomp) - Cut 4kHz -3dB + Master EQ - Cut 6kHz -3dB + Use Cabinet 2 (Vintage)\n\n### Scenario: 808 Too Sub-Heavy\n**Quick fix:** Master EQ - Cut 60Hz -4dB + Use Cabinet 1 (Bright) + Enable Distortion (Drive 30% for harmonics)\n\n### Scenario: Drums Too Harsh\n**Quick fix:** Use Cabinet 2 (Vintage) + Master EQ - Cut 6kHz -2dB, 12kHz -3dB + Enable Noise Gate (Threshold -20dB)\n\n### Scenario: Need Instant Width\n**Quick fix:** Enable Chorus (Rate 0.3Hz, Depth 40%, Level 40%) + Enable Cabinet 4 (American/Balanced)\n\n## Template Integration\n\n### Create Hip-Hop Template\n```\n1. Set up standard Hardcore chains on:\n   - Drum bus (Aggressive preset)\n   - Vocal track (Lo-Fi preset)\n   - Bass track (Saturation preset)\n   - Send track (Reverb/Delay)\n\n2. Save as template:\n   File → Templates → Save as...\n   Name: \"Hip-Hop Hardcore Setup\"\n\n3. Use for new projects:\n   File → New from template → Hip-Hop Hardcore Setup\n```\n\n---\n\n*Source: Image-Line FL Studio Hardcore Manual [SRC: IL-MAN]*\n",
+      "parallel-vs-insert": "# Parallel vs Insert Processing Guide\n\nUnderstanding when to use Hardcore as an insert effect vs. parallel send for hip-hop production. [SRC: IL-MAN]\n\n## Insert Processing\n\n**What it is:** Hardcore placed directly on the instrument/track channel, processing the entire signal (100% wet by default).\n\n### When to Use Insert\n\n✅ **Total transformation desired**\n- Completely changing the character of the source\n- Print-and-commit processing\n- Extreme effects where dry signal doesn't fit\n\n✅ **Single sound sources**\n- Individual drum samples\n- Bass guitar recordings\n- Lead vocal takes\n- Synth patches\n\n✅ **Simpler chains**\n- When you don't need complex blending\n- Quick processing decisions\n- Demo/idea recording\n\n✅ **CPU conservation on single tracks**\n- One instance per sound\n- No additional mixer routing needed\n\n### Insert Examples\n\n**Example 1: Bass Guitar**\n```\nTrack: Bass Guitar\nHardcore (Insert): Distortion + Compression + Cabinet 3\nResult: Complete bass tone, fully committed\n```\n\n**Example 2: Vocal Effect**\n```\nTrack: Lead Vocal\nHardcore (Insert): Radio effect chain (EQ + Distortion + Cabinet 5)\nResult: 100% wet, no dry vocal mixed in\n```\n\n**Example 3: Drum Sample**\n```\nTrack: Snare Sample\nHardcore (Insert): Distortion + Compression + Gate\nResult: Completely transformed snare character\n```\n\n## Parallel Processing (Send/Return)\n\n**What it is:** Hardcore placed on a send/return track, blended with the dry signal via mixer faders.\n\n### When to Use Parallel\n\n✅ **Blend control needed**\n- Want to control how much effect vs. dry signal\n- Subtle to extreme processing in one plugin\n- Easy A/B comparison\n\n✅ **Multiple tracks sharing processing**\n- Drum group (kick, snare, hats) sharing saturation\n- Multiple vocals sharing reverb/delay\n- Bus processing with individual track control\n\n✅ **Preserving transients**\n- Heavy distortion blended with clean signal\n- Parallel compression (New York style)\n- Maintaining punch while adding character\n\n✅ **Complex layering**\n- Multiple Hardcore instances on different sends\n- Frequency-split processing\n- Mid/side style effects\n\n### Parallel Examples\n\n**Example 1: Drum Bus Saturation**\n```\nTrack 1: Kick (Dry)\nTrack 2: Snare (Dry)\nTrack 3: Hats (Dry)\nSend Track: Hardcore (Distortion + Compression + Cabinet 1)\n\nRouting: All drum tracks → Send track\nMixing: Blend dry drums (80%) with processed send (20%)\nResult: Tight drums with controlled aggression added\n```\n\n**Example 2: Vocal Parallel Reverb**\n```\nTrack: Lead Vocal (Dry)\nSend Track: Hardcore (Short Reverb + Cabinet 2)\n\nRouting: Vocal → Send\nMixing: Dry vocal (100%) + Reverb send (30%)\nResult: Vocal with vintage room character\n```\n\n**Example 3: Parallel Bass Processing**\n```\nTrack 1: Bass - Low frequencies (High-pass removed)\nTrack 2: Bass - High frequencies (Low-pass removed)\nSend Track 1: Clean cabinet (Cabinet 2) for lows\nSend Track 2: Distorted (Cabinet 3) for highs\n\nMixing: Blend both sends with dry bass\nResult: Full bass with controlled saturation on top end\n```\n\n## Decision Matrix\n\n| Situation | Insert | Parallel | Reasoning |\n|-----------|--------|----------|-----------|\n| Extreme distortion | ✓ | ✓ | Use parallel if transients matter |\n| Subtle saturation | ✓ | ✓ | Either works, parallel gives more control |\n| Reverb/Delay | ✗ | ✓ | Always parallel for time-based effects |\n| Noise gate | ✓ | ✗ | Must be on signal itself |\n| EQ shaping | ✓ | ✗ | Insert for source tone |\n| Drum bus processing | ✗ | ✓ | Blend control for group |\n| Vocal special FX | ✓ | ✓ | Depends on effect intensity |\n| Multiple tracks | ✗ | ✓ | Efficiency via sends |\n\n## Setting Up Parallel Processing in FL Studio\n\n### Method 1: Standard Send/Return\n```\nStep 1: Create Send Track\n- In mixer, right-click on empty track\n- Select \"Create send track\" or press Ctrl + L\n\nStep 2: Load Hardcore\n- Open Hardcore on the send track\n- Set all mix controls to 100% wet\n- Set Cabinet as desired\n\nStep 3: Route Source Track\n- On source track, right-click the send knob\n- Select the send track (or drag to route)\n- Adjust send level to taste\n\nStep 4: Blend\n- Keep dry track at normal level\n- Adjust send track fader for blend amount\n- Tip: Solo both to hear combined effect\n```\n\n### Method 2: Multiple Sends\n```\nStep 1: Create multiple send tracks\n- Send A: Light processing (Cabinet + subtle saturation)\n- Send B: Heavy processing (Distortion + Cabinet 5)\n- Send C: Time effects (Reverb + Delay)\n\nStep 2: Route selectively\n- Send source to all three sends\n- Adjust each send level independently\n\nStep 3: Complex blending\n- Dry: 70%\n- Send A: 20%\n- Send B: 10%\n- Send C: 25%\n```\n\n### Method 3: Patcher (Advanced)\n```\nStep 1: Replace Hardcore with Patcher\n- Right-click plugin slot\n- Select Patcher\n\nStep 2: Create parallel paths\n- Add Hardcore to one module\n- Create dry signal path\n- Use surface controls to blend\n\nStep 3: Save as preset\n- Complex parallel chains can be saved\n- Reusable across projects\n```\n\n## Hip-Hop Specific Strategies\n\n### Parallel Distortion for Drums\n**Why:** Heavy distortion adds harmonics but loses punch. Parallel processing preserves transients.\n```\nDry Drums: 80% level\nDistortion Send: 20% level\nHardcore: Heavy distortion + Noise gate + Cabinet 1\nResult: Punchy drums with grit and edge\n```\n\n### Parallel Cabinet for Character\n**Why:** Cabinet changes tone without heavy processing.\n```\nDry Signal: 70% level\nCabinet Send: 30% level\nHardcore: Only cabinet simulation (no stompboxes)\nResult: Subtle speaker character\n```\n\n### Parallel Compression (NY Style)\n**Why:** Heavy compression for density, blended with uncompressed punch.\n```\nDry Drums: 60% level\nCompressed Send: 40% level\nHardcore: Compressor (Ratio 10:1, Fast attack/release)\nResult: Dense, punchy drums\n```\n\n## Common Mistakes\n\n❌ **Using time effects as insert**\n- Reverb/Delay as insert washes out the source\n- Always use parallel for time-based effects\n\n❌ **100% wet parallel sends**\n- Defeats the purpose of parallel processing\n- Keep some dry signal or adjust blend\n\n❌ **Gain staging issues**\n- Parallel paths can cause phase issues if not level-matched\n- Use meters to ensure consistent loudness\n\n❌ **Over-complicating simple sources**\n- Single synth note doesn't need parallel processing\n- Reserve for complex sources or buses\n\n## CPU Considerations\n\n**Insert Method:** One instance per track = Higher CPU with many tracks\n**Parallel Method:** One instance shared across multiple tracks = Lower CPU overall\n\n**For large projects:** Use parallel sends for shared processing (drums, vocals, etc.)\n\n---\n\n*Source: Image-Line FL Studio Hardcore Manual [SRC: IL-MAN]*\n",
+      "quick-start-checklist": "# Quick Start Checklist: Hardcore\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Hardcore to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Hardcore\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Hardcore\r\n\r\nThis section contains learning information for the hardcore plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Industrial_Vocal_Chain": "# Goal: Industrial Vocal Chain (Hardcore)\n\n## Routing Context\n*   **Track:** Lead Vocal (Aggressive Trap/Rap).\n*   **Placement:** After a primary compressor, before reverb.\n\n## Step-by-Step Setup\n1.  Load **Hardcore**.\n2.  Enable the **Noise Gate** (first position). Adjust threshold to silence the \"mic floor.\"\n3.  Enable the **Distortion** pedal. \n    *   Set **Gain** to 15% (just a light fuzz).\n4.  Enable the **Compressor** pedal.\n    *   Set **Ratio** high to flatten the vocal dynamics.\n5.  Set **Cabinet** to **5** (Small/Boxy).\n6.  Open the **Graphic EQ**:\n    *   Pull down **62Hz**, **125Hz**, **250Hz** (removes mud).\n    *   Pull down **8kHz** (removes harsh \"ess\" sounds).\n    *   Boost **1kHz** and **2kHz** slightly (adds \"megaphone\" clarity).\n\n## What to Listen For\n*   The vocal should sound gritty, aggressive, and \"radio-like,\" but the words must remain intelligible.\n\n## Variations\n1.  **Drowned:** Add the **Reverb** pedal *before* the Distortion for a \"washy\" industrial sound.\n2.  **Stereo Glitch:** Add the **Flanger** pedal with a high **Speed** for a robotic texture.\n\n## Pitfall\n*   **Harshness:** If the \"S\" sounds are too painful, the Distortion is too high. Back off the Gain and use the Graphic EQ to cut the high-end. [SRC: REPUTABLE]\n",
+      "01_LoFi_Bedroom_Guitar": "# Workflow: Lo-Fi \"Bedroom\" Guitar (Hardcore)\n\n## The Concept\nCreate that dusty, nostalgic, and slightly out-of-tune guitar sound perfect for Lo-Fi Hip Hop beats.\n\n## Setup\n*   **Target:** A clean Electric Guitar DI or a Rhodes piano sample.\n\n## Recipe\n1.  **Cabinet:** Select **Cabinet 2** (Warm/Dark).\n2.  **Pedals:** \n    *   **Chorus:** Enable. Set **Depth** to 40% and **Speed** to 20%. This adds the \"wobble.\"\n    *   **Delay:** Enable. Set **Feedback** to 40% and **Mix** to 20%.\n    *   **Compressor:** Enable. Set **Attack** to slow to keep the \"pluck\" of the notes.\n3.  **EQ:** Pull down the **8kHz** slider all the way. Boost **250Hz** for warmth.\n\n## Vibe Check\n*   The sound should feel \"old\" and \"recorded in a room.\" It should have a gentle pitch-warble from the chorus.\n\n## Automation Idea\n*   Automate the **Chorus Speed** to slightly increase during the \"chorus\" or transition of your track to add more \"instability.\"\n\n## Pitfalls\n*   **Too Clean:** If it sounds too modern, enable the **Distortion** pedal with the **Gain at 1%**. This adds invisible \"hair\" that makes it feel like an old recording. [SRC: REPUTABLE]\n",
+      "bass-saturation-chain": "# Bass Saturation Chain\n\nComplete workflow for adding controlled saturation, harmonics, and presence to bass instruments using Hardcore. [SRC: IL-MAN]\n\n## Overview\n\nThe Bass Saturation Chain adds upper harmonics to bass instruments, helping them cut through dense mixes while maintaining low-end integrity. This workflow works on 808s, synth bass, bass guitar, and any low-frequency source needing more character and definition.\n\n## Why Saturate Bass?\n\n**The Problem:**\n- Sub-bass frequencies (20-100Hz) are felt more than heard\n- On small speakers (phones, laptops), sub-bass disappears completely\n- Pure sine wave 808s lack character and presence\n\n**The Solution:**\n- Saturation adds harmonics above the fundamental frequency\n- These harmonics are audible even on small speakers\n- Bass becomes more defined, characterful, and mix-friendly\n\n## Method 1: Insert Processing (Complete Transformation)\n\n**Best for:** Individual bass tracks, committed bass sounds\n\n### Chain Configuration\n```\nPosition 1: Compressor (Sustain & Control)\nPosition 2: Distortion (Harmonics)\nPosition 3: EQ Stompbox (Shape Before Cabinet)\nPosition 4: Cabinet (Character)\n```\n\n### Detailed Settings\n\n**1. Compressor** (Dynamic control)\n- Threshold: -10 to -14 dB\n- Ratio: 5:1 to 8:1 (fairly aggressive)\n- Attack: 8-15 ms (let transients through)\n- Release: 300-500 ms (sustain notes)\n- Makeup: 6-10 dB\n\n**Purpose:** Even out bass dynamics, increase perceived sustain, prepare signal for distortion\n\n**2. Distortion** (Harmonic generation)\n- Drive: 30-50% (moderate saturation)\n- Tone: -15 to -5 (warm, not bright)\n- Level: 90-95%\n\n**Purpose:** Add 2nd and 3rd harmonics for upper-frequency presence\n\n**Why negative tone:** Bass needs warmth, not high-end fizz. Negative tone keeps saturation focused on low-mids.\n\n**3. EQ Stompbox** (Pre-cabinet shaping)\n- Low: +3 to +6 dB @ 80-120 Hz (sub reinforcement)\n- Mid: -3 to -6 dB @ 300-500 Hz (remove mud/boxiness)\n- High: 0 dB or +1-2 dB @ 3-5 kHz (harmonics presence)\n\n**Purpose:** Shape the bass tone before cabinet filters it\n\n**4. Cabinet: 3 (British/Crunch) or 1 (Bright)**\n\n**Cabinet 3 (British) for:**\n- Mid-forward bass that cuts through mix\n- Gritty, aggressive character\n- Rock, punk, industrial\n\n**Cabinet 1 (Bright) for:**\n- Modern trap/sub-heavy bass\n- Tight, defined low end\n- Extended high harmonics\n\n**Cabinet 2 (Vintage) for:**\n- Classic, warm bass\n- Controlled highs\n- Vintage hip-hop, lo-fi\n\n**5. Master 8-Band EQ**\n- 60 Hz: +2 to +4 dB (sub weight)\n- 170 Hz: +1 to +2 dB (kick separation)\n- 310 Hz: -2 to -4 dB (remove mud)\n- 600 Hz: -2 to -3 dB (remove boxiness)\n- 1 kHz: 0 dB\n- 3 kHz: +2 to +3 dB (attack/harmonics)\n- 6 kHz: 0 to +1 dB (string clarity)\n- 12 kHz: -2 to -4 dB (control fizz)\n\n## Method 2: Parallel Processing (Sub + Harmonics)\n\n**Best for:** Maintaining clean sub while adding saturation\n\n### Setup\nSplit bass into two frequency ranges:\n\n**Low Chain (Sub frequencies):**\n- High-pass: Remove everything above 120Hz\n- Hardcore: Clean Cabinet 2 (Vintage) only\n- Purpose: Pure, tight sub-bass\n\n**High Chain (Harmonics):**\n- Low-cut: Remove everything below 120Hz\n- Hardcore: Distortion + Cabinet 3 (British)\n- Purpose: Saturated upper harmonics\n\n**Blend:** \n- Low chain: 60-70% (foundation)\n- High chain: 30-40% (character)\n\n## Genre-Specific Variations\n\n### Trap/Modern Hip-Hop 808s\n**Goal:** Aggressive, cutting sub-bass\n\n**Settings:**\n- Compressor: Ratio 6:1, Fast attack (5ms), Release 250ms\n- Distortion: Drive 45%, Tone -8\n- Cabinet: 1 (Bright/Modern)\n- Master EQ: Boost 60Hz +4, Cut 400Hz -4, Boost 3kHz +3\n\n**Technique:** Distortion adds harmonics that make 808 audible on phone speakers\n\n### Vintage Hip-Hop/Boom-Bap\n**Goal:** Warm, characterful bass\n\n**Settings:**\n- Compressor: Ratio 4:1, Medium attack (10ms), Release 400ms\n- Distortion: Drive 25%, Tone -12\n- Cabinet: 2 (Vintage/Classic)\n- Master EQ: Boost 60Hz +2, Boost 200Hz +2, Cut 6kHz -3\n\n**Technique:** Subtle saturation mimics vintage sampling\n\n### Rock/Punk Bass\n**Goal:** Aggressive, gritty bass guitar\n\n**Settings:**\n- Compressor: Ratio 7:1, Attack 12ms, Release 350ms\n- Distortion: Drive 60%, Tone -5\n- Cabinet: 3 (British/Crunch)\n- Add: Chorus (Rate 0.3Hz, Depth 35%, Level 30%) for width\n- Master EQ: Scoop 400-600Hz, Boost 2kHz +3\n\n**Technique:** Heavier distortion for aggressive rock tone\n\n### Synth Bass Enhancement\n**Goal:** Add analog character to digital synths\n\n**Settings:**\n- Compressor: Ratio 3:1, Soft knee, Release 500ms\n- Distortion: Drive 20%, Tone -3 (very subtle)\n- Cabinet: 4 (American/Smooth)\n- Master EQ: Gentle smile curve (cut mids slightly, boost lows/highs)\n\n**Technique:** Minimal processing for analog warmth without obvious distortion\n\n## Advanced Techniques\n\n### Sidechain Integration\nUse the compressed bass to trigger sidechain on other elements:\n1. Hardcore compression controls bass dynamics\n2. Sidechain bass to kicks (pumping effect)\n3. Sidechain bass to synths (mix clarity)\n\n### Note-Length Automation\nAutomate based on bass note length:\n- **Short/staccato notes:** Increase distortion for more bite\n- **Long/sustained notes:** Reduce distortion, increase sustain compression\n- **Slides/glides:** Moderate distortion throughout\n\n### Multi-Band Saturation\nFor complex bass sounds:\n- **20-80Hz:** Clean (no distortion)\n- **80-250Hz:** Light saturation (20-30% drive)\n- **250Hz-1kHz:** Moderate saturation (40-50% drive)\n- **1kHz+:** Heavy saturation or no processing (depending on sound)\n\nUse multiple Hardcore instances or Patcher for this setup.\n\n## Safety Rules\n\n### Gain Staging\n- Bass can quickly accumulate gain\n- Monitor cumulative levels: Input + Compression Makeup + Distortion + EQ + Cabinet\n- Aim for consistent level when bypassing\n\n### Low-End Control\n- Don't over-distort and lose sub presence\n- Monitor on multiple systems (subwoofer, nearfields, headphones)\n- Master EQ Band 1 (60Hz) controls sub weight\n\n### Muddiness Prevention\n- 200-400Hz is \"mud zone\" for bass\n- Use EQ cuts liberally in this range\n- Cabinet selection affects this range significantly\n\n### Mono Compatibility\n- Bass should be mono or nearly mono\n- If using stereo effects (Chorus), keep mix low\n- Check bass in mono (use FL Studio's Stereo Separation)\n\n## Troubleshooting\n\n| Problem | Cause | Solution |\n|---------|-------|----------|\n| No sub presence | High-pass filter too aggressive | Reduce high-pass or boost 60Hz |\n| Too muddy | 200-400Hz buildup | Cut Stompbox EQ 300-500Hz, Master EQ 310/600Hz |\n| Too harsh/fizzy | High distortion tone | Reduce Drive, make Tone more negative, cut 6-12kHz |\n| Loses punch | Compressor attack too fast | Increase attack to 10-15ms |\n| Inconsistent level | Makeup gain wrong | Match bypassed level using A/B test |\n| Not audible on phones | No upper harmonics | Ensure some distortion Drive is applied |\n\n## Quick Start Presets\n\n**Trap 808 Saturation:**\n```\nCompressor: ON, Threshold -12dB, Ratio 6:1, Attack 5ms, Release 250ms, Makeup 8dB\nDistortion: ON, Drive 45%, Tone -8, Level 95%\nCabinet: 1 (Bright)\nMaster EQ: 60Hz +4, 310Hz -3, 600Hz -3, 3kHz +3, 12kHz -2\n```\n\n**Vintage Warm Bass:**\n```\nCompressor: ON, Threshold -15dB, Ratio 4:1, Attack 10ms, Release 400ms, Makeup 6dB\nDistortion: ON, Drive 25%, Tone -12, Level 90%\nCabinet: 2 (Vintage)\nMaster EQ: 60Hz +2, 170Hz +2, 310Hz -2, 6kHz -3, 12kHz -4\n```\n\n**Rock Grit Bass:**\n```\nCompressor: ON, Threshold -10dB, Ratio 7:1, Attack 12ms, Release 350ms, Makeup 9dB\nDistortion: ON, Drive 60%, Tone -5, Level 85%\nChorus: ON, Rate 0.3Hz, Depth 35%, Level 30%\nCabinet: 3 (British)\nMaster EQ: 310Hz -4, 600Hz -3, 1kHz +1, 3kHz +3\n```\n\n---\n\n*Source: Image-Line FL Studio Hard Studio Hardcore Manual [SRC: IL-MAN]*\n",
+      "drum-destruction-chain": "# Drum Destruction Chain\n\nComplete workflow for aggressive drum processing using Hardcore's distortion, compression, and cabinet simulation. [SRC: IL-MAN]\n\n## Overview\n\nThe Drum Destruction Chain transforms clean, sterile drum samples into aggressive, gritty, character-rich drums suitable for modern trap, hip-hop, and electronic productions. This workflow uses Hardcore as either an insert or parallel send.\n\n## Method 1: Insert Processing (Total Transformation)\n\n**Best for:** Individual drum samples, committed drum bus processing\n\n### Chain Configuration\n```\nPosition 1: Noise Gate (Tightening)\nPosition 2: Compressor (Punch)\nPosition 3: Distortion (Harmonics & Grit)\nPosition 4: EQ Stompbox (Tone Shaping)\nPositions 5-11: Optional modulation/time effects\n```\n\n### Detailed Settings\n\n**1. Noise Gate** (Tight drum control)\n- Threshold: -25 to -30 dB\n- Attack: 3-5 ms\n- Hold: 40-60 ms\n- Release: 80-120 ms\n- Purpose: Truncate drum tails, remove bleed, create tightness\n\n**2. Compressor** (Transient control)\n- Threshold: -12 to -18 dB\n- Ratio: 4:1 to 6:1\n- Attack: 5-10 ms\n- Release: 100-150 ms\n- Makeup: 6-10 dB\n- Purpose: Control dynamics, add punch, even out hits\n\n**3. Distortion** (Character & harmonics)\n- Drive: 50-70%\n- Tone: +10 to +20 (bright aggression)\n- Level: 80-90%\n- Purpose: Add grit, harmonics, aggression\n\n**4. EQ Stompbox** (Pre-cabinet shaping)\n- Low: +2 to +4 dB @ 100-150 Hz (sub reinforcement)\n- Mid: -2 to -4 dB @ 400-600 Hz (remove mud)\n- High: +1 to +3 dB @ 5-8 kHz (presence)\n\n**5. Cabinet: 1 (Bright/Modern)**\n- Mix: 100%\n- Purpose: Tight lows, aggressive mids, controlled highs\n\n**6. Master 8-Band EQ**\n- 60 Hz: +2 dB (sub weight)\n- 170 Hz: +3 dB (kick punch)\n- 310 Hz: -2 dB (remove mud)\n- 600 Hz: 0 dB\n- 1 kHz: +1 dB (snare body)\n- 3 kHz: +3 dB (attack clarity)\n- 6 kHz: 0 dB\n- 12 kHz: +1 dB (air)\n\n## Method 2: Parallel Processing (Punch + Grit)\n\n**Best for:** Drum buses where you want to preserve transients while adding aggression\n\n### Setup\n1. Keep drum bus dry (100%)\n2. Create send track with Hardcore\n3. Route drum bus to send (20-30% level)\n4. Hardcore on send: 100% wet, aggressive settings\n\n### Send Track Settings\n```\nDistortion: Drive 70%, Tone 15%, Level 100%\nCompressor: Threshold -10dB, Ratio 8:1, Attack 3ms, Release 60ms\nNoise Gate: Threshold -35dB, Attack 2ms, Hold 30ms, Release 70ms\nCabinet: 1 (Bright)\nMaster EQ: Boost 170Hz +2dB, 3kHz +4dB\n```\n\n**Blend:** 70% dry drums / 30% processed send\n\n## Genre-Specific Variations\n\n### Trap Drums\n- **Drive:** 65-80% (heavier distortion)\n- **Tone:** +15 to +25 (bright aggression)\n- **Gate:** Tighter settings (Attack 2-3ms, Release 60-80ms)\n- **Cabinet:** 1 (Bright/Modern)\n- **Master EQ:** Boost 3kHz +4dB for attack\n\n### Boom-Bap/Vintage\n- **Drive:** 30-50% (moderate saturation)\n- **Tone:** -10 to 0 (warmer)\n- **Gate:** Looser settings (Attack 8-10ms, Release 150-200ms)\n- **Cabinet:** 2 (Vintage/Classic)\n- **Master EQ:** Cut 12kHz -5dB for rolled-off highs\n\n### Industrial/Aggressive\n- **Drive:** 75-90% (extreme saturation)\n- **Additional:** Enable Modulator (Ring Mod, Rate 5Hz, Depth 60%)\n- **Gate:** Very tight (Attack 1-2ms)\n- **Cabinet:** 5 (Small) - boxy character\n\n### Lo-Fi Dust\n- **Drive:** 25-40% (subtle warmth)\n- **Cabinet:** 2 (Vintage)\n- **Master EQ:** Cut 12kHz -6dB, Boost 310Hz +2dB\n- **Add:** Delay (100ms slapback, 20% mix)\n\n## Safety Rules\n\n### Gain Staging\n- Monitor cumulative gain across chain\n- Distortion adds perceived loudness - reduce output level\n- Aim for unity gain when bypassing (A/B test)\n\n### Harshness Control\n- High distortion + Bright cabinet = harshness risk\n- Use Master EQ to cut 3-5kHz if drums become grating\n- Consider Cabinet 2 or 4 if Cabinet 1 is too bright\n\n### Low-End Management\n- Hardcore can exaggerate sub frequencies\n- Use Gate to prevent sub build-up between hits\n- Master EQ Band 1 (60Hz) controls sub weight\n\n## Advanced Techniques\n\n### Multi-Band Processing\nFor ultimate control, split drum bus into frequency bands:\n- **Lows (20-120Hz):** Clean Cabinet 2 (tight sub)\n- **Mids (120-2kHz):** Processed Hardcore with moderate distortion\n- **Highs (2kHz+):** Light processing or clean\n\n### Per-Drum Variations\nInstead of processing entire drum bus, use multiple Hardcore instances:\n- **Kick:** Heavy distortion + Cabinet 1\n- **Snare:** Moderate distortion + Reverb\n- **Hi-hats:** Light distortion + Cabinet 4 (balanced)\n\n### Automation\n- Automate Distortion Drive for build-ups (increase from 40% to 70%)\n- Automate Gate Threshold for verse/chorse variation\n- Automate Master EQ for section changes\n\n## CPU Optimization\n\n**Freeze tracks** when Hardcore chain is finalized:\n1. Render drum bus to audio (Alt + R)\n2. Keep original muted for future edits\n3. Reduces CPU usage significantly\n\n## Troubleshooting\n\n| Problem | Likely Cause | Solution |\n|---------|--------------|----------|\n| Too harsh | High tone + Cabinet 1 | Reduce Tone setting, switch to Cabinet 2 or 4 |\n| No punch | Fast compression attack | Increase attack time to 10-15ms |\n| Muddy | 310Hz buildup | Cut Master EQ Band 3 |\n| Weak sub | 60Hz cut or gate too tight | Boost Band 1, loosen gate release |\n| Artifacts | Input too hot | Reduce Input Gain or source level |\n\n## Quick Start Preset\n\n**Trap Drum Destruction (Copy these settings):**\n```\nNoise Gate: ON, Threshold -28dB, Attack 4ms, Hold 50ms, Release 90ms\nCompressor: ON, Threshold -15dB, Ratio 5:1, Attack 6ms, Release 110ms, Makeup 8dB\nDistortion: ON, Drive 65%, Tone +18, Level 85%\nCabinet: 1 (Bright)\nMaster EQ: 60Hz +2, 170Hz +3, 310Hz -2, 3kHz +3, 12kHz +1\n```\n\n---\n\n*Source: Image-Line FL Studio Hardcore Manual [SRC: IL-MAN]*\n",
+      "industrial-vocal-chains": "# Industrial Vocal Chains\n\nComplete workflow for aggressive, distorted, industrial-style vocal processing using Hardcore. [SRC: IL-MAN]\n\n## Overview\n\nIndustrial vocal chains combine heavy distortion, aggressive compression, modulation effects, and limited frequency ranges to create harsh, mechanical, post-apocalyptic vocal aesthetics. These workflows are essential for industrial hip-hop, noise rap, aggressive electronic, and experimental productions.\n\n## Core Industrial Sound Principles\n\n**Aggression:** Heavy distortion, saturation, and clipping\n**Mechanical:** Repetitive, sequenced, or gated patterns\n**Limited:** Narrow frequency ranges simulating damaged equipment\n**Layered:** Multiple vocal tracks with different processing\n**Rhythmic:** Vocals become part of the rhythmic texture\n\n## Method 1: Classic Industrial Vocal\n\n**Character:** Harsh, mid-forward, heavily compressed, mechanical\n\n### Chain Configuration\n```\nPosition 1: Noise Gate (Choppy, mechanical)\nPosition 2: Distortion (Heavy saturation)\nPosition 3: Modulator (Ring modulation or Tremolo)\nPosition 4: Compressor (Extreme limiting)\nPosition 5: Cabinet 5 (Small/broken speaker)\n```\n\n### Detailed Settings\n\n**1. Noise Gate** (Mechanical choppiness)\n- Threshold: -18 to -22 dB\n- Attack: 0.5-2 ms (immediate)\n- Hold: 20-40 ms (short bursts)\n- Release: 40-80 ms (abrupt cutoff)\n\n**Purpose:** Create staccato, machine-gun vocal effect\n\n**2. Distortion** (Aggressive saturation)\n- Drive: 70-90% (extreme)\n- Tone: +20 to +40 (harsh brightness)\n- Level: 70-85%\n\n**Purpose:** Maximum harmonic destruction\n\n**3. Modulator** (Mechanical instability)\n\n**Option A - Ring Modulation:**\n- Mode: Ring Mod\n- Rate: 3-8 Hz (or synced to tempo)\n- Depth: 60-80%\n- Level: 70%\n\n**Option B - Tremolo:**\n- Mode: Tremolo\n- Rate: 4-12 Hz (chopping)\n- Depth: 70-90%\n- Level: 85%\n\n**Purpose:** Synthetic, inhuman vocal character\n\n**4. Compressor** (Brickwall limiting)\n- Threshold: -6 to -10 dB\n- Ratio: 20:1 (hard limiting)\n- Attack: 0.5-3 ms (immediate)\n- Release: 40-100 ms (fast)\n- Makeup: 3-6 dB\n\n**Purpose:** Flatten all dynamics, consistent aggression\n\n**5. Cabinet 5** (Damaged speaker)\n- Mix: 100%\n\n**Purpose:** Boxy, limited, broken equipment character\n\n**6. Master 8-Band EQ** (Harsh presence)\n- 60 Hz: -4 dB\n- 170 Hz: -2 dB\n- 310 Hz: +3 dB (boxy mid)\n- 600 Hz: +4 dB (forward)\n- 1 kHz: +5 dB (aggressive presence)\n- 3 kHz: +2 dB\n- 6 kHz: -2 dB (control extreme harshness)\n- 12 kHz: -6 dB\n\n## Method 2: Noise/Texture Layer\n\n**Character:** Atmospheric, textural, background industrial bed\n\n### Chain Configuration\n```\nPosition 1: Distortion (Maximum)\nPosition 2: Flanger (Sweeping metallic)\nPosition 3: Phaser (Liquid movement)\nPosition 4: Reverb (Industrial space)\nPosition 5: Cabinet 5\n```\n\n### Detailed Settings\n\n**1. Distortion**\n- Drive: 85-100% (absolute maximum)\n- Tone: +30 to +50\n- Level: 60%\n\n**2. Flanger**\n- Rate: 0.1-0.3 Hz (slow sweep)\n- Depth: 60-80%\n- Feedback: +40 to +70% (metallic resonance)\n- Level: 50-60%\n\n**3. Phaser**\n- Rate: 0.2-0.5 Hz\n- Depth: 50-70%\n- Stages: 6 or 8 (maximum complexity)\n- Level: 40-50%\n\n**4. Reverb**\n- Size: 60-80% (large industrial space)\n- Damp: 30-50% (bright, reflective)\n- Mix: 40-60% (prominent)\n- Level: 80%\n\n**Purpose:** Create cavernous industrial atmosphere\n\n**Use case:** Background texture layer, not lead vocal\n\n## Method 3: Industrial Rap Lead\n\n**Character:** Aggressive but intelligible, rhythmic, punchy\n\n### Chain Configuration\n```\nPosition 1: Compressor (Control)\nPosition 2: Distortion (Character)\nPosition 3: EQ Stompbox (Tone shaping)\nPosition 4: Noise Gate (Rhythmic effect)\nPosition 5: Cabinet 3 (British) or 1 (Bright)\n```\n\n### Detailed Settings\n\n**1. Compressor** (Punch and control)\n- Threshold: -10 to -14 dB\n- Ratio: 8:1 to 12:1\n- Attack: 2-5 ms (fast)\n- Release: 80-150 ms\n- Makeup: 6-10 dB\n\n**2. Distortion** (Aggressive but controlled)\n- Drive: 50-70%\n- Tone: +10 to +25\n- Level: 80-90%\n\n**3. EQ Stompbox**\n- Low: -3 to -6 dB @ 150Hz (remove boom)\n- Mid: +3 to +6 dB @ 2-3kHz (presence)\n- High: -6 to -9 dB @ 8kHz (control sibilance)\n\n**4. Noise Gate** (Rhythmic effect)\n- Threshold: -20 to -25 dB\n- Attack: 2-5 ms\n- Hold: 60-100 ms (slightly longer for flow)\n- Release: 100-200 ms (some decay)\n\n**5. Cabinet 3** (British) or **Cabinet 1** (Bright)\n- Mix: 100%\n\n**Purpose:** Mid-forward, aggressive but less \"broken\" than Cabinet 5\n\n## Layering Strategy\n\nIndustrial vocals work best in layers:\n\n**Layer 1 - Main Vocal:**\n- Industrial Rap Lead chain (Method 3)\n- Center of mix, provides intelligibility\n\n**Layer 2 - Destruction:**\n- Classic Industrial chain (Method 1)\n- Hard-panned or blended 30% under main\n- Provides texture and aggression\n\n**Layer 3 - Texture:**\n- Noise/Texture chain (Method 2)\n- Background, low in mix (10-20%)\n- Provides atmosphere and space\n\n**Layer 4 - Whispers/Shouts:**\n- Extreme noise gate for staccato effect\n- Used for specific words/phrases\n\n## Performance Techniques\n\n### Vocal Delivery for Industrial\n1. **Staccato delivery:** Short, punchy words work best with gates\n2. **Shouted phrases:** Yelling exaggerates distortion nicely\n3. **Rhythmic patterns:** Repetition creates mechanical feel\n4. **Whisper to scream:** Dynamic range provides contrast\n5. **Breath control:** Heavy compression will exaggerate breathing\n\n### Lyric Considerations\n- Industrial production favors aggressive, rhythmic content\n- Staccato words: \"Stop,\" \"Break,\" \"Crush,\" \"Kill\"\n- Repetitive phrases enhance the mechanical aesthetic\n- Shouted group vocals (gang vocals) layered sound powerful\n\n## Genre Variations\n\n### Industrial Hip-Hop (Death Grips style)\n- Heavy use of Method 3 (Rap Lead)\n- Add delay (100-200ms) for space\n- Layer with noise textures\n- Emphasize rhythmic delivery\n\n### Noise/Experimental (Merzbow influence)\n- Method 2 (Texture) as primary vocal\n- Vocals become textural, not lyrical\n- Extreme distortion + multiple modulation effects\n- Prioritize atmosphere over intelligibility\n\n### Industrial Rock (Nine Inch Nails style)\n- Blend clean and industrial vocals\n- Method 3 for aggression\n- Clean vocal blended underneath\n- Emphasis on emotional delivery through distortion\n\n### Dark Electronic/EBM\n- Method 1 (Classic Industrial)\n- Heavy gate for sequenced feel\n- Sync modulator rate to tempo\n- Emphasis on cold, mechanical aesthetic\n\n## Safety Rules\n\n### Hearing Protection\n- Industrial settings can create extreme high-frequency content\n- Monitor at reasonable volumes\n- Use limiters after Hardcore for safety\n\n### Sibilance Control\n- Industrial distortion exaggerates sibilance\n- Always cut 6-8kHz in Master EQ\n- Consider de-esser after Hardcore\n\n### Gain Staging\n- Extreme distortion = extreme perceived loudness\n- Reduce levels significantly when bypassing\n- A/B test at consistent volumes\n\n### Intelligibility\n- Industrial doesn't mean unintelligible\n- Test with lyrics: Can you understand every word?\n- If not, reduce distortion or adjust EQ\n\n## Parallel Processing\n\nFor control, use multiple Hardcore instances on sends:\n\n**Send 1 - Aggression:**\n- Method 1 (Classic Industrial) at 40% blend\n\n**Send 2 - Character:**\n- Distortion only (no gate/modulator) at 25% blend\n\n**Send 3 - Space:**\n- Reverb/Delay chain at 30% blend\n\n**Dry Vocal:**\n- 60-70% of total mix\n\n## Automation Strategies\n\n### Phrase-Level Automation\n- **Build-ups:** Gradually increase distortion drive\n- **Impacts:** Momentary increase in gate threshold (tighter)\n- **Breakdowns:** Reduce to cleaner processing\n\n### Modulator Rate Automation\n- Sync ring modulator rate to section tempo\n- Automate for breakdowns (slower rate = more space)\n- Tremolo rate can follow song energy\n\n### Gate Threshold Automation\n- **Tighter sections:** Lower threshold (more gating)\n- **Flow sections:** Higher threshold (less gating)\n- **Word-by-word:** Threshold follows vocal dynamics\n\n## Quick Start Presets\n\n**Classic Industrial:**\n```\nNoise Gate: ON, Threshold -20dB, Attack 1ms, Hold 30ms, Release 60ms\nDistortion: ON, Drive 80%, Tone +35, Level 75%\nModulator: ON, Mode Ring Mod, Rate 5Hz, Depth 75%, Level 70%\nCompressor: ON, Threshold -8dB, Ratio 20:1, Attack 2ms, Release 80ms\nCabinet: 5 (Small)\nMaster EQ: 310Hz +3, 600Hz +4, 1kHz +5, 12kHz -6\n```\n\n**Industrial Rap:**\n```\nCompressor: ON, Threshold -12dB, Ratio 10:1, Attack 3ms, Release 120ms\nDistortion: ON, Drive 60%, Tone +20, Level 85%\nEQ Stompbox: ON, Low 150Hz -4dB, Mid 2.5kHz +5dB, High 8kHz -7dB\nNoise Gate: ON, Threshold -22dB, Attack 3ms, Hold 80ms, Release 150ms\nCabinet: 3 (British)\nMaster EQ: 1kHz +4, 3kHz +2, 6kHz -2\n```\n\n**Texture Layer:**\n```\nDistortion: ON, Drive 95%, Tone +45, Level 60%\nFlanger: ON, Rate 0.2Hz, Depth 70%, Feedback 55%, Level 55%\nPhaser: ON, Rate 0.3Hz, Depth 60%, Stages 8, Level 45%\nReverb: ON, Size 70%, Damp 40%, Mix 50%, Level 80%\nCabinet: 5 (Small)\nMaster EQ: 310Hz +2, 600Hz +3, 1kHz +2, 6kHz -3, 12kHz -8\n```\n\n---\n\n*Source: Image-Line FL Studio Hardcore Manual [SRC: IL-MAN]*\n",
+      "metal-wall-of-sound-vibe": "# Metal Wall-of-Sound Vibe\n\nComplete workflow for creating massive, dense, aggressive wall-of-sound textures using Hardcore. [SRC: IL-MAN]\n\n## Overview\n\nThe \"wall-of-sound\" aesthetic—pioneered in 1960s pop production and perfected in metal genres like doom, stoner, shoegaze, and blackgaze—involves dense, layered, saturated textures that create an overwhelming sonic experience. This workflow transforms individual instruments into massive, enveloping soundscapes.\n\n## Core Wall-of-Sound Principles\n\n**Density:** Multiple layers occupying similar frequency ranges\n**Saturation:** Heavy distortion creating rich harmonic content\n**Width:** Stereo spread through modulation and doubling\n**Compression:** Flattened dynamics for consistent density\n**Space:** Reverb and delay creating cavernous atmosphere\n\n## Method 1: Guitar Wall\n\n**Goal:** Massive, dense guitar textures\n\n### Layer Structure\nCreate 4-6 guitar layers, each with Hardcore processing:\n\n**Layer 1 - Center Foundation:**\n- Mono, center-panned\n- Moderate distortion (Drive 50%)\n- Cabinet 2 (Vintage) for warmth\n- Slight delay (slapback 80ms)\n\n**Layer 2 - Left Width:**\n- Hard-panned left\n- Chorus (Depth 60%, Level 50%)\n- Same distortion as Layer 1\n- Cabinet 1 (Bright)\n\n**Layer 3 - Right Width:**\n- Hard-panned right\n- Flanger (Depth 50%, Rate 0.2Hz)\n- Same distortion as Layer 1\n- Cabinet 1 (Bright)\n\n**Layer 4 - Texture Left:**\n- Hard-panned left\n- Heavy distortion (Drive 80%)\n- Phaser (Stages 8, Depth 60%)\n- Cabinet 5 (Small) - boxy character\n- Lower volume (50% of main layers)\n\n**Layer 5 - Texture Right:**\n- Hard-panned right\n- Heavy distortion (Drive 80%)\n- Different phaser rate (0.15Hz vs Layer 4)\n- Cabinet 5 (Small)\n- Lower volume (50% of main layers)\n\n**Layer 6 - Ambience:**\n- Center or spread\n- Heavy reverb (Size 80%, Mix 50%)\n- Light distortion (Drive 30%)\n- Cabinet 2 (Vintage)\n- Very low volume (20% of main layers)\n\n### Hardcore Settings Per Layer\n\n**Foundation Layer:**\n```\nDistortion: Drive 50%, Tone +5, Level 90%\nCompressor: Threshold -16dB, Ratio 4:1, Attack 10ms, Release 200ms\nCabinet: 2 (Vintage)\nMaster EQ: Gentle, slight mid scoop\n```\n\n**Width Layers (L/R):**\n```\nDistortion: Drive 50%, Tone +10, Level 85%\nChorus (Left) / Flanger (Right): Moderate settings\nCompressor: Same as foundation\nCabinet: 1 (Bright)\nMaster EQ: Slight high boost\n```\n\n**Texture Layers:**\n```\nDistortion: Drive 80%, Tone +20, Level 70%\nPhaser: Rate 0.15-0.25Hz, Depth 60%, Stages 6-8\nCabinet: 5 (Small)\nMaster EQ: Mid-forward (boxy character)\n```\n\n## Method 2: Synth Wall\n\n**Goal:** Dense, evolving synthesizer textures\n\n### Layer Structure\n\n**Layer 1 - Bass Foundation:**\n- Sub oscillator or low synth\n- Minimal processing: Compression + Cabinet 2\n- Center, full volume\n\n**Layer 2 - Mid Pad:**\n- Mid-range synth (octaves above bass)\n- Chorus (Depth 70%, wide)\n- Cabinet 1 (Bright)\n- Full stereo width\n\n**Layer 3 - High Shimmer:**\n- High-frequency synth or noise\n- Heavy chorus + flanger\n- Distortion (Drive 60%)\n- Reverb (Size 70%)\n- Cabinet 4 (American)\n- Lower volume, wide stereo\n\n**Layer 4 - Texture Noise:**\n- White or pink noise\n- Heavy distortion + phaser\n- Auto-filter or wah\n- Cabinet 5 (Small)\n- Very low volume, background texture\n\n## Method 3: Drum Wall\n\n**Goal:** Dense, saturated drum textures\n\nSee detailed **Drum Destruction Chain.md**\n\nAdditional wall-of-sound elements:\n- **Room mics:** Heavy reverb and compression\n- **Parallel saturation:** Multiple send tracks with different distortions\n- **Cymbal wash:** Heavy compression on room mics for continuous cymbal sustain\n\n## Method 4: Vocal Wall\n\n**Goal:** Dense, layered vocal textures (shoegaze/Cocteau Twins style)\n\n### Layer Structure\n\n**Layer 1 - Main Vocal:**\n- Lead melody, center\n- Compression + subtle saturation\n- Cabinet 2 or 4\n\n**Layer 2 - Doubles L/R:**\n- Same melody, hard-panned\n- Chorus (Depth 60%)\n- Delay (100ms slapback)\n\n**Layer 3 - Harmonies:**\n- Additional harmonies, spread across stereo\n- Heavy reverb\n- Distortion (Drive 40%)\n\n**Layer 4 - Textures:**\n- Vocals as instrument (no words)\n- Heavy phaser + flanger\n- Heavy distortion (Drive 70%)\n- Very reverb-heavy\n\n**Layer 5 - Whispers/Ambience:**\n- Whispered vocals\n- Heavy reverb + delay\n- Low volume, background\n\n## Master Bus Processing for Wall\n\nAfter layering, process the master:\n\n**Hardcore on Master Bus:**\n```\nCompressor: Glue everything together\n  - Threshold: -10dB\n  - Ratio: 4:1\n  - Attack: 20ms\n  - Release: 300ms\n\nEQ Stompbox: Final shaping\n  - Low: +2dB @ 80Hz (weight)\n  - Mid: -2dB @ 500Hz (scoop)\n  - High: +3dB @ 6kHz (air)\n\nCabinet: 2 (Vintage) or 4 (American)\n  - Adds final cohesive character\n\nMaster EQ: Wall polish\n  - 60Hz: +2dB\n  - 310Hz: -3dB (mud removal)\n  - 3kHz: +2dB (clarity)\n  - 12kHz: +3dB (air)\n```\n\n## Genre-Specific Variations\n\n### Doom Metal\n- Slower tempos allow for longer reverb\n- Heavy use of Cabinet 2 (Vintage)\n- More distortion, less clarity\n- Emphasis on low-end weight\n\n### Shoegaze\n- Heavy modulation (chorus/flanger/phaser)\n- Reverb is primary effect\n- Balance between clarity and wash\n- Cabinet 2 or 4 for smoothness\n\n### Blackgaze\n- Mix of black metal aggression + shoegaze wash\n- Distortion: 60-80% on all layers\n- Heavy compression for consistency\n- Extreme reverb settings\n\n### Stoner Rock\n- Mid-forward aggression\n- Cabinet 3 (British) emphasis\n- Moderate distortion (40-60%)\n- Reverb for space but not overwhelming\n\n### Drone/Doom\n- Minimal note changes, maximum sustain\n- Extreme distortion (80-100%)\n- Heavy compression and limiting\n- Very long reverb (Size 90%+)\n- Sustained, evolving textures\n\n## Creating the Wall: Step-by-Step\n\n### Step 1: Foundation\n- Record main instrument (guitar riff, synth pad)\n- Process with moderate Hardcore chain\n- Establish tonal center\n\n### Step 2: Width\n- Duplicate and pan left/right\n- Add different modulation to each side\n- Widen stereo field\n\n### Step 3: Texture\n- Add additional layers with different processing\n- Extreme distortion, phasers, different cabinets\n- Lower volume but full frequency coverage\n\n### Step 4: Space\n- Add reverb-heavy layers\n- Background ambient elements\n- Create depth and dimension\n\n### Step 5: Glue\n- Master bus compression\n- Final EQ shaping\n- Cohesive cabinet simulation\n\n## Safety Rules\n\n### Muddiness Prevention\n- Wall-of-sound can quickly become muddy\n- Use EQ to carve space for each layer\n- High-pass texture layers aggressively\n- Master EQ cut at 310Hz\n\n### Clarity Maintenance\n- Despite density, maintain some definition\n- Don't over-compress to the point of lifelessness\n- Keep main melodic elements cleaner\n- Use sidechain compression if needed\n\n### CPU Management\n- Multiple layers with Hardcore = high CPU\n- Freeze completed layers\n- Render to audio frequently\n- Commit to decisions\n\n### Mono Compatibility\n- Check wall in mono regularly\n- Phase cancellation can destroy the wall\n- Keep bass and center elements mono-compatible\n- Modulation effects can create phase issues\n\n## Troubleshooting\n\n| Problem | Cause | Solution |\n|---------|-------|----------|\n| Wall sounds muddy | Too many layers in same frequency range | High-pass texture layers, EQ cuts at 310-600Hz |\n| No definition | Over-compression or too much distortion | Reduce compression, keep some layers cleaner |\n| Harsh and fatiguing | Too much high-end distortion | Cut 6-12kHz, use darker cabinets |\n| Thin wall | Not enough low-end foundation | Add sub layer, boost 60Hz on bass elements |\n| Phase cancellation | Stereo effects creating issues | Check in mono, adjust modulation rates |\n| CPU overload | Too many active Hardcore instances | Freeze layers, render to audio |\n\n## Quick Start: 6-Layer Guitar Wall\n\n**Layer 1 (Center):**\n- Distortion 50%, Tone +5, Cabinet 2, Delay 80ms\n\n**Layer 2 (Left):**\n- Distortion 50%, Tone +10, Cabinet 1, Chorus Depth 60%\n\n**Layer 3 (Right):**\n- Distortion 50%, Tone +10, Cabinet 1, Flanger Depth 50%\n\n**Layer 4 (Left Texture):**\n- Distortion 80%, Tone +20, Cabinet 5, Phaser Stages 8\n\n**Layer 5 (Right Texture):**\n- Distortion 80%, Tone +20, Cabinet 5, Phaser Rate 0.15Hz\n\n**Layer 6 (Ambience):**\n- Distortion 30%, Cabinet 2, Reverb Size 80%, Mix 50%\n\n**Master Bus:**\n- Compression 4:1, EQ scoop at 500Hz, Vintage cabinet\n\n---\n\n*Source: Image-Line FL Studio Hardcore Manual [SRC: IL-MAN]*\n",
+      "radio-megaphone-effects": "# Radio/Megaphone Effects\n\nComplete workflow for creating telephone, radio, megaphone, and broadcast-style vocal effects using Hardcore. [SRC: IL-MAN]\n\n## Overview\n\nRadio and megaphone effects simulate the frequency-limited, compressed, distorted character of broadcast equipment, telephone systems, and public address systems. These effects are staples in hip-hop production for hooks, ad-libs, transitions, and stylistic vocal treatments.\n\n## Core Sound Characteristics\n\n**Limited Frequency Range:**\n- Telephones: 300Hz - 3.4kHz\n- AM Radio: 100Hz - 5kHz\n- Megaphones: 200Hz - 4kHz\n- FM Radio: 30Hz - 15kHz (but compressed and bright)\n\n**Dynamic Character:**\n- Heavy compression (broadcast limiters)\n- Aggressive distortion (speaker overdrive)\n- Hard limiting (transmitter protection)\n\n**Tonal Signature:**\n- Mid-forward (1-3kHz emphasis)\n- Sibilance control (reduced 5-10kHz)\n- Low-end rolloff (microphone proximity effect)\n\n## Method 1: Telephone Effect\n\n**Frequency range:** ~300Hz - 3.4kHz\n**Character:** Band-limited, intelligible, slightly distorted\n\n### Chain Configuration\n```\nPosition 1: EQ Stompbox (Band limiting)\nPosition 2: Distortion (Phone line saturation)\nPosition 3: Compressor (Heavy limiting)\nPosition 4: Cabinet 5 (Small speaker)\n```\n\n### Detailed Settings\n\n**1. EQ Stompbox** (Telephone bandpass)\n- Low Frequency: 300 Hz\n- Low Gain: -15 dB (high-pass)\n- Mid Frequency: 2000 Hz\n- Mid Gain: +4 to +6 dB (presence boost)\n- High Frequency: 3400 Hz\n- High Gain: -15 dB (low-pass)\n\n**Purpose:** Simulate telephone frequency response (300Hz-3.4kHz)\n\n**2. Distortion** (Line saturation)\n- Drive: 15-30%\n- Tone: +10 to +25 (bright, thin)\n- Level: 85-90%\n\n**Purpose:** Add subtle overdrive like overloaded phone lines\n\n**3. Compressor** (Heavy broadcast limiting)\n- Threshold: -8 to -12 dB\n- Ratio: 10:1 to 20:1 (limiting)\n- Attack: 1-3 ms (fast catching)\n- Release: 50-100 ms (fast recovery)\n- Makeup: 4-6 dB\n\n**Purpose:** Simulate broadcast limiter, even out all levels\n\n**4. Cabinet 5** (Small speaker character)\n- Mix: 100%\n\n**Purpose:** Boxy, limited frequency character of phone speaker\n\n**5. Master 8-Band EQ** (Fine-tuning)\n- 60 Hz: -12 dB (remove all sub)\n- 170 Hz: -6 dB\n- 310 Hz: 0 dB\n- 600 Hz: +2 dB (low-mid presence)\n- 1 kHz: +4 dB (primary vocal presence)\n- 3 kHz: +3 dB (intelligibility)\n- 6 kHz: -4 dB (control harshness)\n- 12 kHz: -10 dB (remove air)\n\n## Method 2: AM Radio Effect\n\n**Frequency range:** ~100Hz - 5kHz\n**Character:** Warm, compressed, slightly noisy\n\n### Chain Configuration\nSame as telephone but with wider frequency range and more warmth.\n\n### Key Differences from Telephone\n\n**1. EQ Stompbox** (AM radio range)\n- Low Frequency: 100 Hz\n- Low Gain: -9 dB (gentler high-pass)\n- Mid Frequency: 1500 Hz\n- Mid Gain: +3 dB\n- High Frequency: 5000 Hz\n- High Gain: -12 dB\n\n**2. Distortion** (Warm overdrive)\n- Drive: 20-35%\n- Tone: 0 to +10 (warmer than telephone)\n\n**3. Cabinet 3** (British/Crunch) or 2 (Vintage)\n- For more warmth and body than Cabinet 5\n\n**4. Master EQ** (Warmer curve)\n- Less severe high-frequency cuts\n- More 200-600Hz body\n- Add slight saturation character\n\n## Method 3: Megaphone/Bullhorn Effect\n\n**Frequency range:** ~200Hz - 4kHz\n**Character:** Aggressive, distorted, compressed, \"tinny\"\n\n### Chain Configuration\n```\nPosition 1: Distortion (Speaker breakup)\nPosition 2: EQ Stompbox (Megaphone EQ)\nPosition 3: Compressor (Heavy limiting)\nPosition 4: Cabinet 5 (Small speaker)\nPosition 5: Noise Gate (Choppy character)\n```\n\n### Detailed Settings\n\n**1. Distortion** (Heavy speaker breakup)\n- Drive: 40-60%\n- Tone: +15 to +30 (bright, aggressive)\n- Level: 80%\n\n**2. EQ Stompbox** (Megaphone bandpass)\n- Low Frequency: 200 Hz\n- Low Gain: -12 dB\n- Mid Frequency: 2500 Hz\n- Mid Gain: +6 to +9 dB (aggressive mid boost)\n- High Frequency: 4000 Hz\n- High Gain: -12 dB\n\n**3. Compressor** (Extreme limiting)\n- Threshold: -6 to -10 dB\n- Ratio: 20:1 (hard limiting)\n- Attack: 1 ms\n- Release: 40-80 ms\n- Makeup: 3-5 dB\n\n**4. Cabinet 5** (Small speaker boxiness)\n- Mix: 100%\n\n**5. Noise Gate** (Megaphone choppiness)\n- Threshold: -20 to -25 dB\n- Attack: 1-2 ms\n- Hold: 30-50 ms\n- Release: 60-100 ms\n\n**6. Master EQ** (Final megaphone shaping)\n- 60 Hz: -10 dB\n- 170 Hz: -4 dB\n- 310 Hz: +3 dB (boxy character)\n- 600 Hz: +4 dB (mid forward)\n- 1 kHz: +5 dB (presence)\n- 3 kHz: +3 dB (intelligibility)\n- 6 kHz: -3 dB (control harshness)\n- 12 kHz: -8 dB (remove air)\n\n## Method 4: FM Radio/Broadcast\n\n**Frequency range:** ~30Hz - 15kHz (full range but processed)\n**Character:** Bright, compressed, \"radio-ready\"\n\n### Chain Configuration\n```\nPosition 1: Compressor (Multi-stage feel)\nPosition 2: EQ Stompbox (Broadcast EQ)\nPosition 3: Distortion (Subtle excitation)\nPosition 4: Cabinet 1 (Bright) or 4 (American)\n```\n\n### Detailed Settings\n\n**1. Compressor** (Broadcast consistency)\n- Threshold: -14 to -18 dB\n- Ratio: 6:1 to 10:1\n- Attack: 5-8 ms\n- Release: 150-250 ms\n- Makeup: 6-10 dB\n\n**2. EQ Stompbox** (Broadcast smile curve)\n- Low: +2 dB @ 100 Hz (warmth)\n- Mid: 0 dB @ 1 kHz\n- High: +4 dB @ 8 kHz (brightness)\n\n**3. Distortion** (Exciter-style)\n- Drive: 10-20% (very subtle)\n- Tone: +10 to +20\n- Level: 95%\n\n**4. Cabinet 1** (Bright/Modern) or **Cabinet 4** (American)\n- Mix: 75-100%\n\n**5. Master EQ** (Broadcast polish)\n- 60 Hz: +1 dB (sub presence)\n- 170 Hz: +1 dB (warmth)\n- 310 Hz: -1 dB (slight mud removal)\n- 600 Hz: 0 dB\n- 1 kHz: +1 dB (presence)\n- 3 kHz: +2 dB (clarity)\n- 6 kHz: +3 dB (air)\n- 12 kHz: +2 dB (sheen)\n\n## Genre-Specific Applications\n\n### Hip-Hop Radio Hooks\n**Goal:** \"Now playing on Hot 97\" vibe\n- Use FM Radio method\n- Add slight delay (slapback 80ms)\n- Heavy compression for consistency\n- Bright, energetic character\n\n### Trap Megaphone Ad-libs\n**Goal:** Aggressive \"hey!\" and \"yeah!\" shouts\n- Use Megaphone method\n- Very short, choppy delivery works best\n- Gate emphasizes the choppiness\n- Drive 60%+ for aggression\n\n### Lo-Fi Phone Vocals\n**Goal:** Intimate \"phone call\" aesthetic\n- Use Telephone method\n- Softer, more subtle distortion\n- Add delay (100-150ms) for distance\n- Lower mix (50-70%) for blend\n\n### Industrial/Punk Announcements\n**Goal:** Aggressive PA system\n- Use Megaphone method\n- Add Modulator (Tremolo) for instability\n- Ring modulation for destruction\n- Cabinet 5 at 100%\n\n## Parallel Processing for Blend\n\nFor more control, use Hardcore on a send track:\n\n**Setup:**\n- Vocal: 100% dry\n- Send: Hardcore Radio/Megaphone chain at 30-60% blend\n- Hardcore: 100% wet\n\n**Benefits:**\n- Control effect amount with send fader\n- Automate for section changes\n- Keep dry vocal as foundation\n\n## Automation Strategies\n\n### Section-Based\n- **Verses:** Clean or light telephone effect\n- **Choruses:** FM Radio (bright, energetic)\n- **Bridge:** Megaphone (contrast, aggression)\n- **Outro:** Telephone fading out\n\n### Word-by-Word\n- Individual words as megaphone ad-libs\n- Phrases through telephone for storytelling\n- Hooks through FM radio for polish\n\n### Build-Up Effects\n- Start clean, gradually increase drive\n- Start with Cabinet 4, switch to Cabinet 5\n- Automate EQ high-pass from 100Hz to 300Hz\n\n## Integration with Full Mix\n\n### In the Vocal Chain\n```\nVocal Source → Hardcore Radio Effect → Final Compressor → Master\n```\n\n### As Send Effect\n```\nVocal Source ──┬──→ Dry\n               └──→ Send (Hardcore Radio) → Blend 40%\n```\n\n### Post-Processing\nAfter Hardcore, consider:\n- **De-esser:** If sibilance is too strong\n- **Limiter:** For broadcast-style brickwall\n- **Additional reverb:** For space (if not in Hardcore)\n\n## Troubleshooting\n\n| Problem | Cause | Solution |\n|---------|-------|----------|\n| Can't understand words | Too much distortion or EQ | Reduce Drive, check midrange clarity |\n| Too harsh/shrill | High tone + cabinet 1 | Switch to Cabinet 2 or reduce Tone |\n| Not \"effect-y\" enough | Subtle settings | Increase Drive, narrow frequency range |\n| Sounds digital/clean | Not enough cabinet | Ensure Cabinet 5 is at 100% |\n| Muddy/thick | Low-end not cut enough | High-pass higher (300Hz+) |\n| No presence | Mids not boosted | Boost 1-3kHz in Stompbox EQ |\n\n## Quick Start Presets\n\n**Telephone Effect:**\n```\nEQ Stompbox: ON, Low 300Hz -15dB, Mid 2kHz +5dB, High 3.4kHz -15dB\nDistortion: ON, Drive 25%, Tone +20, Level 88%\nCompressor: ON, Threshold -10dB, Ratio 15:1, Attack 2ms, Release 80ms\nCabinet: 5 (Small)\nMaster EQ: 60Hz -12, 1kHz +4, 3kHz +3, 12kHz -10\n```\n\n**Megaphone Effect:**\n```\nDistortion: ON, Drive 55%, Tone +25, Level 80%\nEQ Stompbox: ON, Low 200Hz -12dB, Mid 2.5kHz +8dB, High 4kHz -12dB\nCompressor: ON, Threshold -8dB, Ratio 20:1, Attack 1ms, Release 60ms\nNoise Gate: ON, Threshold -22dB, Attack 1ms, Hold 40ms, Release 80ms\nCabinet: 5 (Small)\nMaster EQ: 60Hz -10, 600Hz +4, 1kHz +5, 12kHz -8\n```\n\n**FM Radio Effect:**\n```\nCompressor: ON, Threshold -16dB, Ratio 8:1, Attack 6ms, Release 200ms\nEQ Stompbox: ON, Low 100Hz +2dB, Mid 1kHz 0dB, High 8kHz +4dB\nDistortion: ON, Drive 15%, Tone +15, Level 95%\nCabinet: 4 (American)\nMaster EQ: 60Hz +1, 3kHz +2, 6kHz +3, 12kHz +2\n```\n\n---\n\n*Source: Image-Line FL Studio Hardcore Manual [SRC: IL-MAN]*\n",
+      "synth-fattening-chains": "# Synth Fattening Chains\n\nComplete workflow for adding width, depth, saturation, and character to synthesizers using Hardcore. [SRC: IL-MAN]\n\n## Overview\n\nSynthesizers—especially digital virtual analog and software synths—can sound thin, sterile, or two-dimensional. The Synth Fattening Chain uses Hardcore's modulation effects, subtle saturation, and cabinet simulation to add analog-style warmth, stereo width, and three-dimensional character.\n\n## Why Synths Need Fattening\n\n**Digital Sterility:**\n- Pure waveforms lack harmonic complexity\n- No analog circuit noise or saturation\n- Flat dynamics without natural movement\n\n**The Solution:**\n- Modulation adds stereo width and movement\n- Saturation adds harmonics and warmth\n- Cabinet simulation adds speaker character\n- Time effects add depth and space\n\n## Method 1: Analog Warmth\n\n**Goal:** Subtle saturation and character like vintage analog synths\n\n### Chain Configuration\n```\nPosition 1: Compressor (Analog-style leveling)\nPosition 2: Distortion (Gentle saturation)\nPosition 3: Cabinet 2 (Vintage)\n```\n\n### Detailed Settings\n\n**1. Compressor** (Gentle analog leveling)\n- Threshold: -18 to -22 dB\n- Ratio: 2:1 to 3:1 (subtle)\n- Attack: 15-25 ms (let transients breathe)\n- Release: 300-500 ms (smooth)\n- Makeup: 3-5 dB\n\n**Purpose:** Even out synth levels like analog compressors\n\n**2. Distortion** (Analog saturation)\n- Drive: 15-25% (gentle)\n- Tone: -5 to +5 (neutral)\n- Level: 90-95%\n\n**Purpose:** Add 2nd/3rd harmonics for warmth\n\n**3. Cabinet 2** (Vintage)\n- Mix: 75-100%\n\n**Purpose:** Vintage speaker character, rounded highs\n\n**4. Master 8-Band EQ**\n- 60 Hz: +1 dB\n- 170 Hz: 0 dB\n- 310 Hz: 0 dB\n- 600 Hz: -1 dB\n- 1 kHz: 0 dB\n- 3 kHz: +1 dB\n- 6 kHz: +2 dB\n- 12 kHz: +1 dB\n\n**Result:** Warm, vintage analog character with controlled low-end and gentle high-end lift.\n\n## Method 2: Stereo Width & Movement\n\n**Goal:** Wide, three-dimensional synths with modulation movement\n\n### Chain Configuration\n```\nPosition 1: Chorus (Width)\nPosition 2: Phaser (Movement)\nPosition 3: Cabinet 4 (Transparent)\n```\n\n### Detailed Settings\n\n**1. Chorus** (Stereo widening)\n- Rate: 0.2-0.5 Hz (slow, subtle)\n- Depth: 40-60%\n- Level: 50-70%\n\n**Purpose:** Create stereo width through detuned copies\n\n**2. Phaser** (Liquid movement)\n- Rate: 0.1-0.3 Hz (very slow)\n- Depth: 35-50%\n- Stages: 4 or 6\n- Level: 40-50%\n\n**Purpose:** Add subtle movement without obvious effect\n\n**3. Cabinet 4** (American/Smooth)\n- Mix: 50-75%\n\n**Purpose:** Balanced frequency response maintains width\n\n**4. Master 8-Band EQ**\n- 60 Hz: 0 dB\n- 170 Hz: -1 dB\n- 310 Hz: -2 dB (reduce mud for clarity)\n- 600 Hz: 0 dB\n- 1 kHz: 0 dB\n- 3 kHz: +2 dB\n- 6 kHz: +3 dB (air and width)\n- 12 kHz: +4 dB (maximum air)\n\n**Result:** Wide, spacious synth with gentle movement and clarity.\n\n## Method 3: Lead Synth Aggression\n\n**Goal:** Cutting, aggressive lead synths for solos and hooks\n\n### Chain Configuration\n```\nPosition 1: Compressor (Punch)\nPosition 2: Distortion (Grit and edge)\nPosition 3: EQ Stompbox (Presence shaping)\nPosition 4: Cabinet 1 (Bright)\n```\n\n### Detailed Settings\n\n**1. Compressor** (Transient control)\n- Threshold: -12 to -16 dB\n- Ratio: 4:1 to 6:1\n- Attack: 5-10 ms (some transient preservation)\n- Release: 150-250 ms\n- Makeup: 6-8 dB\n\n**2. Distortion** (Lead character)\n- Drive: 40-60%\n- Tone: +10 to +20 (brightness)\n- Level: 85-90%\n\n**Purpose:** Grit and harmonics that cut through mix\n\n**3. EQ Stompbox** (Scoop and boost)\n- Low: 0 dB or slight cut @ 120Hz\n- Mid: -2 to -4 dB @ 400-600 Hz (scoop)\n- High: +2 to +4 dB @ 4-6 kHz (presence)\n\n**Purpose:** Mid-scoop + high-boost = modern lead tone\n\n**4. Cabinet 1** (Bright/Modern)\n- Mix: 100%\n\n**Purpose:** Maximum presence and cutting power\n\n**5. Master 8-Band EQ** (Lead polish)\n- 60 Hz: -2 dB (tighten)\n- 170 Hz: -1 dB\n- 310 Hz: -3 dB (scoop)\n- 600 Hz: -2 dB (scoop)\n- 1 kHz: 0 dB\n- 3 kHz: +3 dB (attack)\n- 6 kHz: +4 dB (presence)\n- 12 kHz: +3 dB (air)\n\n**Result:** Modern, aggressive lead synth that cuts through dense mixes.\n\n## Method 4: Pad Enhancement\n\n**Goal:** Lush, atmospheric pads with depth and space\n\n### Chain Configuration\n```\nPosition 1: Chorus (Width)\nPosition 2: Flanger (Subtle movement)\nPosition 3: Reverb (Space)\nPosition 4: Cabinet 2 (Vintage warmth)\n```\n\n### Detailed Settings\n\n**1. Chorus** (Wide pad foundation)\n- Rate: 0.1-0.3 Hz (very slow)\n- Depth: 50-70%\n- Level: 60-80%\n\n**Purpose:** Wide, detuned pad character\n\n**2. Flanger** (Subtle shimmer)\n- Rate: 0.05-0.15 Hz (extremely slow)\n- Depth: 30-40%\n- Feedback: +10 to +20%\n- Level: 30-40%\n\n**Purpose:** Gentle sweeping texture\n\n**3. Reverb** (Atmospheric space)\n- Size: 60-80%\n- Damp: 40-60%\n- Mix: 35-50%\n- Level: 80%\n\n**Purpose:** Cavernous pad space\n\n**4. Cabinet 2** (Vintage)\n- Mix: 75%\n\n**Purpose:** Warmth without brightness\n\n**5. Master 8-Band EQ**\n- 60 Hz: +2 dB (pad weight)\n- 170 Hz: +1 dB\n- 310 Hz: -1 dB\n- 600 Hz: 0 dB\n- 1 kHz: 0 dB\n- 3 kHz: +1 dB\n- 6 kHz: +2 dB\n- 12 kHz: +3 dB (air for atmosphere)\n\n**Result:** Lush, wide, atmospheric pads with vintage character.\n\n## Method 5: Bass Synth Enhancement\n\n**Goal:** Fat, present bass synths that work on all systems\n\nSee detailed workflow in **Bass Saturation Chain.md**\n\nQuick summary:\n- Compressor for sustain\n- Distortion for harmonics (audible on small speakers)\n- Cabinet 1 or 3 for character\n- EQ for low-end control\n\n## Genre-Specific Applications\n\n### Synthwave/Retrowave\n- Method 2 (Width) + slight saturation\n- Cabinet 2 (Vintage)\n- Emphasize chorus for 80s width\n- Light reverb for space\n\n### Trap/Modern Hip-Hop\n- Method 3 (Aggression) for leads\n- Method 1 (Warmth) for pads\n- Heavy distortion on 808-style bass\n- Bright cabinets (Cabinet 1)\n\n### Techno/Industrial\n- Method 1 (Warmth) but with more drive\n- Method 4 (Pads) with darker settings\n- Emphasize distortion and compression\n- Limited, aggressive character\n\n### Pop/EDM\n- Method 2 (Width) for supersaws\n- Method 3 (Aggression) for leads\n- Cabinet 4 (balanced) for transparency\n- Heavy use of chorus for width\n\n## Advanced Techniques\n\n### Multi-Timbral Processing\nFor layered synths (oscillator stacks):\n- **Sub oscillator:** Clean, minimal processing\n- **Mid oscillator:** Method 1 (Warmth)\n- **High oscillator:** Method 3 (Aggression)\n- **Noise layer:** Heavy distortion for texture\n\n### Key Tracking Considerations\n- **Low synth notes:** More bass cabinet, less distortion\n- **Mid synth notes:** Balanced processing\n- **High synth notes:** Bright cabinet, more distortion safe\n- **Wide chords:** Method 2 (Width effects)\n\n### Automation for Movement\n- **Filter sweep sections:** Automate EQ frequencies\n- **Build-ups:** Increase chorus depth gradually\n- **Breakdowns:** Add reverb for space\n- **Drops:** Remove effects for impact\n\n## Parallel Processing\n\nFor complex synths, use multiple Hardcore instances:\n\n**Synth Source ──┬──→ Dry (40%)**\n**               ├──→ Send A: Method 2 (Width) - 30%**\n**               ├──→ Send B: Method 3 (Aggression) - 20%**\n**               └──→ Send C: Reverb only - 10%**\n\n## CPU Optimization\n\n**Complex chains (4-5 effects active):**\n- Freeze synth tracks once processing is finalized\n- Render to audio (Alt + R)\n- Keep original muted for edits\n\n**Alternative:** Use fewer effects but with higher intensity\n\n## Troubleshooting\n\n| Problem | Cause | Solution |\n|---------|-------|----------|\n| Too muddy | Low-end buildup | High-pass in Stompbox EQ, cut 310Hz |\n| Too thin | No low-end | Boost 60Hz, use Cabinet 2 or 1 |\n| Harsh/fizzy | High distortion + bright tone | Reduce drive, make tone negative, cut 6-12kHz |\n| Not wide enough | Chorus too subtle | Increase chorus depth to 60%+, try flanger |\n| Phase issues | Stereo effects on mono source | Check source stereo width first |\n| CPU overload | Too many effects | Freeze track or reduce active effects |\n\n## Quick Start Presets\n\n**Analog Warmth:**\n```\nCompressor: ON, Threshold -20dB, Ratio 2.5:1, Attack 20ms, Release 400ms\nDistortion: ON, Drive 20%, Tone 0, Level 95%\nCabinet: 2 (Vintage)\nMaster EQ: Subtle smile curve, boost 12kHz slightly\n```\n\n**Wide Pad:**\n```\nChorus: ON, Rate 0.25Hz, Depth 55%, Level 65%\nPhaser: ON, Rate 0.2Hz, Depth 40%, Stages 6, Level 45%\nReverb: ON, Size 70%, Damp 50%, Mix 40%, Level 80%\nCabinet: 2 (Vintage)\nMaster EQ: Scoop mids slightly, boost highs\n```\n\n**Aggressive Lead:**\n```\nCompressor: ON, Threshold -14dB, Ratio 5:1, Attack 8ms, Release 200ms\nDistortion: ON, Drive 55%, Tone +15, Level 88%\nEQ Stompbox: ON, Mid 500Hz -3dB, High 5kHz +3dB\nCabinet: 1 (Bright)\nMaster EQ: Scoop 310/600Hz, boost 3/6/12kHz\n```\n\n---\n\n*Source: Image-Line FL Studio Hardcore Manual [SRC: IL-MAN]*\n",
+      "vocal-lo-fi-chain": "# Vocal Lo-Fi Chain\n\nComplete workflow for creating vintage, dusty, degraded vocal effects using Hardcore. [SRC: IL-MAN]\n\n## Overview\n\nThe Vocal Lo-Fi Chain transforms clean, modern vocal recordings into character-rich, vintage-sounding vocals perfect for lo-fi hip-hop, alternative R&B, intros/outros, and artistic effects. This workflow emphasizes warmth, subtle pitch drift, and controlled degradation.\n\n## Core Philosophy\n\nLo-fi vocals aren't about \"bad quality\"—they're about intentional character. The goal is to create a sound that feels nostalgic, intimate, and human rather than sterile and clinical.\n\n## Method: Insert Processing\n\n**Best for:** Lead vocals, doubles, ad-libs, background vocals\n\n### Recommended Chain Order\n```\nPosition 1: Modulator (Pitch drift)\nPosition 2: Distortion (Warmth & saturation)\nPosition 3: EQ Stompbox (Frequency limiting)\nPosition 4: Cabinet (Vintage character)\nPosition 5: Delay (Space & depth)\nPosition 6: Reverb (Atmosphere)\n```\n\n## Detailed Settings\n\n### 1. Modulator - Vibrato Mode\n**Purpose:** Create subtle pitch instability like tape wow/flutter or worn vinyl\n\n**Settings:**\n- Mode: Vibrato\n- Rate: 0.3-0.6 Hz (slow, subtle drift)\n- Depth: 20-40% (gentle pitch variation)\n- Level: 50-70% (blend with dry)\n\n**Tips:**\n- Slower rate = more vintage tape feel\n- Too fast sounds like special effect, not character\n- Lower depth maintains intelligibility\n\n### 2. Distortion - Light Saturation\n**Purpose:** Add analog warmth and gentle saturation\n\n**Settings:**\n- Drive: 20-35% (subtle, not aggressive)\n- Tone: -5 to +5 (neutral to slightly warm)\n- Level: 85-95% (maintain level, slight compensation)\n\n**Tips:**\n- Low drive = warmth without obvious distortion\n- Negative tone = darker, vintage feel\n- This isn't \"distorted vocals\"—it's \"saturated warmth\"\n\n### 3. EQ Stompbox - Frequency Limiting\n**Purpose:** Simulate limited frequency response of vintage equipment\n\n**Settings:**\n- Low Frequency: 120-150 Hz\n- Low Gain: -6 to -12 dB (remove sub rumble)\n- Mid Frequency: 1000 Hz (neutral or slight boost)\n- Mid Gain: 0 to +2 dB\n- High Frequency: 6-8 kHz\n- High Gain: -6 to -9 dB (reduce sibilance/air)\n\n**Tips:**\n- High-pass removes unwanted low-end\n- High-shelf reduction simulates tape/vinyl rolloff\n- Mid boost maintains vocal presence\n\n### 4. Cabinet - Vintage/Classic\n**Purpose:** Final vintage character and frequency shaping\n\n**Settings:**\n- Cabinet: 2 (Vintage/Classic)\n- Mix: 75-100%\n\n**Why Cabinet 2:**\n- Natural high-end rolloff above 6kHz\n- Warm 200-400Hz body\n- Soft, rounded character\n- Perfect for lo-fi aesthetic\n\n### 5. Delay - Slapback Echo\n**Purpose:** Add 1950s-60s style slapback for vintage depth\n\n**Settings:**\n- Time: 80-120 ms\n- Feedback: 10-20% (minimal repeats)\n- Mix: 20-30%\n- Level: 80-90%\n\n**Tips:**\n- 100ms is classic rockabilly slapback\n- Lower feedback keeps it clean, not spacey\n- Subtle mix adds depth without wash\n\n### 6. Reverb - Small Room\n**Purpose:** Intimate space, not cathedral\n\n**Settings:**\n- Size: 20-40% (small room)\n- Damp: 60-75% (darker, vintage room)\n- Mix: 15-25%\n- Level: 80%\n\n**Tips:**\n- Small size = intimate, not distant\n- Higher damp = darker reverb (less digital sheen)\n- Keep mix low—lo-fi is about closeness, not space\n\n### 7. Master 8-Band EQ - Final Polish\n**Purpose:** Overall lo-fi frequency shaping\n\n**Settings:**\n- 60 Hz: -3 to -6 dB (remove sub)\n- 170 Hz: 0 dB (keep some warmth)\n- 310 Hz: +2 to +3 dB (add vintage body/mud)\n- 600 Hz: 0 to +1 dB\n- 1 kHz: 0 dB\n- 3 kHz: -2 to -3 dB (reduce clarity)\n- 6 kHz: -3 to -4 dB (control harshness)\n- 12 kHz: -5 to -8 dB (heavy air reduction)\n\n## Variations\n\n### Alternative: Radio/Vintage Phone\nMore extreme lo-fi for radio/megaphone effects:\n\n**Changes:**\n- Cabinet: 5 (Small) instead of 2\n- EQ Stompbox: High-pass 200Hz, Low-pass 4kHz\n- Distortion: Drive 40% for more grit\n- Add Noise Gate: Threshold -20dB (create choppy effect)\n\n### Alternative: Tape Wow & Flutter\nMore pronounced tape character:\n\n**Changes:**\n- Modulator: Rate 0.1-0.2Hz, Depth 50-60%\n- Add Flanger: Rate 0.05Hz, Depth 30%, Feedback 10% (very slow sweep)\n- Cabinet: 2 (Vintage)\n\n### Alternative: Vinyl Crackle Feel\nSimulate worn record:\n\n**Changes:**\n- Enable all three modulation effects: Chorus + Flanger + Phaser (subtle settings)\n- Distortion: Drive 25%, Tone -10\n- Heavy Master EQ cuts above 5kHz\n\n## Safety Rules\n\n### Sibilance Control\nLo-fi processing can exaggerate sibilance:\n- Master EQ Band 7 (6kHz): Cut -2 to -4 dB\n- High-shelf reduction in Stompbox EQ\n- If still sibilant, add de-esser after Hardcore\n\n### Intelligibility\nDon't make vocals too muddy:\n- Keep 1-3kHz range relatively flat (clarity range)\n- Don't over-cut highs—vocals need some air\n- Test with lyrics-heavy sections\n\n### Pitch Drift Limits\nToo much vibrato sounds drunk, not vintage:\n- Keep vibrato rate slow (under 1Hz)\n- Keep depth moderate (under 50%)\n- If vocals sound seasick, reduce depth\n\n## Parallel Processing Option\n\nFor more control, use Hardcore on a send track:\n\n**Setup:**\n- Vocal track: 100% dry\n- Send track with Hardcore: 30-50% blend\n- Hardcore: 100% wet settings as above\n\n**Benefits:**\n- Control lo-fi amount with send fader\n- Automate send level for section changes\n- Keep dry vocal as safety net\n\n## Integration with Full Mix\n\n### Placement in Vocal Chain\n```\nVocal Source → [Hardcore Lo-Fi Chain] → Compressor (final control) → Delay/Reverb (if not in Hardcore) → Master\n```\n\nOr if using send:\n```\nVocal Source ──┬──→ Dry Vocal Track\n               └──→ Send (Hardcore Lo-Fi) → Blend 30%\n```\n\n### Automation Ideas\n- **Verses:** Full lo-fi chain (intimate)\n- **Choruses:** Reduce lo-fi (more modern, energetic)\n- **Bridge:** Extreme lo-fi for contrast\n- **Outro:** Return to full lo-fi (fade out vintage)\n\n## Troubleshooting\n\n| Problem | Cause | Solution |\n|---------|-------|----------|\n| Too muddy | Over-cutting highs, too much 310Hz | Reduce low-mid boost, ease off high cuts |\n| Can't understand lyrics | Too much distortion/EQ | Reduce distortion drive, flatten 1-3kHz EQ |\n| Sounds like effect, not character | Too aggressive settings | Reduce all effect intensities by 30% |\n| Pitch sounds drunk | Vibrato too fast/deep | Rate below 0.5Hz, Depth below 35% |\n| Too thin | Over-filtering lows | Ease off high-pass, add some 60Hz back |\n\n## Quick Start Preset\n\n**Standard Lo-Fi Vocal (Copy these settings):**\n```\nModulator: ON, Mode Vibrato, Rate 0.4Hz, Depth 30%, Level 60%\nDistortion: ON, Drive 30%, Tone 0, Level 90%\nEQ Stompbox: ON, Low 150Hz -9dB, Mid 1kHz +1dB, High 7kHz -6dB\nDelay: ON, Time 100ms, Feedback 15%, Mix 25%\nReverb: ON, Size 30%, Damp 70%, Mix 20%\nCabinet: 2 (Vintage)\nMaster EQ: 60Hz -4, 310Hz +2, 3kHz -2, 6kHz -3, 12kHz -6\n```\n\n---\n\n*Source: Image-Line FL Studio Hardcore Manual [SRC: IL-MAN]*\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Hardcore\r\n\r\nThis section contains workflow information for the hardcore plugin.\r\n"
+    }
+  },
+  "rules": {
+    "gain-staging": {
+      "plugin": "Hardcore",
+      "category": "Gain Staging Rules",
+      "dataSource": "IL-MAN",
+      "description": "Essential gain staging guidelines for Hardcore to prevent clipping and maintain headroom",
+      "rules": [
+        {
+          "ruleId": "GAIN-001",
+          "title": "Maintain Unity Gain Principle",
+          "severity": "high",
+          "description": "When toggling effects on/off, perceived loudness should remain consistent",
+          "details": "If an effect makes the track louder when enabled, reduce its output level or the mix control. This ensures you're making tonal decisions, not just liking something because it's louder.",
+          "check": "A/B test with effect on/off at same perceived volume",
+          "violation": "Effect sounds better simply because it's louder",
+          "solution": "Adjust Level/Makeup/Mix controls to match dry signal volume"
+        },
+        {
+          "ruleId": "GAIN-002",
+          "title": "Input Gain Sets the Foundation",
+          "severity": "high",
+          "description": "Input gain determines how hard the first stompbox is driven",
+          "details": "Higher input gain = more saturation in distortion pedals. Start at 0dB and adjust based on your source level and desired saturation amount.",
+          "check": "Input meter shows healthy level without constant red",
+          "recommendedRange": "-12 to +6 dB depending on source",
+          "violation": "Constant clipping at input stage",
+          "solution": "Reduce input gain or source track volume"
+        },
+        {
+          "ruleId": "GAIN-003",
+          "title": "Cumulative Gain Across Chain",
+          "severity": "high",
+          "description": "Each stompbox adds or reduces gain. Monitor cumulative effect.",
+          "details": "Distortion adds gain, compression adds makeup gain, EQ boosts add gain. Stack multiple gain-increasing effects and you'll run out of headroom.",
+          "check": "Master output meter stays below 0dBFS",
+          "formula": "Input + Stompbox gains + Master EQ boosts < 0dBFS",
+          "violation": "Master output clipping despite individual effects not clipping",
+          "solution": "Reduce individual effect output levels or enable master limiter"
+        },
+        {
+          "ruleId": "GAIN-004",
+          "title": "Distortion Level Compensation",
+          "severity": "medium",
+          "description": "Distortion increases perceived loudness due to added harmonics",
+          "details": "Even if peak levels don't increase, distortion adds high-frequency content that sounds louder. Compensate by reducing Distortion Level control.",
+          "check": "Loudness meter (LUFS) comparison with/without distortion",
+          "typicalReduction": "5-15% Level reduction for unity loudness",
+          "violation": "Distortion sounds 'better' but is actually just louder",
+          "solution": "Reduce Distortion Level by 10-20% or use mix control"
+        },
+        {
+          "ruleId": "GAIN-005",
+          "title": "Compressor Makeup Gain Math",
+          "severity": "medium",
+          "description": "Set makeup gain to compensate for gain reduction",
+          "details": "If compressor is reducing gain by 6dB on average, set makeup gain to approximately +6dB. Over-compensation causes clipping; under-compensation makes track too quiet.",
+          "formula": "Makeup Gain ≈ Average Gain Reduction",
+          "check": "Output level matches input level (bypass test)",
+          "violation": "Compressed signal significantly louder or quieter than dry",
+          "solution": "Adjust Makeup Gain to match GR meter average"
+        },
+        {
+          "ruleId": "GAIN-006",
+          "title": "EQ Boost Gain Compensation",
+          "severity": "medium",
+          "description": "Boosting frequencies adds gain at those frequencies",
+          "details": "+6dB boost at 3kHz increases the overall level if that frequency was present. Compensate with output gain reduction if multiple boosts applied.",
+          "check": "Master output after EQ stays at healthy level",
+          "rule": "Sum of all EQ boosts should not exceed +12dB without compensation",
+          "violation": "Multiple +6dB boosts causing master clipping",
+          "solution": "Cut instead of boost, or reduce master output gain"
+        },
+        {
+          "ruleId": "GAIN-007",
+          "title": "Cabinet Mix for Parallel Feel",
+          "severity": "low",
+          "description": "Use Cabinet Mix control for subtle speaker emulation",
+          "details": "At 100% you get full cabinet character. At 50% you blend cabinet with direct signal. At 0% cabinet is bypassed entirely.",
+          "useCases": {
+            "100%": "Full amp simulation, realistic guitar tones",
+            "50-75%": "Subtle speaker character on non-guitar sources",
+            "0%": "Only stompbox effects, no cabinet filtering"
+          },
+          "check": "Cabinet character matches desired tone without overwhelming"
+        },
+        {
+          "ruleId": "GAIN-008",
+          "title": "Output Gain Final Adjustment",
+          "severity": "high",
+          "description": "Master output gain is your final safety net",
+          "details": "After all processing, adjust output gain so the signal leaves Hardcore at appropriate level. This should be the LAST control you touch.",
+          "target": "Match input level or match next plugin's expected input",
+          "check": "Output meter shows healthy level (around -12 to -6 dBFS)",
+          "violation": "Output consistently clipping or too low",
+          "solution": "Adjust Output Gain to healthy level, revisit earlier stages if needed"
+        },
+        {
+          "ruleId": "GAIN-009",
+          "title": "Avoid Digital Clipping",
+          "severity": "critical",
+          "description": "Never allow signal to exceed 0dBFS inside Hardcore or at output",
+          "details": "Hardcore is not a true analog circuit. Digital clipping is harsh and undesirable. Even 'analog-modeled' distortion has limits.",
+          "redLine": "-6 dBFS on meters (leave headroom)",
+          "check": "No red clipping indicators on any stage",
+          "violation": "Frequent red lights on meters",
+          "solution": "Reduce gains at earlier stages, especially input and distortion drive"
+        },
+        {
+          "ruleId": "GAIN-010",
+          "title": "Parallel Processing Gain Matching",
+          "severity": "medium",
+          "description": "When using Hardcore on send track, ensure unity gain",
+          "details": "Set Hardcore internal mix to 100% wet. Control the blend using the send track fader and/or send level knob on source track.",
+          "setup": {
+            "hardcoreMix": "100% wet",
+            "hardcoreLevel": "Unity (80-100%)",
+            "sendLevel": "Control blend here",
+            "sendTrackFader": "Control total processed volume"
+          },
+          "check": "Processed signal at same level as dry when send at 100%",
+          "violation": "Can't achieve unity blend (too loud or too quiet)",
+          "solution": "Adjust Hardcore output level to match source track level"
+        }
+      ],
+      "gainStaginWorkflow": {
+        "step1": "Set Input Gain to healthy level (0dB or source-dependent)",
+        "step2": "Add stompboxes one by one, adjusting their individual levels",
+        "step3": "Watch cumulative gain - reduce levels if stacking gain-heavy effects",
+        "step4": "Set Master EQ (minimal boosting, surgical cutting preferred)",
+        "step5": "Select appropriate Cabinet model and mix amount",
+        "step6": "Adjust Output Gain for final level matching"
+      }
+    },
+    "harshness-control": {
+      "plugin": "Hardcore",
+      "category": "Harshness Control Rules",
+      "dataSource": "IL-MAN",
+      "description": "Guidelines for preventing and controlling harsh, unpleasant frequencies when processing with Hardcore",
+      "rules": [
+        {
+          "ruleId": "HARSH-001",
+          "title": "Understand Harsh Frequency Ranges",
+          "severity": "high",
+          "description": "Harshness typically occurs in 2-5 kHz range",
+          "details": "The 2-5kHz region contains frequencies that can sound grating, fatiguing, or 'ice-picky' when exaggerated. Distortion and bright processing can push these over the edge.",
+          "frequencyCharacteristics": {
+            "2kHz": "Vocal presence, can become harsh if overdone",
+            "3kHz": "Attack and bite, easily becomes grating",
+            "4kHz": "Guitar 'quack', vocal intelligibility edge",
+            "5kHz": "Brightness, sibilance crossover point"
+          },
+          "check": "Listen for fatigue or discomfort during extended playback",
+          "solution": "Use Master EQ to gently reduce 2-5kHz if needed"
+        },
+        {
+          "ruleId": "HARSH-002",
+          "title": "Distortion Amount vs. Harshness",
+          "severity": "high",
+          "description": "Higher distortion drive increases harshness non-linearly",
+          "details": "Distortion adds harmonics. As you increase Drive, you create more high-frequency harmonics which can accumulate into harshness.",
+          "driveThresholds": {
+            "subtle": "0-30% - Warmth and gentle saturation",
+            "moderate": "30-60% - Noticeable grit, manageable harshness",
+            "aggressive": "60-85% - Heavy distortion, harshness control critical",
+            "extreme": "85-100% - Extreme saturation, likely harsh without mitigation"
+          },
+          "check": "High drive settings (70%+) with bright tone = harshness risk",
+          "solution": "Combine high drive with darker tone or EQ cuts in 3-5kHz"
+        },
+        {
+          "ruleId": "HARSH-003",
+          "title": "Multi-Effect Harshness Accumulation",
+          "severity": "high",
+          "description": "Harshness compounds when stacking multiple effects",
+          "details": "Each effect can add a small amount of edge. Chorus, flanger, phaser, and distortion all contribute. The cumulative effect can become harsh even if individual effects sound fine.",
+          "cumulativeCheck": "Bypass all effects, enable one by one, identify harshness source",
+          "commonCulprits": [
+            "Distortion + Cabinet 1 (both add high-mid emphasis)",
+            "Flanger with high feedback + Bright cabinet",
+            "Multiple modulation effects stacking"
+          ],
+          "solution": "Reduce number of active effects or use darker cabinet/EQ"
+        },
+        {
+          "ruleId": "HARSH-004",
+          "title": "Cabinet Selection for Harshness Control",
+          "severity": "medium",
+          "description": "Cabinets act as final tone filters - choose wisely",
+          "details": "The cabinet is your last line of defense against harshness. Darker cabinets naturally roll off the frequencies that become harsh.",
+          "cabinetHarshness": {
+            "cabinet1": "HIGH RISK - Extended 3-8kHz response",
+            "cabinet2": "LOW RISK - Rolled off above 6kHz, warm",
+            "cabinet3": "MEDIUM RISK - Mid-forward, controlled 5-6kHz",
+            "cabinet4": "LOW RISK - Balanced, smooth highs",
+            "cabinet5": "VARIABLE - Limited range cuts harshness but can sound boxy"
+          },
+          "check": "Does chosen cabinet smooth or exaggerate harshness?",
+          "solution": "Cabinet 2 or 4 for harshness-prone sources; Cabinet 1 only if source is naturally dark"
+        },
+        {
+          "ruleId": "HARSH-005",
+          "title": "Master EQ as Harshness Filter",
+          "severity": "medium",
+          "description": "Use Master 8-band EQ for surgical harshness reduction",
+          "details": "Bands 5 (1kHz), 6 (3kHz), and 7 (6kHz) control the harshness range. Gentle cuts here preserve clarity while removing grating edge.",
+          "eqStrategy": {
+            "band5": "Cut -1 to -2 dB if honk/boxiness present",
+            "band6": "Cut -2 to -4 dB for primary harshness control",
+            "band7": "Cut -1 to -3 dB for high-mid bite control"
+          },
+          "technique": "Start with -2dB cuts, A/B test, adjust by ear",
+          "check": "Harshness reduced but clarity maintained"
+        },
+        {
+          "ruleId": "HARSH-006",
+          "title": "Pre-Distortion Filtering",
+          "severity": "medium",
+          "description": "Remove harsh frequencies before distortion adds harmonics",
+          "details": "Distortion creates new harmonics from existing frequencies. If you distort a harsh source, you create MORE harshness. Filter first.",
+          "stompboxEQStrategy": {
+            "midFreq": "Set to 3kHz",
+            "midGain": "Cut -2 to -4 dB",
+            "highFreq": "Set to 8kHz",
+            "highGain": "Cut -3 to -6 dB"
+          },
+          "check": "Source sounds slightly dull before distortion, balanced after",
+          "solution": "Use Stompbox EQ before Distortion in the chain"
+        },
+        {
+          "ruleId": "HARSH-007",
+          "title": "Modulation Effects and Harshness",
+          "severity": "low",
+          "description": "Chorus, flanger, and phaser can add edge",
+          "details": "Modulation effects create movement but can also add metallic or glassy character that contributes to harshness perception.",
+          "settings": {
+            "chorus": "Keep Depth moderate (20-40%), Rate slow (0.2-0.5Hz)",
+            "flanger": "Negative feedback (-20 to -50%) for hollow rather than metallic",
+            "phaser": "Fewer stages (2-4) for less resonant peaks"
+          },
+          "check": "Modulation adds width without metallic harshness",
+          "solution": "Reduce depth/feedback or move modulation earlier in chain"
+        },
+        {
+          "ruleId": "HARSH-008",
+          "title": "The Lo-Fi Solution",
+          "severity": "low",
+          "description": "When harshness persists, embrace the lo-fi aesthetic",
+          "details": "Sometimes the source is naturally harsh. Rather than fighting it, use Hardcore to push into intentional lo-fi territory where harshness becomes character.",
+          "loFiChain": {
+            "eq": "Cut 8-12kHz aggressively",
+            "distortion": "Moderate drive (40-50%)",
+            "cabinet": "Cabinet 5 (Small) - Limited frequency range",
+            "delay": "Short slapback or none"
+          },
+          "result": "Intentionally degraded, warm, vintage character",
+          "useCase": "When modern clarity is unattainable or undesirable"
+        },
+        {
+          "ruleId": "HARSH-009",
+          "title": "Gain Staging Impact on Harshness",
+          "severity": "medium",
+          "description": "Improper gain staging can create digital harshness",
+          "details": "Digital clipping and near-clipping levels create unpleasant, harsh distortion. Even 'analog-modeled' plugins behave badly when overdriven digitally.",
+          "redZones": [
+            "Input gain pushing +12dB with hot source",
+            "Distortion Level at 100% with high drive",
+            "Multiple +6dB EQ boosts stacking",
+            "Output gain compensation pushing to 0dBFS"
+          ],
+          "check": "No red meters at any stage",
+          "solution": "Reduce gains at earlier stages, maintain -6 to -12dB headroom"
+        },
+        {
+          "ruleId": "HARSH-010",
+          "title": "Test at Multiple Volumes",
+          "severity": "medium",
+          "description": "Harshness perception changes with playback volume",
+          "details": "Fletcher-Munson curves mean we perceive high frequencies differently at different volumes. A setting that sounds balanced at conversation level may be harsh at performance level.",
+          "testingProtocol": [
+            "Test at low volume (conversation level)",
+            "Test at medium volume (typical monitoring)",
+            "Test at high volume (performance/club level)",
+            "Test on different playback systems (headphones, monitors, earbuds)"
+          ],
+          "check": "Harshness doesn't increase disproportionately at high volume",
+          "solution": "If harsh at high volume, reduce 3-5kHz regardless of low-volume impression"
+        },
+        {
+          "ruleId": "HARSH-011",
+          "title": "Reference Track Comparison",
+          "severity": "low",
+          "description": "Compare your Hardcore settings to professionally mixed references",
+          "details": "Professional mixes rarely sound harsh. If your Hardcore-processed material sounds edgier than reference tracks, you have a harshness problem.",
+          "comparisonPoints": [
+            "Snare drum attack - crisp but not painful",
+            "Vocal clarity - present but not grating",
+            "Guitar chords - bright but not 'ice-picky'",
+            "Overall mix - engaging but not fatiguing"
+          ],
+          "check": "Your processed material matches professional harshness level",
+          "solution": "Reduce Master EQ 3-5kHz range until harshness matches reference"
+        }
+      ],
+      "harshnessTroubleshooting": {
+        "harshDrums": "Reduce 3kHz (Band 6), Use Cabinet 2 or 4, Lower Distortion Tone",
+        "harshVocals": "Cut 2-5kHz pre-distortion, Use Cabinet 2, Reduce Drive",
+        "harshGuitars": "Check multiple distortion stacking, Reduce 3-4kHz, Darker cabinet",
+        "harshSynths": "Often source-related - high-pass or use Cabinet 5 for limitation"
+      },
+      "quickSafeSettings": {
+        "universalHarshnessReducer": {
+          "masterEQ": {
+            "band3": 0,
+            "band4": -1,
+            "band5": -2,
+            "band6": -3,
+            "band7": -2,
+            "band8": -1
+          },
+          "cabinet": 2,
+          "description": "Gentle presence reduction suitable for most sources"
+        }
+      }
+    },
+    "sibilance-safety": {
+      "plugin": "Hardcore",
+      "category": "Sibilance Safety Rules",
+      "dataSource": "IL-MAN",
+      "description": "Guidelines for controlling sibilance (harsh 's', 'sh', 't' sounds) when using Hardcore on vocals and bright sources",
+      "rules": [
+        {
+          "ruleId": "SIB-001",
+          "title": "Identify Sibilance Frequency Range",
+          "severity": "high",
+          "description": "Sibilance typically occurs between 5-10 kHz",
+          "details": "The 's', 'sh', 'ch', and 't' sounds contain strong energy in the 5-10kHz range. Hardcore's distortion and bright cabinets can exaggerate these frequencies.",
+          "frequencyRanges": {
+            "femaleVocals": "6-9 kHz",
+            "maleVocals": "5-8 kHz",
+            "drumCymbals": "8-12 kHz",
+            "hihats": "10-15 kHz"
+          },
+          "check": "Solo vocals and listen for harsh 's' sounds",
+          "solution": "Target 6-8kHz range on Master EQ Band 7 (6kHz) and Band 8 (12kHz)"
+        },
+        {
+          "ruleId": "SIB-002",
+          "title": "Use Caution with Bright Cabinets on Vocals",
+          "severity": "high",
+          "description": "Cabinet 1 (Bright/Modern) extends highs to 8kHz+",
+          "details": "Cabinet 1 has strong 3-5kHz presence and extended treble. Combined with distortion, this can make vocals painfully sibilant.",
+          "warning": "Cabinet 1 + High Distortion + Vocals = Sibilance risk",
+          "saferAlternatives": [
+            "Cabinet 2 (Vintage) - Natural high-end rolloff",
+            "Cabinet 3 (British) - Controlled 5-6kHz range",
+            "Cabinet 4 (American) - Balanced, extended but smooth"
+          ],
+          "check": "A/B test cabinet selection on vocal phrases with 's' sounds",
+          "solution": "Switch to darker cabinet or reduce high-end before cabinet"
+        },
+        {
+          "ruleId": "SIB-003",
+          "title": "Pre-Distortion EQ is Critical",
+          "severity": "high",
+          "description": "Distortion adds harmonics, exaggerating existing high frequencies",
+          "details": "If you distort a signal with existing sibilance, you create MORE sibilance through added harmonics. Use Stompbox EQ before Distortion to tame highs.",
+          "preDistortionStrategy": {
+            "highFreq": "Set to 8-10 kHz",
+            "highGain": "Cut -3 to -6 dB before distortion",
+            "reason": "Removes harshness before harmonic generation"
+          },
+          "check": "Distortion on/off comparison - does it exaggerate 's' sounds?",
+          "solution": "Enable Stompbox EQ before Distortion, cut 8-10kHz range"
+        },
+        {
+          "ruleId": "SIB-004",
+          "title": "Master EQ De-Essing",
+          "severity": "medium",
+          "description": "Use Master 8-band EQ for broad de-essing",
+          "details": "Band 7 (6kHz) and Band 8 (12kHz) control the sibilance range. Gentle cuts here can tame harshness without making vocals dull.",
+          "settings": {
+            "band7": "Cut -2 to -4 dB at 6 kHz",
+            "band8": "Cut -1 to -3 dB at 12 kHz",
+            "alternative": "Cut Band 6 (3kHz) by -2dB if sibilance is lower frequency"
+          },
+          "check": "Vocal 's' sounds are controlled but not lisping",
+          "caution": "Don't over-cut - vocals need presence and air"
+        },
+        {
+          "ruleId": "SIB-005",
+          "title": "Distortion Tone Control Strategy",
+          "severity": "medium",
+          "description": "Distortion Tone control affects sibilance generation",
+          "details": "Positive Tone values (+10 to +50) emphasize high frequencies, potentially creating sibilance even in clean sources.",
+          "saferSettings": {
+            "vocalProcessing": "Tone 0 to -10 (neutral to slightly dark)",
+            "drumProcessing": "Tone 0 to +10 (moderate brightness)",
+            "riskySetting": "Tone +30 to +50 on vocals"
+          },
+          "check": "Tone setting doesn't exaggerate 's' sounds",
+          "solution": "Reduce Tone setting or combine with high-frequency cuts"
+        },
+        {
+          "ruleId": "SIB-006",
+          "title": "Test with Sibilance-Rich Material",
+          "severity": "high",
+          "description": "Always test Hardcore settings with phrases containing 's', 'sh', 't'",
+          "details": "A setting that sounds great on 'oo' and 'ah' vowels may be painfully harsh on 'sassy sailors shoot ships'. Test comprehensively.",
+          "testPhrases": [
+            "She sells seashells by the seashore",
+            "Sassy sailors shoot ships",
+            "The sixth sheik's sixth sheep's sick",
+            "Tess tickles test tubes"
+          ],
+          "check": "All sibilant sounds are controlled, no single sound jumps out",
+          "solution": "Adjust settings until all phonemes sound balanced"
+        },
+        {
+          "ruleId": "SIB-007",
+          "title": "Post-Hardcore De-Esser Strategy",
+          "severity": "low",
+          "description": "Consider dedicated de-esser after Hardcore on vocal chain",
+          "details": "If Hardcore is essential for vocal character but creates sibilance, add a dedicated de-esser plugin after Hardcore in the chain.",
+          "chainPosition": "Source → Hardcore → De-Esser → Rest of chain",
+          "settings": {
+            "frequency": "6-8 kHz",
+            "reduction": "3-6 dB gentle reduction",
+            "threshold": "Just below peak sibilant levels"
+          },
+          "check": "De-esser catches what Hardcore exaggerates"
+        },
+        {
+          "ruleId": "SIB-008",
+          "title": "Drum Cymbal and Hi-Hat Control",
+          "severity": "medium",
+          "description": "High-frequency drum elements also need sibilance management",
+          "details": "Cymbals and hi-hats contain sibilant-like energy in 8-15kHz range. Hardcore can make them harsh and splashy.",
+          "settings": {
+            "masterEQ": {
+              "band7": "Cut -2 to -3 dB at 6kHz (reduces harshness)",
+              "band8": "Cut -3 to -5 dB at 12kHz (tames splash)"
+            },
+            "cabinet": "Cabinet 2 (Vintage) or Cabinet 4 (American)"
+          },
+          "check": "Cymbals sound present but not painfully bright",
+          "solution": "Reduce treble in Master EQ or choose darker cabinet"
+        },
+        {
+          "ruleId": "SIB-009",
+          "title": "Mix Level Compensation",
+          "severity": "medium",
+          "description": "Sibilance issues often worsen at higher mix levels",
+          "details": "An effect that sounds balanced at 20% mix may expose sibilance at 50% mix. Always check at your intended blend level.",
+          "check": "Test at actual mix level you'll use in production",
+          "solution": "Adjust Hardcore settings at intended mix percentage"
+        },
+        {
+          "ruleId": "SIB-010",
+          "title": "Automation for Problem Sections",
+          "severity": "low",
+          "description": "Automate Hardcore settings for sibilant passages",
+          "details": "If only certain words are sibilant, automate the Master EQ or Tone controls to reduce highs during those moments.",
+          "automationTargets": [
+            "Master EQ Band 7 (increase cut during sibilance)",
+            "Distortion Tone (reduce to darker setting)",
+            "Cabinet Mix (reduce to blend in less cabinet high-end)"
+          ],
+          "check": "Sibilant sections are controlled without affecting rest of vocal",
+          "solution": "Create automation clips for sibilant words/phrases"
+        }
+      ],
+      "quickReference": {
+        "vocalSafeChain": [
+          "Stompbox EQ: Cut 8kHz -4dB (before distortion)",
+          "Distortion: Drive 30-40%, Tone 0 or negative",
+          "Master EQ: Cut 6kHz -2dB, Cut 12kHz -2dB",
+          "Cabinet: 2 (Vintage) or 4 (American)"
+        ],
+        "drumSafeChain": [
+          "Master EQ: Cut 6kHz -2dB, Cut 12kHz -3dB",
+          "Cabinet: 2 (Vintage) or 4 (American)",
+          "Consider: Less distortion on cymbal-heavy sections"
+        ]
+      }
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Hardcore\r\n\r\nThis section contains reference information for the hardcore plugin.\r\n"
+    }
+  }
+}

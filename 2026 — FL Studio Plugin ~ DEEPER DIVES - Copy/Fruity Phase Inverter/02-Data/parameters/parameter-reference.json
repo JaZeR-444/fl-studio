@@ -1,0 +1,77 @@
+{
+  "parameters": [
+    {
+      "name": "Invert Left",
+      "type": "toggle",
+      "default": "off",
+      "description": "Inverts the phase of the left audio channel",
+      "range": "on/off",
+      "impact": "Flips left channel waveform polarity",
+      "uses": [
+        "Fix phase issues in left channel",
+        "Create stereo phase effects",
+        "Part of mid-side processing"
+      ]
+    },
+    {
+      "name": "Invert Right",
+      "type": "toggle",
+      "default": "off",
+      "description": "Inverts the phase of the right audio channel",
+      "range": "on/off",
+      "impact": "Flips right channel waveform polarity",
+      "uses": [
+        "Fix phase issues in right channel",
+        "Create stereo phase effects",
+        "Part of mid-side processing"
+      ]
+    },
+    {
+      "name": "Swap L/R",
+      "type": "toggle",
+      "default": "off",
+      "description": "Exchanges left and right audio channels",
+      "range": "on/off",
+      "impact": "Swaps stereo image",
+      "uses": [
+        "Test for phase issues (if sound changes, phase problem exists)",
+        "Correct reversed stereo recordings",
+        "Creative stereo placement"
+      ]
+    }
+  ],
+  "combinations": [
+    {
+      "name": "Both Inverted",
+      "settings": {
+        "invertLeft": true,
+        "invertRight": true
+      },
+      "result": "Full polarity flip - sounds identical in isolation but affects phase when mixed with non-inverted signals"
+    },
+    {
+      "name": "Left Only Inverted",
+      "settings": {
+        "invertLeft": true,
+        "invertRight": false
+      },
+      "result": "Creates phase-based stereo effect, useful for stereo widening"
+    },
+    {
+      "name": "Right Only Inverted",
+      "settings": {
+        "invertLeft": false,
+        "invertRight": true
+      },
+      "result": "Creates phase-based stereo effect (opposite of left-only)"
+    },
+    {
+      "name": "Swap + Invert",
+      "settings": {
+        "swap": true,
+        "invertLeft": true
+      },
+      "result": "Complex stereo manipulation for advanced phase effects"
+    }
+  ]
+}

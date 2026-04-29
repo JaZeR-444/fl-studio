@@ -1,0 +1,628 @@
+{
+  "id": "vintage-chorus",
+  "name": "Vintage Chorus",
+  "category": "Modulation",
+  "tier": "Free",
+  "type": "Modulation",
+  "description": "Vintage Chorus - Modulation",
+  "tags": [
+    "specialized"
+  ],
+  "capabilities": [
+    "modulation",
+    "fx",
+    "audio"
+  ],
+  "icon": "/plugins/vintage-chorus-icon.svg",
+  "color": "#A855F7",
+  "version": "1.0",
+  "data_dir": "plugins\\vintage-chorus",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "vintage-chorus-params": {
+      "$schema": "./schema.json",
+      "plugin": {
+        "name": "Vintage Chorus",
+        "version": "1.x",
+        "category": "Effect",
+        "type": "BBD Chorus",
+        "emulates": "Roland Juno 6/60 Chorus",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Vintage%20Chorus.htm"
+      },
+      "parameters": {
+        "main": [
+          {
+            "id": "mode",
+            "name": "Mode",
+            "type": "selector",
+            "options": [
+              "I",
+              "II",
+              "I+II"
+            ],
+            "default": "I",
+            "description": "Chorus voice selection and stereo width",
+            "characteristics": {
+              "I": "Single chorus voice, subtle width",
+              "II": "Different chorus voice, medium depth",
+              "I+II": "Both voices combined, maximum stereo width"
+            },
+            "sweetSpot": "I+II for lush synth pads"
+          },
+          {
+            "id": "rate",
+            "name": "Rate",
+            "type": "slider",
+            "range": "0.1-10 Hz",
+            "unit": "Hz",
+            "default": "0.5 Hz",
+            "description": "LFO modulation speed",
+            "automatable": true,
+            "sweetSpot": "0.4-0.8 Hz for classic chorus, 1.5-3 Hz for vibrato"
+          },
+          {
+            "id": "depth",
+            "name": "Depth",
+            "type": "slider",
+            "range": "0-100%",
+            "unit": "%",
+            "default": "50%",
+            "description": "Modulation intensity",
+            "automatable": true,
+            "sweetSpot": "60-75% for Juno strings, 40-50% for subtle"
+          },
+          {
+            "id": "dryWet",
+            "name": "Dry/Wet",
+            "type": "slider",
+            "range": "0-100%",
+            "unit": "%",
+            "default": "50%",
+            "description": "Effect mix level",
+            "automatable": true,
+            "note": "80-90% for classic Juno, 30-50% for subtle enhancement"
+          }
+        ],
+        "bbd": [
+          {
+            "id": "clockRate",
+            "name": "BBD Clock Rate",
+            "type": "selector",
+            "options": [
+              "Low",
+              "Medium",
+              "High"
+            ],
+            "default": "Medium",
+            "description": "Bucket brigade delay quality simulation",
+            "characteristics": {
+              "Low": "Darker, warmer, more vintage character",
+              "Medium": "Balanced warmth and clarity",
+              "High": "Cleaner, brighter, less BBD character"
+            }
+          },
+          {
+            "id": "noise",
+            "name": "Noise",
+            "type": "slider",
+            "range": "0-100%",
+            "unit": "%",
+            "default": "20%",
+            "description": "Vintage BBD noise amount",
+            "note": "20-35% for authentic vintage, 0% for clean modern"
+          },
+          {
+            "id": "filtering",
+            "name": "Filtering",
+            "type": "toggle",
+            "range": "Off/On",
+            "default": "On",
+            "description": "BBD high-frequency roll-off simulation",
+            "note": "Enable for authentic vintage warmth"
+          }
+        ]
+      },
+      "stereoProcessing": {
+        "modeI": {
+          "width": "Narrow",
+          "voices": 1,
+          "monoCompatibility": "Excellent"
+        },
+        "modeII": {
+          "width": "Medium",
+          "voices": 1,
+          "monoCompatibility": "Good",
+          "difference": "Different modulation phase than Mode I"
+        },
+        "modeIPlusII": {
+          "width": "Maximum",
+          "voices": 2,
+          "monoCompatibility": "Fair",
+          "warning": "Check mono compatibility for broadcast/streaming"
+        }
+      },
+      "presetSettings": {
+        "classicJunoStrings": {
+          "mode": "I+II",
+          "rate": "0.5 Hz",
+          "depth": "70%",
+          "dryWet": "85%",
+          "clockRate": "Medium",
+          "noise": "30%",
+          "filtering": "On"
+        },
+        "subtleGuitar": {
+          "mode": "I",
+          "rate": "0.8 Hz",
+          "depth": "40%",
+          "dryWet": "30%",
+          "clockRate": "High",
+          "noise": "10%"
+        },
+        "modernClean": {
+          "mode": "I",
+          "rate": "1.0 Hz",
+          "depth": "35%",
+          "dryWet": "50%",
+          "clockRate": "High",
+          "noise": "0%",
+          "filtering": "Off"
+        },
+        "deepLush": {
+          "mode": "I+II",
+          "rate": "0.3 Hz",
+          "depth": "80%",
+          "dryWet": "90%",
+          "clockRate": "Low",
+          "noise": "40%"
+        }
+      },
+      "historicalReference": {
+        "hardware": "Roland Juno-60",
+        "technology": "Bucket Brigade Device (BBD)",
+        "era": "1982-1984",
+        "artists": [
+          "Depeche Mode",
+          "Human League",
+          "Vince Clarke",
+          "Underworld"
+        ],
+        "famousSounds": "Synth strings in 80s new wave and synth-pop"
+      },
+      "cpuUsage": "Low to Moderate",
+      "latency": "Minimal",
+      "realtimeSafe": true
+    }
+  },
+  "presets": {
+    "comprehensive-chorus-presets": {
+      "classicChorusPresets": {
+        "juno60Chorus": {
+          "rate": 4,
+          "depth": 75,
+          "delayTime": 20,
+          "voiceCount": 2,
+          "mix": 50,
+          "stereoWidth": 100,
+          "characteristic": "Roland Juno-60 style chorus"
+        },
+        "bossCe2": {
+          "rate": 3.5,
+          "depth": 65,
+          "delayTime": 15,
+          "voiceCount": 3,
+          "mix": 45,
+          "stereoWidth": 90,
+          "characteristic": "Boss CE-2 pedal emulation"
+        },
+        "mxrChorus": {
+          "rate": 5,
+          "depth": 80,
+          "delayTime": 25,
+          "voiceCount": 2,
+          "mix": 55,
+          "stereoWidth": 85,
+          "characteristic": "MXR analog chorus pedal"
+        }
+      },
+      "vocalPresets": {
+        "subtleVocal": {
+          "rate": 2.5,
+          "depth": 30,
+          "delayTime": 8,
+          "voiceCount": 2,
+          "mix": 20,
+          "stereoWidth": 60,
+          "preProcessing": "deEsser",
+          "description": "Gentle vocal enhancement for modern production"
+        },
+        "80sVocal": {
+          "rate": 6,
+          "depth": 70,
+          "delayTime": 18,
+          "voiceCount": 3,
+          "mix": 35,
+          "stereoWidth": 80,
+          "preProcessing": "compression",
+          "description": "Vintage 80s pop vocal style"
+        },
+        "broadwayChorus": {
+          "rate": 3.8,
+          "depth": 60,
+          "delayTime": 12,
+          "voiceCount": 4,
+          "mix": 40,
+          "stereoWidth": 100,
+          "preProcessing": "eq + compression",
+          "description": "Theatrical broadway vocal enhancement"
+        }
+      },
+      "guitarPresets": {
+        "cleanStrat": {
+          "rate": 4.5,
+          "depth": 50,
+          "delayTime": 22,
+          "voiceCount": 3,
+          "mix": 30,
+          "stereoWidth": 75,
+          "guitarType": "single-coil",
+          "description": "Stratocaster clean rhythm tone"
+        },
+        "leslieChorus": {
+          "rate": 6.2,
+          "depth": 85,
+          "delayTime": 30,
+          "voiceCount": 2,
+          "mix": 65,
+          "stereoWidth": 100,
+          "guitarType": "humbucker",
+          "description": "Rotating speaker Leslie effect"
+        },
+        "acousticEnhancement": {
+          "rate": 2.8,
+          "depth": 40,
+          "delayTime": 10,
+          "voiceCount": 2,
+          "mix": 25,
+          "stereoWidth": 60,
+          "guitarType": "acoustic",
+          "description": "Natural acoustic guitar enhancement"
+        }
+      },
+      "bassPresets": {
+        "bassThicken": {
+          "rate": 1.5,
+          "depth": 35,
+          "delayTime": 8,
+          "voiceCount": 2,
+          "mix": 20,
+          "stereoWidth": 50,
+          "bassType": "electric",
+          "description": "Subtle bass thickening without losing punch"
+        },
+        "synthBass": {
+          "rate": 4,
+          "depth": 60,
+          "delayTime": 15,
+          "voiceCount": 3,
+          "mix": 30,
+          "stereoWidth": 80,
+          "bassType": "synthesizer",
+          "description": "Classic analog synth bass character"
+        },
+        "uprightBass": {
+          "rate": 2.2,
+          "depth": 45,
+          "delayTime": 12,
+          "voiceCount": 2,
+          "mix": 25,
+          "stereoWidth": 40,
+          "bassType": "acoustic",
+          "description": "Upright bass natural enhancement"
+        }
+      },
+      "keyboardPresets": {
+        "rhodesChorus": {
+          "rate": 3.5,
+          "depth": 65,
+          "delayTime": 20,
+          "voiceCount": 3,
+          "mix": 50,
+          "stereoWidth": 90,
+          "instrumentType": "electric piano",
+          "description": "Rhodes piano classic chorus"
+        },
+        "wurlyChorus": {
+          "rate": 4.8,
+          "depth": 70,
+          "delayTime": 25,
+          "voiceCount": 2,
+          "mix": 60,
+          "stereoWidth": 85,
+          "instrumentType": "electric piano",
+          "description": "Wurlitzer electric piano chorus"
+        },
+        "organChorus": {
+          "rate": 5.5,
+          "depth": 75,
+          "delayTime": 18,
+          "voiceCount": 4,
+          "mix": 55,
+          "stereoWidth": 100,
+          "instrumentType": "hammond organ",
+          "description": "Hammond organ rotating speaker effect"
+        }
+      },
+      "drumPresets": {
+        "roomAmbience": {
+          "rate": 1.8,
+          "depth": 25,
+          "delayTime": 6,
+          "voiceCount": 2,
+          "mix": 15,
+          "stereoWidth": 70,
+          "drumType": "overheads",
+          "description": "Subtle drum room enhancement"
+        },
+        "snareThickness": {
+          "rate": 8,
+          "depth": 50,
+          "delayTime": 5,
+          "voiceCount": 2,
+          "mix": 20,
+          "stereoWidth": 60,
+          "drumType": "snare",
+          "description": "Snare drum thickening and movement"
+        },
+        "cymbalShimmer": {
+          "rate": 12,
+          "depth": 40,
+          "delayTime": 3,
+          "voiceCount": 3,
+          "mix": 25,
+          "stereoWidth": 100,
+          "drumType": "cymbals",
+          "description": "Cymbal shimmer and movement"
+        }
+      },
+      "experimentalPresets": {
+        "detuneDream": {
+          "rate": 0.8,
+          "depth": 15,
+          "delayTime": 40,
+          "voiceCount": 4,
+          "mix": 60,
+          "stereoWidth": 100,
+          "specialEffect": "slow detune for pads",
+          "description": "Ethereal pad detuning effect"
+        },
+        "vibratoHeavy": {
+          "rate": 8.5,
+          "depth": 100,
+          "delayTime": 2,
+          "voiceCount": 1,
+          "mix": 100,
+          "stereoWidth": 50,
+          "specialEffect": "extreme vibrato",
+          "description": "Heavy vibrato for creative effects"
+        },
+        "pitchDrift": {
+          "rate": 0.3,
+          "depth": 10,
+          "delayTime": 50,
+          "voiceCount": 2,
+          "mix": 40,
+          "stereoWidth": 80,
+          "specialEffect": "organic pitch drift",
+          "description": "Natural pitch drift for realism"
+        }
+      },
+      "genreSpecific": {
+        "newWave": {
+          "rate": 6.8,
+          "depth": 80,
+          "delayTime": 18,
+          "voiceCount": 3,
+          "mix": 65,
+          "stereoWidth": 90,
+          "genre": "new wave/synthpop",
+          "description": "1980s new wave synth chorus"
+        },
+        "shoegaze": {
+          "rate": 2.5,
+          "depth": 70,
+          "delayTime": 35,
+          "voiceCount": 4,
+          "mix": 75,
+          "stereoWidth": 100,
+          "genre": "shoegaze/dream pop",
+          "description": "Lush shoegaze guitar chorus"
+        },
+        "chillwave": {
+          "rate": 4.2,
+          "depth": 60,
+          "delayTime": 25,
+          "voiceCount": 3,
+          "mix": 55,
+          "stereoWidth": 95,
+          "genre": "chillwave/retro synth",
+          "description": "1980s synth pop chorus"
+        }
+      }
+    },
+    "genre-presets": {
+      "presetArchetypes": {
+        "subtleWidth": {
+          "description": "Adds gentle width for vocals and leads",
+          "settings": {
+            "rate": "0.15",
+            "depth": "0.2",
+            "dryWet": "0.25",
+            "sync": "Off",
+            "stereo": "50%"
+          },
+          "useCases": [
+            "hip-hop vocals",
+            "R&B leads",
+            "melodic hooks"
+          ],
+          "tags": [
+            "hip-hop/rap",
+            "R&B",
+            "subtle"
+          ]
+        },
+        "warmPad": {
+          "description": "Classic 80s warmth for synth pads",
+          "settings": {
+            "rate": "0.35",
+            "depth": "0.4",
+            "dryWet": "0.4",
+            "sync": "Off",
+            "stereo": "70%"
+          },
+          "useCases": [
+            "synth pads",
+            "moody backgrounds",
+            "electric textures"
+          ],
+          "tags": [
+            "moody",
+            "upbeat",
+            "80s vibe"
+          ]
+        },
+        "funkyRhythm": {
+          "description": "Tight rhythmic movement for guitars and keys",
+          "settings": {
+            "rate": "0.5",
+            "depth": "0.3",
+            "dryWet": "0.35",
+            "sync": "On",
+            "stereo": "60%"
+          },
+          "useCases": [
+            "rhythm guitars",
+            "funk keys",
+            "electric piano"
+          ],
+          "tags": [
+            "funky",
+            "electric",
+            "rhythmic"
+          ]
+        },
+        "deepBass": {
+          "description": "Ultra-subtle bass enhancement without mud",
+          "settings": {
+            "rate": "0.08",
+            "depth": "0.1",
+            "dryWet": "0.15",
+            "sync": "Off",
+            "stereo": "30%"
+          },
+          "useCases": [
+            "bass synths",
+            "808 subtones",
+            "deep bass EDM"
+          ],
+          "tags": [
+            "deep bass edm",
+            "bassy",
+            "subtle"
+          ]
+        }
+      },
+      "genreStartingPoints": {
+        "hipHop": {
+          "vocalWidth": {
+            "rate": 0.2,
+            "depth": 0.25,
+            "dryWet": 0.3
+          },
+          "melodicWidth": {
+            "rate": 0.25,
+            "depth": 0.35,
+            "dryWet": 0.35
+          },
+          "bassSubtle": {
+            "rate": 0.1,
+            "depth": 0.12,
+            "dryWet": 0.2
+          }
+        },
+        "rnb": {
+          "smoothWidth": {
+            "rate": 0.18,
+            "depth": 0.3,
+            "dryWet": 0.35
+          },
+          "pianoWidth": {
+            "rate": 0.3,
+            "depth": 0.4,
+            "dryWet": 0.4
+          },
+          "padDepth": {
+            "rate": 0.35,
+            "depth": 0.45,
+            "dryWet": 0.45
+          }
+        },
+        "deepBassEDM": {
+          "subEnhancement": {
+            "rate": 0.08,
+            "depth": 0.08,
+            "dryWet": 0.15
+          },
+          "bassTexturing": {
+            "rate": 0.12,
+            "depth": 0.15,
+            "dryWet": 0.25
+          }
+        }
+      }
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "concepts-and-best-uses": "# Concepts & Best Uses: Vintage Chorus\r\n\r\n## What It Is\r\nVintage Chorus is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Vintage Chorus\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n",
+      "what-is-vintage-chorus": "Tags: moody | hip-hop/rap | R&B\n\n## What Is Vintage Chorus?\n\nVintage Chorus is FL Studio's analog-modeled chorus effect that simulates the warm, lush modulation characteristics of classic 1970s and 1980s chorus units. Unlike digital choruses that can sound flat or synthetic, Vintage Chorus emulates the slight pitch fluctuations and delay time variations that occur in analog bucket-brigade device (BBD) circuits.\n\n### Why It Matters for Your Mix\n\n**Tone targets:**\n- **Moody:** Warm, dark, subtle movement that adds depth without drawing attention\n- **Upbeat:** Brighter, more pronounced modulation for energetic, funky textures\n- **Funky/Electric:** Tight, rhythmic movement that grooves with the beat\n\n**What it actually does:**\n- Splits your audio into two paths\n- Delays one path by 15-35ms (the \"modulated\" signal)\n- Applies slight pitch modulation (typically ±0.5-2 cents)\n- Blends the dry and modulated signals back together\n\n### How to Hear It\n\n1. Apply to a clean guitar or synth pad\n2. Start with Rate at 0, Depth at 50%\n3. Slowly increase Rate to about 0.3-0.5Hz\n4. Listen for the \"doubling\" effect—the sound seems to have width and movement\n5. Increase Depth to hear more pronounced pitch shifting\n\n### Typical Mistakes\n\n| Mistake | What It Sounds Like | Fix |\n|---------|---------------------|-----|\n| Rate too fast | Vibrato effect, unnatural wobble | Lower Rate to 0.1-0.4Hz |\n| Depth too high | Detuned, out-of-tune feeling | Keep Depth under 40% for subtle effect |\n| No dry signal | Phasey, hollow sound | Maintain 30-50% Dry/Wet balance |\n| Overuse on bass | Muddiness, lost low-end clarity | Use sparingly on sub-bass, avoid on fundamental bass |\n\n### What to Adjust First\n\n**For hip-hop/R&B:** Start with Rate at 0.2Hz, Depth at 25%, Dry/Wet at 30%. This adds subtle width to vocals and synths without coloring the low-end.\n\n**For deep bass EDM:** Use Rate at 0.1-0.15Hz with very light Depth (10-15%) on bass synths. Never apply to 808s or sub-bass frequencies.\n\n**For moody pads:** Crank Rate to 0.4-0.6Hz with Depth at 40-50% for that lush, psychedelic 80s texture.\n"
+    },
+    "Quick-Reference": {
+      "parameter-cheat-sheet": "# Vintage Chorus - Parameter Cheat Sheet\n\n**Plugin Type:** BBD Chorus Effect\n**Category:** Modulation / Time-Based Effect\n**Emulates:** Roland Juno 6/60 Chorus\n**Official Manual:** [Vintage Chorus](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Vintage%20Chorus.htm)\n\n---\n\n## Main Parameters\n\n| Parameter | Range | Function | Quick Tip |\n|-----------|-------|----------|-----------|\n| **Mode** | I / II / I+II | Chorus intensity modes | I = subtle, II = deeper, I+II = widest |\n| **Rate** | 0.1-10 Hz | LFO modulation speed | Slower = warmer, faster = vibrato |\n| **Depth** | 0-100% | Modulation intensity | Higher = more chorus movement |\n| **Dry/Wet** | 0-100% | Effect mix level | 50% for classic chorus, 100% for special effects |\n\n---\n\n## BBD Character Controls\n\n| Parameter | Range | Function | When to Use |\n|-----------|-------|----------|-------------|\n| **BBD Clock Rate** | Low/Medium/High | Bucket brigade delay quality | Lower = darker/warmer, Higher = cleaner |\n| **Noise** | 0-100% | Vintage BBD noise amount | Add for authenticity, reduce for clean modern sound |\n| **Filtering** | Off/On | BBD high-frequency roll-off | Enable for authentic vintage character |\n\n---\n\n## Chorus Modes Explained\n\n| Mode | Description | Sound Character | Best For |\n|------|-------------|-----------------|----------|\n| **I** | Single chorus voice | Subtle thickness, narrow stereo | Subtle enhancement, mono compatibility |\n| **II** | Different chorus voice | Deeper modulation, medium stereo | Richer chorus effect |\n| **I+II** | Both voices combined | Widest stereo image, lush | Synth pads, guitars, maximum width |\n\n---\n\n## Quick Start Presets\n\n| Use Case | Settings |\n|----------|----------|\n| **Classic Synth Pad** | Mode: I+II, Rate: 0.5 Hz, Depth: 60%, Dry/Wet: 70% |\n| **Subtle Guitar** | Mode: I, Rate: 0.8 Hz, Depth: 40%, Dry/Wet: 30% |\n| **80s Synth Bass** | Mode: II, Rate: 1.2 Hz, Depth: 50%, Dry/Wet: 50% |\n| **Juno String** | Mode: I+II, Rate: 0.4 Hz, Depth: 70%, Dry/Wet: 80% |\n| **Modern Clean** | Mode: I, Rate: 1.0 Hz, Depth: 30%, Noise: 0% |\n\n---\n\n## BBD Technology Emulation\n\n### What is BBD?\n- **Bucket Brigade Device:** Analog delay technology\n- **Character:** Warm, slightly noisy, bandwidth-limited\n- **Famous Examples:** Boss CE-1, Roland Juno series, Electro-Harmonix Small Clone\n\n### Emulation Features\n- **Clock Rate:** Simulates BBD chip clock frequency\n- **Noise:** Replicates characteristic BBD hiss\n- **Filtering:** Models BBD bandwidth limitations\n- **Modulation:** Authentic LFO characteristics\n\n---\n\n## Rate (Speed) Guide\n\n| Hz Range | Musical Effect | Application |\n|----------|----------------|-------------|\n| **0.1-0.3 Hz** | Very slow swirl | Ambient pads, evolving textures |\n| **0.4-0.8 Hz** | Classic chorus speed | Synth strings, warm pads |\n| **0.9-1.5 Hz** | Medium chorus | General purpose, 80s sounds |\n| **1.6-3.0 Hz** | Fast chorus | Bright guitars, modern synths |\n| **3.0+ Hz** | Vibrato territory | Special effects, shimmer |\n\n---\n\n## Depth (Intensity) Guide\n\n| Depth % | Character | Use Case |\n|---------|-----------|----------|\n| **0-20%** | Barely noticeable | Subtle thickening |\n| **20-40%** | Mild chorus | Natural enhancement |\n| **40-60%** | Classic chorus | Standard sweet spot |\n| **60-80%** | Deep chorus | Lush, obvious effect |\n| **80-100%** | Extreme modulation | Special FX, vibrato |\n\n---\n\n## Stereo Width Control\n\nThe chorus effect creates stereo width through phase-shifted modulation:\n\n- **Mode I:** Narrow width, centered\n- **Mode II:** Medium width\n- **Mode I+II:** Maximum width, dual-voice spread\n\n**Tip:** Check mono compatibility when using I+II mode\n\n---\n\n## Routing Strategies\n\n### Insert Effect (Direct)\n- Place on synth/guitar track\n- Use moderate Dry/Wet (30-70%)\n- Best for individual instrument processing\n\n### Send Effect (Parallel)\n- Place on send track\n- Use 100% Wet\n- Control intensity via send level\n- Preserves dry signal clarity\n\n### Bus Processing\n- Apply to group of instruments\n- Unifies multiple elements\n- Creates cohesive ensemble sound\n\n---\n\n## Genre Applications\n\n| Genre | Typical Settings |\n|-------|------------------|\n| **Synthwave/80s** | Mode: I+II, Rate: 0.5 Hz, Depth: 70%, High Noise |\n| **Ambient** | Mode: I+II, Rate: 0.2 Hz, Depth: 80%, Low Noise |\n| **Modern Pop** | Mode: I, Rate: 1.2 Hz, Depth: 40%, No Noise |\n| **Rock Guitar** | Mode: I, Rate: 0.8 Hz, Depth: 50%, Medium Noise |\n| **Trance Leads** | Mode: II, Rate: 1.5 Hz, Depth: 60%, No Noise |\n\n---\n\n## Juno Sound Recreation\n\n### Classic Juno String Sound\n1. **Start with:** Saw wave synth\n2. **Chorus Mode:** I+II\n3. **Rate:** 0.4-0.5 Hz (slow)\n4. **Depth:** 70%\n5. **Dry/Wet:** 80-90%\n6. **BBD:** Medium clock, some noise\n7. **Add:** Slight reverb after chorus\n\n### Juno Bass\n1. **Saw or square wave**\n2. **Mode:** II (deeper modulation)\n3. **Rate:** 1.0-1.5 Hz\n4. **Depth:** 50%\n5. **Dry/Wet:** 50%\n6. **Keep low end:** High-pass filter at 150Hz on chorus send\n\n---\n\n## Common Mistakes to Avoid\n\n1. **Too Much Depth:** Over 80% can sound unnatural and wobbly\n2. **Too Fast Rate:** Above 2.5 Hz sounds like vibrato, not chorus\n3. **Mono Source Only:** Chorus works best on already-stereo sources\n4. **Over-Processing:** Adding chorus to everything = muddy mix\n5. **Ignoring Mono Compatibility:** Always check how it sounds in mono\n\n---\n\n## Mixing Integration\n\n### Frequency Considerations\n- **Chorus Creates Movement:** Can cloud bass frequencies\n- **Solution:** High-pass filter chorus send at 200-300 Hz\n- **Alternative:** Use chorus only on mid/high frequencies\n\n### Stereo Placement\n- **Wide Chorus:** Push to sides with stereo enhancer\n- **Narrow Chorus:** Keep centered for focus\n- **Tip:** Pan dry signal center, chorus to sides\n\n### Volume Automation\n- **Verses:** Lower chorus (30-40% wet)\n- **Choruses:** Increase chorus (60-80% wet)\n- **Drops:** Full chorus for impact\n\n---\n\n## Stacking & Layering\n\n### Dual Chorus Setup\n- **Chorus 1:** Vintage Chorus (BBD character)\n- **Chorus 2:** Fruity Chorus (clean, digital)\n- **Result:** Hybrid vintage/modern character\n\n### Chorus + Other Effects\n\n**Before Chorus:**\n- Compression (evens out modulation)\n- EQ (shape tone before modulation)\n- Saturation (adds harmonics)\n\n**After Chorus:**\n- Reverb (smooths chorus tails)\n- Delay (rhythmic echo of chorus)\n- Limiter (control output)\n\n---\n\n## CPU & Performance\n\n- **CPU Usage:** Low to moderate\n- **Latency:** Minimal\n- **Realtime Safe:** Yes\n- **Oversampling:** None (analog-style processing)\n\n---\n\n## Automation Ideas\n\n1. **Depth Automation:** Increase during choruses/breakdowns\n2. **Rate Automation:** Slow down for dreamy sections\n3. **Dry/Wet Automation:** Build from dry to wet\n4. **Mode Switching:** Start with I, switch to I+II for width\n\n---\n\n## Comparison to Other Chorus Plugins\n\n| Plugin | Character | Use Case |\n|--------|-----------|----------|\n| **Vintage Chorus** | Warm BBD, Juno emulation | Vintage synths, authentic 80s |\n| **Fruity Chorus** | Clean digital | Modern production, clarity |\n| **Fruity Flanger** | Metallic, jet-plane | Aggressive modulation |\n| **Delay-Based Chorus** | Custom, flexible | Experimental chorus |\n\n---\n\n## Historical Context\n\n### Roland Juno Series\n- **Released:** 1982-1984\n- **Famous For:** Affordable polyphonic synth with chorus\n- **Artists:** Vince Clarke (Depeche Mode), Underworld, Aphex Twin\n- **Legacy:** Defining sound of 80s music\n\n### BBD Chips\n- **Manufacturer:** Originally by Matsushita/Panasonic (MN series)\n- **Function:** Analog delay via capacitor array\n- **Limitations:** Noise, bandwidth reduction, clock noise\n- **Character:** Warm, musical degradation\n\n---\n\n## Related Plugins\n\n- **Fruity Chorus** - Digital chorus for clean modulation\n- **Fruity Flanger** - Related modulation effect\n- **Vintage Phaser** - Companion vintage modulation\n- **Hyper Chorus** - Advanced chorus with more parameters\n\n---\n\n**Last Updated:** February 3, 2026\n**Status:** Complete reference material\n",
+      "quick-start-checklist": "# Quick Start Checklist: Vintage Chorus\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Vintage Chorus to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "quickstart-guide": "# Vintage Chorus Quick Start Guide\n\n## What is Vintage Chorus?\nVintage Chorus is a faithful recreation of classic analog chorus effects from the 1970s and 1980s, providing the warm, lush modulation that defined records from that era.\n\n## 5-Minute Setup\n1. Load Vintage Chorus on your instrument or vocal track\n2. Start with the \"Classic 80s\" preset\n3. Set rate to 3.5Hz for gentle movement\n4. Set depth to 50% for moderate chorus\n5. Adjust mix to 30% for subtle enhancement\n\n## Essential Controls\n- **Rate**: Speed of the modulation (0.1Hz - 10Hz)\n- **Depth**: Amount of pitch modulation\n- **Mix**: Balance between dry and wet signal\n- **Delay Time**: Base delay before modulation (classic choruses use 5-30ms)\n- **Voice Count**: Number of chorus voices (2-4)\n\n## Quick Settings\n- **Subtle Enhancement**: Rate 2Hz, Depth 25%, Mix 15%\n- **Classic 80s**: Rate 4Hz, Depth 60%, Mix 40%\n- **Thick Chorus**: Rate 6Hz, Depth 80%, Mix 60%\n- **Vibrato Effect**: Rate 5Hz, Depth 100%, Mix 100%\n\n## Pro Tips\n- Use slower rates for bass and pads\n- Faster rates work well on guitars and vocals\n- Keep mix under 40% for natural enhancement\n- Experiment with voice count for stereo width\n- Try different delay times for classic sounds",
+      "top-controls": "# Top Controls: Vintage Chorus\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Vintage Chorus\r\n\r\nThis section contains learning information for the vintage-chorus plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-context": {
+      "integration-guide": "# Vintage Chorus Integration Guide\n\n## DAW Integration Strategies\n\n### FL Studio Native Integration\n**Optimal Signal Flow**:\n```\nAudio Source → Vintage Chorus → Mixer Channel → Effects → Master\n```\n\n**Best Practices**:\n- Use on individual mixer channels for instrument-specific control\n- Create preset groups for different instruments\n- Utilize playlist automation for dynamic changes\n- Use Patcher for complex chorus routing\n\n**Patcher Integration**:\n- **Multi-Chorus Layering**: Multiple chorus instances\n- **Parameter Linking**: Synchronized parameter control\n- **MIDI Distribution**: Complex MIDI routing\n- **Effect Chain Management**: Built-in processing chain\n\n### Cross-DAW Compatibility\n**Plugin Format Support**:\n- **VST2**: Universal Windows/Linux compatibility\n- **VST3**: Enhanced performance and modern features\n- **AU**: macOS native format with Logic integration\n- **AAX**: Pro Tools professional integration\n\n**Migration Considerations**:\n- **Settings Transfer**: Cross-platform preset compatibility\n- **Automation Translation**: DAW-specific automation handling\n- **Workflow Adaptation**: Interface differences between DAWs\n- **Performance Optimization**: DAW-specific performance tips\n\n## Plugin Chain Integration\n\n### Classic Signal Chain Order\n**Traditional Chain**:\n```\nInstrument → Vintage Chorus → Delay → Reverb → EQ → Compression → Master\n```\n\n**Modern Chain**:\n```\nInstrument → EQ → Vintage Chorus → Stereo Enhancement → Reverb → Limiter\n```\n\n**Chain Positioning**:\n\n#### Pre-Effect Processing\n**Before Chorus**:\n- **Equalization**: Shape source before modulation\n- **Dynamics Control**: Compression before chorus\n- **Noise Reduction**: Clean signal preparation\n- **Saturation**: Add character before modulation\n\n#### Post-Effect Processing\n**After Chorus**:\n- **Spatial Effects**: Reverb, delay for space\n- **Stereo Enhancement**: Width processors\n- **Mastering**: EQ, limiting, compression\n- **Final Polish**: Harmonic excitement, tape emulation\n\n### Parallel Processing Configurations\n\n#### Send/Return Setup\n**Parallel Chorus**:\n```\nDry Signal → Master Bus\n                ↘\n                → Vintage Chorus → Return Bus → Master Bus\n```\n\n**Benefits**:\n- **Dry Signal Preservation**: Maintain original character\n- **Wet Signal Processing**: Process chorused signal separately\n- **Mix Control**: Independent dry/wet balance\n- **Creative Possibilities**: Different processing for wet signal\n\n#### Multi-Bus Configuration\n**Frequency-Specific Chorus**:\n- **Low Bus**: Bass-specific chorus settings\n- **Mid Bus**: Vocal/guitar chorus processing\n- **High Bus**: Percussion/cymbal enhancement\n- **Master Bus**: Final blend and control\n\n## Hardware Integration\n\n### MIDI Controller Setup\n**Recommended Controllers**:\n\n#### Keyboard Controllers\n```\nMod Wheel → Chorus Depth\nPitch Bend → Chorus Rate\nExpression Pedal → Chorus Mix\nSustain Pedal → Chorus Bypass\nFootswitch 1-4 → Preset Selection\n```\n\n#### Fader/Knob Controllers\n```\nFader 1 → Chorus Rate\nFader 2 → Chorus Depth\nFader 3 → Chorus Mix\nFader 4 → Delay Time\nKnob 1-4 → Voice Count, Stereo Width\n```\n\n### Audio Interface Integration\n**Connection Types**:\n- **Line Level**: Studio connections\n- **Instrument Level**: Direct guitar/bass connections\n- **Microphone Level**: Vocal recording setups\n- **Send/Return**: Effect loop integration\n\n**Optimization Settings**:\n- **Sample Rate**: 44.1kHz or higher for quality\n- **Buffer Size**: Balance latency and stability\n- **Clock Source**: Internal or external synchronization\n- **Gain Staging**: Optimal signal levels\n\n### External Hardware Chaining\n\n#### Vintage Hardware Integration\n**Analog Chain**:\n```\nVintage Chorus → Analog Compressor → Analog Reverb → Audio Interface\n```\n\n**Digital Integration**:\n```\nVintage Chorus (Plugin) → Hardware Effects → Audio Interface\n```\n\n**Benefits**:\n- **Analog Character**: Warmth from hardware\n- **Hybrid Processing**: Best of both worlds\n- **Hardware Knobs**: Tactile control\n- **Unique Algorithms**: Hardware-only processing\n\n## Software Integration\n\n### Third-Party Plugin Compatibility\n\n#### Complementary Effects\n**Stereo Enhancement**:\n- **Imagers**: Stereo wideners and spatial processors\n- **Mid/Side Processing**: Frequency-specific stereo control\n- **Haas Effect**: Stereo delay-based enhancement\n\n**Dynamic Processing**:\n- **Compressors**: Post-chorus dynamics control\n- **Expanders**: Add punch and presence\n- **Limiters**: Output protection and glue\n\n#### Creative Processing\n**Modulation Effects**:\n- **Phasers**: Complementary modulation types\n- **Flangers**: Similar but different character\n- **Vibrato**: Pure pitch modulation\n\n**Spatial Effects**:\n- **Reverbs**: Space and ambiance\n- **Delays**: Rhythmic complexity\n- **Echoes**: Vintage delay emulation\n\n### Max for Live Integration\n**Custom Interfaces**:\n- **Dedicated Chorus Controller**: Visual parameter control\n- **Preset Manager**: Advanced preset organization\n- **MIDI Learn**: Enhanced parameter mapping\n- **Performance Recorder**: Capture parameter automation\n\n**Advanced Features**:\n- **Randomization**: Generate unexpected settings\n- **Pattern Generation**: Automated parameter changes\n- **Data Visualization**: Real-time parameter display\n- **Remote Control**: Network-based parameter control\n\n## Workflow Optimization\n\n### Template Creation\n**Project Templates**:\n- **Instrument Templates**: Pre-configured chorus settings\n- **Genre Templates**: Genre-specific chain setup\n- **Performance Templates**: Live performance configurations\n- **Mixing Templates**: Final stage processing chains\n\n**Template Elements**:\n- **Pre-Configured Tracks**: Labeled and ready\n- **MIDI Routing**: Automatic MIDI assignments\n- **Effect Chains**: Basic processing setup\n- **Automation Templates**: Common automation patterns\n\n### Preset Management System\n**Organization Strategy**:\n- **By Instrument**: Separate folders for each instrument type\n- **By Genre**: Organized for different musical styles\n- **By Use Case**: Recording, live, creative categories\n- **By Project**: Song-specific preset collections\n\n**Backup and Sharing**:\n- **Cloud Storage**: Automatic preset backup\n- **Version Control**: Track preset evolution\n- **Export Formats**: Multiple format options\n- **Community Sharing**: Share and download presets\n\n## Advanced Integration Concepts\n\n### Multi-Instance Coordination\n**Parallel Processing**:\n- **Instance 1**: Low-frequency chorus\n- **Instance 2**: Mid-frequency chorus  \n- **Instance 3**: High-frequency chorus\n- **Master Control**: Synchronized parameter changes\n\n**Parameter Linking**:\n- **Global Rate**: All instances share LFO rate\n- **Depth Scaling**: Proportional depth changes\n- **Voice Coordination**: Synchronized voice count changes\n- **Mix Automation**: Coordinated mix control\n\n### External Control Integration\n\n#### OSC and Network Control\n**Network Capabilities**:\n- **Wi-Fi Control**: Tablet/smartphone control\n- **Web Interface**: Browser-based parameter control\n- **Remote Monitoring**: Real-time parameter display\n- **Collaborative Control**: Multiple operators\n\n#### Advanced MIDI Integration\n**MIDI Learn**:\n- **Automatic Detection**: Learn controller mapping automatically\n- **Custom Scaling**: Non-linear parameter mapping\n- **Conditional Logic**: If-then parameter relationships\n- **Layer Mapping**: Multiple controllers per parameter\n\n## Performance Optimization\n\n### CPU Management\n**Efficient Usage**:\n- **Instance Limiting**: Use minimum necessary instances\n- **Quality Settings**: Balance quality vs performance\n- **Bouncing**: Render completed tracks to audio\n- **Buffer Optimization**: Optimize for workflow needs\n\n**Memory Optimization**:\n- **Preset Caching**: Efficient preset loading\n- **Cache Management**: Clear unnecessary data\n- **Plugin Chain**: Efficient signal flow\n- **System Resources**: Optimize OS settings\n\n### Audio Quality Optimization\n**Signal Path Quality**:\n- **Gain Staging**: Proper level management\n- **Noise Floor**: Minimize noise at each stage\n- **Headroom**: Avoid clipping and distortion\n- **Dithering**: Proper bit depth conversion\n\n**Monitoring Setup**:\n- **Studio Monitors**: Accurate monitoring environment\n- **Headphone Monitoring**: Detailed listening\n- **Metering**: Visual level and frequency analysis\n- **A/B Testing**: Compare with/without chorus\n\n## Troubleshooting Integration Issues\n\n### Common Problems\n\n#### Plugin Loading Issues\n**Symptoms**: Plugin doesn't appear or load\n**Solutions**:\n1. Check installation path and permissions\n2. Verify plugin format compatibility\n3. Rescan plugin database in DAW\n4. Reinstall plugin if necessary\n5. Check for conflicting plugins\n\n#### Automation Problems\n**Symptoms**: Parameters not automating or responding\n**Solutions**:\n1. Verify parameter is automatable\n2. Check automation lane assignments\n3. Test with simple automation\n4. Check DAW automation settings\n5. Verify MIDI controller mappings\n\n#### Audio Issues\n**Symptoms**: No sound, distortion, glitches\n**Solutions**:\n1. Check signal chain routing\n2. Verify input levels and gain staging\n3. Check for clipping at any stage\n4. Test buffer size adjustments\n5. Update audio interface drivers\n\n### Performance Issues\n**CPU Overload**:\n- Reduce instance count\n- Optimize buffer settings\n- Disable unused parameters\n- Render to audio when possible\n\n**Latency Problems**:\n- Adjust buffer sizes\n- Check for software monitoring\n- Verify direct monitoring settings\n- Optimize system performance\n\n## Best Practices\n\n### Professional Workflow\n**Planning**:\n- Document chorus settings for each project\n- Create preset libraries for common uses\n- Plan effect chain before recording\n- Test settings before critical sessions\n\n**Execution**:\n- Use consistent gain staging\n- A/B test chorus settings\n- Monitor levels and artifacts\n- Save successful settings immediately\n\n### Creative Integration\n**Sound Design**:\n- Experiment with unconventional parameter settings\n- Layer multiple chorus types\n- Combine with other effects creatively\n- Document successful combinations\n\n**Performance**:\n- Map essential parameters to controllers\n- Create performance preset banks\n- Practice real-time parameter changes\n- Have backup equipment ready\n\n### Maintenance\n**Regular Updates**:\n- Keep plugin updated\n- Update DAW software\n- Maintain audio interface drivers\n- Update MIDI controller firmware\n\n**System Care**:\n- Regular system maintenance\n- Backup important presets\n- Monitor system performance\n- Clean up temporary files",
+      "live-performance": "# Vintage Chorus Live Performance Guide\n\n## Performance Setup Configuration\n\n### Essential Equipment Requirements\n**Core Equipment**:\n- Laptop with adequate CPU (8GB+ RAM recommended)\n- Professional audio interface (low latency)\n- MIDI controller for real-time parameter control\n- High-quality headphones or monitoring system\n- Backup power supply and essential cables\n\n**Enhanced Setup**:\n- Foot pedals for hands-free control\n- Tablet for preset management and control\n- Backup audio interface and cables\n- Power conditioning for stable performance\n\n### Controller Mapping for Live Use\n\n#### Essential Parameters to Map\n**Primary Controls**:\n- **Chorus Rate**: Speed of modulation (most crucial for live)\n- **Chorus Depth**: Amount of effect (intensity control)\n- **Mix Level**: Wet/dry balance (practical control)\n- **Bypass/Enable**: Turn effect on/off (essential)\n\n**Secondary Controls**:\n- **Delay Time**: Fine-tune chorus character\n- **Voice Count**: Change chorus thickness\n- **Stereo Width**: Adjust stereo imaging\n- **Preset Selection**: Quick preset switching\n\n#### Controller Types and Mappings\n\n**Foot Controller Setup**:\n```\nFootswitch 1: Chorus Bypass/Enable\nFootswitch 2: Preset Next\nFootswitch 3: Preset Previous  \nFootswitch 4: Tap Tempo (if supported)\nExpression Pedal: Chorus Depth\n```\n\n**MIDI Keyboard Mapping**:\n```\nMod Wheel: Chorus Rate\nPitch Bend: Chorus Mix\nAftertouch: Chorus Depth\nSustain: Chorus Bypass\nProgram Change: Preset Selection\n```\n\n## Live Performance Techniques\n\n### Real-Time Chorus Control\n\n#### Rate Modulation Techniques\n**Dynamic Rate Changes**:\n- **Slow to Fast**: Gradual acceleration for builds\n- **Fast to Slow**: Deceleration for breakdowns\n- **Rhythmic Changes**: Sync rate to song sections\n- **Random Variations**: Add organic feel to performances\n\n**Musical Rate Applications**:\n- **Verse**: Subtle rates (2-4Hz) for support\n- **Chorus**: Moderate rates (4-6Hz) for enhancement\n- **Bridge**: Increasing rates for tension building\n- **Solo**: Minimal rates to avoid interference\n\n#### Depth Control Strategies\n**Performance Depth Modulation**:\n- **Gentle Enhancement**: 20-40% for subtle support\n- **Moderate Effect**: 40-60% for presence\n- **Heavy Modulation**: 60-80% for dramatic sections\n- **Dynamic Control**: Real-time depth automation\n\n**Instrument-Specific Depth**:\n- **Vocals**: Keep low (15-30%) for natural sound\n- **Guitar**: Moderate (30-50%) for classic sounds\n- **Bass**: Very low (10-25%) to maintain punch\n- **Keyboards**: Variable (20-60%) depending on style\n\n### Set Structure Management\n\n#### Song Section Chorus Settings\n**Performance Mapping**:\n```json\n{\n  \"songStructure\": {\n    \"intro\": {\n      \"rate\": 2.5,\n      \"depth\": 25,\n      \"mix\": 20,\n      \"description\": \"Subtle support for opening\"\n    },\n    \"verse\": {\n      \"rate\": 3.5,\n      \"depth\": 40,\n      \"mix\": 30,\n      \"description\": \"Moderate enhancement for verses\"\n    },\n    \"preChorus\": {\n      \"rate\": 5.0,\n      \"depth\": 60,\n      \"mix\": 45,\n      \"description\": \"Building tension before chorus\"\n    },\n    \"chorus\": {\n      \"rate\": 6.5,\n      \"depth\": 75,\n      \"mix\": 55,\n      \"description\": \"Maximum effect for main section\"\n    },\n    \"bridge\": {\n      \"rate\": 4.0,\n      \"depth\": 50,\n      \"mix\": 40,\n      \"description\": \"Different character for bridge\"\n    },\n    \"outro\": {\n      \"rate\": 2.0,\n      \"depth\": 30,\n      \"mix\": 25,\n      \"description\": \"Fade out with subtle effect\"\n    }\n  }\n}\n```\n\n#### Genre-Specific Setups\n**Rock/Pop Performances**:\n- **Guitar Focus**: Medium rates, moderate depth\n- **Vocal Support**: Subtle enhancement, natural sound\n- **Dynamic Changes**: Automate chorus intensity with song energy\n\n**Electronic Music Sets**:\n- **Synth Enhancement**: Higher rates, tempo-synced\n- **Build-Ups**: Gradual rate and depth increases\n- **Drops**: Maximum chorus engagement\n- **Ambient Sections**: Slow, evolving modulation\n\n### Improvisation and Expression\n\n#### Real-Time Sound Manipulation\n**Expressive Techniques**:\n- **Rate Ramping**: Smooth transitions between rates\n- **Depth Swells**: Automated intensity changes\n- **Mix Morphing**: Blend between wet/dry signals\n- **Voice Switching**: Change chorus character live\n\n**Creative Performance Approaches**:\n- **Rhythmic Chorus**: Tap tempo for rhythmic effects\n- **Feedback Integration**: Combine with delay feedback\n- **Multi-Preset Morphing**: Crossfade between presets\n- **Parameter Locking**: Lock certain parameters while varying others\n\n### Multi-Instrument Performances\n\n#### Guitar Performance Setup\n**Electric Guitar Chain**:\n```\nGuitar → Wah → Distortion → Vintage Chorus → Delay → Reverb → Amp\n```\n\n**Performance Settings**:\n- **Clean Tones**: Subtle chorus for rhythm\n- **Lead Tones**: More pronounced chorus for solos\n- **Rhythm vs Lead**: Different presets for different roles\n- **Tap Tempo**: Sync chorus rate to song tempo\n\n#### Vocal Performance Setup\n**Vocal Chain Configuration**:\n```\nMicrophone → Preamp → EQ → Vintage Chorus → Reverb → PA System\n```\n\n**Vocal Chorus Strategies**:\n- **Lead Vocals**: Very subtle, mainly for mix enhancement\n- **Backing Vocals**: More pronounced chorus for stereo width\n- **Harmony Vocals**: Moderate chorus for blend\n- **Spoken Word**: Minimal chorus to maintain clarity\n\n## Advanced Live Applications\n\n### Multi-Chorus Layering\n**Parallel Processing**:\n- **Instance 1**: Subtle, slow chorus for foundation\n- **Instance 2**: Moderate, medium chorus for body\n- **Instance 3**: Heavy, fast chorus for accent\n- **Master Mix**: Controlled blend of all instances\n\n**Dynamic Layer Control**:\n- **Section Switching**: Different combinations for song sections\n- **Real-Time Blending**: Crossfade between combinations\n- **Automated Changes**: Programmed intensity variations\n- **Manual Override**: Take control during performance\n\n### Creative Performance Techniques\n\n#### Tempo-Synced Performance\n**Musical Applications**:\n- **Quarter Note Chorus**: Slow, sweeping modulation\n- **Eighth Note Chorus**: Medium, rhythmic movement\n- **Sixteenth Note Chorus**: Fast, intense modulation\n- **Triplet Chorus**: Swung, syncopated feel\n\n**Sync Strategies**:\n- **Tap Tempo**: Real-time tempo detection\n- **MIDI Clock**: External synchronization\n- **Host Sync**: DAW tempo following\n- **Manual Sync**: Visual tempo matching\n\n#### Experimental Performance\n**Creative Techniques**:\n- **Rate Modulation**: LFO controlling chorus rate\n- **Depth Randomization**: Random depth variations\n- **Feedback Integration**: Chorus feeding into itself\n- **Stereo Field Movement**: Dynamic stereo width changes\n\n## Troubleshooting Live Issues\n\n### Technical Problems\n\n#### Audio Issues\n**No Sound or Distorted Sound**:\n1. Check all audio connections\n2. Verify mixer gain staging\n3. Test bypass vs. engaged chorus\n4. Check for clipping at any stage\n5. Verify audio interface functionality\n\n**Clicks, Pops, or Glitches**:\n1. Increase audio interface buffer size\n2. Check CPU usage during performance\n3. Verify MIDI controller connections\n4. Test with simplified settings\n5. Restart audio interface if needed\n\n#### MIDI Controller Problems\n**Controller Not Responding**:\n1. Check MIDI cable connections\n2. Verify MIDI channel assignments\n3. Test with different controller if available\n4. Update MIDI controller firmware\n5. Re-learn parameter mappings\n\n**Mapping Issues**:\n1. Verify correct CC assignments\n2. Check controller range (0-127 vs. 0-16383)\n3. Test with simple automation\n4. Reset and re-learn if necessary\n5. Document working mappings for future\n\n### Creative Problems\n\n#### Chorus Sounds Unnatural\n**Solutions**:\n- Reduce depth for more natural sound\n- Lower rate to avoid obvious modulation\n- Adjust mix to blend better with dry signal\n- Try different voice configurations\n- Use instrument-specific presets\n\n#### Performance Fatigue\n**Mental Fatigue Solutions**:\n- Simplify control assignments\n- Use preset changes rather than continuous control\n- Take breaks between long performances\n- Have backup simpler setup ready\n\n**Physical Fatigue Solutions**:\n- Use ergonomic controller setup\n- Map most-used parameters to easily accessible controls\n- Use foot pedals for frequently used functions\n- Maintain comfortable playing posture\n\n## Preparation and Practice\n\n### Pre-Performance Setup\n**Equipment Check**:\n- [ ] Audio interface connected and tested\n- [ ] MIDI controllers mapped and working\n- [ ] Presets organized and loaded\n- [ ] Backup equipment available and tested\n- [ ] Monitor levels set appropriately\n- [ ] Power conditioning system connected\n\n**Technical Preparation**:\n- [ ] System optimized for performance\n- [ ] Background processes disabled\n- [ ] Power management configured\n- [ ] All drivers updated\n- [ ] Backup power sources ready\n\n### Practice Techniques\n\n#### Skill Development\n**Parameter Control Practice**:\n- Practice smooth rate and depth changes\n- Master preset switching without disrupting flow\n- Develop muscle memory for controller layout\n- Practice troubleshooting while continuing performance\n\n**Performance Rehearsal**:\n- Practice entire set with all changes\n- Test transitions between songs and sections\n- Verify equipment works under performance conditions\n- Practice emergency procedures\n\n#### Set Design Practice\n**Structural Planning**:\n- Map chorus intensity to song dynamics\n- Plan preset changes for smooth transitions\n- Design control flow for intuitive operation\n- Prepare backup plans for equipment failures\n\n## Professional Best Practices\n\n### Set Management\n\n#### Energy Planning\n- **Dynamic Arc**: Plan chorus intensity throughout performance\n- **Audience Engagement**: Adjust for crowd response\n- **Song Flow**: Smooth transitions between songs\n- **Peak Moments**: Maximum effect for impact points\n\n#### Repertoire Organization\n- **Preset Banks**: Organized by song or set section\n- **Quick Access**: Frequently used presets easily reachable\n- **Backup Plans**: Alternative settings for each song\n- **Documentation**: Notes on successful settings\n\n### Technical Excellence\n\n#### Reliability Measures\n- **Equipment Redundancy**: Critical systems doubled\n- **Backup Configuration**: Quick switch to simple setup\n- **Testing Protocol**: Thorough pre-show verification\n- **Emergency Procedures**: Clear action plans for failures\n\n#### Performance Optimization\n- **Buffer Management**: Balance latency and stability\n- **CPU Monitoring**: Watch system performance\n- **Audio Quality**: Maintain consistent monitoring\n- **Adaptability**: Adjust to venue acoustics\n\n### Post-Performance\n\n#### Review and Documentation\n- **Performance Notes**: Record what worked and didn't\n- **Settings Archive**: Save successful configurations\n- **Equipment Notes**: Document any issues or needs\n- **Improvement Planning**: Plan adjustments for next performance\n\n#### Maintenance Routine\n- **Equipment Check**: Inspect all gear after performance\n- **Software Updates**: Update plugins and drivers\n- **Backup Verification**: Verify all settings are backed up\n- **Skill Development**: Plan practice based on performance experience",
+      "troubleshooting-workflows": "# Vintage Chorus Troubleshooting Guide\n\n## Sound Issues\n\n### No Chorus Effect\n**Causes**:\n- Mix knob at 0%\n- Plugin bypassed\n- No input signal\n- Wrong routing in mixer\n\n**Solutions**:\n1. Increase mix to at least 20%\n2. Disable plugin bypass\n3. Verify signal reaching the plugin\n4. Check mixer routing and send levels\n\n### Chorus Sounds Too Thin or Weak\n**Causes**:\n- Depth too low\n- Rate too slow\n- Insufficient voice count\n- Delay time too short\n\n**Solutions**:\n1. Increase depth to 40-70%\n2. Set rate to 3-6Hz for movement\n3. Increase voice count to 3-4 voices\n4. Adjust delay time to 10-30ms\n\n### Chorus Creates Unwanted Pitch Detune\n**Causes**:\n- Depth too high\n- Rate too fast\n- Mix too wet\n- Extreme delay settings\n\n**Solutions**:\n1. Reduce depth below 60%\n2. Set rate to 2-4Hz for natural movement\n3. Balance mix to 30-50% wet\n4. Use moderate delay times (10-25ms)\n\n## Performance Issues\n\n### Audio Glitches and Artifacts\n**Causes**:\n- CPU overload\n- Low buffer size\n- Multiple chorus instances\n- Extreme parameter settings\n\n**Solutions**:\n1. Reduce buffer size or disable other plugins\n2. Increase audio buffer to 256-512 samples\n3. Limit to 1-2 chorus instances\n4. Use moderate parameter settings\n\n### High CPU Usage\n**Causes**:\n- Multiple voices\n- High sample rates\n- Complex delay settings\n- Additional processing\n\n**Solutions**:\n1. Reduce voice count to 2\n2. Use lower sample rates when possible\n3. Use simpler delay configurations\n4. Freeze tracks when possible\n\n### Timing and Synchronization Problems\n**Causes**:\n- Wrong tempo sync settings\n- LFO drift issues\n- Host timing problems\n- Buffer compensation errors\n\n**Solutions**:\n1. Enable host tempo sync\n2. Check synchronization settings\n3. Verify DAW timing\n4. Adjust PDC compensation\n\n## Creative Problems\n\n### Can't Get Classic 80s Sound\n**Solutions**:\n- Use 4-6Hz rate for authentic character\n- Set depth to 60-80% for that era's sound\n- Try 3-voice configuration\n- Use 15-25ms delay times\n- Mix around 40-50% for presence\n\n### Chorus Makes Mix Muddy\n**Causes**:\n- Too much wet signal\n- Low frequencies being modulated\n- Multiple modulation sources\n- Poor source signal quality\n\n**Solutions**:\n1. Reduce mix to 20-30%\n2. Add high-pass filter before chorus\n3. Check for other LFO sources\n4. Improve source recording quality\n\n### Stereo Image Problems\n**Issues**:\n- Mono chorus sound\n- Unbalanced stereo field\n- Phase cancellation\n- Weak stereo width\n\n**Solutions**:\n1. Ensure 3-4 voice mode for stereo\n2. Check stereo output routing\n3. Verify proper signal chain\n4. Use stereo widening techniques\n\n## Integration Issues\n\n### Plugin Not Loading or Responding\n**Causes**:\n- Installation corruption\n- Version incompatibility\n- Plugin path issues\n- System conflicts\n\n**Solutions**:\n1. Reinstall plugin completely\n2. Check DAW compatibility\n3. Verify installation directory\n4. Disable conflicting plugins\n\n### Automation Not Working\n**Causes**:\n- Parameters not automatable\n- Automation disabled\n- Wrong track mapping\n- DAW-specific issues\n\n**Solutions**:\n1. Check which parameters can be automated\n2. Enable automation in DAW\n3. Verify correct automation lanes\n4. Test with simple automation curves\n\n### MIDI Controller Problems\n**Issues**:\n- Controller not detected\n- Parameter mapping incorrect\n- MIDI channel conflicts\n- Controller firmware issues\n\n**Solutions**:\n1. Check MIDI connections and drivers\n2. Re-learn parameter assignments\n3. Verify MIDI channel settings\n4. Update controller firmware\n\n## Instrument-Specific Issues\n\n### Guitar Chorus Problems\n**Common Issues**:\n- Chorus sounds artificial on guitar\n- Too much pitch wobble\n- Loss of attack clarity\n- Poor sustain characteristics\n\n**Solutions**:\n1. Use slower rates (2-4Hz)\n2. Reduce depth for natural sound\n3. Add compression after chorus\n4. Experiment with delay times\n\n### Vocal Chorus Issues\n**Common Problems**:\n- Vocals sound processed\n- Sibilance enhancement\n- Loss of intimacy\n- Unnatural movement\n\n**Solutions**:\n1. Keep mix low (15-25%)\n2. Use subtle depth (30-50%)\n3. Apply de-essing before chorus\n4. Use slower rates (1.5-3Hz)\n\n### Bass Chorus Issues\n**Common Issues**:\n- Low-frequency modulation sounds unnatural\n- Bass loses punch\n- Muddy low end\n- Pitch instability\n\n**Solutions**:\n1. Use very slow rates (0.5-2Hz)\n2. Limit depth to 20-40%\n3. Add high-pass filter after chorus\n4. Use shorter delay times\n\n## Advanced Troubleshooting\n\n### Complex Signal Chain Issues\n**Multi-Effect Problems**:\n- Chorus conflicts with other modulation\n- Phase cancellation between effects\n- Gain staging problems\n- Frequency masking issues\n\n**Diagnostic Steps**:\n1. Test chorus in isolation\n2. Add effects one at a time\n3. Check gain structure\n4. Analyze frequency spectrum\n\n### Environmental and System Issues\n**System Performance**:\n- Background processes affecting performance\n- Driver compatibility problems\n- Hardware limitations\n- Operating system conflicts\n\n**Optimization Steps**:\n1. Disable unnecessary background applications\n2. Update audio drivers\n3. Check hardware specifications\n4. Optimize OS for audio\n\n### Quality Assurance\n**Sound Quality Verification**:\n- A/B test with bypass\n- Check on multiple monitoring systems\n- Verify at different volume levels\n- Test with various source material\n\n**Reference Comparisons**:\n- Compare with classic chorus units\n- Reference iconic recordings\n- Use test signals for analysis\n- Document successful settings"
+    },
+    "by-goal": {
+      "advanced-chorus-techniques": "# Advanced Vintage Chorus Techniques\n\n## Classic Emulation Mastery\n\n### Reproducing Iconic Chorus Units\n\n#### Roland Juno-60 Chorus\n**Technical Characteristics**:\n- **LFO Rate**: 4-6Hz triangle wave\n- **Delay Structure**: 20-30ms multi-tap delay\n- **Voice Configuration**: 2 voice stereo\n- **Modulation Depth**: Moderate (60-80%)\n- **Stereo Imaging**: Natural width enhancement\n\n**Recreation Steps**:\n1. Set rate to 4.5Hz using triangle LFO\n2. Configure delay time to 25ms\n3. Use 2-voice configuration with slight detuning\n4. Set depth to 70% for authentic character\n5. Apply subtle high-frequency roll-off\n\n#### Boss CE-2 Chorus Pedal\n**Technical Analysis**:\n- **Circuit Type**: Analog BBD (Bucket Brigade Device)\n- **Rate Range**: 0.5-8Hz\n- **Delay Time**: 10-20ms\n- **Voice Count**: 2 voice stereo\n- **Character**: Warm, slightly metallic\n\n**Emulation Parameters**:\n```json\n{\n  \"emulation\": {\n    \"rate\": 3.5,\n    \"depth\": 65,\n    \"delayTime\": 15,\n    \"voiceCount\": 2,\n    \"mix\": 45,\n    \"bbdCharacteristics\": {\n      \"clockNoise\": 5,\n      \"frequencyResponse\": \"warm\",\n      \"saturation\": \"subtle\"\n    }\n  }\n}\n```\n\n### BBD vs Digital Chorus\n\n#### Bucket Brigade Device Characteristics\n**Analog BBD Features**:\n- **Clock Noise**: Subtle high-frequency artifacts\n- **Frequency Response**: Natural roll-off above 8kHz\n- **Distortion**: Gentle saturation at high depths\n- **Drift**: Slight timing variations\n\n**Implementation Techniques**:\n1. Add subtle noise generator for clock artifacts\n2. Use gentle high-frequency roll-off\n3. Include soft saturation in signal path\n4. Implement slight random timing drift\n\n#### Modern Digital Enhancements\n**Digital Advantages**:\n- **Clean Signal**: No clock noise or degradation\n- **Precise Timing**: Accurate delay and modulation\n- **Extended Features**: More voice counts, tap tempo\n- **Noise-Free**: Signal purity\n\n**Hybrid Approaches**:\n- Combine analog modeling with digital clarity\n- Add noise as optional character element\n- Use high-quality oversampling\n- Maintain analog frequency response curves\n\n## Advanced Modulation Techniques\n\n### Complex LFO Programming\n\n#### Multi-LFO Configurations\n**Dual LFO System**:\n- **LFO1**: Primary rate modulation (0.1-10Hz)\n- **LFO2**: Depth and character modulation (0.05-2Hz)\n- **Cross-Modulation**: LFO2 modulates LFO1 rate\n- **Synchronization**: Both LFOs syncable to host\n\n**Advanced Waveforms**:\n- **Asymmetric Waves**: Different rise/fall times\n- **Randomized Waveforms**: Controlled chaos\n- **Stepped Waves**: Digital-style modulation\n- **Custom Waveforms**: User-drawn LFO shapes\n\n#### tempo-Synchronized Modulation\n**Musical Time Divisions**:\n- **Whole Note**: Slow, evolving modulation\n- **Quarter Note**: Moderate rhythmic movement\n- **Eighth Note**: Faster rhythmic pulsing\n- **Sixteenth Note**: Fast, intense movement\n\n**Sync Strategies**:\n- **Tap Tempo**: Real-time tempo detection\n- **MIDI Clock**: External synchronization\n- **Host Sync**: DAW tempo following\n- **Free Running**: Independent timing\n\n### Voice Management\n\n#### Voice Count Optimization\n**Single Voice**:\n- **Character**: Pure, focused modulation\n- **CPU Usage**: Minimal\n- **Applications**: Subtle enhancement, mono sources\n- **Stereo Image**: Natural from delay panning\n\n**Multi-Voice Configurations**:\n- **2 Voice**: Classic stereo chorus\n- **3 Voice**: Thick, rich chorus\n- **4 Voice**: Maximum width and complexity\n- **8 Voice**: Extreme effects (if supported)\n\n#### Voice Distribution\n**Stereo Voice Placement**:\n- **Left-Right**: Hard pan separation\n- **Center-Side**: Mid-side configuration\n- **Rotating**: Movement across stereo field\n- **Random**: Dynamic stereo placement\n\n**Voice Detuning**:\n- **Frequency Spread**: Voice frequency variation\n- **Phase Relationship**: Voice phase differences\n- **Amplitude Balance**: Voice level matching\n- **Evolution**: Dynamic detuning changes\n\n## Creative Sound Design\n\n### Instrument-Specific Techniques\n\n#### Guitar Chorus Design\n**Electric Guitar Considerations**:\n- **Pickup Type**: Single-coil vs humbucker\n- **Playing Style**: Clean vs distorted tones\n- **Genre Requirements**: Blues, rock, jazz needs\n- **Signal Chain**: Pre- vs post-distortion\n\n**Configuration Strategies**:\n```json\n{\n  \"guitarChorus\": {\n    \"cleanStrat\": {\n      \"rate\": 4.5,\n      \"depth\": 50,\n      \"delayTime\": 22,\n      \"voiceCount\": 2,\n      \"mix\": 30\n    },\n    \"rock Humbucker\": {\n      \"rate\": 3.8,\n      \"depth\": 60,\n      \"delayTime\": 18,\n      \"voiceCount\": 3,\n      \"mix\": 40\n    }\n  }\n}\n```\n\n#### Vocal Processing\n**Vocal Enhancement Goals**:\n- **Natural Movement**: Subtle pitch variation\n- **Presence Enhancement**: Without artificial quality\n- **Genre Appropriateness**: Pop, rock, classical styles\n- **Sibilance Control**: Avoid enhancing harsh frequencies\n\n**Vocal Chorus Strategies**:\n1. Use lower rates (1.5-3Hz) for natural sound\n2. Limit depth to 20-40% to avoid processing artifacts\n3. Apply de-essing before chorus\n4. Use higher voice counts for backing vocals\n5. Keep mix low for lead vocals (15-25%)\n\n#### Keyboard and Synth Applications\n**Electric Piano Enhancement**:\n- **Rhodes Character**: Warm, soulful chorus\n- **Wurlitzer**: Slightly brighter, more movement\n- **Acoustic Piano**: Very subtle enhancement\n- **Synth Leads**: More intense, rhythmic modulation\n\n**Synthesizer Integration**:\n- **Pre-Filter Chorus**: Modulates oscillator pitch\n- **Post-Filter Chorus**: Modulates filtered signal\n- **Parallel Processing**: Wet/dry signal mixing\n- **Series Processing**: Chorus into other effects\n\n### Genre-Specific Applications\n\n#### Pop Music Chorus\n**Contemporary Pop**:\n- **Subtle Enhancement**: 15-30% mix\n- **Smooth Movement**: 2-4Hz rates\n- **Vocal Focus**: Natural, not processed\n- **Stereo Width**: Controlled enhancement\n\n**80s Pop Revival**:\n- **Heavy Chorus**: 50-70% mix\n- **Fast Movement**: 5-8Hz rates\n- **Multiple Voices**: 3-4 voice configurations\n- **Bright Character**: Enhanced high frequencies\n\n#### Rock and Alternative\n**Rock Guitar**:\n- **Medium Enhancement**: 30-50% mix\n- **Moderate Movement**: 3-6Hz rates\n- **Distortion Friendly**: Post-distortion placement\n- **Punch Maintenance**: Preserve attack\n\n**Alternative Textures**:\n- **Experimental Settings**: Unusual rate/depth combos\n- **Feedback Integration**: Chorus into feedback\n- **Modulation Stacking**: Multiple modulation sources\n- **Atmospheric Effects**: Long delay times\n\n#### Electronic Music\n**EDM Applications**:\n- **Rhythmic Chorus**: Tempo-synced rates\n- **Build-Ups**: Automated parameter changes\n- **Drop Effects**: Sudden chorus engagement\n- **Stereo Enhancement**: Maximum width\n\n**Ambient and Chillwave**:\n- **Slow Evolution**: Very low rates\n- **Deep Modulation**: High depth settings\n- **Long Delays**: Extended delay times\n- **Layer Complexity**: Multiple instances\n\n## Performance Techniques\n\n### Real-Time Control\n\n#### MIDI Controller Mapping\n**Essential Parameters**:\n```json\n{\n  \"midiMapping\": {\n    \"CC1\": \"rate\",\n    \"CC2\": \"depth\",\n    \"CC3\": \"delayTime\",\n    \"CC4\": \"mix\",\n    \"CC5\": \"voiceCount\",\n    \"CC7\": \"stereoWidth\"\n  }\n}\n```\n\n**Advanced Control**:\n- **Expression Pedal**: Real-time depth control\n- **Mod Wheel**: Rate modulation\n- **Footswitches**: Preset switching\n- **Aftertouch**: Dynamic parameter changes\n\n#### Performance Strategies\n**Live Setup**:\n- **Preset Organization**: Song-specific settings\n- **Automation Recording**: Capture parameter movements\n- **Safe Parameters**: Keep mix reasonable\n- **Backup Presets**: Simple, reliable settings\n\n### Studio Recording Techniques\n\n#### Signal Chain Optimization\n**Pre-Chorus Processing**:\n- **Equalization**: Shape source before modulation\n- **Compression**: Control dynamics before chorus\n- **Noise Gating**: Clean signal preparation\n- **Saturation**: Add character before modulation\n\n**Post-Chorus Processing**:\n- **Equalization**: Shape chorused signal\n- **Compression**: Control modulated dynamics\n- **Reverb**: Add space after modulation\n- **Stereo Enhancement**: Further width control\n\n#### Mixing with Chorus\n**Level Balancing**:\n- **Dry Signal**: Maintain core sound presence\n- **Wet Signal**: Add enhancement without overwhelming\n- **Frequency Spectrum**: Avoid frequency masking\n- **Stereo Field**: Maintain balanced stereo image\n\n**Automation Strategies**:\n- **Rate Automation**: Create dynamic movement\n- **Depth Automation**: Vary effect intensity\n- **Mix Automation**: Fade chorus in/out\n- **Voice Automation**: Change character over time\n\n## Creative Applications\n\n### Experimental Effects\n\n#### Unconventional Uses\n**As a Vibrato**:\n- **Single Voice**: Mono or centered stereo\n- **Fast Rate**: 6-12Hz for pitch vibrato\n- **High Depth**: 80-100% for strong effect\n- **Mix Control**: Blend with dry signal\n\n**As a Flanger**:\n- **Short Delay**: 2-10ms delay times\n- **Feedback**: Add regeneration (if supported)\n- **High Rate**: Fast modulation rates\n- **Zero Crossing**: Create comb filtering\n\n#### Creative Sound Design\n**Texture Generation**:\n- **Multiple Instances**: Layer different chorus settings\n- **Parallel Processing**: Split signal to multiple choruses\n- **Feedback Loops**: Chorus into itself for resonance\n- **Extreme Settings**: Push parameters to maximum\n\n**Atmospheric Effects**:\n- **Slow Modulation**: Create evolving textures\n- **Long Delays**: Extended delay times for space\n- **High Voice Count**: Maximum complexity\n- **Stereo Movement**: Dynamic stereo field changes\n\n## Technical Considerations\n\n### Phase Relationships\n**Phase Management**:\n- **Voice Phasing**: Control voice phase relationships\n- **Stereo Phase**: Maintain coherent stereo image\n- **Multi-Instance**: Avoid phase cancellation\n- **Feedback Phase**: Careful feedback loop control\n\n### Frequency Response\n**Analog Modeling**:\n- **Frequency Roll-off**: Simulate analog limitations\n- **Saturation**: Add gentle harmonic distortion\n- **Clock Noise**: Subtle BBD characteristics\n- **Nonlinearity**: Imperfect component behavior\n\n### Performance Optimization\n**CPU Efficiency**:\n- **Voice Count Management**: Use minimum necessary voices\n- **Quality Settings**: Balance quality vs performance\n- **Instance Limiting**: Manage multiple chorus instances\n- **Bouncing**: Render to audio when possible\n\n**Memory Management**:\n- **Preset Caching**: Efficient preset loading\n- **Parameter Storage**: Optimize parameter storage\n- **Buffer Management**: Efficient audio processing\n- **Cache Clearing**: Regular maintenance",
+      "juno-string-recreation": "# Juno String Sound Recreation with Vintage Chorus\n\n**Difficulty:** Beginner\n**Time Required:** 10-15 minutes\n**Goal:** Create authentic Roland Juno-style string pad sound\n**Genre:** Synthwave, 80s Pop, Ambient\n\n---\n\n## Prerequisites\n\n- Vintage Chorus plugin\n- Subtractive synthesizer (3x Osc, Sawer, or any analog-style synth)\n- Understanding of basic synthesis\n- Reference: Listen to Juno-60 string patches\n\n---\n\n## Workflow Steps\n\n### Step 1: Synthesizer Setup\n\n1. **Load Synthesizer:**\n   - Use 3x Osc, Sawer, or similar subtractive synth\n   - *Why:* Simple oscillators best match Juno character\n\n2. **Oscillator Configuration:**\n   - **Waveform:** Sawtooth wave\n   - **Voices:** 6-8 voices (polyphony)\n   - **Detune:** Slight detune between voices (3-7 cents)\n   - *Why:* Juno used saw waves with built-in chorus\n\n3. **Filter Settings:**\n   - **Type:** Low-pass filter (24dB slope if available)\n   - **Cutoff:** ~2000-3000 Hz\n   - **Resonance:** Low (10-15%)\n   - *Why:* Juno had simple low-pass filter\n\n4. **Envelope (Filter):**\n   - **Attack:** 100-300ms (slow)\n   - **Decay:** 500ms\n   - **Sustain:** 60-70%\n   - **Release:** 800ms-1.2s\n   - *Why:* Slow attack creates pad character\n\n5. **Envelope (Amplitude):**\n   - **Attack:** 50-150ms\n   - **Decay:** 300ms\n   - **Sustain:** 80-90%\n   - **Release:** 600ms-1s\n   - *Why:* Gentle amplitude envelope for smooth strings\n\n---\n\n### Step 2: Vintage Chorus Configuration\n\n6. **Insert Vintage Chorus:**\n   - Place on synth channel or send track\n   - *Why:* The chorus IS the Juno string sound\n\n7. **Chorus Mode:** Select **I+II**\n   - *Why:* Maximum stereo width and lushness\n   - *Note:* This is the signature Juno setting\n\n8. **Rate Setting:** **0.4-0.5 Hz**\n   - *Why:* Slow modulation = warm, organic movement\n   - *Too Fast:* Sounds like vibrato, not chorus\n\n9. **Depth Setting:** **65-75%**\n   - *Why:* Deep enough for lush character\n   - *Sweet Spot:* 70%\n\n10. **Dry/Wet Mix:** **80-90%**\n    - *Why:* Heavy chorus is essential to Juno sound\n    - *Tip:* 85% is classic\n\n---\n\n### Step 3: BBD Character Setup\n\n11. **BBD Clock Rate:** **Medium**\n    - *Why:* Balances warmth and clarity\n    - *Lower:* Darker, murkier\n    - *Higher:* Cleaner, less vintage\n\n12. **Noise Amount:** **20-35%**\n    - *Why:* Adds authentic BBD character\n    - *Too Much:* Hissy and distracting\n    - *Too Little:* Loses vintage vibe\n\n13. **Filtering:** **Enable**\n    - *Why:* Simulates BBD bandwidth limitation\n    - *Result:* Warmer, more analog sound\n\n---\n\n### Step 4: Fine-Tuning the Tone\n\n14. **Oscillator Octave:**\n    - Try C3-C5 range for playing\n    - *Lower Octaves:* Warmer, darker\n    - *Higher Octaves:* Brighter, airier\n\n15. **Voice Spread (if available):**\n    - Enable voice spread/detune\n    - Amount: 3-8 cents\n    - *Why:* Creates natural ensemble sound\n\n16. **Sub Oscillator (Optional):**\n    - Add square or sine wave -1 octave\n    - Mix: 15-25%\n    - *Why:* Adds body to low end\n\n---\n\n### Step 5: Additional Processing\n\n17. **High-Pass Filter (Post-Chorus):**\n    - Cut below 80-100 Hz\n    - *Why:* Chorus can muddy low end\n    - *Tool:* Parametric EQ 2\n\n18. **Add Reverb (Optional):**\n    - **Reverb Type:** Hall or Plate\n    - **Size:** Medium to large\n    - **Mix:** 15-25%\n    - *Why:* Places strings in space\n    - *Place:* After chorus\n\n19. **Subtle Compression:**\n    - **Ratio:** 2:1 to 3:1\n    - **Threshold:** Gentle\n    - **Attack/Release:** Slow\n    - *Why:* Evens out dynamics, glues sound\n\n---\n\n### Step 6: Playing Technique\n\n20. **Chord Voicings:**\n    - Play open voicings (wide intervals)\n    - Avoid dense clusters\n    - *Why:* Chorus needs space to work\n\n21. **Velocity Sensitivity:**\n    - Keep velocity relatively even (70-100)\n    - *Why:* Strings are sustained, not percussive\n\n22. **Sustain Pedal:**\n    - Use sustain pedal for lush overlaps\n    - *Result:* Layers of chorused sound\n\n---\n\n## Sound Variations\n\n### Variation 1: Warmer/Darker Juno Strings\n- **Filter Cutoff:** Lower to 1500-2000 Hz\n- **BBD Clock:** Low\n- **Noise:** 40-50%\n- **Result:** Lo-fi vintage character\n\n### Variation 2: Bright Modern Strings\n- **Filter Cutoff:** Higher to 3500-4500 Hz\n- **BBD Clock:** High\n- **Noise:** 0-10%\n- **Chorus Depth:** 50-60% (less extreme)\n- **Result:** Clean, contemporary sound\n\n### Variation 3: Poly-Brass (Juno Brass Patch)\n- **Waveform:** Mix saw + square wave\n- **Filter Cutoff:** 2500 Hz\n- **Filter Envelope:** Higher sustain (80%)\n- **Chorus Mode:** II (not I+II)\n- **Chorus Depth:** 50%\n\n---\n\n## Genre-Specific Adaptations\n\n### Synthwave/Outrun\n- **Emphasis:** Maximum width (I+II mode)\n- **Reverb:** Large hall, 30-40% mix\n- **Additional:** Sidechain to kick for pumping\n\n### Ambient\n- **Rate:** Very slow (0.2-0.3 Hz)\n- **Depth:** 80%+\n- **Reverb:** Huge (50%+ mix)\n- **Filter:** Lower cutoff (1800 Hz)\n\n### 80s Pop\n- **Bright and Present:** Higher filter cutoff\n- **Less Reverb:** 10-15% for clarity\n- **Compression:** More aggressive (4:1)\n\n---\n\n## Common Issues & Solutions\n\n### Issue: Too Thin/Weak\n- **Solution:** Increase chorus depth, check dry/wet mix\n- **Check:** Are you in I+II mode?\n- **Add:** Sub oscillator for body\n\n### Issue: Too Wobbly/Unstable\n- **Solution:** Reduce chorus depth to 50-60%\n- **Check:** Is rate too fast? Slow to 0.4-0.6 Hz\n\n### Issue: Muddy in Mix\n- **Solution:** High-pass at 150-200 Hz\n- **Cut:** 300-400 Hz with EQ (mud frequency)\n- **Reduce:** Reverb amount\n\n### Issue: Mono Compatibility Problems\n- **Solution:** Reduce to Mode I or II (not I+II)\n- **Alternative:** Use less extreme depth (40-50%)\n\n---\n\n## Preset Save & Recall\n\n1. **Save Synth Preset:**\n   - Document all oscillator/filter settings\n   - Name: \"Juno Strings - Base\"\n\n2. **Save Chorus Preset:**\n   - Store Vintage Chorus settings\n   - Name: \"Classic Juno Chorus\"\n\n3. **Save Full Channel State:**\n   - Include post-processing (EQ, reverb)\n   - Name: \"Complete Juno String Patch\"\n\n---\n\n## Reference Tracks\n\nListen to these for authentic Juno string sound:\n\n1. **Depeche Mode - \"Just Can't Get Enough\"** (1981)\n2. **Human League - \"Don't You Want Me\"** (1981)\n3. **Vince Clarke/Erasure** - Extensive Juno use\n4. **OMD (Orchestral Manoeuvres in the Dark)** - Synth strings\n5. **Underworld - \"Born Slippy\"** (1995) - Modern Juno use\n\n---\n\n## Next Steps\n\nAfter mastering Juno strings:\n\n1. **Explore Juno Bass Sounds** - Use Mode II with less depth\n2. **Create Juno Lead Sounds** - Faster chorus, more filter movement\n3. **Layer with Real Strings** - Blend Juno with orchestral samples\n4. **Study Other Vintage Synths** - Compare to Prophet, Polysix\n\n---\n\n**Related Workflows:**\n- [80s Synth Bass Creation](./80s-synth-bass.md)\n- [Ambient Pad Design](./ambient-pad-design.md)\n- [Vintage Synth Lead](./vintage-synth-lead.md)\n\n---\n\n**Last Updated:** February 3, 2026\n**Status:** Complete workflow\n",
+      "spacey-keys-psychedelic-hiphop": "# Spacey Keys & Synths for Psychedelic Hip-Hop\n\n**Genre:** Psychedelic Hip-Hop, Cloud Rap, Alternative R&B\n**Vibe:** Dreamy, atmospheric, floating\n**Difficulty:** Beginner\n**Time:** 10 minutes\n\n---\n\n## The Psychedelic Hip-Hop Sound\n\nVintage Chorus creates the **warm, swirling textures** heard in psychedelic and atmospheric hip-hop. Think:\n- **Spacey Rhodes pianos** (Mac Miller, Travis Scott)\n- **Dreamy synth pads** (Kid Cudi, The Weeknd)\n- **Lo-fi keys** (Tyler, The Creator, Earl Sweatshirt)\n\n---\n\n## Quick Settings for Instant Vibes\n\n### For Electric Piano (Rhodes/Wurlitzer)\n\n**Vintage Chorus Settings:**\n```\nMode: I+II (both modes engaged - Shift+Click)\nDelay Time 1: 2.5ms\nDelay Time 2: 5ms\nFeedback: 30-40%\nLFO Waveform: Sine\nLFO Speed: 0.3 Hz (slow)\nPhase Difference L/R: 180° (wide stereo)\nWet/Dry Mix: 60% wet\n```\n\n**Why:**\n- **Both modes** = thick, lush Juno-style chorus\n- **Slow LFO** = gentle movement, not seasick\n- **Wide stereo** = fills the mix, creates space\n- **Moderate feedback** = analog warmth without resonance\n\n**Vibe:** Dreamy, nostalgic, vintage\n\n---\n\n### For Synth Pads (Atmospheric)\n\n**Vintage Chorus Settings:**\n```\nMode: II (smoother)\nDelay Time 1: 4ms\nDelay Time 2: 8ms\nFeedback: 50-60% (more intense)\nLFO Waveform: Sine\nLFO Speed: 0.15 Hz (very slow)\nTempo Sync: OFF\nAnalog Noise: 15% (vintage character)\nWet/Dry Mix: 70% wet\n```\n\n**Vibe:** Lush, cinematic, enveloping\n\n---\n\n### For Lo-Fi Keys (Vintage/Degraded)\n\n**Vintage Chorus Settings:**\n```\nMode: I (more aggressive)\nDelay Time 1: 3ms\nDelay Time 2: 3ms (matched for doubling)\nFeedback: 20%\nLFO Speed: 0.5 Hz (moderate)\nAnalog Noise: 35% (lots of hiss)\nHigh-Pass Wet: 300Hz (thin it out)\nWet/Dry Mix: 50%\n```\n\n**Post-Processing:**\n- **Bitcrusher:** Reduce to 12-bit\n- **Fruity Squeeze:** Vintage warmth\n- **Vinyl noise layer**\n\n**Vibe:** Dusty, nostalgic, tape-saturated\n\n---\n\n## Step-by-Step: Psychedelic Rhodes\n\n### Step 1: Choose Your Source Sound\n\n**Options:**\n1. **FL Keys** - Electric Piano preset\n2. **Flex** - Rhodes sample\n3. **External VST** - Keyscape, Lounge Lizard\n4. **Sampled Rhodes** - Classic 70s recordings\n\n### Step 2: MIDI Programming\n\n**Chord Progressions for Psychedelic Hip-Hop:**\n\n**Option 1: Jazzy (Mac Miller style)**\n```\nCmaj9 → Am7 → Dm9 → G7sus4\n```\n- Use **7th, 9th, 11th chords**\n- Play with **both hands** (bass note + chord)\n- **Timing:** Slightly behind the beat (laid back)\n\n**Option 2: Moody Minor (The Weeknd style)**\n```\nEm7 → Cmaj7 → Am7 → B7\n```\n- **Minor key center**\n- **Sustained chords** (whole notes)\n- **Add tension:** Use altered chords (b9, #11)\n\n**Option 3: Dreamy (Kid Cudi style)**\n```\nAmaj7 → F#m7 → Dmaj7 → E7sus4\n```\n- **Major key** but add extensions\n- **Arpeggios:** Broken chord patterns\n- **High register:** Play in octave 4-5\n\n### Step 3: Apply Vintage Chorus\n\n1. Load **Vintage Chorus** on the piano track\n2. Use **I+II mode** (Shift+Click both buttons)\n3. Set **LFO Speed** to 0.2-0.4 Hz (slow swirl)\n4. Adjust **Wet/Dry** to taste (50-70%)\n\n### Step 4: Additional Effects Chain\n\n**Essential Effects:**\n\n1. **Fruity Parametric EQ 2**\n   - Cut below 120Hz (make room for bass)\n   - Boost +2dB at 1-2kHz (presence)\n   - Gentle high-shelf +1dB at 8kHz (air)\n\n2. **Fruity Reverb 2**\n   - Size: Medium-Large\n   - Decay: 2.5-3.5 seconds\n   - Mix: 25-35%\n   - *Creates depth and space*\n\n3. **Fruity Delay 2** (Optional)\n   - Time: 1/8 dotted (pingpong)\n   - Mix: 15-20%\n   - Feedback: 2-3 repeats\n   - *Adds rhythmic interest*\n\n4. **Fruity Limiter**\n   - Soft saturation\n   - Ceiling: -6dB (leave headroom)\n   - *Glues the sound together*\n\n---\n\n## Advanced Techniques\n\n### Technique 1: Automation for Movement\n\n**Automate these parameters:**\n- **Wet/Dry Mix:** Start at 40%, rise to 80% in chorus\n- **LFO Speed:** Slowly increase for building intensity\n- **Feedback:** Reduce in dense sections, increase when sparse\n\n**Result:** Evolving, breathing keys that don't get stale\n\n---\n\n### Technique 2: Parallel Processing\n\n**Setup:**\n1. **Dry Signal:** Clean Rhodes (100%)\n2. **Send to FX Track:** Vintage Chorus (I+II mode) + Heavy Reverb\n3. **Blend:** 70% dry, 30% wet send\n\n**Result:** Clarity of dry signal + lushness of chorus\n\n---\n\n### Technique 3: Layering with Pads\n\n**Stack these sounds:**\n1. **Rhodes** with Vintage Chorus (mid-range)\n2. **Synth Pad** with longer reverb (high-end)\n3. **Sub Bass** (low-end foundation)\n\n**EQ Each Layer:**\n- **Rhodes:** Cut below 200Hz, focus 400Hz-4kHz\n- **Pad:** Cut below 500Hz, focus 1kHz-8kHz\n- **Bass:** Keep below 150Hz\n\n**Result:** Full, rich, professional sound\n\n---\n\n### Technique 4: Vinyl/Lo-Fi Processing\n\n**For Dusty, Nostalgic Vibe:**\n\n1. **RC-20 Retro Color** or **iZotope Vinyl** (if available)\n2. **Fruity Squeeze** - Vintage saturation\n3. **Bitcrusher** - Reduce to 12-14 bit\n4. **Low-Pass Filter** - Cut at 8-10kHz (dull the highs)\n5. **Layer vinyl crackle** underneath\n\n**When to Use:**\n- Lo-fi hip-hop\n- Nostalgic R&B\n- Earl Sweatshirt/Tyler style production\n\n---\n\n## Genre-Specific Settings\n\n### 1. Cloud Rap (Yung Lean, Bladee)\n\n**Settings:**\n- **I+II Mode**\n- Wet Mix: **80%** (very wet)\n- LFO Speed: **0.1 Hz** (super slow)\n- **Huge reverb** (5+ second decay)\n\n**Vibe:** Ethereal, detached, dreamy\n\n**Reference:**\n- Yung Lean - \"Ginseng Strip 2002\"\n- Bladee - \"Be Nice 2 Me\"\n\n---\n\n### 2. Psychedelic Trap (Travis Scott, Playboi Carti)\n\n**Settings:**\n- **Mode II**\n- Wet Mix: **60%**\n- LFO Speed: **0.3 Hz**\n- **Medium reverb** + **Delay**\n- **Sidechain to kick** for pumping\n\n**Vibe:** Spacey but energetic, hypnotic\n\n**Reference:**\n- Travis Scott - \"90210\"\n- Playboi Carti - \"Long Time\"\n\n---\n\n### 3. Alternative R&B (Frank Ocean, SZA)\n\n**Settings:**\n- **I+II Mode**\n- Wet Mix: **50%** (balanced)\n- LFO Speed: **0.25 Hz**\n- **Subtle reverb**\n- **Clean, hi-fi production**\n\n**Vibe:** Polished, emotional, modern\n\n**Reference:**\n- Frank Ocean - \"Ivy\"\n- SZA - \"Drew Barrymore\"\n- Daniel Caesar - \"Best Part\"\n\n---\n\n### 4. Lo-Fi Hip-Hop (Nujabes, J Dilla)\n\n**Settings:**\n- **Mode I**\n- Wet Mix: **40%**\n- **Analog Noise: 40%**\n- **Bitcrusher + Vinyl processing**\n- **Dark, warm EQ**\n\n**Vibe:** Dusty, warm, nostalgic\n\n**Reference:**\n- Nujabes - \"Feather\"\n- J Dilla - \"Don't Cry\"\n- Tomppabeats - \"I Miss You\"\n\n---\n\n## Mixing Tips\n\n### Frequency Placement\n- **Keys/Rhodes:** 200Hz - 6kHz (main body)\n- **Cut low-end:** High-pass at 100-200Hz\n- **Avoid fighting vocals:** Notch around 1-3kHz if vocals present\n\n### Stereo Width\n- **Mono the low-mids** (below 300Hz)\n- **Wide stereo** on highs (Vintage Chorus handles this)\n- **Check in mono** to avoid phase issues\n\n### Sidechain Compression\n- **Light sidechain** to kick (optional)\n- Ratio: 2:1\n- Attack: 20ms (slower than bass)\n- *Lets keys breathe with the beat*\n\n---\n\n## Preset Cheat Sheet\n\n| Vibe | Mode | LFO Speed | Wet Mix | Feedback | Reverb |\n|------|------|-----------|---------|----------|--------|\n| **Spacey Rhodes** | I+II | 0.3 Hz | 60% | 35% | Medium |\n| **Cloud Rap** | I+II | 0.1 Hz | 80% | 45% | Huge |\n| **Clean R&B** | II | 0.25 Hz | 50% | 30% | Subtle |\n| **Lo-Fi** | I | 0.5 Hz | 40% | 25% | Small |\n| **Psychedelic Trap** | II | 0.3 Hz | 65% | 40% | Medium+Delay |\n\n---\n\n## Common Mistakes\n\n1. **Too much wet signal:** Over 80% sounds washy\n2. **LFO too fast:** Creates seasickness, not movement\n3. **Forgetting to EQ:** Keys fight with bass and vocals\n4. **Stereo width on low-end:** Causes phase issues\n5. **No automation:** Static chorus gets boring\n\n---\n\n## Creative Ideas\n\n### Idea 1: Reverse Rhodes\n- Record 4-bar chord progression\n- **Reverse it** in Edison\n- Apply Vintage Chorus\n- Layer under forward progression\n- *Creates haunting, atmospheric texture*\n\n### Idea 2: Chopped & Screwed\n- Record Rhodes with chorus\n- **Time-stretch** to 75% speed (Newtime)\n- **Pitch down** -3 semitones\n- *Houston/Memphis rap vibe*\n\n### Idea 3: Glitchy Rhythms\n- Use **Transporter** after Vintage Chorus\n- Creates stuttering, evolving keys\n- Perfect for experimental hip-hop\n\n---\n\n## Reference Artists\n\n**Psychedelic Hip-Hop:**\n- Mac Miller\n- Kid Cudi\n- Travis Scott\n- ASAP Rocky\n\n**Lo-Fi:**\n- Nujabes\n- J Dilla\n- Knxwledge\n- Tomppabeats\n\n**Alternative R&B:**\n- Frank Ocean\n- The Weeknd\n- SZA\n- Daniel Caesar\n\n**Cloud Rap:**\n- Yung Lean\n- Bladee\n- Bones\n- Xavier Wulf\n\n---\n\n## Next Steps\n\n1. **Learn chord theory:** Better chords = better vibes\n2. **Study reference tracks:** Understand how they use space\n3. **Experiment with layering:** Combine multiple chorus instances\n4. **Master automation:** Make it move and breathe\n5. **Try different sources:** Rhodes, synths, guitars all sound different\n\n---\n\n**Related Workflows:**\n- [Vintage Phaser for Psychedelic Guitars](../../Vintage%20Phaser/03-Workflows/by-goal/psychedelic-guitar-tone.md)\n- [Ambient Pad Creation](./ambient-synth-pads.md)\n- [Lo-Fi Rhodes Processing](./lofi-keys-texture.md)\n\n---\n\n**Last Updated:** February 3, 2026\n**Genre:** Psychedelic Hip-Hop, Cloud Rap, Lo-Fi, Alternative R&B\n**Vibe:** ☁️ Floating on Clouds\n"
+    },
+    "by-instrument": {
+      "vocal-chorus-workflows": "Tags: hip-hop/rap | R&B | moody\n\n## Vocal Chorus Workflows\n\n### Hip-Hop Vocal Width\n\n**Starting Point Settings:**\n- Rate: 0.2Hz\n- Depth: 25%\n- Dry/Wet: 30%\n- Stereo: 50%\n- Sync: Off\n\n**A/B Test Method:**\n1. Apply settings, play vocal phrase\n2. Toggle Dry/Wet between 30% and 0%\n3. Listen for: \"Is there width without it feeling processed?\"\n\n**Quick Fix Path:**\n- If too subtle → Increase Depth by 5%\n- If too obvious → Reduce Dry/Wet by 5%\n- If phasey → Reduce Stereo to 40%\n- If thin in mono → Increase Dry signal by 10%\n\n### R&B Smooth Vocal Layer\n\n**Settings:**\n- Rate: 0.18Hz\n- Depth: 30%\n- Dry/Wet: 35%\n- Stereo: 60%\n- Sync: Off\n\n**When to Use:**\n- Background vocal stacks\n- Doubled lead vocals\n- Harmonies that need cohesion\n- Smooth, radio-ready processing\n\n**Troubleshooting:**\n- If harmonies sound separate → Increase Dry/Wet\n- If too processed → Lower Depth to 20%\n- If lost in mix → Bump Dry/Wet to 40%\n\n### Moody Atmospheric Vocal\n\n**Settings:**\n- Rate: 0.35Hz\n- Depth: 40%\n- Dry/Wet: 45%\n- Stereo: 75%\n- Sync: Off\n\n**Best For:**\n- Intro/outro vocals\n- Emo/conscious hip-hop\n- Atmospheric R&B\n- Breakdowns and bridges\n\n**Exit Criteria:**\n- Vocal should feel \"in the air\" but still intelligible\n- Test: Can you still understand every word?\n- Test: Does it create space without feeling distant?\n\n### Quick Reference Table\n\n| Goal | Rate | Depth | Dry/Wet | Stereo | Use Case |\n|------|------|-------|---------|--------|----------|\n| Subtle width | 0.2 | 25% | 30% | 50% | Main vocal |\n| Layer cohesion | 0.18 | 30% | 35% | 60% | Doubles/harmonies |\n| Width + warmth | 0.25 | 35% | 40% | 55% | R&B smoothness |\n| Atmospheric | 0.35 | 40% | 45% | 75% | Mood pieces |\n| Funky movement | 0.5 | 30% | 35% | 65% | Groovy vocals |\n| Bass-friendly | 0.1 | 15% | 20% | 35% | Low vocal register |\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Vintage Chorus\r\n\r\nThis section contains workflow information for the vintage-chorus plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Vintage Chorus\r\n\r\nThis section contains reference information for the vintage-chorus plugin.\r\n"
+    }
+  }
+}

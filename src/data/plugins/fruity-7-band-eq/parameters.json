@@ -1,0 +1,265 @@
+{
+  "pluginName": "Fruity 7 Band EQ",
+  "version": "1.0",
+  "lastUpdated": "2025-01-04",
+  "category": "Equalization",
+  "parameters": {
+    "band1": {
+      "type": "low_shelf",
+      "frequency": {
+        "range": [20, 200],
+        "default": 60,
+        "unit": "Hz"
+      },
+      "gain": {
+        "range": [-24, 24],
+        "default": 0,
+        "unit": "dB"
+      },
+      "q": {
+        "range": [0.7, 10],
+        "default": 1.0,
+        "unit": "Q"
+      },
+      "purpose": "Sub-bass control and low-end warmth"
+    },
+    "band2": {
+      "type": "bell",
+      "frequency": {
+        "range": [40, 500],
+        "default": 200,
+        "unit": "Hz"
+      },
+      "gain": {
+        "range": [-24, 24],
+        "default": 0,
+        "unit": "dB"
+      },
+      "q": {
+        "range": [0.7, 10],
+        "default": 2.0,
+        "unit": "Q"
+      },
+      "purpose": "Bass fundamentals and body control"
+    },
+    "band3": {
+      "type": "bell",
+      "frequency": {
+        "range": [200, 2000],
+        "default": 800,
+        "unit": "Hz"
+      },
+      "gain": {
+        "range": [-24, 24],
+        "default": 0,
+        "unit": "dB"
+      },
+      "q": {
+        "range": [0.7, 10],
+        "default": 2.0,
+        "unit": "Q"
+      },
+      "purpose": "Lower midrange clarity and mud control"
+    },
+    "band4": {
+      "type": "bell",
+      "frequency": {
+        "range": [500, 5000],
+        "default": 2000,
+        "unit": "Hz"
+      },
+      "gain": {
+        "range": [-24, 24],
+        "default": 0,
+        "unit": "dB"
+      },
+      "q": {
+        "range": [0.7, 10],
+        "default": 2.0,
+        "unit": "Q"
+      },
+      "purpose": "Vocal presence and intelligibility"
+    },
+    "band5": {
+      "type": "bell",
+      "frequency": {
+        "range": [2000, 10000],
+        "default": 6000,
+        "unit": "Hz"
+      },
+      "gain": {
+        "range": [-24, 24],
+        "default": 0,
+        "unit": "dB"
+      },
+      "q": {
+        "range": [0.7, 10],
+        "default": 2.0,
+        "unit": "Q"
+      },
+      "purpose": "Attack, definition, and high-mid control"
+    },
+    "band6": {
+      "type": "high_shelf",
+      "frequency": {
+        "range": [4000, 20000],
+        "default": 12000,
+        "unit": "Hz"
+      },
+      "gain": {
+        "range": [-24, 24],
+        "default": 0,
+        "unit": "dB"
+      },
+      "q": {
+        "range": [0.7, 10],
+        "default": 1.0,
+        "unit": "Q"
+      },
+      "purpose": "Air, brilliance, and high-frequency control"
+    },
+    "band7": {
+      "type": "bell",
+      "frequency": {
+        "range": [8000, 20000],
+        "default": 16000,
+        "unit": "Hz"
+      },
+      "gain": {
+        "range": [-24, 24],
+        "default": 0,
+        "unit": "dB"
+      },
+      "q": {
+        "range": [0.7, 4],
+        "default": 1.5,
+        "unit": "Q"
+      },
+      "purpose": "Ultra-high frequency air and sparkle"
+    }
+  },
+  "presets": {
+    "mix_bus": {
+      "warm_enhancement": {
+        "name": "Warm Enhancement",
+        "description": "Gentle warmth and clarity for full mixes",
+        "settings": {
+          "band1": {"freq": 60, "gain": 1.5, "q": 1.0},
+          "band3": {"freq": 300, "gain": -1.0, "q": 2.0},
+          "band5": {"freq": 8000, "gain": 1.0, "q": 1.5},
+          "band6": {"freq": 12000, "gain": 0.5, "q": 1.0}
+        }
+      },
+      "air_brilliance": {
+        "name": "Air & Brilliance",
+        "description": "High-frequency enhancement for professional polish",
+        "settings": {
+          "band3": {"freq": 400, "gain": -1.5, "q": 2.5},
+          "band5": {"freq": 6000, "gain": 2.0, "q": 1.2},
+          "band6": {"freq": 14000, "gain": 2.0, "q": 1.0},
+          "band7": {"freq": 16000, "gain": 1.5, "q": 1.5}
+        }
+      }
+    },
+    "vocal": {
+      "presence_clarity": {
+        "name": "Vocal Presence & Clarity",
+        "description": "Enhance vocal intelligibility and presence",
+        "settings": {
+          "band2": {"freq": 120, "gain": 1.0, "q": 1.5},
+          "band3": {"freq": 800, "gain": 2.0, "q": 2.0},
+          "band4": {"freq": 2500, "gain": 2.5, "q": 2.5},
+          "band6": {"freq": 10000, "gain": 1.0, "q": 1.0}
+        }
+      },
+      "de_ess": {
+        "name": "De-esser",
+        "description": "Reduce sibilance and harsh s-sounds",
+        "settings": {
+          "band5": {"freq": 5000, "gain": -3.0, "q": 8.0},
+          "band6": {"freq": 7000, "gain": -2.0, "q": 6.0}
+        }
+      }
+    },
+    "instrument": {
+      "bass_guitar": {
+        "name": "Bass Guitar Enhancement",
+        "description": "Add weight and definition to bass guitar",
+        "settings": {
+          "band1": {"freq": 80, "gain": 3.0, "q": 1.2},
+          "band2": {"freq": 150, "gain": 2.0, "q": 1.8},
+          "band4": {"freq": 1000, "gain": 1.0, "q": 2.0}
+        }
+      },
+      "kick_drum": {
+        "name": "Kick Drum Enhancement",
+        "description": "Add weight and punch to kick drums",
+        "settings": {
+          "band1": {"freq": 60, "gain": 2.0, "q": 1.5},
+          "band2": {"freq": 100, "gain": 1.5, "q": 2.0},
+          "band4": {"freq": 3000, "gain": 2.0, "q": 3.0}
+        }
+      }
+    },
+    "problem_solving": {
+      "mud_reducer": {
+        "name": "Mud Reducer",
+        "description": "Remove problematic low-mid frequencies",
+        "settings": {
+          "band3": {"freq": 350, "gain": -3.0, "q": 4.0}
+        }
+      },
+      "harshness_control": {
+        "name": "Harshness Control",
+        "description": "Tame harsh high frequencies",
+        "settings": {
+          "band5": {"freq": 4000, "gain": -2.0, "q": 3.0},
+          "band6": {"freq": 6000, "gain": -1.5, "q": 2.5}
+        }
+      }
+    }
+  },
+  "genreApplications": {
+    "pop": {
+      "typicalSettings": {
+        "band1": {"freq": 60, "gain": 1.0},
+        "band3": {"freq": 400, "gain": -1.0},
+        "band5": {"freq": 8000, "gain": 2.0},
+        "band6": {"freq": 12000, "gain": 1.0}
+      },
+      "useCase": "Clean, bright, radio-friendly mix"
+    },
+    "rock": {
+      "typicalSettings": {
+        "band1": {"freq": 100, "gain": 3.0},
+        "band4": {"freq": 2000, "gain": 2.0},
+        "band6": {"freq": 12000, "gain": 1.5}
+      },
+      "useCase": "Powerful, aggressive, clear"
+    },
+    "electronic": {
+      "typicalSettings": {
+        "band2": {"freq": 60, "gain": 2.0},
+        "band5": {"freq": 6000, "gain": 3.0},
+        "band7": {"freq": 15000, "gain": 2.0}
+      },
+      "useCase": "Punchy, bright, modern"
+    },
+    "acoustic": {
+      "typicalSettings": {
+        "band1": {"freq": 80, "gain": 1.5},
+        "band3": {"freq": 600, "gain": -1.0},
+        "band6": {"freq": 10000, "gain": 0.5}
+      },
+      "useCase": "Natural, warm, balanced"
+    }
+  },
+  "technicalSpecs": {
+    "frequencyRange": [20, 20000],
+    "gainRange": [-24, 24],
+    "qRange": [0.7, 10],
+    "latency": 0,
+    "cpuUsage": 0.3,
+    "sampleRates": [44100, 48000, 88200, 96000, 176400, 192000]
+  }
+}

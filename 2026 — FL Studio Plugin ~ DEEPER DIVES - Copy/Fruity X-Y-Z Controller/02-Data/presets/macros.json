@@ -1,0 +1,239 @@
+{
+  "macroTemplates": [
+    {
+      "id": "hip-hop-lead-performance",
+      "name": "Hip-Hop Lead Performance Rig",
+      "description": "Complete performance setup for expressive hip-hop leads with all five vibe dimensions",
+      "category": "performance",
+      "difficulty": "advanced",
+      "controllers": [
+        {
+          "instance": 1,
+          "name": "Timbre Controller",
+          "mode": "relative",
+          "mappings": [
+            {"output": "x", "target": "Pitch Bend", "range": "±12 semitones"},
+            {"output": "y", "target": "Filter Cutoff", "range": "Full"},
+            {"output": "z", "target": "Resonance", "range": "0-80%"},
+            {"output": "speed", "target": "Distortion Drive", "range": "0-50%"}
+          ]
+        },
+        {
+          "instance": 2,
+          "name": "Vibe Controller", 
+          "mode": "absolute",
+          "mappings": [
+            {"output": "x", "target": "Stereo Width", "range": "50-150%"},
+            {"output": "y", "target": "Reverb Send", "range": "0-60%"},
+            {"output": "z", "target": "Delay Send", "range": "0-40%"}
+          ]
+        }
+      ],
+      "performanceNotes": [
+        "Use Controller 1 for continuous timbre morphing",
+        "Use Controller 2 for spatial positioning during phrase breaks",
+        "Cross hands between controllers for complex passages",
+        "Map Speed on both controllers to accent detection"
+      ],
+      "vibeBlend": [
+        {"vibe": "PUNCH", "weight": 40, "controller": 1, "outputs": ["speed", "z"]},
+        {"vibe": "CLARITY", "weight": 30, "controller": 2, "outputs": ["y"]},
+        {"vibe": "AIR", "weight": 30, "controller": 2, "outputs": ["z"]}
+      ]
+    },
+    {
+      "id": "tablet-performance-rig",
+      "name": "Touchscreen Performance Setup",
+      "description": "Optimized for tablet/touchscreen with gesture-based control",
+      "category": "performance",
+      "difficulty": "intermediate",
+      "device": "tablet",
+      "controllers": [
+        {
+          "instance": 1,
+          "name": "Main Controller",
+          "mode": "absolute",
+          "gestureMapping": {
+            "singleFinger": "X + Y control",
+            "pinch": "Z control",
+            "flick": "Speed spike → Accent"
+          },
+          "mappings": [
+            {"output": "x", "target": "Pan"},
+            {"output": "y", "target": "Filter Cutoff"},
+            {"output": "z", "target": "Effect Depth"},
+            {"output": "speed", "target": "Expression"}
+          ]
+        }
+      ],
+      "gestureLibrary": [
+        {"name": "The Sweep", "gesture": "Smooth diagonal", "result": "Filter sweep + pan"},
+        {"name": "The Pulse", "gesture": "Quick tap-hold-release", "result": "One-shot effect"},
+        {"name": "The Pinch", "gesture": "Two-finger pinch", "result": "Z-axis modulation"},
+        {"name": "The Flick", "gesture": "Fast swipe + stop", "result": "Accent trigger"}
+      ],
+      "setupNotes": [
+        "Enable 'Show touches' in OS settings",
+        "Use screen protector for smooth gliding",
+        "Position tablet at comfortable angle",
+        "Practice gestures for muscle memory"
+      ]
+    },
+    {
+      "id": "three-parameter-morph",
+      "name": "3-Parameter Morphing Matrix",
+      "description": "Advanced macro for morphing between three distinct sound states",
+      "category": "morphing",
+      "difficulty": "advanced",
+      "concept": "Each axis blends between two values of a single parameter, creating 8 possible states (corners of cube)",
+      "controllers": [
+        {
+          "instance": 1,
+          "name": "Morph Controller",
+          "mode": "absolute",
+          "mappings": [
+            {
+              "output": "x", 
+              "target": "Oscillator Shape",
+              "morph": {
+                "0%": "Saw wave",
+                "100%": "Square wave"
+              }
+            },
+            {
+              "output": "y",
+              "target": "Filter Type", 
+              "morph": {
+                "0%": "Low-pass",
+                "100%": "High-pass"
+              }
+            },
+            {
+              "output": "z",
+              "target": "Envelope",
+              "morph": {
+                "0%": "Fast/Pluck",
+                "100%": "Slow/Pad"
+              }
+            }
+          ]
+        }
+      ],
+      "morphStates": [
+        {"position": "0,0,0", "name": "Saw + Low + Fast", "description": "Aggressive pluck"},
+        {"position": "100,0,0", "name": "Square + Low + Fast", "description": "Hollow pluck"},
+        {"position": "0,100,0", "name": "Saw + High + Fast", "description": "Bright sting"},
+        {"position": "100,100,0", "name": "Square + High + Fast", "description": "Nasal blip"},
+        {"position": "0,0,100", "name": "Saw + Low + Slow", "description": "Warm pad"},
+        {"position": "100,0,100", "name": "Square + Low + Slow", "description": "Hollow pad"},
+        {"position": "0,100,100", "name": "Saw + High + Slow", "description": "Bright pad"},
+        {"position": "100,100,100", "name": "Square + High + Slow", "description": "Glassy pad"}
+      ],
+      "performanceTechnique": "Navigate through cube corners to morph between radically different sounds"
+    },
+    {
+      "id": "spatial-positioning-rig",
+      "name": "3D Spatial Positioning System",
+      "description": "Complete spatial audio rig for immersive 3D positioning",
+      "category": "spatial",
+      "difficulty": "intermediate",
+      "controllers": [
+        {
+          "instance": 1,
+          "name": "Spatial Controller",
+          "mode": "absolute",
+          "mappings": [
+            {"output": "x", "target": "Pan", "description": "Left-right position"},
+            {"output": "y", "target": "Low-pass Filter", "description": "Near-far depth (darker = farther)"},
+            {"output": "z", "target": "Reverb Send", "description": "Distance in space"},
+            {"output": "speed", "target": "Doppler/Velocity", "description": "Motion blur effect"}
+          ]
+        }
+      ],
+      "spatialConcepts": [
+        {
+          "position": "Bottom-left",
+          "perception": "Far left, distant, dark",
+          "use": "Background elements"
+        },
+        {
+          "position": "Top-right", 
+          "perception": "Far right, close, bright",
+          "use": "Lead elements, focus"
+        },
+        {
+          "position": "Center",
+          "perception": "Center position, mid-distance",
+          "use": "Supporting elements"
+        }
+      ],
+      "techniqueNotes": [
+        "Use Y-axis filter to simulate distance (farther = less high frequencies)",
+        "Z-axis reverb creates realistic depth perception",
+        "Speed output adds Doppler-like motion effects",
+        "Combine multiple instances for group positioning"
+      ]
+    },
+    {
+      "id": "multi-touch-ensemble",
+      "name": "Multi-Touch Ensemble Control",
+      "description": "Control multiple instruments simultaneously using multiple X-Y-Z instances",
+      "category": "performance",
+      "difficulty": "expert",
+      "setup": {
+        "instances": 4,
+        "arrangement": "2x2 grid on touchscreen or separate controllers"
+      },
+      "controllers": [
+        {
+          "instance": 1,
+          "name": "Lead Synth",
+          "role": "Melody/harmony",
+          "mappings": {
+            "x": "Pitch bend",
+            "y": "Filter cutoff", 
+            "z": "Reverb send"
+          }
+        },
+        {
+          "instance": 2,
+          "name": "Bass",
+          "role": "Foundation",
+          "mappings": {
+            "x": "Pan",
+            "y": "Drive/distortion",
+            "z": "Compression"
+          }
+        },
+        {
+          "instance": 3,
+          "name": "Pads",
+          "role": "Atmosphere",
+          "mappings": {
+            "x": "Stereo width",
+            "y": "Filter sweep",
+            "z": "Effect depth"
+          }
+        },
+        {
+          "instance": 4,
+          "name": "Drums",
+          "role": "Rhythm",
+          "mappings": {
+            "x": "Pan",
+            "y": "Transient shaping",
+            "z": "Saturation",
+            "speed": "Accent boost"
+          }
+        }
+      ],
+      "performanceTechniques": [
+        "Cross-hand control: Left hand on instances 1+2, right hand on 3+4",
+        "Focus technique: Concentrate on one instance, others on auto",
+        "Build technique: Gradually engage all four instances",
+        "Tutti technique: Use all four simultaneously for climax"
+      ],
+      "complexityLevel": "Requires extensive practice for coordination"
+    }
+  ]
+}

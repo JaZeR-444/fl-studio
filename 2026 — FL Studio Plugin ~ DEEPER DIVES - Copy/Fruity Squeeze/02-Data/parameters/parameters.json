@@ -1,0 +1,178 @@
+{
+  "plugin": "Fruity Squeeze",
+  "version": "Latest",
+  "category": "Dynamics / Multiband Compressor",
+  "parameters": [
+    {
+      "name": "Low/Mid Crossover",
+      "type": "Frequency",
+      "range": "~50 Hz - 1 kHz",
+      "default": "250 Hz",
+      "description": "Sets the frequency that separates the low band from the mid band",
+      "unit": "Hz",
+      "automation": true,
+      "notes": "Lower values isolate more bass frequencies; higher values include more low-mids with bass"
+    },
+    {
+      "name": "Mid/High Crossover",
+      "type": "Frequency",
+      "range": "~500 Hz - 10 kHz",
+      "default": "2 kHz",
+      "description": "Sets the frequency that separates the mid band from the high band",
+      "unit": "Hz",
+      "automation": true,
+      "notes": "Lower values create brighter overall sound; higher values keep more presence in mids"
+    },
+    {
+      "name": "Low Threshold",
+      "type": "Level",
+      "range": "-∞ to 0 dB",
+      "default": "-12 dB",
+      "description": "Sets the level where low band compression begins",
+      "unit": "dB",
+      "automation": true,
+      "notes": "Lower threshold = more compression; -∞ bypasses low band"
+    },
+    {
+      "name": "Low Ratio",
+      "type": "Ratio",
+      "range": "1:1 to ∞:1",
+      "default": "4:1",
+      "description": "Controls the intensity of low band compression",
+      "unit": ":1",
+      "automation": true,
+      "notes": "∞:1 acts as a brick-wall limiter"
+    },
+    {
+      "name": "Low Volume",
+      "type": "Level",
+      "range": "-∞ to +12 dB",
+      "default": "0 dB",
+      "description": "Output level for the low band after compression",
+      "unit": "dB",
+      "automation": true,
+      "notes": "Use to compensate for gain reduction or reshape tonal balance"
+    },
+    {
+      "name": "Mid Threshold",
+      "type": "Level",
+      "range": "-∞ to 0 dB",
+      "default": "-12 dB",
+      "description": "Sets the level where mid band compression begins",
+      "unit": "dB",
+      "automation": true,
+      "notes": "Lower threshold = more compression; -∞ bypasses mid band"
+    },
+    {
+      "name": "Mid Ratio",
+      "type": "Ratio",
+      "range": "1:1 to ∞:1",
+      "default": "4:1",
+      "description": "Controls the intensity of mid band compression",
+      "unit": ":1",
+      "automation": true,
+      "notes": "Mids often need moderate ratios (4:1-6:1) for natural sound"
+    },
+    {
+      "name": "Mid Volume",
+      "type": "Level",
+      "range": "-∞ to +12 dB",
+      "default": "0 dB",
+      "description": "Output level for the mid band after compression",
+      "unit": "dB",
+      "automation": true,
+      "notes": "Critical for vocal presence and instrument clarity"
+    },
+    {
+      "name": "High Threshold",
+      "type": "Level",
+      "range": "-∞ to 0 dB",
+      "default": "-12 dB",
+      "description": "Sets the level where high band compression begins",
+      "unit": "dB",
+      "automation": true,
+      "notes": "Lower threshold = more compression; -∞ bypasses high band"
+    },
+    {
+      "name": "High Ratio",
+      "type": "Ratio",
+      "range": "1:1 to ∞:1",
+      "default": "4:1",
+      "description": "Controls the intensity of high band compression",
+      "unit": ":1",
+      "automation": true,
+      "notes": "Higher ratios useful for de-essing (6:1-10:1)"
+    },
+    {
+      "name": "High Volume",
+      "type": "Level",
+      "range": "-∞ to +12 dB",
+      "default": "0 dB",
+      "description": "Output level for the high band after compression",
+      "unit": "dB",
+      "automation": true,
+      "notes": "Adjust to control brightness or tame harshness"
+    },
+    {
+      "name": "Input Level",
+      "type": "Level",
+      "range": "-12 dB to +12 dB",
+      "default": "0 dB",
+      "description": "Adjusts signal level entering Fruity Squeeze",
+      "unit": "dB",
+      "automation": true,
+      "notes": "Higher input drives more waveshaping/harmonic distortion"
+    },
+    {
+      "name": "Output Level",
+      "type": "Level",
+      "range": "-12 dB to +12 dB",
+      "default": "0 dB",
+      "description": "Final gain stage after all processing",
+      "unit": "dB",
+      "automation": true,
+      "notes": "Use to match output to input level or adjust final loudness"
+    },
+    {
+      "name": "Dry/Wet Mix",
+      "type": "Percentage",
+      "range": "0% to 100%",
+      "default": "100%",
+      "description": "Blends compressed signal with original dry signal",
+      "unit": "%",
+      "automation": true,
+      "notes": "50% enables parallel compression for more natural dynamics"
+    }
+  ],
+  "metering": [
+    {
+      "name": "Input Meter",
+      "description": "Shows incoming signal level before processing"
+    },
+    {
+      "name": "Low Band Gain Reduction",
+      "description": "Visual feedback for low band compression amount"
+    },
+    {
+      "name": "Mid Band Gain Reduction",
+      "description": "Visual feedback for mid band compression amount"
+    },
+    {
+      "name": "High Band Gain Reduction",
+      "description": "Visual feedback for high band compression amount"
+    },
+    {
+      "name": "Output Meter",
+      "description": "Shows final output level after all processing"
+    }
+  ],
+  "technicalSpecs": {
+    "bands": 3,
+    "filterType": "Linkwitz-Riley crossover",
+    "processingType": "Waveshaper-based compression",
+    "attackTime": "0 ms (instant)",
+    "releaseTime": "0 ms (instant)",
+    "harmonicCharacter": "Odd-order harmonics",
+    "latency": "Minimal"
+  }
+}

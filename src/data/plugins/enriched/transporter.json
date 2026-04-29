@@ -1,0 +1,404 @@
+{
+  "id": "transporter",
+  "name": "Transporter",
+  "category": "Creative",
+  "tier": "Free",
+  "type": "Creative",
+  "description": "Transporter - Creative",
+  "tags": [
+    "creative",
+    "experimental"
+  ],
+  "capabilities": [
+    "creative",
+    "experimental",
+    "fx",
+    "audio"
+  ],
+  "icon": "/plugins/transporter-icon.svg",
+  "color": "#EC4899",
+  "version": "1.0",
+  "data_dir": "plugins\\transporter",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "transporter-params": {
+      "$schema": "./schema.json",
+      "plugin": {
+        "name": "Transporter",
+        "version": "1.x",
+        "category": "Effect",
+        "type": "Realtime Relooping Effect",
+        "description": "Transient-based loop buffer effect",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Transporter.htm"
+      },
+      "parameters": {
+        "loopControls": [
+          {
+            "id": "loopLength",
+            "name": "Loop Length",
+            "type": "selector",
+            "range": "1/64 - 4 bars",
+            "default": "1/4",
+            "description": "Size of the looped audio buffer",
+            "automatable": true,
+            "bpmSync": true,
+            "sweetSpot": "1/16 - 1/4 for glitch, 1/2 - 1 bar for musical loops"
+          },
+          {
+            "id": "loopPosition",
+            "name": "Loop Position",
+            "type": "slider",
+            "range": "0-100%",
+            "unit": "%",
+            "default": "0%",
+            "description": "Starting point within the buffer for loop playback",
+            "automatable": true,
+            "performanceUse": "Sweep for dynamic repositioning effects"
+          },
+          {
+            "id": "freeze",
+            "name": "Freeze",
+            "type": "toggle",
+            "range": "On/Off",
+            "default": "Off",
+            "description": "Locks current loop content for sustained playback",
+            "performanceUse": "Enable during builds, release on drops"
+          },
+          {
+            "id": "snapToTransients",
+            "name": "Snap to Transients",
+            "type": "toggle",
+            "range": "On/Off",
+            "default": "On",
+            "description": "Quantizes loop points to detected transient hits",
+            "note": "Disable for smooth, non-rhythmic sources"
+          },
+          {
+            "id": "transientSensitivity",
+            "name": "Transient Sensitivity",
+            "type": "slider",
+            "range": "0-100%",
+            "unit": "%",
+            "default": "50%",
+            "description": "Detection threshold for transient hits",
+            "sweetSpot": "60-80% for percussive material, 30-50% for dense mixes"
+          }
+        ],
+        "transport": [
+          {
+            "id": "speed",
+            "name": "Speed",
+            "type": "slider",
+            "range": "0.5x - 2x",
+            "default": "1x",
+            "description": "Playback speed multiplier",
+            "automatable": true,
+            "performanceUse": "Automate to 0 for vinyl-stop effect"
+          },
+          {
+            "id": "direction",
+            "name": "Direction",
+            "type": "toggle",
+            "options": [
+              "Forward",
+              "Reverse"
+            ],
+            "default": "Forward",
+            "description": "Loop playback direction",
+            "performanceUse": "Switch to reverse for build-up effects"
+          }
+        ],
+        "stutter": [
+          {
+            "id": "stutterEnable",
+            "name": "Stutter",
+            "type": "selector",
+            "range": "Off / 1-16 steps",
+            "default": "Off",
+            "description": "Repeats loop segment rhythmically",
+            "sweetSpot": "4 or 8 steps for musical stutters"
+          },
+          {
+            "id": "stutterRate",
+            "name": "Stutter Rate",
+            "type": "selector",
+            "range": "1/64 - 1 bar",
+            "default": "1/16",
+            "description": "Length of each stutter repeat",
+            "bpmSync": true,
+            "sweetSpot": "1/16 or 1/32 for glitch effects"
+          }
+        ],
+        "mix": [
+          {
+            "id": "dryWet",
+            "name": "Dry/Wet Mix",
+            "type": "slider",
+            "range": "0-100%",
+            "unit": "%",
+            "default": "50%",
+            "description": "Balance between original and effected signal",
+            "automatable": true,
+            "note": "Use 100% wet on send tracks, variable on inserts"
+          },
+          {
+            "id": "outputGain",
+            "name": "Output Gain",
+            "type": "slider",
+            "range": "-inf to +6dB",
+            "unit": "dB",
+            "default": "0dB",
+            "description": "Overall output level compensation"
+          },
+          {
+            "id": "crossfadeTime",
+            "name": "Crossfade Time",
+            "type": "slider",
+            "range": "0-100ms",
+            "unit": "ms",
+            "default": "25ms",
+            "description": "Smoothness of loop transitions",
+            "sweetSpot": "25-40ms for clean glitch, lower for aggressive cuts"
+          }
+        ],
+        "modulation": [
+          {
+            "id": "lfoRate",
+            "name": "LFO Rate",
+            "type": "slider",
+            "range": "0.01 Hz - 20 Hz",
+            "unit": "Hz",
+            "description": "Modulation oscillation speed",
+            "bpmSync": true,
+            "sweetSpot": "Sync to 1/4 or 1/8 for rhythmic modulation"
+          },
+          {
+            "id": "lfoDepth",
+            "name": "LFO Depth",
+            "type": "slider",
+            "range": "0-100%",
+            "unit": "%",
+            "default": "0%",
+            "description": "Intensity of LFO modulation",
+            "sweetSpot": "30-50% for subtle movement, 70%+ for chaos"
+          },
+          {
+            "id": "lfoTarget",
+            "name": "LFO Target",
+            "type": "selector",
+            "options": [
+              "Loop Position",
+              "Loop Length",
+              "Speed"
+            ],
+            "default": "Loop Position",
+            "description": "Parameter affected by LFO",
+            "note": "Loop Position creates scanning effect"
+          }
+        ]
+      },
+      "performanceMappings": {
+        "essential": [
+          "loopLength",
+          "loopPosition",
+          "freeze"
+        ],
+        "advanced": [
+          "stutterEnable",
+          "speed",
+          "direction",
+          "transientSensitivity"
+        ],
+        "safety": [
+          "dryWet",
+          "outputGain"
+        ]
+      },
+      "presetCategories": [
+        "Glitch Stutter",
+        "Beat Repeat",
+        "Reverse Effects",
+        "Vinyl Stop",
+        "Build-Ups",
+        "Transient Gate"
+      ],
+      "cpuUsage": "Low to Moderate",
+      "latency": "Minimal (transient lookahead dependent)",
+      "realtimeSafe": true
+    }
+  },
+  "presets": {
+    "effect-presets": {
+      "glitchPresets": {
+        "vocalStutter": {
+          "bufferSize": "1/16",
+          "pitchShift": 0,
+          "filterFreq": 2000,
+          "filterRes": 30,
+          "mix": 75,
+          "stereoWidth": 100,
+          "automation": [
+            "bufferSize",
+            "filterFreq"
+          ]
+        },
+        "drumGlitch": {
+          "bufferSize": "1/32",
+          "pitchShift": -12,
+          "filterFreq": 800,
+          "filterRes": 70,
+          "mix": 90,
+          "stereoWidth": 50,
+          "automation": [
+            "pitchShift",
+            "bufferSize"
+          ]
+        },
+        "atmosphericGlitch": {
+          "bufferSize": "1/8",
+          "pitchShift": 5,
+          "filterFreq": 5000,
+          "filterRes": 20,
+          "mix": 60,
+          "stereoWidth": 120,
+          "automation": [
+            "filterFreq",
+            "mix"
+          ]
+        }
+      },
+      "stutterPresets": {
+        "trapStutter": {
+          "bufferSize": "1/16",
+          "pitchShift": 0,
+          "filterFreq": 1500,
+          "filterRes": 40,
+          "mix": 80,
+          "stereoWidth": 80,
+          "syncToHost": true,
+          "division": "1/16T"
+        },
+        "houseStutter": {
+          "bufferSize": "1/8",
+          "pitchShift": 0,
+          "filterFreq": 3000,
+          "filterRes": 25,
+          "mix": 70,
+          "stereoWidth": 100,
+          "syncToHost": true,
+          "division": "1/8"
+        },
+        "dubstepGlitch": {
+          "bufferSize": "1/32",
+          "pitchShift": -7,
+          "filterFreq": 600,
+          "filterRes": 80,
+          "mix": 95,
+          "stereoWidth": 60,
+          "syncToHost": true,
+          "division": "1/32"
+        }
+      },
+      "performancePresets": {
+        "liveSetOpener": {
+          "bufferSize": "1/4",
+          "pitchShift": 0,
+          "filterFreq": 4000,
+          "filterRes": 30,
+          "mix": 50,
+          "stereoWidth": 120,
+          "triggerMode": "manual",
+          "holdMode": true
+        },
+        "buildupTool": {
+          "bufferSize": "1/16",
+          "pitchShift": 2,
+          "filterFreq": 2500,
+          "filterRes": 50,
+          "mix": 85,
+          "stereoWidth": 100,
+          "triggerMode": "auto",
+          "intensityRamp": true
+        },
+        "dropEnhancer": {
+          "bufferSize": "1/32",
+          "pitchShift": -5,
+          "filterFreq": 800,
+          "filterRes": 90,
+          "mix": 100,
+          "stereoWidth": 80,
+          "triggerMode": "beatSync",
+          "ducking": true
+        }
+      },
+      "experimentalPresets": {
+        "granularFreeze": {
+          "bufferSize": "200ms",
+          "pitchShift": 0,
+          "filterFreq": 3500,
+          "filterRes": 60,
+          "mix": 100,
+          "freezeMode": true,
+          "randomization": 30
+        },
+        "tapeStop": {
+          "bufferSize": "2 bars",
+          "pitchShift": -24,
+          "filterFreq": 1000,
+          "filterRes": 40,
+          "mix": 95,
+          "tapeEmulation": true,
+          "wowFlutter": true
+        },
+        "bitCrushStutter": {
+          "bufferSize": "1/64",
+          "pitchShift": 0,
+          "filterFreq": 500,
+          "filterRes": 20,
+          "mix": 90,
+          "bitReduction": 8,
+          "sampleRate": 8000
+        }
+      }
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "concepts-and-best-uses": "# Concepts & Best Uses: Transporter\r\n\r\n## What It Is\r\nTransporter is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Transporter\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "parameter-cheat-sheet": "# Transporter - Parameter Cheat Sheet\n\n**Plugin Type:** Realtime Relooping Effect\n**Category:** Creative Effect / Beat Mangler\n**Official Manual:** [Transporter](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Transporter.htm)\n\n---\n\n## Main Loop Controls\n\n| Parameter | Range | Function | Quick Tip |\n|-----------|-------|----------|-----------|\n| **Loop Length** | 1/64 - 4 bars | Size of the looped buffer | Shorter = glitchy, longer = rhythmic loops |\n| **Loop Position** | 0-100% | Where in the buffer to start loop | Automate for dynamic repositioning |\n| **Freeze** | On/Off | Locks current loop content | Use for building static layers |\n| **Transient Sensitivity** | 0-100% | Detection threshold for beats/hits | Higher = only strong transients trigger |\n| **Snap to Transients** | On/Off | Quantizes loop points to detected hits | Creates cleaner, more musical loops |\n\n---\n\n## Transport & Timing\n\n| Parameter | Range | Function | When to Use |\n|-----------|-------|----------|-------------|\n| **Speed** | 0.5x - 2x | Playback speed multiplier | Create half-time or double-time effects |\n| **Direction** | Forward/Reverse | Loop playback direction | Reverse for creative reversed effects |\n| **Stutter** | Off/1-16 steps | Repeats loop segment rhythmically | Add rhythmic stutter fills |\n| **Stutter Rate** | 1/64 - 1 bar | Length of each stutter repeat | Sync to tempo for musical results |\n\n---\n\n## Mix & Effects\n\n| Parameter | Range | Function | Practical Use |\n|-----------|-------|----------|---------------|\n| **Dry/Wet Mix** | 0-100% | Balance between original and effected signal | 100% for complete transformation |\n| **Output Gain** | -inf to +6dB | Overall output level | Compensate for level changes |\n| **Crossfade Time** | 0-100ms | Smoothness of loop transitions | Increase to reduce clicks/pops |\n\n---\n\n## Modulation Section\n\n| Parameter | Function | Automation Ideas |\n|-----------|----------|------------------|\n| **LFO Rate** | Modulation speed | Sync to tempo for rhythmic loop position changes |\n| **LFO Depth** | Modulation intensity | Subtle wobble or extreme position jumping |\n| **LFO Target** | Loop Position/Length/Speed | Choose what the LFO affects |\n\n---\n\n## Quick Start Presets\n\n| Use Case | Settings |\n|----------|----------|\n| **Glitch Stutter** | Loop: 1/16, Snap: On, Stutter: 4 steps at 1/32 |\n| **Vinyl Stop** | Speed: Automate from 100% to 0%, Crossfade: 50ms |\n| **Beat Repeat** | Loop: 1/4, Freeze: On, Position: Automate |\n| **Reverse Build** | Direction: Reverse, Loop: 1 bar, Speed: 0.5x |\n| **Transient Gate** | Sensitivity: 80%, Loop: 1/64, Snap: On |\n\n---\n\n## Transient Detection Tips\n\n1. **Percussive Material:** Use high sensitivity (70-90%) for clean detection\n2. **Dense Mixes:** Lower sensitivity (30-50%) to avoid over-triggering\n3. **Snap to Transients:** Always enable for rhythmic material\n4. **Manual Override:** Disable for smooth, non-rhythmic sources\n\n---\n\n## Live Performance Tricks\n\n### Build-Up Effect\n1. Set loop length to 1/8\n2. Gradually decrease loop length while increasing transient sensitivity\n3. Freeze at peak moment\n4. Release freeze on the drop\n\n### Breakdown Fill\n1. Freeze current loop at bar end\n2. Set stutter to 8 steps at 1/16\n3. Reverse direction\n4. Decrease speed to 0.5x over 2 bars\n\n### Glitch Out\n1. Very short loop (1/64 or 1/32)\n2. Automate loop position rapidly\n3. High crossfade time (75ms+)\n4. Mix at 50% with dry signal\n\n---\n\n## BPM Sync Behavior\n\n- **Auto-Sync:** Transporter automatically syncs to project tempo\n- **Loop Lengths:** All musical (1/4, 1/8, etc.) values sync to BPM\n- **Tempo Changes:** Plugin adjusts loop timing in realtime\n- **Stutter Rates:** Also tempo-synced when using musical divisions\n\n---\n\n## Common Mistakes to Avoid\n\n1. **Too Long Crossfade:** Makes loops mushy and undefined\n2. **Extreme Sensitivity:** Can miss intended transients or over-trigger\n3. **No Freeze Control:** Learn to freeze loops strategically, not randomly\n4. **Ignoring Dry/Wet:** Often 30-70% mix sounds better than 100% wet\n5. **Fixed Loop Position:** Automate position for dynamic movement\n\n---\n\n## CPU & Performance\n\n- **CPU Usage:** Low to moderate (depends on loop length)\n- **Buffer Size:** Shorter loops = less memory usage\n- **Realtime Safe:** Yes - suitable for live performance\n- **Latency:** Minimal (based on transient lookahead)\n\n---\n\n## Genre Applications\n\n| Genre | Typical Settings |\n|-------|------------------|\n| **Glitch Hop** | Short loops (1/16-1/32), high stutter rate |\n| **IDM** | Variable loop lengths, position automation |\n| **Techno** | Longer loops (1/2-1 bar), freeze on builds |\n| **Dubstep** | Stutter on snare hits, reverse effects |\n| **Hip-Hop** | Beat repeat (1/4 loops), transient-snapped |\n\n---\n\n## Routing Suggestions\n\n### Send Effect\n- Place on send track for parallel processing\n- Mix dry drums with glitched version\n- Control effect intensity via send level\n\n### Insert Effect\n- Direct loop manipulation of single track\n- 100% wet for complete transformation\n- Automate freeze for specific sections\n\n### Sidechain Input\n- Route different source for transient detection\n- Loop one signal based on rhythm of another\n- Creative cross-rhythmic effects\n\n---\n\n## Related Plugins\n\n- **Gross Beat** - Alternative loop/stutter effect with more presets\n- **Fruity Scratcher** - Manual loop manipulation\n- **Fruity Granulizer** - Grain-based loop processing\n- **Effector** - Multi-effect with loop capabilities\n\n---\n\n**Last Updated:** February 3, 2026\n**Status:** Complete reference material\n",
+      "quick-start-checklist": "# Quick Start Checklist: Transporter\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Transporter to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "quickstart-guide": "# Transporter Quick Start Guide\n\n## What is Transporter?\nTransporter is a creative audio manipulation plugin that specializes in stutter, glitch, and rhythmic effects for live performance and studio production.\n\n## 5-Minute Setup\n1. Load Transporter on your desired track\n2. Start with the \"Stutter Init\" preset\n3. Play audio and experiment with the main buffer size\n4. Try different stutter divisions (1/4, 1/8, 1/16)\n5. Add filter modulation for movement\n\n## Essential Controls\n- **Buffer Size**: Length of audio loop (16ms - 2 bars)\n- **Stutter Rate**: Repeat speed of buffer\n- **Pitch Shift**: Transposition of stuttered audio\n- **Filter**: Frequency filtering of effects\n- **Mix**: Dry/wet balance\n\n## Quick Patterns\n- **Basic Stutter**: 1/16 notes, 0 pitch shift\n- **Glitch Effect**: Random buffer sizes, pitch +12\n- **Rhythmic Gate**: 1/8 notes with filter automation\n- **Vocal Chop**: 1/32 notes, formant preservation\n\n## Pro Tips\n- Use sidechain input for rhythmic syncing\n- Automate buffer size for builds\n- Combine with reverb for atmospheric effects\n- Freeze stutter moments for repeated loops",
+      "top-controls": "# Top Controls: Transporter\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Transporter\r\n\r\nThis section contains learning information for the transporter plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-context": {
+      "genre-applications": "# Genre-Specific Transporter Applications\n\n## Electronic Music Genres\n\n### EDM\n**Characteristics**: High energy, big builds, festival drops\n**Transporter Settings**:\n- **Build-ups**: Gradual buffer size reduction\n- **Drops**: Heavy 1/32 stutter with pitch manipulation\n- **Breakdowns**: Atmospheric glitch effects\n- **Risers**: Filtered pitch automation\n\n**Preset Template**:\n```json\n{\n  \"edmDrop\": {\n    \"bufferSize\": \"1/32\",\n    \"pitchShift\": -5,\n    \"filterFreq\": 800,\n    \"filterRes\": 90,\n    \"mix\": 100,\n    \"automation\": [\"filterFreq\", \"bufferSize\"]\n  }\n}\n```\n\n### Techno\n**Characteristics**: Repetitive, hypnotic, industrial\n**Transporter Settings**:\n- **Loops**: Long buffer repeats\n- **Percussive**: Short stutters on percussion\n- **Industrial**: Extreme distortion effects\n- **Hypnotic**: Slow, evolving changes\n\n**Workflow**:\n1. Create rhythmic stutter patterns\n2. Automate filter cutoff slowly\n3. Add pitch variation on accents\n4. Use sidechain for ducking\n\n### House\n**Characteristics**: Groovy, soulful, four-on-the-floor\n**Transporter Settings**:\n- **Vocal Chops**: 1/16 pitch-shifted stutters\n- **Bass Glitches**: Subtle bass processing\n- **Atmosphere**: Filtered long buffers\n- **Groove**: Swing-quantized rhythms\n\n### Dubstep\n**Characteristics**: Aggressive, heavy bass, complex rhythms\n**Transporter Settings**:\n- **Wobble Bass**: Filter automation\n- **Vocal Samples**: Heavy glitch processing\n- **Snare Rolls**: Rapid stutter effects\n- **Build-ups**: Intense rhythmic complexity\n\n## Hip-Hop Applications\n\n### Trap\n**Characteristics**: 808s, hi-hats, vocal samples\n**Transporter Settings**:\n- **Hi-Hat Rolls**: 1/32T stutter on hi-hats\n- **808 Glides**: Pitch-modulated bass\n- **Vocal Ad-libs**: Repetitive vocal chops\n- **Snare Rolls**: Build-up stutter effects\n\n**Production Techniques**:\n1. Apply to hi-hat patterns\n2. Create vocal loops from samples\n3. Process 808s for character\n4. Build tension before drops\n\n### Boom Bap\n**Characteristics**: Sample-based, gritty, soulful\n**Transporter Settings**:\n- **Sample Chops**: Classic MPC-style stutters\n- **Drum Fills**: Rhythmic complexity\n- **Vocal Samples**: Vintage feel processing\n- **Atmosphere**: Subtle textural effects\n\n### Lo-Fi Hip-Hop\n**Characteristics**: Relaxed, dusty, atmospheric\n**Transporter Settings**:\n- **Tape Effects**: Buffer-based tape stops\n- **Vinyl Effects**: Emulated vinyl artifacts\n- **Ambient Glitches**: Subtle texture addition\n- **Chopped Samples**: Lo-fi vocal processing\n\n## Rock and Alternative\n\n### Electronic Rock\n**Characteristics**: Rock instruments with electronic processing\n**Transporter Settings**:\n- **Guitar Stutters**: Rhythmic guitar effects\n- **Vocal Effects**: Processed vocal textures\n- **Drum Loops**: Processed acoustic drums\n- **Build-ups**: Song tension creation\n\n### Industrial\n**Characteristics**: Harsh, mechanical, aggressive\n**Transporter Settings**:\n- **Harsh Glitches**: Extreme digital artifacts\n- **Mechanical Rhythms**: Repetitive stutter patterns\n- **Distorted Processing**: Heavy saturation\n- **Noise Integration**: Industrial texture addition\n\n## Pop and Commercial\n\n### Pop Production\n**Characteristics**: Polished, radio-friendly, vocal-focused\n**Transporter Settings**:\n- **Vocal Effects**: Subtle stutter enhancements\n- **Build Effects**: Song tension building\n- **Rhythmic Interest**: Background texture\n- **Transition Effects**: Smooth song changes\n\n### Dance Pop\n**Characteristics**: Upbeat, energetic, mainstream\n**Transporter Settings**:\n- **Vocal Chops**: Catchy repetitive vocals\n- **Synth Stutters**: Processed synth elements\n- **Drop Effects**: Impact creation\n- **Rhythm Enhancement**: Groove addition\n\n## Film and Media\n\n### Action Scenes\n**Characteristics**: Intense, driving, dramatic\n**Transporter Settings**:\n- **Tension Building**: Gradual complexity increase\n- **Impact Effects**: Sudden dramatic moments\n- **Chase Scenes**: Rhythmic intensity\n- **Fight Scenes**: Aggressive processing\n\n### Sci-Fi/Fantasy\n**Characteristics**: Otherworldly, futuristic, magical\n**Transporter Settings**:\n- **Alien Effects**: Unusual sonic textures\n- **Futuristic Sounds**: Advanced processing\n- **Magical Elements**: Ethereal glitch effects\n- **Atmosphere**: World-building texture\n\n### Horror/Thriller\n**Characteristics**: Tense, unsettling, frightening\n**Transporter Settings**:\n- **Psychological Effects**: Disorienting processing\n- **Jump Scares**: Sudden dramatic changes\n- **Tension**: Gradual anxiety building\n- **Unnatural Sounds**: Distorted reality effects",
+      "integration-guide": "# Transporter Integration Guide\n\n## DAW Integration\n\n### FL Studio Native Integration\n**Best Practices**:\n- Use Patcher for complex routing\n- Create template projects with Transporter\n- Set up custom control surfaces\n- Use playlist automation for parameter changes\n\n**Signal Flow Examples**:\n```\nAudio Track → Transporter → EQ → Compressor → Reverb → Limiter\n```\n\n### Ableton Live Integration\n**Setup Options**:\n- **VST/AU Plugin**: Standard integration\n- **Max for Live**: Custom controller devices\n- **MIDI Mapping**: Dedicated hardware control\n- **Audio Effects Rack**: Preset organization\n\n**Live Performance Setup**:\n1. Audio Input → Transporter → Output\n2. Sidechain Input → Rhythm Sync\n3. MIDI Controller → Parameter Control\n4. Session Clips → Scene Changes\n\n### Logic Pro Integration\n**Workflow Integration**:\n- **Smart Controls**: Custom control surfaces\n- **MIDI Learn**: Hardware mapping\n- **Automation**: Logic's automation system\n- **Plugin Manager**: Organization and favorites\n\n## Plugin Chain Integration\n\n### Vocal Processing Chain\n**Order**: Transporter → EQ → De-esser → Compressor → Reverb\n1. **Transporter**: Creative stutter effects\n2. **EQ**: Shape frequency content\n3. **De-esser**: Control sibilance\n4. **Compression**: Dynamic control\n5. **Reverb**: Spatial positioning\n\n### Drum Processing Chain\n**Order**: Transporter → Transient Designer → EQ → Compression → Saturation\n1. **Transporter**: Rhythmic stutter/gate effects\n2. **Transient Designer**: Shape attack/sustain\n3. **EQ**: Tone shaping\n4. **Compression**: Glue and control\n5. **Saturation**: Add warmth/character\n\n### Synth Processing Chain\n**Order**: Synth → Transporter → Filter → Delay → Reverb → Limiter\n1. **Synthesizer**: Raw sound generation\n2. **Transporter**: Rhythmic processing\n3. **Filter**: Additional filtering\n4. **Delay**: Rhythmic echoes\n5. **Reverb**: Space and atmosphere\n\n## Hardware Integration\n\n### MIDI Controller Setup\n**Recommended Controllers**:\n- **Novation Launchpad**: Grid-style triggering\n- **Native Instruments Maschine**: Pad performance\n- **AKAI MPC**: Classic pad feel\n- **Roli Seaboard**: Expressive control\n\n**Control Mapping**:\n```json\n{\n  \"midiMapping\": {\n    \"CC1\": \"bufferSize\",\n    \"CC2\": \"pitchShift\",\n    \"CC3\": \"filterFreq\",\n    \"CC4\": \"mix\",\n    \"CC5\": \"stereoWidth\",\n    \"NoteOn\": \"trigger\",\n    \"NoteOff\": \"stop\"\n  }\n}\n```\n\n### Audio Interface Integration\n**Requirements**:\n- Low-latency drivers (ASIO/Core Audio)\n- Multiple inputs for sidechaining\n- High-quality converters for processing\n- Monitor mixing for wet/dry monitoring\n\n### Hardware Processors\n**External Processing Options**:\n- **Analog Filters**: Additional character\n- **Hardware Compressors**: Add analog warmth\n- **Tape Machines**: Vintage texture\n- **Guitar Pedals**: Creative distortion\n\n## Software Integration\n\n### Max for Live Integration\n**Custom Devices**:\n- **Transporter Controller**: Dedicated interface\n- **Randomizer**: Generative effect creation\n- **Recorder**: Capture stutter moments\n- **Sequencer**: Pattern-based triggering\n\n### Script Integration\n**Python/Automation**:\n- **Parameter Automation**: Scripted parameter changes\n- **Preset Generation**: Algorithmic preset creation\n- **Performance Recording**: MIDI data capture\n- **Batch Processing**: Process multiple files\n\n### Controller Scripts\n**FL Studio Scripts**:\n- **Transport Scripts**: Dedicated transport controls\n- **Performance Scripts**: Live performance assistance\n- **Recording Scripts**: Capture performances\n- **Mixing Scripts**: Automated mixing assistance\n\n## Third-Party Integration\n\n### Sidechain Sources\n**Compatible Sources**:\n- **Kick Drums**: Rhythmic ducking\n- **Bass Lines**: Frequency separation\n- **Vocal Tracks**: Vocal ducking\n- **Full Mix**: Master ducking\n\n### ReWire Integration\n**Multi-DAW Workflows**:\n- **FL Studio + Ableton**: Live performance + studio production\n- **Logic + FL**: Composition + creative processing\n- **Pro Tools + FL**: Post-production + effects\n\n### Avid Integration\n**Pro Tools Workflow**:\n- **AAX Version**: Native Pro Tools support\n- **HDX Processing**: DSP acceleration (if available)\n- **Automation**: Pro Tools automation system\n- **Surface Control**: Avid control surfaces\n\n## Workflow Optimization\n\n### Template Creation\n**Project Templates**:\n- **Electronic Music**: Pre-routed signal chains\n- **Hip-Hop**: Vocal and drum processing\n- **Film Scoring**: Ambient and effect templates\n- **Live Performance**: Performance-ready setups\n\n### Preset Management\n**Organization Strategies**:\n- **Genre Folders**: Organized by musical style\n- **Use Case Folders**: Live vs. Studio presets\n- **Star Ratings**: Favorite preset marking\n- **Custom Tags**: User-defined categories\n\n### Automation Strategies\n**Advanced Automation**:\n- **LFO Automation**: Parameter modulation\n- **Envelope Following**: Dynamic response\n- **Step Sequencing**: Rhythmic automation\n- **Randomization**: Controlled variation",
+      "live-performance": "# Transporter Live Performance Guide\n\n## Setup Configuration\n\n### Stage Setup Requirements\n**Hardware Essentials**:\n- Laptop with sufficient RAM/CPU\n- High-quality audio interface\n- MIDI controller for real-time control\n- Backup audio interface and cables\n- Power conditioning and surge protection\n\n**Software Configuration**:\n- Optimize buffer settings (128-256 samples)\n- Disable unnecessary background processes\n- Set up performance templates\n- Configure MIDI mappings in advance\n\n### Controller Mapping\n\n### Essential Parameters to Map\n**Primary Controls**:\n- **Buffer Size**: Main stutter rhythm\n- **Pitch Shift**: Tonal manipulation\n- **Filter Cutoff**: Frequency filtering\n- **Mix**: Wet/dry balance\n- **Trigger**: Effect activation\n\n**Secondary Controls**:\n- **Stereo Width**: Spatial control\n- **Filter Resonance**: Filter character\n- **Feedback**: Intensity control\n- **Freeze**: Hold current buffer\n\n### Recommended Controllers\n**Professional Setup**:\n- **Main Controller**: Novation Launchkey Pro\n- **Secondary Controller**: Native Instruments Maschine\n- **Expression Pedal**: Moog EP-3\n- **Footswitches**: Boss FS series\n\n**Budget Setup**:\n- **Main Controller**: AKAI MPK Mini\n- **Expression Pedal**: M-Audio EX-P\n- **Footswitch**: Sustain pedal repurposed\n\n## Performance Techniques\n\n### Real-Time Buffer Manipulation\n**Live Techniques**:\n- **Gradual Size Changes**: Build-ups and breakdowns\n- **Rapid Switching**: Abrupt effect changes\n- **Rhythmic Tapping**: Manual rhythm creation\n- **Randomization**: Controlled chaos\n\n### Dynamic Control\n**Performance Strategies**:\n- **Velocity Response**: Play harder for more intensity\n- **Aftertouch**: Additional parameter control\n- **Mod Wheel**: Continuous parameter changes\n- **Pedal Control**: Hands-free manipulation\n\n### Set Flow Management\n**Structural Elements**:\n- **Intro**: Minimal effects, subtle processing\n- **Verse**: Light stutter, vocal enhancement\n- **Build-up**: Gradual intensity increase\n- **Drop**: Maximum effect intensity\n- **Breakdown**: Filtered, atmospheric processing\n- **Outro**: Fade out, return to minimal\n\n## Genre-Specific Performance\n\n### Electronic Music Sets\n**EDM Performance**:\n- **Build Control**: Gradual buffer size reduction\n- **Drop Impact**: Heavy stutter with pitch manipulation\n- **Transition Tools**: Effect-based song changes\n- **Crowd Interaction**: Responsive processing\n\n**Techno Sets**:\n- **Loop Creation**: Long buffer manipulation\n- **Hypnotic Patterns**: Repetitive processing\n- **Industrial Elements**: Harsh distortion\n- **Evolution**: Slow parameter changes\n\n### Hip-Hop Performance\n**Trap Sets**:\n- **Hi-Hat Control**: Rhythmic stutter on hi-hats\n- **808 Processing**: Bass manipulation\n- **Vocal Effects**: Real-time vocal processing\n- **Ad-Lib Creation**: Spontaneous effects\n\n**Boom Bap Sets**:\n- **Sample Manipulation**: Classic sample chopping\n- **Drum Fills**: Live drum processing\n- **Atmosphere**: Background texture creation\n- **Scratch Emulation**: Turntable-style effects\n\n## Advanced Performance Concepts\n\n### Multi-Instance Performance\n**Setup**: Multiple Transporter instances\n- **Instance 1**: Main rhythm processing\n- **Instance 2**: Vocal effects\n- **Instance 3**: Ambient texture\n- **Instance 4**: Drum processing\n\n**Control Strategy**:\n- **Layer Switching**: Dedicated controls for each layer\n- **Crossfading**: Smooth transitions between layers\n- **Parallel Processing**: Multiple effects simultaneously\n\n### Collaborative Performance\n**Multi-Musician Setups**:\n- **Shared Control**: Multiple controllers\n- **Role Assignment**: Each musician controls specific parameters\n- **Visual Feedback**: Screen sharing for synchronization\n- **Communication**: Clear hand signals and cues\n\n### Improvisation Techniques\n**Spontaneous Creation**:\n- **Randomization**: Controlled random parameter changes\n- **Reaction-Based**: Respond to other musicians\n- **Audience Response**: Adjust based on crowd energy\n- **Mistake Recovery**: Turn errors into creative moments\n\n## Technical Considerations\n\n### Latency Management\n**Optimization Strategies**:\n- **Buffer Size**: Balance between latency and CPU\n- **Driver Selection**: ASIO/Core Audio preferred\n- **CPU Management**: Monitor usage during performance\n- **Backup Systems**: Plan for technical failures\n\n### Audio Routing\n**Signal Flow**:\n```\nMicrophone → Audio Interface → Transporter → Mixer → PA System\n               ↑\n          MIDI Controller\n```\n\n**Monitor Setup**:\n- **Stage Monitor**: Wet signal for performer\n- **Front of House**: Balanced wet/dry mix\n- **Recording**: Clean signal capture\n- **Streaming**: Optimized mix for online audience\n\n### Backup and Recovery\n**Contingency Planning**:\n- **Plugin Crashes**: Have alternative effects ready\n- **Power Failure**: UPS battery backup\n- **Controller Issues**: Mouse/keyboard backup control\n- **Audio Interface**: Backup interface available\n\n## Performance Templates\n\n### Pre-Show Checklist\n**Technical Setup**:\n- [ ] Audio interface connected and recognized\n- [ ] MIDI controllers mapped and tested\n- [ ] Templates loaded and accessible\n- [ ] Monitor levels set\n- [ ] Recording setup tested\n\n**Creative Setup**:\n- [ ] Song structures mapped to scenes\n- [ ] Transition effects prepared\n- [ ] Backup presets loaded\n- [ ] Emergency procedures reviewed\n\n### On-Stage Troubleshooting\n**Common Issues and Solutions**:\n- **No Sound**: Check audio interface, cables, mixer\n- **MIDI Not Working**: Verify connections, restart controllers\n- **Plugin Crash**: Reload plugin, reset to safe preset\n- **High CPU**: Increase buffer, disable unused plugins\n\n**Performance Recovery**:\n- **Keep Playing**: Continue with basic setup\n- **Simplify**: Reduce complexity until stable\n- **Communicate**: Let audience know briefly if needed\n- **Recover**: Gradually restore full setup",
+      "troubleshooting-workflows": "# Transporter Troubleshooting Guide\n\n## Sound Issues\n\n### No Effect Output\n**Causes**:\n- Mix knob at 0%\n- Plugin bypassed\n- No audio input\n- Wrong routing\n\n**Solutions**:\n1. Increase mix to 50-100%\n2. Disable plugin bypass\n3. Check input routing\n4. Verify audio signal chain\n\n### Audio Glitches/Dropouts\n**Causes**:\n- Buffer size too small\n- CPU overload\n- Audio driver issues\n- Multiple instances\n\n**Solutions**:\n1. Increase buffer size\n2. Close other plugins\n3. Update audio drivers\n4. Reduce instance count\n\n### Clicks and Pops\n**Causes**:\n- Zero-crossing issues\n- Rapid parameter changes\n- Small buffer sizes\n- Poor source audio\n\n**Solutions**:\n1. Enable fade/smoothing options\n2. Automate slowly\n3. Use larger buffers\n4. Clean input audio\n\n## Timing Issues\n\n### Stutter Not in Sync\n**Causes**:\n- Host sync disabled\n- Wrong tempo detection\n- MIDI clock issues\n- Latency compensation\n\n**Solutions**:\n1. Enable host sync\n2. Check project tempo\n3. Verify MIDI clock\n4. Adjust PDC settings\n\n### Rhythm Feeling Off\n**Causes**:\n- Wrong division selected\n- Humanization disabled\n- Quantization issues\n- Groove missing\n\n**Solutions**:\n1. Try different divisions\n2. Add humanization\n3. Check quantize settings\n4. Apply groove template\n\n## Performance Issues\n\n### High CPU Usage\n**Causes**:\n- Complex algorithms\n- High oversampling\n- Multiple instances\n- Small buffer sizes\n\n**Solutions**:\n1. Reduce oversampling\n2. Freeze tracks\n3. Use larger buffers\n4. Limit instances\n\n### Plugin Crashes\n**Causes**:\n- Version incompatibility\n- Memory issues\n- Corrupted presets\n- Driver conflicts\n\n**Solutions**:\n1. Update plugin\n2. Increase RAM\n3. Reset to defaults\n4. Update drivers\n\n## Creative Problems\n\n### Effects Sound Boring\n**Solutions**:\n- Automate parameters\n- Try different presets\n- Layer with other effects\n- Use modulators\n\n### Can't Achieve Desired Sound\n**Techniques**:\n- Combine multiple techniques\n- Use external processing\n- Experiment with extreme settings\n- Study reference tracks\n\n## Installation Issues\n\n### Plugin Not Showing\n**Causes**:\n- Wrong installation path\n- Plugin not scanned\n- Version mismatch\n- Permissions issue\n\n**Solutions**:\n1. Reinstall to correct path\n2. Rescan plugins\n3. Check version compatibility\n4. Run as administrator\n\n### Authorization Problems\n**Solutions**:\n- Check license key\n- Re-enter registration\n- Contact support\n- Try demo version first"
+    },
+    "by-goal": {
+      "advanced-techniques": "# Advanced Transporter Techniques\n\n## Complex Buffer Manipulation\n\n### Multi-Layer Buffering\n**Technique**: Create layered stutter effects\n- **Layer 1**: Main rhythm (1/16 notes)\n- **Layer 2**: Counter-rhythm (1/8T notes)\n- **Layer 3**: Atmospheric layer (1/4 notes)\n- **Layer 4**: Glitch accents (random)\n\n**Implementation**:\n1. Use multiple instances\n2. Different buffer sizes per layer\n3. Separate EQ/filter per layer\n4. Automated mix changes\n\n### Dynamic Buffer Morphing\n**Concept**: Smoothly transition between buffer sizes\n- **Build Morph**: 1/4 → 1/8 → 1/16 → 1/32\n- **Release Morph**: 1/32 → 1/16 → 1/8 → 1/4\n- **Random Morph**: Intelligent randomization\n- **Rhythm Morph**: Follow rhythmic patterns\n\n### Buffer Size Modulation\n**Advanced Techniques**:\n- **LFO Control**: Sine, triangle, square modulation\n- **Envelope Following**: React to input dynamics\n- **MIDI Control**: Real-time manual control\n- **Audio Rate Modulation**: Extreme modulation effects\n\n## Pitch Manipulation\n\n### Formant Preservation\n**Technique**: Maintain vocal character while pitching\n- **Formant Shift**: Separate from pitch shift\n- **Vocal Mode**: Optimized algorithms\n- **Gender Bend**: Extreme formant shifts\n- **Character Preservation**: Natural sound quality\n\n### Multi-Octave Techniques\n**Strategies**:\n- **Octave Doubling**: Layer multiple octaves\n- **Harmonic Stacking**: Add harmonics\n- **Detuned Layers**: Create width\n- **Pitch Automation**: Dynamic movement\n\n### Micro-Pitch Variations\n**Subtle Effects**:\n- **Vibrato**: Add vibrato to stuttered audio\n- **Drift**: Slow random pitch changes\n- **Flutter**: Fast pitch variations\n- **Humanize**: Slight timing and pitch variations\n\n## Rhythmic Complexity\n\n### Poly-Rhythmic Stutter\n**Concept**: Overlay different rhythmic patterns\n- **3 over 4**: Triplet feel over straight rhythm\n- **5 over 4**: Complex syncopation\n- **7 over 8**: Advanced polyrhythms\n- **Randomized**: Controlled chaos\n\n### Groove Application\n**Techniques**:\n- **Swing Application**: Add groove to stutter\n- **Humanization**: Natural feel\n- **Templates**: Apply preset grooves\n- **Custom Grooves**: User-created patterns\n\n### Metric Modulation\n**Advanced Rhythm**:\n- **Tempo Changes**: Internal tempo shifts\n- **Division Changes**: Rhythmic subdivision shifts\n- **Cross-Rhythms**: Complex layering\n- **Freeform**: Metric modulation\n\n## Creative Signal Flow\n\n### Parallel Processing\n**Setup**: Split signal for different processing\n1. **Dry Path**: Original signal\n2. **Stutter Path**: Transporter effect\n3. **Reverb Path**: Space and dimension\n4. **Delay Path**: Rhythmic echoes\n\n### Feedback Loops\n**Technique**: Create feedback systems\n- **Self-Oscillation**: Extreme settings\n- **Controlled Feedback**: Musical feedback\n- **Modulated Feedback**: Changing character\n- **Feedback Clipping**: Saturation effects\n\n### Sidechain Integration\n**Advanced Sidechain**:\n- **Multi-Band**: Frequency-selective ducking\n- **Rhythm Sync**: Follow drum patterns\n- **Envelope Shaping**: Custom response curves\n- **Gate Effects**: Rhythmic cutting\n\n## Performance Techniques\n\n### Live Performance Setup\n**Controller Mapping**:\n- **Buffer Size**: Fader or knob\n- **Pitch Shift**: Rotary encoder\n- **Filter**: Expression pedal\n- **Mix**: Crossfader\n- **Trigger**: Pad or button\n\n### Set Management\n**Workflow**:\n- **Scene Organization**: Song structure\n- **Preset Switching**: Smooth transitions\n- **Automation Recording**: Capture performances\n- **Safety Nets**: Backup systems\n\n### Improvisation Techniques\n**Live Approaches**:\n- **Randomization**: Controlled chaos\n- **Reaction-Based**: Respond to music\n- **Audience Interaction**: Real-time adjustments\n- **Collaboration**: Work with other musicians",
+      "live-glitch-performance": "# Live Glitch Performance with Transporter\n\n**Difficulty:** Intermediate\n**Time Required:** 20-30 minutes\n**Goal:** Set up Transporter for expressive live performance control\n**Genre:** Glitch, IDM, Live Electronic\n\n---\n\n## Prerequisites\n\n- Transporter loaded on mixer track or send\n- MIDI controller with knobs/faders (optional but recommended)\n- Understanding of FL Studio automation and MIDI mapping\n- Audio source playing (drum loop, vocals, or full mix)\n\n---\n\n## Workflow Steps\n\n### Step 1: Initial Routing Setup\n\n1. **Create Send Track:**\n   - Add Transporter to mixer Send track (e.g., Send 1)\n   - Send ~30% of your main drum bus to this track\n   - *Why:* Parallel processing keeps original signal intact\n\n2. **Set Initial Mix:**\n   - Transporter **Dry/Wet:** 100% wet\n   - Send **Volume:** -6dB\n   - *Why:* Control effect intensity via send level, not dry/wet\n\n---\n\n### Step 2: Core Performance Parameters\n\n3. **Map Loop Length to Controller:**\n   - Right-click **Loop Length** > Link to Controller\n   - Assign to knob/fader\n   - *Why:* Real-time loop size changes are essential for glitch\n   - *Range:* Focus on 1/64 to 1/4 range\n\n4. **Map Loop Position to Second Controller:**\n   - Assign to another knob/fader or XY pad\n   - *Why:* Dynamic loop repositioning creates variation\n   - *Tip:* Use mod wheel or ribbon controller for smooth sweeps\n\n5. **Map Freeze to Button/Pad:**\n   - Assign to MIDI note or button\n   - *Why:* Instant loop capture for builds and fills\n   - *Tip:* Use toggle mode for sustained freezes\n\n---\n\n### Step 3: Transient Detection Configuration\n\n6. **Set Transient Sensitivity:** ~60%\n   - *Why:* Middle ground for most drum material\n   - *Adjust:* Higher for sparse drums, lower for dense mixes\n\n7. **Enable Snap to Transients:**\n   - Turn **ON**\n   - *Why:* Keeps loops musical and in-time\n   - *Note:* Can disable for smooth, non-rhythmic sources\n\n---\n\n### Step 4: Stutter Effect Setup\n\n8. **Stutter Rate:** Set to **1/16**\n   - *Why:* Classic glitch stutter rate\n   - *Alternatives:* 1/32 for faster, 1/8 for slower\n\n9. **Stutter Steps:** Start at **4**\n   - *Why:* Creates rhythmic 4-hit stutter\n   - *Map to Controller:* For variable stutter lengths\n\n10. **Map Stutter On/Off:**\n    - Assign to button or pad\n    - *Why:* Engage stutter only when needed\n    - *Performance Tip:* Hit on fill moments\n\n---\n\n### Step 5: Advanced Performance Controls\n\n11. **Speed Control:**\n    - Keep at **100%** normally\n    - *Performance Move:* Drop to 50% for half-time breakdowns\n    - *Map to Fader:* For vinyl-stop style effects\n\n12. **Direction Toggle:**\n    - Set up button for Forward/Reverse switch\n    - *Why:* Instant reverse effects for builds\n    - *Tip:* Combine with freeze for reversed loop layers\n\n13. **Crossfade Time:** Set to **25-40ms**\n    - *Why:* Smooth enough to avoid clicks, tight enough for glitch\n    - *Adjust:* Lower for aggressive cuts, higher for smooth transitions\n\n---\n\n### Step 6: LFO Modulation (Optional Advanced)\n\n14. **LFO Rate:** Sync to **1/4** or **1/8**\n    - *Why:* Rhythmic automatic loop position movement\n    - *When:* Use during sustained sections for auto-variation\n\n15. **LFO Depth:** Start at **30%**\n    - *Why:* Subtle automatic wobble\n    - *Increase:* Up to 70% for chaotic movement\n\n16. **LFO Target:** Set to **Loop Position**\n    - *Why:* Creates auto-scanning through loop buffer\n    - *Alternatives:* Try on Loop Length for rhythmic size changes\n\n---\n\n### Step 7: Performance Technique Practice\n\n17. **Practice These Moves:**\n\n**Move 1: Build-Up**\n- Start with loop length at 1/4\n- Gradually reduce to 1/64 over 4 bars\n- Increase send level simultaneously\n- Freeze on last beat before drop\n- Release all on drop\n\n**Move 2: Glitch Fill**\n- Enable stutter during last bar of phrase\n- Sweep loop position while stutter is active\n- Disable stutter on downbeat\n\n**Move 3: Reverse Build**\n- Freeze current loop\n- Switch to reverse direction\n- Reduce speed from 100% to 50%\n- Switch back to forward on drop\n\n**Move 4: Position Scan**\n- Loop length at 1/8\n- Rapidly sweep loop position back and forth\n- Creates \"scrubbing\" effect\n\n---\n\n### Step 8: Safety Nets & Backup\n\n18. **Create Snapshots:**\n    - Save multiple Transporter preset states\n    - Name them: \"Reset\", \"Glitch\", \"Stutter\", \"Reverse\"\n    - *Why:* Quick recall if you get lost during performance\n\n19. **Set Up Kill Switch:**\n    - Map send level to fader\n    - Pull to 0 to instantly remove effect\n    - *Why:* Emergency reset for live situations\n\n---\n\n## Performance Workflow Example (16-Bar Section)\n\n```\nBars 1-4:   Normal playback (send at 10%)\nBars 5-6:   Gradually increase send to 40%\nBar 7:      Sweep loop position, length at 1/8\nBar 8:      Freeze loop, enable stutter (4 steps at 1/16)\nBar 9-12:   Hold freeze, stutter builds tension\nBar 13:     Disable stutter, reverse direction\nBar 14:     Reduce speed to 50%\nBar 15:     Release freeze, forward direction, speed back to 100%\nBar 16:     Pull send back to 10%, reset loop length to 1/4\n```\n\n---\n\n## MIDI Controller Mapping Template\n\n### Essential Mappings\n| Control | Assignment | Range |\n|---------|------------|-------|\n| Knob 1 | Loop Length | 1/64 - 1/2 |\n| Knob 2 | Loop Position | 0-100% |\n| Knob 3 | Transient Sensitivity | 40-80% |\n| Knob 4 | Crossfade Time | 10-100ms |\n| Fader 1 | Send Level | 0-100% |\n| Fader 2 | Speed | 0.5x - 2x |\n| Pad 1 | Freeze Toggle | On/Off |\n| Pad 2 | Stutter Enable | On/Off |\n| Pad 3 | Direction Toggle | Fwd/Rev |\n| Pad 4 | Snap to Transients | On/Off |\n\n---\n\n## Advanced Variations\n\n### Variation 1: Dual Transporter Setup\n- Load two Transporters on separate send tracks\n- One for short glitches (1/64-1/16)\n- One for long loops (1/4-1 bar)\n- Crossfade between them for dynamic range\n\n### Variation 2: Source Switching\n- Route multiple sources to Transporter send\n- Switch which tracks are sent during performance\n- Glitch drums, then switch to vocals, then synths\n\n### Variation 3: Post-Effect Chain\n- Add distortion after Transporter (on send track)\n- Add reverb for glitch ambience\n- Use filter for frequency-based glitch variations\n\n---\n\n## Genre-Specific Techniques\n\n### Glitch Hop\n- Focus on 1/16 and 1/32 loop lengths\n- Heavy stutter use on snare hits\n- Combine with pitch-shifted drums\n\n### IDM\n- Variable loop lengths (1/64 to 1 bar)\n- Extensive loop position automation\n- Combine freeze with reverse for abstract textures\n\n### Techno (Live Sets)\n- Longer loops (1/2 to 1 bar)\n- Use freeze sparingly for build-ups\n- Stutter on hi-hats for energy boosts\n\n### Bass Music\n- Short loops on bass hits (1/32)\n- Reverse effects before drops\n- Combine with distortion for aggression\n\n---\n\n## Troubleshooting Live Performance\n\n### Issue: Clicks and Pops\n- **Solution:** Increase crossfade time to 40-60ms\n- Check that snap to transients is enabled\n\n### Issue: Effect Too Harsh\n- **Solution:** Reduce send level, don't use 100% wet\n- Add slight reverb after Transporter to smooth\n\n### Issue: Lost in the Effect\n- **Solution:** Use your kill switch (send fader)\n- Load \"Reset\" preset snapshot\n\n### Issue: Loops Don't Sync\n- **Solution:** Verify project BPM is set correctly\n- Check that loop lengths are using musical divisions\n\n---\n\n## Recording Your Performance\n\n1. **Record to Playlist:**\n   - Arm mixer track with Transporter\n   - Record all parameter movements\n   - Edit/refine automation afterwards\n\n2. **Export Individual Glitch Sections:**\n   - Solo Transporter send track\n   - Export loops as audio samples\n   - Build custom glitch library\n\n3. **Freeze Favorite Moments:**\n   - When you hit a great glitch texture, freeze it\n   - Record that frozen loop separately\n   - Use as one-shot sample later\n\n---\n\n## Next Steps\n\nAfter mastering live Transporter performance:\n\n1. **Combine with Gross Beat** for enhanced time manipulation\n2. **Layer multiple Transporters** on different frequency ranges\n3. **Create macro controls** in Patcher for complex multi-parameter moves\n4. **Build custom glitch presets** based on your performance style\n\n---\n\n**Related Workflows:**\n- [Glitch Drum Processing](./glitch-drum-processing.md)\n- [Vocal Stutter Effects](./vocal-stutter-effects.md)\n- [Build-Up and Fill Creation](./buildup-fill-creation.md)\n\n---\n\n**Last Updated:** February 3, 2026\n**Status:** Complete workflow\n",
+      "vocal-chop-glitch-hiphop": "# Vocal Chops & Glitch Effects for Hip-Hop\n\n**Genre:** Hip-Hop, Trap, Experimental, Glitch-Hop\n**Vibe:** Futuristic, rhythmic, unpredictable\n**Difficulty:** Intermediate\n**Time:** 15-20 minutes\n\n---\n\n## What Transporter Does for Hip-Hop\n\nTransporter creates **dynamic, evolving vocal chops** by:\n- Detecting transients in your vocal\n- Triggering **random loop variations**\n- Creating **stutters, glitches, and rhythmic patterns**\n- Making static vocals into **moving, living textures**\n\n---\n\n## Quick Setup: Vocal Chop Effect\n\n### Step 1: Route Your Vocals\n\n**Input Configuration:**\n1. Load **Transporter** as an insert effect on vocal track\n2. OR send vocals to Transporter on an FX channel\n3. **Recommendation:** Use FX send for parallel processing\n\n**Source Material:**\n- Recorded rap vocals\n- Sung hooks/melodies\n- Ad-libs and one-shots\n- Vocal samples from other tracks\n\n### Step 2: Essential Settings\n\n```\nMin Length A: 100-300ms (rhythmic chops)\nSensitivity: 50-70% (responsive to louder syllables)\nA/B Ratio: 30-50% (varied loop lengths)\nSpread: 30-50% (stereo movement)\nBouncing Rate: 0% (start with no acceleration)\n```\n\n**What This Does:**\n- Creates **100-300ms loops** triggered by vocal transients\n- **Sensitivity** determines which syllables trigger new loops\n- **A/B Ratio** adds variety (different loop lengths)\n- **Spread** creates stereo width\n\n---\n\n## Genre-Specific Techniques\n\n### 1. Trap Vocal Stutter (Future, Young Thug)\n\n**Settings:**\n```\nMin Length A: 150ms (short, snappy)\nSensitivity: 65%\nA/B Ratio: 40%\nSpread: 40%\nBias: Deterministic\nReverse Probability: 15% (occasional reverse)\n```\n\n**How to Use:**\n1. Apply to **ad-libs or hook vocals**\n2. **Automate bypass:** Stutter ON during transitions\n3. **Layer** with dry vocal (50/50 blend)\n\n**Result:** Futuristic, robotic vocal rhythms\n\n**Reference:**\n- Future - \"Mask Off\"\n- Young Thug - \"Best Friend\"\n- Travis Scott - \"SICKO MODE\" (transitions)\n\n---\n\n### 2. Glitchy Melodic Hook (Porter Robinson Influence in Hip-Hop)\n\n**Settings:**\n```\nMin Length A: 200ms\nSensitivity: 55%\nA/B Ratio: 60% (more variation)\nSpread: 60% (wide stereo)\nBouncing Rate: 30% (accelerating loops)\nReverse Probability: 25%\nOctave: +1 (pitch up)\n```\n\n**How to Use:**\n1. Apply to **sung/melodic vocals**\n2. Let it **evolve over 4-8 bars**\n3. **Automate sensitivity** for builds\n\n**Result:** Evolving, unpredictable vocal texture\n\n**Reference:**\n- Flume x Travis Scott - \"Say It\"\n- Skrillex & Rick Ross - \"Purple Lamborghini\"\n\n---\n\n### 3. Chopped & Screwed Remix Style\n\n**Settings:**\n```\nMin Length A: 500ms (longer chunks)\nSensitivity: 40% (fewer triggers)\nA/B Ratio: 20%\nSpread: 0% (mono, focused)\nReverse Probability: 0%\nOctave: -1 (pitch down)\n```\n\n**Post-Processing:**\n- **Slow down playback** to 60-75% speed\n- **Pitch down** -2 to -4 semitones\n- **Heavy reverb** (Houston style)\n\n**Result:** Slowed, pitched-down, hypnotic\n\n**Reference:**\n- DJ Screw - Any chopped & screwed mix\n- Travis Scott - \"Drugs You Should Try It\"\n\n---\n\n### 4. Psychedelic Vocal Texture\n\n**Settings:**\n```\nMin Length A: 300ms\nSensitivity: 50%\nA/B Ratio: 70% (maximum variation)\nSpread: 80% (very wide)\nBouncing Rate: 50%\nBias: Probabilistic (random)\nReverse Probability: 40% (lots of reverse)\nOctave: Random shifts\n```\n\n**Post-Processing:**\n- **Vintage Phaser** (slow, deep)\n- **Long reverb** (4+ seconds)\n- **Delay** (1/8 dotted)\n\n**Result:** Trippy, unpredictable, atmospheric\n\n**Reference:**\n- Kid Cudi - \"Day 'n' Nite\" (similar vibe)\n- ASAP Rocky - \"L$D\"\n\n---\n\n## Step-by-Step: Creating a Vocal Chop Hook\n\n### Step 1: Prepare Your Vocal\n\n**Record a clean vocal hook:**\n- 4-8 bars of sung/rapped melody\n- Clear pronunciation\n- No reverb/effects (add after Transporter)\n\n### Step 2: Set Up Parallel Processing\n\n**Signal Chain:**\n```\nVocal Track → Mixer Insert 1\n  ├─ 100% to Master (dry vocal)\n  └─ Send to Insert 10 (Transporter FX)\n       └─ Transporter → Effects → Master\n```\n\n**Why Parallel:**\n- Keeps **dry vocal clarity**\n- Adds **Transporter texture** on top\n- More control over wet/dry balance\n\n### Step 3: Configure Transporter\n\n**For Rhythmic Hook:**\n```\nMin Length A: 200ms\nSensitivity: 60%\nA/B Ratio: 40%\nSpread: 50%\n```\n\n**Start Playing:**\n- Let Transporter **build a buffer** (20 seconds of audio)\n- Adjust **Sensitivity** until it triggers on the right syllables\n\n### Step 4: Shape the Sound\n\n**Manual Triggers:**\n- **Click waveform** to manually trigger new loops\n- Use **Flush** button to reset and start fresh\n- Experiment with **different sections** of the vocal\n\n### Step 5: Add Effects to Transporter Output\n\n**Effects Chain:**\n1. **Fruity Parametric EQ 2**\n   - High-pass at 200Hz\n   - Boost +3dB at 3kHz (clarity)\n\n2. **Fruity Delay 3**\n   - 1/16 or 1/8 note\n   - 2-3 repeats\n   - 20-30% mix\n\n3. **Fruity Reverb 2**\n   - Medium size\n   - 15-25% mix\n\n4. **Fruity Limiter**\n   - Soft saturation\n   - Glue it together\n\n### Step 6: Automation for Variation\n\n**Automate These Parameters:**\n- **Sensitivity:** Higher during busy sections\n- **Bouncing Rate:** Increase for builds\n- **Reverse Probability:** Add during breakdowns\n- **Bypass:** Turn ON/OFF for dramatic effect\n\n---\n\n## Advanced Techniques\n\n### Technique 1: Sidechain to Kick\n\n**Setup:**\n- Sidechain Transporter output to kick drum\n- **Fast attack** (5ms), **medium release** (100ms)\n- Creates **pumping glitch effect**\n\n---\n\n### Technique 2: Multi-Layer Glitch\n\n**Stack 3 Instances:**\n1. **Transporter 1:** Short loops (100ms) - high layer\n2. **Transporter 2:** Medium loops (250ms) - mid layer\n3. **Transporter 3:** Long loops (500ms) - low layer\n\n**Result:** Complex, evolving texture\n\n---\n\n### Technique 3: Freeze & Resample\n\n**Process:**\n1. Let Transporter run for 30-60 seconds\n2. **Record output** to audio track\n3. **Chop up** the recording\n4. Arrange as a **hook or breakdown**\n\n**Why:** Capture happy accidents, create repeatable moments\n\n---\n\n### Technique 4: Vocal Instrument\n\n**Use Transporter to turn vocals into melodic elements:**\n1. Record **\"ooh\" or \"ahh\"** sustained notes\n2. Apply Transporter with **long loops** (500ms+)\n3. **Pitch shift** with Fruity Pitcher\n4. Use as **pad or atmospheric layer**\n\n---\n\n## Mixing Transporter Vocals\n\n### Frequency Management\n- **High-pass at 200-300Hz:** Avoid mud\n- **Cut 500Hz-1kHz:** Prevent boxiness\n- **Boost 3-5kHz:** Add presence/clarity\n\n### Stereo Placement\n- **Dry vocal:** Center (mono)\n- **Transporter effect:** Wide stereo\n- Creates **depth** and **separation**\n\n### Volume Balance\n- **Dry vocal:** -6dB to -3dB\n- **Transporter:** -12dB to -6dB (support, not dominate)\n\n---\n\n## Common Mistakes\n\n1. **Too much wet signal:** Loses vocal clarity\n2. **Sensitivity too low:** Doesn't trigger enough\n3. **Sensitivity too high:** Triggers on every syllable (chaotic)\n4. **No dry vocal:** Effect sounds disconnected\n5. **Forgetting to flush:** Old audio stays in buffer\n\n---\n\n## Preset Cheat Sheet\n\n| Vibe | Min Length | Sensitivity | A/B Ratio | Spread | Reverse % |\n|------|------------|-------------|-----------|--------|-----------|\n| **Trap Stutter** | 150ms | 65% | 40% | 40% | 15% |\n| **Glitchy Hook** | 200ms | 55% | 60% | 60% | 25% |\n| **Chopped & Screwed** | 500ms | 40% | 20% | 0% | 0% |\n| **Psychedelic** | 300ms | 50% | 70% | 80% | 40% |\n| **Subtle Texture** | 100ms | 45% | 30% | 30% | 5% |\n\n---\n\n## Creative Uses\n\n### Use 1: Transition Effects\n- Bypass Transporter during verses\n- **Enable during last 2 bars** before chorus\n- Creates build-up/tension\n\n### Use 2: Ad-Lib Processing\n- Apply to **\"yeah,\" \"uh,\" \"let's go\"** ad-libs\n- Short loops (100-150ms)\n- High reverse probability (30%)\n- Makes ad-libs more interesting\n\n### Use 3: Intro/Outro Textures\n- Use vocal sample or acapella\n- Let Transporter create **evolving texture**\n- Record 60 seconds, chop the best parts\n- Use as **intro atmosphere**\n\n---\n\n## Reference Tracks\n\n**Trap/Future Bass Influence:**\n- Flume - \"Say It\" (vocal manipulation)\n- What So Not - \"Gemini\" (glitch vocals)\n- RL Grime - \"Core\" (vocal stabs)\n\n**Hip-Hop Glitch:**\n- Travis Scott - \"SICKO MODE\" (transitions)\n- Kanye West - \"Black Skinhead\" (stutter effects)\n- Future - \"Mask Off\" (vocal textures)\n\n**Experimental:**\n- Death Grips - \"Get Got\" (aggressive glitch)\n- JPEGMAFIA - \"1539 N. Calvert\" (chaotic vocal edits)\n\n---\n\n## Production Tips\n\n### For Moody Tracks\n- Lower **Bouncing Rate** (stable)\n- **Deterministic** bias (less random)\n- **Subtle spread** (20-30%)\n- Dark reverb, minimal delay\n\n### For Upbeat Tracks\n- Higher **Bouncing Rate** (energetic)\n- **Probabilistic** bias (more random)\n- **Wide spread** (60%+)\n- Bright effects, rhythmic delay\n\n### For Psychedelic Tracks\n- Maximum **variation** (A/B Ratio 70%+)\n- High **reverse probability** (30-50%)\n- **Octave shifts** (±1)\n- Phaser, chorus, long reverb\n\n---\n\n## Next Steps\n\n1. **Experiment with different vocals:** Rap, sung, spoken word\n2. **Learn automation:** Create dynamic, evolving effects\n3. **Combine with other plugins:** Vocodex, Gross Beat\n4. **Record & resample:** Capture happy accidents\n5. **Study references:** Understand how pros use glitch effects\n\n---\n\n**Related Workflows:**\n- [Gross Beat for Vocal Stutter](../../Gross%20Beat/03-Workflows/by-goal/vocal-stutter-effect.md)\n- [Vocodex for Robot Vocals](../../Vocodex/03-Workflows/by-goal/melodic-vocal-effects-hiphop.md)\n- [Edison Vocal Editing](../../Edison/03-Workflows/by-goal/vocal-chop-editing.md)\n\n---\n\n**Last Updated:** February 3, 2026\n**Genre:** Hip-Hop, Trap, Glitch-Hop, Experimental\n**Vibe:** 🤖 Futuristic Vocal Manipulation\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Transporter\r\n\r\nThis section contains workflow information for the transporter plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Transporter\r\n\r\nThis section contains reference information for the transporter plugin.\r\n"
+    }
+  }
+}

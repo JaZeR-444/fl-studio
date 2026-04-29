@@ -1,0 +1,160 @@
+{
+  "id": "fpc",
+  "name": "FPC",
+  "presets": {},
+  "parameters": {
+    "fpc-specs": {
+      "plugin_name": "FPC",
+      "category": "Generator",
+      "engine": "Pad-based Sampler",
+      "specs": {
+        "total_pads": 32,
+        "layers_per_pad": "Unlimited",
+        "mixer_outputs": "Independent per pad (Offset)",
+        "file_support": [
+          "WAV",
+          "AIFF",
+          "SF2"
+        ]
+      },
+      "features": [
+        "MPC-style workflow",
+        "Velocity crossfading",
+        "MIDI pattern library",
+        "Internal ADSR envelopes"
+      ]
+    },
+    "parameters": {
+      "pluginName": "FPC",
+      "category": "Drum Sampler",
+      "parameters": [
+        {
+          "section": "Main Pad",
+          "id": "pad_vol",
+          "name": "Pad Volume",
+          "range": {
+            "min": 0,
+            "max": 200,
+            "unit": "%"
+          },
+          "description": "Global volume for the selected pad."
+        },
+        {
+          "section": "Main Pad",
+          "id": "midi_note",
+          "name": "MIDI Note",
+          "range": {
+            "min": 0,
+            "max": 127,
+            "unit": "Note"
+          },
+          "description": "The Input MIDI key that triggers this pad."
+        },
+        {
+          "section": "Main Pad",
+          "id": "cut_group",
+          "name": "Cut Group",
+          "range": {
+            "min": 0,
+            "max": 99,
+            "unit": "ID"
+          },
+          "description": "The Choke Group ID this pad sends 'Kill' messages to."
+        },
+        {
+          "section": "Main Pad",
+          "id": "cut_by_group",
+          "name": "Cut By Group",
+          "range": {
+            "min": 0,
+            "max": 99,
+            "unit": "ID"
+          },
+          "description": "The Choke Group ID this pad listens to for 'Kill' messages."
+        },
+        {
+          "section": "Layer",
+          "id": "layer_max_vel",
+          "name": "Velocity High",
+          "range": {
+            "min": 0,
+            "max": 127,
+            "unit": "Vel"
+          },
+          "description": "Upper velocity limit for the layer."
+        },
+        {
+          "section": "Layer",
+          "id": "layer_min_vel",
+          "name": "Velocity Low",
+          "range": {
+            "min": 0,
+            "max": 127,
+            "unit": "Vel"
+          },
+          "description": "Lower velocity limit for the layer."
+        }
+      ]
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Drums Translation Guide",
+      "filename": "03_Vibe_Drums_Translation_Guide.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "00 Practical Use Cases",
+      "category": "general",
+      "filename": "00_Practical_Use_Cases.md"
+    },
+    {
+      "title": "01 Workflow Recipes",
+      "category": "general",
+      "filename": "01_Workflow_Recipes.md"
+    },
+    {
+      "title": "Common Usage",
+      "category": "general",
+      "filename": "common-usage.md"
+    },
+    {
+      "title": "00 Goal Quick Result",
+      "category": "by-goal",
+      "filename": "00_Goal_Quick_Result.md"
+    },
+    {
+      "title": "Fpc With External Hardware",
+      "category": "by-goal",
+      "filename": "fpc-with-external-hardware.md"
+    },
+    {
+      "title": "Multi Output Routing Setup",
+      "category": "by-goal",
+      "filename": "multi-output-routing-setup.md"
+    },
+    {
+      "title": "Realistic Acoustic Drums",
+      "category": "by-goal",
+      "filename": "realistic-acoustic-drums.md"
+    }
+  ]
+}

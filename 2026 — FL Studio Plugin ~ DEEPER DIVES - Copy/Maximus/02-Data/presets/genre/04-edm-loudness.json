@@ -1,0 +1,39 @@
+{
+  "name": "EDM Loudness",
+  "genre": "EDM",
+  "mood": "electric",
+  "description": "Heavy limiting for club and festival maximum loudness",
+  "parameters": {
+    "inputGain": 3,
+    "threshold": -10.0,
+    "ratio": 12.0,
+    "attack": 0.05,
+    "release": 30,
+    "outputGain": 4,
+    "ceiling": -0.1,
+    "link": true,
+    "channelMode": "LR",
+    "s/C": true,
+    "limiterMode": "Hard"
+  },
+  "workflow": {
+    "useCase": "EDM drops and festival tracks",
+    "steps": [
+      "Set ceiling to -0.1 for maximum loudness",
+      "High input gain (+3dB)",
+      "Low threshold (-8 to -10dB) for heavy limiting",
+      "Very fast attack (0.05ms) for total control",
+      "Quick release (25-40ms) for density",
+      "Enable s/C for transient preservation"
+    ],
+    "troubleshooting": [
+      { "issue": "Over-compressed", "fix": "Reduce ratio to 8, increase threshold" },
+      { "issue": "Lost energy", "fix": "Enable s/C, reduce attack to 0.1ms" },
+      { "issue": "Digital distortion", "fix": "Increase ceiling, reduce input gain" }
+    ]
+  },
+  "abTest": {
+    "listenFor": "Maximum loudness with maintained energy on drops",
+    "duration": "Build-up and drop section"
+  }
+}

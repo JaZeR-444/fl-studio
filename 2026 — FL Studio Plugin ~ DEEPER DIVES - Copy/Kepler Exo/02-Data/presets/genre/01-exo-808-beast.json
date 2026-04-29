@@ -1,0 +1,38 @@
+{
+  "metadata": {
+    "plugin": "Kepler Exo",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "presetName": "Exo 808 Beast",
+    "category": "genre",
+    "genre": "hip-hop/rap",
+    "mood": "dark",
+    "exoFeatures": ["sub-oscillator", "expanded-modulation", "dual-filter"]
+  },
+  "settings": {
+    "oscillator1": { "waveform": "saw", "octave": "-2", "detune": 0, "mix": 70 },
+    "oscillator2": { "waveform": "saw", "octave": "-2", "detune": 4, "mix": 65 },
+    "oscillator3": { "waveform": "square", "octave": "-1", "detune": 0, "mix": 50 },
+    "oscillator4": { "waveform": "triangle", "octave": "0", "detune": 3, "mix": 35 },
+    "subOscillator": { "waveform": "sine", "octave": "-2", "mix": 100 },
+    "filterA": { "type": "lowpass", "cutoff": 200, "resonance": 30, "drive": 18 },
+    "filterB": { "type": "lowpass", "cutoff": 4000, "resonance": 20, "drive": 5 },
+    "envelope": { "attack": 4, "decay": 200, "sustain": 60, "release": 140 },
+    "modulation": { "envToFilterA": 75, "lfo1ToPan": 35, "lfo2ToPitch": 8 }
+  },
+  "chain": {
+    "pre": ["Fruily Parametric EQ 2 - High-pass 25Hz"],
+    "post": ["Fruily Limiter - Threshold -14dB, Ratio 4:1, Attack 1ms, Release 35ms"]
+  },
+  "genreTags": ["hip-hop/rap", "trap", "dark", "aggressive"],
+  "a/bTesting": {
+    "testA": "Sub osc at 100% for maximum sub",
+    "testB": "Sub osc at 70% for cleaner sub",
+    "testC": "Osc4 adds harmonic complexity"
+  },
+  "troubleshooting": {
+    "muddy": "Filter A cutoff to 150Hz",
+    "clipping": "Reduce osc mix levels by 20%"
+  }
+}

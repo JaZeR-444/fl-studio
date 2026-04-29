@@ -1,0 +1,34 @@
+{
+  "metadata": {
+    "plugin": "Frequency Splitter",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "presetName": "OVO Vocal Focus",
+    "category": "signature",
+    "inspiredBy": "Drone vocal prominence"
+  },
+  "settings": {
+    "crossover1": 250,
+    "crossover2": 5000,
+    "slope": "24dB/oct",
+    "mode": "linear-phase",
+    "band1": { "gain": -2, "processing": "sub reduction" },
+    "band2": { "gain": 2, "processing": "presence boost 2-5kHz" },
+    "band3": { "gain": 1, "processing": "air boost 8kHz+" }
+  },
+  "chain": {
+    "pre": ["Vocal chain on band2"],
+    "post": ["De-esser on band3"]
+  },
+  "workflow": "Vocal-focused split for maximum clarity. Sub reduction makes space, presence boost cuts through mix.",
+  "characteristics": ["clear", "prominent", "polished", "vocal"],
+  "genreTags": ["hip-hop/rap", "R&B", "vocal"],
+  "a/bTesting": {
+    "testA": "Linear phase for vocal truth",
+    "testB": "Minimum phase for punch"
+  },
+  "troubleshooting": {
+    "vocalMasking": "Increase band1 reduction"
+  }
+}

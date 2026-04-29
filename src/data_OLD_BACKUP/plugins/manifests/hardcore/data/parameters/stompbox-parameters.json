@@ -1,0 +1,457 @@
+{
+  "pluginName": "Hardcore",
+  "stompboxEffects": {
+    "distortion": {
+      "name": "Distortion",
+      "type": "Saturation/Distortion",
+      "description": "Adds harmonics and grit to signal",
+      "controls": {
+        "drive": {
+          "name": "Drive",
+          "range": "0-100%",
+          "default": 30,
+          "function": "Amount of saturation/distortion",
+          "tips": "Low values = subtle warmth, high values = aggressive dirt"
+        },
+        "tone": {
+          "name": "Tone",
+          "range": "-50 to +50",
+          "default": 0,
+          "function": "Brightness/darkness tilt",
+          "tips": "Positive = brighter, negative = darker"
+        },
+        "level": {
+          "name": "Level",
+          "range": "0-100%",
+          "default": 80,
+          "function": "Output gain compensation",
+          "tips": "Adjust to maintain consistent volume when toggling"
+        }
+      },
+      "hipHopUses": [
+        "Drum punch and aggression",
+        "Bass saturation and harmonics",
+        "Vocal edge and character",
+        "Synth grit and bite"
+      ]
+    },
+    "chorus": {
+      "name": "Chorus",
+      "type": "Modulation",
+      "description": "Creates thickening and doubling via pitch modulation",
+      "controls": {
+        "rate": {
+          "name": "Rate",
+          "range": "0.1-10 Hz",
+          "default": 0.5,
+          "function": "LFO modulation speed",
+          "tips": "Slower = more subtle, faster = more obvious"
+        },
+        "depth": {
+          "name": "Depth",
+          "range": "0-100%",
+          "default": 40,
+          "function": "Modulation amount/intensity",
+          "tips": "Higher depth = more pronounced effect"
+        },
+        "level": {
+          "name": "Level",
+          "range": "0-100%",
+          "default": 50,
+          "function": "Effect mix amount",
+          "tips": "100% for full effect, lower for subtle doubling"
+        }
+      },
+      "hipHopUses": [
+        "Vocal doubling and thickening",
+        "Synth widening",
+        "Drum width enhancement",
+        "Guitar spaciousness"
+      ]
+    },
+    "flanger": {
+      "name": "Flanger",
+      "type": "Modulation",
+      "description": "Sweeping comb filter creating jet-plane effect",
+      "controls": {
+        "rate": {
+          "name": "Rate",
+          "range": "0.1-10 Hz",
+          "default": 0.3,
+          "function": "Sweep speed",
+          "tips": "0.1-0.5Hz for slow sweep, 2-5Hz for vibrato effect"
+        },
+        "depth": {
+          "name": "Depth",
+          "range": "0-100%",
+          "default": 50,
+          "function": "Sweep range",
+          "tips": "Controls how far the comb filter sweeps"
+        },
+        "feedback": {
+          "name": "Feedback",
+          "range": "-100 to +100%",
+          "default": 30,
+          "function": "Resonance amount and polarity",
+          "tips": "Positive = sharper resonance, negative = hollow"
+        },
+        "level": {
+          "name": "Level",
+          "range": "0-100%",
+          "default": 50,
+          "function": "Mix amount",
+          "tips": "Balance between dry and flanged signal"
+        }
+      },
+      "hipHopUses": [
+        "Dramatic transition effects",
+        "Vocal psychedelia",
+        "Drum movement and texture",
+        "Sci-fi sound design"
+      ]
+    },
+    "phaser": {
+      "name": "Phaser",
+      "type": "Modulation",
+      "description": "All-pass filter sweep creating notches in frequency",
+      "controls": {
+        "rate": {
+          "name": "Rate",
+          "range": "0.1-10 Hz",
+          "default": 0.3,
+          "function": "Notch sweep speed",
+          "tips": "Slower rates for subtle movement"
+        },
+        "depth": {
+          "name": "Depth",
+          "range": "0-100%",
+          "default": 40,
+          "function": "Notch depth",
+          "tips": "Deeper notches = more pronounced effect"
+        },
+        "stages": {
+          "name": "Stages",
+          "range": "2, 4, 6, 8",
+          "default": 4,
+          "function": "Number of all-pass filter stages",
+          "tips": "More stages = deeper, more notches"
+        },
+        "level": {
+          "name": "Level",
+          "range": "0-100%",
+          "default": 50,
+          "function": "Mix amount",
+          "tips": "Balance with dry signal"
+        }
+      },
+      "hipHopUses": [
+        "Funky drum movement",
+        "Liquid synth textures",
+        "Subtle vocal enhancement",
+        "Retro psychedelic effects"
+      ]
+    },
+    "reverb": {
+      "name": "Reverb",
+      "type": "Time-based",
+      "description": "Room simulation and space creation",
+      "controls": {
+        "size": {
+          "name": "Size",
+          "range": "0-100%",
+          "default": 50,
+          "function": "Simulated room size",
+          "tips": "Low = small room, high = large hall"
+        },
+        "damp": {
+          "name": "Damp",
+          "range": "0-100%",
+          "default": 50,
+          "function": "High-frequency decay",
+          "tips": "Higher = darker, more muffled reverb"
+        },
+        "mix": {
+          "name": "Mix",
+          "range": "0-100%",
+          "default": 30,
+          "function": "Wet/dry balance",
+          "tips": "Use as send effect with 100% wet, adjust track fader"
+        },
+        "level": {
+          "name": "Level",
+          "range": "0-100%",
+          "default": 80,
+          "function": "Output gain",
+          "tips": "Compensate for wet signal volume"
+        }
+      },
+      "hipHopUses": [
+        "Vocal space and depth",
+        "Drum room sound",
+        "Ambient textures",
+        "Transition effects"
+      ]
+    },
+    "delay": {
+      "name": "Delay",
+      "type": "Time-based",
+      "description": "Echo generation with feedback",
+      "controls": {
+        "time": {
+          "name": "Time",
+          "range": "1-2000ms",
+          "default": 300,
+          "function": "Delay length",
+          "tips": "80-120ms for slapback, 300-600ms for rhythmic"
+        },
+        "feedback": {
+          "name": "Feedback",
+          "range": "0-100%",
+          "default": 30,
+          "function": "Repeat decay amount",
+          "tips": "Higher = more echoes, risk of runaway feedback"
+        },
+        "mix": {
+          "name": "Mix",
+          "range": "0-100%",
+          "default": 35,
+          "function": "Wet/dry balance",
+          "tips": "Lower for subtle echo, higher for prominent effect"
+        },
+        "level": {
+          "name": "Level",
+          "range": "0-100%",
+          "default": 80,
+          "function": "Output gain",
+          "tips": "Match volume with dry signal"
+        }
+      },
+      "hipHopUses": [
+        "Vocal slapback",
+        "Rhythmic doubling",
+        "Drum echo effects",
+        "Atmospheric space"
+      ]
+    },
+    "noiseGate": {
+      "name": "Noise Gate",
+      "type": "Dynamics",
+      "description": "Eliminates signal below threshold",
+      "controls": {
+        "threshold": {
+          "name": "Threshold",
+          "range": "-60 to 0 dB",
+          "default": -30,
+          "function": "Activation level",
+          "tips": "Set just above noise floor, below desired signal"
+        },
+        "attack": {
+          "name": "Attack",
+          "range": "0-100ms",
+          "default": 5,
+          "function": "Opening speed",
+          "tips": "Fast for drums, slower for natural sounds"
+        },
+        "hold": {
+          "name": "Hold",
+          "range": "0-500ms",
+          "default": 50,
+          "function": "Minimum open time",
+          "tips": "Prevents chattering on decaying sounds"
+        },
+        "release": {
+          "name": "Release",
+          "range": "10-1000ms",
+          "default": 100,
+          "function": "Closing speed",
+          "tips": "Match to source decay characteristic"
+        }
+      },
+      "hipHopUses": [
+        "Tight drum truncation",
+        "Vocal breath removal",
+        "Lo-fi abrupt cuts",
+        "Noise reduction"
+      ]
+    },
+    "eqStompbox": {
+      "name": "EQ (Stompbox)",
+      "type": "Filtering",
+      "description": "3-band parametric EQ for chain positioning",
+      "controls": {
+        "lowFreq": {
+          "name": "Low Frequency",
+          "range": "80-250 Hz",
+          "default": 120,
+          "function": "Low band center frequency"
+        },
+        "lowGain": {
+          "name": "Low Gain",
+          "range": "-15 to +15 dB",
+          "default": 0,
+          "function": "Low band cut/boost"
+        },
+        "midFreq": {
+          "name": "Mid Frequency",
+          "range": "250Hz-4kHz",
+          "default": 1000,
+          "function": "Mid band center frequency"
+        },
+        "midGain": {
+          "name": "Mid Gain",
+          "range": "-15 to +15 dB",
+          "default": 0,
+          "function": "Mid band cut/boost"
+        },
+        "highFreq": {
+          "name": "High Frequency",
+          "range": "2-12 kHz",
+          "default": 5000,
+          "function": "High band center frequency"
+        },
+        "highGain": {
+          "name": "High Gain",
+          "range": "-15 to +15 dB",
+          "default": 0,
+          "function": "High band cut/boost"
+        }
+      },
+      "hipHopUses": [
+        "Pre-distortion frequency shaping",
+        "Problem frequency correction",
+        "Tone matching",
+        "High-pass filtering for lo-fi"
+      ]
+    },
+    "compressor": {
+      "name": "Compressor",
+      "type": "Dynamics",
+      "description": "Reduces dynamic range above threshold",
+      "controls": {
+        "threshold": {
+          "name": "Threshold",
+          "range": "-60 to 0 dB",
+          "default": -18,
+          "function": "Compression start point",
+          "tips": "Lower threshold = more compression"
+        },
+        "ratio": {
+          "name": "Ratio",
+          "range": "1:1 to 20:1",
+          "default": 4,
+          "function": "Compression intensity",
+          "tips": "Higher ratio = more aggressive limiting"
+        },
+        "attack": {
+          "name": "Attack",
+          "range": "0.1-100ms",
+          "default": 10,
+          "function": "Reaction speed",
+          "tips": "Fast attack = less transient, slow = more punch"
+        },
+        "release": {
+          "name": "Release",
+          "range": "10-1000ms",
+          "default": 200,
+          "function": "Recovery speed",
+          "tips": "Match to source rhythm for natural sound"
+        },
+        "makeup": {
+          "name": "Makeup Gain",
+          "range": "0-24 dB",
+          "default": 6,
+          "function": "Output compensation",
+          "tips": "Compensate for volume lost to compression"
+        }
+      },
+      "hipHopUses": [
+        "Drum punch and control",
+        "Vocal consistency",
+        "Bass sustain",
+        "Parallel New York compression"
+      ]
+    },
+    "modulator": {
+      "name": "Modulator",
+      "type": "Specialized Modulation",
+      "description": "Tremolo, vibrato, and ring modulation",
+      "controls": {
+        "mode": {
+          "name": "Mode",
+          "range": "Tremolo / Vibrato / Ring Mod",
+          "default": "Tremolo",
+          "function": "Modulation type",
+          "tips": "Tremolo = amplitude, Vibrato = pitch, Ring = frequency multiplication"
+        },
+        "rate": {
+          "name": "Rate",
+          "range": "0.1-20 Hz",
+          "default": 2,
+          "function": "Modulation speed",
+          "tips": "2-8Hz for tremolo chops, 0.5Hz for vibrato drift"
+        },
+        "depth": {
+          "name": "Depth",
+          "range": "0-100%",
+          "default": 70,
+          "function": "Effect intensity",
+          "tips": "100% for extreme, 30% for subtle"
+        },
+        "level": {
+          "name": "Level",
+          "range": "0-100%",
+          "default": 80,
+          "function": "Output gain",
+          "tips": "Adjust for unity gain"
+        }
+      },
+      "hipHopUses": [
+        "Tremolo chop effects",
+        "Pitch drift and detune",
+        "Ring mod destruction",
+        "Special FX and textures"
+      ]
+    },
+    "wah": {
+      "name": "Wah",
+      "type": "Filtering",
+      "description": "Vocal envelope filter effect",
+      "controls": {
+        "manual": {
+          "name": "Manual",
+          "range": "0-100%",
+          "default": 50,
+          "function": "Filter frequency (manual mode)",
+          "tips": "Sweep to find vocal vowel sounds (A-E-I-O-U)"
+        },
+        "close": {
+          "name": "Close",
+          "range": "0-100%",
+          "default": 50,
+          "function": "Envelope sensitivity (auto mode)",
+          "tips": "Higher = more responsive to input dynamics"
+        },
+        "range": {
+          "name": "Range",
+          "range": "0-100%",
+          "default": 60,
+          "function": "Sweep width",
+          "tips": "Controls how far the filter travels"
+        },
+        "level": {
+          "name": "Level",
+          "range": "0-100%",
+          "default": 85,
+          "function": "Output gain",
+          "tips": "Wah can have resonant peaks, adjust to avoid clipping"
+        }
+      },
+      "hipHopUses": [
+        "Vocal vowel filtering",
+        "Funky rhythmic effects",
+        "Filter sweeps",
+        "Envelope-controlled filtering"
+      ]
+    }
+  }
+}

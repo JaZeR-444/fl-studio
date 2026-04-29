@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "plugin": "Kepler",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "presetName": "Resonance Bass",
+    "category": "genre",
+    "genre": "EDM",
+    "mood": "electric"
+  },
+  "settings": {
+    "oscillator1": {
+      "waveform": "saw",
+      "octave": "-2",
+      "detune": 0,
+      "mix": 100
+    },
+    "oscillator2": {
+      "waveform": "square",
+      "octave": "-1",
+      "detune": 3,
+      "mix": 60
+    },
+    "filter": {
+      "type": "lowpass",
+      "cutoff": 250,
+      "resonance": 65,
+      "drive": 30,
+      "envAmt": 100,
+      "envVel": 80
+    },
+    "envelope": {
+      "attack": 5,
+      "decay": 200,
+      "sustain": 55,
+      "release": 150
+    },
+    "lfo": {
+      "waveform": "sine",
+      "rate": 0.3,
+      "amt": 35,
+      "dest": "filterCutoff"
+    }
+  },
+  "chain": {
+    "pre": ["Teq4 - High-pass at 45Hz"],
+    "post": ["Fruily Limiter - Attack 1ms, Release 50ms, Ratio 6:1"]
+  },
+  "genreTags": ["EDM", "deep bass", "house", "techno"],
+  "a/bTesting": {
+    "testA": "High resonance for resonance sweeps",
+    "testB": "Lower resonance for consistent bass"
+  },
+  "troubleshooting": {
+    "distortedSound": "Reduce filter drive to 20%",
+    "weakSub": "Add sub oscillator routed directly to output"
+  }
+}

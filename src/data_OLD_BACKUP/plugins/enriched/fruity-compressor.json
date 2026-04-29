@@ -1,0 +1,321 @@
+{
+  "id": "fruity-compressor",
+  "name": "Fruity Compressor",
+  "presets": {
+    "bass-glue": {
+      "presetName": "Bass Glue",
+      "plugin": "Fruity Compressor",
+      "description": "Subtle compression to lock the bass in place.",
+      "settings": {
+        "threshold": -15.0,
+        "ratio": 4.0,
+        "attack": 50.0,
+        "release": 300.0,
+        "type": "MEDIUM",
+        "gain": 1.5
+      },
+      "usage": "Ensures every bass note has the same perceived power."
+    },
+    "hard-kick-punch": {
+      "presetName": "Hard Kick Punch",
+      "plugin": "Fruity Compressor",
+      "description": "Aggressive compression to emphasize the transient of a kick drum.",
+      "settings": {
+        "threshold": -12.0,
+        "ratio": 6.0,
+        "attack": 30.0,
+        "release": 50.0,
+        "type": "HARD",
+        "gain": 3.0
+      },
+      "usage": "Use on kick drums that need more 'click' and 'thump' to cut through a busy mix."
+    },
+    "parallel-drums": {
+      "presetName": "Parallel Drums",
+      "plugin": "Fruity Compressor",
+      "description": "Extreme compression for parallel processing (New York Style).",
+      "settings": {
+        "threshold": -30.0,
+        "ratio": 10.0,
+        "attack": 1.0,
+        "release": 100.0,
+        "type": "VINTAGE",
+        "gain": 10.0
+      },
+      "usage": "Use on a separate bus and blend with the dry drums for massive energy."
+    },
+    "snare-snap": {
+      "presetName": "Snare Snap",
+      "plugin": "Fruity Compressor",
+      "description": "Focuses on the initial strike of the snare drum.",
+      "settings": {
+        "threshold": -10.0,
+        "ratio": 5.0,
+        "attack": 40.0,
+        "release": 80.0,
+        "type": "HARD",
+        "gain": 2.5
+      },
+      "usage": "Helps the snare pop without losing its body."
+    },
+    "soft-knee-vocal": {
+      "presetName": "Soft Knee Vocal",
+      "plugin": "Fruity Compressor",
+      "description": "Transparent vocal leveling using a soft knee and moderate ratio.",
+      "settings": {
+        "threshold": -18.0,
+        "ratio": 3.0,
+        "attack": 15.0,
+        "release": 200.0,
+        "type": "SOFT",
+        "gain": 2.0
+      },
+      "usage": "Best for lead vocals that need consistent volume without sounding 'squashed'."
+    }
+  },
+  "parameters": {
+    "compressor-specs": {
+      "plugin": {
+        "name": "Fruity Compressor",
+        "category": "Dynamics",
+        "type": "Compressor",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Compressor.htm"
+      },
+      "parameters": {
+        "core": [
+          {
+            "id": "threshold",
+            "name": "Threshold",
+            "range": "-60 to 0 dB",
+            "default": "-15 dB",
+            "description": "Sets the level at which the compressor starts working."
+          },
+          {
+            "id": "ratio",
+            "name": "Ratio",
+            "range": "1.0:1 to 100.0:1",
+            "default": "4.0:1",
+            "description": "Sets the amount of compression applied."
+          },
+          {
+            "id": "gain",
+            "name": "Gain",
+            "range": "-30 to +30 dB",
+            "default": "0 dB",
+            "description": "Makeup gain to compensate for volume loss."
+          }
+        ],
+        "envelope": [
+          {
+            "id": "attack",
+            "name": "Attack",
+            "range": "0 to 400 ms",
+            "unit": "ms",
+            "description": "Time taken to reach full compression."
+          },
+          {
+            "id": "release",
+            "name": "Release",
+            "range": "1 to 4000 ms",
+            "unit": "ms",
+            "description": "Time taken to return to unity gain."
+          }
+        ],
+        "types": [
+          "Hard",
+          "Medium",
+          "Vintage",
+          "Soft",
+          "Hard R",
+          "Medium R",
+          "Vintage R",
+          "Soft R"
+        ]
+      },
+      "workflows": [
+        {
+          "name": "Sidechain Ducking",
+          "steps": [
+            "Route trigger track (e.g. Kick) to bass track's mixer insert.",
+            "Insert Fruity Compressor on bass track.",
+            "Right-click 'Threshold' or 'Ratio' and link to internal controller if using Peak Controller, or use Wrapper routing for direct sidechain.",
+            "Set high Ratio (10:1) and fast Attack (0.1ms) for aggressive ducking."
+          ]
+        }
+      ]
+    },
+    "parameters": {
+      "pluginName": "Fruity Compressor",
+      "category": "Dynamics",
+      "parameters": [
+        {
+          "section": "Dynamics",
+          "id": "threshold",
+          "name": "Threshold",
+          "range": {
+            "min": -60,
+            "max": 0,
+            "unit": "dB"
+          },
+          "description": "Level at which compression begins."
+        },
+        {
+          "section": "Dynamics",
+          "id": "ratio",
+          "name": "Ratio",
+          "range": {
+            "min": 0.4,
+            "max": 30,
+            "unit": ":1"
+          },
+          "description": "Input/Output gain reduction ratio."
+        },
+        {
+          "section": "Envelope",
+          "id": "attack",
+          "name": "Attack",
+          "range": {
+            "min": 0,
+            "max": 400,
+            "unit": "ms"
+          },
+          "description": "Reaction time."
+        },
+        {
+          "section": "Envelope",
+          "id": "release",
+          "name": "Release",
+          "range": {
+            "min": 1,
+            "max": 4000,
+            "unit": "ms"
+          },
+          "description": "Recovery time."
+        },
+        {
+          "section": "Character",
+          "id": "knee_type",
+          "name": "Type",
+          "options": [
+            "Hard",
+            "Medium",
+            "Vintage",
+            "Soft",
+            "Hard/R",
+            "Medium/R",
+            "Vintage/R",
+            "Soft/R"
+          ],
+          "description": "Knee curve and TCR (Auto-Release) activation."
+        }
+      ]
+    },
+    "specs": {
+      "plugin": "Fruity Compressor",
+      "parameters": [
+        {
+          "name": "Threshold",
+          "id": "threshold",
+          "unit": "dB",
+          "min": -60.0,
+          "max": 0.0,
+          "default": -15.0,
+          "description": "The level at which compression starts."
+        },
+        {
+          "name": "Ratio",
+          "id": "ratio",
+          "unit": "factor",
+          "min": 1.0,
+          "max": 100.0,
+          "default": 4.0,
+          "description": "The compression ratio."
+        },
+        {
+          "name": "Attack",
+          "id": "attack",
+          "unit": "ms",
+          "min": 0.0,
+          "max": 400.0,
+          "default": 10.0,
+          "description": "Time to reach full compression."
+        },
+        {
+          "name": "Release",
+          "id": "release",
+          "unit": "ms",
+          "min": 1.0,
+          "max": 4000.0,
+          "default": 200.0,
+          "description": "Time to return to unity gain."
+        }
+      ]
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "Common Usage",
+      "category": "general",
+      "filename": "common-usage.md"
+    },
+    {
+      "title": "00 Goal Quick Result",
+      "category": "by-goal",
+      "filename": "00_Goal_Quick_Result.md"
+    },
+    {
+      "title": "01 Goal Shaping And Control",
+      "category": "by-goal",
+      "filename": "01_Goal_Shaping_And_Control.md"
+    },
+    {
+      "title": "Sidechain Ducking",
+      "category": "by-goal",
+      "filename": "sidechain-ducking.md"
+    },
+    {
+      "title": "Vocal Compression",
+      "category": "by-goal",
+      "filename": "vocal-compression.md"
+    },
+    {
+      "title": "Bass",
+      "category": "by-instrument",
+      "filename": "bass.md"
+    },
+    {
+      "title": "Drums",
+      "category": "by-instrument",
+      "filename": "drums.md"
+    },
+    {
+      "title": "Guitars",
+      "category": "by-instrument",
+      "filename": "guitars.md"
+    },
+    {
+      "title": "Vocals",
+      "category": "by-instrument",
+      "filename": "vocals.md"
+    }
+  ]
+}

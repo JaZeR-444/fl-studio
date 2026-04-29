@@ -1,0 +1,246 @@
+{
+  "workflowRules": {
+    "name": "Fruity WaveShaper Workflow Decision Rules",
+    "version": "1.0",
+    "description": "Rules for selecting appropriate WaveShaper settings by context",
+    "source": "[SRC: IL-MAN]",
+    "contexts": [
+      {
+        "name": "808s and Sub Bass",
+        "rules": {
+          "mode": {
+            "value": "Unipolar",
+            "reason": "Even harmonics preserve low-end warmth and punch",
+            "exception": "Aggressive distorted 808s may use Bipolar with caution"
+          },
+          "curve": {
+            "value": "soft-s-curve",
+            "reason": "Gentle saturation maintains fundamental frequency",
+            "avoid": "hard-clipping (removes punch)"
+          },
+          "preGain": {
+            "min": 6,
+            "max": 14,
+            "sweetSpot": "8-12dB",
+            "reason": "Enough drive for harmonics, not enough to lose sub"
+          },
+          "mix": {
+            "min": 40,
+            "max": 70,
+            "sweetSpot": "50-60%",
+            "reason": "Blend original punch with saturated presence"
+          },
+          "oversample": {
+            "minimum": "2x",
+            "recommended": "4x",
+            "reason": "Low-frequency sources less prone to aliasing"
+          },
+          "chainPosition": {
+            "after": "Initial EQ (high-pass cleanup)",
+            "before": "Compression and limiting",
+            "reason": "Saturation before compression preserves character"
+          }
+        }
+      },
+      {
+        "name": "Drums (Kicks, Snares, Hats)",
+        "rules": {
+          "mode": {
+            "value": "Bipolar",
+            "reason": "Asymmetric distortion preserves transient bite",
+            "exception": "Subtle drum bus may use Unipolar"
+          },
+          "curve": {
+            "value": "hard-clip",
+            "reason": "Sharp threshold enhances transients",
+            "options": ["hard-clip", "asymmetric-hard"]
+          },
+          "preGain": {
+            "min": 10,
+            "max": 18,
+            "sweetSpot": "12-16dB",
+            "reason": "High drive for aggressive transient control"
+          },
+          "mix": {
+            "min": 50,
+            "max": 80,
+            "sweetSpot": "60-70%",
+            "reason": "Aggressive distortion for impact"
+          },
+          "oversample": {
+            "minimum": "4x",
+            "recommended": "4x-8x",
+            "reason": "Hats and cymbals have high-frequency content"
+          },
+          "hiHatSpecific": {
+            "mode": "Unipolar preferred",
+            "preGain": "4-8dB",
+            "oversample": "8x minimum",
+            "reason": "High frequencies need more anti-aliasing"
+          }
+        }
+      },
+      {
+        "name": "Vocals",
+        "rules": {
+          "mode": {
+            "primary": "Unipolar",
+            "alternative": "Bipolar (for attitude/grit)",
+            "reason": "Even harmonics are more forgiving on vocals"
+          },
+          "curve": {
+            "value": "soft-s-curve",
+            "reason": "Gentle saturation maintains intelligibility",
+            "avoid": "hard-clipping (causes sibilance issues)"
+          },
+          "preGain": {
+            "min": 3,
+            "max": 10,
+            "sweetSpot": "5-8dB",
+            "reason": "Conservative drive preserves vocal clarity"
+          },
+          "mix": {
+            "min": 15,
+            "max": 40,
+            "sweetSpot": "25-35%",
+            "reason": "Transparency - keep lyrics intelligible"
+          },
+          "oversample": {
+            "minimum": "4x",
+            "recommended": "4x",
+            "reason": "Vocals have sibilance in high frequencies"
+          },
+          "chainRequirements": {
+            "before": "De-esser",
+            "reason": "Distortion amplifies sibilance - de-ess first"
+          },
+          "adLibs": {
+            "mix": "60-80%",
+            "curve": "asymmetric",
+            "reason": "Background vocals can be more aggressive"
+          }
+        }
+      },
+      {
+        "name": "Mix Bus",
+        "rules": {
+          "mode": {
+            "value": "Unipolar",
+            "critical": true,
+            "reason": "Even harmonics safer for full mix; Bipolar creates cumulative harshness"
+          },
+          "curve": {
+            "value": "soft-s-curve",
+            "reason": "Very gentle saturation for glue effect",
+            "avoid": ["hard-clip", "bipolar", "aggressive"]
+          },
+          "preGain": {
+            "min": 1,
+            "max": 6,
+            "sweetSpot": "2-4dB",
+            "reason": "Extremely conservative for mix cohesion"
+          },
+          "mix": {
+            "min": 10,
+            "max": 25,
+            "sweetSpot": "15-20%",
+            "reason": "Subtle effect - full mix context"
+          },
+          "oversample": {
+            "minimum": "4x",
+            "recommended": "4x",
+            "reason": "Full mix has all frequencies"
+          },
+          "alternativeApproach": {
+            "method": "Parallel bus instead of insert",
+            "reason": "More control, less cumulative distortion",
+            "recommended": true
+          },
+          "warning": "Mix bus distortion is powerful - easy to overdo"
+        }
+      },
+      {
+        "name": "Creative Sound Design",
+        "rules": {
+          "mode": {
+            "value": "Bipolar",
+            "reason": "Maximum flexibility and complexity",
+            "option": "Either - experiment freely"
+          },
+          "curve": {
+            "options": ["foldback", "staircase", "asymmetric", "custom"],
+            "reason": "No rules - create unique textures"
+          },
+          "preGain": {
+            "range": "0 to +24dB",
+            "reason": "Extreme drive for creative destruction"
+          },
+          "mix": {
+            "range": "0 to 100%",
+            "reason": "Context-dependent - full creative freedom"
+          },
+          "oversample": {
+            "minimum": "8x",
+            "recommended": "16x for extreme cases",
+            "reason": "Creative distortion often needs maximum quality"
+          },
+          "guideline": "No safety rules - experiment freely"
+        }
+      }
+    ],
+    "vibeMapping": {
+      "Moody": {
+        "mode": "Unipolar",
+        "curve": "soft-s-curve",
+        "preGainRange": "4-10dB",
+        "mixRange": "30-60%",
+        "characteristics": ["Warm", "Even harmonics", "Introspective"]
+      },
+      "Upbeat": {
+        "mode": "Bipolar",
+        "curve": "hard-clip or asymmetric",
+        "preGainRange": "10-16dB",
+        "mixRange": "60-80%",
+        "characteristics": ["Aggressive", "Punchy", "Energetic"]
+      },
+      "Psychedelic": {
+        "mode": "Bipolar",
+        "curve": "foldback or custom",
+        "preGainRange": "12-20dB",
+        "mixRange": "40-70%",
+        "characteristics": ["Complex", "Weird", "Experimental"]
+      },
+      "Jazzy": {
+        "mode": "Unipolar",
+        "curve": "soft-s-curve or soft-limiter",
+        "preGainRange": "2-8dB",
+        "mixRange": "20-45%",
+        "characteristics": ["Smooth", "Musical", "Sophisticated"]
+      },
+      "Vibey": {
+        "mode": "Unipolar",
+        "curve": "soft-s-curve",
+        "preGainRange": "4-8dB",
+        "mixRange": "35-60%",
+        "characteristics": ["Relaxed", "Warm", "Cool"]
+      }
+    },
+    "safetyChecklist": {
+      "beforeApplying": [
+        "Input level is healthy (-12dB to -6dB)",
+        "Center is enabled",
+        "Oversampling appropriate for distortion level"
+      ],
+      "afterApplying": [
+        "Output level matches input (use Post gain)",
+        "No clipping on channel or master meter",
+        "Effect is audible and appropriate"
+      ],
+      "beforeFinalizing": [
+        "Aliasing checked with high-frequency sources",
+        "Low-end preserved on bass/808s",
+        "Vocals remain intelligible"
+      ]
+    }
+  }
+}

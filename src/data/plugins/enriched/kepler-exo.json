@@ -1,0 +1,1778 @@
+{
+  "id": "kepler-exo",
+  "name": "Kepler Exo",
+  "category": "Synthesizer",
+  "tier": "Premium",
+  "type": "Synthesizer",
+  "description": "Kepler Exo - Synthesizer",
+  "tags": [
+    "synth",
+    "sound-design",
+    "specialized"
+  ],
+  "capabilities": [
+    "synthesis",
+    "midi",
+    "polyphonic"
+  ],
+  "icon": "/plugins/kepler-exo-icon.svg",
+  "color": "#8B5CF6",
+  "version": "1.0",
+  "data_dir": "plugins\\kepler-exo",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "kepler-exo-params": {
+      "plugin_name": "Kepler Exo",
+      "category": "Advanced Vintage Synth",
+      "features": [
+        "Hard Sync",
+        "FM",
+        "Matrix",
+        "HQ Mode",
+        "Dual ADSR",
+        "FX Rack"
+      ],
+      "sections": {
+        "DCO_1": {
+          "Range": "Octave setting",
+          "Waveforms": "Saw, Square, Pulse",
+          "PWM": "Pulse Width Modulation"
+        },
+        "DCO_2": {
+          "Semi": "Semitone offset (-24 to +24)",
+          "Fine": "Cents offset",
+          "Sync": "Hard Sync toggle",
+          "X_Mod": "Cross-modulation depth",
+          "Level": "Volume of DCO 2"
+        },
+        "VCF": {
+          "Mode": "STD vs HQ",
+          "Slope": "24dB vs 6dB",
+          "Audio_Mod": "Audio-rate filter modulation",
+          "Freq": "Cutoff frequency",
+          "Res": "Resonance"
+        },
+        "MATRIX": {
+          "Slots": 8,
+          "Sources": [
+            "LFO1",
+            "LFO2",
+            "Env1",
+            "Env2",
+            "Vel",
+            "ModW",
+            "AftT"
+          ],
+          "Destinations": [
+            "Pitch",
+            "PWM",
+            "Cutoff",
+            "Res",
+            "Level",
+            "Pan",
+            "FX"
+          ]
+        },
+        "FX": {
+          "Saturation": "Harmonic drive",
+          "Delay": "Time-based echoes",
+          "Reverb": "Spatial room simulation",
+          "Chorus": "JUNO Modes I, II, I+II"
+        }
+      }
+    }
+  },
+  "presets": {
+    "genre-presets": {
+      "metadata": {
+        "plugin": "Kepler Exo",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "genres": [
+          "hip-hop/rap",
+          "R&B",
+          "EDM",
+          "trap",
+          "lo-fi",
+          "drill",
+          "experimental"
+        ],
+        "description": "Genre-aware presets for Kepler Exo with extended features (4 oscillators, sub osc, expanded modulation)"
+      },
+      "presets": {
+        "hip-hop-bass-exo": {
+          "name": "Exo 808 Beast",
+          "genre": "hip-hop/rap",
+          "mood": "dark",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "dual-filter"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 0,
+              "mix": 70
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 4,
+              "mix": 65
+            },
+            "oscillator3": {
+              "waveform": "square",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 50
+            },
+            "oscillator4": {
+              "waveform": "triangle",
+              "octave": "0",
+              "detune": 3,
+              "mix": 35
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 100
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 200,
+              "resonance": 30,
+              "drive": 18
+            },
+            "filterB": {
+              "type": "lowpass",
+              "cutoff": 4000,
+              "resonance": 20,
+              "drive": 5
+            },
+            "envelope": {
+              "attack": 4,
+              "decay": 200,
+              "sustain": 60,
+              "release": 140
+            },
+            "modulation": {
+              "envToFilterA": 75,
+              "lfo1ToPan": 35,
+              "lfo2ToPitch": 8
+            }
+          },
+          "chain": {
+            "pre": [
+              "Fruity Parametric EQ 2 - High-pass 25Hz"
+            ],
+            "post": [
+              "Fruity Limiter - Threshold -14dB, Ratio 4:1, Attack 1ms, Release 35ms"
+            ]
+          },
+          "genreTags": [
+            "hip-hop/rap",
+            "trap",
+            "dark",
+            "aggressive"
+          ],
+          "a/bTesting": {
+            "testA": "Sub osc at 100% for maximum sub",
+            "testB": "Sub osc at 70% for cleaner sub",
+            "testC": "Osc4 adds harmonic complexity"
+          },
+          "troubleshooting": {
+            "muddy": "Filter A cutoff to 150Hz",
+            "clipping": "Reduce osc mix levels by 20%"
+          }
+        },
+        "rb-keys-exo": {
+          "name": "Exo Soul Keys",
+          "genre": "R&B",
+          "mood": "moody",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "sine",
+              "octave": "0",
+              "detune": 0,
+              "mix": 85
+            },
+            "oscillator2": {
+              "waveform": "triangle",
+              "octave": "0",
+              "detune": 5,
+              "mix": 70
+            },
+            "oscillator3": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 3,
+              "mix": 45
+            },
+            "oscillator4": {
+              "waveform": "square",
+              "octave": "0",
+              "detune": 8,
+              "mix": 30
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 0
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 2500,
+              "resonance": 18,
+              "drive": 5
+            },
+            "filterB": {
+              "type": "highpass",
+              "cutoff": 200,
+              "resonance": 10,
+              "drive": 0
+            },
+            "envelope": {
+              "attack": 60,
+              "decay": 400,
+              "sustain": 75,
+              "release": 350
+            },
+            "modulation": {
+              "envToFilterA": 30,
+              "lfo1ToPan": 50,
+              "lfo2ToFilterB": 20
+            },
+            "stereoWidth": 100
+          },
+          "chain": {
+            "pre": [
+              "Soft clipper - 1.5dB reduction"
+            ],
+            "post": [
+              "Fruity Reverb 2 - Hall, Decay 2.8s, Mix 22%",
+              "Fruity Parametric EQ 2 - Bell +2dB at 3kHz"
+            ]
+          },
+          "genreTags": [
+            "R&B",
+            "smooth",
+            "moody",
+            "soulful"
+          ],
+          "a/bTesting": {
+            "testA": "LFO pan at 50% for gentle movement",
+            "testB": "LFO pan off for static stereo field"
+          },
+          "troubleshooting": {
+            "harshHighs": "Filter A cutoff to 2000Hz",
+            "weakLowEnd": "Increase osc1 to 100%"
+          }
+        },
+        "edm-supersaw-exo": {
+          "name": "Exo Stadium Supersaw",
+          "genre": "EDM",
+          "mood": "electric",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "dual-filter",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 0,
+              "mix": 85
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 7,
+              "mix": 85
+            },
+            "oscillator3": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 14,
+              "mix": 80
+            },
+            "oscillator4": {
+              "waveform": "saw",
+              "octave": "+1",
+              "detune": 21,
+              "mix": 65
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 0
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 4200,
+              "resonance": 48,
+              "drive": 18
+            },
+            "filterB": {
+              "type": "lowpass",
+              "cutoff": 8000,
+              "resonance": 25,
+              "drive": 8
+            },
+            "envelope": {
+              "attack": 15,
+              "decay": 280,
+              "sustain": 55,
+              "release": 450
+            },
+            "modulation": {
+              "envToFilterA": 70,
+              "lfo1ToFilterA": 45,
+              "lfo2ToPitch": 12
+            },
+            "stereoWidth": 120
+          },
+          "chain": {
+            "pre": [
+              "Soft clipper - 2.5dB reduction"
+            ],
+            "post": [
+              "Fruity Limiter - Ceiling -0.3dB, Gain 6dB",
+              "Fruity Reverb 2 - Cathedral, Decay 4s, Mix 15%"
+            ]
+          },
+          "genreTags": [
+            "EDM",
+            "big room",
+            "electric",
+            "anthem"
+          ],
+          "a/bTesting": {
+            "testA": "4 oscillators for massive width",
+            "testB": "3 oscillators for tighter mix",
+            "testC": "Dual filter for spectral control"
+          },
+          "troubleshooting": {
+            "muddy": "Filter B high-pass at 250Hz",
+            "phasing": "Reduce stereo width to 100%"
+          }
+        },
+        "drill-bass-exo": {
+          "name": "Exo Grim Reaper",
+          "genre": "drill",
+          "mood": "dark",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "dual-filter"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 0,
+              "mix": 90
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 5,
+              "mix": 85
+            },
+            "oscillator3": {
+              "waveform": "square",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 60
+            },
+            "oscillator4": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 10,
+              "mix": 40
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 100
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 120,
+              "resonance": 40,
+              "drive": 25
+            },
+            "filterB": {
+              "type": "bandpass",
+              "cutoff": 800,
+              "resonance": 35,
+              "drive": 15
+            },
+            "envelope": {
+              "attack": 6,
+              "decay": 220,
+              "sustain": 55,
+              "release": 180
+            },
+            "modulation": {
+              "envToFilterA": 80,
+              "lfo1ToPitch": 20,
+              "lfo2ToFilterB": 30
+            }
+          },
+          "chain": {
+            "pre": [
+              "High-pass at 35Hz"
+            ],
+            "post": [
+              "Fruity Limiter - Threshold -12dB, Attack 0.5ms, Release 25ms, Ratio 6:1"
+            ]
+          },
+          "genreTags": [
+            "drill",
+            "dark",
+            "heavy",
+            "aggressive"
+          ],
+          "a/bTesting": {
+            "testA": "Pitch LFO for demonic sub movement",
+            "testB": "Static pitch for pure heaviness"
+          },
+          "troubleshooting": {
+            "tooDistorted": "Filter drive to 18%",
+            "weakImpact": "Increase filter A resonance to 50%"
+          }
+        },
+        "lofi-pad-exo": {
+          "name": "Exo Dusty VHS",
+          "genre": "lo-fi",
+          "mood": "moody",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 12,
+              "mix": 70
+            },
+            "oscillator2": {
+              "waveform": "triangle",
+              "octave": "-2",
+              "detune": 18,
+              "mix": 65
+            },
+            "oscillator3": {
+              "waveform": "square",
+              "octave": "0",
+              "detune": 8,
+              "mix": 40
+            },
+            "oscillator4": {
+              "waveform": "sine",
+              "octave": "-1",
+              "detune": 25,
+              "mix": 55
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 30
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 1800,
+              "resonance": 22,
+              "drive": 8
+            },
+            "filterB": {
+              "type": "highpass",
+              "cutoff": 150,
+              "resonance": 15,
+              "drive": 0
+            },
+            "envelope": {
+              "attack": 180,
+              "decay": 600,
+              "sustain": 80,
+              "release": 1000
+            },
+            "modulation": {
+              "envToFilterA": 20,
+              "lfo1ToPan": 65,
+              "lfo2ToFilterB": 15
+            },
+            "stereoWidth": 150
+          },
+          "chain": {
+            "pre": [
+              "Vintage Phaser - Mix 35%, Rate 0.25Hz"
+            ],
+            "post": [
+              "Fruity Reverb 2 - Room, Decay 2.5s, Mix 28%",
+              "Tape Saturation - 4% drive"
+            ]
+          },
+          "genreTags": [
+            "lo-fi",
+            "moody",
+            "chill",
+            "nostalgic"
+          ],
+          "a/bTesting": {
+            "testA": "Heavy detune for tape warble",
+            "testB": "Tighter detune for cleaner lo-fi"
+          },
+          "troubleshooting": {
+            "tooNoisy": "Reduce LFO pan to 40%",
+            "muddy": "Filter B high-pass at 200Hz"
+          }
+        },
+        "trap-lead-exo": {
+          "name": "Exo Glitch Symphony",
+          "genre": "trap",
+          "mood": "dark",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "dual-filter"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "square",
+              "octave": "+1",
+              "detune": 0,
+              "mix": 100
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 12,
+              "mix": 75
+            },
+            "oscillator3": {
+              "waveform": "square",
+              "octave": "0",
+              "detune": 5,
+              "mix": 60
+            },
+            "oscillator4": {
+              "waveform": "saw",
+              "octave": "+1",
+              "detune": 20,
+              "mix": 50
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 0
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 3200,
+              "resonance": 50,
+              "drive": 12
+            },
+            "filterB": {
+              "type": "bandpass",
+              "cutoff": 1500,
+              "resonance": 40,
+              "drive": 8
+            },
+            "envelope": {
+              "attack": 1,
+              "decay": 70,
+              "sustain": 0,
+              "release": 45
+            },
+            "modulation": {
+              "envToFilterA": 95,
+              "lfo1ToPitch": 35,
+              "lfo2ToFilterB": 45
+            }
+          },
+          "chain": {
+            "pre": [
+              "Teq4 - High-pass 600Hz"
+            ],
+            "post": [
+              "Fruily Reverb 2 - Plate, Decay 1s, Mix 20%",
+              "Bitcrusher - 10-bit, 60% wet"
+            ]
+          },
+          "genreTags": [
+            "trap",
+            "dark",
+            "glitch",
+            "experimental"
+          ],
+          "a/bTesting": {
+            "testA": "Sample-hold LFO for random glitches",
+            "testB": "Sine LFO for regular vibrato"
+          },
+          "troubleshooting": {
+            "tooChaotic": "Reduce LFO amounts to 20%",
+            "tooThin": "Add sub osc at 40%"
+          }
+        },
+        "experimental-texture-exo": {
+          "name": "Exo Sci-Fi Textures",
+          "genre": "experimental",
+          "mood": "spacey",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "dual-filter",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 0,
+              "mix": 80
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "+1",
+              "detune": 50,
+              "mix": 70
+            },
+            "oscillator3": {
+              "waveform": "square",
+              "octave": "-1",
+              "detune": 25,
+              "mix": 60
+            },
+            "oscillator4": {
+              "waveform": "triangle",
+              "octave": "0",
+              "detune": 75,
+              "mix": 50
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 50
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 5000,
+              "resonance": 55,
+              "drive": 15
+            },
+            "filterB": {
+              "type": "bandpass",
+              "cutoff": 2500,
+              "resonance": 45,
+              "drive": 10
+            },
+            "envelope": {
+              "attack": 50,
+              "decay": 800,
+              "sustain": 70,
+              "release": 1200
+            },
+            "modulation": {
+              "envToFilterA": 60,
+              "lfo1ToFilterB": 80,
+              "lfo2ToPitch": 50
+            },
+            "stereoWidth": 200
+          },
+          "chain": {
+            "pre": [
+              "Fruity Parametric EQ 2 - Multi-band processing"
+            ],
+            "post": [
+              "Fruity Reverb 2 - Gated, Decay 1.5s, Mix 40%",
+              "Delay - Stereo ping-pong, 600ms, Feedback 50%"
+            ]
+          },
+          "genreTags": [
+            "experimental",
+            "spacey",
+            "cinematic",
+            "ambient"
+          ],
+          "a/bTesting": {
+            "testA": "Extreme detune for metallic textures",
+            "testB": "Tighter detune for harmonious clusters"
+          },
+          "troubleshooting": {
+            "tooHarsh": "Filter A cutoff to 3500Hz",
+            "lossOfControl": "Reduce modulation amounts by half"
+          }
+        },
+        "rnb-pad-exo": {
+          "name": "Exo Velvet Pad",
+          "genre": "R&B",
+          "mood": "smooth",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "sine",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 90
+            },
+            "oscillator2": {
+              "waveform": "triangle",
+              "octave": "-1",
+              "detune": 4,
+              "mix": 75
+            },
+            "oscillator3": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 6,
+              "mix": 50
+            },
+            "oscillator4": {
+              "waveform": "sine",
+              "octave": "0",
+              "detune": 10,
+              "mix": 40
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 25
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 3000,
+              "resonance": 15,
+              "drive": 3
+            },
+            "filterB": {
+              "type": "lowpass",
+              "cutoff": 6000,
+              "resonance": 10,
+              "drive": 0
+            },
+            "envelope": {
+              "attack": 250,
+              "decay": 500,
+              "sustain": 85,
+              "release": 800
+            },
+            "modulation": {
+              "envToFilterA": 15,
+              "lfo1ToPan": 30,
+              "lfo2ToFilterB": 10
+            },
+            "stereoWidth": 110
+          },
+          "chain": {
+            "pre": [
+              "Vintage Chorus - Mix 40%, Rate 0.2Hz"
+            ],
+            "post": [
+              "Fruity Reverb 2 - Hall, Decay 3s, Mix 18%",
+              "Fruity Parametric EQ 2 - High-shelf +1.5dB at 8kHz"
+            ]
+          },
+          "genreTags": [
+            "R&B",
+            "smooth",
+            "moody",
+            "romantic"
+          ],
+          "a/bTesting": {
+            "testA": "Gentle pan LFO for subtle movement",
+            "testB": "Static for centered emotional focus"
+          },
+          "troubleshooting": {
+            "tooDark": "Filter A cutoff to 4000Hz",
+            "lacksWarmth": "Increase osc3 to 60%"
+          }
+        }
+      }
+    },
+    "signature-presets": {
+      "metadata": {
+        "plugin": "Kepler Exo",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "description": "Artist and production style inspired presets for Kepler Exo"
+      },
+      "presets": {
+        "metro-boomin-exo": {
+          "name": "Exo Boomin System",
+          "inspiredBy": "Metro Boomin modern trap production",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "dual-filter"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 0,
+              "mix": 80
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 4,
+              "mix": 75
+            },
+            "oscillator3": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 55
+            },
+            "oscillator4": {
+              "waveform": "square",
+              "octave": "-1",
+              "detune": 3,
+              "mix": 45
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 100
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 180,
+              "resonance": 32,
+              "drive": 20
+            },
+            "filterB": {
+              "type": "lowpass",
+              "cutoff": 350,
+              "resonance": 20,
+              "drive": 8
+            },
+            "envelope": {
+              "attack": 5,
+              "decay": 180,
+              "sustain": 65,
+              "release": 120
+            },
+            "modulation": {
+              "envToFilterA": 72,
+              "lfo1ToPan": 20,
+              "lfo2ToFilterB": 15
+            }
+          },
+          "chain": {
+            "post": [
+              "Fruity Limiter - Threshold -15dB, Ratio 4:1, Attack 0.5ms, Release 30ms"
+            ]
+          },
+          "characteristics": [
+            "deep",
+            "punchy",
+            "modern",
+            "cleansounding"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "trap",
+            "modern"
+          ],
+          "a/bTesting": {
+            "testA": "4 oscillators for modern complexity",
+            "testB": "2 oscillators for classic 808"
+          },
+          "troubleshooting": {
+            "notDeepEnough": "Increase sub osc to 100%",
+            "muddyMix": "Filter A cutoff to 140Hz"
+          }
+        },
+        "wheezy-exo": {
+          "name": "Exo Paperboy",
+          "inspiredBy": "Wheezy ATL trap style",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 0,
+              "mix": 85
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 6,
+              "mix": 80
+            },
+            "oscillator3": {
+              "waveform": "square",
+              "octave": "0",
+              "detune": 0,
+              "mix": 60
+            },
+            "oscillator4": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 10,
+              "mix": 50
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 90
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 220,
+              "resonance": 38,
+              "drive": 18
+            },
+            "filterB": {
+              "type": "highpass",
+              "cutoff": 80,
+              "resonance": 15,
+              "drive": 0
+            },
+            "envelope": {
+              "attack": 4,
+              "decay": 160,
+              "sustain": 58,
+              "release": 100
+            },
+            "modulation": {
+              "envToFilterA": 78,
+              "lfo1ToPan": 45,
+              "lfo2ToPitch": 12
+            },
+            "stereoWidth": 130
+          },
+          "chain": {
+            "post": [
+              "Fruity Compressor - Attack 8ms, Release 70ms, Ratio 3:1"
+            ]
+          },
+          "characteristics": [
+            "aggressive",
+            "bright",
+            "modern",
+            "punchy"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "trap",
+            "ATL"
+          ],
+          "a/bTesting": {
+            "testA": "Pan LFO for stereo movement",
+            "testB": "Pan LFO off for mono impact"
+          },
+          "troubleshooting": {
+            "tooHarsh": "Reduce osc4 mix to 35%",
+            "lacksPunch": "Increase filter drive to 25%"
+          }
+        },
+        "murda-beatz-exo": {
+          "name": "Exo Melody King",
+          "inspiredBy": "Murda Beatz melodic trap style",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "dual-filter",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 80
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 5,
+              "mix": 75
+            },
+            "oscillator3": {
+              "waveform": "triangle",
+              "octave": "0",
+              "detune": 3,
+              "mix": 65
+            },
+            "oscillator4": {
+              "waveform": "square",
+              "octave": "0",
+              "detune": 8,
+              "mix": 50
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 0
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 1200,
+              "resonance": 28,
+              "drive": 10
+            },
+            "filterB": {
+              "type": "lowpass",
+              "cutoff": 4500,
+              "resonance": 18,
+              "drive": 5
+            },
+            "envelope": {
+              "attack": 15,
+              "decay": 280,
+              "sustain": 68,
+              "release": 300
+            },
+            "modulation": {
+              "envToFilterA": 45,
+              "lfo1ToFilterB": 35,
+              "lfo2ToPan": 25
+            },
+            "stereoWidth": 115
+          },
+          "chain": {
+            "post": [
+              "Fruity Reverb 2 - Hall, Decay 2s, Mix 20%",
+              "Fruity Limiter - Soft knee"
+            ]
+          },
+          "characteristics": [
+            "melodic",
+            "bright",
+            "emotional",
+            "groove"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "trap",
+            "melodic"
+          ],
+          "a/bTesting": {
+            "testA": "Dual filter for harmonic complexity",
+            "testB": "Single filter for focused sound"
+          },
+          "troubleshooting": {
+            "tooDark": "Filter B cutoff to 5500Hz",
+            "muddyChords": "Filter A cutoff to 1000Hz"
+          }
+        },
+        "tay-keith-exo": {
+          "name": "Exo Gunna Wet",
+          "inspiredBy": "Tay Keith trap style with Wet",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 85
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 7,
+              "mix": 80
+            },
+            "oscillator3": {
+              "waveform": "square",
+              "octave": "0",
+              "detune": 4,
+              "mix": 55
+            },
+            "oscillator4": {
+              "waveform": "triangle",
+              "octave": "0",
+              "detune": 12,
+              "mix": 45
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 0
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 800,
+              "resonance": 35,
+              "drive": 12
+            },
+            "filterB": {
+              "type": "bandpass",
+              "cutoff": 2000,
+              "resonance": 25,
+              "drive": 8
+            },
+            "envelope": {
+              "attack": 10,
+              "decay": 200,
+              "sustain": 62,
+              "release": 250
+            },
+            "modulation": {
+              "envToFilterA": 55,
+              "lfo1ToPan": 40,
+              "lfo2ToFilterB": 30
+            },
+            "stereoWidth": 140
+          },
+          "chain": {
+            "post": [
+              "Fruity Reverb 2 - Large Room, Decay 2.2s, Mix 25%",
+              "Fruity Compressor - Soft attack"
+            ]
+          },
+          "characteristics": [
+            "smooth",
+            "wet",
+            "melodic",
+            "atmospheric"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "trap",
+            "melodic",
+            "atmospheric"
+          ],
+          "a/bTesting": {
+            "testA": "Heavy reverb for atmospheric feel",
+            "testB": "Less reverb for drier mix"
+          },
+          "troubleshooting": {
+            "tooWashed": "Reduce reverb mix to 15%",
+            "lacksClarity": "Bandpass filter B at 2500Hz"
+          }
+        },
+        "harry-fraud-exo": {
+          "name": "Exo SSL Soul",
+          "inspiredBy": "Harry Fraud Brooklyn soul style",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "dual-filter",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 78
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 5,
+              "mix": 72
+            },
+            "oscillator3": {
+              "waveform": "triangle",
+              "octave": "0",
+              "detune": 3,
+              "mix": 60
+            },
+            "oscillator4": {
+              "waveform": "sine",
+              "octave": "0",
+              "detune": 8,
+              "mix": 55
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 20
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 2000,
+              "resonance": 20,
+              "drive": 8
+            },
+            "filterB": {
+              "type": "highpass",
+              "cutoff": 120,
+              "resonance": 12,
+              "drive": 0
+            },
+            "envelope": {
+              "attack": 45,
+              "decay": 350,
+              "sustain": 72,
+              "release": 400
+            },
+            "modulation": {
+              "envToFilterA": 28,
+              "lfo1ToPan": 35,
+              "lfo2ToFilterB": 18
+            },
+            "stereoWidth": 105
+          },
+          "chain": {
+            "pre": [
+              "SSL-style EQ emulation"
+            ],
+            "post": [
+              "Fruily Reverb 2 - Plate, Decay 1.8s, Mix 18%"
+            ]
+          },
+          "characteristics": [
+            "warm",
+            "smooth",
+            "soulful",
+            "classic"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "R&B",
+            "soulful"
+          ],
+          "a/bTesting": {
+            "testA": "Subtle stereo width for cohesion",
+            "testB": "Mono for SSL-style punch"
+          },
+          "troubleshooting": {
+            "tooWarm": "Increase filter A cutoff to 2500Hz",
+            "lacksLowEnd": "Sub osc to 40%"
+          }
+        },
+        "ska-gregory-exo": {
+          "name": "Exo Cash Money",
+          "inspiredBy": "Ska Gregory New Orleans bounce",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 0,
+              "mix": 88
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 4,
+              "mix": 82
+            },
+            "oscillator3": {
+              "waveform": "square",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 65
+            },
+            "oscillator4": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 8,
+              "mix": 55
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 95
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 250,
+              "resonance": 30,
+              "drive": 15
+            },
+            "filterB": {
+              "type": "lowpass",
+              "cutoff": 500,
+              "resonance": 22,
+              "drive": 8
+            },
+            "envelope": {
+              "attack": 6,
+              "decay": 140,
+              "sustain": 60,
+              "release": 110
+            },
+            "modulation": {
+              "envToFilterA": 68,
+              "lfo1ToPan": 25,
+              "lfo2ToPitch": 8
+            },
+            "stereoWidth": 90
+          },
+          "chain": {
+            "post": [
+              "Fruily Limiter - Punchy settings, fast release"
+            ]
+          },
+          "characteristics": [
+            "bouncy",
+            "party",
+            "fun",
+            "uplifting"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "bounce",
+            "party"
+          ],
+          "a/bTesting": {
+            "testA": "Fast decay for bouncy feel",
+            "testB": "Longer decay for smoother flow"
+          },
+          "troubleshooting": {
+            "notBouncy": "Envelope decay to 120ms",
+            "tooBoomy": "Filter A cutoff to 200Hz"
+          }
+        },
+        "mike-will-exo": {
+          "name": "Exo Future Past",
+          "inspiredBy": "Mike Will Made-It futuristic style",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "dual-filter",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 0,
+              "mix": 82
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 7,
+              "mix": 80
+            },
+            "oscillator3": {
+              "waveform": "saw",
+              "octave": "+1",
+              "detune": 14,
+              "mix": 65
+            },
+            "oscillator4": {
+              "waveform": "square",
+              "octave": "0",
+              "detune": 21,
+              "mix": 50
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 0
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 3800,
+              "resonance": 42,
+              "drive": 15
+            },
+            "filterB": {
+              "type": "lowpass",
+              "cutoff": 7000,
+              "resonance": 28,
+              "drive": 8
+            },
+            "envelope": {
+              "attack": 12,
+              "decay": 260,
+              "sustain": 58,
+              "release": 380
+            },
+            "modulation": {
+              "envToFilterA": 62,
+              "lfo1ToFilterB": 48,
+              "lfo2ToPan": 32
+            },
+            "stereoWidth": 125
+          },
+          "chain": {
+            "pre": [
+              "Soft clipper - 2dB"
+            ],
+            "post": [
+              "Fruily Reverb 2 - Gated, Decay 1.5s, Mix 22%",
+              "Delay - 320ms, Feedback 35%"
+            ]
+          },
+          "characteristics": [
+            "futuristic",
+            "wide",
+            "bright",
+            "innovative"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "R&B",
+            "future bass",
+            "experimental"
+          ],
+          "a/bTesting": {
+            "testA": "4 oscillators for maximum width",
+            "testB": "2 oscillators for classic saw"
+          },
+          "troubleshooting": {
+            "tooBusy": "Filter B cutoff to 5000Hz",
+            "lacksFuture": "Increase modulation amounts"
+          }
+        },
+        "zaytoven-exo": {
+          "name": "Exo MIDI Pluck Deluxe",
+          "inspiredBy": "Zaytoven piano-driven production",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "square",
+              "octave": "+1",
+              "detune": 0,
+              "mix": 100
+            },
+            "oscillator2": {
+              "waveform": "triangle",
+              "octave": "0",
+              "detune": 4,
+              "mix": 70
+            },
+            "oscillator3": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 6,
+              "mix": 50
+            },
+            "oscillator4": {
+              "waveform": "sine",
+              "octave": "+1",
+              "detune": 3,
+              "mix": 40
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 0
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 3000,
+              "resonance": 38,
+              "drive": 8
+            },
+            "filterB": {
+              "type": "highpass",
+              "cutoff": 150,
+              "resonance": 15,
+              "drive": 0
+            },
+            "envelope": {
+              "attack": 2,
+              "decay": 55,
+              "sustain": 0,
+              "release": 35
+            },
+            "modulation": {
+              "envToFilterA": 88,
+              "lfo1ToPan": 20,
+              "lfo2ToPitch": 5
+            },
+            "stereoWidth": 85
+          },
+          "chain": {
+            "post": [
+              "Fruily Reverb 2 - Small Room, Decay 0.6s, Mix 12%",
+              "Fruily Compressor - Fast attack"
+            ]
+          },
+          "characteristics": [
+            "plucky",
+            "bright",
+            "melodic",
+            "classic"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "R&B",
+            "melodic",
+            "piano"
+          ],
+          "a/bTesting": {
+            "testA": "Square wave for classic MIDI",
+            "testB": "Saw for modern edge"
+          },
+          "troubleshooting": {
+            "tooClicky": "Attack to 4ms",
+            "sustainingTooLong": "Sustain at 0, decay to 45ms"
+          }
+        },
+        "just-blaze-exo": {
+          "name": "Exo Classic Soul",
+          "inspiredBy": "Just Blaze soulful hip-hop",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "dual-filter",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 75
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 5,
+              "mix": 70
+            },
+            "oscillator3": {
+              "waveform": "triangle",
+              "octave": "0",
+              "detune": 3,
+              "mix": 62
+            },
+            "oscillator4": {
+              "waveform": "sine",
+              "octave": "0",
+              "detune": 8,
+              "mix": 58
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 35
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 2200,
+              "resonance": 18,
+              "drive": 6
+            },
+            "filterB": {
+              "type": "highpass",
+              "cutoff": 100,
+              "resonance": 10,
+              "drive": 0
+            },
+            "envelope": {
+              "attack": 35,
+              "decay": 320,
+              "sustain": 75,
+              "release": 420
+            },
+            "modulation": {
+              "envToFilterA": 22,
+              "lfo1ToPan": 28,
+              "lfo2ToFilterB": 15
+            },
+            "stereoWidth": 95
+          },
+          "chain": {
+            "pre": [
+              "Vintage warmth processing"
+            ],
+            "post": [
+              "Fruily Reverb 2 - Hall, Decay 2.5s, Mix 16%"
+            ]
+          },
+          "characteristics": [
+            "warm",
+            "soulful",
+            "classic",
+            "emotional"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "R&B",
+            "soulful",
+            "classic"
+          ],
+          "a/bTesting": {
+            "testA": "Subtle stereo for width",
+            "testB": "Mono for classic punch"
+          },
+          "troubleshooting": {
+            "tooDark": "Filter A cutoff to 2800Hz",
+            "lacksWarmth": "Increase osc4 to 65%"
+          }
+        },
+        "timbaland-exo": {
+          "name": "Exo Beat Break",
+          "inspiredBy": "Timbaland experimental hip-hop",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "dual-filter",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 0,
+              "mix": 78
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "+1",
+              "detune": 15,
+              "mix": 68
+            },
+            "oscillator3": {
+              "waveform": "square",
+              "octave": "-1",
+              "detune": 8,
+              "mix": 55
+            },
+            "oscillator4": {
+              "waveform": "triangle",
+              "octave": "0",
+              "detune": 25,
+              "mix": 48
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 45
+            },
+            "filterA": {
+              "type": "bandpass",
+              "cutoff": 2500,
+              "resonance": 48,
+              "drive": 12
+            },
+            "filterB": {
+              "type": "notch",
+              "cutoff": 1500,
+              "resonance": 35,
+              "drive": 8
+            },
+            "envelope": {
+              "attack": 8,
+              "decay": 180,
+              "sustain": 55,
+              "release": 220
+            },
+            "modulation": {
+              "envToFilterA": 58,
+              "lfo1ToFilterB": 72,
+              "lfo2ToPitch": 40
+            },
+            "stereoWidth": 160
+          },
+          "chain": {
+            "pre": [
+              "Unique pre-processing"
+            ],
+            "post": [
+              "Fruily Reverb 2 - Experimental, Decay 2s, Mix 30%",
+              "Delay - Ping-pong, 450ms, Feedback 45%"
+            ]
+          },
+          "characteristics": [
+            "experimental",
+            "unconventional",
+            "forward-thinking",
+            "textural"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "experimental",
+            "innovative"
+          ],
+          "a/bTesting": {
+            "testA": "Extreme modulation for weird textures",
+            "testB": "Milder modulation for usable sounds"
+          },
+          "troubleshooting": {
+            "tooWeird": "Reduce LFO amounts to 30%",
+            "notWeirdEnough": "Increase modulation diversity"
+          }
+        }
+      }
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Kepler Exo\n\nLeveraging the \"Exo\" features for professional Hip-Hop, R&B, and Pop sound design.\n\n---\n\n## 1. PSYCHEDELIC (Primary Focus)\n*FM \"trippiness,\" evolving harmonic shifts, and disorienting motion.*\n- **The Mental Model:** Shifting landscapes, metallic hallucinations (Travis Scott / Mike Dean).\n- **Exo-Only Levers:**\n    - **X-Mod (Cross-Mod):** Turn this up to 40–60% for \"inhuman\" harmonic textures.\n    - **Audio Mod (VCF):** Modulate the filter with DCO 1 to create \"growling\" textures that change with pitch.\n    - **Matrix Routing:** Map **LFO 2** to **DCO 2 Semi** (very small amount) for a \"warped\" pitch feel.\n    - **Hard Sync:** Automate DCO 2's pitch with an LFO for \"screaming\" cycles.\n- **Listen For:** Sounds that feel like they are \"morphing\" between organic and digital.\n\n## 2. UPBEAT\n*Aggressive leads, rhythmic precision, and bright energy.*\n- **The Mental Model:** High-energy Hyperpop, modern Synth-Pop, and energetic Trap.\n- **Exo-Only Levers:**\n    - **Hard Sync:** Enable and use **Env 2** to \"rip\" the pitch of DCO 2 at the start of every note.\n    - **Saturator:** Crank the built-in saturation for aggressive \"analog bite.\"\n    - **Slope (6dB):** Use the 6dB filter mode for a brighter, more \"airy\" top end that cuts through a dense mix.\n- **Listen For:** \"Tearing\" textures and bright, snappy transients.\n\n## 3. MOODY\n*Heavy low-end, dark atmosphere, and melancholic depth.*\n- **The Mental Model:** Deep, atmospheric R&B (Drake / 40 vibes).\n- **Exo-Only Levers:**\n    - **Dual DCOs:** Detune DCO 1 and DCO 2 slightly (+/- 5 cents) for a massive, thick \"shadow\" effect.\n    - **HQ Filter:** Use HQ mode with 24dB slope for a very smooth, creamy darkness.\n    - **Saturation:** Use subtle saturation to \"warm up\" the low-mids of a pad.\n    - **Env 2:** Use a dedicated envelope for a very slow filter sweep.\n- **Listen For:** A thick, heavy \"cloak\" of sound that feels expensive and deep.\n\n## 4. JAZZY / VIBEY\n*Neo-Soul warmth, Rhodes-like character, and modern lushness.*\n- **The Mental Model:** Moonchild / Robert Glasper; sophisticated Alternative R&B.\n- **Exo-Only Levers:**\n    - **HQ Chorus:** Use the built-in Chorus I+II for maximum lush width.\n    - **Matrix Routing:** Map **Velocity** to **Filter Cutoff**. This makes the synth feel like a \"real\" instrument that responds to how hard you play.\n    - **DCO 2 (Fine):** Detune slightly to create \"natural\" acoustic-style beating.\n- **Listen For:** Expressive, \"human\" dynamics and a wide, creamy stereo image.\n\n---\n\n## Exo Vibe Matrix (New Levers)\n| Vibe | Hard Sync | X-Mod (FM) | Audio Mod | Filter HQ | Matrix Usage |\n| :--- | :--- | :--- | :--- | :--- | :--- |\n| **Psyched**| ON | High | High | STD | LFO -> Pitch |\n| **Upbeat** | ON | Low | Low | STD | Env -> Sync Pitch |\n| **Moody** | OFF | Low | OFF | ON | Slow Env -> Cutoff |\n| **Jazzy** | OFF | OFF | OFF | ON | Velocity -> Cutoff |\n| **Vibey** | OFF | Low | OFF | ON | LFO -> PWM |\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Kepler Exo\r\n\r\n## What It Is\r\nKepler Exo is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Kepler Exo\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "exo-vs-standard-comparison": "# Kepler vs. Kepler Exo: The Pro Comparison\n\nWhich JUNO-inspired engine should you choose for your track? [SRC: IL-MAN]\n\n| Feature | Kepler (Standard) | Kepler Exo |\n| :--- | :--- | :--- |\n| **Oscillators** | 1 (DCO) + Sub | **2 (DCO1 & DCO2)** + Sub |\n| **Oscillator Interaction** | None | **Hard Sync, Cross-Mod (FM)** |\n| **Modulation Matrix** | No (Fixed) | **Yes (Deep Routing)** |\n| **Envelopes** | 1 ADSR | **2 ADSRs** |\n| **LFOs** | 1 | **2** |\n| **Filter Modes** | Standard (JUNO) | **Standard + HQ + 6dB Option** |\n| **FX Rack** | Chorus Only | **Chorus, Delay, Reverb, Saturation** |\n| **Complexity** | Simple, Fast, \"Pure\" | Deep, Flexible, Sound Design Hub |\n\n## Use **Kepler (Standard)** When:\n- You need a \"Classic JUNO\" sound in 30 seconds.\n- You are creating simple 80s basslines or lush, static pads.\n- You want to keep CPU usage to an absolute minimum.\n- You prefer the \"One knob per function\" workflow.\n\n## Use **Kepler Exo** When:\n- You need **Hard Sync** for \"tearing\" leads or metallic FM textures.\n- You want evolving, complex motion using the **Modulation Matrix**.\n- You need a **second envelope** to control the filter separately from the amplitude.\n- You want the **HQ Filter** for smoother resonance sweeps.\n- You are designing cinematic textures or modern Hybrid-Pop patches.\n\n## Pro Tip: The \"Twin\" Strategy\nStart your idea in **Kepler** to find the vibe. If you realize the sound needs more \"bite\" or a complex LFO shape that Kepler doesn't have, switch to **Kepler Exo**—the core sound engine is the same, but the ceiling for creativity is much higher.\n",
+      "parameter-cheat-sheet": "# Parameter Cheat Sheet: Kepler Exo\n\nAdvanced-reference for the expanded \"Pro\" analog engine. [SRC: IL-MAN]\n\n---\n\n## 🎹 DCO 1 & 2 (Oscillators)\n- **DCO 1:** The primary oscillator.\n- **DCO 2:** The secondary oscillator.\n  - **Fine/Semi:** Tuning offsets relative to DCO 1.\n  - **Sync (Hard Sync):** Forces DCO 2 to restart whenever DCO 1 does. Creates \"tearing\" leads.\n  - **X-Mod (Cross-Mod):** DCO 1 modulates the frequency of DCO 2 (FM synthesis).\n\n## 🎚️ VCF (Advanced Filter)\n- **Mode (STD/HQ):**\n  - *STD:* Classic JUNO emulation.\n  - *HQ:* Modern, high-fidelity algorithm with smoother resonance.\n- **Slope (24dB/6dB):** Selects between a steep (24dB) or gentle (6dB) filter curve.\n- **Audio Mod:** Uses the output of DCO 1 to modulate the filter frequency at high speed (Growl).\n\n## 📐 MOD MATRIX (The Hub)\n- **Slots:** Multiple routing slots.\n- **Source:** What is moving (LFO 1, Env 2, Velocity, Mod Wheel).\n- **Destination:** What is being moved (DCO 2 Pitch, Filter Res, Pan, FX Mix).\n- **Amount:** Depth and direction (Bipolar) of the modulation.\n\n## 📐 ENVELOPES & LFOs\n- **Env 1 & 2:** Two independent ADSRs. Usually, Env 1 is for Amp (VCA) and Env 2 is for Filter (VCF).\n- **LFO 1 & 2:** Two independent LFOs with multiple waveforms and sync modes.\n\n## ✨ FX RACK\n- **Saturator:** Adds harmonic \"crunch\" and analog warmth.\n- **Delay / Reverb:** High-quality spatial processing.\n- **Chorus:** The classic JUNO Modes I, II, and I+II.\n\n---\n\n## 🎯 Advanced Starting Points\n- **Sync Lead:** Sync ON + Env 2 assigned to DCO 2 Pitch in the Matrix.\n- **Growl Bass:** Audio Mod turned up + High Resonance + Saw wave.\n- **Ambient Drift:** LFO 1 -> DCO 1 Pitch (Slow); LFO 2 -> Filter Cutoff (Slower).\n- **Metallic Bell:** High X-Mod + Square waves + Short Release.\n",
+      "quick-start-checklist": "# Quick Start Checklist: Kepler Exo\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Kepler Exo to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Kepler Exo\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Kepler Exo\r\n\r\nThis section contains learning information for the kepler-exo plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "evolving-textures-matrix": "# Workflow: Evolving Textures (Vibey/Psychedelic)\n\n*Goal: Using the 8-slot Modulation Matrix to create complex, shifting, and atmospheric pads that never sound the same twice.*\n\n## Vibe Mapping\n- **Vibey:** ⭐⭐⭐⭐⭐ (Primary)\n- **Psychedelic:** ⭐⭐⭐⭐⭐ (Primary)\n- **Moody:** ⭐⭐⭐⭐\n\n## 🚶 Step-by-Step Setup\n1. **The Dual-Osc Base:**\n   - **DCO 1:** Sawtooth.\n   - **DCO 2:** Pulse.\n   - **Detune (Fine):** Set DCO 2 to **+7 cents** for natural beating.\n2. **The Matrix (Motion Strategy):**\n   - **Slot 1:** Source: **LFO 1**, Destination: **Filter Cutoff**, Amount: **+30%** (Slow rhythmic movement).\n   - **Slot 2:** Source: **LFO 2**, Destination: **PWM**, Amount: **+50%** (Harmonic shifting).\n   - **Slot 3:** Source: **Env 2**, Destination: **DCO 2 Level**, Amount: **-40%** (The second oscillator fades out as the note is held).\n   - **Slot 4:** Source: **Mod Wheel**, Destination: **FX Reverb Mix**, Amount: **+80%** (Performative depth).\n3. **LFO Setup:**\n   - **LFO 1:** Sine wave, synced to 1/1 bar.\n   - **LFO 2:** Random/S&H wave, slow rate (creates \"organic\" unpredictable changes).\n4. **The Filter (HQ Mode):**\n   - Enable **HQ Filter**.\n   - Set **Freq** to 35%.\n   - Set **Resonance** to 20%.\n5. **The \"Expensive\" Space:**\n   - Turn on **Chorus I+II** and a large **Reverb**.\n\n## 🔄 Variations\n- **The \"Dreamy Underwater\" Pad:** Set **LP Filter** to 500Hz and map **LFO 1** to **Pan**.\n- **The \"Glitchy Atmosphere\":** Map a fast **Random LFO** to **DCO 2 Semi** (at a very low amount, e.g., 2%).\n\n## ⚠️ Pitfalls & Fixes\n- **Problem:** The sound is too \"chaotic.\"\n- **Fix:** Lower the **Amount** in the Matrix slots. Subtle modulation (5–15%) is often more effective than extreme values.\n- **Problem:** CPU spiking.\n- **Fix:** Disable **HQ Filter** mode if you have multiple instances of Exo running.\n\n## 🎚️ Automation Ideas\n- **Texture Morph:** Automate the **LFO 2 Rate** to speed up during the bridge of the song.\n- **Matrix Intensity:** If your DAW allows, automate the **Master Modulation Depth** (if available) or the individual Matrix amounts.\n",
+      "metallic-fm-perc": "# Workflow: Metallic FM Percussion (Psychedelic/Jazzy)\n\n*Goal: Using Cross-Modulation (FM) and short envelopes to create bell-like, metallic, and \"glitchy\" percussive elements.*\n\n## Vibe Mapping\n- **Psychedelic:** ⭐⭐⭐⭐⭐ (Primary)\n- **Jazzy:** ⭐⭐⭐ (For \"organic\" bell hits)\n- **Upbeat:** ⭐⭐⭐ (For percussive ear candy)\n\n## 🚶 Step-by-Step Setup\n1. **The FM Engine:**\n   - **DCO 1:** Square wave. (This is the \"Carrier\").\n   - **DCO 2:** Square wave. (This is the \"Modulator\").\n   - Set **DCO 2 Semi** to **+19** (an octave and a fifth) or **+7**. These non-unison ratios create metallic harmonics.\n2. **The \"Ring\" (Cross-Mod):**\n   - Increase **X-Mod** to **60–80%**. You should hear a metallic, bell-like clang.\n3. **The Percussive Shape (ADSR):**\n   - **Attack:** 0.\n   - **Decay:** Very short (100–300ms).\n   - **Sustain:** 0.\n   - **Release:** Very short.\n4. **Filter Sculpting:**\n   - Set **Filter Freq** to 50%.\n   - Set **Resonance** to 60%.\n   - Map **Env 2** to **Filter Cutoff** with a positive amount for a \"snap.\"\n5. **Texture:**\n   - Add 20% **Noise** to add a \"shaker\" or \"hit\" character to the start of the sound.\n\n## 🔄 Variations\n- **The \"Digital Cowbell\":** Set **DCO 2 Semi** to specific dissonant ratios and keep the filter open.\n- **The \"Organic Kalimba\":** Lower the **X-Mod** and use the **HQ Filter** with high resonance to create a \"woody\" pluck.\n\n## ⚠️ Pitfalls & Fixes\n- **Problem:** The sound is too \"harsh\" or \"noisy.\"\n- **Fix:** Lower the **X-Mod** or the **DCO 2 Level**. FM can get messy very quickly.\n- **Problem:** It sounds too \"thin.\"\n- **Fix:** Add a bit of **Sub-Oscillator** (even 10-20%) to ground the metallic clang.\n\n## 🎚️ Automation Ideas\n- **Dynamic Clang:** Map **Velocity** to **X-Mod** in the Matrix. This makes the sound more metallic the harder you play—just like a real metal instrument.\n- **Glitch Roll:** Automate the **DCO 2 Semi** pitch during a drum fill.\n",
+      "modern-analog-leads": "# Workflow: Modern Analog Leads (Upbeat/Aggressive)\n\n*Goal: Creating the iconic \"tearing\" sync lead—aggressive, bright, and cutting—using Kepler Exo's dual-oscillator sync engine.*\n\n## Vibe Mapping\n- **Upbeat:** ⭐⭐⭐⭐⭐ (Primary)\n- **Psychedelic:** ⭐⭐⭐⭐ (With high resonance)\n- **Moody:** ⭐⭐ (If filtered dark)\n\n## 🎛️ Routing Context\n- **Preferred:** Insert chain with a bit of \"OTT\" style compression after the plugin.\n- **Mix Status:** 100% Dry/Wet on the synth (Effect logic is internal).\n\n## 🚶 Step-by-Step Setup\n1. **The Sync Core:**\n   - **DCO 1:** Select **Sawtooth**. This is your \"Master\" clock.\n   - **DCO 2:** Select **Sawtooth**. This is your \"Slave\" oscillator.\n   - Engage the **SYNC** button.\n2. **The \"Tear\" (Pitch Modulation):**\n   - Go to the **Modulation Matrix**.\n   - Slot 1: **Source = Env 2**, **Destination = DCO 2 Semi (or Pitch)**.\n   - Set **Amount** to **+100%**.\n3. **The Envelope (Env 2):**\n   - **Attack:** 0 (Instant).\n   - **Decay:** Moderate (400–800ms).\n   - **Sustain:** 0.\n   - **Listen:** As you play, the DCO 2 pitch \"rips\" downward, creating the classic sync sweep.\n4. **The Grit (Saturation):**\n   - Turn on the built-in **Saturator** and drive it to **30%**.\n5. **The Space:**\n   - Engage **Chorus II** and add a bit of built-in **Delay**.\n\n## 🔄 Variations\n- **The \"Screaming\" Lead:** Increase **Filter Resonance** to 70% in **STD Mode**.\n- **The \"Industrial\" Lead:** Add **Noise** and use **DCO 1 Audio Mod** to \"growl\" the filter.\n\n## ⚠️ Pitfalls & Fixes\n- **Problem:** The sync sound is too \"harsh\" or \"piercing.\"\n- **Fix:** Switch the Filter to **6dB slope** for a gentler rolloff, or lower the **LP Filter**.\n- **Problem:** The \"rip\" is too fast.\n- **Fix:** Increase the **Decay** time on **Env 2**.\n\n## 🎚️ Automation Ideas\n- **Sync Warp:** Automate the **Semi** pitch of **DCO 2** manually (or with a Mod Wheel) to create manual \"screams.\"\n- **Drive Build:** Automate the **Saturation Drive** to increase during a transition.\n"
+    },
+    "by-instrument": {
+      "01-bass-workflows": "# Kepler Exo Bass Workflows\n\n## Exo 808 Beast\n\n### Sound Profile\nMassive, modern 808 with 4 oscillators + sub oscillator for extreme low-end presence.\n\n### Recommended Preset\n`genre/01-exo-808-beast.json`\n\n### Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, -2 octave, 70% | Sub harmonics |\n| Oscillator 2 | Saw, -2 octave, 65% | Thickness |\n| Oscillator 3 | Square, -1 octave, 50% | Click/Attack |\n| Oscillator 4 | Triangle, 0 octave, 35% | Harmonics |\n| Sub Oscillator | Sine, -2 octave, 100% | Foundation |\n| Filter A | Lowpass, 200Hz, Res 30, Drive 18 | Main tone |\n| Filter B | Lowpass, 4000Hz, Res 20, Drive 5 | High control |\n| Envelope | A:4, D:200, S:60, R:140 | Punch |\n| Modulation | Env→FilterA: 75%, LFO1→Pan: 35% | Movement |\n\n### Exo-Specific Advantages\n- **Sub Oscillator:** Dedicated low-end without affecting harmonics\n- **Dual Filter:** Independent sub and harmonic control\n- **4 Oscillators:** Layered harmonic complexity\n- **Expanded Modulation:** More movement possibilities\n\n### Genre Variations\n- **Modern Trap:** Increase FilterA resonance to 38%, add LFO2→Pitch (8%)\n- **Hip-Hop Classic:** Reduce osc3/4 mix, warmer FilterA drive (12%)\n- **Dark Drill:** Increase FilterA drive to 25%, faster LFO1 (0.5Hz)\n- **R&B Smooth:** Softer attack (10ms), reduced FilterA drive (12%)\n\n### Chain Processing\n```\nKepler Exo → Fruity Parametric EQ 2\n  - High-pass: 25Hz\n  → Fruity Limiter\n  - Threshold: -14dB\n  - Ratio: 4:1\n  - Attack: 1ms\n  - Release: 35ms\n```\n\n### Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More sub | Sub Oscillator to 100% |\n| More punch | Increase FilterA resonance to 38% |\n| More grit | Increase FilterA drive to 22% |\n| Cleaner sound | Reduce osc3/4 to 30% each |\n| More movement | Increase LFO1 pan to 45% |\n\n### Layering Strategies\n- **Quad Layer:** All 4 oscillators + sub for maximum impact\n- **Trio Layer:** Osc1 + Osc2 + sub for classic 808\n- **Dual Layer:** Osc1 + sub for pure sub\n- **Solo Sub:** Sub only, osc1-4 at 0%\n\n---\n\n## Exo Grim Reaper\n\n### Sound Profile\nExtreme drill bass with menacing harmonics and dark texture.\n\n### Recommended Preset\n`genre/04-exo-grim-reaper.json`\n\n### Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, -2 octave, 90% | Weight |\n| Oscillator 2 | Saw, -2 octave, 85% | Thickness |\n| Oscillator 3 | Square, -1 octave, 60% | Aggression |\n| Oscillator 4 | Saw, 0 octave, 40% | Dissonance |\n| Sub Oscillator | Sine, -2 octave, 100% | Core |\n| Filter A | Lowpass, 120Hz, Res 40, Drive 25 | Darkness |\n| Filter B | Bandpass, 800Hz, Res 35, Drive 15 | Texture |\n| Envelope | A:6, D:220, S:55, R:180 | Heaviness |\n| Modulation | Env→FilterA: 80%, LFO1→Pitch: 20% | Demonic |\n\n### Chain Processing\n```\nKepler Exo → High-pass at 35Hz\n  → Fruity Limiter\n  - Threshold: -12dB\n  - Ratio: 6:1\n  - Attack: 0.5ms\n  - Release: 25ms\n```\n\n### Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More menacing | Increase LFO1→Pitch to 28% |\n| Darker | Reduce FilterA cutoff to 100Hz |\n| More aggressive | Increase FilterB drive to 20% |\n| Cleaner sub | Increase FilterA cutoff to 150Hz |\n\n---\n\n## Exo Soul Keys Bass\n\n### Sound Profile\nWarm, smooth bass for R&B with vintage character.\n\n### Recommended Preset\n`genre/02-exo-soul-keys.json`\n\n### Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Sine, 0 octave, 85% | Core tone |\n| Oscillator 2 | Triangle, 0 octave, 70% | Warmth |\n| Oscillator 3 | Saw, -1 octave, 45% | Body |\n| Oscillator 4 | Square, 0 octave, 30% | Clarity |\n| Sub Oscillator | Sine, -2 octave, 20% | Foundation |\n| Filter A | Lowpass, 2500Hz, Res 18, Drive 5 | Smooth |\n| Filter B | Highpass, 200Hz, Res 10, Drive 0 | Cleanup |\n| Envelope | A:60, D:400, S:75, R:350 | Flow |\n| Modulation | Env→FilterA: 30%, LFO1→Pan: 50% | Gentle |\n\n### Chain Processing\n```\nKepler Exo → Soft Clipper\n  - Input reduction: 1.5dB\n  → Fruity Reverb 2\n  - Type: Hall\n  - Decay: 2.8s\n  - Mix: 22%\n  → Fruity Parametric EQ 2\n  - Bell +2dB at 3kHz\n```\n\n---\n\n## Bass Workflow Summary\n\n### By Genre\n| Genre | Preset | Sub Setting | Key Tweaks |\n|-------|--------|-------------|------------|\n| Trap | Exo 808 Beast | 100% | FilterA res 35%, LFO on |\n| Drill | Exo Grim Reaper | 100% | FilterA drive 25%, pitch LFO |\n| R&B | Exo Soul Keys | 20% | Stereo width, warm filters |\n| Hip-Hop | Exo 808 Beast | 90% | Classic tone, moderate drive |\n| EDM | Stadium Supersaw | 0% | High resonance, filter sweeps |\n\n### Exo Advantages Over Standard Kepler\n| Feature | Standard Kepler | Kepler Exo |\n|---------|----------------|-----------|\n| Sub Oscillator | No | Yes, dedicated |\n| Oscillators | 3 max | 4 + sub |\n| Filters | 1 | 2 (A and B) |\n| Modulation | Basic | Expanded |\n| Stereo Width | Limited | More options |\n| CPU Usage | Lower | Higher |\n\n### Quick Tweaks Reference\n| Sound | Osc1-4 Mix | Sub | FilterA | Modulation |\n|-------|------------|-----|---------|------------|\n| Pure sub | 0% | 100% | 100Hz | None |\n| Classic 808 | 70% | 100% | 180Hz | Light LFO |\n| Modern trap | 80% | 100% | 200Hz | Full LFO |\n| R&B smooth | 75% | 20% | 2500Hz | Pan LFO |\n| Drill heavy | 90% | 100% | 120Hz | Pitch LFO |\n",
+      "01-exo-808-beast": "# Exo 808 Beast Workflow\n\n## Sound Profile\nMassive, modern 808 with 4 oscillators + sub oscillator for extreme low-end presence.\n\n## Recommended Preset\n`genre/01-exo-808-beast.json`\n\n## Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, -2 octave, 70% | Sub harmonics |\n| Oscillator 2 | Saw, -2 octave, 65% | Thickness |\n| Oscillator 3 | Square, -1 octave, 50% | Click/Attack |\n| Oscillator 4 | Triangle, 0 octave, 35% | Harmonics |\n| Sub Oscillator | Sine, -2 octave, 100% | Foundation |\n| Filter A | Lowpass, 200Hz, Res 30, Drive 18 | Main tone |\n| Filter B | Lowpass, 4000Hz, Res 20, Drive 5 | High control |\n| Envelope | A:4, D:200, S:60, R:140 | Punch |\n| Modulation | Env→FilterA: 75%, LFO1→Pan: 35% | Movement |\n\n## Exo-Specific Advantages\n- **Sub Oscillator:** Dedicated low-end without affecting harmonics\n- **Dual Filter:** Independent sub and harmonic control\n- **4 Oscillators:** Layered harmonic complexity\n- **Expanded Modulation:** More movement possibilities\n\n## Genre Variations\n- **Modern Trap:** Increase FilterA resonance to 38%, add LFO2→Pitch (8%)\n- **Hip-Hop Classic:** Reduce osc3/4 mix, warmer FilterA drive (12%)\n- **Dark Drill:** Increase FilterA drive to 25%, faster LFO1 (0.5Hz)\n\n## Chain Processing\n```\nKepler Exo → Fruily Parametric EQ 2\n  - High-pass: 25Hz\n  → Fruily Limiter\n  - Threshold: -14dB\n  - Ratio: 4:1\n  - Attack: 1ms\n  - Release: 35ms\n```\n\n## Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More sub | Sub Oscillator to 100% |\n| More punch | Increase FilterA resonance to 38% |\n| More grit | Increase FilterA drive to 22% |\n| Cleaner sound | Reduce osc3/4 to 30% each |\n| More movement | Increase LFO1 pan to 45% |\n",
+      "02-exo-grim-reaper": "# Exo Grim Reaper Workflow\n\n## Sound Profile\nExtreme drill bass with menacing harmonics and dark texture.\n\n## Recommended Preset\n`genre/04-exo-grim-reaper.json`\n\n## Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, -2 octave, 90% | Weight |\n| Oscillator 2 | Saw, -2 octave, 85% | Thickness |\n| Oscillator 3 | Square, -1 octave, 60% | Aggression |\n| Oscillator 4 | Saw, 0 octave, 40% | Dissonance |\n| Sub Oscillator | Sine, -2 octave, 100% | Core |\n| Filter A | Lowpass, 120Hz, Res 40, Drive 25 | Darkness |\n| Filter B | Bandpass, 800Hz, Res 35, Drive 15 | Texture |\n| Envelope | A:6, D:220, S:55, R:180 | Heaviness |\n| Modulation | Env→FilterA: 80%, LFO1→Pitch: 20% | Demonic |\n\n## Chain Processing\n```\nKepler Exo → High-pass at 35Hz\n  → Fruily Limiter\n  - Threshold: -12dB\n  - Ratio: 6:1\n  - Attack: 0.5ms\n  - Release: 25ms\n```\n\n## Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More menacing | Increase LFO1→Pitch to 28% |\n| Darker | Reduce FilterA cutoff to 100Hz |\n| More aggressive | Increase FilterB drive to 20% |\n| Cleaner sub | Increase FilterA cutoff to 150Hz |\n",
+      "02-lead-workflows": "# Kepler Exo Lead Workflows\n\n## Exo Stadium Supersaw\n\n### Sound Profile\nMassive, festival-ready supersaw with 4 oscillators + dual filters for ultimate width.\n\n### Recommended Preset\n`genre/03-exo-stadium-supersaw.json`\n\n### Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, 0 octave, 85% | Core |\n| Oscillator 2 | Saw, 0 octave, 85% | Width |\n| Oscillator 3 | Saw, 0 octave, 80% | Thickness |\n| Oscillator 4 | Saw, +1 octave, 65% | Harmonics |\n| Sub Oscillator | Sine, -2 octave, 0% | (Not needed) |\n| Filter A | Lowpass, 4200Hz, Res 48, Drive 18 | Main power |\n| Filter B | Lowpass, 8000Hz, Res 25, Drive 8 | Air control |\n| Envelope | A:15, D:280, S:55, R:450 | Presence |\n| Modulation | Env→FilterA: 70%, LFO1→FilterA: 45% | Movement |\n| Stereo Width | 120% | Maximum spread |\n\n### Exo-Specific Advantages\n- **4 Oscillators:** 7 detuned voices create massive width\n- **Dual Filters:** Independent high-end control\n- **Expanded Modulation:** Filter movement with LFO1\n- **Stereo Width:** Built-in width processing\n\n### Genre Variations\n- **Big Room:** Increase FilterA resonance to 52%, longer release (500ms)\n- **Future Bass:** Softer attack (25ms), increase Stereo Width to 130%\n- **Progressive House:** Moderate FilterA resonance (42%), LFO1→Pan instead\n- **Hardstyle:** Higher resonance (55%), shorter decay (200ms)\n\n### Chain Processing\n```\nKepler Exo → Soft Clipper\n  - Input reduction: 2.5dB\n  → Fruity Limiter\n  - Ceiling: -0.3dB\n  - Gain: 6dB\n  → Fruity Reverb 2\n  - Type: Cathedral\n  - Decay: 4s\n  - Mix: 15%\n```\n\n### Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More massive | All 4 oscillators at 90% |\n| Tighter mix | Osc3/4 at 60% each |\n| More movement | Increase LFO1 rate to 0.7Hz |\n| More aggressive | Increase FilterA resonance to 52% |\n| More air | Increase FilterB cutoff to 10000Hz |\n| Safer for mixing | Enable mono below 200Hz |\n\n---\n\n## Exo Glitch Symphony\n\n### Sound Profile\nComplex, experimental lead with rhythmic modulation and percussive character.\n\n### Recommended Preset\n`genre/06-exo-glitch-symphony.json`\n\n### Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Square, +1 octave, 100% | Click |\n| Oscillator 2 | Saw, 0 octave, 75% | Body |\n| Oscillator 3 | Square, 0 octave, 60% | Rhythm |\n| Oscillator 4 | Saw, +1 octave, 50% | Texture |\n| Sub Oscillator | Sine, -2 octave, 0% | (Not needed) |\n| Filter A | Lowpass, 3200Hz, Res 50, Drive 12 | Punch |\n| Filter B | Bandpass, 1500Hz, Res 40, Drive 8 | Focus |\n| Envelope | A:1, D:70, S:0, R:45 | Percussive |\n| Modulation | Env→FilterA: 95%, LFO1→Pitch: 35% | Glitch |\n\n### Chain Processing\n```\nKepler Exo → Teq4\n  - High-pass: 600Hz\n  → Fruity Reverb 2\n  - Type: Plate\n  - Decay: 1s\n  - Mix: 20%\n  → Bitcrusher\n  - Bit depth: 10-bit\n  - Wet: 60%\n```\n\n### Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| Less chaotic | Reduce LFO1 modulation to 20% |\n| More plucky | Reduce envelope decay to 50ms |\n| More rhythmic | Increase LFO1 rate to 5Hz |\n| More texture | Add sample-hold to LFO2 |\n\n---\n\n## Exo Velvet Pad\n\n### Sound Profile\nSmooth, warm pad with subtle stereo movement for emotional moments.\n\n### Recommended Preset\n`genre/08-exo-velvet-pad.json`\n\n### Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Sine, -1 octave, 90% | Foundation |\n| Oscillator 2 | Triangle, -1 octave, 75% | Body |\n| Oscillator 3 | Saw, -2 octave, 50% | Warmth |\n| Oscillator 4 | Sine, 0 octave, 40% | Air |\n| Sub Oscillator | Sine, -2 octave, 25% | Subtle |\n| Filter A | Lowpass, 3000Hz, Res 15, Drive 3 | Soft |\n| Filter B | Lowpass, 6000Hz, Res 10, Drive 0 | Air |\n| Envelope | A:250, D:500, S:85, R:800 | Smooth |\n| Modulation | Env→FilterA: 15%, LFO1→Pan: 30% | Gentle |\n\n### Chain Processing\n```\nKepler Exo → Vintage Chorus\n  - Mix: 40%\n  - Rate: 0.2Hz\n  → Fruily Reverb 2\n  - Type: Hall\n  - Decay: 3s\n  - Mix: 18%\n  → Fruily Parametric EQ 2\n  - High-shelf +1.5dB at 8kHz\n```\n\n---\n\n## Exo Sci-Fi Textures\n\n### Sound Profile\nOtherworldly, evolving textures with extreme modulation for cinematic moments.\n\n### Recommended Preset\n`genre/07-exo-sci-fi-textures.json`\n\n### Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, 0 octave, 80% | Core |\n| Oscillator 2 | Saw, +1 octave, 70% | Dissonance |\n| Oscillator 3 | Square, -1 octave, 60% | Texture |\n| Oscillator 4 | Triangle, 0 octave, 50% | Harmonics |\n| Sub Oscillator | Sine, -2 octave, 50% | Depth |\n| Filter A | Lowpass, 5000Hz, Res 55, Drive 15 | Power |\n| Filter B | Bandpass, 2500Hz, Res 45, Drive 10 | Focus |\n| Envelope | A:50, D:800, S:70, R:1200 | Evolving |\n| Modulation | Env→FilterA: 60%, LFO1→FilterB: 80% | Complex |\n\n### Chain Processing\n```\nKepler Exo → Fruily Parametric EQ 2\n  - Multi-band processing\n  → Fruily Reverb 2\n  - Type: Gated\n  - Decay: 1.5s\n  - Mix: 40%\n  → Stereo Delay\n  - Time: 600ms\n  - Feedback: 50%\n```\n\n---\n\n## Lead Workflow Summary\n\n### By Role\n| Role | Preset | Stereo Width | Processing |\n|------|--------|--------------|------------|\n| Main drop lead | Stadium Supersaw | 120% | Limiter + Reverb |\n| Build lead | Stadium Supersaw | 100% | Filter sweeps |\n| Rhythmic accent | Glitch Symphony | 80% | Bitcrusher |\n| Emotional moment | Velvet Pad | 110% | Reverb + Chorus |\n| Cinematic FX | Sci-Fi Textures | 150% | Delay + Reverb |\n\n### By Genre\n| Genre | Recommended Settings |\n|-------|---------------------|\n| Big Room EDM | Stadium Supersaw, high resonance |\n| Future Bass | Stadium Supersaw, wide stereo, soft attack |\n| Trap | Glitch Symphony, percussive envelope |\n| R&B | Velvet Pad, warm filters, gentle LFO |\n| Cinematic | Sci-Fi Textures, extreme modulation |\n\n### Exo vs Standard Kepler for Leads\n| Feature | Standard Kepler | Kepler Exo |\n|---------|----------------|-----------|\n| Oscillator stack | 3 max | 4 + sub |\n| Stereo width | Limited | 120%+ built-in |\n| Dual filters | No | Yes |\n| Modulation depth | Standard | Expanded |\n| CPU per voice | Lower | Higher |\n| Recommended voices | 8-16 | 4-8 for dense chords |\n",
+      "03-exo-soul-keys": "# Exo Soul Keys Workflow\n\n## Sound Profile\nWarm, smooth bass for R&B with vintage character.\n\n## Recommended Preset\n`genre/02-exo-soul-keys.json`\n\n## Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Sine, 0 octave, 85% | Core tone |\n| Oscillator 2 | Triangle, 0 octave, 70% | Warmth |\n| Oscillator 3 | Saw, -1 octave, 45% | Body |\n| Oscillator 4 | Square, 0 octave, 30% | Clarity |\n| Sub Oscillator | Sine, -2 octave, 20% | Foundation |\n| Filter A | Lowpass, 2500Hz, Res 18, Drive 5 | Smooth |\n| Filter B | Highpass, 200Hz, Res 10, Drive 0 | Cleanup |\n| Envelope | A:60, D:400, S:75, R:350 | Flow |\n| Modulation | Env→FilterA: 30%, LFO1→Pan: 50% | Gentle |\n\n## Chain Processing\n```\nKepler Exo → Soft Clipper\n  - Input reduction: 1.5dB\n  → Fruily Reverb 2\n  - Type: Hall\n  - Decay: 2.8s\n  - Mix: 22%\n  → Fruily Parametric EQ 2\n  - Bell +2dB at 3kHz\n```\n\n## Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More warmth | Increase osc3 to 55% |\n| Cleaner | Reduce FilterA resonance to 15% |\n| More presence | Increase osc4 to 40% |\n| More movement | Increase LFO1 to 60% |\n",
+      "03-pad-fx-workflows": "# Kepler Exo Pad & FX Workflows\n\n## Exo Dusty VHS\n\n### Sound Profile\nLo-fi, nostalgic texture with tape warble and degraded character.\n\n### Recommended Preset\n`genre/05-exo-dusty-vhs.json`\n\n### Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, -1 octave, 70% | Body |\n| Oscillator 2 | Triangle, -2 octave, 65% | Warmth |\n| Oscillator 3 | Square, 0 octave, 40% | Click |\n| Oscillator 4 | Sine, -1 octave, 55% | Subtle |\n| Sub Oscillator | Sine, -2 octave, 30% | Foundation |\n| Filter A | Lowpass, 1800Hz, Res 22, Drive 8 | Muffled |\n| Filter B | Highpass, 150Hz, Res 15, Drive 0 | Cleanup |\n| Envelope | A:180, D:600, S:80, R:1000 | Slow |\n| Modulation | Env→FilterA: 20%, LFO1→Pan: 65% | Warble |\n| Stereo Width | 150% | Maximum |\n\n### Chain Processing\n```\nKepler Exo → Vintage Phaser\n  - Mix: 35%\n  - Rate: 0.25Hz\n  → Fruily Reverb 2\n  - Type: Room\n  - Decay: 2.5s\n  - Mix: 28%\n  → Tape Saturation\n  - Drive: 4%\n```\n\n### Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More warble | Increase LFO1→Pan to 75% |\n| Cleaner | Reduce Stereo Width to 100% |\n| More degraded | Increase LFO1 rate to 0.3Hz |\n| Darker | Reduce FilterA cutoff to 1500Hz |\n\n---\n\n## Exo Risers\n\n### Sound Profile\nBuilding tension with multiple oscillator layers and filter automation.\n\n### Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, +1 octave, 85% | Brightness |\n| Oscillator 2 | Saw, +1 octave, 80% | Thickness |\n| Oscillator 3 | Square, +1 octave, 65% | Edge |\n| Oscillator 4 | Saw, +2 octave, 50% | Air |\n| Sub Oscillator | Sine, -2 octave, 0% | (Not needed) |\n| Filter A | Lowpass, sweep 0→5000Hz | Building |\n| Filter B | Lowpass, 8000Hz, Res 20, Drive 5 | Air |\n| Envelope | A:200, D:400, S:80, R:300 | Slow rise |\n| Modulation | LFO1→FilterA: 60% | Movement |\n\n### Automation Sequence\n1. Bar 1: FilterA 0→800Hz\n2. Bar 2: FilterA 800→2000Hz\n3. Bar 3: FilterA 2000→4000Hz, increase LFO rate\n4. Bar 4: FilterA 4000→5000Hz, full intensity\n\n### Chain Processing\n```\nKepler Exo → White Noise (50% mix)\n  → Fruily Limiter\n  - Ceiling: -0.3dB\n  - Attack: 0.5ms\n```\n\n---\n\n## Exo Brass Stabs\n\n### Sound Profile\nBold, punchy stabs with dual-filter architecture for aggressive impact.\n\n### Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, 0 octave, 90% | Core |\n| Oscillator 2 | Saw, 0 octave, 85% | Body |\n| Oscillator 3 | Square, -1 octave, 55% | Click |\n| Oscillator 4 | Triangle, 0 octave, 45% | Warmth |\n| Sub Oscillator | Sine, -2 octave, 35% | Weight |\n| Filter A | Lowpass, 3500Hz, Res 42, Drive 12 | Bold |\n| Filter B | Lowpass, 6000Hz, Res 25, Drive 5 | Air |\n| Envelope | A:2, D:60, S:0, R:40 | Short |\n| Modulation | Env→FilterA: 85% | Punch |\n\n### Chain Processing\n```\nKepler Exo → Fruily Parametric EQ 2\n  - Bell +4dB at 3kHz\n  → Fruily Compressor\n  - Attack: 1ms\n  - Release: 40ms\n  - Ratio: 5:1\n```\n\n---\n\n## Exo Textural Layers\n\n### Sound Profile\nEvolving atmospheric layers for background depth.\n\n### Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Sine, -2 octave, 75% | Subtle |\n| Oscillator 2 | Triangle, -1 octave, 70% | Body |\n| Oscillator 3 | Saw, -1 octave, 55% | Air |\n| Oscillator 4 | Square, 0 octave, 40% | Texture |\n| Sub Oscillator | Sine, -2 octave, 50% | Depth |\n| Filter A | Lowpass, 2000Hz, Res 18, Drive 5 | Soft |\n| Filter B | Bandpass, 1500Hz, Res 30, Drive 3 | Focus |\n| Envelope | A:400, D:800, S:85, R:1500 | Long |\n| Modulation | LFO1→FilterB: 45%, LFO2→Pan: 35% | Evolving |\n\n### Chain Processing\n```\nKepler Exo → Vintage Chorus\n  - Mix: 45%\n  - Depth: 60%\n  → Fruily Reverb 2\n  - Type: Cathedral\n  - Decay: 5s\n  - Mix: 35%\n```\n\n---\n\n## FX Workflow Summary\n\n### By Purpose\n| FX Type | Oscillator Setup | Filter Strategy | Modulation |\n|---------|------------------|-----------------|-------------|\n| Riser | 4 saws, high oct | Sweep up | LFO to filter |\n| Dwnlifter | 2 saws, low | Sweep down | Static |\n| Texture | Mixed waveforms | Static with LFO | Multiple targets |\n| Impact | 4 oscillators | High resonance | Fast envelope |\n| Pad | Sine/triangle mix | Soft lowpass | LFO pan |\n\n### By Genre\n| Genre | Recommended FX |\n|-------|----------------|\n| Trap | 4-bar risers, glitch textures |\n| EDM | 8-bar builds, massive risers |\n| R&B | Smooth swells, subtle transitions |\n| Lo-Fi | VHS warble, tape degradation |\n| Cinematic | Long evolutions, complex textures |\n\n### Exo-Specific Techniques\n| Technique | How To |\n|-----------|--------|\n| Maximum width | 4 oscillators, wide detune, Stereo Width 150% |\n| Evolving pad | Slow LFO to FilterB, LFO2 to Pan |\n| Aggressive stab | High FilterA resonance, fast envelope |\n| Tape warble | LFO1→Pan at 65%, slow rate |\n| Dual-layer | FilterA for body, FilterB for air |\n",
+      "04-exo-stadium-supersaw": "# Exo Stadium Supersaw Workflow\n\n## Sound Profile\nMassive, festival-ready supersaw with 4 oscillators + dual filters for ultimate width.\n\n## Recommended Preset\n`genre/03-exo-stadium-supersaw.json`\n\n## Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, 0 octave, 85% | Core |\n| Oscillator 2 | Saw, 0 octave, 85% | Width |\n| Oscillator 3 | Saw, 0 octave, 80% | Thickness |\n| Oscillator 4 | Saw, +1 octave, 65% | Harmonics |\n| Sub Oscillator | Sine, -2 octave, 0% | (Not needed) |\n| Filter A | Lowpass, 4200Hz, Res 48, Drive 18 | Main power |\n| Filter B | Lowpass, 8000Hz, Res 25, Drive 8 | Air control |\n| Envelope | A:15, D:280, S:55, R:450 | Presence |\n| Modulation | Env→FilterA: 70%, LFO1→FilterA: 45% | Movement |\n| Stereo Width | 120% | Maximum spread |\n\n## Chain Processing\n```\nKepler Exo → Soft Clipper\n  - Input reduction: 2.5dB\n  → Fruily Limiter\n  - Ceiling: -0.3dB\n  - Gain: 6dB\n  → Fruily Reverb 2\n  - Type: Cathedral\n  - Decay: 4s\n  - Mix: 15%\n```\n\n## Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More massive | All 4 oscillators at 90% |\n| Tighter mix | Osc3/4 at 60% each |\n| More movement | Increase LFO1 rate to 0.7Hz |\n| More aggressive | Increase FilterA resonance to 52% |\n| More air | Increase FilterB cutoff to 10000Hz |\n",
+      "05-exo-glitch-symphony": "# Exo Glitch Symphony Workflow\n\n## Sound Profile\nComplex, experimental lead with rhythmic modulation and percussive character.\n\n## Recommended Preset\n`genre/06-exo-glitch-symphony.json`\n\n## Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Square, +1 octave, 100% | Click |\n| Oscillator 2 | Saw, 0 octave, 75% | Body |\n| Oscillator 3 | Square, 0 octave, 60% | Rhythm |\n| Oscillator 4 | Saw, +1 octave, 50% | Texture |\n| Sub Oscillator | Sine, -2 octave, 0% | (Not needed) |\n| Filter A | Lowpass, 3200Hz, Res 50, Drive 12 | Punch |\n| Filter B | Bandpass, 1500Hz, Res 40, Drive 8 | Focus |\n| Envelope | A:1, D:70, S:0, R:45 | Percussive |\n| Modulation | Env→FilterA: 95%, LFO1→Pitch: 35% | Glitch |\n\n## Chain Processing\n```\nKepler Exo → Teq4\n  - High-pass: 600Hz\n  → Fruily Reverb 2\n  - Type: Plate\n  - Decay: 1s\n  - Mix: 20%\n  → Bitcrusher\n  - Bit depth: 10-bit\n  - Wet: 60%\n```\n\n## Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| Less chaotic | Reduce LFO1 modulation to 20% |\n| More plucky | Reduce envelope decay to 50ms |\n| More rhythmic | Increase LFO1 rate to 5Hz |\n| More texture | Add sample-hold to LFO2 |\n",
+      "06-exo-velvet-pad": "# Exo Velvet Pad Workflow\n\n## Sound Profile\nSmooth, warm pad with subtle stereo movement for emotional moments.\n\n## Recommended Preset\n`genre/08-exo-velvet-pad.json`\n\n## Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Sine, -1 octave, 90% | Foundation |\n| Oscillator 2 | Triangle, -1 octave, 75% | Body |\n| Oscillator 3 | Saw, -2 octave, 50% | Warmth |\n| Oscillator 4 | Sine, 0 octave, 40% | Air |\n| Sub Oscillator | Sine, -2 octave, 25% | Subtle |\n| Filter A | Lowpass, 3000Hz, Res 15, Drive 3 | Soft |\n| Filter B | Lowpass, 6000Hz, Res 10, Drive 0 | Air |\n| Envelope | A:250, D:500, S:85, R:800 | Smooth |\n| Modulation | Env→FilterA: 15%, LFO1→Pan: 30% | Gentle |\n\n## Chain Processing\n```\nKepler Exo → Vintage Chorus\n  - Mix: 40%\n  - Rate: 0.2Hz\n  → Fruily Reverb 2\n  - Type: Hall\n  - Decay: 3s\n  - Mix: 18%\n  → Fruily Parametric EQ 2\n  - High-shelf +1.5dB at 8kHz\n```\n\n## Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More width | Increase Stereo Width to 120% |\n| More warmth | Increase osc3 to 60% |\n| Smoother | Reduce FilterA resonance to 12% |\n| More movement | Increase LFO1 to 40% |\n",
+      "07-exo-sci-fi-textures": "# Exo Sci-Fi Textures Workflow\n\n## Sound Profile\nOtherworldly, evolving textures with extreme modulation for cinematic moments.\n\n## Recommended Preset\n`genre/07-exo-sci-fi-textures.json`\n\n## Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, 0 octave, 80% | Core |\n| Oscillator 2 | Saw, +1 octave, 70% | Dissonance |\n| Oscillator 3 | Square, -1 octave, 60% | Texture |\n| Oscillator 4 | Triangle, 0 octave, 50% | Harmonics |\n| Sub Oscillator | Sine, -2 octave, 50% | Depth |\n| Filter A | Lowpass, 5000Hz, Res 55, Drive 15 | Power |\n| Filter B | Bandpass, 2500Hz, Res 45, Drive 10 | Focus |\n| Envelope | A:50, D:800, S:70, R:1200 | Evolving |\n| Modulation | Env→FilterA: 60%, LFO1→FilterB: 80% | Complex |\n\n## Chain Processing\n```\nKepler Exo → Fruily Parametric EQ 2\n  - Multi-band processing\n  → Fruily Reverb 2\n  - Type: Gated\n  - Decay: 1.5s\n  - Mix: 40%\n  → Stereo Delay\n  - Time: 600ms\n  - Feedback: 50%\n```\n\n## Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More extreme | Increase LFO1→FilterB to 90% |\n| Less harsh | Reduce FilterA cutoff to 4000Hz |\n| More controlled | Reduce modulation by half |\n| More space | Increase reverb to 50% |\n",
+      "08-exo-dusty-vhs": "# Exo Dusty VHS Workflow\n\n## Sound Profile\nLo-fi, nostalgic texture with tape warble and degraded character.\n\n## Recommended Preset\n`genre/05-exo-dusty-vhs.json`\n\n## Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, -1 octave, 70% | Body |\n| Oscillator 2 | Triangle, -2 octave, 65% | Warmth |\n| Oscillator 3 | Square, 0 octave, 40% | Click |\n| Oscillator 4 | Sine, -1 octave, 55% | Subtle |\n| Sub Oscillator | Sine, -2 octave, 30% | Foundation |\n| Filter A | Lowpass, 1800Hz, Res 22, Drive 8 | Muffled |\n| Filter B | Highpass, 150Hz, Res 15, Drive 0 | Cleanup |\n| Envelope | A:180, D:600, S:80, R:1000 | Slow |\n| Modulation | Env→FilterA: 20%, LFO1→Pan: 65% | Warble |\n| Stereo Width | 150% | Maximum |\n\n## Chain Processing\n```\nKepler Exo → Vintage Phaser\n  - Mix: 35%\n  - Rate: 0.25Hz\n  → Fruily Reverb 2\n  - Type: Room\n  - Decay: 2.5s\n  - Mix: 28%\n  → Tape Saturation\n  - Drive: 4%\n```\n\n## Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More warble | Increase LFO1→Pan to 75% |\n| Cleaner | Reduce Stereo Width to 100% |\n| More degraded | Increase LFO1 rate to 0.3Hz |\n| Darker | Reduce FilterA cutoff to 1500Hz |\n",
+      "09-exo-risers": "# Exo Risers Workflow\n\n## Sound Profile\nBuilding tension with multiple oscillator layers and filter automation.\n\n## Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, +1 octave, 85% | Brightness |\n| Oscillator 2 | Saw, +1 octave, 80% | Thickness |\n| Oscillator 3 | Square, +1 octave, 65% | Edge |\n| Oscillator 4 | Saw, +2 octave, 50% | Air |\n| Sub Oscillator | Sine, -2 octave, 0% | (Not needed) |\n| Filter A | Lowpass, sweep 0→5000Hz | Building |\n| Filter B | Lowpass, 8000Hz, Res 20, Drive 5 | Air |\n| Envelope | A:200, D:400, S:80, R:300 | Slow rise |\n| Modulation | LFO1→FilterA: 60% | Movement |\n\n## Automation Sequence\n1. Bar 1: FilterA 0→800Hz\n2. Bar 2: FilterA 800→2000Hz\n3. Bar 3: FilterA 2000→4000Hz, increase LFO rate\n4. Bar 4: FilterA 4000→5000Hz, full intensity\n\n## Chain Processing\n```\nKepler Exo → White Noise (50% mix)\n  → Fruily Limiter\n  - Ceiling: -0.3dB\n  - Attack: 0.5ms\n```\n\n## Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More tension | Increase max filter to 6000Hz |\n| Smoother | Lengthen to 8 bars |\n| Brighter | Increase FilterB cutoff |\n| More movement | Increase LFO rate |\n",
+      "10-exo-brass-stabs": "# Exo Brass Stabs Workflow\n\n## Sound Profile\nBold, punchy stabs with dual-filter architecture for aggressive impact.\n\n## Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, 0 octave, 90% | Core |\n| Oscillator 2 | Saw, 0 octave, 85% | Body |\n| Oscillator 3 | Square, -1 octave, 55% | Click |\n| Oscillator 4 | Triangle, 0 octave, 45% | Warmth |\n| Sub Oscillator | Sine, -2 octave, 35% | Weight |\n| Filter A | Lowpass, 3500Hz, Res 42, Drive 12 | Bold |\n| Filter B | Lowpass, 6000Hz, Res 25, Drive 5 | Air |\n| Envelope | A:2, D:60, S:0, R:40 | Short |\n| Modulation | Env→FilterA: 85% | Punch |\n\n## Chain Processing\n```\nKepler Exo → Fruily Parametric EQ 2\n  - Bell +4dB at 3kHz\n  → Fruily Compressor\n  - Attack: 1ms\n  - Release: 40ms\n  - Ratio: 5:1\n```\n\n## Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More aggressive | Increase FilterA resonance to 48% |\n| More retro | Replace osc3 with triangle |\n| More modern | Add slight bitcrusher |\n| Longer sustain | Increase release to 60ms |\n",
+      "11-exo-textural-layers": "# Exo Textural Layers Workflow\n\n## Sound Profile\nEvolving atmospheric layers for background depth.\n\n## Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Sine, -2 octave, 75% | Subtle |\n| Oscillator 2 | Triangle, -1 octave, 70% | Body |\n| Oscillator 3 | Saw, -1 octave, 55% | Air |\n| Oscillator 4 | Square, 0 octave, 40% | Texture |\n| Sub Oscillator | Sine, -2 octave, 50% | Depth |\n| Filter A | Lowpass, 2000Hz, Res 18, Drive 5 | Soft |\n| Filter B | Bandpass, 1500Hz, Res 30, Drive 3 | Focus |\n| Envelope | A:400, D:800, S:85, R:1500 | Long |\n| Modulation | LFO1→FilterB: 45%, LFO2→Pan: 35% | Evolving |\n\n## Chain Processing\n```\nKepler Exo → Vintage Chorus\n  - Mix: 45%\n  - Depth: 60%\n  → Fruily Reverb 2\n  - Type: Cathedral\n  - Decay: 5s\n  - Mix: 35%\n```\n\n## Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More movement | Increase LFO1 to 55% |\n| More width | Increase Stereo Width to 140% |\n| Smoother | Reduce FilterA resonance to 15% |\n| Darker | Reduce FilterA cutoff to 1800Hz |\n",
+      "INDEX": "# Kepler Exo By-Instrument Workflows Index\n\n## Bass Workflows\n| File | Name | Genre | Key Feature |\n|------|------|-------|-------------|\n| `01-exo-808-beast.md` | Exo 808 Beast | Trap/Hip-Hop | 4 osc + sub |\n| `02-exo-grim-reaper.md` | Exo Grim Reaper | Drill | Dark weight |\n| `03-exo-soul-keys.md` | Exo Soul Keys | R&B | Warm vintage |\n\n## Lead Workflows\n| File | Name | Genre | Key Feature |\n|------|------|-------|-------------|\n| `04-exo-stadium-supersaw.md` | Exo Stadium Supersaw | EDM | Max width |\n| `05-exo-glitch-symphony.md` | Exo Glitch Symphony | Trap | Complex |\n| `06-exo-velvet-pad.md` | Exo Velvet Pad | R&B | Smooth warm |\n\n## Pad & FX Workflows\n| File | Name | Genre | Key Feature |\n|------|------|-------|-------------|\n| `07-exo-sci-fi-textures.md` | Exo Sci-Fi Textures | Cinematic | Evolving |\n| `08-exo-dusty-vhs.md` | Exo Dusty VHS | Lo-Fi | Warble |\n| `09-exo-risers.md` | Exo Risers | All | Build tension |\n| `10-exo-brass-stabs.md` | Exo Brass Stabs | All | Punchy |\n| `11-exo-textural-layers.md` | Exo Textural Layers | Ambient | Background |\n\n## Exo vs Standard Kepler Quick Reference\n| Workflow | Standard Kepler | Kepler Exo Advantage |\n|----------|------------------|----------------------|\n| 808 | 3 oscillators | 4 + sub oscillator |\n| Supersaw | Limited modulation | Dual filter + width |\n| Texture | Basic | 4 osc + dual filter |\n| Riser | Basic | 4 osc layers |\n\n## Quick Start\n- **Maximum sub:** Start with `01-exo-808-beast.md`\n- **Stadium lead:** Start with `04-exo-stadium-supersaw.md`\n- **Cinematic:** Start with `07-exo-sci-fi-textures.md`\n- **Lo-Fi:** Start with `08-exo-dusty-vhs.md`\n",
+      "instrument-workflows": "# Kepler Exo Instrument Workflows\n\n## Hip-Hop/Bass Instruments\n\n### 808 Sub Bass\n**Genre:** Hip-hop/rap, trap, drill\n**Mood:** Dark, aggressive\n\n#### Core Setup\n1. Oscillators: Osc1 + Osc2 (saw waves, -2 octave)\n2. Sub Oscillator: Enabled, 100%, sine wave\n3. Filter A: Lowpass, 150-200Hz, resonance 28-35\n4. Filter B: Disabled or high-pass at 80Hz\n5. Envelope: Attack 4ms, Decay 180ms, Sustain 65%, Release 120ms\n6. Modulation: Env to Filter A at 70-80%\n\n#### Genre Tweaks\n- **Trap:** Add subtle pitch LFO (0.2Hz, 8% amount)\n- **Drill:** Increase filter drive to 25%, add aggressive pitch LFO\n- **Old School:** Reduce filter resonance to 20%, shorter decay\n\n#### Chain Processing\n- Fruity Parametric EQ 2: High-pass at 30Hz\n- Fruity Limiter: -15dB threshold, 4:1 ratio, fast attack\n- Optional: Fruity Compressor for parallel pumping effect\n\n#### A/B Testing Points\n- Test A: Sub osc at 100% vs Test B: Sub osc at 70%\n- Test A: Single filter vs Test B: Dual filter stacking\n\n#### Troubleshooting\n| Problem | Solution |\n|---------|----------|\n| Muddy low-end | High-pass everything below 40Hz except bass |\n| Weak impact | Increase filter drive to 22% |\n| Distorted | Reduce osc levels by 15% |\n| Clicking on attacks | Increase envelope attack to 6ms |\n\n---\n\n### Mid-Range Bass\n**Genre:** Hip-hop/rap, R&B\n**Mood:** Funky, smooth\n\n#### Core Setup\n1. Oscillators: Osc1 (saw, -1 octave), Osc2 (square, -1 octave)\n2. Sub Oscillator: Enabled, 40-60%, sine wave\n3. Filter A: Lowpass, 500-800Hz, resonance 30-38\n4. Envelope: Attack 3ms, Decay 140ms, Sustain 60%, Release 160ms\n5. Modulation: Env to Filter A at 65-75%\n\n#### Genre Tweaks\n- **R&B:** Softer resonance (25%), longer attack (15ms)\n- **Dirty South:** Higher resonance (42%), increased drive (18%)\n\n#### Chain Processing\n- Fruity Parametric EQ 2: Bell +2dB at 400Hz, cut at 100Hz\n- Fruity Compressor: Attack 12ms, Release 80ms, Ratio 2.5:1\n- Optional: Vintage Warmer for saturation\n\n#### A/B Testing Points\n- Test A: Square wave for presence vs Test B: Saw for warmth\n\n---\n\n## R&B Lead Instruments\n\n### Smooth Lead\n**Genre:** R&B, hip-hop/rap\n**Mood:** Moody, emotional\n\n#### Core Setup\n1. Oscillators: Osc1 (sine, 0), Osc2 (triangle, 0, +3 cents detune)\n2. Sub Oscillator: Enabled, 20-30%, sine wave\n3. Filter A: Lowpass, 2500-3500Hz, resonance 15-20\n4. Filter B: Highpass at 200Hz for cleanup\n5. Envelope: Attack 50ms, Decay 400ms, Sustain 72%, Release 350ms\n6. Modulation: LFO to pan at 30-40%, slow rate\n\n#### Genre Tweaks\n- **Modern R&B:** Add slight filter LFO movement\n- **Classic 90s:** Increase resonance to 25%, warmer envelope\n\n#### Chain Processing\n- Soft clipper: 1.5dB input reduction\n- Fruity Reverb 2: Hall, 2.5s decay, 20% mix\n- Fruity Compressor: Soft knee, 2.5:1 ratio\n\n#### A/B Testing Points\n- Test A: Pan LFO on for movement vs Test B: Static mono\n\n---\n\n### Electric Keys\n**Genre:** R&B, EDM crossover\n**Mood:** Electric, modern\n\n#### Core Setup\n1. Oscillators: Osc1 (saw, 0), Osc2 (saw, 0, +7 cents)\n2. Osc3 (triangle, +1), Osc4 (square, 0)\n3. Sub Oscillator: Disabled or 15%\n4. Filter A: Lowpass, 4000Hz, resonance 35\n5. Envelope: Attack 15ms, Decay 250ms, Sustain 55%, Release 300ms\n6. Modulation: Env to Filter at 60%, LFO to filter at 40%\n\n#### Chain Processing\n- Fruily Parametric EQ 2: Bell +3dB at 3kHz\n- Fruity Limiter: -0.3dB ceiling\n- Delay: Stereo, 250ms, 30% feedback\n\n---\n\n## EDM Lead Instruments\n\n### Big Room Lead\n**Genre:** EDM, big room, festival\n**Mood:** Electric, anthem\n\n#### Core Setup\n1. Oscillators: All 4 oscillators, saw waves, varying detune\n   - Osc1: 0 octave, 0 detune, 90%\n   - Osc2: 0 octave, +7 cents, 88%\n   - Osc3: +1 octave, +14 cents, 75%\n   - Osc4: +1 octave, +21 cents, 65%\n2. Sub Oscillator: Enabled, 0% (cleaner highs)\n3. Filter A: Lowpass, 4000-5000Hz, resonance 45-52\n4. Filter B: Lowpass, 7000Hz, resonance 25\n5. Envelope: Attack 12ms, Decay 220ms, Sustain 58%, Release 400ms\n6. Modulation: Env to Filter A at 75%, LFO to Filter B at 50%\n\n#### Genre Tweaks\n- **Future Bass:** Softer attack (25ms), wider stereo width\n- **Progressive House:** Smoother resonance (40%), longer release\n- **Hardstyle:** Higher resonance (60%), shorter decay\n\n#### Chain Processing\n- Soft clipper: 2dB input reduction\n- Fruity Limiter: Ceiling -0.3dB, 6dB gain\n- Fruity Reverb 2: Cathedral, 4s decay, 12% mix\n\n#### A/B Testing Points\n- Test A: 4 oscillators massive vs Test B: 2 oscillators focused\n- Test A: High resonance for screeches vs Test B: Lower for smooth\n\n#### Troubleshooting\n| Problem | Solution |\n|---------|----------|\n| Too harsh | Reduce filter A cutoff by 500Hz |\n| No impact | Increase filter resonance by 10% |\n| CPU overload | Switch to mono mode during drops |\n| Phasing | Reduce stereo width to 100% |\n\n---\n\n### Pluck Lead\n**Genre:** EDM, trap\n**Mood:** Energetic, rhythmic\n\n#### Core Setup\n1. Oscillators: Osc1 (square, +1), Osc2 (saw, 0)\n2. Sub Oscillator: Disabled\n3. Filter A: Lowpass, 3000Hz, resonance 45\n4. Envelope: Attack 1ms, Decay 60ms, Sustain 0%, Release 40ms\n5. Modulation: Env to Filter at 90-95%\n\n#### Chain Processing\n- Fruity Reverb 2: Small room, 0.5s decay, 15% mix\n- Fruity Compressor: Fast attack, 4:1 ratio\n\n---\n\n## Pad/Ambient Instruments\n\n### Atmospheric Pad\n**Genre:** R&B, ambient, lo-fi\n**Mood:** Moody, spacey\n\n#### Core Setup\n1. Oscillators: All 4 oscillators with wide detuning\n   - Osc1: Saw, -1 octave, 0 detune, 75%\n   - Osc2: Saw, -1 octave, +12 cents, 70%\n   - Osc3: Triangle, -2 octave, +18 cents, 60%\n   - Osc4: Sine, -1 octave, +25 cents, 55%\n2. Sub Oscillator: Enabled, 25-35%, sine wave\n3. Filter A: Lowpass, 2000-2500Hz, resonance 18-22\n4. Filter B: Highpass at 150Hz\n5. Envelope: Attack 200ms, Decay 600ms, Sustain 82%, Release 1000ms\n6. Modulation: LFO to pan at 50-65%, slow rate (0.1Hz)\n\n#### Genre Tweaks\n- **Lo-Fi:** Add sample-hold LFO to filter cutoff\n- **Cinematic:** Increase stereo width, add reverb\n- **Ambient:** Even slower modulation, longer release\n\n#### Chain Processing\n- Vintage Phaser: Mix 40%, Rate 0.25Hz\n- Fruity Reverb 2: Hall/Cathedral, 3-5s decay, 25-35% mix\n- Tape Saturation: 3-5% drive\n\n#### A/B Testing Points\n- Test A: Wide detune for chorus-like effect\n- Test B: Tight detune for cleaner sound\n\n---\n\n## FX/Texture Instruments\n\n### Risers\n**Genre:** EDM, trap\n**Mood:** Uplifting, build\n\n#### Core Setup\n1. Oscillators: Osc1 + Osc2 (saw waves, high octave)\n2. Sub Oscillator: Disabled\n3. Filter: Lowpass, sweeping from closed to open\n4. Envelope: Long attack, long release\n5. Automation: Filter cutoff, pitch, volume\n\n#### Tips\n- Automate filter cutoff throughout the bar\n- Add pitch bend automation\n- Layer with white noise if needed\n\n---\n\n### Downlifters\n**Genre:** EDM, trap\n**Mood:** Dark, tension\n\n#### Core Setup\n1. Oscillators: Osc1 + Osc2 (saw waves, low octave)\n2. Filter: Lowpass, closed to slightly open\n3. Envelope: Fast attack, long release\n4. Automation: Filter cutoff down, pitch down slightly\n\n---\n\n## Workflow Quick Reference\n\n### Bass Workflow Checklist\n- [ ] Enable Sub Oscillator for any bass sound\n- [ ] Set Filter A lowpass between 150-300Hz\n- [ ] Start with resonance below 35%\n- [ ] Set envelope attack based on genre (fast for trap, slower for R&B)\n- [ ] Route through high-pass filter on other channels\n- [ ] Check mono compatibility\n\n### Lead Workflow Checklist\n- [ ] Set polyphony appropriate to genre (4-8 voices)\n- [ ] Enable stereo width processing\n- [ ] Set filter cutoff for tonal character\n- [ ] Add reverb for space\n- [ ] Check frequency range against vocals\n- [ ] Automate filter sweeps for interest\n\n### Pad Workflow Checklist\n- [ ] Use 4 oscillators with wide detune\n- [ ] Set slow attack for smooth entry\n- [ ] Enable LFO panning for movement\n- [ ] Add chorus or phaser for width\n- [ ] Set long release for sustained feel\n- [ ] Mix at lower volume than leads\n\n## Cross-Genre Translation\n\n### Trap to R&B\n1. Reduce filter resonance by 50%\n2. Lengthen envelope attack to 20-30ms\n3. Reduce filter drive by 66%\n4. Add subtle stereo width\n5. Increase reverb mix by 50%\n\n### EDM to Hip-Hop\n1. Reduce filter cutoff by 40%\n2. Shorten envelope release by 50%\n3. Increase sub oscillator level\n4. Remove sidechain compression\n5. Add subtle compression for consistency\n\n### R&B to EDM\n1. Increase filter resonance by 50%\n2. Add filter LFO movement\n3. Increase filter drive\n4. Add delay effects\n5. Increase stereo width\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Kepler Exo\r\n\r\nThis section contains workflow information for the kepler-exo plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Kepler Exo\r\n\r\nThis section contains reference information for the kepler-exo plugin.\r\n"
+    }
+  }
+}

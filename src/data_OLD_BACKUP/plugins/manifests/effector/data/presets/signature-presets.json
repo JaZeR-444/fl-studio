@@ -1,0 +1,170 @@
+Tags: electric | hip-hop/rap | moody
+
+## Effector Creative Modulation Presets
+
+### Signature Modulation Presets
+
+```json
+{
+  "jaZerPulse": {
+    "description": "Signature rhythmic pulse for hip-hop",
+    "effect": "tremolo",
+    "settings": {
+      "rate": "1/4",
+      "depth": 55,
+      "sync": true,
+      "waveform": "sine",
+      "stereoMode": "linked"
+    },
+    "variations": {
+      "subtle": { "depth": 40 },
+      "heavy": { "depth": 70 },
+      "syncopated": { "waveform": "square", "rate": "1/8" }
+    },
+    "useCases": ["Hip-hop drums", "Rhythmic elements", "Signature pulse"],
+    "tags": ["hip-hop/rap", "signature", "rhythmic"]
+  },
+  "rnbSmooth": {
+    "description": "Smooth, flowing modulation for R&B",
+    "effect": "phaser",
+    "settings": {
+      "rate": 0.2,
+      "depth": 48,
+      "feedback": 35,
+      "stages": 6,
+      "dryWet": 55
+    },
+    "useCases": ["Smooth R&B", "Warm pads", "Flowing textures"],
+    "tags": ["R&B", "smooth", "warm"]
+  },
+  "trapBuild": {
+    "description": "Filter sweep for trap builds",
+    "effect": "filter",
+    "settings": {
+      "type": "lowpass",
+      "cutoff": 0,
+      "resonance": 45,
+      "envAmount": 85,
+      "envAttack": 100,
+      "envDecay": 500
+    },
+    "automation": {
+      "cutoff": {
+        "start": 0,
+        "end": 100,
+        "duration": "4 bars",
+        "curve": "linear"
+      }
+    },
+    "useCases": ["Trap builds", "Drop entrances", "Dramatic moments"],
+    "tags": ["hip-hop/rap", "trap", "build"]
+  },
+  "lofiTexture": {
+    "description": "Degraded lo-fi texture",
+    "effect": "bitcrusher",
+    "settings": {
+      "bits": 8,
+      "sampleRate": 8000,
+      "dryWet": 45
+    },
+    "useCases": ["Lo-fi production", "Sample texture", "Vintage feel"],
+    "tags": ["lofi", "moody", "texture"]
+  },
+  "glitchPattern": {
+    "description": "Rhythmic glitch texture",
+    "effect": "granular",
+    "settings": {
+      "grainSize": 50,
+      "overlap": 40,
+      "spray": 30,
+      "dryWet": 60
+    },
+    "automation": "Trigger on beat",
+    "useCases": ["Glitch music", "IDM", "Rhythmic texture"],
+    "tags": ["electric", "glitch", "experimental"]
+  }
+}
+```
+
+### Effect Chain Presets
+
+```json
+{
+  "rhythmicAtmosphere": {
+    "description": "Complex rhythmic atmospheric effect",
+    "chain": [
+      {
+        "effect": "filter",
+        "type": "lowpass",
+        "cutoff": 60,
+        "resonance": 35,
+        "envAmount": 50
+      },
+      {
+        "effect": "tremolo",
+        "rate": "1/4",
+        "depth": 35,
+        "waveform": "sine"
+      },
+      {
+        "effect": "panner",
+        "rate": "1/2",
+        "depth": 50,
+        "waveform": "sine"
+      }
+    ],
+    "order": "Filter → Tremolo → Panner",
+    "wetDry": "100%",
+    "useCases": ["Atmospheric textures", "Background movement", "Ambient music"],
+    "tags": ["moody", "atmospheric", "complex"]
+  },
+  "digitalAggression": {
+    "description": "Harsh digital texture",
+    "chain": [
+      {
+        "effect": "bitcrusher",
+        "bits": 6,
+        "sampleRate": 6000,
+        "dryWet": 50
+      },
+      {
+        "effect": "ringmod",
+        "tone": 75,
+        "dryWet": 60
+      },
+      {
+        "effect": "tremolo",
+        "rate": "1/8",
+        "depth": 70,
+        "waveform": "square"
+      }
+    ],
+    "order": "BitCrush → RingMod → Tremolo",
+    "useCases": ["Digital textures", "Aggressive sound", "Modern production"],
+    "tags": ["electric", "aggressive", "digital"]
+  },
+  "vintageWarmth": {
+    "description": "Warm vintage modulation",
+    "chain": [
+      {
+        "effect": "filter",
+        "type": "lowpass",
+        "cutoff": 75,
+        "resonance": 30,
+        "envAmount": 25
+      },
+      {
+        "effect": "phaser",
+        "rate": 0.15,
+        "depth": 40,
+        "feedback": 30,
+        "stages": 6
+      }
+    ],
+    "order": "Filter → Phaser",
+    "wetDry": "75%",
+    "useCases": ["Vintage feel", "Warm modulation", "Classic sounds"],
+    "tags": ["vintage", "warm", "classic"]
+  }
+}
+```

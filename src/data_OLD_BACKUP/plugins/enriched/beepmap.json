@@ -1,0 +1,223 @@
+{
+  "id": "beepmap",
+  "name": "BeepMap",
+  "presets": {},
+  "parameters": {
+    "beepmap-specs": {
+      "plugin_name": "BeepMap",
+      "category": "Instrument / Experimental",
+      "engine": "Image-to-Spectral-Synthesis",
+      "parameters": [
+        {
+          "name": "Frequency (Hz)",
+          "type": "knob",
+          "description": "Base frequency of the image's bottom pixels.",
+          "vibe_impact": "Pitch, range, mood"
+        },
+        {
+          "name": "Length (ms)",
+          "type": "knob",
+          "description": "Scanning duration from left to right.",
+          "vibe_impact": "Speed, timing, rhythm"
+        },
+        {
+          "name": "Grain",
+          "type": "knob",
+          "description": "The density of the scan resolution.",
+          "vibe_impact": "Smoothness, digital grit, artifacts"
+        },
+        {
+          "name": "Scale (Log/Lin)",
+          "type": "switch",
+          "description": "Determines frequency distribution mapping.",
+          "vibe_impact": "Musicality, tuning, focus"
+        }
+      ],
+      "mix_impact_tags": [
+        "spectral",
+        "unpredictable",
+        "atmospheric"
+      ]
+    },
+    "parameters": {
+      "pluginName": "BeepMap",
+      "category": "Image Synth / Sonifier",
+      "parameters": [
+        {
+          "section": "Global",
+          "id": "freq",
+          "name": "Frequency Range",
+          "range": {
+            "min": 20,
+            "max": 22000,
+            "unit": "Hz"
+          },
+          "description": "Sets the maximum pitch for the top pixel row."
+        },
+        {
+          "section": "Global",
+          "id": "length",
+          "name": "Pixel Duration",
+          "range": {
+            "min": 1,
+            "max": 5000,
+            "unit": "ms"
+          },
+          "description": "Scan speed per pixel column."
+        },
+        {
+          "section": "Global",
+          "id": "scale",
+          "name": "Scale Mode",
+          "options": [
+            "Linear (Hz)",
+            "Log (Cents)"
+          ],
+          "description": "Mapping of Y-axis to Pitch."
+        },
+        {
+          "section": "Tone",
+          "id": "use_blue",
+          "name": "Use Blue",
+          "type": "Switch",
+          "description": "Enables Blue channel to modulate frequency range per pixel."
+        },
+        {
+          "section": "Tone",
+          "id": "grainy",
+          "name": "Grainy",
+          "type": "Switch",
+          "description": "Enables granular synthesis mode (Geiger effect)."
+        },
+        {
+          "section": "Playback",
+          "id": "loop",
+          "name": "Loop Mode",
+          "type": "Switch",
+          "description": "Repeats the image scan continuously."
+        },
+        {
+          "section": "Output",
+          "id": "widen",
+          "name": "Widen",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Stereo width enhancer."
+        },
+        {
+          "section": "System",
+          "id": "max_bitmap_height",
+          "name": "Max Bitmap Height",
+          "range": {
+            "min": 10,
+            "max": 999,
+            "unit": "px"
+          },
+          "description": "Number of sine wave oscillators (CPU Load)."
+        }
+      ]
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Spectral Guide",
+      "filename": "03_Vibe_Spectral_Guide.md"
+    },
+    {
+      "title": "Pixel Mapping",
+      "filename": "pixel_mapping.md"
+    },
+    {
+      "title": "Resynthesis Theory",
+      "filename": "resynthesis_theory.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "00 Practical Use Cases",
+      "category": "general",
+      "filename": "00_Practical_Use_Cases.md"
+    },
+    {
+      "title": "01 Workflow Recipes",
+      "category": "general",
+      "filename": "01_Workflow_Recipes.md"
+    },
+    {
+      "title": "Common Usage",
+      "category": "general",
+      "filename": "common-usage.md"
+    },
+    {
+      "title": "Industrial Background Noise",
+      "category": "by-context",
+      "filename": "industrial-background-noise.md"
+    },
+    {
+      "title": "Sci Fi Ui Sound Design",
+      "category": "by-context",
+      "filename": "sci-fi-ui-sound-design.md"
+    },
+    {
+      "title": "Abstract Percussion Loops",
+      "category": "by-goal",
+      "filename": "abstract-percussion-loops.md"
+    },
+    {
+      "title": "Bitmap Sound Design",
+      "category": "by-goal",
+      "filename": "bitmap-sound-design.md"
+    },
+    {
+      "title": "Cinematic Horror Drones",
+      "category": "by-goal",
+      "filename": "cinematic-horror-drones.md"
+    },
+    {
+      "title": "Hidden Spectrogram Art",
+      "category": "by-goal",
+      "filename": "hidden-spectrogram-art.md"
+    },
+    {
+      "title": "Image To Sound Conversion",
+      "category": "by-goal",
+      "filename": "image-to-sound-conversion.md"
+    },
+    {
+      "title": "Sfx Generation",
+      "category": "by-goal",
+      "filename": "sfx_generation.md"
+    },
+    {
+      "title": "Ambient Glitch Textures",
+      "category": "by-instrument",
+      "filename": "ambient_glitch_textures.md"
+    },
+    {
+      "title": "Visual Drum Kit",
+      "category": "by-instrument",
+      "filename": "visual_drum_kit.md"
+    },
+    {
+      "title": "Visual Instrument Design",
+      "category": "by-instrument",
+      "filename": "visual_instrument_design.md"
+    }
+  ]
+}

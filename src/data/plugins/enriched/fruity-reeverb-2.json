@@ -1,0 +1,426 @@
+{
+  "id": "fruity-reeverb-2",
+  "name": "Fruity Reeverb 2",
+  "category": "Reverb",
+  "tier": "Free",
+  "type": "Reverb",
+  "description": "Fruity Reeverb 2 - Reverb",
+  "tags": [
+    "spatial",
+    "fx",
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "reverb",
+    "fx",
+    "spatial",
+    "audio"
+  ],
+  "icon": "/plugins/fruity-reeverb-2-icon.svg",
+  "color": "#06B6D4",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-reeverb-2",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "reeverb2-params": {
+      "plugin": "Fruity Reeverb 2",
+      "type": "Reverb",
+      "description": "Simulates acoustic spaces to add realistic reverberation to instruments.",
+      "parameters": [
+        {
+          "name": "MID / SIDE",
+          "type": "Switch",
+          "role": "Input Processing",
+          "description": "Processes either the mid (summed mono) or side (stereo field) components of the input signal.",
+          "tips": [
+            "Use Side mode to add width without muddying the center channel."
+          ]
+        },
+        {
+          "name": "H.CUT",
+          "label": "High Cut",
+          "type": "Knob",
+          "role": "Tone Shaping",
+          "description": "Removes high frequencies from the reverb input.",
+          "tips": [
+            "Cut highs to push the reverb further back in the mix."
+          ]
+        },
+        {
+          "name": "L.CUT",
+          "label": "Low Cut",
+          "type": "Knob",
+          "role": "Tone Shaping",
+          "description": "Removes low frequencies from the reverb input.",
+          "tips": [
+            "Essential for removing mud. Try cutting up to 300-500Hz on vocals."
+          ]
+        },
+        {
+          "name": "DELAY",
+          "label": "Predelay",
+          "type": "Knob",
+          "role": "Spatial Definition",
+          "description": "Controls the delay between the direct signal and the first reverb reflection.",
+          "tips": [
+            "Increase to separate the dry vocal from the reverb tail.",
+            "Tempo-synced delays can create rhythmic pumping effects."
+          ]
+        },
+        {
+          "name": "SIZE",
+          "label": "Room Size",
+          "type": "Knob",
+          "role": "Spatial Simulation",
+          "description": "Sets the size of the simulated virtual room.",
+          "tips": [
+            "Small = bathroom/studio, Large = cathedral/hall.",
+            "Automate for creative effects."
+          ]
+        },
+        {
+          "name": "DIFF",
+          "label": "Diffusion",
+          "type": "Knob",
+          "role": "Texture",
+          "description": "Controls the density of reflections.",
+          "tips": [
+            "Low = distinct echoes (grainy), High = smooth wash (dense)."
+          ]
+        },
+        {
+          "name": "MOD",
+          "label": "Modulation Depth",
+          "type": "Knob",
+          "role": "Texture",
+          "description": "Modulates the reverb time to smooth out metallic ringing.",
+          "tips": [
+            "Adds chorus-like movement to the tail.",
+            "Use sparingly on realistic acoustic instruments."
+          ]
+        },
+        {
+          "name": "SPEED",
+          "label": "Modulation Speed",
+          "type": "Knob",
+          "role": "Texture",
+          "description": "Sets the speed of the sine-wave modulation.",
+          "tips": []
+        },
+        {
+          "name": "BASS",
+          "label": "Bass Multiplier",
+          "type": "Knob",
+          "role": "Decay Shaping",
+          "description": "Adjusts the decay time of bass frequencies relative to the main decay.",
+          "tips": [
+            "Boost for boomy, dark rooms. Cut for tighter low end."
+          ]
+        },
+        {
+          "name": "CROSS",
+          "label": "Bass Crossover",
+          "type": "Knob",
+          "role": "Decay Shaping",
+          "description": "Determines the frequency point below which bass is boosted by the Bass knob.",
+          "tips": []
+        },
+        {
+          "name": "DEC",
+          "label": "Decay Time",
+          "type": "Knob",
+          "role": "Spatial Simulation",
+          "description": "Controls the reverb's decay time (RT60).",
+          "tips": [
+            "Short (<1s) for ambience, Long (>2s) for lush tails."
+          ]
+        },
+        {
+          "name": "DAMP",
+          "label": "High Damping",
+          "type": "Knob",
+          "role": "Tone Shaping",
+          "description": "Adjusts the damping rate of high frequencies in the tail.",
+          "tips": [
+            "High damping = warm, dark room (absorptive walls).",
+            "Low damping = bright, splashing room (reflective walls)."
+          ]
+        },
+        {
+          "name": "DRY",
+          "label": "Dry Level",
+          "type": "Knob",
+          "role": "Mix",
+          "description": "Sets the level of the direct input signal.",
+          "tips": [
+            "Set to 0 when using as a Send effect."
+          ]
+        },
+        {
+          "name": "ER",
+          "label": "Early Reflections",
+          "type": "Knob",
+          "role": "Mix",
+          "description": "Sets the level of the first reflections.",
+          "tips": [
+            "ER defines the 'position' in the room. louder ER = closer to walls/listener."
+          ]
+        },
+        {
+          "name": "WET",
+          "label": "Wet Level",
+          "type": "Knob",
+          "role": "Mix",
+          "description": "Sets the level of the reverberant signal.",
+          "tips": []
+        },
+        {
+          "name": "SEP",
+          "label": "Stereo Separation",
+          "type": "Knob",
+          "role": "Output Processing",
+          "description": "Adjusts the stereo separation of the wet reverb signal.",
+          "tips": [
+            "Turn left for mono reverb, right for extra wide."
+          ]
+        }
+      ],
+      "common_problems": [
+        {
+          "symptom": "Muddy Mix",
+          "solution": "Increase L.CUT (Low Cut) to remove bass from the reverb.",
+          "parameter": "L.CUT"
+        },
+        {
+          "symptom": "Washed Out Sound",
+          "solution": "Reduce DECAY time or WET level. Increase PREDELAY.",
+          "parameter": "DEC / DELAY"
+        },
+        {
+          "symptom": "Metallic Ringing",
+          "solution": "Increase MOD (Modulation) and DIFF (Diffusion).",
+          "parameter": "MOD / DIFF"
+        }
+      ]
+    }
+  },
+  "presets": {
+    "hip-hop-reverb-presets": {
+      "presets": [
+        {
+          "name": "Trap Vocal Lead",
+          "category": "vocals",
+          "subgenre": "trap",
+          "parameters": {
+            "preDelay": 30,
+            "size": 55,
+            "decay": 2,
+            "highDamping": 5500,
+            "diffusion": 70,
+            "bass": 0.7,
+            "modRate": 0.2,
+            "modDepth": 0.1,
+            "width": 90,
+            "wet": 100
+          },
+          "sendAmount": "22%",
+          "description": "Modern, bright vocal space for trap/modern hip-hop",
+          "tips": "Use on send track, high-pass return at 350Hz"
+        },
+        {
+          "name": "Boom Bap Classic",
+          "category": "vocals",
+          "subgenre": "boom-bap",
+          "parameters": {
+            "preDelay": 20,
+            "size": 48,
+            "decay": 1.7,
+            "highDamping": 4500,
+            "diffusion": 65,
+            "bass": 1.1,
+            "modRate": 0.15,
+            "modDepth": 0.05,
+            "width": 85,
+            "wet": 100
+          },
+          "sendAmount": "24%",
+          "description": "Warm, vintage room sound for classic hip-hop",
+          "tips": "Add slight tape saturation before reverb for warmth"
+        },
+        {
+          "name": "Melodic Singing",
+          "category": "vocals",
+          "subgenre": "melodic",
+          "parameters": {
+            "preDelay": 38,
+            "size": 65,
+            "decay": 3,
+            "highDamping": 6000,
+            "diffusion": 80,
+            "bass": 0.75,
+            "modRate": 0.25,
+            "modDepth": 0.18,
+            "width": 100,
+            "wet": 100
+          },
+          "sendAmount": "30%",
+          "description": "Lush hall for melodic/singing vocals",
+          "tips": "Automate send higher in chorus sections"
+        },
+        {
+          "name": "Lo-Fi Intimate",
+          "category": "vocals",
+          "subgenre": "lo-fi",
+          "parameters": {
+            "preDelay": 15,
+            "size": 58,
+            "decay": 2.4,
+            "highDamping": 3800,
+            "diffusion": 55,
+            "bass": 1.4,
+            "modRate": 0.4,
+            "modDepth": 0.35,
+            "width": 95,
+            "wet": 100
+          },
+          "sendAmount": "32%",
+          "description": "Warm, vintage character for lo-fi/chill rap",
+          "tips": "Use with vinyl/tape effects for cohesive vintage sound"
+        },
+        {
+          "name": "Snare Room (Trap)",
+          "category": "drums",
+          "subgenre": "trap",
+          "parameters": {
+            "preDelay": 12,
+            "size": 42,
+            "decay": 1.2,
+            "highDamping": 4000,
+            "diffusion": 68,
+            "bass": 0.6,
+            "modRate": 0,
+            "modDepth": 0,
+            "width": 80,
+            "wet": 100
+          },
+          "sendAmount": "25%",
+          "description": "Tight room for modern snare/clap sounds",
+          "tips": "Keep send lower for punchier sound"
+        },
+        {
+          "name": "Pad Atmosphere",
+          "category": "melodic",
+          "subgenre": "all",
+          "parameters": {
+            "preDelay": 5,
+            "size": 78,
+            "decay": 4.2,
+            "highDamping": 5800,
+            "diffusion": 85,
+            "bass": 0.8,
+            "modRate": 0.28,
+            "modDepth": 0.22,
+            "width": 110,
+            "wet": 100
+          },
+          "sendAmount": "45%",
+          "description": "Huge, enveloping space for pads and synths",
+          "tips": "Use on send, compress reverb return for consistency"
+        },
+        {
+          "name": "Piano Natural",
+          "category": "melodic",
+          "subgenre": "all",
+          "parameters": {
+            "preDelay": 22,
+            "size": 58,
+            "decay": 2.6,
+            "highDamping": 5200,
+            "diffusion": 72,
+            "bass": 0.9,
+            "modRate": 0.18,
+            "modDepth": 0.12,
+            "width": 95,
+            "wet": 100
+          },
+          "sendAmount": "28%",
+          "description": "Natural hall for piano/keys",
+          "tips": "Matches well with acoustic piano samples"
+        },
+        {
+          "name": "808 Subtle Air",
+          "category": "bass",
+          "subgenre": "trap",
+          "parameters": {
+            "preDelay": 8,
+            "size": 28,
+            "decay": 0.7,
+            "highDamping": 2500,
+            "diffusion": 50,
+            "bass": 0.4,
+            "modRate": 0,
+            "modDepth": 0,
+            "width": 70,
+            "wet": 100
+          },
+          "sendAmount": "8%",
+          "description": "Minimal room for 808s without mud",
+          "tips": "Very subtle! High-pass reverb return at 500Hz minimum"
+        }
+      ]
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity Reeverb 2\n\n## Purpose & Identity\nFruity Reeverb 2 is a high-quality **algorithmic reverb**. Its primary identity is an acoustic space simulator that uses mathematical equations to generate reflections. It is a major upgrade over the original Reeverb, offering professional features like **Mid/Side processing**, detailed **damping**, and **bass multiplier** controls. [SRC: IL-MAN]\n\n## 60-Second Mental Model\nThink of it as a \"Room Generator.\" You aren't playing a recording of a room; you are telling a computer to *build* a room around your sound. \n- **Size** is the width of the walls.\n- **Decay** is how long the sound bounces before disappearing.\n- **Damping** is what the walls are made of (Soft carpet vs. Hard tile).\n\n## Hip-Hop / R&B Context\n- **The \"Big Room\" Trap Snare:** Adding a 1.5s bright reverb to a snare to give it that \"Stadium\" energy (Upbeat).\n- **Submerged Melodies:** Using high damping and low-pass filtering to make a piano sound like it's playing at the end of a dark hallway (Moody).\n- **Vocal Depth:** Using **Pre-Delay** to keep the vocal crisp and \"in front\" while still having a lush, spacey tail (Vibey).\n\n## When To Use\n- When you want **maximum flexibility** to design a custom space.\n- When you need a **lush, modulated tail** that doesn't sound metallic.\n- When you want to **cleanly separate** the reverb from the dry signal using Mid/Side.\n\n## When NOT To Use\n- **CPU Constraints:** If you need 50 reverbs at once, use the original **Fruity Reeverb** (if available) or keep decay times short.\n- **Ultra-Realism:** Use **Fruity Convolver** if you need the exact acoustic fingerprint of a real physical building. [SRC: REPUTABLE]",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Fruity Reeverb 2\n\n## UI Tour\n1.  **Main Controls:**\n    - **Decay:** Tail length (up to 20 seconds).\n    - **Size:** Perceived room dimensions.\n    - **Pre-Delay:** The gap before the reverb starts. [SRC: IL-MAN]\n2.  **EQ / Filtering (Top Row):**\n    - **L.Cut / H.Cut:** Simple shelf filters.\n    - **DAMP:** Controls how fast the high-end decays relative to the low-end.\n3.  **Low-End Management:**\n    - **Bass:** Multiplier for low-frequency decay.\n    - **Cross:** The \"Crossover\" frequency where the Bass knob takes effect.\n4.  **Spatial Focus:**\n    - **Mid/Side Switch:** Process only the center (Mid) or only the edges (Side).\n5.  **Texture:**\n    - **Mod / Speed:** Adds pitch detuning to the tail for \"lushness.\"\n    - **Diffusion:** Echo density.\n\n## Signal Flow\n1.  **Input:** Audio enters.\n2.  **Pre-Delay:** The signal is delayed by the set ms.\n3.  **Initial Reflection (ER):** The first \"bounce\" is calculated based on Size.\n4.  **Late Reverb (Tail):** The dense algorithmic decay is generated.\n5.  **Spectral Damping:** High frequencies are filtered out of the feedback loop.\n6.  **Low Multiplier:** Low frequencies are adjusted based on the Bass/Cross settings.\n7.  **M/S Routing:** The signal is routed to the Mid or Side channels.\n8.  **Output:** Final stereo mix.\n\n## Things Beginners Misunderstand\n- **Size vs Decay:** Size is the \"Box,\" Decay is the \"Feedback.\" You can have a tiny room with a 10-second decay (unnatural but trippy) or a giant hall with a 0.5-second decay.\n- **Mid/Side Mode:** Switching to \"Side\" doesn't make the reverb wider; it tells the reverb to **ignore** the middle of your vocal and only respond to the stereo info. [SRC: REPUTABLE]\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques And Best Practices: Fruity Reeverb 2\n\n## 1. The \"Vocal Halo\" (Pre-Delay)\nIn R&B, we want a huge reverb, but we don't want the vocal to sound \"pushed back.\"\n- **Technique:** Increase **Pre-Delay** to **30ms - 60ms**.\n- **Result:** The dry vocal transient finishes before the reverb starts. This keeps the artist \"in your face\" while the \"halo\" of space follows behind them. [SRC: REPUTABLE]\n\n## 2. Cleaning the Low-End (Bass Multiplier)\n- **Technique:** Set **Bass** to **0.5x**. Set **Cross** to **200Hz**.\n- **Why:** This makes the low-frequency reverb decay twice as fast as the high-end. \n- **Result:** Prevents the \"muddy\" rumble that often ruins hip-hop mixes when using long reverbs.\n\n## 3. The \"Expensive\" R&B Tail (Modulation)\n- **Technique:** Set **Mod** to **30%** and **Speed** to **0.5 Hz**.\n- **Effect:** This adds a subtle, chorus-like pitch movement to the reverb tail.\n- **Vibe:** It sounds more \"shimmering\" and professional, similar to high-end Lexicon hardware.\n\n## 4. Side-Only Reverb (Clarity Hack)\n- **Technique:** Switch the plugin to **SIDE** mode.\n- **Execution:** Place it on a lead vocal send.\n- **Result:** The reverb will only be audible in the stereo edges. The \"Phantom Center\" where the Kick, Snare, and Vocal live stays perfectly clean. [SRC: IL-MAN]\n\n## Common Pitfalls + Fixes\n- **Pitfall:** \"The reverb sounds like static/white noise.\"\n  - **Fix:** Your **Diffusion** is too high or your **Size** is too small. Decrease Diffusion to add more \"grain\" and distinct echoes.\n- **Pitfall:** \"The mix sounds hollow.\"\n  - **Fix:** You might have too much **L.Cut**. Ensure you aren't cutting above 300Hz unless necessary. [SRC: REPUTABLE]\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity Reeverb 2\n\nReeverb 2 translates vibes through **Acoustic Dimension** and **Spectral Decay**.\n\n## 1. Moody (Dark, Distant, Submerged)\n- **Concept:** \"The Long Shadow.\"\n- **Levers:**\n  - **Damping:** High (clockwise).\n  - **L.Cut:** 300Hz (remove rumble).\n  - **Decay:** Long (4s+).\n- **Listen For:** A warm, muffled tail that stays out of the way of the high-end transients.\n- **Don't Do This:** Don't let the highs shimmer; keep it \"felt\" rather than \"heard.\"\n\n## 2. Upbeat (Big, Bright, Stadium)\n- **Concept:** \"The Hype Room.\"\n- **Levers:**\n  - **Size:** Large.\n  - **Decay:** Moderate (1.5s).\n  - **H.Cut:** Open (clockwise).\n- **Listen For:** A bright \"sizzle\" on the drums that makes the track feel massive and professional.\n\n## 3. Spacey (Ethereal, Infinite, Galactic)\n- **Concept:** \"The Void.\"\n- **Levers:**\n  - **Decay:** Maximum (20s).\n  - **Modulation:** Depth at 50%.\n  - **Stereo Sep:** Wide.\n- **Listen For:** A tail that never seems to end, slowly drifting in pitch.\n\n## 4. Jazzy (Intimate, Natural, Close)\n- **Concept:** \"The Live Studio.\"\n- **Levers:**\n  - **Size:** Small.\n  - **Decay:** Short (0.8s).\n  - **Pre-Delay:** High (40ms+).\n- **Listen For:** The instrument staying \"dry\" and focused, but having a natural \"halo\" of a real room around it.\n\n## 5. Vibey (Smooth, Glossy, Expensive)\n- **Concept:** \"The Silk Wall.\"\n- **Levers:**\n  - **Diffusion:** Maximum.\n  - **Mid/Side Switch:** Set to **Side**.\n  - **ER (Early Reflections):** Low.\n- **Listen For:** Reverb that exists only at the \"edges\" of the stereo field, leaving the center perfectly clear for the vocal. [SRC: REPUTABLE]",
+      "complete-guide": "# Fruity Reeverb 2 – Advanced Reverb Guide\r\n\r\n## Overview\r\nProfessional reverb with extensive control over early reflections, room character, and modulation. More CPU-intensive but vastly more flexible than original Reeverb.\r\n\r\n## Main Parameters\r\n\r\n### Early Reflections\r\n- **Pre-delay**: Gap before reverb starts (0-500ms)\r\n- **Early Level**: Amount of early reflections\r\n- **Early Damping**: High-frequency absorption in early reflections\r\n\r\n### Room Character\r\n- **Size**: Virtual room dimensions\r\n- **Diffusion**: Reflection density and smoothness\r\n- **Decay**: Reverb tail length\r\n- **Damping**: High-frequency decay rate\r\n\r\n### Tone Shaping\r\n- **Bass**: Low-frequency multiplier\r\n- **High Damping**: High-frequency absorption\r\n- **High Cut**: Low-pass filter on reverb\r\n\r\n### Modulation\r\n- **Mod Rate**: Chorus-like modulation speed\r\n- **Mod Depth**: Amount of pitch modulation\r\n\r\n### Output\r\n- **Dry**: Original signal level\r\n- **Wet**: Reverb signal level\r\n- **Width**: Stereo spread\r\n\r\n## Hip-Hop Applications\r\n\r\n### Vocal Reverb (Lead)\r\n**Settings**:\r\n- Pre-delay: 20-40ms\r\n- Size: 50-65%\r\n- Decay: 1.5-2.5s\r\n- High Damping: 4-6kHz\r\n- Wet: 20-30%\r\n\r\n**Result**: Clear, professional vocal space\r\n\r\n### Snare/Clap (Trap)\r\n**Settings**:\r\n- Pre-delay: 10-15ms\r\n- Size: 40-50%\r\n- Decay: 0.8-1.5s\r\n- High Damping: 3kHz\r\n- Wet: 18-28%\r\n\r\n**Result**: Modern, punchy room sound\r\n\r\n### Pad Atmosphere\r\n**Settings**:\r\n- Pre-delay: 0-10ms\r\n- Size: 70-85%\r\n- Decay: 3-5s\r\n- Modulation: Subtle\r\n- Wet: 40-60%\r\n\r\n**Result**: Lush, enveloping space\r\n\r\n### 808 Air (Minimal)\r\n**Settings**:\r\n- Pre-delay: 5ms\r\n- Size: 25-35%\r\n- Decay: 0.5-1s\r\n- High Damping: 2kHz\r\n- Bass: 0.5x\r\n- Wet: 5-12%\r\n\r\n**Result**: Slight room without mud\r\n\r\n## Genre-Specific Presets\r\n\r\n### Trap\r\n```json\r\n{\r\n  \"name\": \"Trap Vocal Space\",\r\n  \"preDelay\": 30,\r\n  \"size\": 55,\r\n  \"decay\": 2.0,\r\n  \"highDamping\": 5000,\r\n  \"diffusion\": 70,\r\n  \"modRate\": 0.2,\r\n  \"modDepth\": 0.1,\r\n  \"wet\": 25,\r\n  \"use\": \"Lead vocals, ad-libs\"\r\n}\r\n```\r\n\r\n### Boom Bap\r\n```json\r\n{\r\n  \"name\": \"Classic Room\",\r\n  \"preDelay\": 15,\r\n  \"size\": 45,\r\n  \"decay\": 1.8,\r\n  \"highDamping\": 4000,\r\n  \"diffusion\": 65,\r\n  \"bass\": 1.2,\r\n  \"wet\": 22,\r\n  \"use\": \"Samples, drums\"\r\n}\r\n```\r\n\r\n### Lo-Fi\r\n```json\r\n{\r\n  \"name\": \"Vintage Space\",\r\n  \"preDelay\": 5,\r\n  \"size\": 60,\r\n  \"decay\": 2.5,\r\n  \"highDamping\": 3500,\r\n  \"diffusion\": 50,\r\n  \"modRate\": 0.5,\r\n  \"modDepth\": 0.3,\r\n  \"bass\": 1.5,\r\n  \"wet\": 32,\r\n  \"use\": \"Keys, guitars, vocals\"\r\n}\r\n```\r\n\r\n### Melodic\r\n```json\r\n{\r\n  \"name\": \"Dreamy Hall\",\r\n  \"preDelay\": 25,\r\n  \"size\": 75,\r\n  \"decay\": 3.5,\r\n  \"highDamping\": 6000,\r\n  \"diffusion\": 85,\r\n  \"modRate\": 0.3,\r\n  \"modDepth\": 0.15,\r\n  \"wet\": 38,\r\n  \"use\": \"Synths, pads, melodic vocals\"\r\n}\r\n```\r\n\r\n## Professional Workflows\r\n\r\n### Send/Return Setup\r\n1. Create dedicated reverb send track\r\n2. Add Fruity Reeverb 2 (wet 100%, dry 0%)\r\n3. Route instruments via mixer sends\r\n4. Control depth per instrument\r\n\r\n**Advantages**:\r\n- One cohesive space\r\n- CPU efficient\r\n- Easy to EQ/compress reverb\r\n- Professional standard\r\n\r\n### Multiple Reverb Approach\r\n1. **Short reverb**: Drums, transients (decay 0.8-1.5s)\r\n2. **Medium reverb**: Vocals, leads (decay 1.5-2.5s)\r\n3. **Long reverb**: Pads, atmosphere (decay 3-5s)\r\n\r\nEach reverb serves different purpose\r\n\r\n### Parallel Reverb Processing\r\n1. Send to reverb aux at 100% wet\r\n2. Add EQ to reverb return (cut lows, shape highs)\r\n3. Add compression to reverb (glue effect)\r\n4. Blend with dry signal\r\n\r\n**Result**: Maximum control and polish\r\n\r\n## Advanced Techniques\r\n\r\n### Pre-Delay Clarity\r\n- **Short (5-15ms)**: Tight, immediate space\r\n- **Medium (20-40ms)**: Separates dry from wet\r\n- **Long (50-100ms)**: Slapback-style effect\r\n\r\n**Rule**: Longer pre-delay = more clarity on transients\r\n\r\n### Modulation Character\r\n- **No mod**: Clean, transparent reverb\r\n- **Subtle (0.1-0.2)**: Natural shimmer\r\n- **Medium (0.3-0.5)**: Chorus-like texture\r\n- **Heavy (0.6-1.0)**: Obvious, creative effect\r\n\r\n### Damping EQ Simulation\r\n- **Low High Damping (2-3kHz)**: Dark, vintage\r\n- **Mid High Damping (4-5kHz)**: Natural, balanced\r\n- **High High Damping (6-8kHz)**: Bright, modern\r\n\r\n### Width Manipulation\r\n- **Narrow (30-50%)**: Centered, focused\r\n- **Normal (70-100%)**: Natural stereo\r\n- **Wide (>100%)**: Expansive, spacious\r\n\r\n## By Instrument Details\r\n\r\n### Lead Vocals\r\n```\r\nPre-delay: 25-35ms (clarity)\r\nSize: 55-65%\r\nDecay: 1.8-2.5s\r\nHigh Damping: 5-6kHz\r\nWet: 20-28%\r\n```\r\n\r\n### Backing Vocals\r\n```\r\nPre-delay: 10-20ms\r\nSize: 60-70%\r\nDecay: 2.5-3.5s\r\nWet: 35-50%\r\n```\r\n\r\n### Snare\r\n```\r\nPre-delay: 10-15ms\r\nSize: 40-50%\r\nDecay: 1.0-1.5s\r\nHigh Damping: 3-4kHz\r\nWet: 20-30%\r\n```\r\n\r\n### Hi-Hats\r\n```\r\nPre-delay: 5-10ms\r\nSize: 35-45%\r\nDecay: 0.6-1.0s\r\nHigh Damping: 6kHz+\r\nWet: 12-20%\r\n```\r\n\r\n### Pads/Synths\r\n```\r\nPre-delay: 0-10ms\r\nSize: 70-85%\r\nDecay: 3-5s\r\nModulation: Medium\r\nWet: 40-60%\r\n```\r\n\r\n### Piano/Keys\r\n```\r\nPre-delay: 15-25ms\r\nSize: 50-65%\r\nDecay: 2.0-3.0s\r\nHigh Damping: 5kHz\r\nWet: 25-35%\r\n```\r\n\r\n### 808/Sub Bass\r\n```\r\nPre-delay: 5ms\r\nSize: 25-35%\r\nDecay: 0.5-0.8s\r\nHigh Damping: 2kHz\r\nBass: 0.5x\r\nWet: 5-10% MAX\r\n```\r\n\r\n## Mixing Strategies\r\n\r\n### Reverb EQ Template\r\nOn reverb return track:\r\n1. **High-pass**: 200-400Hz (remove mud)\r\n2. **Cut**: 500-800Hz (clear midrange)\r\n3. **Boost**: 8-12kHz if needed (air)\r\n\r\n### Compression on Reverb\r\n- Light ratio (2:1 to 3:1)\r\n- Medium-fast attack\r\n- Slow release\r\n- Creates consistent reverb level\r\n\r\n### Stereo Width Control\r\n- **Drums**: 70-85% width (focused)\r\n- **Melodics**: 90-110% width (spacious)\r\n- **Vocals**: 80-100% width (balanced)\r\n\r\n## Common Mistakes\r\n\r\n❌ **Too much on everything**: Use selectively\r\n→ Not every element needs reverb\r\n\r\n❌ **No pre-delay**: Transients get washed out\r\n→ Use 20-40ms for clarity\r\n\r\n❌ **Wrong decay time**: Doesn't match tempo\r\n→ Faster tempo = shorter decay\r\n\r\n❌ **No EQ on reverb**: Muddy low-end\r\n→ Always high-pass reverb return\r\n\r\n❌ **Same settings for all**: Generic sound\r\n→ Customize per instrument\r\n\r\n## Troubleshooting\r\n\r\n**Muddy mix**: High-pass reverb at 300-500Hz\r\n\r\n**Reverb too obvious**: Reduce wet, increase pre-delay\r\n\r\n**Sounds fake**: Increase diffusion, add subtle modulation\r\n\r\n**Too dark**: Lower high damping frequency\r\n\r\n**Too bright/harsh**: Increase high damping, add high-cut\r\n\r\n**Doesn't glue**: Create one main reverb send for cohesion\r\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Reeverb 2\r\n\r\n## What It Is\r\nFruity Reeverb 2 is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Fruity Reeverb 2\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: Fruity Reeverb 2 (5 Minutes)\n\n1.  **Insert:** Load **Fruity Reeverb 2** on a Send track.\n2.  **Wet/Dry:** Ensure **WET** is at 100% and **DRY** is at 0%.\n3.  **Space:** Choose a preset or set **SIZE** to medium.\n4.  **Length:** Adjust **DECAY** until the tail lasts long enough without overlapping the next chord.\n5.  **Clarity:** Turn up **PRE-DELAY** (~20ms) so the original sound \"pops\" before the reverb hits.\n6.  **Tone:** Use **L.CUT** to remove low mud and **H.CUT** to tame harsh high sizzle.\n7.  **Tip:** Use the **BASS** knob to decide if the \"weight\" of the reverb should last longer than the \"air.\" [SRC: IL-MAN]",
+      "01_Common_Mistakes": "# Common Mistakes: Fruity Reeverb 2\n\n- **Rumble Overload:** Leaving the **Bass** multiplier at 1.5x on a large room. This creates a low-end \"boom\" that ruins the clarity of the kick drum. **Fix:** Set Bass to 0.5x.\n- **Washed Out Vocals:** Setting Pre-Delay to 0. This makes the vocal sound distant and drowned. **Fix:** Use 20ms+ Pre-Delay to keep the vocal upfront.\n- **High Frequency Hiss:** Not using the **DAMP** knob. Digital reverb can have harsh, static-like high frequencies. **Fix:** Turn DAMP up to ~50% to make the high-end die out faster.\n- **Mid/Side Confusion:** Thinking \"Mid\" means \"Mid frequencies.\" **Fix:** Mid refers to the **Center** of the stereo field. Side refers to the **Edges**.\n- **Static Tails:** Not using **Modulation**. A little bit of Mod (10-20%) prevents the reverb from sounding like a boring loop and makes it feel like real air. [SRC: REPUTABLE]\n",
+      "02_Best_Settings_Starting_Points": "# Best Settings Starting Points: Fruity Reeverb 2\n\n| Goal | Size | Decay | Pre-Delay | M/S | Use Case |\n| :--- | :--- | :--- | :--- | :--- | :--- |\n| **Expensive R&B** | 70% | 3.5s | 45ms | SIDE | Lead Vocal space. |\n| **Trap Drum Room**| 10% | 0.6s | 0ms | MID | Snare/Percussion glue. |\n| **Lush Ambient** | 100%| 12.0s | 80ms | MID | Cinematic pads. |\n| **Soul Guitar** | 40% | 1.8s | 15ms | MID | Natural acoustic guitar.|\n| **Wide Ad-libs** | 60% | 2.5s | 100ms | SIDE | Background vocals. |\n\n*Note: Always set L.Cut to at least 200Hz for hip-hop mixes.* [SRC: IL-MAN]\n",
+      "03_Vibe_Starting_Points_Moody": "# Vibe Starting Points: Moody (Fruity Reeverb 2)\n\n- **The Goal:** A massive, \"infinite\" dark cavern that feels lonely and deep.\n- **Recipe:**\n  1. Load Reeverb 2 on a melodic synth pad.\n  2. Set **Size** to **MAX**.\n  3. Set **Decay** to **8.0s**.\n  4. Set **DAMP** to **80%** (Makes the tail very dark).\n  5. Set **Pre-Delay** to **120ms**.\n  6. **Bass Multiplier:** Set to **1.5x** and **Cross** to **400Hz**.\n- **Result:** The sound hits, and then a massive, heavy shadow of reverb follows it several beats later. It feels like the sound is bouncing off the walls of a giant, empty warehouse.\n- **Mix Tip:** Link the **Mix** knob to an automation clip to make the cavern \"swell\" during the bridge. [SRC: REPUTABLE]\n",
+      "04_Vibe_Starting_Points_Upbeat_Psychedelic_Jazzy_Vibey": "# Vibe Starting Points: Upbeat, Psychedelic, Jazzy, Vibey\n\n## Upbeat (The \"Energy Room\")\n- **Settings:** Size 15%, Decay 0.4s, ER 80%.\n- **Move:** High Diffusion + No Pre-delay.\n- **Effect:** Adds a physical \"punch\" to the percussion hits without cluttering the rhythm.\n\n## Psychedelic (The \"Liquid Room\")\n- **Settings:** Mod 100%, Speed 2.0 Hz.\n- **Move:** Automate the **Size** knob from 0% to 100% during a note.\n- **Effect:** The reverb \"screams\" and pitch-shifts like a moving wall.\n\n## Jazzy (The \"Realistic Chamber\")\n- **Settings:** Size 45%, Decay 1.4s, Bass 1.0x.\n- **Move:** L.Cut at 150Hz, H.Cut at 12kHz.\n- **Context:** Simulates a high-end studio room where you can hear the air around the saxophone.\n\n## Vibey (The \"Expensive Glow\")\n- **Settings:** Decay 4.0s, Pre-Delay 50ms, SIDE Mode.\n- **Move:** DAMP at 30%, H.Cut disabled.\n- **Context:** The classic modern R&B vocal \"aura\" that sits only at the edges. [SRC: REPUTABLE]\n",
+      "cheat-sheet": "# Fruity Reeverb 2: The Algorithmic Architect\r\n\r\n> **Scope:** Algorithmic Reverb, Mid/Side Processing, and Damping.\r\n> **Source:** Image-Line Official Manual (v21.2).\r\n> **Complexity:** Medium-High.\r\n\r\n## 🧠 The \"Room\" Concept\r\nFruity Reeverb 2 is an algorithmic reverberator. Unlike convolution (which uses samples), it uses mathematical delay lines to simulate space. This makes it extremely flexible for \"Unnatural\" or \"Hyper-Real\" spaces.\r\n\r\n**Signal Flow:**\r\n`Input` -> **[PRE-DELAY]** -> **[LOW/HIGH CUT]** -> **[DIFFUSION]** -> **[REVERB ENGINE]** -> **[DAMPING]** -> **[BASS MULTIPLIER]** -> **[STEREO SEP]** -> **[OUTPUT]**\r\n\r\n*   **Critical Nuance:** The \"Damping\" and \"High Cut\" are different. High Cut removes treble *before* the reverb. Damping makes the treble decay *faster* than the bass (simulating air absorption).\r\n\r\n---\r\n\r\n## 🎛️ Section 1: The Room Properties\r\n\r\n### Size & Tone\r\n| Control | Range | Function & Nuance |\r\n| :--- | :--- | :--- |\r\n| **Size** | Small - Massive | **Virtual Dimension.** <br> *Small:* Metallic, Ringing (Bathroom). <br> *Large:* Smooth, Washed out (Cathedral). <br> *Pro Tip:* Large sizes need longer Decay times to sound natural. |\r\n| **Diff (Diffusion)** | Sparse - Dense | **Reflection Density.** <br> *Low:* You can hear individual \"grains\" or echoes. <br> *High:* Smooth wall of white noise. <br> *Percussion:* Use Low Diffusion for clarity. *Vocals:* Use High Diffusion for smoothness. |\r\n| **Dec (Decay)** | 0.1s - 20s | **RT60 Time.** <br> How long it takes for the sound to drop by 60dB. |\r\n\r\n### Coloration Controls\r\n| Control | Function |\r\n| :--- | :--- |\r\n| **H.Cut** | **Input Filter.** <br> Removes \"Sss\" and clicks *before* they enter the reverb. Essential for preventing metallic harshness. |\r\n| **L.Cut** | **Input Filter.** <br> Removes Kick/Sub *before* reverberation. Always cut below 200Hz for a clean mix. |\r\n| **Damp** | **Air Absorption.** <br> *High Damp:* Highs die quickly (Warm/Dark room). <br> *Off:* Highs last as long as lows (Unnatural/Icy). |\r\n\r\n---\r\n\r\n## 🔁 Section 2: Advanced Processing (MID/SIDE)\r\n\r\n### Mid / Side Switch\r\nThis is the hidden superpower of Reeverb 2.\r\n\r\n*   **MID (Default):** Processes the sum (L+R).\r\n*   **SIDE:** Processes *only* the stereo difference information.\r\n    *   **Usage:** Add space to the wide synths/pads without muddying the center kick/vocal/snare.\r\n    *   **Result:** A mix that feels \"huge\" but stays \"focused\".\r\n\r\n---\r\n\r\n## 🌊 Section 3: Modulation (The \"Alive\" Knob)\r\n\r\nAlgorithmic reverbs can sound static (metallic ringing at specific frequencies). Modulation fixes this.\r\n\r\n| Control | Function |\r\n| :--- | :--- |\r\n| **Mod** | **LFO Depth.** <br> Modulates the delay times inside the reverb tank. |\r\n| **Speed** | **LFO Rate.** |\r\n| **Effect** | Breaks up standing waves. <br> *Subtle:* Smoother tail. <br> *Extreme:* Detuned \"Chorused Reverb\" (Vangelis style). |\r\n\r\n---\r\n\r\n## ⚡ Technical Specs: Bass Multiplier\r\n\r\n*   **Bass:** Multiplies the Decay time for low frequencies.\r\n*   **Cross:** Sets the frequency split point.\r\n*   **Physics:** In real life, bass travels further than treble.\r\n*   **Setting:** Set Bass to 1.2x - 1.5x for a \"Boomy\" majestic hall. Set to 0.5x for a tight, controlled studio room.\r\n\r\n---\r\n\r\n## 🧪 \"Secret Sauce\" Workflows\r\n\r\n### 1. The \"Invisible\" Vocal Halo\r\n1.  **Size:** 40 (Small Hall).\r\n2.  **Diff:** 100% (Smooth).\r\n3.  **Decay:** 1.5s.\r\n4.  **H.Cut:** 4kHz (Aggressive cut).\r\n5.  **Damp:** High.\r\n6.  **Result:** You don't \"hear\" the reverb, but the vocal sounds expensive and seated.\r\n\r\n### 2. The \"Side-Only\" Width\r\n1.  **Input:** Stereo Synth Pad.\r\n2.  **Mode Switch:** Set to **SIDE**.\r\n3.  **Wet:** 100%. Dry: 100% (Parallel).\r\n4.  **Result:** The center of the stereo image (Mono) is 100% dry and punchy. The edges are swimming in reverb. Extreme width.\r\n\r\n### 3. The \"Gated\" Snare Prep\r\n1.  **Diff:** 0% (Grainy).\r\n2.  **Size:** 100 (Massive).\r\n3.  **Decay:** Long.\r\n4.  **L.Cut:** 500Hz.\r\n5.  **Result:** A harsh, exploding noise burst. Perfect for feeding into a Noise Gate for the classic 80s effect.\r\n",
+      "parameter-cheat-sheet": "# Fruity Reeverb 2 - Parameter Cheat Sheet\n\nA quick reference guide for every control in Fruity Reeverb 2.\n\n## 🎛️ The Controls\n\n### Input Section\n| Knob | Full Name | Function | Pro Tip |\n|------|-----------|----------|---------|\n| **MID/SIDE** | Mid/Side Mode | **Mid**: Reverbs summed mono signal. **Side**: Reverbs stereo difference. | Use **Side** mode on synths to widen them without muddying the center (kick/bass/vocal). |\n| **H.CUT** | High Cut | Removes high frequencies entering the reverb. | Lower this to make the reverb sit \"behind\" the source. |\n| **L.CUT** | Low Cut | Removes low frequencies entering the reverb. | **CRITICAL:** Cut up to 300-500Hz to prevent \"muddy mix\" syndrome. |\n\n### Room Section\n| Knob | Full Name | Function | Pro Tip |\n|------|-----------|----------|---------|\n| **DELAY** | Predelay | Time gap before reverb starts. | Increase to ~20-60ms to keep vocals clear and intelligible. |\n| **SIZE** | Room Size | How big the virtual space is. | Small = Drums/Percussion. Large = Pads/Orchestral. |\n| **DIFF** | Diffusion | Density of reflections. | **Low**: Grainy, echo-y (good for vocals). **High**: Smooth, dense (good for drums). |\n\n### Texture Section\n| Knob | Full Name | Function | Pro Tip |\n|------|-----------|----------|---------|\n| **MOD** | Modulation | Pitch wobble of the tail. | Fixes \"metallic\" ringing on long reverbs. Adds chorus vibe. |\n| **SPEED** | Mod Speed | Speed of the wobble. | Slow speeds usually sound more natural. |\n| **DAMP** | Damping | How fast high frequencies die out. | High damping = darker, warmer, more realistic room. |\n\n### Bass Section\n| Knob | Full Name | Function | Pro Tip |\n|------|-----------|----------|---------|\n| **BASS** | Bass Multiplier | Boosts/Cuts decay time of low freqs. | Usually keep this near default or lower to avoid low-end buildup. |\n| **CROSS** | Crossover | Frequency split point for the Bass knob. | - |\n\n### Output/Mix Section\n| Knob | Full Name | Function | Pro Tip |\n|------|-----------|----------|---------|\n| **DEC** | Decay Time | How long the tail lasts (RT60). | Sync this to tempo (roughly) so tails die before next phrase. |\n| **DRY** | Dry Level | Volume of original sound. | **0%** if on a Send/Bus. **100%** if on an Insert. |\n| **ER** | Early Reflections | First bounce volume. | Louder ER makes the sound feel \"closer\" to the walls. |\n| **WET** | Wet Level | Volume of the reverb tail. | Balance this against DRY for distance. Less Dry + More Wet = Far away. |\n| **SEP** | Separation | Stereo width of the wet signal. | Turn left for mono reverb (vintage/center), right for wide. |\n\n---\n\n## 🛑 Common Mistakes\n- **Too much Decay:** Makes the mix washed out.\n- **No Low Cut:** Causes the whole track to sound muddy and undefined.\n- **Reverb on Master:** Don't do it (unless for a specific special effect breakdown).\n",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Reeverb 2\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Reeverb 2 to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Reeverb 2\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Reeverb 2\r\n\r\nThis section contains learning information for the fruity-reeverb-2 plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: The \"Vocal Cloud\" (Fruity Reeverb 2)\n\n## Routing Context\n- **Target:** Melodic Rap Vocal or R&B Backgrounds.\n- **Position:** Parallel Send (100% Wet).\n\n## Step-by-Step Setup\n1.  Route your vocal to a dedicated Reverb track.\n2.  Set **SIZE** to maximum.\n3.  Set **DECAY** to `6.0s`.\n4.  Set **DIFFUSION** to maximum (clockwise).\n5.  Set **PRE-DELAY** to `80ms`.\n6.  Set **MOD** to `30%` and **SPEED** to `0.5Hz`.\n7.  **The Secret:** Switch the plugin to **SIDE** mode.\n8.  **The Result:** A massive, shimmering \"cloud\" that wraps around the vocal but stays completely out of the way of the lyrics in the center.\n\n## Vibe Check\n- **Vibey/Spacey:** The signature \"Atmospheric\" depth found in modern trap-soul.\n\n## Variation\n- **Dark Cloud:** Turn the **DAMP** knob to 80% to make the cloud sound warm and \"vintage.\" [SRC: REPUTABLE]\n",
+      "01_Goal_Shaping_And_Control": "# Goal: Mid/Side Clarity (Side-Only Reverb)\n\n## Routing Context\n- **Target:** Lead Rap Vocal.\n- **Position:** Place **Fruity Reeverb 2** on a dedicated **Mixer Send Track**.\n\n## Step-by-Step Setup\n1.  On the **Send Track**, set Reeverb 2 to **100% WET** (Dry slider at 0).\n2.  Locate the **Mid/Side** switch and set it to **SIDE**.\n3.  Set **Decay** to **2.5s**.\n4.  Set **Pre-Delay** to **40ms**.\n5.  Set **L.Cut** to **350Hz** (High-pass).\n6.  Route your Vocal to this Send.\n\n## What To Listen For\n- The vocal should sound perfectly clear and centered (Mono).\n- The reverb tail should feel like it is \"wrapping around\" the artist from the speakers' edges. \n- Because the reverb is in Side-mode, it won't \"fight\" with the vocal's presence in the middle.\n\n## Vibe Check\n- **Vibey:** This is the #1 secret for that professional, wide, but clear radio sound.\n\n## Pitfalls + Fixes\n- **Pitfall:** \"The reverb is too wide.\"\n  - **Fix:** Decrease the **Stereo Separation** knob (lower right) toward the center. [SRC: REPUTABLE]\n",
+      "03_Goal_Creative_Effect": "# Goal: Lush R&B Cloud (The \"Atmosphere\" Wash)\n\n## Step-by-Step Setup\n1.  Load **Fruity Reeverb 2**.\n2.  Set **Size** to **80%**.\n3.  Set **Decay** to **5.0s**.\n4.  Set **Mod** to **40%** and **Speed** to **0.2 Hz**.\n5.  Set **DAMP** to **30%** (Keeps it bright but not harsh).\n6.  Disable **H.Cut** (High-pass is off).\n7.  Turn **Pre-Delay** to **80ms**.\n\n## Context Application\n- **Melodic R&B:** Use this on a clean guitar or a high-pitched synth pluck.\n- **Vibe:** Vibey/Psychedelic.\n\n## Automation Idea\n- Link the **Decay** knob to a Peak Controller on the Snare. Every time the snare hits, the \"Cloud\" shortens for a split second, then grows back.\n\n## Pitfalls\n- **Muddiness:** Long decays build up fast. Set **Bass** multiplier to **0.3x** to ensure the low-end doesn't turn into a roar. [SRC: REPUTABLE]\n",
+      "send-based-reverb": "# Reverb Send Setup Guide – Fruity Reeverb 2\r\n\r\n## Goal\r\nCreate professional send-based reverb routing for cohesive space and efficient CPU usage.\r\n\r\n## Why Use Sends?\r\n\r\n### Advantages\r\n- **Cohesive Space**: All instruments share same reverb \"room\"\r\n- **CPU Efficient**: One reverb instance instead of many\r\n- **Easy Control**: Adjust space per instrument with send amount\r\n- **Professional Standard**: Industry-standard mixing approach\r\n- **Processing Power**: EQ/compress reverb separately\r\n\r\n### vs. Insert Reverb\r\n**Insert** (direct on track):\r\n- ✓ Quick and easy\r\n- ✓ Independent spaces\r\n- ✗ CPU intensive\r\n- ✗ Less cohesive\r\n\r\n**Send** (aux return):\r\n- ✓ Professional approach\r\n- ✓ Cohesive sound\r\n- ✓ CPU efficient\r\n- ✗ Slightly more setup\r\n\r\n## Basic Send Setup\r\n\r\n### Step 1: Create Reverb Track\r\n1. Select empty mixer track (e.g., Track 10)\r\n2. Rename: \"Reverb - Main\" or \"Vocal Reverb\"\r\n3. Insert Fruity Reeverb 2\r\n4. Set: Dry = 0%, Wet = 100%\r\n5. **Critical**: Track receives signal but doesn't route to itself\r\n\r\n### Step 2: Configure Reverb\r\nChoose appropriate settings for reverb type:\r\n\r\n**Short Room** (drums, transients):\r\n```\r\nSize: 40-50%\r\nDecay: 0.8-1.5s\r\nUse: Drums, percussion, tight sounds\r\n```\r\n\r\n**Medium Hall** (vocals, leads):\r\n```\r\nSize: 55-65%\r\nDecay: 1.8-2.5s\r\nUse: Vocals, lead instruments\r\n```\r\n\r\n**Long Space** (pads, atmosphere):\r\n```\r\nSize: 70-85%\r\nDecay: 3.0-5.0s\r\nUse: Pads, synths, backgrounds\r\n```\r\n\r\n### Step 3: Route Instruments\r\n1. Select source track (e.g., vocal track)\r\n2. Find send knobs in mixer (top row)\r\n3. Right-click send knob for reverb track\r\n4. Adjust send level (start 20%)\r\n5. Repeat for each instrument\r\n\r\n### Step 4: Set Send Amounts\r\nDifferent amounts create depth:\r\n\r\n- **Upfront** (lead vocal, main elements): 15-25%\r\n- **Middle** (supporting elements): 25-35%\r\n- **Background** (pads, textures): 35-50%\r\n\r\n## Multiple Reverb Setup\r\n\r\n### Professional 3-Reverb Template\r\n\r\n**Track 10 - Short Reverb**:\r\n```\r\nSize: 45%\r\nDecay: 1.2s\r\nUse: Drums, percussion, transients\r\n```\r\n\r\n**Track 11 - Medium Reverb**:\r\n```\r\nSize: 60%\r\nDecay: 2.2s\r\nUse: Vocals, melodies, leads\r\n```\r\n\r\n**Track 12 - Long Reverb**:\r\n```\r\nSize: 75%\r\nDecay: 4.0s\r\nUse: Pads, atmosphere, special effects\r\n```\r\n\r\n### Routing Strategy\r\nEach instrument can send to multiple reverbs:\r\n- **Vocal**: 22% short + 12% long = dimension\r\n- **Snare**: 28% short only = tight\r\n- **Pad**: 15% medium + 35% long = huge space\r\n\r\n## Advanced Reverb Processing\r\n\r\n### EQ the Reverb Return\r\nAdd EQ after Reeverb 2 on reverb track:\r\n\r\n1. **High-Pass**: 300-400Hz (remove mud)\r\n2. **Cut**: 500-800Hz (clear midrange)\r\n3. **Shelf**: -2dB @ 200Hz (control lows)\r\n4. **Boost**: +1-2dB @ 10kHz (air, optional)\r\n\r\n**Why**: Cleans reverb, prevents mud, maintains clarity\r\n\r\n### Compress the Reverb\r\nAdd compressor after Reeverb 2:\r\n```\r\nRatio: 2:1 to 3:1\r\nAttack: 30-50ms\r\nRelease: 100-200ms\r\nThreshold: Adjust for -3 to -6dB reduction\r\n```\r\n\r\n**Why**: Evens out reverb level, adds glue, controls dynamics\r\n\r\n### Sidechain Duck Reverb\r\n1. Add Fruity Peak Controller after reverb\r\n2. Input from lead vocal or kick\r\n3. Link to reverb wet/send level\r\n4. Settings: Base 100%, Vol 0%, Decay 150-250ms\r\n\r\n**Why**: Reverb ducks during main elements, returns between\r\n\r\n## Genre-Specific Send Templates\r\n\r\n### Trap/Modern Hip-Hop\r\n```\r\nTrack 10 - Vocal Reverb:\r\n  Size: 55%, Decay: 2.0s, High Damping: 5.5kHz\r\n  Send: Vocals (22%), Ad-libs (35%)\r\n\r\nTrack 11 - Drum Room:\r\n  Size: 42%, Decay: 1.0s, High Damping: 4kHz\r\n  Send: Snare (25%), Claps (28%)\r\n\r\nTrack 12 - Atmosphere:\r\n  Size: 78%, Decay: 4.5s, Mod: 0.2\r\n  Send: Pads (45%), FX (60%)\r\n```\r\n\r\n### Boom Bap/Classic\r\n```\r\nTrack 10 - Main Room:\r\n  Size: 48%, Decay: 1.6s, Bass: 1.1x\r\n  Send: Vocals (24%), Sample (18%), Drums (15%)\r\n\r\nTrack 11 - Vocal Space:\r\n  Size: 55%, Decay: 2.2s, Pre-delay: 25ms\r\n  Send: Lead Vocal (22%), Backing (38%)\r\n```\r\n\r\n### Lo-Fi/Chill\r\n```\r\nTrack 10 - Warm Room:\r\n  Size: 58%, Decay: 2.5s, High Damp: 3.8kHz\r\n  Mod: 0.35, Bass: 1.4x\r\n  Send: All instruments (22-40%)\r\n\r\nSingle reverb for cohesive vintage vibe\r\n```\r\n\r\n### Melodic/Emotional\r\n```\r\nTrack 10 - Vocal Hall:\r\n  Size: 62%, Decay: 2.8s, Pre-delay: 35ms\r\n  Send: Lead (25%), Harmonies (40%)\r\n\r\nTrack 11 - Instrument Hall:\r\n  Size: 68%, Decay: 3.2s, Mod: 0.22\r\n  Send: Keys (32%), Synths (38%), Strings (45%)\r\n\r\nTrack 12 - Huge Space:\r\n  Size: 82%, Decay: 5.5s\r\n  Send: Special moments, builds (varies)\r\n```\r\n\r\n## Send Amount Guidelines\r\n\r\n### By Role in Mix\r\n- **Lead Elements** (vocal, main melody): 18-25%\r\n- **Supporting** (chords, harmony): 25-35%\r\n- **Background** (pads, textures): 35-50%\r\n- **Rhythm** (drums): 15-30% (vary by element)\r\n- **Bass**: 0-10% maximum\r\n\r\n### By Frequency Range\r\n- **Low** (<200Hz): 0-10%\r\n- **Low-Mid** (200-500Hz): 10-20%\r\n- **Mid** (500-2kHz): 20-35%\r\n- **High-Mid** (2-5kHz): 25-40%\r\n- **High** (>5kHz): 30-45%\r\n\r\nLower frequencies need less reverb to avoid mud\r\n\r\n### By Genre Density\r\n**Dense/Busy** (trap, drill):\r\n- Lower send amounts (15-25%)\r\n- Shorter decay times\r\n- More clarity needed\r\n\r\n**Sparse/Open** (lo-fi, melodic):\r\n- Higher send amounts (25-40%)\r\n- Longer decay times\r\n- Space is feature\r\n\r\n## Mixing Tips\r\n\r\n### Creating Depth\r\nFront to back placement using reverb:\r\n\r\n1. **Front** (dry, upfront): Low send (10-20%)\r\n2. **Middle** (present): Medium send (25-35%)\r\n3. **Back** (distant): High send (40-60%)\r\n\r\nCombine with volume for 3D mix\r\n\r\n### Mono Compatibility\r\n- High-pass reverb return (mono <300Hz)\r\n- Width setting moderate (70-90%)\r\n- Check in mono to verify\r\n\r\n### Automation Strategies\r\n- **Verse**: Lower sends (intimate)\r\n- **Chorus**: Higher sends (big)\r\n- **Build**: Increase gradually\r\n- **Drop**: Sudden change for impact\r\n\r\n## Troubleshooting\r\n\r\n**Mix sounds washy/muddy**:\r\n→ High-pass reverb at 350-400Hz\r\n→ Reduce send amounts 5-10%\r\n\r\n**Reverb too obvious**:\r\n→ Increase pre-delay\r\n→ Lower send amounts\r\n→ Shorter decay time\r\n\r\n**No depth/dimension**:\r\n→ Vary send amounts more\r\n→ Use multiple reverbs\r\n→ EQ reverb return\r\n\r\n**CPU overload**:\r\n→ Freeze reverb tracks\r\n→ Use one reverb for similar instruments\r\n→ Reduce to essential reverbs only\r\n\r\n**Instruments sound distant**:\r\n→ Lower send amounts\r\n→ Increase pre-delay (separates dry/wet)\r\n\r\n## Session Template Example\r\n\r\n```\r\nMixer Layout:\r\nTrack 1-5: Instruments (dry)\r\nTrack 8: Delay\r\nTrack 10: Short Reverb (drums)\r\nTrack 11: Medium Reverb (vocals/leads)\r\nTrack 12: Long Reverb (pads/atmosphere)\r\nTrack 15: Master\r\n\r\nPro Tip: Leave gaps between types for organization\r\n```\r\n"
+    },
+    "by-instrument": {
+      "drums": "# Workflow: Tight Drum Room (Glue)\n\n## The Concept\nMaking dry drum samples sound like they were recorded in the same room.\n\n## Step-by-Step\n1.  Place **Fruity Reeverb 2** on your Drum Bus.\n2.  Set **Size** to **15%** (Small room).\n3.  Set **Decay** to **0.6s**.\n4.  Set **ER (Early Reflections)** to **70%**.\n5.  Set **Diffusion** to **MAX**.\n6.  **Tweak:** Set **L.Cut** to **400Hz** to keep the kick drum dry.\n7.  **Mix:** Keep the Reverb slider at ~15% wet.\n\n## Vibe Check\n- **Upbeat:** Adds a physical \"thump\" and realistic depth to the drums.\n\n## Pitfalls\n- **Too Much ER:** High Early Reflections in a small room can sound \"boxy.\" Back off the ER knob if it sounds like a cardboard box. [SRC: REPUTABLE]\n",
+      "vocal-reverb-setup": "# Vocal Reverb Setup with Fruity Reeverb 2\r\n\r\n## Goal\r\nCreate professional vocal space that adds depth and dimension without washing out clarity or competing with the beat.\r\n\r\n## Basic Setup Workflow\r\n\r\n### Step 1: Create Reverb Send\r\n1. Add empty mixer track (e.g., track 10 - \"Vocal Reverb\")\r\n2. Insert Fruity Reeverb 2\r\n3. Set Dry to 0%, Wet to 100%\r\n4. This is your dedicated vocal reverb space\r\n\r\n### Step 2: Route Vocals\r\n1. Select vocal mixer track\r\n2. Right-click send knob to reverb track\r\n3. Start at 15-20% send amount\r\n4. Adjust to taste\r\n\r\n### Step 3: Base Settings\r\n```\r\nPre-delay: 30ms\r\nSize: 58%\r\nDecay: 2.0s\r\nHigh Damping: 5000Hz\r\nDiffusion: 70%\r\nMod Rate: 0.2\r\nMod Depth: 0.1\r\nBass: 0.8x\r\nWidth: 90%\r\nWet: 100% (on send track)\r\n```\r\n\r\n## Genre-Specific Settings\r\n\r\n### Trap Vocals\r\n```\r\nPre-delay: 25-35ms (clarity for fast delivery)\r\nSize: 50-60%\r\nDecay: 1.8-2.2s\r\nHigh Damping: 5-6kHz (modern, bright)\r\nWet Send: 18-25%\r\nCharacter: Tight, present, modern\r\n```\r\n\r\n### Boom Bap/Classic\r\n```\r\nPre-delay: 15-25ms (natural feel)\r\nSize: 45-55%\r\nDecay: 1.5-2.0s\r\nHigh Damping: 4-5kHz (warmer)\r\nBass: 1.0-1.2x\r\nWet Send: 20-28%\r\nCharacter: Warm, vintage room\r\n```\r\n\r\n### Melodic/Singing\r\n```\r\nPre-delay: 35-45ms (separation)\r\nSize: 60-70%\r\nDecay: 2.5-3.5s\r\nHigh Damping: 5.5-6.5kHz\r\nModulation: 0.15-0.25\r\nWet Send: 25-35%\r\nCharacter: Lush, spacious, emotional\r\n```\r\n\r\n### Lo-Fi/Chill\r\n```\r\nPre-delay: 10-20ms (intimate)\r\nSize: 55-65%\r\nDecay: 2.0-2.8s\r\nHigh Damping: 3.5-4.5kHz (darker)\r\nBass: 1.3-1.5x\r\nMod Depth: 0.3-0.4\r\nWet Send: 28-40%\r\nCharacter: Warm, vintage, textured\r\n```\r\n\r\n## Advanced Techniques\r\n\r\n### Lead vs. Backing Vocals\r\n**Lead Vocal**:\r\n- Less reverb (18-25%)\r\n- More pre-delay (30-40ms)\r\n- Stays upfront and clear\r\n\r\n**Backing/Harmony**:\r\n- More reverb (35-50%)\r\n- Less pre-delay (15-25ms)\r\n- Sits back in mix, supports lead\r\n\r\n### Reverb EQ Processing\r\nOn reverb return track, add EQ after Reeverb 2:\r\n1. **High-Pass**: 300-400Hz (removes mud)\r\n2. **Cut**: 500-800Hz (clears midrange clash)\r\n3. **Shelf**: -2dB @ 200Hz (tames lows)\r\n4. **Boost**: +1-2dB @ 10kHz (air, optional)\r\n\r\n### Automation for Dynamics\r\n**Verse (storytelling)**:\r\n- Lower reverb send (15-20%)\r\n- Intimate, close feel\r\n\r\n**Chorus (big moment)**:\r\n- Higher reverb send (25-35%)\r\n- Spacious, larger-than-life\r\n\r\n**Bridge/Breakdown**:\r\n- Maximum reverb (40-60%)\r\n- Extra space and emotion\r\n\r\n### Sidechain Ducking\r\n1. Add Fruity Peak Controller after Reeverb 2\r\n2. Input from vocal track\r\n3. Link to reverb wet level\r\n4. Settings: Base 100%, Vol 0%, Decay 150ms\r\n5. Result: Reverb ducks during singing, returns between phrases\r\n\r\n## Pre-Delay Strategy\r\n\r\n### Why Pre-Delay Matters\r\n- Separates dry vocal from wet reverb\r\n- Preserves consonants and transients\r\n- Creates clarity in dense mixes\r\n\r\n### Pre-Delay by Tempo\r\n- **Slow (60-80 BPM)**: 35-50ms\r\n- **Medium (80-120 BPM)**: 25-35ms\r\n- **Fast (120-160 BPM)**: 15-25ms\r\n- **Very Fast (160+ BPM)**: 10-20ms\r\n\r\n### Pre-Delay by Vocal Style\r\n- **Rap (fast delivery)**: 20-30ms\r\n- **Melodic rap/singing**: 30-40ms\r\n- **Singing (sustained)**: 35-50ms\r\n\r\n## Modulation Use\r\n\r\n### No Modulation (Clean)\r\n- Transparent, natural reverb\r\n- Modern, professional sound\r\n- Best for: Trap, commercial hip-hop\r\n\r\n### Subtle Modulation (0.1-0.2)\r\n- Adds shimmer and life\r\n- Not obviously modulated\r\n- Best for: Melodic, R&B-influenced\r\n\r\n### Medium Modulation (0.3-0.4)\r\n- Vintage, chorus-like character\r\n- Warm, analog vibe\r\n- Best for: Lo-fi, chill rap\r\n\r\n### Heavy Modulation (0.5+)\r\n- Creative, obvious effect\r\n- Dream-like, ethereal\r\n- Best for: Experimental, atmospheric sections\r\n\r\n## Common Vocal Reverb Mistakes\r\n\r\n❌ **Too much reverb**: Drowns vocal, loses clarity\r\n→ Start at 20%, increase carefully\r\n\r\n❌ **No pre-delay**: Consonants get washed out\r\n→ Always use 25-40ms minimum\r\n\r\n❌ **Too long decay**: Reverb tail muddles next phrase\r\n→ Match decay to song tempo/pacing\r\n\r\n❌ **No EQ on reverb**: Low-end mud\r\n→ High-pass reverb return at 300-400Hz\r\n\r\n❌ **Same reverb for all vocals**: No depth/dimension\r\n→ Use more reverb on backing vocals\r\n\r\n❌ **Reverb on bass frequencies**: Muddy vocal\r\n→ Set Bass multiplier to 0.6-0.8x\r\n\r\n## Quick Troubleshooting\r\n\r\n**Vocal sounds distant**: Reduce send amount or increase pre-delay\r\n\r\n**Muddy/unclear**: High-pass reverb return, reduce bass multiplier\r\n\r\n**Too bright/harsh**: Lower high damping frequency\r\n\r\n**Doesn't fit the beat**: Adjust decay time (shorter = tighter)\r\n\r\n**Sounds fake**: Increase diffusion, add subtle modulation\r\n\r\n**Reverb too obvious**: Reduce send, increase pre-delay\r\n\r\n## Professional Polish\r\n\r\n### Reverb Compression\r\nAdd compressor after Reeverb 2:\r\n- Ratio: 2:1 to 3:1\r\n- Attack: 30-50ms\r\n- Release: 100-200ms\r\n- Creates consistent reverb level\r\n\r\n### Parallel Reverb Option\r\n1. Send vocal to reverb at 100%\r\n2. Process reverb aggressively (EQ, compress)\r\n3. Blend small amount back\r\n4. Maximum control\r\n\r\n### Multiple Reverbs\r\n- **Short reverb** (decay 0.8-1.2s): Early reflections, room tone\r\n- **Long reverb** (decay 2.5-4s): Lush tail, atmosphere\r\n- Blend both for complex space\r\n\r\n## Session Template\r\n\r\n### Standard Setup\r\n```\r\nTrack 1-3: Vocals (dry)\r\nTrack 10: Vocal Reverb (short, decay 1.5s)\r\nTrack 11: Vocal Reverb (long, decay 3.0s)\r\nTrack 12: Vocal Delay\r\n\r\nSend short reverb: 20-25%\r\nSend long reverb: 10-15%\r\nSend delay: 15-20%\r\n```\r\n\r\nCreates professional, dimensional vocal sound\r\n"
+    },
+    "common-usage.md": {
+      "common-usage": "# Common Workflows: Fruity Reeverb 2\r\n\r\n## 1. Mid/Side Reverb Integration\r\n\r\nStop washing out your Lead Vocals and Kick Drums.\r\n\r\n1.  **Problem:** Applying reverb to a stereo mix muddies the center (where the Kick/Snare/Vocal live).\r\n2.  **Solution:** Use the **SIDE** input mode.\r\n3.  **Steps:**\r\n    *   Load Reeverb 2 on your Master or Bus.\r\n    *   Flip the switch in the top left from \"MID\" to \"SIDE\".\r\n    *   Set Decay to 2-3 seconds.\r\n    *   Set Dry to 100% (to keep the original signal).\r\n4.  **Physics:** The reverb algorithm *ignores* the center channel. It only reverberates sounds that are already panned.\r\n5.  **Result:** Crystal clear center image, with massive width and ambiance on the sides.\r\n\r\n## 2. The \"Abyss\" Drone Generator\r\n\r\nTurning short sounds into infinite soundscapes.\r\n\r\n1.  **Source:** A short pluck or piano note.\r\n2.  **Settings:**\r\n    *   **decay:** 20 Seconds (Max).\r\n    *   **Size:** 100 (Max).\r\n    *   **Diffusion:** 100%.\r\n    *   **Modulation:** Depth 50%, Speed Slow.\r\n3.  **H.Cut:** Open (20kHz).\r\n4.  **Damping:** OFF (Let the highs ring forever).\r\n5.  **Technique:** Play one note. The sound will hang and evolve because of the Modulation.\r\n6.  **Pro Tip:** Automate the \"H.Cut\" knob slowly to create filter sweeps on the reverb tail.\r\n\r\n## 3. The \"Bright Plate\" (Vocal Pop)\r\n\r\nAchieving that shimmering modern pop vocal.\r\n\r\n1.  **Pre-Delay:** 20-50ms. (Crucial: separates the \"S\" from the \"Shiiiing\").\r\n2.  **L.Cut:** 600Hz. (Remove all muddiness).\r\n3.  **H.Cut:** 12kHz. (Keep the air).\r\n4.  **Damping:** Low/Off.\r\n5.  **Stereo Sep:** Turn knob 50% Left (Widen).\r\n6.  **Bass Multiplier:** 0.5x (Tighten the low reflections).\r\n\r\n## 4. Drum Room \"Glue\"\r\n\r\nMaking electronic samples sound like a live kit.\r\n\r\n1.  **Send:** Create a Send Channel with Reeverb 2.\r\n2.  **Size:** 20-30 (Club/Studio size).\r\n3.  **Diffusion:** 60% (Slightly grainy).\r\n4.  **ER (Early Reflections):** Boost this! This simulates the first bounce off the walls, which defines the \"space\" more than the tail does.\r\n5.  **Decay:** Short (0.6s).\r\n6.  **Action:** Send Kick, Snare, and Hats to this bus.\r\n7.  **Result:** They now sound like they exist in the same physical room.\r\n\r\n## 5. Frequency Slotting (The L.Cut Trick)\r\n\r\n1.  **Concept:** Reverb adds noise. Noise masks instruments.\r\n2.  **Rule:** Never reverb the bass frequencies unless for special FX.\r\n3.  **Action:** Set **L.Cut** knob to ~300Hz-500Hz on almost every instance.\r\n4.  **Why?** Reverberating frequencies below 300Hz creates a \"mud blanket\" that destroys mix clarity.\r\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Reeverb 2\r\n\r\nThis section contains workflow information for the fruity-reeverb-2 plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Reeverb 2\r\n\r\nThis section contains reference information for the fruity-reeverb-2 plugin.\r\n"
+    }
+  }
+}

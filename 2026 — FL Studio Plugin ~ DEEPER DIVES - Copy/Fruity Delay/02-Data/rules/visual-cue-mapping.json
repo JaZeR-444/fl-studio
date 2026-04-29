@@ -1,0 +1,49 @@
+{
+  "visualMappingRules": {
+    "moodClassification": [
+      {
+        "mood": "Dark / Moody R&B",
+        "primaryAnimation": "Breathe",
+        "speed": "0.5x",
+        "logic": "Slow, constant vertical movement mimics the breathing rate of an intimate performance. Use when the 808 is sustained and the melody is dark."
+      },
+      {
+        "mood": "Upbeat Trap / Club",
+        "primaryAnimation": "Dance 1",
+        "speed": "2.0x",
+        "logic": "Rapid, full-body movement matches the high-energy high-hat rolls. Use when the BPM is >140 and the snare is aggressive."
+      },
+      {
+        "mood": "Psychedelic / Experimental",
+        "primaryAnimation": "Manual Mode",
+        "logic": "Choreograph jumps (F5) to off-beat ghost notes. Use Size automation (Link to Peak Controller) to make the mascot physically 'pulse' with the low-end energy."
+      },
+      {
+        "mood": "Soulful / Neo-Soul",
+        "primaryAnimation": "Sway",
+        "speed": "1.0x",
+        "logic": "Side-to-side movement mimics the swaying of a live jazz performer. Use when Rhodes keys and clean guitars are dominant."
+      }
+    ],
+    "rhythmicSyncRules": [
+      {
+        "if": "Snare hits on 2 and 4",
+        "action": "Trigger Jump (F5) frame via MIDI exactly on the 2 and 4."
+      },
+      {
+        "if": "Sub-bass drop occurs",
+        "action": "Automate Size from 50% to 100% over 1 bar to visualize the 'Weight' of the drop."
+      }
+    ],
+    "brandAestheticRules": [
+      {
+        "theme": "Cyberpunk Purple",
+        "action": "Overlay a 20% opacity purple glass-card over the mascot window to match the DEEPER DIVES design system."
+      },
+      {
+        "theme": "Minimalist Studio",
+        "action": "Set mascot size to 25% and position in the bottom-right corner to act as a silent metronome."
+      }
+    ]
+  }
+}

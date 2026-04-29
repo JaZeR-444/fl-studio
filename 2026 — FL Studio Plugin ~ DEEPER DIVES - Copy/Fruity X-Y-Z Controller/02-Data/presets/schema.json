@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "fruity-xyz-presets",
+  "title": "X-Y-Z Controller Preset Schema",
+  "description": "Schema for 3D controller preset definitions",
+  "type": "object",
+  "properties": {
+    "presets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {"type": "string"},
+          "name": {"type": "string"},
+          "category": {"type": "string"},
+          "description": {"type": "string"},
+          "mappings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "output": {"type": "string"},
+                "target": {"type": "string"},
+                "range": {"type": "object"}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

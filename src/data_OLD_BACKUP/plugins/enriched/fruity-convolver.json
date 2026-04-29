@@ -1,0 +1,315 @@
+{
+  "id": "fruity-convolver",
+  "name": "Fruity Convolver",
+  "presets": {
+    "retro-future-spaces": {
+      "retroFuturePresets": {
+        "philosophy": "This data-set provides the technical parameters for 'Retro-Future' spaces—acoustic environments that combine the warmth of 1970s hardware with the clean air of modern digital R&B.",
+        "archetypes": [
+          {
+            "name": "The Chrome Plate (Modern Soul)",
+            "components": {
+              "irSource": "Vintage EMT-140 Plate Reverb",
+              "sculpting": {
+                "stretch": "115%",
+                "highPass": "600Hz",
+                "lowPass": "8500Hz",
+                "blur": "15%"
+              }
+            },
+            "vibe": "Warm mid-range 'Soul' with a shimmering digital high-end. Perfect for Neo-Soul vocals."
+          },
+          {
+            "name": "The Neon Warehouse (Psy-Trap)",
+            "components": {
+              "irSource": "Industrial Concrete Space",
+              "sculpting": {
+                "reverse": "ON",
+                "stretch": "200%",
+                "blur": "45%",
+                "highPass": "350Hz"
+              }
+            },
+            "vibe": "Huge, swelling, hazy textures. The sound of a physical space being 'stretched' by a computer."
+          },
+          {
+            "name": "The Analog Starship (Moody R&B)",
+            "components": {
+              "irSource": "Large Cathedral + White Noise Hybrid",
+              "sculpting": {
+                "stretch": "400%",
+                "lowPass": "2500Hz",
+                "selfMono": "ON",
+                "inputDelay": "60ms"
+              }
+            },
+            "vibe": "Dark, intimate, and seemingly infinite. The sound of being 'Alone in Space'. Ideal for deep background ad-libs."
+          }
+        ],
+        "engineeringLogic": [
+          {
+            "objective": "Achieve 'Hi-Def' depth",
+            "action": "Set Convolver to 'LL' (Low Latency) mode but set the Master Wrapper 'Oversampling' to 2x during render. This preserves the 'Hi-Freq' air of the custom IRs."
+          },
+          {
+            "objective": "Maintain 'Cool' low-end",
+            "action": "Always use the internal Convolver EQ to cut below 400Hz. This prevents the 'Ghost Space' from making your 808 sound flabby."
+          }
+        ]
+      }
+    },
+    "reverb-archetypes": {
+      "archetypes": [
+        {
+          "name": "Classic Studio Plate",
+          "irType": "Plate Reverb Sample",
+          "settings": {
+            "stretch": "120%",
+            "hpFilter": "300Hz",
+            "lpFilter": "8000Hz"
+          },
+          "useCase": "Vocals and Snares for 80s warmth."
+        },
+        {
+          "name": "Concrete Warehouse",
+          "irType": "Industrial Space",
+          "settings": {
+            "stretch": "200%",
+            "dryMix": "0%",
+            "wetMix": "100%"
+          },
+          "useCase": "Cinematic atmosphere or sound design."
+        }
+      ]
+    }
+  },
+  "parameters": {
+    "convolver-specs": {
+      "plugin": {
+        "name": "Fruity Convolver",
+        "category": "Reverb",
+        "type": "Convolution Processor",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Convolver.htm"
+      },
+      "parameters": {
+        "spatial": [
+          {
+            "id": "inputDelay",
+            "name": "Predelay",
+            "unit": "ms"
+          },
+          {
+            "id": "stretch",
+            "name": "Stretch",
+            "unit": "%"
+          }
+        ],
+        "mix": [
+          "Dry",
+          "Wet"
+        ],
+        "tools": [
+          "Blur",
+          "Normalize",
+          "Reverse",
+          "EQ Match",
+          "Impulse Trigger"
+        ]
+      },
+      "technical": {
+        "engine": "Fast Fourier Transform (FFT)",
+        "latency": "Variable (User controllable via LL switch)",
+        "capabilities": "Zero-latency convolution, Linear Phase EQing"
+      }
+    },
+    "parameters": {
+      "pluginName": "Fruity Convolver",
+      "category": "Convolution Reverb",
+      "parameters": [
+        {
+          "section": "Main",
+          "id": "dry_level",
+          "name": "Dry",
+          "range": {
+            "min": -100,
+            "max": 0,
+            "unit": "dB"
+          },
+          "description": "Original signal level."
+        },
+        {
+          "section": "Main",
+          "id": "wet_level",
+          "name": "Wet",
+          "range": {
+            "min": -100,
+            "max": 0,
+            "unit": "dB"
+          },
+          "description": "Convolved signal level."
+        },
+        {
+          "section": "Main",
+          "id": "predelay",
+          "name": "Delay",
+          "range": {
+            "min": 0,
+            "max": 500,
+            "unit": "ms"
+          },
+          "description": "Time before convolution starts."
+        },
+        {
+          "section": "Main",
+          "id": "stereo_sep",
+          "name": "Separation",
+          "range": {
+            "min": -100,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Stereo width of the Wet signal."
+        },
+        {
+          "section": "Impulse",
+          "id": "stretch",
+          "name": "Stretch",
+          "range": {
+            "min": 0,
+            "max": 200,
+            "unit": "%"
+          },
+          "description": "Pitch/Time scaling of the IR."
+        },
+        {
+          "section": "Modulation",
+          "id": "blur",
+          "name": "Blur",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Spectral smearing amount."
+        }
+      ]
+    }
+  },
+  "rules": {
+    "convolver-usage-rules": {
+      "rules": [
+        {
+          "goal": "Natural Vocal Placement",
+          "if": "Vocal sounds 'on top' of the mix",
+          "then": [
+            "Select a Small Room IR",
+            "Set Predelay to 20-40ms to separate vocal from reflections",
+            "Wet mix below 15%"
+          ]
+        },
+        {
+          "goal": "Deep Sub Isolation",
+          "if": "Reverb is muddying the kick",
+          "then": [
+            "Apply internal EQ High-Pass at 500Hz",
+            "Reduce Stretch to shorten the tail"
+          ]
+        }
+      ]
+    },
+    "phase-logic": {
+      "phaseLogic": {
+        "behavior": "Convolution is inherently Linear Phase.",
+        "implication": "It does not rotate phase at the crossover points, making it superior to IIR EQs for parallel processing.",
+        "warning": "If the IR itself was recorded with phase-shifting gear, that shift will be captured and applied to your signal."
+      }
+    }
+  },
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    },
+    {
+      "title": "Acoustic Space Physics",
+      "filename": "acoustic-space-physics.md"
+    },
+    {
+      "title": "Ir Capture Guide",
+      "filename": "ir-capture-guide.md"
+    },
+    {
+      "title": "Zero Crossing Phase Alignment",
+      "filename": "zero-crossing-phase-alignment.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "Common Usage",
+      "category": "general",
+      "filename": "common-usage.md"
+    },
+    {
+      "title": "01 Goal Creative Effect",
+      "category": "by-goal",
+      "filename": "01_Goal_Creative_Effect.md"
+    },
+    {
+      "title": "02 Goal Mix Validation",
+      "category": "by-goal",
+      "filename": "02_Goal_Mix_Validation.md"
+    },
+    {
+      "title": "Advanced Impulse Sculpting Masterclass",
+      "category": "by-goal",
+      "filename": "advanced-impulse-sculpting-masterclass.md"
+    },
+    {
+      "title": "Dreamy Psychedelic Clouds",
+      "category": "by-goal",
+      "filename": "dreamy-psychedelic-clouds.md"
+    },
+    {
+      "title": "Eq Matching Reference",
+      "category": "by-goal",
+      "filename": "eq-matching-reference.md"
+    },
+    {
+      "title": "Vocal Ir Sound Design",
+      "category": "by-goal",
+      "filename": "vocal-ir-sound-design.md"
+    },
+    {
+      "title": "Guitar",
+      "category": "by-instrument",
+      "filename": "guitar.md"
+    },
+    {
+      "title": "Hybrid Acoustic Electronic Spaces",
+      "category": "by-instrument",
+      "filename": "hybrid-acoustic-electronic-spaces.md"
+    },
+    {
+      "title": "Moody Rnb Drums",
+      "category": "by-instrument",
+      "filename": "moody-rnb-drums.md"
+    },
+    {
+      "title": "Orchestral Strings Hall",
+      "category": "by-instrument",
+      "filename": "orchestral-strings-hall.md"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "psychoacousticSpatialRules": {
+    "philosophy": "This data-set provides the exact mathematical parameters for Fruity Delay 3 to simulate a virtual 3D environment based on the biology of human hearing.",
+    "spatialZones": [
+      {
+        "zone": "The Inner Circle (Intimacy)",
+        "objective": "Make the listener feel like the singer is in their own head.",
+        "settings": {
+          "time": "0 ms",
+          "offset": "5-10 ms",
+          "model": "Digital",
+          "lpFilter": "12000 Hz",
+          "feedback": "0%",
+          "wetLevel": "15%"
+        },
+        "logic": "Minimal temporal offset mimics the width of a human skull. High LP preserves the 'Air' of the performance."
+      },
+      {
+        "zone": "The Studio Booth (Presence)",
+        "objective": "Mimic a professional, dampened acoustic environment.",
+        "settings": {
+          "time": "40 ms",
+          "offset": "15 ms",
+          "model": "Analog",
+          "lpFilter": "6000 Hz",
+          "feedback": "15%",
+          "wetLevel": "25%"
+        },
+        "logic": "40ms is just outside the Haas window, creating a distinct reflection that mimics a wall 20 feet away."
+      },
+      {
+        "zone": "The Dark Hall (Mood)",
+        "objective": "Create a vast, atmospheric background shadow.",
+        "settings": {
+          "time": "1/2 Beat",
+          "offset": "20 ms",
+          "model": "Analog",
+          "lpFilter": "1800 Hz",
+          "diffusion": "80%",
+          "feedback": "65%",
+          "wetLevel": "40%"
+        },
+        "logic": "Aggressive LP filtering and high diffusion remove the 'Identity' of the sound, leaving only the 'Emotion'."
+      },
+      {
+        "zone": "The Psychedelic Void (Trippiness)",
+        "objective": "Disorient the listener's localization system.",
+        "settings": {
+          "time": "Automated (Spiral)",
+          "offset": "100%",
+          "vibratoDepth": "40%",
+          "saturation": "60%",
+          "feedback": "95%",
+          "wetLevel": "100%"
+        },
+        "logic": "Extreme vibrato and feedback saturation trigger the 'Uncanny Valley' response in the auditory cortex."
+      }
+    ],
+    "collisionRules": [
+      {
+        "conflict": "Delay clashing with 808",
+        "action": "Set internal HP filter to 450Hz; use 'Invert' feedback mode to cancel low-frequency buildup."
+      },
+      {
+        "conflict": "Delay masking vocal clarity",
+        "action": "Increase Ducker Threshold to -15dB; set Release to 1/4 note interval in ms."
+      }
+    ]
+  }
+}

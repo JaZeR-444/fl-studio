@@ -1,0 +1,3052 @@
+{
+  "id": "flex",
+  "name": "FLEX",
+  "presets": {
+    "delay-reverb-spaces": {
+      "spatialPresets": {
+        "description": "Manual configuration recipes for FLEX's Delay and Reverb modules to create specific spatial environments. Apply these settings to the bottom FX row.",
+        "version": "1.1",
+        "parameter_ranges": {
+          "reverb": {
+            "decay": "0.1s - 10s",
+            "size": "0% - 100%",
+            "mix": "0% - 100%",
+            "color": "0% (dark) - 100% (bright)",
+            "mod": "0% - 100% (chorus effect)"
+          },
+          "delay": {
+            "time": "1ms - 2000ms or tempo-synced divisions",
+            "feedback": "0% - 100%+ (>100% creates infinite feedback)",
+            "mix": "0% - 100%",
+            "type": [
+              "Fake Stereo",
+              "True Stereo",
+              "Ping Pong"
+            ]
+          }
+        },
+        "spaces": [
+          {
+            "name": "Intimate Studio Room",
+            "instrument_type": "Vocals, Dry Guitars, Keys",
+            "description": "A tight, controlled space that adds dimension without being 'reverby'.",
+            "audio_characteristics": "Natural ambience, minimal reflections, preserved transients",
+            "cpu_impact": "Low",
+            "reverb_settings": {
+              "Decay": "0.6s",
+              "Size": "15%",
+              "Mix": "12%",
+              "Color": "50%",
+              "Mod": "0%"
+            },
+            "delay_settings": {
+              "Mix": "0% (Bypassed)"
+            },
+            "tips": [
+              "Perfect for lead vocals that need to sit up front",
+              "Increase Mix to 18-20% for background vocals"
+            ],
+            "common_mistakes": [
+              "Adding delay on top - it clutters the space",
+              "Using this on bass - bass should stay dry"
+            ]
+          },
+          {
+            "name": "Massive Valhalla Hall",
+            "instrument_type": "Trance Leads, Cinematic Pads",
+            "description": "Huge, lush, long-tail reverb for epic scale.",
+            "audio_characteristics": "Endless decay, cathedral-like depth, lush and immersive",
+            "cpu_impact": "High",
+            "reverb_settings": {
+              "Decay": "5.5s",
+              "Size": "100%",
+              "Mix": "50%",
+              "Color": "72%",
+              "Mod": "25%"
+            },
+            "delay_settings": {
+              "Type": "Ping Pong",
+              "Time": "1/4 Dot (tempo-synced)",
+              "Feedback": "42%",
+              "Mix": "32%"
+            },
+            "tips": [
+              "Perfect for epic builds and breakdowns",
+              "Automate the reverb mix from 30% to 60% during builds",
+              "Works great with long Attack envelopes (1-2s)"
+            ],
+            "common_mistakes": [
+              "Using this on busy elements - it will muddy the mix",
+              "Forgetting to sidechain compress against kick/snare"
+            ],
+            "genre_fit": [
+              "Trance",
+              "Cinematic",
+              "Ambient",
+              "Progressive House"
+            ]
+          },
+          {
+            "name": "Slapback Rock",
+            "instrument_type": "Guitars, Rock Vocals",
+            "description": "Vintage 50s/60s echo effect. Distinct single repeat.",
+            "audio_characteristics": "Short, single distinct echo like vintage tape delay",
+            "cpu_impact": "Very Low",
+            "delay_settings": {
+              "Type": "Fake Stereo",
+              "Time": "95ms (not tempo-synced)",
+              "Feedback": "8%",
+              "Mix": "30%",
+              "Color": "25%"
+            },
+            "reverb_settings": {
+              "Mix": "3%"
+            },
+            "tips": [
+              "Classic on rockabilly and surf guitar",
+              "Try 80-120ms range to taste",
+              "Keep feedback low - you want ONE clear repeat"
+            ],
+            "common_mistakes": [
+              "Using tempo-synced time - ruins the vintage feel",
+              "Adding too much reverb - defeats the tight character"
+            ],
+            "genre_fit": [
+              "Rockabilly",
+              "Surf Rock",
+              "Classic Rock",
+              "Country"
+            ]
+          },
+          {
+            "name": "Underwater Ambience",
+            "instrument_type": "Lo-Fi Pads, Background Textures",
+            "description": "Murky, submerged sound.",
+            "audio_characteristics": "Dark, muffled, dreamlike quality",
+            "cpu_impact": "Medium",
+            "reverb_settings": {
+              "Decay": "2.2s",
+              "Size": "85%",
+              "Mix": "55%",
+              "Color": "12%",
+              "Mod": "15%"
+            },
+            "delay_settings": {
+              "Type": "True Stereo",
+              "Time": "1/2 (tempo-synced)",
+              "Feedback": "35%",
+              "Mix": "28%",
+              "Color": "5%"
+            },
+            "tips": [
+              "Combine with Master Filter Low Pass at 2-4kHz for deeper submersion",
+              "Works great with long Attack envelopes",
+              "Perfect for transitional textures"
+            ],
+            "common_mistakes": [
+              "Not cutting enough highs - keeps it too clear",
+              "Using this on lead elements - they'll disappear"
+            ],
+            "genre_fit": [
+              "Lo-Fi",
+              "Ambient",
+              "Experimental",
+              "Chillwave"
+            ]
+          },
+          {
+            "name": "Rhythmic Ghost",
+            "instrument_type": "Plucks, Arps",
+            "description": "Creates a rhythmic backdrop behind the main sound.",
+            "audio_characteristics": "Bouncing stereo delays that create polyrhythmic texture",
+            "cpu_impact": "Medium",
+            "delay_settings": {
+              "Type": "Ping Pong",
+              "Time": "3/16 (dotted)",
+              "Feedback": "58%",
+              "Mix": "32%",
+              "Mod": "45%"
+            },
+            "reverb_settings": {
+              "Decay": "1.2s",
+              "Size": "40%",
+              "Mix": "18%",
+              "Color": "55%",
+              "Mod": "10%"
+            },
+            "tips": [
+              "Perfect for house and techno plucks",
+              "Try 3/8 for slower, spacier feel",
+              "Automate feedback for build-ups"
+            ],
+            "common_mistakes": [
+              "Too much feedback - creates chaos",
+              "Using on bass - muddies low end"
+            ],
+            "genre_fit": [
+              "Tech House",
+              "Techno",
+              "Progressive House",
+              "Trance"
+            ]
+          },
+          {
+            "name": "Dry Studio (Minimal Processing)",
+            "instrument_type": "Lead Vocals, Rap, Podcasts",
+            "description": "Ultra-dry with just a hint of space for natural sound.",
+            "audio_characteristics": "Upfront, present, intimate, clear articulation",
+            "cpu_impact": "Very Low",
+            "reverb_settings": {
+              "Decay": "0.3s",
+              "Size": "8%",
+              "Mix": "5%",
+              "Color": "48%",
+              "Mod": "0%"
+            },
+            "delay_settings": {
+              "Mix": "0%"
+            },
+            "tips": [
+              "Perfect for modern hip-hop and trap vocals",
+              "Keeps vocals cutting through dense beats",
+              "Add 10-15ms pre-delay for more separation (if FLEX supports it)"
+            ],
+            "common_mistakes": [
+              "Going completely 0% reverb - sounds unnatural",
+              "Using the same setting for background vocals"
+            ],
+            "genre_fit": [
+              "Hip-Hop",
+              "Trap",
+              "Drill",
+              "Modern Pop"
+            ]
+          },
+          {
+            "name": "Dub Echo Chamber",
+            "instrument_type": "Leads, Vocals, Keys",
+            "description": "Classic reggae/dub delay with heavy feedback and filtering.",
+            "audio_characteristics": "Trippy, infinite echoes, progressively darker repeats",
+            "cpu_impact": "Medium",
+            "delay_settings": {
+              "Type": "True Stereo",
+              "Time": "1/4 (tempo-synced)",
+              "Feedback": "75%",
+              "Mix": "45%",
+              "Color": "15%"
+            },
+            "reverb_settings": {
+              "Decay": "1.8s",
+              "Size": "60%",
+              "Mix": "25%",
+              "Color": "35%",
+              "Mod": "30%"
+            },
+            "tips": [
+              "Automate delay feedback from 0% to 85% for classic dub effects",
+              "Use on send track for more control",
+              "Combine with Limiter set to 'Warming' for analog character"
+            ],
+            "common_mistakes": [
+              "Not automating - static dub echo is boring",
+              "Feedback above 85% - creates runaway feedback"
+            ],
+            "genre_fit": [
+              "Dub",
+              "Reggae",
+              "Dub Techno",
+              "Ambient Dub"
+            ]
+          },
+          {
+            "name": "Stereo Widener (Haas Effect)",
+            "instrument_type": "Synths, Pads, Keys",
+            "description": "Uses ultra-short delays to widen mono sounds without reverb.",
+            "audio_characteristics": "Wide stereo image, maintains clarity, no wetness",
+            "cpu_impact": "Very Low",
+            "delay_settings": {
+              "Type": "Fake Stereo",
+              "Time": "15-25ms (not tempo-synced)",
+              "Feedback": "0%",
+              "Mix": "30%",
+              "Color": "50%"
+            },
+            "reverb_settings": {
+              "Mix": "0%"
+            },
+            "tips": [
+              "Perfect for synths that need width without losing focus",
+              "Keep delay time under 30ms to avoid audible echo",
+              "Check mono compatibility - may cause phase issues"
+            ],
+            "common_mistakes": [
+              "Using on bass - destroys mono compatibility",
+              "Delay time too long - creates audible slap",
+              "Combining with wide unison - gets too wide"
+            ],
+            "genre_fit": [
+              "All genres for width enhancement"
+            ]
+          },
+          {
+            "name": "Plate Reverb (Vintage)",
+            "instrument_type": "Drums, Snares, Vocals",
+            "description": "Simulates classic EMT plate reverb - bright and dense.",
+            "audio_characteristics": "Dense, bright, metallic shimmer, short-to-medium decay",
+            "cpu_impact": "Medium",
+            "reverb_settings": {
+              "Decay": "1.5s",
+              "Size": "45%",
+              "Mix": "22%",
+              "Color": "78%",
+              "Mod": "8%"
+            },
+            "delay_settings": {
+              "Mix": "0%"
+            },
+            "tips": [
+              "Classic on snares and vocals",
+              "Increase Color to 85%+ for '80s snare sound",
+              "Works great with Limiter set to 'Warming'"
+            ],
+            "common_mistakes": [
+              "Too much size - loses the 'plate' character",
+              "Using on bass or low instruments"
+            ],
+            "genre_fit": [
+              "Rock",
+              "Pop",
+              "R&B",
+              "80s Music"
+            ]
+          },
+          {
+            "name": "Spring Reverb (Surf)",
+            "instrument_type": "Guitars, Organs",
+            "description": "Emulates vintage spring reverb tanks found in guitar amps.",
+            "audio_characteristics": "Boingy, metallic, lo-fi character",
+            "cpu_impact": "Low",
+            "reverb_settings": {
+              "Decay": "0.9s",
+              "Size": "25%",
+              "Mix": "28%",
+              "Color": "42%",
+              "Mod": "35%"
+            },
+            "delay_settings": {
+              "Mix": "0%"
+            },
+            "tips": [
+              "High mod rate simulates spring wobble",
+              "Keep decay short for authentic sound",
+              "Combine with Slapback Rock delay for surf guitar"
+            ],
+            "common_mistakes": [
+              "Making decay too long - real springs are short",
+              "Not enough mod - loses the characteristic wobble"
+            ],
+            "genre_fit": [
+              "Surf Rock",
+              "Garage Rock",
+              "Vintage Pop",
+              "Psych Rock"
+            ]
+          }
+        ],
+        "combination_tips": [
+          "Intimate Studio Room + Slapback Rock = Modern country vocal",
+          "Massive Valhalla Hall + Rhythmic Ghost = Trance lead",
+          "Dry Studio + Stereo Widener = Modern trap vocal",
+          "Dub Echo Chamber + Underwater Ambience = Experimental ambient"
+        ],
+        "automation_ideas": [
+          "Automate reverb mix from 0% to 60% during breakdowns",
+          "Automate delay feedback from 30% to 85% for dub effects",
+          "Automate reverb color from 20% to 80% for evolving textures",
+          "Automate delay time (if possible) for pitch-shift effects"
+        ]
+      }
+    },
+    "envelope-shapes": {
+      "envelopeShapes": {
+        "description": "Standard ADSR (Attack, Hold, Decay, Sustain, Release) configurations for common sound types. Apply these to the Volume Envelope sliders in FLEX.",
+        "version": "1.1",
+        "envelope_basics": {
+          "Attack": "Time from 0% to 100% volume after key press",
+          "Hold": "Time at 100% volume before decay starts",
+          "Decay": "Time from 100% down to Sustain level",
+          "Sustain": "Volume level held while key is pressed",
+          "Release": "Time from current level to 0% after key release"
+        },
+        "percentage_to_time_guide": {
+          "0%": "Instant / 0ms",
+          "10%": "~10-30ms (Very fast)",
+          "25%": "~50-100ms (Fast)",
+          "50%": "~200-500ms (Medium)",
+          "75%": "~1-2s (Slow)",
+          "100%": "~3-5s+ (Very slow)"
+        },
+        "shapes": [
+          {
+            "name": "Sharp Pluck",
+            "instrument_type": "Lead, Bell, Guitar, Marimba",
+            "description": "Immediate impact with no sustain. Sounds like a string being plucked.",
+            "visual_ascii": "|\n|\\___",
+            "settings": {
+              "Attack": "0%",
+              "Hold": "0%",
+              "Decay": "30%",
+              "Sustain": "0%",
+              "Release": "15%"
+            },
+            "sound_character": "Percussive, defined transient, natural decay",
+            "use_cases": [
+              "Plucked strings and guitars",
+              "Bells and metallic sounds",
+              "Pizzicato strings",
+              "Short synth leads"
+            ],
+            "common_problems": [
+              {
+                "symptom": "Sound cuts off too quickly",
+                "solution": "Increase Release to 20-30%"
+              },
+              {
+                "symptom": "Sound has click at start",
+                "solution": "Increase Attack slightly to 2-5%"
+              }
+            ],
+            "velocity_interaction": "High velocity should trigger brighter tone - check if Macro controls velocity sensitivity",
+            "mix_tips": [
+              "Perfect for rhythmic patterns",
+              "Works great with short reverbs (0.5-1s)",
+              "Layer with longer release for sustained chords"
+            ]
+          },
+          {
+            "name": "Atmospheric Pad",
+            "instrument_type": "Pad, Drone, Texture",
+            "description": "Slow fade-in and long fade-out. No sudden movements.",
+            "visual_ascii": "    ___\n  /     \\\n /       \\___",
+            "settings": {
+              "Attack": "70%",
+              "Hold": "20%",
+              "Decay": "0%",
+              "Sustain": "100%",
+              "Release": "70%"
+            },
+            "sound_character": "Swelling, evolving, cinematic, no transients",
+            "use_cases": [
+              "Cinematic background textures",
+              "Ambient music foundations",
+              "Film score swells",
+              "Trance breakdowns"
+            ],
+            "common_problems": [
+              {
+                "symptom": "Takes too long to hear the sound",
+                "solution": "Reduce Attack to 40-50%"
+              },
+              {
+                "symptom": "Sounds muddy in the mix",
+                "solution": "Use High Pass filter or reduce Release to 50%"
+              }
+            ],
+            "velocity_interaction": "Low velocity sensitivity - pads should be consistent",
+            "mix_tips": [
+              "Use long reverbs (3-5s decay)",
+              "Automate Filter Cutoff for movement",
+              "Layer multiple instances with different Attack times"
+            ]
+          },
+          {
+            "name": "Punchy Bass / 808",
+            "instrument_type": "Bass, Sub Bass, 808",
+            "description": "Hard hit that sustains fully, but stops immediately when key is released (to avoid mud).",
+            "visual_ascii": "|‾‾‾‾‾\n|",
+            "settings": {
+              "Attack": "0%",
+              "Hold": "10%",
+              "Decay": "20%",
+              "Sustain": "85%",
+              "Release": "8%"
+            },
+            "sound_character": "Tight, punchy, controlled, no bleed",
+            "use_cases": [
+              "Trap and hip-hop 808s",
+              "EDM sub bass",
+              "Kick bass hybrids",
+              "Modern pop bass"
+            ],
+            "common_problems": [
+              {
+                "symptom": "Bass notes run into each other",
+                "solution": "Reduce Release to 3-5%"
+              },
+              {
+                "symptom": "Bass has click at start",
+                "solution": "Increase Attack to 2-3%"
+              },
+              {
+                "symptom": "Bass cuts off too abruptly",
+                "solution": "Increase Release to 12-15%"
+              }
+            ],
+            "velocity_interaction": "Should respond to velocity for dynamic expression",
+            "mix_tips": [
+              "Keep completely dry (0% reverb)",
+              "Use Limiter 'Distortion' mode for grit",
+              "Sidechain to kick for cleaner mix"
+            ]
+          },
+          {
+            "name": "Orchestral Strings (Legato)",
+            "instrument_type": "Violin, Cello, Viola",
+            "description": "Natural bow movement. Not instant, but not a slow pad.",
+            "visual_ascii": "  /‾‾‾‾\n /     \\__",
+            "settings": {
+              "Attack": "25%",
+              "Hold": "0%",
+              "Decay": "0%",
+              "Sustain": "100%",
+              "Release": "35%"
+            },
+            "sound_character": "Natural, organic swell, realistic bow articulation",
+            "use_cases": [
+              "Orchestral arrangements",
+              "Film scoring",
+              "Classical music",
+              "Emotional ballads"
+            ],
+            "common_problems": [
+              {
+                "symptom": "Sounds too synth-like",
+                "solution": "Add slight random variation to Attack times (layer multiple instances)"
+              },
+              {
+                "symptom": "Notes don't connect smoothly",
+                "solution": "Increase Release or use portamento/glide"
+              }
+            ],
+            "velocity_interaction": "Critical - high velocity = louder and brighter",
+            "mix_tips": [
+              "Use medium reverb (1.5-2.5s)",
+              "Slight Attack variation adds realism",
+              "Layer with different velocities for depth"
+            ]
+          },
+          {
+            "name": "Percussive Hit / Stab",
+            "instrument_type": "Drum, Stab, Impact",
+            "description": "One-shot sound. Key hold duration doesn't matter.",
+            "visual_ascii": "|\\\n| \\___",
+            "settings": {
+              "Attack": "0%",
+              "Hold": "0%",
+              "Decay": "40%",
+              "Sustain": "0%",
+              "Release": "40%"
+            },
+            "sound_character": "Percussive, one-shot, impact sound",
+            "use_cases": [
+              "Drum hits",
+              "Synth stabs",
+              "Sound effects",
+              "Orchestral hits"
+            ],
+            "common_problems": [
+              {
+                "symptom": "Sound is too short",
+                "solution": "Increase Decay and Release to 60-80%"
+              },
+              {
+                "symptom": "Multiple hits blend together",
+                "solution": "Reduce Release to 20-30%"
+              }
+            ],
+            "velocity_interaction": "Should be highly velocity-sensitive",
+            "mix_tips": [
+              "Short reverbs work best (0.5-1s)",
+              "Use Limiter 'Heating' for more punch",
+              "Perfect for rhythmic patterns"
+            ]
+          },
+          {
+            "name": "Smooth Organ",
+            "instrument_type": "Organ, Sustained Keys",
+            "description": "Instant on, instant off. Like turning a switch.",
+            "visual_ascii": " ‾‾‾‾‾\n|     |\n",
+            "settings": {
+              "Attack": "0%",
+              "Hold": "0%",
+              "Decay": "0%",
+              "Sustain": "100%",
+              "Release": "5%"
+            },
+            "sound_character": "Immediate, sustained, no dynamics",
+            "use_cases": [
+              "Organ sounds",
+              "Accordion",
+              "Harmonium",
+              "Square wave leads"
+            ],
+            "common_problems": [
+              {
+                "symptom": "Click at note start",
+                "solution": "Add minimal Attack (2-3%)"
+              },
+              {
+                "symptom": "Click at note end",
+                "solution": "Increase Release to 8-10%"
+              }
+            ],
+            "velocity_interaction": "Minimal - organs maintain constant volume",
+            "mix_tips": [
+              "Works with medium reverbs",
+              "Add rotary speaker effect for authentic sound",
+              "Great for sustained chords"
+            ]
+          },
+          {
+            "name": "Piano (Acoustic)",
+            "instrument_type": "Piano, Acoustic Keys",
+            "description": "Fast attack with long, natural decay that fades out even while held.",
+            "visual_ascii": "|\\\n| \\\n|  \\___",
+            "settings": {
+              "Attack": "0%",
+              "Hold": "0%",
+              "Decay": "55%",
+              "Sustain": "35%",
+              "Release": "45%"
+            },
+            "sound_character": "Natural piano decay, percussive start, long tail",
+            "use_cases": [
+              "Acoustic piano",
+              "Electric piano",
+              "Clavinet",
+              "Harpsichord"
+            ],
+            "common_problems": [
+              {
+                "symptom": "Sound cuts off when held",
+                "solution": "Increase Sustain to 50-60%"
+              },
+              {
+                "symptom": "Too much sustain - not natural",
+                "solution": "Reduce Sustain to 20-30%"
+              }
+            ],
+            "velocity_interaction": "Critical for expressiveness - map velocity to filter and volume",
+            "mix_tips": [
+              "Medium reverb with short pre-delay",
+              "Slight compression for evenness",
+              "High velocity sensitivity essential"
+            ]
+          },
+          {
+            "name": "Brass Swell",
+            "instrument_type": "Trumpet, Trombone, French Horn",
+            "description": "Medium attack with full sustain - mimics breath control.",
+            "visual_ascii": "  /‾‾‾‾‾\n /       \\",
+            "settings": {
+              "Attack": "30%",
+              "Hold": "10%",
+              "Decay": "10%",
+              "Sustain": "95%",
+              "Release": "25%"
+            },
+            "sound_character": "Breath-like swell, powerful sustain, controlled release",
+            "use_cases": [
+              "Brass sections",
+              "Solo trumpet/trombone",
+              "Big band arrangements",
+              "Film score brass"
+            ],
+            "common_problems": [
+              {
+                "symptom": "Attack too slow for fast passages",
+                "solution": "Create separate preset with Attack at 10-15%"
+              },
+              {
+                "symptom": "Sounds too synth-like",
+                "solution": "Automate Macro 1 for vibrato/expression"
+              }
+            ],
+            "velocity_interaction": "High velocity = louder and brighter brass tone",
+            "mix_tips": [
+              "Medium reverb with natural room sound",
+              "Automate expression for realism",
+              "Layer multiple takes for section sound"
+            ]
+          },
+          {
+            "name": "Synthesizer Lead (Short)",
+            "instrument_type": "EDM Lead, Synth Solo",
+            "description": "Fast attack, short decay - aggressive and cutting.",
+            "visual_ascii": "|\\__\n|",
+            "settings": {
+              "Attack": "0%",
+              "Hold": "5%",
+              "Decay": "25%",
+              "Sustain": "50%",
+              "Release": "20%"
+            },
+            "sound_character": "Punchy, articulate, defined notes",
+            "use_cases": [
+              "EDM leads",
+              "House synth riffs",
+              "Techno sequences",
+              "Trance leads"
+            ],
+            "common_problems": [
+              {
+                "symptom": "Notes blend together",
+                "solution": "Reduce Release to 10%"
+              },
+              {
+                "symptom": "Too short and choppy",
+                "solution": "Increase Sustain to 70%"
+              }
+            ],
+            "velocity_interaction": "Medium sensitivity for dynamic playing",
+            "mix_tips": [
+              "Use Ping Pong delay for width",
+              "Short reverbs (0.5-1s)",
+              "Automate filter cutoff for movement"
+            ]
+          },
+          {
+            "name": "Synthesizer Lead (Long)",
+            "instrument_type": "Trance Lead, Progressive Lead",
+            "description": "Medium attack with long sustain - soaring and epic.",
+            "visual_ascii": "   /‾‾‾‾‾‾\n  /        \\\n /          \\__",
+            "settings": {
+              "Attack": "35%",
+              "Hold": "15%",
+              "Decay": "15%",
+              "Sustain": "90%",
+              "Release": "50%"
+            },
+            "sound_character": "Soaring, epic, emotional build",
+            "use_cases": [
+              "Trance leads",
+              "Progressive house leads",
+              "Melodic techno",
+              "Emotional breakdowns"
+            ],
+            "common_problems": [
+              {
+                "symptom": "Takes too long to start",
+                "solution": "Reduce Attack to 20-25%"
+              },
+              {
+                "symptom": "Too much overlap between notes",
+                "solution": "Reduce Release to 30-35%"
+              }
+            ],
+            "velocity_interaction": "Low sensitivity - consistent melody volume",
+            "mix_tips": [
+              "Large reverbs (3-5s)",
+              "Delay with high feedback",
+              "Automate attack time for variation"
+            ]
+          }
+        ],
+        "envelope_application_tips": [
+          "Start with a preset close to your target sound",
+          "Adjust one parameter at a time and listen",
+          "Use automation clips to vary envelopes over time",
+          "Check envelope behavior at different velocities"
+        ],
+        "genre_specific_approaches": {
+          "EDM": "Fast attacks, medium releases - keep it punchy",
+          "Ambient": "Long attacks and releases - create evolving textures",
+          "Hip-Hop": "Sharp attacks, short releases - tight and controlled",
+          "Classical": "Natural attacks and releases - mimic real instruments",
+          "Trap": "Instant attacks, varies releases - bass short, leads medium"
+        }
+      }
+    },
+    "genre-templates": {
+      "genreTemplates": {
+        "description": "Recommended starting points for FLEX settings based on musical genre. Use these as a checklist when initializing a new patch.",
+        "version": "1.1",
+        "how_to_use": [
+          "1. Load a FLEX preset from the recommended packs",
+          "2. Apply the macro suggestions from the genre template",
+          "3. Configure the FX chain as specified",
+          "4. Fine-tune envelope settings for your specific sound",
+          "5. Remember: these are starting points, not rules"
+        ],
+        "genres": [
+          {
+            "name": "Lo-Fi Hip Hop",
+            "bpm_range": "70-90 BPM",
+            "character": "Imperfect, Dusty, Warm",
+            "macro_suggestions": {
+              "Detune/Wobble": "30-50% (Visible pitch drift)",
+              "Noise": "10-20% (Subtle vinyl crackle)",
+              "Brightness": "Low (Muffled)"
+            },
+            "fx_chain": {
+              "Master_Filter": "Low Pass 12dB @ 2-3kHz",
+              "Limiter": "Warming (High Pre-gain)",
+              "Reverb": "Small Room, Short Decay"
+            }
+          },
+          {
+            "name": "Synthwave / Retrowave",
+            "bpm_range": "100-120 BPM",
+            "character": "Neon, Analog, Glossy",
+            "macro_suggestions": {
+              "Unison": "High (Thick analog feel)",
+              "Glide": "10-15% (Subtle portamento)",
+              "Cutoff": "Medium-High (Bright)"
+            },
+            "fx_chain": {
+              "Delay": "Ping Pong, 3/8 time, High Feedback",
+              "Reverb": "Large Hall (Gated feel)",
+              "Limiter": "Limiter (Clean)"
+            }
+          },
+          {
+            "name": "Modern Trap",
+            "bpm_range": "130-160 BPM",
+            "character": "Dark, Minimal, Distorted",
+            "macro_suggestions": {
+              "Reverb": "Very High (Drenched)",
+              "Attack": "Fast (for leads/bells)",
+              "Release": "Long (for atmosphere)"
+            },
+            "fx_chain": {
+              "Master_Filter": "High Pass (Keep 808 space clear)",
+              "Limiter": "Distortion (for 808s)",
+              "Delay": "1/4 Note, Simple Stereo"
+            }
+          },
+          {
+            "name": "Cinematic / Score",
+            "bpm_range": "Variable (60-120 BPM)",
+            "character": "Huge, Dynamic, Evolving",
+            "key_characteristics": "Epic scale, emotional depth, dynamic range",
+            "recommended_packs": [
+              "Essential Strings",
+              "Essential Brass",
+              "Cinematic Pads"
+            ],
+            "macro_suggestions": {
+              "Dynamics/Expression": "Automated constantly (critical)",
+              "Timbre": "Start low (30%), open to 80% during climax",
+              "Attack": "Slow 50-70%",
+              "Vibrato/Mod": "30-40% for realism"
+            },
+            "envelope_settings": {
+              "Attack": "35-70% (slow swells)",
+              "Sustain": "90-100% (full power)",
+              "Release": "50-70% (long tails)"
+            },
+            "fx_chain": {
+              "Reverb": {
+                "Decay": "5s+",
+                "Size": "100%",
+                "Mix": "40-50%",
+                "Color": "60%"
+              },
+              "Delay": {
+                "Type": "True Stereo",
+                "Time": "1/4",
+                "Mix": "15%",
+                "Feedback": "25%"
+              },
+              "Master_Filter": "Off (full frequency range)",
+              "Limiter": "Limiter (transparent, preserve dynamics)"
+            },
+            "mixing_tips": [
+              "Layer multiple instances for depth",
+              "Automate reverb mix during swells (20% to 60%)",
+              "Use sidechain on pads when strings enter",
+              "Leave headroom - don't over-compress"
+            ],
+            "common_mistakes": [
+              "Too much compression - kills dynamics",
+              "Not enough automation - sounds static",
+              "Reverb too short - loses epic scale"
+            ]
+          },
+          {
+            "name": "Deep House",
+            "bpm_range": "120-125 BPM",
+            "character": "Groovy, Warm, Soulful, Spacious",
+            "key_characteristics": "Deep basslines, warm chords, soulful vocals, jazzy elements",
+            "recommended_packs": [
+              "Essential 808s",
+              "Essential Keys",
+              "Vintage Synths"
+            ],
+            "macro_suggestions": {
+              "Warmth": "50-60%",
+              "Detune/Unison": "20-30% (analog feel)",
+              "Brightness": "40-50% (warm, not harsh)",
+              "Glide": "10-15% (subtle portamento)"
+            },
+            "envelope_settings": {
+              "Attack": "10-20% (gentle fade)",
+              "Sustain": "80-90%",
+              "Release": "30-40% (smooth tails)"
+            },
+            "fx_chain": {
+              "Reverb": {
+                "Decay": "2-3s",
+                "Size": "60-70%",
+                "Mix": "25-35%",
+                "Color": "45%"
+              },
+              "Delay": {
+                "Type": "True Stereo",
+                "Time": "1/8 Dot",
+                "Mix": "20%",
+                "Feedback": "30%"
+              },
+              "Master_Filter": "Off or gentle Low Pass @ 12kHz",
+              "Limiter": "Warming (analog character)"
+            },
+            "mixing_tips": [
+              "Keep bass mono and dry",
+              "Add vintage warmth with Limiter 'Warming' mode",
+              "Use medium reverb on chords",
+              "Subtle delay for groove elements"
+            ],
+            "common_mistakes": [
+              "Bass too wide - causes phase issues",
+              "Too bright - loses warmth",
+              "Too much reverb on bass"
+            ]
+          },
+          {
+            "name": "Techno / Industrial",
+            "bpm_range": "125-135 BPM",
+            "character": "Dark, Hypnotic, Driving, Minimal",
+            "key_characteristics": "Repetitive elements, dark atmosphere, heavy bass, industrial textures",
+            "recommended_packs": [
+              "Essential 808s",
+              "Analog Synths",
+              "Industrial Sounds"
+            ],
+            "macro_suggestions": {
+              "Distortion/Drive": "40-70%",
+              "Resonance": "50-80% (acid elements)",
+              "Modulation": "30-50% (movement)",
+              "Reverb": "20-30% (controlled space)"
+            },
+            "envelope_settings": {
+              "Attack": "0-5% (immediate)",
+              "Sustain": "70-90%",
+              "Release": "15-25% (tight)"
+            },
+            "fx_chain": {
+              "Reverb": {
+                "Decay": "1.5-2.5s",
+                "Size": "50%",
+                "Mix": "15-25%",
+                "Color": "30%"
+              },
+              "Delay": {
+                "Type": "Ping Pong",
+                "Time": "1/8 or 1/16",
+                "Mix": "25%",
+                "Feedback": "45%"
+              },
+              "Master_Filter": "Automate Low Pass or High Pass",
+              "Limiter": "Distortion (for aggressive sounds)"
+            },
+            "mixing_tips": [
+              "Automate filter cutoff for builds",
+              "Use heavy sidechain compression",
+              "Keep elements minimal and repetitive",
+              "Dark color palette in reverb"
+            ],
+            "common_mistakes": [
+              "Too many elements - loses hypnotic quality",
+              "Reverb too bright",
+              "Not enough automation"
+            ]
+          },
+          {
+            "name": "Dubstep / Riddim",
+            "bpm_range": "140-150 BPM (Half-time feel)",
+            "character": "Aggressive, Heavy, Modulated, Distorted",
+            "key_characteristics": "Heavy wobble bass, aggressive modulation, sparse arrangement, sub focus",
+            "recommended_packs": [
+              "Essential 808s",
+              "Bass Collection"
+            ],
+            "macro_suggestions": {
+              "Modulation/LFO": "70-100% (heavy wobble)",
+              "Distortion": "60-90%",
+              "Filter Cutoff": "Automate aggressively",
+              "Resonance": "60-80%"
+            },
+            "envelope_settings": {
+              "Attack": "0% (instant impact)",
+              "Sustain": "100% (hold the note)",
+              "Release": "5-10% (tight stops)"
+            },
+            "fx_chain": {
+              "Reverb": {
+                "Decay": "1.2s",
+                "Size": "40%",
+                "Mix": "20%",
+                "Color": "50%"
+              },
+              "Delay": {
+                "Type": "True Stereo",
+                "Time": "1/4",
+                "Mix": "15%",
+                "Feedback": "20%"
+              },
+              "Master_Filter": "Automate aggressively for wobbles",
+              "Limiter": "Distortion (maximum aggression)"
+            },
+            "mixing_tips": [
+              "Layer multiple bass sounds",
+              "Keep sub separate from mid bass",
+              "Automate everything - wobbles, filters, effects",
+              "Heavy compression and limiting"
+            ],
+            "common_mistakes": [
+              "Sub bass not mono",
+              "Too much reverb on bass",
+              "Static wobbles - needs automation"
+            ]
+          },
+          {
+            "name": "Trance / Uplifting",
+            "bpm_range": "135-140 BPM",
+            "character": "Euphoric, Energetic, Melodic, Uplifting",
+            "key_characteristics": "Soaring leads, lush pads, arpeggiated plucks, emotional breakdowns",
+            "recommended_packs": [
+              "Essential Leads",
+              "Trance Synths",
+              "Epic Pads"
+            ],
+            "macro_suggestions": {
+              "Unison": "60-80% (thick sound)",
+              "Brightness": "70-85% (bright and cutting)",
+              "Attack": "30-50% (swelling leads)",
+              "Reverb": "40-60% (huge space)"
+            },
+            "envelope_settings": {
+              "Attack": "35-50% (soaring quality)",
+              "Sustain": "90-100%",
+              "Release": "50-60% (long tails)"
+            },
+            "fx_chain": {
+              "Reverb": {
+                "Decay": "4-6s",
+                "Size": "90-100%",
+                "Mix": "45-55%",
+                "Color": "75%",
+                "Mod": "25%"
+              },
+              "Delay": {
+                "Type": "Ping Pong",
+                "Time": "1/4 or 1/2 Dot",
+                "Mix": "35%",
+                "Feedback": "50%"
+              },
+              "Master_Filter": "Off (full brightness)",
+              "Limiter": "Limiter (clean and loud)"
+            },
+            "mixing_tips": [
+              "Huge reverbs and delays",
+              "Automate filter for builds",
+              "Layer multiple leads for thickness",
+              "Sidechain everything to kick"
+            ],
+            "common_mistakes": [
+              "Not enough reverb - loses epic scale",
+              "Static leads - needs modulation",
+              "Too muddy - high-pass pads"
+            ]
+          },
+          {
+            "name": "Drum & Bass",
+            "bpm_range": "170-180 BPM",
+            "character": "Fast, Energetic, Complex, Bass-Heavy",
+            "key_characteristics": "Fast breakbeats, heavy sub bass, complex rhythms, atmospheric pads",
+            "recommended_packs": [
+              "Essential 808s",
+              "Bass Collection",
+              "Atmospheric Pads"
+            ],
+            "macro_suggestions": {
+              "Sub Level": "High (dominant bass)",
+              "Movement/Modulation": "50-70%",
+              "Brightness": "Variable by element",
+              "Distortion": "30-50% (controlled aggression)"
+            },
+            "envelope_settings": {
+              "Attack": "0-10% (tight transients)",
+              "Sustain": "Variable",
+              "Release": "15-30% (controlled)"
+            },
+            "fx_chain": {
+              "Reverb": {
+                "Decay": "1.5-2.5s",
+                "Size": "60%",
+                "Mix": "20-30%",
+                "Color": "55%"
+              },
+              "Delay": {
+                "Type": "True Stereo",
+                "Time": "1/8 or 1/16",
+                "Mix": "20%",
+                "Feedback": "30%"
+              },
+              "Master_Filter": "High Pass for pads to clear bass space",
+              "Limiter": "Heating (punch and energy)"
+            },
+            "mixing_tips": [
+              "Sub bass must be mono and clean",
+              "Reese bass in stereo above 150Hz",
+              "Complex delay patterns for atmosphere",
+              "Heavy sidechain on everything except sub"
+            ],
+            "common_mistakes": [
+              "Sub bass too wide",
+              "Too much processing on bass",
+              "Not enough space for drums"
+            ]
+          },
+          {
+            "name": "Future Bass",
+            "bpm_range": "140-160 BPM",
+            "character": "Bright, Cheerful, Lush, Modern",
+            "key_characteristics": "Bright supersaws, vocal chops, dynamic drops, emotional melodies",
+            "recommended_packs": [
+              "Modern Synths",
+              "Essential Leads",
+              "Vocal Packs"
+            ],
+            "macro_suggestions": {
+              "Unison/Voices": "70-90% (thick supersaws)",
+              "Brightness": "75-90% (bright and sparkly)",
+              "Detune": "40-60% (wide chorused sound)",
+              "Modulation": "50-70% (movement and life)"
+            },
+            "envelope_settings": {
+              "Attack": "10-30% (punchy but smooth)",
+              "Sustain": "85-95%",
+              "Release": "35-45%"
+            },
+            "fx_chain": {
+              "Reverb": {
+                "Decay": "2.5-3.5s",
+                "Size": "75%",
+                "Mix": "35-45%",
+                "Color": "70%",
+                "Mod": "30%"
+              },
+              "Delay": {
+                "Type": "Ping Pong",
+                "Time": "1/4 Dot or 1/8",
+                "Mix": "30%",
+                "Feedback": "40%"
+              },
+              "Master_Filter": "Off (keep brightness)",
+              "Limiter": "Limiter (clean and punchy)"
+            },
+            "mixing_tips": [
+              "Layer multiple detuned synths",
+              "Heavy sidechain on chords",
+              "Bright reverbs with modulation",
+              "Dynamic automation on filters"
+            ],
+            "common_mistakes": [
+              "Not enough unison/detune",
+              "Too dark - needs brightness",
+              "Static - needs constant movement"
+            ]
+          },
+          {
+            "name": "R&B / Neo-Soul",
+            "bpm_range": "70-95 BPM",
+            "character": "Smooth, Soulful, Warm, Intimate",
+            "key_characteristics": "Smooth chords, warm bass, soulful keys, subtle textures",
+            "recommended_packs": [
+              "Essential Keys",
+              "Vintage Organs",
+              "Electric Pianos"
+            ],
+            "macro_suggestions": {
+              "Warmth": "60-75%",
+              "Detune": "15-25% (subtle analog vibe)",
+              "Brightness": "40-55% (warm, not harsh)",
+              "Vibrato": "20-35% (natural modulation)"
+            },
+            "envelope_settings": {
+              "Attack": "15-25% (soft entry)",
+              "Sustain": "80-95%",
+              "Release": "40-55% (smooth decay)"
+            },
+            "fx_chain": {
+              "Reverb": {
+                "Decay": "1.8-2.5s",
+                "Size": "50-65%",
+                "Mix": "20-30%",
+                "Color": "48%"
+              },
+              "Delay": {
+                "Type": "True Stereo",
+                "Time": "1/4 Dot",
+                "Mix": "15-20%",
+                "Feedback": "25%"
+              },
+              "Master_Filter": "Gentle Low Pass @ 10-12kHz",
+              "Limiter": "Warming (analog saturation)"
+            },
+            "mixing_tips": [
+              "Use vintage warmth on everything",
+              "Subtle chorus/detune for width",
+              "Medium reverbs with warm color",
+              "Don't over-compress - keep dynamics"
+            ],
+            "common_mistakes": [
+              "Too bright - loses soul",
+              "Over-processing - loses organic feel",
+              "Not enough warmth"
+            ]
+          }
+        ],
+        "cross_genre_tips": [
+          "Always start with envelope settings that match the genre's energy",
+          "Reverb decay time should match tempo (faster BPM = shorter decay)",
+          "Aggressive genres benefit from Limiter 'Distortion' mode",
+          "Emotional genres need long attacks and releases",
+          "Electronic genres use more automation than organic genres"
+        ],
+        "pack_recommendations_summary": {
+          "Essential 808s": [
+            "Trap",
+            "Hip-Hop",
+            "Deep House",
+            "Techno",
+            "Dubstep",
+            "Drum & Bass"
+          ],
+          "Essential Keys": [
+            "Lo-Fi Hip Hop",
+            "R&B",
+            "Neo-Soul",
+            "Deep House"
+          ],
+          "Essential Strings": [
+            "Cinematic",
+            "Classical",
+            "Emotional Pop"
+          ],
+          "Analog Synths": [
+            "Techno",
+            "House",
+            "Synthwave"
+          ],
+          "Modern Synths": [
+            "Future Bass",
+            "EDM",
+            "Progressive House"
+          ]
+        }
+      }
+    },
+    "limiter-dynamics": {
+      "dynamicsPresets": {
+        "description": "Recipes for the Limiter section (Bottom Right) to achieve different dynamic characters and saturation colors.",
+        "version": "1.1",
+        "limiter_types_explained": {
+          "Limiter": "Clean, transparent peak limiting - no coloration",
+          "Warming": "Soft-knee compression with mild saturation - analog warmth",
+          "Heating": "Harder compression with noticeable saturation - aggressive",
+          "Distortion": "Hard clipping and overdrive - heavy coloration",
+          "Custom": "Preset-defined curve - varies by sound designer"
+        },
+        "parameter_ranges": {
+          "Pre": "0-100% (Input gain into limiter)",
+          "Mix": "0-100% (Blend between dry and processed signal)"
+        },
+        "presets": [
+          {
+            "name": "Transparent Safety",
+            "use_case": "Standard Mixing, Mastering, Clean Sounds",
+            "description": "Catches peaks without coloring the sound. Default behavior.",
+            "sonic_character": "Invisible limiting, maintains dynamic range, no harmonics added",
+            "cpu_impact": "Low",
+            "settings": {
+              "Type": "Limiter",
+              "Pre": "0%",
+              "Mix": "100%"
+            },
+            "when_to_use": [
+              "When you need peak protection only",
+              "Preserving transients on drums",
+              "Clean digital production",
+              "Classical and acoustic music"
+            ],
+            "tips": [
+              "Increase Pre slightly (5-10%) if preset is too quiet",
+              "This is the default for a reason - start here"
+            ],
+            "genre_fit": [
+              "All genres",
+              "Classical",
+              "Jazz",
+              "Acoustic"
+            ]
+          },
+          {
+            "name": "Analog Warmth",
+            "use_case": "Pads, Keys, Vintage Synths, Lo-Fi",
+            "description": "Subtle saturation that thickens the sound, similar to tube gear.",
+            "sonic_character": "Warm, slightly compressed, adds even harmonics, glues elements together",
+            "cpu_impact": "Low-Medium",
+            "settings": {
+              "Type": "Warming",
+              "Pre": "30%",
+              "Mix": "100%"
+            },
+            "when_to_use": [
+              "Adding vintage character to digital sounds",
+              "Warming up cold synth presets",
+              "Creating lo-fi aesthetics",
+              "Gluing chord layers together"
+            ],
+            "tips": [
+              "Push Pre to 40-50% for more obvious warmth",
+              "Combine with Master Filter Low Pass for vintage vibe",
+              "Works great on Rhodes, Wurlitzer, and organ sounds"
+            ],
+            "before_after": "Before: Crisp, digital. After: Warm, slightly compressed, cohesive",
+            "genre_fit": [
+              "Lo-Fi Hip Hop",
+              "R&B",
+              "Neo-Soul",
+              "Synthwave",
+              "Deep House"
+            ]
+          },
+          {
+            "name": "Hard Drive / Fuzz",
+            "use_case": "Aggressive Bass, Rock Leads, Industrial",
+            "description": "Heavy distortion that obliterates dynamics for maximum loudness.",
+            "sonic_character": "Distorted, saturated, aggressive, adds odd harmonics, compressed",
+            "cpu_impact": "Medium",
+            "settings": {
+              "Type": "Distortion",
+              "Pre": "85%",
+              "Mix": "100%"
+            },
+            "when_to_use": [
+              "Aggressive trap 808s",
+              "Dubstep/riddim bass",
+              "Industrial techno leads",
+              "Rock and metal tones"
+            ],
+            "tips": [
+              "Crank Pre to 100% for maximum destruction",
+              "Use High Pass filter before this to avoid mud",
+              "Combine with resonant filter for acid sounds"
+            ],
+            "before_after": "Before: Clean bass. After: Aggressive, distorted, cuts through mix",
+            "genre_fit": [
+              "Trap",
+              "Dubstep",
+              "Industrial",
+              "Hard Techno",
+              "Metal"
+            ],
+            "warning": "Can be very loud - adjust mixer level accordingly"
+          },
+          {
+            "name": "Parallel Glue",
+            "use_case": "Drum Loops, Pluck Chords, Dynamic Layers",
+            "description": "Mixes a heavily compressed signal with the clean signal for punch + transients.",
+            "sonic_character": "Punchy transients with added body and sustain",
+            "cpu_impact": "Medium",
+            "settings": {
+              "Type": "Heating",
+              "Pre": "55%",
+              "Mix": "45%"
+            },
+            "when_to_use": [
+              "Adding body to drums without losing punch",
+              "Thickening pluck chords",
+              "Making sustained notes punchier",
+              "Gluing layers together"
+            ],
+            "tips": [
+              "Mix at 30-50% for best results",
+              "Too much Mix loses transients",
+              "Great on chord stabs and plucks"
+            ],
+            "before_after": "Before: Punchy but thin. After: Punchy AND thick",
+            "genre_fit": [
+              "House",
+              "Techno",
+              "EDM",
+              "Pop",
+              "Hip-Hop"
+            ]
+          },
+          {
+            "name": "Lo-Fi Crush",
+            "use_case": "Hip Hop, Experimental, Lo-Fi Aesthetics",
+            "description": "Destructive artifacting for vintage/degraded character.",
+            "sonic_character": "Crunchy, aliased, degraded, nostalgic",
+            "cpu_impact": "Medium",
+            "settings": {
+              "Type": "Distortion",
+              "Pre": "100%",
+              "Mix": "25%"
+            },
+            "when_to_use": [
+              "Creating lo-fi hip hop textures",
+              "Adding grit to clean samples",
+              "Vintage tape emulation",
+              "Experimental sound design"
+            ],
+            "tips": [
+              "Low Mix (20-30%) works best",
+              "Combine with Master Filter Low Pass @ 3-5kHz",
+              "Add noise/vinyl crackle macros if available"
+            ],
+            "before_after": "Before: Clean, digital. After: Degraded, vintage, lo-fi",
+            "genre_fit": [
+              "Lo-Fi Hip Hop",
+              "Vaporwave",
+              "Experimental",
+              "Chillwave"
+            ]
+          },
+          {
+            "name": "Vocal Shine",
+            "use_case": "Vocal Presets, Leads, Solo Instruments",
+            "description": "Gentle compression that brings vocals/leads forward without harshness.",
+            "sonic_character": "Present, upfront, polished, controlled dynamics",
+            "cpu_impact": "Low-Medium",
+            "settings": {
+              "Type": "Warming",
+              "Pre": "25%",
+              "Mix": "100%"
+            },
+            "when_to_use": [
+              "Vocal samples in FLEX",
+              "Lead synths that need to cut through",
+              "Solo instruments",
+              "Elements that need presence"
+            ],
+            "tips": [
+              "Keep Pre moderate (20-30%)",
+              "Too much Pre causes harshness",
+              "Combine with short reverb for depth"
+            ],
+            "before_after": "Before: Buried in mix. After: Upfront and present",
+            "genre_fit": [
+              "Pop",
+              "R&B",
+              "EDM",
+              "House",
+              "Trance"
+            ]
+          },
+          {
+            "name": "Soft Tape Saturation",
+            "use_case": "Full Mixes, Busses, Vintage Vibes",
+            "description": "Emulates analog tape saturation with soft knee compression.",
+            "sonic_character": "Smooth, analog, glues elements, adds weight",
+            "cpu_impact": "Medium",
+            "settings": {
+              "Type": "Warming",
+              "Pre": "40%",
+              "Mix": "85%"
+            },
+            "when_to_use": [
+              "Adding analog character to full arrangements",
+              "Gluing multiple FLEX instances together",
+              "Vintage production aesthetics",
+              "Smoothing digital harshness"
+            ],
+            "tips": [
+              "Use on busses/groups rather than individual sounds",
+              "Mix at 70-90% for tape blend",
+              "Pair with vintage-style reverbs"
+            ],
+            "before_after": "Before: Clean but separate elements. After: Cohesive, warm, analog",
+            "genre_fit": [
+              "Lo-Fi",
+              "Synthwave",
+              "R&B",
+              "Deep House",
+              "Organic Electronic"
+            ]
+          },
+          {
+            "name": "Aggressive Pump",
+            "use_case": "EDM Leads, Synth Stabs, High-Energy Elements",
+            "description": "Hard compression for maximum impact and energy.",
+            "sonic_character": "Loud, aggressive, compressed, energetic, in-your-face",
+            "cpu_impact": "Medium",
+            "settings": {
+              "Type": "Heating",
+              "Pre": "70%",
+              "Mix": "100%"
+            },
+            "when_to_use": [
+              "EDM drop elements",
+              "Aggressive synth leads",
+              "Stab chords",
+              "Maximum impact sounds"
+            ],
+            "tips": [
+              "Reduce Pre if it clips (causing artifacts)",
+              "Works great with bright, cutting sounds",
+              "May need to reduce mixer level"
+            ],
+            "before_after": "Before: Dynamic. After: Compressed, loud, aggressive",
+            "genre_fit": [
+              "Big Room",
+              "Electro House",
+              "Hardstyle",
+              "Dubstep"
+            ],
+            "warning": "Very aggressive - can cause ear fatigue"
+          },
+          {
+            "name": "Subtle Enhancement",
+            "use_case": "Acoustic Instruments, Delicate Sounds",
+            "description": "Barely-there warmth that adds polish without obvious processing.",
+            "sonic_character": "Natural, slightly enhanced, maintains dynamics",
+            "cpu_impact": "Low",
+            "settings": {
+              "Type": "Warming",
+              "Pre": "15%",
+              "Mix": "100%"
+            },
+            "when_to_use": [
+              "Acoustic piano and strings",
+              "Natural instrument samples",
+              "When you need transparency with slight warmth",
+              "Classical and acoustic genres"
+            ],
+            "tips": [
+              "Very subtle - A/B test to hear difference",
+              "Don't push Pre above 20%",
+              "Great for adding \"glue\" without coloration"
+            ],
+            "before_after": "Before: Pristine. After: Slightly more cohesive",
+            "genre_fit": [
+              "Classical",
+              "Jazz",
+              "Acoustic",
+              "Singer-Songwriter"
+            ]
+          },
+          {
+            "name": "Bass Thickener",
+            "use_case": "808s, Sub Bass, Bass Synths",
+            "description": "Adds weight and harmonics to bass sounds without losing punch.",
+            "sonic_character": "Thick, punchy, adds harmonics for clarity on small speakers",
+            "cpu_impact": "Medium",
+            "settings": {
+              "Type": "Heating",
+              "Pre": "50%",
+              "Mix": "100%"
+            },
+            "when_to_use": [
+              "Trap 808s that need more presence",
+              "Deep house bass",
+              "Sub bass that disappears on laptop speakers",
+              "Bass that needs more body"
+            ],
+            "tips": [
+              "Check in mono - bass should stay tight",
+              "Combine with Distortion type for aggressive bass",
+              "Keep bass completely dry (0% reverb)"
+            ],
+            "before_after": "Before: Clean but thin bass. After: Thick, punchy, audible on all systems",
+            "genre_fit": [
+              "Trap",
+              "Hip-Hop",
+              "Deep House",
+              "UK Garage",
+              "Drum & Bass"
+            ]
+          }
+        ],
+        "workflow_tips": [
+          "Start with 'Transparent Safety' and only add character if needed",
+          "Use Warming for vintage/organic genres",
+          "Use Heating/Distortion for aggressive electronic genres",
+          "Parallel compression (low Mix %) preserves transients",
+          "Higher Pre = more saturation/distortion",
+          "Always A/B test - your ears might be fatigued"
+        ],
+        "common_mistakes": [
+          "Using Distortion on everything - causes ear fatigue",
+          "Not adjusting mixer level after heavy limiting",
+          "Forgetting to check mono compatibility after saturation",
+          "Too much Pre causing unwanted clipping artifacts"
+        ],
+        "genre_quick_reference": {
+          "Lo-Fi/Vintage": "Warming @ 30-40% Pre",
+          "Clean/Digital": "Limiter @ 0-15% Pre",
+          "Aggressive/Heavy": "Distortion @ 70-100% Pre or Heating @ 50-70% Pre",
+          "Glue/Cohesion": "Warming @ 20-30% Pre, Mix 70-85%",
+          "Maximum Impact": "Heating @ 70% Pre, Mix 100%"
+        }
+      }
+    },
+    "macro-archetypes": {
+      "macroArchetypes": {
+        "description": "Reusable configurations for Macros and Master FX to achieve specific sound characters. Since FLEX oscillators are fixed, these archetypes focus on shaping.",
+        "archetypes": [
+          {
+            "name": "Cinematic Pad Wash",
+            "instrument_type": "Pad / Atmosphere",
+            "macros_focus": {
+              "Filter/Tone": "Lower (40-60%) for darkness",
+              "Movement": "Higher (70%) for slow evolution",
+              "Unison": "High (80%) for width"
+            },
+            "envelope_settings": {
+              "Attack": "High (Slow fade in)",
+              "Release": "High (Long tail)"
+            },
+            "effects_chain": {
+              "Reverb": {
+                "Decay": "Long (>4s)",
+                "Mix": "50%+"
+              },
+              "Delay": {
+                "Time": "1/2 or 1/1",
+                "Mix": "30%"
+              },
+              "Limiter": "Warming"
+            }
+          },
+          {
+            "name": "Tight Pluck / EDM Lead",
+            "instrument_type": "Lead / Pluck",
+            "macros_focus": {
+              "Filter/Tone": "High (Open) or Automated",
+              "Pluck/Decay": "Low (Short)",
+              "Reverb": "Low to Medium"
+            },
+            "envelope_settings": {
+              "Attack": "Minimum (Instant)",
+              "Release": "Short (Stop immediately)"
+            },
+            "effects_chain": {
+              "Reverb": {
+                "Decay": "Short (<1s)",
+                "Mix": "15%"
+              },
+              "Delay": {
+                "Type": "Ping Pong",
+                "Mix": "40%"
+              },
+              "Limiter": "Limiter (Hard)"
+            }
+          },
+          {
+            "name": "Aggressive 808 / Bass",
+            "instrument_type": "Bass",
+            "macros_focus": {
+              "Distortion/Drive": "High",
+              "Slide/Glide": "Adjust to taste",
+              "Cutoff": "Medium (Keep some high harmonics)"
+            },
+            "envelope_settings": {
+              "Attack": "Minimum",
+              "Release": "Short (Avoid mud)"
+            },
+            "effects_chain": {
+              "Reverb": {
+                "Mix": "0% (Dry)"
+              },
+              "Limiter": "Distortion",
+              "Master_Filter": "Low Pass (if too fizzy)"
+            }
+          },
+          {
+            "name": "Lo-Fi Keys",
+            "instrument_type": "Piano / Keys",
+            "macros_focus": {
+              "Detune/Wobble": "Medium (Vintage feel)",
+              "Noise/Crackle": "Low (Texture)",
+              "Cutoff": "Low (Muffled)"
+            },
+            "effects_chain": {
+              "Limiter": "Warming",
+              "Master_Filter": "Low Pass 12dB (cut highs)"
+            }
+          }
+        ]
+      }
+    },
+    "master-filter-curves": {
+      "filterCurves": {
+        "description": "Configuration recipes for FLEX's Master Filter (Bottom Left) to create mixing tools and special effects.",
+        "version": "1.1",
+        "filter_types_explained": {
+          "Low Pass": "Removes high frequencies - makes sound darker/warmer",
+          "High Pass": "Removes low frequencies - makes sound thinner/cleaner",
+          "Band Pass": "Only allows middle frequencies - telephone/radio effect",
+          "Notch": "Removes a specific frequency band - surgical cut",
+          "Peak": "Boosts a specific frequency band - emphasis",
+          "Phaser": "Creates sweeping phase cancellation - psychedelic effect",
+          "Vowel": "Formant filtering - vocal-like quality",
+          "Comb": "Series of notches - metallic ringing",
+          "All Pass": "Changes phase without affecting frequency - subtle structural changes"
+        },
+        "slope_explained": {
+          "6dB": "Gentle, natural roll-off",
+          "12dB": "Standard slope - balanced",
+          "24dB": "Steep, aggressive - removes frequencies completely"
+        },
+        "curves": [
+          {
+            "name": "The Clean-Up (High Pass)",
+            "use_case": "Mixing / De-mudding / Clarity",
+            "description": "Removes unnecessary low frequencies from non-bass instruments.",
+            "sonic_character": "Cleaner, tighter, removes mud and rumble",
+            "frequency_target": "150-200Hz",
+            "settings": {
+              "Type": "High Pass 12dB",
+              "Cutoff": "180Hz",
+              "Resonance": "0%"
+            },
+            "when_to_use": [
+              "Pads to make room for bass",
+              "Leads that are too boomy",
+              "Removing rumble from any non-bass sound",
+              "Cleaning up layered sounds"
+            ],
+            "automation_ideas": [
+              "Start at 80Hz, sweep to 200Hz during build-ups"
+            ],
+            "tips": [
+              "Sweep up until sound gets thin, then back off slightly",
+              "Be careful with pianos - don't cut too much",
+              "Use 6dB slope for gentle cut, 24dB for aggressive"
+            ],
+            "before_after": "Before: Muddy, competing with bass. After: Clean, clear, focused",
+            "genre_fit": [
+              "All genres for mixing"
+            ]
+          },
+          {
+            "name": "Telephone / Radio",
+            "use_case": "Special Effect / Intro / Transition",
+            "description": "Isolates the midrange for a lo-fi communication device sound.",
+            "sonic_character": "Thin, nasal, lo-fi, vintage communication device",
+            "frequency_target": "1-2kHz (midrange only)",
+            "settings": {
+              "Type": "Band Pass",
+              "Cutoff": "1.5kHz",
+              "Resonance": "15%"
+            },
+            "when_to_use": [
+              "Intro effects before full sound drops",
+              "Walkie-talkie/phone effects",
+              "Creating tension before a drop",
+              "Retro sci-fi sounds"
+            ],
+            "automation_ideas": [
+              "Automate from Band Pass to Off (bypass) for dramatic reveal",
+              "Sweep cutoff 800Hz to 3kHz for scanning radio effect"
+            ],
+            "tips": [
+              "Combine with bit crusher or distortion for more degradation",
+              "Works great on vocals and keys",
+              "Lower cutoff (800Hz) = older phone, higher (2kHz) = modern"
+            ],
+            "before_after": "Before: Full range. After: Tinny, narrow, vintage",
+            "genre_fit": [
+              "All genres for effects",
+              "Lo-Fi",
+              "Vaporwave",
+              "Experimental"
+            ]
+          },
+          {
+            "name": "Acid Squelch",
+            "use_case": "Sound Design / Bass / Acid Techno",
+            "description": "Aggressive resonant peak for 303-style sounds.",
+            "sonic_character": "Squelchy, resonant, aggressive, singing quality",
+            "frequency_target": "Variable (300Hz-3kHz)",
+            "settings": {
+              "Type": "Low Pass 24dB",
+              "Cutoff": "800Hz (animate this!)",
+              "Resonance": "80%"
+            },
+            "when_to_use": [
+              "Acid bass lines",
+              "Techno leads",
+              "Creating movement in static sounds",
+              "TB-303 style sounds"
+            ],
+            "automation_ideas": [
+              "CRITICAL: Automate cutoff constantly - static acid is boring",
+              "Fast cutoff sweeps (16th notes) for classic acid",
+              "Slow sweeps for building tension"
+            ],
+            "tips": [
+              "High resonance (70-90%) is essential",
+              "24dB slope is critical for authentic sound",
+              "Combine with Limiter 'Distortion' for more grit"
+            ],
+            "before_after": "Before: Static bass. After: Squelchy, animated, aggressive",
+            "genre_fit": [
+              "Acid Techno",
+              "Acid House",
+              "Techno",
+              "Psy-Trance"
+            ],
+            "warning": "High resonance can cause piercing frequencies - watch levels"
+          },
+          {
+            "name": "Talkbox Vowel",
+            "use_case": "Leads / Dubstep Bass / Vocal Effects",
+            "description": "Imparts a vocal quality to the sound through formant filtering.",
+            "sonic_character": "Vocal-like, talking, expressive, human quality",
+            "frequency_target": "Formant frequencies (vocal ranges)",
+            "settings": {
+              "Type": "Vowel",
+              "Cutoff": "50% (animate for vowel changes)",
+              "Resonance": "50%"
+            },
+            "when_to_use": [
+              "Dubstep talking bass",
+              "Expressive leads",
+              "Creating vocal-like synth parts",
+              "Funky filtered basslines"
+            ],
+            "automation_ideas": [
+              "Automate cutoff 0-100% = cycles through vowel sounds (A-E-I-O-U)",
+              "Step automation for rhythmic talking effect",
+              "Slow sweep for evolving vocal character"
+            ],
+            "tips": [
+              "Move cutoff slowly to hear different vowels",
+              "Works best on harmonically rich sounds",
+              "Combine with slight distortion for more character"
+            ],
+            "before_after": "Before: Normal synth. After: Sounds like it's singing/talking",
+            "genre_fit": [
+              "Dubstep",
+              "Funk",
+              "Disco",
+              "Bass Music",
+              "Experimental"
+            ]
+          },
+          {
+            "name": "Phaser Wash",
+            "use_case": "Pads / Psychedelic Textures / Movement",
+            "description": "Adds swirling phase cancellation movement to static sounds.",
+            "sonic_character": "Swirling, spacey, moving, psychedelic",
+            "frequency_target": "Variable (creates notches throughout spectrum)",
+            "settings": {
+              "Type": "Phaser 2",
+              "Cutoff": "Automate slowly (sine wave LFO)",
+              "Resonance": "50%"
+            },
+            "when_to_use": [
+              "Adding movement to static pads",
+              "Psychedelic effects",
+              "Creating space in the mix",
+              "Retro synth sounds"
+            ],
+            "automation_ideas": [
+              "Sine wave automation on cutoff for classic phaser sweep",
+              "Increase resonance during builds for more intensity",
+              "Random LFO for unpredictable movement"
+            ],
+            "tips": [
+              "Phaser 1 = subtle, Phaser 2 = medium, Phaser 3 = intense",
+              "Higher resonance = more pronounced effect",
+              "Use slow automation (4-8 bars) for best results"
+            ],
+            "before_after": "Before: Static. After: Swirling, moving, spacey",
+            "genre_fit": [
+              "Psytrance",
+              "Psychedelic Rock",
+              "Ambient",
+              "Experimental"
+            ]
+          },
+          {
+            "name": "Anti-Fizz (Low Pass)",
+            "use_case": "Mixing / Guitars / Saws / Brightness Control",
+            "description": "Tames harsh digital high frequencies without muffling the sound.",
+            "sonic_character": "Smoother highs, less digital harshness, more analog feel",
+            "frequency_target": "8-12kHz (air frequencies)",
+            "settings": {
+              "Type": "Low Pass 6dB",
+              "Cutoff": "9kHz",
+              "Resonance": "0%"
+            },
+            "when_to_use": [
+              "Bright sawtooth synths that are too harsh",
+              "Digital sounds that need warmth",
+              "Presets with too much high-end sizzle",
+              "Making aggressive sounds more pleasing"
+            ],
+            "automation_ideas": [
+              "Open up to 12kHz during chorus/drop for more energy",
+              "Close down to 6kHz for verses/quieter sections"
+            ],
+            "tips": [
+              "6dB slope is key - gentle and natural",
+              "Don't go below 7kHz or sound gets muffled",
+              "Use instead of EQ for more natural sound"
+            ],
+            "before_after": "Before: Harsh, digital, fatiguing. After: Smooth, warm, pleasant",
+            "genre_fit": [
+              "All genres for mixing",
+              "Lo-Fi",
+              "Vintage styles"
+            ]
+          },
+          {
+            "name": "Sub Bass Isolator",
+            "use_case": "Bass / 808s / Sub Focus",
+            "description": "Removes everything except sub frequencies for powerful low end.",
+            "sonic_character": "Pure sub bass, no harmonics, floor-shaking",
+            "frequency_target": "20-80Hz only",
+            "settings": {
+              "Type": "Low Pass 24dB",
+              "Cutoff": "80Hz",
+              "Resonance": "0%"
+            },
+            "when_to_use": [
+              "Creating pure sub bass layer",
+              "808 sub layer underneath main bass",
+              "Film/game low-end impacts",
+              "Dubstep sub drops"
+            ],
+            "automation_ideas": [
+              "Automate cutoff from 80Hz to 200Hz for bass that growls up"
+            ],
+            "tips": [
+              "Keep this layer MONO - critical for club systems",
+              "Layer with mid bass (200Hz+) for complete bass sound",
+              "Use 24dB slope for clean cutoff"
+            ],
+            "before_after": "Before: Full bass. After: Pure sub frequencies only",
+            "genre_fit": [
+              "Dubstep",
+              "Trap",
+              "Hip-Hop",
+              "Drum & Bass",
+              "UK Garage"
+            ]
+          },
+          {
+            "name": "Air Filter (High Shelf)",
+            "use_case": "Brightness / Air / Sparkle",
+            "description": "Simulates high shelf EQ for adding air and presence.",
+            "sonic_character": "Airy, bright, sparkly, more presence",
+            "frequency_target": "10kHz+ (air frequencies)",
+            "settings": {
+              "Type": "Peak",
+              "Cutoff": "10kHz",
+              "Resonance": "30%"
+            },
+            "when_to_use": [
+              "Adding air to dull presets",
+              "Making leads cut through",
+              "Brightening pads",
+              "Adding sparkle to keys"
+            ],
+            "automation_ideas": [
+              "Increase resonance to 50% during chorus for lift"
+            ],
+            "tips": [
+              "Don't overdo it - can get harsh quickly",
+              "Works best on already-bright sounds",
+              "Combine with Limiter 'Warming' to control harshness"
+            ],
+            "before_after": "Before: Dull. After: Bright, airy, sparkly",
+            "genre_fit": [
+              "Pop",
+              "EDM",
+              "Trance",
+              "House"
+            ]
+          },
+          {
+            "name": "Notch Sweep",
+            "use_case": "Sound Design / Transitions / Effects",
+            "description": "Sweeping notch creates dramatic movement and tension.",
+            "sonic_character": "Sweeping, phasing, dramatic, tension-building",
+            "frequency_target": "Variable (sweeps entire spectrum)",
+            "settings": {
+              "Type": "Notch",
+              "Cutoff": "Automate from 0% to 100%",
+              "Resonance": "60%"
+            },
+            "when_to_use": [
+              "Build-ups and transitions",
+              "Creating tension before drops",
+              "Dramatic filter sweeps",
+              "Sound design effects"
+            ],
+            "automation_ideas": [
+              "Sweep from low to high over 8 bars for build-up",
+              "Fast sweeps (1 bar) for dramatic effect",
+              "Step automation for glitchy sounds"
+            ],
+            "tips": [
+              "High resonance makes the sweep more obvious",
+              "Works great on white noise and full mixes",
+              "Combine with reverb automation for bigger effect"
+            ],
+            "before_after": "Before: Static. After: Sweeping, moving, dramatic",
+            "genre_fit": [
+              "All genres for transitions",
+              "Techno",
+              "Dubstep",
+              "Trance"
+            ]
+          },
+          {
+            "name": "Comb Metallic",
+            "use_case": "Special Effects / Sci-Fi / Metallic Tones",
+            "description": "Creates metallic, robotic, or alien-like sounds through comb filtering.",
+            "sonic_character": "Metallic, ringing, robotic, unusual",
+            "frequency_target": "Creates series of notches for metallic quality",
+            "settings": {
+              "Type": "Comb+",
+              "Cutoff": "40%",
+              "Resonance": "50%"
+            },
+            "when_to_use": [
+              "Sci-fi sound effects",
+              "Robotic voices",
+              "Metallic percussion",
+              "Unusual textures"
+            ],
+            "automation_ideas": [
+              "Automate cutoff for tuned metallic notes",
+              "Subtle movement adds character"
+            ],
+            "tips": [
+              "Comb+ and Comb- sound different - try both",
+              "Works best on harmonically rich sounds",
+              "Small cutoff movements create big changes"
+            ],
+            "before_after": "Before: Normal synth. After: Metallic, robotic, unusual",
+            "genre_fit": [
+              "Experimental",
+              "IDM",
+              "Sound Design",
+              "Sci-Fi"
+            ]
+          },
+          {
+            "name": "Lo-Fi Muffler",
+            "use_case": "Lo-Fi / Vintage / Underwater",
+            "description": "Aggressive low pass for heavy lo-fi character.",
+            "sonic_character": "Dark, muffled, vintage, lo-fi, distant",
+            "frequency_target": "Cuts above 2-4kHz",
+            "settings": {
+              "Type": "Low Pass 12dB",
+              "Cutoff": "3kHz",
+              "Resonance": "0%"
+            },
+            "when_to_use": [
+              "Lo-fi hip hop production",
+              "Vintage tape emulation",
+              "Underwater/distant effects",
+              "Removing digital harshness completely"
+            ],
+            "automation_ideas": [
+              "Automate from 1kHz to 8kHz for dramatic open-up",
+              "Keep low during verses, open for chorus"
+            ],
+            "tips": [
+              "Combine with Limiter 'Warming' for vintage sound",
+              "Lower cutoff (1-2kHz) for extreme lo-fi",
+              "Add noise/crackle macros if available"
+            ],
+            "before_after": "Before: Modern, bright. After: Vintage, muffled, nostalgic",
+            "genre_fit": [
+              "Lo-Fi Hip Hop",
+              "Vaporwave",
+              "Chillwave",
+              "Vintage Pop"
+            ]
+          }
+        ],
+        "workflow_tips": [
+          "Start with Master Filter OFF - only add if needed",
+          "Static filters are for mixing, animated filters are for effects",
+          "High Pass everything except bass and kick",
+          "Low Pass to remove digital harshness",
+          "Automate cutoff for maximum impact",
+          "Check mono compatibility after filtering"
+        ],
+        "automation_workflow": [
+          "1. Right-click Cutoff knob → Create automation clip",
+          "2. Draw your automation curve (sweeps, steps, etc.)",
+          "3. Adjust Resonance for more dramatic sweeps",
+          "4. A/B test to ensure it's not too extreme"
+        ],
+        "common_mistakes": [
+          "Too much high pass - sound gets thin",
+          "Too much low pass - sound gets muffled",
+          "Forgetting to automate - filter just sits there",
+          "Too much resonance - causes painful peaks",
+          "Using steep slopes when gentle would work better"
+        ],
+        "genre_quick_reference": {
+          "Mixing/Clarity": "High Pass 12dB @ 150-200Hz, Res 0%",
+          "Lo-Fi": "Low Pass 12dB @ 2-4kHz, Res 0%",
+          "Acid Bass": "Low Pass 24dB @ variable, Res 80%, AUTOMATE",
+          "Build-Ups": "High Pass sweep 80Hz → 1kHz over 8 bars",
+          "Drops": "Low Pass @ 8kHz, open to full during drop"
+        },
+        "filter_combination_ideas": [
+          "High Pass (clean up) + Peak @ 10kHz (add air)",
+          "Low Pass @ 8kHz + Limiter Warming (vintage warmth)",
+          "Band Pass (intro) → OFF (drop reveal)",
+          "Notch Sweep + Reverb automation (epic build)"
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "flex-params": {
+      "plugin": "FLEX",
+      "version": "1.1",
+      "type": "Rompler / Hybrid Synthesizer",
+      "description": "Preset-based synthesizer with Subtractive, Wavetable, Multisample, FM & AM synthesis engines. Over 50GB of content across multiple expansion packs.",
+      "interface_sections": {
+        "top": "Analysis Display & Visualizers",
+        "middle_left": "Macros & Performance Controls",
+        "middle_right": "Filter & Envelope Section",
+        "bottom": "Master FX Chain (Filter, Delay, Reverb, Limiter)"
+      },
+      "parameters": [
+        {
+          "name": "Macros 1-8",
+          "type": "Slider (Horizontal)",
+          "role": "Sound Design / Performance",
+          "range": "0-100%",
+          "default": "Varies by preset (designer-defined)",
+          "description": "Custom meta-controls specific to each preset. One macro often controls 10+ underlying parameters simultaneously.",
+          "common_assignments": {
+            "Macro 1": "Filter Cutoff / Brightness / Tone",
+            "Macro 2": "Timbre / Waveform Blend / Character",
+            "Macro 3-4": "Envelope / Movement / Attack/Release",
+            "Macro 5-8": "Effects (Delay, Reverb, Chorus, Distortion)"
+          },
+          "shortcuts": {
+            "Alt + Click": "Reset to designer's default value",
+            "Right-Click": "Create automation clip",
+            "Ctrl + Right-Click": "Link to MIDI controller"
+          },
+          "tips": [
+            "Automate these to transform the sound completely",
+            "Lock macros (show panel locks) to keep settings when browsing presets",
+            "These are the most powerful controls in FLEX"
+          ],
+          "automation_ideas": [
+            "Slow automation (4-8 bars) for evolving textures",
+            "Fast automation (1/16 notes) for wobble bass",
+            "Step automation for rhythmic gating",
+            "Envelope-triggered for dynamic response"
+          ]
+        },
+        {
+          "name": "Cutoff",
+          "label": "Filter Cutoff",
+          "type": "Knob (Rotary)",
+          "role": "Tone Shaping / Brightness",
+          "range": "20Hz - 20kHz (full audible range)",
+          "default": "Varies by preset",
+          "description": "Controls the brightness by filtering frequencies above (Low Pass) or below (High Pass) the cutoff point.",
+          "parameter_interaction": "Affected by Env Amt (envelope modulation) and often linked to Macro 1",
+          "tips": [
+            "Automate for 'wobble' bass effects",
+            "Lower for darker, warmer sounds",
+            "Higher for brighter, more aggressive sounds",
+            "Works in conjunction with Master Filter"
+          ],
+          "automation_ideas": [
+            "Slow upward sweep for filter builds",
+            "Fast LFO for wobble bass (Dubstep)",
+            "Envelope-triggered for dynamic plucks"
+          ],
+          "common_settings": {
+            "Dark Pads": "30-40%",
+            "Bright Leads": "70-90%",
+            "Wobble Bass": "Automate 20-80%"
+          }
+        },
+        {
+          "name": "Resonance",
+          "label": "Filter Resonance / Q",
+          "type": "Knob (Rotary)",
+          "role": "Tone Shaping / Emphasis",
+          "range": "0-100%",
+          "default": "Preset-specific (usually 10-30%)",
+          "description": "Boosts frequencies around the cutoff point, creating emphasis and 'squelch'.",
+          "parameter_interaction": "Works with Cutoff - high resonance with low cutoff = bass emphasis",
+          "tips": [
+            "High resonance (70-90%) creates 'squelchy' acid textures",
+            "Medium (30-50%) adds character without harshness",
+            "0% for clean, transparent filtering",
+            "Can cause self-oscillation at very high values"
+          ],
+          "warning": "Very high resonance can create loud, piercing frequencies - monitor levels",
+          "common_settings": {
+            "Clean Filter": "0-20%",
+            "Character": "30-50%",
+            "Acid Squelch": "70-90%"
+          }
+        },
+        {
+          "name": "Env Amt",
+          "label": "Envelope Amount",
+          "type": "Knob (Rotary)",
+          "role": "Modulation / Movement",
+          "range": "-100% to +100%",
+          "default": "0% (no modulation)",
+          "description": "Controls how much the envelope modulates the filter cutoff.",
+          "parameter_interaction": "Uses the same envelope as volume (AHDSR)",
+          "tips": [
+            "Positive values: Filter opens from low to high (wah effect)",
+            "Negative values: Filter closes from high to low (ow effect)",
+            "Higher values = more dramatic movement",
+            "Combine with resonance for pronounced effects"
+          ],
+          "common_settings": {
+            "Pluck": "+40 to +60% (bright attack, dark decay)",
+            "Bass": "+20 to +30% (subtle movement)",
+            "Static": "0% (no filter movement)"
+          }
+        },
+        {
+          "name": "Attack (A)",
+          "label": "Envelope Attack",
+          "type": "Slider (Vertical)",
+          "role": "Envelope / Dynamics",
+          "range": "0-100% (0ms - 5s+)",
+          "default": "Varies by preset",
+          "description": "Time from 0% to 100% volume/brightness after key press.",
+          "parameter_interaction": "Affects both volume and filter cutoff (if Env Amt is set)",
+          "tips": [
+            "0% = Instant (percussion, plucks, bass)",
+            "25-50% = Natural swell (strings, brass)",
+            "70-90% = Slow fade-in (pads, ambience)",
+            "Add 2-5% if you hear clicks at note start"
+          ],
+          "shortcuts": {
+            "Alt + Click": "Reset to default",
+            "Double-Click": "Open fine-tune view"
+          },
+          "genre_specific": {
+            "EDM/Bass": "0-10%",
+            "Cinematic": "50-80%",
+            "Ambient": "70-90%"
+          }
+        },
+        {
+          "name": "Hold (H)",
+          "label": "Envelope Hold",
+          "type": "Slider (Vertical)",
+          "role": "Envelope / Sustain",
+          "range": "0-100%",
+          "default": "Varies by preset",
+          "description": "Time at peak level before decay starts.",
+          "tips": [
+            "Short hold (0-10%) for most sounds",
+            "Medium hold (20-40%) for percussive elements with body",
+            "Long hold (50%+) for organ-like sustained attack"
+          ]
+        },
+        {
+          "name": "Decay (D)",
+          "label": "Envelope Decay",
+          "type": "Slider (Vertical)",
+          "role": "Envelope / Dynamics",
+          "range": "0-100%",
+          "default": "Varies by preset",
+          "description": "Time from peak level down to sustain level.",
+          "tips": [
+            "Short decay (10-30%) for punchy sounds",
+            "Medium decay (40-60%) for natural decay",
+            "Long decay (70%+) for slow transitions"
+          ]
+        },
+        {
+          "name": "Sustain (S)",
+          "label": "Envelope Sustain",
+          "type": "Slider (Vertical)",
+          "role": "Envelope / Level",
+          "range": "0-100% (volume level)",
+          "default": "Varies by preset",
+          "description": "Volume level maintained while key is held (after decay phase).",
+          "parameter_interaction": "This is a LEVEL, not a time. 100% = full volume, 0% = silent",
+          "tips": [
+            "100% for pads and sustained sounds",
+            "0% for plucks and percussion (one-shot sounds)",
+            "50-80% for piano-like decay",
+            "Lower sustain if sound is too loud when held"
+          ],
+          "common_settings": {
+            "Pad": "95-100%",
+            "Piano": "30-50%",
+            "Pluck": "0%"
+          }
+        },
+        {
+          "name": "Release (R)",
+          "label": "Envelope Release",
+          "type": "Slider (Vertical)",
+          "role": "Envelope / Tail",
+          "range": "0-100% (0ms - 5s+)",
+          "default": "Varies by preset",
+          "description": "Time from current level to 0% after key release.",
+          "tips": [
+            "Short release (5-15%) for tight, punchy sounds (808s)",
+            "Medium release (30-50%) for natural decay (strings)",
+            "Long release (70-90%) for atmospheric tails (pads)",
+            "Reduce release if notes overlap and muddy the mix"
+          ],
+          "genre_specific": {
+            "Trap/Hip-Hop Bass": "5-10%",
+            "Cinematic": "60-80%",
+            "EDM Leads": "30-45%"
+          },
+          "warning": "Very long releases can cause CPU buildup with complex chords"
+        },
+        {
+          "name": "Master Filter Type",
+          "label": "Master Filter Type Selector",
+          "type": "Dropdown Menu",
+          "role": "Global Tone Shaping",
+          "options": [
+            "Off",
+            "Low Pass 6dB",
+            "Low Pass 12dB",
+            "Low Pass 24dB",
+            "High Pass 6dB",
+            "High Pass 12dB",
+            "High Pass 24dB",
+            "Band Pass",
+            "Notch",
+            "Peak",
+            "Phaser 1",
+            "Phaser 2",
+            "Phaser 3",
+            "Vowel",
+            "Comb+",
+            "Comb-",
+            "All Pass"
+          ],
+          "default": "Off",
+          "description": "Global filter applied to the final output. Different algorithms for mixing and creative effects.",
+          "tips": [
+            "Use High Pass 12dB @ 150-200Hz for de-mudding non-bass sounds",
+            "Low Pass for vintage/lo-fi character",
+            "Vowel/Phaser for creative effects",
+            "24dB slopes are steeper/more aggressive"
+          ]
+        },
+        {
+          "name": "Master Filter Cutoff",
+          "label": "Master Filter Frequency",
+          "type": "Knob (Rotary)",
+          "role": "Global Tone Shaping",
+          "range": "20Hz - 20kHz",
+          "default": "50% (varies by filter type)",
+          "description": "Sets the frequency point for the Master Filter.",
+          "tips": [
+            "Automate for dramatic filter sweeps",
+            "Critical parameter for build-ups and drops"
+          ]
+        },
+        {
+          "name": "Master Filter Resonance",
+          "label": "Master Filter Q/Resonance",
+          "type": "Knob (Rotary)",
+          "role": "Global Tone Emphasis",
+          "range": "0-100%",
+          "default": "0%",
+          "description": "Resonance/emphasis for the Master Filter.",
+          "tips": [
+            "High values (70-90%) for acid effects",
+            "Keep at 0% for clean mixing filters"
+          ]
+        },
+        {
+          "name": "Delay Type",
+          "label": "Delay Mode Selector",
+          "type": "Dropdown Menu",
+          "role": "Stereo Effects",
+          "options": [
+            "Fake Stereo",
+            "True Stereo",
+            "Ping Pong"
+          ],
+          "default": "True Stereo",
+          "description": "Delay algorithm type affecting stereo behavior.",
+          "option_details": {
+            "Fake Stereo": "Haas effect - very short L/R offset for widening",
+            "True Stereo": "Independent L/R delays - preserves stereo image",
+            "Ping Pong": "Bounces between left and right channels"
+          },
+          "tips": [
+            "Fake Stereo for widening mono sounds (10-25ms)",
+            "True Stereo for maintaining stereo presets",
+            "Ping Pong for rhythmic, spatial effects"
+          ]
+        },
+        {
+          "name": "Delay Time",
+          "label": "Delay Time/Sync",
+          "type": "Knob (Rotary)",
+          "role": "Rhythm / Timing",
+          "range": "1ms - 2000ms or tempo-synced",
+          "default": "1/4 note (tempo-synced)",
+          "description": "Time between delay repeats. Can be free-running or tempo-synced.",
+          "tempo_sync_values": [
+            "1/1",
+            "1/2",
+            "1/4",
+            "1/8",
+            "1/16",
+            "1/4 Dot",
+            "1/8 Dot",
+            "3/16"
+          ],
+          "tips": [
+            "Use tempo-sync for rhythmic delays",
+            "Use free time (ms) for slapback and Haas effects",
+            "Dotted times (1/4 Dot, 1/8 Dot) sound more musical"
+          ],
+          "common_settings": {
+            "Slapback": "80-120ms (not synced)",
+            "Rhythmic": "1/4 or 1/8 (synced)",
+            "Haas Effect": "15-25ms (not synced)"
+          }
+        },
+        {
+          "name": "Delay Feedback",
+          "label": "Delay Feedback/Repeats",
+          "type": "Knob (Rotary)",
+          "role": "Echo Length",
+          "range": "0-100%+ (can exceed 100% in some modes)",
+          "default": "30%",
+          "description": "Amount of delay output fed back into input - controls number of echoes.",
+          "tips": [
+            "0-30% = Single or few repeats",
+            "40-60% = Multiple echoes",
+            "70-90% = Many repeats, near-infinite",
+            "100%+ = Infinite feedback (use carefully)"
+          ],
+          "warning": "Feedback above 85% can create runaway feedback - automate carefully",
+          "automation_ideas": [
+            "Automate 30% to 80% during builds for dub effects"
+          ]
+        },
+        {
+          "name": "Delay Mix",
+          "label": "Delay Wet/Dry Mix",
+          "type": "Knob (Rotary)",
+          "role": "Effects Balance",
+          "range": "0-100%",
+          "default": "0% (Off)",
+          "description": "Balance between dry (unprocessed) and wet (delayed) signal.",
+          "tips": [
+            "0% = No delay",
+            "15-30% = Subtle space",
+            "40-60% = Obvious rhythmic delay",
+            "Use lower values for mixing, higher for effects"
+          ],
+          "common_settings": {
+            "Subtle Depth": "10-20%",
+            "Rhythmic": "30-45%",
+            "Dub Echo": "50-70%"
+          }
+        },
+        {
+          "name": "Reverb Decay",
+          "label": "Reverb Decay Time",
+          "type": "Knob (Rotary)",
+          "role": "Space / Ambience",
+          "range": "0.1s - 10s",
+          "default": "2s",
+          "description": "Time for reverb tail to fade to silence.",
+          "tips": [
+            "Short (0.5-1s) = Small room, tight",
+            "Medium (1.5-3s) = Studio, natural",
+            "Long (4s+) = Hall, cathedral, epic",
+            "Faster tempos need shorter decay to avoid mud"
+          ],
+          "genre_specific": {
+            "Lo-Fi/Hip-Hop": "0.8-1.5s",
+            "Pop/Rock": "1.5-2.5s",
+            "Cinematic": "4-8s"
+          }
+        },
+        {
+          "name": "Reverb Size",
+          "label": "Reverb Room Size",
+          "type": "Knob (Rotary)",
+          "role": "Space / Scale",
+          "range": "0-100%",
+          "default": "50%",
+          "description": "Simulated room/space size.",
+          "tips": [
+            "Small (10-30%) = Tight room, intimate",
+            "Medium (40-60%) = Studio, natural",
+            "Large (70-100%) = Hall, epic, huge"
+          ]
+        },
+        {
+          "name": "Reverb Mix",
+          "label": "Reverb Wet/Dry Mix",
+          "type": "Knob (Rotary)",
+          "role": "Effects Balance",
+          "range": "0-100%",
+          "default": "0% (Off)",
+          "description": "Balance between dry and reverb signal.",
+          "tips": [
+            "0% = Completely dry",
+            "10-20% = Subtle ambience",
+            "30-50% = Obvious space",
+            "60%+ = Washed out, very wet",
+            "NEVER use reverb on bass/808s"
+          ],
+          "common_mistakes": [
+            "Too much reverb muddies the mix",
+            "Using reverb on bass destroys low-end clarity",
+            "Same reverb amount on all presets - be dynamic"
+          ]
+        },
+        {
+          "name": "Reverb Color",
+          "label": "Reverb Tone/Brightness",
+          "type": "Knob (Rotary)",
+          "role": "Tone Shaping",
+          "range": "0-100% (dark to bright)",
+          "default": "50%",
+          "description": "Tone/brightness of the reverb tail.",
+          "tips": [
+            "0-30% = Dark, warm, vintage",
+            "40-60% = Neutral, natural",
+            "70-100% = Bright, airy, modern",
+            "Match color to genre - dark for lo-fi, bright for EDM"
+          ]
+        },
+        {
+          "name": "Reverb Mod",
+          "label": "Reverb Modulation",
+          "type": "Knob (Rotary)",
+          "role": "Character / Movement",
+          "range": "0-100%",
+          "default": "0%",
+          "description": "Adds pitch modulation/chorus to reverb tail.",
+          "tips": [
+            "0% = Clean, metallic reverb",
+            "20-40% = Removes metallic ringing",
+            "60%+ = Chorus/shimmer effect",
+            "Use to add movement to static pads"
+          ]
+        },
+        {
+          "name": "Limiter Type",
+          "label": "Limiter Mode",
+          "type": "Dropdown Menu",
+          "role": "Dynamics / Saturation",
+          "options": [
+            "Limiter",
+            "Warming",
+            "Heating",
+            "Distortion",
+            "Custom"
+          ],
+          "default": "Limiter",
+          "description": "Limiting/compression algorithm with different saturation colors.",
+          "option_details": {
+            "Limiter": "Clean, transparent peak limiting",
+            "Warming": "Soft compression + mild saturation (tube-like)",
+            "Heating": "Harder compression + noticeable saturation",
+            "Distortion": "Hard clipping + aggressive overdrive",
+            "Custom": "Preset-defined curve"
+          },
+          "tips": [
+            "Limiter for clean, digital production",
+            "Warming for analog warmth and glue",
+            "Heating for aggressive punch",
+            "Distortion for maximum aggression (808s, bass)"
+          ]
+        },
+        {
+          "name": "Limiter Pre",
+          "label": "Limiter Pre-Gain",
+          "type": "Knob (Rotary)",
+          "role": "Dynamics / Drive",
+          "range": "0-100%",
+          "default": "0%",
+          "description": "Input gain into the limiter section. Drives saturation/distortion.",
+          "tips": [
+            "0% = No coloration",
+            "20-40% = Subtle warmth (Warming mode)",
+            "50-70% = Obvious saturation",
+            "80-100% = Heavy distortion",
+            "Adjust based on Limiter Type"
+          ],
+          "common_settings": {
+            "Clean": "0-15%",
+            "Analog Warmth": "25-40%",
+            "Aggressive": "70-100%"
+          },
+          "warning": "High Pre gain can cause clipping - reduce mixer level if needed"
+        },
+        {
+          "name": "Master Volume",
+          "label": "Output Level",
+          "type": "Slider (Vertical)",
+          "role": "Output",
+          "range": "0-100%",
+          "default": "80% (varies)",
+          "description": "Final output level before FL Studio mixer.",
+          "tips": [
+            "Lock this (padlock icon) to maintain consistent volume when browsing presets",
+            "Reduce if preset is too loud",
+            "Usually set once and locked"
+          ]
+        },
+        {
+          "name": "Pitch",
+          "label": "Fine Tune",
+          "type": "Slider (Horizontal)",
+          "role": "Tuning",
+          "range": "-100 to +100 cents",
+          "default": "0 cents",
+          "description": "Fine pitch tuning in cents (100 cents = 1 semitone).",
+          "shortcuts": {
+            "Hold Alt": "Fine adjustment mode"
+          },
+          "tips": [
+            "±10-15 cents for slight detuning between layers",
+            "±50 cents for experimental detuning",
+            "Use for matching presets to out-of-tune samples"
+          ]
+        },
+        {
+          "name": "Arpeggiator Icon",
+          "label": "Arpeggiator Toggle",
+          "type": "Button (Icon)",
+          "role": "Performance",
+          "states": [
+            "Off (Grey)",
+            "On (Orange)"
+          ],
+          "default": "Preset-dependent",
+          "description": "Enables/disables built-in arpeggiator or sequencer for preset.",
+          "tips": [
+            "Orange = Arpeggiator is active",
+            "Click to toggle on/off",
+            "If preset has unwanted rhythm, turn this off"
+          ]
+        },
+        {
+          "name": "Dump Score Icon",
+          "label": "Extract MIDI",
+          "type": "Button (Icon)",
+          "role": "MIDI Export",
+          "states": [
+            "Unavailable (Grey)",
+            "Available (Orange)"
+          ],
+          "description": "Extracts MIDI notes from loop-based presets to Piano Roll.",
+          "tips": [
+            "Only available on presets with embedded MIDI",
+            "Click to dump notes to active pattern",
+            "Use for learning, variation, or layering"
+          ]
+        }
+      ],
+      "common_problems": [
+        {
+          "symptom": "Preset has an annoying rhythm/arp",
+          "priority": "High",
+          "solution": "Click the 'Arpeggiator' icon (pyramid of dots) in the pitch section to disable the built-in arp.",
+          "parameter": "Arpeggiator Icon",
+          "visual_indicator": "Icon changes from Orange (on) to Grey (off)"
+        },
+        {
+          "symptom": "Sound never stops playing / Long tail",
+          "priority": "High",
+          "solution": "Reduce the 'R' (Release) slider in the Volume Envelope section to 5-15%.",
+          "parameter": "Release Slider",
+          "additional_checks": [
+            "Check Reverb Mix - high reverb can extend tails",
+            "Check Delay Feedback - high feedback creates infinite echoes"
+          ]
+        },
+        {
+          "symptom": "Sound is too quiet",
+          "priority": "Medium",
+          "solution": "Increase the 'Master Volume' slider (bottom right) or 'Limiter Pre' gain (10-30%).",
+          "parameter": "Master Volume / Limiter Pre",
+          "alternative_solutions": [
+            "Check if Macros are turned down",
+            "Increase mixer fader level",
+            "Check if preset has very low sustain level"
+          ]
+        },
+        {
+          "symptom": "Sound is too loud / Clipping",
+          "priority": "High",
+          "solution": "Reduce Master Volume or Limiter Pre gain. Check for red clipping indicators.",
+          "parameter": "Master Volume / Limiter Pre",
+          "prevention": "Lock Master Volume at comfortable level when browsing presets"
+        },
+        {
+          "symptom": "Sound is too wet / washed out / drowning in reverb",
+          "priority": "High",
+          "solution": "Lower Reverb Mix to 0-20% and Delay Mix to 0-20%. Check Macros 5-8 which often control effects.",
+          "parameter": "Reverb Mix / Delay Mix / Macros",
+          "additional_tip": "Lock these knobs if you want to browse with consistent wetness"
+        },
+        {
+          "symptom": "Sound is too bright / harsh / piercing",
+          "priority": "Medium",
+          "solution": "Lower Filter Cutoff, or enable Master Filter 'Low Pass 12dB' at 8-10kHz. Check Macro 1 (often brightness).",
+          "parameter": "Cutoff / Master Filter / Macro 1",
+          "additional_solutions": [
+            "Reduce Filter Resonance if set high",
+            "Use Limiter 'Warming' instead of 'Limiter' for softer highs"
+          ]
+        },
+        {
+          "symptom": "Sound is too dark / muffled / dull",
+          "priority": "Medium",
+          "solution": "Increase Filter Cutoff to 70-90%, or check if Master Filter Low Pass is enabled (disable it).",
+          "parameter": "Cutoff / Master Filter",
+          "additional_checks": [
+            "Check Macro 1 - often controls brightness",
+            "Ensure Env Amt isn't set to negative with fast attack"
+          ]
+        },
+        {
+          "symptom": "Click or pop at note start",
+          "priority": "Medium",
+          "solution": "Increase Attack slider slightly (2-5%) to soften the transient.",
+          "parameter": "Attack",
+          "alternative_causes": [
+            "Limiter Pre too high causing clipping",
+            "Filter resonance too high"
+          ]
+        },
+        {
+          "symptom": "Bass sounds too wide / loses power in mono",
+          "priority": "High",
+          "solution": "Check Vectorscope - should be vertical line. Lower 'Width' or 'Unison' Macros. Use mixer stereo separation at 0% for bass.",
+          "parameter": "Macros (Width/Unison)",
+          "prevention": "Always check bass sounds in mono",
+          "critical": "Wide bass causes phase cancellation on club systems"
+        },
+        {
+          "symptom": "CPU usage too high / Audio glitches",
+          "priority": "High",
+          "solution": "Check for 'Unison' or 'Voices' Macros and reduce them. Increase FL Studio buffer size. Freeze/render track.",
+          "parameter": "Macros (Unison/Voices)",
+          "additional_solutions": [
+            "Reduce polyphony in Settings",
+            "Disable unnecessary visualizers",
+            "Render to audio if performance critical"
+          ]
+        },
+        {
+          "symptom": "Notes overlap / muddy mix",
+          "priority": "Medium",
+          "solution": "Reduce Release time to 10-20%. For bass, keep at 5-10%.",
+          "parameter": "Release",
+          "additional_checks": [
+            "Lower Reverb/Delay Mix",
+            "Use High Pass filter on non-bass elements",
+            "Check for overlapping MIDI notes"
+          ]
+        },
+        {
+          "symptom": "Preset sounds different when browsing",
+          "priority": "Low",
+          "solution": "Some parameters were locked. Click FLEX logo → uncheck 'Show panel locks' or unlock individual padlock icons.",
+          "parameter": "Panel Locks",
+          "note": "This is actually a feature - use locks intentionally to maintain settings"
+        },
+        {
+          "symptom": "Can't extract MIDI from preset",
+          "priority": "Low",
+          "solution": "The 'Dump Score' icon is grey, meaning this preset has no embedded MIDI data. Only loop-based presets support MIDI extraction.",
+          "parameter": "Dump Score Icon",
+          "workaround": "Record the audio and use melody detection, or play it manually"
+        },
+        {
+          "symptom": "Preset has unwanted filter sweep",
+          "priority": "Medium",
+          "solution": "Check Env Amt knob - if set high (positive or negative), it's modulating the filter. Set to 0% for static filter.",
+          "parameter": "Env Amt",
+          "additional_checks": [
+            "Check if Macro is controlling filter cutoff",
+            "Look for automation on Filter Cutoff"
+          ]
+        },
+        {
+          "symptom": "Sound cuts off before MIDI note ends",
+          "priority": "Medium",
+          "solution": "Increase Sustain level to 80-100%, or check if Decay is too short with 0% Sustain (causes one-shot behavior).",
+          "parameter": "Sustain / Decay",
+          "note": "Some presets intentionally use 0% Sustain for pluck/percussion sounds"
+        }
+      ],
+      "workflow_best_practices": [
+        "Lock Master Volume when browsing presets to maintain consistent loudness",
+        "Always check bass sounds with Vectorscope - should be mono (vertical line)",
+        "Use Alt + Click on Macros to reset to designer's intended default",
+        "Automate Macros for movement - static presets sound boring",
+        "Check mono compatibility before exporting - especially on bass",
+        "Use 'Show panel locks' feature to keep reverb/volume consistent while browsing",
+        "Start with Limiter 'Limiter' mode, only add color if needed",
+        "High Pass filter everything except kick and bass",
+        "Use short Attack times for rhythmic elements, long for pads",
+        "Keep bass completely dry (0% reverb/delay)"
+      ],
+      "keyboard_shortcuts": [
+        {
+          "action": "Reset parameter to default",
+          "shortcut": "Alt + Click"
+        },
+        {
+          "action": "Fine adjustment mode",
+          "shortcut": "Hold Alt while dragging"
+        },
+        {
+          "action": "Create automation clip",
+          "shortcut": "Right-Click parameter"
+        },
+        {
+          "action": "Link to MIDI controller",
+          "shortcut": "Ctrl + Right-Click"
+        },
+        {
+          "action": "Load next preset",
+          "shortcut": "Ctrl + Up Arrow"
+        },
+        {
+          "action": "Load previous preset",
+          "shortcut": "Ctrl + Down Arrow"
+        },
+        {
+          "action": "Favorite preset",
+          "shortcut": "Shift + F"
+        },
+        {
+          "action": "Cycle GUI themes",
+          "shortcut": "Double-Click FLEX logo or Analysis display"
+        }
+      ],
+      "performance_tips": {
+        "cpu_optimization": [
+          "Reduce Unison/Voices in Macros",
+          "Increase buffer size in FL Studio settings",
+          "Freeze tracks when not editing",
+          "Render complex instances to audio",
+          "Close visualizers if not needed"
+        ],
+        "ram_optimization": [
+          "Unload unused packs from browser",
+          "Close unused FLEX instances",
+          "Use DirectWave for simple multisamples"
+        ]
+      }
+    }
+  },
+  "rules": {
+    "flex-troubleshooting": {
+      "rules": [
+        {
+          "symptom": "preset_too_wet_or_washed_out",
+          "displayName": "Preset Too Wet / Washed Out",
+          "description": "The sound is drowning in reverb or delay, losing its definition.",
+          "priority": 1,
+          "recommendations": [
+            {
+              "action": "Lower Reverb Mix",
+              "parameter": "Reverb Mix Knob",
+              "value": "0-20%",
+              "notes": "Turn down the Reverb Mix knob in the bottom effects row."
+            },
+            {
+              "action": "Lower Delay Mix",
+              "parameter": "Delay Mix Knob",
+              "value": "0-20%",
+              "notes": "Turn down the Delay Mix knob. Also check if Macro sliders 5-8 are controlling FX levels."
+            }
+          ]
+        },
+        {
+          "symptom": "sound_does_not_stop",
+          "displayName": "Sound Does Not Stop Playing",
+          "description": "After releasing the key, the sound continues for too long (long release tail).",
+          "priority": 1,
+          "recommendations": [
+            {
+              "action": "Reduce Release Time",
+              "parameter": "Envelope Release Slider (R)",
+              "value": "Lower",
+              "notes": "Drag the 'R' slider in the Volume Envelope section downwards to shorten the fade-out time."
+            }
+          ]
+        },
+        {
+          "symptom": "unwanted_rhythm_or_arpeggio",
+          "displayName": "Unwanted Rhythm / Arpeggio",
+          "description": "The preset plays a sequence or pattern instead of a sustained note.",
+          "priority": 2,
+          "recommendations": [
+            {
+              "action": "Disable Arpeggiator",
+              "parameter": "Arpeggiator Icon",
+              "value": "Off (Grey)",
+              "notes": "Click the pyramid-of-dots icon in the Pitch section. If it's orange, the arp is active. Click to turn it grey."
+            }
+          ]
+        },
+        {
+          "symptom": "sound_too_harsh_or_bright",
+          "displayName": "Sound Too Harsh / Bright",
+          "description": "The high frequencies are piercing or fatiguing.",
+          "priority": 2,
+          "recommendations": [
+            {
+              "action": "Lower Cutoff",
+              "parameter": "Filter Cutoff Knob",
+              "value": "Lower",
+              "notes": "Turn down the main Filter Cutoff knob. Also check Macro 1, which often controls brightness."
+            },
+            {
+              "action": "Engage Master Filter",
+              "parameter": "Master Filter",
+              "value": "Low Pass",
+              "notes": "Enable the Master Filter (bottom left) and set it to 'LP 12dB' to roll off highs."
+            }
+          ]
+        },
+        {
+          "symptom": "cpu_usage_too_high",
+          "displayName": "CPU Usage Too High",
+          "description": "FLEX is causing audio glitches or high CPU load.",
+          "priority": 3,
+          "recommendations": [
+            {
+              "action": "Disable Unison",
+              "parameter": "Macros",
+              "value": "Check Macros",
+              "notes": "Check if any Macro controls 'Unison' or 'Voices' and turn it down."
+            },
+            {
+              "action": "Increase Buffer Size",
+              "parameter": "FL Studio Audio Settings",
+              "value": "Higher Buffer",
+              "notes": "Increase your audio buffer size in FL Studio settings."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "concepts": [
+    {
+      "title": "Flex Vs Others",
+      "filename": "flex-vs-others.md"
+    },
+    {
+      "title": "Master Effects Modes",
+      "filename": "master-effects-modes.md"
+    },
+    {
+      "title": "Visual Analysis",
+      "filename": "visual-analysis.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "Cpu Optimization",
+      "category": "by-goal",
+      "filename": "cpu-optimization.md"
+    },
+    {
+      "title": "Creative Automation",
+      "category": "by-goal",
+      "filename": "creative-automation.md"
+    },
+    {
+      "title": "Extracting Midi From Loops",
+      "category": "by-goal",
+      "filename": "extracting-midi-from-loops.md"
+    },
+    {
+      "title": "Managing Packs",
+      "category": "by-goal",
+      "filename": "managing-packs.md"
+    },
+    {
+      "title": "Preset Surfing Locks",
+      "category": "by-goal",
+      "filename": "preset-surfing-locks.md"
+    },
+    {
+      "title": "Sound Design Macros",
+      "category": "by-goal",
+      "filename": "sound-design-macros.md"
+    },
+    {
+      "title": "Atmospheric Pads",
+      "category": "by-instrument",
+      "filename": "atmospheric-pads.md"
+    },
+    {
+      "title": "Cinematic Strings",
+      "category": "by-instrument",
+      "filename": "cinematic-strings.md"
+    },
+    {
+      "title": "Edm Leads",
+      "category": "by-instrument",
+      "filename": "edm-leads.md"
+    },
+    {
+      "title": "Expressive Guitars",
+      "category": "by-instrument",
+      "filename": "expressive-guitars.md"
+    },
+    {
+      "title": "Mixing 808S",
+      "category": "by-instrument",
+      "filename": "mixing-808s.md"
+    },
+    {
+      "title": "Realistic Pianos",
+      "category": "by-instrument",
+      "filename": "realistic-pianos.md"
+    }
+  ]
+}

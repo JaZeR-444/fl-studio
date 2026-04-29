@@ -1,0 +1,211 @@
+{
+  "id": "3x-osc",
+  "name": "3x Osc",
+  "presets": {},
+  "parameters": {
+    "3xosc-params": {
+      "plugin_name": "3x Osc",
+      "category": "Generator / Synth",
+      "engine": "Subtractive Synthesizer",
+      "parameters": [
+        {
+          "name": "Waveform",
+          "type": "selector",
+          "values": [
+            "Sine",
+            "Triangle",
+            "Saw",
+            "Square",
+            "Pulse",
+            "Rounded Saw",
+            "Noise"
+          ],
+          "vibe_impact": "Fundamental texture, identity"
+        },
+        {
+          "name": "Fine Tune",
+          "type": "knob",
+          "unit": "Cents",
+          "description": "Adjusts pitch in 1/100ths of a semitone.",
+          "vibe_impact": "Unison, detune, psychedelic"
+        },
+        {
+          "name": "Coarse Tune",
+          "type": "knob",
+          "unit": "Semitones",
+          "description": "Adjusts pitch in fixed intervals.",
+          "vibe_impact": "Harmonics, sub-layers"
+        },
+        {
+          "name": "AM (Osc 3)",
+          "type": "switch",
+          "description": "Enables Amplitude Modulation using Oscillator 3.",
+          "vibe_impact": "Aggression, industrial, grit"
+        }
+      ],
+      "mix_impact_tags": [
+        "sub-bass",
+        "transient",
+        "thickness"
+      ]
+    },
+    "parameters": {
+      "pluginName": "3x Osc",
+      "category": "Synthesizer (Subtractive)",
+      "parameters": [
+        {
+          "section": "Oscillator 1",
+          "id": "osc1_shape",
+          "name": "Shape",
+          "options": [
+            "Sine",
+            "Triangle",
+            "Square",
+            "Saw",
+            "Rounded Saw",
+            "Noise",
+            "Custom"
+          ],
+          "description": "Fundamental waveform type."
+        },
+        {
+          "section": "Oscillator 1",
+          "id": "osc1_invert",
+          "name": "Invert Phase",
+          "type": "Switch",
+          "description": "Flips polarity 180 degrees."
+        },
+        {
+          "section": "Oscillator 2",
+          "id": "osc2_mix",
+          "name": "Mix Level",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Ratio of Osc 2 volume mixed into Osc 1."
+        },
+        {
+          "section": "Oscillator 2",
+          "id": "osc2_coarse",
+          "name": "Coarse Pitch",
+          "range": {
+            "min": -24,
+            "max": 24,
+            "unit": "semitones"
+          },
+          "description": "Pitch offset relative to root note."
+        },
+        {
+          "section": "Oscillator 2",
+          "id": "osc2_fine",
+          "name": "Fine Pitch",
+          "range": {
+            "min": -100,
+            "max": 100,
+            "unit": "cents"
+          },
+          "description": "Detuning for phasing/thickening."
+        },
+        {
+          "section": "Oscillator 3",
+          "id": "osc3_mix",
+          "name": "Mix Level",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Ratio of Osc 3 volume mixed into the sum of 1+2."
+        },
+        {
+          "section": "Oscillator 3",
+          "id": "am_osc3",
+          "name": "AM OSC 3",
+          "type": "Switch",
+          "description": "Uses Osc 3 to amplitude modulate Osc 1+2."
+        },
+        {
+          "section": "Global",
+          "id": "phase_rand",
+          "name": "Phase Randomness",
+          "type": "Knob",
+          "description": "Adds jitter to the start phase of all oscillators for analog feel."
+        },
+        {
+          "section": "Global",
+          "id": "hq_mode",
+          "name": "HQ (Anti-Aliasing)",
+          "type": "Switch",
+          "description": "Enables band-limiting filters."
+        }
+      ]
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Synthesis Guide",
+      "filename": "03_Vibe_Synthesis_Guide.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "Common Usage",
+      "category": "general",
+      "filename": "common-usage.md"
+    },
+    {
+      "title": "00 Goal Quick Result",
+      "category": "by-goal",
+      "filename": "00_Goal_Quick_Result.md"
+    },
+    {
+      "title": "Bass Sound Creation",
+      "category": "by-goal",
+      "filename": "bass-sound-creation.md"
+    },
+    {
+      "title": "Chip Tune Lead",
+      "category": "by-goal",
+      "filename": "chip-tune-lead.md"
+    },
+    {
+      "title": "Creating Classic Reese Bass",
+      "category": "by-goal",
+      "filename": "creating-classic-reese-bass.md"
+    },
+    {
+      "title": "Lead Sound Creation",
+      "category": "by-goal",
+      "filename": "lead-sound-creation.md"
+    },
+    {
+      "title": "White Noise Riser",
+      "category": "by-goal",
+      "filename": "white-noise-riser.md"
+    },
+    {
+      "title": "Sub Bass Stabilization",
+      "category": "by-instrument",
+      "filename": "sub_bass_stabilization.md"
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "id": "fruity-center",
+  "name": "Fruity Center",
+  "category": "Spatial",
+  "tier": "Free",
+  "type": "Spatial",
+  "description": "Fruity Center - Spatial",
+  "tags": [
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "stereo",
+    "spatial",
+    "mixing",
+    "audio"
+  ],
+  "icon": "/plugins/fruity-center-icon.svg",
+  "color": "#0EA5E9",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-center",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "center-params": {
+      "plugin": {
+        "name": "Fruity Center",
+        "category": "Utility",
+        "type": "Mid-Side Matrix",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Center.htm"
+      },
+      "parameters": {
+        "center": {
+          "id": "center",
+          "name": "Center (Mid)",
+          "range": "0-100%",
+          "description": "Adjusts the level of correlated (identical) L/R audio."
+        },
+        "side": {
+          "id": "side",
+          "name": "Side",
+          "range": "0-100%",
+          "description": "Adjusts the level of uncorrelated (difference) L/R audio."
+        }
+      },
+      "math": {
+        "midCalculation": "L + R",
+        "sideCalculation": "L - R"
+      }
+    }
+  },
+  "presets": {
+    "center-boost-presence": {
+      "presetName": "Center Boost Presence",
+      "plugin": "Fruity Center",
+      "description": "Focuses the energy on the center channel while slightly dipping the sides.",
+      "settings": {
+        "center": 1.2,
+        "side": 0.8,
+        "lowCut": 100,
+        "highCut": 15000
+      },
+      "usage": "Use on a kick or lead vocal to make it sound more centered and authoritative."
+    },
+    "side-only-monitor": {
+      "presetName": "Side Only Monitor",
+      "plugin": "Fruity Center",
+      "description": "Isolates the side (stereo) information for analysis.",
+      "settings": {
+        "center": 0,
+        "side": 1,
+        "lowCut": 20,
+        "highCut": 20000
+      },
+      "usage": "Essential for checking if your reverb or delay is too wide or has phase issues."
+    },
+    "vocal-remover-basic": {
+      "presetName": "Vocal Remover Basic",
+      "plugin": "Fruity Center",
+      "description": "Cuts the center channel to remove centered vocals/instruments.",
+      "settings": {
+        "center": 0,
+        "side": 1,
+        "lowCut": 200,
+        "highCut": 20000
+      },
+      "usage": "Use to create karaoke tracks or to isolate side-panned elements from a stereo file."
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity Center\n\n## Purpose & Identity\nFruity Center is a dedicated **DC Offset removal utility**. Its sole function is to identify if an audio waveform is \"lopsided\" (not centered on the 0-line) and shift it back to the vertical center in real-time. It acts as a specialized high-pass filter with an extremely low cutoff frequency (near 0Hz). [SRC: IL-MAN]\n\n## 60-Second Mental Model\nImagine a wave drawn on a piece of paper. If you slide the whole paper up by an inch, the wave is no longer in the middle. Fruity Center is the invisible hand that slides the paper back down so the wave is perfectly balanced. \n\n## Hip-Hop / R&B Context\nTechnical perfection is the foundation of high-end urban production.\n- **Cleaning Hardware Inputs:** Many analog synths and cheap audio interfaces introduce a constant electrical \"bias\" (DC Offset). Fruity Center fixes this before it reaches your compressors.\n- **Headroom Recovery:** In a competitive \"Loud\" rap master, DC offset is wasted energy. Removing it allows your Kick drum to hit harder without hitting the digital ceiling early.\n- **Restoration:** Fixing old, poorly recorded R&B samples that have \"lopsided\" waveforms which cause clicks when you chop them.\n\n## When To Use\n- When you see a waveform in an oscilloscope (**Wave Candy**) that isn't centered.\n- When you hear **clicks or pops** at the start/end of audio clips even when you have fades.\n- When your meters show volume activity even when the sound is \"silent.\"\n\n## When NOT To Use\n- **Standard Mixing:** If your waveform is already centered, Fruity Center does nothing. \n- **Sub-Bass Removal:** Use **Fruity Parametric EQ 2** if you want to cut audible low-end (e.g., 20Hz-30Hz). Fruity Center only targets the inaudible \"zero-frequency\" DC.\n",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Fruity Center\n\n## UI Tour\nFruity Center has no knobs or sliders in its standard interface. It is a \"Set and Forget\" tool.\n\n1.  **Status Indicator:** (Some versions) shows if DC offset is being detected and corrected.\n2.  **Logo/Header:** Minimalist legacy design.\n\n## Functional Flow\n1.  **Input:** Audio signal enters the slot.\n2.  **Averaging Engine:** The plugin calculates the \"Mean\" value of the signal over a short window of time. [SRC: UNVERIFIED - common DSP practice]\n3.  **DC Detection:** If the average value is not zero, the plugin identifies a DC Offset.\n4.  **Correction Filter:** A high-pass filter with a cutoff near **1Hz to 5Hz** is applied to block the constant DC voltage while letting all audible sound (even sub-bass) pass through.\n5.  **Output:** Re-centered audio is passed to the next mixer slot.\n\n## Things Beginners Misunderstand\n- **\"I can't hear a difference\":** DC offset is inaudible by itself. You won't \"hear\" Fruity Center working, but you will **see** the results in your meters and feels the extra headroom.\n- **Placement:** It should almost always be the **FIRST plugin** in your chain. If you distort a signal with DC offset (using **Blood Overdrive**), the offset gets amplified and much harder to fix later. [SRC: REPUTABLE]\n- **Edison vs Fruity Center:** Edison is for \"fixing\" a file forever. Fruity Center is for fixing a signal *live* as it plays.\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques And Best Practices: Fruity Center\n\n## 1. Visual Diagnosis (Wave Candy)\n- **Technique:** Always keep a **Wave Candy** instance open in \"Oscilloscope\" mode on your master or selected track.\n- **Execution:** If the waveform line stays above or below the center horizontal line during \"silence,\" you have DC offset.\n- **Fix:** Immediately load Fruity Center as Slot 1.\n\n## 2. Headroom Recovery for 808s\n- **Technique:** Some 808 samples are poorly processed and have a \"bias.\"\n- **Execution:** Check your 808 Mixer Track. If it's hitting -3dB but looks \"small\" in the waveform, load Fruity Center.\n- **Result:** The wave centers, potentially giving you back 1-2dB of \"real\" headroom to make the bass louder. [SRC: REPUTABLE]\n\n## 3. The \"Post-Distortion\" Check\n- **Technique:** Extreme distortion or waveshaping (e.g., **Fruity WaveShaper**) can actually *create* DC offset by asymmetry.\n- **Execution:** Place Fruity Center *after* your most aggressive distortion units.\n- **Result:** Re-stabilizes the signal before it hits the rest of your mix bus.\n\n## 4. Hardware Recording Insurance\n- **Technique:** If you are recording a vocal or a synth through analog gear.\n- **Execution:** Make Fruity Center part of your \"Input FX\" chain.\n- **Why:** Prevents electrical noise from your interface from becoming part of your permanent recording.\n\n## Common Pitfalls + Fixes\n- **Pitfall:** \"Thinking it's a sub-bass cut.\"\n  - **Fix:** Don't rely on Fruity Center to clean up your low-end mud. It doesn't cut 40Hz. You still need an EQ for that.\n- **Pitfall:** \"Using it unnecessarily.\"\n  - **Fix:** Modern high-end VSTs (like Serum or Sytrus) rarely produce DC offset. Only use Fruity Center if you have a confirmed diagnostic reason to do so. [SRC: IL-MAN]\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity Center\n\nNote: As a technical restoration tool, Fruity Center enables \"Vibes\" by **ensuring signal integrity**.\n\n## 1. Moody (Clean, Deep, Quiet)\n- **Concept:** Removing the \"Hidden Noise.\"\n- **Levers:**\n  - **Restoration:** Use on dark, filtered pads that were recorded from analog gear. \n- **Listen For:** Total silence during the gaps. Without DC removal, moody silences can sometimes feel \"pressurized\" or heavy in an unnatural way.\n- **Don't Do This:** Don't ignore offset in quiet sections; it makes the track feel \"broken.\"\n\n## 2. Upbeat (Loud, Punchy, Competitive)\n- **Concept:** Headroom Optimization.\n- **Levers:**\n  - **Peak Management:** Centers your Kicks and Snares.\n- **Listen For:** The extra 1dB of loudness you can squeeze out of the Master Limiter because your signals aren't \"pushing\" the ceiling asymmetrically.\n- **Don't Do This:** Don't let DC offset eat your headroom; upbeat tracks need every bit of energy.\n\n## 3. Psychedelic (Complex, Warped, Modular)\n- **Concept:** Fixing Asymmetric Destruction.\n- **Levers:**\n  - **Post-Waveshaping:** Use after extreme modular synth patches.\n- **Listen For:** Stability in the speakers. Psychedelic sounds can get very \"lopsided\"—Fruity Center keeps them from damaging your playback system.\n\n## 4. Jazzy (Organic, Transparent, Close)\n- **Concept:** Preserving the \"Wood.\"\n- **Levers:**\n  - **Analog Path Cleanup:** Use on upright bass recordings.\n- **Listen For:** A natural low-end that doesn't \"jump\" when the player stops.\n\n## 5. Vibey (Polished, Shimmering, Professional)\n- **Concept:** The \"Radio Ready\" Signal.\n- **Levers:**\n  - **Vocal Chain Polish:** Slot 1 on every lead vocal.\n- **Listen For:** A mix that feels \"expensive\" because there are no technical artifacts like pops or asymmetrical clipping. [SRC: REPUTABLE]\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Center\r\n\r\n## What It Is\r\nFruity Center is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Fruity Center\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: Fruity Center (5 Minutes)\n\n1.  **Diagnose:** Open **Wave Candy** on your master track and select the **Oscilloscope** view.\n2.  **Observe:** Look for a waveform that is shifted vertically off the center line.\n3.  **Insert:** Load **Fruity Center** into the first slot of the problematic track.\n4.  **Confirm:** Watch Wave Candy. The waveform should instantly \"snap\" back to the vertical center.\n5.  **Listen:** You will hear no difference, but your mix now has more headroom. [SRC: IL-MAN]\n",
+      "01_Common_Mistakes": "# Common Mistakes: Fruity Center\n\n- **Using as a Low-Pass Filter:** Expecting Fruity Center to change the \"Tone\" of the bass. It doesn't. **Fix:** Use an EQ for tonal changes.\n- **Placing it at the End:** Putting Fruity Center after a compressor or saturator. **Fix:** Move it to **Slot 1**. Fixing the offset *before* dynamics processing is much more effective.\n- **Ignoring the Visuals:** Not checking the oscilloscope and assuming every track needs Fruity Center. **Fix:** Only use it where an offset is visible to save CPU (even if the load is tiny).\n- **Misidentifying Peaks:** Thinking an asymmetrical vocal (which is common and natural) is \"DC Offset.\" **Fix:** If the waveform *returns* to 0 during silence, it’s not DC Offset. If it *stays* high/low during silence, it IS offset. [SRC: REPUTABLE]\n",
+      "02_Best_Settings_Starting_Points": "# Best Settings Starting Points: Fruity Center\n\n| Target Scenario | Version Mode | Position | Expected Vibe |\n| :--- | :--- | :--- | :--- |\n| **Analog Synth Rec** | Default (Auto) | Input FX / Slot 1 | Stable, clean low-end. |\n| **Poor Sample Rip** | Default (Auto) | Slot 1 | Click-free chopping. |\n| **Post-Aggressive Dist**| Default (Auto) | Post-Distortion | Balanced headroom. |\n| **Master Bus Safety** | Default (Auto) | Master Slot 1 | Maximum loudness floor. |\n\n*Note: Since Fruity Center is automatic, \"Settings\" refer to your placement strategy.* [SRC: IL-MAN]\n",
+      "03_Vibe_Starting_Points_Moody": "# Vibe Starting Points: Moody (Fruity Center)\n\n- **The Goal:** Achieving \"True Digital Silence\" in a sparse R&B arrangement.\n- **Recipe:**\n  1. Record your dark analog synths or noisy vintage mics.\n  2. Load Fruity Center into **Slot 1**.\n  3. Load a Noise Gate into **Slot 2**.\n- **Result:** Fruity Center removes the electrical bias (DC), which makes the Noise Gate work much more effectively. This creates a \"total vacuum\" between notes, emphasizing the moody, isolated feeling of the track.\n- **Vibe Lever:** The \"Contrast.\" Silence feels much more dramatic when the signal path is technically perfect. [SRC: REPUTABLE]\n",
+      "04_Vibe_Starting_Points_Upbeat_Psychedelic_Jazzy_Vibey": "# Vibe Starting Points: Upbeat, Psychedelic, Jazzy, Vibey\n\n## Upbeat (The \"Loudness Floor\")\n- **Strategy:** Center every drum layer. \n- **Benefit:** When the Kick hits, it hits the 0dB ceiling with a perfectly symmetrical wave, giving you the loudest possible \"thwack.\"\n\n## Psychedelic (The \"Post-Warp\" Anchor)\n- **Strategy:** Use after extreme **Fruity WaveShaper** or **Distructor** settings.\n- **Benefit:** Prevents the \"offset\" that happens when you distort only one side of a wave, keeping the sound immersive rather than broken.\n\n## Jazzy (The \"Invisible Hand\")\n- **Strategy:** Use on live bass recordings.\n- **Benefit:** Preserves the natural sub-frequencies of an upright bass while removing any \"hum\" or DC bias from the preamp.\n\n## Vibey (The \"Polished Chain\")\n- **Strategy:** Lead Vocal -> Fruity Center -> Auto-tune.\n- **Benefit:** Some pitch-correction algorithms perform better when the input wave is perfectly centered. [SRC: REPUTABLE]\n",
+      "mid-side-basics": "# Fruity Center - Parameter Cheat Sheet\n\n**Plugin Type:** Stereo/Mid-Side Utility\n**Category:** Utility\n**Official Manual:** [Fruity Center](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Center.htm)\n\n---\n\n## 🎚️ Mid-Side Control Parameters\n\n| Parameter | Range | Function | Quick Tip |\n|-----------|-------|----------|-----------|\n| **Center (Mid)** | 0 - 100% | Volume of the mono/centered content | Lower to remove vocals or center-panned instruments |\n| **Side** | 0 - 100% | Volume of the stereo/difference content | Boost for extra width; lower to check mono compatibility |\n\n---\n\n## 🎛️ Common Utility Scenarios\n\n| Problem | Fruity Center Solution |\n|---------|------------------------|\n| **Vocal Removal** | Vocals are usually centered. Cut the **Center** knob to attenuate them for karaoke. |\n| **Muddy Reverb** | Reverb is often stereo-heavy. Lower the **Side** knob to make the reverb more \"focused\" and mono. |\n| **Narrow Mix** | Boost the **Side** knob relative to the **Center** to increase the perceived stereo image. |\n| **Mono Check** | Set **Side** to 0% to hear exactly what will be lost on mono playback systems (like club PAs). |\n\n---\n\n## 🔧 Technical Engine Data\n\n- **Type:** Sum-Difference Processor (Mid-Side Matrix)\n- **Math:** \n  - `Mid = (L + R) / 2`\n  - `Side = (L - R) / 2`\n- **Latency:** 0 samples\n- **CPU:** Near-zero\n\n---\n\n## 🎯 Quick Start Workflows\n\n### The \"Instant Width\"\n1. **Center:** 80%\n2. **Side:** 100%\n3. **Action:** By slightly dipping the center, you allow the side-panned elements to feel more prominent, increasing width.\n\n### The \"Surgical Mono\"\n1. **Center:** 100%\n2. **Side:** 0%\n3. **Action:** Converts any stereo signal to a perfect mono signal. Essential for ensuring your sub-bass is 100% phase-aligned.\n\n---\n\n## ⚡ Pro Tips\n\n1. **Phase Cancellation Risks:** If you boost the **Side** knob too much, you may introduce phase issues that make the sound disappear when played in Mono. Always toggle between Stereo and Mono (Side @ 0%) to check.\n2. **Post-EQ is Key:** After removing the Center, the remaining Side signal often lacks low end (since kicks/bass are usually centered). Use an EQ to boost the lows of the Side signal if it sounds too thin.\n3. **Creative Panning:** Automate the **Center** knob during a transition to \"suck the air\" out of a sound before a drop, then bring it back for full impact.\n\n---\n\n**Last Updated:** February 3, 2026\n**Status:** ⭐ HIGH PRIORITY - Elaborated Reference",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Center\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Center to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Center\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Center\r\n\r\nThis section contains learning information for the fruity-center plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: Headroom Recovery (Fruity Center)\n\n## Routing Context\n- **Target:** A synthesized 808 or heavy Kick.\n- **Position:** Slot 1 (Start of chain).\n\n## Step-by-Step Setup\n1.  On the 808 mixer track, load **Wave Candy** (Oscilloscope mode).\n2.  Play the 808. Observe the waveform. \n    - *Is the horizontal line jumping \"up\" or \"down\" and staying there?*\n3.  Load **Fruity Center** into **Slot 1**.\n4.  Observe the waveform again. \n    - *It should now be perfectly centered on the 0-axis.*\n5.  Check your **Mixer Peak Meter**. \n    - *Often, the peak volume will drop by 0.5dB to 1.5dB without changing the sound.*\n\n## Result\n- You have just \"found\" 1dB of extra volume. You can now turn the 808 up by that same amount, resulting in a louder, more competitive mix.\n\n## Vibe Check\n- **Upbeat:** This is how you get those \"wall-of-sound\" rap masters that hit hard but don't distort.\n\n## Pitfalls + Fixes\n- **Pitfall:** \"The sound changed tone.\"\n  - **Fix:** You might have extremely low sub-frequencies (under 10Hz). Fruity Center acts as a high-pass. If your 808 is purely a 5Hz sine wave (unlikely), it will be quieted. [SRC: REPUTABLE]\n",
+      "01_Goal_Mix_Validation": "# Workflow: Post-Distortion Stability (Fruity Center)\n\n## The Concept\nExtreme asymmetry in waveshaping can shift the whole sound off-center. Fruity Center fixes the \"Lean.\"\n\n## Step-by-Step\n1.  Apply heavy distortion using **Fruity WaveShaper** (asymmetrical curve).\n2.  Notice in your mixer that the track is hitting the \"Red\" on only one side of the meter (if using a dual meter).\n3.  Place **Fruity Center** immediately after the distortion.\n4.  **Result:** The \"leaning\" signal is centered, allowing following compressors or limiters to respond to the peaks symmetrically.\n\n## Vibe Check\n- **Psychedelic:** Keeps trippy, distorted textures from feeling \"broken\" or unstable.\n\n## Automation Idea\n- Don't automate this plugin. It should be a constant, silent guardian of your signal path. [SRC: REPUTABLE]\n",
+      "isolating-stereo-effects": "# Isolating Stereo Effects Workflow\n\n## Goal\nExtract only the reverb or stereo effects from a dry vocal or instrument track.\n\n## Steps\n1. **The Setup**: You have a vocal track that was recorded with \"baked-in\" stereo reverb that you want to isolate or process separately.\n2. **Insert Fruity Center**: Place it on the mixer track.\n3. **Isolate the Sides**: Turn the **Center** knob all the way down to **0%**.\n4. **Listen**: What remains is only the \"Side\" information. Since most dry vocals are mono (centered), they will disappear, leaving behind only the stereo reverb tail and any double-tracking.\n5. **Process the Effect**:\n   - Now you can add a **Fruity Chorus** or **Fruity Flanger** *after* Fruity Center to process only the reverb without affecting the dry vocal.\n   - You can also EQ the sides to remove low-end rumble from the reverb.\n6. **Parallel Blend**: Use the Mixer Slot Mix level to bring back the \"Center\" information as much as needed.\n\n## Result\nYou have successfully separated the dry source from its stereo environment, allowing for surgical processing of the spatial elements of the sound.\n",
+      "removing-vocals-from-master": "# Removing Vocals (Karaoke Style) Workflow\n\n## Goal\nAttenuate the center-panned vocals from a stereo master to create a backing track.\n\n## Steps\n1. **Insert Fruity Center**: Place it on the mixer track containing the stereo audio.\n2. **Listen to Side Only**: Turn the **Center** knob all the way to **0%**. \n    - You will likely hear the drums, reverb, and side-panned instruments.\n    - The vocals should be significantly quieter or gone.\n3. **Find the Balance**: Slowly bring the **Center** knob back up until you have enough of the kick and snare (which are also usually centered) without the vocals becoming too loud.\n4. **Post-Processing**: Use an EQ to boost the low end (since the kick was attenuated) and the high end to compensate for the loss of center energy.\n\n## Warning\nThis process works best on professional studio recordings. If the vocals have a lot of stereo reverb or are double-tracked and panned, Fruity Center will only remove the \"dry\" center portion.\n"
+    },
+    "by-instrument": {
+      "master-bus": "# Instrument: Master Bus\n\nUsing Fruity Center for final stereo image correction.\n\n## Narrowing the Low End\n- Use the **Low Cut** knob in Fruity Center (if available) or chain it with a mid-side EQ.\n- **Goal**: Ensure that everything below 150Hz is mono (Center only) to avoid phase cancellation in club systems.\n\n## Adding \"Air\" to the Sides\n1. Place Fruity Center on your master bus.\n2. Set the **Side** knob to 110%.\n3. Set the **High Cut** to about 5kHz.\n4. **Result**: This gently boosts the stereo information in the high-mids and highs, making the mix feel wider and more professional.\n\n## Checking Mono Compatibility\n- Temporarily turn the **Side** knob to 0%.\n- If your mix completely disappears or sounds extremely thin, you have phase issues that need to be fixed at the source.\n",
+      "synth-layers": "# Instrument: Synth Layers\n\nCreating separation between multiple synth parts.\n\n## The Lead Synth\n- Boost the **Center** channel by 10%.\n- **Goal**: Keeps the lead focused and prominent in the middle of the mix.\n\n## The Ambient Pad\n- Turn the **Center** channel down to 40%.\n- Turn the **Side** channel up to 120%.\n- **Goal**: Pushes the pad to the edges of the speakers, leaving a \"hole\" in the middle for the lead synth and vocals.\n\n## Arpeggios\n- Use an automation clip on the **Side** knob to make the arpeggio grow wider during the chorus and narrow during the verse.\n- **Result**: Adds dynamic movement to the stereo field.\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Center\r\n\r\nThis section contains workflow information for the fruity-center plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Center\r\n\r\nThis section contains reference information for the fruity-center plugin.\r\n"
+    }
+  }
+}

@@ -1,0 +1,354 @@
+{
+  "plugin_name": "Dashboard",
+  "preset_collection": "Monitoring Presets",
+  "version": "1.0.0",
+  "created_date": "2026-02-03",
+  "author": "FL Studio Plugin Deep Dives Research Team",
+  "description": "Collection of optimized Dashboard configurations for different monitoring scenarios in hip-hop, rap, and R&B production",
+  "presets": [
+    {
+      "id": "hiphop-mixing-standard",
+      "name": "Hip-Hop Mixing Standard",
+      "category": "Mixing",
+      "sub_category": "General",
+      "genre_focus": ["hip-hop", "rap", "rnb"],
+      "production_stage": "mixing",
+      "description": "Balanced configuration for general hip-hop mixing with focus on low-end management and vocal clarity",
+      "parameters": {
+        "display_mode": "spectrum",
+        "db_range": -48,
+        "frequency_range": "full",
+        "refresh_rate": "medium",
+        "fft_size": 2048,
+        "window_type": "hann",
+        "smoothing": "light",
+        "peak_hold_duration": "medium",
+        "meter_ballistics": "medium",
+        "phase_correlation_display": true,
+        "warning_markers": -3,
+        "color_scheme": "default",
+        "grid_overlay": true
+      },
+      "use_case": "Primary mixing setup for hip-hop tracks with balanced frequency analysis and level monitoring",
+      "benefits": [
+        "Clear visualization of 808/kick relationship",
+        "Good vocal clarity in dense mixes",
+        "Effective phase correlation monitoring",
+        "Balanced CPU usage"
+      ],
+      "notes": "Perfect for general mixing sessions where you need to monitor both frequency content and levels simultaneously."
+    },
+    {
+      "id": "trap-lowend-focus",
+      "name": "Trap Production - Low-End Focus",
+      "category": "Mixing",
+      "sub_category": "Low-End",
+      "genre_focus": ["trap", "drill", "southern_hip_hop"],
+      "production_stage": "mixing",
+      "description": "High-resolution configuration specifically for managing aggressive 808s and sub-bass in trap music",
+      "parameters": {
+        "display_mode": "spectrum",
+        "db_range": -60,
+        "frequency_range": "low_end",
+        "refresh_rate": "medium",
+        "fft_size": 4096,
+        "window_type": "blackman",
+        "smoothing": "medium",
+        "peak_hold_duration": "long",
+        "meter_ballistics": "slow",
+        "phase_correlation_display": true,
+        "warning_markers": -1,
+        "color_scheme": "high_contrast",
+        "grid_overlay": true
+      },
+      "use_case": "Detailed analysis of 808s, sub-bass, and kick drum relationships in trap production",
+      "benefits": [
+        "Ultra-precise low-frequency analysis",
+        "Clear visualization of 808 harmonics",
+        "Effective phase monitoring for mono compatibility",
+        "High resolution for frequency conflict detection"
+      ],
+      "notes": "Use this preset when working with complex 808 layers or when you need to ensure your low-end translates well to club systems."
+    },
+    {
+      "id": "rap-vocal-clarity",
+      "name": "Rap Vocal Clarity",
+      "category": "Mixing",
+      "sub_category": "Vocals",
+      "genre_focus": ["rap", "conscious_rap", "mixtape_rap"],
+      "production_stage": "mixing",
+      "description": "Configuration optimized for monitoring rap vocal clarity, presence, and dynamic range",
+      "parameters": {
+        "display_mode": "spectrum",
+        "db_range": -54,
+        "frequency_range": "mid_range",
+        "refresh_rate": "fast",
+        "fft_size": 1024,
+        "window_type": "hann",
+        "smoothing": "light",
+        "peak_hold_duration": "long",
+        "meter_ballistics": "fast",
+        "phase_correlation_display": false,
+        "warning_markers": -6,
+        "color_scheme": "default",
+        "grid_overlay": true
+      },
+      "use_case": "Monitoring rap vocal presence, clarity, and ensuring they cut through dense instrumental tracks",
+      "benefits": [
+        "Clear visualization of vocal presence range",
+        "Effective monitoring of rap's dynamic range",
+        "Quick detection of frequency conflicts with vocals",
+        "Fast response for dynamic rap delivery"
+      ],
+      "notes": "Ideal for sessions where rap vocals need to maintain clarity and intelligibility in busy mixes."
+    },
+    {
+      "id": "rnb-smooth-production",
+      "name": "R&B Smooth Production",
+      "category": "Mixing",
+      "sub_category": "Vocals",
+      "genre_focus": ["rnb", "neo_soul", "contemporary_rnb"],
+      "production_stage": "mixing",
+      "description": "Configuration for monitoring smooth R&B vocals with attention to harmonic content and spatial placement",
+      "parameters": {
+        "display_mode": "spectrum",
+        "db_range": -60,
+        "frequency_range": "full",
+        "refresh_rate": "medium",
+        "fft_size": 2048,
+        "window_type": "hann",
+        "smoothing": "medium",
+        "peak_hold_duration": "medium",
+        "meter_ballistics": "medium",
+        "phase_correlation_display": true,
+        "warning_markers": -6,
+        "color_scheme": "low_brightness",
+        "grid_overlay": true
+      },
+      "use_case": "Monitoring smooth R&B vocals with harmonic richness and spatial depth",
+      "benefits": [
+        "Smooth visualization for harmonic analysis",
+        "Effective monitoring of spatial elements",
+        "Balanced approach to frequency and level monitoring",
+        "Reduced eye strain for long sessions"
+      ],
+      "notes": "Perfect for R&B production where smooth, warm tones and spatial depth are important."
+    },
+    {
+      "id": "hiphop-mastering-safe",
+      "name": "Hip-Hop Mastering - Safe Levels",
+      "category": "Mastering",
+      "sub_category": "Safety",
+      "genre_focus": ["hip_hop", "rap", "rnb"],
+      "production_stage": "mastering",
+      "description": "Configuration focused on preventing clipping and ensuring safe levels for streaming distribution",
+      "parameters": {
+        "display_mode": "meters",
+        "db_range": -72,
+        "frequency_range": "full",
+        "refresh_rate": "medium",
+        "fft_size": 1024,
+        "window_type": "hann",
+        "smoothing": "off",
+        "peak_hold_duration": "infinite",
+        "meter_ballistics": "medium",
+        "phase_correlation_display": true,
+        "warning_markers": -1,
+        "color_scheme": "default",
+        "grid_overlay": true
+      },
+      "use_case": "Final mastering stage to ensure safe levels and prevent clipping in hip-hop masters",
+      "benefits": [
+        "Continuous peak monitoring",
+        "True peak detection",
+        "Mono compatibility verification",
+        "Streaming-safe level monitoring"
+      ],
+      "notes": "Use this preset during the final mastering stage to catch any potential clipping or phase issues."
+    },
+    {
+      "id": "hiphop-true-peak",
+      "name": "Hip-Hop True Peak Monitoring",
+      "category": "Mastering",
+      "sub_category": "Precision",
+      "genre_focus": ["hip_hop", "aggressive_rap", "trap"],
+      "production_stage": "mastering",
+      "description": "Configuration specifically for monitoring true peak levels in aggressively limited hip-hop masters",
+      "parameters": {
+        "display_mode": "peak",
+        "db_range": -18,
+        "frequency_range": "full",
+        "refresh_rate": "medium",
+        "fft_size": 512,
+        "window_type": "hann",
+        "smoothing": "off",
+        "peak_hold_duration": "infinite",
+        "meter_ballistics": "fast",
+        "phase_correlation_display": false,
+        "warning_markers": -1,
+        "color_scheme": "high_contrast",
+        "grid_overlay": true
+      },
+      "use_case": "Monitoring inter-sample peaks in heavily compressed and limited hip-hop masters",
+      "benefits": [
+        "Accurate true peak detection",
+        "Prevention of inter-sample clipping",
+        "Compliance with streaming platform requirements",
+        "High visibility for critical monitoring"
+      ],
+      "notes": "Essential for aggressive hip-hop masters that undergo heavy limiting to prevent inter-sample peaks."
+    },
+    {
+      "id": "hiphop-live-performance",
+      "name": "Hip-Hop Live Performance",
+      "category": "Performance",
+      "sub_category": "Live",
+      "genre_focus": ["hip_hop", "rap", "rnb"],
+      "production_stage": "performance",
+      "description": "Configuration optimized for live hip-hop performance monitoring with quick visual feedback",
+      "parameters": {
+        "display_mode": "meters",
+        "db_range": -48,
+        "frequency_range": "full",
+        "refresh_rate": "fast",
+        "fft_size": 512,
+        "window_type": "hann",
+        "smoothing": "light",
+        "peak_hold_duration": "medium",
+        "meter_ballistics": "fast",
+        "phase_correlation_display": true,
+        "warning_markers": -3,
+        "color_scheme": "default",
+        "grid_overlay": false
+      },
+      "use_case": "Live performance monitoring to prevent clipping and ensure consistent levels",
+      "benefits": [
+        "Fast response for live monitoring",
+        "Clear level indication",
+        "Phase correlation for stereo elements",
+        "Low CPU usage for live performance"
+      ],
+      "notes": "Perfect for live hip-hop performances where quick visual feedback is essential for maintaining quality."
+    },
+    {
+      "id": "hiphop-arrangement-check",
+      "name": "Hip-Hop Arrangement Check",
+      "category": "Arrangement",
+      "sub_category": "Composition",
+      "genre_focus": ["hip_hop", "rap", "rnb"],
+      "production_stage": "arrangement",
+      "description": "Configuration for checking arrangement balance and element relationships in hip-hop compositions",
+      "parameters": {
+        "display_mode": "spectrum",
+        "db_range": -54,
+        "frequency_range": "full",
+        "refresh_rate": "medium",
+        "fft_size": 1024,
+        "window_type": "hann",
+        "smoothing": "medium",
+        "peak_hold_duration": "short",
+        "meter_ballistics": "medium",
+        "phase_correlation_display": true,
+        "warning_markers": -3,
+        "color_scheme": "default",
+        "grid_overlay": true
+      },
+      "use_case": "Analyzing arrangement balance and identifying element conflicts during composition",
+      "benefits": [
+        "Clear visualization of arrangement density",
+        "Identification of frequency conflicts",
+        "Monitoring of element balance",
+        "Phase relationship checking"
+      ],
+      "notes": "Use during arrangement phase to identify when elements are conflicting or when the mix is becoming too dense."
+    },
+    {
+      "id": "hiphop-stereo-imaging",
+      "name": "Hip-Hop Stereo Imaging",
+      "category": "Mixing",
+      "sub_category": "Stereo",
+      "genre_focus": ["hip_hop", "rap", "rnb"],
+      "production_stage": "mixing",
+      "description": "Configuration focused on stereo field monitoring and imaging for hip-hop production",
+      "parameters": {
+        "display_mode": "meters",
+        "db_range": -48,
+        "frequency_range": "full",
+        "refresh_rate": "medium",
+        "fft_size": 1024,
+        "window_type": "hann",
+        "smoothing": "light",
+        "peak_hold_duration": "medium",
+        "meter_ballistics": "medium",
+        "phase_correlation_display": true,
+        "warning_markers": -3,
+        "color_scheme": "default",
+        "grid_overlay": true,
+        "channel_linking": "difference"
+      },
+      "use_case": "Monitoring stereo imaging and ensuring mono compatibility in hip-hop mixes",
+      "benefits": [
+        "Clear phase correlation visualization",
+        "Stereo field monitoring",
+        "Mono compatibility checking",
+        "Wide element placement verification"
+      ],
+      "notes": "Use when placing wide elements like pads, reverbs, or stereo synths to ensure they don't cause phase issues."
+    },
+    {
+      "id": "hiphop-drum-mixing",
+      "name": "Hip-Hop Drum Mixing",
+      "category": "Mixing",
+      "sub_category": "Drums",
+      "genre_focus": ["hip_hop", "rap", "rnb"],
+      "production_stage": "mixing",
+      "description": "Configuration optimized for mixing hip-hop drums with focus on transient clarity and balance",
+      "parameters": {
+        "display_mode": "scope",
+        "db_range": -48,
+        "frequency_range": "full",
+        "refresh_rate": "fast",
+        "fft_size": 512,
+        "window_type": "hann",
+        "smoothing": "off",
+        "peak_hold_duration": "short",
+        "meter_ballistics": "fast",
+        "phase_correlation_display": false,
+        "warning_markers": -3,
+        "color_scheme": "default",
+        "grid_overlay": true,
+        "persistence": 30
+      },
+      "use_case": "Mixing hip-hop drums with focus on transient clarity and pattern consistency",
+      "benefits": [
+        "Clear transient visualization",
+        "Pattern consistency checking",
+        "Drum balance monitoring",
+        "Clipping prevention for drums"
+      ],
+      "notes": "Perfect for detailed drum mixing where you need to see the shape and timing of individual hits."
+    }
+  ],
+  "metadata": {
+    "last_updated": "2026-02-03",
+    "compatible_versions": ["FL Studio 20+", "FL Studio 21+"],
+    "tags": [
+      "hip-hop",
+      "rap",
+      "rnb",
+      "mixing",
+      "mastering",
+      "monitoring",
+      "visualization",
+      "low-end",
+      "vocals",
+      "stereo-field",
+      "phase-correlation"
+    ],
+    "license": "CC BY-SA 4.0",
+    "documentation_links": [
+      "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Dashboard.htm",
+      "https://www.image-line.com/support/flstudio_online_manual/plugin_hints/dashboard_hint.htm"
+    ]
+  }
+}

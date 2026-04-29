@@ -1,0 +1,184 @@
+{
+  "id": "fruity-formula-controller",
+  "name": "Fruity Formula Controller",
+  "category": "Controller",
+  "tier": "Free",
+  "type": "Controller",
+  "description": "Fruity Formula Controller - Controller",
+  "tags": [
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "automation",
+    "modulation",
+    "control"
+  ],
+  "icon": "/plugins/fruity-formula-controller-icon.svg",
+  "color": "#78716C",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-formula-controller",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "pluginName": "Fruity Formula Controller",
+    "category": "Controller / Logic",
+    "parameters": [
+      {
+        "section": "Inputs",
+        "id": "a",
+        "name": "Knob A",
+        "range": {
+          "min": 0,
+          "max": 1,
+          "unit": "float"
+        },
+        "description": "Variable 'a' in formula."
+      },
+      {
+        "section": "Inputs",
+        "id": "b",
+        "name": "Knob B",
+        "range": {
+          "min": 0,
+          "max": 1,
+          "unit": "float"
+        },
+        "description": "Variable 'b' in formula."
+      },
+      {
+        "section": "Inputs",
+        "id": "c",
+        "name": "Knob C",
+        "range": {
+          "min": 0,
+          "max": 1,
+          "unit": "float"
+        },
+        "description": "Variable 'c' in formula."
+      },
+      {
+        "section": "Editor",
+        "id": "formula",
+        "name": "Formula Text",
+        "options": [
+          "Text String"
+        ],
+        "description": "The mathematical expression."
+      },
+      {
+        "section": "Monitor",
+        "id": "compile",
+        "name": "Compile",
+        "options": [
+          "Action"
+        ],
+        "description": "Validates and applies the formula."
+      }
+    ]
+  },
+  "presets": {
+    "envelope-follower-basic": {
+      "presetName": "Envelope Follower Basic",
+      "plugin": "Fruity Formula Controller",
+      "description": "Scales the output based on the input 'a' value (often mapped to Peak Controller).",
+      "settings": {
+        "formula": "a*b",
+        "a": 0.5,
+        "b": 1,
+        "c": 1
+      },
+      "usage": "Use to scale an existing automation signal with a multiplier (b knob)."
+    },
+    "lfo-sine": {
+      "presetName": "LFO Sine",
+      "plugin": "Fruity Formula Controller",
+      "description": "A standard sine wave LFO using a basic formula.",
+      "settings": {
+        "formula": "Sin(SongPos*Pi*2)*0.5+0.5",
+        "a": 1,
+        "b": 1,
+        "c": 1
+      },
+      "usage": "Use to modulate volume, cutoff, or any parameter that needs a smooth back-and-forth movement."
+    },
+    "random-stepped": {
+      "presetName": "Random Stepped",
+      "plugin": "Fruity Formula Controller",
+      "description": "Generates random values that stay constant for a set duration.",
+      "settings": {
+        "formula": "Rand(Int(SongPos*4))",
+        "a": 1,
+        "b": 1,
+        "c": 1
+      },
+      "usage": "Great for glitchy filter effects or randomized sample selection."
+    },
+    "useful-formulas": {
+      "basic_math": {
+        "Inverter": "1 - a",
+        "Scaling": "a * b",
+        "Offset": "a + b"
+      },
+      "lfo_shapes": {
+        "Standard Sine": "Sin(SongTime * Pi)",
+        "Absolute Bounce": "Abs(Sin(SongTime * Pi))",
+        "Quantized Ramp": "Floor(a * 8) / 8"
+      },
+      "logic": {
+        "Binary Gate": "IfG(a, 0.5, 1, 0)",
+        "Crossfader": "a * b + (1 - a) * c",
+        "Range Limiter": "Max(b, Min(c, a))"
+      },
+      "psychedelic": {
+        "Chaos": "Rand() * a",
+        "Frequency Modulation": "Sin(SongTime * Pi * (1 + b * Sin(SongTime * c)))"
+      }
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity Formula Controller\n\n## Purpose & Identity\nFruity Formula Controller is the **mathematical brain** of FL Studio. Its primary identity is a logic-based automation generator. Instead of drawing curves by hand, you write expressions (like `Sin(SongTime*Pi)`) to create LFOs, complex envelopes, randomization, or logic gates that drive other plugins. [SRC: IL-MAN]\n\n## 60-Second Mental Model\nThink of it as a \"Custom LFO Designer.\" You have three input knobs (a, b, c) and a text box. You write a math equation, and the plugin outputs a value between 0 and 1. You can then link that output to *anything* in FL Studio—filter cutoffs, volume faders, or even the parameters of other controllers.\n\n## Hip-Hop / R&B Context\n- **Perfect Chopped Gates:** Writing a formula that creates a perfectly synced 1/16th note gate for \"Upbeat\" textures.\n- **Human Drifting:** Adding a tiny, unpredictable \"drift\" to a melody’s pitch or volume to give it a \"Vibey\" lo-fi feel.\n- **Complex Panning:** Using `Sin` and `Cos` formulas together to make a sound \"orbit\" the listener's head in a \"Spacey\" way.\n\n## When To Use\n- When you need a **mathematically perfect curve** (e.g., a perfect Sine wave).\n- When you want to **invert** a controller (if Knob A goes up, the parameter goes down).\n- When you need **conditional logic** (e.g., \"Only turn on the reverb when the snare hits\").\n\n## When NOT To Use\n- **Simple Automation:** If you can draw it easily in the Playlist, drawing it is faster.\n- **CPU Constraints:** While light, hundreds of complex math evaluations per second can add up in massive Patcher projects. [SRC: REPUTABLE]",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Fruity Formula Controller\n\n## UI Tour\nThe interface is intentionally minimal, designed for code entry rather than visual tweaking. [SRC: IL-MAN]\n\n### 1. The Inputs (The Variables)\n- **Knobs a, b, c**: Normalized input faders (0.0 to 1.0). These are the variables you use in your formula.\n- **Tip**: You can link these knobs to MIDI controllers, automation clips, or other internal controllers like Peak Controller.\n\n### 2. The Formula Bar (The Logic)\n- **Expression Box**: Where the math happens.\n- **Compile Button**: **CRITICAL**. The formula will not update until you click this.\n- **Presets**: A drop-down menu with classic formulas (Invert, Sine, etc.).\n\n### 3. The Output (The Result)\n- **Meter**: A vertical bar showing the real-time output value (0.0 to 1.0).\n- **Tip**: Right-click this meter to see the output value as a decimal.\n\n## Signal Flow\n1. **Inputs (a, b, c)**: Real-time values are read from the knobs or their internal links.\n2. **Environment Variables**: The engine reads project data like `SongTime` (current beat position) and `Tempo`.\n3. **The Expression Engine**: The text in the formula bar is evaluated mathematically.\n4. **Clamping**: The result is restricted to the 0.0 – 1.0 range (though some internal calculations can exceed this before the final output).\n5. **Output**: The result is broadcast to any parameter linked to the Fruity Formula Controller.\n\n## Things Beginners Misunderstand\n- **\"Why is the output stuck at 0?\"**: You likely haven't pressed **Compile**. Even if the code is correct, it doesn't \"live\" until compiled.\n- **\"SongTime doesn't move\"**: `SongTime` only increments while the FL Studio transport is **playing**. If the DAW is stopped, formulas based on `SongTime` will stay static.\n- **Case Sensitivity**: Variables like `a, b, c` and functions like `Sin()` are usually case-sensitive in the underlying engine. Stick to the standard syntax.\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques And Best Practices: Fruity Formula Controller\n\n## 1. The \"Macro Scaling\" Trick\nLink three different VST parameters to the same Formula Controller.\n- **Technique**: Use the formula `a * b`. Use Knob A as your master MIDI knob, and Knob B as a \"depth\" control for each instance.\n- **Benefit**: You can control how much influence your MIDI knob has on each parameter individually.\n\n## 2. Rhythmic Quantization\nTurning a smooth LFO into a \"stepped\" 8-bit style modulation.\n- **Technique**: Formula: `Round(a * 8) / 8`.\n- **Benefit**: This quantizes the input into 8 discrete steps. Perfect for \"robotic\" pitch shifts or lo-fi filter sweeps.\n\n## 3. The \"Probability\" Gate\nAllowing an effect to turn on only sometimes.\n- **Technique**: Formula: `IfG(a, Rand(), 1, 0)`.\n- **Benefit**: If Knob A is at 0.1, the effect has a 10% chance of triggering. If A is at 0.9, it has a 90% chance. Great for \"glitchy\" psychedelic R&B.\n\n## 4. Tension-Based Bouncing\nCreating a \"heartbeat\" rhythm.\n- **Technique**: Formula: `Abs(Sin(SongTime * Pi))^a`.\n- **Benefit**: Knob A now controls the \"tension\" of the curve. At low values, it's a smooth bounce; at high values, it's a sharp \"thump.\"\n\n## 5. Mono-Check Logic\n- **Protocol**: If using Formula Controller to drive Stereo Pan, use a formula that never hits Hard Left or Hard Right to avoid ear fatigue.\n- **Fix**: `0.25 + (a * 0.5)`—this keeps the output between 0.25 and 0.75, ensuring the sound stays somewhat centered.\n\n## Common Pitfalls + Fixes\n| Pitfall | The Fix |\n| :--- | :--- |\n| **\"Output stays at 1.0\"** | Your math result is > 1. Use `Min(1, result)` or divide your values. |\n| **\"LFO is too fast\"** | `Sin(SongTime / 4 * Pi)`. Dividing `SongTime` slows the period. |\n| **\"Equation error\"** | Check for missing parentheses `()` or division by zero `/0`. |\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity Formula Controller\n\nFormula Controller translates vibes through **Math-Driven Motion**.\n\n## 1. Upbeat (Precision, Rhythmic, Kinetic)\n- **Concept:** \"The Perfect Clock.\"\n- **Levers:**\n  - **Formula:** `IfG(Sin(SongTime*Pi*4), 0, 1, 0)` (1/4 note gate).\n  - **Knob A:** Speed multiplier.\n- **Listen For:** A perfectly timed energy pulse that locks the track to the grid.\n- **Don't Do This:** Don't let the formula drift; use `SongTime` for absolute sync.\n\n## 2. Psychedelic (Chaotic, Evolving, Liquid)\n- **Concept:** \"Non-Repeating Evolution.\"\n- **Levers:**\n  - **Formula:** `Sin(SongTime*a) * Rand()`\n  - **Variable:** `SeededRand(SongTime)` for repeatable chaos.\n- **Listen For:** Modulation that feels alive and unpredictable, never hitting the same spot twice.\n\n## 3. Spacey (Galactic, Rotating, Immersive)\n- **Concept:** \"The Orbital Path.\"\n- **Levers:**\n  - **Sine/Cosine Duo:** Use one Formula Controller with `Sin(SongTime)` for Pan, and another with `Cos(SongTime)` for Volume.\n- **Listen For:** The sound circling the listener, creating a sense of 3D planetary motion.\n\n## 4. Vibey (Relaxed, Drifting, Human)\n- **Concept:** \"The Lo-Fi Drift.\"\n- **Levers:**\n  - **Formula:** `a + (Rand()*0.05)`\n  - **Action:** Add a tiny bit of random noise to a static value (Knob A).\n- **Listen For:** Micro-imperfections that make digital synths feel like old, unstable hardware.\n\n## 5. Moody (Stagnant, Compressed, Intense)\n- **Concept:** \"The Pressure Valve.\"\n- **Levers:**\n  - **Logarithmic Scaling:** `Log(a*9 + 1) / Log(10)`\n- **Listen For:** A control curve that feels heavy at the start and light at the end, mimicking the feel of a physical pressure-sensitive pad. [SRC: REPUTABLE]",
+      "04_Ready_To_Use_Patterns": "# Concepts: Ready-To-Use Patterns\n\nMathematical recipes for instant musical movement.\n\n---\n\n## 1. The \"Variable Tension\" Bounce\n- **Formula**: `Abs(Sin(SongTime * Pi))^a`\n- **What it does**: Creates a \"bouncing ball\" effect.\n- **Control**: Use Knob A to change the \"sharpness\" of the bounce. 0.1 = Rounded; 10 = Sharp Thump.\n- **Verification**: Link to Volume. You should hear a rhythmic pulse that gets snappier as you turn A up.\n\n## 2. Probabilistic Ear-Candy\n- **Formula**: `IfG(a, Rand(), 1, 0)`\n- **What it does**: A \"dice roll\" gate.\n- **Control**: Knob A is the \"Probability.\" At 0.1, the output is almost always 0. At 0.9, it's almost always 1.\n- **Verification**: Link to a high-feedback Delay. Only specific notes will \"trigger\" the delay.\n\n## 3. The \"Lofi Clock\" (Time Quantizer)\n- **Formula**: `Round(SongTime * a) / a`\n- **What it does**: Quantizes time itself.\n- **Control**: Knob A controls the \"Bit-rate.\" High values = smooth; Low values = chunky steps.\n- **Verification**: Link to a Filter. The filter will jump between positions rather than sliding.\n\n## 4. The \"Inverter with Offset\"\n- **Formula**: `b + (1 - b) * (1 - a)`\n- **What it does**: Inverts Input A, but uses Input B as a \"floor\" or minimum value.\n- **Control**: Knob A = Movement; Knob B = Minimum limit.\n- **Verification**: Useful for mapping a mod-wheel so it never fully closes a filter.\n\n## 5. Sine-Saw Hybrid\n- **Formula**: `(Sin(SongTime*Pi) + (SongTime % 1)) / 2`\n- **What it does**: Blends a smooth curve with a sharp ramp.\n- **Verification**: Link to a Panning knob for a \"swirl-and-jump\" stereo effect.\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Formula Controller\r\n\r\n## What It Is\r\nFruity Formula Controller is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Fruity Formula Controller\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: Fruity Formula Controller (5 Minutes)\n\n1.  **Insert:** Load **Fruity Formula Controller** into any slot.\n2.  **Paste:** Click the text box and paste this: `Sin(SongTime*Pi)` (Basic Sine LFO).\n3.  **Compile:** Press the **Compile** button (Checkmark icon).\n4.  **Link:** Right-click a knob on another plugin -> **Link to controller**.\n5.  **Source:** Select **Formula Controller - Out** from the list.\n6.  **Play:** Press Play in FL Studio. The target knob will now move automatically in a smooth wave.\n7.  **Tip:** Change the formula to `1-a` to make an **Inverter**. Link Knob A to your mod wheel. [SRC: IL-MAN]\n",
+      "cheat-sheet": "# Fruity Formula Controller: The Math Engine\r\n\r\n> **Scope:** Logic Gates, Complex LFOs, and Automation Processing.\r\n> **Source:** Image-Line Official Manual (v21.2) + Direct Analysis.\r\n> **Complexity:** High (Programming).\r\n\r\n## 🧠 The \"Algebra\" Concept\r\nThis plugin does not generate sound. It generates **Data**.\r\n*   **Inputs:** `a`, `b`, `c`. (Knobs you can link to other things).\r\n*   **Engine:** Processes these inputs using a math formula.\r\n*   **Output:** A single value (0.0 to 1.0) that you link to a target parameter.\r\n\r\n**Signal Flow:**\r\n`Input Knobs (a,b,c)` -> **[FORMULA EVALUATOR]** -> **[CLAMP 0-1]** -> **[OUTPUT]**\r\n\r\n---\r\n\r\n## 🎛️ Section 1: Core Syntax\r\n\r\nThe syntax is based on Delphi/Pascal math.\r\n*   `+` (Add), `-` (Sub), `*` (Mult), `/` (Div).\r\n*   `^` (Power). Example: `a^2` (Exponential curve).\r\n*   `Sin(x)`, `Cos(x)`: Oscillators.\r\n*   `Abs(x)`: Absolute value (Rectifier).\r\n*   `Max(a,b)`: Output the larger value.\r\n*   `Min(a,b)`: Output the smaller value.\r\n*   `Int(x)`: Integer part.\r\n*   `Frac(x)`: Decimal part.\r\n\r\n---\r\n\r\n## 🔁 Section 2: Logic (If/Then)\r\n\r\nEssential for Sidechaining and Gates.\r\n*   **Function:** `Iff(condition, true_value, false_value)`.\r\n    *   *Note:* It might be case-sensitive depending on version. Usually `If(c, t, f)` or `Iff(c, t, f)`.\r\n*   **Example:** `Iff(a > 0.5, 1, 0)` produces a **Square Wave** output from a linear input.\r\n\r\n---\r\n\r\n## ⚡ Technical Specs: The 0-1 Clamp\r\n\r\n*   **Rule:** The output is *always* clipped between 0.0 and 1.0.\r\n*   **Consequence:**\r\n    *   If your formula outputs `1.5`, the controller sends `1.0`.\r\n    *   If your formula outputs `-0.5`, the controller sends `0.0`.\r\n*   **Workaround:** You must scale your formula to fit this range.\r\n    *   *Sine Wave:* `Sin(SongTime)` goes -1 to +1.\r\n    *   *Fix:* `Sum(SongTime)*0.5 + 0.5` shifts it to 0 to 1.\r\n\r\n---\r\n\r\n## 🧪 \"Secret Sauce\" Workflows\r\n\r\n### 1. The Crossfader (Inverter)\r\n1.  **Formula:** `1 - a`\r\n2.  **Use:** Link Input `a` to Volume A. Link Formula Output to Volume B.\r\n3.  **Result:** When you turn knob `a` up, Volume A goes up, and Volume B goes down.\r\n\r\n### 2. Audio Follower (Peak Controller Helper)\r\n1.  **Formula:** `a * b`\r\n2.  **Input a:** Peak Controller output (Audio level).\r\n3.  **Input b:** A manual knob (Sensitivity).\r\n4.  **Result:** A scalable sidechain signal where Knob `b` adjusts the depth of the ducking without changing the compressor threshold.\r\n\r\n### 3. Quantizer (Stepped LFO)\r\n1.  **Formula:** `Int(a * 8) / 8`\r\n2.  **Input a:** Triangle LFO.\r\n3.  **Result:** The smooth LFO is chopped into 8 discrete steps. Perfect for Chiptune pitch modulation.\r\n",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Formula Controller\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Formula Controller to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "syntax-guide": "# Syntax Guide: Fruity Formula Controller\n\nA dictionary of mathematical operators and functions. [SRC: IL-MAN]\n\n## 1. Constants & Variables\n- `a, b, c`: The three input knobs (0 to 1.0).\n- `SongTime`: Number of beats passed since start of song.\n- `Time`: System time in seconds.\n- `Tempo`: Current BPM.\n- `Pi`: 3.14159...\n- `E`: 2.71828...\n\n## 2. Basic Operators\n- `+`, `-`, `*`, `/`: Add, Subtract, Multiply, Divide.\n- `^`: Power (e.g., `a^2` is A squared).\n- `%`: Modulo (Remainder after division).\n\n## 3. Trigonometry\n- `Sin(x)`, `Cos(x)`, `Tan(x)`: Basic waves.\n- `ArcSin(x)`, `ArcCos(x)`, `ArcTan(x)`: Inverse waves.\n\n## 4. Logic & Conditionals\n- `IfG(x, y, a, b)`: If **x > y**, output **a**, else **b**.\n- `IfL(x, y, a, b)`: If **x < y**, output **a**, else **b**.\n- `IfE(x, y, a, b)`: If **x = y**, output **a**, else **b**. [UNVERIFIED: Floating point precision issues].\n- `Min(x, y)`: Output the smaller of the two.\n- `Max(x, y)`: Output the larger of the two.\n\n## 5. Rounding & Conversion\n- `Abs(x)`: Converts negative to positive (Rectification).\n- `Round(x)`: Rounds to the nearest integer.\n- `Floor(x)`: Rounds down.\n- `Ceil(x)`: Rounds up.\n- `Log(x)`, `Exp(x)`: Logarithmic and Exponential curves.\n\n## 6. Randomness\n- `Rand()`: Outputs a random value between 0 and 1 every sample.\n- `SeededRand(seed)`: Random but repeatable if the seed is constant.\n",
+      "top-controls": "# Top Controls: Fruity Formula Controller\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Formula Controller\r\n\r\nThis section contains learning information for the fruity-formula-controller plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: The \"Orbital\" Panner (Fruity Formula Controller)\n\n## Routing Context\n- **Target:** A Spacey Synth Lead or Pad.\n- **Position:** Needs **two** Formula Controllers.\n\n## Step-by-Step Setup\n1.  **X-Axis (Pan):** \n    - Load Formula Controller 1. \n    - Formula: `0.5 + (Sin(SongTime*Pi)*0.5)`\n    - Compile.\n2.  **Y-Axis (Volume/Distance):** \n    - Load Formula Controller 2.\n    - Formula: `0.5 + (Cos(SongTime*Pi)*0.5)`\n    - Compile.\n3.  **The Link:** \n    - Link your instrument's **PAN** to Controller 1.\n    - Link your instrument's **VOLUME** to Controller 2.\n\n## Result\n- The sound will now \"circle\" the listener. When it's at the far left, it's at medium volume. As it moves to the center, it gets louder (closer), then moves to the right and gets quieter (further away).\n\n## Vibe Check\n- **Spacey/Psychedelic:** Creates a true 3D orbital sensation that feels much more natural than standard auto-panning.\n\n## Pitfalls + Fixes\n- **Pitfall:** \"It circles too fast.\"\n  - **Fix:** Change `SongTime*Pi` to `SongTime*Pi*0.5` to cut the speed in half. [SRC: REPUTABLE]\n"
+    },
+    "by-instrument": {
+      "dynamic-reverb": "# Instrument: Dynamic Reverb\n\nControlling reverb size and mix with formulas.\n\n## The \"Ducking\" Reverb\n1. Link a **Fruity Peak Controller** from your dry vocal to **Knob A** of Formula Controller.\n2. **Formula**: `1 - a`\n3. Link your **Reverb Mix** to the Formula Controller output.\n4. **Result**: The reverb is quiet when the vocal is singing and gets louder during the pauses.\n\n## Randomized Room Size\n- **Formula**: `b + Rand(Int(SongPos/4))*0.1`\n- **Result**: Every 4 bars, the reverb room size changes slightly, adding a subtle sense of space and variety to the mix.\n\n## Space Expansion\n- **Formula**: `a * b`\n- **Usage**: Map `a` to your song's energy level (e.g., from a master automation clip) and link it to reverb decay.\n- **Result**: The space gets larger and more wash-out during the big chorus sections.\n",
+      "performance-mode-macro": "# Workflow: Performance Mode Macro (Multi-Control Hub)\n\n*Goal: Link one MIDI knob to multiple effects, but scale them differently for a more \"expensive\" performance feel.*\n\n## 🎛️ Routing Context\n- **Setup**: One instance of Fruity Formula Controller.\n- **Inputs**: Knob A linked to your physical MIDI controller knob.\n\n## 🚶 Step-by-Step Setup\n1. **The Formula**: Write `a` into the formula box and click **Compile**. (This is a 1:1 direct pass-through for now).\n2. **The First Link (Filter)**: Right-click your synth's Filter Cutoff -> **Link to controller**. Select \"Formula Controller - Output\". Use the mapping formula: `Input` (1:1).\n3. **The Second Link (Reverb)**: Right-click your Reverb Mix -> **Link to controller**. Select \"Formula Controller - Output\". Use the mapping formula: `Log(1+9*Input)/2.3`.\n   - *Result*: As you turn Knob A, the filter opens linearly, but the reverb swells in naturally (logarithmically).\n4. **The Third Link (Inverted Dry)**: Right-click your Dry volume -> **Link to controller**. Use mapping formula: `1-Input`.\n   - *Result*: As the effect and filter go up, the dry signal automatically fades out.\n5. **Recording**: Press **Record** in FL Studio. Move your MIDI knob. FL Studio will record all three parameter movements perfectly synchronized into one clip.\n\n## 🔄 Variations\n- **The \"High-Energy\" Macro**: Use `Input^2` for the filter so it stays dark for most of the knob turn, then \"bursts\" open at the very end.\n- **The \"Glitch\" Macro**: Add `+ 0.05 * Rand() * Input` to the mapping formula to add subtle \"jitter\" only when the knob is turned up.\n\n## ⚠️ Pitfalls & Fixes\n- **Problem**: Parameters jump suddenly.\n- **Fix**: Check the \"Smoothing\" settings in the **Link to controller** window.\n",
+      "synth-cutoff": "# Instrument: Synth Cutoff\n\nAutomating filter movement with math.\n\n## The Periodic Sweep\n- **Formula**: `Sin(SongPos*Pi*2)*0.5+0.5`\n- **Action**: Link your synth's Filter Cutoff to the Formula Controller output.\n- **Result**: A perfectly synced filter sweep that matches the project tempo.\n\n## The \"Rhythmic Jump\"\n- **Formula**: `If(Frac(SongPos*2)>0.5, 1, 0.2)`\n- **Result**: The filter jumps between open (1) and closed (0.2) on every half-beat.\n\n## Scaled Modulation\n- **Formula**: `a + (Sin(SongPos*Pi)*b)`\n- **Usage**: Use `a` for the base cutoff level and `b` for the intensity of the wobble.\n- **Goal**: Gives you a single \"Macro\" knob (b) to control the intensity of the filter movement.\n"
+    },
+    "common-usage.md": {
+      "common-usage": "# Common Workflows: Fruity Formula Controller\r\n\r\n## 1. Tempo-Synced Sine LFO\r\n\r\n1.  **Variable:** `SongTime`.\r\n2.  **Formula:** `Sin(SongTime * Pi * 2) * 0.5 + 0.5`\r\n3.  **Explanation:**\r\n    *   `SongTime`: Current play position in beats (or seconds? Manual says beats usually).\r\n    *   `* Pi * 2`: 1 Beat = 1 Cycle (2 Pi Radians).\r\n    *   `* 0.5 + 0.5`: Scales the -1/+1 output to 0/1 range.\r\n4.  **Use:** A perfectly synced LFO that never drifts.\r\n\r\n## 2. Dynamic Ring Modulation\r\n\r\n1.  **Formula:** `a * Sin(SongTime * b * 50)`\r\n2.  **Input a:** Volume envelope.\r\n3.  **Input b:** Pitch/Rate knob.\r\n4.  **Result:** An Amplitude Modulation (LFO) where the *rate* is controlled by knob `b` and the *depth* follows the envelope of input `a`.\r\n\r\n## 3. Probability Gate (Randomizer)\r\n\r\n1.  **Formula:** `SeededRand(SongTime)`\r\n2.  **Result:** Generates a new random value every time the internal seed/time updates.\r\n3.  **Enhancement:** `Iff(Rand(SongTime) > a, 1, 0)`\r\n    *   **Input a:** Probability Threshold (e.g., 0.8).\r\n    *   **Effect:** Only outputs \"1\" (Trigger) 20% of the time. Link to \"Play\" button of a sample.\r\n\r\n## 4. Pythagorean Stereo Panner\r\n\r\n1.  **Goal:** Constant Power Panning (Sine/Cosine law).\r\n2.  **Output 1 (Left):** `Cos(a * Pi / 2)`\r\n3.  **Output 2 (Right):** `Sin(a * Pi / 2)`\r\n4.  **Result:** As knob `a` moves 0-1, the volume preserves energy relative to the center, unlike linear panning which dips in volume at the center. Requires 2 Formula Controllers (or Patcher).\r\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Formula Controller\r\n\r\nThis section contains workflow information for the fruity-formula-controller plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Formula Controller\r\n\r\nThis section contains reference information for the fruity-formula-controller plugin.\r\n"
+    }
+  }
+}

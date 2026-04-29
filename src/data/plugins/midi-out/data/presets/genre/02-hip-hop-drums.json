@@ -1,0 +1,40 @@
+{
+  "name": "Hip-Hop Drum MIDI",
+  "genre": "hip-hop/rap",
+  "mood": "funky",
+  "description": "MIDI configuration optimized for drum machine output",
+  "parameters": {
+    "channel": 10,
+    "port": "MIDI",
+    "clockSource": "Internal",
+    "clockOut": true,
+    "noteLength": "Short",
+    "velocity": 110,
+    "pitchBendRange": 0,
+    "aftertouch": false,
+    "midiCC": true,
+    "thru": true,
+    "syncToHost": true,
+    "programChange": true,
+    "bankSelect": true
+  },
+  "workflow": {
+    "useCase": "Trigger drum machines like TR-808, MPC",
+    "steps": [
+      "Set channel to 10 (drums standard)",
+      "Enable clock output for sync",
+      "Set short note length for tight hits",
+      "Higher velocity for punchy drums",
+      "Enable program change for kit switching"
+    ],
+    "troubleshooting": [
+      { "issue": "Late triggers", "fix": "Reduce MIDI output delay" },
+      { "issue": "Wrong drum sounds", "fix": "Check MIDI note mapping" },
+      { "issue": "No sync", "fix": "Enable clock out, check tempo" }
+    ]
+  },
+  "abTest": {
+    "listenFor": "Tight, synchronized drum triggering",
+    "duration": "Full beat pattern"
+  }
+}

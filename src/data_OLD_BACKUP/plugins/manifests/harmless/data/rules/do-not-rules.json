@@ -1,0 +1,149 @@
+{
+  "metadata": {
+    "plugin": "Harmless",
+    "ruleSet": "do-not-rules",
+    "lastUpdated": "2026-02-03"
+  },
+  "rules": [
+    {
+      "id": "additive-misconceptions",
+      "name": "Additive Engine Misconceptions",
+      "priority": "high",
+      "donts": [
+        {
+          "mistake": "Worrying about filter resonance distortion",
+          "explanation": "Additive engine prevents phase issues - high resonance is safe",
+          "reality": "Can use 80%+ resonance without artifacts"
+        },
+        {
+          "mistake": "Avoiding steep filter slopes",
+          "explanation": "48dB brickwall sounds clean in additive synthesis",
+          "reality": "Extreme slopes are a feature, not a problem"
+        },
+        {
+          "mistake": "Thinking it's CPU-heavy by default",
+          "explanation": "CPU scales with active harmonics, not voices",
+          "reality": "Sparse masks are very efficient"
+        },
+        {
+          "mistake": "Expecting analog warmth",
+          "explanation": "Harmless is mathematically clean by design",
+          "reality": "Use drive/distortion to add warmth"
+        }
+      ]
+    },
+    {
+      "id": "performance-pitfalls",
+      "name": "Performance Pitfalls",
+      "priority": "medium",
+      "donts": [
+        {
+          "mistake": "Using phaser on every track",
+          "explanation": "Phaser is CPU-intensive on all 512 harmonics",
+          "reality": "Use strategically, disable when not needed"
+        },
+        {
+          "mistake": "Rich harmonic masks for simple bass",
+          "explanation": "Full sawtooth with 512 harmonics wastes CPU for sub bass",
+          "reality": "Use fundamental-only or sparse masks for bass"
+        },
+        {
+          "mistake": "9 voices unison on everything",
+          "explanation": "Maximum unison not always needed",
+          "reality": "3-4 voices often sufficient, saves CPU"
+        },
+        {
+          "mistake": "High phaser rate without purpose",
+          "explanation": "20+ Hz rates create extreme effects",
+          "reality": "Mostly useful for special FX, not bread-and-butter sounds"
+        }
+      ]
+    },
+    {
+      "id": "sound-design-mistakes",
+      "name": "Sound Design Mistakes",
+      "priority": "medium",
+      "donts": [
+        {
+          "mistake": "Ignoring the harmonic mask",
+          "explanation": "Using only presets misses Harmless's power",
+          "reality": "Custom masks create unique sounds impossible elsewhere"
+        },
+        {
+          "mistake": "Pluck filter with no harmonics",
+          "explanation": "Pluck needs frequencies to decay - pure sine won't work",
+          "reality": "Use sawtooth or rich masks with pluck"
+        },
+        {
+          "mistake": "Unison on sub bass frequencies",
+          "explanation": "Creates phase issues in mono playback systems",
+          "reality": "Keep sub bass in single voice mode"
+        },
+        {
+          "mistake": "Forgetting pluck needs 0% sustain",
+          "explanation": "Sustained pluck sounds like filter effect, not decay",
+          "reality": "Set amp sustain to 0 for true string decay"
+        },
+        {
+          "mistake": "Using phaser like traditional phaser",
+          "explanation": "Expecting phase shift but getting frequency shift",
+          "reality": "Understand it's harmonic frequency modulation"
+        }
+      ]
+    },
+    {
+      "id": "mixing-mistakes",
+      "name": "Mixing Mistakes",
+      "priority": "medium",
+      "donts": [
+        {
+          "mistake": "Applying heavy unison to bass",
+          "explanation": "Creates mono compatibility issues",
+          "reality": "Bass should be mostly mono below 200Hz"
+        },
+        {
+          "mistake": "Maximus at 100% on everything",
+          "explanation": "Over-compression kills dynamics",
+          "reality": "25-40% is the sweet spot"
+        },
+        {
+          "mistake": "Brickwall filter without purpose",
+          "explanation": "48dB slope sounds very digital/clinical",
+          "reality": "Use for effect, not as default"
+        },
+        {
+          "mistake": "High resonance on bass",
+          "explanation": "Can create whistling artifacts in low frequencies",
+          "reality": "Keep bass resonance under 30%"
+        }
+      ]
+    },
+    {
+      "id": "workflow-inefficiencies",
+      "name": "Workflow Inefficiencies",
+      "priority": "low",
+      "donts": [
+        {
+          "mistake": "Not saving custom masks",
+          "explanation": "Losing good masks when switching presets",
+          "reality": "Save to mask preset slots before experimenting"
+        },
+        {
+          "mistake": "Random mask drawing without purpose",
+          "explanation": "Random harmonics rarely sound musical",
+          "reality": "Use mask recipes or purposeful shapes"
+        },
+        {
+          "mistake": "Ignoring sub oscillator",
+          "explanation": "Missing out on easy low-end extension",
+          "reality": "Sub osc is powerful for bass design"
+        },
+        {
+          "mistake": "Never using color control",
+          "explanation": "Pre-filter brightness is quick tone control",
+          "reality": "Use color before adjusting filter"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,743 @@
+{
+  "id": "minisynth",
+  "name": "MiniSynth",
+  "presets": {
+    "01-g-funk-lead": {
+      "metadata": {
+        "plugin": "MiniSynth",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "G-Funk Lead",
+        "category": "genre",
+        "genre": "hip-hop/rap",
+        "mood": "smooth"
+      },
+      "settings": {
+        "oscillator": {
+          "waveform": "sine",
+          "octave": "0",
+          "detune": 0,
+          "mix": 100
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 2800,
+          "resonance": 15,
+          "drive": 5
+        },
+        "envelope": {
+          "attack": 50,
+          "decay": 300,
+          "sustain": 80,
+          "release": 400
+        },
+        "lfo": {
+          "waveform": "sine",
+          "rate": 0.2,
+          "amt": 10,
+          "dest": "filterCutoff"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Soft clipper - 1dB"
+        ],
+        "post": [
+          "Fruily Reverb 2 - Plate, Decay 1.5s, Mix 15%",
+          "Fruily Compressor - Soft knee"
+        ]
+      },
+      "genreTags": [
+        "hip-hop/rap",
+        "G-Funk",
+        "smooth",
+        "West Coast"
+      ],
+      "a/bTesting": {
+        "testA": "Sine wave for classic G-Funk",
+        "testB": "Add triangle for modern edge"
+      },
+      "troubleshooting": {
+        "tooDark": "Increase filter cutoff to 3200Hz",
+        "clicking": "Increase envelope attack to 30ms"
+      }
+    },
+    "02-rnb-smooth-bass": {
+      "metadata": {
+        "plugin": "MiniSynth",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Smooth Bass",
+        "category": "genre",
+        "genre": "R&B",
+        "mood": "smooth"
+      },
+      "settings": {
+        "oscillator": {
+          "waveform": "triangle",
+          "octave": "-1",
+          "detune": 0,
+          "mix": 100
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 1500,
+          "resonance": 20,
+          "drive": 8
+        },
+        "envelope": {
+          "attack": 20,
+          "decay": 200,
+          "sustain": 75,
+          "release": 300
+        },
+        "lfo": {
+          "waveform": "sine",
+          "rate": 0.3,
+          "amt": 15,
+          "dest": "pan"
+        }
+      },
+      "chain": {
+        "post": [
+          "Fruily Compressor - Ratio 2:1, Attack 15ms"
+        ]
+      },
+      "genreTags": [
+        "R&B",
+        "smooth",
+        "groove",
+        "soulful"
+      ],
+      "a/bTesting": {
+        "testA": "Triangle for warmth",
+        "testB": "Add sine for more sub"
+      },
+      "troubleshooting": {
+        "tooThin": "Increase filter drive to 12%",
+        "muddy": "Increase filter cutoff to 1800Hz"
+      }
+    },
+    "03-piano-keys": {
+      "metadata": {
+        "plugin": "MiniSynth",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Piano Keys",
+        "category": "genre",
+        "genre": "R&B",
+        "mood": "moody"
+      },
+      "settings": {
+        "oscillator": {
+          "waveform": "sine",
+          "octave": "0",
+          "detune": 0,
+          "mix": 90
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 3500,
+          "resonance": 10,
+          "drive": 3
+        },
+        "envelope": {
+          "attack": 5,
+          "decay": 250,
+          "sustain": 85,
+          "release": 350
+        },
+        "lfo": {
+          "waveform": "sine",
+          "rate": 0.4,
+          "amt": 8,
+          "dest": "pitch"
+        }
+      },
+      "chain": {
+        "post": [
+          "Fruily Reverb 2 - Hall, Decay 2s, Mix 18%"
+        ]
+      },
+      "genreTags": [
+        "R&B",
+        "moody",
+        "piano",
+        "soulful"
+      ],
+      "a/bTesting": {
+        "testA": "Sine wave for pure tone",
+        "testB": "Add triangle for harmonics"
+      },
+      "troubleshooting": {
+        "tooSoft": "Increase filter drive to 5%",
+        "harshHighs": "Reduce filter cutoff to 3000Hz"
+      }
+    },
+    "04-acid-bass": {
+      "metadata": {
+        "plugin": "MiniSynth",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Acid Bass",
+        "category": "genre",
+        "genre": "EDM",
+        "mood": "electric"
+      },
+      "settings": {
+        "oscillator": {
+          "waveform": "saw",
+          "octave": "-1",
+          "detune": 0,
+          "mix": 100
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 2000,
+          "resonance": 65,
+          "drive": 15
+        },
+        "envelope": {
+          "attack": 5,
+          "decay": 150,
+          "sustain": 50,
+          "release": 100
+        },
+        "lfo": {
+          "waveform": "square",
+          "rate": 1,
+          "amt": 80,
+          "dest": "filterCutoff"
+        }
+      },
+      "chain": {
+        "post": [
+          "Fruily Distancer - Drive 20%",
+          "Fruily Compressor - Fast attack"
+        ]
+      },
+      "genreTags": [
+        "EDM",
+        "techno",
+        "acid",
+        "electric"
+      ],
+      "a/bTesting": {
+        "testA": "High resonance for acid sound",
+        "testB": "Lower resonance for techno"
+      },
+      "troubleshooting": {
+        "selfOscillation": "Reduce resonance below 60%",
+        "tooHarsh": "Reduce filter cutoff to 1500Hz"
+      }
+    },
+    "05-trap-pluck": {
+      "metadata": {
+        "plugin": "MiniSynth",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Trap Pluck",
+        "category": "genre",
+        "genre": "trap",
+        "mood": "dark"
+      },
+      "settings": {
+        "oscillator": {
+          "waveform": "square",
+          "octave": "0",
+          "detune": 0,
+          "mix": 100
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 3000,
+          "resonance": 40,
+          "drive": 10
+        },
+        "envelope": {
+          "attack": 2,
+          "decay": 80,
+          "sustain": 0,
+          "release": 50
+        },
+        "lfo": {
+          "waveform": "sine",
+          "rate": 2,
+          "amt": 20,
+          "dest": "pitch"
+        }
+      },
+      "chain": {
+        "post": [
+          "Fruily Reverb 2 - Small Room, Decay 0.8s, Mix 15%"
+        ]
+      },
+      "genreTags": [
+        "trap",
+        "dark",
+        "plucky",
+        "aggressive"
+      ],
+      "a/bTesting": {
+        "testA": "Square wave for click",
+        "testB": "Add saw for body"
+      },
+      "troubleshooting": {
+        "tooClicky": "Increase attack to 5ms",
+        "notPunchy": "Increase filter resonance to 50%"
+      }
+    },
+    "06-warm-pad": {
+      "metadata": {
+        "plugin": "MiniSynth",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Warm Pad",
+        "category": "genre",
+        "genre": "ambient",
+        "mood": "moody"
+      },
+      "settings": {
+        "oscillator": {
+          "waveform": "triangle",
+          "octave": "-1",
+          "detune": 5,
+          "mix": 85
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 2000,
+          "resonance": 15,
+          "drive": 5
+        },
+        "envelope": {
+          "attack": 300,
+          "decay": 500,
+          "sustain": 85,
+          "release": 800
+        },
+        "lfo": {
+          "waveform": "sine",
+          "rate": 0.1,
+          "amt": 25,
+          "dest": "pan"
+        }
+      },
+      "chain": {
+        "post": [
+          "Fruily Reverb 2 - Cathedral, Decay 4s, Mix 25%"
+        ]
+      },
+      "genreTags": [
+        "ambient",
+        "moody",
+        "warm",
+        "cinematic"
+      ],
+      "a/bTesting": {
+        "testA": "Triangle for warmth",
+        "testB": "Add sine for smoothness"
+      },
+      "troubleshooting": {
+        "tooDark": "Increase filter cutoff to 2500Hz",
+        "phasing": "Reduce detune or pan amount"
+      }
+    },
+    "armin": {
+      "metadata": {
+        "plugin": "MiniSynth",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Euro Trance Lead",
+        "category": "signature",
+        "inspiredBy": "Armin van Buuren festival style"
+      },
+      "settings": {
+        "oscillator": {
+          "waveform": "saw",
+          "octave": "0",
+          "detune": 7,
+          "mix": 100
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 4000,
+          "resonance": 50,
+          "drive": 15
+        },
+        "envelope": {
+          "attack": 20,
+          "decay": 200,
+          "sustain": 70,
+          "release": 500
+        },
+        "lfo": {
+          "waveform": "saw-up",
+          "rate": 0.5,
+          "amt": 60,
+          "dest": "filterCutoff"
+        }
+      },
+      "chain": {
+        "post": [
+          "Fruily Limiter - Ceiling -0.3dB",
+          "Reverb - Large hall, Decay 3s, Mix 20%"
+        ]
+      },
+      "characteristics": [
+        "big",
+        "uplifting",
+        "anthem",
+        "powerful"
+      ],
+      "genreTags": [
+        "EDM",
+        "trance",
+        "progressive",
+        "festival"
+      ],
+      "a/bTesting": {
+        "testA": "Detuned for width",
+        "testB": "Clean for purity"
+      },
+      "troubleshooting": {
+        "too harsh": "Reduce filter resonance to 40%",
+        "not big enough": "Increase detune to 10 cents"
+      }
+    },
+    "j-dilla": {
+      "metadata": {
+        "plugin": "MiniSynth",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Subtle Lead",
+        "category": "signature",
+        "inspiredBy": "J Dilla smooth production"
+      },
+      "settings": {
+        "oscillator": {
+          "waveform": "triangle",
+          "octave": "0",
+          "detune": 3,
+          "mix": 90
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 2000,
+          "resonance": 12,
+          "drive": 4
+        },
+        "envelope": {
+          "attack": 30,
+          "decay": 350,
+          "sustain": 82,
+          "release": 400
+        },
+        "lfo": {
+          "waveform": "sine",
+          "rate": 0.15,
+          "amt": 10,
+          "dest": "pan"
+        }
+      },
+      "chain": {
+        "post": [
+          "Fruily Reverb 2 - Room, Decay 1.8s, Mix 15%",
+          "Light compression"
+        ]
+      },
+      "characteristics": [
+        "smooth",
+        "mellow",
+        "soulful",
+        "subtle"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "R&B",
+        "soul",
+        "jazzy"
+      ],
+      "a/bTesting": {
+        "testA": "Triangle for warmth",
+        "testB": "Sine for purity"
+      },
+      "troubleshooting": {
+        "tooSoft": "Increase filter drive to 6%",
+        "notEnoughPresence": "Increase filter cutoff to 2200Hz"
+      }
+    },
+    "nile-rodgers": {
+      "metadata": {
+        "plugin": "MiniSynth",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Vintage Lead",
+        "category": "signature",
+        "inspiredBy": "Nile Rodgers funk style"
+      },
+      "settings": {
+        "oscillator": {
+          "waveform": "sine",
+          "octave": "0",
+          "detune": 0,
+          "mix": 95
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 2500,
+          "resonance": 18,
+          "drive": 6
+        },
+        "envelope": {
+          "attack": 10,
+          "decay": 200,
+          "sustain": 80,
+          "release": 250
+        },
+        "lfo": {
+          "waveform": "sine",
+          "rate": 0.25,
+          "amt": 12,
+          "dest": "filterCutoff"
+        }
+      },
+      "chain": {
+        "post": [
+          "Fruily Compressor - Ratio 2:1, Attack 10ms",
+          "Fruily Reverb 2 - Plate, Decay 1s, Mix 12%"
+        ]
+      },
+      "characteristics": [
+        "smooth",
+        "warm",
+        "funky",
+        "classic"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "R&B",
+        "funk",
+        "classic"
+      ],
+      "a/bTesting": {
+        "testA": "Sine for pure tone",
+        "testB": "Triangle for harmonics"
+      },
+      "troubleshooting": {
+        "tooDull": "Increase filter cutoff to 3000Hz",
+        "clickingAttack": "Increase attack to 15ms"
+      }
+    },
+    "uk-dnb": {
+      "metadata": {
+        "plugin": "MiniSynth",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Drum Bass",
+        "category": "signature",
+        "inspiredBy": "UK drum & bass style"
+      },
+      "settings": {
+        "oscillator": {
+          "waveform": "saw",
+          "octave": "-1",
+          "detune": 0,
+          "mix": 100
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 800,
+          "resonance": 45,
+          "drive": 12
+        },
+        "envelope": {
+          "attack": 2,
+          "decay": 100,
+          "sustain": 60,
+          "release": 150
+        },
+        "lfo": {
+          "waveform": "square",
+          "rate": 4,
+          "amt": 30,
+          "dest": "filterCutoff"
+        }
+      },
+      "chain": {
+        "post": [
+          "Fruily Compressor - Fast attack 2ms, Ratio 4:1",
+          "Fruily Limiter - Threshold -10dB"
+        ]
+      },
+      "characteristics": [
+        "punchy",
+        "energetic",
+        "rhythmic",
+        "dark"
+      ],
+      "genreTags": [
+        "EDM",
+        "drum & bass",
+        "jungle",
+        "energetic"
+      ],
+      "a/bTesting": {
+        "testA": "High resonance for reese sound",
+        "testB": "Lower resonance for cleaner sound"
+      },
+      "troubleshooting": {
+        "too muddy": "Increase filter cutoff to 1000Hz",
+        "not punchy": "Reduce decay to 80ms"
+      }
+    }
+  },
+  "parameters": {
+    "minisynth-modifier-map": {
+      "plugin_name": "MiniSynth",
+      "category": "Subtractive / Mobile",
+      "waveform_modifiers": [
+        {
+          "mode": "Saw",
+          "modifier": "Pulse Width",
+          "use_cases": [
+            "Lead",
+            "Organ",
+            "Brass"
+          ]
+        },
+        {
+          "mode": "Pulse",
+          "modifier": "Pulse Width",
+          "use_cases": [
+            "Nasal Bass",
+            "Chiptune"
+          ]
+        },
+        {
+          "mode": "Saw + Saw",
+          "modifier": "Osc 2 Pitch",
+          "use_cases": [
+            "Thick Lead",
+            "Fifths"
+          ]
+        },
+        {
+          "mode": "SuperSaw",
+          "modifier": "Detune Amount",
+          "use_cases": [
+            "Trance Lead",
+            "Wide Pad"
+          ]
+        },
+        {
+          "mode": "Bell",
+          "modifier": "Harmonics",
+          "use_cases": [
+            "Bells",
+            "Plucks",
+            "Metallic Perc"
+          ]
+        },
+        {
+          "mode": "DeafSaw",
+          "modifier": "Spectral Brightness",
+          "use_cases": [
+            "Shimmer",
+            "High-End Air"
+          ]
+        },
+        {
+          "mode": "Filtered",
+          "modifier": "Internal Cutoff",
+          "use_cases": [
+            "Dark Bass",
+            "Double Filter"
+          ]
+        },
+        {
+          "mode": "Noise",
+          "modifier": "Noise Color",
+          "use_cases": [
+            "Snare Decay",
+            "Risers",
+            "Ambience"
+          ]
+        }
+      ]
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "01 Subtractive Synthesis",
+      "filename": "01-subtractive-synthesis.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "By Goal Workflows",
+      "category": "by-goal",
+      "filename": "by-goal-workflows.md"
+    },
+    {
+      "title": "Deep Mobile Bass",
+      "category": "by-goal",
+      "filename": "deep-mobile-bass.md"
+    },
+    {
+      "title": "Glitchy Lfo Effects",
+      "category": "by-goal",
+      "filename": "glitchy-lfo-effects.md"
+    },
+    {
+      "title": "Index",
+      "category": "by-goal",
+      "filename": "INDEX.md"
+    },
+    {
+      "title": "Lush Trance Leads",
+      "category": "by-goal",
+      "filename": "lush-trance-leads.md"
+    },
+    {
+      "title": "01 Lead Workflow",
+      "category": "by-instrument",
+      "filename": "01-lead-workflow.md"
+    },
+    {
+      "title": "02 Bass Workflow",
+      "category": "by-instrument",
+      "filename": "02-bass-workflow.md"
+    },
+    {
+      "title": "03 Pad Workflow",
+      "category": "by-instrument",
+      "filename": "03-pad-workflow.md"
+    },
+    {
+      "title": "05 Synth Pluck Presets",
+      "category": "by-instrument",
+      "filename": "05-synth-pluck-presets.md"
+    },
+    {
+      "title": "06 Chord Stab Presets",
+      "category": "by-instrument",
+      "filename": "06-chord-stab-presets.md"
+    }
+  ]
+}

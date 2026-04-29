@@ -1,0 +1,37 @@
+{
+  "metadata": {
+    "plugin": "Kepler Exo",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "presetName": "Exo Grim Reaper",
+    "category": "genre",
+    "genre": "drill",
+    "mood": "dark",
+    "exoFeatures": ["sub-oscillator", "expanded-modulation", "dual-filter"]
+  },
+  "settings": {
+    "oscillator1": { "waveform": "saw", "octave": "-2", "detune": 0, "mix": 90 },
+    "oscillator2": { "waveform": "saw", "octave": "-2", "detune": 5, "mix": 85 },
+    "oscillator3": { "waveform": "square", "octave": "-1", "detune": 0, "mix": 60 },
+    "oscillator4": { "waveform": "saw", "octave": "0", "detune": 10, "mix": 40 },
+    "subOscillator": { "waveform": "sine", "octave": "-2", "mix": 100 },
+    "filterA": { "type": "lowpass", "cutoff": 120, "resonance": 40, "drive": 25 },
+    "filterB": { "type": "bandpass", "cutoff": 800, "resonance": 35, "drive": 15 },
+    "envelope": { "attack": 6, "decay": 220, "sustain": 55, "release": 180 },
+    "modulation": { "envToFilterA": 80, "lfo1ToPitch": 20, "lfo2ToFilterB": 30 }
+  },
+  "chain": {
+    "pre": ["High-pass at 35Hz"],
+    "post": ["Fruily Limiter - Threshold -12dB, Attack 0.5ms, Release 25ms, Ratio 6:1"]
+  },
+  "genreTags": ["drill", "dark", "heavy", "aggressive"],
+  "a/bTesting": {
+    "testA": "Pitch LFO for demonic sub movement",
+    "testB": "Static pitch for pure heaviness"
+  },
+  "troubleshooting": {
+    "tooDistorted": "Filter drive to 18%",
+    "weakImpact": "Increase filter A resonance to 50%"
+  }
+}

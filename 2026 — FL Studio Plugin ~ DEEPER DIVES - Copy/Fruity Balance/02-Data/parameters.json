@@ -1,0 +1,269 @@
+{
+  "pluginName": "Fruity Balance",
+  "version": "1.0",
+  "lastUpdated": "2025-01-04",
+  "category": "Spatial Processing",
+  "parameters": {
+    "pan": {
+      "type": "continuous",
+      "range": {
+        "min": -100,
+        "max": 100,
+        "default": 0
+      },
+      "unit": "percent",
+      "description": "Stereo panning position using constant power curve",
+      "technicalDetails": "Constant power panning maintains perceived loudness across positions",
+      "sweetSpots": {
+        "hard_left": -100,
+        "center_left": [-30, -20],
+        "center": 0,
+        "center_right": [20, 30],
+        "hard_right": 100
+      }
+    },
+    "balance": {
+      "type": "continuous",
+      "range": {
+        "min": -100,
+        "max": 100,
+        "default": 0
+      },
+      "unit": "percent",
+      "description": "Left/right channel level balance adjustment",
+      "technicalDetails": "Adjusts relative channel levels without changing stereo position",
+      "sweetSpots": {
+        "left_dominant": [-20, -10],
+        "balanced": 0,
+        "right_dominant": [10, 20]
+      }
+    },
+    "width": {
+      "type": "percentage",
+      "range": {
+        "min": 0,
+        "max": 200,
+        "default": 100
+      },
+      "unit": "percent",
+      "description": "Stereo image width control from mono to double width",
+      "technicalDetails": "Spatial processing algorithm for stereo width enhancement",
+      "sweetSpots": {
+        "mono": 0,
+        "narrow": [50, 80],
+        "natural": 100,
+        "enhanced": [120, 150],
+        "extreme": [180, 200]
+      }
+    },
+    "outputLevel": {
+      "type": "gain",
+      "range": {
+        "min": -20,
+        "max": 20,
+        "default": 0
+      },
+      "unit": "dB",
+      "description": "Output level compensation for gain changes from processing",
+      "technicalDetails": "Maintains consistent output levels despite spatial processing"
+    },
+    "mono": {
+      "type": "boolean",
+      "default": false,
+      "description": "Switch to mono output for compatibility testing",
+      "technicalDetails": "Sum to mono with proper phase handling"
+    },
+    "bypass": {
+      "type": "boolean",
+      "default": false,
+      "description": "Bypass processing for A/B comparison",
+      "technicalDetails": "Hard bypass maintaining level matching"
+    }
+  },
+  "presets": {
+    "vocal": {
+      "lead_vocal_center": {
+        "name": "Lead Vocal - Center",
+        "description": "Centered lead vocal with focused image",
+        "settings": {
+          "pan": 0,
+          "balance": 0,
+          "width": 80,
+          "outputLevel": 0
+        }
+      },
+      "lead_vocal_slight": {
+        "name": "Lead Vocal - Slight Pan",
+        "description": "Lead vocal slightly off-center for space",
+        "settings": {
+          "pan": -15,
+          "balance": 0,
+          "width": 85,
+          "outputLevel": 0
+        }
+      },
+      "background_vocals": {
+        "name": "Background Vocals - Wide",
+        "description": "Wide stereo background vocals",
+        "settings": {
+          "pan": 0,
+          "balance": 0,
+          "width": 130,
+          "outputLevel": -2
+        }
+      }
+    },
+    "guitar": {
+      "rhythm_left": {
+        "name": "Rhythm Guitar - Left",
+        "description": "Left-positioned rhythm guitar",
+        "settings": {
+          "pan": -50,
+          "balance": 0,
+          "width": 90,
+          "outputLevel": 0
+        }
+      },
+      "rhythm_right": {
+        "name": "Rhythm Guitar - Right",
+        "description": "Right-positioned rhythm guitar",
+        "settings": {
+          "pan": 50,
+          "balance": 0,
+          "width": 90,
+          "outputLevel": 0
+        }
+      },
+      "acoustic_wide": {
+        "name": "Acoustic Guitar - Wide",
+        "description": "Wide stereo acoustic guitar",
+        "settings": {
+          "pan": 0,
+          "balance": 0,
+          "width": 140,
+          "outputLevel": -1
+        }
+      }
+    },
+    "keyboard": {
+      "piano_natural": {
+        "name": "Piano - Natural",
+        "description": "Natural piano stereo width",
+        "settings": {
+          "pan": 0,
+          "balance": 0,
+          "width": 110,
+          "outputLevel": 0
+        }
+      },
+      "synth_wide": {
+        "name": "Synth - Wide",
+        "description": "Wide stereo synthesizer",
+        "settings": {
+          "pan": 0,
+          "balance": 0,
+          "width": 160,
+          "outputLevel": -2
+        }
+      },
+      "organ_traditional": {
+        "name": "Organ - Traditional",
+        "description": "Traditional Leslie positioning",
+        "settings": {
+          "pan": 0,
+          "balance": 0,
+          "width": 125,
+          "outputLevel": 0
+        }
+      }
+    },
+    "drums": {
+      "overheads_natural": {
+        "name": "Drum Overheads - Natural",
+        "description": "Natural drum overhead positioning",
+        "settings": {
+          "pan": 0,
+          "balance": 0,
+          "width": 105,
+          "outputLevel": 0
+        }
+      },
+      "room_wide": {
+        "name": "Room Mics - Wide",
+        "description": "Wide room microphone enhancement",
+        "settings": {
+          "pan": 0,
+          "balance": 0,
+          "width": 150,
+          "outputLevel": -3
+        }
+      }
+    },
+    "utility": {
+      "bass_mono": {
+        "name": "Bass - Mono",
+        "description": "Mono bass guitar for solid foundation",
+        "settings": {
+          "pan": 0,
+          "balance": 0,
+          "width": 0,
+          "outputLevel": 0
+        }
+      },
+      "phase_check": {
+        "name": "Phase Check",
+        "description": "Check stereo phase issues",
+        "settings": {
+          "pan": 0,
+          "balance": 0,
+          "width": 100,
+          "outputLevel": 0,
+          "mono": true
+        }
+      }
+    }
+  },
+  "genreApplications": {
+    "pop": {
+      "typicalSettings": {
+        "lead_elements": {"pan": 0, "width": 80},
+        "supporting_elements": {"pan": [-30, 30], "width": 90},
+        "background_elements": {"pan": 0, "width": 120}
+      },
+      "useCase": "Clean, commercial stereo imaging"
+    },
+    "rock": {
+      "typicalSettings": {
+        "rhythm_section": {"pan": [-50, 50], "width": 100},
+        "lead_elements": {"pan": [-10, 10], "width": 85},
+        "background": {"pan": 0, "width": 110}
+      },
+      "useCase": "Traditional rock stereo placement"
+    },
+    "electronic": {
+      "typicalSettings": {
+        "bass_elements": {"pan": 0, "width": 0},
+        "melodic_elements": {"pan": [-40, 40], "width": 130},
+        "atmospheric": {"pan": 0, "width": 150}
+      },
+      "useCase": "Wide, modern electronic imaging"
+    },
+    "acoustic": {
+      "typicalSettings": {
+        "main_elements": {"pan": [-20, 20], "width": 100},
+        "supporting": {"pan": [-40, 40], "width": 95},
+        "ambient": {"pan": 0, "width": 105}
+      },
+      "useCase": "Natural, realistic stereo field"
+    }
+  },
+  "technicalSpecs": {
+    "panningLaw": "Constant power (-3dB center"),
+    "widthAlgorithm": "Mid-side processing",
+    "phaseCoherence": "Maintained across all settings",
+    "latency": 0,
+    "cpuUsage": 0.1,
+    "sampleRates": [44100, 48000, 88200, 96000],
+    "bitDepths": [16, 24, 32]
+  }
+}

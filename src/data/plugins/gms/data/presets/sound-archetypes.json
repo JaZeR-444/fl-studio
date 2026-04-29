@@ -1,0 +1,226 @@
+{
+  "description": "GMS sound archetypes - foundational building blocks for patch design",
+  "usage": "Combine these archetypes to build complete patches for different genres and applications",
+  "archetypes": {
+    "supersawLead": {
+      "name": "Supersaw Lead",
+      "description": "Classic EDM supersaw with maximum thickness",
+      "category": "Leads",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Sawtooth", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Sawtooth", "pitch": 0, "fine": 7 },
+          "osc3": { "wave": "Sawtooth", "pitch": 0, "fine": -7 }
+        },
+        "mix": { "osc2": 100, "osc3": 50, "noise": 0 },
+        "unisono": { "voices": 8, "stereo": 75, "detune": 50 },
+        "filter": { "type": "LP", "cutoff": 80, "res": 15 },
+        "levelEg": { "attack": 0, "decay": 20, "sustain": 90, "release": 30 }
+      },
+      "fxChain": ["FLNG", "RVRB"],
+      "fxSettings": {
+        "FLNG": { "x": 40, "y": 30 },
+        "RVRB": { "x": 40, "y": 25 }
+      }
+    },
+    "fmBass": {
+      "name": "FM Bass",
+      "description": "Subby FM bass with harmonic character",
+      "category": "Bass",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Sine", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Sine", "pitch": 12, "fine": 0 },
+          "osc3": { "wave": "Sine", "pitch": -12, "fine": 0 }
+        },
+        "modulation": { "mode": "2 to 1 FM", "amount": 50 },
+        "mix": { "osc2": 100, "osc3": 60, "noise": 0 },
+        "unisono": { "voices": 2, "stereo": 10, "detune": 20 },
+        "filter": { "type": "LP", "cutoff": 60, "res": 10 },
+        "levelEg": { "attack": 0, "decay": 40, "sustain": 80, "release": 25 }
+      },
+      "fxChain": ["DIST"],
+      "fxSettings": {
+        "DIST": { "x": 25, "y": 70 }
+      }
+    },
+    "syncBass": {
+      "name": "Sync Sweep Bass",
+      "description": "Aggressive sync bass with envelope modulation",
+      "category": "Bass",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Sawtooth", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Sawtooth", "pitch": 12, "fine": 0 },
+          "osc3": { "wave": "Sine", "pitch": -12, "fine": 0 }
+        },
+        "modulation": { "mode": "1 SYNC", "amount": 60 },
+        "mix": { "osc2": 100, "osc3": 50, "noise": 0 },
+        "unisono": { "voices": 3, "stereo": 15, "detune": 30 },
+        "filter": { "type": "LP", "cutoff": 70, "res": 25 },
+        "envelope1": { "dest": "OSC2 PITCH", "attack": 0, "decay": 35, "amount": 40 },
+        "levelEg": { "attack": 0, "decay": 30, "sustain": 85, "release": 20 }
+      },
+      "fxChain": ["DIST", "LPF"],
+      "fxSettings": {
+        "DIST": { "x": 35, "y": 65 },
+        "LPF": { "x": 75, "y": 20 }
+      }
+    },
+    "eightOhEight": {
+      "name": "808 Style",
+      "description": "Classic 808 sub bass with pitch drop",
+      "category": "Bass",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Sine", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Sine", "pitch": 24, "fine": 0 },
+          "osc3": { "wave": "Sine", "pitch": 0, "fine": 0 }
+        },
+        "modulation": { "mode": "2 to 1 FM", "amount": 35 },
+        "mix": { "osc2": 80, "osc3": 0, "noise": 5 },
+        "unisono": { "voices": 1, "stereo": 0, "detune": 0 },
+        "filter": { "type": "LP", "cutoff": 50, "res": 0 },
+        "envelope1": { "dest": "PITCH", "attack": 0, "decay": 25, "amount": -40 },
+        "levelEg": { "attack": 0, "decay": 10, "sustain": 60, "release": 40 }
+      },
+      "fxChain": ["DIST"],
+      "fxSettings": {
+        "DIST": { "x": 15, "y": 80 }
+      }
+    },
+    "widePad": {
+      "name": "Wide Atmospheric Pad",
+      "description": "Lush stereo pad with movement",
+      "category": "Pads",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Sawtooth", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Triangle", "pitch": 12, "fine": 5 },
+          "osc3": { "wave": "Triangle", "pitch": -12, "fine": -5 }
+        },
+        "mix": { "osc2": 70, "osc3": 60, "noise": 0 },
+        "unisono": { "voices": 10, "stereo": 95, "detune": 60 },
+        "filter": { "type": "LP", "cutoff": 65, "res": 20 },
+        "envelope1": { "dest": "CUTOFF", "attack": 40, "decay": 50, "amount": 30 },
+        "lfo1": { "dest": "CUTOFF", "rate": 20, "amount": 15, "shape": "Sine" },
+        "levelEg": { "attack": 50, "decay": 60, "sustain": 95, "release": 60 }
+      },
+      "fxChain": ["PHSR", "ECHO", "RVRB"],
+      "fxSettings": {
+        "PHSR": { "x": 35, "y": 25 },
+        "ECHO": { "x": 45, "y": 50 },
+        "RVRB": { "x": 60, "y": 40 }
+      }
+    },
+    "pluck": {
+      "name": "FM Pluck",
+      "description": "Bell-like pluck sound",
+      "category": "Leads",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Sine", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Sine", "pitch": 12, "fine": 0 },
+          "osc3": { "wave": "Sine", "pitch": 24, "fine": 0 }
+        },
+        "modulation": { "mode": "2 to 1 FM", "amount": 60 },
+        "mix": { "osc2": 100, "osc3": 30, "noise": 0 },
+        "unisono": { "voices": 2, "stereo": 40, "detune": 25 },
+        "filter": { "type": "LP", "cutoff": 90, "res": 10 },
+        "levelEg": { "attack": 0, "decay": 30, "sustain": 10, "release": 25 }
+      },
+      "fxChain": ["ECHO", "RVRB"],
+      "fxSettings": {
+        "ECHO": { "x": 35, "y": 60 },
+        "RVRB": { "x": 30, "y": 20 }
+      }
+    },
+    "trapLead": {
+      "name": "Modern Trap Lead",
+      "description": "Bright lead for trap/hip-hop",
+      "category": "Leads",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Sawtooth", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Sawtooth", "pitch": 7, "fine": 3 },
+          "osc3": { "wave": "Sawtooth", "pitch": -5, "fine": -3 }
+        },
+        "mix": { "osc2": 80, "osc3": 50, "noise": 0 },
+        "unisono": { "voices": 5, "stereo": 50, "detune": 40 },
+        "filter": { "type": "LP", "cutoff": 85, "res": 15 },
+        "levelEg": { "attack": 0, "decay": 20, "sustain": 90, "release": 30 }
+      },
+      "fxChain": ["DIST", "ECHO"],
+      "fxSettings": {
+        "DIST": { "x": 20, "y": 75 },
+        "ECHO": { "x": 30, "y": 65 }
+      }
+    },
+    "texture": {
+      "name": "Ring Mod Texture",
+      "description": "Inharmonic texture for effects",
+      "category": "FX",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Sawtooth", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Square", "pitch": 3, "fine": 0 },
+          "osc3": { "wave": "Noise", "pitch": 0, "fine": 0 }
+        },
+        "modulation": { "mode": "2 to 1 RM", "amount": 70 },
+        "mix": { "osc2": 100, "osc3": 40, "noise": 20 },
+        "unisono": { "voices": 6, "stereo": 80, "detune": 55 },
+        "filter": { "type": "LP", "cutoff": 70, "res": 30 },
+        "lfo1": { "dest": "AMOUNT", "rate": 25, "amount": 40, "shape": "Triangle" },
+        "levelEg": { "attack": 20, "decay": 50, "sustain": 80, "release": 40 }
+      },
+      "fxChain": ["PHSR", "RVRB"],
+      "fxSettings": {
+        "PHSR": { "x": 50, "y": 40 },
+        "RVRB": { "x": 55, "y": 50 }
+      }
+    },
+    "wobbleBass": {
+      "name": "Wobble Bass",
+      "description": "Dubstep-style wobble bass",
+      "category": "Bass",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Sawtooth", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Sawtooth", "pitch": 12, "fine": 0 },
+          "osc3": { "wave": "Sine", "pitch": -12, "fine": 0 }
+        },
+        "mix": { "osc2": 100, "osc3": 60, "noise": 0 },
+        "unisono": { "voices": 3, "stereo": 20, "detune": 35 },
+        "filter": { "type": "LP", "cutoff": 60, "res": 35 },
+        "lfo1": { "dest": "CUTOFF", "rate": 60, "amount": 70, "shape": "Triangle", "sync": "Beat" },
+        "levelEg": { "attack": 0, "decay": 30, "sustain": 85, "release": 20 }
+      },
+      "fxChain": ["DIST", "HPF"],
+      "fxSettings": {
+        "DIST": { "x": 40, "y": 60 },
+        "HPF": { "x": 15, "y": 0 }
+      }
+    },
+    "arpeggio": {
+      "name": "Fast Arpeggio",
+      "description": "Tight pluck for arpeggios",
+      "category": "Leads",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Sawtooth", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Square", "pitch": 12, "fine": 0 },
+          "osc3": { "wave": "None", "pitch": 0, "fine": 0 }
+        },
+        "mix": { "osc2": 60, "osc3": 0, "noise": 0 },
+        "unisono": { "voices": 2, "stereo": 30, "detune": 20 },
+        "filter": { "type": "LP", "cutoff": 75, "res": 20 },
+        "envelope1": { "dest": "CUTOFF", "attack": 0, "decay": 15, "amount": 50 },
+        "levelEg": { "attack": 0, "decay": 20, "sustain": 30, "release": 20 }
+      },
+      "fxChain": ["ECHO"],
+      "fxSettings": {
+        "ECHO": { "x": 35, "y": 70 }
+      }
+    }
+  }
+}

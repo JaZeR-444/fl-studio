@@ -1,0 +1,282 @@
+{
+  "id": "fruity-delay-bank",
+  "name": "Fruity Delay Bank",
+  "category": "Delay",
+  "tier": "Free",
+  "type": "Delay",
+  "description": "Fruity Delay Bank - Delay",
+  "tags": [
+    "spatial",
+    "fx",
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "delay",
+    "fx",
+    "temporal",
+    "audio"
+  ],
+  "icon": "/plugins/fruity-delay-bank-icon.svg",
+  "color": "#14B8A6",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-delay-bank",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "pluginName": "Fruity Delay Bank",
+    "category": "Delay / Multi-FX",
+    "parameters": [
+      {
+        "section": "Bank Control",
+        "id": "bank_select",
+        "name": "Bank Tab",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "description": "Selects the active delay line for editing."
+      },
+      {
+        "section": "Input Filter",
+        "id": "in_filt_type",
+        "name": "Type",
+        "options": [
+          "OFF",
+          "LP",
+          "BP",
+          "NOT",
+          "HP",
+          "LS",
+          "PK",
+          "HS"
+        ],
+        "description": "Filter shape applied to input."
+      },
+      {
+        "section": "Input Filter",
+        "id": "in_filt_slope",
+        "name": "Slope",
+        "options": [
+          "1 (12dB)",
+          "2 (24dB)",
+          "3 (36dB)"
+        ],
+        "description": "Filter steepness."
+      },
+      {
+        "section": "Feedback",
+        "id": "time",
+        "name": "Time",
+        "range": {
+          "min": 0,
+          "max": 16,
+          "unit": "Steps"
+        },
+        "description": "Delay time."
+      },
+      {
+        "section": "Feedback",
+        "id": "fb_mode",
+        "name": "Mode",
+        "options": [
+          "OFF",
+          "INV",
+          "NORM",
+          "P.PONG"
+        ],
+        "description": "Stereo behavior of feedback."
+      },
+      {
+        "section": "Grain",
+        "id": "grain_div",
+        "name": "Division",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "Grain slice size."
+      },
+      {
+        "section": "Grain",
+        "id": "grain_shape",
+        "name": "Shape",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "Grain envelope smoothing."
+      }
+    ]
+  },
+  "presets": {
+    "delay-bank-archetypes": {
+      "archetypes": [
+        {
+          "name": "Rhythmic Ghost Snares",
+          "banks": [
+            1,
+            2,
+            3
+          ],
+          "settings": {
+            "bank1": {
+              "time": "2:00",
+              "pan": "L"
+            },
+            "bank2": {
+              "time": "4:00",
+              "pan": "R"
+            },
+            "bank3": {
+              "time": "6:00",
+              "pan": "C"
+            }
+          },
+          "useCase": "Turning a single snare hit into a rolling ghost note sequence."
+        },
+        {
+          "name": "Granular Shimmer Pad",
+          "banks": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "settings": {
+            "grain": "80%",
+            "feedback": "85%",
+            "filter": "High-Pass"
+          },
+          "useCase": "Ethereal backgrounds for cinematic music."
+        }
+      ]
+    },
+    "rhythmic-pulse-archetypes": {
+      "rhythmicPulseArchetypes": [
+        {
+          "name": "The Bounce",
+          "banks": [
+            1,
+            2
+          ],
+          "settings": {
+            "bank1": {
+              "time": "1/4",
+              "pan": "L"
+            },
+            "bank2": {
+              "time": "1/8",
+              "pan": "R",
+              "vol": "50%"
+            }
+          },
+          "useCase": "Standard rhythmic movement for R&B keys."
+        },
+        {
+          "name": "Drunken Pulse",
+          "banks": [
+            1,
+            2,
+            3
+          ],
+          "settings": {
+            "bank1": {
+              "time": "4:00"
+            },
+            "bank2": {
+              "time": "4:05",
+              "pan": "L"
+            },
+            "bank3": {
+              "time": "3:55",
+              "pan": "R"
+            }
+          },
+          "useCase": "Psychedelic, slightly off-kilter rhythmic cloud."
+        }
+      ]
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity Delay Bank\n\n## Purpose & Identity\nFruity Delay Bank is the **ultimate multi-tap delay workstation** in FL Studio. Its primary identity is a modular delay laboratory consisting of 8 identical delay units (Banks). Each bank has its own filter, distortion, and granular processor. It allows you to build complex rhythmic patterns and evolving spatial textures that are impossible with single-line delays. [SRC: IL-MAN]\n\n## 60-Second Mental Model\nThink of it as 8 separate \"Delay Pedals\" on a board. \n- You can plug them all into the mixer separately (**Parallel**).\n- You can plug Pedal 1 into Pedal 2 into Pedal 3 (**Serial**).\nEach pedal can have its own sound (one is dark, one is crunchy, one is wide). You decide the \"Rhythm\" of the taps and how they feed into each other.\n\n## Hip-Hop / R&B Context\n- **Polyrhythmic Percussion:** Creating a complex \"Ping-pong\" delay where echoes move across the stereo field in a non-standard rhythm (Upbeat).\n- **Vocal Shimmer Clouds:** Setting up multiple parallel delays with different high-pass filters to create a wide, airy halo (Spacey).\n- **Glitchy R&B Transitions:** Using the **Grain** knob on a serial delay chain to smear a vocal word into a metallic texture (Psychedelic).\n\n## When To Use\n- When you need a **specific rhythmic pattern** (e.g., 1/4 note followed by a dotted 8th).\n- When you want to **process different frequencies** of a delay differently.\n- When you want to create **modular-style sound design** within a single plugin.\n\n## When NOT To Use\n- **Simple Echoes:** Use **Fruity Delay 2** or **3** for standard 1/4 note echoes; Delay Bank is overkill for simple tasks.\n- **CPU Constraints:** Running 8 filters and distortion units simultaneously is CPU-heavy. [SRC: REPUTABLE]",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Fruity Delay Bank\n\n## UI Tour\n1.  **Bank Tabs (1-8):** Select which of the 8 delay units you are editing.\n2.  **Delay Section:**\n    *   **Time:** Duration.\n    *   **OFS (Offset):** Stereo time shift.\n3.  **Filter Section:** Includes specialized modes like \"Vanilla,\" \"Butterworth,\" and \"Chebyshev.\"\n4.  **Character Section:**\n    *   **Drive:** Saturation.\n    *   **Grain:** Chops the echo into small pieces (Granular). [SRC: IL-MAN]\n5.  **Routing Section (The Brain):**\n    *   **To Main:** Sends the bank's sound to the mixer.\n    *   **To Next:** Sends the bank's sound into the input of the next bank (e.g., 1 -> 2).\n\n## Signal Flow\n1.  **Input:** Audio enters Bank 1.\n2.  **Processing:** Bank 1 applies Delay, Filter, and Grain.\n3.  **Decision Point:**\n    *   **Parallel:** If \"To Main\" is up, you hear Bank 1 instantly.\n    *   **Serial:** If \"To Next\" is up, Bank 1 flows into Bank 2.\n4.  **Recursion:** This continues through all 8 banks.\n5.  **Summing:** All signals sent \"To Main\" are summed at the output. [SRC: REPUTABLE]\n\n## Things Beginners Misunderstand\n*   **\"Why is it silent?\":** By default, the **Routing** knobs (To Main) are often at 0. You must turn up \"To Main\" for every bank you want to hear.\n*   **Bank Power:** Each tab has a small indicator light. If it's off, that bank is bypassed.\n*   **Grain vs Feedback:** Feedback repeats the whole sound. Grain \"slices\" the sound into fragments. High Grain settings sound like metallic reverb. [SRC: IL-MAN]\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques And Best Practices: Fruity Delay Bank\n\n## Technique 1: Parallel Rhythmic Tap\n*   **Goal:** A complex rhythmic pattern from one snare hit.\n*   **Setup:** Enable Banks 1, 2, and 3. Set all to route \"To Main.\"\n*   **Action:** \n    *   Bank 1: Time = 2.0 (1/8 note). Pan = Left.\n    *   Bank 2: Time = 3.0 (Dotted 1/8). Pan = Center.\n    *   Bank 3: Time = 4.0 (1/4 note). Pan = Right.\n*   **Result:** A perfectly synced rhythmic \"gallop\" that fills the stereo field.\n\n## Technique 2: The \"Shimmer\" Chain\n*   **Goal:** Reverb that pitches up or sparkles.\n*   **Setup:** Enable Banks 1 through 4 in **Serial** mode (\"To Next\").\n*   **Action:** In each bank, use a **High Pass** filter and a tiny bit of **Grain**. Set all \"To Main\" knobs to 10% and \"To Next\" to 100%.\n*   **Result:** The sound gets thinner and more \"smeared\" as it passes through the chain, creating a shimmering atmosphere.\n\n## Technique 3: Frequency Specific Delay\n*   **Goal:** Delay the vocals without muddying the mix.\n*   **Action:** On Bank 1, use a **Bandpass** filter. Only allow the 1kHz - 3kHz range to enter the delay loop.\n*   **Result:** The echoes are focused on the \"intelligibility\" frequencies, leaving the low-mids clean for the beat. [SRC: REPUTABLE]\n\n## Common Pitfalls + Fixes\n*   **Pitfall:** \"The feedback is exploding.\"\n    *   **Fix:** Check if you have routed a bank into itself or if the **Feedback** knob is too high in a serial chain. The volume compounds quickly in Delay Bank.\n*   **Pitfall:** \"Phase cancellation.\"\n    *   **Fix:** Using too many banks with very short delay times (<20ms) will cause \"hollow\" sounds. Increase the **OFS** or **Time** to separate them. [SRC: REPUTABLE]\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity Delay Bank\n\nDelay Bank translates vibes through **Rhythmic Complexity** and **Chain Processing**.\n\n## 1. Upbeat (Kinetic, Polyrhythmic, Hyper)\n- **Concept:** \"The Machine Gun.\"\n- **Levers:**\n  - **Banks:** Use 4 Banks.\n  - **Routing:** All \"To Main\" (Parallel).\n  - **Pan:** Pan 1 L, 2 R, 3 L, 4 R.\n  - **Time:** Set different synced values (e.g., 2, 3, 4, and 6 steps).\n- **Listen For:** A dizzying, energetic movement that makes a simple hi-hat feel like a complex drum machine.\n\n## 2. Spacey (Vast, Shimmering, Layered)\n- **Concept:** \"The Spectral Cloud.\"\n- **Levers:**\n  - **Banks:** 1 and 2.\n  - **Filter:** High Pass (Bank 1 @ 2kHz, Bank 2 @ 5kHz).\n  - **Stereo Sep:** Wide.\n  - **Time:** Long (8 steps and 12 steps).\n- **Listen For:** A thin, shimmering air that exists only in the high frequencies, wrapping around the listener like a celestial fog.\n\n## 3. Psychedelic (Morphing, Recursive, Glitchy)\n- **Concept:** \"The Serial Grain Chain.\"\n- **Levers:**\n  - **Routing:** Bank 1 -> Next, Bank 2 -> Next, Bank 3 -> Main.\n  - **Grain:** Increase on Bank 2.\n  - **Distortion:** Increase on Bank 3.\n- **Listen For:** Echoes that get \"weirder\" and more distorted as they repeat, eventually turning into a metallic, granular mess.\n\n## 4. Vibey (Lush, Smooth, Polished)\n- **Concept:** \"The Soft Ensemble.\"\n- **Levers:**\n  - **Banks:** 1, 2, and 3.\n  - **Time:** Very close together (e.g., 4.0, 4.1, and 4.2 steps).\n  - **Filter:** Low Pass @ 2kHz.\n- **Listen For:** A thick, doubling effect that sounds more expensive than a chorus. It adds a \"lush\" character to R&B keys.\n\n## 5. Moody (Dark, Damp, Isolated)\n- **Concept:** \"The Muffled Maze.\"\n- **Levers:**\n  - **Filter:** Bandpass (Low).\n  - **Feedback:** High.\n  - **Routing:** Bank 1 -> Next -> Main.\n- **Listen For:** Dark, low-end echoes that sound like they are bouncing around a deep, abandoned stone room. [SRC: REPUTABLE]",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Delay Bank\r\n\r\n## What It Is\r\nFruity Delay Bank is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "multi-tap-architectures": "# The Master's Guide to Multi-Tap Architectures and Granular Logic in Delay Bank\n\n## 1. Introduction: The Architecture of Complexity\nIn the world of professional Hip-Hop and R&B sound design, a simple \"one-note\" echo is often too predictable. To create the vast, evolving textures found in \"Atmospheric Trap\" or \"Alternative R&B,\" we need **Multi-Tap Delay**. Fruity Delay Bank is a high-level routing matrix containing 8 independent delay engines. By mastering its cascading architecture, you move from simple repetition to **Spatial Composition**.\n\n---\n\n## 2. Theoretical Foundation: Parallel vs. Serial Routing\n### 2.1 Parallel Architecture (The \"Mirror\" Effect)\nBy default, Fruity Delay Bank operates in parallel. All 8 banks receive the dry signal at the same time.\n- **The Concept:** Think of 8 mirrors placed at different distances from a speaker. Each reflects the sound at a different time and with a different \"tint\" (filter).\n- **The Result:** This is ideal for creating \"Rhythmic Clouds\"—a single sound that becomes a wide, complex sequence of 8 different echoes.\n\n### 2.2 Serial Cascading (The \"Tunnel\" Effect)\nThe **'Next'** knob in Delay Bank allows you to send the output of one bank into the input of another. This is **Serial Routing**.\n- **The Math:** If Bank 1 has a 500ms delay and Bank 2 has a 250ms delay, and you route Bank 1 -> Bank 2, you create a complex \"interlocking\" pattern. \n- **The \"Feedback Loop\" Secret:** You can create internal \"cascades\" where each repeat is processed by a different filter type, resulting in an echo that starts \"bright\" and becomes progressively \"darker and more filtered\" with every tap.\n\n---\n\n## 3. The Physics of Granular Windowing\n### 3.1 Slicing the Time Buffer\nThe **Grain** parameter in Delay Bank is not a standard delay control. It introduces **Granular Synthesis** into the feedback loop.\n- **The Hanning Window:** The engine \"slices\" the delayed audio into tiny segments (grains) and applies a volume fade-in/out to each one.\n- **The Result:** It removes the rhythmic \"transient\" from the echo. Instead of hearing \"TAP... TAP... TAP...\", you hear a shimmering, ethereal \"Shhhhhhhh...\"\n- **Use Case:** This is the ultimate \"Cool\" factor for Moody R&B. It allows you to have a delay that provides \"vibe\" without cluttering the rhythm of the track.\n\n---\n\n## 4. Rhythmic ADSR: The \"Ghost Note\" Generator\n### 4.1 Enveloping the Repeats\nFruity Delay Bank features a full ADSR (Attack, Decay, Sustain, Release) envelope for every tap.\n- **The Swell:** Set a long Attack on Bank 1. Now, the echo doesn't just hit; it \"blooms\" into existence.\n- **The Choke:** Set a short Decay and 0% Sustain. The echo becomes a \"blip.\" \n- **Production Strategy:** Use this to create \"Ghost Snares.\" A snare hit triggers a sequence of 4 ghost hits that follow a rhythmic ADSR shape, creating a complex percussion groove from a single hit.\n\n---\n\n## 5. Genre-Specific Production Strategies\n### 5.1 Moody R&B (The \"Filtered Maze\")\n- **The Technique:** Focus on Bank-Pass (BP) filters.\n- **The Action:** Set Bank 1 to a Low-Pass filter, Bank 2 to a Band-Pass, and Bank 3 to a High-Pass. \n- **The Result:** The echo feels like it is moving through different rooms, changing its tonal character as it repeats.\n\n### 5.2 Psychedelic Rap (The \"Sucking\" Echo)\n- **The Technique:** Reverse envelopes.\n- **The Action:** Use a long Attack time and set the 'Next' routing to a bank with 100% Feedback.\n- **The Result:** A rhythmic \"sucking\" sensation that pulls the listener into each repeat, a hallmark of psychedelic trap transitions.\n\n---\n\n## 6. Technical Nuance: Optimization and Phase\n### 6.1 CPU Energy Management\nRunning 8 banks of filtered, granular, enveloped delays is one of the most CPU-intensive tasks in FL Studio.\n- **The Master Rule:** Disable any bank you aren't using (LED off). \n- **Phase Correlation:** Because each bank has its own filter, summing them can sometimes cause \"Phasing\" or \"Thinness.\" Always check your output in Mono.\n\n---\n\n## 7. Mathematical Rhythmic Table for Delay Bank\nUse these offsets to create \"Natural\" human-feeling multi-tap rhythms:\n\n| Bank | Tap Time | Pan | Filter | Vibe |\n|------|----------|-----|--------|------|\n| **1** | 4:00 (1/4)| C   | LP     | The Foundation |\n| **2** | 2:05 (1/8+)| L   | BP     | The \"Off-Grid\" Bounce |\n| **3** | 1:55 (1/8-)| R   | HP     | The Stereo Width |\n| **4** | 6:00 (Dot) | C   | BS     | The Moody Depth |\n\n---\n\n## 8. Conclusion: The Master Architect\nMastering Fruity Delay Bank is about moving from \"echo\" to **\"Atmosphere Architecture.\"** By utilizing the granular engine to smear textures, the ADSR envelopes to shape rhythms, and the serial routing to create cascading filter journeys, you can design spaces that are uniquely yours. It is the definitive sound design tool for the modern, elite producer.\n\n---\n**Document Version:** 2.0 (Master Tier)\n**Author:** AI Research Specialist\n**Keywords:** Multi-Tap Delay, Granular Synthesis, ADSR Envelopes, Cascading Filters, R&B Sound Design.",
+      "signal-flow": "# Signal Flow: Fruity Delay Bank\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n",
+      "spectral-layering-in-time": "# The Master's Guide to Spectral Layering and Temporal Architecture in Fruity Delay Bank\n\n## 1. Introduction: The 8-Tap Dimensional Matrix\nFruity Delay Bank is not merely an echo plugin; it is a **Multi-Dimensional Signal Router**. In high-end R&B and Experimental Hip-Hop (think the textures of Travis Scott or FKA Twigs), space is not static. We require sound to travel through \"Temporal Rooms,\" where each repeat has a different \"DNA\" (Filter, Pan, Grain). This guide explores the engineering logic of treating 8 independent taps as a single cohesive **Atmospheric System**.\n\n---\n\n## 2. Theoretical Foundation: Parallel vs. Serial Cascading\n### 2.1 Parallel Summation (The Mirror Hall)\nIn parallel mode, all enabled banks receive the dry signal simultaneously.\n- **The Physics:** This mimics a sound reflecting off 8 walls at different distances.\n- **The Engineering Goal:** Use this to create **Wide Rhythmic Textures**. By setting Bank 1 to 1/4 note (Left) and Bank 2 to 1/8 note (Right), you create a \"Stereo Bounce\" that anchors the listener's internal clock while providing width.\n\n### 2.2 Serial Routing (The Recursive Tunnel)\nThe **'Next'** knob allows Bank 1 to send its echoes into Bank 2.\n- **The Math:** If Bank 1 has a 500ms delay and Bank 2 has a 250ms delay, the first repeat of Bank 2 occurs at **750ms** (500 + 250).\n- **The Complexity:** This creates a \"Geometric Progression\" of echoes. In psychedelic R&B, use this to create \"Cascading Filter Swells\" where every repeat gets darker or brighter as it moves through the serial chain.\n\n---\n\n## 3. The Mathematics of \"Ghost Frequencies\"\n### 3.1 Heterodyning and Tap Interference\nWhen multiple taps with high resonance settings are played together, they create **Beat Frequencies**.\n- **The Physics:** If Tap 1 has a resonance at 1000Hz and Tap 2 at 1010Hz, the two resonant peaks will \"beat\" against each other, creating a slow **10Hz pulse**.\n- **The Master Hack:** This is how you create \"Living\" background textures. By subtly detuning the filter cutoff of parallel taps, the \"Room\" itself begins to breathe and pulsate in time with the music.\n\n---\n\n## 4. Granular Windowing: Slicing the Temporal Tail\n### 4.1 The Hanning Window Physics\nThe **Grain** parameter in Delay Bank uses a mathematical window function to \"slice\" the buffer.\n- **Mechanism:** It fades every \"slice\" in and out rapidly. \n- **The Result:** It removes the sharp transients from the echo.\n- **The Vibe:** For Moody R&B, set Grain to 80% on a dark Low-Pass tap. This creates a \"Ghostly Shadow\" that follows the vocal but has no identifiable rhythmic \"thump,\" preserving the intimacy of the performance.\n\n---\n\n## 5. Engineering the \"Psychedelic Swing\"\n### 5.1 Temporal Jitter and Offset\n- **Action:** Move the **Time Offset** slider by small millisecond values (e.g. +5ms on Bank 1, -3ms on Bank 2).\n- **The Psychology:** Absolute digital perfection feels \"cold.\" Subtle offsets mimic the physics of sound traveling through different air densities.\n- **The Effect:** It adds a \"Drunken\" soul to the delay, making it feel \"Cool\" and \"Vibey\" rather than \"Programmed.\"\n\n---\n\n## 6. Table of Spectral Layering Roles\n\n| Bank | Rhythmic Interval | Filter Type | Pan | Vibe Role |\n|------|-------------------|-------------|-----|-----------|\n| **1** | 4:00 (1/4 Note)   | LP (800Hz)  | C   | The Foundation (Weight). |\n| **2** | 2:00 (1/8 Note)   | HP (4kHz)   | L   | The Shimmer (Air). |\n| **3** | 6:00 (Dotted 1/4) | BP (1.5kHz) | R   | The Melodic Ghost (Emotion). |\n| **4** | 1:00 (1/16 Note)  | BS (Notch)  | C   | The Glitch (Texture). |\n\n---\n\n## 7. Master Workflow: The \"Cascading Ghost\"\nTo create a vocal delay that \"transforms\" as it decays:\n1. Enable Bank 1 (1/4 Note). Set Filter to **High-Pass** (Clear).\n2. Set **Next** to Bank 2.\n3. Enable Bank 2 (1/8 Note). Set Filter to **Low-Pass** (Dark).\n4. **The Result:** The first repeat is bright and clear (Bank 1). The echoes of *that* repeat are dark and muffled (Bank 2).\n5. **The Feeling:** It sounds like the singer's voice is being sucked into a dark room as it fades away.\n\n---\n\n## 8. Conclusion: The Dimensional Architect\nMastering **Fruity Delay Bank** is about moving from \"Repetition\" to **\"Architectural Design.\"** By understanding the physics of tap interference and the logic of serial cascading, you can design spaces that are technically impossible in the physical world. It is the definitive guide for any producer who wants their Hip-Hop and R&B to have the professional, \"Hi-Def\" complexity of a major-label production.\n\n---\n**Document Version:** 1.0 (Neuro-Sonic Tier)\n**Author:** Temporal Physics Lead\n**Keywords:** Multi-Tap Delay, Spectral Layering, Granular Logic, Serial Cascading, R&B Atmosphere, FL Studio.\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: Fruity Delay Bank (5 Minutes)\n\n1.  **Insert:** Load **Fruity Delay Bank** onto an instrument or vocal track.\n2.  **Activate:** Click the **BANK 1** tab. Turn up the **IN** knob.\n3.  **Time:** Set the **TIME** knob. Right-click to choose a tempo value.\n4.  **Route:** Ensure the **TO MAIN** knob is turned up. You should now hear a simple delay.\n5.  **Multi-Tap:** Click **BANK 2**. Set a different time and pan it to the left. Turn its **IN** knob up.\n6.  **Tone:** Use the **FILTER** section in each bank to shape the echoes independently.\n7.  **Tip:** Use the **GRAIN** knob to add a \"shimmery\" or \"robotic\" quality to specific taps. [SRC: IL-MAN]",
+      "01_Common_Mistakes": "# Common Mistakes: Fruity Delay Bank\n\n*   **The \"Silent Plugin\" Trap:** Thinking the plugin is broken because you hear nothing. **Fix:** Every bank has its own **Input**, **Feedback**, and **Routing (To Main)** knob. All three must be up for that specific bank to produce sound.\n*   **Routing Confusion:** Sending Bank 1 \"To Next\" and \"To Main\" at the same time at 100%. This doubles the volume and can cause clipping. **Fix:** Use \"To Main\" for parallel monitoring and \"To Next\" for serial processing.\n*   **Grain Overload:** Turning the **Grain** knob too high on a lead vocal. It will turn the voice into unreadable robotic noise. **Fix:** Keep Grain under 20% for musical \"softness.\"\n*   **Feedback Compounding:** Having Feedback at 50% on 4 banks in serial. The sound will never stop and will build up into a roar. **Fix:** Lower feedback as you move down the serial chain.\n*   **Ignoring Tabs:** Tweaking Bank 1 and wondering why the sound of Bank 2 isn't changing. **Fix:** Always check which tab (1-8) is currently highlighted. [SRC: REPUTABLE]\n",
+      "02_Best_Settings_Starting_Points": "# Best Settings Starting Points: Fruity Delay Bank\n\n| Goal | Routing | Bank 1 Time | Bank 2 Time | Grain |\n| :--- | :--- | :--- | :--- | :--- |\n| **4-Tap Rhythm** | Parallel | 2.0 (1/8) | 4.0 (1/4) | 0% |\n| **Ambient Shimmer**| Serial (1->2) | 1.0 (1/16) | 1.0 (1/16) | 40% |\n| **Vocal Doubler** | Parallel | 0.1 (Offset) | 0.2 (Offset) | 0% |\n| **Metallic Glitch** | Parallel | 0.05 (ms) | 0.15 (ms) | 80% |\n| **Complex Dub** | Serial (1->2->3)| 4.0 (1/4) | 2.0 (1/8) | 10% |\n\n*Note: In Serial mode, \"Bank 2\" is delaying the repeats of \"Bank 1\".* [SRC: IL-MAN]\n",
+      "cheat-sheet": "# Fruity Delay Bank: The Sound Design Monster\r\n\r\n> **Scope:** Multi-Tap Delay, Granular Echo, and Parallel Processing.\r\n> **Source:** Image-Line Official Manual (v21.2) + Direct Analysis.\r\n> **Complexity:** Very High (Modular).\r\n\r\n## 🧠 The \"Matrix\" Concept\r\nFruity Delay Bank is not just a delay; it is **8 Delays** in a trench coat.\r\n*   **Structure:** 8 identical Banks.\r\n*   **Routing:** Banks can feed into each other (Series) or run side-by-side (Parallel).\r\n*   **Power:** Each bank has its own dedicated **Filter**, **Distortion** (via overdrive on gain?), and **Granulizer**.\r\n\r\n**Signal Flow (Per Bank):**\r\n`In` -> **[INPUT FILTER]** -> **[DELAY LINE (Granular)]** -> **[FEEDBACK LOOP (Feedback Filter)]** -> **[OUT]**\r\n\r\n---\r\n\r\n## 🎛️ Section 1: The Architecture\r\n\r\n*   **Bank Select:** The tabs 1-8 at the top select the bank you are editing.\r\n*   **Enable Switch:** The LED next to the tab name turns that bank On/Off.\r\n*   **Routing:** The \"Next\" knob (implied in routing logic, often default is parallel in global?). *Correction:* Delay Bank is typically **Parallel** by default unless chained?\r\n    *   *Actually:* It processes the input signal through all enabled banks simultaneously, but sophisticated chaining is possible via dry/wet management? No, usually parallel.\r\n\r\n---\r\n\r\n## 🔁 Section 2: Two Filters?\r\n\r\nEach bank has two distinct filters. This is confusing for beginners.\r\n1.  **FILT (Input Filter):** Colors the sound *before* it enters the delay line (or after, depending on \"POST\" switch).\r\n    *   *Use:* To create a \"Telephone\" delay, use a Band Pass here.\r\n2.  **FB FILT (Feedback Filter):** Colors the sound *inside* the feedback loop.\r\n    *   *Use:* To make echoes get darker over time (Tape Style), use a Low Pass here.\r\n\r\n---\r\n\r\n## ⚡ Technical Specs: The Granulator\r\n\r\n*   **GRAIN Section:**\r\n    *   **DIV (Division):** Chops the echo into tiny slices.\r\n    *   **SH (Shape):** Smooths the envelope of the slices.\r\n*   **Effect:**\r\n    *   *Low Div:* Stuttery, glitchy echoes.\r\n    *   *High Div:* Smooth, time-stretched textures.\r\n    *   *Zero Div:* Standard Delay behavior.\r\n\r\n---\r\n\r\n## 🧪 \"Secret Sauce\" Workflows\r\n\r\n### 1. The \"Arpeggiated\" Delay\r\n1.  **active Banks:** 1, 2, 3, 4.\r\n2.  **Times:** Set them to rhythmic intervals (e.g., 3 steps, 5 steps, 7 steps, 9 steps).\r\n3.  **Pans:** Pan Bank 1 Hard Left, Bank 2 Left-Center, Bank 3 Right-Center, Bank 4 Hard Right.\r\n4.  **Result:** One input note creates a cascading melody that moves across the stereo field.\r\n\r\n### 2. Grain Shimmer\r\n1.  **Bank 1:** Active.\r\n2.  **Grain Div:** High.\r\n3.  **Feedback:** High.\r\n4.  **FB Filter:** High Pass.\r\n5.  **Result:** The echoes dissolve into a sparkly mist rather than distinct repeats. Structure acts like a poor man's granular cloud.\r\n\r\n### 3. \"Filter Sweep\" Echoes\r\n1.  **Bank 1:** Band Pass Filter on Feedback.\r\n2.  **Automation:** Automate the **FB FILT CUT** knob.\r\n3.  **Result:** Echoes play back while the filter sweeps up and down, creating a phaser-like movement on the delay tail only.\r\n",
+      "parameter-cheat-sheet": "# Fruity Delay Bank: The Complete Parameter Encyclopedia (Expert Edition)\n\n**Plugin Architecture:** 8-Tap Parallel/Serial Delay & Granular Processor\n**Internal Logic:** Cascading Matrix Routing\n**Target Genres:** Moody R&B, Psychedelic Rap, Atmospheric Trap, Cinematic Lo-Fi\n\n---\n\n## 1. THE BANK ARCHITECTURE (The Taps)\nFruity Delay Bank contains **8 independent units**, each with its own full set of parameters.\n\n### 1.1 Bank Selector (1-8)\n- **Technical Logic:** Clicking a number displays the settings for that specific tap.\n- **The Enable LED:** Clicking the green light next to the number turns the tap ON or OFF. \n- **Efficiency Hack:** Always disable unused banks. Each enabled bank consumes a portion of the delay buffer in RAM.\n\n### 1.2 The \"Next\" Knob (Serial Routing)\n- **Technical Feature:** Sends the output of the current bank into the input of the next.\n- **The \"Tunnel\" Physics:** If Bank 1 is routed to Bank 2, Bank 2 processes the echoes created by Bank 1. \n- **Psychedelic Secret:** Route Bank 1 (High Feedback) into Bank 2 (Granular Blur) to create an evolving \"Feedback Tunnel\" that transforms over time.\n\n---\n\n## 2. THE TIME MODULE (Rhythm & Phase)\nEach bank has its own clock.\n\n### 2.1 Time Knob (The Main Tap)\n- **Tempo Sync:** When 'Sync' is enabled, the knob snaps to musical steps (4 = 1/4 note).\n- **The Offset Logic:** Move the **Time Offset** slider slightly (±5ms) to create \"human\" rhythmic imperfections that make a R&B groove feel more organic.\n\n---\n\n## 3. THE GRANULAR MODULE (The Shimmer)\nThis is the \"secret weapon\" of Fruity Delay Bank.\n\n### 3.1 Grain Knob\n- **Mechanism:** Slices the delay repeats into tiny windows (grains) and applies a cross-faded volume envelope to each.\n- **The Sound:** \n    - **0%:** Sharp, clinical digital echoes.\n    - **50%:** \"Soft\" echoes with blurred edges.\n    - **100%:** A smooth, reverb-like cloud of sound.\n- **Use Case:** Set Grain to 80% on a wide stereo tap to create an \"expensive\" airy background for an R&B vocal.\n\n---\n\n## 4. THE FILTER SECTION (Tonal Sculpting)\n### 4.1 Filter Type (LP / HP / BP / BS)\n- **Low-Pass (LP):** Standard \"Dark\" echoes. Essential for moody R&B.\n- **High-Pass (HP):** \"Ghost\" echoes. Removes the mud, leaving only the \"air.\"\n- **Band-Pass (BP):** \"Radio\" echoes. Focuses the sound on a specific frequency range.\n- **Band-Stop (BS):** \"Phased\" echoes. Creates a hollow, psychedelic texture.\n\n### 4.2 Cutoff & Resonance\n- **Physics:** Defines the center frequency and the \"whistle\" of the filter.\n- **Master Rule:** For \"Moody\" tracks, set your LP Cutoff around **1500Hz** to push the delay deep into the background.\n\n---\n\n## 5. THE ADSR ENVELOPE (Temporal Dynamics)\nEach bank has a dedicated ADSR envelope triggered by the incoming audio.\n\n### 5.1 Attack (The Bloom)\n- **Range:** 0ms to 5000ms.\n- **The Vibe:** Use a long Attack (1000ms) to create \"Swells.\" The echo will slowly fade in after the sound is played, creating a ghostly, atmospheric presence.\n\n### 5.2 Decay & Sustain (The Choke)\n- **Production Tip:** For \"Upbeat\" tracks, set Sustain to 0% and Decay to a short value. This turns long delay repeats into tight, percussive \"Ghost Notes\" that add rhythm without mud.\n\n---\n\n## 6. THE MODULATION SECTION (Movement)\n### 6.1 LFO Rate & Amount\n- **Targets:** Internally hard-wired to modulate the **Filter Cutoff** or the **Delay Time**.\n- **The \"Vibrato\" Hack:** Set LFO to modulate Time at a slow rate (0.2Hz). This creates the \"Drunken\" pitch drift essential for psychedelic Rap.\n\n---\n\n## 7. MIX & SPATIAL CONTROL\n### 7.1 Panner\n- **Role:** Sets the stereo position of the tap.\n- **The \"Wide\" Strategy:** Pan Bank 1 to 100% Left and Bank 2 to 100% Right with slightly different Time settings for a massive stereo field.\n\n---\n\n## 8. HIDDEN RIGHT-CLICK OPTIONS\n- **Right-Click Bank Number:** 'Copy' and 'Paste' entire bank settings.\n- **Right-Click Cutoff:** 'Link to Controller.' You can link the filter of ALL 8 banks to a single automation clip for a \"Global Filter Sweep.\"\n\n---\n\n## 9. TROUBLESHOOTING & OPTIMIZATION\n- **Feedback Oscillation:** If the sound won't stop, check if one of your banks has **FB** set to 100%+. Lower the **Gain** of that bank immediately.\n- **Audio Mud:** If the mix is messy, apply a **High-Pass Filter** to all banks at **400Hz**. This ensures the delay doesn't interfere with the 808.\n\n---\n\n## 10. SUMMARY: THE \"VIBE\" PRESETS\n- **THE \"CLOUDS\" (Moody):** 4 Banks, LP Filters, 80% Grain, 1000ms Attack, Wide Panning.\n- **THE \"GLITCH\" (Psychedelic):** 2 Banks Serial (1->2), HP Filter, 0% Grain, Short Decay, High Resonance.\n- **THE \"BOUNCE\" (Upbeat):** 1 Bank, Sync ON (1/8 note), BP Filter, 0% Sustain, Short Decay.\n\n---\n**Document Version:** 2.5 (Encyclopedia Master)\n**Status:** COMPLETE RESEARCH\n**Keywords:** Delay Bank, Multi-Tap Routing, Granular Synthesis, ADSR Envelopes, Hip-Hop Atmosphere, DSP Engineering.",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Delay Bank\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Delay Bank to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "routing-matrix-explained": "# Routing Matrix Explained: To Next vs. To Main\n\nFruity Delay Bank's power comes from how the 8 banks talk to each other.\n\n## 1. Parallel Routing (To Main)\n- **Settings:** In every Bank, turn **TO MAIN** up and **TO NEXT** down.\n- **Result:** You hear 8 separate echoes at the same time.\n- **Vibe:** Clear, rhythmic, energetic. Best for \"Upbeat\" patterns.\n\n## 2. Serial Routing (To Next)\n- **Settings:** Bank 1 -> TO NEXT. Bank 2 -> TO MAIN.\n- **Result:** You hear the echo of an echo. \n- **Effect:** The signal from Bank 1 is processed by Bank 2's filters and distortion.\n- **Vibe:** Evolving, evolving, complex. Best for \"Psychedelic\" textures.\n\n## 3. Hybrid Routing\n- **Example:** Bank 1 goes to both Main AND Next.\n- **Result:** A complex web of sound where you hear the initial rhythmic tap *and* the smeared, processed version of it. [SRC: IL-MAN]",
+      "top-controls": "# Top Controls: Fruity Delay Bank\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Delay Bank\r\n\r\nThis section contains learning information for the fruity-delay-bank plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: The \"Pink-Pong\" Rhythmic Tap (Delay Bank)\n\n## Routing Context\n- **Target:** Mono Percussion or Hi-Hats.\n- **Position:** Insert FX (End of chain).\n\n## Step-by-Step Setup\n1.  On your percussion track, load **Fruity Delay Bank**.\n2.  **Bank 1:**\n    - Time: `3 steps` (Dotted 8th).\n    - Pan: `100% Left`.\n    - To Main: `50%`.\n3.  **Bank 2:**\n    - Time: `4 steps` (1/4 Note).\n    - Pan: `100% Right`.\n    - To Main: `50%`.\n4.  **Bank 3:**\n    - Time: `6 steps` (Dotted 4th).\n    - Pan: `Center`.\n    - To Main: `30%`.\n5.  **The Result:** Your percussion \"bounces\" across the stereo field in a complex, rhythmic dance.\n\n## Vibe Check\n- **Upbeat/Kinetic:** Essential for modern \"complex\" trap beats where the ears are constantly being surprised by movement.\n\n## Variation\n- **Dark Taps:** Add a `1kHz Low Pass` filter to Bank 3 only. This makes the centered echo sound like it's coming from further away (Spacey). [SRC: REPUTABLE]",
+      "03_Goal_Creative_Effect": "# Workflow: Granular Shimmer Tails (Delay Bank)\n\n## The Concept\nUsing Serial routing and Granular \"Grain\" to turn a simple sound into a shimmering, reverb-like cloud.\n\n## Step-by-Step\n1.  Set **Bank 1** to route \"To Next\" (100%). Set Time to `1.0` (1/16 note).\n2.  Set **Bank 2** to route \"To Next\" (100%). Set Time to `1.0`.\n3.  Set **Bank 3** to route \"To Main\" (100%). Set Time to `1.0`.\n4.  **The Grain:** In all three banks, turn the **Grain** knob to `30%`.\n5.  **The Filter:** Set all filters to **High Pass (HP)** Butter (BW) @ 1kHz.\n6.  **The Feedback:** Turn the **Feedback** on Bank 3 to `60%`.\n\n## Result\n*   The signal gets \"smeared\" three times in a row. Because of the High Pass filters, the result is a thin, shimmering \"wash\" that sounds like crystal or digital rain.\n\n## Vibe Check\n*   **Psychedelic / Vibey:** Perfect for adding an ethereal layer to R&B keys or guitars.\n\n## Automation Idea\n*   Automate the **Grain** knob on Bank 3 to move from 0 to 50% over 4 bars to make the tail \"disintegrate.\" [SRC: REPUTABLE]\n",
+      "complex-rhythmic-textures": "# Designing Complex Rhythmic Textures Workflow\n\n## Goal\nUse the multi-tap architecture of Delay Bank to turn a single snare hit or synth pluck into a complex 16th-note rhythmic pattern.\n\n## Steps\n1. **Bank 1 (The Foundation)**:\n   - Set **Time** to `4:00` (1/4 note).\n   - Set **Feedback** to 40%.\n   - Pan: **Center**.\n2. **Bank 2 (The Bounce)**:\n   - Set **Time** to `2:00` (1/8 note).\n   - Set **Filter** to **High-Pass**.\n   - Pan: **Hard Left**.\n3. **Bank 3 (The Ghost Note)**:\n   - Set **Time** to `1:00` (1/16 note).\n   - Set **Volume** low (20%).\n   - Set **Filter** to **Low-Pass** (very dark).\n   - Pan: **Hard Right**.\n4. **The \"Next\" Routing (Serial)**:\n   - On Bank 1, find the **Next** knob and set it to Bank 2.\n   - Now, the 1/4 note repeats of Bank 1 are being sent INTO the 1/8 note delay of Bank 2.\n5. **Final Polish**:\n   - Use the **Global Wet** to blend this complex rhythmic cloud with your dry sound.\n\n## Result\nWhat was once a static hit is now a wide, moving, and rhythmically interesting sequence that fills the frequency spectrum.\n",
+      "moody-rnb-filter-clouds": "# Masterclass: Designing Moody R&B Filter Clouds in Fruity Delay Bank\n\n## 1. Executive Summary: The \"Ethereal Shadow\" Aesthetic\nIn modern, elite R&B and Alternative Hip-Hop (think Frank Ocean, 6LACK, or Brent Faiyaz), the background atmosphere is often more important than the melody itself. We need \"Filter Clouds\"—atmospheric textures that provide rhythm, space, and tone without ever being too distinct. This guide will show you how to use the **Multi-Tap, Granular, and Serial-Cascading** architecture of **Fruity Delay Bank** to build a complex, professional atmospheric cloud.\n\n---\n\n## 2. Phase 1: Architecture Configuration (The Routing)\n\n### 2.1 The Parallel/Serial Hybrid\nTo create a cloud that has \"depth,\" we need some taps to be rhythmic and others to be smeared.\n1. **Enable Bank 1 & 2 (Rhythmic Foundation):** These will provide the initial \"bounce.\"\n2. **Enable Bank 3 & 4 (Texture Layer):** These will provide the smeared cloud.\n3. **The Cascade:** On Bank 1, turn the **Next** knob to send its output into **Bank 3**.\n4. **The Result:** The rhythmic repeats of Bank 1 will now be \"processed\" by the granular engine of Bank 3, creating an evolving, cascading texture.\n\n---\n\n## 3. Phase 2: Frequency Bracketing (The Filter Journey)\n\n### 3.1 Spectral Separation\nEach tap must occupy a different frequency space to avoid \"Mid-Range Mud.\"\n- **Bank 1 (The Body):** Set Filter to **Low-Pass** at **800Hz**. This is the warm \"dark\" foundation.\n- **Bank 2 (The Air):** Set Filter to **High-Pass** at **3000Hz**. This provides the ghostly shimmer.\n- **Bank 3 (The Focus):** Set Filter to **Band-Pass** at **1500Hz**. This acts as the melodic \"ghost\" of the original sound.\n\n---\n\n## 4. Phase 3: Technical Smearing (The Granular Engine)\n\n### 4.1 Liquifying the Rhythm\n- **Goal:** We want Bank 3 and 4 to sound like a \"wash\" rather than distinct echoes.\n- **Action:** On Bank 3, set the **Grain** knob to **85%**.\n- **Action:** On Bank 4, set the **Grain** knob to **100%**.\n- **The Physics:** The grains are now so small and cross-faded that the repeats meld together into a singular, fluid atmospheric mass.\n\n---\n\n## 5. Phase 4: Dynamic Breathing (The ADSR Envelopes)\n\n### 5.1 The \"Bloom\" Effect\nFor Moody R&B, the atmosphere should \"rise\" after the lead melody stops.\n- **Bank 3 Attack:** Set to **1500ms**.\n- **The Logic:** When the singer is performing, the cloud is silent. When they take a breath, the Granular Cloud (Bank 3) slowly blooms into the mix.\n- **Bank 1 Decay:** Set to **25%** with **0% Sustain**. This ensures the rhythmic part of the delay is short and tight, leaving room for the blooming cloud.\n\n---\n\n## 6. Phase 5: Stereo Panning (The Immersive World)\n\n### 6.1 Spatial Staging\n- **Bank 1:** Pan **Center**. (The solid rhythmic core).\n- **Bank 2:** Pan **Hard Left**. (The bright shimmering air).\n- **Bank 3:** Pan **Hard Right**. (The filtered granular ghost).\n- **Global Width:** Increase the **Stereo Cross** in the global settings to 100% to maximize the psychedelic sense of space.\n\n---\n\n## 7. Phase 6: Post-Processing (The \"Dark Secret\")\n\n### 7.1 The \"Vinyl\" Warmth (Fruity Fast Dist)\n- **Action:** Place a **Fruity Fast Dist (Type A)** *after* Fruity Delay Bank.\n- **Settings:** Mix at 15%, Post-Filter at 25%.\n- **The Result:** This adds \"analog heat\" to the digital cloud, making it feel like it was recorded on a dusty 1970s soul record.\n\n---\n\n## 8. Mathematical Pulse Table for R&B\nUse these time settings to create a complex, \"off-grid\" R&B groove:\n\n| Bank | Time Setting | Offset | Filter Type | Role |\n|------|--------------|--------|-------------|------|\n| **1** | 4:00 (1/4)   | 0ms    | LP (800Hz)  | Foundation |\n| **2** | 2:00 (1/8)   | +10ms  | HP (4kHz)   | Shimmer |\n| **3** | 6:00 (Dotted) | -5ms   | BP (1.5kHz) | Melodic Ghost |\n| **4** | 12:00 (Bar)  | +20ms  | LP (500Hz)  | Deep Shadow |\n\n---\n\n## 9. Troubleshooting the Cloud\n- **Issue:** \"The delay sounds out of tune.\"\n- **Fix:** Turn down the **LFO Amount** in the Mod section of every bank. Excessive pitch modulation can ruin sophisticated R&B harmony.\n- **Issue:** \"My kick drum sounds weak when the cloud is active.\"\n- **Fix:** Increase the **High-Pass Filter** on every bank to at least **400Hz**. You are experiencing frequency clashing in the sub-range.\n\n---\n\n## 10. Conclusion: The Master of Atmosphere\nThe \"Moody R&B Filter Cloud\" is an exercise in **Complex Routing**. By treating Fruity Delay Bank as a modular synthesis system rather than a simple echo, you can create atmospheric textures that are rich, evolving, and deeply emotional. This is the difference between a \"beat\" and a \"sonic world.\" Follow this masterclass, and your R&B tracks will have the professional, immersive depth of an elite production.\n\n---\n**Document Version:** 1.0 (Masterclass Edition)\n**Keywords:** R&B Production, Atmospheric Texture, Delay Bank Workflow, Multi-Tap Design, Sound Engineering, FL Studio.",
+      "psychedelic-reverse-echoes": "# Psychedelic Reverse-Like Echoes Workflow\n\n## Goal\nCreate a \"sucking\" or \"reverse\" delay effect that pulls the listener into each repeat, popular in psychedelic Rap.\n\n## Steps\n1. **The Bank Setup**:\n   - Enable **Bank 1**.\n   - Set **Time** to `4:00` (1/4 note).\n2. **The Envelope (The Key)**:\n   - Go to the **Volume Envelope** section of Bank 1.\n   - Set **Attack** to a medium-slow value (~200ms).\n   - Set **Sustain** to 0%.\n   - Set **Release** to 0%.\n3. **The Resulting Shape**:\n   - Instead of a sharp hit, the delay will now \"swell\" in volume and then cut off.\n4. **The Next Step**:\n   - Send Bank 1 INTO Bank 2 using the **Next** knob.\n   - Set Bank 2 to a standard 1/8 note delay.\n5. **The Psych Effect**:\n   - The \"swelling\" echoes are now being echoed themselves, creating a complex, reversed-like texture.\n\n## Pro Tip\nSet the **Filter** on Bank 1 to **High-Pass** so the \"sucking\" sound only happens in the upper frequencies, leaving the low-end groove clean.\n",
+      "rhythmic-serial-taps": "# Rhythmic Serial Taps Workflow\n\n## Goal\nCreate a \"ping-pong\" delay where the first repeat is in the Left ear, the second is in the Right ear, and the third is in the Center—but each has a different filter character.\n\n## Steps\n1. **Bank 1 (The Start)**:\n   - Time: `4:00` (1/4 note). Pan: **Hard Left**.\n   - Filter: **High-Pass**.\n   - **Next Routing:** Set to Bank 2.\n2. **Bank 2 (The Bounce)**:\n   - Time: `2:00` (1/8 note). Pan: **Hard Right**.\n   - Filter: **Low-Pass** (very dark).\n   - **Next Routing:** Set to Bank 3.\n3. **Bank 3 (The Focus)**:\n   - Time: `1:00` (1/16 note). Pan: **Center**.\n   - Filter: **Band-Pass** (focus on 1kHz).\n4. **Resulting Chain**:\n   - The audio starts high and thin on the Left.\n   - It then bounces to the Right and becomes dark.\n   - It finally lands in the Center as a focused \"mid-range\" ghost note.\n\n## Why this is elite\nThis level of spatial control is impossible with standard delay plugins. It allows you to create a \"journey\" for the sound through the frequency and stereo spectrum.\n"
+    },
+    "by-instrument": {
+      "atmospheric-synth-leads": "# Atmospheric Synth Lead Workflow\n\n## Goal\nTransform a dry, mono synth lead into a massive, wide, and evolving atmospheric soundscape.\n\n## Steps\n1. **Insert Delay Bank**: Place it on the Synth mixer track.\n2. **Setup Parallel Taps**:\n   - **Bank 1**: Set Time to `4:00`, Pan 100% Left.\n   - **Bank 2**: Set Time to `8:00`, Pan 100% Right.\n   - **Bank 3**: Set Time to `12:00`, Pan Center.\n3. **The Granular Shimmer**:\n   - On **Bank 3**, turn the **Grain** knob to **70%**.\n   - Set the **Filter** to **Band-Pass** around 2000Hz.\n   - Increase **Feedback** to 80%.\n4. **Modulation**:\n   - In the **Mod** section of Bank 1 & 2, set a slow **Rate** (0.2Hz) to subtly drift the pitch.\n5. **The Mix**:\n   - Set the global **Wet** to 40%.\n\n## Result\nA lead sound that has a solid rhythmic foundation (Bank 1 & 2) but is surrounded by an ethereal, granular cloud (Bank 3) that moves independently in the stereo field.\n"
+    },
+    "common-usage.md": {
+      "common-usage": "# Common Workflows: Fruity Delay Bank\r\n\r\n## 1. The 3-Tap Polyrhythm\r\n\r\n1.  **Concept:** 3 vs 4 polyrhythm using delay taps.\r\n2.  **Setup:**\r\n    *   **Bank 1:** Time = 4 steps (1/4 note). Pan Left.\r\n    *   **Bank 2:** Time = 3 steps (Example). Pan Right.\r\n    *   **Bank 3:** Time = 6 steps. Pan Center.\r\n    *   **Dry:** 100%.\r\n    *   **Feedback:** 0% on all banks.\r\n3.  **Result:** You are using the banks not as \"Echoes\" but as \"Taps\". This creates a complex rhythmic pattern from a single hit without any feedback mess.\r\n\r\n## 2. Twisted Metallic Reverb\r\n\r\n1.  **Grain Engine:** Activate **Grain** on Bank 1.\r\n2.  **Settings:**\r\n    *   **Time:** Very Short (10-20ms).\r\n    *   **Feedback:** High.\r\n    *   **Div:** Adjust until it sounds like a robot.\r\n3.  **Result:** Short granular delays creates metallic, resonant textures that sound like they are inside a droid's stomach.\r\n\r\n## 3. Frequency Split Delay\r\n\r\n1.  **Bank 1 (Lows):**\r\n    *   **Input Filter:** Low Pass at 200Hz.\r\n    *   **Delay:** Mono, Center, 1/4 note.\r\n2.  **Bank 2 (Highs):**\r\n    *   **Input Filter:** High Pass at 200Hz.\r\n    *   **Delay:** Ping Pong, Wide, 1/8 dotted note.\r\n3.  **Result:** The Bass frequencies stay tight and mono (Foundation), while the High frequencies dance around stereo (Air). This keeps the mix clean.\r\n\r\n## 4. The \"Glitch\" Effect\r\n\r\n1.  **Automation:** The Grain Division parameter.\r\n2.  **Action:** Automate **DIV** rapidly during a drum fill.\r\n3.  **Sound:** It time-stretches and mangles the drum hits in real-time, creating IDM-style stutter effects.\r\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Delay Bank\r\n\r\nThis section contains workflow information for the fruity-delay-bank plugin.\r\n"
+    }
+  },
+  "rules": {
+    "buffer-math": {
+      "bufferLogic": {
+        "calculation": "BufferSize = SampleRate * DelayTime",
+        "example": "At 44.1kHz, a 500ms delay uses a buffer of 22,050 samples.",
+        "limitation": "If your project RAM is low, running 8 banks of long delays (4 seconds each) can hit memory limits on older systems."
+      }
+    },
+    "delay-bank-rules": {
+      "rules": [
+        {
+          "scenario": "CPU usage is too high",
+          "action": "Disable unused banks (LED off); reduce the number of serial 'Next' routings."
+        },
+        {
+          "scenario": "Rhythms sound 'cluttered'",
+          "action": "Use the built-in ADSR Envelopes to shorten the 'Sustain' of each tap."
+        }
+      ]
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Delay Bank\r\n\r\nThis section contains reference information for the fruity-delay-bank plugin.\r\n"
+    }
+  }
+}

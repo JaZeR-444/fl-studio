@@ -1,0 +1,267 @@
+{
+  "plugin_name": "Fruity Stereo Shaper",
+  "category": "Hip-Hop Matrix Presets",
+  "version": "1.0",
+  "presets": [
+    {
+      "name": "Moody Narrow Stereo",
+      "genre": "Moody/Dark Hip-Hop",
+      "description": "Tight, claustrophobic stereo field for introspective beats",
+      "use_cases": ["sad trap", "emo rap", "dark beats"],
+      "settings": {
+        "l_to_l": 1.0,
+        "l_to_r": -0.2,
+        "r_to_l": -0.2,
+        "r_to_r": 1.0,
+        "delay_ms": 0,
+        "phase_invert_l": false,
+        "phase_invert_r": false
+      },
+      "tips": "Creates intimate, narrow stereo image. Perfect for vocals and atmospheric pads.",
+      "mono_safe": true
+    },
+    {
+      "name": "Club Wide Stereo",
+      "genre": "Upbeat/Club Hip-Hop",
+      "description": "Maximum width while maintaining mono compatibility",
+      "use_cases": ["club bangers", "party tracks", "hype music"],
+      "settings": {
+        "l_to_l": 1.0,
+        "l_to_r": -0.3,
+        "r_to_l": -0.3,
+        "r_to_r": 1.0,
+        "delay_ms": 8,
+        "phase_invert_l": false,
+        "phase_invert_r": true
+      },
+      "tips": "Wide stereo with Haas effect. Check mono! Bass should bypass this.",
+      "mono_safe": false,
+      "warning": "Not mono-safe - use only on mid/high frequency elements"
+    },
+    {
+      "name": "Lo-Fi Mono Collapse",
+      "genre": "Lo-Fi/Chill Hip-Hop",
+      "description": "Vintage narrow stereo like old cassettes",
+      "use_cases": ["lo-fi beats", "vintage sound", "nostalgic vibe"],
+      "settings": {
+        "l_to_l": 0.7,
+        "l_to_r": 0.3,
+        "r_to_l": 0.3,
+        "r_to_r": 0.7,
+        "delay_ms": 0,
+        "phase_invert_l": false,
+        "phase_invert_r": false
+      },
+      "tips": "Reduces stereo width for vintage vibe. Combine with saturation.",
+      "mono_safe": true
+    },
+    {
+      "name": "808 Bass Mono Lock",
+      "genre": "Trap/Electronic Hip-Hop",
+      "description": "Forces bass to mono while preserving stereo harmonics",
+      "use_cases": ["808 bass", "sub bass", "kick drum"],
+      "settings": {
+        "l_to_l": 0.5,
+        "l_to_r": 0.5,
+        "r_to_l": 0.5,
+        "r_to_r": 0.5,
+        "delay_ms": 0,
+        "phase_invert_l": false,
+        "phase_invert_r": false
+      },
+      "tips": "Complete mono collapse. Use with multiband to only affect low frequencies.",
+      "mono_safe": true,
+      "workflow": "Use in Patcher with crossover - only process below 150Hz"
+    },
+    {
+      "name": "Trap Hi-Hat Spread",
+      "genre": "Trap/Electronic Hip-Hop",
+      "description": "Maximum width for hi-hat rolls and trap patterns",
+      "use_cases": ["hi-hats", "percussion", "shakers"],
+      "settings": {
+        "l_to_l": 1.0,
+        "l_to_r": -0.4,
+        "r_to_l": -0.4,
+        "r_to_r": 1.0,
+        "delay_ms": 12,
+        "phase_invert_l": true,
+        "phase_invert_r": false
+      },
+      "tips": "Extreme width for trap hi-hats. Will have phase issues in mono.",
+      "mono_safe": false,
+      "warning": "Only use on hi-frequency percussion"
+    },
+    {
+      "name": "Vocal Center Extract",
+      "genre": "All Hip-Hop Genres",
+      "description": "Isolates center-panned vocal content",
+      "use_cases": ["vocal isolation", "acapella extraction", "remix prep"],
+      "settings": {
+        "l_to_l": 0.707,
+        "l_to_r": 0.707,
+        "r_to_l": 0.707,
+        "r_to_r": -0.707,
+        "delay_ms": 0,
+        "phase_invert_l": false,
+        "phase_invert_r": false
+      },
+      "tips": "Converts LR to MS. Solo Mid to hear vocals. Use MS-to-LR preset to convert back.",
+      "mono_safe": true,
+      "workflow": "Part 1 of MS processing chain"
+    },
+    {
+      "name": "Karaoke Effect",
+      "genre": "Creative/Experimental",
+      "description": "Removes center-panned vocals (phase cancellation)",
+      "use_cases": ["instrumental creation", "karaoke", "vocal removal"],
+      "settings": {
+        "l_to_l": 1.0,
+        "l_to_r": -1.0,
+        "r_to_l": -1.0,
+        "r_to_r": 1.0,
+        "delay_ms": 0,
+        "phase_invert_l": false,
+        "phase_invert_r": false
+      },
+      "tips": "Cancels center content. Only works on perfectly centered elements.",
+      "mono_safe": false,
+      "warning": "Completely destroys mono compatibility"
+    },
+    {
+      "name": "Melodic Pad Width",
+      "genre": "Melodic/R&B Hip-Hop",
+      "description": "Moderate width for lush pads and synths",
+      "use_cases": ["pads", "synth chords", "ambient textures"],
+      "settings": {
+        "l_to_l": 1.0,
+        "l_to_r": -0.15,
+        "r_to_l": -0.15,
+        "r_to_r": 1.0,
+        "delay_ms": 5,
+        "phase_invert_l": false,
+        "phase_invert_r": false
+      },
+      "tips": "Subtle width enhancement. Safe for melodic elements.",
+      "mono_safe": true
+    },
+    {
+      "name": "Funky Guitar Spread",
+      "genre": "Funky/Groovy Hip-Hop",
+      "description": "Wide stereo for guitar loops and funk samples",
+      "use_cases": ["guitar loops", "funk samples", "live instruments"],
+      "settings": {
+        "l_to_l": 1.0,
+        "l_to_r": -0.25,
+        "r_to_l": -0.25,
+        "r_to_r": 1.0,
+        "delay_ms": 10,
+        "phase_invert_l": false,
+        "phase_invert_r": true
+      },
+      "tips": "Adds spaciousness to funk loops. Check mono on bass-heavy samples.",
+      "mono_safe": false
+    },
+    {
+      "name": "Sample Vintage Width",
+      "genre": "Boom Bap/Golden Era",
+      "description": "Classic hip-hop narrow stereo image",
+      "use_cases": ["boom bap", "90s hip-hop", "classic samples"],
+      "settings": {
+        "l_to_l": 0.85,
+        "l_to_r": 0.15,
+        "r_to_l": 0.15,
+        "r_to_r": 0.85,
+        "delay_ms": 0,
+        "phase_invert_l": false,
+        "phase_invert_r": false
+      },
+      "tips": "Authentic 90s stereo width. Perfect for boom bap production.",
+      "mono_safe": true
+    },
+    {
+      "name": "Build-Up Width Automation",
+      "genre": "Electronic/Trap Hip-Hop",
+      "description": "Starting point for automation (narrow → wide)",
+      "use_cases": ["build-ups", "drops", "transitions"],
+      "settings": {
+        "l_to_l": 0.6,
+        "l_to_r": 0.4,
+        "r_to_l": 0.4,
+        "r_to_r": 0.6,
+        "delay_ms": 0,
+        "phase_invert_l": false,
+        "phase_invert_r": false
+      },
+      "tips": "Start here, automate to 'Club Wide Stereo' for drops.",
+      "mono_safe": true,
+      "workflow": "Automate matrix sliders during build-up sections"
+    },
+    {
+      "name": "Side-Only Processing Setup",
+      "genre": "Advanced/Technical",
+      "description": "Extracts only Side component for processing",
+      "use_cases": ["reverb only on sides", "width-only effects", "MS processing"],
+      "settings": {
+        "l_to_l": 0.707,
+        "l_to_r": -0.707,
+        "r_to_l": 0.707,
+        "r_to_r": 0.707,
+        "delay_ms": 0,
+        "phase_invert_l": false,
+        "phase_invert_r": false
+      },
+      "tips": "Solo 'Side' after applying this. Process sides separately from mid.",
+      "mono_safe": true,
+      "workflow": "Use in Patcher with parallel Mid/Side chains"
+    }
+  ],
+  "workflows": [
+    {
+      "name": "MS Processing Chain",
+      "steps": [
+        "1. Load 'Vocal Center Extract' preset (LR to MS)",
+        "2. Now Left = Mid, Right = Side",
+        "3. Process each channel with separate effects",
+        "4. Load another Stereo Shaper after effects",
+        "5. Use 'MS to LR' preset to convert back"
+      ]
+    },
+    {
+      "name": "Width Automation",
+      "steps": [
+        "1. Load 'Build-Up Width Automation' preset",
+        "2. Create automation clip for matrix sliders",
+        "3. Automate from narrow (verse) to wide (chorus)",
+        "4. Always check mono compatibility after automation"
+      ]
+    },
+    {
+      "name": "Bass Mono Lock Workflow",
+      "steps": [
+        "1. Load 808 into Patcher",
+        "2. Add Fruity Stereo Shaper after 808",
+        "3. Use '808 Bass Mono Lock' preset",
+        "4. Verify mono with correlation meter",
+        "5. Add distortion/saturation after for harmonics"
+      ]
+    }
+  ],
+  "mono_compatibility_guide": {
+    "always_mono": ["bass below 150Hz", "kick drum", "808s", "sub bass"],
+    "mono_safe": ["vocals", "lead synths", "snare", "melodic elements"],
+    "can_be_wide": ["hi-hats", "reverb", "pads", "ambient textures"],
+    "check_carefully": ["samples", "loops", "guitars", "effects"]
+  },
+  "tips": [
+    "Always check mono compatibility with mixer mono button",
+    "Bass frequencies (below 150Hz) should always be mono",
+    "Use correlation meter in Fruity Limiter to check phase",
+    "Automate width for dynamic mixes (narrow verse, wide chorus)",
+    "Negative matrix values create width but risk mono cancellation",
+    "Delay knob adds Haas effect - use 5-30ms for stereo width",
+    "Phase inversion creates extreme width but destroys mono",
+    "Use Patcher for complex MS processing chains",
+    "Save your matrix settings as presets for recall",
+    "Trust your ears - if it sounds wrong in mono, fix it"
+  ]
+}

@@ -1,0 +1,448 @@
+{
+  "pluginName": "GMS",
+  "description": "Complete parameter specification for Groove Machine Synth",
+  "parameters": [
+    {
+      "section": "Oscillators",
+      "id": "osc1_wave",
+      "name": "OSC1 Waveshape",
+      "type": "Wavetable",
+      "supports": ["Preset waves", "Custom .wav loading"],
+      "description": "Select waveform or drag .wav file"
+    },
+    {
+      "section": "Oscillators",
+      "id": "osc1_pitch",
+      "name": "OSC1 Pitch",
+      "range": { "min": -24, "max": 24, "unit": "semitones" },
+      "default": 0,
+      "description": "Coarse pitch adjustment"
+    },
+    {
+      "section": "Oscillators",
+      "id": "osc1_fine",
+      "name": "OSC1 Fine",
+      "range": { "min": -100, "max": 100, "unit": "cents" },
+      "default": 0,
+      "description": "Fine pitch adjustment"
+    },
+    {
+      "section": "Oscillators",
+      "id": "osc2_wave",
+      "name": "OSC2 Waveshape",
+      "type": "Wavetable",
+      "supports": ["Preset waves", "Custom .wav loading"],
+      "description": "Secondary oscillator waveform"
+    },
+    {
+      "section": "Oscillators",
+      "id": "osc2_pitch",
+      "name": "OSC2 Pitch",
+      "range": { "min": -24, "max": 24, "unit": "semitones" },
+      "default": 0,
+      "description": "OSC2 coarse pitch"
+    },
+    {
+      "section": "Oscillators",
+      "id": "osc2_fine",
+      "name": "OSC2 Fine",
+      "range": { "min": -100, "max": 100, "unit": "cents" },
+      "default": 0,
+      "description": "OSC2 fine pitch"
+    },
+    {
+      "section": "Oscillators",
+      "id": "osc3_wave",
+      "name": "OSC3 Waveshape",
+      "type": "Wavetable",
+      "supports": ["Preset waves", "Custom .wav loading"],
+      "description": "Third oscillator waveform"
+    },
+    {
+      "section": "Oscillators",
+      "id": "osc3_pitch",
+      "name": "OSC3 Pitch",
+      "range": { "min": -24, "max": 24, "unit": "semitones" },
+      "default": 0,
+      "description": "OSC3 coarse pitch"
+    },
+    {
+      "section": "Oscillators",
+      "id": "osc3_fine",
+      "name": "OSC3 Fine",
+      "range": { "min": -100, "max": 100, "unit": "cents" },
+      "default": 0,
+      "description": "OSC3 fine pitch"
+    },
+    {
+      "section": "Modulation",
+      "id": "mod_mode",
+      "name": "Modulation Mode",
+      "type": "Select",
+      "options": ["1 SYNC", "2 to 1 FM", "2 to 1 RM"],
+      "default": "1 SYNC",
+      "description": "Inter-oscillator modulation mode"
+    },
+    {
+      "section": "Modulation",
+      "id": "mod_amount",
+      "name": "Modulation Amount",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "default": 0,
+      "description": "Modulation depth/intensity"
+    },
+    {
+      "section": "Mix",
+      "id": "osc2_mix",
+      "name": "OSC 2 Mix",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "default": 50,
+      "description": "Balance between OSC1 and OSC2"
+    },
+    {
+      "section": "Mix",
+      "id": "osc2_invert",
+      "name": "OSC 2 Invert",
+      "type": "Switch",
+      "default": "Off",
+      "description": "Invert OSC2 phase"
+    },
+    {
+      "section": "Mix",
+      "id": "osc3_mix",
+      "name": "OSC 3 Mix",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "default": 0,
+      "description": "Mix of (OSC1+2) with OSC3"
+    },
+    {
+      "section": "Mix",
+      "id": "noise_mix",
+      "name": "Noise Mix",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "default": 0,
+      "description": "White noise blend amount"
+    },
+    {
+      "section": "Phase",
+      "id": "osc2_phase",
+      "name": "OSC 2 Phase",
+      "range": { "min": 0, "max": 360, "unit": "degrees" },
+      "default": 0,
+      "description": "OSC2 starting phase"
+    },
+    {
+      "section": "Phase",
+      "id": "osc2_retrig",
+      "name": "OSC 2 Retrigger",
+      "type": "Switch",
+      "default": "On",
+      "description": "Retrigger OSC2 phase on each note"
+    },
+    {
+      "section": "Phase",
+      "id": "unisono_phase",
+      "name": "Unisono Phase",
+      "range": { "min": 0, "max": 360, "unit": "degrees" },
+      "default": 0,
+      "description": "Unison phase offset"
+    },
+    {
+      "section": "Unisono",
+      "id": "unison_voices",
+      "name": "Unisono Voices",
+      "range": { "min": 1, "max": 16, "unit": "voices" },
+      "default": 1,
+      "description": "Number of unison voices per note"
+    },
+    {
+      "section": "Unisono",
+      "id": "unison_stereo",
+      "name": "Unisono Stereo",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "default": 0,
+      "description": "Stereo spread of voices"
+    },
+    {
+      "section": "Unisono",
+      "id": "unison_detune",
+      "name": "Unisono Detune",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "default": 0,
+      "description": "Detuning amount between voices"
+    },
+    {
+      "section": "Keyboard",
+      "id": "octave",
+      "name": "Octave",
+      "range": { "min": -4, "max": 4, "unit": "octaves" },
+      "default": 0,
+      "description": "Global octave shift"
+    },
+    {
+      "section": "Keyboard",
+      "id": "mono_voice",
+      "name": "Mono Voice",
+      "type": "Switch",
+      "default": "Off",
+      "description": "Monophonic mode with portamento"
+    },
+    {
+      "section": "Filter",
+      "id": "filter_cutoff",
+      "name": "Filter Cutoff",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "default": 100,
+      "description": "Filter cutoff frequency"
+    },
+    {
+      "section": "Filter",
+      "id": "filter_res",
+      "name": "Filter Resonance",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "default": 0,
+      "description": "Emphasis at cutoff"
+    },
+    {
+      "section": "Filter",
+      "id": "filter_kbd",
+      "name": "Filter Keyboard",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "default": 0,
+      "description": "Keyboard tracking of cutoff"
+    },
+    {
+      "section": "Filter",
+      "id": "filter_type",
+      "name": "Filter Type",
+      "type": "Select",
+      "options": ["LP", "BP", "HP"],
+      "default": "LP",
+      "description": "Low Pass, Band Pass, or High Pass"
+    },
+    {
+      "section": "Envelope",
+      "id": "eg_attack",
+      "name": "Envelope Attack",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "default": 0,
+      "description": "Time to reach peak"
+    },
+    {
+      "section": "Envelope",
+      "id": "eg_decay",
+      "name": "Envelope Decay",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "default": 30,
+      "description": "Time to reach sustain"
+    },
+    {
+      "section": "Envelope",
+      "id": "eg_amount",
+      "name": "Envelope Amount",
+      "range": { "min": -100, "max": 100, "unit": "%" },
+      "default": 0,
+      "description": "Modulation amount (bipolar)"
+    },
+    {
+      "section": "Envelope",
+      "id": "eg_invert",
+      "name": "Envelope Invert",
+      "type": "Switch",
+      "default": "Off",
+      "description": "Invert envelope phase"
+    },
+    {
+      "section": "Envelope",
+      "id": "eg_destination",
+      "name": "Envelope Destination",
+      "type": "Select",
+      "options": ["CUTOFF", "RES", "PITCH", "PAN", "AMPLITUDE", "OSC MIX", "AMOUNT", "OSC1 PITCH", "OSC2 PITCH", "OSC3 PITCH"],
+      "default": "CUTOFF",
+      "description": "Target for envelope modulation"
+    },
+    {
+      "section": "LFO",
+      "id": "lfo_rate",
+      "name": "LFO Rate",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "default": 30,
+      "description": "LFO speed"
+    },
+    {
+      "section": "LFO",
+      "id": "lfo_sync",
+      "name": "LFO Sync",
+      "type": "Select",
+      "options": ["None", "Beat", "Bar"],
+      "default": "None",
+      "description": "Tempo synchronization"
+    },
+    {
+      "section": "LFO",
+      "id": "lfo_amount",
+      "name": "LFO Amount",
+      "range": { "min": -100, "max": 100, "unit": "%" },
+      "default": 0,
+      "description": "Modulation depth"
+    },
+    {
+      "section": "LFO",
+      "id": "lfo_retrig",
+      "name": "LFO Retrigger",
+      "type": "Switch",
+      "default": "Off",
+      "description": "Restart LFO on note"
+    },
+    {
+      "section": "LFO",
+      "id": "lfo_destination",
+      "name": "LFO Destination",
+      "type": "Select",
+      "options": ["CUTOFF", "RES", "PITCH", "PAN", "AMPLITUDE", "OSC MIX", "AMOUNT", "OSC1 PITCH", "OSC2 PITCH", "OSC3 PITCH"],
+      "default": "CUTOFF",
+      "description": "Target for LFO modulation"
+    },
+    {
+      "section": "LFO",
+      "id": "lfo_invert",
+      "name": "LFO Invert",
+      "type": "Switch",
+      "default": "Off",
+      "description": "Invert LFO waveform"
+    },
+    {
+      "section": "LFO",
+      "id": "lfo_shape",
+      "name": "LFO Shape",
+      "type": "Select",
+      "options": ["Sine", "Triangle", "Saw", "Square", "Random", "Various"],
+      "default": "Sine",
+      "description": "LFO waveform shape"
+    },
+    {
+      "section": "Level Envelope",
+      "id": "level_amplitude",
+      "name": "Amplitude",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "default": 80,
+      "description": "Overall volume level"
+    },
+    {
+      "section": "Level Envelope",
+      "id": "level_attack",
+      "name": "Attack",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "default": 0,
+      "description": "Time to full volume"
+    },
+    {
+      "section": "Level Envelope",
+      "id": "level_decay",
+      "name": "Decay",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "default": 0,
+      "description": "Time to sustain level"
+    },
+    {
+      "section": "Level Envelope",
+      "id": "level_sustain",
+      "name": "Sustain",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "default": 100,
+      "description": "Volume during note hold"
+    },
+    {
+      "section": "Level Envelope",
+      "id": "level_release",
+      "name": "Release",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "default": 20,
+      "description": "Time to silence after release"
+    },
+    {
+      "section": "Channel",
+      "id": "channel_output",
+      "name": "Output",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "default": 80,
+      "description": "Channel volume"
+    },
+    {
+      "section": "Channel",
+      "id": "channel_pan",
+      "name": "Pan",
+      "range": { "min": -100, "max": 100, "unit": "%" },
+      "default": 0,
+      "description": "Stereo position (L to R)"
+    },
+    {
+      "section": "Channel",
+      "id": "channel_pitch",
+      "name": "Channel Pitch",
+      "range": { "min": -12, "max": 12, "unit": "semitones" },
+      "default": 0,
+      "description": "Global pitch shift"
+    },
+    {
+      "section": "Channel",
+      "id": "freq_slide",
+      "name": "Frequency Slide",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "default": 0,
+      "description": "Portamento/glide time"
+    }
+  ],
+  "fxParameters": [
+    {
+      "effect": "DIST",
+      "x": { "name": "Distortion", "range": "0-100%" },
+      "y": { "name": "Low Pass", "range": "0-100%" }
+    },
+    {
+      "effect": "CRSH",
+      "x": { "name": "Sample Rate Reduction", "range": "0-100%" },
+      "y": { "name": "Low Pass", "range": "0-100%" }
+    },
+    {
+      "effect": "FLNG",
+      "x": { "name": "Depth", "range": "0-100%" },
+      "y": { "name": "Feedback", "range": "0-100%" }
+    },
+    {
+      "effect": "PHSR",
+      "x": { "name": "Depth", "range": "0-100%" },
+      "y": { "name": "Feedback", "range": "0-100%" }
+    },
+    {
+      "effect": "LPF",
+      "x": { "name": "Cutoff", "range": "0-100%" },
+      "y": { "name": "Resonance", "range": "0-100%" }
+    },
+    {
+      "effect": "HPF",
+      "x": { "name": "Cutoff", "range": "0-100%" },
+      "y": { "name": "Resonance", "range": "0-100%" }
+    },
+    {
+      "effect": "ECHO",
+      "x": { "name": "Feedback", "range": "0-100%" },
+      "y": { "name": "Filtering", "range": "0-100%" }
+    },
+    {
+      "effect": "RVRB",
+      "x": { "name": "Feedback", "range": "0-100%" },
+      "y": { "name": "Wet Level", "range": "0-100%" }
+    },
+    {
+      "effect": "PAN",
+      "x": { "name": "Position", "range": "0-100% (L to R)" },
+      "y": { "name": "Binaural", "range": "0-100%" }
+    },
+    {
+      "effect": "TRNC",
+      "x": { "name": "Release Time", "range": "0-100%" },
+      "y": { "name": "Drop Level", "range": "0-100%" }
+    }
+  ]
+}

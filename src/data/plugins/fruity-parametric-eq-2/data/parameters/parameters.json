@@ -1,0 +1,84 @@
+{
+  "pluginName": "Fruity Parametric EQ 2",
+  "tabs": ["BANDS", "HQ", "LIN"],
+  "parameters": [
+    {
+      "section": "Global",
+      "id": "main_level",
+      "name": "Main Level",
+      "range": { "min": -18, "max": 18, "unit": "dB" },
+      "description": "Output volume control."
+    },
+    {
+      "section": "Bands",
+      "id": "band_freq",
+      "name": "Band Frequency",
+      "range": { "min": 20, "max": 20000, "unit": "Hz" },
+      "description": "Center frequency for bands 1-7."
+    },
+    {
+      "section": "Bands",
+      "id": "band_gain",
+      "name": "Band Gain",
+      "range": { "min": -18, "max": 18, "unit": "dB" },
+      "description": "Boost or Cut amount for Peaking/Shelf types."
+    },
+    {
+      "section": "Bands",
+      "id": "band_bw",
+      "name": "Bandwidth (Q)",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "description": "Width of the affected frequency range. High % = Narrow."
+    },
+    {
+      "section": "Bands",
+      "id": "band_type",
+      "name": "Filter Type",
+      "options": [
+        "Low Pass",
+        "Band Pass",
+        "High Pass",
+        "Notch",
+        "Low Shelf",
+        "Peaking",
+        "High Shelf"
+      ],
+      "description": "Topology of the filter band."
+    },
+    {
+      "section": "Bands",
+      "id": "band_order",
+      "name": "Filter Order (Slope)",
+      "options": [
+        "Gentle 4",
+        "Gentle 6",
+        "Gentle 8",
+        "Steep 4",
+        "Steep 6",
+        "Steep 8"
+      ],
+      "description": "Steepness of the filter cutoff. Steep 8 = -48dB/Octave."
+    },
+    {
+      "section": "Options",
+      "id": "hq_mode",
+      "name": "HQ (High Quality)",
+      "type": "Switch",
+      "description": "Enables Oversampling to reduce frequency cramping near 20kHz."
+    },
+    {
+      "section": "Options",
+      "id": "lin_mode",
+      "name": "LIN (Linear Phase)",
+      "type": "Toggle",
+      "description": "Enables FFT processing for zero phase shift (adds latency)."
+    },
+    {
+      "section": "Visualization",
+      "id": "pivot_slope",
+      "name": "Pivot Slope",
+      "options": ["0dB", "1.5dB", "3dB", "4.5dB", "6dB"],
+      "description": "Changes the visual tilt of the spectral analyzer."
+    }
+  ]
+}

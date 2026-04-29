@@ -1,0 +1,163 @@
+{
+  "id": "fruity-love-philter",
+  "name": "Fruity Love Philter",
+  "presets": {
+    "formant-talker": {
+      "presetName": "Formant Talker",
+      "plugin": "Fruity Love Philter",
+      "description": "Uses the 'Vowel' filter type to mimic speech.",
+      "settings": {
+        "unit1": {
+          "filter": "Formant",
+          "x_mod": "Vowel A-E",
+          "y_mod": "Vowel I-O"
+        }
+      },
+      "usage": "Automate the X/Y pad to make your synth 'talk'."
+    },
+    "gated-noise": {
+      "presetName": "Gated Noise",
+      "plugin": "Fruity Love Philter",
+      "description": "Uses a noise gate envelope to rhythmically chop audio.",
+      "settings": {
+        "unit1": {
+          "vol": "Gate Pattern 1",
+          "filter": "Off"
+        }
+      },
+      "usage": "Instant 'Trance Gate' effect without sidechaining."
+    },
+    "phaser-jet": {
+      "presetName": "Phaser Jet",
+      "plugin": "Fruity Love Philter",
+      "description": "Complex 8-stage phaser using multiple filter units.",
+      "settings": {
+        "unit1": "Phaser",
+        "unit2": "Phaser",
+        "routing": "Series"
+      },
+      "usage": "Thick, swirling modulation for pads."
+    },
+    "simple-low-pass": {
+      "presetName": "Simple Low Pass",
+      "plugin": "Fruity Love Philter",
+      "description": "A high-quality, resonant low pass filter.",
+      "settings": {
+        "unit1": {
+          "filter": "Vanilla Low Pass",
+          "cutoff": 0.5,
+          "resonance": 0.2
+        }
+      },
+      "usage": "Cleaner alternative to Fast LP."
+    },
+    "trance-gate": {
+      "presetName": "Trance Gate",
+      "plugin": "Fruity Love Philter",
+      "description": "Rhythmic volume gating using the pattern sequencer.",
+      "settings": {
+        "unit1": {
+          "type": "Vol",
+          "pattern": "16th notes on/off"
+        }
+      },
+      "usage": "Turn a sustained pad into a rhythmic chord progression."
+    },
+    "wub-bass-filter": {
+      "presetName": "Wub Bass Filter",
+      "plugin": "Fruity Love Philter",
+      "description": "LFO-driven low pass filter for Dubstep wobble.",
+      "settings": {
+        "unit1": {
+          "filter": "Mango Low Pass",
+          "lfo": "Sine",
+          "speed": "Tempo Sync 1/4"
+        }
+      },
+      "usage": "Apply to a Reese bass for instant wobble."
+    }
+  },
+  "parameters": {
+    "love-philter-params": {
+      "plugin_name": "Fruity Love Philter",
+      "category": "Filter",
+      "units": 8,
+      "parameters": [
+        {
+          "name": "Articulator Editor",
+          "type": "graph",
+          "description": "Visual curve editor for Env, LFO, and Map.",
+          "vibe_impact": "Rhythm, motion, identity",
+          "mix_impact_tags": [
+            "motion",
+            "rhythm"
+          ]
+        },
+        {
+          "name": "Waveshaper",
+          "type": "graph",
+          "description": "Per-unit distortion engine.",
+          "vibe_impact": "Aggression, grit, warmth",
+          "mix_impact_tags": [
+            "loudness",
+            "harmonic"
+          ]
+        },
+        {
+          "name": "Cutoff (Knob)",
+          "type": "knob",
+          "description": "Global multiplier for the Cutoff envelope.",
+          "vibe_impact": "Brightness, focus"
+        },
+        {
+          "name": "Resonance (Knob)",
+          "type": "knob",
+          "description": "Global multiplier for the Resonance envelope.",
+          "vibe_impact": "Character, whistle"
+        },
+        {
+          "name": "Routing (Next/Out)",
+          "type": "button",
+          "description": "Determines if signal goes to the next unit or the exit.",
+          "vibe_impact": "Complexity, scale"
+        }
+      ]
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "00 Goal Quick Result",
+      "category": "by-goal",
+      "filename": "00_Goal_Quick_Result.md"
+    },
+    {
+      "title": "Synths Xy",
+      "category": "by-instrument",
+      "filename": "synths-xy.md"
+    },
+    {
+      "title": "Vocals",
+      "category": "by-instrument",
+      "filename": "vocals.md"
+    }
+  ]
+}

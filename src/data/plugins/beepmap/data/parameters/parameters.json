@@ -1,0 +1,62 @@
+{
+  "pluginName": "BeepMap",
+  "category": "Image Synth / Sonifier",
+  "parameters": [
+    {
+      "section": "Global",
+      "id": "freq",
+      "name": "Frequency Range",
+      "range": { "min": 20, "max": 22000, "unit": "Hz" },
+      "description": "Sets the maximum pitch for the top pixel row."
+    },
+    {
+      "section": "Global",
+      "id": "length",
+      "name": "Pixel Duration",
+      "range": { "min": 1, "max": 5000, "unit": "ms" },
+      "description": "Scan speed per pixel column."
+    },
+    {
+      "section": "Global",
+      "id": "scale",
+      "name": "Scale Mode",
+      "options": ["Linear (Hz)", "Log (Cents)"],
+      "description": "Mapping of Y-axis to Pitch."
+    },
+    {
+      "section": "Tone",
+      "id": "use_blue",
+      "name": "Use Blue",
+      "type": "Switch",
+      "description": "Enables Blue channel to modulate frequency range per pixel."
+    },
+    {
+      "section": "Tone",
+      "id": "grainy",
+      "name": "Grainy",
+      "type": "Switch",
+      "description": "Enables granular synthesis mode (Geiger effect)."
+    },
+    {
+      "section": "Playback",
+      "id": "loop",
+      "name": "Loop Mode",
+      "type": "Switch",
+      "description": "Repeats the image scan continuously."
+    },
+    {
+      "section": "Output",
+      "id": "widen",
+      "name": "Widen",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "description": "Stereo width enhancer."
+    },
+    {
+      "section": "System",
+      "id": "max_bitmap_height",
+      "name": "Max Bitmap Height",
+      "range": { "min": 10, "max": 999, "unit": "px" },
+      "description": "Number of sine wave oscillators (CPU Load)."
+    }
+  ]
+}

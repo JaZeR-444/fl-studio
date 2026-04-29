@@ -1,0 +1,3545 @@
+{
+  "id": "kepler-exo",
+  "name": "Kepler Exo",
+  "presets": {
+    "genre-presets": {
+      "metadata": {
+        "plugin": "Kepler Exo",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "genres": [
+          "hip-hop/rap",
+          "R&B",
+          "EDM",
+          "trap",
+          "lo-fi",
+          "drill",
+          "experimental"
+        ],
+        "description": "Genre-aware presets for Kepler Exo with extended features (4 oscillators, sub osc, expanded modulation)"
+      },
+      "presets": {
+        "hip-hop-bass-exo": {
+          "name": "Exo 808 Beast",
+          "genre": "hip-hop/rap",
+          "mood": "dark",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "dual-filter"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 0,
+              "mix": 70
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 4,
+              "mix": 65
+            },
+            "oscillator3": {
+              "waveform": "square",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 50
+            },
+            "oscillator4": {
+              "waveform": "triangle",
+              "octave": "0",
+              "detune": 3,
+              "mix": 35
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 100
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 200,
+              "resonance": 30,
+              "drive": 18
+            },
+            "filterB": {
+              "type": "lowpass",
+              "cutoff": 4000,
+              "resonance": 20,
+              "drive": 5
+            },
+            "envelope": {
+              "attack": 4,
+              "decay": 200,
+              "sustain": 60,
+              "release": 140
+            },
+            "modulation": {
+              "envToFilterA": 75,
+              "lfo1ToPan": 35,
+              "lfo2ToPitch": 8
+            }
+          },
+          "chain": {
+            "pre": [
+              "Fruity Parametric EQ 2 - High-pass 25Hz"
+            ],
+            "post": [
+              "Fruity Limiter - Threshold -14dB, Ratio 4:1, Attack 1ms, Release 35ms"
+            ]
+          },
+          "genreTags": [
+            "hip-hop/rap",
+            "trap",
+            "dark",
+            "aggressive"
+          ],
+          "a/bTesting": {
+            "testA": "Sub osc at 100% for maximum sub",
+            "testB": "Sub osc at 70% for cleaner sub",
+            "testC": "Osc4 adds harmonic complexity"
+          },
+          "troubleshooting": {
+            "muddy": "Filter A cutoff to 150Hz",
+            "clipping": "Reduce osc mix levels by 20%"
+          }
+        },
+        "rb-keys-exo": {
+          "name": "Exo Soul Keys",
+          "genre": "R&B",
+          "mood": "moody",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "sine",
+              "octave": "0",
+              "detune": 0,
+              "mix": 85
+            },
+            "oscillator2": {
+              "waveform": "triangle",
+              "octave": "0",
+              "detune": 5,
+              "mix": 70
+            },
+            "oscillator3": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 3,
+              "mix": 45
+            },
+            "oscillator4": {
+              "waveform": "square",
+              "octave": "0",
+              "detune": 8,
+              "mix": 30
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 0
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 2500,
+              "resonance": 18,
+              "drive": 5
+            },
+            "filterB": {
+              "type": "highpass",
+              "cutoff": 200,
+              "resonance": 10,
+              "drive": 0
+            },
+            "envelope": {
+              "attack": 60,
+              "decay": 400,
+              "sustain": 75,
+              "release": 350
+            },
+            "modulation": {
+              "envToFilterA": 30,
+              "lfo1ToPan": 50,
+              "lfo2ToFilterB": 20
+            },
+            "stereoWidth": 100
+          },
+          "chain": {
+            "pre": [
+              "Soft clipper - 1.5dB reduction"
+            ],
+            "post": [
+              "Fruity Reverb 2 - Hall, Decay 2.8s, Mix 22%",
+              "Fruity Parametric EQ 2 - Bell +2dB at 3kHz"
+            ]
+          },
+          "genreTags": [
+            "R&B",
+            "smooth",
+            "moody",
+            "soulful"
+          ],
+          "a/bTesting": {
+            "testA": "LFO pan at 50% for gentle movement",
+            "testB": "LFO pan off for static stereo field"
+          },
+          "troubleshooting": {
+            "harshHighs": "Filter A cutoff to 2000Hz",
+            "weakLowEnd": "Increase osc1 to 100%"
+          }
+        },
+        "edm-supersaw-exo": {
+          "name": "Exo Stadium Supersaw",
+          "genre": "EDM",
+          "mood": "electric",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "dual-filter",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 0,
+              "mix": 85
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 7,
+              "mix": 85
+            },
+            "oscillator3": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 14,
+              "mix": 80
+            },
+            "oscillator4": {
+              "waveform": "saw",
+              "octave": "+1",
+              "detune": 21,
+              "mix": 65
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 0
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 4200,
+              "resonance": 48,
+              "drive": 18
+            },
+            "filterB": {
+              "type": "lowpass",
+              "cutoff": 8000,
+              "resonance": 25,
+              "drive": 8
+            },
+            "envelope": {
+              "attack": 15,
+              "decay": 280,
+              "sustain": 55,
+              "release": 450
+            },
+            "modulation": {
+              "envToFilterA": 70,
+              "lfo1ToFilterA": 45,
+              "lfo2ToPitch": 12
+            },
+            "stereoWidth": 120
+          },
+          "chain": {
+            "pre": [
+              "Soft clipper - 2.5dB reduction"
+            ],
+            "post": [
+              "Fruity Limiter - Ceiling -0.3dB, Gain 6dB",
+              "Fruity Reverb 2 - Cathedral, Decay 4s, Mix 15%"
+            ]
+          },
+          "genreTags": [
+            "EDM",
+            "big room",
+            "electric",
+            "anthem"
+          ],
+          "a/bTesting": {
+            "testA": "4 oscillators for massive width",
+            "testB": "3 oscillators for tighter mix",
+            "testC": "Dual filter for spectral control"
+          },
+          "troubleshooting": {
+            "muddy": "Filter B high-pass at 250Hz",
+            "phasing": "Reduce stereo width to 100%"
+          }
+        },
+        "drill-bass-exo": {
+          "name": "Exo Grim Reaper",
+          "genre": "drill",
+          "mood": "dark",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "dual-filter"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 0,
+              "mix": 90
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 5,
+              "mix": 85
+            },
+            "oscillator3": {
+              "waveform": "square",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 60
+            },
+            "oscillator4": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 10,
+              "mix": 40
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 100
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 120,
+              "resonance": 40,
+              "drive": 25
+            },
+            "filterB": {
+              "type": "bandpass",
+              "cutoff": 800,
+              "resonance": 35,
+              "drive": 15
+            },
+            "envelope": {
+              "attack": 6,
+              "decay": 220,
+              "sustain": 55,
+              "release": 180
+            },
+            "modulation": {
+              "envToFilterA": 80,
+              "lfo1ToPitch": 20,
+              "lfo2ToFilterB": 30
+            }
+          },
+          "chain": {
+            "pre": [
+              "High-pass at 35Hz"
+            ],
+            "post": [
+              "Fruity Limiter - Threshold -12dB, Attack 0.5ms, Release 25ms, Ratio 6:1"
+            ]
+          },
+          "genreTags": [
+            "drill",
+            "dark",
+            "heavy",
+            "aggressive"
+          ],
+          "a/bTesting": {
+            "testA": "Pitch LFO for demonic sub movement",
+            "testB": "Static pitch for pure heaviness"
+          },
+          "troubleshooting": {
+            "tooDistorted": "Filter drive to 18%",
+            "weakImpact": "Increase filter A resonance to 50%"
+          }
+        },
+        "lofi-pad-exo": {
+          "name": "Exo Dusty VHS",
+          "genre": "lo-fi",
+          "mood": "moody",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 12,
+              "mix": 70
+            },
+            "oscillator2": {
+              "waveform": "triangle",
+              "octave": "-2",
+              "detune": 18,
+              "mix": 65
+            },
+            "oscillator3": {
+              "waveform": "square",
+              "octave": "0",
+              "detune": 8,
+              "mix": 40
+            },
+            "oscillator4": {
+              "waveform": "sine",
+              "octave": "-1",
+              "detune": 25,
+              "mix": 55
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 30
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 1800,
+              "resonance": 22,
+              "drive": 8
+            },
+            "filterB": {
+              "type": "highpass",
+              "cutoff": 150,
+              "resonance": 15,
+              "drive": 0
+            },
+            "envelope": {
+              "attack": 180,
+              "decay": 600,
+              "sustain": 80,
+              "release": 1000
+            },
+            "modulation": {
+              "envToFilterA": 20,
+              "lfo1ToPan": 65,
+              "lfo2ToFilterB": 15
+            },
+            "stereoWidth": 150
+          },
+          "chain": {
+            "pre": [
+              "Vintage Phaser - Mix 35%, Rate 0.25Hz"
+            ],
+            "post": [
+              "Fruity Reverb 2 - Room, Decay 2.5s, Mix 28%",
+              "Tape Saturation - 4% drive"
+            ]
+          },
+          "genreTags": [
+            "lo-fi",
+            "moody",
+            "chill",
+            "nostalgic"
+          ],
+          "a/bTesting": {
+            "testA": "Heavy detune for tape warble",
+            "testB": "Tighter detune for cleaner lo-fi"
+          },
+          "troubleshooting": {
+            "tooNoisy": "Reduce LFO pan to 40%",
+            "muddy": "Filter B high-pass at 200Hz"
+          }
+        },
+        "trap-lead-exo": {
+          "name": "Exo Glitch Symphony",
+          "genre": "trap",
+          "mood": "dark",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "dual-filter"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "square",
+              "octave": "+1",
+              "detune": 0,
+              "mix": 100
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 12,
+              "mix": 75
+            },
+            "oscillator3": {
+              "waveform": "square",
+              "octave": "0",
+              "detune": 5,
+              "mix": 60
+            },
+            "oscillator4": {
+              "waveform": "saw",
+              "octave": "+1",
+              "detune": 20,
+              "mix": 50
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 0
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 3200,
+              "resonance": 50,
+              "drive": 12
+            },
+            "filterB": {
+              "type": "bandpass",
+              "cutoff": 1500,
+              "resonance": 40,
+              "drive": 8
+            },
+            "envelope": {
+              "attack": 1,
+              "decay": 70,
+              "sustain": 0,
+              "release": 45
+            },
+            "modulation": {
+              "envToFilterA": 95,
+              "lfo1ToPitch": 35,
+              "lfo2ToFilterB": 45
+            }
+          },
+          "chain": {
+            "pre": [
+              "Teq4 - High-pass 600Hz"
+            ],
+            "post": [
+              "Fruily Reverb 2 - Plate, Decay 1s, Mix 20%",
+              "Bitcrusher - 10-bit, 60% wet"
+            ]
+          },
+          "genreTags": [
+            "trap",
+            "dark",
+            "glitch",
+            "experimental"
+          ],
+          "a/bTesting": {
+            "testA": "Sample-hold LFO for random glitches",
+            "testB": "Sine LFO for regular vibrato"
+          },
+          "troubleshooting": {
+            "tooChaotic": "Reduce LFO amounts to 20%",
+            "tooThin": "Add sub osc at 40%"
+          }
+        },
+        "experimental-texture-exo": {
+          "name": "Exo Sci-Fi Textures",
+          "genre": "experimental",
+          "mood": "spacey",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "dual-filter",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 0,
+              "mix": 80
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "+1",
+              "detune": 50,
+              "mix": 70
+            },
+            "oscillator3": {
+              "waveform": "square",
+              "octave": "-1",
+              "detune": 25,
+              "mix": 60
+            },
+            "oscillator4": {
+              "waveform": "triangle",
+              "octave": "0",
+              "detune": 75,
+              "mix": 50
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 50
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 5000,
+              "resonance": 55,
+              "drive": 15
+            },
+            "filterB": {
+              "type": "bandpass",
+              "cutoff": 2500,
+              "resonance": 45,
+              "drive": 10
+            },
+            "envelope": {
+              "attack": 50,
+              "decay": 800,
+              "sustain": 70,
+              "release": 1200
+            },
+            "modulation": {
+              "envToFilterA": 60,
+              "lfo1ToFilterB": 80,
+              "lfo2ToPitch": 50
+            },
+            "stereoWidth": 200
+          },
+          "chain": {
+            "pre": [
+              "Fruity Parametric EQ 2 - Multi-band processing"
+            ],
+            "post": [
+              "Fruity Reverb 2 - Gated, Decay 1.5s, Mix 40%",
+              "Delay - Stereo ping-pong, 600ms, Feedback 50%"
+            ]
+          },
+          "genreTags": [
+            "experimental",
+            "spacey",
+            "cinematic",
+            "ambient"
+          ],
+          "a/bTesting": {
+            "testA": "Extreme detune for metallic textures",
+            "testB": "Tighter detune for harmonious clusters"
+          },
+          "troubleshooting": {
+            "tooHarsh": "Filter A cutoff to 3500Hz",
+            "lossOfControl": "Reduce modulation amounts by half"
+          }
+        },
+        "rnb-pad-exo": {
+          "name": "Exo Velvet Pad",
+          "genre": "R&B",
+          "mood": "smooth",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "sine",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 90
+            },
+            "oscillator2": {
+              "waveform": "triangle",
+              "octave": "-1",
+              "detune": 4,
+              "mix": 75
+            },
+            "oscillator3": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 6,
+              "mix": 50
+            },
+            "oscillator4": {
+              "waveform": "sine",
+              "octave": "0",
+              "detune": 10,
+              "mix": 40
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 25
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 3000,
+              "resonance": 15,
+              "drive": 3
+            },
+            "filterB": {
+              "type": "lowpass",
+              "cutoff": 6000,
+              "resonance": 10,
+              "drive": 0
+            },
+            "envelope": {
+              "attack": 250,
+              "decay": 500,
+              "sustain": 85,
+              "release": 800
+            },
+            "modulation": {
+              "envToFilterA": 15,
+              "lfo1ToPan": 30,
+              "lfo2ToFilterB": 10
+            },
+            "stereoWidth": 110
+          },
+          "chain": {
+            "pre": [
+              "Vintage Chorus - Mix 40%, Rate 0.2Hz"
+            ],
+            "post": [
+              "Fruity Reverb 2 - Hall, Decay 3s, Mix 18%",
+              "Fruity Parametric EQ 2 - High-shelf +1.5dB at 8kHz"
+            ]
+          },
+          "genreTags": [
+            "R&B",
+            "smooth",
+            "moody",
+            "romantic"
+          ],
+          "a/bTesting": {
+            "testA": "Gentle pan LFO for subtle movement",
+            "testB": "Static for centered emotional focus"
+          },
+          "troubleshooting": {
+            "tooDark": "Filter A cutoff to 4000Hz",
+            "lacksWarmth": "Increase osc3 to 60%"
+          }
+        }
+      }
+    },
+    "signature-presets": {
+      "metadata": {
+        "plugin": "Kepler Exo",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "description": "Artist and production style inspired presets for Kepler Exo"
+      },
+      "presets": {
+        "metro-boomin-exo": {
+          "name": "Exo Boomin System",
+          "inspiredBy": "Metro Boomin modern trap production",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "dual-filter"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 0,
+              "mix": 80
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 4,
+              "mix": 75
+            },
+            "oscillator3": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 55
+            },
+            "oscillator4": {
+              "waveform": "square",
+              "octave": "-1",
+              "detune": 3,
+              "mix": 45
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 100
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 180,
+              "resonance": 32,
+              "drive": 20
+            },
+            "filterB": {
+              "type": "lowpass",
+              "cutoff": 350,
+              "resonance": 20,
+              "drive": 8
+            },
+            "envelope": {
+              "attack": 5,
+              "decay": 180,
+              "sustain": 65,
+              "release": 120
+            },
+            "modulation": {
+              "envToFilterA": 72,
+              "lfo1ToPan": 20,
+              "lfo2ToFilterB": 15
+            }
+          },
+          "chain": {
+            "post": [
+              "Fruity Limiter - Threshold -15dB, Ratio 4:1, Attack 0.5ms, Release 30ms"
+            ]
+          },
+          "characteristics": [
+            "deep",
+            "punchy",
+            "modern",
+            "cleansounding"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "trap",
+            "modern"
+          ],
+          "a/bTesting": {
+            "testA": "4 oscillators for modern complexity",
+            "testB": "2 oscillators for classic 808"
+          },
+          "troubleshooting": {
+            "notDeepEnough": "Increase sub osc to 100%",
+            "muddyMix": "Filter A cutoff to 140Hz"
+          }
+        },
+        "wheezy-exo": {
+          "name": "Exo Paperboy",
+          "inspiredBy": "Wheezy ATL trap style",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 0,
+              "mix": 85
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 6,
+              "mix": 80
+            },
+            "oscillator3": {
+              "waveform": "square",
+              "octave": "0",
+              "detune": 0,
+              "mix": 60
+            },
+            "oscillator4": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 10,
+              "mix": 50
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 90
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 220,
+              "resonance": 38,
+              "drive": 18
+            },
+            "filterB": {
+              "type": "highpass",
+              "cutoff": 80,
+              "resonance": 15,
+              "drive": 0
+            },
+            "envelope": {
+              "attack": 4,
+              "decay": 160,
+              "sustain": 58,
+              "release": 100
+            },
+            "modulation": {
+              "envToFilterA": 78,
+              "lfo1ToPan": 45,
+              "lfo2ToPitch": 12
+            },
+            "stereoWidth": 130
+          },
+          "chain": {
+            "post": [
+              "Fruity Compressor - Attack 8ms, Release 70ms, Ratio 3:1"
+            ]
+          },
+          "characteristics": [
+            "aggressive",
+            "bright",
+            "modern",
+            "punchy"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "trap",
+            "ATL"
+          ],
+          "a/bTesting": {
+            "testA": "Pan LFO for stereo movement",
+            "testB": "Pan LFO off for mono impact"
+          },
+          "troubleshooting": {
+            "tooHarsh": "Reduce osc4 mix to 35%",
+            "lacksPunch": "Increase filter drive to 25%"
+          }
+        },
+        "murda-beatz-exo": {
+          "name": "Exo Melody King",
+          "inspiredBy": "Murda Beatz melodic trap style",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "dual-filter",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 80
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 5,
+              "mix": 75
+            },
+            "oscillator3": {
+              "waveform": "triangle",
+              "octave": "0",
+              "detune": 3,
+              "mix": 65
+            },
+            "oscillator4": {
+              "waveform": "square",
+              "octave": "0",
+              "detune": 8,
+              "mix": 50
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 0
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 1200,
+              "resonance": 28,
+              "drive": 10
+            },
+            "filterB": {
+              "type": "lowpass",
+              "cutoff": 4500,
+              "resonance": 18,
+              "drive": 5
+            },
+            "envelope": {
+              "attack": 15,
+              "decay": 280,
+              "sustain": 68,
+              "release": 300
+            },
+            "modulation": {
+              "envToFilterA": 45,
+              "lfo1ToFilterB": 35,
+              "lfo2ToPan": 25
+            },
+            "stereoWidth": 115
+          },
+          "chain": {
+            "post": [
+              "Fruity Reverb 2 - Hall, Decay 2s, Mix 20%",
+              "Fruity Limiter - Soft knee"
+            ]
+          },
+          "characteristics": [
+            "melodic",
+            "bright",
+            "emotional",
+            "groove"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "trap",
+            "melodic"
+          ],
+          "a/bTesting": {
+            "testA": "Dual filter for harmonic complexity",
+            "testB": "Single filter for focused sound"
+          },
+          "troubleshooting": {
+            "tooDark": "Filter B cutoff to 5500Hz",
+            "muddyChords": "Filter A cutoff to 1000Hz"
+          }
+        },
+        "tay-keith-exo": {
+          "name": "Exo Gunna Wet",
+          "inspiredBy": "Tay Keith trap style with Wet",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 85
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 7,
+              "mix": 80
+            },
+            "oscillator3": {
+              "waveform": "square",
+              "octave": "0",
+              "detune": 4,
+              "mix": 55
+            },
+            "oscillator4": {
+              "waveform": "triangle",
+              "octave": "0",
+              "detune": 12,
+              "mix": 45
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 0
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 800,
+              "resonance": 35,
+              "drive": 12
+            },
+            "filterB": {
+              "type": "bandpass",
+              "cutoff": 2000,
+              "resonance": 25,
+              "drive": 8
+            },
+            "envelope": {
+              "attack": 10,
+              "decay": 200,
+              "sustain": 62,
+              "release": 250
+            },
+            "modulation": {
+              "envToFilterA": 55,
+              "lfo1ToPan": 40,
+              "lfo2ToFilterB": 30
+            },
+            "stereoWidth": 140
+          },
+          "chain": {
+            "post": [
+              "Fruity Reverb 2 - Large Room, Decay 2.2s, Mix 25%",
+              "Fruity Compressor - Soft attack"
+            ]
+          },
+          "characteristics": [
+            "smooth",
+            "wet",
+            "melodic",
+            "atmospheric"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "trap",
+            "melodic",
+            "atmospheric"
+          ],
+          "a/bTesting": {
+            "testA": "Heavy reverb for atmospheric feel",
+            "testB": "Less reverb for drier mix"
+          },
+          "troubleshooting": {
+            "tooWashed": "Reduce reverb mix to 15%",
+            "lacksClarity": "Bandpass filter B at 2500Hz"
+          }
+        },
+        "harry-fraud-exo": {
+          "name": "Exo SSL Soul",
+          "inspiredBy": "Harry Fraud Brooklyn soul style",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "dual-filter",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 78
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 5,
+              "mix": 72
+            },
+            "oscillator3": {
+              "waveform": "triangle",
+              "octave": "0",
+              "detune": 3,
+              "mix": 60
+            },
+            "oscillator4": {
+              "waveform": "sine",
+              "octave": "0",
+              "detune": 8,
+              "mix": 55
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 20
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 2000,
+              "resonance": 20,
+              "drive": 8
+            },
+            "filterB": {
+              "type": "highpass",
+              "cutoff": 120,
+              "resonance": 12,
+              "drive": 0
+            },
+            "envelope": {
+              "attack": 45,
+              "decay": 350,
+              "sustain": 72,
+              "release": 400
+            },
+            "modulation": {
+              "envToFilterA": 28,
+              "lfo1ToPan": 35,
+              "lfo2ToFilterB": 18
+            },
+            "stereoWidth": 105
+          },
+          "chain": {
+            "pre": [
+              "SSL-style EQ emulation"
+            ],
+            "post": [
+              "Fruily Reverb 2 - Plate, Decay 1.8s, Mix 18%"
+            ]
+          },
+          "characteristics": [
+            "warm",
+            "smooth",
+            "soulful",
+            "classic"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "R&B",
+            "soulful"
+          ],
+          "a/bTesting": {
+            "testA": "Subtle stereo width for cohesion",
+            "testB": "Mono for SSL-style punch"
+          },
+          "troubleshooting": {
+            "tooWarm": "Increase filter A cutoff to 2500Hz",
+            "lacksLowEnd": "Sub osc to 40%"
+          }
+        },
+        "ska-gregory-exo": {
+          "name": "Exo Cash Money",
+          "inspiredBy": "Ska Gregory New Orleans bounce",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 0,
+              "mix": 88
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 4,
+              "mix": 82
+            },
+            "oscillator3": {
+              "waveform": "square",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 65
+            },
+            "oscillator4": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 8,
+              "mix": 55
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 95
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 250,
+              "resonance": 30,
+              "drive": 15
+            },
+            "filterB": {
+              "type": "lowpass",
+              "cutoff": 500,
+              "resonance": 22,
+              "drive": 8
+            },
+            "envelope": {
+              "attack": 6,
+              "decay": 140,
+              "sustain": 60,
+              "release": 110
+            },
+            "modulation": {
+              "envToFilterA": 68,
+              "lfo1ToPan": 25,
+              "lfo2ToPitch": 8
+            },
+            "stereoWidth": 90
+          },
+          "chain": {
+            "post": [
+              "Fruily Limiter - Punchy settings, fast release"
+            ]
+          },
+          "characteristics": [
+            "bouncy",
+            "party",
+            "fun",
+            "uplifting"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "bounce",
+            "party"
+          ],
+          "a/bTesting": {
+            "testA": "Fast decay for bouncy feel",
+            "testB": "Longer decay for smoother flow"
+          },
+          "troubleshooting": {
+            "notBouncy": "Envelope decay to 120ms",
+            "tooBoomy": "Filter A cutoff to 200Hz"
+          }
+        },
+        "mike-will-exo": {
+          "name": "Exo Future Past",
+          "inspiredBy": "Mike Will Made-It futuristic style",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "dual-filter",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 0,
+              "mix": 82
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 7,
+              "mix": 80
+            },
+            "oscillator3": {
+              "waveform": "saw",
+              "octave": "+1",
+              "detune": 14,
+              "mix": 65
+            },
+            "oscillator4": {
+              "waveform": "square",
+              "octave": "0",
+              "detune": 21,
+              "mix": 50
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 0
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 3800,
+              "resonance": 42,
+              "drive": 15
+            },
+            "filterB": {
+              "type": "lowpass",
+              "cutoff": 7000,
+              "resonance": 28,
+              "drive": 8
+            },
+            "envelope": {
+              "attack": 12,
+              "decay": 260,
+              "sustain": 58,
+              "release": 380
+            },
+            "modulation": {
+              "envToFilterA": 62,
+              "lfo1ToFilterB": 48,
+              "lfo2ToPan": 32
+            },
+            "stereoWidth": 125
+          },
+          "chain": {
+            "pre": [
+              "Soft clipper - 2dB"
+            ],
+            "post": [
+              "Fruily Reverb 2 - Gated, Decay 1.5s, Mix 22%",
+              "Delay - 320ms, Feedback 35%"
+            ]
+          },
+          "characteristics": [
+            "futuristic",
+            "wide",
+            "bright",
+            "innovative"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "R&B",
+            "future bass",
+            "experimental"
+          ],
+          "a/bTesting": {
+            "testA": "4 oscillators for maximum width",
+            "testB": "2 oscillators for classic saw"
+          },
+          "troubleshooting": {
+            "tooBusy": "Filter B cutoff to 5000Hz",
+            "lacksFuture": "Increase modulation amounts"
+          }
+        },
+        "zaytoven-exo": {
+          "name": "Exo MIDI Pluck Deluxe",
+          "inspiredBy": "Zaytoven piano-driven production",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "square",
+              "octave": "+1",
+              "detune": 0,
+              "mix": 100
+            },
+            "oscillator2": {
+              "waveform": "triangle",
+              "octave": "0",
+              "detune": 4,
+              "mix": 70
+            },
+            "oscillator3": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 6,
+              "mix": 50
+            },
+            "oscillator4": {
+              "waveform": "sine",
+              "octave": "+1",
+              "detune": 3,
+              "mix": 40
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 0
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 3000,
+              "resonance": 38,
+              "drive": 8
+            },
+            "filterB": {
+              "type": "highpass",
+              "cutoff": 150,
+              "resonance": 15,
+              "drive": 0
+            },
+            "envelope": {
+              "attack": 2,
+              "decay": 55,
+              "sustain": 0,
+              "release": 35
+            },
+            "modulation": {
+              "envToFilterA": 88,
+              "lfo1ToPan": 20,
+              "lfo2ToPitch": 5
+            },
+            "stereoWidth": 85
+          },
+          "chain": {
+            "post": [
+              "Fruily Reverb 2 - Small Room, Decay 0.6s, Mix 12%",
+              "Fruily Compressor - Fast attack"
+            ]
+          },
+          "characteristics": [
+            "plucky",
+            "bright",
+            "melodic",
+            "classic"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "R&B",
+            "melodic",
+            "piano"
+          ],
+          "a/bTesting": {
+            "testA": "Square wave for classic MIDI",
+            "testB": "Saw for modern edge"
+          },
+          "troubleshooting": {
+            "tooClicky": "Attack to 4ms",
+            "sustainingTooLong": "Sustain at 0, decay to 45ms"
+          }
+        },
+        "just-blaze-exo": {
+          "name": "Exo Classic Soul",
+          "inspiredBy": "Just Blaze soulful hip-hop",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "dual-filter",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 75
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 5,
+              "mix": 70
+            },
+            "oscillator3": {
+              "waveform": "triangle",
+              "octave": "0",
+              "detune": 3,
+              "mix": 62
+            },
+            "oscillator4": {
+              "waveform": "sine",
+              "octave": "0",
+              "detune": 8,
+              "mix": 58
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 35
+            },
+            "filterA": {
+              "type": "lowpass",
+              "cutoff": 2200,
+              "resonance": 18,
+              "drive": 6
+            },
+            "filterB": {
+              "type": "highpass",
+              "cutoff": 100,
+              "resonance": 10,
+              "drive": 0
+            },
+            "envelope": {
+              "attack": 35,
+              "decay": 320,
+              "sustain": 75,
+              "release": 420
+            },
+            "modulation": {
+              "envToFilterA": 22,
+              "lfo1ToPan": 28,
+              "lfo2ToFilterB": 15
+            },
+            "stereoWidth": 95
+          },
+          "chain": {
+            "pre": [
+              "Vintage warmth processing"
+            ],
+            "post": [
+              "Fruily Reverb 2 - Hall, Decay 2.5s, Mix 16%"
+            ]
+          },
+          "characteristics": [
+            "warm",
+            "soulful",
+            "classic",
+            "emotional"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "R&B",
+            "soulful",
+            "classic"
+          ],
+          "a/bTesting": {
+            "testA": "Subtle stereo for width",
+            "testB": "Mono for classic punch"
+          },
+          "troubleshooting": {
+            "tooDark": "Filter A cutoff to 2800Hz",
+            "lacksWarmth": "Increase osc4 to 65%"
+          }
+        },
+        "timbaland-exo": {
+          "name": "Exo Beat Break",
+          "inspiredBy": "Timbaland experimental hip-hop",
+          "exoFeatures": [
+            "sub-oscillator",
+            "expanded-modulation",
+            "dual-filter",
+            "stereo-width"
+          ],
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 0,
+              "mix": 78
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "+1",
+              "detune": 15,
+              "mix": 68
+            },
+            "oscillator3": {
+              "waveform": "square",
+              "octave": "-1",
+              "detune": 8,
+              "mix": 55
+            },
+            "oscillator4": {
+              "waveform": "triangle",
+              "octave": "0",
+              "detune": 25,
+              "mix": 48
+            },
+            "subOscillator": {
+              "waveform": "sine",
+              "octave": "-2",
+              "mix": 45
+            },
+            "filterA": {
+              "type": "bandpass",
+              "cutoff": 2500,
+              "resonance": 48,
+              "drive": 12
+            },
+            "filterB": {
+              "type": "notch",
+              "cutoff": 1500,
+              "resonance": 35,
+              "drive": 8
+            },
+            "envelope": {
+              "attack": 8,
+              "decay": 180,
+              "sustain": 55,
+              "release": 220
+            },
+            "modulation": {
+              "envToFilterA": 58,
+              "lfo1ToFilterB": 72,
+              "lfo2ToPitch": 40
+            },
+            "stereoWidth": 160
+          },
+          "chain": {
+            "pre": [
+              "Unique pre-processing"
+            ],
+            "post": [
+              "Fruily Reverb 2 - Experimental, Decay 2s, Mix 30%",
+              "Delay - Ping-pong, 450ms, Feedback 45%"
+            ]
+          },
+          "characteristics": [
+            "experimental",
+            "unconventional",
+            "forward-thinking",
+            "textural"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "experimental",
+            "innovative"
+          ],
+          "a/bTesting": {
+            "testA": "Extreme modulation for weird textures",
+            "testB": "Milder modulation for usable sounds"
+          },
+          "troubleshooting": {
+            "tooWeird": "Reduce LFO amounts to 30%",
+            "notWeirdEnough": "Increase modulation diversity"
+          }
+        }
+      }
+    },
+    "01-exo-808-beast": {
+      "metadata": {
+        "plugin": "Kepler Exo",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Exo 808 Beast",
+        "category": "genre",
+        "genre": "hip-hop/rap",
+        "mood": "dark",
+        "exoFeatures": [
+          "sub-oscillator",
+          "expanded-modulation",
+          "dual-filter"
+        ]
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "-2",
+          "detune": 0,
+          "mix": 70
+        },
+        "oscillator2": {
+          "waveform": "saw",
+          "octave": "-2",
+          "detune": 4,
+          "mix": 65
+        },
+        "oscillator3": {
+          "waveform": "square",
+          "octave": "-1",
+          "detune": 0,
+          "mix": 50
+        },
+        "oscillator4": {
+          "waveform": "triangle",
+          "octave": "0",
+          "detune": 3,
+          "mix": 35
+        },
+        "subOscillator": {
+          "waveform": "sine",
+          "octave": "-2",
+          "mix": 100
+        },
+        "filterA": {
+          "type": "lowpass",
+          "cutoff": 200,
+          "resonance": 30,
+          "drive": 18
+        },
+        "filterB": {
+          "type": "lowpass",
+          "cutoff": 4000,
+          "resonance": 20,
+          "drive": 5
+        },
+        "envelope": {
+          "attack": 4,
+          "decay": 200,
+          "sustain": 60,
+          "release": 140
+        },
+        "modulation": {
+          "envToFilterA": 75,
+          "lfo1ToPan": 35,
+          "lfo2ToPitch": 8
+        }
+      },
+      "chain": {
+        "pre": [
+          "Fruily Parametric EQ 2 - High-pass 25Hz"
+        ],
+        "post": [
+          "Fruily Limiter - Threshold -14dB, Ratio 4:1, Attack 1ms, Release 35ms"
+        ]
+      },
+      "genreTags": [
+        "hip-hop/rap",
+        "trap",
+        "dark",
+        "aggressive"
+      ],
+      "a/bTesting": {
+        "testA": "Sub osc at 100% for maximum sub",
+        "testB": "Sub osc at 70% for cleaner sub",
+        "testC": "Osc4 adds harmonic complexity"
+      },
+      "troubleshooting": {
+        "muddy": "Filter A cutoff to 150Hz",
+        "clipping": "Reduce osc mix levels by 20%"
+      }
+    },
+    "02-exo-soul-keys": {
+      "metadata": {
+        "plugin": "Kepler Exo",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Exo Soul Keys",
+        "category": "genre",
+        "genre": "R&B",
+        "mood": "moody",
+        "exoFeatures": [
+          "sub-oscillator",
+          "expanded-modulation",
+          "stereo-width"
+        ]
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "sine",
+          "octave": "0",
+          "detune": 0,
+          "mix": 85
+        },
+        "oscillator2": {
+          "waveform": "triangle",
+          "octave": "0",
+          "detune": 5,
+          "mix": 70
+        },
+        "oscillator3": {
+          "waveform": "saw",
+          "octave": "-1",
+          "detune": 3,
+          "mix": 45
+        },
+        "oscillator4": {
+          "waveform": "square",
+          "octave": "0",
+          "detune": 8,
+          "mix": 30
+        },
+        "subOscillator": {
+          "waveform": "sine",
+          "octave": "-2",
+          "mix": 0
+        },
+        "filterA": {
+          "type": "lowpass",
+          "cutoff": 2500,
+          "resonance": 18,
+          "drive": 5
+        },
+        "filterB": {
+          "type": "highpass",
+          "cutoff": 200,
+          "resonance": 10,
+          "drive": 0
+        },
+        "envelope": {
+          "attack": 60,
+          "decay": 400,
+          "sustain": 75,
+          "release": 350
+        },
+        "modulation": {
+          "envToFilterA": 30,
+          "lfo1ToPan": 50,
+          "lfo2ToFilterB": 20
+        },
+        "stereoWidth": 100
+      },
+      "chain": {
+        "pre": [
+          "Soft clipper - 1.5dB reduction"
+        ],
+        "post": [
+          "Fruily Reverb 2 - Hall, Decay 2.8s, Mix 22%",
+          "Fruily Parametric EQ 2 - Bell +2dB at 3kHz"
+        ]
+      },
+      "genreTags": [
+        "R&B",
+        "smooth",
+        "moody",
+        "soulful"
+      ],
+      "a/bTesting": {
+        "testA": "LFO pan at 50% for gentle movement",
+        "testB": "LFO pan off for static stereo field"
+      },
+      "troubleshooting": {
+        "harshHighs": "Filter A cutoff to 2000Hz",
+        "weakLowEnd": "Increase osc1 to 100%"
+      }
+    },
+    "03-exo-stadium-supersaw": {
+      "metadata": {
+        "plugin": "Kepler Exo",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Exo Stadium Supersaw",
+        "category": "genre",
+        "genre": "EDM",
+        "mood": "electric",
+        "exoFeatures": [
+          "sub-oscillator",
+          "expanded-modulation",
+          "dual-filter",
+          "stereo-width"
+        ]
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "0",
+          "detune": 0,
+          "mix": 85
+        },
+        "oscillator2": {
+          "waveform": "saw",
+          "octave": "0",
+          "detune": 7,
+          "mix": 85
+        },
+        "oscillator3": {
+          "waveform": "saw",
+          "octave": "0",
+          "detune": 14,
+          "mix": 80
+        },
+        "oscillator4": {
+          "waveform": "saw",
+          "octave": "+1",
+          "detune": 21,
+          "mix": 65
+        },
+        "subOscillator": {
+          "waveform": "sine",
+          "octave": "-2",
+          "mix": 0
+        },
+        "filterA": {
+          "type": "lowpass",
+          "cutoff": 4200,
+          "resonance": 48,
+          "drive": 18
+        },
+        "filterB": {
+          "type": "lowpass",
+          "cutoff": 8000,
+          "resonance": 25,
+          "drive": 8
+        },
+        "envelope": {
+          "attack": 15,
+          "decay": 280,
+          "sustain": 55,
+          "release": 450
+        },
+        "modulation": {
+          "envToFilterA": 70,
+          "lfo1ToFilterA": 45,
+          "lfo2ToPitch": 12
+        },
+        "stereoWidth": 120
+      },
+      "chain": {
+        "pre": [
+          "Soft clipper - 2.5dB reduction"
+        ],
+        "post": [
+          "Fruily Limiter - Ceiling -0.3dB, Gain 6dB",
+          "Fruily Reverb 2 - Cathedral, Decay 4s, Mix 15%"
+        ]
+      },
+      "genreTags": [
+        "EDM",
+        "big room",
+        "electric",
+        "anthem"
+      ],
+      "a/bTesting": {
+        "testA": "4 oscillators for massive width",
+        "testB": "3 oscillators for tighter mix",
+        "testC": "Dual filter for spectral control"
+      },
+      "troubleshooting": {
+        "muddy": "Filter B high-pass at 250Hz",
+        "phasing": "Reduce stereo width to 100%"
+      }
+    },
+    "04-exo-grim-reaper": {
+      "metadata": {
+        "plugin": "Kepler Exo",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Exo Grim Reaper",
+        "category": "genre",
+        "genre": "drill",
+        "mood": "dark",
+        "exoFeatures": [
+          "sub-oscillator",
+          "expanded-modulation",
+          "dual-filter"
+        ]
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "-2",
+          "detune": 0,
+          "mix": 90
+        },
+        "oscillator2": {
+          "waveform": "saw",
+          "octave": "-2",
+          "detune": 5,
+          "mix": 85
+        },
+        "oscillator3": {
+          "waveform": "square",
+          "octave": "-1",
+          "detune": 0,
+          "mix": 60
+        },
+        "oscillator4": {
+          "waveform": "saw",
+          "octave": "0",
+          "detune": 10,
+          "mix": 40
+        },
+        "subOscillator": {
+          "waveform": "sine",
+          "octave": "-2",
+          "mix": 100
+        },
+        "filterA": {
+          "type": "lowpass",
+          "cutoff": 120,
+          "resonance": 40,
+          "drive": 25
+        },
+        "filterB": {
+          "type": "bandpass",
+          "cutoff": 800,
+          "resonance": 35,
+          "drive": 15
+        },
+        "envelope": {
+          "attack": 6,
+          "decay": 220,
+          "sustain": 55,
+          "release": 180
+        },
+        "modulation": {
+          "envToFilterA": 80,
+          "lfo1ToPitch": 20,
+          "lfo2ToFilterB": 30
+        }
+      },
+      "chain": {
+        "pre": [
+          "High-pass at 35Hz"
+        ],
+        "post": [
+          "Fruily Limiter - Threshold -12dB, Attack 0.5ms, Release 25ms, Ratio 6:1"
+        ]
+      },
+      "genreTags": [
+        "drill",
+        "dark",
+        "heavy",
+        "aggressive"
+      ],
+      "a/bTesting": {
+        "testA": "Pitch LFO for demonic sub movement",
+        "testB": "Static pitch for pure heaviness"
+      },
+      "troubleshooting": {
+        "tooDistorted": "Filter drive to 18%",
+        "weakImpact": "Increase filter A resonance to 50%"
+      }
+    },
+    "05-exo-dusty-vhs": {
+      "metadata": {
+        "plugin": "Kepler Exo",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Exo Dusty VHS",
+        "category": "genre",
+        "genre": "lo-fi",
+        "mood": "moody",
+        "exoFeatures": [
+          "sub-oscillator",
+          "expanded-modulation",
+          "stereo-width"
+        ]
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "-1",
+          "detune": 12,
+          "mix": 70
+        },
+        "oscillator2": {
+          "waveform": "triangle",
+          "octave": "-2",
+          "detune": 18,
+          "mix": 65
+        },
+        "oscillator3": {
+          "waveform": "square",
+          "octave": "0",
+          "detune": 8,
+          "mix": 40
+        },
+        "oscillator4": {
+          "waveform": "sine",
+          "octave": "-1",
+          "detune": 25,
+          "mix": 55
+        },
+        "subOscillator": {
+          "waveform": "sine",
+          "octave": "-2",
+          "mix": 30
+        },
+        "filterA": {
+          "type": "lowpass",
+          "cutoff": 1800,
+          "resonance": 22,
+          "drive": 8
+        },
+        "filterB": {
+          "type": "highpass",
+          "cutoff": 150,
+          "resonance": 15,
+          "drive": 0
+        },
+        "envelope": {
+          "attack": 180,
+          "decay": 600,
+          "sustain": 80,
+          "release": 1000
+        },
+        "modulation": {
+          "envToFilterA": 20,
+          "lfo1ToPan": 65,
+          "lfo2ToFilterB": 15
+        },
+        "stereoWidth": 150
+      },
+      "chain": {
+        "pre": [
+          "Vintage Phaser - Mix 35%, Rate 0.25Hz"
+        ],
+        "post": [
+          "Fruily Reverb 2 - Room, Decay 2.5s, Mix 28%",
+          "Tape Saturation - 4% drive"
+        ]
+      },
+      "genreTags": [
+        "lo-fi",
+        "moody",
+        "chill",
+        "nostalgic"
+      ],
+      "a/bTesting": {
+        "testA": "Heavy detune for tape warble",
+        "testB": "Tighter detune for cleaner lo-fi"
+      },
+      "troubleshooting": {
+        "tooNoisy": "Reduce LFO pan to 40%",
+        "muddy": "Filter B high-pass at 200Hz"
+      }
+    },
+    "06-exo-glitch-symphony": {
+      "metadata": {
+        "plugin": "Kepler Exo",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Exo Glitch Symphony",
+        "category": "genre",
+        "genre": "trap",
+        "mood": "dark",
+        "exoFeatures": [
+          "sub-oscillator",
+          "expanded-modulation",
+          "dual-filter"
+        ]
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "square",
+          "octave": "+1",
+          "detune": 0,
+          "mix": 100
+        },
+        "oscillator2": {
+          "waveform": "saw",
+          "octave": "0",
+          "detune": 12,
+          "mix": 75
+        },
+        "oscillator3": {
+          "waveform": "square",
+          "octave": "0",
+          "detune": 5,
+          "mix": 60
+        },
+        "oscillator4": {
+          "waveform": "saw",
+          "octave": "+1",
+          "detune": 20,
+          "mix": 50
+        },
+        "subOscillator": {
+          "waveform": "sine",
+          "octave": "-2",
+          "mix": 0
+        },
+        "filterA": {
+          "type": "lowpass",
+          "cutoff": 3200,
+          "resonance": 50,
+          "drive": 12
+        },
+        "filterB": {
+          "type": "bandpass",
+          "cutoff": 1500,
+          "resonance": 40,
+          "drive": 8
+        },
+        "envelope": {
+          "attack": 1,
+          "decay": 70,
+          "sustain": 0,
+          "release": 45
+        },
+        "modulation": {
+          "envToFilterA": 95,
+          "lfo1ToPitch": 35,
+          "lfo2ToFilterB": 45
+        }
+      },
+      "chain": {
+        "pre": [
+          "Teq4 - High-pass 600Hz"
+        ],
+        "post": [
+          "Fruily Reverb 2 - Plate, Decay 1s, Mix 20%",
+          "Bitcrusher - 10-bit, 60% wet"
+        ]
+      },
+      "genreTags": [
+        "trap",
+        "dark",
+        "glitch",
+        "experimental"
+      ],
+      "a/bTesting": {
+        "testA": "Sample-hold LFO for random glitches",
+        "testB": "Sine LFO for regular vibrato"
+      },
+      "troubleshooting": {
+        "tooChaotic": "Reduce LFO amounts to 20%",
+        "tooThin": "Add sub osc at 40%"
+      }
+    },
+    "07-exo-sci-fi-textures": {
+      "metadata": {
+        "plugin": "Kepler Exo",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Exo Sci-Fi Textures",
+        "category": "genre",
+        "genre": "experimental",
+        "mood": "spacey",
+        "exoFeatures": [
+          "sub-oscillator",
+          "expanded-modulation",
+          "dual-filter",
+          "stereo-width"
+        ]
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "0",
+          "detune": 0,
+          "mix": 80
+        },
+        "oscillator2": {
+          "waveform": "saw",
+          "octave": "+1",
+          "detune": 50,
+          "mix": 70
+        },
+        "oscillator3": {
+          "waveform": "square",
+          "octave": "-1",
+          "detune": 25,
+          "mix": 60
+        },
+        "oscillator4": {
+          "waveform": "triangle",
+          "octave": "0",
+          "detune": 75,
+          "mix": 50
+        },
+        "subOscillator": {
+          "waveform": "sine",
+          "octave": "-2",
+          "mix": 50
+        },
+        "filterA": {
+          "type": "lowpass",
+          "cutoff": 5000,
+          "resonance": 55,
+          "drive": 15
+        },
+        "filterB": {
+          "type": "bandpass",
+          "cutoff": 2500,
+          "resonance": 45,
+          "drive": 10
+        },
+        "envelope": {
+          "attack": 50,
+          "decay": 800,
+          "sustain": 70,
+          "release": 1200
+        },
+        "modulation": {
+          "envToFilterA": 60,
+          "lfo1ToFilterB": 80,
+          "lfo2ToPitch": 50
+        },
+        "stereoWidth": 200
+      },
+      "chain": {
+        "pre": [
+          "Fruily Parametric EQ 2 - Multi-band processing"
+        ],
+        "post": [
+          "Fruily Reverb 2 - Gated, Decay 1.5s, Mix 40%",
+          "Delay - Stereo ping-pong, 600ms, Feedback 50%"
+        ]
+      },
+      "genreTags": [
+        "experimental",
+        "spacey",
+        "cinematic",
+        "ambient"
+      ],
+      "a/bTesting": {
+        "testA": "Extreme detune for metallic textures",
+        "testB": "Tighter detune for harmonious clusters"
+      },
+      "troubleshooting": {
+        "tooHarsh": "Filter A cutoff to 3500Hz",
+        "lossOfControl": "Reduce modulation amounts by half"
+      }
+    },
+    "08-exo-velvet-pad": {
+      "metadata": {
+        "plugin": "Kepler Exo",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Exo Velvet Pad",
+        "category": "genre",
+        "genre": "R&B",
+        "mood": "smooth",
+        "exoFeatures": [
+          "sub-oscillator",
+          "expanded-modulation",
+          "stereo-width"
+        ]
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "sine",
+          "octave": "-1",
+          "detune": 0,
+          "mix": 90
+        },
+        "oscillator2": {
+          "waveform": "triangle",
+          "octave": "-1",
+          "detune": 4,
+          "mix": 75
+        },
+        "oscillator3": {
+          "waveform": "saw",
+          "octave": "-2",
+          "detune": 6,
+          "mix": 50
+        },
+        "oscillator4": {
+          "waveform": "sine",
+          "octave": "0",
+          "detune": 10,
+          "mix": 40
+        },
+        "subOscillator": {
+          "waveform": "sine",
+          "octave": "-2",
+          "mix": 25
+        },
+        "filterA": {
+          "type": "lowpass",
+          "cutoff": 3000,
+          "resonance": 15,
+          "drive": 3
+        },
+        "filterB": {
+          "type": "lowpass",
+          "cutoff": 6000,
+          "resonance": 10,
+          "drive": 0
+        },
+        "envelope": {
+          "attack": 250,
+          "decay": 500,
+          "sustain": 85,
+          "release": 800
+        },
+        "modulation": {
+          "envToFilterA": 15,
+          "lfo1ToPan": 30,
+          "lfo2ToFilterB": 10
+        },
+        "stereoWidth": 110
+      },
+      "chain": {
+        "pre": [
+          "Vintage Chorus - Mix 40%, Rate 0.2Hz"
+        ],
+        "post": [
+          "Fruily Reverb 2 - Hall, Decay 3s, Mix 18%",
+          "Fruily Parametric EQ 2 - High-shelf +1.5dB at 8kHz"
+        ]
+      },
+      "genreTags": [
+        "R&B",
+        "smooth",
+        "moody",
+        "romantic"
+      ],
+      "a/bTesting": {
+        "testA": "Gentle pan LFO for subtle movement",
+        "testB": "Static for centered emotional focus"
+      },
+      "troubleshooting": {
+        "tooDark": "Filter A cutoff to 4000Hz",
+        "lacksWarmth": "Increase osc3 to 60%"
+      }
+    },
+    "harry-fraud-exo": {
+      "metadata": {
+        "plugin": "Kepler Exo",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Exo SSL Soul",
+        "category": "signature",
+        "inspiredBy": "Harry Fraud Brooklyn soul style",
+        "exoFeatures": [
+          "sub-oscillator",
+          "expanded-modulation",
+          "dual-filter",
+          "stereo-width"
+        ]
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "-1",
+          "detune": 0,
+          "mix": 78
+        },
+        "oscillator2": {
+          "waveform": "saw",
+          "octave": "-1",
+          "detune": 5,
+          "mix": 72
+        },
+        "oscillator3": {
+          "waveform": "triangle",
+          "octave": "0",
+          "detune": 3,
+          "mix": 60
+        },
+        "oscillator4": {
+          "waveform": "sine",
+          "octave": "0",
+          "detune": 8,
+          "mix": 55
+        },
+        "subOscillator": {
+          "waveform": "sine",
+          "octave": "-2",
+          "mix": 20
+        },
+        "filterA": {
+          "type": "lowpass",
+          "cutoff": 2000,
+          "resonance": 20,
+          "drive": 8
+        },
+        "filterB": {
+          "type": "highpass",
+          "cutoff": 120,
+          "resonance": 12,
+          "drive": 0
+        },
+        "envelope": {
+          "attack": 45,
+          "decay": 350,
+          "sustain": 72,
+          "release": 400
+        },
+        "modulation": {
+          "envToFilterA": 28,
+          "lfo1ToPan": 35,
+          "lfo2ToFilterB": 18
+        },
+        "stereoWidth": 105
+      },
+      "chain": {
+        "pre": [
+          "SSL-style EQ emulation"
+        ],
+        "post": [
+          "Fruily Reverb 2 - Plate, Decay 1.8s, Mix 18%"
+        ]
+      },
+      "characteristics": [
+        "warm",
+        "smooth",
+        "soulful",
+        "classic"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "R&B",
+        "soulful"
+      ],
+      "a/bTesting": {
+        "testA": "Subtle stereo width for cohesion",
+        "testB": "Mono for SSL-style punch"
+      },
+      "troubleshooting": {
+        "tooWarm": "Increase filter A cutoff to 2500Hz",
+        "lacksLowEnd": "Sub osc to 40%"
+      }
+    },
+    "just-blaze-exo": {
+      "metadata": {
+        "plugin": "Kepler Exo",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Exo Classic Soul",
+        "category": "signature",
+        "inspiredBy": "Just Blaze soulful hip-hop",
+        "exoFeatures": [
+          "sub-oscillator",
+          "expanded-modulation",
+          "dual-filter",
+          "stereo-width"
+        ]
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "-1",
+          "detune": 0,
+          "mix": 75
+        },
+        "oscillator2": {
+          "waveform": "saw",
+          "octave": "-1",
+          "detune": 5,
+          "mix": 70
+        },
+        "oscillator3": {
+          "waveform": "triangle",
+          "octave": "0",
+          "detune": 3,
+          "mix": 62
+        },
+        "oscillator4": {
+          "waveform": "sine",
+          "octave": "0",
+          "detune": 8,
+          "mix": 58
+        },
+        "subOscillator": {
+          "waveform": "sine",
+          "octave": "-2",
+          "mix": 35
+        },
+        "filterA": {
+          "type": "lowpass",
+          "cutoff": 2200,
+          "resonance": 18,
+          "drive": 6
+        },
+        "filterB": {
+          "type": "highpass",
+          "cutoff": 100,
+          "resonance": 10,
+          "drive": 0
+        },
+        "envelope": {
+          "attack": 35,
+          "decay": 320,
+          "sustain": 75,
+          "release": 420
+        },
+        "modulation": {
+          "envToFilterA": 22,
+          "lfo1ToPan": 28,
+          "lfo2ToFilterB": 15
+        },
+        "stereoWidth": 95
+      },
+      "chain": {
+        "pre": [
+          "Vintage warmth processing"
+        ],
+        "post": [
+          "Fruily Reverb 2 - Hall, Decay 2.5s, Mix 16%"
+        ]
+      },
+      "characteristics": [
+        "warm",
+        "soulful",
+        "classic",
+        "emotional"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "R&B",
+        "soulful",
+        "classic"
+      ],
+      "a/bTesting": {
+        "testA": "Subtle stereo for width",
+        "testB": "Mono for classic punch"
+      },
+      "troubleshooting": {
+        "tooDark": "Filter A cutoff to 2800Hz",
+        "lacksWarmth": "Increase osc4 to 65%"
+      }
+    },
+    "metro-boomin-exo": {
+      "metadata": {
+        "plugin": "Kepler Exo",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Exo Boomin System",
+        "category": "signature",
+        "inspiredBy": "Metro Boomin modern trap production",
+        "exoFeatures": [
+          "sub-oscillator",
+          "expanded-modulation",
+          "dual-filter"
+        ]
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "-2",
+          "detune": 0,
+          "mix": 80
+        },
+        "oscillator2": {
+          "waveform": "saw",
+          "octave": "-2",
+          "detune": 4,
+          "mix": 75
+        },
+        "oscillator3": {
+          "waveform": "saw",
+          "octave": "-1",
+          "detune": 0,
+          "mix": 55
+        },
+        "oscillator4": {
+          "waveform": "square",
+          "octave": "-1",
+          "detune": 3,
+          "mix": 45
+        },
+        "subOscillator": {
+          "waveform": "sine",
+          "octave": "-2",
+          "mix": 100
+        },
+        "filterA": {
+          "type": "lowpass",
+          "cutoff": 180,
+          "resonance": 32,
+          "drive": 20
+        },
+        "filterB": {
+          "type": "lowpass",
+          "cutoff": 350,
+          "resonance": 20,
+          "drive": 8
+        },
+        "envelope": {
+          "attack": 5,
+          "decay": 180,
+          "sustain": 65,
+          "release": 120
+        },
+        "modulation": {
+          "envToFilterA": 72,
+          "lfo1ToPan": 20,
+          "lfo2ToFilterB": 15
+        }
+      },
+      "chain": {
+        "post": [
+          "Fruily Limiter - Threshold -15dB, Ratio 4:1, Attack 0.5ms, Release 30ms"
+        ]
+      },
+      "characteristics": [
+        "deep",
+        "punchy",
+        "modern",
+        "cleansounding"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "trap",
+        "modern"
+      ],
+      "a/bTesting": {
+        "testA": "4 oscillators for modern complexity",
+        "testB": "2 oscillators for classic 808"
+      },
+      "troubleshooting": {
+        "notDeepEnough": "Increase sub osc to 100%",
+        "muddyMix": "Filter A cutoff to 140Hz"
+      }
+    },
+    "mike-will-exo": {
+      "metadata": {
+        "plugin": "Kepler Exo",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Exo Future Past",
+        "category": "signature",
+        "inspiredBy": "Mike Will Made-It futuristic style",
+        "exoFeatures": [
+          "sub-oscillator",
+          "expanded-modulation",
+          "dual-filter",
+          "stereo-width"
+        ]
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "0",
+          "detune": 0,
+          "mix": 82
+        },
+        "oscillator2": {
+          "waveform": "saw",
+          "octave": "0",
+          "detune": 7,
+          "mix": 80
+        },
+        "oscillator3": {
+          "waveform": "saw",
+          "octave": "+1",
+          "detune": 14,
+          "mix": 65
+        },
+        "oscillator4": {
+          "waveform": "square",
+          "octave": "0",
+          "detune": 21,
+          "mix": 50
+        },
+        "subOscillator": {
+          "waveform": "sine",
+          "octave": "-2",
+          "mix": 0
+        },
+        "filterA": {
+          "type": "lowpass",
+          "cutoff": 3800,
+          "resonance": 42,
+          "drive": 15
+        },
+        "filterB": {
+          "type": "lowpass",
+          "cutoff": 7000,
+          "resonance": 28,
+          "drive": 8
+        },
+        "envelope": {
+          "attack": 12,
+          "decay": 260,
+          "sustain": 58,
+          "release": 380
+        },
+        "modulation": {
+          "envToFilterA": 62,
+          "lfo1ToFilterB": 48,
+          "lfo2ToPan": 32
+        },
+        "stereoWidth": 125
+      },
+      "chain": {
+        "pre": [
+          "Soft clipper - 2dB"
+        ],
+        "post": [
+          "Fruily Reverb 2 - Gated, Decay 1.5s, Mix 22%",
+          "Delay - 320ms, Feedback 35%"
+        ]
+      },
+      "characteristics": [
+        "futuristic",
+        "wide",
+        "bright",
+        "innovative"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "R&B",
+        "future bass",
+        "experimental"
+      ],
+      "a/bTesting": {
+        "testA": "4 oscillators for maximum width",
+        "testB": "2 oscillators for classic saw"
+      },
+      "troubleshooting": {
+        "tooBusy": "Filter B cutoff to 5000Hz",
+        "lacksFuture": "Increase modulation amounts"
+      }
+    },
+    "murda-beatz-exo": {
+      "metadata": {
+        "plugin": "Kepler Exo",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Exo Melody King",
+        "category": "signature",
+        "inspiredBy": "Murda Beatz melodic trap style",
+        "exoFeatures": [
+          "sub-oscillator",
+          "expanded-modulation",
+          "dual-filter",
+          "stereo-width"
+        ]
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "-1",
+          "detune": 0,
+          "mix": 80
+        },
+        "oscillator2": {
+          "waveform": "saw",
+          "octave": "-1",
+          "detune": 5,
+          "mix": 75
+        },
+        "oscillator3": {
+          "waveform": "triangle",
+          "octave": "0",
+          "detune": 3,
+          "mix": 65
+        },
+        "oscillator4": {
+          "waveform": "square",
+          "octave": "0",
+          "detune": 8,
+          "mix": 50
+        },
+        "subOscillator": {
+          "waveform": "sine",
+          "octave": "-2",
+          "mix": 0
+        },
+        "filterA": {
+          "type": "lowpass",
+          "cutoff": 1200,
+          "resonance": 28,
+          "drive": 10
+        },
+        "filterB": {
+          "type": "lowpass",
+          "cutoff": 4500,
+          "resonance": 18,
+          "drive": 5
+        },
+        "envelope": {
+          "attack": 15,
+          "decay": 280,
+          "sustain": 68,
+          "release": 300
+        },
+        "modulation": {
+          "envToFilterA": 45,
+          "lfo1ToFilterB": 35,
+          "lfo2ToPan": 25
+        },
+        "stereoWidth": 115
+      },
+      "chain": {
+        "post": [
+          "Fruily Reverb 2 - Hall, Decay 2s, Mix 20%",
+          "Fruily Limiter - Soft knee"
+        ]
+      },
+      "characteristics": [
+        "melodic",
+        "bright",
+        "emotional",
+        "groove"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "trap",
+        "melodic"
+      ],
+      "a/bTesting": {
+        "testA": "Dual filter for harmonic complexity",
+        "testB": "Single filter for focused sound"
+      },
+      "troubleshooting": {
+        "tooDark": "Filter B cutoff to 5500Hz",
+        "muddyChords": "Filter A cutoff to 1000Hz"
+      }
+    },
+    "ska-gregory-exo": {
+      "metadata": {
+        "plugin": "Kepler Exo",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Exo Cash Money",
+        "category": "signature",
+        "inspiredBy": "Ska Gregory New Orleans bounce",
+        "exoFeatures": [
+          "sub-oscillator",
+          "expanded-modulation",
+          "stereo-width"
+        ]
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "-2",
+          "detune": 0,
+          "mix": 88
+        },
+        "oscillator2": {
+          "waveform": "saw",
+          "octave": "-2",
+          "detune": 4,
+          "mix": 82
+        },
+        "oscillator3": {
+          "waveform": "square",
+          "octave": "-1",
+          "detune": 0,
+          "mix": 65
+        },
+        "oscillator4": {
+          "waveform": "saw",
+          "octave": "0",
+          "detune": 8,
+          "mix": 55
+        },
+        "subOscillator": {
+          "waveform": "sine",
+          "octave": "-2",
+          "mix": 95
+        },
+        "filterA": {
+          "type": "lowpass",
+          "cutoff": 250,
+          "resonance": 30,
+          "drive": 15
+        },
+        "filterB": {
+          "type": "lowpass",
+          "cutoff": 500,
+          "resonance": 22,
+          "drive": 8
+        },
+        "envelope": {
+          "attack": 6,
+          "decay": 140,
+          "sustain": 60,
+          "release": 110
+        },
+        "modulation": {
+          "envToFilterA": 68,
+          "lfo1ToPan": 25,
+          "lfo2ToPitch": 8
+        },
+        "stereoWidth": 90
+      },
+      "chain": {
+        "post": [
+          "Fruily Limiter - Punchy settings, fast release"
+        ]
+      },
+      "characteristics": [
+        "bouncy",
+        "party",
+        "fun",
+        "uplifting"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "bounce",
+        "party"
+      ],
+      "a/bTesting": {
+        "testA": "Fast decay for bouncy feel",
+        "testB": "Longer decay for smoother flow"
+      },
+      "troubleshooting": {
+        "notBouncy": "Envelope decay to 120ms",
+        "tooBoomy": "Filter A cutoff to 200Hz"
+      }
+    },
+    "tay-keith-exo": {
+      "metadata": {
+        "plugin": "Kepler Exo",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Exo Gunna Wet",
+        "category": "signature",
+        "inspiredBy": "Tay Keith trap style with Wet",
+        "exoFeatures": [
+          "sub-oscillator",
+          "expanded-modulation",
+          "stereo-width"
+        ]
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "-1",
+          "detune": 0,
+          "mix": 85
+        },
+        "oscillator2": {
+          "waveform": "saw",
+          "octave": "-1",
+          "detune": 7,
+          "mix": 80
+        },
+        "oscillator3": {
+          "waveform": "square",
+          "octave": "0",
+          "detune": 4,
+          "mix": 55
+        },
+        "oscillator4": {
+          "waveform": "triangle",
+          "octave": "0",
+          "detune": 12,
+          "mix": 45
+        },
+        "subOscillator": {
+          "waveform": "sine",
+          "octave": "-2",
+          "mix": 0
+        },
+        "filterA": {
+          "type": "lowpass",
+          "cutoff": 800,
+          "resonance": 35,
+          "drive": 12
+        },
+        "filterB": {
+          "type": "bandpass",
+          "cutoff": 2000,
+          "resonance": 25,
+          "drive": 8
+        },
+        "envelope": {
+          "attack": 10,
+          "decay": 200,
+          "sustain": 62,
+          "release": 250
+        },
+        "modulation": {
+          "envToFilterA": 55,
+          "lfo1ToPan": 40,
+          "lfo2ToFilterB": 30
+        },
+        "stereoWidth": 140
+      },
+      "chain": {
+        "post": [
+          "Fruily Reverb 2 - Large Room, Decay 2.2s, Mix 25%",
+          "Fruily Compressor - Soft attack"
+        ]
+      },
+      "characteristics": [
+        "smooth",
+        "wet",
+        "melodic",
+        "atmospheric"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "trap",
+        "melodic",
+        "atmospheric"
+      ],
+      "a/bTesting": {
+        "testA": "Heavy reverb for atmospheric feel",
+        "testB": "Less reverb for drier mix"
+      },
+      "troubleshooting": {
+        "tooWashed": "Reduce reverb mix to 15%",
+        "lacksClarity": "Bandpass filter B at 2500Hz"
+      }
+    },
+    "timbaland-exo": {
+      "metadata": {
+        "plugin": "Kepler Exo",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Exo Beat Break",
+        "category": "signature",
+        "inspiredBy": "Timbaland experimental hip-hop",
+        "exoFeatures": [
+          "sub-oscillator",
+          "expanded-modulation",
+          "dual-filter",
+          "stereo-width"
+        ]
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "0",
+          "detune": 0,
+          "mix": 78
+        },
+        "oscillator2": {
+          "waveform": "saw",
+          "octave": "+1",
+          "detune": 15,
+          "mix": 68
+        },
+        "oscillator3": {
+          "waveform": "square",
+          "octave": "-1",
+          "detune": 8,
+          "mix": 55
+        },
+        "oscillator4": {
+          "waveform": "triangle",
+          "octave": "0",
+          "detune": 25,
+          "mix": 48
+        },
+        "subOscillator": {
+          "waveform": "sine",
+          "octave": "-2",
+          "mix": 45
+        },
+        "filterA": {
+          "type": "bandpass",
+          "cutoff": 2500,
+          "resonance": 48,
+          "drive": 12
+        },
+        "filterB": {
+          "type": "notch",
+          "cutoff": 1500,
+          "resonance": 35,
+          "drive": 8
+        },
+        "envelope": {
+          "attack": 8,
+          "decay": 180,
+          "sustain": 55,
+          "release": 220
+        },
+        "modulation": {
+          "envToFilterA": 58,
+          "lfo1ToFilterB": 72,
+          "lfo2ToPitch": 40
+        },
+        "stereoWidth": 160
+      },
+      "chain": {
+        "pre": [
+          "Unique pre-processing"
+        ],
+        "post": [
+          "Fruily Reverb 2 - Experimental, Decay 2s, Mix 30%",
+          "Delay - Ping-pong, 450ms, Feedback 45%"
+        ]
+      },
+      "characteristics": [
+        "experimental",
+        "unconventional",
+        "forward-thinking",
+        "textural"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "experimental",
+        "innovative"
+      ],
+      "a/bTesting": {
+        "testA": "Extreme modulation for weird textures",
+        "testB": "Milder modulation for usable sounds"
+      },
+      "troubleshooting": {
+        "tooWeird": "Reduce LFO amounts to 30%",
+        "notWeirdEnough": "Increase modulation diversity"
+      }
+    },
+    "wheezy-exo": {
+      "metadata": {
+        "plugin": "Kepler Exo",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Exo Paperboy",
+        "category": "signature",
+        "inspiredBy": "Wheezy ATL trap style",
+        "exoFeatures": [
+          "sub-oscillator",
+          "expanded-modulation",
+          "stereo-width"
+        ]
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "-2",
+          "detune": 0,
+          "mix": 85
+        },
+        "oscillator2": {
+          "waveform": "saw",
+          "octave": "-2",
+          "detune": 6,
+          "mix": 80
+        },
+        "oscillator3": {
+          "waveform": "square",
+          "octave": "0",
+          "detune": 0,
+          "mix": 60
+        },
+        "oscillator4": {
+          "waveform": "saw",
+          "octave": "0",
+          "detune": 10,
+          "mix": 50
+        },
+        "subOscillator": {
+          "waveform": "sine",
+          "octave": "-2",
+          "mix": 90
+        },
+        "filterA": {
+          "type": "lowpass",
+          "cutoff": 220,
+          "resonance": 38,
+          "drive": 18
+        },
+        "filterB": {
+          "type": "highpass",
+          "cutoff": 80,
+          "resonance": 15,
+          "drive": 0
+        },
+        "envelope": {
+          "attack": 4,
+          "decay": 160,
+          "sustain": 58,
+          "release": 100
+        },
+        "modulation": {
+          "envToFilterA": 78,
+          "lfo1ToPan": 45,
+          "lfo2ToPitch": 12
+        },
+        "stereoWidth": 130
+      },
+      "chain": {
+        "post": [
+          "Fruily Compressor - Attack 8ms, Release 70ms, Ratio 3:1"
+        ]
+      },
+      "characteristics": [
+        "aggressive",
+        "bright",
+        "modern",
+        "punchy"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "trap",
+        "ATL"
+      ],
+      "a/bTesting": {
+        "testA": "Pan LFO for stereo movement",
+        "testB": "Pan LFO off for mono impact"
+      },
+      "troubleshooting": {
+        "tooHarsh": "Reduce osc4 mix to 35%",
+        "lacksPunch": "Increase filter drive to 25%"
+      }
+    },
+    "zaytoven-exo": {
+      "metadata": {
+        "plugin": "Kepler Exo",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Exo MIDI Pluck Deluxe",
+        "category": "signature",
+        "inspiredBy": "Zaytoven piano-driven production",
+        "exoFeatures": [
+          "sub-oscillator",
+          "expanded-modulation",
+          "stereo-width"
+        ]
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "square",
+          "octave": "+1",
+          "detune": 0,
+          "mix": 100
+        },
+        "oscillator2": {
+          "waveform": "triangle",
+          "octave": "0",
+          "detune": 4,
+          "mix": 70
+        },
+        "oscillator3": {
+          "waveform": "saw",
+          "octave": "0",
+          "detune": 6,
+          "mix": 50
+        },
+        "oscillator4": {
+          "waveform": "sine",
+          "octave": "+1",
+          "detune": 3,
+          "mix": 40
+        },
+        "subOscillator": {
+          "waveform": "sine",
+          "octave": "-2",
+          "mix": 0
+        },
+        "filterA": {
+          "type": "lowpass",
+          "cutoff": 3000,
+          "resonance": 38,
+          "drive": 8
+        },
+        "filterB": {
+          "type": "highpass",
+          "cutoff": 150,
+          "resonance": 15,
+          "drive": 0
+        },
+        "envelope": {
+          "attack": 2,
+          "decay": 55,
+          "sustain": 0,
+          "release": 35
+        },
+        "modulation": {
+          "envToFilterA": 88,
+          "lfo1ToPan": 20,
+          "lfo2ToPitch": 5
+        },
+        "stereoWidth": 85
+      },
+      "chain": {
+        "post": [
+          "Fruily Reverb 2 - Small Room, Decay 0.6s, Mix 12%",
+          "Fruily Compressor - Fast attack"
+        ]
+      },
+      "characteristics": [
+        "plucky",
+        "bright",
+        "melodic",
+        "classic"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "R&B",
+        "melodic",
+        "piano"
+      ],
+      "a/bTesting": {
+        "testA": "Square wave for classic MIDI",
+        "testB": "Saw for modern edge"
+      },
+      "troubleshooting": {
+        "tooClicky": "Attack to 4ms",
+        "sustainingTooLong": "Sustain at 0, decay to 45ms"
+      }
+    }
+  },
+  "parameters": {
+    "kepler-exo-params": {
+      "plugin_name": "Kepler Exo",
+      "category": "Advanced Vintage Synth",
+      "features": [
+        "Hard Sync",
+        "FM",
+        "Matrix",
+        "HQ Mode",
+        "Dual ADSR",
+        "FX Rack"
+      ],
+      "sections": {
+        "DCO_1": {
+          "Range": "Octave setting",
+          "Waveforms": "Saw, Square, Pulse",
+          "PWM": "Pulse Width Modulation"
+        },
+        "DCO_2": {
+          "Semi": "Semitone offset (-24 to +24)",
+          "Fine": "Cents offset",
+          "Sync": "Hard Sync toggle",
+          "X_Mod": "Cross-modulation depth",
+          "Level": "Volume of DCO 2"
+        },
+        "VCF": {
+          "Mode": "STD vs HQ",
+          "Slope": "24dB vs 6dB",
+          "Audio_Mod": "Audio-rate filter modulation",
+          "Freq": "Cutoff frequency",
+          "Res": "Resonance"
+        },
+        "MATRIX": {
+          "Slots": 8,
+          "Sources": [
+            "LFO1",
+            "LFO2",
+            "Env1",
+            "Env2",
+            "Vel",
+            "ModW",
+            "AftT"
+          ],
+          "Destinations": [
+            "Pitch",
+            "PWM",
+            "Cutoff",
+            "Res",
+            "Level",
+            "Pan",
+            "FX"
+          ]
+        },
+        "FX": {
+          "Saturation": "Harmonic drive",
+          "Delay": "Time-based echoes",
+          "Reverb": "Spatial room simulation",
+          "Chorus": "JUNO Modes I, II, I+II"
+        }
+      }
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "Evolving Textures Matrix",
+      "category": "by-goal",
+      "filename": "evolving-textures-matrix.md"
+    },
+    {
+      "title": "Metallic Fm Perc",
+      "category": "by-goal",
+      "filename": "metallic-fm-perc.md"
+    },
+    {
+      "title": "Modern Analog Leads",
+      "category": "by-goal",
+      "filename": "modern-analog-leads.md"
+    },
+    {
+      "title": "01 Bass Workflows",
+      "category": "by-instrument",
+      "filename": "01-bass-workflows.md"
+    },
+    {
+      "title": "01 Exo 808 Beast",
+      "category": "by-instrument",
+      "filename": "01-exo-808-beast.md"
+    },
+    {
+      "title": "02 Exo Grim Reaper",
+      "category": "by-instrument",
+      "filename": "02-exo-grim-reaper.md"
+    },
+    {
+      "title": "02 Lead Workflows",
+      "category": "by-instrument",
+      "filename": "02-lead-workflows.md"
+    },
+    {
+      "title": "03 Exo Soul Keys",
+      "category": "by-instrument",
+      "filename": "03-exo-soul-keys.md"
+    },
+    {
+      "title": "03 Pad Fx Workflows",
+      "category": "by-instrument",
+      "filename": "03-pad-fx-workflows.md"
+    },
+    {
+      "title": "04 Exo Stadium Supersaw",
+      "category": "by-instrument",
+      "filename": "04-exo-stadium-supersaw.md"
+    },
+    {
+      "title": "05 Exo Glitch Symphony",
+      "category": "by-instrument",
+      "filename": "05-exo-glitch-symphony.md"
+    },
+    {
+      "title": "06 Exo Velvet Pad",
+      "category": "by-instrument",
+      "filename": "06-exo-velvet-pad.md"
+    },
+    {
+      "title": "07 Exo Sci Fi Textures",
+      "category": "by-instrument",
+      "filename": "07-exo-sci-fi-textures.md"
+    },
+    {
+      "title": "08 Exo Dusty Vhs",
+      "category": "by-instrument",
+      "filename": "08-exo-dusty-vhs.md"
+    },
+    {
+      "title": "09 Exo Risers",
+      "category": "by-instrument",
+      "filename": "09-exo-risers.md"
+    },
+    {
+      "title": "10 Exo Brass Stabs",
+      "category": "by-instrument",
+      "filename": "10-exo-brass-stabs.md"
+    },
+    {
+      "title": "11 Exo Textural Layers",
+      "category": "by-instrument",
+      "filename": "11-exo-textural-layers.md"
+    },
+    {
+      "title": "Index",
+      "category": "by-instrument",
+      "filename": "INDEX.md"
+    },
+    {
+      "title": "Instrument Workflows",
+      "category": "by-instrument",
+      "filename": "instrument-workflows.md"
+    }
+  ]
+}

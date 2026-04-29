@@ -1,0 +1,143 @@
+{
+  "id": "fl-keys",
+  "name": "FL Keys",
+  "category": "Piano/Keys",
+  "tier": "Premium",
+  "type": "Piano/Keys",
+  "description": "FL Keys - Piano/Keys",
+  "tags": [
+    "specialized"
+  ],
+  "capabilities": [
+    "synthesis",
+    "sampling",
+    "midi",
+    "realistic"
+  ],
+  "icon": "/plugins/fl-keys-icon.svg",
+  "color": "#3B82F6",
+  "version": "1.0",
+  "data_dir": "plugins\\fl-keys",
+  "has_presets": false,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "pluginName": "FL Keys",
+    "category": "Piano Module",
+    "parameters": [
+      {
+        "section": "Environment",
+        "id": "sample_set",
+        "name": "Sample Bank",
+        "options": [
+          "Grand Piano",
+          "Rhodes",
+          "Roto Organ",
+          "Others..."
+        ],
+        "description": "The base waveform set."
+      },
+      {
+        "section": "Environment",
+        "id": "decay",
+        "name": "Decay Time",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "0 = Infinite Sustain. >0 = Natural Decay."
+      },
+      {
+        "section": "Environment",
+        "id": "pan_tremolo",
+        "name": "Pan / Tremolo",
+        "range": {
+          "min": -100,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "Left = Auto-Pan Amount. Right = Tremolo Amount."
+      },
+      {
+        "section": "Environment",
+        "id": "stretch",
+        "name": "Stretch Tuning",
+        "range": {
+          "min": -50,
+          "max": 50,
+          "unit": "Cents"
+        },
+        "description": "Pitch offset for high notes."
+      },
+      {
+        "section": "Misc",
+        "id": "overdrive",
+        "name": "Overdrive",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "Soft saturation gain."
+      },
+      {
+        "section": "Velocity",
+        "id": "muffle",
+        "name": "Muffle",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "Velocity-to-Filter sensitivity."
+      }
+    ]
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: FL Keys\n\n## Purpose & Identity\nFL Keys is a lightweight, sample-based **keyboard rompler**. Its primary identity is a reliable \"Sketchbook\" for melodic ideas. It provides 4 high-quality multi-sampled models: **Grand Piano**, **Rhodes**, **Roto Organ**, and **Harpsichord**. It is designed for speed, using very little CPU or RAM while offering essential realism controls. [SRC: IL-MAN]\n\n## 60-Second Mental Model\nThink of it as a \"Virtual Piano Rental.\" You have 4 classic instruments ready to play. You can't change the strings or the wood (synthesis), but you can control how hard the player hits the keys (**Velocity**), how much the room echoes (**Environment**), and how much mechanical noise the pedals make (**Release**).\n\n## Hip-Hop / R&B Context\n- **The \"Lofi\" Piano:** Using the Grand Piano with high \"Muffle\" settings to get that dark, filtered piano sound found in late-night R&B (Moody).\n- **Soulful Chord Progressions:** Using the E-Piano (Rhodes) model with built-in tremolo for Jazzy foundations.\n- **Trap Melodies:** Using the Grand Piano with short release times for fast, high-pitched \"Bell-like\" patterns (Upbeat).\n\n## When To Use\n- When you need a **bread-and-butter piano** sound without opening a 50GB library.\n- When you want to **sketch out chords** quickly.\n- When you need a **vintage Rhodes** or Organ texture for a soulful bridge.\n\n## When NOT To Use\n- **Cinematic Masterpieces:** For ultra-realistic, concert-grade pianos with 100 velocity layers, use **FLEX** (Essential Pianos) or a dedicated 3rd party VST.\n- **Synthesized Keys:** Use **Sytrus** if you want to design a \"Key\" sound from scratch using oscillators. [SRC: REPUTABLE]",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: FL Keys\n\n## UI Tour\nThe interface is clean and categorized into the model selector and the \"Realism\" modifiers. [SRC: IL-MAN]\n\n### 1. Environment & Tone (The \"Vibe\")\n- **Decay**: Controls how long the note sustains.\n- **Release**: Controls the length of the tail after the key is let go.\n- **Pan**: Moves the instrument in the stereo field.\n- **Vol**: Master output level.\n\n### 2. Realism Controls (The \"Soul\")\n- **Muffled**: A low-pass filter that softens the tone. Higher = Darker.\n- **Hardness**: Adjusts the \"hammer\" sound. Higher = more aggressive attack.\n- **Vel Curve**: Calibrates how the plugin responds to your MIDI controller's pressure.\n\n### 3. Model Selector (The \"Core\")\n- **Grand Piano**: Clean, multi-sampled acoustic piano.\n- **Rhodes**: Iconic 70s electric piano.\n- **Roto Organ**: Hammond-style organ with a spinning speaker effect.\n- **Harpsichord**: Plucked, baroque-style keyboard.\n\n### 4. Miscellaneous (The \"Details\")\n- **Treble**: High-frequency shelf.\n- **Stretch**: Adjusts sample interpolation (usually keep at default).\n- **Key (Release Noise)**: Adjusts the volume of the sound made when you release a key.\n\n## Signal Flow\n1. **MIDI Input**: Pitch and Velocity data are received.\n2. **Sample Selection**: The engine picks the correct sample based on the Pitch/Velocity layer.\n3. **Hardness Processing**: The sample's transient is modified.\n4. **Muffled Filtering**: The Low-Pass filter is applied.\n5. **Envelope Application**: Decay and Release curves are applied to the volume.\n6. **Panning/Roto**: Stereo positioning or spinning speaker effects are applied.\n7. **Summing**: The signal leaves through the global Volume and Treble controls.\n\n## Things Beginners Misunderstand\n- **\"It's too quiet\"**: FL Keys depends heavily on **Velocity**. If your MIDI notes are low-velocity, it will sound muted. Use the **Vel Curve** knob to compensate.\n- **The \"Release\" knob**: Unlike a synth, the Release knob in FL Keys often triggers a specific \"Key Up\" sample. Setting it too high can sound like a loud clunk.\n- **Overdrive**: On the Organ model, the **Hardness** knob often acts as a saturation/drive control.\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques And Best Practices: FL Keys\n\n## 1. The \"Premium\" Piano Layer\nMake FL Keys sound expensive by layering it.\n- **Technique**: Load a generic Pad in Sytrus. Layer it with FL Keys (Grand Piano).\n- **Move**: Set FL Keys **Hardness** high but **Vol** lower. \n- **Result**: The \"Pad\" provides the body, while \"FL Keys\" provides the realistic piano attack.\n\n## 2. Lo-Fi \"Dusty\" Rhodes\n- **Technique**: Select the **Rhodes** model. Turn the **Muffled** knob to 60%.\n- **Move**: Add a Fruity Chorus (very slow) and a Fruity Blood Overdrive (low setting) *after* the plugin.\n- **Listen For**: That classic, warm, slightly unstable R&B texture.\n\n## 3. Humanizing the \"Hammer\"\n- **Technique**: Don't use a fixed velocity for every note in the Piano Roll.\n- **Move**: Use the **Alt+R (Randomize)** tool in the Piano Roll to vary velocities between 80 and 110.\n- **Benefit**: This triggers different sample layers in FL Keys, making it sound like a real human player.\n\n## 4. The \"Organ Growl\"\n- **Technique**: Select the **Roto Organ**.\n- **Move**: Crank the **Hardness** knob. This adds a \"harmonic bite\" similar to a tube pre-amp.\n- **Listen For**: A gritty, gospel-like saturation that cuts through a thick Hip-Hop mix.\n\n## 5. Tail Discipline\n- **Protocol**: If the piano notes are \"bleeding\" into each other and making the mix muddy.\n- **Fix**: Lower the **Release** knob to roughly 9 o'clock. This tightens the \"key up\" noise and keeps the silence between notes clean. [SRC: REPUTABLE]\n\n## Common Pitfalls + Fixes\n| Pitfall | The Fix |\n| :--- | :--- |\n| **\"Nasal\" Tone** | Check the **Muffled** knob; it might be too high. Also check **Treble**. |\n| **Too much \"Clunk\"** | Lower the **Key** knob (Release noise) or the **Hardness** knob. |\n| **Stuck Sustain** | Check your MIDI controller for a stuck Sustain Pedal signal. |\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: FL Keys\n\nFL Keys translates vibes through **Mechanical Realism** and **Dynamic Response**.\n\n## 1. Moody (Dark, Muffled, Submerged)\n- **Concept:** \"The Filtered Grand.\"\n- **Levers:**\n  - **Model:** Grand Piano.\n  - **Muffle:** High (70%+).\n  - **Environment:** High (Large room feel).\n- **Listen For:** A warm, distant piano that feels like it's playing in a dark, empty house.\n- **Don't Do This:** Don't use the Harpsichord; it’s too \"bright\" for a moody vibe.\n\n## 2. Jazzy (Smooth, Soulful, Organic)\n- **Concept:** \"The Neo-Soul Rhodes.\"\n- **Levers:**\n  - **Model:** E-Piano.\n  - **Panning:** Medium (adds tremolo).\n  - **Vel -> Vol:** High (so you can play soft or loud with your fingers).\n- **Listen For:** The gentle \"stereo wobble\" and the mechanical key-noise.\n\n## 3. Upbeat (Kinetic, Sharp, Pop)\n- **Concept:** \"The Aggressive E-Piano.\"\n- **Levers:**\n  - **Model:** E-Piano.\n  - **Overdrive:** Medium (to add grit).\n  - **Hardness:** High (makes the samples sound \"brighter\").\n- **Listen For:** A sharp, buzzy keyboard lead that cuts through a fast drum pattern.\n\n## 4. Melodic (Clear, Polished, Catchy)\n- **Concept:** \"The Radio Grand.\"\n- **Levers:**\n  - **Model:** Grand Piano.\n  - **Hardness:** Neutral.\n  - **Release:** High (to hear the key noise artifacts).\n- **Listen For:** A professional, \"dry\" piano that is perfectly clear and ready for external reverb.\n\n## 5. Psychedelic (Warped, Spinning, Retro)\n- **Concept:** \"The Roto Whirl.\"\n- **Levers:**\n  - **Model:** Roto Organ.\n  - **Panning (LFO):** High Speed.\n  - **Overdrive:** High.\n- **Listen For:** A dizzying, spinning organ sound that mimics a Leslie speaker being pushed to its limit. [SRC: REPUTABLE]",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fl Keys\r\n\r\n## What It Is\r\nFl Keys is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Fl Keys\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: FL Keys (5 Minutes)\n\n1.  **Insert:** Load **FL Keys** from the Channel Rack.\n2.  **Model:** Choose your instrument from the **MODEL** dropdown (e.g., Grand Piano).\n3.  **Mechanicals:** Adjust the **RELEASE** knob to hear the \"clack\" of the keys when you let go.\n4.  **Tone:** Use the **MUFFLE** knob to make the sound darker (left) or brighter (right).\n5.  **Velocity:** Turn up the **VEL -> VOL** knob so the piano reacts to how hard you play.\n6.  **Space:** Use the **ENVIRONMENT** knob to add basic room ambience.\n7.  **Tip:** If you select the **E-PIANO** model, the **PANNING** knob becomes a tremolo (stereo wobble) effect. [SRC: IL-MAN]\n",
+      "cheat-sheet": "# FL Keys: The Lightweight Workhorse\r\n\r\n> **Scope:** Piano, Rhodes, and Organ Simulation.\r\n> **Source:** Image-Line Official Manual (v21.2) + Direct Analysis.\r\n> **Complexity:** Low (Module).\r\n\r\n## 🧠 The \"Hybrid\" Concept\r\nFL Keys is not just a sampler. It uses a combination of **Samples** and **DSP Synthesis** to create lightweight key sounds.\r\n*   **Samples:** Providing the core attack and tone.\r\n*   **DSP:** Managing the decay, tremolo, and overdrive in real-time.\r\n*   **Efficiency:** It uses < 1MB of RAM, making it the fastest piano to load for sketching.\r\n\r\n**Signal Flow:**\r\n`MIDI` -> **[SAMPLE SELECT]** -> **[VELOCITY MAP]** -> **[MUFFLE FILTER]** -> **[OVERDRIVE]** -> **[TREMOLO/PAN]** -> **[OUTPUT]**\r\n\r\n---\r\n\r\n## 🎛️ Section 1: The Environment Controls\r\n\r\nThe knobs on FL Keys are non-standard.\r\n\r\n| Control | Function | The \"Split\" Behavior |\r\n| :--- | :--- | :--- |\r\n| **Decay** | Note Length. | **Min (0%):** Sustain Mode (Organ behavior). **>0%:** Piano decay behavior. |\r\n| **Pan** | Auto-Pan / Tremolo. | **Left (0-50%):** Auto-Pan Intensity. **Right (50-100%):** Tremolo (Volume LFO) Intensity. |\r\n| **Stereo** | Key Tracking Pan. | **Right:** Low notes Pan Left, High notes Pan Right (Player perspective). **Left:** Inverted (Audience perspective). |\r\n| **Stretch** | Stretched Tuning. | Tunes high notes *sharp* (up to +50 cents) to mimic the inharmonicity of real acoustic piano strings. |\r\n\r\n---\r\n\r\n## 🔁 Section 2: Velocity \"Hardness\"\r\n\r\nFL Keys does not just play louder when hit harder.\r\n\r\n*   **Hardness Knob:** Adjusts the sample selection mapping.\r\n    *   *High Hardness:* Even soft velocities trigger bright samples.\r\n    *   *Low Hardness:* Even hard velocities trigger dark samples.\r\n*   **Muffle:** A Low Pass Filter linked to velocity.\r\n    *   *Usage:* Turn \"Muffle\" up to make soft notes sound darker and \"woody\".\r\n\r\n---\r\n\r\n## ⚡ Technical Specs: The 'Roto Organ'\r\n\r\nFL Keys has a hidden identity.\r\n1.  **Preset:** Select \"Roto Organ\".\r\n2.  **Decay:** Set to **0%** (Sustain Mode).\r\n3.  **Release:** Short.\r\n4.  **Overdrive:** 50%.\r\n5.  **LFO:** Set to Fast.\r\n6.  **Pan Knob:** Set to Max Right (Tremolo).\r\n7.  **Result:** A convincing B3 Hammond Organ with Leslie Speaker simulation (Tremolo).\r\n\r\n---\r\n\r\n## 🧪 \"Secret Sauce\" Workflows\r\n\r\n### 1. The \"Lo-Fi\" Hip Hop Piano\r\n1.  **Detune:** Increase slightly (Honky Tonk).\r\n2.  **Overdrive:** 20% (Saturation).\r\n3.  **Treble:** Decrease (Darker).\r\n4.  **Muffle:** Increase to 80%.\r\n5.  **Result:** A dark, dusty, detuned upright piano perfect for Boom Bap.\r\n\r\n### 2. The \"Dreamy\" Rhodes\r\n1.  **Preset:** Rhodes.\r\n2.  **Pan Knob:** Turn Left (Auto-Pan).\r\n3.  **LFO:** Slow speed.\r\n4.  **Stereo:** Max Right (Wide).\r\n5.  **Result:** The classic 70s Electric Piano sound that bounces between the speakers.\r\n\r\n### 3. Stretched Tuning for Solos\r\n1.  **Context:** Playing a high-pitched piano solo over a synth bass.\r\n2.  **Issue:** The piano sounds flat compared to the synth (because real strings are sharp).\r\n3.  **Action:** Turn **Stretch** to +20 cents.\r\n4.  **Result:** The high notes sparkle more and cut through the mix, matching the psychoacoustic expectation of a Grand Piano.\r\n",
+      "keyboard-models-decoded": "# Quick Reference: Keyboard Models Decoded\n\nA breakdown of the 4 core sample sets inside FL Keys. [SRC: IL-MAN]\n\n## 1. Grand Piano\n- **Character**: Natural, bright, and wide-range.\n- **Best For**: Trap melodies, Pop ballads, and general melodic sketching.\n- **Pro Tip**: Use \"Hardness\" to switch between a soft \"Upright\" feel and a sharp \"Concert Grand\" feel.\n\n## 2. Rhodes\n- **Character**: Warm, bell-like, and harmonically rich.\n- **Best For**: Neo-Soul, Lo-Fi, and Smooth R&B.\n- **Pro Tip**: This model includes a built-in Tremolo. Use the **LFO** knobs to control the speed and depth of the stereo panning.\n\n## 3. Roto Organ\n- **Character**: Gritty, percussive, and \"spinning.\"\n- **Best For**: Gospel, House, and 90s Hip-Hop.\n- **Pro Tip**: The **Hardness** knob here acts like a \"Drive\" control for the internal cabinet emulation.\n\n## 4. Harpsichord\n- **Character**: Thin, plucked, and \"stringy.\"\n- **Best For**: Baroque textures, \"Indie\" sounds, and psychedelic sound design.\n- **Pro Tip**: Excellent for layering with a high-pass filter to add a \"pluck\" attack to other synths.\n",
+      "parameter-cheat-sheet": "# Parameter Cheat Sheet: FL Keys\n\nThe essential modifiers for the FL Keys engine. [SRC: IL-MAN]\n\n---\n\n## 🏛️ Model Selection\n- **Grand Piano**: Acoustic.\n- **Rhodes**: Electric bell-tone.\n- **Roto Organ**: Hammond-style.\n- **Harpsichord**: Plucked string.\n\n## 🛠️ Performance Knobs\n- **Decay**: Sustain length.\n- **Release**: Tail length.\n- **Hardness**: Transient sharpess.\n- **Muffled**: Tone softness (LP Filter).\n- **Treble**: High-end boost/cut.\n\n## 🎨 Realism Details\n- **Stretch**: Sample interpolation resolution.\n- **Key**: Volume of the \"key release\" mechanism noise.\n- **Vel Curve**: Changes how the plugin interprets MIDI pressure.\n\n## 🌀 LFO (Rhodes Only)\n- **Rate**: Speed of the stereo panning.\n- **Depth**: Intensity of the stereo panning.",
+      "quick-start-checklist": "# Quick Start Checklist: Fl Keys\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fl Keys to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fl Keys\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fl Keys\r\n\r\nThis section contains learning information for the fl-keys plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: The Dark \"Toronto\" Piano (FL Keys)\n\n## Step-by-Step Setup\n1.  Initialize **FL Keys** and select the **Grand Piano** model.\n2.  Set **MUFFLE** to `80%` (Turn significantly to the left).\n3.  Set **RELEASE** to `60%` (To hear the mechanical clacks).\n4.  Set **ENVIRONMENT** to `40%` (Adds a small room reverb).\n5.  **The Secret Sauce:** Add **Fruity Delay 3** after FL Keys. Set a very slow `1/2 note` delay with high-pass filtering.\n6.  **The Play:** Play simple minor chords in the lower-mid octaves (C3-C4).\n\n## Result\n- A heavy, lonely, submerged piano sound. It has no sharp \"high-end,\" making it the perfect moody foundation for a storytelling rap verse.\n\n## Vibe Check\n- **Moody/Nocturnal:** The \"Drake/40\" signature piano aesthetic.\n\n## Variation\n- **Vintage Dust:** Add a **Fruity Blood Overdrive** at 2% PreAmp to add a tiny amount of analog-style noise. [SRC: REPUTABLE]\n",
+      "01_Goal_Make_It_Premium": "# Goal Workflow: Make It Premium (Mastering the Rompler)\n\n*Goal: Transform the basic FL Keys sound into a professional, world-class keyboard texture.*\n\n## 🎛️ Routing Context\n- **Routing**: FL Keys -> Mixer Track 1.\n- **Mixer Chain**: Fruity Parametric EQ 2 -> Fruity Chorus -> LuxeVerb.\n\n## 🚶 Step-by-Step Setup\n1. **Calibrate the Source**:\n   - Select **Grand Piano**.\n   - Set **Hardness** to 60%.\n   - Set **Release** to 25%.\n2. **EQ Pocketing**:\n   - Cut everything below 200Hz (HPF).\n   - Add a wide boost (+2dB) at 10kHz for \"Air.\"\n3. **The \"Dimension\" Trick**:\n   - Add **Fruity Chorus**.\n   - Set **Rate** to 0.2Hz (extremely slow).\n   - Set **Mix** to 15%.\n   - *Result*: Adds a non-linear motion that makes the fixed samples feel like they are moving in a real room.\n4. **The Luxe Space**:\n   - Add **LuxeVerb**.\n   - Select \"Hall\" mode.\n   - Set **Decay** to 2.5s.\n   - Set **Mix** to 20%.\n5. **Dynamics**:\n   - Place a **Fruity Limiter** at the end. Use the Compressor to \"glue\" the notes together with a 2:1 ratio.\n\n## 🔄 Variations\n- **The \"Cinematic\" Version**: Increase LuxeVerb Mix to 50% and turn **Muffled** to 40% inside FL Keys.\n- **The \"Biting\" Lead**: Increase **Hardness** to 90% and use a shorter Reverb.\n\n## ⚠️ Pitfalls & Fixes\n- **Problem**: It sounds too \"thin.\"\n- **Fix**: Layer it with a simple Sine wave or a warm Pad synth to fill the low-mids.\n",
+      "jazz-piano-realism": "# Goal Workflow: Jazz Piano Realism (The Human Touch)\n\n*Goal: Adding the subtle artifacts and dynamic response of a live acoustic piano.*\n\n## 🎛️ Routing Context\n- **Routing**: FL Keys -> Piano Melodic Bus.\n- **Hardware**: Best performed with a weighted MIDI keyboard.\n\n## 🚶 Step-by-Step Setup\n1. **Calibrate Velocity**:\n   - Play your keyboard normally. Adjust the **Vel Curve** knob in FL Keys until the loudest notes you play feel \"Bright\" and the softest feel \"Muffled.\"\n2. **Mechanical Noise**:\n   - Turn the **Key** knob to 50%.\n   - *Result*: Every time you release a note, you'll hear the \"thump\" of the piano dampers. This is essential for the jazzy \"living room\" vibe.\n3. **Harmonic Resonance**:\n   - Set **Hardness** to 40% (Medium-Soft).\n4. **Dynamics**:\n   - Set **Decay** to 100% (Full sustain).\n   - Set **Release** to 15% (Tight damper response).\n5. **The Performance**:\n   - In the Piano Roll, avoid hard quantizing. Move the start times of your chords slightly off-grid.\n   - Use the **Alt+R (Randomize)** tool to vary velocities between 70 and 95.\n\n## 🔄 Variations\n- **The \"Upright\" Feel**: Set **Treble** to -3dB and **Muffled** to 20%.\n- **The \"Ballad\" Grand**: Add a long plate reverb and keep the **Release** knob high.\n\n## ⚠️ Pitfalls & Fixes\n- **Problem**: The \"Key\" noise is too distracting.\n- **Fix**: Lower the **Key** knob to 10%. It should be felt more than heard.",
+      "vintage-70s-rhodes-setup": "# Goal Workflow: Vintage 70s Rhodes Setup (Vibey Soul)\n\n*Goal: Recreating the iconic, smoky sound of a 1970s stage Rhodes.*\n\n## 🎛️ Routing Context\n- **Routing**: FL Keys -> Mixer Track.\n- **Mixer Chain**: Fruity Blood Overdrive -> Fruity Phaser -> Fruity Delay 3.\n\n## 🚶 Step-by-Step Setup\n1. **Source Settings**:\n   - Select **Rhodes** model.\n   - Set **Muffled** to 45%.\n   - Set **LFO Rate** to 1/2 note. Set **LFO Depth** to 30% (Internal tremolo).\n2. **Drive Stage**:\n   - Add **Fruity Blood Overdrive**.\n   - Keep the Drive low (just enough to add warmth).\n   - Set the filter to cut some highs.\n3. **Phaser Swirl**:\n   - Add **Fruity Phaser**.\n   - Set **Speed** to 0.1Hz.\n   - Set **Mix** to 20%.\n   - *Result*: Adds a \"liquid\" texture to the bell-like samples.\n4. **Time Space**:\n   - Add **Fruity Delay 3**.\n   - Set to 1/4 note.\n   - Set **Diffusion** high to make the echoes sound more like a wash.\n5. **Vibe Check**: Play a Minor 9th chord. The sound should feel warm, unstable, and deeply \"soulful.\"\n\n## 🔄 Variations\n- **The \"Barking\" Rhodes**: Set MIDI Velocity to 127. The Rhodes model in FL Keys has a distinct \"growl\" at maximum velocity.\n- **The \"Underwater\" R&B**: Set **Muffled** to 80% and increase the Reverb.\n\n## ⚠️ Pitfalls & Fixes\n- **Problem**: The panning is too wide.\n- **Fix**: Lower the **LFO Depth** inside the FL Keys UI."
+    },
+    "by-instrument": {
+      "lofi_hiphop_keys": "# Instrument Workflow: Lo-Fi Hip-Hop Keys (Dusty Soul)\n\n## 1. The \"Sampled\" Rhodes\n- **Recipe**: Rhodes model + Muffled 60% + Key 80%.\n- **Move**: Pitch the loop down -12 semitones in the Sampler settings.\n- **Vibe**: Mimics the sound of a vintage record being sampled and slowed down.\n\n## 2. Tape Flutter Grand\n- **Recipe**: Grand Piano + Muffled 20% + Low Hardness.\n- **Move**: Add a Fruity Delay 3 with **Time** modulation turned up slightly.\n- **Vibe**: Adds a \"wobbly\" pitch character that sounds like an old upright piano in a dusty attic.\n\n## 3. Vinyl \"Crack\" Layers\n- **Recipe**: Set **Key** (Release noise) to maximum. \n- **Move**: Add a Bitcrusher (12-bit mode) after the plugin.\n- **Vibe**: Emphasizes the digital noise and mechanical clicks, providing a rhythmic \"hiss\" that acts like a percussion layer.\n",
+      "trap_piano_leads": "# Instrument Workflow: Trap Piano Leads (Dark Tension)\n\n## 1. The \"Metro\" Grand\n- **Recipe**: Grand Piano + Hardness 80% + Release 15%.\n- **Vibe**: Sharp, cold, and staccato. Perfect for dark minor-key melodies that need to cut through a heavy 808.\n\n## 2. Reversed Piano Wash\n- **Recipe**: Use Grand Piano + long Release.\n- **Move**: Export the melody to audio. Select **Reverse** in the Sampler. Add a large Reverb.\n- **Vibe**: Creates that \"haunting\" atmospheric background wash found in modern emo-trap.\n\n## 3. Glitched Harpsichord\n- **Recipe**: Harpsichord + max Hardness.\n- **Move**: Add Fruity Fast Dist (Drive at 50%) after FL Keys.\n- **Vibe**: Transforms the plucked keys into a gritty, aggressive lead that sounds like a cross between a synth and a guitar.\n",
+      "vocal_accompaniment": "# Instrument Workflow: Vocal Accompaniment (The Pocket)\n\n## 1. The \"Support\" Grand\n- **Recipe**: Grand Piano + Muffled 40% + Release 30%.\n- **Vibe**: Creates a soft bed for the singer. The muffling ensures the high-end frequency of the vocal isn't fighting with the piano's \"sparkle.\"\n\n## 2. R&B \"Silky\" Stack\n- **Recipe**: Rhodes model + slow LFO + high Treble.\n- **Move**: Add a wide Stereo Enhancer *after* the plugin.\n- **Vibe**: A wide, luxurious electric piano that wraps around the vocal, making it feel more professional.\n\n## 3. Melodic Rap Accent\n- **Recipe**: Harpsichord + short Decay + high Reverb.\n- **Move**: Only play octaves or single fifths.\n- **Vibe**: Adds a \"plucky\" rhythmic counter-melody that highlights specific vocal phrases without cluttering the mids.\n"
+    },
+    "common-usage.md": {
+      "common-usage": "# Common Workflows: FL Keys\r\n\r\n## 1. The \"Placeholder\" Piano (Sketching)\r\n\r\nFL Keys is the ultimate placeholder.\r\n\r\n1.  **Usage:** Always start your chord progression with FL Keys (Grand Piano).\r\n2.  **Why:** It loads instantly, uses 0% CPU, and has a clear mid-range.\r\n3.  **Later:** Once the composition is done, replace it with a 50GB Kontakt Library. The MIDI data remains valid because FL Keys responds to standard Velocity/Sustain Pedal mappings.\r\n\r\n## 2. Layering for Attack\r\n\r\n1.  **Concept:** Modern Pop Pianos need a sharp transient.\r\n2.  **Setup:**\r\n    *   Channel 1: Nexus/Keyscape (Main Body).\r\n    *   Channel 2: FL Keys (Grand Piano).\r\n3.  **FL Keys Settings:**\r\n    *   **Treble:** Max.\r\n    *   **Decay:** Very Short (Staccato).\r\n    *   **Overdrive:** 30%.\r\n    *   **Volume:** Low (-12dB).\r\n4.  **Result:** FL Keys adds a metallic \"clank\" to the attack of the chord, helping the expensive library cut through the dense mix.\r\n\r\n## 3. The \"Pseudo-Guitar\"\r\n\r\n1.  **Preset:** Use \"Grand Piano\" (surprise!).\r\n2.  **Overdrive:** 100%.\r\n3.  **Treble:** Max.\r\n4.  **Decay:** Short.\r\n5.  **Chords:** Play power chords (Root + Fifth).\r\n6.  **Result:** It sounds surprisingly like a distorted rhythm guitar or a Clavinet, useful for background textures.\r\n\r\n## 4. Automation of LFO Speed\r\n\r\n1.  **Preset:** Roto Organ.\r\n2.  **LFO:** Use the LFO knob to control the \"Leslie Speaker\" speed.\r\n3.  **Automation:**\r\n    *   Create an automation clip for the **LFO** knob.\r\n    *   Ramp it up from Slow to Fast during transitions.\r\n4.  **Effect:** The classic organ \"Spin up\" effect.\r\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fl Keys\r\n\r\nThis section contains workflow information for the fl-keys plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fl Keys\r\n\r\nThis section contains reference information for the fl-keys plugin.\r\n"
+    }
+  }
+}

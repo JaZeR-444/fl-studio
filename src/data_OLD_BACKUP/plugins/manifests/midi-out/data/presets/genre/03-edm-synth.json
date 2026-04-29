@@ -1,0 +1,40 @@
+{
+  "name": "EDM Synth MIDI",
+  "genre": "EDM",
+  "mood": "electric",
+  "description": "MIDI configuration for EDM synths with modulation support",
+  "parameters": {
+    "channel": 1,
+    "port": "MIDI",
+    "clockSource": "Internal",
+    "clockOut": true,
+    "noteLength": "Default",
+    "velocity": 100,
+    "pitchBendRange": 12,
+    "aftertouch": true,
+    "midiCC": true,
+    "thru": true,
+    "syncToHost": true,
+    "mpe": false,
+    "nrpn": true
+  },
+  "workflow": {
+    "useCase": "EDM hardware and software synths",
+    "steps": [
+      "Set channel 1 for main synth",
+      "Enable aftertouch for expression",
+      "Pitch bend range 12 semitones",
+      "Enable NRPN for parameter control",
+      "Clock sync for tempo effects"
+    ],
+    "troubleshooting": [
+      { "issue": "No modulation", "fix": "Check CC mapping in synth" },
+      { "issue": "Pitch drift", "fix": "Verify MIDI clock sync" },
+      { "issue": "Stuck notes", "fix": "Enable thru, check note off" }
+    ]
+  },
+  "abTest": {
+    "listenFor": "Full modulation and expression control",
+    "duration": "Arpeggio with pitch bend"
+  }
+}

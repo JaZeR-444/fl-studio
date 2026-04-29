@@ -1,0 +1,314 @@
+{
+  "id": "fruity-envelope-controller",
+  "name": "Fruity Envelope Controller",
+  "presets": {
+    "mod-archetypes": {
+      "archetypes": [
+        {
+          "name": "Velocity Filter",
+          "articulator": 1,
+          "mappings": [
+            "VEL"
+          ],
+          "curve": "Exponential Rising",
+          "useCase": "Expressive synth leads where harder playing opens the filter."
+        },
+        {
+          "name": "Note Randomizer",
+          "articulator": 2,
+          "mappings": [
+            "RND"
+          ],
+          "curve": "Full Random",
+          "useCase": "Humanizing drum pitch or pan per note."
+        }
+      ]
+    }
+  },
+  "parameters": {
+    "envelope-controller-specs": {
+      "plugin": {
+        "name": "Fruity Envelope Controller",
+        "category": "Control",
+        "type": "Modulation Source",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Envelope%20Controller.htm"
+      },
+      "parameters": {
+        "articulators": 8,
+        "components": [
+          "Envelope (ADSR + Multi-point)",
+          "LFO (BPM Syncable)",
+          "Keyboard Mapping",
+          "Velocity Mapping",
+          "Random Generator"
+        ],
+        "controls": [
+          {
+            "id": "base",
+            "name": "Base",
+            "description": "The offset value."
+          },
+          {
+            "id": "amount",
+            "name": "Amount",
+            "description": "The modulation multiplier."
+          },
+          {
+            "id": "smoothing",
+            "name": "Smoothing",
+            "description": "Low-pass filter for the control signal."
+          }
+        ]
+      },
+      "outputType": "Internal Controller (available for Linking)"
+    }
+  },
+  "rules": {
+    "emotional-modulation-shapes": {
+      "emotionalModulationRules": {
+        "philosophy": "This rule-set defines how specific envelope shapes trigger emotional responses in the listener. Use these curves inside Fruity Envelope Controller to 'Score' the narrative of your Hip-Hop/R&B track.",
+        "curveDictionary": [
+          {
+            "name": "The Aggressive Snap",
+            "shape": "Instant Attack, Steep Exponential Decay.",
+            "emotion": "Dominance / Precision / Hardness.",
+            "context": "Link to Filter Cutoff for high-energy Trap leads. Triggers the brain's 'Threat Response' (High Attention)."
+          },
+          {
+            "name": "The Vulnerable Breath",
+            "shape": "Slow Logarithmic Attack (500ms+), S-Curve Decay.",
+            "emotion": "Melancholy / Intimacy / Fragility.",
+            "context": "Link to Reverb Wet or Volume for Moody R&B vocals. Mimics the human intake of air before speaking."
+          },
+          {
+            "name": "The Psychedelic Drift",
+            "shape": "Zero Attack, Infinite Sustain, Random Drifting LFO.",
+            "emotion": "Confusion / Surrealism / Euphoria.",
+            "context": "Link to Fine Pitch (±5 cents). Triggers the brain's 'Uncanny Valley' effect (Trippiness)."
+          },
+          {
+            "name": "The Mechanical Stutter",
+            "shape": "Hard Square Wave, No Smoothing.",
+            "emotion": "Anxiety / Urgency / Industrial Coldness.",
+            "context": "Link to Volume Gate for high-speed Drill hi-hats. Mimics the sound of machinery (The 'Grind')."
+          }
+        ],
+        "masterEngineeringLogic": [
+          {
+            "objective": "Achieve 'Elite Coolness' (Soul)",
+            "action": "Set Articulator Smoothing to 15ms. This 'shaves off' the digital edges of your envelopes, making the transitions feel 'Analog' and expensive."
+          },
+          {
+            "objective": "Achieve 'Modern Impact' (Trap)",
+            "action": "Use Linear Attack but Exponential Decay for filter sweeps. This creates a 'Whiplash' effect that is synonymous with modern high-end Trap production."
+          }
+        ]
+      }
+    },
+    "humanization-constants": {
+      "humanizationConstants": {
+        "philosophy": "This data-set provides the mathematical constants required to 'Humanize' digital MIDI data using Fruity Envelope Controller. It targets the biological timing and pressure errors of real performers across various Hip-Hop and R&B sub-genres.",
+        "genreTemplates": [
+          {
+            "genre": "Classic Boom Bap (J Dilla Style)",
+            "timingEntropy": {
+              "mapping": "RND -> Sampler Shift",
+              "base": "0.50",
+              "amount": "0.08",
+              "smoothing": "5ms",
+              "logic": "Adds a ±4ms random drift to every hit. Mimics the mechanical 'un-quantization' of early MPC hardware."
+            },
+            "pressureDynamics": {
+              "mapping": "VEL -> Filter Cutoff",
+              "curve": "Linear Rising",
+              "amount": "15%",
+              "logic": "Subtle brightness variation based on strike strength."
+            }
+          },
+          {
+            "genre": "Moody R&B (Neo-Soul)",
+            "timingEntropy": {
+              "mapping": "LFO -> Sampler Shift",
+              "waveform": "Sine (Slow 4-bar)",
+              "amount": "0.15",
+              "smoothing": "200ms",
+              "logic": "Creates a slow, 'Drunken' swing that drifts in and out of time. Mimics a 'lazy' drummer playing behind the beat."
+            },
+            "pressureDynamics": {
+              "mapping": "VEL -> Reverb Wet",
+              "curve": "Exponential Falling",
+              "amount": "30%",
+              "logic": "Softer notes are more 'Drowned' in reverb; louder notes are 'Dryer' and closer. Mimics intimate distance perception."
+            }
+          },
+          {
+            "genre": "Upbeat Trap (Club Energy)",
+            "timingEntropy": {
+              "mapping": "None",
+              "logic": "Trap requires 100% rhythmic stability. Humanization should focus on tone, not timing."
+            },
+            "pressureDynamics": {
+              "mapping": "VEL -> Distortion Pre-Amp",
+              "curve": "S-Curve",
+              "amount": "40%",
+              "logic": "High-velocity 808s 'Scream' more than quiet ones. Mimics the saturation of analog tape when driven hard."
+            }
+          }
+        ],
+        "biologicalConstants": {
+          "fingerJitter": "±2ms (Smoothing 2ms)",
+          "velocityAveraging": "±10 units (Smoothing 15ms)",
+          "fatigueEmulation": "Link 'Smoothing' to Song Position. As the song progresses, the smoothing increases, making the modulations 'lazier' and more 'tired'."
+        }
+      }
+    },
+    "modulation-rules": {
+      "rules": [
+        {
+          "scenario": "Modulation is too 'clicky' or abrupt",
+          "action": "Increase Smoothing to 10-30ms"
+        },
+        {
+          "scenario": "LFO is drifting out of time",
+          "action": "Enable BPM Sync and Re-trigger on note"
+        }
+      ]
+    },
+    "rhythmic-emotional-response": {
+      "emotionalResponseMapping": {
+        "logic": "The shape of a modulation curve determines the psychological reaction of the listener. In Hip-Hop and R&B, we manipulate these curves to enhance the narrative of the song.",
+        "shapes": [
+          {
+            "shape": "Exponential Rising (The Snap)",
+            "physics": "Slow start, fast finish. High dV/dt at the end of the curve.",
+            "emotion": "Aggression / Surprise / High energy.",
+            "bestUse": "Trap snare filter sweeps, Drill hi-hat pitch rolls."
+          },
+          {
+            "shape": "Logarithmic Falling (The Breath)",
+            "physics": "Fast start, slow finish. Energy dissipates gracefully.",
+            "emotion": "Isolation / Relief / Deep thought.",
+            "bestUse": "Moody R&B vocal reverb tails, Neo-Soul pad releases."
+          },
+          {
+            "shape": "Sine Wave (The Pulse)",
+            "physics": "Constant, predictable oscillation. Symmetrical energy.",
+            "emotion": "Hypnosis / Groove / Reliability.",
+            "bestUse": "Sidechain ducking, slow rhythmic melodic filters."
+          },
+          {
+            "shape": "Sawtooth Falling (The Cut)",
+            "physics": "Instant jump to max, linear fall to zero.",
+            "emotion": "Anxiety / Mechanical / Cold.",
+            "bestUse": "Industrial glitch stutters, rhythmic noise layers."
+          }
+        ],
+        "rhythmicRules": [
+          {
+            "mood": "Psychedelic Haze",
+            "action": "Set Envelope Controller Smoothing to >200ms. This 'slows down' the emotional changes, creating a sensation of being drugged or underwater."
+          },
+          {
+            "mood": "Club Energy",
+            "action": "Set Smoothing to <10ms. Instant emotional transitions create high-impact, 'staccato' energy that keeps the listener focused."
+          }
+        ]
+      }
+    },
+    "troubleshooting": {
+      "troubleshootingRules": [
+        {
+          "issue": "Modulation causes audio clicks",
+          "rootCause": "Discontinuous control signal at note-on/off.",
+          "fix": "Increase Smoothing to 5-10ms to round the waveform edges."
+        },
+        {
+          "issue": "LFO feels 'off-beat'",
+          "rootCause": "Phase mismatch with project transport.",
+          "fix": "Enable 'Sync' and set LFO Phase to 0 deg."
+        }
+      ]
+    }
+  },
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    },
+    {
+      "title": "Generative Melodics",
+      "filename": "generative-melodics.md"
+    },
+    {
+      "title": "Macro Control Architecture",
+      "filename": "macro-control-architecture.md"
+    },
+    {
+      "title": "Modulation Theory",
+      "filename": "modulation-theory.md"
+    },
+    {
+      "title": "Neural Pattern Sequencing",
+      "filename": "neural-pattern-sequencing.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "00 Goal Quick Result",
+      "category": "by-goal",
+      "filename": "00_Goal_Quick_Result.md"
+    },
+    {
+      "title": "01 Goal Space And Motion",
+      "category": "by-goal",
+      "filename": "01_Goal_Space_And_Motion.md"
+    },
+    {
+      "title": "Complex Patcher Mod Routing",
+      "category": "by-goal",
+      "filename": "complex-patcher-mod-routing.md"
+    },
+    {
+      "title": "Generative Trap Percussion",
+      "category": "by-goal",
+      "filename": "generative-trap-percussion.md"
+    },
+    {
+      "title": "Psychedelic Drifting Leads",
+      "category": "by-goal",
+      "filename": "psychedelic-drifting-leads.md"
+    },
+    {
+      "title": "Random Drum Humanization",
+      "category": "by-goal",
+      "filename": "random-drum-humanization.md"
+    },
+    {
+      "title": "Upbeat Melodic Sidechaining",
+      "category": "by-goal",
+      "filename": "upbeat-melodic-sidechaining.md"
+    },
+    {
+      "title": "Expressive Synth Pads",
+      "category": "by-instrument",
+      "filename": "expressive-synth-pads.md"
+    },
+    {
+      "title": "Moody Vocal Stutters",
+      "category": "by-instrument",
+      "filename": "moody-vocal-stutters.md"
+    }
+  ]
+}

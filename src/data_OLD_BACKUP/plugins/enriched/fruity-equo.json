@@ -1,0 +1,241 @@
+{
+  "id": "fruity-equo",
+  "name": "Fruity Equo",
+  "presets": {
+    "bright-and-clear": {
+      "presetName": "Bright and Clear",
+      "plugin": "Fruity Equo",
+      "description": "Enhances clarity and air while maintaining a clean low end.",
+      "settings": {
+        "mode": "VOL",
+        "masterGain": 1.0,
+        "smooth": 0.15,
+        "bands": {
+          "lows": -1.0,
+          "lowMids": -2.0,
+          "mids": 0.0,
+          "highMids": 2.5,
+          "highs": 4.0,
+          "air": 6.0
+        }
+      },
+      "usage": "Best for dull vocals, acoustic guitars, or overheads."
+    },
+    "gentle-master-smile": {
+      "presetName": "Gentle Master Smile",
+      "plugin": "Fruity Equo",
+      "description": "A subtle 'V' shape for the master bus to add final polish.",
+      "settings": {
+        "mode": "VOL",
+        "masterGain": 1.0,
+        "smooth": 0.4,
+        "bands": {
+          "lows": 1.5,
+          "mids": -1.0,
+          "highs": 2.0
+        }
+      },
+      "usage": "Use as a final touch on the master track to make the mix sound finished."
+    },
+    "low-end-punch": {
+      "presetName": "Low End Punch",
+      "plugin": "Fruity Equo",
+      "description": "Focuses energy on the fundamental bass frequencies while cutting mud.",
+      "settings": {
+        "mode": "VOL",
+        "masterGain": 1.0,
+        "smooth": 0.1,
+        "bands": {
+          "sub": 3.0,
+          "thump": 4.5,
+          "mud": -3.0,
+          "mids": -1.0,
+          "highs": 0.0
+        }
+      },
+      "usage": "Best for kicks and bass synths that need more presence in the low end."
+    },
+    "radio-effect": {
+      "presetName": "Radio Effect",
+      "plugin": "Fruity Equo",
+      "description": "Aggressive band-pass filtering for a lo-fi telephonic sound.",
+      "settings": {
+        "mode": "VOL",
+        "masterGain": 0.8,
+        "smooth": 0.0,
+        "bands": {
+          "lows": -100.0,
+          "mids": 6.0,
+          "highs": -100.0
+        }
+      },
+      "usage": "Creative effect for intros or bridge sections."
+    },
+    "spectral-width": {
+      "presetName": "Spectral Width",
+      "plugin": "Fruity Equo",
+      "description": "Pans different frequencies across the stereo field for massive width.",
+      "settings": {
+        "mode": "PAN",
+        "masterGain": 1.0,
+        "smooth": 0.3,
+        "bands": {
+          "lows": 0.0,
+          "lowMids": -0.2,
+          "mids": 0.2,
+          "highMids": -0.4,
+          "highs": 0.4
+        }
+      },
+      "usage": "Best for synth pads, background vocals, or sound effects."
+    },
+    "vocal-presence": {
+      "presetName": "Vocal Presence",
+      "plugin": "Fruity Equo",
+      "description": "Targets the 'expensive' frequencies in a vocal performance.",
+      "settings": {
+        "mode": "VOL",
+        "masterGain": 1.0,
+        "smooth": 0.2,
+        "bands": {
+          "body": 0.0,
+          "nasal": -1.5,
+          "clarity": 2.0,
+          "presence": 3.5,
+          "air": 5.0
+        }
+      },
+      "usage": "Apply to lead vocals to help them sit on top of a dense mix."
+    }
+  },
+  "parameters": {
+    "parameters": {
+      "pluginName": "Fruity Equo",
+      "category": "Equalizer / Filter",
+      "parameters": [
+        {
+          "section": "Shape",
+          "id": "morph",
+          "name": "Morph",
+          "range": {
+            "min": 1,
+            "max": 8,
+            "unit": "BankIndex"
+          },
+          "description": "Blends between the 8 EQ bank states."
+        },
+        {
+          "section": "Shape",
+          "id": "shift",
+          "name": "Band Shift",
+          "range": {
+            "min": -100,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Offsets the frequency centers of all bands."
+        },
+        {
+          "section": "Shape",
+          "id": "mix",
+          "name": "Mix",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Dry/Wet blend of the EQ processing."
+        },
+        {
+          "section": "Band",
+          "id": "vol",
+          "name": "Band Volume",
+          "range": {
+            "min": -18,
+            "max": 18,
+            "unit": "dB"
+          },
+          "description": "Gain per frequency band."
+        },
+        {
+          "section": "Band",
+          "id": "pan",
+          "name": "Band Pan",
+          "range": {
+            "min": -100,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Panning per frequency band."
+        },
+        {
+          "section": "Routing",
+          "id": "send",
+          "name": "Send Amount",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Sends selected bands to auxiliary tracks."
+        }
+      ]
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "Common Usage",
+      "category": "general",
+      "filename": "common-usage.md"
+    },
+    {
+      "title": "00 Goal Quick Result",
+      "category": "by-goal",
+      "filename": "00_Goal_Quick_Result.md"
+    },
+    {
+      "title": "01 Goal Shaping And Control",
+      "category": "by-goal",
+      "filename": "01_Goal_Shaping_And_Control.md"
+    },
+    {
+      "title": "Bass",
+      "category": "by-instrument",
+      "filename": "bass.md"
+    },
+    {
+      "title": "Drums",
+      "category": "by-instrument",
+      "filename": "drums.md"
+    },
+    {
+      "title": "Synth Pads",
+      "category": "by-instrument",
+      "filename": "synth-pads.md"
+    },
+    {
+      "title": "Vocals",
+      "category": "by-instrument",
+      "filename": "vocals.md"
+    }
+  ]
+}

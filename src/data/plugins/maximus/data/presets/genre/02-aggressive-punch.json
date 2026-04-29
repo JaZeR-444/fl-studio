@@ -1,0 +1,39 @@
+{
+  "name": "Aggressive Punch",
+  "genre": "hip-hop/rap",
+  "mood": "electric",
+  "description": "Heavy limiting for maximum impact with preserved punch",
+  "parameters": {
+    "inputGain": 2,
+    "threshold": -8.0,
+    "ratio": 8.0,
+    "attack": 0.1,
+    "release": 50,
+    "outputGain": 2,
+    "ceiling": -0.3,
+    "link": true,
+    "channelMode": "LR",
+    "s/C": true,
+    "limiterMode": "Hard"
+  },
+  "workflow": {
+    "useCase": "Hip-hop beats and aggressive tracks",
+    "steps": [
+      "Set ceiling to -0.3",
+      "Increase input gain by 2-3dB",
+      "Lower threshold to -6 to -8dB",
+      "Use fast attack (0.1-0.3ms) for punch",
+      "Quick release (40-60ms) for tightness",
+      "Enable s/C for punch preservation"
+    ],
+    "troubleshooting": [
+      { "issue": "Lost punch", "fix": "Enable s/C or increase attack time" },
+      { "issue": "Clipping", "fix": "Lower threshold or reduce input gain" },
+      { "issue": "Cramping", "fix": "Increase release time" }
+    ]
+  },
+  "abTest": {
+    "listenFor": "Loud, aggressive sound with maintained kick punch",
+    "duration": "First 30 seconds with prominent drums"
+  }
+}

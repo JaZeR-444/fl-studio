@@ -1,0 +1,223 @@
+{
+  "id": "fruity-chorus",
+  "name": "Fruity Chorus",
+  "presets": {
+    "detuned-unison": {
+      "presetName": "Detuned Unison",
+      "plugin": "Fruity Chorus",
+      "description": "Mimics the sound of multiple voices slightly out of tune.",
+      "settings": {
+        "delay": 25.0,
+        "depth": 15.0,
+        "rate": 1.5,
+        "stereo": 1.0,
+        "cross": 0.2
+      },
+      "usage": "Use on lead synths to make them sound thicker and more organic."
+    },
+    "slow-shimmer": {
+      "presetName": "Slow Shimmer",
+      "plugin": "Fruity Chorus",
+      "description": "A very slow, subtle movement for clean sounds.",
+      "settings": {
+        "delay": 15.0,
+        "depth": 5.0,
+        "rate": 0.2,
+        "stereo": 0.8,
+        "cross": 0.5
+      },
+      "usage": "Perfect for electric pianos, clean guitars, or atmospheric pads."
+    },
+    "vintage-vibrato": {
+      "presetName": "Vintage Vibrato",
+      "plugin": "Fruity Chorus",
+      "description": "Focuses on the pitch modulation rather than the stereo spread.",
+      "settings": {
+        "delay": 5.0,
+        "depth": 20.0,
+        "rate": 5.0,
+        "stereo": 0.0,
+        "cross": 0.0
+      },
+      "usage": "Creative effect for lo-fi beats or psychedelic guitars."
+    }
+  },
+  "parameters": {
+    "chorus-specs": {
+      "plugin": {
+        "name": "Fruity Chorus",
+        "category": "Modulation",
+        "type": "Multi-Voice Chorus",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Chorus.htm"
+      },
+      "parameters": {
+        "modulation": [
+          {
+            "id": "delay",
+            "name": "Delay",
+            "range": "0.1 to 50 ms",
+            "unit": "ms",
+            "description": "Base delay time for modulated voices."
+          },
+          {
+            "id": "rate",
+            "name": "Rate",
+            "range": "0 to 10 Hz",
+            "unit": "Hz",
+            "description": "LFO frequency determining modulation speed."
+          },
+          {
+            "id": "depth",
+            "name": "Depth",
+            "range": "0-100%",
+            "description": "Magnitude of the delay/pitch modulation."
+          }
+        ],
+        "stereo": [
+          {
+            "id": "stereoCross",
+            "name": "Stereo Cross",
+            "range": "0-100%",
+            "description": "Phase offset between L/R LFOs for stereo width."
+          }
+        ]
+      },
+      "voiceArchitecture": {
+        "count": 4,
+        "arrangement": "2 voices per channel (Stereo)"
+      }
+    },
+    "parameters": {
+      "pluginName": "Fruity Chorus",
+      "category": "Modulation",
+      "parameters": [
+        {
+          "section": "Delay Line",
+          "id": "delay",
+          "name": "Base Delay",
+          "range": {
+            "min": 0,
+            "max": 30,
+            "unit": "ms"
+          },
+          "description": "Offset between Dry and Wet."
+        },
+        {
+          "section": "Delay Line",
+          "id": "depth",
+          "name": "Mod Depth",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Amount of LFO modulation applied to delay time."
+        },
+        {
+          "section": "Stereo",
+          "id": "stereo_phase",
+          "name": "Stereo Spread",
+          "range": {
+            "min": 0,
+            "max": 360,
+            "unit": "Deg"
+          },
+          "description": "LFO Phase offset between Left and Right channels."
+        },
+        {
+          "section": "LFO",
+          "id": "lfo_freq_1",
+          "name": "LFO 1 Rate",
+          "range": {
+            "min": 0,
+            "max": 10,
+            "unit": "Hz"
+          },
+          "description": "Speed of Oscillator 1."
+        },
+        {
+          "section": "Filter",
+          "id": "cross_type",
+          "name": "Crossover Mode",
+          "options": [
+            "Process HP",
+            "Process LP"
+          ],
+          "description": "Determines which band gets chorused."
+        },
+        {
+          "section": "Filter",
+          "id": "cross_cutoff",
+          "name": "Cutoff Freq",
+          "range": {
+            "min": 10,
+            "max": 20000,
+            "unit": "Hz"
+          },
+          "description": "Split point for the crossover."
+        }
+      ]
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "Common Usage",
+      "category": "general",
+      "filename": "common-usage.md"
+    },
+    {
+      "title": "01 Goal Shaping And Control",
+      "category": "by-goal",
+      "filename": "01_Goal_Shaping_And_Control.md"
+    },
+    {
+      "title": "03 Goal Creative Effect",
+      "category": "by-goal",
+      "filename": "03_Goal_Creative_Effect.md"
+    },
+    {
+      "title": "Ensemble Vocal Layering",
+      "category": "by-goal",
+      "filename": "ensemble-vocal-layering.md"
+    },
+    {
+      "title": "Thickening Synth Pads",
+      "category": "by-goal",
+      "filename": "thickening-synth-pads.md"
+    },
+    {
+      "title": "Guitars",
+      "category": "by-instrument",
+      "filename": "guitars.md"
+    },
+    {
+      "title": "Synth Bass",
+      "category": "by-instrument",
+      "filename": "synth-bass.md"
+    },
+    {
+      "title": "Vocals",
+      "category": "by-instrument",
+      "filename": "vocals.md"
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "description": "Mobile-optimized GMS presets for FL Studio Mobile compatibility",
+  "usage": "These presets use CPU-efficient settings while maintaining sound quality for mobile devices",
+  "optimizationNotes": [
+    "Keep unisono voices at 4 or less for mobile CPU efficiency",
+    "Limit active FX to 2-3 modules",
+    "Use simpler waveforms (sine, triangle) where possible",
+    "Avoid heavy modulation simultaneously",
+    "Presets are .gms format compatible with both Desktop and Mobile"
+  ],
+  "mobilePresets": [
+    {
+      "name": "Mobile Supersaw",
+      "category": "Leads",
+      "description": "CPU-friendly supersaw for mobile",
+      "optimization": "4 voices instead of 8, 2 FX only",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Sawtooth", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Sawtooth", "pitch": 0, "fine": 7 },
+          "osc3": { "wave": "Sawtooth", "pitch": 0, "fine": -7 }
+        },
+        "mix": { "osc2": 100, "osc3": 60, "noise": 0 },
+        "unisono": { "voices": 4, "stereo": 70, "detune": 45 },
+        "filter": { "type": "LP", "cutoff": 82, "res": 15 },
+        "levelEg": { "attack": 0, "decay": 25, "sustain": 90, "release": 30 }
+      },
+      "fxEnabled": ["FLNG", "RVRB"],
+      "fxSettings": {
+        "FLNG": { "x": 35, "y": 25 },
+        "RVRB": { "x": 40, "y": 30 }
+      }
+    },
+    {
+      "name": "Mobile 808",
+      "category": "Bass",
+      "description": "Efficient sub bass for mobile production",
+      "optimization": "Single voice, minimal modulation, 1 FX",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Sine", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Sine", "pitch": 24, "fine": 0 },
+          "osc3": { "wave": "None", "pitch": 0, "fine": 0 }
+        },
+        "modulation": { "mode": "2 to 1 FM", "amount": 35 },
+        "mix": { "osc2": 85, "osc3": 0, "noise": 5 },
+        "unisono": { "voices": 1, "stereo": 0, "detune": 0 },
+        "filter": { "type": "LP", "cutoff": 48, "res": 5 },
+        "envelope1": { "dest": "PITCH", "attack": 0, "decay": 28, "amount": -30 },
+        "levelEg": { "attack": 0, "decay": 18, "sustain": 65, "release": 32 }
+      },
+      "fxEnabled": ["DIST"],
+      "fxSettings": {
+        "DIST": { "x": 15, "y": 80 }
+      }
+    },
+    {
+      "name": "Mobile Pluck",
+      "category": "Melodic",
+      "description": "Light pluck for mobile melodies",
+      "optimization": "2 voices, 1 FX, simple FM",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Sine", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Sine", "pitch": 12, "fine": 0 },
+          "osc3": { "wave": "None", "pitch": 0, "fine": 0 }
+        },
+        "modulation": { "mode": "2 to 1 FM", "amount": 55 },
+        "mix": { "osc2": 100, "osc3": 0, "noise": 0 },
+        "unisono": { "voices": 2, "stereo": 40, "detune": 25 },
+        "filter": { "type": "LP", "cutoff": 90, "res": 8 },
+        "levelEg": { "attack": 0, "decay": 28, "sustain": 12, "release": 28 }
+      },
+      "fxEnabled": ["ECHO"],
+      "fxSettings": {
+        "ECHO": { "x": 30, "y": 65 }
+      }
+    },
+    {
+      "name": "Mobile Pad",
+      "category": "Pads",
+      "description": "Wide pad optimized for mobile",
+      "optimization": "6 voices (balanced), 2 FX, no LFO modulation",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Triangle", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Triangle", "pitch": 7, "fine": 4 },
+          "osc3": { "wave": "Triangle", "pitch": -7, "fine": -4 }
+        },
+        "mix": { "osc2": 80, "osc3": 70, "noise": 0 },
+        "unisono": { "voices": 6, "stereo": 90, "detune": 55 },
+        "filter": { "type": "LP", "cutoff": 65, "res": 12 },
+        "envelope1": { "dest": "CUTOFF", "attack": 45, "decay": 55, "amount": 25 },
+        "levelEg": { "attack": 60, "decay": 55, "sustain": 95, "release": 55 }
+      },
+      "fxEnabled": ["RVRB"],
+      "fxSettings": {
+        "RVRB": { "x": 55, "y": 40 }
+      }
+    },
+    {
+      "name": "Mobile Arp",
+      "category": "Sequence",
+      "description": "Tight arp for mobile sequences",
+      "optimization": "2 voices, simple subtractive, 1 FX",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Sawtooth", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Sawtooth", "pitch": 12, "fine": 0 },
+          "osc3": { "wave": "None", "pitch": 0, "fine": 0 }
+        },
+        "mix": { "osc2": 70, "osc3": 0, "noise": 0 },
+        "unisono": { "voices": 2, "stereo": 30, "detune": 20 },
+        "filter": { "type": "LP", "cutoff": 75, "res": 20 },
+        "envelope1": { "dest": "CUTOFF", "attack": 0, "decay": 18, "amount": 45 },
+        "levelEg": { "attack": 0, "decay": 22, "sustain": 35, "release": 22 }
+      },
+      "fxEnabled": ["ECHO"],
+      "fxSettings": {
+        "ECHO": { "x": 32, "y": 70 }
+      }
+    },
+    {
+      "name": "Mobile Trap Lead",
+      "category": "Leads",
+      "description": "Bright trap lead for mobile",
+      "optimization": "4 voices, 2 FX, moderate detune",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Sawtooth", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Sawtooth", "pitch": 7, "fine": 3 },
+          "osc3": { "wave": "Sawtooth", "pitch": -5, "fine": -3 }
+        },
+        "mix": { "osc2": 85, "osc3": 45, "noise": 0 },
+        "unisono": { "voices": 4, "stereo": 55, "detune": 40 },
+        "filter": { "type": "LP", "cutoff": 85, "res": 15 },
+        "levelEg": { "attack": 0, "decay": 22, "sustain": 90, "release": 30 }
+      },
+      "fxEnabled": ["DIST", "ECHO"],
+      "fxSettings": {
+        "DIST": { "x": 22, "y": 75 },
+        "ECHO": { "x": 28, "y": 60 }
+      }
+    },
+    {
+      "name": "Mobile Wobble",
+      "category": "Bass",
+      "description": "Basic wobble for mobile dubstep",
+      "optimization": "3 voices, 1 LFO, 2 FX",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Sawtooth", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Sawtooth", "pitch": 12, "fine": 0 },
+          "osc3": { "wave": "None", "pitch": 0, "fine": 0 }
+        },
+        "mix": { "osc2": 100, "osc3": 0, "noise": 0 },
+        "unisono": { "voices": 3, "stereo": 25, "detune": 35 },
+        "filter": { "type": "LP", "cutoff": 60, "res": 35 },
+        "lfo1": { "dest": "CUTOFF", "rate": 55, "amount": 60, "shape": "Triangle", "sync": "Beat" },
+        "levelEg": { "attack": 0, "decay": 30, "sustain": 85, "release": 20 }
+      },
+      "fxEnabled": ["DIST"],
+      "fxSettings": {
+        "DIST": { "x": 40, "y": 60 }
+      }
+    },
+    {
+      "name": "Mobile Keys",
+      "category": "Keys",
+      "description": "Electric piano-style for mobile",
+      "optimization": "3 voices, triangle waves, 1 FX",
+      "settings": {
+        "oscillators": {
+          "osc1": { "wave": "Triangle", "pitch": 0, "fine": 0 },
+          "osc2": { "wave": "Triangle", "pitch": 12, "fine": 2 },
+          "osc3": { "wave": "Sine", "pitch": -12, "fine": 0 }
+        },
+        "mix": { "osc2": 65, "osc3": 50, "noise": 8 },
+        "unisono": { "voices": 3, "stereo": 35, "detune": 30 },
+        "filter": { "type": "LP", "cutoff": 75, "res": 10 },
+        "envelope1": { "dest": "CUTOFF", "attack": 5, "decay": 30, "amount": 20 },
+        "levelEg": { "attack": 5, "decay": 30, "sustain": 80, "release": 35 }
+      },
+      "fxEnabled": ["ECHO"],
+      "fxSettings": {
+        "ECHO": { "x": 25, "y": 55 }
+      }
+    }
+  ],
+  "mobileWorkflowTips": [
+    "Save presets in .gms format for cross-platform compatibility",
+    "Test patches on both desktop and mobile before finalizing",
+    "Use freeze/render for complex patches in mobile projects",
+    "Keep polyphony in mind - mobile has limited voices",
+    "Export audio from mobile for desktop refinement",
+    "Use simpler waveforms on mobile for CPU headroom",
+    "Limit simultaneous GMS instances on mobile devices"
+  ]
+}

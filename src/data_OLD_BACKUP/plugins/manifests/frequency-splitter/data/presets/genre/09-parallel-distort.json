@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "plugin": "Frequency Splitter",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "presetName": "Parallel Distortion Split",
+    "category": "genre",
+    "genre": "EDM",
+    "mood": "electric"
+  },
+  "settings": {
+    "crossover1": 500,
+    "crossover2": 2000,
+    "slope": "24dB/oct",
+    "mode": "minimum-phase",
+    "band1": { "gain": -6, "processing": "clean low-end" },
+    "band2": { "gain": 6, "processing": "heavy distortion" },
+    "band3": { "gain": 0, "processing": "crisp highs" }
+  },
+  "chain": {
+    "pre": ["Clean band for foundation"],
+    "post": ["Recombine with parallel routing"]
+  },
+  "workflow": "Create parallel distortion effect. Clean lows + distorted mids + crisp highs for maximum impact.",
+  "genreTags": ["EDM", "distortion", "parallel", "electric"],
+  "a/bTesting": {
+    "testA": "Minimum phase for impact",
+    "testB": "Linear phase for transparency"
+  },
+  "troubleshooting": {
+    "tooDirty": "Reduce band2 gain by 6dB",
+    "thinSound": "Increase band1 gain by 3dB"
+  }
+}

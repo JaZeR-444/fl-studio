@@ -1,0 +1,188 @@
+{
+  "id": "fruity-7-band-eq",
+  "name": "Fruity 7 Band EQ",
+  "category": "EQ",
+  "tier": "Free",
+  "type": "EQ",
+  "description": "Fruity 7 Band EQ - EQ",
+  "tags": [
+    "mixing",
+    "tone-shaping",
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "eq",
+    "tone-shaping",
+    "mixing",
+    "audio"
+  ],
+  "icon": "/plugins/fruity-7-band-eq-icon.svg",
+  "color": "#84CC16",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-7-band-eq",
+  "has_presets": false,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "7band-eq-freqs": {
+      "plugin_name": "Fruity 7 Band EQ",
+      "category": "Effect / Mixing",
+      "engine": "Parallel Peaking Filter Bank",
+      "bands": [
+        {
+          "hz": 63,
+          "impact": "Sub-Bass",
+          "vibe": "Weight"
+        },
+        {
+          "hz": 250,
+          "impact": "Low-Mids",
+          "vibe": "Warmth"
+        },
+        {
+          "hz": 500,
+          "impact": "Mids",
+          "vibe": "Body"
+        },
+        {
+          "hz": 1500,
+          "impact": "Upper-Mids",
+          "vibe": "Nasal"
+        },
+        {
+          "hz": 3000,
+          "impact": "Presence",
+          "vibe": "Aggression"
+        },
+        {
+          "hz": 5000,
+          "impact": "Brilliance",
+          "vibe": "Crispness"
+        },
+        {
+          "hz": 8000,
+          "impact": "High-End",
+          "vibe": "Air"
+        }
+      ],
+      "specs": {
+        "gain_range": "+/- 12dB",
+        "cpu_impact": "Negligible",
+        "latency": "Zero (IIR)"
+      }
+    },
+    "eq-specs": {
+      "plugin": {
+        "name": "Fruity 7 Band EQ",
+        "category": "EQ",
+        "type": "Graphic Equalizer",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%207%20Band%20EQ.htm"
+      },
+      "parameters": {
+        "bands": [
+          {
+            "id": "band1",
+            "freq": 63,
+            "unit": "Hz",
+            "label": "Sub"
+          },
+          {
+            "id": "band2",
+            "freq": 160,
+            "unit": "Hz",
+            "label": "Bass"
+          },
+          {
+            "id": "band3",
+            "freq": 400,
+            "unit": "Hz",
+            "label": "Mud/Low-Mid"
+          },
+          {
+            "id": "band4",
+            "freq": 1000,
+            "unit": "Hz",
+            "label": "Mids"
+          },
+          {
+            "id": "band5",
+            "freq": 2500,
+            "unit": "Hz",
+            "label": "Presence"
+          },
+          {
+            "id": "band6",
+            "freq": 6300,
+            "unit": "Hz",
+            "label": "Sibilance"
+          },
+          {
+            "id": "band7",
+            "freq": 16000,
+            "unit": "Hz",
+            "label": "Air"
+          }
+        ],
+        "global": [
+          {
+            "id": "masterGain",
+            "name": "Gain",
+            "range": "-18 to +18 dB"
+          }
+        ]
+      },
+      "bestFor": [
+        "Quick frequency balancing",
+        "Low CPU environments",
+        "Live mixing",
+        "Individual drum hit shaping"
+      ]
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity 7 Band EQ\n\n## Purpose and Identity\n**Fruity 7 Band EQ** is a classic graphic equalizer designed for rapid, broad tonal shaping. Unlike parametric EQs that use floating nodes, it features 7 fixed faders at musically significant frequency centers (63Hz to 8kHz+). It is the most CPU-efficient EQ in FL Studio, making it ideal for \"broad strokes\" mixing and quick tonal fixes. [SRC: IL-MAN]\n\n## 60-Second Mental Model\nThink of it as the **\"Tone Control\"** on a high-end car stereo or home theater system. You don't have to hunt for frequencies; you just grab the \"Bass\" (63Hz), the \"Mids\" (500Hz/1.5kHz), or the \"Air\" (8kHz) and move them up or down. It's built for **speed** and **decision-making**, not for surgical precision.\n\n## Typical Roles In A Session\n- **The \"Car Test\" Simulator**: Quickly cutting or boosting bands to hear how a mix translates to consumer systems.\n- **Fast Balancer**: Adding \"sparkle\" to a dull vocal or \"warmth\" to a thin synth in under 5 seconds.\n- **Lo-Fi Texturizer**: Creating \"Telephone\" or \"Radio\" effects by aggressively cutting the top and bottom bands.\n\n## Hip-Hop/R&B Context\n- **Snare Crack**: Boosting the **3000Hz** band to make a snare hit through a dense 808 layer.\n- **Vocal Air**: Boosting the **8000Hz+** band for that expensive, silky sheen on melodic rap.\n- **Low-Mid Mud Removal**: Cutting the **250Hz** band on a melodic loop to leave room for the fundamental frequencies of the vocal.\n\n## When to Use vs When NOT to Use\n| Use It When... | Avoid It When... |\n| :--- | :--- |\n| You need to change the tone FAST. | You need to remove a specific annoying \"whistle\" frequency. |\n| You want extremely low CPU usage. | You need a visualization of the spectrum (use Parametric EQ 2). |\n| You are doing \"Car Test\" or consumer-level checks. | You need to automate complex filter sweeps (use EQUO). |\n| You want a \"musical\" broad-stroke sound. | You need to see exactly where your 808 fundamental is. |\n",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Fruity 7 Band EQ\n\n## UI Tour\nThe interface is a simple horizontal row of faders. [SRC: IL-MAN]\n\n### 1. The Frequency Faders (The \"Seven\")\n- **63**: Sub-bass and deep kick \"thump.\"\n- **250**: Low-mid warmth and snare \"body.\"\n- **500**: Mid-range \"woodiness\" and vocal weight.\n- **1500**: Upper-mid clarity and guitar/keys definition.\n- **3000**: Presence, pick noise, and vocal \"bite.\"\n- **5000**: Brilliance and percussion crispness.\n- **8000**: High-end \"Air\" and cymbal sizzle.\n\n### 2. Output Control\n- **Output Gain**: Adjusts the final level. \n- **Important**: If you boost multiple EQ bands, the signal will get much louder. Use this knob to \"Gain Stage\" so the track doesn't clip.\n\n## Signal Flow\n1. **Input**: Stereo audio signal enters.\n2. **Parallel Filter Bank**: The signal is split into seven parallel peaking filters.\n3. **Gain Adjustment**: Each filter applies a boost or cut based on fader position (typically +/- 12dB).\n4. **Summing**: The seven signals are recombined.\n5. **Output Gain**: Master volume is applied.\n6. **Output**: The processed signal leaves the plugin.\n\n## Things Beginners Misunderstand\n- **\"The frequencies are wrong\"**: You cannot change the center frequency of these bands. They are fixed at standard musical intervals. If you need a split at 100Hz instead of 63Hz, use a Parametric EQ.\n- **Q-Factor**: The \"width\" of each band is fixed. Boosting one band will subtly affect the frequencies surrounding it, creating a natural, overlapping curve.\n- **Digital vs Analog**: This is a standard digital IIR EQ. It is clean and transparent at neutral settings.\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques And Best Practices: Fruity 7 Band EQ\n\n## 1. The \"Consumer\" Reality Check\nMimic how your listener might EQ your track.\n- **Technique**: Place Fruity 7 Band EQ on your Master track (Post-Mastering).\n- **Move**: Boost the **63Hz** and **8000Hz** bands by +3dB (The \"Smiley Face\" curve).\n- **Goal**: Does your mix still sound balanced? Many car stereos have this exact EQ profile by default.\n\n## 2. Instant Vocal \"Presence\"\nMake a vocal \"pop\" out of a busy track.\n- **Technique**: Boost the **3000Hz** band by +2dB.\n- **Move**: Cut the **250Hz** band by -2dB to remove \"chestiness.\"\n- **Listen For**: The vocal getting sharper and more defined in the center of the mix.\n\n## 3. The Telephone Effect (Fast)\nThe quickest way to get a lo-fi radio sound.\n- **Technique**: Pull the **63**, **250**, and **8000** faders all the way down (-12dB).\n- **Move**: Boost the **1500** and **3000** faders to the max.\n- **Result**: Immediate, focused mid-range that sounds like a vintage communication device.\n\n## 4. Cleaning the \"Mud\" from Samples\n- **Technique**: Use the **500Hz** band on melodic loops.\n- **Move**: Apply a -4dB cut.\n- **Why**: 500Hz is the \"Boxiness\" frequency. Removing it often makes a sample sound \"cleaner\" and \"more professional\" instantly.\n\n## 5. Gain Staging Protocol\n- **Rule**: If you boost any band, you **MUST** lower the **Output Gain** knob.\n- **Action**: Look at the mixer meter. If it was hitting -6dB before the EQ, make sure it's still hitting -6dB after the EQ.\n- **Benefit**: This allows you to hear the *tonal* change without being fooled by the \"Louder is Better\" brain bias. [SRC: REPUTABLE]\n\n## Common Pitfalls + Fixes\n| Pitfall | The Fix |\n| :--- | :--- |\n| **Harsh Mix** | You have over-boosted the **3000** or **5000** bands. Pull them back to zero. |\n| **Sub-Bass distortion** | Boosting **63Hz** too far can cause your master limiter to freak out. Cut the band instead if it's too heavy. |\n| **Phase Issues** | Extreme boosts/cuts on a multi-mic drum recording. Use subtle moves (+/- 3dB max). |\n",
+      "03_Vibe_Tonal_Translation_Guide": "# Vibe Translation Guide: Fruity 7 Band EQ\n\nUsing broad frequency zones to hit specific production aesthetic targets.\n\n---\n\n## 1. MOODY\n*Darkness, weight, and \"heavy\" atmospheres.*\n- **The Lever**: **Low-Mid Emphasis + High-End Shelving**.\n- **Move**: Boost **250Hz** (+2dB). Cut **5000Hz** and **8000Hz** (-4dB).\n- **What to Listen For**: The sound feels \"submerged\" and warm. High frequencies are rounded off, creating a sense of distance and melancholy.\n- **Don't Do This**: Boosting **3000Hz** (too energetic).\n\n## 2. UPBEAT\n*Clarity, snap, and high-frequency \"sparkle\".*\n- **The Lever**: **The \"Presence\" Peak + Air Boost**.\n- **Move**: Boost **3000Hz** (+3dB). Boost **8000Hz** (+2dB). Cut **63Hz** (-2dB).\n- **What to Listen For**: A \"bright\" and aggressive sound that feels like it's jumping forward. The lack of sub-bass makes the transient energy feel lighter and faster.\n- **Don't Do This**: Cutting the **5000Hz** band (kills the brilliance).\n\n## 3. PSYCHEDELIC\n*Unnatural \"notched\" textures and shifting balances.*\n- **The Lever**: **Extreme Mid-Range \"Phasing\" Logic**.\n- **Move**: Boost **250Hz** and **3000Hz** to max. Cut **500Hz** and **1500Hz** to minimum.\n- **What to Listen For**: A \"hollow\" or \"robotic\" texture that sounds like a fixed phaser. It breaks the natural balance of the instrument.\n- **Don't Do This**: Keeping the faders near zero.\n\n## 4. JAZZY\n*Warmth, organic \"rounding,\" and soulful mid-range.*\n- **The Lever**: **Woody Mid Boost + Soft Sub-Cut**.\n- **Move**: Boost **500Hz** (+2dB). Cut **63Hz** (-1dB). Keep everything else flat.\n- **What to Listen For**: A \"rounded\" tone that emphasizes the body of the Rhodes or Guitar. It feels \"human\" and \"wooden.\"\n- **Don't Do This**: High boosts at **5000Hz** (sounds too digital).\n\n## 5. VIBEY\n*Modern luxury, smooth silk, and \"expensive\" sheen.*\n- **The Lever**: **Silky Air-Boost + Boxiness Cut**.\n- **Move**: Boost **8000Hz** (+4dB). Cut **500Hz** (-3dB).\n- **What to Listen For**: The sound feels \"processed\" in a professional way. It has a high-budget, clean sheen that fits perfectly into modern R&B.\n- **Don't Do This**: Heavy boosts in the **250Hz** range.\n\n---\n\n## Vibe Parameter Matrix (Fader Positions)\n| Vibe | 63Hz | 250Hz | 500Hz | 3kHz | 8kHz |\n| :--- | :--- | :--- | :--- | :--- | :--- |\n| **Moody** | Flat | + | Flat | Cut | -- |\n| **Upbeat** | -- | Flat | Flat | ++ | + |\n| **Psyched** | Flat | ++ | -- | ++ | Flat |\n| **Jazzy** | - | Flat | + | Flat | Flat |\n| **Vibey** | Flat | Flat | - | Flat | ++ |\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity 7 Band Eq\r\n\r\n## What It Is\r\nFruity 7 Band Eq is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Fruity 7 Band Eq\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "parameter-reference.md": {
+      "parameter-reference": "# Fruity 7 Band EQ Parameter Reference\n\n## Band Structure Overview\n\nFruity 7 Band EQ features seven fully parametric frequency bands covering the entire audible spectrum. Each band can function as bell filter, shelf filter, or high/low pass filter.\n\n## Band 1: Low Shelf (20Hz - 200Hz)\n\n### Frequency Range\n- **Minimum**: 20Hz\n- **Maximum**: 200Hz\n- **Default**: 60Hz\n- **Type**: Shelf filter\n- **Q Control**: Available for shelf slope adjustment\n\n### Common Applications\n```\nSub-Bass Enhancement: +1 to +4dB at 30-60Hz\nRumble Control: -2 to -6dB at 20-40Hz\nLow-End Warmth: +1 to +3dB at 80-120Hz\nLow-Frequency Cut: -3 to -12dB below 40Hz\n```\n\n### Technical Characteristics\n- **Shelf Slope**: 12dB/octave standard\n- **Phase Response**: Minimal phase shift\n- **Musical Q**: 0.7 to 1.5 for shelf adjustments\n- **Surgical Q**: 2 to 4 for precise control\n\n## Band 2: Low-Mid Bell (40Hz - 500Hz)\n\n### Frequency Range\n- **Minimum**: 40Hz\n- **Maximum**: 500Hz\n- **Default**: 200Hz\n- **Type**: Bell filter\n- **Q Range**: 0.7 to 10\n\n### Common Applications\n```\nBass Guitar Fundamental: +2 to +6dB at 80-120Hz\nKick Drum Body: +1 to +4dB at 60-100Hz\nBoominess Control: -2 to -4dB at 150-250Hz\nChest Thump: +1 to +3dB at 80-100Hz\n```\n\n### Technical Characteristics\n- **Bell Shape**: Symmetrical response curve\n- **Narrow Q**: 4-8 for surgical removal\n- **Wide Q**: 0.7-2 for musical enhancement\n- **Frequency Resolution**: 1Hz precision\n\n## Band 3: Mid Bell 1 (200Hz - 2kHz)\n\n### Frequency Range\n- **Minimum**: 200Hz\n- **Maximum**: 2000Hz\n- **Default**: 800Hz\n- **Type**: Bell filter\n- **Q Range**: 0.7 to 10\n\n### Common Applications\n```\nMud Reduction: -2 to -6dB at 250-400Hz\nVocal Body: +1 to +3dB at 800Hz-1.2kHz\nGuitar Honk Control: -3 to -6dB at 600-800Hz\nLower Midrange Clarity: +1 to +2dB at 1kHz\n```\n\n### Critical Frequencies\n- **200-300Hz**: Mud and boxiness\n- **400-600Hz**: Body and warmth\n- **800Hz-1.2kHz**: Vocal presence\n- **1.5-2kHz**: Definition and intelligibility\n\n## Band 4: Mid Bell 2 (500Hz - 5kHz)\n\n### Frequency Range\n- **Minimum**: 500Hz\n- **Maximum**: 5000Hz\n- **Default**: 2000Hz\n- **Type**: Bell filter\n- **Q Range**: 0.7 to 10\n\n### Common Applications\n```\nVocal Presence: +2 to +4dB at 2-3kHz\nInstrument Definition: +1 to +3dB at 3-5kHz\nNasal Reduction: -2 to -4dB at 1kHz\nForward Projection: +1.5 to +3dB at 2.5kHz\n```\n\n### Critical Frequencies\n- **500-800Hz**: Lower vocal range\n- **1kHz**: Vocal intelligibility\n- **2-3kHz**: Presence and forwardness\n- **4-5kHz**: Attack and definition\n\n## Band 5: High-Mid Bell (2kHz - 10kHz)\n\n### Frequency Range\n- **Minimum**: 2000Hz\n- **Maximum**: 10000Hz\n- **Default**: 6000Hz\n- **Type**: Bell filter\n- **Q Range**: 0.7 to 10\n\n### Common Applications\n```\nVocal Air: +1 to +3dB at 6-8kHz\nGuitar Attack: +2 to +4dB at 3-5kHz\nHarshness Control: -1 to -3dB at 4-6kHz\nPercussion Definition: +1 to +2dB at 8-10kHz\n```\n\n### Critical Frequencies\n- **2-3kHz**: Clarity and detail\n- **4-6kHz**: Sibilance and harshness\n- **6-8kHz**: Air and presence\n- **8-10kHz**: Brilliance and sparkle\n\n## Band 6: High Shelf (4kHz - 20kHz)\n\n### Frequency Range\n- **Minimum**: 4000Hz\n- **Maximum**: 20000Hz\n- **Default**: 12000Hz\n- **Type**: Shelf filter\n- **Q Control**: Available for shelf slope\n\n### Common Applications\n```\nHigh-Frequency Air: +1 to +3dB at 12-16kHz\nBrilliance Enhancement: +0.5 to +2dB at 10-14kHz\nHarshness Reduction: -1 to -2dB at 4-8kHz\nDetail Addition: +1 to +2dB at 15kHz+\n```\n\n### Technical Characteristics\n- **Shelf Slope**: 12dB/octave standard\n- **Air Frequencies**: 12-20kHz affects perceived quality\n- **Digital Harshness**: 14-18kHz can cause digital harshness\n- **Analog Warmth**: Subtle boosts add analog character\n\n## Band 7: Air Band (8kHz - 20kHz)\n\n### Frequency Range\n- **Minimum**: 8000Hz\n- **Maximum**: 20000Hz\n- **Default**: 16000Hz\n- **Type**: Bell filter (optimized for air)\n- **Q Range**: 0.7 to 4 (wider range)\n\n### Common Applications\n```\nAir Enhancement: +1 to +3dB at 16kHz+\nSubtle Sparkle: +0.5 to +1.5dB at 12-14kHz\nHigh-Frequency Extension: +1 to +2dB at 18kHz+\nVintage Tape Air: +2 to +4dB at 12kHz\n```\n\n### Psychoacoustic Effects\n- **Perceived Quality**: 16-20kHz affects perceived recording quality\n- **Air and Space**: Creates sense of space and air\n- **Digital Enhancement**: Compensates for digital recording character\n- **Subtle Impact**: Small changes have big perceived impact\n\n## Global Parameters\n\n### Gain Control\n- **Range**: ±24dB per band\n- **Resolution**: 0.1dB precision\n- **Unity**: 0dB position\n- **Detent**: Clicked position at 0dB\n\n### Q Factor Control\n- **Range**: 0.7 to 10.0\n- **Resolution**: 0.1 precision\n- **Default**: 2.0 (musical medium)\n- **Types**: Different Q behaviors for different band types\n\n### Filter Type Selection\n**Band Types**:\n- **Bell**: Symmetrical boost/cut\n- **Low Shelf**: Below frequency point\n- **High Shelf**: Above frequency point\n- **Low Pass**: High frequency roll-off\n- **High Pass**: Low frequency roll-off\n- **Band Pass**: Only frequencies within range\n- **Notch**: Narrow frequency removal\n\n## Technical Specifications\n\n### Frequency Response\n- **Frequency Range**: 20Hz to 20kHz\n- **Frequency Resolution**: 1Hz precision\n- **Phase Response**: Linear phase option available\n- **Group Delay**: Minimal for musical use\n\n### Quality Metrics\n- **THD+N**: <0.001% at unity gain\n- **Dynamic Range**: 120dB\n- **Noise Floor**: -120dBu\n- **Frequency Accuracy**: ±0.5Hz\n\n### Processing Characteristics\n- **Latency**: Zero samples (real-time processing)\n- **CPU Usage**: 0.3% per instance at 44.1kHz\n- **Memory**: 1MB per instance\n- **Sample Rate**: 44.1kHz to 192kHz support\n\n## Advanced Features\n\n### Filter Mode Options\n**Bell Filter Modes**:\n- **Symmetrical**: Standard bell shape\n- **Asymmetric**: Different boost/cut shapes\n- **Proportional Q**: Q changes with gain amount\n- **Constant Q**: Q remains constant with gain\n\n**Shelf Filter Modes**:\n- **Standard Shelf**: 12dB/octave slope\n- **Steep Shelf**: 18dB/octave slope\n- **Gentle Shelf**: 6dB/octave slope\n- **Variable Q**: Adjustable shelf steepness\n\n### Analysis Tools\n**Frequency Analysis**:\n- **Real-time Spectrum**: Live frequency display\n- **Pre/Post EQ**: Shows EQ curve and response\n- **Peak Hold**: Identifies problem frequencies\n- **Averaging**: Smooths display for clarity\n\n**Metering**:\n- **Input/Output Meters**: Level monitoring\n- **Gain Reduction Meter**: Shows overall gain change\n- **Phase Meter**: Phase coherence monitoring\n- **Correlation Meter**: Stereo image analysis\n\n### Preset Management\n**Preset Organization**:\n- **Factory Presets**: 50+ professional starting points\n- **User Presets**: Unlimited custom presets\n- **A/B Comparison**: Quick preset switching\n- **Morphing**: Smooth preset transitions\n\n**Preset Categories**:\n- **Mix Bus**: Overall mix enhancement\n- **Instrument**: Specific instrument EQ\n- **Vocal**: Vocal enhancement and correction\n- **Mastering**: Final polish and correction\n- **Problem Solving**: Common audio issues\n- **Creative**: Artistic sound shaping\n\n## Professional Usage Guidelines\n\n### Gain Staging\n- **Input Level**: -18dB to -12dB optimal\n- **Output Compensation**: Auto gain correction available\n- **Headroom**: Maintain 6dB headroom\n- **Digital Clipping**: Avoid at all costs\n\n### Surgical Precision\n- **Narrow Q**: Use Q=4+ for specific problems\n- **Small Adjustments**: ±3dB maximum for surgical cuts\n- **Frequency Accuracy**: Use spectrum analyzer for precision\n- **Context Testing**: Always check in full mix\n\n### Musical Enhancement\n- **Wide Q**: Use Q=0.7-2 for musical boosts\n- **Gentle Gains**: ±1.5dB maximum for musical enhancement\n- **Harmonic Relationships**: Consider musical intervals\n- **Genre Context**: Adjust approach based on musical style\n\nThis parameter reference provides comprehensive understanding of Fruity 7 Band EQ's extensive control set for professional equalization tasks."
+    },
+    "Quick-Reference": {
+      "eq-band-guide": "# Fruity 7 Band EQ Guide\n\n| Band | Frequency | Target Content |\n| :--- | :--- | :--- |\n| **Band 1** | ~63 Hz | Sub-bass, kick \"thump\". |\n| **Band 2** | ~160 Hz | Bass body, \"boxiness\" area. |\n| **Band 3** | ~400 Hz | Low-mids, \"mud\" territory. |\n| **Band 4** | ~1 kHz | Core of vocals and instruments. |\n| **Band 5** | ~2.5 kHz | Presence, clarity, and \"bite\". |\n| **Band 6** | ~6.3 kHz | High-mids, percussion \"snap\". |\n| **Band 7** | ~16 kHz | Air and shimmer. |\n",
+      "graphic-vs-parametric": "# Quick Reference: Graphic vs. Parametric EQ\n\nChoosing the right tool for your mix task. [SRC: IL-MAN]\n\n## 1. Fruity 7 Band EQ (Graphic)\n- **Workflow**: Fast, fader-based.\n- **Precision**: Low. Bands are fixed at specific centers.\n- **Philosophy**: Broad-strokes and tonal \"character\" shifts.\n- **Best For**:\n  - Quick tone checks (Car test).\n  - Lo-Fi creative effects.\n  - Low-CPU mixing on old laptops.\n  - Mastering \"balance\" shifts.\n\n## 2. Fruity Parametric EQ 2 (Parametric)\n- **Workflow**: Precise, node-based.\n- **Precision**: High. You choose the frequency, slope, and Q (width).\n- **Philosophy**: Surgical correction and frequency \"carving.\"\n- **Best For**:\n  - Removing a specific resonant \"whistle.\"\n  - High-pass and Low-pass filters with steep slopes.\n  - Sidechain EQing.\n  - Visually seeing where sounds clash.\n\n---\n**Rule of Thumb**: Use the **7 Band EQ** to find the *vibe*; use **Parametric EQ 2** to fix the *problem*.\n",
+      "parameter-cheat-sheet": "# Parameter Cheat Sheet: Fruity 7 Band EQ\n\nThe essential modifiers for the classic graphic EQ. [SRC: IL-MAN]\n\n---\n\n## 🎚️ The Frequency Zones\n- **63Hz**: Sub-Thump / Rumble.\n- **250Hz**: Warmth / Muddiness.\n- **500Hz**: Body / Boxiness.\n- **1.5kHz**: Clarity / Nasal Tones.\n- **3.0kHz**: Presence / Snare \"Crack.\"\n- **5.0kHz**: Brilliance / Percussion.\n- **8.0kHz**: Air / Sizzle.\n\n## 🛠️ Global Modifiers\n- **Output Gain**: Adjusts final volume. **MUST** use if boosting bands.\n- **On/Off LED**: Bypasses the plugin for A/B testing.\n\n## ⚙️ Navigation Tips\n- **Double Click Fader**: Resets the band to 0dB.\n- **Scroll Wheel**: Fine-tune fader position.\n- **Alt + Click**: (If supported) resets the entire plugin to flat.",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity 7 Band Eq\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity 7 Band Eq to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity 7 Band Eq\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "quick-start-guide.md": {
+      "quick-start-guide": "# Fruity 7 Band EQ Quick Start Guide\n\n## Getting Started in 60 Seconds\n\n### Basic Mix Bus EQ\n1. **Load Fruity 7 Band EQ** on your master or mix bus\n2. **Start with all bands at 0dB** (no processing)\n3. **Add 2dB at 80Hz** (low-mid band) for warmth\n4. **Cut 2dB at 300Hz** (mid band 1) to reduce mud\n5. **Add 2dB at 10kHz** (high-mid band) for air\n\n## The 7 Bands Explained\n\n### Band 1: Low Shelf (20-200Hz)\n- **Purpose**: Sub-bass and low-end warmth\n- **Common Uses**: Add weight, control rumble\n- **Tip**: Gentle boosts (+1-3dB) work best\n\n### Band 2: Low-Mid Bell (40-500Hz)  \n- **Purpose**: Bass fundamentals and body\n- **Common Uses**: Add punch, control boom\n- **Tip**: Watch for masking with other instruments\n\n### Band 3: Mid Bell 1 (200Hz-2kHz)\n- **Purpose**: Lower midrange clarity\n- **Common Uses**: Cut mud, add presence\n- **Tip**: Most problem frequencies live here\n\n### Band 4: Mid Bell 2 (500Hz-5kHz)\n- **Purpose**: Vocal presence and intelligibility\n- **Common Uses**: Vocal clarity, instrument definition\n- **Tip**: Critical for vocal intelligibility\n\n### Band 5: High-Mid Bell (2kHz-10kHz)\n- **Purpose**: Attack, definition, and brightness\n- **Common Uses**: Add attack, enhance detail\n- **Tip**: Can cause harshness if over-boosted\n\n### Band 6: High Shelf (4kHz-20kHz)\n- **Purpose**: Air and brilliance\n- **Common Uses**: Add sparkle, enhance brightness\n- **Tip**: Subtle boosts (+1-2dB) for professional results\n\n### Band 7: Air Band (8kHz-20kHz)\n- **Purpose**: Ultra-high frequency air\n- **Common Uses**: Add air, enhance space\n- **Tip**: Very high frequencies affect perceived quality\n\n## Common Starting Points\n\n### Mix Bus Enhancement\n```\nBand 1: +1.5dB at 60Hz (warmth)\nBand 3: -1.5dB at 300Hz (mud reduction)\nBand 5: +2dB at 8kHz (air)\nOther bands: 0dB\n```\n\n### Vocal Enhancement\n```\nBand 3: +2dB at 2kHz (presence)\nBand 4: +1.5dB at 4kHz (clarity)\nBand 6: +1dB at 12kHz (air)\nOther bands: 0dB\n```\n\n### Bass Guitar Enhancement\n```\nBand 1: +3dB at 80Hz (weight)\nBand 2: +2dB at 200Hz (body)\nBand 4: +1dB at 1kHz (definition)\nOther bands: 0dB\n```\n\n## Problem-Solving Examples\n\n### Mix Sounds Muddy\n**Solution**: Cut 2-3dB at 250-400Hz using Band 3\n**Q Setting**: Medium (Q=2-3) for gentle reduction\n\n### Vocals Get Lost\n**Solution**: Boost 2-3dB at 2-4kHz using Bands 3-4\n**Q Setting**: Narrow (Q=4-6) for focused boost\n\n### Mix Lacks Sparkle\n**Solution**: Boost 1-2dB at 10-12kHz using Bands 5-6\n**Q Setting**: Wide (Q=1-2) for gentle enhancement\n\n### Bass Overpowers Mix\n**Solution**: Cut 2-4dB at 80-120Hz using Band 2\n**Q Setting**: Medium (Q=2-3) for musical reduction\n\n## Q Settings Guide\n\n### Q Values and Uses\n- **Q=0.7-1.5**: Wide, musical adjustments\n- **Q=1.5-3**: Moderate bandwidth, general use\n- **Q=3-6**: Narrow, surgical corrections\n- **Q=6-10**: Very narrow, specific problems\n\n### Practical Q Examples\n```\nWide Boost: Q=1.2 for musical warmth\nSurgical Cut: Q=5 for removing resonances\nVocal Presence: Q=4 for focused boost\nGeneral Tone: Q=2 for overall shaping\n```\n\n## Genre-Specific Starting Points\n\n### Pop Music\n```\nBand 1: +1dB at 80Hz\nBand 3: -1dB at 400Hz\nBand 5: +2dB at 8kHz\nResult: Clean, bright, radio-ready\n```\n\n### Rock Music\n```\nBand 1: +3dB at 100Hz\nBand 4: +2dB at 2kHz\nBand 6: +1.5dB at 12kHz\nResult: Powerful, aggressive, clear\n```\n\n### Electronic Music\n```\nBand 2: +2dB at 60Hz\nBand 5: +3dB at 6kHz\nBand 7: +2dB at 15kHz\nResult: Punchy, bright, modern\n```\n\n### Hip-Hop\n```\nBand 1: +4dB at 60Hz\nBand 3: -2dB at 300Hz\nBand 6: +1dB at 10kHz\nResult: Heavy sub, clean mids, crisp highs\n```\n\n## Professional Tips\n\n### The 80/20 Rule\n- 80% of EQ work is subtractive (cutting)\n- 20% is additive (boosting)\n- Cuts generally sound more natural than boosts\n\n### Less is More\n- Start with small adjustments (±1-2dB)\n- Small changes make big differences\n- Multiple small cuts > one large boost\n\n### A/B Testing\n- Always bypass to check improvement\n- Level-match when comparing\n- Listen in context, not in solo\n\n### Monitor at Different Volumes\n- Check EQ at various listening levels\n- Fletcher-Munson curve affects bass perception\n- Make final decisions at moderate volume\n\n## Common Mistakes to Avoid\n\n❌ Over-EQing (extreme boosts or cuts)\n❌ Ignoring context (only listening solo)\n❌ Not leveling matching when A/B testing\n❌ Using too narrow Q for musical boosts\n❌ Adding too much high-frequency air\n\n## Quick Reference Chart\n\n| Problem | Band | Frequency | Action | Amount |\n|---------|------|-----------|--------|--------|\n| Muddy | 3 | 300Hz | Cut | -2dB |\n| Thin | 2 | 100Hz | Boost | +3dB |\n| Harsh | 5 | 4kHz | Cut | -1.5dB |\n| Dull | 6 | 12kHz | Boost | +2dB |\n| Boomy | 1 | 60Hz | Cut | -3dB |\n| Nasal | 4 | 1kHz | Cut | -2dB |\n| No Air | 7 | 15kHz | Boost | +1.5dB |\n\nThis quick start guide provides immediate functionality while teaching fundamental EQ concepts. Start here, then explore advanced techniques as you gain experience."
+    },
+    "README.md": {
+      "README": "# Learning - Fruity 7 Band Eq\r\n\r\nThis section contains learning information for the fruity-7-band-eq plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "car-test-translation-check": "# Goal Workflow: Car Test Translation Check (Consumer Proofing)\n\n*Goal: Stress-testing your mix to see if it will fall apart on cheap car stereos or earbuds.*\n\n## 🚶 Step-by-Step Setup\n1. **The \"Boom\" Test**:\n   - Boost the **63Hz** band to +6dB. \n   - *Logic*: Many car sub-woofers are \"untuned\" and over-emphasize the low end. \n   - *Check*: Does your mix distort or turn into a muddy mess? If so, you need to compress your 808 more on the desktop.\n2. **The \"Harsh\" Test**:\n   - Boost the **3000Hz** band to +4dB.\n   - *Logic*: Cheap earbud speakers often have a \"spike\" in this range.\n   - *Check*: Is the vocal hurting your ears? If it is, you need to de-ess the lead vocal more aggressively.\n3. **The \"Mono\" Check**:\n   - Set the Mixer track to Mono while the EQ is active.\n4. **Final Decision**:\n   - If your mix still sounds \"okay\" under these extreme conditions, it is likely ready for release.\n5. **Reset**: Always disable this EQ before you do your final render!\n\n## 🔄 Variations\n- **The \"Laptop\" Simulation**: Cut **63Hz** and **250Hz** entirely. Can you still hear the \"key\" of your 808? If not, you need to add more saturation to the bass.\n- **The \"Mall\" Simulation**: Boost **1500Hz** and add a massive Reverb tail.\n\n## ⚠️ Pitfalls & Fixes\n- **Problem**: I forgot to turn the EQ off.\n- **Fix**: Label the plugin instance \"!! TEST ONLY !!\" in the mixer slot.\n",
+      "cleaning-up-muddiness": "# Cleaning Up Muddiness Workflow\n\n## Goal\nRemove excessive low-mid frequency build-up to allow the main elements of the mix to breathe.\n\n## Steps\n1. **Insert 7 Band EQ**: Place it on the track showing \"muddiness\" (often guitars, synths, or muddy vocals).\n2. **Identify the Mud**: Usually resides in the **400Hz** region.\n3. **Apply the Cut**: Lower the **400Hz** band (Band 3) by **3-6 dB**.\n4. **Clean the Low End**: If the instrument doesn't need sub-frequencies, lower the **63Hz** band (Band 1).\n5. **Check Balance**: If the track sounds too thin after the 400Hz cut, try boosting the **2.5kHz** band (Band 5) slightly to add clarity.\n\n## Pro Tip\nFruity 7 Band EQ is extremely low CPU. Use it on individual tracks instead of Fruity Parametric EQ 2 if you only need simple, broad adjustments.\n",
+      "mixing-with-your-ears": "# The \"Mixing with Your Ears\" Workflow\n\n## Goal\nImprove a track's tone without getting distracted by complex visual graphs or dozens of parameters.\n\n## Steps\n1. **Insert 7 Band EQ**: Place it on your lead instrument or vocal.\n2. **The \"Band Mute\" Audition**: \n   - One by one, move a slider to its maximum (+18dB).\n   - Listen to what *that specific frequency* does to the sound.\n   - If it sounds \"harsh\" or \"muddy\", you know you need to cut there.\n   - If it sounds \"exciting\" or \"clear\", you might want a small boost.\n3. **Apply the Cuts First**:\n   - Start with **400Hz** (Band 3). Almost every instrument benefits from a slight cut here in a busy mix.\n   - Cut **63Hz** (Band 1) if the track isn't a kick or bass.\n4. **Apply Subtle Boosts**:\n   - Boost **16kHz** (Band 7) for vocals or hi-hats.\n   - Boost **2.5kHz** (Band 5) for lead guitars or synths to help them \"pop\".\n5. **Level Matching**: Use the **Gain** slider to ensure the volume is the same when you toggle the EQ on/off.\n\n## Why this works\nBy limiting your choices to 7 fixed bands, you spend less time \"fiddling\" with frequency values and more time listening to the actual tonal balance of the track.\n",
+      "quick-mastering-balance": "# Goal Workflow: Quick Mastering Balance (The Final Polish)\n\n*Goal: Using broad strokes to finalize the tonal balance of your full mix before export.*\n\n## 🎛️ Routing Context\n- **Routing**: Final slot on the Master Mixer track (Post-Limiter).\n\n## 🚶 Step-by-Step Setup\n1. **The Sub Check**:\n   - Boost the **63Hz** band by 1dB. Does the mix feel better or worse?\n   - If better, keep it. If it sounds \"boomy,\" try a 1dB cut instead.\n2. **The \"Boxy\" Check**:\n   - Cut the **500Hz** band by 1dB. \n   - *Logic*: This usually creates a \"clearing\" in the middle of the mix that allows instruments to sound more separated.\n3. **The Air Check**:\n   - Boost the **8000Hz+** band by 1.5dB.\n   - *Result*: Adds a subtle \"High-Definition\" sheen to the entire song.\n4. **Gain Staging**:\n   - After these moves, look at your output meter. \n   - If you boosted more than you cut, lower the **Output Gain** knob by 1dB to maintain your original loudness.\n5. **A/B Testing**:\n   - Toggle the plugin on and off quickly. The change should be subtle—if it sounds like a completely different song, you've gone too far.\n\n## 🔄 Variations\n- **The \"Vibey\" Master**: Boost **250Hz** by 1dB and cut **3000Hz** by 1dB for a warmer, more analog feel.\n- **The \"Radio\" Master**: Boost **3000Hz** and **5000Hz** by 1dB to make the mix cut through car speakers.\n\n## ⚠️ Pitfalls & Fixes\n- **Problem**: The mix sounds \"thin.\"\n- **Fix**: You have likely over-cut the **250Hz** or **500Hz** bands. Bring them back toward zero.\n",
+      "telephone-effect-graphic": "# Goal Workflow: Telephone Effect (The Fast Route)\n\n*Goal: Creating a focused, lo-fi vocal or melodic texture in under 10 seconds.*\n\n## 🚶 Step-by-Step Setup\n1. **Reset**: Right-click any fader to ensure the EQ is flat.\n2. **Bottom Cut**: Pull the **63Hz** and **250Hz** faders all the way down (-12dB).\n   - *Result*: All the weight and bass disappear.\n3. **Top Cut**: Pull the **8000Hz+** fader all the way down (-12dB).\n   - *Result*: The air and crispness vanish.\n4. **The Focus**: Boost the **1500Hz** and **3000Hz** faders to +6dB.\n   - *Result*: The sound is now nasal and \"tinny.\"\n5. **Saturation Polish**: Add a **Fruity Fast Dist** or **Fruity Blood Overdrive** *after* the EQ.\n6. **Result**: A convincing telephone/radio sound that fits perfectly for intros or background ad-libs.\n\n## 🔄 Variations\n- **The \"Walkie-Talkie\"**: Boost **3000Hz** to the max and add a noise gate.\n- **The \"Small Speaker\"**: Cut only the 63Hz band and boost the 500Hz band.\n\n## ⚠️ Pitfalls & Fixes\n- **Problem**: The sound is piercing.\n- **Fix**: Lower the **3000Hz** fader or the Mixer track volume.\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity 7 Band Eq\r\n\r\nThis section contains workflow information for the fruity-7-band-eq plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity 7 Band Eq\r\n\r\nThis section contains reference information for the fruity-7-band-eq plugin.\r\n"
+    }
+  }
+}

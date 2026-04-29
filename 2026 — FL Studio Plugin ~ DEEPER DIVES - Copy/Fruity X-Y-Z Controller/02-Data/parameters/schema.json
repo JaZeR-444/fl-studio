@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "fruity-xyz-controller-parameters",
+  "title": "Fruity X-Y-Z Controller Parameter Schema",
+  "description": "Schema for defining X-Y-Z Controller output parameters and their mapping capabilities",
+  "type": "object",
+  "properties": {
+    "outputs": {
+      "type": "array",
+      "description": "Available controller outputs",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": ["x", "y", "z", "speed", "acceleration"],
+            "description": "Unique output identifier"
+          },
+          "name": {
+            "type": "string",
+            "description": "Human-readable output name"
+          },
+          "range": {
+            "type": "object",
+            "properties": {
+              "min": {
+                "type": "number",
+                "description": "Minimum output value"
+              },
+              "max": {
+                "type": "number",
+                "description": "Maximum output value"
+              },
+              "default": {
+                "type": "number",
+                "description": "Default/rest value"
+              }
+            },
+            "required": ["min", "max"]
+          },
+          "controlType": {
+            "type": "string",
+            "enum": ["position", "movement", "gesture"],
+            "description": "Category of control"
+          },
+          "inputMethod": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["mouse", "touch", "trackpad", "midi"]
+            },
+            "description": "Supported input devices"
+          },
+          "typicalTargets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Common parameter types to link this output to"
+          }
+        },
+        "required": ["id", "name", "range", "controlType"]
+      }
+    },
+    "modes": {
+      "type": "array",
+      "description": "Available controller modes",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": ["absolute", "relative"]
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "behavior": {
+            "type": "string",
+            "description": "How position maps to values"
+          }
+        },
+        "required": ["id", "name", "behavior"]
+      }
+    }
+  },
+  "required": ["outputs", "modes"]
+}

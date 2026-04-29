@@ -1,0 +1,139 @@
+{
+  "$schema": "./schema.json",
+  "plugin": {
+    "name": "Vocodex",
+    "version": "1.x",
+    "category": "Effect",
+    "type": "Advanced Vocoder with Built-in Carrier Synth",
+    "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Vocodex.htm"
+  },
+  "parameters": {
+    "vocoder": [
+      {
+        "id": "bands",
+        "name": "Bands",
+        "type": "slider",
+        "range": "4-100",
+        "default": "32",
+        "description": "Number of frequency analysis bands",
+        "sweetSpot": "24-40 for vocal clarity, 64-100 for detail"
+      },
+      {
+        "id": "minFreq",
+        "name": "Min Frequency",
+        "type": "slider",
+        "range": "20Hz-20kHz",
+        "unit": "Hz",
+        "default": "100 Hz",
+        "description": "Lowest frequency analyzed"
+      },
+      {
+        "id": "maxFreq",
+        "name": "Max Frequency",
+        "type": "slider",
+        "range": "20Hz-20kHz",
+        "unit": "Hz",
+        "default": "8000 Hz",
+        "description": "Highest frequency analyzed"
+      },
+      {
+        "id": "bandwidth",
+        "name": "Band Width",
+        "type": "slider",
+        "range": "0.1-4 octaves",
+        "unit": "octaves",
+        "default": "1 octave",
+        "description": "Width of each filter band"
+      }
+    ],
+    "carrier": [
+      {
+        "id": "waveform",
+        "name": "Waveform",
+        "type": "selector",
+        "options": ["Saw", "Square", "Noise", "Sine"],
+        "default": "Saw",
+        "description": "Carrier oscillator waveform",
+        "note": "Saw recommended for rich harmonic content"
+      },
+      {
+        "id": "pitch",
+        "name": "Pitch",
+        "type": "slider",
+        "range": "-24 to +24 semitones",
+        "unit": "semitones",
+        "default": "0",
+        "description": "Carrier pitch offset"
+      },
+      {
+        "id": "unison",
+        "name": "Unison",
+        "type": "slider",
+        "range": "1-9 voices",
+        "default": "1",
+        "description": "Number of detuned voices"
+      },
+      {
+        "id": "detune",
+        "name": "Detune",
+        "type": "slider",
+        "range": "0-100%",
+        "unit": "%",
+        "default": "0%",
+        "description": "Amount of voice detuning"
+      }
+    ],
+    "modulator": [
+      {
+        "id": "attack",
+        "name": "Attack",
+        "type": "slider",
+        "description": "Envelope follower attack time"
+      },
+      {
+        "id": "release",
+        "name": "Release",
+        "type": "slider",
+        "description": "Envelope follower release time"
+      },
+      {
+        "id": "noiseGate",
+        "name": "Noise Gate",
+        "type": "slider",
+        "description": "Removes low-level modulator signal"
+      }
+    ],
+    "mix": [
+      {
+        "id": "modMix",
+        "name": "Mod Mix",
+        "type": "slider",
+        "range": "0-100%",
+        "unit": "%",
+        "default": "100%",
+        "description": "Modulator input level"
+      },
+      {
+        "id": "carMix",
+        "name": "Car Mix",
+        "type": "slider",
+        "range": "0-100%",
+        "unit": "%",
+        "default": "100%",
+        "description": "Carrier input level"
+      }
+    ]
+  },
+  "routingModes": {
+    "internal": "Use built-in carrier synthesizer",
+    "sidechain": "Route external audio as carrier"
+  },
+  "historicalReference": {
+    "invented": "1930s by Homer Dudley (Bell Labs)",
+    "musicPioneers": ["Kraftwerk", "Daft Punk", "Zapp & Roger"],
+    "originalPurpose": "Voice encryption and bandwidth reduction"
+  },
+  "cpuUsage": "Moderate to High (depends on band count)",
+  "latency": "Minimal",
+  "realtimeSafe": true
+}

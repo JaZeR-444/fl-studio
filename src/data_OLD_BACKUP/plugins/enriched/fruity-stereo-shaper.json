@@ -1,0 +1,819 @@
+{
+  "id": "fruity-stereo-shaper",
+  "name": "Fruity Stereo Shaper",
+  "presets": {
+    "by-frequency-range": {
+      "pluginName": "Fruity Stereo Shaper",
+      "category": "Frequency-Based Stereo Presets",
+      "description": "Stereo imaging organized by frequency range for targeted mix control",
+      "presets": [
+        {
+          "name": "Sub Bass Lock (0-100 Hz)",
+          "frequencyRange": "0-100 Hz",
+          "description": "Complete mono summing for sub frequencies",
+          "parameters": {
+            "lowFreqCutoff": "100 Hz",
+            "stereoSeparation": "0%",
+            "midSideMix": "Mid 100%",
+            "phase": "0°",
+            "outputGain": "0 dB"
+          },
+          "use": "Apply to any element with sub content (808s, kick, sub bass) to prevent phase cancellation",
+          "criticalFor": [
+            "808 Bass",
+            "Kick Drum",
+            "Sub Bass"
+          ]
+        },
+        {
+          "name": "Bass Foundation Mono (100-250 Hz)",
+          "frequencyRange": "100-250 Hz",
+          "description": "Mono low-end for tight bass foundation",
+          "parameters": {
+            "lowFreqCutoff": "250 Hz",
+            "stereoSeparation": "0%",
+            "midSideMix": "Mid 100%",
+            "phase": "0°",
+            "outputGain": "0 dB"
+          },
+          "use": "Keeps bass notes and kick fundamentals focused and punchy",
+          "criticalFor": [
+            "Bass Guitar",
+            "Kick Body",
+            "Tom Drums"
+          ]
+        },
+        {
+          "name": "Low-Mid Anchor (250-500 Hz)",
+          "frequencyRange": "250-500 Hz",
+          "description": "Centered low-mids with minimal stereo",
+          "parameters": {
+            "lowFreqCutoff": "500 Hz",
+            "stereoSeparation": "20%",
+            "midSideMix": "Mid 85%",
+            "phase": "0°",
+            "outputGain": "0 dB"
+          },
+          "use": "Maintains body and warmth while preventing mud in the mix",
+          "criticalFor": [
+            "Snare Body",
+            "Vocal Chest",
+            "Guitar Low-Mids"
+          ]
+        },
+        {
+          "name": "Mid Presence (500-1000 Hz)",
+          "frequencyRange": "500-1000 Hz",
+          "description": "Moderate stereo for presence range",
+          "parameters": {
+            "lowFreqCutoff": "1000 Hz",
+            "stereoSeparation": "60%",
+            "midSideMix": "Stereo 100%",
+            "phase": "0°",
+            "outputGain": "0 dB"
+          },
+          "use": "Adds dimension to midrange instruments without losing focus",
+          "criticalFor": [
+            "Vocals",
+            "Guitars",
+            "Keyboards"
+          ]
+        },
+        {
+          "name": "Upper Mid Spread (1-2 kHz)",
+          "frequencyRange": "1-2 kHz",
+          "description": "Enhanced stereo for clarity and presence",
+          "parameters": {
+            "lowFreqCutoff": "2000 Hz",
+            "stereoSeparation": "100%",
+            "midSideMix": "Stereo 100%",
+            "phase": "0°",
+            "outputGain": "-0.5 dB"
+          },
+          "use": "Opens up mix and adds clarity to melodic elements",
+          "criticalFor": [
+            "Synth Leads",
+            "Vocal Harmonies",
+            "Piano"
+          ]
+        },
+        {
+          "name": "Presence Boost (2-4 kHz)",
+          "frequencyRange": "2-4 kHz",
+          "description": "Wide stereo for vocal/instrument presence",
+          "parameters": {
+            "lowFreqCutoff": "4000 Hz",
+            "stereoSeparation": "130%",
+            "midSideMix": "Side 70%",
+            "phase": "0°",
+            "outputGain": "-1 dB"
+          },
+          "use": "Enhances clarity and separation in crowded mixes",
+          "criticalFor": [
+            "Lead Vocals",
+            "Snare Crack",
+            "Hi-Hats"
+          ]
+        },
+        {
+          "name": "Brilliance Range (4-8 kHz)",
+          "frequencyRange": "4-8 kHz",
+          "description": "Very wide stereo for air and shimmer",
+          "parameters": {
+            "lowFreqCutoff": "8000 Hz",
+            "stereoSeparation": "160%",
+            "midSideMix": "Side 80%",
+            "phase": "0°",
+            "outputGain": "-1.5 dB"
+          },
+          "use": "Creates spacious high-end without harshness",
+          "criticalFor": [
+            "Cymbals",
+            "Vocal Air",
+            "String Harmonics"
+          ]
+        },
+        {
+          "name": "Ultra High Shimmer (8-16 kHz)",
+          "frequencyRange": "8-16 kHz",
+          "description": "Maximum stereo for top-end sparkle",
+          "parameters": {
+            "lowFreqCutoff": "16000 Hz",
+            "stereoSeparation": "180%",
+            "midSideMix": "Side 90%",
+            "phase": "0°",
+            "outputGain": "-2 dB"
+          },
+          "use": "Adds dimension and air to high-frequency content",
+          "criticalFor": [
+            "Bells",
+            "Shakers",
+            "Reverb Tails"
+          ]
+        },
+        {
+          "name": "Full Spectrum Mono",
+          "frequencyRange": "Full Spectrum",
+          "description": "Complete mono summing across all frequencies",
+          "parameters": {
+            "lowFreqCutoff": "N/A",
+            "stereoSeparation": "0%",
+            "midSideMix": "Mid 100%",
+            "phase": "0°",
+            "outputGain": "0 dB"
+          },
+          "use": "For mono compatibility testing or vintage mono aesthetic",
+          "criticalFor": [
+            "Lo-Fi Production",
+            "Mono Compatibility Check"
+          ]
+        },
+        {
+          "name": "Progressive Width (Multiband)",
+          "frequencyRange": "Multi-Band",
+          "description": "Increasing stereo width by frequency (requires multiband setup)",
+          "parameters": {
+            "band1_0-200Hz": "0% stereo",
+            "band2_200-1kHz": "40% stereo",
+            "band3_1-4kHz": "100% stereo",
+            "band4_4kHz+": "160% stereo"
+          },
+          "use": "Ideal stereo distribution for full mixes or complex instruments",
+          "criticalFor": [
+            "Master Bus",
+            "Synth Pads",
+            "Full Drum Bus"
+          ]
+        }
+      ],
+      "frequencyGuidelines": {
+        "subBass": {
+          "range": "0-60 Hz",
+          "recommendation": "Always mono (0% stereo)",
+          "reason": "Maximum power and mono compatibility"
+        },
+        "bass": {
+          "range": "60-250 Hz",
+          "recommendation": "Mono to minimal stereo (0-20%)",
+          "reason": "Maintain punch and prevent phase issues"
+        },
+        "lowMids": {
+          "range": "250-500 Hz",
+          "recommendation": "Minimal to moderate stereo (20-60%)",
+          "reason": "Body and warmth without muddiness"
+        },
+        "mids": {
+          "range": "500-2000 Hz",
+          "recommendation": "Moderate stereo (60-100%)",
+          "reason": "Presence and dimension"
+        },
+        "upperMids": {
+          "range": "2-4 kHz",
+          "recommendation": "Wide stereo (100-140%)",
+          "reason": "Clarity and separation"
+        },
+        "presence": {
+          "range": "4-8 kHz",
+          "recommendation": "Very wide stereo (140-180%)",
+          "reason": "Air and space"
+        },
+        "brilliance": {
+          "range": "8+ kHz",
+          "recommendation": "Ultra-wide stereo (160-200%)",
+          "reason": "Shimmer and dimension"
+        }
+      }
+    },
+    "hip-hop-stereo-presets": {
+      "pluginName": "Fruity Stereo Shaper",
+      "category": "Hip-Hop Stereo Imaging Presets",
+      "presets": [
+        {
+          "name": "Drill 808 Mono Foundation",
+          "description": "Mono-izes sub frequencies for tight, focused drill bass",
+          "genre": "Drill",
+          "instrument": "808 Bass",
+          "parameters": {
+            "lowFreqCutoff": "120 Hz",
+            "stereoSeparation": "0% (Mono)",
+            "midSideMix": "Mid 100%",
+            "phase": "0°",
+            "outputGain": "0 dB"
+          },
+          "use": "Apply to 808s and sub bass to prevent phase issues and ensure maximum low-end punch"
+        },
+        {
+          "name": "Melodic Trap Keys Wide",
+          "description": "Widens melodic piano/keys while keeping low-mids centered",
+          "genre": "Melodic Trap",
+          "instrument": "Piano/Keys",
+          "parameters": {
+            "lowFreqCutoff": "250 Hz",
+            "stereoSeparation": "150%",
+            "midSideMix": "Side 70%",
+            "phase": "0°",
+            "outputGain": "-1 dB"
+          },
+          "use": "Creates wide, spacious melodic elements that sit perfectly in the mix without muddying the center"
+        },
+        {
+          "name": "Boom Bap Vinyl Drums Center",
+          "description": "Tightens drum image for classic boom bap punch",
+          "genre": "Boom Bap",
+          "instrument": "Drums",
+          "parameters": {
+            "lowFreqCutoff": "150 Hz",
+            "stereoSeparation": "50%",
+            "midSideMix": "Mid 80%",
+            "phase": "0°",
+            "outputGain": "0 dB"
+          },
+          "use": "Gives drums that focused, punchy center image characteristic of 90s hip-hop"
+        },
+        {
+          "name": "Ambient Guitar/Vocal Layer",
+          "description": "Ultra-wide atmospheric elements for moody trap",
+          "genre": "Ambient/Moody Trap",
+          "instrument": "Guitars/Vocals",
+          "parameters": {
+            "lowFreqCutoff": "400 Hz",
+            "stereoSeparation": "200%",
+            "midSideMix": "Side 90%",
+            "phase": "0°",
+            "outputGain": "-2 dB"
+          },
+          "use": "Creates ethereal, spacious background elements that fill the stereo field"
+        },
+        {
+          "name": "Memphis Phonk Cowbell Spread",
+          "description": "Wide cowbell/synth stabs for phonk energy",
+          "genre": "Memphis Phonk",
+          "instrument": "Cowbell/Stabs",
+          "parameters": {
+            "lowFreqCutoff": "500 Hz",
+            "stereoSeparation": "130%",
+            "midSideMix": "Stereo 100%",
+            "phase": "0°",
+            "outputGain": "0 dB"
+          },
+          "use": "Spreads high-frequency stabs and cowbells for aggressive phonk width"
+        },
+        {
+          "name": "Hyper-Pop Lead Expansion",
+          "description": "Extreme width for glitchy, hyper-pop synth leads",
+          "genre": "Hyper-Pop/Glitch Trap",
+          "instrument": "Synth Leads",
+          "parameters": {
+            "lowFreqCutoff": "300 Hz",
+            "stereoSeparation": "180%",
+            "midSideMix": "Side 85%",
+            "phase": "15°",
+            "outputGain": "-1.5 dB"
+          },
+          "use": "Creates maximalist, in-your-face stereo width for modern hyper-pop aesthetics"
+        },
+        {
+          "name": "Trap Flute/Lead Center Focus",
+          "description": "Keeps melodic leads focused and present",
+          "genre": "Trap",
+          "instrument": "Flute/Lead",
+          "parameters": {
+            "lowFreqCutoff": "200 Hz",
+            "stereoSeparation": "75%",
+            "midSideMix": "Mid 60%",
+            "phase": "0°",
+            "outputGain": "0 dB"
+          },
+          "use": "Maintains lead presence while adding subtle width"
+        },
+        {
+          "name": "Lo-Fi Vinyl Sample Mono",
+          "description": "Mono vintage sample sound for authentic lo-fi",
+          "genre": "Lo-Fi Hip-Hop",
+          "instrument": "Samples",
+          "parameters": {
+            "lowFreqCutoff": "100 Hz",
+            "stereoSeparation": "0%",
+            "midSideMix": "Mid 100%",
+            "phase": "0°",
+            "outputGain": "0 dB"
+          },
+          "use": "Emulates mono vinyl/cassette sources for authentic lo-fi character"
+        },
+        {
+          "name": "Synth Pad Cloud",
+          "description": "Massive stereo field for ambient pads",
+          "genre": "Cloud Rap/Ambient",
+          "instrument": "Pads/Strings",
+          "parameters": {
+            "lowFreqCutoff": "350 Hz",
+            "stereoSeparation": "170%",
+            "midSideMix": "Side 80%",
+            "phase": "0°",
+            "outputGain": "-2.5 dB"
+          },
+          "use": "Creates vast, atmospheric pad layers that envelop the listener"
+        },
+        {
+          "name": "Jersey Club Vocal Chops Wide",
+          "description": "Energetic vocal chop spread",
+          "genre": "Jersey Club",
+          "instrument": "Vocal Chops",
+          "parameters": {
+            "lowFreqCutoff": "450 Hz",
+            "stereoSeparation": "140%",
+            "midSideMix": "Stereo 100%",
+            "phase": "0°",
+            "outputGain": "-1 dB"
+          },
+          "use": "Spreads rapid vocal chops across the stereo field for club energy"
+        },
+        {
+          "name": "Reggaeton Perc Spread",
+          "description": "Wide high-frequency percussion",
+          "genre": "Reggaeton/Latin Trap",
+          "instrument": "Percussion",
+          "parameters": {
+            "lowFreqCutoff": "600 Hz",
+            "stereoSeparation": "120%",
+            "midSideMix": "Stereo 100%",
+            "phase": "0°",
+            "outputGain": "0 dB"
+          },
+          "use": "Spreads shakers, congas, and auxiliary percussion for rhythmic width"
+        },
+        {
+          "name": "Rage Lead Narrow",
+          "description": "Focused, aggressive lead for rage beats",
+          "genre": "Rage/Plugg",
+          "instrument": "Synth Lead",
+          "parameters": {
+            "lowFreqCutoff": "180 Hz",
+            "stereoSeparation": "60%",
+            "midSideMix": "Mid 70%",
+            "phase": "0°",
+            "outputGain": "+0.5 dB"
+          },
+          "use": "Keeps aggressive leads punchy and forward without spreading too wide"
+        }
+      ]
+    },
+    "hiphop-matrix-presets": {
+      "plugin_name": "Fruity Stereo Shaper",
+      "category": "Hip-Hop Matrix Presets",
+      "version": "1.0",
+      "presets": [
+        {
+          "name": "Moody Narrow Stereo",
+          "genre": "Moody/Dark Hip-Hop",
+          "description": "Tight, claustrophobic stereo field for introspective beats",
+          "use_cases": [
+            "sad trap",
+            "emo rap",
+            "dark beats"
+          ],
+          "settings": {
+            "l_to_l": 1.0,
+            "l_to_r": -0.2,
+            "r_to_l": -0.2,
+            "r_to_r": 1.0,
+            "delay_ms": 0,
+            "phase_invert_l": false,
+            "phase_invert_r": false
+          },
+          "tips": "Creates intimate, narrow stereo image. Perfect for vocals and atmospheric pads.",
+          "mono_safe": true
+        },
+        {
+          "name": "Club Wide Stereo",
+          "genre": "Upbeat/Club Hip-Hop",
+          "description": "Maximum width while maintaining mono compatibility",
+          "use_cases": [
+            "club bangers",
+            "party tracks",
+            "hype music"
+          ],
+          "settings": {
+            "l_to_l": 1.0,
+            "l_to_r": -0.3,
+            "r_to_l": -0.3,
+            "r_to_r": 1.0,
+            "delay_ms": 8,
+            "phase_invert_l": false,
+            "phase_invert_r": true
+          },
+          "tips": "Wide stereo with Haas effect. Check mono! Bass should bypass this.",
+          "mono_safe": false,
+          "warning": "Not mono-safe - use only on mid/high frequency elements"
+        },
+        {
+          "name": "Lo-Fi Mono Collapse",
+          "genre": "Lo-Fi/Chill Hip-Hop",
+          "description": "Vintage narrow stereo like old cassettes",
+          "use_cases": [
+            "lo-fi beats",
+            "vintage sound",
+            "nostalgic vibe"
+          ],
+          "settings": {
+            "l_to_l": 0.7,
+            "l_to_r": 0.3,
+            "r_to_l": 0.3,
+            "r_to_r": 0.7,
+            "delay_ms": 0,
+            "phase_invert_l": false,
+            "phase_invert_r": false
+          },
+          "tips": "Reduces stereo width for vintage vibe. Combine with saturation.",
+          "mono_safe": true
+        },
+        {
+          "name": "808 Bass Mono Lock",
+          "genre": "Trap/Electronic Hip-Hop",
+          "description": "Forces bass to mono while preserving stereo harmonics",
+          "use_cases": [
+            "808 bass",
+            "sub bass",
+            "kick drum"
+          ],
+          "settings": {
+            "l_to_l": 0.5,
+            "l_to_r": 0.5,
+            "r_to_l": 0.5,
+            "r_to_r": 0.5,
+            "delay_ms": 0,
+            "phase_invert_l": false,
+            "phase_invert_r": false
+          },
+          "tips": "Complete mono collapse. Use with multiband to only affect low frequencies.",
+          "mono_safe": true,
+          "workflow": "Use in Patcher with crossover - only process below 150Hz"
+        },
+        {
+          "name": "Trap Hi-Hat Spread",
+          "genre": "Trap/Electronic Hip-Hop",
+          "description": "Maximum width for hi-hat rolls and trap patterns",
+          "use_cases": [
+            "hi-hats",
+            "percussion",
+            "shakers"
+          ],
+          "settings": {
+            "l_to_l": 1.0,
+            "l_to_r": -0.4,
+            "r_to_l": -0.4,
+            "r_to_r": 1.0,
+            "delay_ms": 12,
+            "phase_invert_l": true,
+            "phase_invert_r": false
+          },
+          "tips": "Extreme width for trap hi-hats. Will have phase issues in mono.",
+          "mono_safe": false,
+          "warning": "Only use on hi-frequency percussion"
+        },
+        {
+          "name": "Vocal Center Extract",
+          "genre": "All Hip-Hop Genres",
+          "description": "Isolates center-panned vocal content",
+          "use_cases": [
+            "vocal isolation",
+            "acapella extraction",
+            "remix prep"
+          ],
+          "settings": {
+            "l_to_l": 0.707,
+            "l_to_r": 0.707,
+            "r_to_l": 0.707,
+            "r_to_r": -0.707,
+            "delay_ms": 0,
+            "phase_invert_l": false,
+            "phase_invert_r": false
+          },
+          "tips": "Converts LR to MS. Solo Mid to hear vocals. Use MS-to-LR preset to convert back.",
+          "mono_safe": true,
+          "workflow": "Part 1 of MS processing chain"
+        },
+        {
+          "name": "Karaoke Effect",
+          "genre": "Creative/Experimental",
+          "description": "Removes center-panned vocals (phase cancellation)",
+          "use_cases": [
+            "instrumental creation",
+            "karaoke",
+            "vocal removal"
+          ],
+          "settings": {
+            "l_to_l": 1.0,
+            "l_to_r": -1.0,
+            "r_to_l": -1.0,
+            "r_to_r": 1.0,
+            "delay_ms": 0,
+            "phase_invert_l": false,
+            "phase_invert_r": false
+          },
+          "tips": "Cancels center content. Only works on perfectly centered elements.",
+          "mono_safe": false,
+          "warning": "Completely destroys mono compatibility"
+        },
+        {
+          "name": "Melodic Pad Width",
+          "genre": "Melodic/R&B Hip-Hop",
+          "description": "Moderate width for lush pads and synths",
+          "use_cases": [
+            "pads",
+            "synth chords",
+            "ambient textures"
+          ],
+          "settings": {
+            "l_to_l": 1.0,
+            "l_to_r": -0.15,
+            "r_to_l": -0.15,
+            "r_to_r": 1.0,
+            "delay_ms": 5,
+            "phase_invert_l": false,
+            "phase_invert_r": false
+          },
+          "tips": "Subtle width enhancement. Safe for melodic elements.",
+          "mono_safe": true
+        },
+        {
+          "name": "Funky Guitar Spread",
+          "genre": "Funky/Groovy Hip-Hop",
+          "description": "Wide stereo for guitar loops and funk samples",
+          "use_cases": [
+            "guitar loops",
+            "funk samples",
+            "live instruments"
+          ],
+          "settings": {
+            "l_to_l": 1.0,
+            "l_to_r": -0.25,
+            "r_to_l": -0.25,
+            "r_to_r": 1.0,
+            "delay_ms": 10,
+            "phase_invert_l": false,
+            "phase_invert_r": true
+          },
+          "tips": "Adds spaciousness to funk loops. Check mono on bass-heavy samples.",
+          "mono_safe": false
+        },
+        {
+          "name": "Sample Vintage Width",
+          "genre": "Boom Bap/Golden Era",
+          "description": "Classic hip-hop narrow stereo image",
+          "use_cases": [
+            "boom bap",
+            "90s hip-hop",
+            "classic samples"
+          ],
+          "settings": {
+            "l_to_l": 0.85,
+            "l_to_r": 0.15,
+            "r_to_l": 0.15,
+            "r_to_r": 0.85,
+            "delay_ms": 0,
+            "phase_invert_l": false,
+            "phase_invert_r": false
+          },
+          "tips": "Authentic 90s stereo width. Perfect for boom bap production.",
+          "mono_safe": true
+        },
+        {
+          "name": "Build-Up Width Automation",
+          "genre": "Electronic/Trap Hip-Hop",
+          "description": "Starting point for automation (narrow → wide)",
+          "use_cases": [
+            "build-ups",
+            "drops",
+            "transitions"
+          ],
+          "settings": {
+            "l_to_l": 0.6,
+            "l_to_r": 0.4,
+            "r_to_l": 0.4,
+            "r_to_r": 0.6,
+            "delay_ms": 0,
+            "phase_invert_l": false,
+            "phase_invert_r": false
+          },
+          "tips": "Start here, automate to 'Club Wide Stereo' for drops.",
+          "mono_safe": true,
+          "workflow": "Automate matrix sliders during build-up sections"
+        },
+        {
+          "name": "Side-Only Processing Setup",
+          "genre": "Advanced/Technical",
+          "description": "Extracts only Side component for processing",
+          "use_cases": [
+            "reverb only on sides",
+            "width-only effects",
+            "MS processing"
+          ],
+          "settings": {
+            "l_to_l": 0.707,
+            "l_to_r": -0.707,
+            "r_to_l": 0.707,
+            "r_to_r": 0.707,
+            "delay_ms": 0,
+            "phase_invert_l": false,
+            "phase_invert_r": false
+          },
+          "tips": "Solo 'Side' after applying this. Process sides separately from mid.",
+          "mono_safe": true,
+          "workflow": "Use in Patcher with parallel Mid/Side chains"
+        }
+      ],
+      "workflows": [
+        {
+          "name": "MS Processing Chain",
+          "steps": [
+            "1. Load 'Vocal Center Extract' preset (LR to MS)",
+            "2. Now Left = Mid, Right = Side",
+            "3. Process each channel with separate effects",
+            "4. Load another Stereo Shaper after effects",
+            "5. Use 'MS to LR' preset to convert back"
+          ]
+        },
+        {
+          "name": "Width Automation",
+          "steps": [
+            "1. Load 'Build-Up Width Automation' preset",
+            "2. Create automation clip for matrix sliders",
+            "3. Automate from narrow (verse) to wide (chorus)",
+            "4. Always check mono compatibility after automation"
+          ]
+        },
+        {
+          "name": "Bass Mono Lock Workflow",
+          "steps": [
+            "1. Load 808 into Patcher",
+            "2. Add Fruity Stereo Shaper after 808",
+            "3. Use '808 Bass Mono Lock' preset",
+            "4. Verify mono with correlation meter",
+            "5. Add distortion/saturation after for harmonics"
+          ]
+        }
+      ],
+      "mono_compatibility_guide": {
+        "always_mono": [
+          "bass below 150Hz",
+          "kick drum",
+          "808s",
+          "sub bass"
+        ],
+        "mono_safe": [
+          "vocals",
+          "lead synths",
+          "snare",
+          "melodic elements"
+        ],
+        "can_be_wide": [
+          "hi-hats",
+          "reverb",
+          "pads",
+          "ambient textures"
+        ],
+        "check_carefully": [
+          "samples",
+          "loops",
+          "guitars",
+          "effects"
+        ]
+      },
+      "tips": [
+        "Always check mono compatibility with mixer mono button",
+        "Bass frequencies (below 150Hz) should always be mono",
+        "Use correlation meter in Fruity Limiter to check phase",
+        "Automate width for dynamic mixes (narrow verse, wide chorus)",
+        "Negative matrix values create width but risk mono cancellation",
+        "Delay knob adds Haas effect - use 5-30ms for stereo width",
+        "Phase inversion creates extreme width but destroys mono",
+        "Use Patcher for complex MS processing chains",
+        "Save your matrix settings as presets for recall",
+        "Trust your ears - if it sounds wrong in mono, fix it"
+      ]
+    }
+  },
+  "parameters": {},
+  "rules": {},
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Matrix Mixer Explained",
+      "filename": "01_Matrix_Mixer_Explained.md"
+    },
+    {
+      "title": "02 Midside Processing Fundamentals",
+      "filename": "02_MidSide_Processing_Fundamentals.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "00 Goal Quick Result",
+      "category": "by-goal",
+      "filename": "00_Goal_Quick_Result.md"
+    },
+    {
+      "title": "01 Moody Vocal Processing",
+      "category": "by-goal",
+      "filename": "01_Moody_Vocal_Processing.md"
+    },
+    {
+      "title": "02 808 Mono Lock Workflow",
+      "category": "by-goal",
+      "filename": "02_808_Mono_Lock_Workflow.md"
+    },
+    {
+      "title": "03 Wide Trap Hi Hats",
+      "category": "by-goal",
+      "filename": "03_Wide_Trap_Hi-Hats.md"
+    },
+    {
+      "title": "04 Lo Fi Stereo Narrowing",
+      "category": "by-goal",
+      "filename": "04_Lo-Fi_Stereo_Narrowing.md"
+    },
+    {
+      "title": "05 Sample Width Control",
+      "category": "by-goal",
+      "filename": "05_Sample_Width_Control.md"
+    },
+    {
+      "title": "01 Drum Overhead Phase Fix",
+      "category": "by-instrument",
+      "filename": "01_Drum_Overhead_Phase_Fix.md"
+    },
+    {
+      "title": "02 Guitar Sample Width",
+      "category": "by-instrument",
+      "filename": "02_Guitar_Sample_Width.md"
+    },
+    {
+      "title": "808 Bass Stereo Workflow",
+      "category": "by-instrument",
+      "filename": "808-bass-stereo-workflow.md"
+    },
+    {
+      "title": "Drums Percussion Stereo Workflow",
+      "category": "by-instrument",
+      "filename": "drums-percussion-stereo-workflow.md"
+    },
+    {
+      "title": "Melody Stereo Workflow",
+      "category": "by-instrument",
+      "filename": "melody-stereo-workflow.md"
+    },
+    {
+      "title": "Vocal Stereo Workflow",
+      "category": "by-instrument",
+      "filename": "vocal-stereo-workflow.md"
+    }
+  ]
+}

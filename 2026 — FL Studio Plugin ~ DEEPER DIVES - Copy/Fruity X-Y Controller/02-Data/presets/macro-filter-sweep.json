@@ -1,0 +1,63 @@
+{
+  "schema": "x-y-controller-preset-v1",
+  "name": "Filter Sweep Macro",
+  "type": "macro-template",
+  "description": "Single-axis filter sweep with optional resonance - classic drop effect",
+  "author": "DEEPER DIVES",
+  "source": "IL-MAN",
+  "tags": ["filter", "drop", "build", "macro"],
+  "hipHopCategory": "Drop Effects",
+  "settings": {
+    "mode": "absolute",
+    "hold": false,
+    "smoothing": 10,
+    "xMin": 0,
+    "xMax": 100,
+    "yMin": 50,
+    "yMax": 100,
+    "xMap": {
+      "type": "exponential",
+      "description": "Sensitive at filter open, subtle at closed"
+    },
+    "yMap": {
+      "type": "linear",
+      "description": "Direct resonance control"
+    }
+  },
+  "mappings": [
+    {
+      "output": "X",
+      "target": "Filter Cutoff",
+      "targetMin": "20Hz",
+      "targetMax": "20kHz",
+      "curve": "exponential",
+      "description": "Main filter sweep - full frequency range"
+    },
+    {
+      "output": "Y",
+      "target": "Filter Resonance",
+      "targetMin": "0%",
+      "targetMax": "60%",
+      "curve": "linear",
+      "description": "Add character peak at cutoff frequency"
+    }
+  ],
+  "gestureGuide": {
+    "defaultPosition": {"x": 0, "y": 50},
+    "buildGesture": "Move X from 0% to 100% over 4-8 bars",
+    "accentGesture": "Quick X jitters on beats 2 and 4",
+    "releaseGesture": "Snap X to 0% for instant filter close"
+  },
+  "hipHopUsage": {
+    "primaryUse": "Pre-drop filter sweeps",
+    "secondaryUses": ["Breakdown texture", "Transition effects", "Vocal filtering"],
+    "genreFit": ["Trap", "Drill", "Hip-Hop", "R&B"],
+    "vibeTarget": "TENSION",
+    "bestFor": "Creating anticipation before impact"
+  },
+  "performanceNotes": {
+    "recording": "Record in loop mode, comp best takes",
+    "timing": "Sync gestures to 1/4 or 1/2 note grid",
+    "modulation": "Add subtle Y movement for evolving resonance"
+  }
+}

@@ -1,0 +1,366 @@
+{
+  "id": "newtone",
+  "name": "Newtone",
+  "category": "Pitch/Time",
+  "tier": "Premium",
+  "type": "Pitch/Time",
+  "description": "Newtone - Pitch/Time",
+  "tags": [],
+  "capabilities": [
+    "pitch-shift",
+    "time-stretch",
+    "fx",
+    "audio"
+  ],
+  "icon": "/plugins/newtone-icon.svg",
+  "color": "#7C3AED",
+  "version": "1.0",
+  "data_dir": "plugins\\newtone",
+  "has_presets": true,
+  "has_parameters": false,
+  "has_learning": true,
+  "has_workflows": true,
+  "presets": {
+    "01-natural-correction": {
+      "name": "Natural Pitch Correction",
+      "genre": "universal",
+      "description": "Subtle pitch correction for natural results",
+      "parameters": {
+        "mode": "Pitch Correct",
+        "speed": 70,
+        "amount": 50,
+        "formant": 0,
+        "smooth": 30
+      },
+      "workflow": {
+        "useCase": "Subtle pitch fixes",
+        "steps": [
+          "Load vocal audio",
+          "Draw correction curve",
+          "Set speed moderate",
+          "Preserve natural character"
+        ],
+        "tips": [
+          "Use slower speed",
+          "Less is more",
+          "Check for artifacts"
+        ]
+      },
+      "abTest": {
+        "listenFor": "In-tune but natural",
+        "duration": "Vocal phrase"
+      }
+    },
+    "02-hard-tuning": {
+      "name": "Hard Tuning",
+      "genre": "EDM",
+      "description": "Extreme pitch correction for effect",
+      "parameters": {
+        "mode": "Pitch Correct",
+        "speed": 100,
+        "amount": 100,
+        "formant": 0,
+        "smooth": 10
+      },
+      "workflow": {
+        "useCase": "T-Pain style effect",
+        "steps": [
+          "Load vocal",
+          "Set speed max",
+          "Full correction",
+          "Minimal smoothing"
+        ],
+        "tips": [
+          "Can sound robotic",
+          "Use on specific words",
+          "Blend with dry"
+        ]
+      },
+      "abTest": {
+        "listenFor": "Robotic, tuned sound",
+        "duration": "Vocal phrase"
+      }
+    },
+    "03-melody-correction": {
+      "name": "Melody Correction",
+      "genre": "universal",
+      "description": "Full melody pitch correction",
+      "parameters": {
+        "mode": "Pitch Correct",
+        "speed": 80,
+        "amount": 70,
+        "formant": 0,
+        "smooth": 40
+      },
+      "workflow": {
+        "useCase": "Full melody correction",
+        "steps": [
+          "Load full vocal",
+          "Draw comprehensive curve",
+          "Balance speed and smooth",
+          "Preserve expression"
+        ],
+        "tips": [
+          "Work section by section",
+          "Listen for unnatural",
+          "Leave some character"
+        ]
+      },
+      "abTest": {
+        "listenFor": "In-tune throughout",
+        "duration": "Full verse"
+      }
+    },
+    "04-formant-shift": {
+      "name": "Formant Shift",
+      "genre": "universal",
+      "description": "Formant manipulation for timbre change",
+      "parameters": {
+        "mode": "Formant",
+        "shift": 2,
+        "amount": 70,
+        "preservePitch": true
+      },
+      "workflow": {
+        "useCase": "Timbre manipulation",
+        "steps": [
+          "Load audio",
+          "Shift formant",
+          "Preserve pitch",
+          "Find character"
+        ],
+        "tips": [
+          "Subtle changes work best",
+          "Changes vowel sounds",
+          "Can create alien effects"
+        ]
+      },
+      "abTest": {
+        "listenFor": "Different timbre",
+        "duration": "Single notes"
+      }
+    },
+    "electro-vocal-effect": {
+      "name": "Electro Vocal Effect",
+      "genre": "hip-hop/rap",
+      "mood": "electric",
+      "description": "Electronic tuning for experimental vocals",
+      "parameters": {
+        "speed": 75,
+        "amount": 85,
+        "formant": -5,
+        "transition": 70,
+        "noteTransition": 60
+      },
+      "workflow": {
+        "useCase": "Electro hip-hop, experimental rap",
+        "steps": [
+          "Fast speed for presence",
+          "High amount for effect",
+          "Formant shift for character",
+          "Quick transitions",
+          "Embrace artificial sound"
+        ],
+        "tips": [
+          "Great for robot effects",
+          "Perfect on specific words",
+          "Use on drops and builds",
+          "Layer with distortion"
+        ]
+      }
+    },
+    "energetic-drill-tuning": {
+      "name": "Drill Aggressive Tuning",
+      "genre": "hip-hop/rap",
+      "mood": "energetic",
+      "description": "Intense tuning for aggressive drill vocals",
+      "parameters": {
+        "speed": 80,
+        "amount": 90,
+        "formant": -3,
+        "transition": 75,
+        "noteTransition": 65
+      },
+      "workflow": {
+        "useCase": "Drill, trap, aggressive hip-hop",
+        "steps": [
+          "Fast speed for intensity",
+          "High amount for effect",
+          "Negative formant for edge",
+          "Quick transitions",
+          "Embrace aggressive sound"
+        ],
+        "tips": [
+          "Perfect for drill melodies",
+          "Great on high ad-libs",
+          "Use on high-energy parts",
+          "Check against raw vocal"
+        ]
+      }
+    },
+    "funky-vocal-groove": {
+      "name": "Funky Vocal Groove",
+      "genre": "hip-hop/rap",
+      "mood": "funky",
+      "description": "Groovy tuning for funk-inspired vocals",
+      "parameters": {
+        "speed": 50,
+        "amount": 65,
+        "formant": 2,
+        "transition": 55,
+        "noteTransition": 50
+      },
+      "workflow": {
+        "useCase": "G-funk, funk-inspired hip-hop",
+        "steps": [
+          "Medium speed for groove",
+          "Moderate amount for funk",
+          "Slight formant for body",
+          "Rhythmic transitions",
+          "Maintain organic feel"
+        ],
+        "tips": [
+          "Great on call-and-response",
+          "Perfect on ad-libs",
+          "Use on runs tastefully",
+          "Sync to drum groove"
+        ]
+      }
+    },
+    "jazzy-smooth-vocal": {
+      "name": "Jazzy Smooth Vocal",
+      "genre": "hip-hop/rap",
+      "mood": "smooth",
+      "description": "Warm tuning for jazzy hip-hop vocals",
+      "parameters": {
+        "speed": 30,
+        "amount": 50,
+        "formant": 3,
+        "transition": 40,
+        "noteTransition": 35
+      },
+      "workflow": {
+        "useCase": "Jazzy hip-hop, lo-fi, soulful rap",
+        "steps": [
+          "Slow speed for warmth",
+          "Light amount for subtle",
+          "Positive formant for body",
+          "Smooth transitions",
+          "Preserve soulful character"
+        ],
+        "tips": [
+          "Perfect for melodic rap",
+          "Great on soul samples",
+          "Use on runs sparingly",
+          "Add reverb for space"
+        ]
+      }
+    },
+    "moody-dark-trap-tuning": {
+      "name": "Dark Trap Tuning",
+      "genre": "hip-hop/rap",
+      "mood": "moody",
+      "description": "Subtle tuning for moody trap vocals",
+      "parameters": {
+        "speed": 35,
+        "amount": 60,
+        "formant": 0,
+        "transition": 50,
+        "noteTransition": 40
+      },
+      "workflow": {
+        "useCase": "Dark trap, drill, moody hip-hop",
+        "steps": [
+          "Set slow speed for natural",
+          "Reduce amount for subtle",
+          "Keep formant neutral",
+          "Smooth transitions",
+          "Preserve vocal character"
+        ],
+        "tips": [
+          "Perfect for rap vocals",
+          "Great for harmonies",
+          "Use on ad-libs subtly",
+          "Check against original"
+        ]
+      }
+    },
+    "upbeat-bouncy-vocal": {
+      "name": "Bouncy Vocal",
+      "genre": "hip-hop/rap",
+      "mood": "upbeat",
+      "description": "Energetic tuning for upbeat hip-hop vocals",
+      "parameters": {
+        "speed": 60,
+        "amount": 75,
+        "formant": 5,
+        "transition": 65,
+        "noteTransition": 55
+      },
+      "workflow": {
+        "useCase": "Upbeat hip-hop, party tracks",
+        "steps": [
+          "Medium speed for presence",
+          "Moderate amount for energy",
+          "Slight formant shift for pop",
+          "Faster transitions",
+          "Maintain natural sound"
+        ],
+        "tips": [
+          "Great for sing-song rap",
+          "Perfect on hooks",
+          "Use on background vocals",
+          "Check on laptop speakers"
+        ]
+      }
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What Is Newtone?\r\n\r\n> **The \"Surgical Table\" for Audio.**\r\n> Newtone is a pitch-correction and time-manipulation editor integrated into FL Studio. It allows you to slice, tune, warp, and completely re-compose monophonic audio recordings.\r\n\r\n## 🧠 The 60-Second Mental Model\r\nThink of Newtone as **Method Acting** for your audio.\r\n*   **Pitcher** is \"Auto-Tune\" (Real-time, automatic, sometimes dumb).\r\n*   **Newtone** is \"Melodyne\" (Offline, manual, precise, transparent).\r\n\r\nYou don't \"play\" Newtone. You **load** audio into it, perform surgery, and then **export** the result back to the playlist. It is an offline editor, not a live effect.\r\n\r\n## 📋 When To Use It\r\n| Use Case | ✅ YES (Newtone) | ❌ NO (Use Pitcher) |\r\n| :--- | :--- | :--- |\r\n| **Vocal Tuning** | Perfecting a raw lead vocal take. | Live autotune effect / Mumble rap tracking. |\r\n| **Creativity** | Re-writing a melody from a flat take. | Real-time MIDI keyboard vocoding. |\r\n| **Correction** | Fixing a single bad note in a bass guitar line. | subtle drift correction on a whole mix. |\r\n| **Design** | Creating artificial harmonies from one sample. | CPU-light background processing. |\r\n\r\n## 🎧 Context: Hip-Hop & R&B\r\nIn modern Urban production, Newtone is used for two distinct purposes:\r\n1.  **The \"Invisible\" Polish:** (R&B) Cleaning up runs and ad-libs where \"Auto-Tune\" artifacts are unwanted. Use it to tighten up harmonies so they lock perfectly with the lead.\r\n2.  **The \"Texture\" Layer:** (Trapsoul / Dark Trap) Pitch-shifting vocals down an octave (with Formant preservation) to create those \"Demon\" background layers without slowing down the sample duration.\r\n",
+      "01_UI_Map_And_Signal_Flow": "# UI Map & Signal Flow\r\n\r\n[SRC: IL-MAN]\r\n\r\n## 🗺️ The Interface Tour\r\n\r\nNewtone looks like the Piano Roll, but for Audio.\r\n\r\n### 1. The Editor Grid (Main Workspace)\r\n*   **Blobs (Notes):** Audio is segmented into \"Pitch Blocks\".\r\n    *   **Vertical Position:** Pitch (Piano keys on left).\r\n    *   **Horizontal Length:** Time (Duration).\r\n*   **Orange Line:** The *actual* micro-pitch detection. The Block is the \"Target\", the Line is the \"Reality\".\r\n*   **Handles (On Note Hover):**\r\n    *   **Top Left/Right:** Volume Envelopes (Fade In/Out).\r\n    *   **Center:** Pitch correction amount for that specific note.\r\n    *   **Edges:** Time warping (stretch/shrink).\r\n\r\n### 2. The Title Bar (Global Controls)\r\nThese knobs apply to **ALL** selected notes.\r\n*   **Combine (Center):** Snaps the pitch to the grid. 100% = Perfect tuning.\r\n*   **Variation:** Flattens the vibrato. 0% = Robot mode.\r\n*   **Trans (Transition):** Speed of the glide between notes.\r\n\r\n### 3. The Toolbar (Tools)\r\n*   **Cut (Scissors):** Slice one note into two. Essential when Newtone misses a note change.\r\n*   **Advanced Edit (Waveform Icon):** Switches \"Advanced Mode\" to see rotation / drift controls.\r\n*   **Send to Playlist (Arrow Button):** **CRITICAL.** This is how you get audio OUT of Newtone.\r\n\r\n## 🚦 Internal Functional Flow\r\n\r\n1.  **Analysis:** Audio is loaded -> Pitches are Detected -> Transient Markers derived.\r\n2.  **Quantization:** Note Centers are calculated based on Scale/Grid.\r\n3.  **Manipulation:**\r\n    *   User moves a block -> Time stretch algorithm keeps length, Pitch shift algorithm changes frequency.\r\n    *   User twists \"Variation\" -> Modulation algorithm flattens the pitch curve.\r\n4.  **Resynthesis:** The edited data is re-rendered into a new audio stream on playback/export.\r\n\r\n## ⚠️ Common Misunderstandings\r\n*   **\"It's just playing over the beat!\"**\r\n    *   *Correction:* Newtone acts as a \"Slave\" player. It plays ALONGSIDE the Playlist. Press the \"Slave Playback\" (H) button to sync it, or MUTE the source clip in the Playlist so you don't hear doubles.\r\n*   **\"Ctrl+Z doesn't work!\"**\r\n    *   *Correction:* Newtone has its own internal undo history, separate from FL's main history (sometimes). Check the \"Edit\" menu inside the plugin.\r\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques & Best Practices\r\n\r\n## 💎 The Golden Techniques\r\n\r\n### 1. The \"Cut & Center\" (The Fixer)\r\nSometimes Newtone detects a \"scoop\" (singer sliding into a note) as part of the note itself, making the average pitch flat.\r\n*   **Move:** Use the **Cut Tool** to slice the scoop off the main vivid body of the note.\r\n*   **Result:** Newtone recalculates the center pitch of the main body, snapping it perfectly to tune. The scoop remains natural but doesn't drag the tuning down.\r\n\r\n### 2. Formant Preserved Transposition\r\nChanging the pitch of a sample usually changes the \"throat size\" (Chipmunk effect).\r\n*   **Move:** Select All (Ctrl+A). Transpose Up +12 Semitones. Go to **Advanced Mode**. Drag the **Formant** handle (middle of note, usually Alt-click or specialized knob depending on version) back DOWN 12 semitones.\r\n*   **Result:** A \"High Pitch\" singer with a \"Deep\" throat resonance. Very common in Deep House and newer R&B.\r\n\r\n### 3. Vibrato Surgery\r\n*   **Context:** A singer held a note too long and got shaky (bad vibrato).\r\n*   **Move:** Select note. Turn **Variation** knob down to ~20%.\r\n*   **Result:** The shakiness is ironed out, sounding like a confident straight tone.\r\n\r\n### 4. Audio-to-MIDI Extraction\r\n*   **Context:** You have a hummed melody on phone.\r\n*   **Move:** Drag audio in. Click \"Send to Piano Roll\" (Piano icon with arrow).\r\n*   **Result:** You now have the MIDI notes to drive a synth.\r\n\r\n## 👂 What to Listen For\r\n*   **Phasing/Warbling:** If you stretch a note too far or pitch shift >5 semitones, you will hear \"underwater\" artifacts.\r\n    *   *Fix:* Don't shift that far. Re-record or accept the aesthetic.\r\n*   **Clicking Transitions:** If notes overlap weirdly.\r\n    *   *Fix:* Adjust the **Transition** knob or manually fade the note volume envelopes in the editor.\r\n\r\n## 🛑 Common Pitfalls\r\n1.  **Tuning Breaths:** Do NOT tune breath sounds. It sounds robotic and weird. Cut them separate and leave them un-tuned.\r\n2.  **Ignoring Scale:** Tuning to \"Chromatic\" (default) allows wrong notes. Set a Scale Helper (Root Note + Scale) in FL to see the grey background guides.\r\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Newtone\r\n\r\nHow to shape the \"Soul\" of the vocal using pitch and time.\r\n\r\n## 🌑 Moody (The \"Trapsoul\" Aesthetic)\r\n*   **The Goal:** Dark, detached, emotional, \"druggy\".\r\n*   **The Levers:**\r\n    1.  **Pitch:** Shift entire vocal **Down -2 to -5 semitones**.\r\n    2.  **Formant:** Shift Formant **Down** slightly more than the pitch for a \"heavy chest\" sound.\r\n    3.  **Variation:** Set to **0%**. Removes all human vibrato, making it sound deadpan and cold.\r\n*   **Listen For:** The \"slurred\" quality. If it sounds too crisp, stretch the time slightly.\r\n*   **Pitfall:** Too much formant drop makes it sound like a muddy monster. Keep readability.\r\n\r\n## ☀️ Upbeat (The \"Pop/Hyperpop\" Sheen)\r\n*   **The Goal:** Tight, energetic, perfection.\r\n*   **The Levers:**\r\n    1.  **Center:** **100%**. Perfect tuning key.\r\n    2.  **Transition:** **Fast** (<10ms). Notes snap instantly.\r\n    3.  **Formant:** Shift **Up +1 or +2 semitones**. Adds a \"youthful\" brightness without changing key.\r\n    4.  **Timing:** Quantize the start times of all notes to the grid.\r\n*   **Listen For:** The \"Snap\". Every note should hit the center of the pitch immediately.\r\n\r\n## 🍄 Psychedelic (The \"Trippy\" Warp)\r\n*   **The Goal:** Liquid, melting, impossible physics.\r\n*   **The Levers:**\r\n    1.  **Drift:** Manually grab the edges of notes and twist the pitch transition to slide UP into notes.\r\n    2.  **Vibrato:** Select a sustained note to **Advanced Edit** -> **Vibrato**. Crank the Frequency to unnatural speeds (>8Hz).\r\n*   **Listen For:** A \"melting\" sensation where pitch isn't stable.\r\n\r\n## 🎷 Jazzy (The \"Neo-Soul\" Naturalism)\r\n*   **The Goal:** Loose, expressive, imperfect \"Blue Notes\".\r\n*   **The Levers:**\r\n    1.  **Center:** Low (**30-50%**). Just gently guiding the singer, not forcing them.\r\n    2.  **Variation:** **100%** (or higher). Preserve or exaggerate the natural wobble.\r\n    3.  **Offset:** Don't quantize start times. Let the vocals drag behind the beat slightly.\r\n*   **Pitfall:** DO NOT snap \"Blue Notes\" (notes between semitones) to the grid. Leave them in the cracks.\r\n\r\n## 🌊 Vibey (The \"Lo-Fi\" Cassette)\r\n*   **The Goal:** Nostalgic, warm, slightly broken.\r\n*   **The Levers:**\r\n    1.  **Global Detune:** Select all notes. Shift them down **-15 cents** (not semitones). This puts the vocal slightly flat relative to the inst, creating \"Tape Haze\".\r\n    2.  **High Cut:** Not in Newtone, but filter the result.\r\n*   **Listen For:** A feeling of \"Old Vinyl\" where the singer isn't quite perfectly 440Hz tuned.\r\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Newtone\r\n\r\n## What It Is\r\nNewtone is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Newtone\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: 5 Minutes to Perfect Vocals\r\n\r\n1.  **Load:** Drag your vocal sample directly onto Newtone (or Add Newtone to mixer -> File -> Load).\r\n2.  **Analyze:** Wait for the blobs to appear.\r\n3.  **Clean:**\r\n    *   Find \"Breath\" noises (short, messy blobs).\r\n    *   **Delete** them or leave them alone (do not tune them).\r\n4.  **Tune (The \"Magic\" Knobs):**\r\n    *   Look at the top right **Center** knob.\r\n    *   Turn it to **80%** (Right).\r\n    *   The notes suck to the grid lines.\r\n5.  **Refine:**\r\n    *   Listen through.\r\n    *   If a note sounds robotic, select *just that note*.\r\n    *   Turn **variation** (Top Right) UP.\r\n6.  **Export:**\r\n    *   Click the **\"Send to Playlist\"** button (Box with Arrow icon) in the toolbar.\r\n    *   It drops a new, tuned audio clip into your song.\r\n",
+      "01_Common_Mistakes": "# Common Mistakes & Fixes\r\n\r\n| Mistake | Symptom | The Fix |\r\n| :--- | :--- | :--- |\r\n| **Doubling** | You hear a \"Phasing\" or chorus effect when playing. | You are hearing the Playlist Vocal AND the Newtone Vocal at the same time. **Mute the original clip** in the playlist. |\r\n| **Wrong Speed** | The vocal is drifting off beat. | Newtone detected the wrong BPM. Click the specific note and drag the edge to stretch/warp it back to the grid line. |\r\n| **Robotic Breaths** | Gasps sound like metallic glitches. | You tuned a breath noise to a musical note. **Cut** the breath separate and reset its \"Center\" to 0%. |\r\n| **Lost Edit** | \"I closed the plugin and my tuning is gone.\" | Newtone usually saves state with the project, BUT if you delete the plugin instance, it's gone. Always **Render/Export** your tuned vocal to audio immediately when done. |\r\n| **Wrong Key** | Valid notes are being tuned to wrong notes. | You didn't tell Newtone the scale. It snaps to Chromatic. Use your ears to manually move the block to the correct scale degree. |\r\n",
+      "02_Best_Settings_Starting_Points": "# Best Settings Starting Points\r\n\r\nFor the 3 global knobs (Top Right).\r\n\r\n## 1. \"Transparent\" (Natural Polish)\r\nBest for: Acoustic Pop, Jazz, Folk.\r\n*   **Center:** 40% (Gentle guidance).\r\n*   **Variation:** 80% (Keep most wobble).\r\n*   **Trans:** 50% (Standard).\r\n\r\n## 2. \"Modern Rap\" (Standard Trap)\r\nBest for: Mainstream Hip-Hop.\r\n*   **Center:** 90% (Tight pitch).\r\n*   **Variation:** 20% (Flattened sustain).\r\n*   **Trans:** 15% (Quick glides).\r\n\r\n## 3. \"Hard Effect\" (T-Pain/Cher)\r\nBest for: Robotic FX.\r\n*   **Center:** 100%.\r\n*   **Variation:** 0%.\r\n*   **Trans:** 0% (Instant).\r\n\r\n## 4. \"Background Glue\" (Tight Harmonies)\r\nBest for: Backing vocals that need to be felt, not heard.\r\n*   **Center:** 100% (Perfect lock).\r\n*   **Variation:** 0% (Remove vibrato clash).\r\n*   **Trans:** 50%.\r\n",
+      "03_Vibe_Starting_Points_Moody": "# Vibe Settings: MOODY\r\n\r\n**Target:** The \"Trapsoul\" / \"Dark R&B\" Sound.\r\n**Ref:** The Weeknd, Bryson Tiller, Travis Scott.\r\n\r\n## The Recipe\r\n1.  **Global Tune:** -3 Semitones (or -12 for chop-n-screw).\r\n2.  **Center:** 80%.\r\n3.  **Variation:** 10%. (Deadpan delivery).\r\n4.  **Formant:** -2 Semitones (Darker throat).\r\n\r\n## The \"Demon Layer\" Trick\r\n1.  Duplicate your Lead Vocal.\r\n2.  Open Newtone on the copy.\r\n3.  Select All -> **Pitch Down 1 Octave (-12)**.\r\n4.  **Center:** 100%.\r\n5.  **Variation:** 0% (Flat).\r\n6.  **Export** and mix this low under your lead vocal.\r\n7.  *Result:* Thick, menacing texture that reinforces the main hook.\r\n",
+      "04_Vibe_Starting_Points_Upbeat_Psychedelic_Jazzy_Vibey": "# Vibe Settings: Upbeat / Psych / Jazzy / Vibey\r\n\r\n## ☀️ UPBEAT (Hyperpop / Club)\r\n**Goal:** High Energy, Bright, Artificial.\r\n*   **Pitch:** Standard (or +1 semitone for \"Chip\" feel).\r\n*   **Formant:** **+2 Semitones**. (Lighter, younger).\r\n*   **Trans:** 5ms (Instant snap).\r\n*   **Move:** Manually shorten long notes to make the rhythm \"staccato\" and punchy.\r\n\r\n## 🍄 PSYCHEDELIC (Trippy)\r\n**Goal:** Liquid, Morphing.\r\n*   **Center:** 20% (Drifting).\r\n*   **Move:** Use the **Advanced Edit** mode (Wave). Grab the \"Rotator\" handle on long notes to make the pitch spiral up or down over time.\r\n*   **Edit:** Slice a sustained note into 16th notes. Pitch them in a ramp Up/Down pattern (Arpeggiator effect).\r\n\r\n## 🎷 JAZZY (Neo-Soul)\r\n**Goal:** Human, Imperfect.\r\n*   **Center:** 0% (Global). Use manual tuning only on \"bad\" notes.\r\n*   **Move:** Identify \"Scoops\" (the curve up to a note). **Exaggerate** them by dragging the pitch start handle down.\r\n*   **Timing:** \"Lay it back\". Select the whole phrase and drag it slightly right (off-grid) to create a lazy pocket.\r\n\r\n## 🌊 VIBEY (Lo-Fi)\r\n**Goal:** Worn out, Warped.\r\n*   **Global Detune:** Select All -> Fine Pitch -15 cents.\r\n*   **Variation:** 100% (Maximize wobble).\r\n*   **Vibrato:** On sustained notes, Increase frequency (Speed) but Decrease Amplitude (Depth). Creates a \"Fluttering tape\" sound rather than a singer's vibrato.\r\n",
+      "quick-start-checklist": "# Quick Start Checklist: Newtone\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Newtone to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Newtone\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Newtone\r\n\r\nThis section contains learning information for the newtone plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Workflow: Quick Vocal Tuning\r\n\r\n**Goal:** Turn a raw take into a usable demo vocal in < 2 minutes.\r\n\r\n1.  **Load:** Drag audio clip into Newtone.\r\n2.  **Sync:** Ensure \"Slave to Host\" (H) is ON.\r\n3.  **Scale:** Right-click the **Scale** icon (top toolbar) -> Select the song's Key (e.g., F# Major).\r\n    *   *Check:* The background lanes should change so only safe notes are grey.\r\n4.  **Global Tune:**\r\n    *   Turn **Center** to ~80%.\r\n    *   Turn **Variation** to ~40%.\r\n5.  **Scan:** Listen to the playback.\r\n6.  **Spot Fix:** If a note sounds weird:\r\n    *   Right-click (to verify pitch).\r\n    *   Alt-Click + Drag vertically to snap it to a different valid note.\r\n7.  **Export:** Click \"Send to Playlist\". Done.\r\n",
+      "01_Goal_Sound_Design": "# Workflow: Glitch Vocal Design\r\n\r\n**Goal:** Create an unnatural, synthetic vocal texture.\r\n\r\n1.  **Flatten:** Select All. Variation 0%. Transition 0%.\r\n2.  **Slice:** Use the **Cut Tool** (C). Slice long sustained notes into 1/8th note chunks.\r\n3.  **Arpeggiate:** Drag every other slice up/down by 5 or 7 semitones to create a melody that wasn't there.\r\n4.  **Formant Warp:**\r\n    *   Select random slices.\r\n    *   Shift their **Formant** (Alt-Drag Center) wildly up and down.\r\n5.  **Result:** A \"glitch-hop\" style vocal chop that retains the lyrics but destroys the melody.\r\n",
+      "02_Goal_Mix_Or_Control": "# Workflow: Tightening Harmonies\r\n\r\n**Goal:** Align a loose backing stack to the Lead vocal.\r\n\r\n1.  **Reference:** Have your Lead Vocal visible in the Playlist (waveform).\r\n2.  **Load:** Load the Backing Vocal into Newtone.\r\n3.  **Visual Alignment:** Look at where the blobs start vs the Playlist waveform lines above.\r\n4.  **Warp:**\r\n    *   Hover over the **Left Edge** of a blob (Cursor changes to <->).\r\n    *   Drag the start point to match the Lead.\r\n    *   *Note:* Hold `Alt` for free-dragging without snap.\r\n5.  **Cutoff:**\r\n    *   Check where the notes END.\r\n    *   Drag the **Right Edge** to ensure the backing vocal cuts off exactly when the Lead does.\r\n6.  **De-Breath:** Cut out any breaths in the backing vocal and delete them (or mute volume). You only need breaths on the lead.\r\n",
+      "10_Vibe_Moody": "# Vibe Workflow: MOODY (The \"Demon\")\r\n\r\n**Context:** Creating that low-pitched, ominous vocal layer found in dark trap.\r\n\r\n1.  **Source:** Record a standard rap take (Mid range).\r\n2.  **Clone:** Duplicate the audio clip and opened in Newtone.\r\n3.  **Pitch Drop:**\r\n    *   Select All (Ctrl+A).\r\n    *   Pitch down **-12 Semitones** (1 Octave).\r\n4.  **Formant Optimization:**\r\n    *   Usually, -12 pitch shift sounds muddy.\r\n    *   **Shift Formant UP +2 or +3 semitones** relative to the new pitch.\r\n    *   *Why:* This keeps the definition/intelligibility while keeping the \"Deep\" note.\r\n5.  **Monotone:**\r\n    *   Turn **Variation** to 0%.\r\n    *   Turn **Center** to 100%.\r\n    *   This removes all emotion, making it sound like a cold machine.\r\n6.  **Mix:**\r\n    *   Export to Playlist.\r\n    *   Low Pass Filter @ 3kHz.\r\n    *   Mix quietly under the main vocal.\r\n",
+      "11_Vibe_Upbeat": "# Vibe Workflow: UPBEAT (Pop Sheen)\r\n\r\n**Context:** Making a vocal cut through a dense, happy mix.\r\n\r\n1.  **Formant Lift:**\r\n    *   Select All.\r\n    *   Shift Formant **+1.5 semitones**. (Do not change Pitch).\r\n    *   *Result:* Voice sounds lighter, \"smilier\".\r\n2.  **Transition Snap:**\r\n    *   Turn **Transition** knob down to ~10ms.\r\n    *   *Result:* The singer hits notes instantly. No lazy slides.\r\n3.  **Breath Control:**\r\n    *   Don't delete breaths (it needs energy).\r\n    *   Instead, shorten them using the Time Stretch drag. Make the gasps quick and urgent.\r\n4.  **High Shelf:**\r\n    *   Export.\r\n    *   Boost highs. The Formant lift will make the highs take EQ better without harshness.\r\n",
+      "12_Vibe_Psychedelic": "# Vibe Workflow: PSYCHEDELIC (Liquid)\r\n\r\n**Context:** Tame Impala / Travis Scott style drifting vocals.\r\n\r\n1.  **The \"Drift\" LFO:**\r\n    *   Go to **Advanced Edit** mode (Wave icon).\r\n    *   Find a long sustained note.\r\n    *   Grab the **Vibrato Frequency** handle (top of note). Crank it UP.\r\n    *   Grab the **Vibrato Amplitude** handle. Crank it UP.\r\n    *   *Result:* Artificial, laser-like vibrato.\r\n2.  **The \"Slide\":**\r\n    *   Cut a note in half.\r\n    *   Pitch the second half UP +12 semitones.\r\n    *   Turn the **Transition** knob UP (Slow).\r\n    *   *Result:* A slow, gooey portamento slide up to the octave.\r\n3.  **Formant Animation:**\r\n    *   Select every other phrase.\r\n    *   Shift Formant +4 on one, -4 on the next.\r\n    *   *Result:* The singer seems to morph size constantly.\r\n",
+      "13_Vibe_Jazzy": "# Vibe Workflow: JAZZY (Neo-Soul)\r\n\r\n**Context:** Preserving the human element in a digital DAW.\r\n\r\n1.  **Manual Only:**\r\n    *   Set Global Center to 0%. (Do not auto-tune).\r\n    *   Listen for notes that are *distractingly* off.\r\n    *   Fix ONLY those notes manually.\r\n2.  **The \"Blue\" Third:**\r\n    *   If the song is in Minor, find the minor 3rd.\r\n    *   Drag it slightly sharp (+10 to +20 cents).\r\n    *   *Result:* Creates tension/blues feel.\r\n3.  **Scoop Preservation:**\r\n    *   Ensure **Variation** is at 100%.\r\n    *   If a note entrance feels too clean, use the **Advanced Edit** pitch ramp to drastically scoop the beginning of the note up from -2 semitones.\r\n",
+      "14_Vibe_Vibey": "# Vibe Workflow: VIBEY (Lo-Fi Haze)\r\n\r\n**Context:** Making it sound like a sample from 1970.\r\n\r\n1.  **Global Detune:**\r\n    *   Select All.\r\n    *   Drag everything **Down -20 cents**.\r\n    *   *Result:* The whole vocal is flat. Just enough to feel \"old\" and untrusted.\r\n2.  **Volume Degrade:**\r\n    *   Randomly select notes and lower their volume handle by -2dB to -4dB.\r\n    *   *Result:* Simulates tape dropout / uneven volume consistency.\r\n3.  **Transition Slur:**\r\n    *   Turn **Transition** knob UP (Slow).\r\n    *   *Result:* Reduces the attack definition of notes, making them blur together like an old recording.\r\n",
+      "hop-hop-subgenre-tuning": "# Hip-Hop Sub-Genre Newtone Workflows\n\n## Moody Dark Trap Tuning\n| Parameter | Setting |\n|-----------|---------|\n| Speed | 35% |\n| Amount | 60% |\n| Formant | 0 |\n| Transition | 50% |\n| Note Transition | 40% |\n\n### Tips\n- Slow speed for natural\n- Reduce amount for subtle\n- Preserve vocal character\n- Perfect for rap vocals\n\n---\n\n## Upbeat Bouncy Vocal\n| Parameter | Setting |\n|-----------|---------|\n| Speed | 60% |\n| Amount | 75% |\n| Formant | +5 |\n| Transition | 65% |\n| Note Transition | 55% |\n\n### Tips\n- Medium speed for presence\n- Moderate amount for energy\n- Slight formant shift for pop\n- Great for sing-song rap\n\n---\n\n## Electro Vocal Effect\n| Parameter | Setting |\n|-----------|---------|\n| Speed | 75% |\n| Amount | 85% |\n| Formant | -5 |\n| Transition | 70% |\n| Note Transition | 60% |\n\n### Tips\n- Fast speed for presence\n- High amount for effect\n- Formant shift for character\n- Great for robot effects\n\n---\n\n## Jazzy Smooth Vocal\n| Parameter | Setting |\n|-----------|---------|\n| Speed | 30% |\n| Amount | 50% |\n| Formant | +3 |\n| Transition | 40% |\n| Note Transition | 35% |\n\n### Tips\n- Slow speed for warmth\n- Light amount for subtle\n- Positive formant for body\n- Perfect for melodic rap\n\n---\n\n## Funky Vocal Groove\n| Parameter | Setting |\n|-----------|---------|\n| Speed | 50% |\n| Amount | 65% |\n| Formant | +2 |\n| Transition | 55% |\n| Note Transition | 50% |\n\n### Tips\n- Medium speed for groove\n- Moderate amount for funk\n- Slight formant for body\n- Great on call-and-response\n\n---\n\n## Energetic Drill Tuning\n| Parameter | Setting |\n|-----------|---------|\n| Speed | 80% |\n| Amount | 90% |\n| Formant | -3 |\n| Transition | 75% |\n| Note Transition | 65% |\n\n### Tips\n- Fast speed for intensity\n- High amount for effect\n- Negative formant for edge\n- Perfect for drill melodies\n\n---\n\n## Related Documentation\n- [Newtone Presets INDEX](../02-Data/presets/INDEX.md)\n- [Newtone Troubleshooting Rules](../02-Data/rules/01_Troubleshooting_Matrix.md)\n",
+      "INDEX": "# Newtone Workflows INDEX\n\n## By-Goal Workflows\n\n| File | Focus |\n|------|-------|\n| [01_Goal_Quick_Result.md](01_Goal_Quick_Result.md) | Quick tuning results |\n| [02_Goal_Mix_Or_Control.md](02_Goal_Mix_Or_Control.md) | Mix vs control |\n| [10_Vibe_Moody.md](10_Vibe_Moody.md) | Moody vocal tuning |\n| [11_Vibe_Upbeat.md](11_Vibe_Upbeat.md) | Upbeat vocal tuning |\n| [12_Vibe_Psychedelic.md](12_Vibe_Psychedelic.md) | Psychedelic effects |\n| [13_Vibe_Jazzy.md](13_Vibe_Jazzy.md) | Jazzy vocal tuning |\n| [14_Vibe_Vibey.md](14_Vibe_Vibey.md) | Vibey vocal tuning |\n| [hop-hop-subgenre-tuning.md](hop-hop-subgenre-tuning.md) | Hip-Hop Sub-Genre Tuning |\n\n## Quick Reference\n\n| Goal | Workflow |\n|------|----------|\n| Quick tuning | Quick Result |\n| Mix vs control | Mix Or Control |\n| Moody vocals | Vibe Moody |\n| Upbeat vocals | Vibe Upbeat |\n| Psychedelic effects | Vibe Psychedelic |\n| Jazzy vocals | Vibe Jazzy |\n| Vibey vocals | Vibe Vibey |\n| Dark trap tuning | Hip-Hop Sub-Genre Tuning |\n| Bouncy vocal | Hip-Hop Sub-Genre Tuning |\n| Electro vocal | Hip-Hop Sub-Genre Tuning |\n| Jazzy smooth | Hip-Hop Sub-Genre Tuning |\n| Funky groove | Hip-Hop Sub-Genre Tuning |\n| Drill tuning | Hip-Hop Sub-Genre Tuning |\n\n## Related Documentation\n\n- [Newtone Presets](../02-Data/presets/INDEX.md)\n- [Newtone Troubleshooting Rules](../02-Data/rules/01_Troubleshooting_Matrix.md)\n"
+    },
+    "by-instrument": {
+      "Bass_Quantization": "# Workflow: Bass Guitar Correction\r\n\r\n**Context:** A live bass player played a great groove but hit a few bum notes.\r\n\r\n1.  **Mode:** Ensure Newtone is in **Monophonic** mode (it always is, but ensure bass is mono).\r\n2.  **Snap:** Bass frequencies are hard to detect.\r\n    *   Use **Right Click -> Snap to Grid** to force the detected blobs to the nearest key.\r\n3.  **Slide Correction:**\r\n    *   Bass slides often go out of tune.\r\n    *   Use **Advanced Edit**.\r\n    *   Drag the **Pitch Drift** handle to ensure the slide lands on the destination note target, not sharp/flat.\r\n4.  **Timing:**\r\n    *   Bass must lock to Kick.\r\n    *   Visually align the start of the Bass blob to the Kick transient (using Playlist ghost channels or visual alignment).\r\n",
+      "Vocals_Leads_Backing": "# Workflow: Lead vs Backing Vocals\r\n\r\n## Lead Recipe (The Star)\r\n1.  **Center:** 60-80% (Tuneful but human).\r\n2.  **Var:** 50% (Controlled vibrato).\r\n3.  **Formant:** 0 (Natural).\r\n4.  **Priority:** Focus on **Emotion**. If a flat note has better emotion, keep it flat.\r\n\r\n## Backing Recipe (The Support)\r\n1.  **Center:** 100% (Pin it).\r\n2.  **Var:** 0-20% (Remove texture).\r\n3.  **Formant:** +/- 2 semitones (Differentiate from lead).\r\n4.  **Priority:** Focus on **Timing**. Align start/end points perfectly to the lead.\r\n5.  **Trick:** If you have 2 backing layers, Formant shift one UP and one DOWN to widen the stereo image perception without phasing.\r\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Newtone\r\n\r\nThis section contains workflow information for the newtone plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Newtone\r\n\r\nThis section contains reference information for the newtone plugin.\r\n"
+    }
+  }
+}

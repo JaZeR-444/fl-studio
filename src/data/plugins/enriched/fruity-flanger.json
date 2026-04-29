@@ -1,0 +1,226 @@
+{
+  "id": "fruity-flanger",
+  "name": "Fruity Flanger",
+  "category": "Modulation",
+  "tier": "Free",
+  "type": "Modulation",
+  "description": "Fruity Flanger - Modulation",
+  "tags": [
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "modulation",
+    "fx",
+    "audio"
+  ],
+  "icon": "/plugins/fruity-flanger-icon.svg",
+  "color": "#A855F7",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-flanger",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "pluginName": "Fruity Flanger",
+    "category": "Modulation",
+    "parameters": [
+      {
+        "section": "Delay Line",
+        "id": "delay",
+        "name": "Delay",
+        "range": {
+          "min": 0,
+          "max": 20,
+          "unit": "ms"
+        },
+        "description": "Base delay time."
+      },
+      {
+        "section": "Modulation",
+        "id": "rate",
+        "name": "Rate",
+        "range": {
+          "min": 0,
+          "max": 5,
+          "unit": "Hz"
+        },
+        "description": "LFO Speed."
+      },
+      {
+        "section": "Modulation",
+        "id": "depth",
+        "name": "Depth",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "LFO Amplitude."
+      },
+      {
+        "section": "Modulation",
+        "id": "phase",
+        "name": "Phase",
+        "range": {
+          "min": 0,
+          "max": 360,
+          "unit": "deg"
+        },
+        "description": "LFO Stereo offset."
+      },
+      {
+        "section": "Feedback",
+        "id": "feed",
+        "name": "Feed",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "Feedback Level."
+      },
+      {
+        "section": "Mix",
+        "id": "invert_wet",
+        "name": "Inv Wet",
+        "options": [
+          "Off",
+          "On"
+        ],
+        "description": "Inverts Wet signal phase."
+      },
+      {
+        "section": "Mix",
+        "id": "cross",
+        "name": "Cross",
+        "range": {
+          "min": -100,
+          "max": 0,
+          "unit": "dB"
+        },
+        "description": "Cross-channel mix level."
+      }
+    ]
+  },
+  "presets": {
+    "classic-jet-plane": {
+      "presetName": "Classic Jet Plane",
+      "plugin": "Fruity Flanger",
+      "description": "The quintessential sweeping flanger effect.",
+      "settings": {
+        "delay": 2.5,
+        "depth": 50,
+        "rate": 0.5,
+        "feedback": 0.7,
+        "cross": 0.3
+      },
+      "usage": "Use on drum fills, synth transitions, or heavy electric guitars."
+    },
+    "metallic-resonator": {
+      "presetName": "Metallic Resonator",
+      "plugin": "Fruity Flanger",
+      "description": "High feedback and short delay for a ring-mod style metallic tone.",
+      "settings": {
+        "delay": 0.5,
+        "depth": 5,
+        "rate": 0,
+        "feedback": 0.9,
+        "cross": 0
+      },
+      "usage": "Creative sound design on percussion or futuristic sound effects."
+    },
+    "soft-chorus-substitute": {
+      "presetName": "Soft Chorus Substitute",
+      "plugin": "Fruity Flanger",
+      "description": "Uses long delay times to mimic a chorus effect.",
+      "settings": {
+        "delay": 15,
+        "depth": 30,
+        "rate": 0.8,
+        "feedback": 0,
+        "cross": 0.5
+      },
+      "usage": "Use on clean guitars or electric pianos for a lush, moving sound."
+    },
+    "underwater-vibe": {
+      "presetName": "Underwater Vibe",
+      "plugin": "Fruity Flanger",
+      "description": "Slow, deep modulation for a submerged feel.",
+      "settings": {
+        "delay": 5,
+        "depth": 80,
+        "rate": 0.2,
+        "feedback": -0.5,
+        "cross": 0.8
+      },
+      "usage": "Atmospheric pads, lo-fi keys, or experimental vocals."
+    },
+    "wide-stereo-spread": {
+      "presetName": "Wide Stereo Spread",
+      "plugin": "Fruity Flanger",
+      "description": "Focuses on widening the signal without heavy modulation.",
+      "settings": {
+        "delay": 1,
+        "depth": 10,
+        "rate": 0.1,
+        "feedback": 0.2,
+        "cross": 1
+      },
+      "usage": "Best for background vocals or pads that need to feel 'around' the listener."
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity Flanger\n\n## Purpose & Identity\nFruity Flanger is a classic modulation effect that creates **metallic, sweeping, and resonant** textures. While similar to Chorus, Flanger uses much shorter delay times (under 10ms) and includes a **Feedback** loop, which creates \"Comb Filtering\"—a series of resonant peaks and notches that sound like a jet engine or a hollow pipe. [SRC: IL-MAN]\n\n## 60-Second Mental Model\nImagine two tape machines playing the same sound. If you press your finger on the rim (the \"flange\") of one machine, it slows down slightly and then speeds back up. The microscopic timing difference causes the signals to cancel each other out at specific frequencies, creating that characteristic \"whoosh\" sound.\n\n## Hip-Hop / R&B Context\n- **The \"Jet\" Transition:** Automating a high-feedback flange sweep on a drum break to build tension before a drop.\n- **Metallic Snares:** Adding a static (non-moving) flange to a snare to give it a \"hollow\" or \"industrial\" character.\n- **Spacey Melodies:** Using slow, wide flanging on a Rhodes or Electric Piano to make it feel like it’s \"drifting through space.\"\n\n## When To Use\n- When you want a **metallic or robotic** texture.\n- When you need a **powerful sweeping transition** (High Feedback).\n- When a sound feels too \"flat\" and needs rhythmic movement that is more aggressive than a chorus.\n\n## When NOT To Use\n- **Lead Vocals:** Excessive flanging can make lyrics unintelligible and sound \"cheap.\" Use sparingly or on background ad-libs.\n- **Surgical Mixes:** The feedback loop creates resonances that can clash with the key of your song. Always check for \"ringing\" frequencies. [SRC: REPUTABLE]",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Fruity Flanger\n\n## UI Tour\nFruity Flanger uses a traditional knob-and-switch interface divided into modulation and feedback sections. [SRC: IL-MAN]\n\n### 1. Delay & Depth (The \"Width\" of the Sweep)\n- **Delay**: Sets the center time of the delay line. Lower values result in higher-pitched resonances.\n- **Depth**: Sets how far the LFO moves the delay around the center. High depth creates a wider frequency sweep.\n\n### 2. LFO Section (The Movement)\n- **Rate**: The speed of the modulation.\n- **Phase**: Adjusts the phase offset between the Left and Right channels. Crank this for extreme stereo widening.\n- **LFO Shape**: Typically Sine or Triangle.\n\n### 3. Feedback Section (The \"Metal\")\n- **Feed (Feedback)**: Feeds the output back to the input.\n- **Invert Feedback (INV FB)**: Inverts the polarity of the feedback. Positive feedback sounds metallic; negative (inverted) feedback sounds hollow or woody.\n- **Dry/Wet/Cross**: Mix knobs for the dry signal, the flanged signal, and the \"cross-panned\" signal.\n\n## Signal Flow\n1. **Input**: Signal enters the plugin.\n2. **Split**: Signal splits into **Dry Path** and **Wet Path**.\n3. **Wet Path (Delay Line)**: The signal enters a short delay (controlled by **Delay** knob).\n4. **LFO Modulation**: The delay time is modulated back and forth (controlled by **Rate** and **Depth**).\n5. **Feedback Loop**: A portion of the modulated signal is sent back to the start of the delay line (controlled by **Feed**).\n6. **Inversion**: If selected, the feedback signal's phase is flipped.\n7. **Summing**: Dry and Wet paths are mixed at the output.\n\n## Things Beginners Misunderstand\n- **\"The Bass Disappeared\"**: Flanging uses phase cancellation. If the delay is very short, it will cancel out low frequencies. Use a high-pass filter before the flanger or mix it in parallel.\n- **\"It's just a chorus\"**: While they are related, flangers use much shorter delays (<10ms) than chorus plugins (~20-50ms), leading to the distinct \"whistle\" or \"ring\".\n- **The \"Cross\" Knob**: This isn't just a mix knob; it mixes the flanged signal of one channel into the other channel, increasing stereo complexity.\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques And Best Practices: Fruity Flanger\n\n## 1. The \"Static Tuned\" Flange\nSet the **Rate** to 0. This stops the LFO. Now, adjust the **Delay** knob. You will hear a fixed metallic resonance.\n- **Technique**: Match the resonant pitch to the key of your song.\n- **Listen For**: A \"ring\" that harmonizes with your synth or snare.\n\n## 2. Inverted Woodiness\nToggle the **Invert Feedback** (INV FB) button.\n- **Technique**: Use this on percussion or acoustic guitars.\n- **Listen For**: The sound becomes \"hollower\" and \"throatier\" rather than metallic and shiny. Excellent for \"boxy\" or vintage R&B textures.\n\n## 3. Ultra-Wide Hats\nSet **Phase** to 100%. This moves the Left and Right delay lines in opposite directions.\n- **Technique**: Apply to Trap hi-hats.\n- **Listen For**: The hats \"swirling\" around the listener's head rather than staying in the center.\n\n## 4. Through-Zero Simulation (Pseudo)\nSet **Dry** to 50% and **Wet** to -50% (Invert Wet).\n- **Technique**: Find the point where the signal almost cancels out.\n- **Listen For**: The \"deep notch\" that happens at the bottom of the sweep.\n\n## 5. Mono-Compatibility Check\nAlways toggle the **Mono** switch on your master track or mixer while using high **Phase** settings.\n- **Pitfall**: Extreme flanging can make a sound completely disappear in mono.\n- **Fix**: Reduce the **Phase** knob until the sound remains present in mono. [SRC: REPUTABLE]\n\n## Common Pitfalls + Fixes\n| Pitfall | The Fix |\n| :--- | :--- |\n| **Harsh \"Whistling\"** | Lower the **Feed** (Feedback) knob. |\n| **Low-End Mud/Loss** | Use a High-Pass filter *before* the Flanger at ~300Hz. |\n| **Nauseating Movement** | Lower the **Rate** and **Depth**. |\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity Flanger\n\nFlanger translates vibes through **resonance** and **rhythmic sweeping**.\n\n## 1. Upbeat (Hectic, High-Energy, Jet-Engine)\n- **Concept:** \"The Turbocharger.\"\n- **Levers:**\n  - **Feedback:** High (Positive or Negative).\n  - **LFO Speed:** Match the tempo (e.g., 1/2 bar).\n  - **Depth:** 100%.\n- **Listen For:** A screaming \"whoosh\" that follows the energy of the track.\n- **Don't Do This:** Don't use this on every track; it’s an \"event\" effect.\n\n## 2. Psychedelic (Warped, Melted, Unstable)\n- **Concept:** \"The Liquid Pipe.\"\n- **Levers:**\n  - **Delay:** Very short (<2ms) for extreme comb filtering.\n  - **Feedback:** Negative (creates a \"hollower\" sound). [SRC: REPUTABLE]\n  - **LFO Wave:** Random or complex.\n- **Listen For:** The sound \"hollowing out\" and shifting through strange resonant peaks.\n\n## 3. Spacey (Vast, Ethereal, Drifting)\n- **Concept:** \"The Galactic Drift.\"\n- **Levers:**\n  - **LFO Speed:** Extremely slow (0.1Hz).\n  - **Stereo Phase:** 180 degrees (Max width).\n  - **Mix:** Low (10-20%).\n- **Listen For:** A subtle, wide movement that makes the sound feel like it's orbiting the listener.\n\n## 4. Vibey (Smooth, Shimmering, Modern)\n- **Concept:** \"The Glossy Sheen.\"\n- **Levers:**\n  - **Feedback:** Zero.\n  - **Delay:** 5-10ms (closer to Chorus territory).\n  - **Cross Cutoff:** HP @ 500Hz.\n- **Listen For:** A shimmering width that doesn't have the \"metallic\" ring of traditional flanging.\n\n## 5. Moody (Dark, Damp, Industrial)\n- **Concept:** \"The Abandoned Factory.\"\n- **Levers:**\n  - **Feedback:** Medium.\n  - **Post-Filter:** Low Pass @ 2kHz.\n- **Listen For:** A \"claustrophobic\" ringing that sounds like it’s coming through a metal vent. [SRC: REPUTABLE]",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Flanger\r\n\r\n## What It Is\r\nFruity Flanger is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Fruity Flanger\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: Fruity Flanger (5 Minutes)\n\n1.  **Insert:** Load **Fruity Flanger** onto a drum loop or synth.\n2.  **Width:** Turn the **Stereo** knob to maximum for a wide \"Spacey\" feel.\n3.  **Intensity:** Adjust the **Depth** slider to set how far the \"sweep\" goes.\n4.  **Feedback:** Increase the **Feedback** knob to hear the \"Jet Engine\" resonance.\n5.  **Timing:** Set the **LFO Speed** to match your project's rhythm (right-click for tempo sync).\n6.  **Tip:** Use **Negative Feedback** (knob to the left) for a \"hollower,\" more psychedelic tone. [SRC: IL-MAN]",
+      "01_Common_Mistakes": "# Common Mistakes: Fruity Flanger\n\n- **Phase Cancellation on Kick/Bass**: Applying flanging directly to a kick drum or sub-bass without a high-pass filter. This leads to weak, \"flappy\" low end.\n- **Feedback Overload**: Setting **Feed** too high on a sound with lots of harmonic content (like a saw lead), causing a piercing, painful whistle.\n- **Static Flanging without Tuning**: Using a rate of 0 but not tuning the **Delay** to the song's key, resulting in \"out-of-tune\" metallic resonance.\n- **Ignoring the Cross Knob**: Keeping **Cross** at 0 when you want extra width. The cross-panning is what makes Fruity Flanger sound \"expensive\" vs \"cheap.\"\n- **Over-modulation on Leads**: Setting the **Depth** too high on a lead vocal, making it sound \"drunk\" and lose its pitch center.\n",
+      "02_Best_Settings_Starting_Points": "# Best Settings Starting Points: Fruity Flanger\n\n| Target Sound | Delay | Feed | Rate | Depth | Phase |\n| :--- | :--- | :--- | :--- | :--- | :--- |\n| **Jet Plane Swoosh** | 5.0 ms | 70% | 0.2 Hz | 80% | 50% |\n| **Trap Hi-Hat Life** | 2.0 ms | 20% | 1.5 Hz | 30% | 100% |\n| **R&B Pad Width** | 8.0 ms | -30% | 0.5 Hz | 40% | 80% |\n| **Robotic Vocal** | 1.5 ms | 85% | 0.0 Hz | 0% | 0% |\n| **Subtle Guitar Air** | 10.0 ms| 0% | 0.1 Hz | 10% | 40% |\n\n*Note: Use \"Invert Feedback\" for the R&B Pad to get that hollow character.*\n",
+      "cheat-sheet": "# Fruity Flanger: The Classic Jet\n\n> **Scope:** Jet Plane Sweeps, Metallic Resonances, and Chorus-like Doubling.\n> **Source:** Image-Line Official Manual (v21.2) + Direct Analysis.\n> **Complexity:** Low (Modulation).\n\n## 🧠 The \"Comb\" Concept\nFlanging is essentially a very short delay (0-20ms) that is modulated.\n*   **Result:** This creates a \"Comb Filter\" (a series of notches) that moves up and down the frequency spectrum.\n*   **Sound:** When the delay is near <1ms, the notches cancel out high frequencies, creating the \"Jet Plane\" whoosh.\n\n**Signal Flow:**\n`Input` -> **[DELAY LINE (LFO Modulated)]** -> **[DAMP]** -> **[FEEDBACK (Normal/Inverted)]** -> **[MIX (Dry + Wet + Cross)]** -> **[OUTPUT]**\n\n---\n\n## 🎛️ Section 1: The Invert Switches\n\nThe character of the flanger is defined here.\n*   **Invert Wet:** Cancels the Dry signal.\n    *   *Result:* Creates a hollow, \"Inside Out\" sound. If Mix is 50/50, silence occurs at DC.\n*   **Invert Feedback:** Feeds the inverted signal back into the loop.\n    *   *Result:* Enhances odd vs even harmonics. One setting sounds like a \"Tube\", the other like a \"Bell\".\n\n---\n\n## 🔁 Section 2: Phase (Stereo)\n\n*   **Knob:** **Phase**.\n*   **Function:** Offsets the LFO for the Right Channel.\n*   **Settings:**\n    *   *0 deg:* Mono modulation (Laser beam).\n    *   *180 deg:* Left goes Up, Right goes Down. (Headphone massage).\n    *   *10 deg:* Subtle width.\n\n---\n\n## ⚡ Technical Specs: The Cross Knob\n\n*   **Function:** Mixes the *Inverted Left* signal into the *Right Output* (and vice versa).\n*   **Effect:** Hyper-Wide Stereo. It creates a pseudo-Haas effect that sits \"outside\" the speakers.\n*   **Warning:** Can ruin mono compatibility if overused.\n\n---\n\n## 🧪 \"Secret Sauce\" Workflows\n\n### 1. The \"Zero\" Flange\n1.  **Delay:** 0ms.\n2.  **Depth:** Very High.\n3.  **Rate:** Slow.\n4.  **Invert Wet:** ON.\n5.  **Result:** When the LFO hits the bottom (0ms delay), the Wet signal perfectly cancels the Dry signal (silence). This creates the dramatic \"Through Zero\" suck effect.\n\n### 2. Infinite Barberpole\n1.  **Rate:** 0 (Static).\n2.  **Automation:** Create a ramp automation clip for the **Delay** time.\n3.  **Result:** A flanger that only goes UP forever (Shepard Tone illusion) if you reset the ramp at the measure.\n\n### 3. Metallic Resonator\n1.  **Delay:** Fixed (Rate 0).\n2.  **Feed:** 99% (Max).\n3.  **Damp:** 0 (No damping).\n4.  **Result:** The flanger effectively becomes a physical model of a short string. Tuning the **Delay** knob changes the pitch of the metallic ring.\n",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Flanger\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Flanger to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Flanger\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "quick-start-guide.md": {
+      "quick-start-guide": "# Fruity Flanger Quick Start Guide\n\n## Getting Started in 60 Seconds\n\n### Classic Flanging Sound\n1. **Load Fruity Flanger** on any track or mixer channel\n2. **Set Delay to 5ms** for medium-speed flanging\n3. **Set Rate to 0.5Hz** for slow, sweeping movement\n4. **Set Depth to 50%** for moderate flanging intensity\n5. **Set Feedback to 25%** for metallic character\n6. **Set Mix to 30%** for subtle effect blending\n\n## Essential Controls\n\n### The Four Core Parameters\n1. **Delay Time** (0.1-20ms): Base delay before modulation\n2. **LFO Rate** (0.05-20Hz): Speed of flanging sweep\n3. **LFO Depth** (0-100%): Amount of delay variation\n4. **Feedback** (0-95%): Regeneration for metallic character\n\n### Additional Controls\n5. **Stereo** (0-100%): Stereo image width\n6. **Mix** (0-100%): Balance between dry and flanged signal\n\n## Common Starting Points\n\n### Classic Guitar Flange\n```\nDelay: 8ms\nRate: 0.8Hz\nDepth: 60%\nFeedback: 30%\nStereo: 75%\nMix: 40%\n```\n**Best For**: Guitar, classic effects, vintage character\n\n### Subtle Vocal Enhancement\n```\nDelay: 2ms\nRate: 0.3Hz\nDepth: 25%\nFeedback: 15%\nStereo: 60%\nMix: 20%\n```\n**Best For**: Vocals, subtle enhancement, clarity\n\n### Electronic Music Flange\n```\nDelay: 12ms\nRate: 2.0Hz\nDepth: 70%\nFeedback: 40%\nStereo: 85%\nMix: 50%\n```\n**Best For**: Synths, electronic production, rhythmic effects\n\n### Sound Design Textures\n```\nDelay: 15ms\nRate: 4.0Hz\nDepth: 85%\nFeedback: 60%\nStereo: 90%\nMix: 60%\n```\n**Best For**: Sound design, creative effects, textures\n\n## Problem-Solving Examples\n\n### Flange Sounds Too Strong\n**Solution**: Reduce Mix to 15-25%, lower Depth to 30-40%\n**Result**: Subtle enhancement without overwhelming mix\n\n### No Sweeping Movement\n**Solution**: Increase Rate to 1-2Hz, ensure Depth > 30%\n**Result**: Noticeable flanging sweep and movement\n\n### Effect Sounds Harsh/Metallic\n**Solution**: Reduce Feedback to 15-25%, adjust Delay to 3-8ms\n**Result**: Warmer, more musical flanging character\n\n### Flanging Gets Lost in Mix\n**Solution**: Increase Stereo to 70-85%, slightly raise Mix\n**Result**: Better stereo image and presence\n\n## Genre-Specific Applications\n\n### Rock Music\n```\nGuitar Flange:\nDelay: 6-10ms\nRate: 0.5-1.5Hz\nDepth: 50-70%\nFeedback: 25-40%\nMix: 35-50%\n```\n\n### Electronic Music\n```\nSynth Flange:\nDelay: 10-15ms\nRate: 1-4Hz\nDepth: 60-80%\nFeedback: 30-50%\nMix: 40-60%\n```\n\n### Pop Music\n```\nVocal/Subtle:\nDelay: 2-5ms\nRate: 0.2-0.6Hz\nDepth: 20-35%\nFeedback: 10-20%\nMix: 15-30%\n```\n\n## Pro Tips\n\n### The Musical Sweet Spot\n- **Delay**: 3-10ms works best for most applications\n- **Rate**: 0.3-2.0Hz provides musical sweep speeds\n- **Depth**: 40-70% gives noticeable but not overwhelming effect\n- **Feedback**: 20-40% adds character without harshness\n- **Mix**: 20-50% integrates effect naturally\n\n### Timing and Tempo\n- **Slow Tempos** (60-90 BPM): Use 0.2-0.8Hz Rate\n- **Medium Tempos** (90-140 BPM): Use 0.6-2.0Hz Rate\n- **Fast Tempos** (140+ BPM): Use 1.5-4.0Hz Rate\n- **Sync to Tempo**: Sync LFO to project tempo for rhythmic effects\n\n### Stereo Imaging\n- **Mono Sources**: Use 50-70% Stereo for gentle width\n- **Stereo Sources**: Use 80-100% Stereo for full image\n- **Creative Width**: High Stereo settings for special effects\n\n### Automation Ideas\n- **Rate Automation**: Speed up flanging in choruses\n- **Depth Automation**: Intensify effect for dramatic moments\n- **Feedback Automation**: Vary metallic character over time\n- **Mix Automation**: Bring effect in/out for sections\n\n## Common Mistakes to Avoid\n\n❌ Too much Feedback creating harsh metallic tones\n❌ Rate too fast creating nervous, chaotic sound\n❌ Mix too high overwhelming original signal\n❌ Delay too long causing timing issues\n❌ Ignoring tempo relationship for rhythmic flanging\n\n## Quick Reference Chart\n\n| Application | Delay | Rate | Depth | Feedback | Mix |\n|-------------|--------|-------|----------|------|\n| Guitar Classic | 8ms | 0.8Hz | 30% | 40% |\n| Subtle Vocal | 3ms | 0.3Hz | 15% | 20% |\n| Electronic Rhythmic | 12ms | 2.5Hz | 50% | 50% |\n| Sound Design | 15ms | 4.0Hz | 60% | 60% |\n| Vintage Tape | 10ms | 0.5Hz | 35% | 45% |\n\n## Integration Tips\n\n### With Other Effects\n- **Before Reverb**: Flanging creates focused reverb effects\n- **Before Delay**: Flanging modulates delay repeats\n- **Before Distortion**: Flanging before distortion creates complex textures\n- **After EQ**: Shape flanged frequency content\n\n### In the Mix\n- Always check in full mix context\n- Use Mix control to balance with dry signal\n- Consider stereo placement in mix\n- Automate parameters for song structure\n\nThis quick start guide provides immediate functionality while teaching fundamental flanging concepts. Start here, then explore advanced modulation techniques and creative applications as you gain experience."
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Flanger\r\n\r\nThis section contains learning information for the fruity-flanger plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: The Jet Transition (Fruity Flanger)\n\n## Routing Context\n- **Target:** Full Drum Bus or Melodic Group.\n- **Position:** Insert FX (End of chain).\n\n## Step-by-Step Setup\n1.  On the target track, load **Fruity Flanger**.\n2.  Set **LFO Speed** to `1/2 bar` (Tempo synced).\n3.  Set **Feedback** to `80%` (Positive).\n4.  Set **Depth** to `100%`.\n5.  **The Play:** During the last 2 bars of a verse, automate the **WET MIX** from `0%` to `50%`.\n6.  **The Result:** A soaring jet-engine sweep that builds massive tension before dropping into the hook.\n\n## Vibe Check\n- **Upbeat/Aggressive:** Essential for high-energy rap build-ups and EDM-style transitions.\n\n## Variation\n- **Hollow Sucking:** Use `-80%` (Negative) Feedback for a \"sucking\" sound that feels more like it's moving *away* from the listener. [SRC: REPUTABLE]\n",
+      "01_Goal_Shaping_And_Control": "# Goal: Psychedelic Metallic Percussion (Flanger)\n\n## Step-by-Step Setup\n1.  Load a basic Hi-Hat pattern.\n2.  Add **Fruity Flanger**.\n3.  Set **LFO Speed** to `0` (Manual mode).\n4.  Set **Feedback** to `95%` (Max Resonance).\n5.  **The Warp:** Manually move the **Delay** slider between `0ms` and `5ms`.\n6.  **Result:** The hi-hats will \"ring\" with a metallic, pipe-like resonance. \n\n## Vibe Check\n- **Psychedelic/Spacey:** Creates an alien, industrial texture that makes a standard trap beat sound unique and experimental.\n\n## Automation Idea\n- Link the **Delay** slider to a **Fruity Peak Controller** on the Snare track. Now the hats \"ring\" differently every time the snare hits. [SRC: REPUTABLE]\n",
+      "10_Vibe_Moody": "# Vibe Workflow: Moody (Hollow Shadows)\n\n*Goal: Add a dark, mysterious \"breathing\" texture to your melodies.*\n\n## 🎛️ Routing Context\n- **Routing**: Rhodes or Electric Piano -> Fruity Flanger.\n- **Mix Status**: 30-50% Wet.\n\n## 🚶 Step-by-Step Setup\n1. **The Core Tone**: Set **Delay** to 8.0 ms (Lower center frequency).\n2. **Hollow Character**: Click the **INV FB** (Invert Feedback) button.\n3. **Subtle Motion**: Set **Rate** to 0.3 Hz. Set **Depth** to 40%.\n4. **Darkness**: Place a **Fruity Free Filter** *after* the flanger and set it to a Low Pass at 1500Hz.\n5. **Phase check**: Keep **Phase** at 0% for a focused, mono-compatible \"shadow.\"\n\n## 🔄 Variations\n- **The \"Rainy Day\"**: Increase **Dry** to 100% and **Wet** to 20% for a ghost-like feel.\n- **The \"Underwater\"**: Automate the **Delay** knob to move between 2ms and 15ms very slowly.\n\n## ⚠️ Pitfalls & Fixes\n- **Problem**: The sound is too \"metallic.\"\n- **Fix**: Ensure **INV FB** is active and reduce **Feed** to below 30%.\n",
+      "11_Vibe_Upbeat": "# Vibe Workflow: Upbeat (The Pop Shimmer)\n\n*Goal: Add rhythmic energy and \"sparkle\" to a lead or percussion bus.*\n\n## 🎛️ Routing Context\n- **Routing**: Synth Lead or Percussion Bus -> Fruity Flanger.\n- **Mix Status**: 20-30% Wet.\n\n## 🚶 Step-by-Step Setup\n1. **The Pulse**: Set **Rate** to match your song (e.g., 1/4 note or 1/2 note).\n2. **Brightness**: Set **Delay** to 1.5 ms (High-frequency resonance).\n3. **Width**: Set **Phase** to 60%.\n4. **Energy**: Set **Feed** to 40% (Positive feedback for a \"shiny\" sound).\n5. **Punch**: Keep **Dry** at 100% to preserve the attack.\n\n## 🔄 Variations\n- **The \"Techno Swirl\"**: Crank **Depth** to 100% and **Rate** to 4Hz for a vibrating energy.\n- **The \"Snare Tail\"**: Apply only to the snare reverb send for a \"sizzling\" effect.\n\n## ⚠️ Pitfalls & Fixes\n- **Problem**: The lead sounds too thin.\n- **Fix**: Reduce the **Wet** knob and increase the **Delay** time slightly to move the comb-filter notches away from the fundamentals.\n",
+      "12_Vibe_Psychedelic": "# Vibe Workflow: Psychedelic (Reverse Flange Morph)\n\n*Goal: Create a disorienting, shifting texture that moves backward in time.*\n\n## 🎛️ Routing Context\n- **Routing**: Synth Lead or Pad -> Mixer Track -> Fruity Flanger.\n- **Mix Status**: 100% Wet for sound design, 40% for the final mix.\n\n## 🚶 Step-by-Step Setup\n1. **Initialize**: Set **Rate** to 0.1 Hz (very slow).\n2. **Width**: Set **Phase** to 100% (Maximum stereo offset).\n3. **Resonance**: Set **Feed** to 70%.\n4. **The \"Swoosh\"**: Set **Depth** to 80%.\n5. **Recording**: Right-click the Mixer Track arm button and record a 4-bar passage of your synth.\n6. **The Flip**: Take the recorded audio, double-click it, and select **Reverse**.\n7. **The Re-Chop**: Chop the reversed audio into 1-bar segments and rearrange them.\n8. **Mono Check**: Switch your Master track to Mono. Ensure the reversed \"swooshes\" still have weight.\n\n## 🔄 Variations\n- **The \"Stutter Shift\"**: Automate the **Delay** knob in a \"stepped\" pattern (holding values for 1 beat) before recording.\n- **The \"High Shimmer\"**: Use a High-Pass Filter at 2kHz *before* the flanger so only the air is processed.\n\n## ⚠️ Pitfalls & Fixes\n- **Problem**: The reversed audio sounds like static noise.\n- **Fix**: Reduce the **Feed** knob before recording; too much feedback creates a whistle that drowns out the original instrument.\n\n## 🎚️ Automation Ideas\n- **Warp Speed**: Link the **Rate** knob to a Peak Controller on your kick drum so the \"swirl\" speeds up every time the kick hits.\n",
+      "13_Vibe_Jazzy": "# Vibe Workflow: Jazzy (Analog Flutter)\n\n*Goal: Mimic the subtle, organic pitch instability of tape or a rotating speaker.*\n\n## 🎛️ Routing Context\n- **Routing**: Guitar loop or Neo-Soul Keys -> Fruity Flanger.\n- **Mix Status**: 10-20% Wet (Extreme Subtlety).\n\n## 🚶 Step-by-Step Setup\n1. **The Drift**: Set **Rate** to 0.15 Hz (Barely moving).\n2. **The Softness**: Set **Delay** to 10.0 ms (Deep, lush range).\n3. **No Resonance**: Set **Feed** to 0%. (We don't want metallic ringing here).\n4. **Width**: Set **Phase** to 30% for a gentle \"air\" around the sound.\n5. **Humanity**: Automate the **Rate** knob slightly using a Fruity Formula Controller with a random LFO to avoid a mechanical feel.\n\n## 🔄 Variations\n- **The \"Bossa Nova\"**: Use a Triangle LFO for a \"sharper\" pitch drift.\n- **The \"Lofi Vinyl\"**: Add 5% **Distortion** (via the FX tab or a separate plugin) after the flanger.\n\n## ⚠️ Pitfalls & Fixes\n- **Problem**: It sounds like an effect.\n- **Fix**: Lower the **Wet** knob until you can only tell it's on when you bypass it. Jazzy vibes are about the *feeling*, not the hearing.\n",
+      "14_Vibe_Vibey": "# Vibe Workflow: Vibey (Silky R&B Width)\n\n*Goal: Add a wide, smooth, \"liquid\" sheen to modern vocals or synth stacks.*\n\n## 🎛️ Routing Context\n- **Routing**: Vocal Bus -> Send 1 (Fruity Flanger) -> Reverb.\n- **Mix Status**: 100% Wet on the Send track.\n\n## 🚶 Step-by-Step Setup\n1. **The Wide Map**: Set **Phase** to 180 (Full stereo inversion).\n2. **The Smooth Sweep**: Set **Rate** to 0.8 Hz.\n3. **The Center**: Set **Delay** to 5.0 ms.\n4. **The Silk**: Set **Feed** to 20% (Low).\n5. **The Mix**: Blend the Send fader into the main mix until the vocals feel \"expensive.\"\n6. **Mono Check**: Toggle Mono. Ensure the vocal doesn't lose its \"body.\" If it does, lower the Phase to 140.\n\n## 🔄 Variations\n- **The \"Cloud Hook\"**: Place a Reverb *before* the flanger so you are flanging the reverb tail.\n- **The \"High-End Air\"**: Place a High-Pass Filter at 5kHz *after* the flanger on the send track.\n\n## ⚠️ Pitfalls & Fixes\n- **Problem**: The vocal sounds \"phasy\" and loses focus.\n- **Fix**: Lower the Send fader and ensure the Dry vocal is still prominent in the center of your mix.\n"
+    },
+    "by-instrument": {
+      "drums": "# Instrument Workflow: Drums (Trap & Boom Bap)\n\n## 1. The \"Resonant Snare\"\n- **Recipe**: Feed 80%, Delay 1.2ms, Rate 0.\n- **Move**: Tune the Delay until the metallic ring matches the \"root\" of your song.\n- **Vibe**: Adds a industrial, 90s hardware feel to standard Trap snares.\n\n## 2. Moving Hi-Hats\n- **Recipe**: Rate 2Hz, Phase 100%, Wet 30%.\n- **Move**: Automate the **Rate** to increase during drum fills.\n- **Vibe**: Keeps repetitive hat loops interesting by constantly shifting their stereo position.\n\n## 3. Percussion Bus \"Glue\"\n- **Recipe**: INV FB active, Feed 40%, Rate 0.5Hz.\n- **Move**: Use a high-pass filter before the flanger.\n- **Vibe**: Inverted feedback adds a \"boxy\" coherence to a bus of mismatched percussive sounds.\n",
+      "keys": "# Instrument Workflow: Keys & Pads\n\n## 1. Underwater Rhodes\n- **Recipe**: INV FB active, Delay 15ms, Rate 0.3Hz.\n- **Move**: Follow with a Low-Pass Filter at 1200Hz.\n- **Vibe**: A dark, \"throaty\" modulation that feels like the electric piano is played inside a resonant box.\n\n## 2. Trance Pad Depth\n- **Recipe**: Rate 0.5Hz, Depth 100%, Phase 180.\n- **Move**: Automate the **Wet** knob to swell with the pad's filter.\n- **Vibe**: Creates an evolving sense of stereo scale that expands as the filter opens.\n\n## 3. Lo-Fi Flutter\n- **Recipe**: Feed 30%, Rate 5Hz (Fast), Depth 10% (Low).\n- **Vibe**: Mimics the rapid pitch jitter of a worn-out belt on a cheap turntable.\n",
+      "vocals": "# Instrument Workflow: Vocals (Modern R&B)\n\n## 1. Silky Ad-Libs\n- **Recipe**: Rate 0.8Hz, Phase 180, Wet 40%.\n- **Vibe**: Makes ad-libs sound \"detached\" from the main dry vocal, creating a wide, floating landscape.\n\n## 2. Robotic \"Auto-Tune\" Edge\n- **Recipe**: Feed 90%, Delay 0.5ms, Rate 0.\n- **Move**: Put this *after* your pitch correction.\n- **Vibe**: Adds a metallic buzzing character that emphasizes the digital nature of the vocal.\n\n## 3. Parallel Widener\n- **Recipe**: Delay 10ms, Rate 0.1Hz, Phase 90.\n- **Move**: Use as a parallel send mixed at 10%.\n- **Vibe**: Adds a subtle \"air\" and thickness to melodic vocals without making them sound obviously processed.\n"
+    },
+    "common-usage.md": {
+      "common-usage": "# Common Workflows: Fruity Flanger\n\n## 1. Drum Loop \"Elasticity\"\n\n1.  **Input:** Breakbeat.\n2.  **Settings:**\n    *   **Rate:** Sync to tempo (using LFO Rate or controller). Actually, Rate is in Hz. Use **2/3 Hz**ish.\n    *   **Feed:** Medium.\n    *   **Mix:** 50%.\n3.  **Result:** The drums sound like they are being stretched and squeezed. Classic Jungle/DnB technique.\n\n## 2. Guitar \"Mist\"\n\n1.  **Input:** Clean Guitar.\n2.  **Settings:**\n    *   **Rate:** Fast (Vibrato speed).\n    *   **Depth:** Low.\n    *   **Feed:** Low.\n    *   **Phase:** 180 degrees.\n3.  **Result:** A shimmering Chorus/Vibrato hybrid that floats around the listener's head. Unlike standard Chorus, the feedback adds a \"glassy\" texture.\n\n## 3. Hi-Hat Shaker\n\n1.  **Input:** Static Hi-Hat Loop.\n2.  **Settings:**\n    *   **Delay:** Low.\n    *   **Feed:** High.\n    *   **Rate:** Fast.\n3.  **Result:** The flanger adds movement to the high frequencies, turning a boring \"Tick Tick\" into a \"Shh-Tss-Shh-Tss\" groove.\n\n## 4. The \"Dive Bomb\"\n\n1.  **Automation:** Link **Delay** to a macro.\n2.  **Feed:** Max.\n3.  **Action:** Slam the Delay knob from Min to Max.\n4.  **Result:** A massive laser-fall sound effect, perfect for transitions/drops.\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Flanger\r\n\r\nThis section contains workflow information for the fruity-flanger plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Flanger\r\n\r\nThis section contains reference information for the fruity-flanger plugin.\r\n"
+    }
+  }
+}

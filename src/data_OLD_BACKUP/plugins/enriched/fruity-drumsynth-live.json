@@ -1,0 +1,302 @@
+{
+  "id": "fruity-drumsynth-live",
+  "name": "Fruity DrumSynth Live",
+  "presets": {
+    "drum-archetypes": {
+      "archetypes": [
+        {
+          "name": "Heavy Analog Kick",
+          "program": "C3",
+          "settings": {
+            "osc1": "55Hz",
+            "osc2": "300Hz",
+            "decay": "60%",
+            "noise": "5%"
+          }
+        },
+        {
+          "name": "TR-808 Snare",
+          "program": "D3",
+          "settings": {
+            "osc1": "180Hz",
+            "noise": "70%",
+            "decay": "25%",
+            "cutoff": "3000Hz"
+          }
+        }
+      ]
+    },
+    "psychedelic-drum-patches": {
+      "psychedelicPatches": [
+        {
+          "name": "Drunken Tom",
+          "settings": {
+            "osc1": "80Hz",
+            "osc2": "Link to LFO for pitch drift",
+            "noise": "20%",
+            "decay": "70%"
+          },
+          "vibe": "Trippy, pitch-sliding low percussion."
+        },
+        {
+          "name": "Alien Shaker",
+          "settings": {
+            "osc1": "4500Hz",
+            "noise": "100%",
+            "res": "95%",
+            "decay": "5%"
+          },
+          "vibe": "Resonant, metallic noise bursts."
+        }
+      ]
+    }
+  },
+  "parameters": {
+    "drumsynth-live-specs": {
+      "plugin": {
+        "name": "Fruity DrumSynth Live",
+        "category": "Instrument",
+        "type": "Percussion Synthesizer",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20DrumSynth%20Live.htm"
+      },
+      "parameters": {
+        "perProgram": [
+          {
+            "id": "osc1",
+            "name": "Oscillator 1",
+            "unit": "Hz"
+          },
+          {
+            "id": "osc2",
+            "name": "Oscillator 2",
+            "unit": "Hz"
+          },
+          {
+            "id": "noise",
+            "name": "Noise Amount",
+            "range": "0-100%"
+          },
+          {
+            "id": "decay",
+            "name": "Decay",
+            "range": "0-100%"
+          },
+          {
+            "id": "cutoff",
+            "name": "Filter Cutoff"
+          },
+          {
+            "id": "res",
+            "name": "Filter Resonance"
+          }
+        ],
+        "global": [
+          {
+            "id": "masterPitch",
+            "name": "Master Pitch"
+          },
+          {
+            "id": "masterVol",
+            "name": "Master Volume"
+          }
+        ]
+      },
+      "midiMapping": {
+        "notes": "0-127",
+        "programs": 128
+      }
+    },
+    "parameters": {
+      "pluginName": "Fruity DrumSynth Live",
+      "category": "Drum Synthesizer",
+      "parameters": [
+        {
+          "section": "Oscillator 1",
+          "id": "osc1_freq",
+          "name": "Frequency",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Base pitch or filter center."
+        },
+        {
+          "section": "Oscillator 1",
+          "id": "osc1_mode",
+          "name": "Noise/Sweep",
+          "options": [
+            "Sweep Tone",
+            "Noise"
+          ],
+          "description": "Oscillator type."
+        },
+        {
+          "section": "Oscillator 1",
+          "id": "osc1_decay",
+          "name": "Decay",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Amp envelope decay."
+        },
+        {
+          "section": "Oscillator 2",
+          "id": "osc2_ring",
+          "name": "Ring Mod",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Modulation amount (Osc1 x Osc2)."
+        },
+        {
+          "section": "Trigger",
+          "id": "voice_mode",
+          "name": "Polyphony",
+          "options": [
+            "Mono",
+            "Poly",
+            "Group 1",
+            "Group 2",
+            "Group 3",
+            "Group 4"
+          ],
+          "description": "Choke group assignment."
+        },
+        {
+          "section": "Morph",
+          "id": "morph_amt",
+          "name": "Morph Amount",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Blend synthesis state to target patch."
+        },
+        {
+          "section": "Output",
+          "id": "send_track",
+          "name": "Send Offset",
+          "range": {
+            "min": 0,
+            "max": 4,
+            "unit": "Tracks"
+          },
+          "description": "Relative Mixer Track offset."
+        }
+      ]
+    }
+  },
+  "rules": {
+    "drum-design-rules": {
+      "rules": [
+        {
+          "scenario": "Drums sound too robotic",
+          "action": "Vary MIDI velocity; DrumSynth Live uses velocity to scale filter cutoff and noise amount."
+        },
+        {
+          "scenario": "Kick clashing with bass",
+          "action": "Use Global Transpose or adjust Osc 1 to match project key."
+        }
+      ]
+    },
+    "layering-rules": {
+      "layeringRules": [
+        {
+          "objective": "Layering with a weak kick sample",
+          "action": "Use DrumSynth Live for the sub-frequency (50-60Hz) only. Set Noise to 0% and Resonance to 10%."
+        },
+        {
+          "objective": "Creating 'Ghost' Snare rolls",
+          "action": "Set Decay to <15% and increase the Filter Cutoff. Lower MIDI velocity to make the rolls feel distant."
+        }
+      ]
+    }
+  },
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    },
+    {
+      "title": "Drum Synthesis Physics",
+      "filename": "drum-synthesis-physics.md"
+    },
+    {
+      "title": "Envelope Snapping Physics",
+      "filename": "envelope-snapping-physics.md"
+    },
+    {
+      "title": "Generative Percussion Logic",
+      "filename": "generative-percussion-logic.md"
+    },
+    {
+      "title": "Neurological Impact Of Transients",
+      "filename": "neurological-impact-of-transients.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "Common Usage",
+      "category": "general",
+      "filename": "common-usage.md"
+    },
+    {
+      "title": "00 Goal Quick Result",
+      "category": "by-goal",
+      "filename": "00_Goal_Quick_Result.md"
+    },
+    {
+      "title": "12 Vibe Psychedelic",
+      "category": "by-goal",
+      "filename": "12_Vibe_Psychedelic.md"
+    },
+    {
+      "title": "Analog Kick Design",
+      "category": "by-goal",
+      "filename": "analog-kick-design.md"
+    },
+    {
+      "title": "Drums",
+      "category": "by-instrument",
+      "filename": "drums.md"
+    },
+    {
+      "title": "Iconic Hardware Modeling",
+      "category": "by-instrument",
+      "filename": "iconic-hardware-modeling.md"
+    },
+    {
+      "title": "Industrial Hi Hats",
+      "category": "by-instrument",
+      "filename": "industrial-hi-hats.md"
+    },
+    {
+      "title": "Moody Rnb Percussion",
+      "category": "by-instrument",
+      "filename": "moody-rnb-percussion.md"
+    },
+    {
+      "title": "Physical Snare Resynthesis",
+      "category": "by-instrument",
+      "filename": "physical-snare-resynthesis.md"
+    }
+  ]
+}

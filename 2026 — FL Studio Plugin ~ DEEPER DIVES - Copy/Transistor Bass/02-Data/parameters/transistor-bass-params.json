@@ -1,0 +1,284 @@
+{
+  "$schema": "./schema.json",
+  "plugin": {
+    "name": "Transistor Bass",
+    "version": "2.x",
+    "category": "Instrument",
+    "type": "Subtractive Synthesizer",
+    "emulates": "Roland TB-303",
+    "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Transistor%20Bass.htm"
+  },
+  "parameters": {
+    "synthesis": [
+      {
+        "id": "waveform",
+        "name": "Waveform",
+        "type": "slider",
+        "range": "Square to Sawtooth",
+        "default": "Square",
+        "description": "Blends between square and sawtooth oscillator waves",
+        "midiCC": null
+      },
+      {
+        "id": "cutoff",
+        "name": "Cutoff",
+        "type": "slider",
+        "range": "0-100%",
+        "unit": "%",
+        "description": "Filter cutoff frequency - the heart of the acid sound",
+        "automatable": true,
+        "midiCC": 1
+      },
+      {
+        "id": "resonance",
+        "name": "Resonance",
+        "type": "slider",
+        "range": "0-100%",
+        "unit": "%",
+        "description": "Filter resonance (Q factor) - creates the screaming acid character",
+        "automatable": true,
+        "sweetSpot": "65-80%"
+      },
+      {
+        "id": "envMod",
+        "name": "Env Mod",
+        "type": "slider",
+        "range": "0-100%",
+        "unit": "%",
+        "description": "Filter envelope modulation depth",
+        "sweetSpot": "70-85%"
+      },
+      {
+        "id": "decay",
+        "name": "Decay",
+        "type": "slider",
+        "range": "0-100%",
+        "unit": "%",
+        "description": "Filter envelope decay time",
+        "note": "Short = plucky, Long = sweeping"
+      },
+      {
+        "id": "accent",
+        "name": "Accent",
+        "type": "slider",
+        "range": "0-100%",
+        "unit": "%",
+        "description": "Simultaneously boosts cutoff, resonance, and volume",
+        "warning": "Use sparingly for emphasis"
+      },
+      {
+        "id": "tuning",
+        "name": "Tuning",
+        "type": "slider",
+        "range": "-1 to +1 octave",
+        "default": "0",
+        "description": "Master pitch adjustment"
+      },
+      {
+        "id": "volume",
+        "name": "Volume",
+        "type": "slider",
+        "range": "0-100%",
+        "unit": "%",
+        "description": "Output level pre-distortion"
+      }
+    ],
+    "advancedTweaks": [
+      {
+        "id": "hp",
+        "name": "HP (High-Pass)",
+        "type": "slider",
+        "range": "0-100%",
+        "description": "High-pass filter for bass character adjustment"
+      },
+      {
+        "id": "minEnvDecay",
+        "name": "Min Envelope Decay",
+        "type": "slider",
+        "range": "0-100%",
+        "description": "Critical parameter affecting accent circuit behavior"
+      },
+      {
+        "id": "filterKeyFollow",
+        "name": "Filter Key Follow",
+        "type": "slider",
+        "range": "0-100%",
+        "description": "Makes cutoff frequency track keyboard pitch (not in original TB-303)"
+      },
+      {
+        "id": "lfoToPw",
+        "name": "LFO → PW",
+        "type": "slider",
+        "range": "-100 to +100%",
+        "description": "LFO modulation of pulse width"
+      },
+      {
+        "id": "lfoRate",
+        "name": "LFO Rate",
+        "type": "slider",
+        "range": "0-100%",
+        "description": "LFO oscillation speed",
+        "bpmSync": true
+      },
+      {
+        "id": "pulseWidth",
+        "name": "PW (Pulse Width)",
+        "type": "slider",
+        "range": "0-100%",
+        "description": "Absolute pulse width setting",
+        "note": "50% = square wave"
+      },
+      {
+        "id": "vcaSmooth",
+        "name": "VCA Smooth",
+        "type": "slider",
+        "range": "0-100%",
+        "description": "Removes attack/release clicks when increased"
+      }
+    ],
+    "effects": {
+      "distortion": [
+        {
+          "id": "distDrive",
+          "name": "Drive",
+          "type": "slider",
+          "description": "Distortion amount (Pro Co Rat emulation)",
+          "sweetSpot": "45-60%"
+        },
+        {
+          "id": "distTone",
+          "name": "Tone",
+          "type": "slider",
+          "description": "Brightness/darkness of distortion"
+        },
+        {
+          "id": "distMix",
+          "name": "Mix",
+          "type": "slider",
+          "description": "Dry/wet balance"
+        }
+      ],
+      "delay": [
+        {
+          "id": "delayTime",
+          "name": "Time",
+          "type": "slider",
+          "bpmSync": true,
+          "description": "Delay length"
+        },
+        {
+          "id": "delayFeedback",
+          "name": "Feedback",
+          "type": "slider",
+          "description": "Number of repeats"
+        },
+        {
+          "id": "delayMix",
+          "name": "Mix",
+          "type": "slider",
+          "description": "Delay level"
+        }
+      ],
+      "reverb": [
+        {
+          "id": "reverbSize",
+          "name": "Size",
+          "type": "slider",
+          "description": "Room size simulation (based on FL Reeverb 2)"
+        },
+        {
+          "id": "reverbDamping",
+          "name": "Damping",
+          "type": "slider",
+          "description": "High-frequency absorption"
+        },
+        {
+          "id": "reverbPredelayFeedback",
+          "name": "Predelay Feedback",
+          "type": "slider",
+          "description": "Echo before reverb tail"
+        },
+        {
+          "id": "reverbMix",
+          "name": "Mix",
+          "type": "slider",
+          "description": "Reverb level"
+        }
+      ]
+    },
+    "sequencer": {
+      "steps": 16,
+      "resolution": "1/16th note",
+      "lengthRange": "1-16 steps",
+      "controls": [
+        {
+          "id": "gate",
+          "name": "Gate",
+          "shortcut": "G",
+          "description": "Note on/off per step"
+        },
+        {
+          "id": "slide",
+          "name": "Slide",
+          "shortcut": "S",
+          "description": "Portamento between notes"
+        },
+        {
+          "id": "accent",
+          "name": "Accent",
+          "shortcut": "A",
+          "description": "Emphasis on step"
+        }
+      ],
+      "parameters": [
+        {
+          "id": "gateLength",
+          "name": "Gate Length",
+          "description": "Note duration"
+        },
+        {
+          "id": "swing",
+          "name": "Swing/Shuffle",
+          "description": "Groove timing adjustment"
+        },
+        {
+          "id": "octave",
+          "name": "Octave",
+          "range": "0-10",
+          "description": "Pitch range selection"
+        }
+      ],
+      "transpose": "Via MIDI Channel 13"
+    },
+    "engineOptions": [
+      {
+        "name": "V1 Legacy",
+        "description": "Original algorithm - preserves old project compatibility"
+      },
+      {
+        "name": "V2 Extended",
+        "description": "Extended cutoff range for modern production"
+      },
+      {
+        "name": "V2 TB303",
+        "description": "Most accurate TB-303 hardware emulation",
+        "recommended": true
+      }
+    ]
+  },
+  "programSystem": {
+    "totalPrograms": 128,
+    "structure": "Each program links a patch and sequence",
+    "editBuffer": {
+      "readFunction": "Load program into edit buffer",
+      "writeFunction": "Save edit buffer to program slot",
+      "purpose": "Prevents accidental overwrite of programs"
+    },
+    "autofollow": "MIDI notes automatically trigger programs when enabled"
+  },
+  "pianoRollMode": {
+    "portamento": "Overlap notes to create slide effect",
+    "accent": "Set velocity ≥ 86% (220/255)",
+    "transpose": "Use color group 13 for sequence transposition"
+  }
+}

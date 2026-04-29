@@ -1,0 +1,329 @@
+{
+  "metadata": {
+    "plugin": "Harmless",
+    "version": "1.x",
+    "lastUpdated": "2026-02-03",
+    "schema": "parameter-v1"
+  },
+  "parameters": [
+    {
+      "id": "harmonicMask",
+      "name": "Harmonic Mask",
+      "category": "oscillator",
+      "type": "custom",
+      "range": { "min": 0, "max": 512, "bars": 512 },
+      "default": "sawtooth",
+      "description": "Visual editor for 512 harmonic amplitudes. Draw custom oscillator shapes by adjusting individual harmonic levels.",
+      "hipHopRelevance": "Core sound design - determines fundamental timbre",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "subOscillator",
+      "name": "Sub Oscillator",
+      "category": "oscillator",
+      "type": "continuous",
+      "range": { "min": -12, "max": 0, "unit": "semitones" },
+      "default": -12,
+      "description": "Adds octave(s) below fundamental for bass reinforcement",
+      "hipHopRelevance": "Essential for 808-style sub bass",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "subLevel",
+      "name": "Sub Level",
+      "category": "oscillator",
+      "type": "continuous",
+      "range": { "min": 0, "max": 100, "unit": "percent" },
+      "default": 0,
+      "description": "Mix level of sub oscillator",
+      "hipHopRelevance": "Controls sub bass weight",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "noise",
+      "name": "Noise",
+      "category": "oscillator",
+      "type": "continuous",
+      "range": { "min": 0, "max": 100, "unit": "percent" },
+      "default": 0,
+      "description": "White noise added to oscillator",
+      "hipHopRelevance": "Percussive attacks, texture, atmosphere",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "color",
+      "name": "Color",
+      "category": "oscillator",
+      "type": "bipolar",
+      "range": { "min": -100, "max": 100, "unit": "percent" },
+      "default": 0,
+      "description": "Pre-filter brightness/darkness adjustment",
+      "hipHopRelevance": "Quick tone shaping without filter",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "filterCutoff",
+      "name": "Filter Cutoff",
+      "category": "filter",
+      "type": "continuous",
+      "range": { "min": 20, "max": 20000, "unit": "Hz" },
+      "default": 20000,
+      "description": "Frequency above which harmonics are attenuated",
+      "hipHopRelevance": "Primary tone control - can go extreme without artifacts",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "filterResonance",
+      "name": "Filter Resonance",
+      "category": "filter",
+      "type": "continuous",
+      "range": { "min": 0, "max": 100, "unit": "percent" },
+      "default": 0,
+      "description": "Boost at cutoff frequency",
+      "hipHopRelevance": "Character and emphasis - safe at high values in additive engine",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "filterSlope",
+      "name": "Filter Slope",
+      "category": "filter",
+      "type": "discrete",
+      "range": { "options": ["12dB", "24dB", "36dB", "48dB"], "unit": "dB/octave" },
+      "default": "24dB",
+      "description": "Steepness of filter cutoff curve",
+      "hipHopRelevance": "24dB default, 48dB for extreme effects",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "filterDrive",
+      "name": "Filter Drive",
+      "category": "filter",
+      "type": "continuous",
+      "range": { "min": 0, "max": 100, "unit": "percent" },
+      "default": 0,
+      "description": "Saturation/distortion at filter stage",
+      "hipHopRelevance": "Adds analog-style warmth and grit",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "pluckAmount",
+      "name": "Pluck Amount",
+      "category": "filter",
+      "type": "continuous",
+      "range": { "min": 0, "max": 100, "unit": "percent" },
+      "default": 0,
+      "description": "String decay simulation - mathematical high-frequency energy loss",
+      "hipHopRelevance": "Essential for realistic pluck sounds, hip-hop bells",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "ampAttack",
+      "name": "Amp Attack",
+      "category": "envelope",
+      "type": "continuous",
+      "range": { "min": 0, "max": 10, "unit": "seconds" },
+      "default": 0.001,
+      "description": "Time to reach full amplitude",
+      "hipHopRelevance": "0ms for plucks, 200ms+ for pads",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "ampDecay",
+      "name": "Amp Decay",
+      "category": "envelope",
+      "type": "continuous",
+      "range": { "min": 0, "max": 10, "unit": "seconds" },
+      "default": 0,
+      "description": "Time to fall from attack peak to sustain level",
+      "hipHopRelevance": "Body and character of the sound",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "ampSustain",
+      "name": "Amp Sustain",
+      "category": "envelope",
+      "type": "continuous",
+      "range": { "min": 0, "max": 100, "unit": "percent" },
+      "default": 100,
+      "description": "Level held while key is pressed",
+      "hipHopRelevance": "0% for plucks, 80%+ for sustained sounds",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "ampRelease",
+      "name": "Amp Release",
+      "category": "envelope",
+      "type": "continuous",
+      "range": { "min": 0, "max": 10, "unit": "seconds" },
+      "default": 0.1,
+      "description": "Time to fade to silence after key release",
+      "hipHopRelevance": "Long for atmospheric tails, short for tight mixes",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "filterEnvAttack",
+      "name": "Filter Env Attack",
+      "category": "envelope",
+      "type": "continuous",
+      "range": { "min": 0, "max": 10, "unit": "seconds" },
+      "default": 0.001,
+      "description": "Filter envelope attack time",
+      "hipHopRelevance": "Controls filter sweep attack",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "filterEnvAmount",
+      "name": "Filter Env Amount",
+      "category": "envelope",
+      "type": "bipolar",
+      "range": { "min": -100, "max": 100, "unit": "percent" },
+      "default": 0,
+      "description": "How much filter envelope affects cutoff",
+      "hipHopRelevance": "Positive for sweep up, negative for inverted behavior",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "phaserRate",
+      "name": "Phaser Rate",
+      "category": "fx",
+      "type": "continuous",
+      "range": { "min": 0, "max": 50, "unit": "Hz" },
+      "default": 0,
+      "description": "Speed of phaser modulation",
+      "hipHopRelevance": "Low for texture, 20+ Hz for pitch effects",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "phaserDepth",
+      "name": "Phaser Depth",
+      "category": "fx",
+      "type": "continuous",
+      "range": { "min": 0, "max": 100, "unit": "percent" },
+      "default": 50,
+      "description": "How far harmonics shift in frequency",
+      "hipHopRelevance": "High for alien effects, low for width",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "phaserFeedback",
+      "name": "Phaser Feedback",
+      "category": "fx",
+      "type": "continuous",
+      "range": { "min": 0, "max": 100, "unit": "percent" },
+      "default": 0,
+      "description": "Output fed back to input for resonance",
+      "hipHopRelevance": "60-80% for classic phaser peaks",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "unisonVoices",
+      "name": "Unison Voices",
+      "category": "unison",
+      "type": "discrete",
+      "range": { "min": 1, "max": 9, "unit": "voices" },
+      "default": 1,
+      "description": "Number of stacked oscillators",
+      "hipHopRelevance": "3-4 for width, 7-9 for supersaw effect",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "unisonDetune",
+      "name": "Unison Detune",
+      "category": "unison",
+      "type": "continuous",
+      "range": { "min": 0, "max": 100, "unit": "percent" },
+      "default": 20,
+      "description": "Spread between unison voices",
+      "hipHopRelevance": "20-40% for tight, 60%+ for wide",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "unisonStereo",
+      "name": "Unison Stereo",
+      "category": "unison",
+      "type": "continuous",
+      "range": { "min": 0, "max": 100, "unit": "percent" },
+      "default": 50,
+      "description": "Width of stereo spread for unison voices",
+      "hipHopRelevance": "100% for maximum width",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "unisonBlend",
+      "name": "Unison Blend",
+      "category": "unison",
+      "type": "continuous",
+      "range": { "min": 0, "max": 100, "unit": "percent" },
+      "default": 100,
+      "description": "Mix of unison voices with dry signal",
+      "hipHopRelevance": "Reduce to prevent volume buildup",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "maximusMix",
+      "name": "Maximus Mix",
+      "category": "fx",
+      "type": "continuous",
+      "range": { "min": 0, "max": 100, "unit": "percent" },
+      "default": 0,
+      "description": "Amount of multiband compression",
+      "hipHopRelevance": "Add punch and glue to sounds",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "reverbMix",
+      "name": "Reverb Mix",
+      "category": "fx",
+      "type": "continuous",
+      "range": { "min": 0, "max": 100, "unit": "percent" },
+      "default": 0,
+      "description": "Wet/dry balance of reverb effect",
+      "hipHopRelevance": "Atmosphere and space",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "delayMix",
+      "name": "Delay Mix",
+      "category": "fx",
+      "type": "continuous",
+      "range": { "min": 0, "max": 100, "unit": "percent" },
+      "default": 0,
+      "description": "Wet/dry balance of delay effect",
+      "hipHopRelevance": "Rhythmic echoes and bounce",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "chorusMix",
+      "name": "Chorus Mix",
+      "category": "fx",
+      "type": "continuous",
+      "range": { "min": 0, "max": 100, "unit": "percent" },
+      "default": 0,
+      "description": "Wet/dry balance of chorus effect",
+      "hipHopRelevance": "Analog-style width",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "crushAmount",
+      "name": "Crush Amount",
+      "category": "fx",
+      "type": "continuous",
+      "range": { "min": 0, "max": 100, "unit": "percent" },
+      "default": 0,
+      "description": "Bit depth and sample rate reduction",
+      "hipHopRelevance": "Lo-fi texture and grit",
+      "src": "IL-MAN"
+    },
+    {
+      "id": "distortionAmount",
+      "name": "Distortion Amount",
+      "category": "fx",
+      "type": "continuous",
+      "range": { "min": 0, "max": 100, "unit": "percent" },
+      "default": 0,
+      "description": "Waveshaping distortion amount",
+      "hipHopRelevance": "Saturation and edge",
+      "src": "IL-MAN"
+    }
+  ]
+}

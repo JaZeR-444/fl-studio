@@ -1,0 +1,378 @@
+{
+  "pluginName": "Harmor",
+  "presetType": "Resynthesis Templates",
+  "version": "1.0",
+  "source": "[SRC: IL-MAN]",
+  "templates": [
+    {
+      "name": "Vocal Resynthesis - Clean",
+      "category": "Vocal",
+      "description": "Clean vocal resynthesis for manipulation",
+      "resynthesisSettings": {
+        "mode": "ADV",
+        "playback": {
+          "speed": 100,
+          "formant": 0
+        },
+        "quality": {
+          "precision": 70,
+          "blending": 50,
+          "window": "Medium"
+        },
+        "phase": {
+          "randomize": 0,
+          "shift": 0,
+          "keep": true
+        }
+      },
+      "postProcessing": {
+        "blur": 30,
+        "strum": 20,
+        "pluck": 25,
+        "prism": 0,
+        "filter": "Gentle low-pass at 8kHz"
+      },
+      "useCases": [
+        "Time-stretching vocals",
+        "Pitch shifting without artifacts",
+        "Vocal chopping",
+        "Formant manipulation"
+      ],
+      "notes": "High precision captures vocal nuances, moderate blending for smoothness"
+    },
+    {
+      "name": "Vocal Resynthesis - Robotic",
+      "category": "Vocal",
+      "description": "Synthetic vocal character",
+      "resynthesisSettings": {
+        "mode": "ADV",
+        "playback": {
+          "speed": 100,
+          "formant": 0
+        },
+        "quality": {
+          "precision": 85,
+          "blending": 30,
+          "window": "Medium"
+        },
+        "phase": {
+          "randomize": 15,
+          "shift": 0,
+          "keep": true
+        }
+      },
+      "postProcessing": {
+        "blur": 20,
+        "strum": 5,
+        "pluck": 30,
+        "prism": 35,
+        "filter": "Band-pass 200Hz-5kHz"
+      },
+      "modulation": {
+        "lfo": {
+          "destination": "Formant",
+          "amount": 6,
+          "rate": "1/8 note"
+        }
+      },
+      "useCases": [
+        "Robot voice effect",
+        "Vocoder alternative",
+        "Sci-fi dialogue",
+        "Character vocals"
+      ],
+      "notes": "High precision + low blending = more synthetic. Add Prism for artificial character"
+    },
+    {
+      "name": "Drum Resynthesis - Transient Focus",
+      "category": "Drum",
+      "description": "Preserve drum transients in resynthesis",
+      "resynthesisSettings": {
+        "mode": "ADV",
+        "playback": {
+          "speed": 100
+        },
+        "quality": {
+          "precision": 50,
+          "blending": 25,
+          "window": "Small"
+        },
+        "phase": {
+          "randomize": 5,
+          "shift": 0,
+          "keep": true
+        }
+      },
+      "postProcessing": {
+        "blur": 10,
+        "strum": 0,
+        "pluck": 60,
+        "prism": 10,
+        "filter": "High-pass at 40Hz"
+      },
+      "useCases": [
+        "Drum time-stretching",
+        "Breakbeat manipulation",
+        "Transient preservation",
+        "Rhythmic resynthesis"
+      ],
+      "notes": "Small window preserves transients, low blending keeps definition"
+    },
+    {
+      "name": "Drum Resynthesis - Ambient",
+      "category": "Drum",
+      "description": "Atmospheric treatment of drums",
+      "resynthesisSettings": {
+        "mode": "IMG",
+        "editing": {
+          "blur": 40,
+          "smearHorizontal": true
+        }
+      },
+      "postProcessing": {
+        "blur": 50,
+        "strum": 30,
+        "pluck": 0,
+        "prism": 25,
+        "filter": "Low-pass at 6kHz"
+      },
+      "envelope": {
+        "attack": 20,
+        "decay": 0,
+        "sustain": 100,
+        "release": 70
+      },
+      "useCases": [
+        "Drum pads",
+        "Textural drums",
+        "Ambient percussion",
+        "Cinematic drums"
+      ],
+      "notes": "IMG mode allows visual blurring of drum transients"
+    },
+    {
+      "name": "Time-Stretch - Half Speed",
+      "category": "Time Manipulation",
+      "description": "Clean half-speed playback",
+      "resynthesisSettings": {
+        "mode": "ADV",
+        "playback": {
+          "speed": 50,
+          "formant": 0
+        },
+        "quality": {
+          "precision": 60,
+          "blending": 60,
+          "window": "Medium"
+        },
+        "phase": {
+          "randomize": 10,
+          "keep": true
+        }
+      },
+      "postProcessing": {
+        "blur": 25,
+        "strum": 15,
+        "pluck": 0,
+        "prism": 0
+      },
+      "useCases": [
+        "Half-speed vocals",
+        "Slowed drums",
+        "Ambient stretching",
+        "DJ Screw style"
+      ],
+      "notes": "Speed 50% = half time, same pitch. No artifacts."
+    },
+    {
+      "name": "Time-Stretch - Double Speed",
+      "category": "Time Manipulation",
+      "description": "Clean double-speed playback",
+      "resynthesisSettings": {
+        "mode": "ADV",
+        "playback": {
+          "speed": 200,
+          "formant": 0
+        },
+        "quality": {
+          "precision": 65,
+          "blending": 55,
+          "window": "Medium"
+        },
+        "phase": {
+          "randomize": 10,
+          "keep": true
+        }
+      },
+      "postProcessing": {
+        "blur": 20,
+        "strum": 10,
+        "pluck": 0,
+        "prism": 0
+      },
+      "useCases": [
+        "Fast percussion",
+        "Double-time feel",
+        "Riser elements",
+        "Accelerated effects"
+      ],
+      "notes": "Speed 200% = double time, same pitch"
+    },
+    {
+      "name": "Freeze/Sustain",
+      "category": "Time Manipulation",
+      "description": "Infinite sustain at any point",
+      "resynthesisSettings": {
+        "mode": "ADV",
+        "playback": {
+          "speed": 0,
+          "time": "Variable (find sweet spot)"
+        },
+        "quality": {
+          "precision": 75,
+          "blending": 70,
+          "window": "Large"
+        },
+        "phase": {
+          "randomize": 20,
+          "keep": true
+        }
+      },
+      "postProcessing": {
+        "blur": 50,
+        "strum": 35,
+        "pluck": 0,
+        "prism": 15,
+        "filter": "Low-pass at 4kHz"
+      },
+      "envelope": {
+        "attack": 30,
+        "decay": 0,
+        "sustain": 100,
+        "release": 80
+      },
+      "useCases": [
+        "Infinite pads",
+        "Freeze effects",
+        "Ambient textures",
+        "Transition sustains"
+      ],
+      "notes": "Speed 0% = freeze at Time position. Large window for smooth sustain."
+    },
+    {
+      "name": "Image Synthesis - Abstract",
+      "category": "Image",
+      "description": "From abstract visual patterns",
+      "imageSettings": {
+        "source": "PNG/BMP",
+        "type": "Abstract/noise patterns",
+        "preProcessing": {
+          "blur": 30,
+          "contrast": "Medium"
+        }
+      },
+      "resynthesisSettings": {
+        "mode": "IMG"
+      },
+      "postProcessing": {
+        "blur": 40,
+        "strum": 25,
+        "pluck": 0,
+        "prism": 20,
+        "filter": "Variable based on image"
+      },
+      "useCases": [
+        "Unique textures",
+        "Sound design",
+        "Experimental",
+        "Cinematic atmospheres"
+      ],
+      "notes": "Start with simple gradients, add complexity gradually"
+    },
+    {
+      "name": "Image Synthesis - Geometric",
+      "category": "Image",
+      "description": "From geometric shapes",
+      "imageSettings": {
+        "source": "PNG/BMP",
+        "type": "Lines, shapes, patterns",
+        "examples": [
+          "Horizontal lines = tones",
+          "Diagonal = sweeps",
+          "Circles = rhythmic pulses"
+        ]
+      },
+      "resynthesisSettings": {
+        "mode": "IMG"
+      },
+      "postProcessing": {
+        "blur": 15,
+        "strum": 10,
+        "pluck": 40,
+        "prism": 10,
+        "filter": "Based on frequency content"
+      },
+      "useCases": [
+        "Synthesized percussion",
+        "Tonal risers",
+        "Rhythmic patterns",
+        "Melodic sequences"
+      ],
+      "notes": "Each geometric shape produces predictable sound types"
+    },
+    {
+      "name": "Formant Shift - Up",
+      "category": "Formant",
+      "description": "Brighten character without pitch change",
+      "resynthesisSettings": {
+        "mode": "ADV",
+        "playback": {
+          "speed": 100,
+          "formant": 6
+        },
+        "quality": {
+          "precision": 70,
+          "blending": 50
+        }
+      },
+      "postProcessing": {
+        "blur": 25,
+        "prism": 10
+      },
+      "useCases": [
+        "Vocal brightening",
+        "Character change",
+        "Telephone effect",
+        "Smaller sounding"
+      ],
+      "notes": "Formant +6 = brighter, smaller character. Good for vocals."
+    },
+    {
+      "name": "Formant Shift - Down",
+      "category": "Formant",
+      "description": "Darken character without pitch change",
+      "resynthesisSettings": {
+        "mode": "ADV",
+        "playback": {
+          "speed": 100,
+          "formant": -6
+        },
+        "quality": {
+          "precision": 70,
+          "blending": 50
+        }
+      },
+      "postProcessing": {
+        "blur": 30,
+        "prism": 5
+      },
+      "useCases": [
+        "Vocal deepening",
+        "Monster voices",
+        "Larger sounding",
+        "Darker character"
+      ],
+      "notes": "Formant -6 = darker, larger character. Use for effect."
+    }
+  ]
+}

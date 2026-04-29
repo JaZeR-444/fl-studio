@@ -1,0 +1,179 @@
+{
+  "pluginName": "Fruit Kick",
+  "version": "1.0",
+  "lastUpdated": "2025-01-04",
+  "category": "Drum Synthesis",
+  "parameters": {
+    "pitch": {
+      "type": "pitch",
+      "range": {
+        "min": "C1",
+        "max": "C5",
+        "default": "C2"
+      },
+      "unit": "note",
+      "description": "Main pitch of the kick drum body",
+      "technicalDetails": "Fundamental frequency control from ~32Hz to ~1046Hz",
+      "sweetSpots": {
+        "sub_bass": ["C1", "C#1", "D1"],
+        "bass": ["D2", "E2", "F2"],
+        "low_mid": ["G2", "A2", "B2"],
+        "mid": ["C3", "D3", "E3"]
+      }
+    },
+    "decay": {
+      "type": "time",
+      "range": {
+        "min": 10,
+        "max": 2000,
+        "default": 200
+      },
+      "unit": "ms",
+      "description": "Decay time of the kick drum sustain",
+      "technicalDetails": "Exponential decay envelope for kick body",
+      "sweetSpots": {
+        "short": [10, 50, "percussive"],
+        "medium": [50, 300, "standard"],
+        "long": [300, 800, "808_style"],
+        "very_long": [800, 2000, "ambient"]
+      }
+    },
+    "tone": {
+      "type": "percentage",
+      "range": {
+        "min": 0,
+        "max": 100,
+        "default": 50
+      },
+      "unit": "%",
+      "description": "Balance between sub-bass and harmonics",
+      "technicalDetails": "Controls harmonic content vs pure fundamental",
+      "sweetSpots": {
+        "sub_heavy": [0, 20, "pure_sub"],
+        "balanced": [40, 60, "musical"],
+        "bright": [70, 85, "punchy"],
+        "harsh": [85, 100, "aggressive"]
+      }
+    },
+    "click": {
+      "type": "percentage",
+      "range": {
+        "min": 0,
+        "max": 100,
+        "default": 30
+      },
+      "unit": "%",
+      "description": "Volume of the attack click layer",
+      "technicalDetails": "Separate transient layer for attack definition",
+      "sweetSpots": {
+        "natural": [10, 30, "subtle"],
+        "defined": [30, 50, "clear"],
+        "punchy": [50, 70, "aggressive"],
+        "sharp": [70, 100, "clicky"]
+      }
+    },
+    "punch": {
+      "type": "percentage",
+      "range": {
+        "min": 0,
+        "max": 100,
+        "default": 50
+      },
+      "unit": "%",
+      "description": "Mid-range emphasis for cut-through",
+      "technicalDetails": "Boosts 200-800Hz range for presence",
+      "sweetSpots": {
+        "subtle": [0, 20, "warm"],
+        "moderate": [30, 50, "balanced"],
+        "strong": [60, 80, "cutting"],
+        "extreme": [80, 100, "aggressive"]
+      }
+    },
+    "distortion": {
+      "type": "percentage",
+      "range": {
+        "min": 0,
+        "max": 100,
+        "default": 0
+      },
+      "unit": "%",
+      "description": "Amount of saturation and harmonic distortion",
+      "technicalDetails": "Tube-style saturation algorithm",
+      "sweetSpots": {
+        "clean": 0,
+        "warm": [10, 25, "subtle_color"],
+        "gritty": [25, 50, "character"],
+        "heavy": [50, 85, "distorted"],
+        "extreme": [85, 100, "fuzzy"]
+      }
+    },
+    "length": {
+      "type": "time",
+      "range": {
+        "min": 10,
+        "max": 2000,
+        "default": 500
+      },
+      "unit": "ms",
+      "description": "Overall duration of the kick drum",
+      "technicalDetails": "Maximum length regardless of decay setting",
+      "sweetSpots": {
+        "staccato": [10, 50, "very_short"],
+        "short": [50, 200, "standard"],
+        "medium": [200, 800, "808_style"],
+        "long": [800, 2000, "sustained"]
+      }
+    }
+  },
+  "genreApplications": {
+    "edm": {
+      "typicalSettings": {
+        "pitch": ["C1", "C2"],
+        "decay": [150, 400],
+        "tone": [30, 50],
+        "click": [40, 70],
+        "punch": [70, 100]
+      },
+      "useCase": "Club and festival impact"
+    },
+    "hiphop": {
+      "typicalSettings": {
+        "pitch": ["C1", "D2"],
+        "decay": [400, 1200],
+        "tone": [0, 30],
+        "click": [15, 35],
+        "punch": [30, 60]
+      },
+      "useCase": "808 sub-bass and trap kicks"
+    },
+    "techno": {
+      "typicalSettings": {
+        "pitch": ["C1", "G1"],
+        "decay": [100, 250],
+        "tone": [20, 40],
+        "click": [60, 85],
+        "punch": [80, 100]
+      },
+      "useCase": "Driving techno grooves"
+    },
+    "pop": {
+      "typicalSettings": {
+        "pitch": ["C2", "D3"],
+        "decay": [80, 200],
+        "tone": [60, 80],
+        "click": [50, 70],
+        "punch": [70, 90]
+      },
+      "useCase": "Radio-friendly kick drums"
+    }
+  },
+  "technicalSpecs": {
+    "oscillatorType": "Sine wave with harmonic generation",
+    "envelopeType": "Exponential ADSR",
+    "distortionType": "Tube-style saturation",
+    "clickLayer": "Separate transient generator",
+    "latency": 0,
+    "cpuUsage": 0.1,
+    "sampleRates": [44100, 48000, 88200, 96000]
+  }
+}

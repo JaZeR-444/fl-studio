@@ -1,0 +1,175 @@
+{
+  "$schema": "./schema.json",
+  "plugin": {
+    "name": "Tuner",
+    "version": "1.x",
+    "category": "Utility",
+    "type": "Pitch Detection & Analysis",
+    "description": "Visual tuning reference for monophonic audio",
+    "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Tuner.htm"
+  },
+  "displayElements": {
+    "visual": [
+      {
+        "id": "noteName",
+        "name": "Note Name Display",
+        "type": "text",
+        "range": "C, C#, D, D#, E, F, F#, G, G#, A, A#, B",
+        "description": "Large display showing detected musical note"
+      },
+      {
+        "id": "octaveNumber",
+        "name": "Octave Number",
+        "type": "numeric",
+        "range": "0-8",
+        "description": "Octave range indicator (C0 to C8)"
+      },
+      {
+        "id": "centDeviation",
+        "name": "Cent Deviation",
+        "type": "numeric",
+        "range": "-50 to +50 cents",
+        "description": "Offset from exact pitch (negative = flat, positive = sharp)"
+      },
+      {
+        "id": "frequency",
+        "name": "Frequency Display",
+        "type": "numeric",
+        "unit": "Hz",
+        "description": "Exact frequency in Hertz"
+      },
+      {
+        "id": "visualMeter",
+        "name": "Visual Meter",
+        "type": "graphical",
+        "description": "Horizontal bar showing pitch deviation (center = in tune)"
+      }
+    ],
+    "colorCoding": [
+      {
+        "color": "Red (Left)",
+        "range": "< -10 cents",
+        "meaning": "Too flat"
+      },
+      {
+        "color": "Yellow (Left)",
+        "range": "-10 to -3 cents",
+        "meaning": "Slightly flat"
+      },
+      {
+        "color": "Green (Center)",
+        "range": "-3 to +3 cents",
+        "meaning": "In tune"
+      },
+      {
+        "color": "Yellow (Right)",
+        "range": "+3 to +10 cents",
+        "meaning": "Slightly sharp"
+      },
+      {
+        "color": "Red (Right)",
+        "range": "> +10 cents",
+        "meaning": "Too sharp"
+      }
+    ]
+  },
+  "parameters": {
+    "reference": [
+      {
+        "id": "referencePitch",
+        "name": "Reference Pitch (A4)",
+        "type": "slider",
+        "range": "420-460 Hz",
+        "unit": "Hz",
+        "default": "440 Hz",
+        "description": "Concert pitch standard for tuning reference",
+        "presets": {
+          "baroque": 415,
+          "classical": 430,
+          "modern": 440,
+          "bright": 442,
+          "sharp": 445
+        }
+      },
+      {
+        "id": "calibration",
+        "name": "Calibration",
+        "type": "slider",
+        "range": "-50 to +50 cents",
+        "unit": "cents",
+        "default": "0 cents",
+        "description": "Fine-tune reference pitch offset"
+      }
+    ],
+    "detection": [
+      {
+        "id": "sensitivity",
+        "name": "Sensitivity",
+        "type": "selector",
+        "options": ["Low", "Medium", "High"],
+        "default": "Medium",
+        "description": "Detection threshold for input signal",
+        "note": "High for quiet signals, Low for loud/distorted"
+      },
+      {
+        "id": "attackTime",
+        "name": "Attack Time",
+        "type": "selector",
+        "options": ["Fast", "Medium", "Slow"],
+        "default": "Fast",
+        "description": "How quickly tuner responds to new pitch",
+        "useCase": "Fast for plucked instruments, Slow for sustained"
+      },
+      {
+        "id": "releaseTime",
+        "name": "Release Time",
+        "type": "selector",
+        "options": ["Fast", "Medium", "Slow"],
+        "default": "Medium",
+        "description": "How long reading stays displayed after signal stops"
+      }
+    ],
+    "displayMode": [
+      {
+        "id": "mode",
+        "name": "Display Mode",
+        "type": "selector",
+        "options": ["Auto", "Chromatic", "Custom Scale"],
+        "default": "Chromatic",
+        "description": "Which notes tuner will detect and display"
+      }
+    ]
+  },
+  "tuningReferences": {
+    "guitar": {
+      "standard": ["E2 (82.41 Hz)", "A2 (110.00 Hz)", "D3 (146.83 Hz)", "G3 (196.00 Hz)", "B3 (246.94 Hz)", "E4 (329.63 Hz)"],
+      "dropD": ["D2 (73.42 Hz)", "A2 (110.00 Hz)", "D3 (146.83 Hz)", "G3 (196.00 Hz)", "B3 (246.94 Hz)", "E4 (329.63 Hz)"],
+      "halfStepDown": ["Eb2 (77.78 Hz)", "Ab2 (103.83 Hz)", "Db3 (138.59 Hz)", "Gb3 (185.00 Hz)", "Bb3 (233.08 Hz)", "Eb4 (311.13 Hz)"]
+    },
+    "bass": {
+      "standard4String": ["E1 (41.20 Hz)", "A1 (55.00 Hz)", "D2 (73.42 Hz)", "G2 (98.00 Hz)"],
+      "standard5String": ["B0 (30.87 Hz)", "E1 (41.20 Hz)", "A1 (55.00 Hz)", "D2 (73.42 Hz)", "G2 (98.00 Hz)"]
+    },
+    "orchestral": {
+      "violin": ["G3 (196.00 Hz)", "D4 (293.66 Hz)", "A4 (440.00 Hz)", "E5 (659.25 Hz)"],
+      "viola": ["C3 (130.81 Hz)", "G3 (196.00 Hz)", "D4 (293.66 Hz)", "A4 (440.00 Hz)"],
+      "cello": ["C2 (65.41 Hz)", "G2 (98.00 Hz)", "D3 (146.83 Hz)", "A3 (220.00 Hz)"]
+    }
+  },
+  "accuracy": {
+    "resolution": "0.1 cent",
+    "tolerance": "±1 cent",
+    "professionalStandard": "±3 cents (acceptable in tune)",
+    "orchestralStandard": "±1 cent (precision work)"
+  },
+  "detectionLimitations": {
+    "inputType": "Monophonic only (single note at a time)",
+    "frequencyRange": "C0 (~16 Hz) to C8 (~4186 Hz)",
+    "requiresStrongFundamental": true,
+    "affectedByEffects": ["Reverb", "Delay", "Heavy distortion"],
+    "bestWith": "Clean, direct instrument signal"
+  },
+  "cpuUsage": "Negligible",
+  "latency": "Minimal (analysis delay only)",
+  "realtimeSafe": true
+}

@@ -1,0 +1,97 @@
+{
+  "schema": "x-y-controller-preset-v1",
+  "name": "Dual Control Template",
+  "type": "macro-template",
+  "description": "Independent two-parameter control - perfect for blend, morph, and A/B situations",
+  "author": "DEEPER DIVES",
+  "source": "IL-MAN",
+  "tags": ["dual", "blend", "morph", "A/B", "crossfade"],
+  "hipHopCategory": "Mix Control",
+  "settings": {
+    "mode": "absolute",
+    "hold": false,
+    "smoothing": 0,
+    "xMin": 0,
+    "xMax": 100,
+    "yMin": 0,
+    "yMax": 100,
+    "xMap": {
+      "type": "linear",
+      "description": "Direct 1:1 control of X parameter"
+    },
+    "yMap": {
+      "type": "linear",
+      "description": "Direct 1:1 control of Y parameter"
+    }
+  },
+  "mappings": [
+    {
+      "output": "X",
+      "target": "[USER DEFINED - Parameter A]",
+      "targetMin": "0%",
+      "targetMax": "100%",
+      "curve": "linear",
+      "description": "First independent parameter"
+    },
+    {
+      "output": "Y",
+      "target": "[USER DEFINED - Parameter B]",
+      "targetMin": "0%",
+      "targetMax": "100%",
+      "curve": "linear",
+      "description": "Second independent parameter"
+    }
+  ],
+  "configurationExamples": [
+    {
+      "name": "Dry/Wet Blend",
+      "xTarget": "Dry Signal Level",
+      "yTarget": "Wet Signal Level",
+      "description": "Crossfade between dry and processed signal"
+    },
+    {
+      "name": "Layer Morph",
+      "xTarget": "Layer A Volume",
+      "yTarget": "Layer B Volume",
+      "description": "Morph between two sound sources"
+    },
+    {
+      "name": "808 Tone Control",
+      "xTarget": "808 Click Amount",
+      "yTarget": "808 Sub Boost",
+      "description": "Balance between attack and sub elements"
+    },
+    {
+      "name": "Vocal FX Blend",
+      "xTarget": "Reverb Send",
+      "yTarget": "Delay Send",
+      "description": "Balance space vs echo on vocals"
+    }
+  ],
+  "gestureGuide": {
+    "corners": {
+      "bottomLeft": "Min X, Min Y",
+      "bottomRight": "Max X, Min Y",
+      "topLeft": "Min X, Max Y",
+      "topRight": "Max X, Max Y"
+    },
+    "center": "Both parameters at 50%",
+    "patterns": [
+      "Diagonal: Smooth transition between states",
+      "Circle: Continuous morph between all states",
+      "Corner jumps: Instant A/B/C/D switching"
+    ]
+  },
+  "hipHopUsage": {
+    "primaryUse": "Independent two-parameter control",
+    "secondaryUses": ["Sound source morphing", "Effect intensity balancing", "Real-time mixing"],
+    "genreFit": ["All Hip-Hop subgenres", "R&B", "Pop"],
+    "vibeTarget": "TEXTURE",
+    "bestFor": "Blending and morphing between sonic states"
+  },
+  "performanceNotes": {
+    "recording": "Map targets first, then record gestures",
+    "technique": "Use corners as preset states, center for blends",
+    "expression": "Small movements around sweet spots for subtle changes"
+  }
+}

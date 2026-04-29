@@ -1,0 +1,57 @@
+{
+  "humanizationConstants": {
+    "philosophy": "This data-set provides the mathematical constants required to 'Humanize' digital MIDI data using Fruity Envelope Controller. It targets the biological timing and pressure errors of real performers across various Hip-Hop and R&B sub-genres.",
+    "genreTemplates": [
+      {
+        "genre": "Classic Boom Bap (J Dilla Style)",
+        "timingEntropy": {
+          "mapping": "RND -> Sampler Shift",
+          "base": "0.50",
+          "amount": "0.08",
+          "smoothing": "5ms",
+          "logic": "Adds a ±4ms random drift to every hit. Mimics the mechanical 'un-quantization' of early MPC hardware."
+        },
+        "pressureDynamics": {
+          "mapping": "VEL -> Filter Cutoff",
+          "curve": "Linear Rising",
+          "amount": "15%",
+          "logic": "Subtle brightness variation based on strike strength."
+        }
+      },
+      {
+        "genre": "Moody R&B (Neo-Soul)",
+        "timingEntropy": {
+          "mapping": "LFO -> Sampler Shift",
+          "waveform": "Sine (Slow 4-bar)",
+          "amount": "0.15",
+          "smoothing": "200ms",
+          "logic": "Creates a slow, 'Drunken' swing that drifts in and out of time. Mimics a 'lazy' drummer playing behind the beat."
+        },
+        "pressureDynamics": {
+          "mapping": "VEL -> Reverb Wet",
+          "curve": "Exponential Falling",
+          "amount": "30%",
+          "logic": "Softer notes are more 'Drowned' in reverb; louder notes are 'Dryer' and closer. Mimics intimate distance perception."
+        }
+      },
+      {
+        "genre": "Upbeat Trap (Club Energy)",
+        "timingEntropy": {
+          "mapping": "None",
+          "logic": "Trap requires 100% rhythmic stability. Humanization should focus on tone, not timing."
+        },
+        "pressureDynamics": {
+          "mapping": "VEL -> Distortion Pre-Amp",
+          "curve": "S-Curve",
+          "amount": "40%",
+          "logic": "High-velocity 808s 'Scream' more than quiet ones. Mimics the saturation of analog tape when driven hard."
+        }
+      }
+    ],
+    "biologicalConstants": {
+      "fingerJitter": "±2ms (Smoothing 2ms)",
+      "velocityAveraging": "±10 units (Smoothing 15ms)",
+      "fatigueEmulation": "Link 'Smoothing' to Song Position. As the song progresses, the smoothing increases, making the modulations 'lazier' and more 'tired'."
+    }
+  }
+}

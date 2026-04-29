@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "plugin": "MiniSynth",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "presetName": "Acid Bass",
+    "category": "genre",
+    "genre": "EDM",
+    "mood": "electric"
+  },
+  "settings": {
+    "oscillator": {
+      "waveform": "saw",
+      "octave": "-1",
+      "detune": 0,
+      "mix": 100
+    },
+    "filter": {
+      "type": "lowpass",
+      "cutoff": 2000,
+      "resonance": 65,
+      "drive": 15
+    },
+    "envelope": {
+      "attack": 5,
+      "decay": 150,
+      "sustain": 50,
+      "release": 100
+    },
+    "lfo": {
+      "waveform": "square",
+      "rate": 1,
+      "amt": 80,
+      "dest": "filterCutoff"
+    }
+  },
+  "chain": {
+    "post": ["Fruily Distancer - Drive 20%", "Fruily Compressor - Fast attack"]
+  },
+  "genreTags": ["EDM", "techno", "acid", "electric"],
+  "a/bTesting": {
+    "testA": "High resonance for acid sound",
+    "testB": "Lower resonance for techno"
+  },
+  "troubleshooting": {
+    "selfOscillation": "Reduce resonance below 60%",
+    "tooHarsh": "Reduce filter cutoff to 1500Hz"
+  }
+}

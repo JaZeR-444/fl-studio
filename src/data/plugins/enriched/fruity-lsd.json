@@ -1,0 +1,128 @@
+{
+  "id": "fruity-lsd",
+  "name": "Fruity LSD",
+  "category": "Filter",
+  "tier": "Free",
+  "type": "Filter",
+  "description": "Fruity LSD - Filter",
+  "tags": [
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "filtering",
+    "tone-shaping",
+    "audio"
+  ],
+  "icon": "/plugins/fruity-lsd-icon.svg",
+  "color": "#F97316",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-lsd",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "lsd-params": {
+      "plugin_name": "Fruity LSD",
+      "category": "Generator",
+      "parameters": [
+        {
+          "name": "Port",
+          "type": "integer",
+          "description": "Internal MIDI port receiver.",
+          "vibe_impact": "Connection, setup"
+        },
+        {
+          "name": "Bank",
+          "type": "selector",
+          "description": "Loads .dls sound banks.",
+          "vibe_impact": "Texture, identity, retro scale"
+        },
+        {
+          "name": "Device",
+          "type": "selector",
+          "description": "Selects the Windows MIDI engine.",
+          "vibe_impact": "Latency, quality"
+        },
+        {
+          "name": "Reverb/Chorus",
+          "type": "switch",
+          "description": "Global Windows system effects.",
+          "vibe_impact": "Retro space, cheesy width"
+        }
+      ],
+      "mix_impact_tags": [
+        "texture",
+        "retro",
+        "resampling"
+      ]
+    }
+  },
+  "presets": {
+    "gm-drum-kit": {
+      "presetName": "GM Drum Kit",
+      "plugin": "Fruity LSD",
+      "description": "Sets up Channel 10 for standard General MIDI drums.",
+      "settings": {
+        "bank": "Roland GS",
+        "channel": 10,
+        "patch": 0
+      },
+      "usage": "Instant access to classic 90s drum sounds."
+    },
+    "orchestral-setup": {
+      "presetName": "Orchestral Setup",
+      "plugin": "Fruity LSD",
+      "description": "Pre-configured channels for a full orchestra.",
+      "settings": {
+        "ch1": "Strings",
+        "ch2": "Brass",
+        "ch3": "Timpani",
+        "ch4": "Flute"
+      },
+      "usage": "Quick sketch template for cinematic ideas."
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity LSD\n\n## Purpose and Identity\n**Fruity LSD** (Legacy Sound Device) is a bridge that allows FL Studio to access the **General MIDI (GM)** synthesizer built into your Windows operating system (specifically the Microsoft GS Wavetable Synth). It is not a synthesizer itself, but a portal to the standard \"computer sounds\" of the 90s and early 2000s. [SRC: IL-MAN]\n\n## 60-Second Mental Model\nImagine a phone line. Fruity LSD is the receiver. On the other end of the line is your Windows sound card. You send MIDI notes to LSD, it relays them to Windows, Windows makes the sound, and LSD brings that audio back into your FL Studio mixer for you to process.\n\n## Typical Roles In A Session\n- **Texture Layering**: Adding a \"cheesy\" or \"retro\" layer to a modern synth to give it a unique character.\n- **Auditioning MIDI**: Quickly listening to a `.mid` file to see what the parts are before assigning high-end VSTs.\n- **DLS Player**: Loading custom Downloadable Sound (.dls) banks for retro gaming or specialty instrumentation.\n\n## Hip-Hop/R&B Context\n- **Vaporwave / Lo-Fi**: Embracing the \"cheap\" digital quality of the GM strings and electric pianos for nostalgic R&B.\n- **Trap Ear-Candy**: Using the GM \"FX\" sounds (Gunshot, Helicopter, Seashore) as background textures.\n- **Resampling**: Printing a \"bad\" MIDI sound to audio and then pitching it down or adding heavy saturation to turn it into a gritty modern texture.\n\n## When to Use vs When NOT to Use\n| Use It When... | Avoid It When... |\n| :--- | :--- |\n| You want a specific \"retro computer\" sound. | You are on a Mac (Not supported). |\n| You need to load old `.dls` files. | You need zero-latency performance. |\n| You want to use low-CPU \"placeholder\" sounds. | You need realistic orchestral or acoustic instruments. |\n| You are making Vaporwave or Chiptune. | You want high-fidelity modern synthesis. |\n",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Fruity LSD\n\n## UI Tour\nThe interface is a simple rack representing the 16 MIDI channels. [SRC: IL-MAN]\n\n### 1. Global Controls\n- **Port**: The MIDI Input Port. **CRITICAL**: This must match the Port of your MIDI Out plugin.\n- **Bank**: A drop-down menu to select custom `.dls` files. Default is the Windows GM set.\n- **Device**: Selects the Windows synthesizer (usually Microsoft GS Wavetable).\n\n### 2. The Channel Strips (1-16)\n- **Patch Name**: Displays the name of the sound currently loaded on that channel (e.g., Acoustic Grand Piano).\n- **Mute/Solo**: Quick buttons to audition specific channels.\n\n### 3. Processing Switches\n- **Reverb/Chorus**: These enable the *system-level* effects from your soundcard. These are low quality and usually best left **OFF** in favor of FL Studio plugins.\n\n## Signal Flow\n1. **MIDI Out (Channel)**: You play a note in a \"MIDI Out\" plugin.\n2. **Port Routing**: The MIDI note travels through the internal Port (e.g., Port 10).\n3. **LSD Receiver**: Fruity LSD (set to Port 10) receives the data.\n4. **System Relay**: LSD sends the MIDI to the Windows DirectMusic driver.\n5. **Synthesis**: Windows GS Wavetable Synth generates the audio.\n6. **Return**: The audio is brought back into the Mixer track where Fruity LSD is loaded.\n7. **Mixer Processing**: You add EQ, Delay, or Reverb to the returned audio.\n\n## Things Beginners Misunderstand\n- **\"It makes no sound\"**: Fruity LSD is a MIDI receiver. You **cannot** put notes directly into its Piano Roll. You must use a \"MIDI Out\" generator plugin to send notes to it.\n- **\"It's laggy\"**: Because it routes audio through the Windows system drivers, there is a fixed latency (delay). It is best used for programmed MIDI rather than live performance.\n- **Mono Output**: Some Windows synthesizers are mono-only. If you want stereo width, add it using Fruity Stereo Shaper in the mixer track.\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques And Best Practices: Fruity LSD\n\n## 1. The \"Texture Layer\" Stack\nDon't use LSD sounds by themselves.\n- **Technique**: Layer the LSD \"String Ensemble\" (Patch 49) at 10% volume underneath a high-end Serum string pad.\n- **Listen For**: A \"crusty\" digital grit that gives the modern synth a nostalgic hardware feel.\n\n## 2. Drum Kit Auditioning\nChannel 10 is reserved for Percussion in General MIDI.\n- **Technique**: Set a MIDI Out to Channel 10. Play different keys to hear standard GM drums (C2=Kick, D2=Snare, etc.).\n- **Benefit**: Use this to quickly sketch out a rhythm without loading hundreds of MBs of drum samples.\n\n## 3. Custom DLS Loading\nAccess sounds from the 90s.\n- **Technique**: Search for old `.dls` banks online (often from video game soundfont archives). Load them using the **Bank** selector.\n- **Goal**: Using the exact sounds from classic Nintendo or PlayStation games.\n\n## 4. Resample and \"Modernize\"\nTransform Windows sounds into professional textures.\n- **Technique**: Record the LSD output into Edison. Normalize it. Add heavy saturation, a 24dB Low-Pass filter, and deep reverb.\n- **Result**: The \"cheap\" source sound becomes a warm, expensive-sounding background texture.\n\n## 5. Mono-Check Protocol\n- **Protocol**: Many GM sounds are extremely narrow or mono. \n- **Action**: Check your master in Mono. If the LSD layer is the *only* thing you can hear, your modern synths might be out of phase.\n- **Fix**: Use Fruity Stereo Enhancer on the LSD mixer track to push it out of the center and leave room for the main instruments.\n\n## Common Pitfalls + Fixes\n| Pitfall | The Fix |\n| :--- | :--- |\n| **No Sound** | Ensure **Port** in MIDI Out matches **Port** in Fruity LSD. |\n| **Piano Roll is Empty** | Use a separate **MIDI Out** generator; LSD has no piano roll. |\n| **Latency/Lag** | Use the \"Track Latency\" compensation in the Mixer to shift the track back in time. |\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity LSD\n\nUsing \"low-fidelity\" legacy sounds to create intentional aesthetic vibes.\n\n---\n\n## 1. MOODY\n*Darkness, distance, and melancholic digital nostalgia.*\n- **The Lever**: **Ocarina / Whistle Patches + Low Pass Filter**.\n- **Move**: Use GM Patch 80 (Ocarina). Cut off all frequencies above 1500Hz. Add a massive Reverb tail.\n- **What to Listen For**: A haunting, lonely lead that sounds like it's being played in a sewer or deep cavern.\n- **Don't Do This**: Using \"Orchestra Hit\" (too energetic).\n\n## 2. UPBEAT\n*Energy, sharp transients, and retro \"cheesiness\".*\n- **The Lever**: **Orchestra Hit / Slap Bass + 1/16 Note Stabs**.\n- **Move**: Use Patch 56 (Orchestra Hit). Sequence fast 1/16 note bursts.\n- **What to Listen For**: A nostalgic \"90s House\" or \"New Jack Swing\" energy that adds instant excitement to a transition.\n- **Don't Do This**: Slow atmospheric patches.\n\n## 3. PSYCHEDELIC\n*Disorientation, \"weird\" textures, and warped artifacts.*\n- **The Lever**: **Bird Tweet / Seashore + Pitch Automation**.\n- **Move**: Use Patch 123 (Bird Tweet) or 122 (Seashore). Automate the pitch by +/- 24 semitones rapidly.\n- **What to Listen For**: Unnatural, digital \"glitches\" that don't sound like analog synthesis.\n- **Don't Do This**: Traditional piano/guitar patches.\n\n## 4. JAZZY\n*Soulful instability, retro keys, and \"cheap\" lounge vibes.*\n- **The Lever**: **Electric Piano 1 + Muted Trumpet**.\n- **Move**: Use Patch 5 (E. Piano 1). Lower the velocity so the samples don't \"bark.\"\n- **What to Listen For**: The sound of a 1990s hotel bar or a low-budget lounge act. It has an organic but distinctly digital soul.\n- **Don't Do This**: High-feedback modulation.\n\n## 5. VIBEY\n*Modern silk, smooth layers, and \"cloud\" atmosphere.*\n- **The Lever**: **String Ensemble + 10% Mix + Slow Chorus**.\n- **Move**: Use Patch 49 (Strings). Set as a parallel layer. Follow with Fruity Chorus at 0.2Hz.\n- **What to Listen For**: A \"ghostly\" sheen that makes your modern synths feel older and more \"sampled.\"\n- **Don't Do This**: Dry, center-panned mono output.\n\n---\n\n## Vibe Parameter Matrix (GM Patches)\n| Vibe | Key GM Patch | Channel | Suggested FX |\n| :--- | :--- | :--- | :--- |\n| **Moody** | 80 (Ocarina) | 1 | Deep Reverb (Lush) |\n| **Upbeat** | 56 (Orch Hit) | 2 | Short Delay |\n| **Psyched**| 123 (Bird Tweet)| 3 | Automated Phaser |\n| **Jazzy** | 5 (E. Piano 1) | 4 | Tape Saturation |\n| **Vibey** | 49 (Strings) | 5 | Wide Chorus |\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Lsd\r\n\r\n## What It Is\r\nFruity Lsd is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Fruity Lsd\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n",
+      "what-is-lsd": "# What is Fruity LSD?\n\nFruity LSD (Liquid Sound Design) is a wrapper for the Windows internal synthesizer (DirectMusic). It allows you to play `.dls` (Downloadable Sounds) files and the standard General MIDI sound set included with Windows.\n\n## Why Use It Today?\n1. **Vaporwave / Nostalgia**: It is the *authentic* sound of 90s/early 2000s computer music.\n2. **CPU Efficiency**: It uses zero CPU overhead from FL Studio itself, as the OS handles the synthesis.\n3. **Chiptune/MIDI Art**: Essential for creating music that sounds like a GeoCities background midi.\n\n## Important Setup\nFruity LSD is an **Effect Plugin**, not a Generator.\n1. Load Fruity LSD on a mixer track.\n2. Set the `Port` number in LSD (e.g., Port 10).\n3. Create a **MIDI Out** channel.\n4. Set the MIDI Out `Port` to 10.\n5. Now the MIDI Out notes trigger the LSD sounds on the mixer track.\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: 5 Minutes with Fruity LSD\n\n## 1. Fast Setup\n1. Put LSD on Mixer Track 5. Port = 1.\n2. Load MIDI Out in Channel Rack. Port = 1.\n3. Play MIDI Out.\n\n## 2. Browsing Sounds\n1. In the MIDI Out plugin, click the **Patch** number.\n2. Use your arrow keys to cycle through all 128 GM sounds while playing a note.\n\n## 3. Percussion Mode\n1. Change the **Channel** in MIDI Out to **10**.\n2. Play the Piano Roll. Your keyboard is now a standard GM drum kit.\n\n## 4. Custom Banks\n1. If you have a `.dls` file, click the folder icon in LSD next to **Bank**.\n2. Select your file. The patch list will now change to the custom sounds in that bank.\n\n## 5. Cleaning up the Sound\n1. GM sounds are often dry and loud.\n2. Turn down the Mixer fader by -6dB.\n3. Add a **Fruity Chorus** or **Fruity Reverb 2** to the LSD mixer track to make it sound \"professional.\"\n",
+      "midi-port-setup": "# Quick Reference: MIDI Port Setup (The Connection)\n\nFollow these steps exactly to make Fruity LSD produce sound. [SRC: IL-MAN]\n\n## Step 1: The Mixer\n- Go to an empty Mixer Track.\n- Load **Fruity LSD** into one of the effect slots.\n\n## Step 2: The Port\n- Look at the top right of the Fruity LSD window.\n- Set the **Port** to a unique number (e.g., **10**).\n\n## Step 3: The Generator\n- Add a new channel to your Channel Rack: **MIDI Out**.\n- Set the **Port** in the MIDI Out plugin to match LSD (**10**).\n\n## Step 4: The Channel\n- In the MIDI Out plugin, ensure the **Channel** is set to **1**.\n- Click the **Patch** box in MIDI Out. Select a sound (e.g., Acoustic Grand Piano).\n\n## Step 5: Verification\n- Play a key on your MIDI keyboard or the Piano Roll of the MIDI Out channel.\n- You should see the level move in the Mixer track where Fruity LSD is loaded.\n\n---\n**Pro Tip**: Use a different **Channel** (1-16) in MIDI Out to play different sounds from the same instance of Fruity LSD.\n",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Lsd\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Lsd to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Lsd\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Lsd\r\n\r\nThis section contains learning information for the fruity-lsd plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "print-to-audio-and-treat": "# Workflow: Print-to-Audio and Treat (Modernizing Lo-Fi)\n\n*Goal: Transform a \"cheap\" MIDI sound into a professional, heavy texture.*\n\n## 🎛️ Routing Context\n- **Routing**: MIDI Out -> Fruity LSD -> Mixer -> Edison.\n\n## 🚶 Step-by-Step Setup\n1. **The Source**: Choose a GM sound that has a lot of mid-range character, like Patch 20 (**Church Organ**) or Patch 22 (**Harmonica**).\n2. **MIDI Sequence**: Record a 4-bar melodic loop.\n3. **Print**: Use **Edison** or **Playlist Recording** to convert the LSD output to an actual `.wav` file.\n4. **Saturation**: Add **Fruity Blood Overdrive** or **Soundgoodizer** to the recorded audio.\n   - *Why*: This adds harmonics that the original Windows soundcard couldn't produce.\n5. **Pitch Warp**: Use the \"Stretch\" mode in the sampler to pitch the loop down -5 semitones while keeping the same length.\n6. **Depth**: Apply a ping-pong Delay.\n7. **Result**: You've used the \"bad\" MIDI sound as a unique spectral seed for a modern, textured sound that nobody else has.\n\n## 🔄 Variations\n- **The \"8-Bit Crunch\"**: Down-sample the audio to 11kHz in Edison before processing.\n- **The \"Reverse Bloom\"**: Reverse the recorded audio, add Reverb, then reverse it back.\n\n## ⚠️ Pitfalls & Fixes\n- **Problem**: Inherent background hiss from the Windows synth.\n- **Fix**: Use a **Gate** or a De-noising tool in Edison before adding saturation.\n",
+      "vaporwave-aesthetics": "# Workflow: Vaporwave Aesthetics (Nostalgic Mush)\n\n*Goal: Embrace the \"low-budget\" quality of 90s MIDI to create a dreamy, retro atmosphere.*\n\n## 🎛️ Routing Context\n- **Routing**: MIDI Out -> Fruity LSD -> Mixer -> Resampling.\n- **Mix Status**: 100% Wet.\n\n## 🚶 Step-by-Step Setup\n1. **The Sound**: Select Patch 49 (**String Ensemble 1**) or Patch 5 (**E. Piano 1**).\n2. **The Melody**: In the MIDI Out Piano Roll, draw slow, complex jazz chords (9ths and 11ths).\n3. **The Slow-Down**: Drop your project BPM to 80 or lower.\n4. **Resampling**: Arm the mixer track and record the LSD output into **Edison**.\n5. **The Melt**: Take the audio in Edison, and pitch it down by exactly **-12 semitones** using the \"Resample\" mode.\n   - *Result*: The digital artifacts of the original \"cheap\" MIDI become elongated and warm.\n6. **Final Polish**: Add a large Hall Reverb (LuxeVerb) and a low-pass filter at 1000Hz.\n7. **Mono Check**: Ensure the washed-out strings don't disappear in mono. If they do, use Fruity Stereo Shaper to fix phase.\n\n## 🔄 Variations\n- **The \"Broken Computer\"**: Use Patch 125 (Telephone Ring) and pitch it down -24 semitones for a granular, industrial glitch.\n- **The \"Mall Soft\"**: Apply a subtle 1/4 note Delay before the reverb.\n\n## ⚠️ Pitfalls & Fixes\n- **Problem**: The sound is too \"clean.\"\n- **Fix**: Use a Bitcrusher or Saturator *before* the reverb to emphasize the digital grit.\n"
+    },
+    "exporting-lsd-audio.md": {
+      "exporting-lsd-audio": "# Workflow: Exporting LSD Audio\n\nSince Fruity LSD generates audio from the Windows OS, it behaves differently during rendering.\n\n## Real-Time Rendering\n- Historically, DLS synthesis required \"Real-time\" rendering mode in the export dialog to capture the audio properly.\n- **Modern Workflow**: It is safer to use Edison to record the output of the Fruity LSD track *before* rendering the final project. This ensures the audio is captured exactly as heard, bypassing any OS-level rendering glitches.\n"
+    },
+    "port-setup-guide.md": {
+      "port-setup-guide": "# Port Setup Guide\n\nThe most confusing part of Fruity LSD is the port mapping.\n\n## The Signal Chain\n1. **Piano Roll** (MIDI Data) -> **MIDI Out Plugin**\n2. **MIDI Out Plugin** (Port X) -> **FL Studio Internal MIDI Bus**\n3. **FL Studio Internal MIDI Bus** (Port X) -> **Fruity LSD**\n4. **Fruity LSD** (Audio Generation) -> **Mixer Track**\n\n## Troubleshooting\n- **No Sound?** Check that the `Port` number on the MIDI Out plugin matches the `Port` number on the LSD interface.\n- **Wrong Instrument?** Change the `Patch` number on the MIDI Out plugin. \n  - Patch 0 = Grand Piano\n  - Patch 30 = Distortion Guitar\n  - Patch 48 = Strings\n  - Channel 10 is ALWAYS drums.\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Lsd\r\n\r\nThis section contains workflow information for the fruity-lsd plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Lsd\r\n\r\nThis section contains reference information for the fruity-lsd plugin.\r\n"
+    }
+  }
+}

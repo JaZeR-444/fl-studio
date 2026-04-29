@@ -1,0 +1,172 @@
+{
+  "pluginName": "Fruity Filter",
+  "version": "1.0",
+  "lastUpdated": "2025-01-04",
+  "category": "Multi-Mode Filtering",
+  "parameters": {
+    "filterType": {
+      "type": "selection",
+      "options": ["low_pass", "high_pass", "band_pass", "notch", "band_reject", "all_pass"],
+      "default": "low_pass",
+      "description": "Filter mode selection"
+    },
+    "cutoffFrequency": {
+      "type": "frequency",
+      "range": [20, 20000],
+      "default": 2000,
+      "unit": "Hz"
+    },
+    "resonance": {
+      "type": "percentage",
+      "range": [0, 100],
+      "default": 25,
+      "unit": "%",
+      "description": "Q control and frequency emphasis"
+    },
+    "slope": {
+      "type": "selection",
+      "options": [12, 24],
+      "default": 24,
+      "unit": "dB/octave",
+      "description": "Filter steepness"
+    },
+    "drive": {
+      "type": "percentage",
+      "range": [0, 100],
+      "default": 0,
+      "unit": "%",
+      "description": "Saturation and harmonic generation"
+    },
+    "mix": {
+      "type": "percentage",
+      "range": [0, 100],
+      "default": 100,
+      "unit": "%",
+      "description": "Dry/wet signal balance"
+    },
+    "outputLevel": {
+      "type": "gain",
+      "range": [-12, 12],
+      "default": 0,
+      "unit": "dB",
+      "description": "Output level compensation"
+    }
+  },
+  "filterCharacteristics": {
+    "low_pass": {
+      "description": "Passes frequencies below cutoff",
+      "applications": ["sub_bass", "warmth", "anti_aliasing"],
+      "typicalSettings": {
+        "sub_bass": {"cutoff": 200, "resonance": 15},
+        "warmth": {"cutoff": 3000, "resonance": 30},
+        "anti_aliasing": {"cutoff": 18000, "resonance": 5}
+      }
+    },
+    "high_pass": {
+      "description": "Passes frequencies above cutoff",
+      "applications": ["cleaning", "space_creation", "rumble_removal"],
+      "typicalSettings": {
+        "cleaning": {"cutoff": 120, "resonance": 20},
+        "space_creation": {"cutoff": 80, "resonance": 25},
+        "rumble_removal": {"cutoff": 40, "resonance": 10}
+      }
+    },
+    "band_pass": {
+      "description": "Passes frequencies around cutoff",
+      "applications": ["isolation", "fx", "telephone"],
+      "typicalSettings": {
+        "isolation": {"cutoff": 1000, "resonance": 40},
+        "fx": {"cutoff": 2500, "resonance": 60},
+        "telephone": {"cutoff": 1500, "resonance": 50}
+      }
+    },
+    "notch": {
+      "description": "Cuts frequencies at cutoff point",
+      "applications": ["feedback_removal", "problem_frequencies", "room_correction"],
+      "typicalSettings": {
+        "feedback_removal": {"cutoff": 400, "resonance": 80},
+        "problem_frequencies": {"cutoff": 600, "resonance": 70},
+        "room_correction": {"cutoff": 300, "resonance": 60}
+      }
+    }
+  },
+  "presets": {
+    "utility": {
+      "sub_extractor": {
+        "name": "Sub-Bass Extractor",
+        "filterType": "low_pass",
+        "cutoffFrequency": 150,
+        "resonance": 10,
+        "slope": 24,
+        "drive": 5,
+        "mix": 100
+      },
+      "air_control": {
+        "name": "Air Control",
+        "filterType": "low_pass",
+        "cutoffFrequency": 12000,
+        "resonance": 20,
+        "slope": 24,
+        "drive": 10,
+        "mix": 50
+      }
+    },
+    "creative": {
+      "telephone": {
+        "name": "Telephone Effect",
+        "filterType": "band_pass",
+        "cutoffFrequency": 1500,
+        "resonance": 45,
+        "slope": 12,
+        "drive": 25,
+        "mix": 90
+      },
+      "underwater": {
+        "name": "Underwater Effect",
+        "filterType": "low_pass",
+        "cutoffFrequency": 800,
+        "resonance": 60,
+        "slope": 24,
+        "drive": 15,
+        "mix": 75
+      }
+    },
+    "genre": {
+      "edm_bass": {
+        "name": "EDM Bass Filter",
+        "filterType": "low_pass",
+        "cutoffFrequency": 300,
+        "resonance": 20,
+        "slope": 24,
+        "drive": 15,
+        "mix": 85
+      },
+      "hiphop_clean": {
+        "name": "Hip-Hop Clean",
+        "filterType": "high_pass",
+        "cutoffFrequency": 80,
+        "resonance": 15,
+        "slope": 12,
+        "drive": 10,
+        "mix": 80
+      },
+      "rock_power": {
+        "name": "Rock Power",
+        "filterType": "band_pass",
+        "cutoffFrequency": 800,
+        "resonance": 50,
+        "slope": 24,
+        "drive": 35,
+        "mix": 70
+      }
+    }
+  },
+  "technicalSpecs": {
+    "filterTypes": 6,
+    "slopes": [12, 24],
+    "resonanceRange": [0, 100],
+    "latency": 0,
+    "cpuUsage": 0.25,
+    "sampleRates": [44100, 48000, 88200, 96000, 192000]
+  }
+}

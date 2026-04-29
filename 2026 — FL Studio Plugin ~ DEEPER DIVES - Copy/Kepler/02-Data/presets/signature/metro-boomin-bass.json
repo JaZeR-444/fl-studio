@@ -1,0 +1,58 @@
+{
+  "metadata": {
+    "plugin": "Kepler",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "presetName": "Boomin Bass",
+    "category": "signature",
+    "inspiredBy": "Metro Boomin style"
+  },
+  "settings": {
+    "oscillator1": {
+      "waveform": "saw",
+      "octave": "-2",
+      "detune": 0,
+      "mix": 85
+    },
+    "oscillator2": {
+      "waveform": "saw",
+      "octave": "-2",
+      "detune": 3,
+      "mix": 75
+    },
+    "filter": {
+      "type": "lowpass",
+      "cutoff": 160,
+      "resonance": 35,
+      "drive": 18,
+      "envAmt": 70,
+      "envVel": 45
+    },
+    "envelope": {
+      "attack": 5,
+      "decay": 200,
+      "sustain": 65,
+      "release": 130
+    },
+    "lfo": {
+      "waveform": "sine",
+      "rate": 0.25,
+      "amt": 10,
+      "dest": "filterCutoff"
+    }
+  },
+  "chain": {
+    "post": ["Fruily Limiter - Threshold -16dB, Ratio 4:1, Attack 1ms, Release 40ms"]
+  },
+  "characteristics": ["deep", "punchy", "modern", "cleansounding"],
+  "genreTags": ["hip-hop/rap", "trap", "modern"],
+  "a/bTesting": {
+    "testA": "Filter env amount at 70 for initial punch",
+    "testB": "Filter env amount at 50 for smoother attack"
+  },
+  "troubleshooting": {
+    "notDeepEnough": "High-pass full mix at 35Hz to create space",
+    "tooMuchSub": "Sidechain to kick at 0.3s release"
+  }
+}

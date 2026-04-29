@@ -1,0 +1,38 @@
+{
+  "name": "Basic MIDI Output",
+  "genre": "universal",
+  "mood": "upbeat",
+  "description": "Standard MIDI configuration for general-purpose output",
+  "parameters": {
+    "channel": 1,
+    "port": "Auto",
+    "clockSource": "Internal",
+    "clockOut": false,
+    "noteLength": "Default",
+    "velocity": 100,
+    "pitchBendRange": 2,
+    "aftertouch": false,
+    "midiCC": true,
+    "thru": true,
+    "syncToHost": true
+  },
+  "workflow": {
+    "useCase": "General MIDI output to hardware",
+    "steps": [
+      "Select MIDI channel (1-16)",
+      "Choose output port or Auto",
+      "Set clock source based on setup",
+      "Configure note length for style",
+      "Adjust velocity for instrument response"
+    ],
+    "troubleshooting": [
+      { "issue": "No sound", "fix": "Check MIDI channel matches hardware" },
+      { "issue": "Timing issues", "fix": "Set clock to Internal or External" },
+      { " "issue": "Wrong notes", "fix": "Verify transpose settings" }
+    ]
+  },
+  "abTest": {
+    "listenFor": "Clean MIDI signal transmission",
+    "duration": "Test all notes and CC messages"
+  }
+}

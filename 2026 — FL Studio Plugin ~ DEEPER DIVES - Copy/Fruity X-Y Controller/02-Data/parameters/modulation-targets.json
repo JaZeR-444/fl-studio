@@ -1,0 +1,175 @@
+{
+  "schema": "x-y-modulation-targets-v1",
+  "description": "Optimal modulation targets and mappings for hip-hop production",
+  "source": "IL-MAN",
+  "recommendedTargets": [
+    {
+      "category": "Filter",
+      "targets": [
+        {
+          "parameter": "Cutoff Frequency",
+          "xMap": "exponential",
+          "yMap": "linear",
+          "useCase": "Main filter sweep for drops and builds"
+        },
+        {
+          "parameter": "Resonance",
+          "xMap": "linear",
+          "yMap": "logarithmic",
+          "useCase": "Add character to filter movement"
+        },
+        {
+          "parameter": "Filter Drive",
+          "xMap": "exponential",
+          "yMap": "linear",
+          "useCase": "Distortion during aggressive sections"
+        }
+      ]
+    },
+    {
+      "category": "Dynamics",
+      "targets": [
+        {
+          "parameter": "Compression Ratio",
+          "xMap": "linear",
+          "yMap": "linear",
+          "useCase": "Glue or punch control"
+        },
+        {
+          "parameter": "Threshold",
+          "xMap": "linear",
+          "yMap": "linear",
+          "useCase": "When compression kicks in"
+        },
+        {
+          "parameter": "Makeup Gain",
+          "xMap": "linear",
+          "yMap": "linear",
+          "useCase": "Level compensation"
+        }
+      ]
+    },
+    {
+      "category": "Space",
+      "targets": [
+        {
+          "parameter": "Reverb Size/Room",
+          "xMap": "exponential",
+          "yMap": "linear",
+          "useCase": "Spatial dimension changes"
+        },
+        {
+          "parameter": "Reverb Pre-delay",
+          "xMap": "linear",
+          "yMap": "logarithmic",
+          "useCase": "Perceived distance"
+        },
+        {
+          "parameter": "Delay Feedback",
+          "xMap": "linear",
+          "yMap": "exponential",
+          "useCase": "Echo intensity"
+        },
+        {
+          "parameter": "Delay Time",
+          "xMap": "step",
+          "yMap": "linear",
+          "useCase": "Rhythmic subdivision changes"
+        }
+      ]
+    },
+    {
+      "category": "Stereo",
+      "targets": [
+        {
+          "parameter": "Stereo Width",
+          "xMap": "linear",
+          "yMap": "linear",
+          "useCase": "Mono to wide field"
+        },
+        {
+          "parameter": "Pan",
+          "xMap": "linear",
+          "yMap": "linear",
+          "useCase": "Left-right positioning"
+        }
+      ]
+    },
+    {
+      "category": "Distortion",
+      "targets": [
+        {
+          "parameter": "Drive Amount",
+          "xMap": "exponential",
+          "yMap": "linear",
+          "useCase": "Subtle warmth to full saturation"
+        },
+        {
+          "parameter": "Mix/Wet",
+          "xMap": "linear",
+          "yMap": "linear",
+          "useCase": "Parallel processing blend"
+        }
+      ]
+    },
+    {
+      "category": "Pitch",
+      "targets": [
+        {
+          "parameter": "Pitch Shift",
+          "xMap": "linear",
+          "yMap": "linear",
+          "range": "±12 semitones",
+          "useCase": "Tuning and harmony effects"
+        },
+        {
+          "parameter": "Formant",
+          "xMap": "linear",
+          "yMap": "linear",
+          "useCase": "Vocal character changes"
+        }
+      ]
+    }
+  ],
+  "specialTargets": [
+    {
+      "parameter": "Speed",
+      "description": "Controller's own velocity output",
+      "useCase": "Dynamic-based modulation - faster movements = more effect"
+    },
+    {
+      "parameter": "Acceleration",
+      "description": "Change in speed output",
+      "useCase": "Accent detection - only triggers on speed changes"
+    }
+  ],
+  "macroCombinations": [
+    {
+      "name": "The Drop Build",
+      "description": "All parameters that increase intensity",
+      "targets": [
+        {"source": "X", "target": "Filter Cutoff", "range": "20Hz-20kHz"},
+        {"source": "X", "target": "Reverb Send", "range": "0-80%"},
+        {"source": "Y", "target": "Saturation", "range": "0-50%"},
+        {"source": "Y", "target": "Stereo Width", "range": "50-150%"}
+      ]
+    },
+    {
+      "name": "The Vibe Kill",
+      "description": "Frequency isolation for breakdowns",
+      "targets": [
+        {"source": "X", "target": "High-pass Filter", "range": "20Hz-2kHz"},
+        {"source": "Y", "target": "Low-pass Filter", "range": "200Hz-20kHz"}
+      ]
+    },
+    {
+      "name": "808 Punch",
+      "description": "808 bass enhancement",
+      "targets": [
+        {"source": "X", "target": "Volume", "range": "100-120%"},
+        {"source": "Y", "target": "Distortion", "range": "0-30%"},
+        {"source": "Speed", "target": "Compression", "range": "2:1-8:1"}
+      ]
+    }
+  ]
+}

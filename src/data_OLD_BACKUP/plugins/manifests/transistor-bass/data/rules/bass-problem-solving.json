@@ -1,0 +1,460 @@
+{
+  "problemSolvingRules": {
+    "name": "Hip-Hop Bass Troubleshooting Guide",
+    "category": "Problem → Solution Mapping",
+    "genre": "Hip-Hop, Trap, R&B"
+  },
+  "symptoms": [
+    {
+      "symptom": "Bass sounds muddy and unclear",
+      "priority": 1,
+      "causes": [
+        "Too much low-mid energy (200-400Hz)",
+        "Phase issues with kick",
+        "No high-pass filtering"
+      ],
+      "solutions": [
+        {
+          "action": "EQ Cut",
+          "parameters": {
+            "frequency": "200-300Hz",
+            "cut": "-3 to -6dB",
+            "Q": "Medium (1.5-2.0)"
+          },
+          "why": "Removes boxiness and mud"
+        },
+        {
+          "action": "High-Pass Filter",
+          "parameters": {
+            "hp": "5-10%",
+            "frequency": "30-35Hz"
+          },
+          "why": "Removes sub-sonic rumble"
+        },
+        {
+          "action": "Check Phase",
+          "parameters": {
+            "tool": "Fruity Phase Inverter",
+            "test": "Flip bass phase, keep whichever sounds fuller"
+          },
+          "why": "Phase cancellation with kick causes thin sound"
+        }
+      ],
+      "preventionTips": [
+        "Start with low cutoff (15-20%)",
+        "Keep resonance under 15% for clean bass",
+        "Always sidechain to kick"
+      ]
+    },
+    {
+      "symptom": "Bass too weak/thin",
+      "priority": 1,
+      "causes": [
+        "Cutoff too low",
+        "Not enough saturation/harmonics",
+        "Fighting with kick",
+        "Playing in wrong octave"
+      ],
+      "solutions": [
+        {
+          "action": "Increase Cutoff",
+          "parameters": {
+            "cutoff": "Increase to 20-25%"
+          },
+          "why": "Adds more harmonic content"
+        },
+        {
+          "action": "Add Saturation",
+          "parameters": {
+            "distDrive": "30-40%",
+            "distMix": "60-70%"
+          },
+          "why": "Adds harmonics audible on small speakers"
+        },
+        {
+          "action": "Parallel Compression",
+          "parameters": {
+            "send": "Heavy compression on parallel track",
+            "blend": "20-30% wet"
+          },
+          "why": "Adds thickness without losing dynamics"
+        },
+        {
+          "action": "Check Octave",
+          "parameters": {
+            "noteRange": "C1-G1 (not C2-G2)"
+          },
+          "why": "808s live in sub/low range"
+        }
+      ],
+      "preventionTips": [
+        "Boost 60-80Hz for body",
+        "Add slight saturation for presence",
+        "Layer with top bass if needed"
+      ]
+    },
+    {
+      "symptom": "Bass clashing with kick",
+      "priority": 1,
+      "causes": [
+        "No sidechain compression",
+        "Both occupy same frequency",
+        "Phase cancellation"
+      ],
+      "solutions": [
+        {
+          "action": "Sidechain Compression",
+          "parameters": {
+            "ratio": "4:1 to 6:1",
+            "attack": "5-10ms (fast)",
+            "release": "100-150ms",
+            "threshold": "Adjust for -6dB reduction"
+          },
+          "why": "Creates space for kick to punch through",
+          "essential": true
+        },
+        {
+          "action": "EQ Separation",
+          "parameters": {
+            "kick": "Boost at 50-60Hz",
+            "bass": "Notch at 50Hz, boost at 80-100Hz"
+          },
+          "why": "Each element has its own frequency pocket"
+        },
+        {
+          "action": "Timing Adjustment",
+          "parameters": {
+            "shift": "Shift bass 10-20ms later"
+          },
+          "why": "Kick hits first, bass fills in after"
+        }
+      ],
+      "preventionTips": [
+        "Always sidechain bass to kick",
+        "Use kick-specific frequency (50Hz), bass different (80Hz)",
+        "Test in mono to hear clashes"
+      ]
+    },
+    {
+      "symptom": "Bass sounds harsh/distorted",
+      "priority": 2,
+      "causes": [
+        "Too much distortion",
+        "Resonance too high",
+        "Clipping"
+      ],
+      "solutions": [
+        {
+          "action": "Reduce Distortion Drive",
+          "parameters": {
+            "distDrive": "Lower to 20-30%"
+          },
+          "why": "Less drive = cleaner sound"
+        },
+        {
+          "action": "Lower Resonance",
+          "parameters": {
+            "resonance": "Keep under 20% for hip-hop"
+          },
+          "why": "High resonance creates harsh peaks"
+        },
+        {
+          "action": "Soft Clip",
+          "parameters": {
+            "tool": "Fruity Soft Clipper",
+            "threshold": "-3dB"
+          },
+          "why": "Tames peaks without harsh distortion"
+        },
+        {
+          "action": "Increase VCA Smooth",
+          "parameters": {
+            "vcaSmooth": "40-50%"
+          },
+          "why": "Removes attack/release clicks"
+        }
+      ],
+      "preventionTips": [
+        "Start with light distortion",
+        "Check levels (avoid clipping)",
+        "Use soft clipping instead of hard limiting"
+      ]
+    },
+    {
+      "symptom": "Bass not punchy enough",
+      "priority": 2,
+      "causes": [
+        "Attack too slow",
+        "Too much reverb/delay",
+        "Decay too long"
+      ],
+      "solutions": [
+        {
+          "action": "Reduce VCA Smooth",
+          "parameters": {
+            "vcaSmooth": "20-30%"
+          },
+          "why": "Faster attack = more punch"
+        },
+        {
+          "action": "Shorten Decay",
+          "parameters": {
+            "decay": "Reduce to 60-70%"
+          },
+          "why": "Tighter envelope = more rhythmic"
+        },
+        {
+          "action": "Remove Effects",
+          "parameters": {
+            "reverb": "Off or <10% mix",
+            "delay": "Off or <15% mix"
+          },
+          "why": "Effects blur the attack"
+        },
+        {
+          "action": "Transient Shaper",
+          "parameters": {
+            "tool": "Transient Processor",
+            "attack": "+3 to +6dB"
+          },
+          "why": "Enhances attack transient"
+        }
+      ],
+      "preventionTips": [
+        "Keep bass dry (minimal effects)",
+        "Use fast envelope settings",
+        "Compress for consistent attack"
+      ]
+    },
+    {
+      "symptom": "Bass disappears on phone/laptop speakers",
+      "priority": 2,
+      "causes": [
+        "No mid/high-frequency harmonics",
+        "All energy in sub frequencies"
+      ],
+      "solutions": [
+        {
+          "action": "Add Saturation",
+          "parameters": {
+            "distDrive": "25-35%",
+            "distMix": "50-70%"
+          },
+          "why": "Creates harmonics at 2-4kHz"
+        },
+        {
+          "action": "EQ Boost",
+          "parameters": {
+            "frequency": "2-4kHz",
+            "boost": "+2 to +3dB"
+          },
+          "why": "Adds presence audible on small speakers"
+        },
+        {
+          "action": "Parallel High-Pass",
+          "parameters": {
+            "send": "Duplicate bass, high-pass at 500Hz",
+            "process": "Heavy saturation",
+            "blend": "15-25% wet"
+          },
+          "why": "Adds top-end without affecting sub"
+        }
+      ],
+      "preventionTips": [
+        "Always check mix on phone speaker",
+        "Use saturation for harmonics",
+        "Boost 2-4kHz subtly"
+      ]
+    },
+    {
+      "symptom": "Bass slides sound wrong/unnatural",
+      "priority": 3,
+      "causes": [
+        "Notes not overlapping correctly",
+        "Slide time too slow/fast",
+        "Wrong interval distance"
+      ],
+      "solutions": [
+        {
+          "action": "Overlap Notes",
+          "parameters": {
+            "overlap": "1-2 ticks in piano roll"
+          },
+          "why": "Triggers portamento/glide"
+        },
+        {
+          "action": "Adjust Glide Time",
+          "parameters": {
+            "quick": "50-100ms for trap",
+            "slow": "200-400ms for R&B"
+          },
+          "why": "Timing affects vibe"
+        },
+        {
+          "action": "Use Common Intervals",
+          "parameters": {
+            "intervals": "3-7 semitones (common in trap)"
+          },
+          "why": "These intervals sound musical"
+        }
+      ],
+      "preventionTips": [
+        "Study reference tracks for slide timing",
+        "Keep slides to 3-7 semitones",
+        "Use slides sparingly (not every note)"
+      ]
+    },
+    {
+      "symptom": "Bass causes clipping/distortion on master",
+      "priority": 1,
+      "causes": [
+        "Too loud in mix",
+        "Competing with other low-end",
+        "No master limiting"
+      ],
+      "solutions": [
+        {
+          "action": "Lower Bass Volume",
+          "parameters": {
+            "volume": "Reduce by 3-6dB"
+          },
+          "why": "Bass should support, not dominate"
+        },
+        {
+          "action": "Sidechain Everything",
+          "parameters": {
+            "targets": "Pads, synths, keys",
+            "ratio": "2:1 to 3:1 (light)"
+          },
+          "why": "Creates space for bass"
+        },
+        {
+          "action": "Master Limiting",
+          "parameters": {
+            "tool": "Fruity Limiter",
+            "ceiling": "-0.3dB",
+            "margin": "Leave headroom"
+          },
+          "why": "Prevents clipping on final output"
+        }
+      ],
+      "preventionTips": [
+        "Mix bass at -6dB to -3dB",
+        "Use sidechain liberally",
+        "Leave headroom for mastering"
+      ]
+    },
+    {
+      "symptom": "Bass sounds sterile/lifeless",
+      "priority": 3,
+      "causes": [
+        "Too clean/digital",
+        "No movement/variation",
+        "Static parameters"
+      ],
+      "solutions": [
+        {
+          "action": "Add Movement",
+          "parameters": {
+            "lfoToPw": "20-40%",
+            "lfoRate": "Slow (10-25%)"
+          },
+          "why": "Creates evolving timbre"
+        },
+        {
+          "action": "Automate Cutoff",
+          "parameters": {
+            "pattern": "Slow rise and fall (4-8 bars)",
+            "range": "15% to 30% and back"
+          },
+          "why": "Adds breathing, organic feel"
+        },
+        {
+          "action": "Vintage Processing",
+          "parameters": {
+            "tools": ["Fruity Squeeze", "Vintage Chorus (subtle)"],
+            "mix": "15-25%"
+          },
+          "why": "Adds analog warmth"
+        },
+        {
+          "action": "Velocity Variation",
+          "parameters": {
+            "range": "80-100% velocity",
+            "humanize": "Slight timing variation"
+          },
+          "why": "Feels more human/organic"
+        }
+      ],
+      "preventionTips": [
+        "Add subtle LFO modulation",
+        "Automate parameters over time",
+        "Use saturation for warmth"
+      ]
+    },
+    {
+      "symptom": "Bass pattern sounds boring/repetitive",
+      "priority": 3,
+      "causes": [
+        "Too simple melody",
+        "No variation between sections",
+        "Static rhythm"
+      ],
+      "solutions": [
+        {
+          "action": "Add Melodic Movement",
+          "parameters": {
+            "technique": "Play 3rds and 5ths of chords",
+            "range": "Stay in C1-A1 range"
+          },
+          "why": "Creates interest while staying low"
+        },
+        {
+          "action": "Vary Per Section",
+          "parameters": {
+            "verse": "Simple root notes",
+            "chorus": "More melodic movement",
+            "bridge": "Different rhythm/pattern"
+          },
+          "why": "Keeps listener engaged"
+        },
+        {
+          "action": "Add Rhythmic Variation",
+          "parameters": {
+            "technique": "Change note lengths, add syncopation"
+          },
+          "why": "Creates groove and interest"
+        }
+      ],
+      "preventionTips": [
+        "Study bass lines in reference tracks",
+        "Create variation every 4-8 bars",
+        "Use slides for melodic interest"
+      ]
+    }
+  ],
+  "quickDiagnosticFlow": {
+    "step1": "Problem identification",
+    "step2": "Check priority (1=critical, 3=polish)",
+    "step3": "Try solutions in order listed",
+    "step4": "Apply prevention tips going forward"
+  },
+  "genreSpecificNotes": {
+    "trap": {
+      "commonIssues": ["Bass too weak", "Slides sound wrong"],
+      "priorities": ["Sidechain", "808 slides", "Sub power"]
+    },
+    "rnb": {
+      "commonIssues": ["Bass not melodic enough", "Too harsh"],
+      "priorities": ["Melodic lines", "Smoothness", "Warmth"]
+    },
+    "lofi": {
+      "commonIssues": ["Sounds too clean", "No vintage vibe"],
+      "priorities": ["Saturation", "Bit reduction", "Warmth"]
+    },
+    "psychedelic": {
+      "commonIssues": ["Too static", "Not trippy enough"],
+      "priorities": ["Movement", "Automation", "Effects"]
+    }
+  }
+}

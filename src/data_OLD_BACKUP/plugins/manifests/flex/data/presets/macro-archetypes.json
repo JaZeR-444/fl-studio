@@ -1,0 +1,74 @@
+{
+  "macroArchetypes": {
+    "description": "Reusable configurations for Macros and Master FX to achieve specific sound characters. Since FLEX oscillators are fixed, these archetypes focus on shaping.",
+    "archetypes": [
+      {
+        "name": "Cinematic Pad Wash",
+        "instrument_type": "Pad / Atmosphere",
+        "macros_focus": {
+          "Filter/Tone": "Lower (40-60%) for darkness",
+          "Movement": "Higher (70%) for slow evolution",
+          "Unison": "High (80%) for width"
+        },
+        "envelope_settings": {
+          "Attack": "High (Slow fade in)",
+          "Release": "High (Long tail)"
+        },
+        "effects_chain": {
+          "Reverb": { "Decay": "Long (>4s)", "Mix": "50%+" },
+          "Delay": { "Time": "1/2 or 1/1", "Mix": "30%" },
+          "Limiter": "Warming"
+        }
+      },
+      {
+        "name": "Tight Pluck / EDM Lead",
+        "instrument_type": "Lead / Pluck",
+        "macros_focus": {
+          "Filter/Tone": "High (Open) or Automated",
+          "Pluck/Decay": "Low (Short)",
+          "Reverb": "Low to Medium"
+        },
+        "envelope_settings": {
+          "Attack": "Minimum (Instant)",
+          "Release": "Short (Stop immediately)"
+        },
+        "effects_chain": {
+          "Reverb": { "Decay": "Short (<1s)", "Mix": "15%" },
+          "Delay": { "Type": "Ping Pong", "Mix": "40%" },
+          "Limiter": "Limiter (Hard)"
+        }
+      },
+      {
+        "name": "Aggressive 808 / Bass",
+        "instrument_type": "Bass",
+        "macros_focus": {
+          "Distortion/Drive": "High",
+          "Slide/Glide": "Adjust to taste",
+          "Cutoff": "Medium (Keep some high harmonics)"
+        },
+        "envelope_settings": {
+          "Attack": "Minimum",
+          "Release": "Short (Avoid mud)"
+        },
+        "effects_chain": {
+          "Reverb": { "Mix": "0% (Dry)" },
+          "Limiter": "Distortion",
+          "Master_Filter": "Low Pass (if too fizzy)"
+        }
+      },
+      {
+        "name": "Lo-Fi Keys",
+        "instrument_type": "Piano / Keys",
+        "macros_focus": {
+          "Detune/Wobble": "Medium (Vintage feel)",
+          "Noise/Crackle": "Low (Texture)",
+          "Cutoff": "Low (Muffled)"
+        },
+        "effects_chain": {
+          "Limiter": "Warming",
+          "Master_Filter": "Low Pass 12dB (cut highs)"
+        }
+      }
+    ]
+  }
+}

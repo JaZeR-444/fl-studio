@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "plugin": "Frequency Splitter",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "presetName": "R&B Vocal Chain",
+    "category": "genre",
+    "genre": "R&B",
+    "mood": "smooth"
+  },
+  "settings": {
+    "crossover1": 200,
+    "crossover2": 4000,
+    "slope": "24dB/oct",
+    "mode": "linear-phase",
+    "band1": { "gain": -2, "processing": "high-pass 80Hz" },
+    "band2": { "gain": 1, "processing": "presence boost 3-5kHz" },
+    "band3": { "gain": 0, "processing": "air boost 8kHz+" }
+  },
+  "chain": {
+    "pre": ["Compression on all bands"],
+    "post": ["De-esser on band 3 only"]
+  },
+  "workflow": "Vocal-specific split: Band 1 removes mud, Band 2 adds presence, Band 3 adds air. Apply before vocal chain.",
+  "genreTags": ["R&B", "vocal", "smooth", "presence"],
+  "a/bTesting": {
+    "testA": "Linear phase for vocal transparency",
+    "testB": "Minimum phase for punch"
+  },
+  "troubleshooting": {
+    "harshVocals": "Reduce band2 gain by 2dB",
+    "sibilance": "Increase de-esser threshold on band3"
+  }
+}

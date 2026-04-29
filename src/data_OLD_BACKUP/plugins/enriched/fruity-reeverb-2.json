@@ -1,0 +1,547 @@
+{
+  "id": "fruity-reeverb-2",
+  "name": "Fruity Reeverb 2",
+  "presets": {
+    "hip-hop-reverb-presets": {
+      "presets": [
+        {
+          "name": "Trap Vocal Lead",
+          "category": "vocals",
+          "subgenre": "trap",
+          "parameters": {
+            "preDelay": 30,
+            "size": 55,
+            "decay": 2.0,
+            "highDamping": 5500,
+            "diffusion": 70,
+            "bass": 0.7,
+            "modRate": 0.2,
+            "modDepth": 0.1,
+            "width": 90,
+            "wet": 100
+          },
+          "sendAmount": "22%",
+          "description": "Modern, bright vocal space for trap/modern hip-hop",
+          "tips": "Use on send track, high-pass return at 350Hz"
+        },
+        {
+          "name": "Boom Bap Classic",
+          "category": "vocals",
+          "subgenre": "boom-bap",
+          "parameters": {
+            "preDelay": 20,
+            "size": 48,
+            "decay": 1.7,
+            "highDamping": 4500,
+            "diffusion": 65,
+            "bass": 1.1,
+            "modRate": 0.15,
+            "modDepth": 0.05,
+            "width": 85,
+            "wet": 100
+          },
+          "sendAmount": "24%",
+          "description": "Warm, vintage room sound for classic hip-hop",
+          "tips": "Add slight tape saturation before reverb for warmth"
+        },
+        {
+          "name": "Melodic Singing",
+          "category": "vocals",
+          "subgenre": "melodic",
+          "parameters": {
+            "preDelay": 38,
+            "size": 65,
+            "decay": 3.0,
+            "highDamping": 6000,
+            "diffusion": 80,
+            "bass": 0.75,
+            "modRate": 0.25,
+            "modDepth": 0.18,
+            "width": 100,
+            "wet": 100
+          },
+          "sendAmount": "30%",
+          "description": "Lush hall for melodic/singing vocals",
+          "tips": "Automate send higher in chorus sections"
+        },
+        {
+          "name": "Lo-Fi Intimate",
+          "category": "vocals",
+          "subgenre": "lo-fi",
+          "parameters": {
+            "preDelay": 15,
+            "size": 58,
+            "decay": 2.4,
+            "highDamping": 3800,
+            "diffusion": 55,
+            "bass": 1.4,
+            "modRate": 0.4,
+            "modDepth": 0.35,
+            "width": 95,
+            "wet": 100
+          },
+          "sendAmount": "32%",
+          "description": "Warm, vintage character for lo-fi/chill rap",
+          "tips": "Use with vinyl/tape effects for cohesive vintage sound"
+        },
+        {
+          "name": "Snare Room (Trap)",
+          "category": "drums",
+          "subgenre": "trap",
+          "parameters": {
+            "preDelay": 12,
+            "size": 42,
+            "decay": 1.2,
+            "highDamping": 4000,
+            "diffusion": 68,
+            "bass": 0.6,
+            "modRate": 0,
+            "modDepth": 0,
+            "width": 80,
+            "wet": 100
+          },
+          "sendAmount": "25%",
+          "description": "Tight room for modern snare/clap sounds",
+          "tips": "Keep send lower for punchier sound"
+        },
+        {
+          "name": "Pad Atmosphere",
+          "category": "melodic",
+          "subgenre": "all",
+          "parameters": {
+            "preDelay": 5,
+            "size": 78,
+            "decay": 4.2,
+            "highDamping": 5800,
+            "diffusion": 85,
+            "bass": 0.8,
+            "modRate": 0.28,
+            "modDepth": 0.22,
+            "width": 110,
+            "wet": 100
+          },
+          "sendAmount": "45%",
+          "description": "Huge, enveloping space for pads and synths",
+          "tips": "Use on send, compress reverb return for consistency"
+        },
+        {
+          "name": "Piano Natural",
+          "category": "melodic",
+          "subgenre": "all",
+          "parameters": {
+            "preDelay": 22,
+            "size": 58,
+            "decay": 2.6,
+            "highDamping": 5200,
+            "diffusion": 72,
+            "bass": 0.9,
+            "modRate": 0.18,
+            "modDepth": 0.12,
+            "width": 95,
+            "wet": 100
+          },
+          "sendAmount": "28%",
+          "description": "Natural hall for piano/keys",
+          "tips": "Matches well with acoustic piano samples"
+        },
+        {
+          "name": "808 Subtle Air",
+          "category": "bass",
+          "subgenre": "trap",
+          "parameters": {
+            "preDelay": 8,
+            "size": 28,
+            "decay": 0.7,
+            "highDamping": 2500,
+            "diffusion": 50,
+            "bass": 0.4,
+            "modRate": 0,
+            "modDepth": 0,
+            "width": 70,
+            "wet": 100
+          },
+          "sendAmount": "8%",
+          "description": "Minimal room for 808s without mud",
+          "tips": "Very subtle! High-pass reverb return at 500Hz minimum"
+        }
+      ]
+    }
+  },
+  "parameters": {
+    "parameters": {
+      "pluginName": "Fruity Reeverb 2",
+      "category": "Reverb / Spatial",
+      "parameters": [
+        {
+          "section": "Input Processing",
+          "id": "mid_side",
+          "name": "Mid / Side Mode",
+          "type": "Switch",
+          "description": "Mid: Processes Sum (L+R). Side: Processes Difference (L-R)."
+        },
+        {
+          "section": "Input Processing",
+          "id": "high_cut",
+          "name": "High Cut",
+          "range": {
+            "min": 20,
+            "max": 20000,
+            "unit": "Hz"
+          },
+          "description": "Removes high frequencies from the input signal."
+        },
+        {
+          "section": "Input Processing",
+          "id": "low_cut",
+          "name": "Low Cut",
+          "range": {
+            "min": 20,
+            "max": 20000,
+            "unit": "Hz"
+          },
+          "description": "Removes low frequencies from the input signal."
+        },
+        {
+          "section": "Room Properties",
+          "id": "size",
+          "name": "Room Size",
+          "range": {
+            "min": 1,
+            "max": 100,
+            "unit": "Geometric"
+          },
+          "description": "Simulated volume of the space."
+        },
+        {
+          "section": "Room Properties",
+          "id": "diffusion",
+          "name": "Diffusion",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Density of reflections. Low = Echos. High = Smooth."
+        },
+        {
+          "section": "Time",
+          "id": "decay",
+          "name": "Decay Time (RT60)",
+          "range": {
+            "min": 0.1,
+            "max": 20.0,
+            "unit": "s"
+          },
+          "description": "Length of the reverb tail."
+        },
+        {
+          "section": "Time",
+          "id": "predelay",
+          "name": "Pre-Delay",
+          "range": {
+            "min": 0,
+            "max": 1000,
+            "unit": "ms"
+          },
+          "description": "Delay before reverb starts."
+        },
+        {
+          "section": "Damping",
+          "id": "high_damp",
+          "name": "High Damping",
+          "range": {
+            "min": 0,
+            "max": 20000,
+            "unit": "Hz"
+          },
+          "description": "Frequency above which decay is swifter (Warmer tail)."
+        },
+        {
+          "section": "Damping",
+          "id": "bass_mult",
+          "name": "Bass Multiplier",
+          "range": {
+            "min": 0,
+            "max": 400,
+            "unit": "%"
+          },
+          "description": "Multiplies decay time for bass frequencies."
+        },
+        {
+          "section": "Output",
+          "id": "wet_level",
+          "name": "Wet Level",
+          "range": {
+            "min": -Infinity,
+            "max": 6,
+            "unit": "dB"
+          },
+          "description": "Volume of reverb signal."
+        },
+        {
+          "section": "Output",
+          "id": "dry_level",
+          "name": "Dry Level",
+          "range": {
+            "min": -Infinity,
+            "max": 6,
+            "unit": "dB"
+          },
+          "description": "Volume of original signal."
+        },
+        {
+          "section": "Output",
+          "id": "sep",
+          "name": "Stereo Separation",
+          "range": {
+            "min": -100,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Width of the wet signal."
+        }
+      ]
+    },
+    "reeverb2-params": {
+      "plugin": "Fruity Reeverb 2",
+      "type": "Reverb",
+      "description": "Simulates acoustic spaces to add realistic reverberation to instruments.",
+      "parameters": [
+        {
+          "name": "MID / SIDE",
+          "type": "Switch",
+          "role": "Input Processing",
+          "description": "Processes either the mid (summed mono) or side (stereo field) components of the input signal.",
+          "tips": [
+            "Use Side mode to add width without muddying the center channel."
+          ]
+        },
+        {
+          "name": "H.CUT",
+          "label": "High Cut",
+          "type": "Knob",
+          "role": "Tone Shaping",
+          "description": "Removes high frequencies from the reverb input.",
+          "tips": [
+            "Cut highs to push the reverb further back in the mix."
+          ]
+        },
+        {
+          "name": "L.CUT",
+          "label": "Low Cut",
+          "type": "Knob",
+          "role": "Tone Shaping",
+          "description": "Removes low frequencies from the reverb input.",
+          "tips": [
+            "Essential for removing mud. Try cutting up to 300-500Hz on vocals."
+          ]
+        },
+        {
+          "name": "DELAY",
+          "label": "Predelay",
+          "type": "Knob",
+          "role": "Spatial Definition",
+          "description": "Controls the delay between the direct signal and the first reverb reflection.",
+          "tips": [
+            "Increase to separate the dry vocal from the reverb tail.",
+            "Tempo-synced delays can create rhythmic pumping effects."
+          ]
+        },
+        {
+          "name": "SIZE",
+          "label": "Room Size",
+          "type": "Knob",
+          "role": "Spatial Simulation",
+          "description": "Sets the size of the simulated virtual room.",
+          "tips": [
+            "Small = bathroom/studio, Large = cathedral/hall.",
+            "Automate for creative effects."
+          ]
+        },
+        {
+          "name": "DIFF",
+          "label": "Diffusion",
+          "type": "Knob",
+          "role": "Texture",
+          "description": "Controls the density of reflections.",
+          "tips": [
+            "Low = distinct echoes (grainy), High = smooth wash (dense)."
+          ]
+        },
+        {
+          "name": "MOD",
+          "label": "Modulation Depth",
+          "type": "Knob",
+          "role": "Texture",
+          "description": "Modulates the reverb time to smooth out metallic ringing.",
+          "tips": [
+            "Adds chorus-like movement to the tail.",
+            "Use sparingly on realistic acoustic instruments."
+          ]
+        },
+        {
+          "name": "SPEED",
+          "label": "Modulation Speed",
+          "type": "Knob",
+          "role": "Texture",
+          "description": "Sets the speed of the sine-wave modulation.",
+          "tips": []
+        },
+        {
+          "name": "BASS",
+          "label": "Bass Multiplier",
+          "type": "Knob",
+          "role": "Decay Shaping",
+          "description": "Adjusts the decay time of bass frequencies relative to the main decay.",
+          "tips": [
+            "Boost for boomy, dark rooms. Cut for tighter low end."
+          ]
+        },
+        {
+          "name": "CROSS",
+          "label": "Bass Crossover",
+          "type": "Knob",
+          "role": "Decay Shaping",
+          "description": "Determines the frequency point below which bass is boosted by the Bass knob.",
+          "tips": []
+        },
+        {
+          "name": "DEC",
+          "label": "Decay Time",
+          "type": "Knob",
+          "role": "Spatial Simulation",
+          "description": "Controls the reverb's decay time (RT60).",
+          "tips": [
+            "Short (<1s) for ambience, Long (>2s) for lush tails."
+          ]
+        },
+        {
+          "name": "DAMP",
+          "label": "High Damping",
+          "type": "Knob",
+          "role": "Tone Shaping",
+          "description": "Adjusts the damping rate of high frequencies in the tail.",
+          "tips": [
+            "High damping = warm, dark room (absorptive walls).",
+            "Low damping = bright, splashing room (reflective walls)."
+          ]
+        },
+        {
+          "name": "DRY",
+          "label": "Dry Level",
+          "type": "Knob",
+          "role": "Mix",
+          "description": "Sets the level of the direct input signal.",
+          "tips": [
+            "Set to 0 when using as a Send effect."
+          ]
+        },
+        {
+          "name": "ER",
+          "label": "Early Reflections",
+          "type": "Knob",
+          "role": "Mix",
+          "description": "Sets the level of the first reflections.",
+          "tips": [
+            "ER defines the 'position' in the room. louder ER = closer to walls/listener."
+          ]
+        },
+        {
+          "name": "WET",
+          "label": "Wet Level",
+          "type": "Knob",
+          "role": "Mix",
+          "description": "Sets the level of the reverberant signal.",
+          "tips": []
+        },
+        {
+          "name": "SEP",
+          "label": "Stereo Separation",
+          "type": "Knob",
+          "role": "Output Processing",
+          "description": "Adjusts the stereo separation of the wet reverb signal.",
+          "tips": [
+            "Turn left for mono reverb, right for extra wide."
+          ]
+        }
+      ],
+      "common_problems": [
+        {
+          "symptom": "Muddy Mix",
+          "solution": "Increase L.CUT (Low Cut) to remove bass from the reverb.",
+          "parameter": "L.CUT"
+        },
+        {
+          "symptom": "Washed Out Sound",
+          "solution": "Reduce DECAY time or WET level. Increase PREDELAY.",
+          "parameter": "DEC / DELAY"
+        },
+        {
+          "symptom": "Metallic Ringing",
+          "solution": "Increase MOD (Modulation) and DIFF (Diffusion).",
+          "parameter": "MOD / DIFF"
+        }
+      ]
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    },
+    {
+      "title": "Complete Guide",
+      "filename": "complete-guide.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "Common Usage",
+      "category": "general",
+      "filename": "common-usage.md"
+    },
+    {
+      "title": "00 Goal Quick Result",
+      "category": "by-goal",
+      "filename": "00_Goal_Quick_Result.md"
+    },
+    {
+      "title": "01 Goal Shaping And Control",
+      "category": "by-goal",
+      "filename": "01_Goal_Shaping_And_Control.md"
+    },
+    {
+      "title": "03 Goal Creative Effect",
+      "category": "by-goal",
+      "filename": "03_Goal_Creative_Effect.md"
+    },
+    {
+      "title": "Send Based Reverb",
+      "category": "by-goal",
+      "filename": "send-based-reverb.md"
+    },
+    {
+      "title": "Drums",
+      "category": "by-instrument",
+      "filename": "drums.md"
+    },
+    {
+      "title": "Vocal Reverb Setup",
+      "category": "by-instrument",
+      "filename": "vocal-reverb-setup.md"
+    }
+  ]
+}

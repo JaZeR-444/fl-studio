@@ -1,0 +1,71 @@
+{
+  "rewireConfigurations": {
+    "studioSetup": {
+      "host": "FL Studio",
+      "clients": ["Reason", "Live"],
+      "sampleRate": 44100,
+      "bufferSize": 512,
+      "syncMode": "internal",
+      "audioRouting": {
+        "mainOutput": "FL Studio Master",
+        "clientOutputs": ["FL Studio Mixer Channels"]
+      }
+    },
+    "liveSetup": {
+      "host": "FL Studio",
+      "clients": ["Ableton Live"],
+      "sampleRate": 48000,
+      "bufferSize": 256,
+      "syncMode": "midi",
+      "audioRouting": {
+        "mainOutput": "Hardware Interface",
+        "clientOutputs": ["Individual Channels"]
+      }
+    },
+    "collaborativeSetup": {
+      "host": "FL Studio",
+      "clients": ["Logic Pro", "Pro Tools"],
+      "sampleRate": 44100,
+      "bufferSize": 1024,
+      "syncMode": "external",
+      "audioRouting": {
+        "mainOutput": "Aggregate Device",
+        "clientOutputs": ["Stereo Bus"]
+      }
+    }
+  },
+  "deviceTemplates": {
+    "audioInterface": {
+      "recommended": ["Focusrite Scarlett", "Universal Audio Apollo", "Motu M-Series"],
+      "compatibility": "ASIO/Core Audio required",
+      "latencyOptimization": "Direct Monitoring preferred"
+    },
+    "midiInterfaces": {
+      "recommended": ["M-Audio Midisport", "iConnectivity", "Motu Micro Lite"],
+      "timing": "Hardware timestamping preferred",
+      "channels": "Minimum 16 channels recommended"
+    },
+    "controlSurfaces": {
+      "compatible": ["Mackie Control", "Novation SL", "Behringer X-Touch"],
+      "mapping": "HUI or Mackie Control protocol",
+      "feedback": "LED feedback supported"
+    }
+  },
+  "troubleshootingMatrix": {
+    "syncIssues": {
+      "symptoms": ["Drift", "Phase problems", "Timing jitter"],
+      "causes": ["Sample rate mismatch", "Buffer size differences", "Clock source conflicts"],
+      "solutions": ["Match sample rates", "Align buffer sizes", "Set clear clock master"]
+    },
+    "audioProblems": {
+      "symptoms": ["Crackling", "Dropouts", "Latency"],
+      "causes": ["Buffer too low", "Driver conflicts", "CPU overload"],
+      "solutions": ["Increase buffer size", "Update drivers", "Optimize CPU usage"]
+    },
+    "connectionFailures": {
+      "symptoms": ["No connection", "Intermittent drops", "Application crashes"],
+      "causes": ["ReWire not installed", "Version incompatibility", "Memory issues"],
+      "solutions": ["Reinstall ReWire", "Update applications", "Increase memory allocation"]
+    }
+  }
+}

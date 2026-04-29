@@ -1,0 +1,116 @@
+{
+  "id": "multiband-delay",
+  "name": "Multiband Delay",
+  "category": "Delay",
+  "tier": "Free",
+  "type": "Delay",
+  "description": "Multiband Delay - Delay",
+  "tags": [
+    "spatial",
+    "fx",
+    "specialized"
+  ],
+  "capabilities": [
+    "delay",
+    "fx",
+    "temporal",
+    "audio"
+  ],
+  "icon": "/plugins/multiband-delay-icon.svg",
+  "color": "#14B8A6",
+  "version": "1.0",
+  "data_dir": "plugins\\multiband-delay",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "multiband-delay-specs": {
+      "plugin_name": "Multiband Delay",
+      "category": "Delay / Spectral / Creative",
+      "engine_specs": {
+        "frequency_bands": 16,
+        "base_delay_max_ms": 100,
+        "total_scaled_delay_max_ms": 1000,
+        "morph_presets": 8,
+        "filter_types": [
+          "Gentle",
+          "Sharp"
+        ],
+        "scaling_range": "-100% to +100%"
+      },
+      "parameters": [
+        {
+          "name": "Time (Band)",
+          "type": "grid-slider",
+          "description": "Sets base delay for 1 of 16 bands.",
+          "mix_impact": "Spectral timing, rhythmic smearing"
+        },
+        {
+          "name": "Vol (Band)",
+          "type": "grid-slider",
+          "description": "Sets level for 1 of 16 bands.",
+          "mix_impact": "Spectral EQ, frequency focus"
+        },
+        {
+          "name": "Pan (Band)",
+          "type": "grid-slider",
+          "description": "Sets stereo position for 1 of 16 bands.",
+          "mix_impact": "Frequency-specific widening"
+        },
+        {
+          "name": "Scale",
+          "type": "knob",
+          "description": "Global multiplier for all band delays.",
+          "vibe_impact": "Reverse vs Forward echoes, scale of space"
+        },
+        {
+          "name": "Morph",
+          "type": "knob",
+          "description": "Blends between 8 band-configuration presets.",
+          "vibe_impact": "Evolving textures, motion"
+        },
+        {
+          "name": "Feedback (FB)",
+          "type": "knob",
+          "description": "Amount of repeats.",
+          "mix_impact": "Depth, cloud density"
+        }
+      ]
+    }
+  },
+  "presets": {},
+  "learning": {
+    "Concepts": {
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Multiband Delay\n\nHow to use spectral splitting to create futuristic vibes in Hip-Hop, R&B, and Pop.\n\n---\n\n## 1. PSYCHEDELIC (Primary Focus)\n*Evolving textures, frequency-split echoes, and \"liquid\" motion.*\n- **The Mental Model:** A sound being shattered into a prism and reconstructed in real-time.\n- **Multiband Delay Levers:**\n    - **Time Tab:** Draw a \"jagged\" or \"chaotic\" pattern. High frequencies delay late, low frequencies delay early.\n    - **Morph Knob:** Automate this! Blend between a \"wide\" state and a \"distorted\" state.\n    - **Scale Knob (Negative):** Move between +100% and -100%. The delays will flip from \"Echoing\" to \"Sucking\" (Reverse).\n- **Listen For:** A sound that feels like it's \"spinning\" or \"disintegrating\" into harmonics.\n\n## 2. VIBEY / MODERN LUSH\n*Expensive-sounding width and spectral \"shimmer.\"*\n- **The Mental Model:** Modern Pop/R&B \"Halos\" where the sound wraps around your head.\n- **Multiband Delay Levers:**\n    - **Pan Tab:** Draw a smooth \"S\" curve. This places different frequencies in different parts of the stereo field.\n    - **Vol Tab:** Use a \"Ramp\" to lower the volume of the lowest 4 bands. This keeps the sub-energy mono and clean.\n    - **Scale:** Set to a low value (10–20%). This creates \"micro-delays\" that sound more like a high-quality ensemble than a distinct echo.\n- **Listen For:** Immersive width that doesn't feel \"chorused\" or \"fake.\"\n\n## 3. MOODY\n*Dark, trailing shadows and \"underwater\" spectral trails.*\n- **The Mental Model:** Dark, cavernous spaces where only the bass and low-mids echo.\n- **Multiband Delay Levers:**\n    - **Vol Tab:** Lower the volume of all high-frequency bands (Bands 10-16).\n    - **Feedback (FB):** High (60%). Create a long, dark spectral trail.\n    - **Filter Type:** **Gentle**. This prevents harsh digital resonance in the shadows.\n    - **Time Tab:** Keep low-frequency delays slightly longer than high-frequency ones.\n- **Listen For:** A dark, heavy \"ghost\" that follows the main melody.\n\n## 4. UPBEAT / ENERGETIC\n*Rhythmic jitters, bright \"shimmer\" delays, and sharp transients.*\n- **The Mental Model:** Hyperpop \"ear candy\" or energetic EDM-style build-ups.\n- **Multiband Delay Levers:**\n    - **Time Tab:** Draw a \"Staircase\" patterns where bands are synced to 1/16th note divisions (requires manual calculation or Scale snapping).\n    - **Vol Tab:** Boost only the \"Click\" frequencies (3kHz – 8kHz) in the delayed signal.\n    - **Feedback:** Low. Keep the repeats tight and snappy.\n- **Listen For:** Rhythmic \"jitter\" that adds energy to a static loop.\n\n---\n\n## Vibe Check Matrix\n| Vibe | Grid Shape | Scale Value | Morph Status | Filter Type |\n| :--- | :--- | :--- | :--- | :--- |\n| **Psyched**| Jagged / Random| Variable | Automated | Sharp |\n| **Vibey** | Smooth S-Curve | 15% (Micro) | Static | Gentle |\n| **Moody** | Low-Pass Ramp | 50% | Static | Gentle |\n| **Upbeat** | Staircase | 100% (Sync) | Pulsing | Sharp |\n| **Jazzy** | Minimal Curve | OFF | OFF | Gentle |\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Multiband Delay\r\n\r\n## What It Is\r\nMultiband Delay is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Multiband Delay\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "parameter-cheat-sheet": "# Parameter Cheat Sheet: Multiband Delay\n\nThe frequency-dependent echo reference. [SRC: IL-MAN]\n\n---\n\n## 📊 The 16-Band Editor (Grid)\n- **Time Tab:** Sets the base delay time (0–100ms) for each of the 16 bands.\n- **Vol Tab:** Sets the output level for each band (can be used as a 16-band EQ).\n- **Pan Tab:** Sets the stereo position for each band.\n- **Pencil / Line / Curve:** Drawing tools to shape the bands quickly.\n\n## ⏱️ Global Delay Controls\n- **Scale:** Multiplies the base delay time.\n  - *Positive (0 to 100%):* Extends delay up to 1000ms.\n  - *Negative (0 to -100%):* Creates reverse \"pre-echo\" effects.\n- **FB (Feedback):** Amount of delayed signal fed back into the input.\n- **Feedback Type (Normal / Invert):** Changes the phase of the repeats.\n\n## 🌀 Morphing System (Bottom)\n- **Morph Knob:** Blends between the 8 internal preset slots (A through H).\n- **Preset Slots (1-8):** Click a number to edit that specific state. All 16 bands are saved per slot.\n\n## ⚙️ Filter & Quality\n- **Filter Type (Gentle / Sharp):** Sets the slope of the 16-band frequency splitters.\n  - *Gentle:* Smoother, more musical transitions.\n  - *Sharp:* Precise isolation (can introduce phase artifacts).\n- **Smoothing:** Blurs the transitions between bands to avoid \"clicking\" during automation.\n\n---\n\n## 🎯 Quick Spectral Recipes\n- **Spectral Width:** Pan Tab -> Draw an \"S\" curve.\n- **High-End Sparkle:** Vol Tab -> Lower the first 10 bands, keep the top 6 at max.\n- **Cascading Echo:** Time Tab -> Draw a diagonal line from bottom-left to top-right.\n- **Reverse Suck:** Set Scale to -100%.\n",
+      "quick-start-checklist": "# Quick Start Checklist: Multiband Delay\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Multiband Delay to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Multiband Delay\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n",
+      "visual-editor-modes": "# Visual Editor Modes: Multiband Delay\n\nMastering the drawing tools for the 16-band grid. [SRC: IL-MAN]\n\n## 1. PENCIL MODE (Individual Control)\n- **Function:** Draw or adjust individual bands one by one.\n- **Best For:** Fine-tuning specific frequencies or creating \"staircase\" patterns where each band is precisely set.\n- **Shortcut:** Left-click and drag horizontally to \"paint\" multiple bands at the same level.\n\n## 2. LINE MODE (Linear Sweeps)\n- **Function:** Draws a straight line between two points.\n- **Best For:** Creating smooth \"Spectral Ramps.\"\n  - *Example:* A ramp from Low (0ms) to High (100ms) creates a delay that arrives later as the frequency gets higher.\n- **Usage:** Click and drag from the start frequency to the end frequency.\n\n## 3. CURVE MODE (Logarithmic / Smooth Arcs)\n- **Function:** Draws a smooth curve (spline) between points.\n- **Best For:** More \"natural\" sounding frequency distributions.\n- **Usage:** Click and drag to create the curve. Use this in the **Pan Tab** to create organic-feeling stereo width that \"blooms\" around the center.\n\n---\n\n## Editor Pro-Tips\n- **Right-Click:** Often opens a menu to Reset, Invert, or Flip the current curve.\n- **Snap to Grid:** Hold **Alt** (standard FL behavior) if you want to bypass the internal grid snapping for very precise, tiny micro-delay offsets.\n- **Vol as EQ:** Remember that the **Vol Tab** is essentially a 16-band Graphic EQ. You can use Line mode to create a low-pass or high-pass filter for the delayed signal only.\n\n---\n*For a guide on the Morph system that stores these curves, see the [04-Reference/morph-interpolation-logic.md](../04-Reference/morph-interpolation-logic.md) guide.*\n"
+    },
+    "README.md": {
+      "README": "# Learning - Multiband Delay\r\n\r\nThis section contains learning information for the multiband-delay plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "cascading-frequency-delay": "# Workflow: Cascading Frequency Delay (Futuristic Trails)\n\n*Goal: Creating a \"falling\" or \"rising\" spectral echo where high frequencies trail behind low frequencies (or vice versa).*\n\n## Vibe Mapping\n- **Psychedelic:** ⭐⭐⭐⭐⭐ (Primary)\n- **Upbeat:** ⭐⭐⭐⭐⭐ (Primary)\n- **Moody:** ⭐⭐⭐⭐ (With dark filtering)\n\n## 🎛️ Routing Context\n- **Preferred:** Parallel Send track or high-mix insert on a melody.\n- **Mix Status:** 50% Wet.\n\n## 🚶 Step-by-Step Setup\n1. **The Base Time:**\n   - Select the **Time** tab.\n   - Set the **Scale** knob to **50%**.\n2. **The \"Ramp\" Pattern:**\n   - Select the **Line** drawing tool.\n   - Draw a line from the bottom-left corner (Band 1, 0ms) to the top-right corner (Band 16, 100ms).\n   - *Result:* The higher the frequency, the later it repeats. This creates a \"smearing\" effect that sounds futuristic and digital.\n3. **The Feedback Cloud:**\n   - Increase the **FB (Feedback)** knob to **40%**.\n   - *Result:* The cascading repeats will now \"stack,\" creating a lush spectral cloud that evolves.\n4. **Sculpting the Tone (Vol Tab):**\n   - Switch to the **Vol** tab.\n   - Lower the volume of the middle bands (Bands 6-10) slightly.\n   - *Why:* This creates a \"split\" in the spectrum, making the high-frequency trails sound like they are separate from the main sound.\n5. **The Filter Character:**\n   - Set **Filter Type** to **Sharp**. This emphasizes the individual bands, making the cascade sound more \"glitchy\" and defined.\n\n## 🔄 Variations\n- **The \"Falling\" Echo:** Draw the line from top-left to bottom-right.\n- **The \"Butterfly\":** Use the **Curve** tool to draw a \"V\" shape in the Time tab. Lows and Highs arrive late, Mids arrive early.\n\n## ⚠️ Pitfalls & Fixes\n- **Problem:** The echoes are too short.\n- **Fix:** Increase the **Scale** knob. Remember, the grid only sets the *relative* time; Scale sets the *actual* time.\n- **Problem:** Metallic ringing.\n- **Fix:** Switch the **Filter Type** to **Gentle**.\n\n## 🎚️ Automation Ideas\n- **Cascade Sweep:** Automate the **Scale** knob from 0 to 100% during a transition.\n- **Texture Morph:** Automate the **Morph** knob between a \"Rising\" ramp and a \"Falling\" ramp.\n",
+      "hop-hop-subgenre-delays": "# Hip-Hop Sub-Genre Multiband Delay Workflows\n\n## Moody Dark Atmosphere\n| Band | Time | Feedback | Mix |\n|------|------|----------|-----|\n| Low | 250ms | 60% | 30% |\n| Mid | 500ms | 70% | 40% |\n| High | 750ms | 80% | 45% |\n\n### Tips\n- Long times for atmosphere\n- Higher feedback for tails\n- Perfect for intros\n- Use on pads and vocals\n\n---\n\n## Upbeat Bouncy Rhythm\n| Band | Time | Feedback | Mix |\n|------|------|----------|-----|\n| Low | 80ms | 40% | 35% |\n| Mid | 160ms | 50% | 45% |\n| High | 240ms | 35% | 50% |\n\n### Tips\n- Short times for rhythm\n- Low feedback for clean\n- Great on hi-hats\n- Perfect for 808 bounce\n\n---\n\n## Electro Width\n| Band | Time | Feedback | Mix |\n|------|------|----------|-----|\n| Low | 100ms | 50% | 40% |\n| Mid | 200ms | 60% | 50% |\n| High | 400ms | 55% | 55% |\n\n### Tips\n- Vary times per band\n- Moderate feedback for width\n- Great on synth leads\n- Perfect for build-ups\n\n---\n\n## Jazzy Echo\n| Band | Time | Feedback | Mix |\n|------|------|----------|-----|\n| Low | 180ms | 45% | 25% |\n| Mid | 360ms | 50% | 35% |\n| High | 540ms | 40% | 40% |\n\n### Tips\n- Moderate times for warmth\n- Lower feedback for smooth\n- Perfect on Rhodes and keys\n- Great on vocals for depth\n\n---\n\n## Funky Slap\n| Band | Time | Feedback | Mix |\n|------|------|----------|-----|\n| Low | 120ms | 55% | 45% |\n| Mid | 240ms | 50% | 50% |\n| High | 360ms | 45% | 55% |\n\n### Tips\n- Rhythmic times for groove\n- Moderate feedback for punch\n- Great on bass for slap effect\n- Perfect on guitars\n\n---\n\n## Energetic Drill Stutter\n| Band | Time | Feedback | Mix |\n|------|------|----------|-----|\n| Low | 60ms | 70% | 50% |\n| Mid | 120ms | 65% | 55% |\n| High | 180ms | 60% | 60% |\n\n### Tips\n- Very short times for stutter\n- High feedback for intensity\n- Perfect on 808s\n- Great on snares\n\n---\n\n## Related Documentation\n- [Multiband Delay Presets INDEX](../02-Data/presets/INDEX.md)\n- [Multiband Delay Safety Rules](../02-Data/rules/multiband-delay-safety-rules.md)\n",
+      "INDEX": "# Multiband Delay Workflows INDEX\n\n## By-Goal Workflows\n\n| File | Focus |\n|------|-------|\n| [reversing-spectral-echoes.md](reversing-spectral-echoes.md) | Reverse delay effects |\n| [cascading-frequency-delay.md](cascading-frequency-delay.md) | Cascading delays |\n| [spectral-width-widening.md](spectral-width-widening.md) | Width enhancement |\n| [hop-hop-subgenre-delays.md](hop-hop-subgenre-delays.md) | Hip-Hop Sub-Genre Delays |\n\n## Quick Reference\n\n| Goal | Workflow |\n|------|----------|\n| Reverse effects | Reversing Spectral Echoes |\n| Cascading delays | Cascading Frequency Delay |\n| Width widening | Spectral Width Widening |\n| Dark atmosphere | Hip-Hop Sub-Genre Delays |\n| Bouncy rhythm | Hip-Hop Sub-Genre Delays |\n| Electro width | Hip-Hop Sub-Genre Delays |\n| Jazzy echo | Hip-Hop Sub-Genre Delays |\n| Funky slap | Hip-Hop Sub-Genre Delays |\n| Drill stutter | Hip-Hop Sub-Genre Delays |\n\n## Related Documentation\n\n- [Multiband Delay Presets](../02-Data/presets/INDEX.md)\n- [Multiband Delay Safety Rules](../02-Data/rules/multiband-delay-safety-rules.md)\n",
+      "reversing-spectral-echoes": "# Workflow: Reversing Spectral Echoes (Sucking Effects)\n\n*Goal: Using the negative Scale parameter to create pre-echoes and \"sucking\" sounds that pull the listener into the next beat.*\n\n## Vibe Mapping\n- **Psychedelic:** ⭐⭐⭐⭐⭐ (Primary)\n- **Upbeat:** ⭐⭐⭐⭐ (For transitions)\n- **Moody:** ⭐⭐⭐⭐ (Haunting ghost effects)\n\n## 🎛️ Routing Context\n- **Preferred:** Insert on a Vocal, Snare, or Impact FX.\n- **Mix Status:** 100% Wet during build-ups, 20% for background textures.\n\n## 🚶 Step-by-Step Setup\n1. **The Grid Shape:**\n   - Select the **Time** tab.\n   - Draw a smooth **Curve** from left to right.\n2. **The \"Reverse\" Flip (The Secret):**\n   - Locate the **Scale** knob. Turn it to the **Left (Negative Range)**.\n   - Set it to **-80%**.\n   - *Result:* The delay engine is now running in reverse logic. The echoes appear to arrive *before* or during the transient in a \"pre-echo\" fashion.\n3. **Ghost Feedback:**\n   - Increase **FB (Feedback)** to 30%. This creates a \"reversed cloud\" that feels like it's sucking the sound backwards into a black hole.\n4. **Spectral Texture (Vol Tab):**\n   - Switch to the **Vol** tab and draw a \"Jagged\" random line.\n   - *Result:* The reverse suck will now have a \"broken\" or \"lo-fi\" texture.\n5. **Smoothing:**\n   - Set **Smoothing** to 50% to make the reverse effect feel \"liquid\" and less \"jittery.\"\n\n## 🔄 Variations\n- **The \"Vocal Ghost\":** Put this on a lead vocal send. Set Scale to -20% and Mix to 15%. This adds a haunting \"aura\" that precedes the singer's words.\n- **The \"Sucking Snare\":** Automate the **Mix** slider to jump to 100% exactly one beat before a snare hit, then back to 0%.\n\n## ⚠️ Pitfalls & Fixes\n- **Problem:** The effect sounds \"metallic\" or \"resonant.\"\n- **Fix:** Decrease the **Feedback** knob or change the **Filter Type** to **Gentle**.\n- **Problem:** No audible effect.\n- **Fix:** Ensure the **Time** sliders in the grid are not at 0. Negative scale on a 0ms delay still equals zero.\n\n## 🎚️ Automation Ideas\n- **The Sucking Build:** Automate the **Scale** knob from +100% (Standard Echo) to -100% (Reverse Suck) over 8 bars.\n- **Feedback Scream:** Automate **FB** to 100% for a split second right before a drop.\n",
+      "spectral-width-widening": "# Workflow: Spectral Width Widening (3D Presence)\n\n*Goal: Creating extreme, high-fidelity stereo width by placing different frequency bands in different parts of the stereo field.*\n\n## Vibe Mapping\n- **Vibey:** ⭐⭐⭐⭐⭐ (Primary)\n- **Upbeat:** ⭐⭐⭐⭐⭐ (Primary)\n- **Psychedelic:** ⭐⭐⭐⭐\n\n## 🎛️ Routing Context\n- **Preferred:** Insert chain on a Pad, Synth Lead, or Melodic Bus.\n- **Mix Status:** 20-40% Wet.\n\n## 🚶 Step-by-Step Setup\n1. **The Base Sound:** Load a wide, mono synth or a centered vocal ad-lib.\n2. **Select Pan Tab:** Click the **Pan** tab above the grid.\n3. **The \"S\" Curve (The Width Secret):**\n   - Select the **Curve** drawing tool.\n   - Click the far left (Low frequencies) and drag to the bottom (Hard Left).\n   - Click the center and drag to the middle (Center).\n   - Click the far right (High frequencies) and drag to the top (Hard Right).\n   - *Result:* Low frequencies are on the left, Mids in the center, and Highs on the right.\n4. **Naturalize (Smoothing):** Increase the **Smoothing** knob slightly to prevent harsh \"jumps\" between bands.\n5. **Micro-Delay Shift:**\n   - Switch to the **Time** tab.\n   - Set the **Scale** knob to roughly **10%**.\n   - Draw a very slight diagonal line. This adds microscopic time offsets between the bands, enhancing the \"Precedence Effect\" (Haas Effect) for massive 3D depth.\n6. **Low-End Discipline:**\n   - Switch to the **Vol** tab.\n   - Lower the volume of the first 2 or 3 bands (the Sub frequencies) to 0.\n   - *Why:* This ensures the wide delay effect doesn't muddy your mono kick and sub-bass.\n\n## 🔄 Variations\n- **The \"High-End Cloud\":** Only draw curves in the right half of the Pan grid (Bands 8-16).\n- **The \"Mirror\":** Right-click the Pan grid and select **Flip Horizontally** to swap the stereo image.\n\n## ⚠️ Pitfalls & Fixes\n- **Problem:** The sound feels \"hollow\" in mono.\n- **Fix:** You have too much phase cancellation. Decrease the **Scale** knob or the **Mix** slider.\n- **Problem:** The transients sound \"smeary.\"\n- **Fix:** Lower the **Time** sliders for the high-frequency bands.\n\n## 🎚️ Automation Ideas\n- **Stereo Breathe:** Automate the **Scale** knob to move between 0% and 20% rhythmically.\n- **Morph Pan:** Create a second Pan state in Slot B and automate the **Morph** knob to slowly \"swirl\" the frequencies across the speakers.\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Multiband Delay\r\n\r\nThis section contains workflow information for the multiband-delay plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Multiband Delay\r\n\r\nThis section contains reference information for the multiband-delay plugin.\r\n"
+    }
+  }
+}

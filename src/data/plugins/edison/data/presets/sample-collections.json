@@ -1,0 +1,190 @@
+Tags: hip-hop/rap | R&B | electric
+
+## Edison Sample Collection
+
+### Essential Sample Pack Settings
+
+```json
+{
+  "vocalOneShots": {
+    "description": "Professional vocal samples for hip-hop",
+    "recordingSettings": {
+      "sampleRate": "44100",
+      "bitDepth": "24",
+      "inputGain": "-12dB",
+      "compression": "2:1, -20dB",
+      "fadeIn": "10ms",
+      "fadeOut": "20ms"
+    },
+    "samples": [
+      {
+        "name": "Ah Yeah",
+        "editing": "Trim silence, fade edges",
+        "level": "-3dB",
+        "key": "D",
+        "bpm": "Variable"
+      },
+      {
+        "name": "Go",
+        "editing": "Short, punchy trim",
+        "level": "-2dB",
+        "key": "N/A",
+        "bpm": "Variable"
+      },
+      {
+        "name": "Word",
+        "editing": "Natural decay",
+        "level": "-3dB",
+        "key": "N/A",
+        "bpm": "Variable"
+      }
+    ],
+    "exportFormat": {
+      "format": "WAV",
+      "sampleRate": "44100",
+      "bitDepth": "16"
+    },
+    "useCases": ["Hip-hop production", "Sample flips", "One-shot elements"],
+    "tags": ["hip-hop/rap", "vocals", "essential"]
+  },
+  "drumOneShots": {
+    "description": "Punchy drum samples",
+    "creationSettings": {
+      "transientBoost": "+50%",
+      "fadeOut": "50ms",
+      "normalization": "-1dB"
+    },
+    "samples": [
+      {
+        "name": "Kick Punchy",
+        "frequency": "80Hz",
+        "decay": "200ms",
+        "character": "Punchy"
+      },
+      {
+        "name": "Snare Crisp",
+        "frequency": "4kHz",
+        "decay": "150ms",
+        "character": "Crisp"
+      },
+      {
+        "name": "Hat Closed",
+        "frequency": "8kHz",
+        "decay": "80ms",
+        "character": "Sharp"
+      }
+    ],
+    "useCases": ["Drum programming", "Sample library", "Custom drums"],
+    "tags": ["hip-hop/rap", "drums", "essential"]
+  },
+  "textureLoops": {
+    "description": "Atmospheric texture loops",
+    "creationSettings": {
+      "reverb": "Large, 30% wet",
+      "fadeIn": "500ms",
+      "fadeOut": "1000ms",
+      "looping": true
+    },
+    "samples": [
+      {
+        "name": "Ambient Pad",
+        "duration": "8 bars",
+        "key": "Am",
+        "bpm": "90"
+      },
+      {
+        "name": "Textural Swell",
+        "duration": "4 bars",
+        "key": "Cmaj",
+        "bpm": "100"
+      }
+    ],
+    "useCases": ["Background", "Atmosphere", "Texture"],
+    "tags": ["moody", "atmospheric", "texture"]
+  }
+}
+```
+
+### Processing Chains
+
+```json
+{
+  "vocalProcessing": {
+    "description": "Standard vocal processing chain",
+    "chain": [
+      {
+        "step": 1,
+        "effect": "Trim Silence",
+        "settings": "Threshold -40dB"
+      },
+      {
+        "step": 2,
+        "effect": "High-Pass Filter",
+        "settings": "80Hz"
+      },
+      {
+        "step": 3,
+        "effect": "Compressor",
+        "settings": "Ratio 3:1, Threshold -18dB"
+      },
+      {
+        "step": 4,
+        "effect": "Enhance",
+        "settings": "Harmonic 25%, High +2dB"
+      },
+      {
+        "step": 5,
+        "effect": "Fade In",
+        "settings": "10ms S-curve"
+      },
+      {
+        "step": 6,
+        "effect": "Fade Out",
+        "settings": "20ms S-curve"
+      },
+      {
+        "step": 7,
+        "effect": "Normalize",
+        "settings": "Peak to -1dB"
+      }
+    ],
+    "useCases": ["Professional vocals", "Sample creation", "Polished results"]
+  },
+  "drumProcessing": {
+    "description": "Punchy drum processing chain",
+    "chain": [
+      {
+        "step": 1,
+        "effect": "Transient Designer",
+        "settings": "Attack +50%"
+      },
+      {
+        "step": 2,
+        "effect": "EQ",
+        "settings": "Low-shelf +3dB at 80Hz, High-shelf +2dB at 5kHz"
+      },
+      {
+        "step": 3,
+        "effect": "Compressor",
+        "settings": "Ratio 4:1, Threshold -15dB"
+      },
+      {
+        "step": 4,
+        "effect": "Trim",
+        "settings": "100ms from transient"
+      },
+      {
+        "step": 5,
+        "effect": "Fade Out",
+        "settings": "50ms"
+      },
+      {
+        "step": 6,
+        "effect": "Normalize",
+        "settings": "Peak to -1dB"
+      }
+    ],
+    "useCases": ["Punchy drums", "One-shot samples", "Impact sounds"]
+  }
+}
+```

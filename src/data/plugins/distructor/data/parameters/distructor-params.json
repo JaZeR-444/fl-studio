@@ -1,0 +1,492 @@
+{
+  "plugin_name": "Distructor",
+  "category": "Effect",
+  "manufacturer": "Image-Line",
+  "plugin_type": "Distortion/Saturation",
+  "version": "1.0.0",
+  "parameters": [
+    {
+      "name": "Drive",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "default": 0,
+      "unit": "percentage",
+      "description": "Input gain for distortion processing",
+      "use_cases": ["distortion_level", "harmonic_generation", "saturation_amount"],
+      "hip_hop_applications": ["drum_enhancement", "bass_processing", "808_distortion"]
+    },
+    {
+      "name": "Input_Gain",
+      "type": "range",
+      "min": -12,
+      "max": 12,
+      "default": 0,
+      "unit": "dB",
+      "description": "Additional input amplification before distortion",
+      "use_cases": ["signal_amplification", "distortion_intensity", "pre_gain"],
+      "hip_hop_applications": ["808_leveling", "drum_boost", "vocal_amplification"]
+    },
+    {
+      "name": "Output_Gain",
+      "type": "range",
+      "min": -12,
+      "max": 12,
+      "default": 0,
+      "unit": "dB",
+      "description": "Post-distortion level adjustment",
+      "use_cases": ["level_compensation", "output_control", "gain_staging"],
+      "hip_hop_applications": ["mix_balance", "level_matching", "gain_staging"]
+    },
+    {
+      "name": "Dry_Wet_Mix",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "default": 100,
+      "unit": "percentage",
+      "description": "Blend between original and processed signal",
+      "use_cases": ["parallel_processing", "blend_control", "subtle_processing"],
+      "hip_hop_applications": ["subtle_enhancement", "parallel_distortion", "dry_wet_balance"]
+    },
+    {
+      "name": "Clean_Blend",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "default": 0,
+      "unit": "percentage",
+      "description": "Amount of unprocessed signal in output",
+      "use_cases": ["parallel_processing", "subtle_enhancement", "transient_preservation"],
+      "hip_hop_applications": ["drum_punch_retention", "vocal_clarity", "subtle_saturation"]
+    },
+    {
+      "name": "Tone",
+      "type": "range",
+      "min": -12,
+      "max": 12,
+      "default": 0,
+      "unit": "dB",
+      "description": "Post-distortion EQ for brightness control",
+      "use_cases": ["brightness_control", "eq_after_distortion", "tone_shaping"],
+      "hip_hop_applications": ["drum_brightening", "vocal_warming", "bass_darkening"]
+    },
+    {
+      "name": "High_Freq_Control",
+      "type": "range",
+      "min": -12,
+      "max": 12,
+      "default": 0,
+      "unit": "dB",
+      "description": "Specific high-frequency adjustment after distortion",
+      "use_cases": ["high_freq_adjustment", "harshness_control", "presence_adjustment"],
+      "hip_hop_applications": ["harshness_reduction", "vocal_presence", "drum_crack_enhancement"]
+    },
+    {
+      "name": "Low_Freq_Control",
+      "type": "range",
+      "min": -12,
+      "max": 12,
+      "default": 0,
+      "unit": "dB",
+      "description": "Specific low-frequency adjustment after distortion",
+      "use_cases": ["low_freq_adjustment", "bass_enhancement", "mud_reduction"],
+      "hip_hop_applications": ["808_warming", "bass_enhancement", "mud_reduction"]
+    },
+    {
+      "name": "Crossover_Frequency",
+      "type": "range",
+      "min": 20,
+      "max": 20000,
+      "default": 1000,
+      "unit": "Hz",
+      "description": "Divides signal for separate low/high band processing",
+      "use_cases": ["dual_band_processing", "selective_distortion", "frequency_separation"],
+      "hip_hop_applications": ["808_bass_processing", "drum_hi_freq_processing", "selective_distortion"]
+    },
+    {
+      "name": "Low_Band_Drive",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "default": 0,
+      "unit": "percentage",
+      "description": "Distortion intensity for low frequencies",
+      "use_cases": ["low_freq_distortion", "bass_processing", "sub_bass_enhancement"],
+      "hip_hop_applications": ["808_processing", "bass_overdrive", "low_end_warming"]
+    },
+    {
+      "name": "High_Band_Drive",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "default": 0,
+      "unit": "percentage",
+      "description": "Distortion intensity for high frequencies",
+      "use_cases": ["high_freq_distortion", "treble_processing", "clarity_enhancement"],
+      "hip_hop_applications": ["drum_crack", "vocal_presence", "hi_hat_enhancement"]
+    },
+    {
+      "name": "Algorithm",
+      "type": "selector",
+      "options": [
+        {
+          "value": "soft_clip",
+          "label": "Soft Clip",
+          "description": "Gentle saturation with smooth transitions",
+          "use_cases": ["warm_saturation", "subtle_distortion", "musical_distortion"],
+          "hip_hop_applications": ["vocal_warming", "bass_enhancement", "subtle_enhancement"]
+        },
+        {
+          "value": "hard_clip",
+          "label": "Hard Clip",
+          "description": "Aggressive digital clipping",
+          "use_cases": ["aggressive_distortion", "harsh_effects", "extreme_processing"],
+          "hip_hop_applications": ["aggressive_drums", "creative_effects", "extreme_processing"]
+        },
+        {
+          "value": "asymmetric",
+          "label": "Asymmetric",
+          "description": "Asymmetrical clipping for tube-like character",
+          "use_cases": ["tube_simulation", "even_harmonics", "musical_distortion"],
+          "hip_hop_applications": ["808_warming", "vocal_character", "musical_saturation"]
+        },
+        {
+          "value": "tube",
+          "label": "Tube",
+          "description": "Vacuum tube saturation emulation",
+          "use_cases": ["tube_warmth", "vacuum_tube_simulation", "analog_character"],
+          "hip_hop_applications": ["vocal_warming", "bass_warming", "analog_character"]
+        },
+        {
+          "value": "transistor",
+          "label": "Transistor",
+          "description": "Transistor circuit overdrive simulation",
+          "use_cases": ["transistor_overdrive", "punchy_distortion", "edge_addition"],
+          "hip_hop_applications": ["drum_enhancement", "bass_edge", "punch_addition"]
+        }
+      ],
+      "description": "Selects the distortion algorithm",
+      "use_cases": ["algorithm_selection", "distortion_type", "character_choice"],
+      "hip_hop_applications": ["drum_processing", "bass_processing", "vocal_processing"]
+    },
+    {
+      "name": "Low_Band_Algorithm",
+      "type": "selector",
+      "options": [
+        {
+          "value": "soft_clip",
+          "label": "Soft Clip",
+          "description": "Gentle saturation for low band",
+          "use_cases": ["low_freq_warming", "subtle_low_distortion", "bass_saturation"],
+          "hip_hop_applications": ["808_warming", "bass_enhancement", "low_end_saturation"]
+        },
+        {
+          "value": "tube",
+          "label": "Tube",
+          "description": "Tube saturation for low band",
+          "use_cases": ["low_freq_warmth", "tube_bass_processing", "analog_low_end"],
+          "hip_hop_applications": ["808_warming", "bass_analog_character", "low_end_warmth"]
+        },
+        {
+          "value": "transistor",
+          "label": "Transistor",
+          "description": "Transistor overdrive for low band",
+          "use_cases": ["low_freq_edge", "bass_overdrive", "punchy_bass"],
+          "hip_hop_applications": ["bass_punch", "808_edge", "low_end_drive"]
+        }
+      ],
+      "description": "Distortion algorithm for low-frequency band",
+      "use_cases": ["low_band_processing", "dual_band_algorithm", "frequency_specific_distortion"],
+      "hip_hop_applications": ["808_processing", "bass_distortion", "low_freq_character"]
+    },
+    {
+      "name": "High_Band_Algorithm",
+      "type": "selector",
+      "options": [
+        {
+          "value": "soft_clip",
+          "label": "Soft Clip",
+          "description": "Gentle saturation for high band",
+          "use_cases": ["high_freq_warming", "subtle_high_distortion", "treble_saturation"],
+          "hip_hop_applications": ["vocal_warming", "hi_hat_saturation", "subtle_high_enhancement"]
+        },
+        {
+          "value": "transistor",
+          "label": "Transistor",
+          "description": "Transistor overdrive for high band",
+          "use_cases": ["high_freq_edge", "treble_overdrive", "presence_addition"],
+          "hip_hop_applications": ["drum_crack", "vocal_presence", "hi_hat_edge"]
+        },
+        {
+          "value": "asymmetric",
+          "label": "Asymmetric",
+          "description": "Asymmetric clipping for high band",
+          "use_cases": ["high_freq_character", "tube_like_highs", "musical_high_distortion"],
+          "hip_hop_applications": ["vocal_character", "treble_warming", "musical_high_distortion"]
+        }
+      ],
+      "description": "Distortion algorithm for high-frequency band",
+      "use_cases": ["high_band_processing", "dual_band_algorithm", "frequency_specific_distortion"],
+      "hip_hop_applications": ["drum_processing", "vocal_processing", "treble_distortion"]
+    },
+    {
+      "name": "Transient_Preservation",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "default": 50,
+      "unit": "percentage",
+      "description": "Maintains original transient response",
+      "use_cases": ["transient_preservation", "attack_maintanance", "punch_retention"],
+      "hip_hop_applications": ["drum_punch", "kick_preservation", "snare_crack"]
+    },
+    {
+      "name": "Harmonic_Balance",
+      "type": "range",
+      "min": -100,
+      "max": 100,
+      "default": 0,
+      "unit": "percentage",
+      "description": "Even vs. odd harmonic generation",
+      "use_cases": ["harmonic_control", "even_odd_balance", "tone_character"],
+      "hip_hop_applications": ["warmth_vs_edge", "harmonic_character", "tone_shaping"]
+    },
+    {
+      "name": "Adaptive_Processing",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "default": 0,
+      "unit": "percentage",
+      "description": "Makes distortion respond to input dynamics",
+      "use_cases": ["dynamic_distortion", "adaptive_processing", "intelligent_distortion"],
+      "hip_hop_applications": ["dynamic_drums", "intelligent_processing", "adaptive_enhancement"]
+    },
+    {
+      "name": "Blend_Curve",
+      "type": "selector",
+      "options": [
+        {
+          "value": "linear",
+          "label": "Linear",
+          "description": "Equal change throughout dry/wet range",
+          "use_cases": ["equal_blend", "linear_transition", "balanced_mixing"],
+          "hip_hop_applications": ["balanced_processing", "linear_blending", "equal_change"]
+        },
+        {
+          "value": "logarithmic",
+          "label": "Logarithmic",
+          "description": "More sensitive at low blend values",
+          "use_cases": ["subtle_start", "logarithmic_blend", "sensitive_control"],
+          "hip_hop_applications": ["subtle_enhancement", "sensitive_control", "gentle_start"]
+        },
+        {
+          "value": "exponential",
+          "label": "Exponential",
+          "description": "More sensitive at high blend values",
+          "use_cases": ["dramatic_end", "exponential_blend", "strong_finish"],
+          "hip_hop_applications": ["dramatic_effects", "strong_processing", "intense_finish"]
+        }
+      ],
+      "description": "Shape of the dry/wet transition",
+      "use_cases": ["blend_shaping", "transition_curve", "mix_character"],
+      "hip_hop_applications": ["processing_curve", "transition_character", "mix_shaping"]
+    }
+  ],
+  "preset_categories": [
+    {
+      "category": "Drum Enhancement",
+      "presets": [
+        {
+          "name": "Hip-Hop Kick Enhancement",
+          "description": "Adds punch and weight to hip-hop kicks",
+          "parameters": {
+            "algorithm": "transistor",
+            "drive": 20,
+            "tone": 2,
+            "clean_blend": 60,
+            "output_gain": 3,
+            "transient_preservation": 80
+          }
+        },
+        {
+          "name": "Snare Crack Enhancement",
+          "description": "Increases snare crack and presence",
+          "parameters": {
+            "algorithm": "transistor",
+            "drive": 25,
+            "tone": 3,
+            "clean_blend": 50,
+            "high_freq_control": 2,
+            "transient_preservation": 85
+          }
+        },
+        {
+          "name": "808 Warmth",
+          "description": "Adds warmth and character to 808s",
+          "parameters": {
+            "algorithm": "asymmetric",
+            "drive": 15,
+            "tone": 0,
+            "clean_blend": 70,
+            "low_freq_control": 2,
+            "output_gain": 2
+          }
+        }
+      ]
+    },
+    {
+      "category": "Bass Processing",
+      "presets": [
+        {
+          "name": "Bass Overdrive",
+          "description": "Musical overdrive for bass lines",
+          "parameters": {
+            "algorithm": "tube",
+            "drive": 30,
+            "tone": 1,
+            "clean_blend": 60,
+            "output_gain": 4,
+            "harmonic_balance": -20
+          }
+        },
+        {
+          "name": "808 Distortion",
+          "description": "Aggressive distortion for 808s",
+          "parameters": {
+            "algorithm": "asymmetric",
+            "drive": 35,
+            "tone": -1,
+            "clean_blend": 50,
+            "low_band_drive": 40,
+            "output_gain": 5
+          }
+        }
+      ]
+    },
+    {
+      "category": "Vocal Processing",
+      "presets": [
+        {
+          "name": "Vocal Saturation",
+          "description": "Subtle saturation for vocal warmth",
+          "parameters": {
+            "algorithm": "tube",
+            "drive": 12,
+            "tone": -1,
+            "clean_blend": 80,
+            "output_gain": 1,
+            "harmonic_balance": -30
+          }
+        },
+        {
+          "name": "Vocal Presence",
+          "description": "Adds presence and clarity to vocals",
+          "parameters": {
+            "algorithm": "soft_clip",
+            "drive": 8,
+            "tone": 2,
+            "clean_blend": 85,
+            "high_freq_control": 1,
+            "output_gain": 1
+          }
+        }
+      ]
+    },
+    {
+      "category": "Creative Effects",
+      "presets": [
+        {
+          "name": "Aggressive Texture",
+          "description": "Harsh distortion for creative textures",
+          "parameters": {
+            "algorithm": "hard_clip",
+            "drive": 75,
+            "tone": 4,
+            "clean_blend": 20,
+            "output_gain": -2,
+            "harmonic_balance": 50
+          }
+        },
+        {
+          "name": "Warm Texture",
+          "description": "Musical saturation for warm textures",
+          "parameters": {
+            "algorithm": "tube",
+            "drive": 60,
+            "tone": -2,
+            "clean_blend": 30,
+            "output_gain": 2,
+            "harmonic_balance": -40
+          }
+        }
+      ]
+    }
+  ],
+  "integration_notes": {
+    "compatible_plugins": [
+      "Fruity Limiter",
+      "Fruity Parametric EQ 2",
+      "Fruity Compressor",
+      "Patcher",
+      "Fruity Stereo Enhancer"
+    ],
+    "common_workflows": [
+      "parallel_processing",
+      "dual_band_processing",
+      "vocal_saturation",
+      "drum_enhancement",
+      "bass_overdrive"
+    ],
+    "recommended_settings_by_context": {
+      "hip_hop_drum_processing": {
+        "algorithm": "transistor",
+        "drive": 20,
+        "clean_blend": 50,
+        "transient_preservation": 80
+      },
+      "rnb_vocal_processing": {
+        "algorithm": "tube",
+        "drive": 10,
+        "clean_blend": 80,
+        "harmonic_balance": -30
+      },
+      "trap_808_processing": {
+        "algorithm": "asymmetric",
+        "drive": 25,
+        "crossover_frequency": 200,
+        "low_band_drive": 30
+      }
+    }
+  },
+  "genre_specific_applications": {
+    "hip_hop": {
+      "primary_use": "drum enhancement and 808 processing",
+      "key_features": ["transient_preservation", "drive_control", "clean_blend"],
+      "typical_settings": {
+        "algorithm": "transistor",
+        "drive": 20,
+        "clean_blend": 60
+      }
+    },
+    "rap": {
+      "primary_use": "vocal saturation and presence enhancement",
+      "key_features": ["tube_algorithm", "subtle_drive", "harmonic_balance"],
+      "typical_settings": {
+        "algorithm": "tube",
+        "drive": 10,
+        "clean_blend": 80
+      }
+    },
+    "rnb": {
+      "primary_use": "smooth vocal and instrument saturation",
+      "key_features": ["soft_clip_algorithm", "subtle_processing", "warmth"],
+      "typical_settings": {
+        "algorithm": "tube",
+        "drive": 15,
+        "clean_blend": 75
+      }
+    }
+  }
+}

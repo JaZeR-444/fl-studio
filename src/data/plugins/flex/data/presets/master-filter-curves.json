@@ -1,0 +1,379 @@
+{
+  "filterCurves": {
+    "description": "Configuration recipes for FLEX's Master Filter (Bottom Left) to create mixing tools and special effects.",
+    "version": "1.1",
+    "filter_types_explained": {
+      "Low Pass": "Removes high frequencies - makes sound darker/warmer",
+      "High Pass": "Removes low frequencies - makes sound thinner/cleaner",
+      "Band Pass": "Only allows middle frequencies - telephone/radio effect",
+      "Notch": "Removes a specific frequency band - surgical cut",
+      "Peak": "Boosts a specific frequency band - emphasis",
+      "Phaser": "Creates sweeping phase cancellation - psychedelic effect",
+      "Vowel": "Formant filtering - vocal-like quality",
+      "Comb": "Series of notches - metallic ringing",
+      "All Pass": "Changes phase without affecting frequency - subtle structural changes"
+    },
+    "slope_explained": {
+      "6dB": "Gentle, natural roll-off",
+      "12dB": "Standard slope - balanced",
+      "24dB": "Steep, aggressive - removes frequencies completely"
+    },
+    "curves": [
+      {
+        "name": "The Clean-Up (High Pass)",
+        "use_case": "Mixing / De-mudding / Clarity",
+        "description": "Removes unnecessary low frequencies from non-bass instruments.",
+        "sonic_character": "Cleaner, tighter, removes mud and rumble",
+        "frequency_target": "150-200Hz",
+        "settings": {
+          "Type": "High Pass 12dB",
+          "Cutoff": "180Hz",
+          "Resonance": "0%"
+        },
+        "when_to_use": [
+          "Pads to make room for bass",
+          "Leads that are too boomy",
+          "Removing rumble from any non-bass sound",
+          "Cleaning up layered sounds"
+        ],
+        "automation_ideas": [
+          "Start at 80Hz, sweep to 200Hz during build-ups"
+        ],
+        "tips": [
+          "Sweep up until sound gets thin, then back off slightly",
+          "Be careful with pianos - don't cut too much",
+          "Use 6dB slope for gentle cut, 24dB for aggressive"
+        ],
+        "before_after": "Before: Muddy, competing with bass. After: Clean, clear, focused",
+        "genre_fit": ["All genres for mixing"]
+      },
+      {
+        "name": "Telephone / Radio",
+        "use_case": "Special Effect / Intro / Transition",
+        "description": "Isolates the midrange for a lo-fi communication device sound.",
+        "sonic_character": "Thin, nasal, lo-fi, vintage communication device",
+        "frequency_target": "1-2kHz (midrange only)",
+        "settings": {
+          "Type": "Band Pass",
+          "Cutoff": "1.5kHz",
+          "Resonance": "15%"
+        },
+        "when_to_use": [
+          "Intro effects before full sound drops",
+          "Walkie-talkie/phone effects",
+          "Creating tension before a drop",
+          "Retro sci-fi sounds"
+        ],
+        "automation_ideas": [
+          "Automate from Band Pass to Off (bypass) for dramatic reveal",
+          "Sweep cutoff 800Hz to 3kHz for scanning radio effect"
+        ],
+        "tips": [
+          "Combine with bit crusher or distortion for more degradation",
+          "Works great on vocals and keys",
+          "Lower cutoff (800Hz) = older phone, higher (2kHz) = modern"
+        ],
+        "before_after": "Before: Full range. After: Tinny, narrow, vintage",
+        "genre_fit": ["All genres for effects", "Lo-Fi", "Vaporwave", "Experimental"]
+      },
+      {
+        "name": "Acid Squelch",
+        "use_case": "Sound Design / Bass / Acid Techno",
+        "description": "Aggressive resonant peak for 303-style sounds.",
+        "sonic_character": "Squelchy, resonant, aggressive, singing quality",
+        "frequency_target": "Variable (300Hz-3kHz)",
+        "settings": {
+          "Type": "Low Pass 24dB",
+          "Cutoff": "800Hz (animate this!)",
+          "Resonance": "80%"
+        },
+        "when_to_use": [
+          "Acid bass lines",
+          "Techno leads",
+          "Creating movement in static sounds",
+          "TB-303 style sounds"
+        ],
+        "automation_ideas": [
+          "CRITICAL: Automate cutoff constantly - static acid is boring",
+          "Fast cutoff sweeps (16th notes) for classic acid",
+          "Slow sweeps for building tension"
+        ],
+        "tips": [
+          "High resonance (70-90%) is essential",
+          "24dB slope is critical for authentic sound",
+          "Combine with Limiter 'Distortion' for more grit"
+        ],
+        "before_after": "Before: Static bass. After: Squelchy, animated, aggressive",
+        "genre_fit": ["Acid Techno", "Acid House", "Techno", "Psy-Trance"],
+        "warning": "High resonance can cause piercing frequencies - watch levels"
+      },
+      {
+        "name": "Talkbox Vowel",
+        "use_case": "Leads / Dubstep Bass / Vocal Effects",
+        "description": "Imparts a vocal quality to the sound through formant filtering.",
+        "sonic_character": "Vocal-like, talking, expressive, human quality",
+        "frequency_target": "Formant frequencies (vocal ranges)",
+        "settings": {
+          "Type": "Vowel",
+          "Cutoff": "50% (animate for vowel changes)",
+          "Resonance": "50%"
+        },
+        "when_to_use": [
+          "Dubstep talking bass",
+          "Expressive leads",
+          "Creating vocal-like synth parts",
+          "Funky filtered basslines"
+        ],
+        "automation_ideas": [
+          "Automate cutoff 0-100% = cycles through vowel sounds (A-E-I-O-U)",
+          "Step automation for rhythmic talking effect",
+          "Slow sweep for evolving vocal character"
+        ],
+        "tips": [
+          "Move cutoff slowly to hear different vowels",
+          "Works best on harmonically rich sounds",
+          "Combine with slight distortion for more character"
+        ],
+        "before_after": "Before: Normal synth. After: Sounds like it's singing/talking",
+        "genre_fit": ["Dubstep", "Funk", "Disco", "Bass Music", "Experimental"]
+      },
+      {
+        "name": "Phaser Wash",
+        "use_case": "Pads / Psychedelic Textures / Movement",
+        "description": "Adds swirling phase cancellation movement to static sounds.",
+        "sonic_character": "Swirling, spacey, moving, psychedelic",
+        "frequency_target": "Variable (creates notches throughout spectrum)",
+        "settings": {
+          "Type": "Phaser 2",
+          "Cutoff": "Automate slowly (sine wave LFO)",
+          "Resonance": "50%"
+        },
+        "when_to_use": [
+          "Adding movement to static pads",
+          "Psychedelic effects",
+          "Creating space in the mix",
+          "Retro synth sounds"
+        ],
+        "automation_ideas": [
+          "Sine wave automation on cutoff for classic phaser sweep",
+          "Increase resonance during builds for more intensity",
+          "Random LFO for unpredictable movement"
+        ],
+        "tips": [
+          "Phaser 1 = subtle, Phaser 2 = medium, Phaser 3 = intense",
+          "Higher resonance = more pronounced effect",
+          "Use slow automation (4-8 bars) for best results"
+        ],
+        "before_after": "Before: Static. After: Swirling, moving, spacey",
+        "genre_fit": ["Psytrance", "Psychedelic Rock", "Ambient", "Experimental"]
+      },
+      {
+        "name": "Anti-Fizz (Low Pass)",
+        "use_case": "Mixing / Guitars / Saws / Brightness Control",
+        "description": "Tames harsh digital high frequencies without muffling the sound.",
+        "sonic_character": "Smoother highs, less digital harshness, more analog feel",
+        "frequency_target": "8-12kHz (air frequencies)",
+        "settings": {
+          "Type": "Low Pass 6dB",
+          "Cutoff": "9kHz",
+          "Resonance": "0%"
+        },
+        "when_to_use": [
+          "Bright sawtooth synths that are too harsh",
+          "Digital sounds that need warmth",
+          "Presets with too much high-end sizzle",
+          "Making aggressive sounds more pleasing"
+        ],
+        "automation_ideas": [
+          "Open up to 12kHz during chorus/drop for more energy",
+          "Close down to 6kHz for verses/quieter sections"
+        ],
+        "tips": [
+          "6dB slope is key - gentle and natural",
+          "Don't go below 7kHz or sound gets muffled",
+          "Use instead of EQ for more natural sound"
+        ],
+        "before_after": "Before: Harsh, digital, fatiguing. After: Smooth, warm, pleasant",
+        "genre_fit": ["All genres for mixing", "Lo-Fi", "Vintage styles"]
+      },
+      {
+        "name": "Sub Bass Isolator",
+        "use_case": "Bass / 808s / Sub Focus",
+        "description": "Removes everything except sub frequencies for powerful low end.",
+        "sonic_character": "Pure sub bass, no harmonics, floor-shaking",
+        "frequency_target": "20-80Hz only",
+        "settings": {
+          "Type": "Low Pass 24dB",
+          "Cutoff": "80Hz",
+          "Resonance": "0%"
+        },
+        "when_to_use": [
+          "Creating pure sub bass layer",
+          "808 sub layer underneath main bass",
+          "Film/game low-end impacts",
+          "Dubstep sub drops"
+        ],
+        "automation_ideas": [
+          "Automate cutoff from 80Hz to 200Hz for bass that growls up"
+        ],
+        "tips": [
+          "Keep this layer MONO - critical for club systems",
+          "Layer with mid bass (200Hz+) for complete bass sound",
+          "Use 24dB slope for clean cutoff"
+        ],
+        "before_after": "Before: Full bass. After: Pure sub frequencies only",
+        "genre_fit": ["Dubstep", "Trap", "Hip-Hop", "Drum & Bass", "UK Garage"]
+      },
+      {
+        "name": "Air Filter (High Shelf)",
+        "use_case": "Brightness / Air / Sparkle",
+        "description": "Simulates high shelf EQ for adding air and presence.",
+        "sonic_character": "Airy, bright, sparkly, more presence",
+        "frequency_target": "10kHz+ (air frequencies)",
+        "settings": {
+          "Type": "Peak",
+          "Cutoff": "10kHz",
+          "Resonance": "30%"
+        },
+        "when_to_use": [
+          "Adding air to dull presets",
+          "Making leads cut through",
+          "Brightening pads",
+          "Adding sparkle to keys"
+        ],
+        "automation_ideas": [
+          "Increase resonance to 50% during chorus for lift"
+        ],
+        "tips": [
+          "Don't overdo it - can get harsh quickly",
+          "Works best on already-bright sounds",
+          "Combine with Limiter 'Warming' to control harshness"
+        ],
+        "before_after": "Before: Dull. After: Bright, airy, sparkly",
+        "genre_fit": ["Pop", "EDM", "Trance", "House"]
+      },
+      {
+        "name": "Notch Sweep",
+        "use_case": "Sound Design / Transitions / Effects",
+        "description": "Sweeping notch creates dramatic movement and tension.",
+        "sonic_character": "Sweeping, phasing, dramatic, tension-building",
+        "frequency_target": "Variable (sweeps entire spectrum)",
+        "settings": {
+          "Type": "Notch",
+          "Cutoff": "Automate from 0% to 100%",
+          "Resonance": "60%"
+        },
+        "when_to_use": [
+          "Build-ups and transitions",
+          "Creating tension before drops",
+          "Dramatic filter sweeps",
+          "Sound design effects"
+        ],
+        "automation_ideas": [
+          "Sweep from low to high over 8 bars for build-up",
+          "Fast sweeps (1 bar) for dramatic effect",
+          "Step automation for glitchy sounds"
+        ],
+        "tips": [
+          "High resonance makes the sweep more obvious",
+          "Works great on white noise and full mixes",
+          "Combine with reverb automation for bigger effect"
+        ],
+        "before_after": "Before: Static. After: Sweeping, moving, dramatic",
+        "genre_fit": ["All genres for transitions", "Techno", "Dubstep", "Trance"]
+      },
+      {
+        "name": "Comb Metallic",
+        "use_case": "Special Effects / Sci-Fi / Metallic Tones",
+        "description": "Creates metallic, robotic, or alien-like sounds through comb filtering.",
+        "sonic_character": "Metallic, ringing, robotic, unusual",
+        "frequency_target": "Creates series of notches for metallic quality",
+        "settings": {
+          "Type": "Comb+",
+          "Cutoff": "40%",
+          "Resonance": "50%"
+        },
+        "when_to_use": [
+          "Sci-fi sound effects",
+          "Robotic voices",
+          "Metallic percussion",
+          "Unusual textures"
+        ],
+        "automation_ideas": [
+          "Automate cutoff for tuned metallic notes",
+          "Subtle movement adds character"
+        ],
+        "tips": [
+          "Comb+ and Comb- sound different - try both",
+          "Works best on harmonically rich sounds",
+          "Small cutoff movements create big changes"
+        ],
+        "before_after": "Before: Normal synth. After: Metallic, robotic, unusual",
+        "genre_fit": ["Experimental", "IDM", "Sound Design", "Sci-Fi"]
+      },
+      {
+        "name": "Lo-Fi Muffler",
+        "use_case": "Lo-Fi / Vintage / Underwater",
+        "description": "Aggressive low pass for heavy lo-fi character.",
+        "sonic_character": "Dark, muffled, vintage, lo-fi, distant",
+        "frequency_target": "Cuts above 2-4kHz",
+        "settings": {
+          "Type": "Low Pass 12dB",
+          "Cutoff": "3kHz",
+          "Resonance": "0%"
+        },
+        "when_to_use": [
+          "Lo-fi hip hop production",
+          "Vintage tape emulation",
+          "Underwater/distant effects",
+          "Removing digital harshness completely"
+        ],
+        "automation_ideas": [
+          "Automate from 1kHz to 8kHz for dramatic open-up",
+          "Keep low during verses, open for chorus"
+        ],
+        "tips": [
+          "Combine with Limiter 'Warming' for vintage sound",
+          "Lower cutoff (1-2kHz) for extreme lo-fi",
+          "Add noise/crackle macros if available"
+        ],
+        "before_after": "Before: Modern, bright. After: Vintage, muffled, nostalgic",
+        "genre_fit": ["Lo-Fi Hip Hop", "Vaporwave", "Chillwave", "Vintage Pop"]
+      }
+    ],
+    "workflow_tips": [
+      "Start with Master Filter OFF - only add if needed",
+      "Static filters are for mixing, animated filters are for effects",
+      "High Pass everything except bass and kick",
+      "Low Pass to remove digital harshness",
+      "Automate cutoff for maximum impact",
+      "Check mono compatibility after filtering"
+    ],
+    "automation_workflow": [
+      "1. Right-click Cutoff knob → Create automation clip",
+      "2. Draw your automation curve (sweeps, steps, etc.)",
+      "3. Adjust Resonance for more dramatic sweeps",
+      "4. A/B test to ensure it's not too extreme"
+    ],
+    "common_mistakes": [
+      "Too much high pass - sound gets thin",
+      "Too much low pass - sound gets muffled",
+      "Forgetting to automate - filter just sits there",
+      "Too much resonance - causes painful peaks",
+      "Using steep slopes when gentle would work better"
+    ],
+    "genre_quick_reference": {
+      "Mixing/Clarity": "High Pass 12dB @ 150-200Hz, Res 0%",
+      "Lo-Fi": "Low Pass 12dB @ 2-4kHz, Res 0%",
+      "Acid Bass": "Low Pass 24dB @ variable, Res 80%, AUTOMATE",
+      "Build-Ups": "High Pass sweep 80Hz → 1kHz over 8 bars",
+      "Drops": "Low Pass @ 8kHz, open to full during drop"
+    },
+    "filter_combination_ideas": [
+      "High Pass (clean up) + Peak @ 10kHz (add air)",
+      "Low Pass @ 8kHz + Limiter Warming (vintage warmth)",
+      "Band Pass (intro) → OFF (drop reveal)",
+      "Notch Sweep + Reverb automation (epic build)"
+    ]
+  }
+}

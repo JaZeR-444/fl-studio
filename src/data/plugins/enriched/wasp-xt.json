@@ -1,0 +1,674 @@
+{
+  "id": "wasp-xt",
+  "name": "Wasp XT",
+  "category": "Synthesizer",
+  "tier": "Free",
+  "type": "Synthesizer",
+  "description": "Wasp XT - Synthesizer",
+  "tags": [
+    "synth",
+    "sound-design",
+    "specialized"
+  ],
+  "capabilities": [
+    "synthesis",
+    "midi",
+    "polyphonic"
+  ],
+  "icon": "/plugins/wasp-xt-icon.svg",
+  "color": "#8B5CF6",
+  "version": "1.0",
+  "data_dir": "plugins\\wasp-xt",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "wasp-xt-params": {
+      "$schema": "./schema.json",
+      "plugin": {
+        "name": "Wasp XT",
+        "version": "1.x",
+        "category": "Instrument",
+        "type": "Enhanced 3-Oscillator Subtractive Synthesizer",
+        "status": "ACTIVE (Replaces discontinued Wasp)",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/WaspXT.htm"
+      },
+      "parameters": {
+        "oscillators": [
+          {
+            "id": "waveform",
+            "name": "Waveform",
+            "options": [
+              "Sine",
+              "Triangle",
+              "Saw",
+              "Square",
+              "Pulse",
+              "Noise"
+            ],
+            "count": 3
+          },
+          {
+            "id": "pitch",
+            "name": "Pitch",
+            "range": "-48 to +48 semitones"
+          },
+          {
+            "id": "detune",
+            "name": "Detune",
+            "range": "-100 to +100 cents"
+          }
+        ],
+        "filter": [
+          {
+            "id": "type",
+            "name": "Filter Type",
+            "options": [
+              "LP",
+              "HP",
+              "BP",
+              "BR",
+              "Formant"
+            ]
+          },
+          {
+            "id": "cutoff",
+            "name": "Cutoff",
+            "range": "20Hz-20kHz",
+            "sweetSpot": "500-2000Hz for bass, 2-8kHz for leads"
+          },
+          {
+            "id": "resonance",
+            "name": "Resonance",
+            "range": "0-100%",
+            "sweetSpot": "40-70%"
+          },
+          {
+            "id": "drive",
+            "name": "Drive",
+            "range": "0-100%",
+            "description": "Pre-filter distortion"
+          }
+        ],
+        "unison": [
+          {
+            "id": "voices",
+            "name": "Unison Voices",
+            "range": "1-12",
+            "sweetSpot": "5-7 for leads, 2-3 for subtle width"
+          },
+          {
+            "id": "detune",
+            "name": "Unison Detune",
+            "range": "0-100%",
+            "sweetSpot": "35-45% for supersaw"
+          }
+        ],
+        "effects": [
+          {
+            "name": "Distortion",
+            "description": "Pre/post filter saturation"
+          },
+          {
+            "name": "Chorus",
+            "description": "Stereo width and thickness"
+          },
+          {
+            "name": "Delay",
+            "description": "Time-based echo"
+          },
+          {
+            "name": "Reverb",
+            "description": "Spatial ambience"
+          }
+        ]
+      },
+      "enhancements": {
+        "overWasp": [
+          "Unison mode (up to 12 voices)",
+          "Formant filter type",
+          "Built-in effects suite",
+          "Advanced modulation matrix",
+          "Improved sound quality"
+        ]
+      },
+      "cpuUsage": "Low to Moderate (depends on unison voices)",
+      "latency": "Minimal",
+      "realtimeSafe": true,
+      "status": "ACTIVE"
+    }
+  },
+  "presets": {
+    "genre-presets": {
+      "presetArchetypes": {
+        "supersawLead": {
+          "description": "Massive, wide lead for EDM choruses",
+          "settings": {
+            "oscillators": {
+              "count": 3,
+              "detune": 15
+            },
+            "filter1": {
+              "type": "lowpass",
+              "cutoff": 55,
+              "resonance": 30
+            },
+            "filter2": {
+              "type": "lowpass",
+              "cutoff": 65,
+              "resonance": 20
+            },
+            "routing": "serial",
+            "env1": {
+              "to": "filter1",
+              "attack": 5,
+              "decay": 200,
+              "sustain": 70,
+              "release": 150
+            },
+            "chorus": {
+              "enabled": true,
+              "depth": 70
+            }
+          },
+          "useCases": [
+            "EDM drops",
+            "big choruses",
+            "anthem leads"
+          ],
+          "tags": [
+            "electric",
+            "upbeat",
+            "psychedelic"
+          ]
+        },
+        "darkPad": {
+          "description": "Moody, atmospheric foundation",
+          "settings": {
+            "oscillators": {
+              "count": 2,
+              "detune": 5
+            },
+            "filter1": {
+              "type": "lowpass",
+              "cutoff": 45,
+              "resonance": 20
+            },
+            "filter2": {
+              "type": "lowpass",
+              "cutoff": 55,
+              "resonance": 15
+            },
+            "routing": "parallel",
+            "env1": {
+              "to": "filter1",
+              "attack": 500,
+              "decay": 500,
+              "sustain": 80,
+              "release": 500
+            },
+            "chorus": {
+              "enabled": true,
+              "depth": 50
+            }
+          },
+          "useCases": [
+            "moody intros",
+            "background texture",
+            "cinematic"
+          ],
+          "tags": [
+            "moody",
+            "atmospheric",
+            "dark"
+          ]
+        },
+        "aggressiveBass": {
+          "description": "Cutting bass for hip-hop drops",
+          "settings": {
+            "oscillators": {
+              "count": 2,
+              "detune": 10
+            },
+            "filter1": {
+              "type": "lowpass",
+              "cutoff": 35,
+              "resonance": 45
+            },
+            "filter2": {
+              "type": "lowpass",
+              "cutoff": 40,
+              "resonance": 35
+            },
+            "routing": "serial",
+            "env1": {
+              "to": "filter1",
+              "attack": 10,
+              "decay": 100,
+              "sustain": 80,
+              "release": 50
+            },
+            "chorus": {
+              "enabled": false,
+              "depth": 0
+            }
+          },
+          "useCases": [
+            "hip-hop bass",
+            "trap drops",
+            "aggressive hooks"
+          ],
+          "tags": [
+            "hip-hop/rap",
+            "electric",
+            "intense"
+          ]
+        },
+        "acidRipper": {
+          "description": "Resonant, TB-303 style sound",
+          "settings": {
+            "oscillators": {
+              "count": 1,
+              "wave": "saw"
+            },
+            "filter1": {
+              "type": "lowpass",
+              "cutoff": 50,
+              "resonance": 70
+            },
+            "filter2": {
+              "type": "highpass",
+              "cutoff": 80,
+              "resonance": 30
+            },
+            "routing": "serial",
+            "env1": {
+              "to": "filter1",
+              "attack": 1,
+              "decay": 150,
+              "sustain": 40,
+              "release": 100
+            },
+            "chorus": {
+              "enabled": false,
+              "depth": 0
+            }
+          },
+          "useCases": [
+            "acid lines",
+            "rhythmic riffs",
+            "techno"
+          ],
+          "tags": [
+            "electric",
+            "psychedelic",
+            "intense"
+          ]
+        },
+        "shimmerPad": {
+          "description": "Bright, airy, ethereal texture",
+          "settings": {
+            "oscillators": {
+              "count": 2,
+              "detune": 8
+            },
+            "filter1": {
+              "type": "lowpass",
+              "cutoff": 70,
+              "resonance": 15
+            },
+            "filter2": {
+              "type": "lowpass",
+              "cutoff": 85,
+              "resonance": 10
+            },
+            "routing": "parallel",
+            "env1": {
+              "to": "filter2",
+              "attack": 800,
+              "decay": 400,
+              "sustain": 90,
+              "release": 600
+            },
+            "ch chorus": {
+              "enabled": true,
+              "depth": 60
+            }
+          },
+          "useCases": [
+            "breakdowns",
+            "intros",
+            "ethereal sections"
+          ],
+          "tags": [
+            "moody",
+            "upbeat",
+            "shimmer"
+          ]
+        }
+      },
+      "genreSettings": {
+        "hipHop": {
+          "subBass": {
+            "filter1": 28,
+            "res": 30,
+            "routing": "single",
+            "chorus": true
+          },
+          "midBass": {
+            "filter1": 40,
+            "res": 40,
+            "routing": "serial",
+            "chorus": true
+          },
+          "texture": {
+            "filter1": 55,
+            "res": 25,
+            "routing": "parallel",
+            "chorus": true
+          }
+        },
+        "rnb": {
+          "smoothBass": {
+            "filter1": 35,
+            "res": 28,
+            "routing": "serial",
+            "chorus": true
+          },
+          "keys": {
+            "filter1": 65,
+            "res": 18,
+            "routing": "parallel",
+            "chorus": true
+          },
+          "pad": {
+            "filter1": 50,
+            "res": 20,
+            "routing": "parallel",
+            "chorus": true
+          }
+        },
+        "deepBassEDM": {
+          "wobble": {
+            "filter1": 35,
+            "res": 50,
+            "routing": "serial",
+            "chorus": false
+          },
+          "supersaw": {
+            "filter1": 50,
+            "res": 35,
+            "routing": "serial",
+            "chorus": true
+          },
+          "texture": {
+            "filter1": 45,
+            "res": 40,
+            "routing": "parallel",
+            "chorus": true
+          }
+        }
+      }
+    },
+    "sound-design-presets": {
+      "classicEmulations": {
+        "vintageWasp": {
+          "osc1Wave": "sawtooth",
+          "osc2Wave": "square",
+          "oscMix": 50,
+          "detune": 5,
+          "filterCutoff": 60,
+          "filterRes": 70,
+          "envAmount": 80,
+          "attack": 10,
+          "decay": 200,
+          "sustain": 40,
+          "release": 300,
+          "lfoRate": 4,
+          "lfoDepth": 30,
+          "unison": 0,
+          "description": "Faithful original Wasp character"
+        },
+        "acidBass": {
+          "osc1Wave": "sawtooth",
+          "osc2Wave": "pulse",
+          "oscMix": 70,
+          "detune": 0,
+          "filterCutoff": 40,
+          "filterRes": 85,
+          "envAmount": 90,
+          "attack": 0,
+          "decay": 50,
+          "sustain": 0,
+          "release": 100,
+          "lfoRate": 0,
+          "lfoDepth": 0,
+          "unison": 2,
+          "description": "303-style acidic bass lines"
+        }
+      },
+      "modernLeads": {
+        "supersaw": {
+          "osc1Wave": "sawtooth",
+          "osc2Wave": "sawtooth",
+          "oscMix": 100,
+          "detune": 15,
+          "unison": 8,
+          "unisonSpread": 20,
+          "filterCutoff": 75,
+          "filterRes": 40,
+          "envAmount": 60,
+          "attack": 20,
+          "decay": 300,
+          "sustain": 50,
+          "release": 400,
+          "lfoRate": 6.5,
+          "lfoDepth": 40,
+          "lfoTarget": "filter",
+          "description": "Trance and EDM supersaw lead"
+        },
+        "hardSync": {
+          "osc1Wave": "sawtooth",
+          "osc2Wave": "square",
+          "oscSync": true,
+          "oscSyncRatio": 2,
+          "filterCutoff": 80,
+          "filterRes": 60,
+          "envAmount": 70,
+          "attack": 5,
+          "decay": 150,
+          "sustain": 30,
+          "release": 200,
+          "lfoRate": 8,
+          "lfoDepth": 50,
+          "lfoTarget": "pitch",
+          "description": "Hard sync lead for electro"
+        }
+      },
+      "bassPresets": {
+        "subBass": {
+          "osc1Wave": "sine",
+          "osc2Wave": "square",
+          "oscMix": 30,
+          "subOsc": true,
+          "subOctave": -2,
+          "filterCutoff": 35,
+          "filterRes": 20,
+          "envAmount": 40,
+          "attack": 50,
+          "decay": 200,
+          "sustain": 60,
+          "release": 500,
+          "distortion": "subtle",
+          "description": "Deep sub bass for dubstep and EDM"
+        },
+        "wobbleBass": {
+          "osc1Wave": "sawtooth",
+          "osc2Wave": "square",
+          "oscMix": 60,
+          "filterCutoff": 50,
+          "filterRes": 75,
+          "envAmount": 80,
+          "lfoRate": 2,
+          "lfoDepth": 70,
+          "lfoTarget": "filter",
+          "attack": 10,
+          "decay": 100,
+          "sustain": 20,
+          "release": 200,
+          "description": "Dubstep wobble bass"
+        }
+      },
+      "padPresets": {
+        "spacePad": {
+          "osc1Wave": "sawtooth",
+          "osc2Wave": "triangle",
+          "oscMix": 50,
+          "detune": 8,
+          "unison": 4,
+          "filterCutoff": 65,
+          "filterRes": 30,
+          "envAmount": 50,
+          "attack": 800,
+          "decay": 1000,
+          "sustain": 70,
+          "release": 1500,
+          "lfoRate": 0.3,
+          "lfoDepth": 60,
+          "lfoTarget": "filter",
+          "delay": "20%",
+          "reverb": "30%",
+          "description": "Evolving space pad"
+        },
+        "warmPad": {
+          "osc1Wave": "sawtooth",
+          "osc2Wave": "pulse",
+          "oscMix": 40,
+          "detune": 4,
+          "unison": 2,
+          "filterCutoff": 55,
+          "filterRes": 25,
+          "envAmount": 45,
+          "attack": 600,
+          "decay": 800,
+          "sustain": 65,
+          "release": 1200,
+          "lfoRate": 0.2,
+          "lfoDepth": 40,
+          "lfoTarget": "filter",
+          "description": "Warm analog pad"
+        }
+      },
+      "fxPresets": {
+        "scifiEffect": {
+          "osc1Wave": "sawtooth",
+          "osc2Wave": "noise",
+          "oscMix": 70,
+          "ringMod": true,
+          "ringModFreq": 100,
+          "filterCutoff": 85,
+          "filterRes": 80,
+          "envAmount": 90,
+          "lfoRate": 15,
+          "lfoDepth": 80,
+          "lfoTarget": "ringMod",
+          "attack": 5,
+          "decay": 50,
+          "sustain": 10,
+          "release": 100,
+          "description": "Science fiction special effect"
+        },
+        "metallicHit": {
+          "osc1Wave": "square",
+          "osc2Wave": "pulse",
+          "oscSync": true,
+          "oscSyncRatio": 1.5,
+          "ringMod": true,
+          "ringModFreq": 500,
+          "filterCutoff": 90,
+          "filterRes": 90,
+          "envAmount": 100,
+          "attack": 0,
+          "decay": 20,
+          "sustain": 0,
+          "release": 50,
+          "distortion": "high",
+          "description": "Metallic percussion hit"
+        }
+      },
+      "arpeggioPresets": {
+        "retroArp": {
+          "osc1Wave": "square",
+          "osc2Wave": "sawtooth",
+          "oscMix": 60,
+          "arpPattern": "up",
+          "arpRate": "1/16",
+          "filterCutoff": 70,
+          "filterRes": 50,
+          "envAmount": 60,
+          "gateLength": 80,
+          "swing": 0,
+          "octaves": 2,
+          "description": "Classic 8-bit arpeggio"
+        },
+        "complexArp": {
+          "osc1Wave": "sawtooth",
+          "osc2Wave": "triangle",
+          "oscMix": 50,
+          "unison": 3,
+          "arpPattern": "random",
+          "arpRate": "1/8T",
+          "filterCutoff": 60,
+          "filterRes": 70,
+          "envAmount": 80,
+          "lfoRate": 4,
+          "lfoDepth": 60,
+          "lfoTarget": "filter",
+          "gateLength": 60,
+          "swing": 25,
+          "octaves": 3,
+          "description": "Complex evolving arpeggio"
+        }
+      }
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "concepts-and-best-uses": "# Concepts & Best Uses: Wasp Xt\r\n\r\n## What It Is\r\nWasp Xt is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Wasp Xt\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n",
+      "what-is-wasp-xt": "Tags: electric | psychedelic | hip-hop/rap\n\n## What Is Wasp XT?\n\nWasp XT is the extended version of the classic Wasp synthesizer, adding dual filters, expanded modulation matrix, and more sophisticated routing options. It maintains the iconic yellow/black interface while offering modern flexibility.\n\n### What XT Adds Over Original Wasp\n\n| Feature | Original Wasp | Wasp XT |\n|---------|---------------|---------|\n| Filters | 1 | 2 (can be serial or parallel) |\n| Mod Matrix | 4 slots | 12 slots |\n| Osc Modes | Basic | Extended with more wave options |\n| Routing | Fixed | Serial/Parallel filter options |\n| Envelopes | 2 | 4 |\n\n### Tone Targets\n\n- **Electric:** Aggressive, buzzy, cutting leads and bass\n- **Psychedelic:** Complex modulation, evolving textures\n- **Moody:** Dark filters, slow envelopes, atmospheric\n\n### Signal Flow\n\n```\nOsc1 ──┐\n       ├──→ Mixer → Filter 1 ──→ Filter 2 ──→ Amp → Output\nOsc2 ──┘              ↑                    ↑\n                       └──← Mod Matrix ←──┘\n```\n\n### Filter Configurations\n\n**Serial (Standard):**\n- Both filters in series\n- 48dB/octave total slope\n- Classic \"darker\" sound\n\n**Parallel:**\n- Split signal to both filters\n- Results blended\n- Can create complex tonal shapes\n\n**Dual Band:**\n- Filter 1: Low-pass\n- Filter 2: High-pass\n- Creates band-pass effect\n- Good for creative effects\n\n### Common XT Sounds\n\n**Super Saw Bass:**\n1. Osc1-3 (if available): Detuned saws\n2. Filter 1: Low-pass at 35%\n3. Filter 2: Low-pass at 50% (less closed)\n4. Serial routing\n5. Heavy chorus for thickness\n\n**Evolving Pad:**\n1. Slow attack envelope\n2. Filter 1: Low-pass with some resonance\n3. Filter 2: Very subtle modulation\n4. Parallel routing for width\n5. LFO modulating filter 2\n\n**Aggressive Lead:**\n1. Detuned saws\n2. Filter 1: Low-pass at 60%\n3. Filter 2: Band-pass at center\n4. Heavy resonance\n5. Fast envelope on filter 1\n\n### Typical XT Mistakes\n\n| Mistake | Result | Fix |\n|---------|--------|-----|\n| Both filters fully open | Harsh, no character | Close filter 1 to 60-70% |\n| Too many modulations | Unfocused sound | Simplify, start over |\n| Serial filter on bass | Lost low-end | Use parallel or single filter |\n| No envelope on filter | Static, boring | Add envelope modulation |\n| Chorus on everything | No dynamics | Use selectively |\n\n### First XT Adjustments\n\n**For supersaw leads:**\n1. Stack 2-3 oscs with heavy detune\n2. Serial filters: Filter 1 at 50%, Filter 2 at 60%\n3. Light resonance on both\n4. Envelope on Filter 1 cutoff\n5. Chorus for 80s sheen\n\n**For complex pads:**\n1. Parallel filter routing\n2. Filter 1: Warm low-pass\n3. Filter 2: Subtle modulation\n4. Multiple envelope destinations\n5. Slower, musical modulations\n"
+    },
+    "Quick-Reference": {
+      "parameter-cheat-sheet": "# Wasp XT - Parameter Cheat Sheet\n\n**Plugin Type:** Enhanced 3-Oscillator Subtractive Synthesizer\n**Category:** Synth / Bass & Lead Generator\n**Status:** ACTIVE (Replaces discontinued Wasp)\n**Official Manual:** [Wasp XT](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/WaspXT.htm)\n\n---\n\n## Main Oscillators\n\n| Parameter | Range | Function | Quick Tip |\n|-----------|-------|----------|-----------|\n| **OSC 1-3 Waveform** | Sine/Triangle/Saw/Square/Pulse/Noise | Primary sound source | Layer different shapes for complex timbres |\n| **Pitch** | -48 to +48 semitones | Oscillator tuning | OSC 3 at -12 for sub bass layer |\n| **Level** | 0-100% | Oscillator volume | Balance for desired mix |\n| **Phase** | 0-360° | Starting phase | Affects initial transient and layering |\n| **Detune** | -100 to +100 cents | Fine pitch adjustment | Slight detune (5-15 cents) for width |\n| **Pulse Width** | 0-100% | PWM duty cycle (Pulse wave only) | 50% = square, vary for timbre changes |\n\n---\n\n## Enhanced Filter Section\n\n| Parameter | Range | Function | Sweet Spot |\n|-----------|-------|----------|------------|\n| **Filter Type** | LP/HP/BP/BR/Formant | Filter mode | LP for bass/pads, BP for vocal-like |\n| **Cutoff** | 20Hz-20kHz | Filter frequency | 500-2kHz for bass, 2-8kHz for leads |\n| **Resonance** | 0-100% | Filter emphasis | 40-70% for character |\n| **Drive** | 0-100% | Pre-filter distortion | 20-40% for warmth, 70%+ for aggression |\n| **Env Amount** | -100 to +100% | Envelope modulation depth | 70-90% for dynamic movement |\n| **Key Follow** | 0-100% | Filter tracks keyboard | 50% for natural brightness scaling |\n\n---\n\n## Envelopes (ADSR)\n\n### Filter Envelope\n| Stage | Bass | Lead | Pad |\n|-------|------|------|-----|\n| **Attack** | 0-5ms | 50-200ms | 500ms-1.5s |\n| **Decay** | 200-500ms | 300-800ms | 1-3s |\n| **Sustain** | 20-40% | 60-80% | 70-90% |\n| **Release** | 100-300ms | 500ms-1s | 2-5s |\n\n### Amp Envelope\nSimilar structure, controls volume\n\n---\n\n## LFO System\n\n| Parameter | Range | Function | Use Case |\n|-----------|-------|----------|----------|\n| **Rate** | 0.01-20 Hz | LFO speed | 0.1-2 Hz for vibrato, 4-12 Hz for tremolo |\n| **Depth** | 0-100% | Modulation intensity | Start at 30%, adjust to taste |\n| **Waveform** | Sine/Triangle/Saw/Square/S&H | LFO shape | Sine for smooth, S&H for random |\n| **Target** | Pitch/Filter/Amp/PWM | Modulation destination | Multiple targets possible |\n| **Sync** | Free/Tempo | LFO timing | Tempo sync for rhythmic effects |\n\n---\n\n## Effects Section (Enhanced vs Original Wasp)\n\n| Effect | Function | When to Use |\n|--------|----------|-------------|\n| **Distortion** | Pre/post filter drive | Warmth or aggression |\n| **Chorus** | Stereo width and thickness | Pads, leads |\n| **Delay** | Time-based echo | Rhythmic interest, space |\n| **Reverb** | Ambience and space | Nearly everything (subtle) |\n| **Unison** | Voice stacking and detuning | Massive supersaw leads |\n\n---\n\n## Quick Start Presets\n\n| Sound | Oscillator Setup | Filter | Envelope | Effects |\n|-------|------------------|--------|----------|---------|\n| **Deep Sub Bass** | OSC 1: Sine, OSC 3: Sine (-12) | LP, Low cutoff (150-300Hz), Low res | Fast attack, medium decay | None or subtle chorus |\n| **Supersaw Lead** | All OSC: Saw, slight detune | LP, Medium cutoff, Moderate res | Medium attack, sustain 70% | Unison 5-7 voices, chorus |\n| **Wobble Bass** | OSC 1+2: Square | LP, High res, LFO to cutoff | Fast attack, short decay | Drive 50%+ |\n| **Lush Pad** | OSC 1: Saw, OSC 2: Square (+7), OSC 3: Triangle (-12) | LP, Medium cutoff | Slow attack (1s+), long release | Chorus + Reverb |\n| **Pluck** | OSC 1: Triangle | LP, Medium cutoff, High env amount | Very fast attack, fast decay, no sustain | Short delay |\n\n---\n\n## Unison Mode (Wasp XT Enhancement)\n\n| Voices | Character | CPU Impact | Use Case |\n|--------|-----------|------------|----------|\n| **2-3** | Subtle thickness | Low | Natural doubling |\n| **4-5** | Noticeable width | Medium | Standard leads |\n| **6-8** | Supersaw character | High | Massive EDM leads |\n| **9-12** | Ultra-wide wall | Very High | Epic pads, special FX |\n\n**Tip:** Combine unison with slight detune (10-20 cents) for maximum width\n\n---\n\n## Wasp XT vs Original Wasp\n\n| Feature | Wasp (Discontinued) | Wasp XT |\n|---------|---------------------|---------|\n| **Status** | Legacy | Active |\n| **Oscillators** | 3 basic | 3 enhanced |\n| **Filter Types** | 4 | 5 (adds Formant) |\n| **Effects** | None/Basic | Distortion, Chorus, Delay, Reverb |\n| **Unison** | No | Yes (up to 12 voices) |\n| **LFO Targets** | Limited | Extensive |\n| **Modulation Matrix** | Basic | Advanced |\n\n**Verdict:** Wasp XT is superior in every way - use for all new projects\n\n---\n\n## Modulation Matrix\n\n### Available Sources\n- LFO 1 & 2\n- Mod Wheel\n- Velocity\n- Aftertouch\n- Envelopes\n\n### Available Destinations\n- Oscillator Pitch, Level, Phase\n- Filter Cutoff, Resonance\n- Amplifier\n- Effects parameters\n\n**Power User Tip:** Assign mod wheel to filter cutoff for live filter sweeps\n\n---\n\n## Genre Applications\n\n| Genre | Typical Wasp XT Use |\n|-------|---------------------|\n| **EDM/Trance** | Supersaw leads (unison 7 voices), plucks |\n| **Dubstep** | Wobble bass (LFO to filter), aggressive leads |\n| **House** | Classic stab sounds, bass |\n| **Synthwave** | Retro leads, pads (saw+square layers) |\n| **Ambient** | Lush evolving pads (slow attacks, long releases) |\n\n---\n\n## Sound Design Tips\n\n### Thick Bass\n- Layer OSC 1 (saw) + OSC 3 (sine, -12 semitones)\n- Low-pass filter at 200-400Hz\n- Slight saturation/drive for harmonics\n- No effects or subtle chorus\n\n### Modern Lead\n- All oscillators saw wave, slightly detuned\n- Unison 5-7 voices\n- Medium-high filter cutoff with resonance\n- Moderate envelope modulation\n- Chorus + subtle delay\n\n### Pad\n- Mix of saw + square waves\n- Slow attack (800ms+), long release (2s+)\n- Chorus + reverb\n- Unison for width\n\n---\n\n## CPU & Performance\n\n- **CPU Usage:** Low to moderate (depends on unison voices)\n- **Optimization:** Fewer unison voices = less CPU\n- **Polyphony:** Up to 32 voices (depends on CPU)\n- **Realtime Safe:** Yes\n\n---\n\n## MIDI Integration\n\n### Velocity Sensitivity\n- Assign velocity to filter cutoff for dynamic timbre\n- Velocity to amplitude for volume expression\n- Combine both for realistic playing\n\n### Mod Wheel\n- Default: Often mapped to vibrato depth\n- Custom: Assign to filter cutoff, effects mix, etc.\n\n### Aftertouch\n- Vibrato intensity\n- Filter expression\n- Effects parameter control\n\n---\n\n## Common Mistakes to Avoid\n\n1. **Too Many Unison Voices:** 12 voices = CPU hog, often unnecessary\n2. **Excessive Resonance:** Above 80% can be piercing\n3. **Ignoring Filter Envelope:** Dynamic filter = more interesting sound\n4. **No Oscillator Layering:** Use all 3 oscillators for full sound\n5. **Forgetting Effects:** Built-in effects save CPU vs separate plugins\n\n---\n\n## Mixing Integration\n\n### EQ Suggestions\n- **Bass:** High-pass at 30-40Hz (remove sub-rumble)\n- **Leads:** Cut 200-400Hz if muddy, boost 2-5kHz for presence\n- **Pads:** High-pass at 100-200Hz, gentle dip at 300-500Hz\n\n### Compression\n- **Ratio:** 2:1 to 4:1 for most sounds\n- **Attack:** Fast for plucks, slow for pads\n- **Release:** Medium (auto-release often works well)\n\n### Effects Chain\n1. Wasp XT (with built-in effects)\n2. EQ (corrective)\n3. Compression (dynamics)\n4. Additional reverb/delay (if needed)\n\n---\n\n## Automation Ideas\n\n1. **Filter Cutoff Sweep:** Build-ups and drops\n2. **LFO Rate:** Slow to fast for tension\n3. **Unison Voices:** Start with 1, end with 12 for massive build\n4. **Effects Mix:** Dry to wet transition\n\n---\n\n## Related Plugins\n\n- **Wasp (Original)** - Discontinued predecessor\n- **3x Osc** - Simpler alternative\n- **Sawer** - More advanced subtractive synthesis\n- **Sytrus** - FM-based alternative\n- **Harmless/Harmor** - Additive alternatives\n\n---\n\n**Last Updated:** February 3, 2026\n**Status:** ACTIVE - Recommended for all new projects\n",
+      "quick-start-checklist": "# Quick Start Checklist: Wasp Xt\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Wasp Xt to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "quickstart-guide": "# Wasp XT Quick Start Guide\n\n## What is Wasp XT?\nWasp XT is an enhanced version of the classic Wasp synthesizer, featuring expanded oscillators, advanced modulation options, and modern processing capabilities while retaining the distinctive character of the original.\n\n## 5-Minute Setup\n1. Load Wasp XT on a mixer channel\n2. Start with the \"Classic Wasp\" preset\n3. Play a simple melody to hear the character\n4. Try oscillator unison for richness\n5. Add filter modulation for movement\n\n## Essential Controls\n- **Oscillator Mix**: Balance between the two oscillators\n- **Filter Cutoff**: Main frequency control (classic Wasp sound)\n- **Filter Resonance**: Filter scream and character\n- **Envelope Amount**: How much filter responds to notes\n- **LFO Rate**: Modulation speed\n- **Arpeggiator**: Built-in pattern generator\n\n## Quick Patches\n- **Classic Lead**: Osc1 = Saw, Osc2 = Square, moderate resonance\n- **Bass Sound**: Sub oscillator + square wave, high filter env\n- **Pad Sound**: Slow LFO, unison detune, soft attack\n- **FX Sound**: High resonance, filter modulation, ring mod\n\n## Pro Tips\n- Use oscillator sync for hard sync effects\n- Try ring modulation for metallic tones\n- Use the arpeggiator for instant patterns\n- Automate filter cutoff for classic acid lines",
+      "top-controls": "# Top Controls: Wasp Xt\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Wasp Xt\r\n\r\nThis section contains learning information for the wasp-xt plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-context": {
+      "integration-guide": "# Wasp XT Integration Guide\n\n## DAW Integration Strategies\n\n### FL Studio Native Integration\n**Optimal Workflow**:\n```\nMIDI Controller → Wasp XT → Mixer → Effects → Master\n```\n\n**Best Practices**:\n- Use Patcher for complex routing\n- Create template projects with Wasp XT\n- Set up custom control surfaces\n- Utilize playlist automation\n\n**Patcher Integration**:\n- **Multi-Instance Layering**: Multiple Wasp XT instances\n- **Effect Chain Management**: Built-in effects\n- **MIDI Routing**: Complex MIDI distribution\n- **Parameter Control**: Centralized parameter mapping\n\n### Cross-DAW Compatibility\n**Plugin Format Support**:\n- **VST2**: Universal compatibility\n- **VST3**: Enhanced performance\n- **AU**: macOS native support\n- **AAX**: Pro Tools integration\n\n**Migration Considerations**:\n- **Settings Transfer**: Export/import capabilities\n- **Preset Compatibility**: Cross-platform presets\n- **Automation Translation**: DAW-specific adaptation\n- **Workflow Adaptation**: DAW interface differences\n\n## Plugin Chain Integration\n\n### Pre-Effects Processing\n**Input Chain Design**:\n```\nAudio Input → EQ → Wasp XT → Compressor → Effects → Output\n```\n\n**Pre-Wasp XT Effects**:\n- **Equalization**: Input signal shaping\n- **Noise Gating**: Clean signal preparation\n- **Distortion**: Drive into Wasp XT\n- **Ring Modulation**: External ring modulation\n\n### Post-Effects Processing\n**Output Chain Design**:\n```\nWasp XT → Delay → Reverb → Stereo Imager → Limiter\n```\n\n**Effect Categories**:\n- **Time-Based**: Delay, reverb for space\n- **Modulation**: Chorus, phaser for movement\n- **Dynamic**: Compression, limiting for control\n- **Spatial**: Stereo processing for width\n\n### Parallel Processing\n**Send/Return Configuration**:\n- **Dry Signal**: Direct Wasp XT output\n- **Wet Signals**: Processed versions\n- **Blend Control**: Dry/wet mixing\n- **Creative Routing**: Complex signal flows\n\n## Hardware Integration\n\n### MIDI Controller Setup\n**Recommended Controllers**:\n- **Keyboard**: 88-key weighted action\n- **Fader Surface**: 8-16 faders for parameters\n- **Knob Controller**: 16+ knobs for real-time control\n- **Drum Pads**: For percussive trigger\n\n**Mapping Strategies**:\n```json\n{\n  \"midiMapping\": {\n    \"CC1\": \"filterCutoff\",\n    \"CC2\": \"filterResonance\",\n    \"CC3\": \"oscillatorMix\",\n    \"CC4\": \"lfoDepth\",\n    \"CC5\": \"attack\",\n    \"CC6\": \"decay\",\n    \"CC7\": \"detune\",\n    \"CC8\": \"effectMix\"\n  }\n}\n```\n\n### Audio Interface Integration\n**Requirements**:\n- **Low Latency**: 128-256 samples\n- **High Quality**: Clean preamps\n- **Multiple I/O**: For external processing\n- **Stable Drivers**: Reliable operation\n\n**Configuration**:\n- **Sample Rate**: 44.1kHz or higher\n- **Buffer Size**: Balance latency vs stability\n- **Clock Source**: Internal or external\n- **Gain Staging**: Optimal signal levels\n\n### External Hardware Processing\n**Hardware Effects Chain**:\n```\nWasp XT → Hardware Compressor → Hardware Reverb → Audio Interface\n```\n\n**Benefits**:\n- **Analog Character**: Warmth and saturation\n- **Physical Knobs**: Tactile control\n- **Processing Power**: Offload CPU\n- **Unique Algorithms**: Hardware-only effects\n\n## Software Integration\n\n### Plugin Host Integration\n**Max for Live**:\n- **Custom Interfaces**: Dedicated control surfaces\n- **Randomization**: Generative patch creation\n- **Sequencers**: Custom pattern generators\n- **Recording**: Parameter automation capture\n\n**Script Integration**:\n- **Python Scripts**: Batch processing\n- **Automation**: Custom parameter automation\n- **Preset Generation**: Algorithmic patch creation\n- **Data Analysis**: Parameter optimization\n\n### Third-Party Plugins\n**Complementary Plugins**:\n- **Multi-band Processors**: Frequency-specific processing\n- **Spatial Processors**: Stereo width control\n- **Modulation Plugins**: Additional LFO sources\n- **Analysis Tools**: Frequency and dynamics analysis\n\n**Integration Methods**:\n- **Sidechain**: Wasp XT drives other plugins\n- **MIDI Sync**: Tempo and rhythm synchronization\n- **Parameter Linking**: Cross-plugin control\n- **Automation Sharing**: Host automation coordination\n\n## Workflow Optimization\n\n### Template Creation\n**Project Templates**:\n```\nEmpty Project → Wasp XT Instances → Mixer Channels → Effects → Master Channel\n```\n\n**Template Elements**:\n- **Pre-configured Tracks**: Labeled and ready\n- **MIDI Routing**: Pre-configured paths\n- **Effect Chains**: Basic processing setup\n- **Automation Templates**: Common automation patterns\n\n### Preset Management\n**Organization System**:\n- **Genre Folders**: EDM, Hip-Hop, Soundtrack\n- **Use Case Folders**: Leads, Bass, Pads, FX\n- **Project Folders**: Song-specific presets\n- **Favorite Presets**: Quick access library\n\n**Backup Strategy**:\n- **Cloud Storage**: Off-site backup\n- **Local Backup**: Secondary storage\n- **Version Control**: Preset evolution tracking\n- **Export Formats**: Multiple format support\n\n## Advanced Integration\n\n### Multi-Instance Coordination\n**Instance Roles**:\n- **Instance 1**: Bass foundation\n- **Instance 2**: Harmonic complexity\n- **Instance 3**: Textural elements\n- **Instance 4**: Lead lines\n\n**Synchronization**:\n- **MIDI Sync**: Shared timing\n- **Parameter Sync**: Linked parameter changes\n- **Preset Coordination**: Complementary settings\n- **Automation Sync**: Coordinated movements\n\n### External Control Integration\n**OSC Integration**:\n- **Wi-Fi Control**: Tablet/smartphone control\n- **Custom Interfaces**: Web-based control\n- **Remote Monitoring**: Real-time parameter display\n- **Collaborative Control**: Multiple operators\n\n**MIDI Learn**:\n- **Automatic Mapping**: Learn from hardware\n- **Custom Scaling**: Parameter range mapping\n- **Inverse Mapping**: Opposite parameter behavior\n- **Conditional Logic**: If-then parameter control\n\n## Troubleshooting Integration\n\n### Common Issues\n**Plugin Not Loading**:\n1. Check installation path\n2. Verify plugin format compatibility\n3. Rescan plugin database\n4. Reinstall if necessary\n\n**Automation Problems**:\n1. Verify automatable parameters\n2. Check automation lane assignment\n3. Test with simple automation\n4. Check host automation settings\n\n**MIDI Issues**:\n1. Verify controller connections\n2. Check MIDI channel assignments\n3. Test with different controller\n4. Update MIDI drivers\n\n**Performance Issues**:\n1. Monitor CPU usage\n2. Optimize buffer settings\n3. Reduce instance count\n4. Render to audio when possible\n\n## Best Practices\n\n### Performance Optimization\n**CPU Management**:\n- **Instance Limit**: Maximum practical number\n- **Rendering**: Freeze completed tracks\n- **Buffer Settings**: Optimize for workflow\n- **Multi-core**: Distribute processing load\n\n**Memory Optimization**:\n- **Preset Loading**: Efficient preset management\n- **Cache Management**: Clear unnecessary data\n- **Project Organization**: Streamlined project structure\n- **System Resources**: Optimize OS settings\n\n### Creative Workflow\n**Sound Design Process**:\n1. **Initial Patch**: Start from known good preset\n2. **Exploration**: Systematic parameter exploration\n3. **Refinement**: Fine-tune promising sounds\n4. **Documentation**: Save and categorize results\n\n**Production Integration**:\n1. **Sound Selection**: Choose appropriate patches\n2. **Arrangement**: Place sounds in mix\n3. **Processing**: Apply effects and automation\n4. **Mixing**: Balance and spatial placement\n\n### Maintenance\n**Regular Updates**:\n- **Plugin Updates**: Latest features and fixes\n- **Driver Updates**: Hardware compatibility\n- **System Updates**: OS stability\n- **Backup Updates**: Preserve current settings\n\n**Documentation**:\n- **Preset Notes**: Document custom settings\n- **Workflow Documentation**: Record efficient processes\n- **Troubleshooting Log**: Track solutions\n- **Version History**: Track changes over time",
+      "live-performance": "# Wasp XT Live Performance Guide\n\n## Performance Setup Configuration\n\n### Hardware Requirements\n**Essential Equipment**:\n- Laptop with adequate CPU/RAM\n- High-quality audio interface (128-256 samples)\n- MIDI controller (keyboard + faders/knobs)\n- Backup power supply and cables\n- Headphones or IEM system for monitoring\n\n**Optional Enhancements**:\n- Foot pedals for hands-free control\n- Tablet for preset management\n- MIDI controller for parameter mapping\n- Backup audio interface\n\n### Controller Mapping Strategy\n\n### Essential Parameters to Map\n**Primary Controls**:\n- **Filter Cutoff**: Main sound shaping\n- **Filter Resonance**: Character control\n- **Oscillator Mix**: Timbre adjustment\n- **Envelope Amount**: Dynamic response\n- **LFO Rate/Depth**: Modulation control\n- **Effect Mix**: Wet/dry balance\n\n**Secondary Controls**:\n- **Attack/Decay**: Envelope shaping\n- **Detune/Unison**: Voice width control\n- **Waveform Selection**: Quick timbre changes\n- **Arpeggiator**: Pattern control\n\n### Controller Types and Mapping\n\n**Keyboard Controllers**:\n```\nMod Wheel → Filter Cutoff\nPitch Bend → Vibrato\nAftertouch → Resonance\nExpression → LFO Depth\nSustain → Arpeggiator Hold\n```\n\n**Fader/Controller Surfaces**:\n```\nFader 1-4 → Filter, Resonance, Mix, LFO\nKnob 1-4 → Osc Mix, Detune, Attack, Decay\nButton 1-8 → Preset switching\nFootswitch 1-2 → Effect toggles\n```\n\n## Live Performance Techniques\n\n### Real-Time Sound Manipulation\n**Filter Performance**:\n- **Slow Sweeps**: Ambient transitions\n- **Fast Cuts**: Rhythmic effects\n- **Resonance Automation**: Character changes\n- **Filter Morphing**: Dynamic timbre shifts\n\n**Oscillator Control**:\n- **Waveform Switching**: Instant timbre changes\n- **Mix Automation**: Harmonic content control\n- **Detune Live**: Width and chorus effects\n- **Sync Ratio Changes**: Hard sync variations\n\n### Performance Strategies\n\n### Set Structure Management\n**Song Section Mapping**:\n- **Intro**: Simple, clean sounds\n- **Verse**: Stable, musical sounds\n- **Build-up**: Increasing complexity\n- **Drop**: Maximum intensity\n- **Breakdown**: Filtered, atmospheric\n- **Outro**: Simplified decay\n\n**Preset Organization**:\n- **By Song**: Dedicated presets per track\n- **By Section**: Different presets for song parts\n- **By Mood**: Emotional presets\n- **Emergency**: Reliable fallback presets\n\n### Improvisation Techniques\n**Spontaneous Creation**:\n- **Randomize Function**: Generate unexpected sounds\n- **Parameter Morphing**: Smooth evolution\n- **Effect Combining**: Layer multiple techniques\n- **Real-time Recording**: Capture improvisations\n\n**Creative Approaches**:\n- **Audio Rate Modulation**: Experimental sounds\n- **Extreme Settings**: Push parameters to limits\n- **Unexpected Combinations**: Try unusual settings\n- **Audience Response**: Adapt to crowd energy\n\n## Genre-Specific Performance\n\n### Electronic Music Sets\n**EDM Performance**:\n- **Build Control**: Gradual filter opening\n- **Drop Impact**: Sudden parameter changes\n- **Transition Tools**: Smooth preset morphing\n- **Energy Management**: Dynamic intensity control\n\n**Techno Performance**:\n- **Loop Creation**: Repetitive patterns\n- **Hypnotic Effects**: Slow, evolving changes\n- **Rhythmic Control**: Precise timing\n- **Groove Maintenance**: Consistent feel\n\n### Ambient Sets\n**Atmospheric Performance**:\n- **Slow Evolution**: Gradual parameter changes\n- **Texture Building**: Layer complexity\n- **Spatial Effects**: Wide, immersive sounds\n- **Temporal Flow**: Long-form development\n\n### Experimental Sets\n**Avant-Garde Performance**:\n- **Sound Destruction**: Extreme processing\n- **Glitch Creation**: Digital artifacts\n- **Random Elements**: Controlled chaos\n- **Audience Participation**: Interactive elements\n\n## Advanced Performance Concepts\n\n### Multi-Instance Performance\n**Layered Setup**:\n- **Instance 1**: Bass foundation\n- **Instance 2**: Harmonic content\n- **Instance 3**: Atmospheric texture\n- **Instance 4**: Lead elements\n\n**Control Strategies**:\n- **Master Controls**: Global parameter control\n- **Instance Switching**: Selective editing\n- **Parallel Processing**: Combined output\n- **Send Effects**: Shared spatial processing\n\n### Ensemble Performance\n**Multi-Musician Setups**:\n- **Shared Sync**: Common tempo and timing\n- **Individual Control**: Personal parameter space\n- **Collaborative Effects**: Shared processing chains\n- **Communication**: Clear visual/audible cues\n\n### Adaptive Performance\n**Environmental Adaptation**:\n- **Acoustic Response**: Adapt to room acoustics\n- **Audience Feedback**: Respond to crowd energy\n- **Technical Adjustments**: Handle equipment issues\n- **Musical Development**: Evolve with performance\n\n## Troubleshooting Live Issues\n\n### Technical Problems\n**Audio Issues**:\n1. Check audio interface connections\n2. Verify driver stability\n3. Monitor CPU usage\n4. Test backup equipment\n5. Restart system if needed\n\n**MIDI Problems**:\n1. Verify controller connections\n2. Check MIDI mapping\n3. Test with different controllers\n4. Update controller drivers\n5. Use keyboard/mouse backup\n\n**Performance Problems**:\n1. Monitor system resources\n2. Optimize plugin settings\n3. Reduce instance count if needed\n4. Freeze rendered tracks\n5. Increase buffer size\n\n### Creative Blocks\n**Performance Recovery**:\n- **Use Presets**: Fall back to reliable patches\n- **Simplify**: Reduce complexity\n- **Randomize**: Generate new ideas\n- **Take Break**: Reset creative perspective\n\n## Preparation and Practice\n\n### Pre-Performance Setup\n**Equipment Check**:\n- [ ] Audio interface connected and tested\n- [ ] MIDI controllers mapped and working\n- [ ] Presets organized and loaded\n- [ ] Backup equipment ready\n- [ ] Monitor levels set properly\n\n**Technical Preparation**:\n- [ ] System optimized for performance\n- [ ] Background processes disabled\n- [ ] Power management configured\n- [ ] Save critical project states\n\n### Practice Techniques\n**Skill Development**:\n- **Parameter Control**: Practice smooth parameter changes\n- **Preset Switching**: Fast, seamless transitions\n- **Improvisation**: Develop creative spontaneity\n- **Troubleshooting**: Quick problem resolution\n\n**Performance Rehearsal**:\n- **Set Flow**: Practice entire performance\n- **Transitions**: Perfect preset changes\n- **Timing**: Sync with other elements\n- **Endurance**: Maintain energy through set\n\n## Professional Best Practices\n\n### Set Design\n**Structural Planning**:\n- **Opening**: Strong, attention-grabbing\n- **Development**: Logical progression\n- **Climax**: Peak intensity moment\n- **Resolution**: Satisfying conclusion\n\n**Emotional Arc**:\n- **Energy Management**: Control crowd response\n- **Mood Changes**: Emotional journey\n- **Surprise Elements**: Unexpected moments\n- **Community Building**: Audience connection\n\n### Technical Excellence\n**Reliability**:\n- **Backup Plans**: Multiple contingency options\n- **Redundancy**: Critical systems doubled\n- **Testing**: Thorough pre-show checking\n- **Documentation**: Clear setup procedures\n\n**Professionalism**:\n- **Punctuality**: Early arrival and setup\n- **Communication**: Clear interaction with team\n- **Preparation**: Thorough planning and practice\n- **Adaptability**: Flexible problem-solving",
+      "troubleshooting-workflows": "# Wasp XT Troubleshooting Guide\n\n## Sound Issues\n\n### No Sound Output\n**Causes**:\n- Mixer channel muted or volume at 0\n- Plugin bypassed\n- No MIDI input\n- Wrong output routing\n\n**Solutions**:\n1. Check mixer channel volume and routing\n2. Disable plugin bypass\n3. Verify MIDI input from keyboard or piano roll\n4. Check audio interface connections\n\n### Thin or Weak Sound\n**Causes**:\n- Filter cutoff too low\n- Resonance too high\n- No oscillator unison\n- Low filter envelope amount\n\n**Solutions**:\n1. Increase filter cutoff above 12 o'clock\n2. Reduce resonance to enhance body\n3. Enable oscillator unison with detune\n4. Increase filter envelope amount for presence\n\n### Distorted or Harsh Sound\n**Causes**:\n- Excessive resonance\n- Filter self-oscillation\n- Overloaded mixer channel\n- Extreme oscillator settings\n\n**Solutions**:\n1. Reduce resonance below 3 o'clock\n2. Lower filter cutoff to stop self-oscillation\n3. Check mixer levels and avoid clipping\n4. Use moderate oscillator levels\n\n## Performance Issues\n\n### High CPU Usage\n**Causes**:\n- Multiple instances\n- High unison voices\n- Complex arpeggiator patterns\n- High sample rates\n\n**Solutions**:\n1. Limit unison voices (4-8 max)\n2. Use fewer instances when possible\n3. Simplify arpeggiator patterns\n4. Render to audio when possible\n\n### Audio Glitches\n**Causes**:\n- Low buffer size\n- CPU overload\n- Driver issues\n- Too many effects\n\n**Solutions**:\n1. Increase buffer size to 256-512 samples\n2. Reduce CPU load by freezing tracks\n3. Update audio drivers\n4. Disable unnecessary effects\n\n### Timing Problems\n**Causes**:\n- Wrong tempo sync settings\n- MIDI clock issues\n- DAW timing problems\n- Buffer compensation errors\n\n**Solutions**:\n1. Enable host tempo sync\n2. Check MIDI clock routing\n3. Verify DAW timing settings\n4. Adjust PDC compensation\n\n## Creative Problems\n\n### Can't Get Classic Wasp Sound\n**Solutions**:\n- Use single oscillator (sawtooth)\n- Set resonance to moderate levels\n- Use moderate filter cutoff\n- Limit modulation depth\n- Disable modern features initially\n\n### Sounds Too Digital\n**Solutions**:\n- Reduce oscillator unison\n- Use gentler filter envelope\n- Lower LFO rate and depth\n- Add subtle saturation\n- Use vintage-style processing\n\n### Arpeggiator Not Working\n**Causes**:\n- Arpeggiator disabled\n- No MIDI notes being received\n- Wrong sync settings\n- Pattern complexity issues\n\n**Solutions**:\n1. Enable arpeggiator button\n2. Verify MIDI input to plugin\n3. Set sync to host or internal\n4. Start with simple patterns\n\n## Integration Issues\n\n### Plugin Not Loading\n**Causes**:\n- Installation issues\n- Plugin path problems\n- Version incompatibility\n- Corrupted installation\n\n**Solutions**:\n1. Reinstall plugin\n2. Check plugin installation path\n3. Verify DAW compatibility\n4. Reset plugin database\n\n### Automation Not Working\n**Causes**:\n- Parameters not automatable\n- Automation disabled\n- Wrong track mapping\n- DAW automation issues\n\n**Solutions**:\n1. Check which parameters can be automated\n2. Enable automation in DAW\n3. Verify correct track mapping\n4. Test with simple automation\n\n### MIDI Controller Issues\n**Problems**: Controller not responding to plugin\n**Solutions**:\n1. Check MIDI learn functionality\n2. Verify controller connections\n3. Map parameters manually if needed\n4. Update controller drivers\n\n## Preset and Settings Issues\n\n### Presets Not Loading\n**Causes**:\n- Corrupted preset files\n- Wrong preset format\n- File permission issues\n- Plugin version mismatch\n\n**Solutions**:\n1. Reinstall preset pack\n2. Check file format compatibility\n3. Verify file permissions\n4. Update plugin to latest version\n\n### Custom Settings Not Saving\n**Causes**:\n- Read-only preset folder\n- Insufficient permissions\n- Plugin protection\n- Saving to wrong location\n\n**Solutions**:\n1. Check folder write permissions\n2. Run DAW as administrator\n3. Disable plugin protection if present\n4. Verify save location is correct\n\n## Advanced Troubleshooting\n\n### Sound Character Problems\n**Diagnosis**: Sound doesn't match expectations\n**Approach**:\n1. Reset to init patch\n2. Build sound step by step\n3. Compare with reference presets\n4. Document working combinations\n\n### Performance Optimization\n**Goals**: Reduce CPU while maintaining quality\n**Methods**:\n1. Render heavy patches to audio\n2. Use freeze/smart render functions\n3. Optimize buffer settings\n4. Limit simultaneous instances\n\n### Creative Blocks\n**Solutions**:\n- Use randomize function\n- Load and modify existing presets\n- Try extreme settings\n- Study oscillator combinations\n- Reference classic patches"
+    },
+    "by-goal": {
+      "advanced-sound-design": "# Advanced Wasp XT Sound Design\n\n## Oscillator Mastery\n\n### Oscillator Combinations\n**Wave Pairing Strategies**:\n- **Saw + Square**: Classic synth bass and leads\n- **Saw + Triangle**: Rich pads and atmospheric sounds\n- **Square + Pulse**: Aggressive bass and percussion\n- **Saw + Noise**: Textured effects and percussion\n\n**Oscillator Sync Techniques**:\n- **Hard Sync**: Osc2 slaved to Osc1\n- **Soft Sync**: Gentle locking with some slip\n- **Frequency Ratios**: 2:1, 3:2, 5:4 for harmonics\n- **Dynamic Sync**: Automated ratio changes\n\n### Ring Modulation Exploration\n**Classic Ring Mod**:\n- **High Frequencies**: Metallic percussion hits\n- **Low Frequencies**: Gritty bass textures\n- **Modulated Rate**: Alien communication effects\n- **Dual Ring Mod**: Complex metallic textures\n\n**Advanced Ring Mod**:\n- **Freq Modulation**: LFO controls ring mod frequency\n- **Mix Control**: Blend between clean and ring mod\n- **Envelope Following**: Ring mod responds to playing dynamics\n- **Audio Rate Modulation**: Extreme sound mangling\n\n## Filter Techniques\n\n### Filter Character Shaping\n**Resonance Techniques**:\n- **Self-Oscillation**: Turn filter into oscillator\n- **Gentle Boost**: Subtle presence enhancement\n- **Aggressive Scream**: Filter distortion character\n- **Q Control**: Precision resonance shaping\n\n**Cutoff Strategies**:\n- **Slow Sweeps**: Ambient pads and soundscapes\n- **Fast Rhythms**: Filter percussion and effects\n- **Random Walk**: Organic, unpredictable movement\n- **Step Sequencing**: Filter note patterns\n\n### Multi-Stage Filtering\n**Series Filtering**:\n```\nOscillator → Filter1 → Filter2 → Output\n```\n- **Lo-Pass → Hi-Pass**: Band-pass characteristics\n- **Band-Pass → Notch**: Complex frequency shaping\n- **Dynamic Filters**: Real-time filter morphing\n\n**Parallel Filtering**:\n- **Frequency Splitting**: Different filters for different bands\n- **Character Mixing**: Blend filter types\n- **Stereo Separation**: Different filters per channel\n\n## Envelope Shaping\n\n### Advanced Envelope Programming\n**Multi-Stage Envelopes**:\n- **Pre-Attack**: Initial sound shaping\n- **Breakpoint Envelopes**: Complex curve design\n- **Looped Envelopes**: Cyclical modulation\n- **Velocity Mapping**: Dynamic response curves\n\n**Envelope Modulation**:\n- **Filter Envelope**: Classic synth filtering\n- **Pitch Envelope**: Percussive and effect sounds\n- **Amplitude Envelope**: Dynamic shaping\n- **Modulation Envelope**: LFO depth control\n\n### Cross-Modulation\n**Envelope-to-LFO**:\n- **Triggered LFO**: Envelope starts LFO\n- **LFO Speed Modulation**: Envelope controls LFO rate\n- **LFO Depth Shaping**: Dynamic LFO intensity\n- **LFO Waveform Morphing**: Envelope-controlled waveform\n\n**Envelope-to-Envelope**:\n- **Secondary Envelopes**: Complex layering\n- **Envelope Scaling**: Relative envelope control\n- **Envelope Delay**: Staggered envelope triggers\n- **Envelope Hold**: Sustained envelope levels\n\n## Modulation Systems\n\n### LFO Advanced Techniques\n**Multi-LFO Setup**:\n- **LFO1 → Filter Cutoff**: Classic filter modulation\n- **LFO2 → Pitch**: Vibrato and pitch effects\n- **LFO3 → Pan**: Stereo movement\n- **LFO4 → Modulation**: Complex routing\n\n**LFO Waveform Programming**:\n- **Custom Waveforms**: Draw your own LFO shapes\n- **Waveform Morphing**: Smooth transitions between shapes\n- **Random LFO**: Controlled chaos\n- **Audio Rate LFO**: FM synthesis effects\n\n### Modulation Matrix\n**Routing Possibilities**:\n- **Velocity → Any Parameter**: Dynamic control\n- **Aftertouch → Filter**: Expressive playing\n- **Mod Wheel → Resonance**: Real-time character\n- **Breath Control → Envelope**: Wind instrument emulation\n\n**Mathematical Operations**:\n- **Parameter Addition**: Multiple sources combine\n- **Parameter Multiplication**: Modulation depth scaling\n- **Parameter Inversion**: Opposite parameter movement\n- **Parameter Quantization**: Stepped parameter changes\n\n## Effects Integration\n\n### Internal Effects Chain\n**Signal Path Design**:\n```\nOscillator → Filter → Distortion → Delay → Reverb → Output\n```\n\n**Effect Sequencing**:\n- **Pre-Filter Effects**: Oscillator-level processing\n- **Post-Filter Effects**: Filtered signal processing\n- **Master Effects**: Output-level processing\n- **Send Effects**: Parallel processing\n\n### External Processing\n**Send Effects**:\n- **Reverb Sends**: Space and ambiance\n- **Delay Sends**: Rhythmic complexity\n- **Chorus Sends**: Stereo width\n- **Distortion Sends**: Parallel saturation\n\n**Insert Effects**:\n- **Equalization**: Frequency shaping\n- **Compression**: Dynamic control\n- **Stereo Imaging**: Spatial processing\n- **Limiting**: Output protection\n\n## Performance Techniques\n\n### Real-Time Control\n**Parameter Assignment**:\n- **Mod Wheel**: Filter cutoff or vibrato\n- **Pitch Bend**: Pitch modulation range\n- **Expression Pedal**: Dynamic parameter control\n- **Footswitches**: Effect switching\n\n**Performance Strategies**:\n- **Parameter Morphing**: Smooth transitions\n- **Scene Switching**: Instant parameter changes\n- **Randomization**: Controlled unpredictability\n- **Expression Mapping**: Expressive playing techniques\n\n### Automation Programming\n**Automated Parameters**:\n- **Filter Automation**: Classic filter sweeps\n- **Oscillator Automation**: Sound evolution\n- **Effect Automation**: Textural changes\n- **Parameter Ramping**: Smooth transitions\n\n**Automation Techniques**:\n- **Draw Automation**: Precise control\n- **Record Automation**: Humanized changes\n- **LFO Automation**: Meta-modulation\n- **Random Automation**: Controlled randomness\n\n## Creative Sound Design\n\n### Experimental Techniques\n**Extreme Settings**:\n- **Maximum Resonance**: Self-oscillation exploration\n- **High FM Rates**: Bell and metallic sounds\n- **Complex Ring Mod**: Digital destruction\n- **Filter Modulation**: Audio rate modulation\n\n**Hybrid Synthesis**:\n- **Additive Elements**: Harmonic construction\n- **Subtractive Processing**: Frequency carving\n- **FM Elements**: Frequency modulation\n- **Physical Modeling**: Emulation techniques\n\n### Genre-Specific Design\n\n**EDM Elements**:\n- **Supersaw Leads**: Wide detuned unison\n- **Sub Bass**: Deep fundamental reinforcement\n- **Atmospheric Pads**: Slow evolving textures\n- **FX Hits**: Stutter and impact sounds\n\n**Soundtrack Elements**:\n- **Ambient Textures**: Slow filter movements\n- **Sci-Fi Effects**: Ring mod and sync\n- **Drama Hits**: Sharp percussive sounds\n- **Atmospheric Beds**: Long evolving sounds\n\n**Experimental Elements**:\n- **Granular Textures**: Small fragment processing\n- **Glitch Effects**: Audio manipulation\n- **Drone Sounds**: Static harmonic content\n- **Noise Elements**: Textural noise integration",
+      "edm-supersaw-lead": "# EDM Supersaw Lead Creation with Wasp XT\n\n**Difficulty:** Intermediate\n**Time Required:** 15 minutes\n**Goal:** Create massive EDM supersaw lead sound\n**Genre:** EDM, Trance, Progressive House\n\n---\n\n## Prerequisites\n\n- Wasp XT synthesizer\n- Understanding of synthesis basics\n- Reference: Modern EDM supersaw leads\n\n---\n\n## Workflow Steps\n\n### Step 1: Oscillator Setup\n\n1. **All 3 Oscillators:** Set to **Sawtooth**\n2. **OSC 1 Pitch:** 0 (center)\n3. **OSC 2 Pitch:** +7 semitones (perfect fifth)\n4. **OSC 3 Pitch:** +12 semitones (octave)\n5. **Detune:** OSC 2 and 3 slightly (5-10 cents)\n\n---\n\n### Step 2: Unison Configuration\n\n6. **Unison Voices:** **7**\n7. **Unison Detune:** **35-45%**\n8. **Unison Spread:** **Wide**\n\n---\n\n### Step 3: Filter\n\n9. **Type:** Low-pass\n10. **Cutoff:** 3000-5000 Hz\n11. **Resonance:** 30-40%\n12. **Envelope Amount:** 60%\n\n---\n\n### Step 4: Effects\n\n13. **Chorus:** 40-50% mix\n14. **Reverb:** 15-20% mix\n15. **Optional Delay:** 1/8 note, 20% mix\n\n---\n\n### Step 5: Performance\n\n16. **Assign mod wheel** to filter cutoff for live control\n\n---\n\n**Last Updated:** February 3, 2026\n**Status:** Complete workflow\n"
+    },
+    "by-instrument": {
+      "wasp-xt-instrument-workflows": "Tags: hip-hop/rap | deep bass edm | electric\n\n## Wasp XT Instrument Workflows\n\n### XT Hip-Hop Supsaw Bass\n\n**Sound Goal:** Big, wide, modern trap bass\n\n**Settings:**\n- Oscillators: 3 saws, detune spread 15\n- Pre-filter gain: -4 dB each\n- Filter 1: Low-pass 38%, Resonance 35%\n- Filter 2: Low-pass 45%, Resonance 25%\n- Routing: Serial\n- Envelope 1: Filter 1 cutoff, fast attack, medium decay, high sustain\n- Envelope 2: Pitch, slight modulation for movement\n- Chorus: ON, depth 60%\n\n**Creation Steps:**\n1. Stack 3 oscs with wide detune\n2. Serial filters create dark, rich character\n3. Envelope on F1 for punchy attacks\n4. Chorus for width (trap needs space)\n\n**A/B Test:**\n1. Compare serial vs parallel routing\n2. Parallel should feel wider, serial darker\n3. Choose based on song mood\n\n**Quick Fix Path:**\n- If muddy → Close F1 to 35%\n- If thin → More detune on oscs\n- If not wide enough → Increase chorus\n\n### XT R&B Smooth Pad\n\n**Sound Goal:** Warm, lush, soulful background\n\n**Settings:**\n- Oscillators: 2 saws, detune 5\n- Pre-filter gain: -3 dB each\n- Filter 1: Low-pass 52%, Resonance 20%\n- Filter 2: Low-pass 60%, Resonance 15%\n- Routing: Parallel\n- Envelope 1: Filter 2 cutoff, slow attack, long release\n- LFO: To F2 cutoff, very slow (0.05Hz), subtle depth\n- Chorus: ON, depth 55%\n\n**Why Parallel?**\n- Parallel routing preserves low-end warmth\n- Two filters create dimensional sound\n- Perfect for R&B \"wall of sound\" aesthetic\n\n### XT Deep Bass Wobble\n\n**Sound Goal:** Rhythmic, funky bass movement\n\n**Settings:**\n- Oscillators: 2 saws, detune 8\n- Pre-filter gain: -3 dB each\n- Filter 1: Low-pass 32%, Resonance 50%\n- Filter 2: Low-pass 40%, Resonance 40%\n- Routing: Serial (for tight response)\n- Envelope 1: Filter 1 cutoff with pitch bend\n- LFO: To filter cutoff, synced to 1/8 notes\n- Chorus: OFF (wobble doesn't need chorus)\n\n**Synced LFO Settings:**\n\n| Rhythm | FL Studio Setting | Result |\n|--------|------------------|--------|\n| Quarter notes | 1/4 note | Slow wobble |\n| Eighth notes | 1/8 note | Standard wobble |\n| Triplets | 1/8 triplet | Bouncy feel |\n| Sixteenth | 1/16 note | Fast wobble |\n\n### XT Electric Lead\n\n**Sound Goal:** Cutting, memorable hook\n\n**Settings:**\n- Oscillators: 2 saws, detune 12\n- Pre-filter gain: 0 dB each\n- Filter 1: Low-pass 62%, Resonance 32%\n- Filter 2: Band-pass, center frequency\n- Routing: Serial\n- Envelope 1: F1 cutoff, medium attack, fast decay\n- Envelope 2: Amp, punchy attack, sustain 70%\n- Chorus: ON, depth 45%\n\n**When to Use:**\n- Song hooks and melodies\n- Call-and-response sections\n- Emphasis on specific phrases\n- Not for sustained notes (too intense)\n\n### XT Complex Pad (Evolving)\n\n**Sound Goal:** Otherworldly, textural\n\n**Settings:**\n- Oscillators: 2 saws + 1 square, detune spread\n- Pre-filter gain: -6 dB each\n- Filter 1: Low-pass 48%, Resonance 25%\n- Filter 2: Low-pass 65%, Resonance 20%\n- Routing: Parallel\n- Envelope 1: F1 cutoff, slow attack (1s), long release\n- Envelope 2: F2 cutoff, random modulation\n- LFO: Stereo panning, very slow\n- Chorus: ON, depth 70%\n\n**Modulation Plan:**\n1. Envelope 1: Filter opens slowly over 3 seconds\n2. LFO: Filters move subtly out of sync\n3. Result: Ever-evolving texture\n\n### Quick Reference Table\n\n| Sound | OSCs | Detune | F1 | F2 | Route | Chorus | Character |\n|-------|------|--------|-----|-----|-------|--------|-----------|\n| Trap bass | 3 | 15 | 38% | 45% | Serial | ON | Big, dark |\n| R&B pad | 2 | 5 | 52% | 60% | Parallel | ON | Warm, lush |\n| Wobble | 2 | 8 | 32% | 40% | Serial | OFF | Rhythmic |\n| Lead | 2 | 12 | 62% | BP | Serial | ON | Cutting |\n| Texture | 3 | 10 | 48% | 65% | Parallel | ON | Evolving |\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Wasp Xt\r\n\r\nThis section contains workflow information for the wasp-xt plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Wasp Xt\r\n\r\nThis section contains reference information for the wasp-xt plugin.\r\n"
+    }
+  }
+}

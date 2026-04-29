@@ -1,0 +1,402 @@
+{
+  "description": "Sound design decision rules - symptom to solution mappings for GMS synthesis",
+  "usage": "Use these rules to diagnose and fix common synthesis problems",
+  "rules": [
+    {
+      "id": "sound-too-thin",
+      "symptom": "Sound is thin, weak, lacks body",
+      "priority": 1,
+      "solutions": [
+        {
+          "action": "Increase unisono voices",
+          "parameter": "unisono.voices",
+          "target": "4-8 voices",
+          "note": "More voices = thicker sound"
+        },
+        {
+          "action": "Add OSC 3 as sub layer",
+          "parameter": "mix.osc3",
+          "target": "50-70% with sine wave at -12 semitones",
+          "note": "Adds low-end foundation"
+        },
+        {
+          "action": "Enable OSC 2",
+          "parameter": "mix.osc2",
+          "target": "80-100%",
+          "note": "Adds harmonic complexity"
+        },
+        {
+          "action": "Increase detune",
+          "parameter": "unisono.detune",
+          "target": "40-60%",
+          "note": "Creates chorus effect"
+        }
+      ],
+      "category": "texture"
+    },
+    {
+      "id": "sound-too-muddy",
+      "symptom": "Sound is muddy, unclear, undefined",
+      "priority": 1,
+      "solutions": [
+        {
+          "action": "Reduce unisono voices",
+          "parameter": "unisono.voices",
+          "target": "1-3 voices",
+          "note": "Fewer voices = more focused"
+        },
+        {
+          "action": "Lower filter cutoff",
+          "parameter": "filter.cutoff",
+          "target": "60-75%",
+          "note": "Removes excess highs"
+        },
+        {
+          "action": "Reduce stereo spread",
+          "parameter": "unisono.stereo",
+          "target": "20-40%",
+          "note": "Tighter stereo image"
+        },
+        {
+          "action": "Enable HPF in FX rack",
+          "parameter": "fx.HPF.x",
+          "target": "15-25%",
+          "note": "Removes low-end mud"
+        }
+      ],
+      "category": "clarity"
+    },
+    {
+      "id": "bass-lacks-impact",
+      "symptom": "Bass sounds weak, no punch or sub presence",
+      "priority": 1,
+      "solutions": [
+        {
+          "action": "Use sine wave for bass",
+          "parameter": "oscillators.wave",
+          "target": "Sine or Triangle",
+          "note": "Clean fundamental for sub"
+        },
+        {
+          "action": "Set unisono to mono",
+          "parameter": "unisono",
+          "target": "1-2 voices, 0% stereo",
+          "note": "Mono bass is essential"
+        },
+        {
+          "action": "Add FM mode",
+          "parameter": "modulation",
+          "target": "2 to 1 FM, amount 30-50%",
+          "note": "Adds harmonic character"
+        },
+        {
+          "action": "Enable pitch envelope",
+          "parameter": "envelope1",
+          "target": "Dest: PITCH, amount -30 to -40%",
+          "note": "Creates pitch drop (808 style)"
+        }
+      ],
+      "category": "bass"
+    },
+    {
+      "id": "lead-not-cutting",
+      "symptom": "Lead doesn't cut through the mix",
+      "priority": 2,
+      "solutions": [
+        {
+          "action": "Use sawtooth wave",
+          "parameter": "oscillators.wave",
+          "target": "Sawtooth on all oscillators",
+          "note": "Maximum harmonic content"
+        },
+        {
+          "action": "Increase unisono",
+          "parameter": "unisono",
+          "target": "6-8 voices, 70% stereo",
+          "note": "Wider, thicker lead"
+        },
+        {
+          "action": "Add filter envelope",
+          "parameter": "envelope1",
+          "target": "Dest: CUTOFF, amount 30-50%",
+          "note": "Adds bite on attack"
+        },
+        {
+          "action": "Enable distortion",
+          "parameter": "fx.DIST",
+          "target": "X: 20-35%, Y: 70-80%",
+          "note": "Adds edge and presence"
+        },
+        {
+          "action": "Increase filter resonance",
+          "parameter": "filter.res",
+          "target": "20-30%",
+          "note": "Emphasizes cutoff frequency"
+        }
+      ],
+      "category": "leads"
+    },
+    {
+      "id": "sound-too-digital",
+      "symptom": "Sound is too sterile, digital, lacks character",
+      "priority": 2,
+      "solutions": [
+        {
+          "action": "Add subtle distortion",
+          "parameter": "fx.DIST",
+          "target": "X: 10-20%, Y: 75%",
+          "note": "Analog-style saturation"
+        },
+        {
+          "action": "Detune oscillators",
+          "parameter": "oscillators.fine",
+          "target": "±3 to ±8 cents",
+          "note": "Natural analog drift"
+        },
+        {
+          "action": "Enable bit crusher",
+          "parameter": "fx.CRSH",
+          "target": "X: 10-20%, Y: 60%",
+          "note": "Lo-fi warmth"
+        },
+        {
+          "action": "Add noise",
+          "parameter": "mix.noise",
+          "target": "5-15%",
+          "note": "Analog noise floor simulation"
+        }
+      ],
+      "category": "character"
+    },
+    {
+      "id": "fm-sound-too-harsh",
+      "symptom": "FM mode sounds too harsh or chaotic",
+      "priority": 1,
+      "solutions": [
+        {
+          "action": "Reduce FM amount",
+          "parameter": "modulation.amount",
+          "target": "30-50%",
+          "note": "Less modulation = cleaner"
+        },
+        {
+          "action": "Use sine waves only",
+          "parameter": "oscillators.wave",
+          "target": "Sine on OSC1 and OSC2",
+          "note": "Cleanest FM timbres"
+        },
+        {
+          "action": "Adjust FM ratio",
+          "parameter": "osc2.pitch",
+          "target": "+12 or +24 semitones",
+          "note": "2:1 or 4:1 ratio for consonance"
+        },
+        {
+          "action": "Add low-pass filter",
+          "parameter": "filter",
+          "target": "LP type, 60-70% cutoff",
+          "note": "Tames harsh harmonics"
+        }
+      ],
+      "category": "fm"
+    },
+    {
+      "id": "pad-too-static",
+      "symptom": "Pad sounds lifeless, boring, no movement",
+      "priority": 2,
+      "solutions": [
+        {
+          "action": "Add filter LFO",
+          "parameter": "lfo1",
+          "target": "Dest: CUTOFF, amount 15-25%",
+          "note": "Gentle filter movement"
+        },
+        {
+          "action": "Increase unisono detune",
+          "parameter": "unisono.detune",
+          "target": "60-75%",
+          "note": "More chorusing effect"
+        },
+        {
+          "action": "Enable phaser",
+          "parameter": "fx.PHSR",
+          "target": "X: 30-40%, Y: 25%",
+          "note": "Subtle phase movement"
+        },
+        {
+          "action": "Add slow pan LFO",
+          "parameter": "lfo2",
+          "target": "Dest: PAN, rate 8-12%",
+          "note": "Stereo movement"
+        },
+        {
+          "action": "Long attack time",
+          "parameter": "levelEg.attack",
+          "target": "40-60%",
+          "note": "Slow fade in"
+        }
+      ],
+      "category": "movement"
+    },
+    {
+      "id": "pluck-too-long",
+      "symptom": "Pluck sound has too much sustain, not percussive",
+      "priority": 1,
+      "solutions": [
+        {
+          "action": "Shorten decay",
+          "parameter": "levelEg.decay",
+          "target": "15-30%",
+          "note": "Faster envelope"
+        },
+        {
+          "action": "Lower sustain",
+          "parameter": "levelEg.sustain",
+          "target": "10-30%",
+          "note": "Less hold level"
+        },
+        {
+          "action": "Add filter envelope",
+          "parameter": "envelope1",
+          "target": "Dest: CUTOFF, fast decay",
+          "note": "Closing filter creates pluck"
+        },
+        {
+          "action": "Reduce release",
+          "parameter": "levelEg.release",
+          "target": "15-25%",
+          "note": "Tighter cutoff"
+        }
+      ],
+      "category": "envelope"
+    },
+    {
+      "id": "sound-phaesy",
+      "symptom": "Sound loses power in mono, phase cancellation",
+      "priority": 1,
+      "solutions": [
+        {
+          "action": "Reduce stereo spread",
+          "parameter": "unisono.stereo",
+          "target": "20-40%",
+          "note": "Less extreme width"
+        },
+        {
+          "action": "Lower unisono voices",
+          "parameter": "unisono.voices",
+          "target": "3-5 voices",
+          "note": "Fewer phase interactions"
+        },
+        {
+          "action": "Check mono compatibility",
+          "parameter": null,
+          "target": "Use FL Studio mono button",
+          "note": "Always test in mono"
+        },
+        {
+          "action": "For bass: mono only",
+          "parameter": "unisono",
+          "target": "1-2 voices, 0% stereo",
+          "note": "Essential for sub frequencies"
+        }
+      ],
+      "category": "phase"
+    },
+    {
+      "id": "wobble-irregular",
+      "symptom": "Wobble bass not rhythmic or irregular",
+      "priority": 2,
+      "solutions": [
+        {
+          "action": "Sync LFO to beat",
+          "parameter": "lfo1.sync",
+          "target": "Beat",
+          "note": "Locks to tempo"
+        },
+        {
+          "action": "Use triangle or sine",
+          "parameter": "lfo1.shape",
+          "target": "Triangle or Sine",
+          "note": "Smooth wobble motion"
+        },
+        {
+          "action": "Set appropriate rate",
+          "parameter": "lfo1.rate",
+          "target": "50-70% for 1/4 or 1/8 notes",
+          "note": "Musical subdivision"
+        },
+        {
+          "action": "Enable LFO retrigger",
+          "parameter": "lfo1.retrig",
+          "target": "On",
+          "note": "Consistent wobble start"
+        }
+      ],
+      "category": "lfo"
+    },
+    {
+      "id": "effects-too-wet",
+      "symptom": "FX are overwhelming the sound, too much effect",
+      "priority": 2,
+      "solutions": [
+        {
+          "action": "Reduce reverb",
+          "parameter": "fx.RVRB.y",
+          "target": "20-35%",
+          "note": "Less wet signal"
+        },
+        {
+          "action": "Lower echo feedback",
+          "parameter": "fx.ECHO.x",
+          "target": "20-35%",
+          "note": "Fewer echoes"
+        },
+        {
+          "action": "Use HPF before reverb",
+          "parameter": "fx.HPF.x",
+          "target": "20-30%",
+          "note": "Cleaner reverb input"
+        },
+        {
+          "action": "Disable unnecessary FX",
+          "parameter": "fx.enabled",
+          "target": "2-3 FX max",
+          "note": "Less is more"
+        }
+      ],
+      "category": "effects"
+    },
+    {
+      "id": "cpu-overload",
+      "symptom": "GMS causing CPU spikes or audio dropouts",
+      "priority": 1,
+      "solutions": [
+        {
+          "action": "Reduce unisono voices",
+          "parameter": "unisono.voices",
+          "target": "4 or fewer",
+          "note": "Biggest CPU saver"
+        },
+        {
+          "action": "Limit active FX",
+          "parameter": "fx.enabled",
+          "target": "2-3 modules",
+          "note": "Each FX uses CPU"
+        },
+        {
+          "action": "Freeze the channel",
+          "parameter": null,
+          "target": "Alt+F or Channel Settings > Freeze",
+          "note": "Render to audio, zero CPU"
+        },
+        {
+          "action": "Simplify oscillators",
+          "parameter": "oscillators.wave",
+          "target": "Use sine/triangle vs complex waves",
+          "note": "Simpler waves use less CPU"
+        }
+      ],
+      "category": "performance"
+    }
+  ]
+}

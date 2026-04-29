@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "plugin": "Kepler",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "presetName": "Mid-Range Growler",
+    "category": "genre",
+    "genre": "hip-hop/rap",
+    "mood": "aggressive"
+  },
+  "settings": {
+    "oscillator1": {
+      "waveform": "saw",
+      "octave": "0",
+      "detune": 0,
+      "mix": 100
+    },
+    "oscillator2": {
+      "waveform": "square",
+      "octave": "-1",
+      "detune": 5,
+      "mix": 70
+    },
+    "filter": {
+      "type": "lowpass",
+      "cutoff": 650,
+      "resonance": 40,
+      "drive": 25,
+      "envAmt": 90,
+      "envVel": 50
+    },
+    "envelope": {
+      "attack": 2,
+      "decay": 150,
+      "sustain": 50,
+      "release": 100
+    },
+    "lfo": {
+      "waveform": "square",
+      "rate": 2,
+      "amt": 30,
+      "dest": "filterCutoff"
+    }
+  },
+  "chain": {
+    "pre": ["Fruily Parametric EQ 2 - Bell +4dB at 400Hz"],
+    "post": ["Fruily Compressor - Attack 10ms, Release 80ms, Ratio 3:1"]
+  },
+  "genreTags": ["hip-hop/rap", "aggressive", "hard"],
+  "a/bTesting": {
+    "testA": "LFO rate at 2Hz for rhythmic pulsing",
+    "testB": "LFO off for static tone"
+  },
+  "troubleshooting": {
+    "harshness": "High-shelf cut above 4kHz by 3dB",
+    "weakImpact": "Increase filter drive to 35%"
+  }
+}

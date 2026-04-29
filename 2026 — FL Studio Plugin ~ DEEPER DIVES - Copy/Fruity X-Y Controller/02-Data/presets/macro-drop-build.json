@@ -1,0 +1,95 @@
+{
+  "schema": "x-y-controller-preset-v1",
+  "name": "Drop Build Macro",
+  "type": "macro-template",
+  "description": "Multi-parameter intensity builder - one gesture controls 6+ parameters simultaneously",
+  "author": "DEEPER DIVES",
+  "source": "IL-MAN",
+  "tags": ["macro", "build", "drop", "multi-parameter", "performance"],
+  "hipHopCategory": "Performance Control",
+  "settings": {
+    "mode": "absolute",
+    "hold": false,
+    "smoothing": 5,
+    "xMin": 0,
+    "xMax": 100,
+    "yMin": 0,
+    "yMax": 100,
+    "xMap": {
+      "type": "linear",
+      "description": "Even distribution across X parameters"
+    },
+    "yMap": {
+      "type": "exponential",
+      "description": "Y parameters kick in later in gesture"
+    }
+  },
+  "mappings": [
+    {
+      "output": "X",
+      "target": "Filter Cutoff",
+      "targetMin": "200Hz",
+      "targetMax": "20kHz",
+      "curve": "linear",
+      "description": "Opens up frequency spectrum"
+    },
+    {
+      "output": "X",
+      "target": "Reverb Send",
+      "targetMin": "0%",
+      "targetMax": "70%",
+      "curve": "exponential",
+      "description": "Increases space wash (kicks in late)"
+    },
+    {
+      "output": "X",
+      "target": "Stereo Width",
+      "targetMin": "80%",
+      "targetMax": "150%",
+      "curve": "linear",
+      "description": "Widens stereo field"
+    },
+    {
+      "output": "Y",
+      "target": "Saturation Drive",
+      "targetMin": "0%",
+      "targetMax": "40%",
+      "curve": "exponential",
+      "description": "Adds harmonic excitement (late kick)"
+    },
+    {
+      "output": "Y",
+      "target": "Compression Ratio",
+      "targetMin": "2:1",
+      "targetMax": "8:1",
+      "curve": "linear",
+      "description": "Increases punch and glue"
+    },
+    {
+      "output": "Y",
+      "target": "Delay Feedback",
+      "targetMin": "10%",
+      "targetMax": "60%",
+      "curve": "exponential",
+      "description": "More echo intensity"
+    }
+  ],
+  "gestureGuide": {
+    "defaultPosition": {"x": 0, "y": 0},
+    "buildGesture": "Spiral from center outward over 8-16 bars",
+    "sweepGesture": "Diagonal from bottom-left to top-right",
+    "peakGesture": "Hold top-right corner at drop moment"
+  },
+  "hipHopUsage": {
+    "primaryUse": "Maximum impact pre-drop builds",
+    "secondaryUses": ["Full mix builds", "Chorus intensification", "Breakdown-to-drop transitions"],
+    "genreFit": ["Trap", "EDM Trap", "Pop-Hip-Hop", "R&B"],
+    "vibeTarget": "BOUNCE",
+    "bestFor": "Creating massive energy before impact"
+  },
+  "performanceNotes": {
+    "recording": "Record multiple takes, pick most natural spiral",
+    "practice": "Practice spiral motion with accelerating speed",
+    "hybrid": "Live capture + playlist quantization for precision"
+  }
+}

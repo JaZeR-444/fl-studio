@@ -1,0 +1,186 @@
+{
+  "id": "fruity-chorus",
+  "name": "Fruity Chorus",
+  "category": "Modulation",
+  "tier": "Free",
+  "type": "Modulation",
+  "description": "Fruity Chorus - Modulation",
+  "tags": [
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "modulation",
+    "fx",
+    "audio"
+  ],
+  "icon": "/plugins/fruity-chorus-icon.svg",
+  "color": "#A855F7",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-chorus",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "pluginName": "Fruity Chorus",
+    "category": "Modulation",
+    "parameters": [
+      {
+        "section": "Delay Line",
+        "id": "delay",
+        "name": "Base Delay",
+        "range": {
+          "min": 0,
+          "max": 30,
+          "unit": "ms"
+        },
+        "description": "Offset between Dry and Wet."
+      },
+      {
+        "section": "Delay Line",
+        "id": "depth",
+        "name": "Mod Depth",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "Amount of LFO modulation applied to delay time."
+      },
+      {
+        "section": "Stereo",
+        "id": "stereo_phase",
+        "name": "Stereo Spread",
+        "range": {
+          "min": 0,
+          "max": 360,
+          "unit": "Deg"
+        },
+        "description": "LFO Phase offset between Left and Right channels."
+      },
+      {
+        "section": "LFO",
+        "id": "lfo_freq_1",
+        "name": "LFO 1 Rate",
+        "range": {
+          "min": 0,
+          "max": 10,
+          "unit": "Hz"
+        },
+        "description": "Speed of Oscillator 1."
+      },
+      {
+        "section": "Filter",
+        "id": "cross_type",
+        "name": "Crossover Mode",
+        "options": [
+          "Process HP",
+          "Process LP"
+        ],
+        "description": "Determines which band gets chorused."
+      },
+      {
+        "section": "Filter",
+        "id": "cross_cutoff",
+        "name": "Cutoff Freq",
+        "range": {
+          "min": 10,
+          "max": 20000,
+          "unit": "Hz"
+        },
+        "description": "Split point for the crossover."
+      }
+    ]
+  },
+  "presets": {
+    "detuned-unison": {
+      "presetName": "Detuned Unison",
+      "plugin": "Fruity Chorus",
+      "description": "Mimics the sound of multiple voices slightly out of tune.",
+      "settings": {
+        "delay": 25,
+        "depth": 15,
+        "rate": 1.5,
+        "stereo": 1,
+        "cross": 0.2
+      },
+      "usage": "Use on lead synths to make them sound thicker and more organic."
+    },
+    "slow-shimmer": {
+      "presetName": "Slow Shimmer",
+      "plugin": "Fruity Chorus",
+      "description": "A very slow, subtle movement for clean sounds.",
+      "settings": {
+        "delay": 15,
+        "depth": 5,
+        "rate": 0.2,
+        "stereo": 0.8,
+        "cross": 0.5
+      },
+      "usage": "Perfect for electric pianos, clean guitars, or atmospheric pads."
+    },
+    "vintage-vibrato": {
+      "presetName": "Vintage Vibrato",
+      "plugin": "Fruity Chorus",
+      "description": "Focuses on the pitch modulation rather than the stereo spread.",
+      "settings": {
+        "delay": 5,
+        "depth": 20,
+        "rate": 5,
+        "stereo": 0,
+        "cross": 0
+      },
+      "usage": "Creative effect for lo-fi beats or psychedelic guitars."
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity Chorus\n\n## Purpose & Identity\nFruity Chorus is a classic modulation effect designed to add **thickness, width, and shimmering movement** to a sound. It works by creating multiple copies of the original signal, slightly delaying them, and oscillating their pitch. This simulates the natural variations heard when multiple people sing the same part (a choir). [SRC: IL-MAN]\n\n## 60-Second Mental Model\nImagine a singer. Now imagine two \"ghost\" versions of that singer standing slightly to the left and right. These ghosts are singing slightly out of tune and their timing is constantly drifting. The result is a sound that feels \"lush\" and \"wide\" rather than thin and centered.\n\n## Hip-Hop / R&B Context\nIn urban production, chorus provides the \"expensive\" polish.\n- **R&B Backing Vocals:** Widening \"halos\" of vocals to wrap around the lead.\n- **Synth Pad \"Glue\":** Making digital synth chords feel more analog and \"warm.\"\n- **Stereo 808s:** Using the **Cross Cutoff** to add width to the top-end of a bass while keeping the sub-bass solid and mono.\n\n## When To Use\n- When a sound feels **too \"digital\" or static** and needs life.\n- When you want to **widen a mono sound** without using a delay.\n- When you need a **Vibrato** effect (by setting the mix to 100% wet).\n\n## When NOT To Use\n- **Lead Vocals (Aggressive Rap):** Chorus can make a rap vocal sound \"washy\" or \"soft.\" Use it sparingly or only on specific ad-libs.\n- **Sub-Bass (Unfiltered):** Never apply full-spectrum chorus to a sub-bass; it will cause phase cancellation and kill the \"thump\" in club systems. [SRC: REPUTABLE]\n",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Fruity Chorus\n\n## UI Tour\nFruity Chorus uses a straightforward modular layout:\n\n1.  **Delay Slider:** Sets the base time offset for the chorus voices (approx. 2ms to 30ms).\n2.  **Depth Slider:** Controls how much the pitch wobbles (Detuning intensity).\n3.  **Stereo Slider:** Controls the LFO phase offset between ears (Widening control). [SRC: IL-MAN]\n4.  **LFO Section:** \n    - **Speed:** The rate of the pitch oscillation.\n    - **Wave:** Switch between Sine (Smooth) or other shapes.\n5.  **Cross Section (The Filter):**\n    - **Type:** HP (High Pass) or LP (Low Pass).\n    - **Cutoff:** The frequency where the chorus effect starts or stops.\n\n## Functional Flow\n1.  **Input:** Audio enters the plugin.\n2.  **Crossover:** The signal is split by the **Cross Cutoff**. Only one half goes to the chorus engine (e.g., frequencies above 200Hz).\n3.  **Voice Generation:** Two or more delayed copies are created.\n4.  **Modulation:** The internal LFO moves the delay time of these copies, creating \"Detuning.\"\n5.  **Stereo Shifting:** The phase of the LFO is shifted for the left and right channels to create width.\n6.  **Mixing:** The processed signal is blended with the Dry signal.\n\n## Things Beginners Misunderstand\n- **Phase Cancellation:** If you turn \"Stereo\" to 100% and then play the track in Mono, the effect might disappear. **Fix:** Always check mono compatibility.\n- **Delay vs Echo:** The \"Delay\" slider isn't an echo. It’s a micro-delay. Lower settings sound like a flanger; higher settings sound like doubling. [SRC: REPUTABLE]\n- **The \"Bite\":** If the chorus sounds \"metallic,\" your delay is too short (<5ms). Increase the Delay slider for a \"lusher\" feel.\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques And Best Practices: Fruity Chorus\n\n## 1. The \"Clean Bass\" Width\n- **Technique:** Place Fruity Chorus on an 808 or synth bass.\n- **Execution:** Set **Cross Type** to **HP**. Set **Cutoff** to 200Hz.\n- **Result:** The sub-bass stays mono and powerful, but the mid-range \"grit\" of the bass gets wide and shimmering. This is essential for modern trap production. [SRC: REPUTABLE]\n\n## 2. Juno-Style Lush Pads\n- **Technique:** Use a slow LFO speed (approx. 0.5Hz) and high Stereo width.\n- **Execution:** Set **Delay** to 15ms. Set **Depth** to 30%.\n- **Result:** Mimics the classic analog choruses found on vintage Roland synthesizers. It adds a \"drifting\" quality that defines \"Vibey\" R&B.\n\n## 3. High-Speed \"Leslie\" Vibrato\n- **Technique:** Set the **Mix** to 100% Wet.\n- **Execution:** Set **LFO Speed** to 6Hz+. Set **Depth** to a low value.\n- **Result:** The sound doesn't \"Chorus\" (mix with itself); instead, the whole signal wobbles in pitch, creating a classic organ-style vibrato.\n\n## 4. Vocal Halo Widening\n- **Technique:** Use on a **Mixer Send** at 100% Wet.\n- **Execution:** Set **Stereo** to maximum. Set **Delay** to 25ms.\n- **Benefit:** You can EQ the chorus independently (e.g., cutting the mud) before blending it back into the main vocal. [SRC: REPUTABLE]\n\n## Common Pitfalls + Fixes\n- **Pitfall:** \"The mix sounds blurry/muddy.\"\n  - **Fix:** Use the **Cross Cutoff** to keep the low-mids clean. Or, lower the **Wet** mix to 20%.\n- **Pitfall:** \"It sounds like a robot.\"\n  - **Fix:** Your **Delay** is too short. Move the Delay slider to at least 10ms to move from \"Flanger\" territory into \"Chorus\" territory.\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity Chorus\n\nChorus translates vibes through **spectral density** and **pitch instability**.\n\n## 1. Moody (Heavy, Dark, Thick)\n- **Concept:** A slow, \"brooding\" thickness.\n- **Levers:**\n  - **Delay:** High (20ms+).\n  - **LFO Speed:** Very slow (0.1 - 0.3Hz).\n  - **Damping:** Use an EQ *after* the chorus to cut highs.\n- **Listen For:** A sound that feels like it’s moving through molasses.\n- **Don't Do This:** Avoid fast LFOs; keep the movement \"sluggish.\"\n\n## 2. Upbeat (Shimmering, Pop, Energetic)\n- **Concept:** High-frequency \"sparkle.\"\n- **Levers:**\n  - **LFO Speed:** Fast (1.5Hz+).\n  - **Depth:** Low (to prevent pitch drift).\n  - **Stereo:** 100% Wide.\n- **Listen For:** A \"jittery\" shimmering energy that makes synths feel \"hyped.\"\n- **Don't Do This:** Don't use heavy low-pass filtering; let the \"shine\" through.\n\n## 3. Psychedelic (Liquid, Melted, Unstable)\n- **Concept:** Spatial disorientation.\n- **Levers:**\n  - **Depth:** High (50%+).\n  - **LFO Shape:** Try Sawtooth if available.\n  - **Stereo Phase:** 100%.\n- **Listen For:** A \"seasick\" pitch wobble that makes the listener feel like the sound is melting.\n- **Don't Do This:** Don't keep the mix low; psychedelic vibes require the effect to be prominent.\n\n## 4. Jazzy (Warm, Organic, Subtle)\n- **Concept:** Studio \"Air\" and Doubling.\n- **Levers:**\n  - **Delay:** 10ms.\n  - **Mix:** Very low (10-15%).\n  - **Cross Cutoff:** HP @ 400Hz.\n- **Listen For:** A subtle \"rounding\" of the edges that makes digital guitars sound like they were recorded in a real room.\n- **Don't Do This:** Avoid \"mechanical\" 100% width; keep it natural.\n\n## 5. Vibey (Lush, Professional, Expensive)\n- **Concept:** The \"Cloud\" vocal halo.\n- **Levers:**\n  - **Stereo:** 100%.\n  - **Delay:** 15ms.\n  - **LFO:** Medium speed (0.8Hz).\n- **Listen For:** A shimmering, wide background that fills the stereo edges without touching the lead vocal. [SRC: REPUTABLE]\n- **Don't Do This:** Don't clutter the center; ensure the lead vocal stays dry and clear.\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Chorus\r\n\r\n## What It Is\r\nFruity Chorus is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Fruity Chorus\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: Fruity Chorus (5 Minutes)\n\n1.  **Insert:** Load **Fruity Chorus** onto a synth or vocal track.\n2.  **Width:** Turn the **Stereo** slider to `100%`.\n3.  **Lushness:** Set the **Delay** slider to `15ms`.\n4.  **Wobble:** Turn up the **Depth** until you hear the pitch start to drift.\n5.  **Clean:** (If on Bass) Set **Cross Type** to `HP` and move the **Cutoff** to `200Hz`.\n6.  **Mix:** Adjust the **Mix** level until the effect is \"felt but not overwhelming.\" [SRC: IL-MAN]\n",
+      "01_Common_Mistakes": "# Common Mistakes: Fruity Chorus\n\n- **Muddy Low End:** Chorusing the sub-frequencies of a kick or 808. This causes massive phase issues. **Fix:** Always use the **Cross Cutoff** (HP) to keep frequencies below 200Hz mono.\n- **Seasick Melodies:** Using too much **Depth** on a sound that already has its own vibrato. This makes the instrument sound out of tune with the song. **Fix:** Keep Depth below 20% for melodic instruments.\n- **Flanger Confusion:** Using a very short **Delay** (<5ms) and wondering why it sounds metallic. **Fix:** Increase the Delay to 10-20ms for a true \"Chorus\" sound.\n- **Mono Disappearance:** Maxing the **Stereo** slider and not checking Mono compatibility. The sound might completely cancel out. **Fix:** Switch the Master to Mono frequently while tweaking.\n- **Ignoring Slot Order:** Placing Chorus *after* a long Reverb. This makes the reverb tail sound shaky and unstable. **Fix:** Place Chorus **BEFORE** Reverb. [SRC: REPUTABLE]\n",
+      "02_Best_Settings_Starting_Points": "# Best Settings Starting Points: Fruity Chorus\n\n| Goal | Delay | Depth | Stereo | LFO Rate | Use Case |\n| :--- | :--- | :--- | :--- | :--- | :--- |\n| **Vocal Halo** | 20ms | 10% | 100% | 0.5 Hz | R&B Backing Vocals. |\n| **Trap 808 Width**| 12ms | 15% | 60% | 1.2 Hz | Mid-range grit width. |\n| **Juno Lead** | 8ms | 25% | 80% | 3.0 Hz | 80s Synth strings. |\n| **Soul Guitar** | 15ms | 5% | 40% | 0.8 Hz | Subtle clean guitar. |\n| **Pitch Vibrato** | 2ms | 40% | 0% | 6.5 Hz | Lo-fi tape wobble. |\n\n*Note: For 808s, always set Cross Cutoff to HP @ 250Hz.* [SRC: IL-MAN]\n",
+      "03_Vibe_Starting_Points_Moody": "# Vibe Starting Points: Moody (Fruity Chorus)\n\n- **The Goal:** A thick, heavy, and slightly \"unstable\" atmosphere.\n- **Recipe:**\n  1. Load Chorus on a dark atmospheric pad.\n  2. Set **Delay** to **25ms** (Creates a very thick stack).\n  3. Set **LFO Speed** to **0.2 Hz** (Exceedingly slow).\n  4. Set **Depth** to **30%** (Noticeable pitch drift).\n  5. Set **Mix** to **20%** wet.\n- **Result:** The sound feels like it’s constantly expanding and contracting. It adds a \"drifting\" quality that feels lonely and nocturnal.\n- **Mix Tip:** Place a **Fruity Fast LP** *after* the chorus to muffle the high-end shimmer, making it even moodier. [SRC: REPUTABLE]\n",
+      "04_Vibe_Starting_Points_Upbeat_Psychedelic_Jazzy_Vibey": "# Vibe Starting Points: Upbeat, Psychedelic, Jazzy, Vibey\n\n## Upbeat (The \"Mainstream Pop\" Shine)\n- **Settings:** Delay 8ms, Speed 2.5Hz, Depth 15%.\n- **Effect:** Adds a fast, \"jittery\" shimmer that makes the synth feel more energetic.\n\n## Psychedelic (The \"Liquid Melt\")\n- **Settings:** Depth 60%, Speed 1.0Hz, 100% Wet.\n- **Effect:** The entire sound wobbles wildly, creating a \"seasick\" trippy texture.\n\n## Jazzy (The \"Studio Double\")\n- **Settings:** Delay 12ms, Depth 5%, Stereo 30%.\n- **Context:** Gives a mono guitar or keys a \"recorded with two mics\" feel without sounding synthesized.\n\n## Vibey (The \"Expensive Halo\")\n- **Settings:** Delay 18ms, Speed 0.8Hz, Stereo 100%, HP @ 500Hz.\n- **Context:** The classic R&B backing vocal width. High-passed so it doesn't clutter the lead. [SRC: REPUTABLE]\n",
+      "cheat-sheet": "# Fruity Chorus: The Classic Widener\r\n\r\n> **Scope:** Modulation, Stereo Width, and Detuning.\r\n> **Source:** Image-Line Official Manual (v21.2) + Direct Analysis.\r\n> **Complexity:** Low (Legacy).\r\n\r\n## 🧠 The \"Multi-Voice\" Concept\r\nFruity Chorus is deeper than it looks. It uses **3 Independent LFOs** to modulate the delay lines.\r\n*   **Standard Chorus:** Usually has 1 LFO.\r\n*   **Fruity Chorus:** Has 3. This allows for complex, swirling textures that don't just sound like a simple sine wave wobble.\r\n*   **Algorithm:** It detunes delayed copies of the incoming signal.\r\n\r\n**Signal Flow:**\r\n`Input` -> **[CROSSOVER SPLIT]** -> **[DELAY LINE (Modulated by 3 LFOs)]** -> **[STEREO SPREAD]** -> **[MIX]** -> **[OUTPUT]**\r\n\r\n---\r\n\r\n## 🎛️ Section 1: The LFO Engine\r\n\r\nMost people ignore the bottom section.\r\n*   **LFO 1 / 2 / 3:** You can stack them.\r\n*   **Frequencies:** Set them to different rates (prime numbers are good, e.g., 0.3Hz, 0.7Hz, 1.1Hz) to avoid rhythmic looping patterns.\r\n*   **Waveform:**\r\n    *   *Sine:* Smooth.\r\n    *   *Multi-Sine:* A Sine mixed with a 3x faster Sine (Harmonic LFO). This creates a \"shimmering\" vibration.\r\n\r\n---\r\n\r\n## 🔁 Section 2: Stereo & Delay Physics\r\n\r\n*   **Delay:** The gap between the Dry signal and the Wet copy.\r\n    *   *Low (<10ms):* Flanger territory (Metallic).\r\n    *   *Medium (15-20ms):* Thick Chorus.\r\n    *   *High (>25ms):* Doubling / Slapback echo.\r\n*   **Stereo (Phase):**\r\n    *   *0 Degrees:* L and R modulate together (Mono compatible).\r\n    *   *180 Degrees:* L goes Up when R goes Down. Maximum width, but disappears in Mono.\r\n    *   *Golden Rule:* Set to **10-45 Degrees** for width that doesn't ruin mono compatibility.\r\n\r\n---\r\n\r\n## ⚡ Technical Specs: The Crossover (Bass Safe)\r\n\r\nFruity Chorus is \"Basement Approved\".\r\n*   **Cross Type:**\r\n    *   *Process HP:* Adds chorus ONLY to high frequencies. **Essential for Bass**.\r\n    *   *Process LP:* Adds chorus ONLY to low frequencies. (Weird, creates muddy rumble).\r\n*   **Cross Cutoff:** Sets the split point.\r\n    *   *Usage:* Set to 300Hz in \"HP\" mode to keep your Sub Bass mono and clean, while widening the mid-range growl.\r\n\r\n---\r\n\r\n## 🧪 \"Secret Sauce\" Workflows\r\n\r\n### 1. The \"Juno-60\" Emulator\r\n1.  **Delay:** 0.5ms (Very short).\r\n2.  **Depth:** High.\r\n3.  **LFO 1 only:** Sine, Slow rate.\r\n4.  **Stereo:** 0.\r\n5.  **Result:** The thick, BBD-style analog chorus found on vintage synths.\r\n\r\n### 2. Vocal Thickener (Invisible Chorus)\r\n1.  **Delay:** 10-15ms.\r\n2.  **Depth:** Very Low (Subtle movement).\r\n3.  **Stereo:** 90 degrees.\r\n4.  **LFOs:** Active all 3 at different slow speeds.\r\n5.  **Result:** The vocal sounds \"wider\" and \"larger\" without sounding like it has an obvious modulation effect on it.\r\n\r\n### 3. Hyper-Stereo Bass\r\n1.  **Cross Type:** Process HP.\r\n2.  **Cutoff:** 400Hz.\r\n3.  **Stereo:** 180 (Max).\r\n4.  **Result:** The sub stays dead center (punchy), but the upper harmonics wrap around the listener's head.\r\n",
+      "chorus-depth-guide": "# Fruity Chorus - Parameter Cheat Sheet\n\n**Plugin Type:** Multi-Voice Chorus\n**Category:** Time-Based Effects / Modulation\n**Official Manual:** [Fruity Chorus](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Chorus.htm)\n\n---\n\n## 🎚️ Modulation Parameters\n\n| Parameter | Range | Function | Quick Tip |\n|-----------|-------|----------|-----------|\n| **Delay** | 0.1 - 50ms | Base delay of the chorus voices | Lower = Metallic/Phaser; Higher = Lush/Deep |\n| **Depth** | 0 - 100% | Amount of pitch modulation | Higher = more \"wobble\" and movement |\n| **Rate** | 0 - 10Hz | Speed of the LFO modulation | Slow (0.2Hz) for pads; Fast (2Hz+) for vibrato |\n| **Stereo Cross** | 0 - 100% | L/R LFO phase offset | 100% creates the widest possible stereo image |\n| **Wet** | 0 - 100% | Level of the effected signal | 50% is the classic \"sweet spot\" |\n\n---\n\n## 🎛️ Why Use Fruity Chorus?\n\n| Problem | Fruity Chorus Solution |\n|---------|------------------------|\n| **Thin Vocals** | Adds a \"doubling\" effect that makes a single voice sound like a group. |\n| **Static Pads** | Adds movement and life to sustained notes. |\n| **Mono Lead Synths**| Quickly creates a wide stereo image from a mono source. |\n\n---\n\n## 🔧 Technical Engine Data\n\n- **Type:** Delay-based pitch modulation (LFO)\n- **Voice Count:** 4 independent delay lines (2 per channel)\n- **LFO Shape:** Sine Wave\n- **Latency:** 0 samples\n- **CPU:** Extremely Light\n\n---\n\n## 🎯 Quick Start Workflows\n\n### The \"80s Pop\" Vocal\n1. **Delay:** 15ms\n2. **Depth:** 30%\n3. **Rate:** 0.5Hz\n4. **Stereo Cross:** 100%\n5. **Wet:** 35%\n6. **Action:** Adds subtle thickness and width without overwhelming the dry vocal.\n\n### The \"Underwater\" Vibe\n1. **Delay:** 40ms\n2. **Depth:** 80% (Extreme)\n3. **Rate:** 1.5Hz\n4. **Stereo Cross:** 50%\n5. **Wet:** 100% (Full effect)\n6. **Action:** Creates a wobbly, pitch-drifting sound perfect for lo-fi interludes.\n\n---\n\n## ⚡ Pro Tips\n\n1. **The Flanger Trick:** Set **Delay** to its minimum (0.1ms). This creates a very short delay that interacts with the original signal to create a subtle flanging or \"metallic\" ring.\n2. **Low-End Caution:** Using chorus on bass can cause phase cancellation in the sub-frequencies. Use a **Frequency Splitter** to only chorus the mids/highs of your bass.\n3. **Patcher Multi-Chorus:** In Patcher, you can stack three Fruity Choruses with different rates (Slow, Medium, Fast) to create a massive \"ensemble\" effect similar to classic analog gear.\n\n---\n\n**Last Updated:** February 3, 2026\n**Status:** ⭐ HIGH PRIORITY - Elaborated Reference",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Chorus\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Chorus to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Chorus\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Chorus\r\n\r\nThis section contains learning information for the fruity-chorus plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "01_Goal_Shaping_And_Control": "# Goal: Clean Bass Width (Fruity Chorus)\n\n## Routing Context\n- **Target:** Synthesized 808 or Sub-Bass.\n- **Position:** Insert FX (Before Limiter).\n\n## Step-by-Step Setup\n1.  Load **Fruity Chorus** onto the Bass track.\n2.  **The Safety:** Set **Cross Type** to `HP`.\n3.  **The Filter:** Move the **Cutoff** knob to approx. `200Hz` (9 o'clock).\n4.  **The Width:** Set **Stereo** to `60%`.\n5.  **The Shimmer:** Set **Delay** to `12ms` and **Depth** to `10%`.\n6.  **Tweak:** Adjust **LFO Freq** until you hear a nice shimmering movement in the high-mids of the bass.\n\n## What To Listen For\n- Switch the Master to **Mono**. The sub-bass should stay loud and centered.\n- Switch back to **Stereo**. The top-end \"grit\" of the bass should feel wide and immersive.\n\n## Vibe Check\n- **Upbeat/Aggressive:** Common in modern club tracks where the 808 needs to sound \"huge\" but stay club-ready.\n\n## Pitfalls + Fixes\n- **Pitfall:** \"The sub-bass sounds weak.\"\n  - **Fix:** Your **Cross Cutoff** is too low. Move it up to `300Hz` to ensure the sub-fundamental is completely untouched by the chorus. [SRC: REPUTABLE]\n",
+      "03_Goal_Creative_Effect": "# Goal: Juno-Style Lush Pads (Fruity Chorus)\n\n## Step-by-Step Setup\n1.  Load a bright Sawtooth Pad (e.g., from 3x Osc).\n2.  Add **Fruity Chorus**.\n3.  Set **LFO Wave** to `Sine`.\n4.  Set **LFO Freq** to `0.4 Hz` (Slow).\n5.  Set **Depth** to `25%`.\n6.  Set **Stereo** to `100%`.\n7.  Set **Delay** to `18ms`.\n8.  **Result:** The sound will \"drift\" like an old analog synth. The wide stereo field makes the chords feel lush and cinematic.\n\n## Vibe Check\n- **Vibey/Moody:** This is the foundational sound of early 2000s R&B and modern \"Cloud Rap.\"\n\n## Variation\n- **Static Width:** Turn the **LFO Depth** to 0 but keep **Stereo** at 100%. This adds width without the pitch wobble.\n\n## Pitfalls\n- **Detuning:** If you have multiple instruments with high chorus depth, they will clash and sound out of tune with each other. Keep depth minimal on busy arrangements. [SRC: REPUTABLE]\n",
+      "ensemble-vocal-layering": "# The \"Ensemble\" Vocal Workflow\n\n## Goal\nMake a single-track vocal recording sound like a group of background singers or a rich \"doubled\" vocal.\n\n## Steps\n1. **Insert Fruity Chorus**: Place it on your vocal track.\n2. **Set Delay**: Go for a medium setting around **20ms**.\n3. **The Lush LFO**:\n   - Set **Rate** to **0.4 Hz**. (Slow enough to be musical, fast enough to move).\n   - Set **Depth** to **40%**.\n4. **Stereo Width**: Crank **Stereo Cross** to **100%**. This ensures the \"extra singers\" appear in the far left and right of the stereo field.\n5. **Phase Invert (Optional)**: If the chorus sounds a bit \"hollow\", try toggling the phase inversion icon in the plugin wrapper to see if it glues better with the track.\n6. **The Mix**: Set **Wet** to **30-40%**. You want the dry vocal to remain dominant and centered, while the chorus provides the \"halo\" around it.\n7. **EQ (Post)**: Follow with a **Fruity Parametric EQ 2** and cut everything below **200Hz** from the chorus signal to prevent mud.\n\n## Result\nA wide, \"expensive\" sounding vocal that sits back in the mix while still feeling thick and present.\n",
+      "thickening-synth-pads": "# Thickening Synth Pads Workflow\n\n## Goal\nTransform a static, thin synthesizer pad into a wide, lush, and moving texture.\n\n## Steps\n1. **Insert Fruity Chorus**: Place it after any reverb or delay.\n2. **Set Delay**: Start at **~15ms**.\n3. **Slow the Rate**: Set **Rate** to **0.3 Hz**. Slow modulation is key for pads.\n4. **Increase Depth**: Raise **Depth** until you hear the sound start to \"shimmer\". Stop before it sounds out of tune.\n5. **Maximize Width**: Set **Stereo Cross** to **100%**.\n6. **Adjust Mix**: Set **Wet** to **40-60%**.\n\n## Pro Tip\nUse a **Fruity Peak Controller** to link the chorus **Rate** to the volume of the synth. This makes the chorus move faster as the synth gets louder, adding organic movement.\n"
+    },
+    "by-instrument": {
+      "guitars": "# Instrument: Guitars\n\nFruity Chorus is a classic pairing for both electric and acoustic guitars.\n\n## 80s Clean Tone\n- **Rate**: 0.5Hz - 1Hz.\n- **Depth**: High (40%).\n- **Stereo**: 100%.\n- **Result**: The iconic, shimmering clean sound found in New Wave and Pop.\n\n## Thickening High-Gain Guitars\n- Use a very fast **Rate** (4Hz) but a very low **Depth** (2-3%).\n- **Result**: Adds a sense of \"double-tracking\" without the phase issues of a longer delay.\n\n## Acoustic Widening\n- Use **Stereo** at 100% but keep the **Mix** (if available via Patcher) at 30%.\n- **Result**: Makes the acoustic guitar feel larger than life without sounding \"processed.\"\n",
+      "synth-bass": "# Instrument: Synth Bass\n\nUsing chorus to add character to bass without losing the low-end punch.\n\n## The 80s Synth Pop Bass\n- **Rate**: Slow (0.3Hz).\n- **Depth**: Moderate (20%).\n- **Stereo**: 50%.\n- **Action**: Use a high-pass filter before the chorus so you only modulate the mids and highs of the bass.\n- **Result**: A wide, moving bass that stays centered in the low end.\n\n## The \"Growl\" Bass\n- Use a high **Depth** and high **Rate** on a saw-wave bass.\n- **Result**: Creates a gritty, moving texture that works well in Techno or Industrial music.\n\n## Mono-Compatibility Warning\nChorus can create phase cancellation in the low end.\n- **Fix**: Always use Fruity Chorus on a parallel bus or use a plugin like Patcher to keep everything below 200Hz in mono.\n",
+      "vocals": "# Workflow: R&B Vocal Halo (Chorus)\n\n## The Concept\nUsing a parallel send to create a wide \"glow\" around a lead vocal.\n\n## Step-by-Step\n1.  Create a **Send Track** named \"Vocal Halo.\"\n2.  Route your lead vocal to this send at 100%.\n3.  Load **Fruity Chorus** on the send.\n4.  **Settings:**\n    - Delay: 25ms.\n    - Stereo: 100%.\n    - Speed: 0.8Hz.\n    - Depth: 10%.\n5.  Add a **High-Pass Filter** at 500Hz *after* the chorus on the send.\n6.  Lower the send fader until the chorus is a subtle \"halo\" behind the dry vocal.\n\n## Vibe Check\n- **Vibey/Polished:** This is how you get wide, expensive vocals without the \"phasing\" issues of putting chorus directly on the lead.\n\n## Pitfalls\n- **Clutter:** If the chorus tail is too long, it will muddy the lyrics. Use a very low mix level (15-20%). [SRC: REPUTABLE]\n"
+    },
+    "common-usage.md": {
+      "common-usage": "# Common Workflows: Fruity Chorus\r\n\r\n## 1. The \"Dimension\" Expander\r\n\r\n1.  **Goal:** Make a mono synth sound stereo without movement.\r\n2.  **Settings:**\r\n    *   **Depth:** 0 (Static).\r\n    *   **Delay:** 10ms.\r\n    *   **Stereo:** 180 degrees.\r\n    *   **Mix:** 50%.\r\n3.  **Result:** Static phase cancellation creates a \"Pseudo-Stereo\" width. It sounds unnatural in mono (comb filtering) but huge in stereo.\r\n\r\n## 2. Reese Bass Width\r\n\r\n1.  **Source:** A mono saw bass.\r\n2.  **Action:** Insert Fruity Chorus.\r\n3.  **Critical Step:** Switch **Cross Type** to **Process HP**.\r\n4.  **Tuning:** Move **Cutoff** until the low end tightens up (usually around 250-400Hz).\r\n5.  **Modulation:** Use **Multi-Sine** on LFO 1 for a \"nervous\" motion.\r\n\r\n## 3. Guitar Strum Thickener\r\n\r\n1.  **Input:** Clean electric guitar DI.\r\n2.  **Delay:** 20ms (approaching Slapback).\r\n3.  **Depth:** Medium.\r\n4.  **LFO:** Slow (0.5 Hz).\r\n5.  **Result:** Sounds like a 12-string guitar or a Double Track.\r\n\r\n## 4. Metallic Flanger\r\n\r\nYou can force Fruity Chorus to act like a Flanger.\r\n\r\n1.  **Delay:** Minimum (0.1ms).\r\n2.  **Depth:** High.\r\n3.  **Feedback?** Fruity Chorus has no feedback knob.\r\n4.  **Workaround:** Put Fruity Chorus in a Send Channel. Route the Send back into itself (carefully!) to create feedback loops. *Warning: dangerous.*\r\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Chorus\r\n\r\nThis section contains workflow information for the fruity-chorus plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Chorus\r\n\r\nThis section contains reference information for the fruity-chorus plugin.\r\n"
+    }
+  }
+}

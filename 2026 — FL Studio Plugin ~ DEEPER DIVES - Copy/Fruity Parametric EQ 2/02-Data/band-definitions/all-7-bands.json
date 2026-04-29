@@ -1,0 +1,491 @@
+{
+  "plugin": "Fruity Parametric EQ 2",
+  "version": "1.0.0",
+  "description": "Complete canonical dataset for all 7 parametric EQ bands with metadata, roles, and UI copy",
+  "bwPercentScale": "IMPORTANT: 0% = widest bandwidth, 100% = narrowest bandwidth (inverted from intuition)",
+  "bands": [
+    {
+      "bandId": 1,
+      "color": "purple",
+      "zone": "Sub / Foundation Control",
+      "frequencyHz": {
+        "typicalRange": [20, 120],
+        "anchorTargets": [30, 45, 60, 70, 80, 90, 100, 120]
+      },
+      "controls": {
+        "typeOptions": ["high_pass", "low_shelf", "bell"],
+        "defaultType": "high_pass",
+        "gainDb": {
+          "typical": [-6, 0],
+          "safeMaxTrack": 6,
+          "safeMaxBus": 3,
+          "safeMaxMaster": 1.5
+        },
+        "bwPercent": {
+          "meaning": "Lower % = wider/more gentle rolloff; Higher % = narrower/more surgical",
+          "wide": [15, 30],
+          "medium": [35, 55],
+          "narrow": [60, 85],
+          "default": 25
+        }
+      },
+      "roles": {
+        "primary": [
+          "Remove inaudible sub-rumble",
+          "Protect headroom and prevent compressor overreaction",
+          "Separate kick/bass from everything else",
+          "Control physical weight vs clarity"
+        ],
+        "fixes": [
+          "Low-end mud you feel but don't hear",
+          "Mix collapsing when limiter hits",
+          "Bass masking kick clarity",
+          "Proximity effect boom from close-mic'd sources"
+        ],
+        "creative": [
+          "Intentional lo-fi / vintage low-end rolloff",
+          "Tighten synths for modern pop/EDM clarity",
+          "Make vocals sit 'above' the mix physically",
+          "Reduce proximity warmth for distant/airy feel"
+        ],
+        "warnings": [
+          "Too aggressive HP makes things thin and weightless",
+          "Never boost here unless designing bass/kick",
+          "Don't HP bass/kick sources above 40-50 Hz",
+          "Wide BW is musical; narrow can sound unnatural"
+        ]
+      },
+      "uiCopy": {
+        "label": "Sub Control",
+        "oneLiner": "Clean rumble and protect headroom.",
+        "tooltip": "Use high-pass to remove sub-rumble and free up headroom. Keep it gentle (wide BW) unless the source is bass/kick.",
+        "dos": [
+          "HP at 70-90 Hz for vocals and leads",
+          "Keep bandwidth wide (15-30%) for musical rolloff",
+          "Use on every non-bass track to prevent mud buildup",
+          "Go lower (40-60 Hz) only on bass/kick sources"
+        ],
+        "donts": [
+          "Don't over-cut if the sound loses weight/body",
+          "Avoid big boosts here on master channel",
+          "Don't use narrow bandwidth for HP (sounds unnatural)",
+          "Don't HP below 30 Hz unless removing DC offset"
+        ]
+      }
+    },
+    {
+      "bandId": 2,
+      "color": "pink",
+      "zone": "Low-Mid Body / Warmth",
+      "frequencyHz": {
+        "typicalRange": [140, 320],
+        "anchorTargets": [150, 180, 200, 220, 250, 280, 300]
+      },
+      "controls": {
+        "typeOptions": ["bell", "low_shelf"],
+        "defaultType": "bell",
+        "gainDb": {
+          "typical": [-3, 2],
+          "safeMaxTrack": 6,
+          "safeMaxBus": 3,
+          "safeMaxMaster": 1.5
+        },
+        "bwPercent": {
+          "meaning": "Lower % = wider; this range stacks fast so prefer wide cuts",
+          "wide": [20, 40],
+          "medium": [40, 55],
+          "narrow": [60, 75],
+          "default": 35
+        }
+      },
+      "roles": {
+        "primary": [
+          "Define thickness, warmth, and physical presence",
+          "Balance between full vs thin",
+          "Control warmth vs muddy",
+          "Adjust perceived closeness vs distance"
+        ],
+        "fixes": [
+          "Muddy vocals that lack clarity",
+          "Clouded mixes with too much low-mid energy",
+          "Instruments fighting for the same space",
+          "Boomy warmth that masks clarity"
+        ],
+        "creative": [
+          "Add 'chest' resonance to vocals",
+          "Thicken guitars, synth pads, or bass",
+          "Make sounds feel larger without actual loudness",
+          "Create warmth and intimacy in ballads"
+        ],
+        "warnings": [
+          "This range stacks extremely fast across tracks",
+          "Cut more often than you boost here",
+          "Too much buildup causes the 'blanket over speakers' effect",
+          "Small changes make big differences"
+        ]
+      },
+      "uiCopy": {
+        "label": "Warmth / Body",
+        "oneLiner": "Adds thickness or removes mud.",
+        "tooltip": "This zone decides full vs muddy. Small cuts clean mixes quickly; small boosts add body and warmth.",
+        "dos": [
+          "Try -1 to -2 dB when mix feels cloudy or congested",
+          "Use wide BW (20-40%) for natural tonal changes",
+          "Boost gently (+1 to +1.5 dB) to add chest to vocals",
+          "Cut around 250 Hz to de-mud dense arrangements"
+        ],
+        "donts": [
+          "Don't boost if you already have bass/808-heavy arrangement",
+          "Avoid deep cuts that make things sound hollow",
+          "Don't boost multiple tracks here simultaneously",
+          "Don't use narrow BW unless targeting specific resonance"
+        ]
+      }
+    },
+    {
+      "bandId": 3,
+      "color": "orange",
+      "zone": "Boxiness / Room Tone",
+      "frequencyHz": {
+        "typicalRange": [300, 550],
+        "anchorTargets": [320, 350, 380, 420, 480, 520]
+      },
+      "controls": {
+        "typeOptions": ["bell", "notch"],
+        "defaultType": "bell",
+        "gainDb": {
+          "typical": [-4, 1],
+          "safeMaxTrack": 6,
+          "safeMaxBus": 3,
+          "safeMaxMaster": 1.5
+        },
+        "bwPercent": {
+          "meaning": "Higher % = more surgical; use medium for general de-boxing",
+          "wide": [30, 45],
+          "medium": [45, 60],
+          "narrow": [65, 85],
+          "default": 50
+        }
+      },
+      "roles": {
+        "primary": [
+          "Remove enclosed, cardboard-like tone",
+          "Control boxiness from room reflections",
+          "De-congest lower midrange",
+          "Improve modern, open quality"
+        ],
+        "fixes": [
+          "'Recorded in a small room' sound",
+          "Cheap microphone coloration",
+          "Boxy drums or vocals",
+          "Cardboard/hollow resonance in acoustic instruments"
+        ],
+        "creative": [
+          "Make sounds feel more 'expensive' and professional",
+          "Create perceived distance (by not cutting it)",
+          "Shape midrange density and weight",
+          "Add vintage character (by leaving some boxiness)"
+        ],
+        "warnings": [
+          "Over-cutting removes life and body from the sound",
+          "Don't stack multiple aggressive mid cuts across 300-1k Hz",
+          "Always A/B compare—easy to remove too much",
+          "Notch filter only for obvious, ringing resonances"
+        ]
+      },
+      "uiCopy": {
+        "label": "Boxiness",
+        "oneLiner": "Opens the sound by removing 'cardboard.'",
+        "tooltip": "Sweep to find the 'boxed-in' tone, then cut gently with medium BW. This makes recordings sound more modern and open.",
+        "dos": [
+          "Cut -1.5 to -3 dB with medium BW for general de-boxing",
+          "Use notch only for obvious resonances that ring",
+          "Sweep to find the exact problem frequency first",
+          "Compare before/after to ensure you're not over-cutting"
+        ],
+        "donts": [
+          "Don't carve huge holes—your mix will feel empty",
+          "Avoid two heavy cuts between 300-1000 Hz",
+          "Don't use narrow BW for general tonal shaping",
+          "Don't cut blindly without sweeping first"
+        ]
+      }
+    },
+    {
+      "bandId": 4,
+      "color": "yellow",
+      "zone": "Nasal / Honk / Mid Focus",
+      "frequencyHz": {
+        "typicalRange": [600, 1200],
+        "anchorTargets": [650, 700, 800, 850, 950, 1000, 1100]
+      },
+      "controls": {
+        "typeOptions": ["bell", "notch"],
+        "defaultType": "bell",
+        "gainDb": {
+          "typical": [-3, 2],
+          "safeMaxTrack": 6,
+          "safeMaxBus": 3,
+          "safeMaxMaster": 1.5
+        },
+        "bwPercent": {
+          "meaning": "Use medium-narrow for honk; this range is very sensitive",
+          "wide": [35, 50],
+          "medium": [50, 65],
+          "narrow": [70, 85],
+          "default": 60
+        }
+      },
+      "roles": {
+        "primary": [
+          "Control tone focus and midrange aggression",
+          "Reduce nasal/honky quality",
+          "Manage midrange forwardness",
+          "Balance ear-fatigue in dense mixes"
+        ],
+        "fixes": [
+          "Nasal vocals that sound 'pinched'",
+          "Honky instruments (especially brass, guitars)",
+          "Fatiguing midrange that hurts ears",
+          "Piercing, forward tone that's too aggressive"
+        ],
+        "creative": [
+          "Make vocals cut through extremely dense mixes",
+          "Telephone / lo-fi / AM radio effects (boost + narrow BW)",
+          "Emphasize character over polish",
+          "Add intensity and urgency to leads"
+        ],
+        "warnings": [
+          "Extremely sensitive range—small changes only",
+          "Too much cut makes vocals distant and unclear",
+          "Boosting here on harsh sources causes pain",
+          "Easy to make things sound cheap if overdone"
+        ]
+      },
+      "uiCopy": {
+        "label": "Honk / Nasal",
+        "oneLiner": "Controls midrange 'forwardness.'",
+        "tooltip": "Use small cuts to reduce honk and nasal tone; small boosts to bring focus forward. Very sensitive—move slowly.",
+        "dos": [
+          "Try -1 to -2 dB for nasal vocals",
+          "Use medium-narrow BW (50-70%) for obvious honk",
+          "Sweep slowly to find the exact problem frequency",
+          "Make small adjustments (0.5 dB increments)"
+        ],
+        "donts": [
+          "Don't overcorrect—this removes presence and clarity",
+          "Avoid boosting here on already harsh sources",
+          "Don't use wide BW cuts (affects too much range)",
+          "Don't cut without listening to vocal intelligibility"
+        ]
+      }
+    },
+    {
+      "bandId": 5,
+      "color": "green",
+      "zone": "Presence / Intelligibility",
+      "frequencyHz": {
+        "typicalRange": [1800, 3200],
+        "anchorTargets": [1800, 2000, 2200, 2500, 2800, 3000, 3200]
+      },
+      "controls": {
+        "typeOptions": ["bell"],
+        "defaultType": "bell",
+        "gainDb": {
+          "typical": [-2, 3],
+          "safeMaxTrack": 6,
+          "safeMaxBus": 3,
+          "safeMaxMaster": 1.5
+        },
+        "bwPercent": {
+          "meaning": "Presence likes medium widths for natural clarity",
+          "wide": [30, 45],
+          "medium": [45, 60],
+          "narrow": [65, 80],
+          "default": 50
+        }
+      },
+      "roles": {
+        "primary": [
+          "Control clarity, definition, and intelligibility",
+          "Determine if sound cuts through the mix",
+          "Improve lyric comprehension",
+          "Place sounds 'in front' of the listener"
+        ],
+        "fixes": [
+          "Buried vocals that disappear in the mix",
+          "Dull leads that lack definition",
+          "Lack of articulation and consonant clarity",
+          "Instruments that don't speak clearly"
+        ],
+        "creative": [
+          "Make vocals feel physically closer to listener",
+          "Accentuate rhythm, attack, and transients",
+          "Add urgency, excitement, and energy",
+          "Enhance perceived professional quality"
+        ],
+        "warnings": [
+          "Overuse causes severe harshness and ear fatigue",
+          "Presence boosts stack dangerously across multiple tracks",
+          "Easy to make mixes sound harsh and amateur",
+          "More is NOT better—subtlety wins"
+        ]
+      },
+      "uiCopy": {
+        "label": "Presence",
+        "oneLiner": "Makes the sound speak clearly in the mix.",
+        "tooltip": "Use gentle boosts for clarity and definition; gentle cuts if the source is biting or too edgy. Be conservative.",
+        "dos": [
+          "+1 to +2 dB for lead vocal clarity",
+          "Prefer medium BW (45-60%) for natural presence",
+          "Use on lead elements only (vocals, lead synths)",
+          "Keep total presence boosts across mix under control"
+        ],
+        "donts": [
+          "Don't boost on already-sharp or sibilant vocals",
+          "Avoid boosting many tracks in this same frequency",
+          "Don't use narrow BW unless correcting specific issue",
+          "Don't exceed +3 dB on individual tracks"
+        ]
+      }
+    },
+    {
+      "bandId": 6,
+      "color": "teal",
+      "zone": "Upper Presence / Detail",
+      "frequencyHz": {
+        "typicalRange": [3500, 6500],
+        "anchorTargets": [3500, 4000, 4500, 5000, 5500, 6000, 6500]
+      },
+      "controls": {
+        "typeOptions": ["bell"],
+        "defaultType": "bell",
+        "gainDb": {
+          "typical": [-2, 2],
+          "safeMaxTrack": 6,
+          "safeMaxBus": 3,
+          "safeMaxMaster": 1.5
+        },
+        "bwPercent": {
+          "meaning": "Use wider for polish, narrower only for harsh resonance nodes",
+          "wide": [25, 40],
+          "medium": [40, 55],
+          "narrow": [60, 80],
+          "default": 35
+        }
+      },
+      "roles": {
+        "primary": [
+          "Control perceived detail and sharpness",
+          "Manage attack definition and transients",
+          "Adjust perceived resolution and HD quality",
+          "Balance crispness vs smoothness"
+        ],
+        "fixes": [
+          "Dullness and lack of clarity",
+          "Soft transients and weak attacks",
+          "Dull consonants (S, T, K sounds)",
+          "Flat-sounding mixes lacking dimension"
+        ],
+        "creative": [
+          "Emphasize consonants for pop vocal style",
+          "Enhance percussion snap and stick definition",
+          "Make digital synths feel sharper and more defined",
+          "Add perceived 'HD' or 'expensive' quality"
+        ],
+        "warnings": [
+          "Too much becomes harsh and fatiguing extremely quickly",
+          "Watch for sibilance increases and ear pain",
+          "Can exaggerate poorly recorded sources",
+          "Narrow cuts only for surgical resonance removal"
+        ]
+      },
+      "uiCopy": {
+        "label": "Detail",
+        "oneLiner": "Adds crispness and articulation.",
+        "tooltip": "Small boosts add definition and snap; small cuts smooth harshness. Less is more in this range—it turns harsh fast.",
+        "dos": [
+          "+0.5 to +1.5 dB for detail and definition",
+          "Cut narrow only for obvious harsh resonances",
+          "Use wide BW for general tonal adjustments",
+          "Monitor for sibilance when boosting"
+        ],
+        "donts": [
+          "Don't boost if sibilance is already present",
+          "Don't stack boosts here with bright saturation/exciters",
+          "Don't exceed +2 dB without careful listening",
+          "Don't use on already-harsh or bright sources"
+        ]
+      }
+    },
+    {
+      "bandId": 7,
+      "color": "blue",
+      "zone": "Air / Shine / Polish",
+      "frequencyHz": {
+        "typicalRange": [8000, 16000],
+        "anchorTargets": [8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000]
+      },
+      "controls": {
+        "typeOptions": ["high_shelf", "bell"],
+        "defaultType": "high_shelf",
+        "gainDb": {
+          "typical": [0, 4],
+          "safeMaxTrack": 6,
+          "safeMaxBus": 3,
+          "safeMaxMaster": 1.5
+        },
+        "bwPercent": {
+          "meaning": "Air is best wide; narrow can sound brittle",
+          "wide": [15, 30],
+          "medium": [30, 45],
+          "narrow": [55, 70],
+          "default": 20
+        }
+      },
+      "roles": {
+        "primary": [
+          "Control openness, brightness, and 'finished' quality",
+          "Add professional gloss and sheen",
+          "Create sense of space and dimension",
+          "Deliver modern, polished top-end"
+        ],
+        "fixes": [
+          "Dull mixes that lack excitement",
+          "Closed or muffled sound",
+          "Lack of sparkle and dimension",
+          "Dark, muddy top-end that sounds old"
+        ],
+        "creative": [
+          "'Expensive' vocal sheen and air",
+          "Glossy modern pop sound signature",
+          "Modern clarity without midrange harshness",
+          "Sparkle on synths and pads"
+        ],
+        "warnings": [
+          "Too much = exaggerated hiss and harsh top-end",
+          "Exaggerates noise, artifacts, and recording flaws",
+          "Can make poorly recorded sources sound worse",
+          "Use conservatively on master channel"
+        ]
+      },
+      "uiCopy": {
+        "label": "Air",
+        "oneLiner": "Adds gloss and a finished top-end.",
+        "tooltip": "Use a wide high shelf for natural polish. Keep it wide and subtle, especially on buses and master channel.",
+        "dos": [
+          "High shelf +2 to +3 dB at 10-14 kHz for air",
+          "Use wide BW (15-30%) to avoid brittle tone",
+          "Apply gently on master for final gloss",
+          "Boost on clean, well-recorded sources only"
+        ],
+        "donts": [
+          "Don't crank this if the source is noisy or lo-fi",
+          "Avoid big boosts on the master (max +2 dB)",
+          "Don't use narrow BW for general air (sounds harsh)",
+          "Don't boost on sources with existing sibilance"
+        ]
+      }
+    }
+  ]
+}

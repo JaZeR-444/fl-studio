@@ -1,0 +1,566 @@
+{
+  "plugin_name": "Dashboard",
+  "category": "Utility",
+  "manufacturer": "Image-Line",
+  "plugin_type": "Analyzer",
+  "version": "1.0.0",
+  "parameters": [
+    {
+      "name": "Display Mode",
+      "type": "selector",
+      "options": [
+        {
+          "value": "scope",
+          "label": "Scope",
+          "description": "Waveform visualization over time",
+          "use_cases": ["transient_analysis", "clipping_detection", "waveform_shape"]
+        },
+        {
+          "value": "spectrum",
+          "label": "Spectrum",
+          "description": "Frequency domain visualization",
+          "use_cases": ["eq_decisions", "frequency_conflicts", "harmonic_analysis"]
+        },
+        {
+          "value": "meters",
+          "label": "Meters",
+          "description": "Level metering for amplitude monitoring",
+          "use_cases": ["level_monitoring", "clip_prevention", "loudness_control"]
+        },
+        {
+          "value": "peak",
+          "label": "Peak",
+          "description": "Maximum level tracking",
+          "use_cases": ["broadcast_compliance", "true_peak_monitoring", "maximum_level_tracking"]
+        }
+      ],
+      "description": "Selects the visualization mode for Dashboard",
+      "use_cases": ["monitoring", "analysis", "performance"],
+      "hip_hop_applications": ["low_end_management", "vocal_clarity", "stereo_imaging"]
+    },
+    {
+      "name": "dB Range",
+      "type": "range",
+      "min": -72,
+      "max": 12,
+      "default": -48,
+      "unit": "dB",
+      "description": "Sets the dynamic range display for meters and spectrum",
+      "use_cases": ["dynamic_range_visualization", "low_level_detail", "high_level_monitoring"],
+      "hip_hop_applications": ["trap_production", "vocal_dynamics", "808_clarity"]
+    },
+    {
+      "name": "Frequency Range",
+      "type": "selector",
+      "options": [
+        {
+          "value": "full",
+          "label": "Full Spectrum (20Hz-20kHz)",
+          "description": "Displays the entire audible frequency range",
+          "use_cases": ["general_analysis", "comprehensive_view"]
+        },
+        {
+          "value": "low_end",
+          "label": "Low-End Focus (20Hz-200Hz)",
+          "description": "Zooms in on sub-bass and bass frequencies",
+          "use_cases": ["808_analysis", "kick_drums", "sub_bass_management"]
+        },
+        {
+          "value": "mid_range",
+          "label": "Mid-Range Focus (200Hz-5kHz)",
+          "description": "Focuses on vocal and instrumental frequencies",
+          "use_cases": ["vocal_clarity", "instrument_separation", "presence_analysis"]
+        },
+        {
+          "value": "high_end",
+          "label": "High-End Focus (5kHz-20kHz)",
+          "description": "Emphasizes high-frequency content",
+          "use_cases": ["air_and_spatial", "hi_hat_definition", "sibilance_control"]
+        }
+      ],
+      "description": "Selects the frequency range to display in spectrum mode",
+      "use_cases": ["frequency_analysis", "range_specific_monitoring"],
+      "hip_hop_applications": ["808_kick_relationship", "vocal_intelligibility", "hi_hat_clarity"]
+    },
+    {
+      "name": "Refresh Rate",
+      "type": "selector",
+      "options": [
+        {
+          "value": "slow",
+          "label": "Slow (15 fps)",
+          "description": "Lower CPU usage, sufficient for general monitoring",
+          "use_cases": ["general_monitoring", "low_cpu_usage"]
+        },
+        {
+          "value": "medium",
+          "label": "Medium (30 fps)",
+          "description": "Good balance of responsiveness and efficiency",
+          "use_cases": ["balanced_performance", "mixing_sessions"]
+        },
+        {
+          "value": "fast",
+          "label": "Fast (60 fps)",
+          "description": "Highest CPU usage, best for detailed transient analysis",
+          "use_cases": ["detailed_analysis", "transient_detection", "critical_monitoring"]
+        }
+      ],
+      "description": "Controls how frequently the display refreshes",
+      "use_cases": ["performance_optimization", "response_speed"],
+      "hip_hop_applications": ["drum_transient_analysis", "vocal_dynamic_monitoring"]
+    },
+    {
+      "name": "FFT Size",
+      "type": "selector",
+      "options": [
+        {
+          "value": 512,
+          "label": "512 points",
+          "description": "Lower resolution, faster response",
+          "use_cases": ["fast_response", "low_cpu_usage"]
+        },
+        {
+          "value": 1024,
+          "label": "1024 points",
+          "description": "Standard resolution",
+          "use_cases": ["standard_analysis", "balanced_resolution"]
+        },
+        {
+          "value": 2048,
+          "label": "2048 points",
+          "description": "Higher resolution, slower response",
+          "use_cases": ["detailed_analysis", "frequency_precision"]
+        },
+        {
+          "value": 4096,
+          "label": "4096 points",
+          "description": "Highest resolution, best for detailed analysis",
+          "use_cases": ["precision_analysis", "sub_bass_detail"]
+        }
+      ],
+      "description": "Determines frequency resolution in spectrum mode",
+      "use_cases": ["frequency_resolution", "analysis_detail"],
+      "hip_hop_applications": ["808_fundamental_analysis", "frequency_conflict_resolution"]
+    },
+    {
+      "name": "Window Type",
+      "type": "selector",
+      "options": [
+        {
+          "value": "rectangular",
+          "label": "Rectangular",
+          "description": "Sharpest frequency resolution",
+          "use_cases": ["frequency_precision", "sharp_resolution"]
+        },
+        {
+          "value": "hann",
+          "label": "Hann",
+          "description": "Good balance of frequency and amplitude accuracy",
+          "use_cases": ["balanced_analysis", "general_use"]
+        },
+        {
+          "value": "hamming",
+          "label": "Hamming",
+          "description": "Reduced spectral leakage",
+          "use_cases": ["leakage_reduction", "clean_spectrum"]
+        },
+        {
+          "value": "blackman",
+          "label": "Blackman",
+          "description": "Excellent for general analysis",
+          "use_cases": ["general_analysis", "smooth_display"]
+        }
+      ],
+      "description": "Determines the FFT window type affecting frequency vs. time resolution",
+      "use_cases": ["spectral_analysis", "resolution_tradeoffs"],
+      "hip_hop_applications": ["808_harmonic_analysis", "vocal_frequency_clarity"]
+    },
+    {
+      "name": "Smoothing",
+      "type": "selector",
+      "options": [
+        {
+          "value": "off",
+          "label": "Off",
+          "description": "Raw spectrum display",
+          "use_cases": ["raw_data", "detailed_analysis"]
+        },
+        {
+          "value": "light",
+          "label": "Light",
+          "description": "Slight averaging for smoother display",
+          "use_cases": ["smooth_display", "visual_clarity"]
+        },
+        {
+          "value": "medium",
+          "label": "Medium",
+          "description": "Moderate smoothing",
+          "use_cases": ["balanced_smoothing", "general_use"]
+        },
+        {
+          "value": "heavy",
+          "label": "Heavy",
+          "description": "Highly averaged display",
+          "use_cases": ["stable_display", "trend_analysis"]
+        }
+      ],
+      "description": "Controls spectrum display smoothing",
+      "use_cases": ["display_stability", "visual_clarity"],
+      "hip_hop_applications": ["general_mixing", "trend_identification"]
+    },
+    {
+      "name": "Peak Hold Duration",
+      "type": "selector",
+      "options": [
+        {
+          "value": "short",
+          "label": "Short (0.5s)",
+          "description": "Good for detecting momentary peaks",
+          "use_cases": ["momentary_peaks", "quick_detection"]
+        },
+        {
+          "value": "medium",
+          "label": "Medium (2s)",
+          "description": "Ideal for general monitoring",
+          "use_cases": ["general_monitoring", "balanced_detection"]
+        },
+        {
+          "value": "long",
+          "label": "Long (5s)",
+          "description": "Best for identifying consistent overages",
+          "use_cases": ["consistent_overages", "extended_monitoring"]
+        },
+        {
+          "value": "infinite",
+          "label": "Infinite",
+          "description": "Permanently holds highest peak until reset",
+          "use_cases": ["maximum_tracking", "compliance_monitoring"]
+        }
+      ],
+      "description": "How long peak indicators remain visible",
+      "use_cases": ["peak_monitoring", "maximum_level_tracking"],
+      "hip_hop_applications": ["master_bus_monitoring", "vocal_peak_tracking"]
+    },
+    {
+      "name": "Meter Ballistics",
+      "type": "selector",
+      "options": [
+        {
+          "value": "fast",
+          "label": "Fast",
+          "description": "Immediate response, good for transients",
+          "use_cases": ["transient_detection", "fast_response"]
+        },
+        {
+          "value": "medium",
+          "label": "Medium",
+          "description": "Balanced response, ideal for general use",
+          "use_cases": ["balanced_response", "general_monitoring"]
+        },
+        {
+          "value": "slow",
+          "label": "Slow",
+          "description": "Averaged response, good for program levels",
+          "use_cases": ["program_levels", "averaged_monitoring"]
+        }
+      ],
+      "description": "How meters respond to level changes",
+      "use_cases": ["level_response", "dynamic_monitoring"],
+      "hip_hop_applications": ["drum_monitoring", "vocal_consistency", "overall_mix"]
+    },
+    {
+      "name": "Phase Correlation Display",
+      "type": "toggle",
+      "default": true,
+      "description": "Shows stereo field integrity and mono compatibility",
+      "use_cases": ["stereo_field", "mono_compatibility", "phase_analysis"],
+      "hip_hop_applications": ["808_mono_safety", "kick_phase", "stereo_imaging"]
+    },
+    {
+      "name": "Warning Markers",
+      "type": "range",
+      "min": -24,
+      "max": 0,
+      "default": -3,
+      "unit": "dB",
+      "description": "Customizable warning thresholds for clipping prevention",
+      "use_cases": ["clipping_warning", "headroom_monitoring"],
+      "hip_hop_applications": ["mixing_headroom", "mastering_thresholds"]
+    },
+    {
+      "name": "Color Scheme",
+      "type": "selector",
+      "options": [
+        {
+          "value": "default",
+          "label": "Default",
+          "description": "Standard Dashboard color scheme",
+          "use_cases": ["standard_use", "default_appearance"]
+        },
+        {
+          "value": "high_contrast",
+          "label": "High Contrast",
+          "description": "Enhanced contrast for better visibility",
+          "use_cases": ["enhanced_visibility", "bright_environments"]
+        },
+        {
+          "value": "low_brightness",
+          "label": "Low Brightness",
+          "description": "Reduced brightness for dark environments",
+          "use_cases": ["dark_environment", "eye_strain_reduction"]
+        }
+      ],
+      "description": "Adjusts the visual appearance and contrast of the display",
+      "use_cases": ["visual_appearance", "environment_adaptation"],
+      "hip_hop_applications": ["late_night_production", "various_lighting_conditions"]
+    },
+    {
+      "name": "Persistence",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "default": 50,
+      "unit": "percentage",
+      "description": "Controls how long previous waveforms remain visible in scope mode",
+      "use_cases": ["waveform_history", "pattern_recognition"],
+      "hip_hop_applications": ["rhythmic_pattern_analysis", "transient_comparison"]
+    },
+    {
+      "name": "Grid Overlay",
+      "type": "toggle",
+      "default": true,
+      "description": "Adds reference lines to displays for better measurement",
+      "use_cases": ["measurement_reference", "visual_guidance"],
+      "hip_hop_applications": ["frequency_identification", "level_measurement"]
+    },
+    {
+      "name": "Channel Linking",
+      "type": "selector",
+      "options": [
+        {
+          "value": "independent",
+          "label": "Independent",
+          "description": "Channels display separately",
+          "use_cases": ["channel_independence", "separate_monitoring"]
+        },
+        {
+          "value": "linked",
+          "label": "Linked",
+          "description": "Channels display together for comparison",
+          "use_cases": ["comparison", "balance_checking"]
+        },
+        {
+          "value": "difference",
+          "label": "Difference",
+          "description": "Shows the difference between channels",
+          "use_cases": ["stereo_difference", "side_channel_analysis"]
+        }
+      ],
+      "description": "Controls how left and right channels are displayed",
+      "use_cases": ["channel_display", "stereo_analysis"],
+      "hip_hop_applications": ["stereo_imaging", "mono_compatibility", "balance_checking"]
+    }
+  ],
+  "preset_categories": [
+    {
+      "category": "Mixing",
+      "presets": [
+        {
+          "name": "Hip-Hop Mixing",
+          "description": "Optimized for hip-hop mixing with focus on low-end and vocals",
+          "parameters": {
+            "display_mode": "spectrum",
+            "db_range": -48,
+            "frequency_range": "full",
+            "refresh_rate": "medium",
+            "fft_size": 2048,
+            "window_type": "hann",
+            "smoothing": "light",
+            "peak_hold_duration": "medium",
+            "meter_ballistics": "medium",
+            "phase_correlation_display": true,
+            "warning_markers": -3
+          }
+        },
+        {
+          "name": "808/Sub-Bass Focus",
+          "description": "Specifically tuned for 808 and sub-bass analysis",
+          "parameters": {
+            "display_mode": "spectrum",
+            "db_range": -60,
+            "frequency_range": "low_end",
+            "refresh_rate": "medium",
+            "fft_size": 4096,
+            "window_type": "blackman",
+            "smoothing": "medium",
+            "peak_hold_duration": "long",
+            "meter_ballistics": "slow",
+            "phase_correlation_display": true,
+            "warning_markers": -1
+          }
+        },
+        {
+          "name": "Vocal Clarity",
+          "description": "Set up for monitoring vocal presence and clarity",
+          "parameters": {
+            "display_mode": "spectrum",
+            "db_range": -54,
+            "frequency_range": "mid_range",
+            "refresh_rate": "fast",
+            "fft_size": 1024,
+            "window_type": "hann",
+            "smoothing": "light",
+            "peak_hold_duration": "long",
+            "meter_ballistics": "fast",
+            "phase_correlation_display": false,
+            "warning_markers": -6
+          }
+        }
+      ]
+    },
+    {
+      "category": "Mastering",
+      "presets": [
+        {
+          "name": "Mastering Analysis",
+          "description": "Comprehensive setup for mastering with multiple views",
+          "parameters": {
+            "display_mode": "meters",
+            "db_range": -72,
+            "frequency_range": "full",
+            "refresh_rate": "medium",
+            "fft_size": 2048,
+            "window_type": "hann",
+            "smoothing": "medium",
+            "peak_hold_duration": "infinite",
+            "meter_ballistics": "medium",
+            "phase_correlation_display": true,
+            "warning_markers": -1
+          }
+        },
+        {
+          "name": "True Peak Monitoring",
+          "description": "Focused on preventing inter-sample peaks",
+            "parameters": {
+            "display_mode": "peak",
+            "db_range": -18,
+            "frequency_range": "full",
+            "refresh_rate": "medium",
+            "fft_size": 1024,
+            "window_type": "hann",
+            "smoothing": "off",
+            "peak_hold_duration": "infinite",
+            "meter_ballistics": "fast",
+            "phase_correlation_display": false,
+            "warning_markers": -1
+          }
+        }
+      ]
+    },
+    {
+      "category": "Performance",
+      "presets": [
+        {
+          "name": "Live Performance",
+          "description": "Optimized for live performance monitoring",
+          "parameters": {
+            "display_mode": "meters",
+            "db_range": -48,
+            "frequency_range": "full",
+            "refresh_rate": "fast",
+            "fft_size": 512,
+            "window_type": "hann",
+            "smoothing": "light",
+            "peak_hold_duration": "medium",
+            "meter_ballistics": "fast",
+            "phase_correlation_display": true,
+            "warning_markers": -3
+          }
+        }
+      ]
+    }
+  ],
+  "integration_notes": {
+    "compatible_plugins": [
+      "Fruity Parametric EQ 2",
+      "Maximus",
+      "Edison",
+      "Fruity Limiter",
+      "Fruity Convolver",
+      "Fruity Stereo Enhancer"
+    ],
+    "common_workflows": [
+      "eq_decision_validation",
+      "compression_effect_monitoring",
+      "stereo_field_verification",
+      "clipping_prevention",
+      "frequency_conflict_resolution"
+    ],
+    "recommended_settings_by_context": {
+      "hip_hop_mixing": {
+        "primary_mode": "spectrum",
+        "secondary_mode": "meters",
+        "focus_frequency": "full",
+        "fft_size": 2048,
+        "refresh_rate": "medium",
+        "peak_hold": "medium"
+      },
+      "trap_production": {
+        "primary_mode": "spectrum",
+        "secondary_mode": "meters", 
+        "focus_frequency": "low_end",
+        "fft_size": 4096,
+        "refresh_rate": "medium",
+        "peak_hold": "long"
+      },
+      "vocal_production": {
+        "primary_mode": "meters",
+        "secondary_mode": "spectrum",
+        "focus_frequency": "mid_range",
+        "fft_size": 1024,
+        "refresh_rate": "fast",
+        "peak_hold": "long"
+      },
+      "mastering": {
+        "primary_mode": "meters",
+        "secondary_mode": "peak",
+        "focus_frequency": "full",
+        "fft_size": 2048,
+        "refresh_rate": "medium",
+        "peak_hold": "infinite"
+      }
+    }
+  },
+  "genre_specific_applications": {
+    "hip_hop": {
+      "primary_use": "low_end management and frequency conflict resolution",
+      "key_features": ["spectrum_mode", "frequency_range_selection", "phase_correlation"],
+      "typical_settings": {
+        "mode": "spectrum",
+        "frequency_range": "low_end",
+        "fft_size": 2048,
+        "window": "hann"
+      }
+    },
+    "rap": {
+      "primary_use": "vocal clarity and presence monitoring",
+      "key_features": ["spectrum_mode", "mid_range_focus", "peak_monitoring"],
+      "typical_settings": {
+        "mode": "spectrum",
+        "frequency_range": "mid_range",
+        "refresh_rate": "fast",
+        "peak_hold": "long"
+      }
+    },
+    "rnb": {
+      "primary_use": "vocal smoothness and harmonic content analysis",
+      "key_features": ["spectrum_mode", "meters", "smoothing"],
+      "typical_settings": {
+        "mode": "spectrum",
+        "smoothing": "medium",
+        "db_range": -60,
+        "ballistics": "medium"
+      }
+    }
+  }
+}

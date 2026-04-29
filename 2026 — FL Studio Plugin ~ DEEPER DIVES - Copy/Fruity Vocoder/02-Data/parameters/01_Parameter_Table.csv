@@ -1,0 +1,16 @@
+parameter,type,default,min,max,suggested_range,audible_impact,mix_impact_tags,vibe_impact_tags,automation_common,notes,source_id
+FORM,knob/slider,0.0,-1.0,1.0,-0.6 to +0.6,Changes vocal character without pitch shift,brightness|character|gender,moody|upbeat|psychedelic|jazzy|vibey,Yes,Positive = feminine/bright; Negative = masculine/dark,IL-MAN
+MIN,knob,100 Hz,20 Hz,5000 Hz,80-200 Hz,Sets lowest processed frequency,weight|punch|muddiness-control,moody|jazzy,No,Remove rumble by raising; Full range by lowering,IL-MAN
+MAX,knob,8000 Hz,1000 Hz,20000 Hz,5000-12000 Hz,Sets highest processed frequency,brightness|air|sibilance,upbeat|psychedelic|vibey,No,Lower for vintage/radio effect; Raise for full sibilance,IL-MAN
+SCALE,toggle,Logarithmic,Linear|Logarithmic,N/A,Logarithmic,Frequency band distribution,clarity|intelligibility,jazzy,No,Log for speech/music; Linear for noise/drums,IL-MAN
+INV,toggle,Off,Off|On,N/A,As needed,Swaps high/low frequency mapping,character|weirdness|special-effect,psychedelic|moody,Yes,Creates alien/demon/robot effects,IL-MAN
+BW,knob,50%,0%,100%,35-70%,Sharpness of filter bands,clarity|definition|smoothness,moody|upbeat|jazzy|vibey,Sometimes,Higher = clearer; Lower = smoother,IL-MAN
+ATTACK,knob,15 ms,1 ms,500 ms,5-300 ms,Envelope rise time,transient|punch|tightness,upbeat|moody|jazzy|vibey,Yes,Fast = punchy; Slow = smooth/lush,IL-MAN
+DECAY,knob,100 ms,10 ms,1000 ms,50-500 ms,Envelope fall time,sustain|groove|ambient-wash,moody|vibey,Yes,Fast = gated; Slow = sustained,IL-MAN
+L_Slider,slider,0%,0%,100%,0-10%,Modulator level in output,blend|dry/wet,N/A,Rare,Usually 0% (analysis only),IL-MAN
+R_Slider,slider,100%,0%,100%,50-100%,Carrier level in output,level|presence|output-gain,N/A,Sometimes,Primary output level control,IL-MAN
+L_R_Labels,clickable,N/A,N/A,N/A,N/A,Swap channel assignments,N/A,N/A,No,Troubleshooting utility,IL-MAN
+HOLD,button,Off,Off|On,N/A,On/Off/Auto,Freeze spectral state,sustain|texture|effect,all vibes,Yes,Essential for drones and stutters,IL-MAN
+BANDS,dropdown,16,4|8|16|32|64|128,N/A,16-64,Spectral resolution,count|clarity|CPU-load,all vibes,Rare,More = clearer but more CPU,IL-MAN
+FILTER,dropdown,2,1-4,N/A,2-3,Filter steepness,definition|smoothness,N/A,Rare,Higher = sharper edges,IL-MAN
+Band_Sliders,vertical_sliders,0 dB,-inf to +12 dB,N/A,Per-band adjustment,Per-band EQ control,EQ|tonal-balance,N/A,No,Graphic EQ for vocoded output,IL-MAN

@@ -1,0 +1,146 @@
+{
+  "id": "fruity-delay",
+  "name": "Fruity Delay",
+  "presets": {
+    "delay-archetypes": {
+      "archetypes": [
+        {
+          "name": "Classic 1/4 Echo",
+          "settings": {
+            "time": "4 steps",
+            "feedback": "40%",
+            "volume": "50%"
+          },
+          "useCase": "Standard rhythmic echo for any instrument."
+        },
+        {
+          "name": "Stereo Width Haas",
+          "settings": {
+            "time": "0ms",
+            "offset": "15ms",
+            "feedback": "0%"
+          },
+          "useCase": "Simple mono-to-stereo widening."
+        }
+      ]
+    }
+  },
+  "parameters": {},
+  "rules": {
+    "delay-rules": {
+      "rules": [
+        {
+          "goal": "Add Space without Reverb",
+          "action": "Use a single 1/8 note tap with low feedback (<10%) and set volume to 20%."
+        },
+        {
+          "goal": "Percussion Thickening",
+          "action": "Set Time very short (<50ms) and increase Feedback to 30% for a 'comb' resonant effect."
+        }
+      ]
+    },
+    "visual-cue-mapping": {
+      "visualMappingRules": {
+        "moodClassification": [
+          {
+            "mood": "Dark / Moody R&B",
+            "primaryAnimation": "Breathe",
+            "speed": "0.5x",
+            "logic": "Slow, constant vertical movement mimics the breathing rate of an intimate performance. Use when the 808 is sustained and the melody is dark."
+          },
+          {
+            "mood": "Upbeat Trap / Club",
+            "primaryAnimation": "Dance 1",
+            "speed": "2.0x",
+            "logic": "Rapid, full-body movement matches the high-energy high-hat rolls. Use when the BPM is >140 and the snare is aggressive."
+          },
+          {
+            "mood": "Psychedelic / Experimental",
+            "primaryAnimation": "Manual Mode",
+            "logic": "Choreograph jumps (F5) to off-beat ghost notes. Use Size automation (Link to Peak Controller) to make the mascot physically 'pulse' with the low-end energy."
+          },
+          {
+            "mood": "Soulful / Neo-Soul",
+            "primaryAnimation": "Sway",
+            "speed": "1.0x",
+            "logic": "Side-to-side movement mimics the swaying of a live jazz performer. Use when Rhodes keys and clean guitars are dominant."
+          }
+        ],
+        "rhythmicSyncRules": [
+          {
+            "if": "Snare hits on 2 and 4",
+            "action": "Trigger Jump (F5) frame via MIDI exactly on the 2 and 4."
+          },
+          {
+            "if": "Sub-bass drop occurs",
+            "action": "Automate Size from 50% to 100% over 1 bar to visualize the 'Weight' of the drop."
+          }
+        ],
+        "brandAestheticRules": [
+          {
+            "theme": "Cyberpunk Purple",
+            "action": "Overlay a 20% opacity purple glass-card over the mascot window to match the DEEPER DIVES design system."
+          },
+          {
+            "theme": "Minimalist Studio",
+            "action": "Set mascot size to 25% and position in the bottom-right corner to act as a silent metronome."
+          }
+        ]
+      }
+    }
+  },
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    },
+    {
+      "title": "Echo Time Buffers",
+      "filename": "echo-time-buffers.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "00 Goal Quick Result",
+      "category": "by-goal",
+      "filename": "00_Goal_Quick_Result.md"
+    },
+    {
+      "title": "01 Goal Space And Motion",
+      "category": "by-goal",
+      "filename": "01_Goal_Space_And_Motion.md"
+    },
+    {
+      "title": "12 Vibe Psychedelic",
+      "category": "by-goal",
+      "filename": "12_Vibe_Psychedelic.md"
+    },
+    {
+      "title": "Glitch Percussion Loops",
+      "category": "by-goal",
+      "filename": "glitch-percussion-loops.md"
+    },
+    {
+      "title": "Moody Halo Delay",
+      "category": "by-goal",
+      "filename": "moody-halo-delay.md"
+    },
+    {
+      "title": "Mono Lead Widening",
+      "category": "by-instrument",
+      "filename": "mono-lead-widening.md"
+    }
+  ]
+}

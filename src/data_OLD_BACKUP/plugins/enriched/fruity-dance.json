@@ -1,0 +1,184 @@
+{
+  "id": "fruity-dance",
+  "name": "Fruity Dance",
+  "presets": {
+    "dance-archetypes": {
+      "archetypes": [
+        {
+          "name": "The Head-Banger",
+          "settings": {
+            "animation": "Dance 1",
+            "speed": "2.0x"
+          },
+          "useCase": "High-energy rock or metal projects."
+        },
+        {
+          "name": "The Lo-Fi Companion",
+          "settings": {
+            "animation": "Breathe",
+            "speed": "0.5x"
+          },
+          "useCase": "Chill, atmospheric, or lo-fi sessions."
+        }
+      ]
+    }
+  },
+  "parameters": {
+    "dance-specs": {
+      "plugin": {
+        "name": "Fruity Dance",
+        "category": "Visual",
+        "type": "Animation Utility",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Dance.htm"
+      },
+      "modes": [
+        "Auto",
+        "Manual"
+      ],
+      "controls": [
+        {
+          "id": "animation",
+          "name": "Animation Sequence"
+        },
+        {
+          "id": "speed",
+          "name": "Playback Speed"
+        },
+        {
+          "id": "size",
+          "name": "Scale Factor"
+        }
+      ],
+      "midiMapping": "Note-based triggering of sprite sequences in Manual mode."
+    }
+  },
+  "rules": {
+    "animation-rules": {
+      "rules": [
+        {
+          "goal": "Performance Visuals",
+          "action": "Enable 'Always on Top' and link the 'Animation' parameter to a MIDI knob for real-time control."
+        },
+        {
+          "goal": "Rhythmic Jumping",
+          "action": "Use Manual mode and place MIDI note F5 on every downbeat of the bar."
+        }
+      ]
+    },
+    "visual-storytelling-logic": {
+      "visualStorytellingRules": {
+        "narrativeStages": [
+          {
+            "stage": "The Introduction (The Hook)",
+            "logic": {
+              "animation": "Breathe",
+              "speed": "0.5x",
+              "size": "25%",
+              "narrative": "The mascot is waking up. The music is sparse. This builds curiosity and establishes the 'Mood' without being distracting."
+            }
+          },
+          {
+            "stage": "The Build-up (The Tension)",
+            "logic": {
+              "animation": "Idle",
+              "speed": "1.0x",
+              "size": "Automate 25% -> 50%",
+              "narrative": "As the filters open and the risers increase, the mascot physically grows. This provides a visual cue that energy is accumulating."
+            }
+          },
+          {
+            "stage": "The Climax (The Drop)",
+            "logic": {
+              "animation": "Dance 1 / Jump",
+              "speed": "2.0x",
+              "size": "75%",
+              "narrative": "Total rhythmic explosion. The mascot matches the energy of the 808. This is the visual 'Payoff' for the listener."
+            }
+          },
+          {
+            "stage": "The Aftermath (The Outro)",
+            "logic": {
+              "animation": "Wave / Breathe",
+              "speed": "0.2x",
+              "size": "Fade to 0%",
+              "narrative": "The journey is ending. The mascot says goodbye and dissolves into the background."
+            }
+          }
+        ],
+        "rhythmicSyncrules": [
+          {
+            "event": "Snare Ghost Notes",
+            "action": "Trigger Frame 13 (Small Kick) using MIDI note F5 at 20% velocity."
+          },
+          {
+            "event": "Psychedelic Melodic Fluctuation",
+            "action": "Link mascot 'Speed' to the filter cutoff of the lead synth. As the sound gets brighter, the dance gets faster."
+          }
+        ]
+      }
+    }
+  },
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    },
+    {
+      "title": "Animation Bpm Sync",
+      "filename": "animation-bpm-sync.md"
+    },
+    {
+      "title": "Visual Beat Sync Neurology",
+      "filename": "visual-beat-sync-neurology.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "00 Goal Quick Result",
+      "category": "by-goal",
+      "filename": "00_Goal_Quick_Result.md"
+    },
+    {
+      "title": "01 Goal Mix Validation",
+      "category": "by-goal",
+      "filename": "01_Goal_Mix_Validation.md"
+    },
+    {
+      "title": "03 Goal Creative Effect",
+      "category": "by-goal",
+      "filename": "03_Goal_Creative_Effect.md"
+    },
+    {
+      "title": "Mascot Choreography",
+      "category": "by-goal",
+      "filename": "mascot-choreography.md"
+    },
+    {
+      "title": "Narrative Visual Sync Automation",
+      "category": "by-goal",
+      "filename": "narrative-visual-sync-automation.md"
+    },
+    {
+      "title": "Streaming Visual Companion",
+      "category": "by-goal",
+      "filename": "streaming-visual-companion.md"
+    },
+    {
+      "title": "Breakbeat Syncing",
+      "category": "by-instrument",
+      "filename": "breakbeat-syncing.md"
+    }
+  ]
+}

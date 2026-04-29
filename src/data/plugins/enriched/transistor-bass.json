@@ -1,0 +1,1681 @@
+{
+  "id": "transistor-bass",
+  "name": "Transistor Bass",
+  "category": "Synthesizer",
+  "tier": "Premium",
+  "type": "Synthesizer",
+  "description": "Transistor Bass - Synthesizer",
+  "tags": [
+    "synth",
+    "sound-design",
+    "specialized"
+  ],
+  "capabilities": [
+    "synthesis",
+    "midi",
+    "polyphonic"
+  ],
+  "icon": "/plugins/transistor-bass-icon.svg",
+  "color": "#8B5CF6",
+  "version": "1.0",
+  "data_dir": "plugins\\transistor-bass",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "transistor-bass-params": {
+      "$schema": "./schema.json",
+      "plugin": {
+        "name": "Transistor Bass",
+        "version": "2.x",
+        "category": "Instrument",
+        "type": "Subtractive Synthesizer",
+        "emulates": "Roland TB-303",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Transistor%20Bass.htm"
+      },
+      "parameters": {
+        "synthesis": [
+          {
+            "id": "waveform",
+            "name": "Waveform",
+            "type": "slider",
+            "range": "Square to Sawtooth",
+            "default": "Square",
+            "description": "Blends between square and sawtooth oscillator waves",
+            "midiCC": null
+          },
+          {
+            "id": "cutoff",
+            "name": "Cutoff",
+            "type": "slider",
+            "range": "0-100%",
+            "unit": "%",
+            "description": "Filter cutoff frequency - the heart of the acid sound",
+            "automatable": true,
+            "midiCC": 1
+          },
+          {
+            "id": "resonance",
+            "name": "Resonance",
+            "type": "slider",
+            "range": "0-100%",
+            "unit": "%",
+            "description": "Filter resonance (Q factor) - creates the screaming acid character",
+            "automatable": true,
+            "sweetSpot": "65-80%"
+          },
+          {
+            "id": "envMod",
+            "name": "Env Mod",
+            "type": "slider",
+            "range": "0-100%",
+            "unit": "%",
+            "description": "Filter envelope modulation depth",
+            "sweetSpot": "70-85%"
+          },
+          {
+            "id": "decay",
+            "name": "Decay",
+            "type": "slider",
+            "range": "0-100%",
+            "unit": "%",
+            "description": "Filter envelope decay time",
+            "note": "Short = plucky, Long = sweeping"
+          },
+          {
+            "id": "accent",
+            "name": "Accent",
+            "type": "slider",
+            "range": "0-100%",
+            "unit": "%",
+            "description": "Simultaneously boosts cutoff, resonance, and volume",
+            "warning": "Use sparingly for emphasis"
+          },
+          {
+            "id": "tuning",
+            "name": "Tuning",
+            "type": "slider",
+            "range": "-1 to +1 octave",
+            "default": "0",
+            "description": "Master pitch adjustment"
+          },
+          {
+            "id": "volume",
+            "name": "Volume",
+            "type": "slider",
+            "range": "0-100%",
+            "unit": "%",
+            "description": "Output level pre-distortion"
+          }
+        ],
+        "advancedTweaks": [
+          {
+            "id": "hp",
+            "name": "HP (High-Pass)",
+            "type": "slider",
+            "range": "0-100%",
+            "description": "High-pass filter for bass character adjustment"
+          },
+          {
+            "id": "minEnvDecay",
+            "name": "Min Envelope Decay",
+            "type": "slider",
+            "range": "0-100%",
+            "description": "Critical parameter affecting accent circuit behavior"
+          },
+          {
+            "id": "filterKeyFollow",
+            "name": "Filter Key Follow",
+            "type": "slider",
+            "range": "0-100%",
+            "description": "Makes cutoff frequency track keyboard pitch (not in original TB-303)"
+          },
+          {
+            "id": "lfoToPw",
+            "name": "LFO → PW",
+            "type": "slider",
+            "range": "-100 to +100%",
+            "description": "LFO modulation of pulse width"
+          },
+          {
+            "id": "lfoRate",
+            "name": "LFO Rate",
+            "type": "slider",
+            "range": "0-100%",
+            "description": "LFO oscillation speed",
+            "bpmSync": true
+          },
+          {
+            "id": "pulseWidth",
+            "name": "PW (Pulse Width)",
+            "type": "slider",
+            "range": "0-100%",
+            "description": "Absolute pulse width setting",
+            "note": "50% = square wave"
+          },
+          {
+            "id": "vcaSmooth",
+            "name": "VCA Smooth",
+            "type": "slider",
+            "range": "0-100%",
+            "description": "Removes attack/release clicks when increased"
+          }
+        ],
+        "effects": {
+          "distortion": [
+            {
+              "id": "distDrive",
+              "name": "Drive",
+              "type": "slider",
+              "description": "Distortion amount (Pro Co Rat emulation)",
+              "sweetSpot": "45-60%"
+            },
+            {
+              "id": "distTone",
+              "name": "Tone",
+              "type": "slider",
+              "description": "Brightness/darkness of distortion"
+            },
+            {
+              "id": "distMix",
+              "name": "Mix",
+              "type": "slider",
+              "description": "Dry/wet balance"
+            }
+          ],
+          "delay": [
+            {
+              "id": "delayTime",
+              "name": "Time",
+              "type": "slider",
+              "bpmSync": true,
+              "description": "Delay length"
+            },
+            {
+              "id": "delayFeedback",
+              "name": "Feedback",
+              "type": "slider",
+              "description": "Number of repeats"
+            },
+            {
+              "id": "delayMix",
+              "name": "Mix",
+              "type": "slider",
+              "description": "Delay level"
+            }
+          ],
+          "reverb": [
+            {
+              "id": "reverbSize",
+              "name": "Size",
+              "type": "slider",
+              "description": "Room size simulation (based on FL Reeverb 2)"
+            },
+            {
+              "id": "reverbDamping",
+              "name": "Damping",
+              "type": "slider",
+              "description": "High-frequency absorption"
+            },
+            {
+              "id": "reverbPredelayFeedback",
+              "name": "Predelay Feedback",
+              "type": "slider",
+              "description": "Echo before reverb tail"
+            },
+            {
+              "id": "reverbMix",
+              "name": "Mix",
+              "type": "slider",
+              "description": "Reverb level"
+            }
+          ]
+        },
+        "sequencer": {
+          "steps": 16,
+          "resolution": "1/16th note",
+          "lengthRange": "1-16 steps",
+          "controls": [
+            {
+              "id": "gate",
+              "name": "Gate",
+              "shortcut": "G",
+              "description": "Note on/off per step"
+            },
+            {
+              "id": "slide",
+              "name": "Slide",
+              "shortcut": "S",
+              "description": "Portamento between notes"
+            },
+            {
+              "id": "accent",
+              "name": "Accent",
+              "shortcut": "A",
+              "description": "Emphasis on step"
+            }
+          ],
+          "parameters": [
+            {
+              "id": "gateLength",
+              "name": "Gate Length",
+              "description": "Note duration"
+            },
+            {
+              "id": "swing",
+              "name": "Swing/Shuffle",
+              "description": "Groove timing adjustment"
+            },
+            {
+              "id": "octave",
+              "name": "Octave",
+              "range": "0-10",
+              "description": "Pitch range selection"
+            }
+          ],
+          "transpose": "Via MIDI Channel 13"
+        },
+        "engineOptions": [
+          {
+            "name": "V1 Legacy",
+            "description": "Original algorithm - preserves old project compatibility"
+          },
+          {
+            "name": "V2 Extended",
+            "description": "Extended cutoff range for modern production"
+          },
+          {
+            "name": "V2 TB303",
+            "description": "Most accurate TB-303 hardware emulation",
+            "recommended": true
+          }
+        ]
+      },
+      "programSystem": {
+        "totalPrograms": 128,
+        "structure": "Each program links a patch and sequence",
+        "editBuffer": {
+          "readFunction": "Load program into edit buffer",
+          "writeFunction": "Save edit buffer to program slot",
+          "purpose": "Prevents accidental overwrite of programs"
+        },
+        "autofollow": "MIDI notes automatically trigger programs when enabled"
+      },
+      "pianoRollMode": {
+        "portamento": "Overlap notes to create slide effect",
+        "accent": "Set velocity ≥ 86% (220/255)",
+        "transpose": "Use color group 13 for sequence transposition"
+      }
+    }
+  },
+  "presets": {
+    "genre-presets": {
+      "acidTechnoPresets": {
+        "raw303": {
+          "tuning": 0,
+          "cutoff": 75,
+          "resonance": 85,
+          "envMod": 90,
+          "decay": 40,
+          "accent": 80,
+          "slide": 60,
+          "distortion": true,
+          "subBass": false
+        },
+        "liquidAcid": {
+          "tuning": -2,
+          "cutoff": 60,
+          "resonance": 70,
+          "envMod": 75,
+          "decay": 65,
+          "accent": 70,
+          "slide": 90,
+          "distortion": false,
+          "subBass": true
+        },
+        "hardAcid": {
+          "tuning": 0,
+          "cutoff": 90,
+          "resonance": 95,
+          "envMod": 100,
+          "decay": 30,
+          "accent": 100,
+          "slide": 40,
+          "distortion": true,
+          "subBass": true
+        }
+      },
+      "housePresets": {
+        "chicagoHouse": {
+          "tuning": 0,
+          "cutoff": 65,
+          "resonance": 75,
+          "envMod": 80,
+          "decay": 50,
+          "accent": 75,
+          "slide": 50,
+          "distortion": false,
+          "subBass": true
+        },
+        "deepHouse": {
+          "tuning": -1,
+          "cutoff": 45,
+          "resonance": 60,
+          "envMod": 65,
+          "decay": 70,
+          "accent": 60,
+          "slide": 70,
+          "distortion": false,
+          "subBass": true
+        },
+        "funkyHouse": {
+          "tuning": 0,
+          "cutoff": 70,
+          "resonance": 80,
+          "envMod": 85,
+          "decay": 45,
+          "accent": 80,
+          "slide": 60,
+          "distortion": false,
+          "subBass": true
+        }
+      },
+      "trancePresets": {
+        "upliftingTrance": {
+          "tuning": 0,
+          "cutoff": 80,
+          "resonance": 85,
+          "envMod": 90,
+          "decay": 35,
+          "accent": 85,
+          "slide": 55,
+          "distortion": false,
+          "subBass": true
+        },
+        "psytrance": {
+          "tuning": 0,
+          "cutoff": 85,
+          "resonance": 90,
+          "envMod": 95,
+          "decay": 25,
+          "accent": 90,
+          "slide": 65,
+          "distortion": true,
+          "subBass": true
+        },
+        "progressiveTrance": {
+          "tuning": -1,
+          "cutoff": 60,
+          "resonance": 70,
+          "envMod": 75,
+          "decay": 55,
+          "accent": 70,
+          "slide": 75,
+          "distortion": false,
+          "subBass": true
+        }
+      },
+      "hipHopPresets": {
+        "boomBap": {
+          "tuning": 0,
+          "cutoff": 55,
+          "resonance": 65,
+          "envMod": 70,
+          "decay": 60,
+          "accent": 65,
+          "slide": 40,
+          "distortion": false,
+          "subBass": true
+        },
+        "trapBass": {
+          "tuning": -2,
+          "cutoff": 40,
+          "resonance": 50,
+          "envMod": 60,
+          "decay": 75,
+          "accent": 50,
+          "slide": 80,
+          "distortion": false,
+          "subBass": true
+        },
+        "drill808": {
+          "tuning": -1,
+          "cutoff": 35,
+          "resonance": 45,
+          "envMod": 55,
+          "decay": 85,
+          "accent": 40,
+          "slide": 90,
+          "distortion": false,
+          "subBass": true
+        }
+      }
+    },
+    "hiphop-bass-presets": {
+      "$schema": "../schema/transistor-bass-schema.json",
+      "presetBank": {
+        "name": "Hip-Hop & R&B Bass Essentials",
+        "version": "1.0",
+        "category": "Bass",
+        "genre": [
+          "Hip-Hop",
+          "Trap",
+          "R&B",
+          "Lo-Fi"
+        ],
+        "totalPresets": 12
+      },
+      "presets": [
+        {
+          "id": "trap_808_deep",
+          "name": "Trap 808 Deep",
+          "description": "Classic trap sub bass - chest-hitting low-end",
+          "genre": [
+            "Trap",
+            "Hip-Hop"
+          ],
+          "vibe": "Moody, Dark, Heavy",
+          "useCase": "Main bass for trap beats",
+          "referenceArtists": [
+            "Metro Boomin",
+            "Southside",
+            "21 Savage"
+          ],
+          "parameters": {
+            "engine": "V2 Extended",
+            "waveform": 100,
+            "cutoff": 18,
+            "resonance": 8,
+            "envMod": 15,
+            "decay": 80,
+            "accent": 0,
+            "tuning": 0,
+            "volume": 75,
+            "hp": 0,
+            "minEnvDecay": 20,
+            "filterKeyFollow": 0,
+            "lfoToPw": 0,
+            "lfoRate": 0,
+            "pulseWidth": 50,
+            "vcaSmooth": 35,
+            "distortion": {
+              "drive": 25,
+              "tone": 40,
+              "mix": 50
+            }
+          },
+          "mixingTips": [
+            "High-pass at 30Hz to remove rumble",
+            "Boost +3dB at 60Hz for chest thump",
+            "Sidechain to kick (4:1 ratio, 100ms release)",
+            "Keep mono below 120Hz"
+          ],
+          "playingTechnique": {
+            "noteRange": "C1-G1",
+            "noteLength": "1/2 to full bar",
+            "velocity": "100% (consistent)",
+            "slides": "Occasional (beat 3.5 to 4)"
+          }
+        },
+        {
+          "id": "melodic_rnb_bass",
+          "name": "Melodic R&B Bass",
+          "description": "Moving bass melodies with warmth and presence",
+          "genre": [
+            "R&B",
+            "Neo-Soul",
+            "Hip-Hop"
+          ],
+          "vibe": "Melodic, Upbeat, Smooth",
+          "useCase": "Melodic basslines following chord progressions",
+          "referenceArtists": [
+            "J. Cole",
+            "Childish Gambino",
+            "Anderson .Paak"
+          ],
+          "parameters": {
+            "engine": "V2 Extended",
+            "waveform": 100,
+            "cutoff": 25,
+            "resonance": 12,
+            "envMod": 30,
+            "decay": 65,
+            "accent": 0,
+            "tuning": 0,
+            "volume": 70,
+            "hp": 5,
+            "minEnvDecay": 25,
+            "filterKeyFollow": 20,
+            "lfoToPw": 30,
+            "lfoRate": 25,
+            "pulseWidth": 50,
+            "vcaSmooth": 30,
+            "distortion": {
+              "drive": 30,
+              "tone": 55,
+              "mix": 60
+            }
+          },
+          "mixingTips": [
+            "Add slight chorus for width (15% mix)",
+            "EQ: Cut 200-300Hz if muddy",
+            "Light compression (3:1) for consistency",
+            "Layer with sub sine if needed"
+          ],
+          "playingTechnique": {
+            "noteRange": "E1-A1",
+            "noteLength": "1/4 to 1/2 note (rhythmic)",
+            "velocity": "80-100% (dynamic)",
+            "slides": "Frequent (smooth R&B feel)"
+          }
+        },
+        {
+          "id": "psychedelic_sub",
+          "name": "Psychedelic Sub",
+          "description": "Trippy, evolving bass with LFO modulation",
+          "genre": [
+            "Psychedelic Hip-Hop",
+            "Cloud Rap",
+            "Alternative"
+          ],
+          "vibe": "Psychedelic, Cool, Experimental",
+          "useCase": "Atmospheric bass with movement",
+          "referenceArtists": [
+            "Frank Ocean",
+            "The Weeknd",
+            "Kid Cudi"
+          ],
+          "parameters": {
+            "engine": "V2 Extended",
+            "waveform": 75,
+            "cutoff": 30,
+            "resonance": 20,
+            "envMod": 45,
+            "decay": 70,
+            "accent": 0,
+            "tuning": 0,
+            "volume": 65,
+            "hp": 10,
+            "minEnvDecay": 30,
+            "filterKeyFollow": 30,
+            "lfoToPw": 60,
+            "lfoRate": 15,
+            "pulseWidth": 50,
+            "vcaSmooth": 40,
+            "distortion": {
+              "drive": 20,
+              "tone": 60,
+              "mix": 40
+            },
+            "delay": {
+              "time": "1/16",
+              "feedback": 25,
+              "mix": 15
+            },
+            "reverb": {
+              "size": "Medium",
+              "mix": 20
+            }
+          },
+          "mixingTips": [
+            "Add Vintage Phaser for extra movement",
+            "Automate cutoff slowly (4-8 bar cycles)",
+            "Wide stereo on harmonics (keep sub mono)",
+            "Layer with pad for fullness"
+          ],
+          "playingTechnique": {
+            "noteRange": "D1-G1",
+            "noteLength": "1/2 to 1 bar (sustained)",
+            "velocity": "70-85% (laid back)",
+            "slides": "Chromatic movements"
+          }
+        },
+        {
+          "id": "lofi_warmth",
+          "name": "Lo-Fi Warm Bass",
+          "description": "Vintage, tape-saturated bass for lo-fi beats",
+          "genre": [
+            "Lo-Fi Hip-Hop",
+            "Boom Bap",
+            "Chill Hop"
+          ],
+          "vibe": "Cool, Nostalgic, Warm",
+          "useCase": "Warm bass foundation for lo-fi tracks",
+          "referenceArtists": [
+            "Nujabes",
+            "J Dilla",
+            "Tomppabeats"
+          ],
+          "parameters": {
+            "engine": "V1 Legacy",
+            "waveform": 100,
+            "cutoff": 20,
+            "resonance": 10,
+            "envMod": 20,
+            "decay": 75,
+            "accent": 0,
+            "tuning": 0,
+            "volume": 65,
+            "hp": 0,
+            "minEnvDecay": 15,
+            "filterKeyFollow": 10,
+            "lfoToPw": 15,
+            "lfoRate": 10,
+            "pulseWidth": 50,
+            "vcaSmooth": 50,
+            "distortion": {
+              "drive": 35,
+              "tone": 35,
+              "mix": 70
+            }
+          },
+          "postProcessing": [
+            "Bitcrusher: 12-bit reduction",
+            "Fruity Squeeze: Warm saturation",
+            "Low-pass filter: 8kHz cutoff",
+            "Layer vinyl noise underneath"
+          ],
+          "mixingTips": [
+            "Boost 100-150Hz for body",
+            "Roll off highs for vintage feel",
+            "Add tape saturation",
+            "Keep dynamics loose (minimal compression)"
+          ],
+          "playingTechnique": {
+            "noteRange": "D1-F1",
+            "noteLength": "1/2 to 1 bar",
+            "velocity": "70-80% (relaxed)",
+            "slides": "Minimal (simple lines)"
+          }
+        },
+        {
+          "id": "aggressive_trap",
+          "name": "Aggressive Trap 808",
+          "description": "Distorted, in-your-face trap bass",
+          "genre": [
+            "Trap",
+            "Drill"
+          ],
+          "vibe": "Moody, Aggressive, Heavy",
+          "useCase": "Hard-hitting trap with attitude",
+          "referenceArtists": [
+            "Pop Smoke",
+            "Fivio Foreign",
+            "UK Drill"
+          ],
+          "parameters": {
+            "engine": "V2 Extended",
+            "waveform": 100,
+            "cutoff": 15,
+            "resonance": 5,
+            "envMod": 10,
+            "decay": 85,
+            "accent": 0,
+            "tuning": 0,
+            "volume": 80,
+            "hp": 0,
+            "minEnvDecay": 10,
+            "filterKeyFollow": 0,
+            "lfoToPw": 0,
+            "lfoRate": 0,
+            "pulseWidth": 50,
+            "vcaSmooth": 25,
+            "distortion": {
+              "drive": 60,
+              "tone": 50,
+              "mix": 80
+            }
+          },
+          "mixingTips": [
+            "Heavy sidechain to kick",
+            "Parallel compression for thickness",
+            "Boost 80-100Hz aggressively",
+            "Soft clip the output"
+          ],
+          "playingTechnique": {
+            "noteRange": "C1-D1",
+            "noteLength": "Full bar (sustain)",
+            "velocity": "100% (maximum)",
+            "slides": "Fast slides for tension"
+          }
+        },
+        {
+          "id": "bounce_funk",
+          "name": "Bounce Funk Bass",
+          "description": "Rhythmic, funky bass with movement",
+          "genre": [
+            "Hip-Hop",
+            "Funk",
+            "G-Funk"
+          ],
+          "vibe": "Upbeat, Funky, Groovy",
+          "useCase": "West Coast bounce, Parliament-inspired",
+          "referenceArtists": [
+            "Dr. Dre",
+            "Snoop Dogg",
+            "Anderson .Paak"
+          ],
+          "parameters": {
+            "engine": "V2 TB303",
+            "waveform": 50,
+            "cutoff": 35,
+            "resonance": 25,
+            "envMod": 50,
+            "decay": 55,
+            "accent": 40,
+            "tuning": 0,
+            "volume": 70,
+            "hp": 15,
+            "minEnvDecay": 30,
+            "filterKeyFollow": 25,
+            "lfoToPw": 40,
+            "lfoRate": 30,
+            "pulseWidth": 40,
+            "vcaSmooth": 35,
+            "distortion": {
+              "drive": 40,
+              "tone": 65,
+              "mix": 55
+            }
+          },
+          "mixingTips": [
+            "Add slight chorus for width",
+            "Boost 150-250Hz for body",
+            "Use accents on syncopated notes",
+            "Layer with talkbox effect"
+          ],
+          "playingTechnique": {
+            "noteRange": "F1-C2",
+            "noteLength": "1/8 to 1/4 (rhythmic)",
+            "velocity": "Varies (dynamic)",
+            "slides": "Funky slides on upbeats"
+          }
+        },
+        {
+          "id": "miami_bass",
+          "name": "Miami Bass 808",
+          "description": "Boomy, club-shaking Miami bass sound",
+          "genre": [
+            "Miami Bass",
+            "Trap",
+            "Club"
+          ],
+          "vibe": "Upbeat, Heavy, Energetic",
+          "useCase": "Dance floor bass, maximum low-end",
+          "referenceArtists": [
+            "2 Live Crew",
+            "DJ Khaled (modern)"
+          ],
+          "parameters": {
+            "engine": "V2 Extended",
+            "waveform": 100,
+            "cutoff": 12,
+            "resonance": 3,
+            "envMod": 5,
+            "decay": 90,
+            "accent": 0,
+            "tuning": 0,
+            "volume": 85,
+            "hp": 0,
+            "minEnvDecay": 5,
+            "filterKeyFollow": 0,
+            "lfoToPw": 0,
+            "lfoRate": 0,
+            "pulseWidth": 50,
+            "vcaSmooth": 20,
+            "distortion": {
+              "drive": 45,
+              "tone": 30,
+              "mix": 70
+            }
+          },
+          "mixingTips": [
+            "Maximize 50-80Hz range",
+            "Heavy compression (6:1)",
+            "Sidechain everything to bass",
+            "Check on subwoofer/club system"
+          ],
+          "playingTechnique": {
+            "noteRange": "C1-E1",
+            "noteLength": "Full bar (maximum sustain)",
+            "velocity": "100% (maximum)",
+            "slides": "None (straight sustains)"
+          }
+        },
+        {
+          "id": "subtle_sub",
+          "name": "Subtle Sub Foundation",
+          "description": "Invisible sub bass that's felt not heard",
+          "genre": [
+            "R&B",
+            "Pop",
+            "Modern Hip-Hop"
+          ],
+          "vibe": "Cool, Clean, Professional",
+          "useCase": "Support bass that doesn't overpower",
+          "referenceArtists": [
+            "Drake",
+            "Bryson Tiller",
+            "6LACK"
+          ],
+          "parameters": {
+            "engine": "V2 Extended",
+            "waveform": 100,
+            "cutoff": 22,
+            "resonance": 5,
+            "envMod": 15,
+            "decay": 70,
+            "accent": 0,
+            "tuning": 0,
+            "volume": 60,
+            "hp": 0,
+            "minEnvDecay": 20,
+            "filterKeyFollow": 5,
+            "lfoToPw": 0,
+            "lfoRate": 0,
+            "pulseWidth": 50,
+            "vcaSmooth": 45,
+            "distortion": {
+              "drive": 15,
+              "tone": 50,
+              "mix": 30
+            }
+          },
+          "mixingTips": [
+            "Keep very low in mix (-12dB)",
+            "Focus energy at 40-60Hz",
+            "Gentle sidechain to kick",
+            "Layer with melodic bass"
+          ],
+          "playingTechnique": {
+            "noteRange": "C1-F1",
+            "noteLength": "Whole notes (sustained)",
+            "velocity": "60-70% (background)",
+            "slides": "None (simple root notes)"
+          }
+        },
+        {
+          "id": "glide_bass",
+          "name": "808 Glide Master",
+          "description": "Perfect for trap slides and portamento",
+          "genre": [
+            "Trap",
+            "Modern Hip-Hop"
+          ],
+          "vibe": "Melodic, Modern, Dynamic",
+          "useCase": "Signature trap 808 slides",
+          "referenceArtists": [
+            "Future",
+            "Lil Baby",
+            "Gunna"
+          ],
+          "parameters": {
+            "engine": "V2 Extended",
+            "waveform": 100,
+            "cutoff": 20,
+            "resonance": 10,
+            "envMod": 20,
+            "decay": 75,
+            "accent": 0,
+            "tuning": 0,
+            "volume": 75,
+            "hp": 0,
+            "minEnvDecay": 25,
+            "filterKeyFollow": 15,
+            "lfoToPw": 0,
+            "lfoRate": 0,
+            "pulseWidth": 50,
+            "vcaSmooth": 40,
+            "distortion": {
+              "drive": 30,
+              "tone": 45,
+              "mix": 55
+            }
+          },
+          "mixingTips": [
+            "Perfect glide time: 50-150ms",
+            "Slight chorus for width",
+            "Automate cutoff on slides",
+            "Keep slides 3-7 semitones"
+          ],
+          "playingTechnique": {
+            "noteRange": "C1-G1",
+            "noteLength": "Varies with slide timing",
+            "velocity": "100%",
+            "slides": "Primary feature - overlap notes"
+          },
+          "slidePatterns": [
+            "C1 (sustain) → D1 (quick slide beat 3.5)",
+            "C1 → F1 (long slide)",
+            "C1 → Eb1 → G1 (double slide)"
+          ]
+        },
+        {
+          "id": "gritty_underground",
+          "name": "Gritty Underground",
+          "description": "Raw, distorted bass for underground hip-hop",
+          "genre": [
+            "Underground Hip-Hop",
+            "Experimental",
+            "Alt-Rap"
+          ],
+          "vibe": "Moody, Raw, Aggressive",
+          "useCase": "Grimy, lo-fi aggressive bass",
+          "referenceArtists": [
+            "Earl Sweatshirt",
+            "JPEGMAFIA",
+            "Danny Brown"
+          ],
+          "parameters": {
+            "engine": "V1 Legacy",
+            "waveform": 85,
+            "cutoff": 28,
+            "resonance": 18,
+            "envMod": 35,
+            "decay": 60,
+            "accent": 25,
+            "tuning": 0,
+            "volume": 75,
+            "hp": 8,
+            "minEnvDecay": 20,
+            "filterKeyFollow": 20,
+            "lfoToPw": 45,
+            "lfoRate": 35,
+            "pulseWidth": 45,
+            "vcaSmooth": 25,
+            "distortion": {
+              "drive": 70,
+              "tone": 40,
+              "mix": 85
+            }
+          },
+          "postProcessing": [
+            "Bitcrusher: 10-bit",
+            "Additional distortion",
+            "Vinyl noise layer",
+            "Lo-fi degradation"
+          ],
+          "mixingTips": [
+            "Embrace the dirt and grit",
+            "Don't over-compress",
+            "Layer with clean sub if needed",
+            "Add vinyl crackle"
+          ],
+          "playingTechnique": {
+            "noteRange": "D1-A1",
+            "noteLength": "Varies (experimental)",
+            "velocity": "Varies (dynamic)",
+            "slides": "Unexpected intervals"
+          }
+        },
+        {
+          "id": "modern_pop_bass",
+          "name": "Modern Pop Bass",
+          "description": "Clean, polished bass for pop-rap crossover",
+          "genre": [
+            "Pop-Rap",
+            "Mainstream Hip-Hop"
+          ],
+          "vibe": "Upbeat, Clean, Radio-Ready",
+          "useCase": "Commercial hip-hop production",
+          "referenceArtists": [
+            "Post Malone",
+            "Juice WRLD",
+            "Lil Nas X"
+          ],
+          "parameters": {
+            "engine": "V2 Extended",
+            "waveform": 100,
+            "cutoff": 24,
+            "resonance": 8,
+            "envMod": 18,
+            "decay": 68,
+            "accent": 0,
+            "tuning": 0,
+            "volume": 72,
+            "hp": 5,
+            "minEnvDecay": 22,
+            "filterKeyFollow": 18,
+            "lfoToPw": 20,
+            "lfoRate": 20,
+            "pulseWidth": 50,
+            "vcaSmooth": 38,
+            "distortion": {
+              "drive": 28,
+              "tone": 58,
+              "mix": 50
+            }
+          },
+          "mixingTips": [
+            "Very clean mix (minimal distortion)",
+            "Tight sidechain to kick",
+            "Boost 2-4kHz for definition",
+            "Professional loudness standards"
+          ],
+          "playingTechnique": {
+            "noteRange": "E1-G1",
+            "noteLength": "1/4 to 1/2 (rhythmic)",
+            "velocity": "85-100% (consistent)",
+            "slides": "Moderate (tasteful)"
+          }
+        },
+        {
+          "id": "chopped_screwed",
+          "name": "Chopped & Screwed Bass",
+          "description": "Slowed down, pitched bass for Houston style",
+          "genre": [
+            "Chopped & Screwed",
+            "Houston Hip-Hop"
+          ],
+          "vibe": "Moody, Slow, Heavy",
+          "useCase": "Screwed versions, slow jams",
+          "referenceArtists": [
+            "DJ Screw",
+            "Travis Scott (slowed)"
+          ],
+          "parameters": {
+            "engine": "V2 Extended",
+            "waveform": 100,
+            "cutoff": 16,
+            "resonance": 6,
+            "envMod": 12,
+            "decay": 95,
+            "accent": 0,
+            "tuning": -300,
+            "volume": 78,
+            "hp": 0,
+            "minEnvDecay": 15,
+            "filterKeyFollow": 0,
+            "lfoToPw": 0,
+            "lfoRate": 0,
+            "pulseWidth": 50,
+            "vcaSmooth": 55,
+            "distortion": {
+              "drive": 32,
+              "tone": 38,
+              "mix": 65
+            },
+            "reverb": {
+              "size": "Large",
+              "mix": 30
+            }
+          },
+          "postProcessing": [
+            "Pitch down -3 to -5 semitones",
+            "Time stretch to 60-75% speed",
+            "Heavy reverb",
+            "Tape saturation"
+          ],
+          "mixingTips": [
+            "Extra long decay (let it breathe)",
+            "More reverb than normal",
+            "Darker EQ curve",
+            "Slow, hypnotic feel"
+          ],
+          "playingTechnique": {
+            "noteRange": "C1-E1 (pitch down after)",
+            "noteLength": "Very long sustains",
+            "velocity": "80-90%",
+            "slides": "Slow, deliberate"
+          }
+        }
+      ],
+      "usageGuide": {
+        "quickStart": "Load preset, adjust to taste, apply mixing tips",
+        "customization": "All presets are starting points - tweak for your track",
+        "layering": "Combine 'Subtle Sub' with melodic presets for fullness",
+        "automation": "Automate cutoff and LFO rate for movement"
+      },
+      "mixingCheatSheet": {
+        "frequencyRanges": {
+          "sub": "40-60Hz (felt, not heard)",
+          "body": "80-150Hz (power and weight)",
+          "definition": "2-4kHz (clarity on small speakers)"
+        },
+        "essentialProcessing": [
+          "High-pass at 30Hz (remove rumble)",
+          "Sidechain to kick (essential)",
+          "Keep mono below 120Hz",
+          "Add harmonics with saturation"
+        ],
+        "commonProblems": {
+          "muddy": "Cut 200-300Hz, check phase",
+          "weak": "Boost 60-80Hz, add saturation",
+          "harsh": "Reduce distortion drive",
+          "clashing": "Sidechain compression"
+        }
+      }
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "concepts-and-best-uses": "# Concepts & Best Uses: Transistor Bass\r\n\r\n## What It Is\r\nTransistor Bass is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Transistor Bass\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n",
+      "tb303-emulation-logic": "# Concept: TB-303 Emulation Logic (Transistor Bass)\n\nTags: acid | bass | classic | emulation\n\n## What It Is\nTransistor Bass is a high-fidelity emulation of the **Roland TB-303**, the synthesizer that defined Acid House and later influenced G-Funk and modern electronic basslines.\n\n## Why It Matters\n- **The Filter Character:** The 303 filter is a \"18dB/oct\" diode ladder. It has a specific \"squelch\" and \"rubber band\" feel that modern digital filters struggle to replicate.\n- **The Sequencer Interaction:** The 303 isn't just a synth; it's a sequencer. The interaction between **Accents** and **Slides** is what creates the \"acid\" feel.\n- **Urban Utility:** While built for Techno, its ability to \"slide\" (portamento) makes it perfect for funky G-Funk basslines or dark, moving Trap backgrounds.\n\n## How to Hear It\n- **The \"Squelch\":** Crank the **Resonance**. You will hear a chirping sound that follows the pitch of the note.\n- **The \"Growl\":** Increase the **Distortion**. The TB-303 circuit is famous for how it sounds when pushed through a distortion pedal.\n\n## Typical Mistakes\n- **Ignoring the Accent:** If every note is the same volume, the 303 sounds like a boring toy. You *must* use Accents to open the filter rhythmically.\n- **Too Many Slides:** If everything slides, the bassline loses its rhythmic \"anchor.\" Use slides sparingly for maximum impact.\n\n## What to Adjust First\n1. **Cutoff:** This is your primary \"Energy\" knob.\n2. **Decay:** This determines if the bass is \"plucky\" (short) or \"liquid\" (long).\n"
+    },
+    "Quick-Reference": {
+      "parameter-cheat-sheet": "# Transistor Bass - Parameter Cheat Sheet\n\n**Plugin Type:** Subtractive Synthesizer (TB-303 Emulation)\n**Category:** Bass Synth / Acid Bassline Generator\n**Official Manual:** [Transistor Bass](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Transistor%20Bass.htm)\n\n---\n\n## 🎚️ Main Synthesis Parameters\n\n| Parameter | Range | Function | Quick Tip |\n|-----------|-------|----------|-----------|\n| **Waveform** | Square ↔ Saw | Blends between square and sawtooth waves | Start with full square for classic acid |\n| **Cutoff** | 0-100% | Filter cutoff frequency | Sweep this for the signature TB-303 squelch |\n| **Resonance** | 0-100% | Filter resonance (Q factor) | High values create screaming acid sounds |\n| **Env Mod** | 0-100% | Filter envelope modulation depth | Higher = more envelope movement on cutoff |\n| **Decay** | 0-100% | Filter envelope decay time | Short decay = plucky, long decay = sweeping |\n| **Accent** | 0-100% | Boosts cutoff, resonance, and volume | Use sparingly for emphasis on key notes |\n| **Tuning** | -1 to +1 octave | Master pitch adjustment | Fine-tune to other instruments |\n| **Volume** | 0-100% | Output level (pre-distortion) | Set before distortion to control drive amount |\n\n---\n\n## 🎛️ Advanced Tweaks Section\n\n| Parameter | Range | Function | When to Use |\n|-----------|-------|----------|-------------|\n| **HP (High-Pass)** | 0-100% | High-pass filter for bass character | Remove excessive sub-bass rumble |\n| **Min Envelope Decay** | 0-100% | Critical for accent circuit behavior | Affects how accents respond dynamically |\n| **Filter Key Follow** | 0-100% | Makes cutoff track keyboard pitch | Add brightness to higher notes (not in original TB-303) |\n| **LFO → PW** | -100 to +100% | LFO modulation of pulse width | Create evolving timbres |\n| **LFO Rate** | 0-100% | LFO oscillation speed | Sync to BPM for rhythmic modulation |\n| **PW (Pulse Width)** | 0-100% | Direct pulse width control | 50% = square wave, adjust for tone |\n| **VCA Smooth** | 0-100% | Removes attack/release clicks | Increase if you hear pops on note triggers |\n\n---\n\n## 🔧 Synthesis Engine Options\n\n| Engine | Description | Use Case |\n|--------|-------------|----------|\n| **V1 Legacy** | Original algorithm | Preserves compatibility with old projects |\n| **V2 Extended** | Extended cutoff range | More extreme filter sweeps |\n| **V2 TB303** | Most accurate emulation | Closest to hardware TB-303 behavior |\n\n**Recommendation:** Use **V2 TB303** for authentic acid bass, **V2 Extended** for modern production flexibility.\n\n---\n\n## 🎹 Sequencer Parameters\n\n| Control | Function | Shortcut |\n|---------|----------|----------|\n| **Length** | 1-16 steps | Adjust pattern length |\n| **Gate** | On/Off per step | **G** key |\n| **Slide** | Portamento between notes | **S** key |\n| **Accent** | Emphasis on step | **A** key |\n| **Octave** | 0-10 range | Set note pitch range |\n| **Gate Length** | Note duration | Shorter = staccato, longer = legato |\n| **Swing/Shuffle** | Groove timing | Add swing for less robotic feel |\n| **Transpose** | Via MIDI Channel 13 | Change key without reprogramming |\n\n**Navigation:** Arrow keys to move between steps\n\n---\n\n## 🎸 Effects Section\n\n### Distortion (Pro Co Rat Emulation)\n| Parameter | Function |\n|-----------|----------|\n| **Drive** | Distortion amount |\n| **Tone** | Brightness/darkness of distortion |\n| **Mix** | Dry/wet balance |\n\n**Tip:** Inspired by Hardfloor's setup - use heavy drive for aggressive acid\n\n### Delay\n| Parameter | Function |\n|-----------|----------|\n| **Time** | Delay length (BPM sync available) |\n| **Feedback** | Number of repeats |\n| **Mix** | Delay level |\n\n### Reverb (Based on FL Reeverb 2)\n| Parameter | Function |\n|-----------|----------|\n| **Size** | Room size simulation |\n| **Damping** | High-frequency absorption |\n| **Predelay Feedback** | Echo before reverb tail |\n| **Mix** | Reverb level |\n\n---\n\n## 📊 Program System\n\n- **128 Programs** available (each links a patch + sequence)\n- **Edit Buffer System:** Prevents accidental overwrite\n  - **Read:** Load program into edit buffer\n  - **Write:** Save edit buffer to program slot\n- **Autofollow Mode:** MIDI notes automatically trigger programs\n\n---\n\n## 🎹 Piano Roll Integration\n\nWhen **Sequencer Mode** is deselected:\n\n| Feature | How to Use |\n|---------|------------|\n| **Portamento/Slide** | Overlap notes in piano roll |\n| **Accent** | Set velocity ≥ 86% (220/255) |\n| **Transpose** | Use color group 13 for sequence transposition |\n\n---\n\n## 🎯 Quick Start Workflow\n\n### Classic Acid Bass in 30 Seconds\n1. **Engine:** Select **V2 TB303**\n2. **Waveform:** Full **Square**\n3. **Cutoff:** Start at **30%**\n4. **Resonance:** Set to **70%**\n5. **Env Mod:** Set to **80%**\n6. **Decay:** Set to **40%**\n7. **Sequencer:** Program 16-step pattern with slides and accents\n8. **Distortion:** Drive to **50%**, Tone to **60%**\n\n### Deep Sub Bass\n1. **Waveform:** Full **Sawtooth**\n2. **Cutoff:** Set to **20%**\n3. **Resonance:** Keep low at **10%**\n4. **HP Filter:** Reduce to **0%** for maximum sub\n5. **Effects:** Keep dry (no distortion/reverb)\n\n---\n\n## ⚡ Pro Tips\n\n1. **Accent Circuit:** The accent parameter simultaneously boosts cutoff, resonance, AND volume - use strategically\n2. **Slide Technique:** Overlapping notes creates portamento/glide between pitches - essential for acid lines\n3. **Edit Buffer Safety:** Always **Read** before making major changes to preserve original\n4. **Multi-Pattern Sharing:** Use same patch across multiple programs for different melodies with identical timbre\n5. **BPM Sync Everything:** Sync LFO and Delay to project tempo for tight groove integration\n\n---\n\n## 🔗 Related Plugins\n\n- **BooBass** - Alternative subtractive bass synth\n- **Sawer** - Advanced subtractive synthesis\n- **Sytrus** - FM-based bass synthesis\n- **Fruity DX10** - Another FM option for bass\n\n---\n\n**Last Updated:** February 3, 2026\n**Status:** ⭐ HIGH PRIORITY - Essential reference material\n",
+      "quick-start-checklist": "# Quick Start Checklist: Transistor Bass\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Transistor Bass to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "quickstart-guide": "# Transistor Bass Quick Start Guide\n\n## What is Transistor Bass?\nTransistor Bass is a TB-303 inspired synthesizer plugin that creates iconic acid bass sounds and sequences.\n\n## 5-Minute Setup\n1. Load Transistor Bass on a mixer channel\n2. Start with the \"Acid Init\" preset\n3. Draw a simple pattern in the piano roll\n4. Enable accent and slide for classic acid sound\n5. Add distortion for extra bite\n\n## Essential Controls\n- **Tuning**: Fine-tune bass pitch\n- **Cutoff**: Filter frequency (main acid control)\n- **Resonance**: Filter scream amount\n- **Env Mod**: Filter envelope depth\n- **Decay**: Note length (short = staccato)\n- **Accent**: Emphasis on notes\n- **Slide**: Note glide effect\n\n## Quick Patterns\n- Basic 4/4 pattern: C1-C1-G1-G1\n- Acid line: C1-E1-G1-E1-G1-E1-C1\n- House bass: A1-A1-D1-D1-G1-G1-D1-D1\n\n## Pro Tips\n- Use accent on every 4th beat\n- Slide from G to C for classic drops\n- Combine with sub-bass for weight\n- Automate cutoff for movement",
+      "top-controls": "# Top Controls: Transistor Bass\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Transistor Bass\r\n\r\nThis section contains learning information for the transistor-bass plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-context": {
+      "integration-guide": "# Transistor Bass Integration Guide\n\n## DAW Integration\n\n### FL Studio Native Integration\n**Best Practices**:\n- Use Patcher for complex routing\n- Create template projects\n- Set up custom controls\n- Use playlist automation\n\n### Ableton Live Integration\n**Setup via ReWire**:\n1. FL Studio as ReWire host\n2. Transistor Bass in FL Studio\n3. Audio routing to Live\n4. MIDI sync between applications\n\n### Logic Pro Integration\n**Workaround Methods**:\n- Use FL Studio as VST wrapper\n- MIDI via IAC bus (Mac)\n- Audio export/import workflow\n- Hardware loopback option\n\n## Plugin Chain Integration\n\n### Classic Acid Chain\n**Order**: TB-303 → Distortion → EQ → Compression → Reverb\n1. **Transistor Bass**: Core sound generation\n2. **Distortion**: Saturator or overdrive\n3. **EQ**: Low-cut + high-shelf\n4. **Compression**: 4:1 ratio control\n5. **Reverb**: Small room or plate\n\n### Modern Production Chain\n**Order**: TB-303 → Multi-band Processing → Stereo Imaging → Limiting\n1. **Transistor Bass**: Main bass sound\n2. **Multi-band**: Separate low/mid/high processing\n3. **Stereo Imaging**: Width control\n4. **Limiter**: Final output protection\n\n### Sidechain Integration\n**Setup**:\n- Kick trigger source\n- Bass ducking amount\n- Attack/release settings\n- Frequency-selective ducking\n\n## Hardware Integration\n\n### MIDI Controller Setup\n**Recommended Controllers**:\n- **Novation Launchkey**: Grid pattern control\n- **Native Instruments Maschine**: Pad performance\n- **Arturia KeyLab**: Keyboard with controls\n- **AKAI MPK**: MPC-style pads\n\n### CV/Gate Integration\n**For Modular Systems**:\n- CV output from audio interface\n- Gate from MIDI converter\n- 1V/Octave tuning calibration\n- External filter connections\n\n### Hardware Processors\n**Outboard Gear**:\n- Analog distortions\n- Vintage filters\n- Tape saturation\n- Hardware compressors\n\n## Software Integration\n\n### Max for Live Integration\n**Custom Devices**:\n- Pattern generator\n- Randomizer\n- Performance controller\n- Recorder/looper\n\n### Script Integration\n**Python/Automation**:\n- Parameter automation\n- Pattern generation\n- Data logging\n- Batch processing\n\n### Controller Scripts\n**FL Studio Scripts**:\n- One-touch pattern switching\n- Filter automation recording\n- Performance macros\n- Backup systems",
+      "live-performance": "# Live Performance with Transistor Bass\n\n## Setup Configuration\n\n### MIDI Controller Mapping\n**Essential Assignments**:\n- **Cutoff Filter**: Mod Wheel or Knob 1\n- **Resonance**: Knob 2 or Sustain Pedal\n- **Decay**: Knob 3 or Expression Pedal\n- **Accent**: Footswitch or Drum Pad\n- **Pattern Select**: Pads 1-8\n\n### Performance Rack Setup\n**Signal Chain**:\n1. Transistor Bass\n2. Distortion Unit\n3. Filter (additional)\n4. Delay/Reverb\n5. Limiter\n\n**Audio Interface Settings**:\n- Buffer: 128-256 samples\n- Sample Rate: 44.1kHz or 48kHz\n- Direct Monitoring: Enabled\n\n## Performance Techniques\n\n### Real-time Pattern Creation\n**On-the-fly Programming**:\n1. Start with simple note sequence\n2. Add accents on the fly\n3. Insert slides for movement\n4. Automate cutoff manually\n\n### Filter Performance\n**Live Filtering**:\n- Slow sweeps for builds\n- Quick cuts for stabs\n- Rhythmic pumping\n- Resonance feedback control\n\n### Pattern Switching\n**Set Flow Management**:\n- **Intro**: Simple, filtered\n- **Build**: Gradual filter opening\n- **Drop**: Full acid intensity\n- **Breakdown**: Filtered, minimal\n- **Outro**: Decay automation\n\n## Genre-Specific Approaches\n\n### Techno Performance\n**Techniques**:\n- Repetitive hypnotic patterns\n- Long filter sweeps\n- Accent on every 4th beat\n- Subtle slide variations\n\n### House Performance\n**Techniques**:\n- Groovy, swing patterns\n- Filter on offbeats\n- Melodic variations\n- Layer with sub-bass\n\n### Acid Techno Live PA\n**Setup Requirements**:\n- Multiple instances for layers\n- Effect sends for processing\n- Pattern triggering system\n- Backup audio files\n\n### Psytrance Elements\n**Performance Additions**:\n- Fast filter modulation\n- High resonance settings\n- Glitchy slide patterns\n- Distortion automation\n\n## Troubleshooting Live Issues\n\n### MIDI Problems\n**Solutions**:\n- Check MIDI connections\n- Verify channel assignments\n- Reset MIDI controller\n- Use backup patterns\n\n### Audio Dropouts\n**Prevention**:\n- Increase buffer size\n- Reduce other plugins\n- Freeze other tracks\n- Use lower quality settings\n\n### Creative Blocks\n**Recovery Techniques**:\n- Switch to preset patterns\n- Use randomize function\n- Adjust filter only\n- Take brief break",
+      "troubleshooting-workflows": "# Transistor Bass Troubleshooting\n\n## Sound Issues\n\n### No Sound Output\n**Causes**: \n- Mixer channel muted\n- Wrong MIDI channel\n- Volume too low\n- Plugin bypassed\n\n**Solutions**:\n1. Check mixer channel volume\n2. Verify MIDI input channel\n3. Increase main volume knob\n4. Disable plugin bypass\n\n### Weak Bass Response\n**Causes**:\n- Cutoff too low\n- Resonance too high\n- Sub-bass not engaged\n- Wrong octave\n\n**Solutions**:\n1. Increase cutoff to 12-2 o'clock\n2. Reduce resonance to 9-10 o'clock\n3. Add sub-bass layer\n4. Check octave setting\n\n### No Acid Sound\n**Causes**:\n- No accent automation\n- Decay too long\n- No slide patterns\n- Filter not moving\n\n**Solutions**:\n1. Add accent automation\n2. Set decay to 2-3 o'clock\n3. Add slide between notes\n4. Automate cutoff movement\n\n## Pattern Issues\n\n### Notes Not Playing\n**Causes**:\n- Pattern not active\n- Wrong pattern number\n- Transport not running\n- Wrong note range\n\n**Solutions**:\n1. Activate pattern in playlist\n2. Check pattern selector\n3. Start FL Studio transport\n4. Use C1-C3 range\n\n### Timing Problems\n**Causes**:\n- Wrong pattern length\n- Swing enabled incorrectly\n- Quantization issues\n- Buffer too low\n\n**Solutions**:\n1. Set correct pattern length\n2. Adjust swing amount\n3. Check quantize settings\n4. Increase buffer size\n\n## Performance Issues\n\n### CPU Spikes\n**Causes**:\n- High oversampling\n- Multiple instances\n- Complex automation\n- Buffer too low\n\n**Solutions**:\n1. Reduce oversampling\n2. Freeze patterns\n3. Simplify automation\n4. Increase buffer size\n\n### Audio Glitches\n**Causes**:\n- Low buffer size\n- Driver issues\n- CPU overload\n- Memory issues\n\n**Solutions**:\n1. Increase ASIO buffer\n2. Update audio drivers\n3. Close other plugins\n4. Restart FL Studio"
+    },
+    "by-goal": {
+      "808-style-sub-bass-hiphop": "# 808-Style Sub Bass for Hip-Hop & R&B\n\n**Genre:** Hip-Hop, Trap, R&B, Lo-Fi\n**Vibe:** Deep, boomy, chest-hitting bass\n**Difficulty:** Beginner\n**Time:** 5-10 minutes\n\n---\n\n## The Hip-Hop Bass Sound\n\nWhile Transistor Bass emulates the TB-303, it can create powerful 808-style sub bass for modern hip-hop when configured correctly. The key is **removing** the acid character and focusing on pure low-end power.\n\n---\n\n## Quick Settings for Instant 808 Bass\n\n### Core Parameters\n```\nEngine: V2 Extended (for maximum low-end)\nWaveform: Full Sawtooth (100% right)\nCutoff: 15-25% (very low)\nResonance: 5-15% (minimal)\nEnv Mod: 10-20% (very subtle)\nDecay: 70-85% (long tail)\nAccent: 0% (not needed for 808s)\nHP Filter: 0% (keep all sub)\n```\n\n### Why These Settings?\n- **Sawtooth wave** = richer harmonics than square (more fullness)\n- **Low cutoff** = focuses energy in sub frequencies (40-80Hz)\n- **Minimal resonance** = clean, not screaming\n- **Long decay** = sustaining 808 boom\n- **No accent** = consistent volume (808s are steady)\n\n---\n\n## Step-by-Step Workflow\n\n### Step 1: Disable the Sequencer\n1. **Turn OFF** the internal sequencer\n2. We'll program in the **Piano Roll** for hip-hop beats\n\n### Step 2: Bass Fundamentals\n\n**For Trap/Modern Hip-Hop:**\n- Root notes: **C1, D1, F1** (deep sub range)\n- Note length: **1/2 to full bar** (let it breathe)\n- Velocity: **100%** (consistent hits)\n\n**For R&B/Neo-Soul:**\n- Root notes: **E1, G1, A1** (slightly higher)\n- Note length: **1/4 to 1/2 note** (more rhythmic)\n- Add **slides** by overlapping notes slightly\n\n**For Lo-Fi Hip-Hop:**\n- Root notes: **D1, E1, G1**\n- Note length: **1/2 to 1 bar** (sustained)\n- Lower velocity: **70-85%** (laid back vibe)\n\n### Step 3: Rhythm Programming\n\n**Classic Trap Pattern:**\n```\nBeat:  1   &   2   &   3   &   4   &\nNote:  C1          C1      C1      D1\nLen:   |--------|  |---|   |---|   |--|\n```\n- **Beat 1:** Long root note (1/2 bar)\n- **Beat 2.5:** Short punch\n- **Beat 3.5:** Short punch\n- **Beat 4.5:** Quick slide to D1\n\n**Moody R&B Pattern:**\n```\nBeat:  1       2       3       4\nNote:  E1      G1      A1      E1\nLen:   |-------|-------|-------|-------|\n```\n- Whole notes with **pitch automation** for glides\n- Add **cutoff automation** for movement\n\n**Psychedelic Hip-Hop:**\n```\nBeat:  1   &   2   &   3   &   4   &\nNote:  D1  E1  D1  F#1 D1  G1  D1  A1\nLen:   |-| |-| |-| |-| |-| |-| |-| |-|\n```\n- Chromatic movement for trippy feel\n- Short punchy notes\n- Unexpected intervals\n\n---\n\n## Melody Integration\n\n### Playing with the Beat\n1. **808 hits with kick:** 808 on beat 1 and 3, kick on all 4 beats\n2. **Sidechain compression:** Duck 808 under kick (-6dB with fast attack)\n3. **Octave slides:** Occasionally jump up an octave for emphasis\n\n### Melodic Bass (R&B Style)\nInstead of one-note 808s, create **moving bass melodies:**\n\n```\nBar 1: E1 - G1 - A1 - G1 (over 4 beats)\nBar 2: D1 - F1 - E1 - D1 (descending line)\nBar 3: C1 - E1 - G1 - B1 (ascending to tension)\nBar 4: A1 - A1 - A1 - A1 (resolve and sustain)\n```\n\n**Tips:**\n- Use **3rds and 5ths** from your chord progression\n- Keep notes in **C1-G2 range** (sub to low-mid)\n- Longer notes on **downbeats** (beats 1 and 3)\n\n---\n\n## Effects Chain for Hip-Hop Bass\n\n### Essential Processing\n\n**1. Saturation/Distortion (Light)**\n- Drive: 20-30%\n- Tone: 40%\n- Mix: 50%\n- *Why:* Adds harmonics so bass is audible on small speakers\n\n**2. Fruity Parametric EQ 2**\n- **Band 1:** High-pass at 30Hz (remove rumble)\n- **Band 2:** Boost +3dB at 60Hz (chest thump)\n- **Band 3:** Cut -2dB at 250Hz (remove mud)\n- **Band 5:** Boost +2dB at 2kHz (add presence for small speakers)\n\n**3. Fruity Soft Clipper**\n- Threshold: -3dB\n- *Why:* Fattens the sound without harsh distortion\n\n**4. Sidechain Compressor**\n- Triggered by kick\n- Ratio: 4:1\n- Attack: 5ms\n- Release: 100-150ms\n- *Why:* Creates the pumping effect\n\n### Optional: Psychedelic Effects\n\n**For Trippy Vibes:**\n- **Fruity Phaser:** Very slow LFO (4 bars)\n- **Fruity Delay 3:** 1/16 triplet, low mix (10%)\n- **Fruity Reverb 2:** Tiny room, 5% mix\n\n---\n\n## Genre-Specific Variations\n\n### 1. Dark Trap (Moody)\n\n**Settings:**\n- Cutoff: 12% (very dark)\n- Decay: 90% (extra long)\n- Add **Maximus** on low band for extra thump\n\n**Vibe:** Underground, ominous, chest-rattling\n\n**Reference Tracks:**\n- Metro Boomin - \"Mask Off\" (Future)\n- Southside - \"XO Tour Llif3\" (Lil Uzi Vert)\n\n### 2. Melodic Hip-Hop (Upbeat)\n\n**Settings:**\n- Cutoff: 25% (brighter)\n- Decay: 60% (more rhythmic)\n- Add **Vintage Chorus** for width\n\n**Melody:** Actual bass melodies, not just root notes\n\n**Reference Tracks:**\n- J. Cole - \"MIDDLE CHILD\"\n- Childish Gambino - \"Redbone\"\n\n### 3. Psychedelic R&B (Cool/Trippy)\n\n**Settings:**\n- Cutoff: 30%\n- Env Mod: 40% (more movement)\n- LFO → PW: 50% (evolving timbre)\n- LFO Rate: 1/2 bar (slow modulation)\n\n**Add Effects:**\n- Vintage Phaser (slow)\n- Delay (1/8 dotted, ping-pong)\n\n**Reference Tracks:**\n- Frank Ocean - \"Nights\"\n- The Weeknd - \"House of Balloons\"\n- Thundercat - \"Them Changes\"\n\n### 4. Lo-Fi Hip-Hop (Chill)\n\n**Settings:**\n- Cutoff: 20%\n- Add **Edison** to record → **downsample** to 22kHz\n- Add **Fruity Squeeze** for vintage warmth\n- **Vinyl noise** layered underneath\n\n**Vibe:** Warm, nostalgic, tape-saturated\n\n**Reference Tracks:**\n- Nujabes - \"Feather\"\n- J Dilla - \"Don't Cry\"\n\n---\n\n## Mixing Tips for Hip-Hop Bass\n\n### Frequency Management\n**The 808 Sweet Spot:**\n- **40-60Hz:** Pure sub (felt, not heard)\n- **80-120Hz:** Body and power\n- **2-4kHz:** Definition for small speakers\n\n### Mono vs. Stereo\n- **Keep bass MONO below 120Hz**\n- Use **Fruity Stereo Shaper** to force mono on low end\n- Can add **subtle stereo width** above 200Hz\n\n### Loudness Without Clipping\n1. **Don't boost sub above +3dB**\n2. Use **Fruity Limiter** on master with -0.3dB ceiling\n3. **Sidechain** bass to kick (essential)\n4. Add **harmonics** with subtle distortion instead of volume\n\n### The \"iPhone Speaker Test\"\nYour bass should still be **felt/heard** on phone speakers:\n- Boost 2-4kHz slightly\n- Add light saturation\n- Check mix in **mono**\n\n---\n\n## Advanced Techniques\n\n### 1. 808 Slides (Glide/Portamento)\n- **Overlap notes** in piano roll by 1-2 ticks\n- Start on root, slide up 3-7 semitones\n- Quick slides (50-100ms) for trap\n- Slow slides (200-400ms) for R&B\n\n**Example Pattern:**\n```\nBeat 1: C1 (sustain)\nBeat 3: C1 → D1 (quick slide)\nBeat 4: D1 → F1 (longer slide)\n```\n\n### 2. Kick + 808 Layering\n- **Kick:** Handles 40-80Hz punch\n- **808:** Handles 60-150Hz body and sustain\n- **EQ the kick:** High-pass at 80Hz\n- **EQ the 808:** Notch at 50Hz (make room for kick)\n\n### 3. Parallel Processing\n- **Main 808:** Clean, untouched\n- **Send to FX channel:** Heavy saturation + chorus\n- **Blend:** 80% dry, 20% wet\n- *Result:* Powerful but controlled\n\n### 4. Automation for Movement\n\n**Moody Vibe:**\n- Automate **Cutoff** slowly (4-8 bar cycles)\n- Start at 15%, rise to 30%, back down\n- Creates breathing, evolving bass\n\n**Psychedelic Vibe:**\n- Automate **LFO Rate** to speed up/slow down\n- Automate **Env Mod** for intensity changes\n- Creates unpredictable, trippy movement\n\n---\n\n## Preset Starting Points\n\n### \"Trap Sub 808\"\n```json\n{\n  \"waveform\": 100,\n  \"cutoff\": 18,\n  \"resonance\": 8,\n  \"envMod\": 15,\n  \"decay\": 80,\n  \"hp\": 0,\n  \"distortion\": 25\n}\n```\n\n### \"Melodic R&B Bass\"\n```json\n{\n  \"waveform\": 100,\n  \"cutoff\": 25,\n  \"resonance\": 12,\n  \"envMod\": 30,\n  \"decay\": 65,\n  \"lfoToPw\": 30,\n  \"lfoRate\": 25\n}\n```\n\n### \"Psychedelic Sub\"\n```json\n{\n  \"waveform\": 75,\n  \"cutoff\": 30,\n  \"resonance\": 20,\n  \"envMod\": 45,\n  \"decay\": 70,\n  \"lfoToPw\": 60,\n  \"lfoRate\": 15\n}\n```\n\n---\n\n## Common Mistakes\n\n1. **Too much resonance:** Keep it under 20% for hip-hop\n2. **Notes too short:** 808s need to sustain and breathe\n3. **Playing too high:** Stay in C1-C2 range\n4. **No sidechain:** Bass and kick will fight\n5. **Too much low-end boost:** Leads to clipping\n\n---\n\n## Reference Artists & Producers\n\n**Trap/Modern:**\n- Metro Boomin\n- Southside\n- London On Da Track\n- Wheezy\n\n**Melodic Hip-Hop:**\n- J. Cole\n- Kanye West\n- Mac Miller\n- Tyler, The Creator\n\n**Psychedelic R&B:**\n- Frank Ocean\n- The Weeknd\n- Thundercat\n- PARTYNEXTDOOR\n\n**Lo-Fi:**\n- Nujabes\n- J Dilla\n- Knxwledge\n- Tomppabeats\n\n---\n\n## Next Steps\n\n1. **Master the fundamentals:** Get one solid 808 sound\n2. **Learn sidechain compression:** Essential for hip-hop\n3. **Study reference tracks:** A/B your bass with pros\n4. **Experiment with slides:** Makes bass melodic and interesting\n5. **Add movement:** Subtle automation keeps it alive\n\n---\n\n**Related Workflows:**\n- [Sidechain Bass to Kick](./sidechain-compression-hiphop.md)\n- [Melodic Bass Lines for R&B](./melodic-bass-rnb.md)\n- [Lo-Fi 808 Processing](./lofi-bass-texture.md)\n\n---\n\n**Last Updated:** February 3, 2026\n**Genre:** Hip-Hop, Trap, R&B, Lo-Fi\n**Vibe:** 🔥 Certified Hood Classic\n",
+      "advanced-acid-techniques": "# Advanced Acid Techniques\n\n## Filter Automation Strategies\n\n### Classic Acid Filter Sweep\n**Pattern**: 8-bar progression\n- Bar 1-2: Low cutoff (25-35)\n- Bar 3-4: Gradual rise (35-55)\n- Bar 5-6: Peak (55-75)\n- Bar 7-8: Return to start\n\n**Implementation**:\n1. Automate cutoff knob\n2. Add subtle resonance sweep\n3. Time slides with filter movements\n4. Use accent on peak moments\n\n### Multi-Stage Filter Rhythm\n**Technique**: Create rhythmic filter patterns\n- **Bounce**: Cutoff 40-60 on offbeats\n- **Pulse**: Quick cuts between 30-70\n- **Wave**: Smooth sine wave automation\n\n### Resonance Modulation\n**Advanced**: Automate resonance alongside cutoff\n- Keep resonance below 80 for musical results\n- Increase resonance during filter peaks\n- Use lower resonance for bass-heavy sections\n\n## Pattern Programming Advanced\n\n### Polyrhythmic Sequences\n**Concept**: Overlay different rhythm patterns\n- **3 over 4**: triplet feel over 4/4\n- **Syncopation**: emphasize 2 and 4\n- **Rests**: strategic silence builds tension\n\n### Slide Programming\n**Techniques**:\n- Short slides: 16th note transitions\n- Long slides: octave glides\n- Patterned slides: every 3rd note\n- Random slides: organic feel\n\n### Accent Logic\n**Patterns**:\n- **Four on the floor**: accent on 1,2,3,4\n- **Backbeat**: accent on 2 and 4\n- **Syncopated**: accent on offbeats\n- **Random**: 25% probability\n\n## Sound Design Techniques\n\n### Distortion Chain\n**Signal Flow**: TB → Distortion → EQ → Compression\n1. **Overdrive**: 15-25% gain increase\n2. **Bitcrush**: subtle reduction (14-16 bit)\n3. **EQ Boost**: 100-200Hz +3dB\n4. **Compression**: 4:1 ratio, fast attack\n\n### Layering Strategies\n**Sub-Bass Layer**:\n- Pure sine wave one octave below\n- Sidechain compression with main bass\n- Low-pass at 80Hz\n- Mono output\n\n**Mid-Range Harmonics**:\n- Square wave at same pitch\n- Band-pass 200-800Hz\n- Stereo width enhancement\n- Gentle saturation\n\n## Performance Techniques\n\n### Real-time Manipulation\n**Live Performance Setup**:\n- **MIDI CC#1**: Cutoff control\n- **MIDI CC#2**: Resonance control\n- **MIDI CC#3**: Decay control\n- **Mod Wheel**: Filter envelope amount\n\n### Pattern Switching\n**Workflow**: Create multiple patterns\n- **Verse**: Simple, filtered bass\n- **Chorus**: Active, resonant bass\n- **Bridge**: Melodic variation\n- **Drop**: Maximum intensity\n\n### Freeze & Render\n**Optimization**:\n1. Record MIDI to audio\n2. Apply external processing\n3. Render with effects\n4. Reduce CPU load",
+      "classic-acid-bass-creation": "# Classic Acid Bass Creation with Transistor Bass\n\n**Difficulty:** Beginner\n**Time Required:** 10-15 minutes\n**Goal:** Create an authentic TB-303 style acid bassline\n**Genre:** Acid House, Techno, Psy-Trance\n\n---\n\n## Prerequisites\n\n- Transistor Bass loaded in FL Studio\n- Understanding of basic sequencer operation\n- Reference track with acid bass (optional but recommended)\n\n---\n\n## Workflow Steps\n\n### Step 1: Engine and Waveform Setup\n\n1. **Select Engine:** Choose **V2 TB303** from the engine dropdown\n   - *Why:* Most accurate emulation of the original hardware\n\n2. **Set Waveform:** Move the **Waveform** slider to full **Square** (left position)\n   - *Why:* Square wave is the classic acid sound - bright and aggressive\n\n---\n\n### Step 2: Filter Configuration (The Heart of Acid)\n\n3. **Initial Cutoff:** Set **Cutoff** to ~**25-35%**\n   - *Why:* Starting point for filter sweeps\n   - *Tip:* You'll modulate this with the envelope\n\n4. **High Resonance:** Set **Resonance** to **65-80%**\n   - *Why:* Creates the signature \"screaming\" acid character\n   - *Warning:* Too high and you get piercing, painful sounds\n\n5. **Envelope Modulation:** Set **Env Mod** to **70-85%**\n   - *Why:* This makes the filter sweep dramatically\n   - *Tip:* Higher values = more pronounced \"squelch\"\n\n6. **Decay Time:** Set **Decay** to **35-45%**\n   - *Why:* Controls how fast the filter closes\n   - *Experimentation:* Short decay = plucky, long decay = sweeping\n\n---\n\n### Step 3: Accent Configuration\n\n7. **Accent Amount:** Set **Accent** to **50-60%**\n   - *Why:* Adds dynamic emphasis to selected steps\n   - *Note:* Accent affects cutoff, resonance, AND volume simultaneously\n\n---\n\n### Step 4: Programming the Sequence\n\n8. **Open Sequencer:** Ensure sequencer mode is enabled (button should be lit)\n\n9. **Set Pattern Length:** Start with **16 steps** (full bar in 16th notes)\n\n10. **Program Basic Pattern:**\n    ```\n    Step:  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16\n    Gate:  ■  □  ■  □  ■  □  ■  □  ■  □  ■  □  ■  □  ■  □\n    Note:  C  -  C  -  C  -  D# -  C  -  C  -  F  -  G  -\n    ```\n    - Press **G** to toggle gates on odd steps\n    - Use arrow keys to navigate, **Up/Down** to change notes\n\n11. **Add Slides:**\n    - Select steps 3, 7, 11, 15\n    - Press **S** to enable slide (portamento)\n    - *Result:* Notes glide into each other for liquid movement\n\n12. **Add Accents:**\n    - Select steps 1, 5, 9, 13 (downbeats)\n    - Press **A** to enable accent\n    - *Result:* Emphasized hits with more filter opening\n\n---\n\n### Step 5: Fine-Tuning the Sound\n\n13. **Adjust Gate Length:** Set to **60-70%**\n    - *Why:* Prevents notes from overlapping too much\n    - *Tip:* Shorter = more staccato, longer = more legato\n\n14. **Add Swing:** Set **Swing/Shuffle** to **15-25%**\n    - *Why:* Makes the groove less robotic\n    - *Genre note:* Classic acid tends to be straight, but slight swing works\n\n15. **Octave Selection:** Try **Octave 2 or 3**\n    - *Why:* Classic acid sits in the low-mid range\n    - *Tip:* Octave 1 = very deep, Octave 3 = more present\n\n---\n\n### Step 6: Advanced Tweaks\n\n16. **Filter Key Follow:** Add **20-30%**\n    - *Why:* Makes higher notes brighter\n    - *Note:* This wasn't in the original TB-303\n\n17. **VCA Smooth:** Increase to **30-40%** if you hear clicks\n    - *Why:* Removes attack/release artifacts\n    - *When:* Especially important with short decay times\n\n---\n\n### Step 7: Add Character with Effects\n\n18. **Distortion (Pro Co Rat):**\n    - **Drive:** 45-60%\n    - **Tone:** 55-65%\n    - **Mix:** 70-100%\n    - *Why:* Adds warmth and aggression (inspired by Hardfloor)\n\n19. **Delay (Optional):**\n    - **Time:** 1/16th note (sync to BPM)\n    - **Feedback:** 25-35%\n    - **Mix:** 15-25%\n    - *Why:* Creates space and rhythmic doubling\n\n20. **Reverb (Subtle):**\n    - **Size:** Small to medium\n    - **Mix:** 10-15%\n    - *Why:* Just enough to sit in the mix without washing out\n\n---\n\n## Advanced Variations\n\n### Variation 1: \"Harder\" Acid (Hardfloor Style)\n- Increase **Distortion Drive** to 75%+\n- Push **Resonance** to 85%+\n- Use **Sawtooth** waveform instead of square\n- Result: More aggressive, industrial sound\n\n### Variation 2: \"Liquid\" Acid\n- Reduce **Resonance** to 45-55%\n- Increase **Decay** to 60-70%\n- More slides (every 2nd note)\n- Less accents (only on beats 1 and 3)\n- Result: Smoother, more melodic lines\n\n### Variation 3: \"303 Bass\" (Less Acid, More Sub)\n- Lower **Cutoff** to 15-20%\n- Reduce **Resonance** to 30%\n- Minimal **Env Mod** (20-30%)\n- No distortion\n- Result: Deep bass foundation instead of acid lead\n\n---\n\n## Melody Programming Tips\n\n### Classic Acid Patterns\n1. **Root Note Focus:** Build patterns around a root note (usually C or D)\n2. **Octave Jumps:** Occasional jumps up an octave for tension\n3. **Chromatic Movement:** Half-step slides create tension/release\n4. **Repetition:** Acid thrives on hypnotic repetition with subtle variation\n\n### Note Distribution\n- **Steps 1, 5, 9, 13:** Root note (foundation)\n- **Steps 3, 7, 11, 15:** Fifth or octave (movement)\n- **Other steps:** Passing tones, chromatic fills\n\n### Rhythm Secrets\n- **Gate Density:** Not every step needs a gate - silence is powerful\n- **Slide Placement:** Use slides sparingly (every 4th step max)\n- **Accent Pattern:** Downbeats (1, 5, 9, 13) OR off-beats (2, 6, 10, 14)\n\n---\n\n## Mixing Integration\n\n### Frequency Management\n- **HPF:** Use **HP** control at 15-20% to remove sub-20Hz rumble\n- **Cutoff Automation:** Automate cutoff for build-ups (close filter, then open)\n- **EQ Post-Processing:** Cut 200-300Hz if it sounds muddy in the mix\n\n### Sidechain Compression\n- Sidechain Transistor Bass to the kick drum\n- Fast attack, medium release\n- Result: Bass \"ducks\" under kick, creating pumping effect\n\n### Stereo Width\n- Transistor Bass is **mono** by default\n- Add stereo width with:\n  - Fruity Stereo Enhancer (subtle)\n  - Stereo delay (left/right offset)\n  - Chorus effect (very light)\n\n---\n\n## Common Mistakes to Avoid\n\n1. **Over-Resonance:** Resonance above 90% can be harsh and painful\n2. **Too Much Env Mod:** 100% envelope modulation can sound uncontrolled\n3. **Excessive Slides:** Every note sliding = muddy, undefined bass\n4. **Ignoring Accents:** Accents are what make acid DYNAMIC\n5. **Forgetting Decay:** Decay time is as important as cutoff/resonance\n\n---\n\n## Preset Recall Workflow\n\n### Saving Your Sound\n1. Create your perfect acid sound in the **Edit Buffer**\n2. Click **Write** to save to a program slot (1-128)\n3. Name the program descriptively (e.g., \"Classic Acid 01\")\n\n### Multi-Pattern Projects\n1. Save the **Patch** (sound) to a program\n2. Use the **same patch** across multiple programs\n3. Change only the **sequence** data per program\n4. Result: Consistent timbre across different melodic patterns\n\n---\n\n## Genre-Specific Adaptations\n\n### Acid House (Classic 303)\n- Moderate resonance (60-70%)\n- Balanced envelope modulation (70%)\n- Medium decay (40-50%)\n- Subtle distortion\n\n### Psy-Trance (Aggressive)\n- Maximum resonance (80%+)\n- Full envelope modulation (90%+)\n- Heavy distortion (60%+)\n- Faster sequences (1/32 notes possible)\n\n### Techno (Minimal)\n- Lower resonance (40-50%)\n- Controlled envelope modulation (50-60%)\n- Longer decay (60%)\n- Focus on rhythm over filter movement\n\n---\n\n## Next Steps\n\nAfter mastering this workflow:\n\n1. **Explore the Wasp/Wasp XT** for alternative acid sounds\n2. **Learn Sytrus FM Bass** for modern acid variations\n3. **Study Patcher** to create custom TB-303 FX chains\n4. **Experiment with automation** on cutoff, resonance, and effects\n\n---\n\n**Related Workflows:**\n- [Deep Sub Bass Creation](./deep-sub-bass-creation.md)\n- [Acid Bass with Piano Roll](./acid-bass-piano-roll.md) (using automation instead of sequencer)\n- [Multi-Pattern Acid Lines](./multi-pattern-acid-composition.md)\n\n---\n\n**Last Updated:** February 3, 2026\n**Status:** 🟢 Complete workflow\n",
+      "urban-acid-funky-basslines": "# Workflow: Urban Acid & Funky Basslines\n**Goal:** Repurposing the aggressive TB-303 sound of Transistor Bass for **Funky**, **Jazzy**, or **Moody** Hip-Hop basslines.\n\n## 1. The \"Clean\" Funky Bass\n*Used for: G-Funk, Neo-Soul.*\n- **Oscillator:** Use the **Sawtooth** for more \"bite\" or **Square** for a \"hollow\" 70s feel.\n- **Filter Cutoff:** Set it low (~20%).\n- **Resonance:** Keep it moderate (~30%). Avoid the \"chirp\" for a cleaner funk sound.\n- **The Playstyle:** Instead of fast \"Techno\" sequences, play long, held notes with occasional fast \"slides\" (legato) using the pitch bend.\n\n## 2. The \"Dark Trap\" Acid Bass\n*Used for: Moody Trap, aggressive drill-style backgrounds.*\n- **Distortion:** Crank the internal Distortion to ~60%.\n- **Filter Envelope:** Increase the \"Env Mod\" to 100%. This makes the filter \"snap\" on every note.\n- **Decay:** Set to a very short value (~10-20%).\n- **Result:** A \"plucky,\" distorted bass that hits hard and leaves room for the 808 sub.\n\n## 3. The \"Liquid\" Soulful Sequence\n- **Resonance:** Crank it to **80%+**.\n- **LFO/Automation:** Automate the **Cutoff** knob slowly over 8 bars.\n- **The \"Accent\" Trick:** In the Transistor Bass sequencer, mark every 4th note as an \"Accent.\" This adds a rhythmic \"pulse\" that makes the bassline feel less robotic.\n\n## 4. Signal Chain for Urban Vibes\n1. **Transistor Bass** (Source)\n2. **Fruity Chorus:** To widen the sound and give it a \"vintage\" analog feel.\n3. **LuxeVerb:** A very small \"Room\" reverb to make it sound like it was recorded in a studio.\n4. **Low Lifter:** To add the sub-bass weight that the original TB-303 lacks.\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Transistor Bass\r\n\r\nThis section contains workflow information for the transistor-bass plugin.\r\n"
+    }
+  },
+  "rules": {
+    "bass-problem-solving": {
+      "problemSolvingRules": {
+        "name": "Hip-Hop Bass Troubleshooting Guide",
+        "category": "Problem → Solution Mapping",
+        "genre": "Hip-Hop, Trap, R&B"
+      },
+      "symptoms": [
+        {
+          "symptom": "Bass sounds muddy and unclear",
+          "priority": 1,
+          "causes": [
+            "Too much low-mid energy (200-400Hz)",
+            "Phase issues with kick",
+            "No high-pass filtering"
+          ],
+          "solutions": [
+            {
+              "action": "EQ Cut",
+              "parameters": {
+                "frequency": "200-300Hz",
+                "cut": "-3 to -6dB",
+                "Q": "Medium (1.5-2.0)"
+              },
+              "why": "Removes boxiness and mud"
+            },
+            {
+              "action": "High-Pass Filter",
+              "parameters": {
+                "hp": "5-10%",
+                "frequency": "30-35Hz"
+              },
+              "why": "Removes sub-sonic rumble"
+            },
+            {
+              "action": "Check Phase",
+              "parameters": {
+                "tool": "Fruity Phase Inverter",
+                "test": "Flip bass phase, keep whichever sounds fuller"
+              },
+              "why": "Phase cancellation with kick causes thin sound"
+            }
+          ],
+          "preventionTips": [
+            "Start with low cutoff (15-20%)",
+            "Keep resonance under 15% for clean bass",
+            "Always sidechain to kick"
+          ]
+        },
+        {
+          "symptom": "Bass too weak/thin",
+          "priority": 1,
+          "causes": [
+            "Cutoff too low",
+            "Not enough saturation/harmonics",
+            "Fighting with kick",
+            "Playing in wrong octave"
+          ],
+          "solutions": [
+            {
+              "action": "Increase Cutoff",
+              "parameters": {
+                "cutoff": "Increase to 20-25%"
+              },
+              "why": "Adds more harmonic content"
+            },
+            {
+              "action": "Add Saturation",
+              "parameters": {
+                "distDrive": "30-40%",
+                "distMix": "60-70%"
+              },
+              "why": "Adds harmonics audible on small speakers"
+            },
+            {
+              "action": "Parallel Compression",
+              "parameters": {
+                "send": "Heavy compression on parallel track",
+                "blend": "20-30% wet"
+              },
+              "why": "Adds thickness without losing dynamics"
+            },
+            {
+              "action": "Check Octave",
+              "parameters": {
+                "noteRange": "C1-G1 (not C2-G2)"
+              },
+              "why": "808s live in sub/low range"
+            }
+          ],
+          "preventionTips": [
+            "Boost 60-80Hz for body",
+            "Add slight saturation for presence",
+            "Layer with top bass if needed"
+          ]
+        },
+        {
+          "symptom": "Bass clashing with kick",
+          "priority": 1,
+          "causes": [
+            "No sidechain compression",
+            "Both occupy same frequency",
+            "Phase cancellation"
+          ],
+          "solutions": [
+            {
+              "action": "Sidechain Compression",
+              "parameters": {
+                "ratio": "4:1 to 6:1",
+                "attack": "5-10ms (fast)",
+                "release": "100-150ms",
+                "threshold": "Adjust for -6dB reduction"
+              },
+              "why": "Creates space for kick to punch through",
+              "essential": true
+            },
+            {
+              "action": "EQ Separation",
+              "parameters": {
+                "kick": "Boost at 50-60Hz",
+                "bass": "Notch at 50Hz, boost at 80-100Hz"
+              },
+              "why": "Each element has its own frequency pocket"
+            },
+            {
+              "action": "Timing Adjustment",
+              "parameters": {
+                "shift": "Shift bass 10-20ms later"
+              },
+              "why": "Kick hits first, bass fills in after"
+            }
+          ],
+          "preventionTips": [
+            "Always sidechain bass to kick",
+            "Use kick-specific frequency (50Hz), bass different (80Hz)",
+            "Test in mono to hear clashes"
+          ]
+        },
+        {
+          "symptom": "Bass sounds harsh/distorted",
+          "priority": 2,
+          "causes": [
+            "Too much distortion",
+            "Resonance too high",
+            "Clipping"
+          ],
+          "solutions": [
+            {
+              "action": "Reduce Distortion Drive",
+              "parameters": {
+                "distDrive": "Lower to 20-30%"
+              },
+              "why": "Less drive = cleaner sound"
+            },
+            {
+              "action": "Lower Resonance",
+              "parameters": {
+                "resonance": "Keep under 20% for hip-hop"
+              },
+              "why": "High resonance creates harsh peaks"
+            },
+            {
+              "action": "Soft Clip",
+              "parameters": {
+                "tool": "Fruity Soft Clipper",
+                "threshold": "-3dB"
+              },
+              "why": "Tames peaks without harsh distortion"
+            },
+            {
+              "action": "Increase VCA Smooth",
+              "parameters": {
+                "vcaSmooth": "40-50%"
+              },
+              "why": "Removes attack/release clicks"
+            }
+          ],
+          "preventionTips": [
+            "Start with light distortion",
+            "Check levels (avoid clipping)",
+            "Use soft clipping instead of hard limiting"
+          ]
+        },
+        {
+          "symptom": "Bass not punchy enough",
+          "priority": 2,
+          "causes": [
+            "Attack too slow",
+            "Too much reverb/delay",
+            "Decay too long"
+          ],
+          "solutions": [
+            {
+              "action": "Reduce VCA Smooth",
+              "parameters": {
+                "vcaSmooth": "20-30%"
+              },
+              "why": "Faster attack = more punch"
+            },
+            {
+              "action": "Shorten Decay",
+              "parameters": {
+                "decay": "Reduce to 60-70%"
+              },
+              "why": "Tighter envelope = more rhythmic"
+            },
+            {
+              "action": "Remove Effects",
+              "parameters": {
+                "reverb": "Off or <10% mix",
+                "delay": "Off or <15% mix"
+              },
+              "why": "Effects blur the attack"
+            },
+            {
+              "action": "Transient Shaper",
+              "parameters": {
+                "tool": "Transient Processor",
+                "attack": "+3 to +6dB"
+              },
+              "why": "Enhances attack transient"
+            }
+          ],
+          "preventionTips": [
+            "Keep bass dry (minimal effects)",
+            "Use fast envelope settings",
+            "Compress for consistent attack"
+          ]
+        },
+        {
+          "symptom": "Bass disappears on phone/laptop speakers",
+          "priority": 2,
+          "causes": [
+            "No mid/high-frequency harmonics",
+            "All energy in sub frequencies"
+          ],
+          "solutions": [
+            {
+              "action": "Add Saturation",
+              "parameters": {
+                "distDrive": "25-35%",
+                "distMix": "50-70%"
+              },
+              "why": "Creates harmonics at 2-4kHz"
+            },
+            {
+              "action": "EQ Boost",
+              "parameters": {
+                "frequency": "2-4kHz",
+                "boost": "+2 to +3dB"
+              },
+              "why": "Adds presence audible on small speakers"
+            },
+            {
+              "action": "Parallel High-Pass",
+              "parameters": {
+                "send": "Duplicate bass, high-pass at 500Hz",
+                "process": "Heavy saturation",
+                "blend": "15-25% wet"
+              },
+              "why": "Adds top-end without affecting sub"
+            }
+          ],
+          "preventionTips": [
+            "Always check mix on phone speaker",
+            "Use saturation for harmonics",
+            "Boost 2-4kHz subtly"
+          ]
+        },
+        {
+          "symptom": "Bass slides sound wrong/unnatural",
+          "priority": 3,
+          "causes": [
+            "Notes not overlapping correctly",
+            "Slide time too slow/fast",
+            "Wrong interval distance"
+          ],
+          "solutions": [
+            {
+              "action": "Overlap Notes",
+              "parameters": {
+                "overlap": "1-2 ticks in piano roll"
+              },
+              "why": "Triggers portamento/glide"
+            },
+            {
+              "action": "Adjust Glide Time",
+              "parameters": {
+                "quick": "50-100ms for trap",
+                "slow": "200-400ms for R&B"
+              },
+              "why": "Timing affects vibe"
+            },
+            {
+              "action": "Use Common Intervals",
+              "parameters": {
+                "intervals": "3-7 semitones (common in trap)"
+              },
+              "why": "These intervals sound musical"
+            }
+          ],
+          "preventionTips": [
+            "Study reference tracks for slide timing",
+            "Keep slides to 3-7 semitones",
+            "Use slides sparingly (not every note)"
+          ]
+        },
+        {
+          "symptom": "Bass causes clipping/distortion on master",
+          "priority": 1,
+          "causes": [
+            "Too loud in mix",
+            "Competing with other low-end",
+            "No master limiting"
+          ],
+          "solutions": [
+            {
+              "action": "Lower Bass Volume",
+              "parameters": {
+                "volume": "Reduce by 3-6dB"
+              },
+              "why": "Bass should support, not dominate"
+            },
+            {
+              "action": "Sidechain Everything",
+              "parameters": {
+                "targets": "Pads, synths, keys",
+                "ratio": "2:1 to 3:1 (light)"
+              },
+              "why": "Creates space for bass"
+            },
+            {
+              "action": "Master Limiting",
+              "parameters": {
+                "tool": "Fruity Limiter",
+                "ceiling": "-0.3dB",
+                "margin": "Leave headroom"
+              },
+              "why": "Prevents clipping on final output"
+            }
+          ],
+          "preventionTips": [
+            "Mix bass at -6dB to -3dB",
+            "Use sidechain liberally",
+            "Leave headroom for mastering"
+          ]
+        },
+        {
+          "symptom": "Bass sounds sterile/lifeless",
+          "priority": 3,
+          "causes": [
+            "Too clean/digital",
+            "No movement/variation",
+            "Static parameters"
+          ],
+          "solutions": [
+            {
+              "action": "Add Movement",
+              "parameters": {
+                "lfoToPw": "20-40%",
+                "lfoRate": "Slow (10-25%)"
+              },
+              "why": "Creates evolving timbre"
+            },
+            {
+              "action": "Automate Cutoff",
+              "parameters": {
+                "pattern": "Slow rise and fall (4-8 bars)",
+                "range": "15% to 30% and back"
+              },
+              "why": "Adds breathing, organic feel"
+            },
+            {
+              "action": "Vintage Processing",
+              "parameters": {
+                "tools": [
+                  "Fruity Squeeze",
+                  "Vintage Chorus (subtle)"
+                ],
+                "mix": "15-25%"
+              },
+              "why": "Adds analog warmth"
+            },
+            {
+              "action": "Velocity Variation",
+              "parameters": {
+                "range": "80-100% velocity",
+                "humanize": "Slight timing variation"
+              },
+              "why": "Feels more human/organic"
+            }
+          ],
+          "preventionTips": [
+            "Add subtle LFO modulation",
+            "Automate parameters over time",
+            "Use saturation for warmth"
+          ]
+        },
+        {
+          "symptom": "Bass pattern sounds boring/repetitive",
+          "priority": 3,
+          "causes": [
+            "Too simple melody",
+            "No variation between sections",
+            "Static rhythm"
+          ],
+          "solutions": [
+            {
+              "action": "Add Melodic Movement",
+              "parameters": {
+                "technique": "Play 3rds and 5ths of chords",
+                "range": "Stay in C1-A1 range"
+              },
+              "why": "Creates interest while staying low"
+            },
+            {
+              "action": "Vary Per Section",
+              "parameters": {
+                "verse": "Simple root notes",
+                "chorus": "More melodic movement",
+                "bridge": "Different rhythm/pattern"
+              },
+              "why": "Keeps listener engaged"
+            },
+            {
+              "action": "Add Rhythmic Variation",
+              "parameters": {
+                "technique": "Change note lengths, add syncopation"
+              },
+              "why": "Creates groove and interest"
+            }
+          ],
+          "preventionTips": [
+            "Study bass lines in reference tracks",
+            "Create variation every 4-8 bars",
+            "Use slides for melodic interest"
+          ]
+        }
+      ],
+      "quickDiagnosticFlow": {
+        "step1": "Problem identification",
+        "step2": "Check priority (1=critical, 3=polish)",
+        "step3": "Try solutions in order listed",
+        "step4": "Apply prevention tips going forward"
+      },
+      "genreSpecificNotes": {
+        "trap": {
+          "commonIssues": [
+            "Bass too weak",
+            "Slides sound wrong"
+          ],
+          "priorities": [
+            "Sidechain",
+            "808 slides",
+            "Sub power"
+          ]
+        },
+        "rnb": {
+          "commonIssues": [
+            "Bass not melodic enough",
+            "Too harsh"
+          ],
+          "priorities": [
+            "Melodic lines",
+            "Smoothness",
+            "Warmth"
+          ]
+        },
+        "lofi": {
+          "commonIssues": [
+            "Sounds too clean",
+            "No vintage vibe"
+          ],
+          "priorities": [
+            "Saturation",
+            "Bit reduction",
+            "Warmth"
+          ]
+        },
+        "psychedelic": {
+          "commonIssues": [
+            "Too static",
+            "Not trippy enough"
+          ],
+          "priorities": [
+            "Movement",
+            "Automation",
+            "Effects"
+          ]
+        }
+      }
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Transistor Bass\r\n\r\nThis section contains reference information for the transistor-bass plugin.\r\n"
+    }
+  }
+}

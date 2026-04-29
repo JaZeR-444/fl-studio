@@ -1,0 +1,132 @@
+{
+  "id": "fruity-keyboard-controller",
+  "name": "Fruity Keyboard Controller",
+  "presets": {
+    "drum-trigger-map": {
+      "presetName": "Drum Trigger Map",
+      "plugin": "Fruity Keyboard Controller",
+      "description": "Specific mapping for triggering Slicex regions.",
+      "settings": {
+        "notes": "C3 to C4 linear"
+      },
+      "usage": "Use to re-order drum slices without moving the actual slice markers."
+    },
+    "major-scale-map": {
+      "presetName": "Major Scale White Keys",
+      "plugin": "Fruity Keyboard Controller",
+      "description": "Maps white keys to a major scale, ignoring black keys.",
+      "settings": {
+        "map": [
+          0,
+          2,
+          4,
+          5,
+          7,
+          9,
+          11
+        ]
+      },
+      "usage": "Link to a synth's pitch to play in key without knowing theory."
+    },
+    "velocity-inverter": {
+      "presetName": "Velocity Inverter",
+      "plugin": "Fruity Keyboard Controller",
+      "description": "Output drops as velocity increases.",
+      "settings": {
+        "velocityMap": "Inverted Line (1.0 to 0.0)"
+      },
+      "usage": "Creative ducking effects or controlling inverse parameters."
+    }
+  },
+  "parameters": {
+    "keyboard-controller-params": {
+      "plugin_name": "Fruity Keyboard Controller",
+      "category": "Controller",
+      "outputs": [
+        {
+          "name": "Note",
+          "description": "Output based on the pitch of the triggered MIDI key.",
+          "vibe_impact": "Melodic tracking, rhythmic steps"
+        },
+        {
+          "name": "Velocity",
+          "description": "Output based on the pressure/velocity of the triggered MIDI key.",
+          "vibe_impact": "Expressive dynamics, human touch"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "Attack",
+          "type": "knob",
+          "description": "The time it takes for the output to reach a new note's value.",
+          "vibe_impact": "Glide, silk, smoothness",
+          "mix_impact_tags": [
+            "motion",
+            "slew"
+          ]
+        },
+        {
+          "name": "Release",
+          "type": "knob",
+          "description": "The time it takes for the output to return to its default state after a note is released.",
+          "vibe_impact": "Decay, shadow, drift"
+        },
+        {
+          "name": "Note Map",
+          "type": "graph",
+          "description": "Defines the pitch-to-data relationship."
+        },
+        {
+          "name": "Velocity Map",
+          "type": "graph",
+          "description": "Defines the pressure-to-data relationship."
+        }
+      ]
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    },
+    {
+      "title": "04 Ready To Use Mapping Patterns",
+      "filename": "04_Ready_To_Use_Mapping_Patterns.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "Controlling Vsts",
+      "category": "general",
+      "filename": "controlling-vsts.md"
+    },
+    {
+      "title": "Patcher Integration",
+      "category": "general",
+      "filename": "patcher-integration.md"
+    },
+    {
+      "title": "Xyz Teleport",
+      "category": "general",
+      "filename": "xyz-teleport.md"
+    },
+    {
+      "title": "00 Goal Quick Result",
+      "category": "by-goal",
+      "filename": "00_Goal_Quick_Result.md"
+    }
+  ]
+}

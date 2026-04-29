@@ -1,0 +1,319 @@
+{
+  "spatialPresets": {
+    "description": "Manual configuration recipes for FLEX's Delay and Reverb modules to create specific spatial environments. Apply these settings to the bottom FX row.",
+    "version": "1.1",
+    "parameter_ranges": {
+      "reverb": {
+        "decay": "0.1s - 10s",
+        "size": "0% - 100%",
+        "mix": "0% - 100%",
+        "color": "0% (dark) - 100% (bright)",
+        "mod": "0% - 100% (chorus effect)"
+      },
+      "delay": {
+        "time": "1ms - 2000ms or tempo-synced divisions",
+        "feedback": "0% - 100%+ (>100% creates infinite feedback)",
+        "mix": "0% - 100%",
+        "type": ["Fake Stereo", "True Stereo", "Ping Pong"]
+      }
+    },
+    "spaces": [
+      {
+        "name": "Intimate Studio Room",
+        "instrument_type": "Vocals, Dry Guitars, Keys",
+        "description": "A tight, controlled space that adds dimension without being 'reverby'.",
+        "audio_characteristics": "Natural ambience, minimal reflections, preserved transients",
+        "cpu_impact": "Low",
+        "reverb_settings": {
+          "Decay": "0.6s",
+          "Size": "15%",
+          "Mix": "12%",
+          "Color": "50%",
+          "Mod": "0%"
+        },
+        "delay_settings": {
+          "Mix": "0% (Bypassed)"
+        },
+        "tips": [
+          "Perfect for lead vocals that need to sit up front",
+          "Increase Mix to 18-20% for background vocals"
+        ],
+        "common_mistakes": [
+          "Adding delay on top - it clutters the space",
+          "Using this on bass - bass should stay dry"
+        ]
+      },
+      {
+        "name": "Massive Valhalla Hall",
+        "instrument_type": "Trance Leads, Cinematic Pads",
+        "description": "Huge, lush, long-tail reverb for epic scale.",
+        "audio_characteristics": "Endless decay, cathedral-like depth, lush and immersive",
+        "cpu_impact": "High",
+        "reverb_settings": {
+          "Decay": "5.5s",
+          "Size": "100%",
+          "Mix": "50%",
+          "Color": "72%",
+          "Mod": "25%"
+        },
+        "delay_settings": {
+          "Type": "Ping Pong",
+          "Time": "1/4 Dot (tempo-synced)",
+          "Feedback": "42%",
+          "Mix": "32%"
+        },
+        "tips": [
+          "Perfect for epic builds and breakdowns",
+          "Automate the reverb mix from 30% to 60% during builds",
+          "Works great with long Attack envelopes (1-2s)"
+        ],
+        "common_mistakes": [
+          "Using this on busy elements - it will muddy the mix",
+          "Forgetting to sidechain compress against kick/snare"
+        ],
+        "genre_fit": ["Trance", "Cinematic", "Ambient", "Progressive House"]
+      },
+      {
+        "name": "Slapback Rock",
+        "instrument_type": "Guitars, Rock Vocals",
+        "description": "Vintage 50s/60s echo effect. Distinct single repeat.",
+        "audio_characteristics": "Short, single distinct echo like vintage tape delay",
+        "cpu_impact": "Very Low",
+        "delay_settings": {
+          "Type": "Fake Stereo",
+          "Time": "95ms (not tempo-synced)",
+          "Feedback": "8%",
+          "Mix": "30%",
+          "Color": "25%"
+        },
+        "reverb_settings": {
+          "Mix": "3%"
+        },
+        "tips": [
+          "Classic on rockabilly and surf guitar",
+          "Try 80-120ms range to taste",
+          "Keep feedback low - you want ONE clear repeat"
+        ],
+        "common_mistakes": [
+          "Using tempo-synced time - ruins the vintage feel",
+          "Adding too much reverb - defeats the tight character"
+        ],
+        "genre_fit": ["Rockabilly", "Surf Rock", "Classic Rock", "Country"]
+      },
+      {
+        "name": "Underwater Ambience",
+        "instrument_type": "Lo-Fi Pads, Background Textures",
+        "description": "Murky, submerged sound.",
+        "audio_characteristics": "Dark, muffled, dreamlike quality",
+        "cpu_impact": "Medium",
+        "reverb_settings": {
+          "Decay": "2.2s",
+          "Size": "85%",
+          "Mix": "55%",
+          "Color": "12%",
+          "Mod": "15%"
+        },
+        "delay_settings": {
+          "Type": "True Stereo",
+          "Time": "1/2 (tempo-synced)",
+          "Feedback": "35%",
+          "Mix": "28%",
+          "Color": "5%"
+        },
+        "tips": [
+          "Combine with Master Filter Low Pass at 2-4kHz for deeper submersion",
+          "Works great with long Attack envelopes",
+          "Perfect for transitional textures"
+        ],
+        "common_mistakes": [
+          "Not cutting enough highs - keeps it too clear",
+          "Using this on lead elements - they'll disappear"
+        ],
+        "genre_fit": ["Lo-Fi", "Ambient", "Experimental", "Chillwave"]
+      },
+      {
+        "name": "Rhythmic Ghost",
+        "instrument_type": "Plucks, Arps",
+        "description": "Creates a rhythmic backdrop behind the main sound.",
+        "audio_characteristics": "Bouncing stereo delays that create polyrhythmic texture",
+        "cpu_impact": "Medium",
+        "delay_settings": {
+          "Type": "Ping Pong",
+          "Time": "3/16 (dotted)",
+          "Feedback": "58%",
+          "Mix": "32%",
+          "Mod": "45%"
+        },
+        "reverb_settings": {
+          "Decay": "1.2s",
+          "Size": "40%",
+          "Mix": "18%",
+          "Color": "55%",
+          "Mod": "10%"
+        },
+        "tips": [
+          "Perfect for house and techno plucks",
+          "Try 3/8 for slower, spacier feel",
+          "Automate feedback for build-ups"
+        ],
+        "common_mistakes": [
+          "Too much feedback - creates chaos",
+          "Using on bass - muddies low end"
+        ],
+        "genre_fit": ["Tech House", "Techno", "Progressive House", "Trance"]
+      },
+      {
+        "name": "Dry Studio (Minimal Processing)",
+        "instrument_type": "Lead Vocals, Rap, Podcasts",
+        "description": "Ultra-dry with just a hint of space for natural sound.",
+        "audio_characteristics": "Upfront, present, intimate, clear articulation",
+        "cpu_impact": "Very Low",
+        "reverb_settings": {
+          "Decay": "0.3s",
+          "Size": "8%",
+          "Mix": "5%",
+          "Color": "48%",
+          "Mod": "0%"
+        },
+        "delay_settings": {
+          "Mix": "0%"
+        },
+        "tips": [
+          "Perfect for modern hip-hop and trap vocals",
+          "Keeps vocals cutting through dense beats",
+          "Add 10-15ms pre-delay for more separation (if FLEX supports it)"
+        ],
+        "common_mistakes": [
+          "Going completely 0% reverb - sounds unnatural",
+          "Using the same setting for background vocals"
+        ],
+        "genre_fit": ["Hip-Hop", "Trap", "Drill", "Modern Pop"]
+      },
+      {
+        "name": "Dub Echo Chamber",
+        "instrument_type": "Leads, Vocals, Keys",
+        "description": "Classic reggae/dub delay with heavy feedback and filtering.",
+        "audio_characteristics": "Trippy, infinite echoes, progressively darker repeats",
+        "cpu_impact": "Medium",
+        "delay_settings": {
+          "Type": "True Stereo",
+          "Time": "1/4 (tempo-synced)",
+          "Feedback": "75%",
+          "Mix": "45%",
+          "Color": "15%"
+        },
+        "reverb_settings": {
+          "Decay": "1.8s",
+          "Size": "60%",
+          "Mix": "25%",
+          "Color": "35%",
+          "Mod": "30%"
+        },
+        "tips": [
+          "Automate delay feedback from 0% to 85% for classic dub effects",
+          "Use on send track for more control",
+          "Combine with Limiter set to 'Warming' for analog character"
+        ],
+        "common_mistakes": [
+          "Not automating - static dub echo is boring",
+          "Feedback above 85% - creates runaway feedback"
+        ],
+        "genre_fit": ["Dub", "Reggae", "Dub Techno", "Ambient Dub"]
+      },
+      {
+        "name": "Stereo Widener (Haas Effect)",
+        "instrument_type": "Synths, Pads, Keys",
+        "description": "Uses ultra-short delays to widen mono sounds without reverb.",
+        "audio_characteristics": "Wide stereo image, maintains clarity, no wetness",
+        "cpu_impact": "Very Low",
+        "delay_settings": {
+          "Type": "Fake Stereo",
+          "Time": "15-25ms (not tempo-synced)",
+          "Feedback": "0%",
+          "Mix": "30%",
+          "Color": "50%"
+        },
+        "reverb_settings": {
+          "Mix": "0%"
+        },
+        "tips": [
+          "Perfect for synths that need width without losing focus",
+          "Keep delay time under 30ms to avoid audible echo",
+          "Check mono compatibility - may cause phase issues"
+        ],
+        "common_mistakes": [
+          "Using on bass - destroys mono compatibility",
+          "Delay time too long - creates audible slap",
+          "Combining with wide unison - gets too wide"
+        ],
+        "genre_fit": ["All genres for width enhancement"]
+      },
+      {
+        "name": "Plate Reverb (Vintage)",
+        "instrument_type": "Drums, Snares, Vocals",
+        "description": "Simulates classic EMT plate reverb - bright and dense.",
+        "audio_characteristics": "Dense, bright, metallic shimmer, short-to-medium decay",
+        "cpu_impact": "Medium",
+        "reverb_settings": {
+          "Decay": "1.5s",
+          "Size": "45%",
+          "Mix": "22%",
+          "Color": "78%",
+          "Mod": "8%"
+        },
+        "delay_settings": {
+          "Mix": "0%"
+        },
+        "tips": [
+          "Classic on snares and vocals",
+          "Increase Color to 85%+ for '80s snare sound",
+          "Works great with Limiter set to 'Warming'"
+        ],
+        "common_mistakes": [
+          "Too much size - loses the 'plate' character",
+          "Using on bass or low instruments"
+        ],
+        "genre_fit": ["Rock", "Pop", "R&B", "80s Music"]
+      },
+      {
+        "name": "Spring Reverb (Surf)",
+        "instrument_type": "Guitars, Organs",
+        "description": "Emulates vintage spring reverb tanks found in guitar amps.",
+        "audio_characteristics": "Boingy, metallic, lo-fi character",
+        "cpu_impact": "Low",
+        "reverb_settings": {
+          "Decay": "0.9s",
+          "Size": "25%",
+          "Mix": "28%",
+          "Color": "42%",
+          "Mod": "35%"
+        },
+        "delay_settings": {
+          "Mix": "0%"
+        },
+        "tips": [
+          "High mod rate simulates spring wobble",
+          "Keep decay short for authentic sound",
+          "Combine with Slapback Rock delay for surf guitar"
+        ],
+        "common_mistakes": [
+          "Making decay too long - real springs are short",
+          "Not enough mod - loses the characteristic wobble"
+        ],
+        "genre_fit": ["Surf Rock", "Garage Rock", "Vintage Pop", "Psych Rock"]
+      }
+    ],
+    "combination_tips": [
+      "Intimate Studio Room + Slapback Rock = Modern country vocal",
+      "Massive Valhalla Hall + Rhythmic Ghost = Trance lead",
+      "Dry Studio + Stereo Widener = Modern trap vocal",
+      "Dub Echo Chamber + Underwater Ambience = Experimental ambient"
+    ],
+    "automation_ideas": [
+      "Automate reverb mix from 0% to 60% during breakdowns",
+      "Automate delay feedback from 30% to 85% for dub effects",
+      "Automate reverb color from 20% to 80% for evolving textures",
+      "Automate delay time (if possible) for pitch-shift effects"
+    ]
+  }
+}

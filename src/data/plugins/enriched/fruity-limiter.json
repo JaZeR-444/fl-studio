@@ -1,0 +1,245 @@
+{
+  "id": "fruity-limiter",
+  "name": "Fruity Limiter",
+  "category": "Dynamics",
+  "tier": "Free",
+  "type": "Dynamics",
+  "description": "Fruity Limiter - Dynamics",
+  "tags": [
+    "mixing",
+    "mastering",
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "compression",
+    "limiting",
+    "dynamics",
+    "mixing",
+    "audio"
+  ],
+  "icon": "/plugins/fruity-limiter-icon.svg",
+  "color": "#10B981",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-limiter",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "pluginName": "Fruity Limiter",
+    "tabs": [
+      "LIMIT",
+      "COMP",
+      "NOISE GATE"
+    ],
+    "parameters": [
+      {
+        "section": "Global",
+        "id": "output_gain",
+        "name": "Output Gain",
+        "range": {
+          "min": -60,
+          "max": 20,
+          "unit": "dB"
+        },
+        "description": "Final output volume after all processing (Limit, Saturation)."
+      },
+      {
+        "section": "Compressor",
+        "id": "comp_gain",
+        "name": "Gain (Makeup)",
+        "range": {
+          "min": -60,
+          "max": 20,
+          "unit": "dB"
+        },
+        "description": "Makeup gain applied AFTER compression but BEFORE limiting."
+      },
+      {
+        "section": "Compressor",
+        "id": "comp_thresh",
+        "name": "Threshold",
+        "range": {
+          "min": -60,
+          "max": 0,
+          "unit": "dB"
+        },
+        "description": "Trigger level for compression."
+      },
+      {
+        "section": "Compressor",
+        "id": "comp_ratio",
+        "name": "Ratio",
+        "range": {
+          "min": 1,
+          "max": 20,
+          "unit": ":1"
+        },
+        "defaultValue": 1,
+        "description": "Ratio of input to output level above threshold."
+      },
+      {
+        "section": "Compressor",
+        "id": "comp_knee",
+        "name": "Knee",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "Softness of the transition into compression."
+      },
+      {
+        "section": "Compressor",
+        "id": "comp_attack",
+        "name": "Attack",
+        "range": {
+          "min": 0,
+          "max": 1000,
+          "unit": "ms"
+        },
+        "description": "Time taken to reach full compression ratio."
+      },
+      {
+        "section": "Compressor",
+        "id": "comp_release",
+        "name": "Release",
+        "range": {
+          "min": 0,
+          "max": 2000,
+          "unit": "ms"
+        },
+        "description": "Time taken to return to zero gain reduction."
+      },
+      {
+        "section": "Compressor",
+        "id": "comp_sustain",
+        "name": "Sustain",
+        "range": {
+          "min": 0,
+          "max": 1000,
+          "unit": "ms"
+        },
+        "description": "RMS averaging window length. Prevents fluttering on bass."
+      },
+      {
+        "section": "Limiter",
+        "id": "limit_ceil",
+        "name": "Ceiling",
+        "range": {
+          "min": -12,
+          "max": 12,
+          "unit": "dB"
+        },
+        "defaultValue": 0,
+        "description": "Absolute maximum output level."
+      },
+      {
+        "section": "Limiter",
+        "id": "limit_sat",
+        "name": "Saturation",
+        "range": {
+          "min": -10,
+          "max": 0,
+          "unit": "dB"
+        },
+        "description": "Threshold where soft-clipping begins before hitting the ceiling."
+      },
+      {
+        "section": "Limiter",
+        "id": "limit_attack",
+        "name": "Attack (Lookahead)",
+        "range": {
+          "min": 0,
+          "max": 1000,
+          "unit": "ms"
+        },
+        "description": "Adds system latency to allow lookahead detection."
+      }
+    ]
+  },
+  "presets": {
+    "brickwall-master": {
+      "presetName": "Brickwall Master",
+      "plugin": "Fruity Limiter",
+      "description": "Standard safety limiting for the master bus.",
+      "settings": {
+        "ceiling": -0.1,
+        "gain": 2,
+        "attack": 0,
+        "release": 200,
+        "sustain": 0,
+        "lookahead": 2
+      },
+      "usage": "Place at the very end of your master chain to prevent clipping."
+    },
+    "sidechain-pumping": {
+      "presetName": "Sidechain Pumping",
+      "plugin": "Fruity Limiter",
+      "description": "Classic EDM ducking setup.",
+      "settings": {
+        "compThreshold": -30,
+        "compRatio": 8,
+        "compAttack": 0,
+        "compRelease": 100,
+        "sidechain": 1
+      },
+      "usage": "Route Kick to this track (Sidechain only), then select the Kick input in the Limiter's sidechain selector."
+    },
+    "vocal-leveler": {
+      "presetName": "Vocal Leveler",
+      "plugin": "Fruity Limiter",
+      "description": "Uses the COMP section, not the LIMIT section.",
+      "settings": {
+        "compThreshold": -20,
+        "compRatio": 4,
+        "compKnee": 0.5,
+        "limitCeiling": 0
+      },
+      "usage": "Smooths out vocal dynamics before it hits the limiter ceiling."
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity Limiter\n\n## Purpose & Identity\nFruity Limiter is a powerful **visual dynamics processor**. Its primary identity is a three-in-one tool: a **Compressor**, a **Limiter**, and a **Noise Gate**. Its defining feature is the real-time scrolling waveform display, which allows you to *see* exactly how your volume peaks are being managed. [SRC: IL-MAN]\n\n## 60-Second Mental Model\nThink of it as a \"Safety Net with a Microscope.\" \n- The **Limiter** section is the hard ceiling that prevents your mix from clipping (Safety Net).\n- The **Compressor** section is the musical leveler that adds punch and groove.\n- The **Visualizer** is the microscope that shows you exactly which drum hits are too loud.\n\n## Hip-Hop / R&B Context\n- **The \"Kick vs 808\" Fight:** Using sidechain compression to automatically turn down the 808 for a split second every time the kick hits (Upbeat).\n- **Vocal Breath Cleanup:** Using the built-in Noise Gate to automatically silence the background hiss and breaths between lines (Vibey).\n- **Mastering Headroom:** Using it as the final plugin on the master to squeeze out commercial loudness for soundcloud or streaming.\n\n## When To Use\n- When you need **Sidechain Ducking** (the \"pumping\" effect).\n- When you need a **visual guide** to help you understand compression settings.\n- When you want a **brickwall ceiling** to prevent digital distortion.\n\n## When NOT To Use\n- **Multiband Control:** Use **Maximus** if you need to compress the bass differently than the highs.\n- **Color Distortion:** Fruity Limiter is designed to be transparent. Use **Blood Overdrive** or **WaveShaper** if you want aggressive grit. [SRC: REPUTABLE]",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Fruity Limiter\n\n## UI Tour\nThe interface is dominated by the scrolling analysis window, with two main functional tabs at the bottom. [SRC: IL-MAN]\n\n### 1. The Analysis Window (The Visualizer)\n- **Grey Waveform**: The incoming raw audio.\n- **Purple Waveform**: The processed output audio.\n- **White Line**: The \"Gain Reduction\" meter. When it dips, the plugin is active.\n- **Blue Line**: The Ceiling (Limit) or Threshold (Comp).\n\n### 2. The LIMIT Tab (The Protector)\n- **CEIL**: The absolute maximum volume level allowed.\n- **ATT/REL**: How fast the limiter reacts and recovers.\n- **SAT (Saturation)**: Adds harmonic \"warmth\" to the signal as it reaches the ceiling.\n\n### 3. THE COMP Tab (The Groover)\n- **THRES**: The level where compression begins.\n- **RATIO**: How much the volume is reduced once it crosses the threshold.\n- **SIDECHAIN**: Selects the external input for ducking effects.\n\n### 4. THE NOISE GATE (The Cleaner)\n- **GAIN/THRES**: Controls the silencing of quiet background noise.\n\n## Signal Flow\n1. **Input**: Audio enters.\n2. **Compressor Stage**: Signal is processed by the **COMP** tab settings.\n3. **Gain Stage**: Post-compression gain is applied.\n4. **Limiter Stage**: The signal is then fed into the **LIMIT** tab logic.\n5. **Saturation**: Final harmonic shaping occurs at the ceiling.\n6. **Output**: Final capped signal leaves the plugin.\n\n## Things Beginners Misunderstand\n- **Tab Priority**: The signal passes through the Compressor *first*, then the Limiter. If you have extreme settings on both, you might be over-compressing.\n- **Lookahead**: The Limiter uses a \"Lookahead\" time (Attack knob in LIMIT tab). This adds a microscopic amount of latency to the project to prevent peaks from ever escaping.\n- **Ceiling vs. Volume**: The Ceiling doesn't just lower the volume; it flattens the peaks. If you want more volume, raise the **GAIN** knob while keeping the **CEIL** static.\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques And Best Practices: Fruity Limiter\n\n## 1. The \"Transparent\" Peak Shave\nInstead of one heavy limiter, use two Fruity Limiters in series.\n- **Technique**: Set the first one to shave off only 1-2dB of the loudest peaks. Set the second one to catch the rest.\n- **Benefit**: This results in fewer audible artifacts and a more natural sound.\n\n## 2. Rhythmic Sidechain Ducking\nThe industry standard for EDM and modern Trap.\n- **Technique**: Set **Sidechain** to the Kick track. Set **Ratio** to maximum. Set **Attack** to 0ms. Adjust **Release** until the sound \"breathes\" back in time with the next beat.\n- **Listen For**: The pumping movement that makes the kick drum feel massive.\n\n## 3. Vocal \"Air\" Preservation\nAvoid over-compressing the high-end sibilance.\n- **Technique**: Use a **Slow Attack** (~15ms) in the COMP tab.\n- **Benefit**: This allows the \"S\" and \"T\" sounds to pass through naturally before the compressor clamps down on the main body of the vocal.\n\n## 4. Parallel \"New York\" Compression\nAdd weight to drums without losing the snap.\n- **Technique**: Set extreme compression (High ratio, low threshold). Then, use the plugin's **Mix** knob (in the Wrapper) to blend it 50/50 with the dry signal.\n- **Listen For**: A \"thicker\" drum sound that still has the original punch.\n\n## 5. Visual Gain Staging\n- **Protocol**: Watch the grey vs. purple waveforms.\n- **Fix**: If the purple line is significantly lower than the grey line, you are losing too much energy. Raise the **Gain** knob to compensate for the reduction. [SRC: REPUTABLE]\n\n## Common Pitfalls + Fixes\n| Pitfall | The Fix |\n| :--- | :--- |\n| **\"Pumping\" Master** | Your Master Limiter release is too fast. Increase the **Release** in the LIMIT tab. |\n| **Dull Snare** | Increase the **Attack** time in the COMP tab. |\n| **Distorted Bass** | Increase the **Release** time in the LIMIT tab so the limiter doesn't follow the bass waves. |\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity Limiter\n\nLimiter translates vibes through **Dynamic Tension** and **Spatial Breathing**.\n\n## 1. Upbeat (Kinetic, Pumping, Aggressive)\n- **Concept:** \"The Sidechain Pump.\"\n- **Levers:**\n  - **Tab:** COMP.\n  - **Sidechain:** Linked to Kick.\n  - **Release:** Fast (50ms - 100ms).\n  - **Threshold:** Low (-20dB).\n- **Listen For:** The melody \"ducking\" out of the way of the kick and then rushing back in, creating a danceable rhythm.\n\n## 2. Spacey (Ethereal, Immersion, Floating)\n- **Concept:** \"The Reverb Breather.\"\n- **Levers:**\n  - **Target:** Reverb Send.\n  - **Sidechain:** Linked to Lead Vocal.\n- **Listen For:** The reverb tail being pushed down while the rapper is talking, then \"swelling\" up in the gaps. This makes the space feel infinite but the vocal stay close.\n\n## 3. Psychedelic (Saturated, Squashed, Gritty)\n- **Concept:** \"The Hot Ceiling.\"\n- **Levers:**\n  - **Tab:** LIMIT.\n  - **Saturation (SAT):** Turn to the right.\n  - **Ceiling:** Lower significantly.\n- **Listen For:** Harmonic distortion and \"warmth\" as the peaks hit the saturated ceiling. It feels like an old tube compressor.\n\n## 4. Vibey (Smooth, Glossy, Polished)\n- **Concept:** \"The Invisible Leveler.\"\n- **Levers:**\n  - **Tab:** COMP.\n  - **Ratio:** 2:1.\n  - **Attack:** Slow (30ms).\n  - **Knee:** Use Curve 3 or 4.\n- **Listen For:** A polished, consistent volume that feels natural and \"expensive,\" with no obvious pumping.\n\n## 5. Moody (Isolated, Clean, Silent)\n- **Concept:** \"The Noise Floor Vacuum.\"\n- **Levers:**\n  - **Section:** Noise Gate (Right side).\n  - **Threshold:** Set to just above the background hiss.\n  - **Gain:** -inf.\n- **Listen For:** Total, \"inky\" black silence between notes, emphasizing the lonely atmosphere. [SRC: REPUTABLE]",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Limiter\r\n\r\n## What It Is\r\nFruity Limiter is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Fruity Limiter\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: Fruity Limiter (5 Minutes)\n\n1.  **Insert:** Load **Fruity Limiter** at the end of your mixer chain.\n2.  **Ceiling:** Go to the **LIMIT** tab. Pull down the **CEIL** knob. Watch the purple line on the visualizer; it shows the new \"Maximum Volume.\"\n3.  **Compression:** Switch to the **COMP** tab. Lower the **THRES** (Threshold) and increase the **RATIO** to level the sound.\n4.  **Sidechain:** To make a sound \"Pump\":\n    - Right-click the **SIDECHAIN** box in the COMP tab.\n    - Select your Kick track (must be routed to this track first).\n    - Lower THRES until the sound ducks when the kick hits.\n5.  **Cleanup:** Use the **Noise Gate** section (Release, Gain, Thres) to remove background noise.\n6.  **Tip:** Use the **SAT** (Saturation) knob on the LIMIT tab to add harmonic warmth. [SRC: IL-MAN]",
+      "cheat-sheet": "# Fruity Limiter: The Ultimate Deep Dive Cheat Sheet\r\n\r\n> **Scope:** Full parameter analysis, Signal Flow, and hidden behaviors.\r\n> **Source:** Image-Line Official Manual (v21.2) + Direct Analysis.\r\n> **Complexity:** High.\r\n\r\n## 🧠 The \"Triple Chain\" Concept\r\nFruity Limiter is NOT just a limiter. It is a series of three distinct dynamic processors acting on the signal in a specific order. Understanding this chain is critical to avoiding \"fighting\" controls.\r\n\r\n**Signal Flow:**\r\n`Input` -> **[COMPRESSOR]** -> **[GAIN]** -> **[NOISE GATE]** -> **[LIMITER]** -> **[SATURATOR]** -> `Output`\r\n\r\n*   **Critical Nuance:** The \"Gain\" knob in the Limiter section is **Post-Compressor** but **Pre-Limiter**. This means you can compress a signal heavily, then boost it into the Limiter ceiling to maximize loudness.\r\n\r\n---\r\n\r\n## 🎛️ Section 1: The Compressor (COMP Tag)\r\n\r\nThe Compressor reduces the dynamic range of the signal *before* it hits the Limiter.\r\n\r\n### Main Controls (Loudness)\r\n\r\n| Control | Range | Function & Nuance |\r\n| :--- | :--- | :--- |\r\n| **Purple Gain** | -Inf to +20dB | **Post-Compression Makeup Gain.** <br> *Nuance:* This gain is applied *after* the compressor but *before* the limiter. Use this to drive the signal into the Limiter's ceiling. |\r\n| **Thresh (Threshold)** | -60dB to 0dB | **The \"Trigger Point\".** <br> Signals above this level will be attenuated. <br> *To Bypass:* Set to 0dB. |\r\n| **Ratio** | 1:1 to 20:1 | **Attentuation Strength.** <br> *Nuance:* High ratios (>10:1) essentially turn the Compressor into a second Limiter. |\r\n| **Knee** | Soft to Hard | **Transition Smoothing.** <br> *Soft Knee:* Compression begins *before* the threshold is hit, gradually increasing ratio. <br> *Hard Knee:* Compression begins exactly at threshold. <br> *Pro Tip:* Use Soft Knee for vocals (transparent), Hard Knee for drums (snap). |\r\n\r\n### Envelope Controls (Time)\r\n\r\n| Control | Range | Function & Nuance |\r\n| :--- | :--- | :--- |\r\n| **Att (Attack)** | 0ms to 1000ms | **Reaction Speed.** <br> *Nuance:* Unlike the Limiter Attack, this **DOES NOT** add latency. It is purely an envelope shape. <br> *Tip:* >15ms lets transients (snare cracks) punch through before clamping down. |\r\n| **Rel (Release)** | 0ms to 2000ms | **Recovery Speed.** <br> *Nuance:* Short release = Pumping/Loudness. Long release = Smooth/Leveling. |\r\n| **Sustain (Susp)** | 0ms to 1000ms | **RMS Averaging Window.** <br> *Unique Feature:* This holds the compression state for a set time, preventing \"chatter\" or distortion on bass frequencies. <br> *Tip:* Vital for 808s. Set to ~50ms to prevent the compressor from riding the individual waveform cycles of sub-bass. |\r\n| **Curve** | 1 (Linear) to 8 | **Envelope Tension.** <br> *Nuance:* Affects how \"snappy\" the Attack/Release feels. <br> *Curve 1:* Instant/Linear. <br> *Curve 8:* Logarithmic/Slow. <br> *Tip:* Curve 6-8 is great for \"gluing\" mix busses. |\r\n\r\n### Sidechaining (The Hidden Menu)\r\n1.  **Right-Click** the \"SIDECHAIN\" selector box (bottom of Comp tab).\r\n2.  Choose input mixer track.\r\n3.  **Visual:** Requires a sidechain send in the Mixer (Right-click cable -> \"Sidechain to this track\").\r\n\r\n---\r\n\r\n## 🧱 Section 2: The Limiter (LIMIT Tag)\r\n\r\nThe Limiter is the safety net and loudness maximizer. It acts *after* the Compressor.\r\n\r\n### Main Controls (Loudness)\r\n\r\n| Control | Range | Function & Nuance |\r\n| :--- | :--- | :--- |\r\n| **Purple Gain** | -Inf to +20dB | **Input Gain.** <br> *Same as Comp Gain.* It drives the signal against the Ceiling. |\r\n| **Ceil (Ceiling)** | -Inf to +12dB | **The Brick Wall.** <br> No signal will exceed this level. <br> *Mastering Std:* usually -0.1dB or -0.3dB (True Peak). |\r\n| **Sat (Saturation)** | -Inf to 0dB | **Threshold of \"Rounding\".** <br> *Nuance:* As signals approach this threshold, they are \"soft clipped\" (rounded) instead of hard limited. <br> *Result:* Adds warmth and harmonic distortion. Reduces \"pumping\". <br> *Warning:* Can sound distorted if driven too hard. |\r\n\r\n### Envelope Controls (Time)\r\n\r\n| Control | Range | Function & Nuance |\r\n| :--- | :--- | :--- |\r\n| **Att (Attack)** | 0ms to 1000ms | **Lookahead Latency.** <br> *CRITICAL:* Increasing this ADDS LATENCY to the plugin. <br> *Why?* To limit instantly without distortion, the plugin must \"look ahead\" into the future. <br> *Setting:* 0ms = Zero Latency (Instant, slightly dirtier). >0ms = Cleanest Limiting (Latency added). |\r\n| **Rel (Release)** | 0ms to 2000ms | **Recovery Speed.** <br> *Mastering Tip:* Timed to the BPM. ~300-500ms is standard for master buss. |\r\n| **Ahead** | N/A | *Note:* The \"Ahead\" knob visible in some skins is actually just the visual representation of the Attack latency. |\r\n\r\n---\r\n\r\n## 🚪 Section 3: The Noise Gate (GATE Tag)\r\n\r\nOften overlooked, the Gate sits *after* the compressor gain but *before* the Limiter logic.\r\n\r\n| Control | Range | Function |\r\n| :--- | :--- | :--- |\r\n| **Thresh** | -Inf to 0dB | **Gate Open Point.** <br> Signals below this are silenced. |\r\n| **Gain** | -Inf to 0dB | **Floor Level.** <br> Instead of total silence (-Inf), you can just reduce background noise by -20dB. |\r\n| **Rel** | 0ms to 2000ms | **Fade Out Time.** <br> *Creative:* Use long release for \"Gated Reverb\" tails. |\r\n\r\n---\r\n\r\n## 📊 Visual Feedback Decoder\r\n\r\nUnderstanding the rolling graph is key to mastering this plugin.\r\n\r\n| Color | Represents | What to look line for |\r\n| :--- | :--- | :--- |\r\n| **Purple** | **Input Signal** | The raw, unprocessed audio entering the plugin. |\r\n| **Green** | **Output Signal** | The final audio leaving the plugin. |\r\n| **Blue Line** | **Comp Threshold** | When Purple peaks cross this blue line, compression happens. |\r\n| **White Line** | **Compression Envelope** | Visualizes the \"Gain Reduction\". If it dips, volume is being reduced. |\r\n| **Grey Line** | **Gate Threshold** | Everything below this line is silenced. |\r\n| **Orange** | **Limiting** | If you see Orange peaks on top of Green, the Limiter is active. |\r\n\r\n---\r\n\r\n## 📉 Advanced Curves & Tension\r\n\r\nThe `CURVE` knob is often ignored but changes the character of the dynamic processing drastically.\r\n\r\n*   **Curves 1-3 (Linear/Fast):**\r\n    *   **Behavior:** The envelope moves in a straight line or snaps quickly.\r\n    *   **Best For:** Drums, Percussion, \"Smashing\" sounds.\r\n    *   **Feel:** Aggressive, Digital.\r\n\r\n*   **Curves 6-8 (Logarithmic/Slow):**\r\n    *   **Behavior:** The envelope \"hangs\" and moves lazily.\r\n    *   **Best For:** Vocals, Pads, Master Bus glue.\r\n    *   **Feel:** Organic, Analog, Optical.\r\n\r\n---\r\n\r\n## ⚡ Latency & CPU Considerations\r\n\r\n*   **Zero Latency Mode:**\r\n    *   Comp Attack: Any value.\r\n    *   Limit Attack: **0ms**.\r\n    *   *Usage:* Live tracking, playing MIDI keyboard.\r\n\r\n*   **High Quality / Mastering Mode:**\r\n    *   Comp Attack: Tuned to taste.\r\n    *   Limit Attack: **2-5ms**. (Enables Lookahead).\r\n    *   *Usage:* Final render. Ensures zero \"overs\" (inter-sample peaks) and smoother limiting.\r\n\r\n---\r\n\r\n## 🛠️ Typical \"Fighting\" Scenarios\r\n\r\n**Scenario 1: \"It's Pumping too much!\"**\r\n*   **Cause:** Release time is too short on the Limiter or Compressor.\r\n*   **Fix:** Increase Release to >200ms. OR Increase \"Sustain\" to hold the gain reduction longer.\r\n\r\n**Scenario 2: \"It sounds distorted!\"**\r\n*   **Cause:** Limiter Attack is 0ms (Hard limiting) OR Saturation knob is too low.\r\n*   **Fix:** Increase Limiter Attack to 2ms (adds latency). Check Saturation knob.\r\n\r\n**Scenario 3: \"Sidechain isn't ducking!\"**\r\n*   **Cause:** Ratio is 1:1.\r\n*   **Fix:** Even if Threshold is low, nothing happens if Ratio is 1:1. Crank Ratio to 4:1+.\r\n",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Limiter\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Limiter to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Limiter\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Limiter\r\n\r\nThis section contains learning information for the fruity-limiter plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: Sidechain Ducking (Kick vs 808)\n\n## Routing Context\n- **Source:** Kick Drum.\n- **Target:** 808 Bass.\n- **Link:** In the Mixer, select Kick -> Right-click the arrow on the 808 track -> **Sidechain to this track**.\n\n## Step-by-Step Setup\n1.  Load **Fruity Limiter** on the **808 track**.\n2.  Switch to the **COMP** tab.\n3.  Right-click the **SIDECHAIN** selector and choose the Kick.\n4.  Set **RATIO** to maximum (Infinity).\n5.  Set **ATTACK** to `0.5ms` (Fast).\n6.  Set **RELEASE** to `100ms` (Tempo dependent).\n7.  Lower the **THRES** (Threshold) until you see the 808 \"ducking\" every time the Kick hits.\n\n## What To Listen For\n- The Kick should \"pop\" through clearly. The 808 should feel like it's making room for the kick, creating a rhythmic \"bounce.\"\n\n## Vibe Check\n- **Upbeat/Aggressive:** This is the industry-standard way to get high-impact trap drums.\n\n## Variation\n- **Soft Ducking:** Use a `2:1` Ratio and only -3dB of Threshold for a subtler, more \"Vibey\" R&B feel. [SRC: REPUTABLE]\n",
+      "01_Transparent_Vocal_Control": "# Workflow: Transparent Vocal Control (The Modern Mix)\n\n*Goal: Smooth out a vocal performance without it sounding \"over-compressed\" or \"robotic.\"*\n\n## 🎛️ Routing Context\n- **Routing**: Vocal Insert -> Fruity Limiter.\n- **Mix Status**: 100% Wet.\n\n## 🚶 Step-by-Step Setup\n1. **The Comp Tab**: Switch to the **COMP** tab.\n2. **Soft Knee**: Set the **CURVE** to 1 (Soft Knee).\n3. **Gentle Ratio**: Set **RATIO** to 2:1.\n4. **Safety Net**: Set the **LIMIT** Ceiling to -0.1dB just to prevent digital clipping.\n5. **Slow Reaction**: Set **ATTACK** to 15ms.\n   - *Result*: This allows the initial \"hit\" of the vocal to stay sharp while compressing the tail.\n6. **Threshold Setting**: Lower **THRES** until you see the white line dipping by 3dB - 5dB during the loudest words.\n7. **Makeup**: Turn the **GAIN** knob up until the vocal sounds as loud as it was before you started.\n8. **Mono Check**: Sum the Master to Mono. Ensure the vocal sits clearly in the center and hasn't been \"pushed back\" into the mix.\n\n## 🔄 Variations\n- **The \"Aggressive\" Vocal**: Increase **RATIO** to 6:1 and set **ATTACK** to 5ms for a more \"clamped\" radio sound.\n- **The \"Parallel\" Blend**: Use the Wrapper's Mix knob to blend the compressed vocal at 60% with the dry version.\n\n## ⚠️ Pitfalls & Fixes\n- **Problem**: Vocal sounds \"nasal\" or \"muffled.\"\n- **Fix**: Your release is too fast. Increase the **RELEASE** time in the COMP tab to ~200ms.\n",
+      "02_Drum_Bus_Punch": "# Workflow: Drum Bus Punch (Trap & Boom Bap)\n\n*Goal: Glue the drums together while emphasizing the \"knock\" of the kick and snare.*\n\n## 🎛️ Routing Context\n- **Routing**: Drum Bus (Group) -> Fruity Limiter.\n- **Mix Status**: 100% Wet.\n\n## 🚶 Step-by-Step Setup\n1. **The Snap**: Go to the **COMP** tab.\n2. **Delayed Compression**: Set **ATTACK** to 30ms.\n   - *Result*: This lets the full \"crack\" of the snare and the \"thump\" of the kick through before the compression starts.\n3. **Hard Glue**: Set **RATIO** to 4:1. Set **CURVE** to 8 (Hard Knee).\n4. **Active Threshold**: Lower **THRES** until the drums feel like they are hitting a \"wall.\" Look for ~2dB of gain reduction.\n5. **The Release**: Set **RELEASE** to 100ms.\n   - *Result*: The compressor should \"reset\" exactly before the next drum hit.\n6. **Harmonic Polish**: Go to the **LIMIT** tab. Set **CEIL** to -0.5dB. Turn the **SAT** (Saturation) knob up until the peaks turn blue in the analyzer.\n7. **Result**: Your drums should sound \"snappier\" and more cohesive.\n\n## 🔄 Variations\n- **The \"Over-Saturate\"**: Lower the Ceiling even further and crank the Gain to turn Fruity Limiter into a distortion box for aggressive industrial trap.\n- **The \"Punchy Soften\"**: Use a very slow Release (500ms+) to make the drums sound more \"vintage\" and less \"sharp.\"\n\n## ⚠️ Pitfalls & Fixes\n- **Problem**: The kick drum is making the cymbals \"pump\" or dip too much.\n- **Fix**: Lower the **Ratio** or use a High-Pass filter on the internal sidechain (if available via Patcher) to ignore the kick.\n"
+    },
+    "by-instrument": {
+      "bass-sidechain": "# Instrument: Bass (Sidechaining)\n\nFruity Limiter is the standard for sidechaining in FL Studio.\n\n1. **Routing**: Select the Kick track, right-click the Bass track, select \"Sidechain to this track\".\n2. **Setup**: Open Fruity Limiter on the Bass.\n3. **Selector**: In the COMP section, change the \"Sidechain\" box from `--` to `1` (or whatever the kick input is).\n4. **Action**: Lower the **Threshold** and increase the **Ratio**.\n5. **Visuals**: You will see the \"Ghost\" waveform of the kick overlaying the bass, making it easy to see exactly how much you are ducking.\n",
+      "master-bus": "# Instrument: Master Bus\n\nUsing Fruity Limiter effectively on the 2-bus.\n\n## Visualizing Headroom\nFruity Limiter's best feature is its display.\n- **Purple**: Input signal.\n- **Green**: Output signal.\n- **White line**: Gain reduction.\n- **Goal**: If you see deep white spikes, you are pushing too hard. Aim for 1-2dB of gain reduction on the loudest peaks for a transparent sound.\n\n## The \"Ceiling\" vs. \"Saturation\"\nFruity Limiter adds a \"Saturation\" knob (in the Limit section).\n- **Tip**: Before hitting the brickwall ceiling, dial in -1dB to -2dB of saturation. This \"soft clips\" the signal before hard limiting, giving you more loudness transparency.\n"
+    },
+    "common-usage.md": {
+      "common-usage": "# Common Workflows: Fruity Limiter\r\n\r\n## 1. The \"Invisible\" Sidechain (Ducking)\r\n\r\nStandard sidechaining often clicks or pops. This method uses the **Envelope Curve** to smooth the ducking effect.\r\n\r\n**Goal:** Cleanly duck a Synth Pad when the Kick hits.\r\n\r\n1.  **Mixer Routing:** Select the Kick track -> Right-click the Synth Pad track -> \"Sidechain to this track\".\r\n2.  **Plugin Setup:** Open Fruity Limiter on the Synth Pad.\r\n3.  **Selector:** Go to the **COMP** tab. Right-click the **SIDECHAIN** box and select the Kick.\r\n4.  **Threshold:** Lower the Blue **THRESH** knob until the Blue line on the graph intercepts the Kick peaks (Purple).\r\n5.  **Ratio:** Set **RATIO** to roughly 4:1 (High compression).\r\n6.  **Attack:** Set **ATT** to 0-2ms (Fast reaction).\r\n7.  **Release:** *The Secret Sauce.* Tune the **REL** knob until the volume returns exactly before the next kick hits (Breathing).\r\n    *   *Refinement:* Adjust the **CURVE** knob to 6 or 7. This makes the release \"hang\" slightly before swooping up, creating a more musical \"suck\" effect rather than a linear \"ramp\" up.\r\n\r\n## 2. \"Gated Reverb\" Snare (80s Style)\r\n\r\nCreating the Phil Collins / Synthwave snare sound using the Gate tab.\r\n\r\n1.  **Routing:** Send your Snare to a Reverb Send track. 100% Wet.\r\n2.  **Plugin:** Add Fruity Limiter *after* the Reverb.\r\n3.  **Gate Setup:** Switch to the **NOISE GATE** tab.\r\n4.  **Threshold:** Raise the **THRESH** (Green line) fairly high.\r\n5.  **Gain:** Ensure Gate Gain is at 0 (Silence).\r\n6.  **Action:** When the Snare hits, the loud transient opens the gate. You hear the reverb.\r\n7.  **Release:** Set **REL** very short (e.g., 200ms).\r\n8.  **Result:** As the reverb tail fades, it crosses below the Threshold. The gate clamps shut abruptly.\r\n    *   *Visual:* Watch the Grey line chop off the Green tail.\r\n\r\n## 3. Vocal Leveling (The \"Rider\")\r\n\r\nInstead of automating volume faders, use the Compressor to \"ride\" the vocal.\r\n\r\n1.  **Ratio:** Low (2:1).\r\n2.  **Threshold:** Deep. Set it so it's compressing -10dB or more on the loudest parts.\r\n3.  **Attack:** Slow (~15-30ms). Let the consonants pass through.\r\n4.  **Release:** Medium-Slow (~300ms).\r\n5.  **Knee:** **SOFT** (Critical).\r\n6.  **Sustain:** Increase **SUSTAIN** to roughly 100ms.\r\n    *   *Why?* This prevents the compressor from \"letting go\" between words in a single phrase, keeping the phrase consistent. It forces the compressor to treat the *sentence* as one block of volume, rather than reacting to every syllable.\r\n\r\n## 4. Maximizing for Social Media (Loudness)\r\n\r\nHow to hit -14 LUFS / -1dB True Peak safely.\r\n\r\n1.  **Tab:** LIMIT.\r\n2.  **Ceiling:** Set **CEIL** to -1.0 dB. (Safety margin for transcoding).\r\n3.  **Attack:** Set **ATT** to 3ms. (Enable Lookahead).\r\n    *   *Note:* Ensure \"Plugin Delay Compensation\" is ON in FL Studio.\r\n4.  **Saturation:** Dial **SAT** to roughly -3dB.\r\n    *   *Effect:* The loudest peaks will be saturated before limiting, shaving off dynamic range musically.\r\n5.  **Gain:** Increase the **GAIN** (Purple) knob until your Limiter activity (Orange) is just flickering on the snare hits. Do not crush the mix.\r\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Limiter\r\n\r\nThis section contains workflow information for the fruity-limiter plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Limiter\r\n\r\nThis section contains reference information for the fruity-limiter plugin.\r\n"
+    }
+  }
+}

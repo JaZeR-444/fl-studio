@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "plugin": "Frequency Splitter",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "presetName": "Mix Bus Separation",
+    "category": "genre",
+    "genre": "mastering",
+    "mood": "transparent"
+  },
+  "settings": {
+    "crossover1": 80,
+    "crossover2": 400,
+    "crossover3": 3000,
+    "slope": "24dB/oct",
+    "mode": "linear-phase",
+    "band1": { "gain": 0, "processing": "high-pass 30Hz" },
+    "band2": { "gain": 0, "processing": "mid focus" },
+    "band3": { "gain": 0, "processing": "presence band" },
+    "band4": { "gain": 0, "processing": "air band" }
+  },
+  "chain": {
+    "pre": ["Individual band compression"],
+    "post": ["Multi-band limiting"]
+  },
+  "workflow": "Mastering-grade split for mix processing. Each band can be compressed/limited independently for transparent control.",
+  "genreTags": ["mastering", "mixing", "transparent", "separation"],
+  "a/bTesting": {
+    "testA": "Linear phase for mastering",
+    "testB": "Minimum phase for mixing"
+  },
+  "troubleshooting": {
+    "phaseIssues": "Always use linear phase for mastering"
+  }
+}

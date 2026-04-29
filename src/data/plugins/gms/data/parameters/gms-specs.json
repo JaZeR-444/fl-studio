@@ -1,0 +1,195 @@
+{
+  "pluginName": "GMS (Groove Machine Synth)",
+  "pluginType": "Hybrid Wavetable Synthesizer",
+  "category": "Generator / EDM / Modern",
+  "manualUrl": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/GMS.htm",
+  "version": "1.0",
+  "lastUpdated": "2026-02-03",
+  "specifications": {
+    "oscillators": {
+      "count": 3,
+      "types": ["Wavetable with custom .wav loading"],
+      "waveforms": ["Sine", "Triangle", "Square", "Sawtooth", "Pulse", "Custom"],
+      "controls": ["WAVESHAPE", "PITCH", "FINE"],
+      "pitchRange": {
+        "semitones": "±24",
+        "fine": "±100 cents"
+      }
+    },
+    "modulationModes": [
+      {
+        "id": "sync",
+        "name": "1 SYNC",
+        "description": "Hard synchronization between OSC1 and OSC2"
+      },
+      {
+        "id": "fm",
+        "name": "2 to 1 FM",
+        "description": "Frequency modulation, OSC2 modulates OSC1"
+      },
+      {
+        "id": "rm",
+        "name": "2 to 1 RM",
+        "description": "Ring modulation, OSC2 multiplies OSC1 amplitude"
+      }
+    ],
+    "unisono": {
+      "maxVoices": 16,
+      "controls": ["VOICES", "STEREO", "DETUNE", "PHASE"],
+      "ranges": {
+        "voices": "1-16",
+        "stereo": "0-100%",
+        "detune": "0-100%",
+        "phase": "0-360°"
+      }
+    },
+    "filter": {
+      "types": ["LP (Low Pass)", "BP (Band Pass)", "HP (High Pass)"],
+      "controls": ["CUTOFF", "RES", "KBD"],
+      "keyboardTracking": true
+    },
+    "envelopes": {
+      "count": 3,
+      "types": [
+        {
+          "id": "eg1",
+          "name": "Envelope Generator 1",
+          "controls": ["ATK", "DEC", "AMNT", "INVERT", "DEST"],
+          "destinations": ["CUTOFF", "RES", "PITCH", "PAN", "AMPLITUDE", "OSC MIX", "AMOUNT", "OSC1-3 PITCH"]
+        },
+        {
+          "id": "eg2",
+          "name": "Envelope Generator 2",
+          "controls": ["ATK", "DEC", "AMNT", "INVERT", "DEST"],
+          "destinations": ["CUTOFF", "RES", "PITCH", "PAN", "AMPLITUDE", "OSC MIX", "AMOUNT", "OSC1-3 PITCH"]
+        },
+        {
+          "id": "levelEg",
+          "name": "Level Envelope",
+          "controls": ["ATTACK", "DECAY", "SUSTAIN", "RELEASE", "Amplitude"],
+          "type": "ADSR"
+        }
+      ]
+    },
+    "lfos": {
+      "count": 2,
+      "controls": ["RATE", "SYNC", "AMNT", "RETRIG", "DEST", "INVERT", "SHAPE"],
+      "syncOptions": ["None", "Beat", "Bar"],
+      "shapes": ["Sine", "Triangle", "Saw", "Square", "Random", "Various"],
+      "shapeNote": "Sine is bipolar, others are unipolar"
+    },
+    "effects": {
+      "count": 10,
+      "routing": "Series (one after another)",
+      "signalFlow": "DIST → CRSH → FLNG → PHSR → LPF → HPF → ECHO → RVRB → PAN → TRNC",
+      "modules": [
+        {
+          "id": "dist",
+          "name": "DIST",
+          "type": "Distortion",
+          "xParam": "Distortion amount",
+          "yParam": "Low pass cutoff"
+        },
+        {
+          "id": "crsh",
+          "name": "CRSH",
+          "type": "Bit Crusher",
+          "xParam": "Sample-rate reduction",
+          "yParam": "Low pass cutoff"
+        },
+        {
+          "id": "flng",
+          "name": "FLNG",
+          "type": "Flanger",
+          "xParam": "Depth",
+          "yParam": "Feedback"
+        },
+        {
+          "id": "phsr",
+          "name": "PHSR",
+          "type": "Phaser",
+          "xParam": "Depth",
+          "yParam": "Feedback"
+        },
+        {
+          "id": "lpf",
+          "name": "LPF",
+          "type": "Low Pass Filter",
+          "xParam": "Cutoff frequency",
+          "yParam": "Resonance"
+        },
+        {
+          "id": "hpf",
+          "name": "HPF",
+          "type": "High Pass Filter",
+          "xParam": "Cutoff frequency",
+          "yParam": "Resonance"
+        },
+        {
+          "id": "echo",
+          "name": "ECHO",
+          "type": "Delay/Echo",
+          "xParam": "Feedback amount",
+          "yParam": "Echo filtering"
+        },
+        {
+          "id": "rvrb",
+          "name": "RVRB",
+          "type": "Reverberation",
+          "xParam": "Feedback (decay)",
+          "yParam": "Wet level"
+        },
+        {
+          "id": "pan",
+          "name": "PAN",
+          "type": "Panning",
+          "xParam": "L/R position",
+          "yParam": "Binaural effect"
+        },
+        {
+          "id": "trnc",
+          "name": "TRNC",
+          "type": "Trance Gate",
+          "xParam": "Release time",
+          "yParam": "Drop level"
+        }
+      ]
+    },
+    "eq": {
+      "type": "5-Band Equalizer",
+      "position": "Post-FX",
+      "bands": [
+        { "band": 1, "frequency": "60 Hz", "type": "Low shelf" },
+        { "band": 2, "frequency": "220 Hz", "type": "Bell" },
+        { "band": 3, "frequency": "1500 Hz", "type": "Bell" },
+        { "band": 4, "frequency": "8000 Hz", "type": "Bell" },
+        { "band": 5, "frequency": "12000 Hz", "type": "High shelf" }
+      ]
+    },
+    "midi": {
+      "controllers": ["VELOCITY", "MODULATION", "AFTERTOUCH", "PITCH BEND"],
+      "velocityToLevel": true,
+      "supports": ["MIDI CC mapping to destinations"]
+    },
+    "crossPlatform": {
+      "desktop": true,
+      "flStudioMobile": true,
+      "presetCompatibility": ".gms format shared between platforms"
+    }
+  },
+  "keyFeatures": [
+    "3 independent wavetable oscillators",
+    "Hybrid synthesis (Subtractive, FM, Ring Modulation, Sync)",
+    "Advanced Unisono (up to 16 voices)",
+    "10 integrated FX modules",
+    "Dual Envelope Generators",
+    "Dual LFOs with tempo sync",
+    "5-band post-FX EQ",
+    "Custom wavetable loading (.wav files)",
+    "FL Studio Desktop and Mobile compatible"
+  ],
+  "credits": {
+    "code": "Maxx Claster",
+    "presets": "Toby Emerson, Arlo G (nucleon)"
+  }
+}

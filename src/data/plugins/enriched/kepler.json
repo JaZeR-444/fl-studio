@@ -1,0 +1,1439 @@
+{
+  "id": "kepler",
+  "name": "Kepler",
+  "category": "Synthesizer",
+  "tier": "Premium",
+  "type": "Synthesizer",
+  "description": "Kepler - Synthesizer",
+  "tags": [
+    "synth",
+    "sound-design"
+  ],
+  "capabilities": [
+    "synthesis",
+    "midi",
+    "polyphonic"
+  ],
+  "icon": "/plugins/kepler-icon.svg",
+  "color": "#8B5CF6",
+  "version": "1.0",
+  "data_dir": "plugins\\kepler",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "kepler-params": {
+      "plugin_name": "Kepler",
+      "category": "Vintage Synth",
+      "sections": {
+        "DCO": {
+          "LFO": "Pitch modulation depth",
+          "PWM": "Pulse width modulation amount",
+          "PWM_Mode": "LFO or Envelope source",
+          "Range": "Octave setting (16', 8', 4')",
+          "Wave_Square": "Toggles Pulse/Square wave",
+          "Wave_Saw": "Toggles Sawtooth wave",
+          "Sub": "Sub-oscillator volume",
+          "Noise": "White noise volume"
+        },
+        "VCF": {
+          "HPF": "High Pass Filter frequency (Stepped)",
+          "Frequency": "Low Pass Cutoff frequency",
+          "Resonance": "Filter resonance/peak",
+          "Env_Depth": "Envelope modulation depth",
+          "LFO_Depth": "LFO modulation depth",
+          "Kybd": "Key tracking amount"
+        },
+        "VCA": {
+          "Mode": "Gate (On/Off) or Env (ADSR)",
+          "Level": "Overall VCA gain"
+        },
+        "ENV": {
+          "Attack": "Attack time",
+          "Decay": "Decay time",
+          "Sustain": "Sustain level",
+          "Release": "Release time"
+        },
+        "CHORUS": {
+          "Mode": "I, II, or I+II (Combined)",
+          "Status": "On/Off"
+        },
+        "ARP": {
+          "Mode": "Up, Down, Up/Down",
+          "Range": "Octave range (1-3)",
+          "Sync": "Tempo sync subdivisions"
+        }
+      }
+    }
+  },
+  "presets": {
+    "genre-presets": {
+      "metadata": {
+        "plugin": "Kepler",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "genres": [
+          "hip-hop/rap",
+          "R&B",
+          "EDM",
+          "trap",
+          "lo-fi",
+          "drill"
+        ],
+        "description": "Comprehensive genre-aware presets for Kepler virtual analog synthesizer"
+      },
+      "presets": {
+        "hip-hop-bass": {
+          "name": "808 Thunder",
+          "genre": "hip-hop/rap",
+          "mood": "dark",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 0,
+              "mix": 80
+            },
+            "oscillator2": {
+              "waveform": "square",
+              "octave": "-2",
+              "detune": 7,
+              "mix": 60
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 180,
+              "resonance": 25,
+              "drive": 15,
+              "envAmt": 85,
+              "envVel": 40
+            },
+            "envelope": {
+              "attack": 5,
+              "decay": 180,
+              "sustain": 60,
+              "release": 120
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 0.5,
+              "amt": 20,
+              "dest": "filterCutoff"
+            }
+          },
+          "chain": {
+            "pre": [
+              "Fruity Parametric EQ 2 - High-cut 200Hz, +3dB at 80Hz"
+            ],
+            "post": [
+              "Fruity Limiter - Threshold -18dB, Ratio 4:1, Makeup +6dB"
+            ]
+          },
+          "genreTags": [
+            "hip-hop/rap",
+            "trap",
+            "drill",
+            "dark"
+          ],
+          "a/bTesting": {
+            "testA": "Filter resonance at 25, sub audible",
+            "testB": "Filter resonance at 45, more character"
+          },
+          "troubleshooting": {
+            "muddyMix": "High-pass filter at 30Hz on full mix",
+            "clipping": "Reduce oscillator mix levels by 15%"
+          }
+        },
+        "hip-hop-bass-2": {
+          "name": "Mid-Range Growler",
+          "genre": "hip-hop/rap",
+          "mood": "aggressive",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 0,
+              "mix": 100
+            },
+            "oscillator2": {
+              "waveform": "square",
+              "octave": "-1",
+              "detune": 5,
+              "mix": 70
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 650,
+              "resonance": 40,
+              "drive": 25,
+              "envAmt": 90,
+              "envVel": 50
+            },
+            "envelope": {
+              "attack": 2,
+              "decay": 150,
+              "sustain": 50,
+              "release": 100
+            },
+            "lfo": {
+              "waveform": "square",
+              "rate": 2,
+              "amt": 30,
+              "dest": "filterCutoff"
+            }
+          },
+          "chain": {
+            "pre": [
+              "Fruity Parametric EQ 2 - Bell +4dB at 400Hz"
+            ],
+            "post": [
+              "Fruity Compressor - Attack 10ms, Release 80ms, Ratio 3:1"
+            ]
+          },
+          "genreTags": [
+            "hip-hop/rap",
+            "aggressive",
+            "hard"
+          ],
+          "a/bTesting": {
+            "testA": "LFO rate at 2Hz for rhythmic pulsing",
+            "testB": "LFO off for static tone"
+          },
+          "troubleshooting": {
+            "harshness": "High-shelf cut above 4kHz by 3dB",
+            "weakImpact": "Increase filter drive to 35%"
+          }
+        },
+        "rb-lead": {
+          "name": "Silk Lead",
+          "genre": "R&B",
+          "mood": "moody",
+          "settings": {
+            "oscillator1": {
+              "waveform": "sine",
+              "octave": "0",
+              "detune": 0,
+              "mix": 100
+            },
+            "oscillator2": {
+              "waveform": "triangle",
+              "octave": "0",
+              "detune": 3,
+              "mix": 50
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 2200,
+              "resonance": 15,
+              "drive": 5,
+              "envAmt": 30,
+              "envVel": 20
+            },
+            "envelope": {
+              "attack": 50,
+              "decay": 400,
+              "sustain": 70,
+              "release": 300
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 0.25,
+              "amt": 15,
+              "dest": "pan"
+            }
+          },
+          "chain": {
+            "pre": [
+              "Soft clipper - 2dB input reduction"
+            ],
+            "post": [
+              "Reverb - Hall, Decay 2.5s, Pre-delay 30ms, Mix 20%"
+            ]
+          },
+          "genreTags": [
+            "R&B",
+            "moody",
+            "smooth",
+            "melodic"
+          ],
+          "a/bTesting": {
+            "testA": "Pan LFO on for movement",
+            "testB": "Pan LFO off for centered mono"
+          },
+          "troubleshooting": {
+            "harshHighs": "Reduce oscillator2 mix to 30%",
+            "tooDark": "Increase filter cutoff to 2800Hz"
+          }
+        },
+        "rb-bass": {
+          "name": "Punchy Foundation",
+          "genre": "R&B",
+          "mood": "funky",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 80
+            },
+            "oscillator2": {
+              "waveform": "square",
+              "octave": "-2",
+              "detune": 2,
+              "mix": 40
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 800,
+              "resonance": 35,
+              "drive": 12,
+              "envAmt": 70,
+              "envVel": 60
+            },
+            "envelope": {
+              "attack": 3,
+              "decay": 120,
+              "sustain": 65,
+              "release": 150
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 0.8,
+              "amt": 25,
+              "dest": "filterCutoff"
+            }
+          },
+          "chain": {
+            "pre": [
+              "High-pass filter at 40Hz"
+            ],
+            "post": [
+              "Fruity Compressor - Attack 15ms, Release 90ms, Ratio 2.5:1"
+            ]
+          },
+          "genreTags": [
+            "R&B",
+            "funky",
+            "groove",
+            "smooth"
+          ],
+          "a/bTesting": {
+            "testA": "Filter env amount at 70 for punch",
+            "testB": "Filter env amount at 40 for smoother attack"
+          },
+          "troubleshooting": {
+            "muddyLowEnd": "Cut below 60Hz on bass channel",
+            "maskingVocals": "EQ dip at 300-500Hz by 2dB"
+          }
+        },
+        "edm-lead": {
+          "name": "Supersaw Hero",
+          "genre": "EDM",
+          "mood": "electric",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 0,
+              "mix": 90
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 7,
+              "mix": 90
+            },
+            "oscillator3": {
+              "waveform": "saw",
+              "octave": "+1",
+              "detune": 14,
+              "mix": 70
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 4000,
+              "resonance": 50,
+              "drive": 20,
+              "envAmt": 80,
+              "envVel": 40
+            },
+            "envelope": {
+              "attack": 20,
+              "decay": 250,
+              "sustain": 60,
+              "release": 400
+            },
+            "lfo": {
+              "waveform": "saw-up",
+              "rate": 0.5,
+              "amt": 40,
+              "dest": "filterCutoff"
+            }
+          },
+          "chain": {
+            "pre": [
+              "Soft clipper - 3dB reduction"
+            ],
+            "post": [
+              "Fruity Limiter - Ceiling -0.3dB, Gain 6dB",
+              "Delay - Stereo, 300ms, Feedback 40%, Mix 25%"
+            ]
+          },
+          "genreTags": [
+            "EDM",
+            "big room",
+            "electric",
+            "anthem"
+          ],
+          "a/bTesting": {
+            "testA": "3 oscillators for massive sound",
+            "testB": "2 oscillators for tighter mix"
+          },
+          "troubleshooting": {
+            "muddyMix": "High-pass filter at 200Hz on lead channel",
+            "phaseIssues": "Invert phase on osc3 if summing issues"
+          }
+        },
+        "edm-bass": {
+          "name": "Resonance Bass",
+          "genre": "EDM",
+          "mood": "electric",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 0,
+              "mix": 100
+            },
+            "oscillator2": {
+              "waveform": "square",
+              "octave": "-1",
+              "detune": 3,
+              "mix": 60
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 250,
+              "resonance": 65,
+              "drive": 30,
+              "envAmt": 100,
+              "envVel": 80
+            },
+            "envelope": {
+              "attack": 5,
+              "decay": 200,
+              "sustain": 55,
+              "release": 150
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 0.3,
+              "amt": 35,
+              "dest": "filterCutoff"
+            }
+          },
+          "chain": {
+            "pre": [
+              "Teq4 - High-pass at 45Hz"
+            ],
+            "post": [
+              "Fruity Limiter - Attack 1ms, Release 50ms, Ratio 6:1"
+            ]
+          },
+          "genreTags": [
+            "EDM",
+            "deep bass",
+            "house",
+            "techno"
+          ],
+          "a/bTesting": {
+            "testA": "High resonance for resonance sweeps",
+            "testB": "Lower resonance for consistent bass"
+          },
+          "troubleshooting": {
+            "distortedSound": "Reduce filter drive to 20%",
+            "weakSub": "Add sub oscillator routed directly to output"
+          }
+        },
+        "trap-lead": {
+          "name": "Glitch Pluck",
+          "genre": "trap",
+          "mood": "dark",
+          "settings": {
+            "oscillator1": {
+              "waveform": "square",
+              "octave": "+1",
+              "detune": 0,
+              "mix": 100
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 8,
+              "mix": 70
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 3000,
+              "resonance": 45,
+              "drive": 10,
+              "envAmt": 95,
+              "envVel": 100
+            },
+            "envelope": {
+              "attack": 1,
+              "decay": 80,
+              "sustain": 0,
+              "release": 50
+            },
+            "lfo": {
+              "waveform": "sample-hold",
+              "rate": 4,
+              "amt": 50,
+              "dest": "pitch"
+            }
+          },
+          "chain": {
+            "pre": [
+              "Teq4 - High-pass at 500Hz"
+            ],
+            "post": [
+              "Fruity Reverb 2 - Plate, Decay 1.2s, Mix 18%",
+              "Bitcrusher - 8-bit, 50% wet"
+            ]
+          },
+          "genreTags": [
+            "trap",
+            "dark",
+            "glitch",
+            "aggressive"
+          ],
+          "a/bTesting": {
+            "testA": "Sample-hold LFO for random pitch glitches",
+            "testB": "Sine LFO for regular vibrato"
+          },
+          "troubleshooting": {
+            "tooChaotic": "Reduce LFO amount to 25%",
+            "tooThin": "Add osc3 with saw wave at +2 octave"
+          }
+        },
+        "lofi-pad": {
+          "name": "Dusty Texture",
+          "genre": "lo-fi",
+          "mood": "moody",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 15,
+              "mix": 75
+            },
+            "oscillator2": {
+              "waveform": "triangle",
+              "octave": "-2",
+              "detune": 22,
+              "mix": 60
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 1500,
+              "resonance": 20,
+              "drive": 8,
+              "envAmt": 25,
+              "envVel": 15
+            },
+            "envelope": {
+              "attack": 150,
+              "decay": 500,
+              "sustain": 75,
+              "release": 800
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 0.1,
+              "amt": 20,
+              "dest": "filterCutoff"
+            }
+          },
+          "chain": {
+            "pre": [
+              "Vintage Phaser - 4 stages, 0.3Hz rate, Mix 40%"
+            ],
+            "post": [
+              "Fruity Reverb 2 - Room, Decay 3s, Mix 25%",
+              "Tape Saturation - 3% drive"
+            ]
+          },
+          "genreTags": [
+            "lo-fi",
+            "moody",
+            "chill",
+            "nostalgic"
+          ],
+          "a/bTesting": {
+            "testA": "Detune oscillators heavily for warmth",
+            "testB": "Tighter detune for cleaner sound"
+          },
+          "troubleshooting": {
+            "tooNoisy": "Reduce LFO amount to 10%",
+            "tooDark": "Increase filter cutoff to 2000Hz"
+          }
+        },
+        "drill-bass": {
+          "name": "Reaper Sub",
+          "genre": "drill",
+          "mood": "dark",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 0,
+              "mix": 90
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 5,
+              "mix": 90
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 120,
+              "resonance": 30,
+              "drive": 20,
+              "envAmt": 60,
+              "envVel": 30
+            },
+            "envelope": {
+              "attack": 8,
+              "decay": 250,
+              "sustain": 70,
+              "release": 180
+            },
+            "lfo": {
+              "waveform": "square",
+              "rate": 0.4,
+              "amt": 15,
+              "dest": "pitch"
+            }
+          },
+          "chain": {
+            "pre": [
+              "Fruity Parametric EQ 2 - High-pass at 20Hz"
+            ],
+            "post": [
+              "Fruity Limiter - Threshold -12dB, Attack 0.5ms, Release 30ms"
+            ]
+          },
+          "genreTags": [
+            "drill",
+            "dark",
+            "heavy",
+            "aggressive"
+          ],
+          "a/bTesting": {
+            "testA": "Pitch LFO on for sub wobble",
+            "testB": "Pitch LFO off for steady sub"
+          },
+          "troubleshooting": {
+            "distortedByDesign": "Keep distortion intentional, check for unwanted clipping",
+            "weakLowEnd": "Increase filter drive to 30%"
+          }
+        },
+        "ambient-pad": {
+          "name": "Ethereal Wash",
+          "genre": "ambient",
+          "mood": "moody",
+          "settings": {
+            "oscillator1": {
+              "waveform": "sine",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 100
+            },
+            "oscillator2": {
+              "waveform": "triangle",
+              "octave": "-1",
+              "detune": 12,
+              "mix": 70
+            },
+            "oscillator3": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 25,
+              "mix": 40
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 2500,
+              "resonance": 25,
+              "drive": 5,
+              "envAmt": 20,
+              "envVel": 10
+            },
+            "envelope": {
+              "attack": 500,
+              "decay": 800,
+              "sustain": 85,
+              "release": 1500
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 0.15,
+              "amt": 30,
+              "dest": "pan"
+            }
+          },
+          "chain": {
+            "pre": [
+              "Vintage Chorus - Mix 50%, Rate 0.3Hz"
+            ],
+            "post": [
+              "Fruity Reverb 2 - Cathedral, Decay 6s, Mix 30%"
+            ]
+          },
+          "genreTags": [
+            "ambient",
+            "moody",
+            "cinematic",
+            "spacey"
+          ],
+          "a/bTesting": {
+            "testA": "3 oscillators for width and depth",
+            "testB": "2 oscillators for simpler arrangements"
+          },
+          "troubleshooting": {
+            "phasingIssues": "Reduce LFO pan amount to 15%",
+            "tooBright": "Filter cutoff to 1800Hz"
+          }
+        }
+      }
+    },
+    "signature-presets": {
+      "metadata": {
+        "plugin": "Kepler",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "description": "Artist and production style inspired presets for Kepler"
+      },
+      "presets": {
+        "metro-boomin": {
+          "name": "Boomin Bass",
+          "inspiredBy": "Metro Boomin style",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 0,
+              "mix": 85
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 3,
+              "mix": 75
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 160,
+              "resonance": 35,
+              "drive": 18,
+              "envAmt": 70,
+              "envVel": 45
+            },
+            "envelope": {
+              "attack": 5,
+              "decay": 200,
+              "sustain": 65,
+              "release": 130
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 0.25,
+              "amt": 10,
+              "dest": "filterCutoff"
+            }
+          },
+          "chain": {
+            "post": [
+              "Fruity Limiter - Threshold -16dB, Ratio 4:1, Attack 1ms, Release 40ms"
+            ]
+          },
+          "characteristics": [
+            "deep",
+            "punchy",
+            "modern",
+            "cleansounding"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "trap",
+            "modern"
+          ],
+          "a/bTesting": {
+            "testA": "Filter env amount at 70 for initial punch",
+            "testB": "Filter env amount at 50 for smoother attack"
+          },
+          "troubleshooting": {
+            "notDeepEnough": "High-pass full mix at 35Hz to create space",
+            "tooMuchSub": "Sidechain to kick at 0.3s release"
+          }
+        },
+        "zaytoven": {
+          "name": "MIDI Pluck",
+          "inspiredBy": "Zaytoven style",
+          "settings": {
+            "oscillator1": {
+              "waveform": "square",
+              "octave": "+1",
+              "detune": 0,
+              "mix": 100
+            },
+            "oscillator2": {
+              "waveform": "triangle",
+              "octave": "0",
+              "detune": 2,
+              "mix": 50
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 2800,
+              "resonance": 40,
+              "drive": 8,
+              "envAmt": 90,
+              "envVel": 100
+            },
+            "envelope": {
+              "attack": 2,
+              "decay": 60,
+              "sustain": 0,
+              "release": 40
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 0.5,
+              "amt": 5,
+              "dest": "pitch"
+            }
+          },
+          "chain": {
+            "post": [
+              "Fruity Reverb 2 - Small Room, Decay 0.8s, Mix 15%",
+              "Fruity Compressor - Fast attack, Ratio 3:1"
+            ]
+          },
+          "characteristics": [
+            "plucky",
+            "bright",
+            "melodic",
+            "groove"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "R&B",
+            "melodic"
+          ],
+          "a/bTesting": {
+            "testA": "Square wave for classic MIDI feel",
+            "testB": "Add saw for modern edge"
+          },
+          "troubleshooting": {
+            "tooClicky": "Increase envelope attack to 5ms",
+            "sustainingTooLong": "Reduce sustain to 0, increase release slightly"
+          }
+        },
+        "mike-will": {
+          "name": "Future Bass",
+          "inspiredBy": "Mike Will Made-It style",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 0,
+              "mix": 90
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 7,
+              "mix": 90
+            },
+            "oscillator3": {
+              "waveform": "saw",
+              "octave": "+1",
+              "detune": 14,
+              "mix": 60
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 3500,
+              "resonance": 45,
+              "drive": 15,
+              "envAmt": 75,
+              "envVel": 35
+            },
+            "envelope": {
+              "attack": 10,
+              "decay": 180,
+              "sustain": 55,
+              "release": 250
+            },
+            "lfo": {
+              "waveform": "saw-down",
+              "rate": 0.25,
+              "amt": 50,
+              "dest": "filterCutoff"
+            }
+          },
+          "chain": {
+            "pre": [
+              "Soft clipper - 2dB input"
+            ],
+            "post": [
+              "Fruity Reverb 2 - Large Hall, Decay 3.5s, Mix 25%",
+              "Fruity Limiter - Ceiling -0.5dB"
+            ]
+          },
+          "characteristics": [
+            "wide",
+            "bright",
+            "uplifting",
+            "melodic"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "R&B",
+            "future bass"
+          ],
+          "a/bTesting": {
+            "testA": "Filter sweep down on attack",
+            "testB": "Static filter for sustained chords"
+          },
+          "troubleshooting": {
+            "muddyArrangement": "High-pass synth at 300Hz except on bass notes",
+            "maskingVocals": "Notch EQ at 2-3kHz on synth"
+          }
+        },
+        "sounwave": {
+          "name": "West Coast Drfill",
+          "inspiredBy": "Sounwave style (TDE)",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 80
+            },
+            "oscillator2": {
+              "waveform": "square",
+              "octave": "-2",
+              "detune": 4,
+              "mix": 55
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 600,
+              "resonance": 30,
+              "drive": 12,
+              "envAmt": 65,
+              "envVel": 50
+            },
+            "envelope": {
+              "attack": 8,
+              "decay": 220,
+              "sustain": 60,
+              "release": 200
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 0.35,
+              "amt": 20,
+              "dest": "pan"
+            }
+          },
+          "chain": {
+            "post": [
+              "Fruity Parametric EQ 2 - High-shelf +2dB at 4kHz",
+              "Fruity Compressor - Soft knee, Ratio 2:1"
+            ]
+          },
+          "characteristics": [
+            "smooth",
+            "warm",
+            "moody",
+            "spacey"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "West Coast",
+            "moody"
+          ],
+          "a/bTesting": {
+            "testA": "Pan movement for width",
+            "testB": "Mono for punch"
+          },
+          "troubleshooting": {
+            "tooDark": "Increase filter cutoff by 100Hz increments",
+            "lacksCharacter": "Add subtle bitcrusher after Kepler"
+          }
+        },
+        "travis-scott": {
+          "name": "Auto-Tune Lead",
+          "inspiredBy": "Travis Scott atmospheric leads",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 0,
+              "mix": 85
+            },
+            "oscillator2": {
+              "waveform": "triangle",
+              "octave": "0",
+              "detune": 6,
+              "mix": 65
+            },
+            "filter": {
+              "type": "bandpass",
+              "cutoff": 2000,
+              "resonance": 35,
+              "drive": 10,
+              "envAmt": 40,
+              "envVel": 30
+            },
+            "envelope": {
+              "attack": 30,
+              "decay": 350,
+              "sustain": 70,
+              "release": 400
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 0.2,
+              "amt": 15,
+              "dest": "filterCutoff"
+            }
+          },
+          "chain": {
+            "pre": [
+              "Fruity Parametric EQ 2 - Band-pass filter"
+            ],
+            "post": [
+              "Fruity Reverb 2 - Large Room, Decay 2.5s, Mix 35%",
+              "Tape Delay - 400ms, Feedback 35%, Mix 20%"
+            ]
+          },
+          "characteristics": [
+            "spacey",
+            "atmospheric",
+            "wide",
+            "melodic"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "trap",
+            "atmospheric"
+          ],
+          "a/bTesting": {
+            "testA": "Bandpass filter for focused sound",
+            "testB": "Lowpass filter for warmer tone"
+          },
+          "troubleshooting": {
+            "tooMidFocused": "Widen bandpass Q to 25",
+            "lacksSpace": "Increase reverb mix to 45%"
+          }
+        },
+        "21-savage": {
+          "name": "Monolithic Sub",
+          "inspiredBy": "21 Savage deep bass aesthetic",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 0,
+              "mix": 100
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 2,
+              "mix": 80
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 100,
+              "resonance": 25,
+              "drive": 25,
+              "envAmt": 50,
+              "envVel": 25
+            },
+            "envelope": {
+              "attack": 10,
+              "decay": 300,
+              "sustain": 80,
+              "release": 250
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 0.15,
+              "amt": 8,
+              "dest": "pitch"
+            }
+          },
+          "chain": {
+            "pre": [
+              "High-pass at 25Hz on everything except bass"
+            ],
+            "post": [
+              "Fruity Limiter - Low threshold, slow attack, heavy compression"
+            ]
+          },
+          "characteristics": [
+            "deep",
+            "heavy",
+            "monolithic",
+            "dark"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "drill",
+            "dark trap"
+          ],
+          "a/bTesting": {
+            "testA": "Low filter cutoff for pure sub",
+            "testB": "Higher cutoff for more harmonic content"
+          },
+          "troubleshooting": {
+            "distortedOutput": "Reduce filter drive to 15%",
+            "notScaryEnough": "Add parallel distortion layer"
+          }
+        },
+        "the-weeknd": {
+          "name": "Night Drive Pad",
+          "inspiredBy": "The Weeknd 80s retro synths",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 85
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 8,
+              "mix": 85
+            },
+            "oscillator3": {
+              "waveform": "square",
+              "octave": "0",
+              "detune": 16,
+              "mix": 50
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 2800,
+              "resonance": 35,
+              "drive": 10,
+              "envAmt": 35,
+              "envVel": 20
+            },
+            "envelope": {
+              "attack": 200,
+              "decay": 500,
+              "sustain": 80,
+              "release": 800
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 0.1,
+              "amt": 40,
+              "dest": "pan"
+            }
+          },
+          "chain": {
+            "pre": [
+              "Vintage Chorus - Mix 45%, Depth 60%"
+            ],
+            "post": [
+              "Fruity Reverb 2 - Tape, Decay 4s, Mix 20%",
+              "Fruity Parametric EQ 2 - High-shelf +3dB at 6kHz"
+            ]
+          },
+          "characteristics": [
+            "retro",
+            "warm",
+            "wide",
+            "nostalgic"
+          ],
+          "genreTags": [
+            "R&B",
+            "synthwave",
+            "retro",
+            "moody"
+          ],
+          "a/bTesting": {
+            "testA": "Heavy detune for chorus-like effect",
+            "testB": "Tighter detune for cleaner sound"
+          },
+          "troubleshooting": {
+            "phaseCancellation": "Mono the bass frequencies below 200Hz",
+            "tooBusy": "Reduce LFO pan rate"
+          }
+        },
+        "drake": {
+          "name": "OVO Lead",
+          "inspiredBy": "Drake melodic delivery style",
+          "settings": {
+            "oscillator1": {
+              "waveform": "triangle",
+              "octave": "0",
+              "detune": 0,
+              "mix": 100
+            },
+            "oscillator2": {
+              "waveform": "sine",
+              "octave": "0",
+              "detune": 4,
+              "mix": 60
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 3500,
+              "resonance": 20,
+              "drive": 5,
+              "envAmt": 25,
+              "envVel": 15
+            },
+            "envelope": {
+              "attack": 40,
+              "decay": 400,
+              "sustain": 75,
+              "release": 350
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 0.3,
+              "amt": 10,
+              "dest": "filterCutoff"
+            }
+          },
+          "chain": {
+            "post": [
+              "Fruity Reverb 2 - Studio, Decay 1.5s, Mix 18%",
+              "Fruity Compressor - Soft attack, Ratio 2.5:1"
+            ]
+          },
+          "characteristics": [
+            "smooth",
+            "melodic",
+            "clean",
+            "forward"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "R&B",
+            "melodic"
+          ],
+          "a/bTesting": {
+            "testA": "Triangle wave for soft attack",
+            "testB": "Add saw wave for presence"
+          },
+          "troubleshooting": {
+            "tooSoft": "Increase drive to 12%",
+            "maskingVocals": "Sidechain to lead vocals"
+          }
+        },
+        "metro-boomin-bass": {
+          "name": "If-You-Know-You-Know",
+          "inspiredBy": "Metro Boomin signature bass stab",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 0,
+              "mix": 100
+            },
+            "oscillator2": {
+              "waveform": "square",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 70
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 250,
+              "resonance": 50,
+              "drive": 22,
+              "envAmt": 85,
+              "envVel": 70
+            },
+            "envelope": {
+              "attack": 3,
+              "decay": 120,
+              "sustain": 45,
+              "release": 80
+            },
+            "lfo": {
+              "waveform": "square",
+              "rate": 1,
+              "amt": 20,
+              "dest": "filterCutoff"
+            }
+          },
+          "chain": {
+            "post": [
+              "Fruity Limiter - Fast attack 0.5ms, Release 25ms, Ratio 6:1"
+            ]
+          },
+          "characteristics": [
+            "punchy",
+            "aggressive",
+            "immediate",
+            "标志性"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "trap",
+            "hard"
+          ],
+          "a/bTesting": {
+            "testA": "Square wave on osc2 for snappy attack",
+            "testB": "Remove osc2 for smoother bass"
+          },
+          "troubleshooting": {
+            "clippingOnHits": "Increase release on limiter to 35ms",
+            "notPunchyEnough": "Shorten envelope decay to 100ms"
+          }
+        },
+        "pierre-bourne": {
+          "name": "Trinidad Jame$",
+          "inspiredBy": "Pierre Bourne plucks",
+          "settings": {
+            "oscillator1": {
+              "waveform": "square",
+              "octave": "+1",
+              "detune": 0,
+              "mix": 100
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 5,
+              "mix": 80
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 4000,
+              "resonance": 55,
+              "drive": 8,
+              "envAmt": 95,
+              "envVel": 100
+            },
+            "envelope": {
+              "attack": 1,
+              "decay": 50,
+              "sustain": 0,
+              "release": 30
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 3,
+              "amt": 8,
+              "dest": "pitch"
+            }
+          },
+          "chain": {
+            "post": [
+              "Fruity Reverb 2 - Small Room, Decay 0.5s, Mix 12%",
+              "Fruity Compressor - Fast attack 1ms, Ratio 4:1"
+            ]
+          },
+          "characteristics": [
+            "bouncy",
+            "plucky",
+            "fun",
+            "repetitive"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "trap",
+            "playful"
+          ],
+          "a/bTesting": {
+            "testA": "Very short decay for plucky sound",
+            "testB": "Longer decay for sustained plucks"
+          },
+          "troubleshooting": {
+            "tooClicky": "Increase attack to 2ms",
+            "losingDefinition": "Notch EQ at 800Hz by 2dB"
+          }
+        }
+      }
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What Kepler Is And When To Use It\n\n## Purpose & Identity\n\nKepler is FL Studio's meticulous software recreation of the iconic **Roland JUNO-6** analog synthesizer from 1982. It captures the warm, \"human\" character of 1980s analog hardware, known for its deceptively simple architecture that produces rich, musical tones [SRC: IL-MAN].\n\n**60-Second Mental Model:**\nOne oscillator + sub-oscillator + legendary analog filter + built-in chorus = instant 80s magic. The JUNO design proves that limitations breed creativity—fewer options force better decisions.\n\n## Where It Fits in FL Studio\n\n| Context | Role | Typical Usage |\n|---------|------|---------------|\n| **Lead Generation** | Main melodic/harmonic content | Synth leads, basslines, pads |\n| **Background Textures** | Atmospheric support | Pads, drones, ambient layers |\n| **Bass Foundation** | Low-end support | 80s-style bass, sub-bass |\n| **Rhythmic Elements** | Sequenced patterns | Arpeggios, bass sequences |\n| **Vintage Character** | Analog warmth injection | Any source needing vintage vibe |\n\n## When to Use Kepler\n\n### Use It For:\n- **Lush 80s pads** - Sawtooth + Chorus I+II = instant JUNO pad [SRC: REPUTABLE]\n- **Punchy basslines** - Pulse wave + sub-osc = snappy 80s bass\n- **Cutting leads** - Filtered sawtooth with envelope modulation\n- **Vaporwave/retrowave** - Authentic 80s character\n- **Analog warmth** - When digital synths sound too clean\n- **Arpeggiated sequences** - Built-in arp for classic patterns\n- **Simple, effective sounds** - When you need results fast\n\n### Don't Use It For:\n- **Complex wavetable sounds** - Use FLEX or Harmor instead\n- **FM synthesis** - Use Sytrus or Morphine\n- **Granular/textural** - Use Harmor or Gross Beat\n- **Modern EDM supersaws** - Use FLEX or third-party synths\n- **When you need 100+ modulation options** - Use Patcher or modular setups\n\n## Hip-Hop/R&B Context\n\n### Typical Placements\n\n| Element | Patch Type | Why It Works |\n|---------|-----------|--------------|\n| **Lead Synth** | Filtered saw lead | Cuts through mix, vintage character |\n| **Bass** | Pulse + sub-osc | Punchy, defined low-end |\n| **Pad Layer** | Saw pad with chorus | Fills space, analog warmth |\n| **Arp/Seq** | Up/Down pattern | Rhythmic interest, 80s vibe |\n| **Texture** | PWM pad | Evolving, organic movement |\n\n### Genre-Specific Applications\n\n**Hip-Hop:**\n- 808-style bass with sub-oscillator\n- Lead synths for melodic trap\n- Arpeggios for rhythmic interest\n- Vintage textures for lo-fi\n\n**R&B:**\n- Warm pads for emotional sections\n- Bass for neo-soul vibes\n- Lead for 80s-inspired productions\n- Textures for atmospheric moments\n\n**Pop-Hip-Hop:**\n- Versatile bass and lead sounds\n- Quick, effective patch creation\n- Vintage-modern hybrid sounds\n\n## Quick Decision Matrix\n\n| Sound Needed | Use Kepler? | Recommended Approach |\n|-------------|-------------|---------------------|\n| 80s pad | Yes | Saw + Chorus I+II |\n| 808 bass | Yes | Pulse + 100% sub-osc |\n| Wavetable lead | No | Use FLEX instead |\n| FM bells | No | Use Sytrus |\n| Vintage bass | Yes | Narrow PWM + fast filter |\n| Complex sequence | Maybe | Use arpeggiator |\n| Ambient drone | Yes | Slow filter, chorus |\n| Modern supersaw | Partial | Saw + manual unison |\n\n## Related Plugins\n\n| Plugin | Use Instead When... |\n|--------|---------------------|\n| Kepler Exo | You need more modulation and control |\n| FLEX | You need modern synthesis, wavetables, more voices |\n| Sytrus | You need FM synthesis |\n| Harmor | You need additive/granular, image synthesis |\n| MiniSynth | You need simpler, more immediate results |\n\n---\n\n**Version:** 1.0\n**Sources:** [IL-MAN], [SRC: REPUTABLE]\n**Last Updated:** 2026-02-03\n",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow\n\n## UI Tour\n\n### Main Interface Layout\n\n```\n┌─────────────────────────────────────────────┐\n│  KEPLER - JUNO-6 Emulation                  │\n│                                             │\n│  ┌──────────┬──────────┬──────────┐        │\n│  │   DCO    │   VCF    │   VCA    │        │\n│  │ (Osc)    │ (Filter) │ (Amp)    │        │\n│  └──────────┴──────────┴──────────┘        │\n│                                             │\n│  ┌──────────┬──────────┬──────────┐        │\n│  │   LFO    │  CHORUS  │   ARP    │        │\n│  └──────────┴──────────┴──────────┘        │\n└─────────────────────────────────────────────┘\n```\n\n### Section Overview\n\n| Section | Controls | Function |\n|---------|----------|----------|\n| **DCO** | Waveform, Range, PWM, Sub-Osc, LFO | Oscillator sound generation |\n| **VCF** | Freq, Res, Env, LFO, Kybd | Filter tone shaping |\n| **VCA** | Env/Gate, ADSR | Amplitude envelope |\n| **LFO** | Rate, Delay | Modulation source |\n| **Chorus** | I, II, I+II buttons | Stereo thickening |\n| **Arp** | Range, Mode, Rate | Automatic patterns |\n\n## Signal Flow\n\n```\nMIDI Note\n    │\n    ├──→ [DCO] ──────────────────────────────────┐\n    │      │                                       │\n    │      ├──→ Sawtooth Wave                     │\n    │      ├──→ Pulse Wave (PWM)                  │\n    │      ├──→ Sub-Oscillator (-1 octave)        │\n    │      └──→ Noise                             │\n    │              │                               │\n    │              ↓                               │\n    │      [LFO → Pitch Modulation]               │\n    │              │                               │\n    └──→ [VCF] ────┤                               │\n           │       │                               │\n           ├──→ Cutoff Frequency                   │\n           ├──→ Resonance                         │\n           ├──→ Env Amount (filter envelope)      │\n           ├──→ LFO Amount (filter modulation)    │\n           └──→ Keyboard Tracking                 │\n                  │                               │\n                  ↓                               │\n           [Filter processes mixed oscillator]    │\n                  │                               │\n    ┌─────────────┘                               │\n    │                                             │\n    ↓                                             │\n[VCA + Envelope] ────────────────────────────────┤\n    │                                             │\n    ├──→ Gate Mode (organ-style)                  │\n    └──→ Env Mode (ADSR envelope)                 │\n           │                                      │\n           ↓                                      │\n    [Chorus I/II/I+II] ──────────────────────────┤\n           │                                      │\n           ├──→ Chorus I (subtle)                 │\n           ├──→ Chorus II (pronounced)            │\n           └──→ I+II (maximum thickness)          │\n                  │                               │\n                  ↓                               │\n           [Final Output] ←───────────────────────┘\n```\n\n## Key Interactions\n\n### DCO (Digitally Controlled Oscillator)\n\n**Waveform Selection:**\n- **Sawtooth:** Rich, full sound—classic for pads and leads\n- **Pulse:** Hollow, reedy—great for bass and brass\n- **PWM:** Variable pulse width creates evolving timbres\n\n**Range Selector:**\n- 16', 8', 4' settings (like organ footage)\n- Lower numbers = higher pitch\n- 8' is standard concert pitch\n\n**Pulse Width Modulation (PWM):**\n- Manual: Static pulse width\n- LFO: Automated pulse width sweep\n- Env: Envelope-controlled width\n\n### VCF (Voltage Controlled Filter)\n\n**Cutoff Frequency:**\n- Controls which frequencies pass\n- Lower = darker, Higher = brighter\n- Cornerstone of subtractive synthesis\n\n**Resonance:**\n- Emphasizes frequencies at cutoff\n- High values can create self-oscillation\n- Classic \"squelch\" sound\n\n**Filter Envelope (Env):**\n- Positive: Opens filter during note\n- Negative: Closes filter during note\n- Amount controls intensity\n\n**Keyboard Tracking (Kybd):**  \n- Filter follows keyboard pitch\n- Ensures consistent tone across range\n\n### VCA (Voltage Controlled Amplifier)\n\n**Gate Mode:**\n- Organ-style on/off\n- No sustain control\n- Good for percussive sounds\n\n**Env Mode:**\n- Full ADSR envelope\n- Attack, Decay, Sustain, Release\n- Standard for most sounds\n\n### LFO (Low Frequency Oscillator)\n\n**Rate:**\n- Speed of modulation\n- Can sync to tempo [UNVERIFIED]\n\n**Delay:**\n- Time before LFO starts\n- Creates evolving modulation\n\n**Destinations:**\n- Pitch (vibrato)\n- Filter (wah effect)\n- Pulse Width (timbre shift)\n\n### Chorus Section\n\n**Chorus I:**\n- Subtle, slow modulation\n- Gentle stereo width\n\n**Chorus II:**\n- Faster, more pronounced\n- Classic JUNO width\n\n**Chorus I+II:**\n- Both modes combined\n- Maximum thickness\n- The \"secret weapon\" [SRC: REPUTABLE]\n\n## Things Beginners Misunderstand\n\n### 1. \"It's Just One Oscillator\"\n- **Misconception:** Limited compared to multi-osc synths\n- **Reality:** Sub-oscillator + chorus = deceptively rich sound\n- **Fix:** Embrace the limitation—focus on filter and envelope\n\n### 2. \"Chorus is Optional\"\n- **Misconception:** Chorus is an effect you can skip\n- **Reality:** Chorus IS the JUNO sound\n- **Fix:** Start with Chorus I or II on every patch\n\n### 3. \"Filter Self-Oscillation is a Bug\"\n- **Misconception:** Squealing filter means something's wrong\n- **Reality:** It's a feature—creates pure sine waves\n- **Fix:** Use high resonance with key tracking for melodic filtering\n\n### 4. \"More Envelope is Better\"\n- **Misconception:** High filter envelope = better sound\n- **Reality:** Subtle envelope moves often sound more professional\n- **Fix:** Start with moderate amounts, adjust to taste\n\n### 5. \"PWM is Just for Special Effects\"\n- **Misconception:** PWM sounds too \"animated\"\n- **Reality:** Gentle PWM adds life to static sounds\n- **Fix:** Try slow LFO PWM on pads for subtle movement\n\n## Right-Click Behaviors\n\n| Control | Right-Click Menu |\n|---------|------------------|\n| Any knob | Reset to default, MIDI learn, Create automation clip |\n| Waveform buttons | N/A (toggle only) |\n| Chorus buttons | N/A (toggle only) |\n| Arp controls | N/A (selector buttons) |\n\n## Verification Checklist\n\nTo verify unverified claims:\n\n- [ ] Test LFO sync to project tempo\n- [ ] Verify self-oscillation frequency at max resonance\n- [ ] Compare Chorus I vs II vs I+II with spectrum analyzer\n- [ ] Test keyboard tracking accuracy\n- [ ] Verify PWM range and behavior\n\n---\n\n**Version:** 1.0\n**Sources:** [IL-MAN], [UNVERIFIED: sync features]\n**Last Updated:** 2026-02-03\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques And Best Practices\n\n## 1. The JUNO Pad Formula\n\n**What:** Create lush, atmospheric pads instantly\n\n**Technique:**\n1. Select **Sawtooth** waveform\n2. Enable **Sub-Oscillator** at 30-50%\n3. Set **Filter Cutoff** to 50% (half open)\n4. Enable **Chorus I+II** (both buttons)\n5. Set envelope: **Attack** 30%, **Release** 40%\n6. Add subtle **LFO** to pitch (vibrato)\n\n**What to Listen For:**\n- Rich, swirling texture\n- Stereo width from chorus\n- Smooth attack and release\n- Not muddy—filter keeps it defined\n\n**Common Pitfall:** Filter too open = harsh; too closed = muddy\n**Fix:** Sweep cutoff while holding chord to find sweet spot\n\n---\n\n## 2. The 80s Bass Punch\n\n**What:** Snappy, punchy bass that defined 80s pop\n\n**Technique:**\n1. Select **Pulse** waveform\n2. Set **PWM** narrow (20-30%)\n3. Enable **Sub-Oscillator** at 100%\n4. Set **Filter Cutoff** low (20-30%)\n5. Set **Filter Env** to positive (opens filter)\n6. Fast envelope: **Attack** 0%, **Decay** 20%, **Sustain** 0%\n\n**What to Listen For:**\n- Immediate attack\n- Defined pitch (not just \"thump\")\n- Sits well in mix without masking\n\n**Pro Tip:** Enable Chorus I for subtle width on bass\n\n---\n\n## 3. PWM Animation\n\n**What:** Add organic movement to static sounds\n\n**Technique:**\n1. Select **Pulse** waveform\n2. Set **PWM Source** to **LFO**\n3. Set **LFO Rate** slow (1-3 Hz estimated)\n4. Adjust **PWM Amount** to taste (20-40%)\n\n**What to Listen For:**\n- Evolving timbre (not pitch)\n- Breathing quality\n- Interest without distraction\n\n**Applications:**\n- Pads: Slow, subtle animation\n- Bass: Medium speed for \"squirm\"\n- Leads: Fast for vibrato-like effect\n\n---\n\n## 4. Filter Self-Oscillation\n\n**What:** Create pure sine waves from filter resonance\n\n**Technique:**\n1. Set **Resonance** to maximum\n2. Set **Filter Cutoff** to desired pitch\n3. Play notes (filter tracks keyboard)\n4. Use **Keyboard Tracking** to tune across range\n\n**What to Listen For:**\n- Pure sine-like tone\n- Pitched resonance follows keys\n- Classic \"acid\" squeal at high notes\n\n**Warning:** Can be loud—turn down volume\n\n---\n\n## 5. The Arpeggiator Foundation\n\n**What:** Create rhythmic sequences instantly\n\n**Technique:**\n1. Enable **Arpeggiator**\n2. Set **Mode** to Up/Down\n3. Set **Range** to 2-3 octaves\n4. Hold multiple notes (chord)\n5. Adjust **Rate** to sync with tempo [UNVERIFIED]\n\n**What to Listen For:**\n- Automatic pattern generation\n- Synced to project tempo\n- Variation from held notes\n\n**Variations:**\n- Up mode: Ascending patterns\n- Down mode: Descending patterns\n- Range affects pattern length\n\n---\n\n## 6. Chorus Stacking\n\n**What:** Understand and use the three chorus modes\n\n**Technique:**\n| Mode | Sound | Best For |\n|------|-------|----------|\n| **Off** | Mono, thinner | Bass, when space is limited |\n| **I** | Subtle width | Subtle enhancement, bass |\n| **II** | Pronounced | Standard 80s sound |\n| **I+II** | Maximum | Lush pads, maximum width |\n\n**What to Listen For:**\n- I: Gentle stereo spread\n- II: Classic JUNO movement\n- I+II: Thick, almost reverb-like\n\n**Pro Tip:** I+II uses more CPU—use strategically\n\n---\n\n## 7. Envelope Shaping\n\n**What:** Control sound dynamics with ADSR\n\n**ADSR Guidelines:**\n\n| Sound Type | Attack | Decay | Sustain | Release |\n|-----------|--------|-------|---------|---------|\n| **Pad** | 20-40% | 30% | 70% | 40-60% |\n| **Bass** | 0-5% | 15-25% | 40-60% | 10-20% |\n| **Lead** | 0-10% | 20% | 80% | 15-30% |\n| **Pluck** | 0% | 10-20% | 0% | 10-20% |\n| **Organ** | 0% | N/A | 100% | 0% (Gate mode) |\n\n**What to Listen For:**\n- Attack: How quickly sound starts\n- Sustain: Level while holding note\n- Release: How quickly sound fades\n\n---\n\n## 8. Keyboard Tracking\n\n**What:** Maintain consistent tone across keyboard range\n\n**Technique:**\n1. Enable **Keyboard Tracking** (Kybd)\n2. Filter cutoff follows note pitch\n3. Higher notes = higher cutoff\n\n**What to Listen For:**\n- Consistent brightness across range\n- No \"dead\" notes at top or bottom\n- Natural filter response\n\n**When to Disable:**\n- Creating \"one-note\" bass sounds\n- When you want darker high notes\n- Special effects\n\n---\n\n## 9. Noise Percussion\n\n**What:** Create drums and percussion with noise\n\n**Technique:**\n1. Select **Noise** waveform (if available) [UNVERIFIED]\n2. Or use filtered noise from oscillator\n3. Set **Filter Cutoff** high\n4. Use **Gate** mode for instant on/off\n5. Short **Decay** for percussive sounds\n\n**What to Listen For:**\n- Snare-like snap\n- Hi-hat sizzle\n- Percussive attack\n\n---\n\n## 10. Sub-Oscillator Bass Boost\n\n**What:** Add fundamental low-end to any sound\n\n**Technique:**\n1. Enable **Sub-Oscillator**\n2. Set level based on need:\n   - 20-30%: Subtle warmth\n   - 50-70%: Noticeable bass boost\n   - 100%: Maximum low-end\n\n**What to Listen For:**\n- Weight in low frequencies\n- Not overwhelming the main oscillator\n- Tight, focused bass\n\n**Applications:**\n- Bass sounds: Always 100%\n- Leads: 30-50% for body\n- Pads: 20-40% for thickness\n\n---\n\n## 11. Velocity Dynamics\n\n**What:** Add expression with velocity sensitivity\n\n**Technique:**\n1. Kepler responds to MIDI velocity\n2. Harder playing = louder, brighter\n3. Softer playing = quieter, darker\n\n**What to Listen For:**\n- Dynamic response to playing\n- Expressive performance\n- Natural variation\n\n**Enhancement:**\n- Add velocity to filter cutoff for brightness control\n- Use aftertouch if available [UNVERIFIED]\n\n---\n\n## 12. The Initialize Workflow\n\n**What:** Start fresh for custom patch creation\n\n**Technique:**\n1. Initialize patch (return all to defaults)\n2. Start with **Sawtooth** or **Pulse**\n3. Set **Filter Cutoff** to middle\n4. Build sound step by step:\n   - Oscillator first\n   - Filter second\n   - Envelope third\n   - Chorus last\n\n**What to Listen For:**\n- Each element contributing clearly\n- No accidental settings\n- Controlled, intentional sound\n\n---\n\n## Common Pitfalls & Fixes\n\n| Pitfall | Symptom | Fix |\n|---------|---------|-----|\n| **Filter too open** | Harsh, digital sound | Lower cutoff, add resonance |\n| **No sub-osc on bass** | Thin bass | Enable sub-osc at 100% |\n| **Forgot chorus** | Thin, lifeless sound | Enable Chorus I or II |\n| **Attack too slow** | Late, lagging notes | Reduce attack to 0-10% |\n| **Release too short** | Choppy sound | Increase release |\n| **Too much resonance** | Squealing, harsh | Reduce resonance |\n| **Wrong octave range** | Too high/low | Adjust Range selector |\n\n## Automation Ideas\n\n1. **Filter Sweeps**\n   - Automate cutoff for build-ups\n   - Classic synth effect\n\n2. **PWM Movement**\n   - Automate PWM amount\n   - Creates evolving pads\n\n3. **Chorus Toggle**\n   - Switch chorus on/off for sections\n   - Instant arrangement change\n\n4. **LFO Rate**\n   - Speed up LFO for intensity\n   - Slow down for relaxation\n\n---\n\n**Version:** 1.0\n**Sources:** [IL-MAN], [SRC: REPUTABLE]\n**Last Updated:** 2026-02-03\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Kepler\n\nMapping vintage JUNO-style controls to modern Hip-Hop, R&B, and Pop-Hip-Hop vibes.\n\n---\n\n## 1. MOODY\n*80s Melancholy, dark textures, and \"Night Drive\" energy.*\n- **The Mental Model:** A rainy city street at midnight (Drive soundtrack vibes).\n- **Kepler Levers:**\n    - **Filter (Freq):** Lower it significantly (20–40%) to remove the \"shine.\"\n    - **Sub-Osc:** Set to 100% to provide a heavy, foundational weight.\n    - **Chorus I:** Use for a slow, subtle drift that feels lonely rather than energetic.\n    - **Release:** Long (50%+) so notes bleed into each other like shadows.\n    - **DCO (LFO):** Very slight pitch modulation (1–2%) to simulate \"tuning instability.\"\n- **Listen For:** A warm, dark presence that sits \"behind\" the beat.\n\n## 2. UPBEAT\n*Synth-Pop energy, bright leads, and rhythmic bounce.*\n- **The Mental Model:** Energetic 80s Pop or bright, high-energy Trap leads.\n- **Kepler Levers:**\n    - **Filter (Freq):** Open wide (80–100%).\n    - **Arpeggiator:** Mode: Up/Down, Range: 2, Speed: 1/16.\n    - **Chorus II:** The faster speed adds energy and movement.\n    - **Attack:** Short/Instant to keep the transients \"snappy.\"\n    - **Waveforms:** Combine Saw and Pulse for maximum harmonic brightness.\n- **Listen For:** \"Sparkle,\" clarity, and rhythmic precision.\n\n## 3. PSYCHEDELIC\n*Motion, evolving filters, \"trippy\" detuning, and resonant squelch.*\n- **The Mental Model:** Travis Scott / Mike Dean synth workouts; hallucinogenic textures.\n- **Kepler Levers:**\n    - **Resonance:** High (70–90%). Sweep the **Freq** fader for \"vocal\" resonant effects.\n    - **PWM:** Set to **LFO** and crank the Depth. This creates a \"phasing\" harmonic shift.\n    - **LFO Rate:** Automate the speed to go from slow to chaotic.\n    - **Chorus I+II:** Use the \"secret\" combined mode for maximum stereo disorientation.\n- **Listen For:** Squealing filters and shifting harmonic shapes.\n\n## 4. JAZZY\n*Neo-Soul keys, organic warmth, and smooth transitions.*\n- **The Mental Model:** Moonchild / Robert Glasper style warm synth textures.\n- **Kepler Levers:**\n    - **Waveform:** Square wave only (Hollow, organic \"reed\" feel).\n    - **Filter (Freq):** Moderate (50%) with slight Resonance for \"woodwind\" character.\n    - **Kybd (Key Tracking):** Set to 100% so high notes stay bright and \"expressive.\"\n    - **PWM:** Low depth for subtle warmth.\n    - **Chorus:** OFF or Chorus I (Keep it natural).\n- **Listen For:** A \"rounded\" tone that feels like a real instrument.\n\n## 5. VIBEY\n*Lush pads, atmospheric \"halo\" sounds, and expensive-sounding width.*\n- **The Mental Model:** Modern R&B atmospheric textures (PBR&B / Alternative R&B).\n- **Kepler Levers:**\n    - **Chorus I+II:** For that signature wide, lush \"halo.\"\n    - **Attack & Release:** Both long (Slow fade in, slow fade out).\n    - **Noise:** Add 5% for \"dusty\" analog texture.\n    - **Filter Envelope:** Use a slow decay to make the pad \"breathe.\"\n- **Listen For:** A wide, \"creamy\" sound that fills the speakers without being harsh.\n\n---\n\n## Vibe Check Matrix\n| Vibe | Waveform | Filter | Chorus | Attack | Release |\n| :--- | :--- | :--- | :--- | :--- | :--- |\n| **Moody** | Saw + Sub | Low | I | Instant | Long |\n| **Upbeat** | Saw + Pulse | High | II | Instant | Short |\n| **Psyched**| Pulse + Res | High | I+II | Instant | Varies |\n| **Jazzy** | Square | Mid | Off/I | Instant | Med |\n| **Vibey** | Saw + Pulse | Mid | I+II | Slow | Long |",
+      "advanced-synthesis-techniques": "Tags: hip-hop/rap | R&B | electric\n\n## Advanced Kepler Synthesis Techniques\n\n### Subtractive Synthesis Mastery\n\n**Core Subtractive Principle:**\nKepler uses subtractive synthesis—generate harmonically rich waveforms, then sculpt them with filters. The key is understanding what each waveform contains so you know what you're removing.\n\n**Waveform Harmonic Content:**\n\n| Waveform | Harmonics | Character | Best For |\n|----------|-----------|-----------|----------|\n| Sawtooth | All harmonics | Bright, rich | Leads, bass |\n| Square | Odd harmonics | Hollow, woody | Bass, keys |\n| Triangle | Few harmonics | Pure, soft | Pads, bass |\n| Sine | Fundamental only | Pure | Sub-bass, fundamentals |\n\n**Strategic Subtraction:**\n\n| Goal | Waveform | Filter Approach |\n|------|----------|----------------|\n| Dark bass | Sawtooth | Aggressive low-pass (200Hz) |\n| Cutting lead | Sawtooth | Moderate cutoff (2-5kHz) |\n| Warm pad | Square | Gentle cutoff (1-2kHz) |\n| Pure sub | Sine | No filter, high resonance |\n\n### Filter Topology\n\n**24dB/octave Low-Pass:**\n- Steep roll-off (4 poles)\n- Classic analog character\n- Best for: Aggressive filtering\n- Resonance creates \"wah\" effect\n\n**12dB/octave Low-Pass:**\n- Gentler slope (2 poles)\n- More transparent\n- Best for: Musical filtering\n- Less colored resonance\n\n**Filter Resonance Settings:**\n\n| Resonance | Effect | Use Case |\n|----------|--------|----------|\n| 0-20% | Clean, transparent | Pads, fundamentals |\n| 20-40% | Musical emphasis | Leads, bass |\n| 40-60% | Noticeable character | Synth sounds |\n| 60-80% | Pronounced \"wah\" | Solo passages |\n| 80%+ | Self-oscillation | Sound design |\n\n### Oscillator Sync Techniques\n\n**Hard Sync Basics:**\n- Master oscillator defines pitch\n- Slave oscillator resets to master\n- Creates rich, metallic harmonics\n- Sweepable with filter\n\n**Sync Strategies by Genre:**\n\n| Genre | Sync Approach | Sound |\n|-------|---------------|-------|\n| Hip-hop | Subtle sync sweep | Glitchy texture |\n| R&B | Warm sync | Smooth harmonics |\n| EDM | Aggressive sync | Screaming lead |\n| Lo-fi | Detuned sync | Vintage character |\n\n### Modulation Routing Deep Dive\n\n**Envelope to Filter:**\n```\nAttack: 0-10ms (fast for punch)\nDecay: 100-500ms (varies with genre)\nSustain: 50-80% (maintains body)\nRelease: 100-300ms (natural fade)\n```\n\n**LFO to Pitch:**\n| Rate | Feel | Use |\n|------|------|-----|\n| 0.1-0.2Hz | Slow warp | Ambient |\n| 0.5-1Hz | Moderate vibrato | Movement |\n| 2-8Hz | Fast vibrato | Percussive |\n\n### Creating Signature Sounds\n\n**The \"Juno\" Sound:**\n1. Saw + Square waves\n2. Slight detune (5-10 cents)\n3. Low-pass filter at 60%\n4. Resonance at 25%\n5. Filter envelope with medium depth\n6. Chorus effect for width\n\n**Modern Trap Lead:**\n1. Detuned saws (2 oscs)\n2. Low-pass filter at 70%\n3. Resonance at 35%\n4. Fast filter envelope attack\n5. Distortion after Kepler\n\n**Warm R&B Pad:**\n1. Triangle + Sine mix\n2. Very gentle filtering (80%+)\n3. Low resonance (15%)\n4. Long attack envelope\n5. Reverb and delay sends\n\n### Troubleshooting Synthesis\n\n| Problem | Likely Cause | Fix |\n|---------|-------------|-----|\n| Too harsh | Filter too open | Close cutoff by 10-20% |\n| No punch | No filter envelope | Add envelope modulation |\n| Thin sound | No detuning | Detune oscs 5-15 cents |\n| Muddiness | Too many lows | High-pass unneeded frequencies |\n| No character | Resonance too low | Increase resonance |\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Kepler\r\n\r\n## What It Is\r\nKepler is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Kepler\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: 5 Minutes to First Result\n\n## Minute 1: Initialize\n\n1. **Load Kepler** on a new channel\n2. Click **Initialize** or reset all parameters to default\n3. Set **Range** to 8' (concert pitch)\n\n## Minute 2: Basic Pad\n\n1. Select **Sawtooth** waveform\n2. Set **Filter Cutoff** to 50%\n3. Set **Attack** to 30%, **Release** to 40%\n4. Enable **Chorus II**\n\n## Minute 3: Test and Adjust\n\n1. Play a chord (hold multiple notes)\n2. Adjust **Filter Cutoff** until it sounds good\n3. Add **Sub-Oscillator** at 30% for thickness\n4. Try **Chorus I+II** for maximum lushness\n\n## Minute 4: Save Your Patch\n\n1. Click the **Preset** menu\n2. Select **Save preset as...**\n3. Name it \"My First Pad\"\n4. Save to your user presets folder\n\n## Minute 5: Experiment\n\n1. Try **Pulse** waveform instead of Saw\n2. Adjust **PWM** to hear timbre change\n3. Play with **Filter Envelope** (increase amount)\n4. Test the **Arpeggiator** (hold chord, enable Arp)\n\n## Quick Presets to Try\n\n### Instant Pad\n- Waveform: Sawtooth\n- Filter: 50%\n- Chorus: I+II\n- Sub-Osc: 30%\n- Attack: 30%, Release: 40%\n\n### Snappy Bass\n- Waveform: Pulse\n- PWM: 30%\n- Filter: 25%\n- Sub-Osc: 100%\n- Attack: 0%, Decay: 20%, Sustain: 40%\n\n### Punchy Lead\n- Waveform: Sawtooth\n- Filter: 70%\n- Resonance: 40%\n- Chorus: II\n- Attack: 5%, Release: 20%\n\n## Next Steps\n\n- See `02_Best_Settings_Starting_Points.md` for more presets\n- Check `03_Vibe_Starting_Points_Moody.md` for vibe-specific setups\n- Review `01_Common_Mistakes.md` to avoid pitfalls\n\n---\n\n**Version:** 1.0\n**Last Updated:** 2026-02-03\n",
+      "01_Common_Mistakes": "# Common Mistakes\n\n## 1. Forgetting the Chorus\n\n**The Mistake:** Leaving chorus off, wondering why sound is thin.\n\n**Why It Happens:** Users treat chorus as optional effect.\n\n**The Problem:** Chorus IS the JUNO sound—without it, you lose 50% of the character.\n\n**The Fix:**\n- Always start with Chorus I or II on\n- Use I+II for pads and lush sounds\n- Only disable for specific bass sounds\n\n---\n\n## 2. Filter Too Open on Pads\n\n**The Mistake:** Filter cutoff at 80-100% for pads.\n\n**Why It Happens:** Thinking \"more open = better.\"\n\n**The Problem:** Sounds harsh, digital, and fights with other elements.\n\n**The Fix:**\n- Pads: Keep cutoff at 40-60%\n- Use resonance for brightness instead\n- Trust the chorus for shimmer\n\n---\n\n## 3. No Sub-Oscillator on Bass\n\n**The Mistake:** Creating bass without sub-oscillator.\n\n**Why It Happens:** Not understanding the JUNO architecture.\n\n**The Problem:** Thin, weak bass without foundation.\n\n**The Fix:**\n- Bass sounds: Always 100% sub-osc\n- Listen to the difference—it's dramatic\n- Sub-oscillator is free bass boost\n\n---\n\n## 4. Attack Too Slow on Bass\n\n**The Mistake:** 20%+ attack on bass patches.\n\n**Why It Happens:** Thinking pads and bass use same envelope.\n\n**The Problem:** Bass sounds late, loses punch, fights kick drum.\n\n**The Fix:**\n- Bass attack: 0-5% always\n- Use filter envelope for \"bite\" instead\n- Keep amplitude envelope snappy\n\n---\n\n## 5. Wrong Waveform for the Job\n\n**The Mistake:** Using pulse for pads or saw for hollow bass.\n\n**Why It Happens:** Not understanding waveform character.\n\n**The Problem:** Wrong tone for intended sound.\n\n**The Fix:**\n| Sound | Use |\n|-------|-----|\n| Lush pad | Sawtooth |\n| Punchy bass | Pulse |\n| Hollow reed | Pulse (narrow) |\n| Bright lead | Sawtooth |\n| Nasal/brassy | Pulse (medium) |\n\n---\n\n## 6. Filter Self-Oscillation Confusion\n\n**The Mistake:** Thinking squealing filter is broken.\n\n**Why It Happens:** Not understanding resonance.\n\n**The Problem:** Users lower resonance, lose character.\n\n**The Fix:**\n- High resonance + high cutoff = self-oscillation\n- It's a feature, not a bug\n- Use it intentionally for special effects\n\n---\n\n## 7. Ignoring Keyboard Tracking\n\n**The Mistake:** Leaving keyboard tracking off.\n\n**Why It Happens:** Not understanding its purpose.\n\n**The Problem:** Inconsistent tone across keyboard range.\n\n**The Fix:**\n- Enable Kybd for most sounds\n- Creates natural filter response\n- Essential for realistic playing\n\n---\n\n## 8. Extreme PWM Settings\n\n**The Mistake:** PWM at 0% or 100%.\n\n**Why It Happens:** Not understanding pulse width.\n\n**The Problem:** 0% = almost silent, 100% = unusual harmonics.\n\n**The Fix:**\n- Sweet spot: 20-60% for most sounds\n- Narrow (10-30%) for hollow bass\n- Wide (50-70%) for fuller pulse\n\n---\n\n## 9. Forgetting to Save Patches\n\n**The Mistake:** Creating great sounds, not saving them.\n\n**Why It Happens:** Being in the flow, forgetting procedure.\n\n**The Problem:** Lose good sounds forever.\n\n**The Fix:**\n- Save immediately when you find something good\n- Use descriptive names\n- Create personal preset library\n\n---\n\n## 10. Not Using the Arpeggiator\n\n**The Mistake:** Ignoring the arpeggiator entirely.\n\n**Why It Happens:** Thinking it's only for \"arp sounds.\"\n\n**The Problem:** Missing out on instant sequences.\n\n**The Fix:**\n- Try it on bass sounds for sequences\n- Use on pads for rhythmic texture\n- Experiment with different ranges\n\n---\n\n## Mistake Prevention Checklist\n\nBefore finalizing a patch:\n\n- [ ] Chorus enabled (unless intentional)\n- [ ] Sub-oscillator appropriate for sound type\n- [ ] Attack time appropriate (fast for bass, slow for pads)\n- [ ] Filter cutoff in sweet spot (not maxed)\n- [ ] Waveform matches intended sound\n- [ ] Keyboard tracking on (unless special effect)\n- [ ] Patch saved with descriptive name\n\n---\n\n**Version:** 1.0\n**Sources:** [IL-MAN], [SRC: REPUTABLE]\n**Last Updated:** 2026-02-03\n",
+      "02_Best_Settings_Starting_Points": "# Best Settings: Starting Points\n\n## Universal Starting Points\n\n### The JUNO Pad\nUse this when you need a pad immediately:\n\n| Parameter | Value | Notes |\n|-----------|-------|-------|\n| Waveform | Sawtooth | Rich, full |\n| Range | 8' | Concert pitch |\n| Sub-Osc | 30% | Added warmth |\n| Filter Cutoff | 50% | Half open |\n| Resonance | 20% | Slight character |\n| Chorus | I+II | Maximum lushness |\n| Attack | 30% | Slow fade in |\n| Release | 50% | Long sustain |\n\n---\n\n## Sound-Type Starting Points\n\n### Classic 80s Bass\n\n| Parameter | Value |\n|-----------|-------|\n| Waveform | Pulse |\n| PWM | 30% (narrow) |\n| Range | 8' or 16' |\n| Sub-Osc | 100% |\n| Filter Cutoff | 30% |\n| Resonance | 30% |\n| Filter Env | +40% |\n| Attack | 0% |\n| Decay | 20% |\n| Sustain | 40% |\n| Release | 15% |\n| Chorus | I or Off |\n\n### Punchy Lead\n\n| Parameter | Value |\n|-----------|-------|\n| Waveform | Sawtooth |\n| Range | 8' |\n| Sub-Osc | 40% |\n| Filter Cutoff | 70% |\n| Resonance | 40% |\n| Filter Env | +20% |\n| Attack | 5% |\n| Decay | 30% |\n| Sustain | 80% |\n| Release | 25% |\n| Chorus | II |\n\n### Warm Pad\n\n| Parameter | Value |\n|-----------|-------|\n| Waveform | Sawtooth |\n| Range | 16' |\n| Sub-Osc | 40% |\n| Filter Cutoff | 40% |\n| Resonance | 15% |\n| Filter Env | +10% |\n| Attack | 40% |\n| Decay | 30% |\n| Sustain | 70% |\n| Release | 60% |\n| Chorus | I+II |\n\n### Pluck/Short\n\n| Parameter | Value |\n|-----------|-------|\n| Waveform | Saw or Pulse |\n| Range | 8' |\n| Sub-Osc | 20% |\n| Filter Cutoff | 60% |\n| Resonance | 35% |\n| Filter Env | +50% |\n| Attack | 0% |\n| Decay | 15% |\n| Sustain | 0% |\n| Release | 15% |\n| Chorus | I |\n\n### PWM Pad (Evolving)\n\n| Parameter | Value |\n|-----------|-------|\n| Waveform | Pulse |\n| PWM Source | LFO |\n| PWM Amount | 40% |\n| Range | 8' |\n| Sub-Osc | 30% |\n| Filter Cutoff | 45% |\n| Resonance | 20% |\n| Attack | 35% |\n| Release | 50% |\n| Chorus | I+II |\n\n---\n\n## Quick Reference Card\n\n### If you want... | Start with...\n---|---\nLush pad | Saw + Chorus I+II + 50% cutoff\n80s bass | Pulse + 100% sub-osc + fast envelope\nBright lead | Saw + high cutoff + Chorus II\nWarm texture | 16' range + sub-osc + Chorus I\nPlucky sound | Short envelope + filter env\nEvolving pad | PWM + LFO + slow attack\n\n---\n\n**Version:** 1.0\n**Last Updated:** 2026-02-03\n",
+      "03_Vibe_Starting_Points_Moody": "# Vibe Starting Points: Moody\n\n## The Moody Aesthetic\n\n**Key Characteristics:**\n- Dark and atmospheric\n- Slow evolution\n- Emotional weight\n- Warm but not bright\n\n## Moody Starting Point 1: Dark Pad\n\n| Parameter | Value | Why |\n|-----------|-------|-----|\n| Waveform | Sawtooth | Full body |\n| Range | 16' | Lower, warmer |\n| Sub-Osc | 40% | Depth |\n| Filter Cutoff | 35% | Dark |\n| Resonance | 15% | Smooth |\n| Filter Env | +15% | Gentle sweep |\n| Chorus | I | Subtle width |\n| Attack | 40% | Slow fade |\n| Release | 60% | Long sustain |\n| LFO | Slow, filter | Breathing |\n\n**Use for:** Atmospheric pads, intros, breakdowns\n\n---\n\n## Moody Starting Point 2: Intimate Bass\n\n| Parameter | Value | Why |\n|-----------|-------|-----|\n| Waveform | Pulse | Controlled |\n| PWM | 35% | Warm |\n| Range | 16' | Deep |\n| Sub-Osc | 80% | Weight |\n| Filter Cutoff | 25% | Dark |\n| Resonance | 10% | Smooth |\n| Chorus | Off | Focused |\n| Attack | 10% | Soft start |\n| Release | 40% | Lingering |\n\n**Use for:** Emotional bass, ballads\n\n---\n\n## Moody Starting Point 3: Distant Lead\n\n| Parameter | Value | Why |\n|-----------|-------|-----|\n| Waveform | Sawtooth | Present |\n| Range | 8' | Standard |\n| Sub-Osc | 30% | Body |\n| Filter Cutoff | 40% | Muted |\n| Resonance | 20% | Character |\n| Chorus | I | Gentle |\n| Attack | 20% | Slow |\n| Release | 45% | Fade out |\n\n**Use for:** Melancholic leads, background lines\n\n---\n\n## Moody Checklist\n\n- [ ] Filter cutoff below 50%\n- [ ] Low or no resonance\n- [ ] Chorus I or Off (not II)\n- [ ] Slow attack and long release\n- [ ] Sub-oscillator for warmth\n- [ ] Optional: LFO for subtle movement\n\n---\n\n**Version:** 1.0\n**Last Updated:** 2026-02-03\n",
+      "04_Vibe_Starting_Points_Upbeat_Psychedelic_Jazzy_Vibey": "# Vibe Starting Points: Upbeat, Psychedelic, Jazzy, Vibey\n\n## Upbeat\n\n**Characteristics:** Energetic, clear, punchy\n\n### Upbeat Dance Bass\n\n| Parameter | Value |\n|-----------|-------|\n| Waveform | Pulse |\n| PWM | 25% |\n| Sub-Osc | 100% |\n| Filter Cutoff | 35% |\n| Resonance | 40% |\n| Filter Env | +50% |\n| Attack | 0% |\n| Decay | 18% |\n| Sustain | 50% |\n| Release | 12% |\n| Chorus | II |\n\n**Use for:** Pop, dance, hip-hop bass\n\n### Upbeat Bright Lead\n\n| Parameter | Value |\n|-----------|-------|\n| Waveform | Sawtooth |\n| Sub-Osc | 50% |\n| Filter Cutoff | 75% |\n| Resonance | 45% |\n| Chorus | II |\n| Attack | 5% |\n| Release | 20% |\n\n**Use for:** Pop leads, energetic synths\n\n---\n\n## Psychedelic\n\n**Characteristics:** Expansive, evolving, mind-bending\n\n### Psychedelic Evolving Pad\n\n| Parameter | Value |\n|-----------|-------|\n| Waveform | Pulse |\n| PWM Source | LFO |\n| PWM Amount | 50% |\n| Filter Cutoff | 50% |\n| Filter LFO | 40% |\n| Chorus | I+II |\n| LFO Rate | Medium |\n| Attack | 30% |\n| Release | 50% |\n\n**Use for:** Experimental sections, intros\n\n### Psychedelic Arp Pattern\n\n| Parameter | Value |\n|-----------|-------|\n| Waveform | Saw |\n| Filter Cutoff | 55% |\n| Resonance | 50% |\n| Chorus | I+II |\n| Arpeggiator | On, Up/Down |\n| Arp Range | 3 octaves |\n| LFO | Filter, fast |\n\n**Use for:** Rhythmic psychedelic elements\n\n---\n\n## Jazzy\n\n**Characteristics:** Natural, dynamic, restrained\n\n### Jazzy Electric Piano-style\n\n| Parameter | Value |\n|-----------|-------|\n| Waveform | Sawtooth |\n| Sub-Osc | 25% |\n| Filter Cutoff | 55% |\n| Resonance | 15% |\n| Filter Env | +20% |\n| Chorus | I |\n| Attack | 8% |\n| Release | 35% |\n\n**Use for:** Jazz chords, Rhodes-like sounds\n\n### Jazzy Soft Lead\n\n| Parameter | Value |\n|-----------|-------|\n| Waveform | Saw |\n| Sub-Osc | 30% |\n| Filter Cutoff | 60% |\n| Resonance | 10% |\n| Chorus | I |\n| Attack | 12% |\n| Release | 30% |\n\n**Use for:** Jazz solos, melodic lines\n\n---\n\n## Vibey\n\n**Characteristics:** Warm, analog, characterful\n\n### Vibey Warm Pad\n\n| Parameter | Value |\n|-----------|-------|\n| Waveform | Saw |\n| PWM | Slow LFO |\n| Sub-Osc | 45% |\n| Filter Cutoff | 45% |\n| Resonance | 25% |\n| Chorus | I+II |\n| Attack | 25% |\n| Release | 50% |\n\n**Use for:** Soul/R&B pads, lo-fi\n\n### Vibey Analog Bass\n\n| Parameter | Value |\n|-----------|-------|\n| Waveform | Pulse |\n| PWM | 40% |\n| Sub-Osc | 90% |\n| Filter Cutoff | 40% |\n| Resonance | 30% |\n| Chorus | I |\n| Attack | 5% |\n| Release | 25% |\n\n**Use for:** Soul bass, warm low-end\n\n---\n\n**Version:** 1.0\n**Last Updated:** 2026-02-03\n",
+      "juno-architecture-101": "# JUNO Architecture 101: The Kepler Model\n\nUnderstanding the \"Single Oscillator\" philosophy of the 1980s. [SRC: IL-MAN], [SRC: REPUTABLE]\n\n## 1. The Single Oscillator Philosophy\nUnlike modern synths (like Sytrus or Vital) that have 3+ oscillators, Kepler (and the JUNO-6) has only **one main DCO**.\n- **The Magic is in the Mix:** You don't choose *between* waveforms; you can engage Saw, Pulse, and Sub *simultaneously*.\n- **Consistency:** Because all waves come from one master clock, they are perfectly in phase, leading to a very \"solid\" and \"stable\" low-end.\n\n## 2. The Sub-Oscillator: The \"Bass\" Engine\nBecause there is only one main oscillator, the **Sub** fader is essential. It provides a rock-solid square wave exactly one octave below your main pitch. This is the secret to Kepler's massive bass presence.\n\n## 3. The Chorus: The \"Ensemble\" Engine\nWithout the chorus, a single-oscillator synth can sound \"thin\" or \"flat.\"\n- **Stereo Invention:** The JUNO chorus was designed to make a single oscillator sound like a whole ensemble of instruments.\n- **Always-On:** In most iconic patches, the chorus is considered part of the \"tone\" rather than an \"effect.\"\n\n## 4. The Resonant Filter (VCF)\nKepler's filter is famous for being \"liquid\" and \"musical.\"\n- **Self-Oscillation:** At 100% resonance, the filter creates its own sine wave. This allows you to play the filter itself as an instrument.\n- **Keytracking (Kybd):** Essential for keeping leads bright across the whole keyboard range.\n\n## 5. DCO vs. VCO\n- **VCO (Vintage):** Tuning drifts over time (unstable, \"warm\").\n- **DCO (Kepler):** Tuning is rock-solid (digitally controlled).\n- **The Best of Both:** Kepler emulates the *character* of the DCO (stable tuning) while maintaining the *analog circuitry feel* of the filter and chorus.\n\n---\n*For a deeper map of these sections, see the [01-Learning/Concepts/01_UI_Map_And_Signal_Flow.md](../Concepts/01_UI_Map_And_Signal_Flow.md) guide.*\n",
+      "parameter-cheat-sheet": "# Parameter Cheat Sheet: Kepler\n\nFast-reference for the JUNO-6 emulation engine. [SRC: IL-MAN]\n\n---\n\n## 🎹 DCO (Oscillator) Section\n- **LFO:** Pitch modulation depth from the LFO.\n- **PWM (Pulse Width Modulation):** Width of the Square/Pulse wave.\n- **PWM Switch (LFO/ENV):** Selects whether the LFO or the Envelope modulates the pulse width.\n- **Range (16/8/4):** Sets the octave (Pitch).\n- **Square (Pulse):** Toggles the square/pulse wave.\n- **Saw:** Toggles the sawtooth wave.\n- **Sub:** Adds a square wave one octave below the main.\n- **Noise:** Injects white noise (grit).\n\n## 🎚️ VCF (Filter) Section\n- **HPF:** High Pass Filter (Fixed/Stepped). Use to thin out the low end.\n- **Freq:** Filter Cutoff frequency.\n- **Res:** Filter Resonance. High values cause \"ringing\" or self-oscillation.\n- **Env:** Depth of the ADSR Envelope's impact on the filter.\n- **LFO:** Depth of the LFO's impact on the filter (creates \"wobble\").\n- **Kybd (Key Tracking):** How much the filter opens as you play higher notes.\n\n## 📐 VCA & ENV Section\n- **VCA Switch (Env/Gate):**\n  - *Gate:* Instant On/Off (Classic organ/rhythm feel).\n  - *Env:* Follows the ADSR envelope.\n- **A-D-S-R:** Attack, Decay, Sustain, Release.\n\n## ✨ CHORUS Section\n- **Off:** Pure, dry signal.\n- **I:** Slow, subtle widening.\n- **II:** Faster, deeper, more aggressive widening.\n- **I+II:** The \"Secret Mode.\" Extreme width and grit.\n\n## 🕹️ ARP (Arpeggiator)\n- **Range (1/2/3):** Octave range of the arpeggio.\n- **Mode:** Up, Down, or Up/Down.\n- **Speed:** Tempo-synced rate (1/4, 1/8, 1/16, etc.).\n\n---\n\n## 🎯 Quick Starting Points\n- **Lush Pad:** Saw + Sub + Chorus II + Long Release.\n- **80s Bass:** Pulse + Sub + High Resonance + Fast Filter Envelope.\n- **Industrial Lead:** Saw + Noise + Max Resonance (Filter self-oscillation).\n- **Neo-Soul Keys:** Square + Sub + Low LP Filter + Chorus I.\n",
+      "quick-reference-card": "Tags: hip-hop/rap | R&B | electric\n\n## Kepler Quick Reference Card\n\n### Emergency Settings\n\n| Problem | Quick Fix |\n|---------|----------|\n| Too harsh | Cutoff +20%, resonance -15% |\n| Too muddy | Cutoff -15%, resonance +10% |\n| No punch | Fast filter attack, resonance +10% |\n| Too thin | Detune oscs, resonance +10% |\n| No character | Increase resonance to 35% |\n| Too loud | Oscillator level -3dB |\n| Clipping | Enable soft clip, reduce output |\n\n### Genre Defaults\n\n| Genre | Waveforms | Cutoff | Resonance | Detune |\n|-------|-----------|--------|-----------|---------|\n| Hip-hop bass | Sine+Sine | 25% | 25% | 0 |\n| Hip-hop lead | Saw+Square | 65% | 30% | 10 |\n| R&B | Saw+Square | 70% | 20% | 5 |\n| Trap lead | 3 Saws | 60% | 35% | 15 |\n| EDM lead | Saw+Square | 55% | 45% | 12 |\n| Lo-fi | Square | 75% | 15% | 8 |\n\n### Waveform Guide\n\n| Waveform | Harmonics | Character | Best For |\n|----------|-----------|-----------|----------|\n| Saw | All | Bright, rich | Leads, bass |\n| Square | Odd | Hollow, woody | Bass, keys |\n| Triangle | Few | Pure, soft | Pads, subs |\n| Sine | None | Pure | Sub-bass |\n\n### Envelope Guide\n\n| Use | Attack | Decay | Sustain | Release |\n|-----|--------|--------|---------|---------|\n| Punchy bass | 5-10ms | 100-200ms | 70-80% | 50-100ms |\n| Smooth pad | 50-100ms | 500-800ms | 80-90% | 500-1000ms |\n| Pluck | 0-5ms | 50-150ms | 30-50% | 100-200ms |\n| Lead | 10-20ms | 200-400ms | 60-80% | 150-300ms |\n\n### LFO Guide\n\n| Rate | Feel | Use |\n|------|------|-----|\n| 0.05-0.1Hz | Very slow | Ambient warp |\n| 0.1-0.3Hz | Slow sweep | Pad movement |\n| 0.3-0.5Hz | Moderate | Subtle vibrato |\n| 1-2Hz | Fast | Tremolo/vibrato |\n| 4-8Hz | Very fast | Percussive |\n\n### Resonance Guide\n\n| Value | Effect | Best For |\n|-------|---------|----------|\n| 0-20% | Clean | Fundamentals |\n| 20-35% | Musical | General use |\n| 35-50% | Character | Leads, bass |\n| 50-70% | Pronounced | Solo passages |\n| 70%+ | Extreme | Sound design |\n\n### Troubleshooting Flowchart\n\n```\nProblem?\n    ↓\nToo harsh? → Cutoff +15%, res -10%\n    ↓\nToo muddy? → Cutoff -15%, res +10%\n    ↓\nNo punch? → Fast attack, res +10%\n    ↓\nToo thin? → Detune oscs, res +10%\n    ↓\nStill not right? → Reset and start over\n```\n\n### Quick Preset Names\n\n```\nBass_HipHop_Deep_[DATE]\nLead_RnB_Smooth_[DATE]\nLead_Trap_Wide_[DATE]\nPad_Atmospheric_[DATE]\nKeys_Electric_[DATE]\n```\n\n### Quality Check\n\n- [ ] Oscillators balanced\n- [ ] Filter not clipping\n- [ ] Modulation musical\n- [ ] Mono compatible\n- [ ] Fits genre\n- [ ] Sounds good in mix\n",
+      "quick-start-checklist": "# Quick Start Checklist: Kepler\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Kepler to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Kepler\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Kepler\r\n\r\nThis section contains learning information for the kepler plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "arpeggiated-sequences": "# Workflow: Arpeggiated Sequences (Upbeat/Psychedelic)\n\n*Goal: Using Kepler's built-in arpeggiator and resonant filter to create rhythmic, hypnotic motion.*\n\n## Vibe Mapping\n- **Upbeat:** ⭐⭐⭐⭐⭐ (Primary)\n- **Psychedelic:** ⭐⭐⭐⭐⭐ (With filter modulation)\n- **Vibey:** ⭐⭐⭐ (With slow delay/reverb)\n\n## 🚶 Step-by-Step Setup\n1. **The Sound:**\n   - Use **Sawtooth** or **Square** waveform.\n   - **Range:** 8'.\n   - **Filter Freq:** 50%.\n   - **Resonance:** 40% (Adds the \"pluck\" character).\n2. **The Arpeggiator:**\n   - **Range:** 2 (Swings across two octaves).\n   - **Mode:** **Up/Down** (The classic hypnotic JUNO pattern).\n   - **Speed:** Sync to **1/16** or **1/8** (BPM dependent).\n3. **The Envelopes:**\n   - **Decay:** Short (30%).\n   - **Sustain:** 0%.\n   - **Release:** Short.\n4. **Modulation (LFO):**\n   - Set **LFO Speed** to match the track tempo if possible.\n   - Raise **LFO Depth** in the **VCF (Filter)** section. This makes the \"brightness\" of the arpeggio rise and fall rhythmically.\n5. **The Space:**\n   - Engage **Chorus II** for maximum energy and width.\n\n## 🔄 Variations\n- **The \"Acid Arp\":** Increase **Resonance** to 90% and manually sweep the **Filter Freq**.\n- **The \"Bell Arp\":** Use **Range 4'**, **Sub OFF**, and **Square Wave** with **High HPF** to thin it out.\n\n## ⚠️ Pitfalls & Fixes\n- **Problem:** Arpeggio is out of time.\n- **Fix:** Ensure the **Speed** setting is correctly set to a synced division (1/8, 1/16) and that your DAW transport is playing.\n- **Problem:** Notes are overlapping and sounding messy.\n- **Fix:** Decrease the **Release** fader.\n\n## 🎚️ Automation Ideas\n- **Filter Climb:** Automate **Filter Freq** from 0 to 100% over 8 bars for a classic riser.\n- **Range Warp:** Automate the **Arp Range** from 1 to 3 during a climax.\n",
+      "classic-lush-pads": "# Workflow: Classic Lush Pads (Vibey/Moody)\n\n*Goal: Creating the definitive JUNO-style pad—creamy, wide, and atmospheric—perfect for R&B, Synthwave, and Ambient textures.*\n\n## Vibe Mapping\n- **Vibey:** ⭐⭐⭐⭐⭐ (Primary)\n- **Moody:** ⭐⭐⭐⭐⭐ (With dark filtering)\n- **Psychedelic:** ⭐⭐⭐ (With PWM modulation)\n\n## 🚶 Step-by-Step Setup\n1. **The Core Tone:**\n   - Engage **Sawtooth** and **Pulse** waves simultaneously (DCO Section).\n   - Set **Range** to **8'**.\n   - Add **Sub-Oscillator** at **30%** for low-end body.\n2. **The Signature Width:**\n   - Engage **Chorus I+II** (Press both buttons if your interface supports it, or choose the combined mode).\n3. **The Envelopes (VCA):**\n   - **Attack:** 1–2 seconds (Slow fade-in).\n   - **Release:** 2–3 seconds (Slow fade-out).\n   - **Sustain:** 100% (Continuous sound).\n4. **The Filter (VCF):**\n   - **Freq (Cutoff):** Set to **40%** (Warm/Dark).\n   - **Resonance:** Set to **15%** (Subtle character).\n   - **Env Depth:** Set to **10%** (Just enough to make the pad \"breathe\" as it starts).\n5. **The Drift (LFO):**\n   - Set LFO to **Triangle**.\n   - Set **LFO Speed** to slow.\n   - Slightly raise **LFO depth** in the DCO section (1-2%) for pitch drift.\n\n## 🔄 Variations\n- **The \"Dreamy Soul\" Pad:** Lower **Filter Freq** to **20%** and increase **Chorus II** speed.\n- **The \"Tape Wear\" Pad:** Use **PWM** modulated by a slow **LFO** to create evolving harmonic \"warping.\"\n\n## ⚠️ Pitfalls & Fixes\n- **Problem:** Pad is too loud and \"distorts\" the chorus.\n- **Fix:** Lower the **VCA Level** slider. The chorus circuit in vintage synths has limited headroom.\n- **Problem:** Low-end is too \"blurry\" for the mix.\n- **Fix:** Use the **HPF** slider to remove the sub-frequencies (set to 1 or 2).\n\n## 🎚️ Automation Ideas\n- **Filter Bloom:** Automate the **Filter Freq** to slowly open from 20% to 60% during a breakdown.\n- **Resonant Rise:** Increase **Resonance** and **Freq** simultaneously during a riser.\n",
+      "snappy-80s-bass": "# Workflow: Snappy 80s Bass (Upbeat/Moody)\n\n*Goal: Creating a punchy, solid analog bassline with the classic JUNO \"snap\"—perfect for 80s Pop, Synthwave, and modern G-Funk.*\n\n## Vibe Mapping\n- **Upbeat:** ⭐⭐⭐⭐⭐ (Primary)\n- **Moody:** ⭐⭐⭐⭐ (With dark filtering)\n- **Jazzy:** ⭐⭐⭐ (With Square wave + Sub)\n\n## 🚶 Step-by-Step Setup\n1. **The Foundation:**\n   - Engage the **Pulse** wave.\n   - Set **Range** to **16'**.\n   - Crank the **Sub-Oscillator** to **100%**. This is the source of the weight.\n2. **The \"Snap\" (VCF Envelope):**\n   - **Filter Freq:** Set to **0%** (Closed).\n   - **Env Depth:** Set to **60%** (This \"opens\" the filter when a note hits).\n   - **Resonance:** Set to **30%** for that \"pluck\" character.\n3. **The ADSR (ENV):**\n   - **Attack:** 0 (Instant).\n   - **Decay:** Short (30-40%) to create the \"snap.\"\n   - **Sustain:** 0-20% (Brief sustain).\n   - **Release:** Short (20%) for a clean cutoff.\n4. **Width & Texture:**\n   - **Chorus I:** Engage for a wider, \"modern\" bass feel. (Optional: Leave Off for a tighter, center-focused mono bass).\n5. **DCO PWM:**\n   - Set **PWM Mode** to **LFO**.\n   - Set **PWM Depth** to 30% for subtle thickness.\n\n## 🔄 Variations\n- **The \"Techno Stab\":** Set **Resonance** to 80% and **Decay** even shorter.\n- **The \"R&B Sub\":** Turn off **Pulse**, use **Square + Sub**, and set **Filter Freq** very low with 0 resonance.\n\n## ⚠️ Pitfalls & Fixes\n- **Problem:** Bass disappears in the mix.\n- **Fix:** Turn off **Chorus**. Chorus makes the low end wide, which can cause phase cancellation in mono.\n- **Problem:** Bass is too \"clicky.\"\n- **Fix:** Increase the **Attack** fader slightly (just a few milliseconds).\n\n## 🎚️ Automation Ideas\n- **Filter Growl:** Automate the **Filter Decay** to get longer during the chorus to make the bass feel \"bigger.\"\n- **PWM Sweep:** Automate the **PWM Depth** for a \"squelchy\" timbral change.\n"
+    },
+    "by-instrument": {
+      "01-808-sub-bass": "# 808 Sub Bass Workflow\n\n## Sound Profile\nDeep, punchy sub with harmonic complexity for modern hip-hop and trap productions.\n\n## Recommended Preset\n`genre/01-808-thunder.json`\n\n## Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, -2 octave, 80% | Sub harmonics |\n| Oscillator 2 | Square, -2 octave, 60% | Harmonic content |\n| Filter | Lowpass, 180Hz, Resonance 25 | Tone shaping |\n| Filter Drive | 15% | Harmonic saturation |\n| Envelope | A:5, D:180, S:60, R:120 | Punch envelope |\n| LFO | Sine, 0.5Hz, 20% to Filter | Subtle movement |\n\n## Genre Variations\n- **Trap:** Increase resonance to 35%, filter drive to 20%\n- **Drill:** Add pitch LFO at 0.4Hz, 15% to pitch\n- **Old School:** Reduce resonance to 20%, shorter decay\n- **R&B:** Softer attack (8ms), warmer filter drive (10%)\n\n## Chain Processing\n```\nKepler → Fruity Parametric EQ 2\n  - High-pass at 30Hz\n  - +3dB bell at 80Hz\n  → Fruity Limiter\n  - Threshold: -18dB\n  - Ratio: 4:1\n  - Attack: 1ms\n  - Release: 40ms\n```\n\n## Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More punch | Increase filter resonance to 35% |\n| Darker tone | Reduce filter cutoff to 150Hz |\n| Brighter tone | Increase filter cutoff to 220Hz |\n| More grit | Increase filter drive to 22% |\n| Cleaner sound | Reduce osc2 mix to 40% |\n| More wobble | Increase LFO rate to 0.8Hz |\n\n## Troubleshooting\n| Problem | Solution |\n|---------|----------|\n| Muffled sound | Increase filter cutoff by 20Hz |\n| Distorted output | Reduce oscillator mix by 15% |\n| Clicking on attacks | Increase envelope attack to 6ms |\n| Phase issues | Invert osc2 phase |\n| Weak low-end | Add Fruity Parametric EQ boost at 60Hz |\n| Masking vocals | High-pass at 200Hz on bass channel |\n\n## Automation Ideas\n- Filter cutoff automation for risers (0→200Hz over 4 bars)\n- Resonance increase on hit points\n- LFO rate changes for rhythmic interest\n- Filter drive increases during drops\n",
+      "01-bass-workflows": "# Kepler Bass Workflows\n\n## 808 Sub Bass\n\n### Sound Profile\nDeep, punchy sub with harmonic complexity for modern hip-hop and trap productions.\n\n### Recommended Preset\n`genre/01-808-thunder.json`\n\n### Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, -2 octave, 80% | Sub harmonics |\n| Oscillator 2 | Square, -2 octave, 60% | Harmonic content |\n| Filter | Lowpass, 180Hz, Resonance 25 | Tone shaping |\n| Filter Drive | 15% | Harmonic saturation |\n| Envelope | A:5, D:180, S:60, R:120 | Punch envelope |\n| LFO | Sine, 0.5Hz, 20% to Filter | Subtle movement |\n\n### Genre Variations\n- **Trap:** Increase resonance to 35%, filter drive to 20%\n- **Drill:** Add pitch LFO at 0.4Hz, 15% to pitch\n- **Old School:** Reduce resonance to 20%, shorter decay\n- **R&B:** Softer attack (8ms), warmer filter drive (10%)\n\n### Chain Processing\n```\nKepler → Fruity Parametric EQ 2\n  - High-pass at 30Hz\n  - +3dB bell at 80Hz\n  → Fruity Limiter\n  - Threshold: -18dB\n  - Ratio: 4:1\n  - Attack: 1ms\n  - Release: 40ms\n```\n\n### Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More punch | Increase filter resonance to 35% |\n| Darker tone | Reduce filter cutoff to 150Hz |\n| brighter tone | Increase filter cutoff to 220Hz |\n| More grit | Increase filter drive to 22% |\n| Cleaner sound | Reduce osc2 mix to 40% |\n| More wobble | Increase LFO rate to 0.8Hz |\n\n### Troubleshooting\n| Problem | Solution |\n|---------|----------|\n| Muffled sound | Increase filter cutoff by 20Hz |\n| Distorted output | Reduce oscillator mix by 15% |\n| Clicking on attacks | Increase envelope attack to 6ms |\n| Phase issues | Invert osc2 phase |\n| Weak low-end | Add Fruity Parametric EQ boost at 60Hz |\n| Masking vocals | High-pass at 200Hz on bass channel |\n\n### Automation Ideas\n- Filter cutoff automation for risers (0→200Hz over 4 bars)\n- Resonance increase on hit points\n- LFO rate changes for rhythmic interest\n- Filter drive increases during drops\n\n---\n\n## Mid-Range Bass\n\n### Sound Profile\nFunky, present bass for R&B and melodic hip-hop with harmonic richness.\n\n### Recommended Preset\n`genre/04-punchy-foundation.json`\n\n### Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, -1 octave, 80% | Body |\n| Oscillator 2 | Square, -2 octave, 40% | Clarity |\n| Filter | Lowpass, 800Hz, Resonance 35 | Character |\n| Filter Drive | 12% | Saturation |\n| Envelope | A:3, D:120, S:65, R:150 | Groove |\n| LFO | Sine, 0.8Hz, 25% to Filter | Rhythm |\n\n### Genre Variations\n- **R&B:** Softer resonance (25%), slower LFO (0.4Hz)\n- **Funky:** Faster LFO (1Hz), higher resonance (40%)\n- **Melodic:** Slower attack (15ms), longer release (200ms)\n\n### Chain Processing\n```\nKepler → Fruity Parametric EQ 2\n  - High-pass at 40Hz\n  - Bell +2dB at 400Hz\n  - Cut at 150Hz\n  → Fruity Compressor\n  - Attack: 15ms\n  - Release: 90ms\n  - Ratio: 2.5:1\n  - Makeup: Auto\n```\n\n### Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More funk | Increase LFO rate to 1.2Hz |\n| Smoother tone | Reduce resonance to 25% |\n| More presence | Increase osc2 mix to 55% |\n| More warmth | Reduce filter cutoff to 600Hz |\n| More attack | Decrease envelope decay to 80ms |\n\n### A/B Testing Checklist\n- [ ] Resonance at 35% vs 25%\n- [ ] LFO on vs LFO off\n- [ ] Osc2 at 40% vs 55%\n- [ ] Filter drive at 12% vs 18%\n\n---\n\n## Drill Sub\n\n### Sound Profile\nHeavy, menacing sub with extreme low-end presence for drill productions.\n\n### Recommended Preset\n`genre/09-reaper-sub.json`\n\n### Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, -2 octave, 90% | Weight |\n| Oscillator 2 | Saw, -2 octave, 90% | Thickness |\n| Filter | Lowpass, 120Hz, Resonance 30 | Darkness |\n| Filter Drive | 20% | Distortion |\n| Envelope | A:8, D:250, S:70, R:180 | Sustain |\n| LFO | Square, 0.4Hz, 15% to Pitch | Dissonance |\n\n### Genre Variations\n- **UK Drill:** Faster LFO (0.6Hz), higher resonance (38%)\n- **American Drill:** Static pitch, lower resonance (25%)\n- **Dark Trap:** Subtle LFO (0.2Hz), moderate drive (15%)\n\n### Chain Processing\n```\nKepler → Fruity Parametric EQ 2\n  - High-pass at 25Hz\n  → Fruity Limiter\n  - Threshold: -12dB\n  - Ratio: 6:1\n  - Attack: 0.5ms\n  - Release: 30ms\n```\n\n### Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More menacing | Increase pitch LFO to 20% |\n| Heavier | Increase filter drive to 28% |\n| Cleaner | Reduce osc2 mix to 70% |\n| More movement | Increase LFO rate to 0.6Hz |\n\n### Safety Notes\n- Monitor for unwanted distortion at high filter drive\n- Use high-pass filters on all other channels\n- Check mono compatibility before mixing\n\n---\n\n## Bass Workflow Summary\n\n### By Genre\n| Genre | Preset | Key Tweaks |\n|-------|--------|------------|\n| Trap | 808 Thunder | Resonance 35%, LFO on |\n| Drill | Reaper Sub | Pitch LFO, high drive |\n| R&B | Punchy Foundation | Softer attack, warmth |\n| Hip-Hop | 808 Thunder | Classic settings |\n| EDM | Resonance Bass | Higher resonance, filter sweeps |\n\n### By Role\n| Role | Recommended Settings |\n|------|---------------------|\n| Main 808 | 808 Thunder, +3dB at 80Hz |\n| Layer bass | Punchy Foundation, lower volume |\n| Sub layer | Reaper Sub, filtered below 150Hz |\n| Textural bass | Glitch Pluck, short envelope |\n\n### Genre Translation Quick Reference\n| From → To | Adjustment |\n|-----------|------------|\n| Trap → R&B | Reduce resonance 50%, slow LFO |\n| Trap → Drill | Add pitch LFO, increase drive |\n| Drill → Trap | Remove pitch LFO, reduce drive |\n| R&B → Trap | Increase resonance, add LFO |\n",
+      "02-lead-workflows": "# Kepler Lead Workflows\n\n## Smooth R&B Lead\n\n### Sound Profile\nWarm, emotional lead with smooth attack and silky sustain for R&B vocal-inspired melodies.\n\n### Recommended Preset\n`genre/03-silk-lead.json`\n\n### Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Sine, 0 octave, 100% | Core tone |\n| Oscillator 2 | Triangle, 0 octave, 50% | Harmonics |\n| Filter | Lowpass, 2200Hz, Resonance 15 | Softness |\n| Filter Drive | 5% | Subtle warmth |\n| Envelope | A:50, D:400, S:70, R:300 | Smooth entry/exit |\n| LFO | Sine, 0.25Hz, 15% to Pan | Subtle movement |\n\n### Genre Variations\n- **Neo-Soul:** Increase resonance to 20%, add slight vibrato\n- **Contemporary R&B:** Faster attack (30ms), brighter filter (2800Hz)\n- **90s R&B:** Triangle wave at 70%, lower filter (1800Hz)\n\n### Chain Processing\n```\nKepler → Soft Clipper\n  - Input reduction: 2dB\n  → Fruity Reverb 2\n  - Type: Hall\n  - Decay: 2.5s\n  - Pre-delay: 30ms\n  - Mix: 20%\n```\n\n### Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More presence | Increase osc2 mix to 65% |\n| Warmer tone | Reduce filter cutoff to 1800Hz |\n| Brighter tone | Increase filter cutoff to 3000Hz |\n| More movement | Increase LFO rate to 0.4Hz |\n| More width | Enable stereo width processing |\n\n### Troubleshooting\n| Problem | Solution |\n|---------|----------|\n| Harsh highs | Reduce osc2 mix to 35% |\n| Too dark | Increase filter cutoff by 300Hz |\n| Weak projection | Increase filter drive to 8% |\n| Clicking attacks | Increase envelope attack to 40ms |\n| Monophonic feel | Increase LFO pan to 25% |\n\n---\n\n## EDM Supersaw Lead\n\n### Sound Profile\nMassive, stadium-filling lead with wide stereo width and powerful presence.\n\n### Recommended Preset\n`genre/05-supersaw-hero.json`\n\n### Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, 0 octave, 90% | Core |\n| Oscillator 2 | Saw, 0 octave, 90% | Width |\n| Oscillator 3 | Saw, +1 octave, 70% | Harmonics |\n| Filter | Lowpass, 4000Hz, Resonance 50 | Power |\n| Filter Drive | 20% | Saturation |\n| Envelope | A:20, D:250, S:60, R:400 | Presence |\n| LFO | Saw-up, 0.5Hz, 40% to Filter | Movement |\n\n### Genre Variations\n- **Big Room:** Higher resonance (55%), longer release (500ms)\n- **Progressive House:** Softer attack (30ms), moderate resonance (45%)\n- **Future Bass:** Add filter LFO movement, stereo width 120%\n\n### Chain Processing\n```\nKepler → Soft Clipper\n  - Input reduction: 3dB\n  → Fruity Limiter\n  - Ceiling: -0.3dB\n  - Gain: 6dB\n  → Stereo Delay\n  - Time: 300ms\n  - Feedback: 40%\n  - Mix: 25%\n```\n\n### Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More massive | Enable all 3 oscillators at 100% |\n| Tighter mix | Reduce osc3 to 60% |\n| More movement | Increase LFO rate to 0.8Hz |\n| More aggressive | Increase resonance to 55% |\n| Smoother | Reduce filter drive to 15% |\n\n### Safety Notes\n- Use high-pass filter at 200Hz when layered with bass\n- Monitor for phase cancellation when summing to mono\n- Reduce polyphony if CPU becomes an issue\n\n---\n\n## Trap Pluck Lead\n\n### Sound Profile\nPunchy, rhythmic lead with percussive character for trap melodies and hi-hat patterns.\n\n### Recommended Preset\n`genre/07-glitch-pluck.json`\n\n### Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Square, +1 octave, 100% | Click |\n| Oscillator 2 | Saw, 0 octave, 70% | Body |\n| Filter | Lowpass, 3000Hz, Resonance 45 | Snap |\n| Filter Drive | 10% | Edge |\n| Envelope | A:1, D:80, S:0, R:50 | Percussive |\n| LFO | Sample-hold, 4Hz, 50% to Pitch | Glitch |\n\n### Genre Variations\n- **Melodic Trap:** Slower LFO (2Hz), less modulation (25%)\n- **Aggressive Trap:** Increase filter resonance (52%), faster decay (60ms)\n- **Ethereal Trap:** Reduce LFO modulation (20%), longer release (80ms)\n\n### Chain Processing\n```\nKepler → Teq4\n  - High-pass at 500Hz\n  → Fruity Reverb 2\n  - Type: Plate\n  - Decay: 1.2s\n  - Mix: 18%\n  → Bitcrusher\n  - Bit depth: 8-bit\n  - Wet: 50%\n```\n\n### Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| Less glitchy | Reduce LFO modulation to 25% |\n| More plucky | Reduce envelope decay to 60ms |\n| More body | Increase osc2 mix to 80% |\n| More click | Increase osc1 to 100% |\n\n---\n\n## Ambient Pad\n\n### Sound Profile\nEthereal, evolving soundscape with deep stereo width and atmospheric depth.\n\n### Recommended Preset\n`genre/10-ethereal-wash.json`\n\n### Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Sine, -1 octave, 100% | Foundation |\n| Oscillator 2 | Triangle, -1 octave, 70% | Body |\n| Oscillator 3 | Saw, 0 octave, 40% | Air |\n| Filter | Lowpass, 2500Hz, Resonance 25 | Softness |\n| Filter Drive | 5% | Gentle warmth |\n| Envelope | A:500, D:800, S:85, R:1500 | Slow evolution |\n| LFO | Sine, 0.15Hz, 30% to Pan | Movement |\n\n### Genre Variations\n- **Cinematic:** Longer attack (800ms), longer release (2000ms)\n- **Chillout:** Slower LFO (0.1Hz), reduced stereo width\n- **Space Ambient:** Increase LFO pan to 45%, add reverb\n\n### Chain Processing\n```\nKepler → Vintage Chorus\n  - Mix: 50%\n  - Rate: 0.3Hz\n  → Fruity Reverb 2\n  - Type: Cathedral\n  - Decay: 6s\n  - Mix: 30%\n```\n\n### Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More width | Enable chorus processing |\n| More warmth | Increase filter drive to 8% |\n| More movement | Increase LFO rate to 0.25Hz |\n| Smoother | Reduce oscillator3 mix to 30% |\n\n### Troubleshooting\n| Problem | Solution |\n|---------|----------|\n| Phasing | Reduce LFO pan to 15% |\n| Too bright | Reduce filter cutoff to 2000Hz |\n| Too dark | Increase filter cutoff to 3000Hz |\n| Too busy | Reduce LFO rate to 0.1Hz |\n\n---\n\n## Lead Workflow Summary\n\n### By Genre\n| Genre | Preset | Chain Priority |\n|-------|--------|----------------|\n| R&B | Silk Lead | Reverb first |\n| EDM | Supersaw Hero | Limiter + Delay |\n| Trap | Glitch Pluck | Bitcrusher + Reverb |\n| Ambient | Ethereal Wash | Chorus + Reverb |\n| Lo-Fi | Dusty Texture | Phaser + Saturation |\n\n### By Role\n| Role | Recommended Settings |\n|------|---------------------|\n| Main hook | Supersaw Hero, +3dB at 3kHz |\n| Countermelody | Silk Lead, lower octave |\n| Textural layer | Ethereal Wash, low volume |\n| Rhythmic accent | Glitch Pluck, short notes |\n| Vocal support | Silk Lead, filtered mids |\n\n### Quick Genre Translation\n| From → To | Adjustment |\n|-----------|------------|\n| R&B → EDM | Add oscillator3, increase resonance |\n| EDM → R&B | Remove oscillator3, reduce resonance |\n| Trap → Ambient | Slow envelope, add LFO pan |\n| Ambient → Trap | Shorten envelope, add pitch LFO |\n",
+      "02-mid-range-bass": "# Mid-Range Bass Workflow\n\n## Sound Profile\nFunky, present bass for R&B and melodic hip-hop with harmonic richness.\n\n## Recommended Preset\n`genre/04-punchy-foundation.json`\n\n## Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, -1 octave, 80% | Body |\n| Oscillator 2 | Square, -2 octave, 40% | Clarity |\n| Filter | Lowpass, 800Hz, Resonance 35 | Character |\n| Filter Drive | 12% | Saturation |\n| Envelope | A:3, D:120, S:65, R:150 | Groove |\n| LFO | Sine, 0.8Hz, 25% to Filter | Rhythm |\n\n## Genre Variations\n- **R&B:** Softer resonance (25%), slower LFO (0.4Hz)\n- **Funky:** Faster LFO (1Hz), higher resonance (40%)\n- **Melodic:** Slower attack (15ms), longer release (200ms)\n\n## Chain Processing\n```\nKepler → Fruity Parametric EQ 2\n  - High-pass at 40Hz\n  - Bell +2dB at 400Hz\n  - Cut at 150Hz\n  → Fruily Compressor\n  - Attack: 15ms\n  - Release: 90ms\n  - Ratio: 2.5:1\n  - Makeup: Auto\n```\n\n## Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More funk | Increase LFO rate to 1.2Hz |\n| Smoother tone | Reduce resonance to 25% |\n| More presence | Increase osc2 mix to 55% |\n| More warmth | Reduce filter cutoff to 600Hz |\n| More attack | Decrease envelope decay to 80ms |\n\n## A/B Testing Checklist\n- [ ] Resonance at 35% vs 25%\n- [ ] LFO on vs LFO off\n- [ ] Osc2 at 40% vs 55%\n- [ ] Filter drive at 12% vs 18%\n",
+      "03-drill-sub": "# Drill Sub Workflow\n\n## Sound Profile\nHeavy, menacing sub with extreme low-end presence for drill productions.\n\n## Recommended Preset\n`genre/09-reaper-sub.json`\n\n## Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, -2 octave, 90% | Weight |\n| Oscillator 2 | Saw, -2 octave, 90% | Thickness |\n| Filter | Lowpass, 120Hz, Resonance 30 | Darkness |\n| Filter Drive | 20% | Distortion |\n| Envelope | A:8, D:250, S:70, R:180 | Sustain |\n| LFO | Square, 0.4Hz, 15% to Pitch | Dissonance |\n\n## Genre Variations\n- **UK Drill:** Faster LFO (0.6Hz), higher resonance (38%)\n- **American Drill:** Static pitch, lower resonance (25%)\n- **Dark Trap:** Subtle LFO (0.2Hz), moderate drive (15%)\n\n## Chain Processing\n```\nKepler → Fruily Parametric EQ 2\n  - High-pass at 25Hz\n  → Fruily Limiter\n  - Threshold: -12dB\n  - Ratio: 6:1\n  - Attack: 0.5ms\n  - Release: 30ms\n```\n\n## Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More menacing | Increase pitch LFO to 20% |\n| Heavier | Increase filter drive to 28% |\n| Cleaner | Reduce osc2 mix to 70% |\n| More movement | Increase LFO rate to 0.6Hz |\n\n## Safety Notes\n- Monitor for unwanted distortion at high filter drive\n- Use high-pass filters on all other channels\n- Check mono compatibility before mixing\n",
+      "03-pad-fx-workflows": "# Kepler Pad & FX Workflows\n\n## Lo-Fi Dusty Pad\n\n### Sound Profile\nWarm, nostalgic texture with degraded character reminiscent of old VHS tapes and worn cassettes.\n\n### Recommended Preset\n`genre/08-dusty-texture.json`\n\n### Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, -1 octave, 75% | Body |\n| Oscillator 2 | Triangle, -2 octave, 60% | Warmth |\n| Filter | Lowpass, 1500Hz, Resonance 20 | Muffled |\n| Filter Drive | 8% | Saturation |\n| Envelope | A:150, D:500, S:75, R:800 | Slow movement |\n| LFO | Sine, 0.1Hz, 20% to Filter | Gentle drift |\n\n### Genre Variations\n- **Chillhop:** Faster LFO (0.2Hz), reduced detune\n- **Boom Bap:** Reduced stereo width, increased warmth\n- **Jazz Hop:** Softer attack (200ms), longer release\n\n### Chain Processing\n```\nKepler → Vintage Phaser\n  - Stages: 4\n  - Rate: 0.3Hz\n  - Mix: 40%\n  → Fruity Reverb 2\n  - Type: Room\n  - Decay: 3s\n  - Mix: 25%\n  → Tape Saturation\n  - Drive: 3%\n```\n\n### Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More degraded | Increase LFO to 30% |\n| Cleaner sound | Reduce LFO to 10% |\n| More warmth | Increase filter drive to 12% |\n| More movement | Increase LFO rate to 0.15Hz |\n\n---\n\n## Metallic Texture\n\n### Sound Profile\nIndustrial, edgy texture with dissonant harmonics for aggressive or experimental productions.\n\n### Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, 0 octave, 85% | Edge |\n| Oscillator 2 | Square, +1 octave, 70% | Dissonance |\n| Filter | Bandpass, 2000Hz, Resonance 50 | Focus |\n| Filter Drive | 15% | Grind |\n| Envelope | A:10, D:300, S:60, R:400 | Sustain |\n| LFO | Square, 2Hz, 40% to Pitch | Mechanical |\n\n### Chain Processing\n```\nKepler → Fruity Distancer\n  - Drive: 25%\n  → Fruity Reverb 2\n  - Type: Gated\n  - Decay: 1.5s\n  - Mix: 35%\n```\n\n### Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More industrial | Increase LFO rate to 4Hz |\n| Less harsh | Reduce bandpass resonance to 35% |\n| More abrasive | Increase filter drive to 20% |\n| More rhythmic | Sync LFO to tempo (1/4 notes) |\n\n---\n\n## Risers\n\n### Sound Profile\nTension-building elements for transitions, builds, and pre-drop energy.\n\n### Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, +1 octave, 90% | Brightness |\n| Oscillator 2 | Saw, +1 octave, 85% | Thickness |\n| Filter | Lowpass, sweep 0→5000Hz | Building energy |\n| Filter Drive | 10% | Saturation |\n| Envelope | A:100, D:500, S:80, R:200 | Slow attack |\n| LFO | None or Sine, 0.5Hz to Filter | Movement |\n\n### Automation Sequence\n1. Start: Filter cutoff at 0Hz\n2. Bar 1: Filter to 500Hz\n3. Bar 2: Filter to 1500Hz\n4. Bar 3: Filter to 3000Hz\n5. Bar 4: Filter to 5000Hz\n6. Drop: Filter to 500Hz\n\n### Chain Processing\n```\nKepler → White Noise Layer (mix 50%)\n  → Fruity Limiter\n  - Ceiling: -0.5dB\n  - Attack: 0.5ms\n```\n\n---\n\n## Downlifters\n\n### Sound Profile\nDark, tension-releasing elements for breakdowns and post-drop sections.\n\n### Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, -2 octave, 100% | Low rumble |\n| Oscillator 2 | Square, -1 octave, 60% | Dissonance |\n| Filter | Lowpass, sweep 5000→100Hz | Closing down |\n| Filter Drive | 18% | Distortion |\n| Envelope | A:5, D:100, S:50, R:150 | Fast action |\n| LFO | None | Static |\n\n### Automation Sequence\n1. Start: Filter cutoff at 5000Hz\n2. Bar 1: Filter to 2000Hz\n3. Bar 2: Filter to 500Hz\n4. End: Filter to 100Hz\n\n### Chain Processing\n```\nKepler → Fruity Distancer\n  - Drive: 30%\n  → Fruity Delay\n  - Time: 250ms\n  - Feedback: 60%\n```\n\n---\n\n## Brass Stabs\n\n### Sound Profile\n Punchy, aggressive stabs for rhythmic emphasis and impact moments.\n\n### Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, 0 octave, 95% | Core |\n| Oscillator 2 | Square, -1 octave, 50% | Click |\n| Filter | Lowpass, 3500Hz, Resonance 40 | Bold |\n| Filter Drive | 12% | Edge |\n| Envelope | A:1, D:50, S:0, R:30 | Short |\n| LFO | None | Static |\n\n### Chain Processing\n```\nKepler → Fruity Parametric EQ 2\n  - Bell +4dB at 3kHz\n  → Fruity Compressor\n  - Attack: 1ms\n  - Release: 50ms\n  - Ratio: 4:1\n```\n\n### Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More aggressive | Increase resonance to 50% |\n| More retro | Replace osc2 with triangle |\n| More modern | Add slight bitcrusher |\n\n---\n\n## Keys Electric\n\n### Sound Profile\nClean, electric piano-style sound with crisp attack and smooth sustain.\n\n### Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Sine, 0 octave, 90% | Core |\n| Oscillator 2 | Triangle, 0 octave, 60% | Body |\n| Filter | Lowpass, 4000Hz, Resonance 15 | Clarity |\n| Filter Drive | 3% | Subtle warmth |\n| Envelope | A:5, D:200, S:80, R:250 | Piano-like |\n| LFO | Sine, 0.5Hz, 8% to Pitch | Vibrato |\n\n### Chain Processing\n```\nKepler → Fruity Reverb 2\n  - Type: Studio\n  - Decay: 1.2s\n  - Mix: 15%\n  → Fruity Compressor\n  - Attack: 10ms\n  - Release: 100ms\n  - Ratio: 2:1\n```\n\n---\n\n## FX Workflow Summary\n\n### By Purpose\n| FX Type | Preset Base | Key Settings |\n|---------|-------------|--------------|\n| Riser | Custom | Sweeping filter, 4-bar automation |\n| Dwnlifter | Custom | Closing filter, fast release |\n| Texture | Dusty Texture | LFO modulation, tape saturation |\n| Impact | Brass Stabs | Short envelope, high resonance |\n| Transition | Metallic | Square LFO, high drive |\n\n### By Genre\n| Genre | Recommended FX |\n|-------|----------------|\n| Trap | 1-bar risers, glitch textures |\n| EDM | 4-bar risers, impactful impacts |\n| R&B | Subtle transitions, smooth swells |\n| Lo-Fi | VHS warble, tape degradation |\n| Ambient | Long evolutions, gentle pads |\n\n### Troubleshooting FX\n| Problem | Solution |\n|---------|----------|\n| Riser too abrupt | Lengthen automation to 8 bars |\n| Impact lacking punch | Increase filter resonance |\n| FX masking lead | High-pass FX at 200Hz |\n| FX too dry | Add reverb or delay |\n| FX too wet | Reduce mix, increase dry signal |\n",
+      "04-rnb-lead": "# R&B Smooth Lead Workflow\n\n## Sound Profile\nWarm, emotional lead with smooth attack and silky sustain for R&B vocal-inspired melodies.\n\n## Recommended Preset\n`genre/03-silk-lead.json`\n\n## Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Sine, 0 octave, 100% | Core tone |\n| Oscillator 2 | Triangle, 0 octave, 50% | Harmonics |\n| Filter | Lowpass, 2200Hz, Resonance 15 | Softness |\n| Filter Drive | 5% | Subtle warmth |\n| Envelope | A:50, D:400, S:70, R:300 | Smooth entry/exit |\n| LFO | Sine, 0.25Hz, 15% to Pan | Subtle movement |\n\n## Genre Variations\n- **Neo-Soul:** Increase resonance to 20%, add slight vibrato\n- **Contemporary R&B:** Faster attack (30ms), brighter filter (2800Hz)\n- **90s R&B:** Triangle wave at 70%, lower filter (1800Hz)\n\n## Chain Processing\n```\nKepler → Soft Clipper\n  - Input reduction: 2dB\n  → Fruily Reverb 2\n  - Type: Hall\n  - Decay: 2.5s\n  - Pre-delay: 30ms\n  - Mix: 20%\n```\n\n## Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More presence | Increase osc2 mix to 65% |\n| Warmer tone | Reduce filter cutoff to 1800Hz |\n| Brighter tone | Increase filter cutoff to 3000Hz |\n| More movement | Increase LFO rate to 0.4Hz |\n| More width | Enable stereo width processing |\n\n## Troubleshooting\n| Problem | Solution |\n|---------|----------|\n| Harsh highs | Reduce osc2 mix to 35% |\n| Too dark | Increase filter cutoff by 300Hz |\n| Weak projection | Increase filter drive to 8% |\n| Clicking attacks | Increase envelope attack to 40ms |\n| Monophonic feel | Increase LFO pan to 25% |\n",
+      "05-edm-supersaw": "# EDM Supersaw Lead Workflow\n\n## Sound Profile\nMassive, stadium-filling lead with wide stereo width and powerful presence.\n\n## Recommended Preset\n`genre/05-supersaw-hero.json`\n\n## Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, 0 octave, 90% | Core |\n| Oscillator 2 | Saw, 0 octave, 90% | Width |\n| Oscillator 3 | Saw, +1 octave, 70% | Harmonics |\n| Filter | Lowpass, 4000Hz, Resonance 50 | Power |\n| Filter Drive | 20% | Saturation |\n| Envelope | A:20, D:250, S:60, R:400 | Presence |\n| LFO | Saw-up, 0.5Hz, 40% to Filter | Movement |\n\n## Genre Variations\n- **Big Room:** Higher resonance (55%), longer release (500ms)\n- **Progressive House:** Softer attack (30ms), moderate resonance (45%)\n- **Future Bass:** Add filter LFO movement, stereo width 120%\n\n## Chain Processing\n```\nKepler → Soft Clipper\n  - Input reduction: 3dB\n  → Fruily Limiter\n  - Ceiling: -0.3dB\n  - Gain: 6dB\n  → Stereo Delay\n  - Time: 300ms\n  - Feedback: 40%\n  - Mix: 25%\n```\n\n## Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More massive | Enable all 3 oscillators at 100% |\n| Tighter mix | Reduce osc3 to 60% |\n| More movement | Increase LFO rate to 0.8Hz |\n| More aggressive | Increase resonance to 55% |\n| Smoother | Reduce filter drive to 15% |\n\n## Safety Notes\n- Use high-pass filter at 200Hz when layered with bass\n- Monitor for phase cancellation when summing to mono\n- Reduce polyphony if CPU becomes an issue\n",
+      "06-trap-pluck": "# Trap Pluck Workflow\n\n## Sound Profile\nPunchy, rhythmic lead with percussive character for trap melodies and hi-hat patterns.\n\n## Recommended Preset\n`genre/07-glitch-pluck.json`\n\n## Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Square, +1 octave, 100% | Click |\n| Oscillator 2 | Saw, 0 octave, 70% | Body |\n| Filter | Lowpass, 3000Hz, Resonance 45 | Snap |\n| Filter Drive | 10% | Edge |\n| Envelope | A:1, D:80, S:0, R:50 | Percussive |\n| LFO | Sample-hold, 4Hz, 50% to Pitch | Glitch |\n\n## Genre Variations\n- **Melodic Trap:** Slower LFO (2Hz), less modulation (25%)\n- **Aggressive Trap:** Increase filter resonance (52%), faster decay (60ms)\n- **Ethereal Trap:** Reduce LFO modulation (20%), longer release (80ms)\n\n## Chain Processing\n```\nKepler → Teq4\n  - High-pass at 500Hz\n  → Fruily Reverb 2\n  - Type: Plate\n  - Decay: 1.2s\n  - Mix: 18%\n  → Bitcrusher\n  - Bit depth: 8-bit\n  - Wet: 50%\n```\n\n## Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| Less glitchy | Reduce LFO modulation to 25% |\n| More plucky | Reduce envelope decay to 60ms |\n| More body | Increase osc2 mix to 80% |\n| More click | Increase osc1 to 100% |\n",
+      "07-ambient-pad": "# Ambient Pad Workflow\n\n## Sound Profile\nEthereal, evolving soundscape with deep stereo width and atmospheric depth.\n\n## Recommended Preset\n`genre/10-ethereal-wash.json`\n\n## Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Sine, -1 octave, 100% | Foundation |\n| Oscillator 2 | Triangle, -1 octave, 70% | Body |\n| Oscillator 3 | Saw, 0 octave, 40% | Air |\n| Filter | Lowpass, 2500Hz, Resonance 25 | Softness |\n| Filter Drive | 5% | Gentle warmth |\n| Envelope | A:500, D:800, S:85, R:1500 | Slow evolution |\n| LFO | Sine, 0.15Hz, 30% to Pan | Movement |\n\n## Genre Variations\n- **Cinematic:** Longer attack (800ms), longer release (2000ms)\n- **Chillout:** Slower LFO (0.1Hz), reduced stereo width\n- **Space Ambient:** Increase LFO pan to 45%, add reverb\n\n## Chain Processing\n```\nKepler → Vintage Chorus\n  - Mix: 50%\n  - Rate: 0.3Hz\n  → Fruily Reverb 2\n  - Type: Cathedral\n  - Decay: 6s\n  - Mix: 30%\n```\n\n## Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More width | Enable chorus processing |\n| More warmth | Increase filter drive to 8% |\n| More movement | Increase LFO rate to 0.25Hz |\n| Smoother | Reduce oscillator3 mix to 30% |\n\n## Troubleshooting\n| Problem | Solution |\n|---------|----------|\n| Phasing | Reduce LFO pan to 15% |\n| Too bright | Reduce filter cutoff to 2000Hz |\n| Too dark | Increase filter cutoff to 3000Hz |\n| Too busy | Reduce LFO rate to 0.1Hz |\n",
+      "08-lofi-dusty": "# Lo-Fi Dusty Pad Workflow\n\n## Sound Profile\nWarm, nostalgic texture with degraded character reminiscent of old VHS tapes and worn cassettes.\n\n## Recommended Preset\n`genre/08-dusty-texture.json`\n\n## Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, -1 octave, 75% | Body |\n| Oscillator 2 | Triangle, -2 octave, 60% | Warmth |\n| Filter | Lowpass, 1500Hz, Resonance 20 | Muffled |\n| Filter Drive | 8% | Saturation |\n| Envelope | A:150, D:500, S:75, R:800 | Slow movement |\n| LFO | Sine, 0.1Hz, 20% to Filter | Gentle drift |\n\n## Genre Variations\n- **Chillhop:** Faster LFO (0.2Hz), reduced detune\n- **Boom Bap:** Reduced stereo width, increased warmth\n- **Jazz Hop:** Softer attack (200ms), longer release\n\n## Chain Processing\n```\nKepler → Vintage Phaser\n  - Stages: 4\n  - Rate: 0.3Hz\n  - Mix: 40%\n  → Fruily Reverb 2\n  - Type: Room\n  - Decay: 3s\n  - Mix: 25%\n  → Tape Saturation\n  - Drive: 3%\n```\n\n## Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More degraded | Increase LFO to 30% |\n| Cleaner sound | Reduce LFO to 10% |\n| More warmth | Increase filter drive to 12% |\n| More movement | Increase LFO rate to 0.15Hz |\n",
+      "09-riser": "# Riser Workflow\n\n## Sound Profile\nTension-building elements for transitions, builds, and pre-drop energy.\n\n## Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, +1 octave, 90% | Brightness |\n| Oscillator 2 | Saw, +1 octave, 85% | Thickness |\n| Filter | Lowpass, sweep 0→5000Hz | Building energy |\n| Filter Drive | 10% | Saturation |\n| Envelope | A:100, D:500, S:80, R:200 | Slow attack |\n| LFO | None or Sine, 0.5Hz to Filter | Movement |\n\n## Automation Sequence\n1. Start: Filter cutoff at 0Hz\n2. Bar 1: Filter to 500Hz\n3. Bar 2: Filter to 1500Hz\n4. Bar 3: Filter to 3000Hz\n5. Bar 4: Filter to 5000Hz\n6. Drop: Filter to 500Hz\n\n## Chain Processing\n```\nKepler → White Noise Layer (mix 50%)\n  → Fruily Limiter\n  - Ceiling: -0.5dB\n  - Attack: 0.5ms\n```\n\n## Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More tension | Increase max shift to 1000Hz |\n| Smoother build | Lengthen automation to 8 bars |\n| More aggressive | Increase drive to 15% |\n| Cleaner | Set feedback to 0% |\n\n## By Genre\n| Genre | Build Length | Automation |\n|-------|--------------|------------|\n| Trap | 2 bar | Filter sweep |\n| EDM | 4 bar | Full automation |\n| Hip-Hop | 1 bar | Simple sweep |\n| R&B | 2 bar | Gentle sweep |\n",
+      "10-downlifter": "# Downlifter Workflow\n\n## Sound Profile\nDark, tension-releasing elements for breakdowns and post-drop sections.\n\n## Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, -2 octave, 100% | Low rumble |\n| Oscillator 2 | Square, -1 octave, 60% | Dissonance |\n| Filter | Lowpass, sweep 5000→100Hz | Closing down |\n| Filter Drive | 18% | Distortion |\n| Envelope | A:5, D:100, S:50, R:150 | Fast action |\n| LFO | None | Static |\n\n## Automation Sequence\n1. Start: Filter cutoff at 5000Hz\n2. Bar 1: Filter to 2000Hz\n3. Bar 2: Filter to 500Hz\n4. End: Filter to 100Hz\n\n## Chain Processing\n```\nKepler → Fruily Distancer\n  - Drive: 30%\n  → Fruily Delay\n  - Time: 250ms\n  - Feedback: 60%\n```\n\n## Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More tension | Slow the automation |\n| More release | Speed up the automation |\n| Darker | Reduce starting cutoff |\n| More impact | Increase filter drive |\n",
+      "11-brass-stabs": "# Brass Stabs Workflow\n\n## Sound Profile\nPunchy, aggressive stabs for rhythmic emphasis and impact moments.\n\n## Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, 0 octave, 95% | Core |\n| Oscillator 2 | Square, -1 octave, 50% | Click |\n| Filter | Lowpass, 3500Hz, Resonance 40 | Bold |\n| Filter Drive | 12% | Edge |\n| Envelope | A:1, D:50, S:0, R:30 | Short |\n| LFO | None | Static |\n\n## Chain Processing\n```\nKepler → Fruily Parametric EQ 2\n  - Bell +4dB at 3kHz\n  → Fruily Compressor\n  - Attack: 1ms\n  - Release: 50ms\n  - Ratio: 4:1\n```\n\n## Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More aggressive | Increase resonance to 50% |\n| More retro | Replace osc2 with triangle |\n| More modern | Add slight bitcrusher |\n| Longer sustain | Increase release to 50ms |\n",
+      "12-metallic-texture": "# Metallic Texture Workflow\n\n## Sound Profile\nIndustrial, edgy texture with dissonant harmonics for aggressive or experimental productions.\n\n## Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Saw, 0 octave, 85% | Edge |\n| Oscillator 2 | Square, +1 octave, 70% | Dissonance |\n| Filter | Bandpass, 2000Hz, Resonance 50 | Focus |\n| Filter Drive | 15% | Grind |\n| Envelope | A:10, D:300, S:60, R:400 | Sustain |\n| LFO | Square, 2Hz, 40% to Pitch | Mechanical |\n\n## Chain Processing\n```\nKepler → Fruily Distancer\n  - Drive: 25%\n  → Fruily Reverb 2\n  - Type: Gated\n  - Decay: 1.5s\n  - Mix: 35%\n```\n\n## Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More industrial | Increase LFO rate to 4Hz |\n| Less harsh | Reduce bandpass resonance to 35% |\n| More abrasive | Increase filter drive to 20% |\n| More rhythmic | Sync LFO to tempo (1/4 notes) |\n",
+      "13-keys-electric": "# Keys Electric Workflow\n\n## Sound Profile\nClean, electric piano-style sound with crisp attack and smooth sustain.\n\n## Settings Blueprint\n| Parameter | Value | Purpose |\n|-----------|-------|---------|\n| Oscillator 1 | Sine, 0 octave, 90% | Core |\n| Oscillator 2 | Triangle, 0 octave, 60% | Body |\n| Filter | Lowpass, 4000Hz, Resonance 15 | Clarity |\n| Filter Drive | 3% | Subtle warmth |\n| Envelope | A:5, D:200, S:80, R:250 | Piano-like |\n| LFO | Sine, 0.5Hz, 8% to Pitch | Vibrato |\n\n## Chain Processing\n```\nKepler → Fruily Reverb 2\n  - Type: Studio\n  - Decay: 1.2s\n  - Mix: 15%\n  → Fruily Compressor\n  - Attack: 10ms\n  - Release: 100ms\n  - Ratio: 2:1\n```\n\n## Quick Tweaks\n| Desired Change | Adjustment |\n|----------------|------------|\n| More electric | Increase filter drive to 5% |\n| More mellow | Reduce filter cutoff to 3500Hz |\n| More crisp | Increase filter cutoff to 4500Hz |\n| Less vibrato | Reduce LFO to 4% |\n",
+      "INDEX": "# Kepler By-Instrument Workflows Index\n\n## Bass Workflows\n| File | Name | Genre | Key Feature |\n|------|------|-------|-------------|\n| `01-808-sub-bass.md` | 808 Sub Bass | Trap/Hip-Hop | Deep punch |\n| `02-mid-range-bass.md` | Mid-Range Bass | R&B | Funky groove |\n| `03-drill-sub.md` | Drill Sub | Drill | Dark weight |\n\n## Lead Workflows\n| File | Name | Genre | Key Feature |\n|------|------|-------|-------------|\n| `04-rnb-lead.md` | R&B Smooth Lead | R&B | Warm emotion |\n| `05-edm-supersaw.md` | EDM Supersaw Lead | EDM | Stadium width |\n| `06-trap-pluck.md` | Trap Pluck | Trap | Percussive rhythm |\n| `07-ambient-pad.md` | Ambient Pad | Ambient | Ethereal wash |\n\n## Pad & FX Workflows\n| File | Name | Genre | Key Feature |\n|------|------|-------|-------------|\n| `08-lofi-dusty.md` | Lo-Fi Dusty | Lo-Fi | VHS warmth |\n| `09-riser.md` | Riser | All | Build tension |\n| `10-downlifter.md` | Downlifter | All | Release tension |\n| `11-brass-stabs.md` | Brass Stabs | All | Punchy accents |\n| `12-metallic-texture.md` | Metallic Texture | Experimental | Industrial edge |\n| `13-keys-electric.md` | Keys Electric | R&B/EDM | Clean tone |\n\n## Summary by Genre\n| Genre | Bass | Lead | FX/Pad |\n|-------|------|------|--------|\n| Trap | 808 Sub, Drill Sub | Trap Pluck | Riser, Metallic |\n| R&B | Mid-Range | R&B Lead | Keys Electric |\n| EDM | - | EDM Supersaw | Riser, Downlifter |\n| Lo-Fi | - | - | Lo-Fi Dusty |\n| Drill | Drill Sub | - | Downlifter |\n| Ambient | - | Ambient Pad | Ambient Pad |\n| Experimental | - | - | Metallic |\n\n## Quick Reference\n- **For punchy bass:** Start with `01-808-sub-bass.md`\n- **For melodic leads:** Start with `05-edm-supersaw.md`\n- **For textures:** Start with `08-lofi-dusty.md`\n- **For transitions:** Start with `09-riser.md` or `10-downlifter.md`\n",
+      "instrument-workflows": "Tags: hip-hop/rap | R&B | electric\n\n## Kepler Instrument Workflows\n\n### Hip-Hop Sub Bass\n\n**Sound Goal:** Deep, focused 808 foundation\n\n**Settings:**\n- Osc1: Sine, octave -2\n- Osc2: Sine, octave -1, detune 0\n- Mix: Osc1 70%, Osc2 30%\n- Filter: Low-pass, Cutoff 25%, Resonance 25%\n- Filter Env: Attack 5ms, Decay 150ms, Sustain 60%, Release 50ms\n- Amp Env: Attack 5ms, Decay 100ms, Sustain 80%, Release 30ms\n\n**A/B Test:**\n1. Play bass pattern\n2. Toggle filter resonance between 20% and 40%\n3. Listen: \"Is it focused or harsh?\"\n4. Adjust: Increase/decrease resonance\n\n**Quick Fix Path:**\n- Too muddy → Cutoff to 22%\n- Too thin → Detune slightly (2-3 cents)\n- No punch → Increase sustain to 90%\n\n### R&B Smooth Lead\n\n**Sound Goal:** Warm, melodic lead for hooks\n\n**Settings:**\n- Osc1: Saw, octave 0\n- Osc2: Square, octave 0, detune 5\n- Mix: 60% Osc1, 40% Osc2\n- Filter: Low-pass, Cutoff 65%, Resonance 20%\n- Filter Env: Attack 15ms, Decay 200ms, Sustain 70%, Release 150ms\n- Amp Env: Attack 20ms, Decay 150ms, Sustain 70%, Release 200ms\n- Chorus: Depth 40%, Rate 0.3Hz\n\n**Why This Works:**\n- Saw provides presence\n- Square adds warmth\n- Gentle filtering maintains character\n- Chorus adds width without harshness\n\n### Electric Piano Sound\n\n**Sound Goal:** Vintage electric piano\n\n**Settings:**\n- Osc1: Triangle, octave 0\n- Osc2: Triangle, octave 1, detune 3\n- Mix: 70% Osc1, 30% Osc2\n- Filter: Low-pass, Cutoff 75%, Resonance 15%\n- Filter Env: Attack 10ms, Decay 100ms, Sustain 85%, Release 250ms\n- Amp Env: Attack 10ms, Decay 50ms, Sustain 90%, Release 150ms\n- Chorus: Depth 50%\n\n**Quick Tweaks:**\n- For brighter → Cutoff to 80%\n- For warmer → Cutoff to 70%\n- For more body → Increase resonance to 20%\n\n### Trap Supsaw Lead\n\n**Sound Goal:** Wide, aggressive lead\n\n**Settings:**\n- Osc1: Saw, octave 0, detune 0\n- Osc2: Saw, octave 0, detune 10\n- Osc3: Saw, octave 0, detune -10\n- Mix: Equal levels\n- Filter: Low-pass, Cutoff 60%, Resonance 35%\n- Filter Env: Attack 2ms, Decay 250ms, Sustain 75%, Release 100ms\n- Amp Env: Attack 5ms, Decay 200ms, Sustain 70%, Release 100ms\n\n**Processing Chain:**\n1. Kepler output\n2. Fruity Limiter (soft clip)\n3. Fruity Parametric EQ (tame highs)\n\n### Atmospheric Pad\n\n**Sound Goal:** Evolving, spacious pad\n\n**Settings:**\n- Osc1: Saw, octave 0, detune 5\n- Osc2: Square, octave 0, detune -5\n- Osc3: Sine, octave -1\n- Mix: 40% Osc1, 30% Osc2, 30% Osc3\n- Filter: Low-pass, Cutoff 70%, Resonance 20%\n- Filter Env: Attack 500ms, Decay 800ms, Sustain 90%, Release 800ms\n- LFO: To filter cutoff, Rate 0.1Hz, Depth 15%\n\n**Creation Steps:**\n1. Set slow attack for smooth entry\n2. Add LFO for subtle movement\n3. Layer sine for foundation\n4. Use reverb for space\n\n### Quick Reference Table\n\n| Sound | OSCs | Waveforms | Cutoff | Res | Character |\n|-------|------|-----------|--------|-----|-----------|\n| Sub bass | 2 | Sine+Sine | 25% | 25% | Deep, focused |\n| R&B lead | 2 | Saw+Square | 65% | 20% | Warm, melodic |\n| Electric keys | 2 | Triangle | 75% | 15% | Vintage, smooth |\n| Trap lead | 3 | Saw detuned | 60% | 35% | Wide, aggressive |\n| Atmospheric pad | 3 | Mix | 70% | 20% | Evolving, wide |\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Kepler\r\n\r\nThis section contains workflow information for the kepler plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Kepler\r\n\r\nThis section contains reference information for the kepler plugin.\r\n"
+    }
+  }
+}

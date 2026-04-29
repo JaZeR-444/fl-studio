@@ -1,0 +1,425 @@
+{
+  "id": "fruity-delay-3",
+  "name": "Fruity Delay 3",
+  "presets": {
+    "echo-archetypes": {
+      "archetypes": [
+        {
+          "name": "Vintage Tape",
+          "settings": {
+            "model": "Analog",
+            "saturation": "45%",
+            "vibratoRate": "0.3Hz",
+            "vibratoDepth": "15%",
+            "lpFilter": "4500Hz"
+          },
+          "useCase": "Warm, drifting repeats for analog synths."
+        },
+        {
+          "name": "Ambient Cloud",
+          "settings": {
+            "diffusion": "85%",
+            "smear": "60%",
+            "feedback": "75%",
+            "hpFilter": "350Hz"
+          },
+          "useCase": "Turning short plucks into lush, reverb-like backgrounds."
+        },
+        {
+          "name": "Digital Glitch",
+          "settings": {
+            "model": "Digital",
+            "sampleRate": "12kHz",
+            "bitDepth": "8-bit",
+            "feedback": "95%"
+          },
+          "useCase": "Industrial textures and rhythmic noise loops."
+        }
+      ]
+    },
+    "psychedelic-archetypes": {
+      "psychedelicDelayArchetypes": [
+        {
+          "name": "The Melting Pitch",
+          "settings": {
+            "model": "Analog",
+            "time": "Automated",
+            "vibratoDepth": "25%",
+            "feedback": "80%"
+          },
+          "vibe": "Drunken, pitch-bending delays for transition effects."
+        },
+        {
+          "name": "Spectral Ghost",
+          "settings": {
+            "smear": "80%",
+            "diffusion": "60%",
+            "feedback": "70%",
+            "filter": "Band-Pass (2k-5k)"
+          },
+          "vibe": "Floating, ethereal melodic shadows."
+        }
+      ]
+    }
+  },
+  "parameters": {
+    "delay3-specs": {
+      "plugin": {
+        "name": "Fruity Delay 3",
+        "category": "Delay",
+        "type": "Multi-Model Delay",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Delay%203.htm"
+      },
+      "parameters": {
+        "time": {
+          "id": "time",
+          "range": "0-4000ms",
+          "bpmSync": true,
+          "modes": [
+            "Digital",
+            "Analog"
+          ]
+        },
+        "feedback": {
+          "id": "feedback",
+          "range": "0-100%+",
+          "features": [
+            "Saturation",
+            "Sample Rate Redux",
+            "Filter (LP/HP)"
+          ]
+        },
+        "modulation": {
+          "id": "vibrato",
+          "rateRange": "0.1-10Hz",
+          "depthRange": "0-100%"
+        },
+        "spatial": [
+          "Diffusion",
+          "Smear",
+          "Stereo Offset",
+          "Ping-Pong"
+        ]
+      },
+      "specialFeatures": [
+        "Ducker (Sidechain Envelope)",
+        "Bit-Reduction in feedback loop",
+        "True Analog emulation mode"
+      ]
+    },
+    "parameters": {
+      "pluginName": "Fruity Delay 3",
+      "tabs": [
+        "DELAY",
+        "FEEDBACK",
+        "MODULATION",
+        "DIFFUSION",
+        "DISTORTION"
+      ],
+      "parameters": [
+        {
+          "section": "Input",
+          "id": "wet_input",
+          "name": "Input Wet",
+          "range": {
+            "min": -60,
+            "max": 6,
+            "unit": "dB"
+          },
+          "description": "Adjusts the input level sent to the delay engine. Useful for automating 'Dub Throws'."
+        },
+        {
+          "section": "Delay",
+          "id": "delay_time",
+          "name": "Time",
+          "range": {
+            "min": 0,
+            "max": 1000,
+            "unit": "ms"
+          },
+          "description": "Delay time. Units change to 'Step' when Tempo Sync is ON."
+        },
+        {
+          "section": "Delay",
+          "id": "delay_offset",
+          "name": "Offset",
+          "range": {
+            "min": -100,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Stereo offset. Delays L or R channel relative to main time."
+        },
+        {
+          "section": "Feedback",
+          "id": "fb_level",
+          "name": "Feedback Level",
+          "range": {
+            "min": 0,
+            "max": 125,
+            "unit": "%"
+          },
+          "description": "Number of repeats. >100% causes self-oscillation."
+        },
+        {
+          "section": "Feedback",
+          "id": "fb_cutoff",
+          "name": "Filter Cutoff",
+          "range": {
+            "min": 10,
+            "max": 20000,
+            "unit": "Hz"
+          },
+          "description": "Frequency of the filter inside the feedback loop."
+        },
+        {
+          "section": "Feedback",
+          "id": "fb_res",
+          "name": "Resonance",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Filter peak amount."
+        },
+        {
+          "section": "Feedback",
+          "id": "sample_rate",
+          "name": "Sample Rate",
+          "range": {
+            "min": 100,
+            "max": 48000,
+            "unit": "Hz"
+          },
+          "description": "Downsampling quality. Low values create metallic aliasing."
+        },
+        {
+          "section": "Modulation",
+          "id": "mod_rate",
+          "name": "Mod Rate",
+          "range": {
+            "min": 0,
+            "max": 20,
+            "unit": "Hz"
+          },
+          "description": "Speed of the LFO."
+        },
+        {
+          "section": "Modulation",
+          "id": "mod_time",
+          "name": "Mod Time",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Amount of pitch wobble applied to delay repeats."
+        },
+        {
+          "section": "Diffusion",
+          "id": "diff_level",
+          "name": "Diffusion Level",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Smearing amount. Turns echoes into reverb."
+        },
+        {
+          "section": "Distortion",
+          "id": "dist_level",
+          "name": "Distortion Threshold",
+          "range": {
+            "min": -60,
+            "max": 0,
+            "unit": "dB"
+          },
+          "description": "Input level required to trigger saturation."
+        },
+        {
+          "section": "Distortion",
+          "id": "dist_knee",
+          "name": "Distortion Knee",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Transitions from clean to distorted."
+        }
+      ]
+    }
+  },
+  "rules": {
+    "delay-selection-rules": {
+      "decisionTree": {
+        "problem": "Delay sounds too 'static' or robotic",
+        "solutions": [
+          {
+            "action": "Enable Analog mode and add subtle Vibrato"
+          },
+          {
+            "action": "Add 5-10% Diffusion to smear the repeats"
+          }
+        ]
+      }
+    },
+    "psychoacoustic-spatial-rules": {
+      "psychoacousticSpatialRules": {
+        "philosophy": "This data-set provides the exact mathematical parameters for Fruity Delay 3 to simulate a virtual 3D environment based on the biology of human hearing.",
+        "spatialZones": [
+          {
+            "zone": "The Inner Circle (Intimacy)",
+            "objective": "Make the listener feel like the singer is in their own head.",
+            "settings": {
+              "time": "0 ms",
+              "offset": "5-10 ms",
+              "model": "Digital",
+              "lpFilter": "12000 Hz",
+              "feedback": "0%",
+              "wetLevel": "15%"
+            },
+            "logic": "Minimal temporal offset mimics the width of a human skull. High LP preserves the 'Air' of the performance."
+          },
+          {
+            "zone": "The Studio Booth (Presence)",
+            "objective": "Mimic a professional, dampened acoustic environment.",
+            "settings": {
+              "time": "40 ms",
+              "offset": "15 ms",
+              "model": "Analog",
+              "lpFilter": "6000 Hz",
+              "feedback": "15%",
+              "wetLevel": "25%"
+            },
+            "logic": "40ms is just outside the Haas window, creating a distinct reflection that mimics a wall 20 feet away."
+          },
+          {
+            "zone": "The Dark Hall (Mood)",
+            "objective": "Create a vast, atmospheric background shadow.",
+            "settings": {
+              "time": "1/2 Beat",
+              "offset": "20 ms",
+              "model": "Analog",
+              "lpFilter": "1800 Hz",
+              "diffusion": "80%",
+              "feedback": "65%",
+              "wetLevel": "40%"
+            },
+            "logic": "Aggressive LP filtering and high diffusion remove the 'Identity' of the sound, leaving only the 'Emotion'."
+          },
+          {
+            "zone": "The Psychedelic Void (Trippiness)",
+            "objective": "Disorient the listener's localization system.",
+            "settings": {
+              "time": "Automated (Spiral)",
+              "offset": "100%",
+              "vibratoDepth": "40%",
+              "saturation": "60%",
+              "feedback": "95%",
+              "wetLevel": "100%"
+            },
+            "logic": "Extreme vibrato and feedback saturation trigger the 'Uncanny Valley' response in the auditory cortex."
+          }
+        ],
+        "collisionRules": [
+          {
+            "conflict": "Delay clashing with 808",
+            "action": "Set internal HP filter to 450Hz; use 'Invert' feedback mode to cancel low-frequency buildup."
+          },
+          {
+            "conflict": "Delay masking vocal clarity",
+            "action": "Increase Ducker Threshold to -15dB; set Release to 1/4 note interval in ms."
+          }
+        ]
+      }
+    }
+  },
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    },
+    {
+      "title": "Echo Physics",
+      "filename": "echo-physics.md"
+    },
+    {
+      "title": "Neurological Time Perception",
+      "filename": "neurological-time-perception.md"
+    },
+    {
+      "title": "Psychedelic Warping",
+      "filename": "psychedelic-warping.md"
+    },
+    {
+      "title": "Temporal Masking Physics",
+      "filename": "temporal-masking-physics.md"
+    },
+    {
+      "title": "Temporal Psychoacoustics",
+      "filename": "temporal-psychoacoustics.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "Common Usage",
+      "category": "general",
+      "filename": "common-usage.md"
+    },
+    {
+      "title": "00 Goal Quick Result",
+      "category": "by-goal",
+      "filename": "00_Goal_Quick_Result.md"
+    },
+    {
+      "title": "01 Goal Space And Motion",
+      "category": "by-goal",
+      "filename": "01_Goal_Space_And_Motion.md"
+    },
+    {
+      "title": "Ducking Vocal Delay",
+      "category": "by-goal",
+      "filename": "ducking-vocal-delay.md"
+    },
+    {
+      "title": "Moody Underwater Vocals",
+      "category": "by-goal",
+      "filename": "moody-underwater-vocals.md"
+    },
+    {
+      "title": "Psychedelic Dub Risers",
+      "category": "by-goal",
+      "filename": "psychedelic-dub-risers.md"
+    },
+    {
+      "title": "Psychedelic Melodic Spiral Risers",
+      "category": "by-goal",
+      "filename": "psychedelic-melodic-spiral-risers.md"
+    },
+    {
+      "title": "Acoustic Guitar Widening",
+      "category": "by-instrument",
+      "filename": "acoustic-guitar-widening.md"
+    },
+    {
+      "title": "Psychedelic Vocal Throws",
+      "category": "by-instrument",
+      "filename": "psychedelic-vocal-throws.md"
+    }
+  ]
+}

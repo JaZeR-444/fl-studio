@@ -1,0 +1,254 @@
+{
+  "pluginName": "Gross Beat",
+  "presetType": "Slot Archetypes",
+  "description": "Reusable envelope patterns for Time and Volume slots",
+  "timeSlotArchetypes": [
+    {
+      "id": "normal-playback",
+      "name": "Normal Playback",
+      "slotNumber": 1,
+      "category": "speed",
+      "envelopeShape": "Diagonal line (45°)",
+      "effect": "No time manipulation",
+      "pitchChange": "0 semitones",
+      "useCases": ["Reference/bypass", "Default state", "Dry comparison"],
+      "midiNote": "C1"
+    },
+    {
+      "id": "half-time",
+      "name": "Half-Time",
+      "slotNumber": 2,
+      "category": "speed",
+      "envelopeShape": "Shallow downward slope (22.5°)",
+      "effect": "50% speed reduction",
+      "pitchChange": "-12 semitones (1 octave down)",
+      "useCases": ["Hip-hop half-time", "Slow grooves", "Heavy sections"],
+      "recommendedSettings": {
+        "mix": 100,
+        "attack": 20,
+        "release": 35
+      },
+      "midiNote": "C#1",
+      "warnings": ["May damage low-end transients - see low-end workflow"]
+    },
+    {
+      "id": "double-time",
+      "name": "Double-Time",
+      "slotNumber": 3,
+      "category": "speed",
+      "envelopeShape": "Steep upward slope (67.5°)",
+      "effect": "200% speed increase",
+      "pitchChange": "+12 semitones (1 octave up)",
+      "useCases": ["Energy boost", "Fast sections", "Chipmunk effect"],
+      "midiNote": "D1"
+    },
+    {
+      "id": "quarter-stutter",
+      "name": "1/4 Note Stutter",
+      "slotNumber": 7,
+      "category": "stutter",
+      "envelopeShape": "Horizontal blocks, 1 beat duration",
+      "effect": "Repeats 1-beat sections",
+      "useCases": ["Four-on-floor", "Steady rhythm", "Transitional fills"],
+      "recommendedSettings": {
+        "attack": 10,
+        "release": 20
+      },
+      "midiNote": "F#1"
+    },
+    {
+      "id": "eighth-stutter",
+      "name": "1/8 Note Stutter",
+      "slotNumber": 8,
+      "category": "stutter",
+      "envelopeShape": "Horizontal blocks, 1/2 beat duration",
+      "effect": "Repeats 1/2-beat sections",
+      "useCases": ["Faster stutters", "Bouncy rhythm", "Trap style"],
+      "recommendedSettings": {
+        "attack": 8,
+        "release": 15
+      },
+      "midiNote": "G1"
+    },
+    {
+      "id": "sixteenth-stutter",
+      "name": "1/16 Note Stutter",
+      "slotNumber": 9,
+      "category": "stutter",
+      "envelopeShape": "Horizontal blocks, 1/4 beat duration",
+      "effect": "Repeats 1/4-beat sections",
+      "useCases": ["Trap rolls", "Fast fills", "Glitch effects"],
+      "recommendedSettings": {
+        "attack": 5,
+        "release": 10
+      },
+      "midiNote": "G#1"
+    },
+    {
+      "id": "tape-stop",
+      "name": "Tape-Stop",
+      "slotNumber": 19,
+      "category": "tape",
+      "envelopeShape": "Steep exponential downward curve",
+      "effect": "Gradual deceleration to stop",
+      "pitchChange": "Progressive downward",
+      "useCases": ["Transitions", "Endings", "Dramatic moments"],
+      "recommendedSettings": {
+        "mix": 100,
+        "attack": 50,
+        "release": 100
+      },
+      "midiNote": "F#2"
+    },
+    {
+      "id": "random-glitch",
+      "name": "Random Glitch",
+      "slotNumber": 13,
+      "category": "glitch",
+      "envelopeShape": "Random jagged pattern",
+      "effect": "Chaotic position jumping",
+      "useCases": ["Experimental", "Texture", "Breakdowns"],
+      "recommendedSettings": {
+        "attack": 5,
+        "release": 15
+      },
+      "midiNote": "C2"
+    }
+  ],
+  "volumeSlotArchetypes": [
+    {
+      "id": "full-volume",
+      "name": "Full Volume",
+      "slotNumber": 1,
+      "category": "utility",
+      "envelopeShape": "Top line (100%)",
+      "effect": "No volume change",
+      "useCases": ["Reference/bypass", "Default state", "Base layer"],
+      "midiNote": "C4"
+    },
+    {
+      "id": "quarter-gate",
+      "name": "1/4 Note Gate",
+      "slotNumber": 2,
+      "category": "gates",
+      "envelopeShape": "Square wave, 1 beat on/off",
+      "effect": "Four-on-the-floor gating",
+      "timing": "Plays on beat, silent off-beat",
+      "useCases": ["Four-on-the-floor", "House grooves", "Simple rhythms"],
+      "recommendedSettings": {
+        "attack": 10,
+        "release": 20
+      },
+      "midiNote": "C#4"
+    },
+    {
+      "id": "eighth-gate",
+      "name": "1/8 Note Gate",
+      "slotNumber": 3,
+      "category": "gates",
+      "envelopeShape": "Square wave, 1/2 beat on/off",
+      "effect": "Eighth-note chopping",
+      "timing": "Bouncy, syncopated rhythm",
+      "useCases": ["Trap", "Funk", "Dance"],
+      "recommendedSettings": {
+        "attack": 8,
+        "release": 15
+      },
+      "midiNote": "D4"
+    },
+    {
+      "id": "sixteenth-gate",
+      "name": "1/16 Note Gate",
+      "slotNumber": 4,
+      "category": "gates",
+      "envelopeShape": "Square wave, 1/4 beat on/off",
+      "effect": "Sixteenth-note chopping",
+      "timing": "Fast, tight rhythm",
+      "useCases": ["Trap hi-hats", "Fast percussion", "Glitch effects"],
+      "recommendedSettings": {
+        "attack": 5,
+        "release": 10
+      },
+      "midiNote": "D#4"
+    },
+    {
+      "id": "sidechain-4-4",
+      "name": "Sidechain 4/4",
+      "slotNumber": 18,
+      "category": "sidechain",
+      "envelopeShape": "Exponential recovery curve",
+      "effect": "Ducks on each beat",
+      "timing": "Standard kick-sidechain simulation",
+      "useCases": ["Pad ducking", "Bass ducking", "Groove enhancement"],
+      "recommendedSettings": {
+        "attack": 5,
+        "release": 150
+      },
+      "midiNote": "F5"
+    },
+    {
+      "id": "crescendo",
+      "name": "Crescendo",
+      "slotNumber": 16,
+      "category": "effects",
+      "envelopeShape": "Linear ramp up",
+      "effect": "Gradual volume increase",
+      "useCases": ["Build-ups", "Intros", "Reveals"],
+      "recommendedSettings": {
+        "attack": 100,
+        "release": 50
+      },
+      "midiNote": "D#5"
+    },
+    {
+      "id": "fade-out",
+      "name": "Fade Out",
+      "slotNumber": 15,
+      "category": "effects",
+      "envelopeShape": "Linear ramp down",
+      "effect": "Gradual volume decrease",
+      "useCases": ["Endings", "Transitions", "Cool downs"],
+      "recommendedSettings": {
+        "attack": 50,
+        "release": 100
+      },
+      "midiNote": "D5"
+    }
+  ],
+  "combinationArchetypes": [
+    {
+      "id": "half-time-gate",
+      "name": "Half-Time with Gate",
+      "combination": {
+        "timeSlot": "half-time",
+        "volumeSlot": "sixteenth-gate"
+      },
+      "effect": "Slow, heavy groove with rhythmic chopping",
+      "genre": "Trap, Hip-Hop",
+      "useCase": "Classic trap breakdown effect"
+    },
+    {
+      "id": "stutter-sidechain",
+      "name": "Stutter with Ducking",
+      "combination": {
+        "timeSlot": "eighth-stutter",
+        "volumeSlot": "sidechain-4-4"
+      },
+      "effect": "Rhythmic stutters with pumping dynamics",
+      "genre": "EDM, House",
+      "useCase": "Build-up and drop effects"
+    },
+    {
+      "id": "tape-fade",
+      "name": "Tape-Stop with Fade",
+      "combination": {
+        "timeSlot": "tape-stop",
+        "volumeSlot": "fade-out"
+      },
+      "effect": "Smooth slow-down with volume fade",
+      "genre": "All genres",
+      "useCase": "Professional transitions and endings"
+    }
+  ],
+  "source": "[SRC: IL-MAN] Image-Line Gross Beat preset documentation and standard patterns"
+}

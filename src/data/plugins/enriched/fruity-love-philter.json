@@ -1,0 +1,185 @@
+{
+  "id": "fruity-love-philter",
+  "name": "Fruity Love Philter",
+  "category": "Filter",
+  "tier": "Free",
+  "type": "Filter",
+  "description": "Fruity Love Philter - Filter",
+  "tags": [
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "filtering",
+    "tone-shaping",
+    "audio"
+  ],
+  "icon": "/plugins/fruity-love-philter-icon.svg",
+  "color": "#F97316",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-love-philter",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "love-philter-params": {
+      "plugin_name": "Fruity Love Philter",
+      "category": "Filter",
+      "units": 8,
+      "parameters": [
+        {
+          "name": "Articulator Editor",
+          "type": "graph",
+          "description": "Visual curve editor for Env, LFO, and Map.",
+          "vibe_impact": "Rhythm, motion, identity",
+          "mix_impact_tags": [
+            "motion",
+            "rhythm"
+          ]
+        },
+        {
+          "name": "Waveshaper",
+          "type": "graph",
+          "description": "Per-unit distortion engine.",
+          "vibe_impact": "Aggression, grit, warmth",
+          "mix_impact_tags": [
+            "loudness",
+            "harmonic"
+          ]
+        },
+        {
+          "name": "Cutoff (Knob)",
+          "type": "knob",
+          "description": "Global multiplier for the Cutoff envelope.",
+          "vibe_impact": "Brightness, focus"
+        },
+        {
+          "name": "Resonance (Knob)",
+          "type": "knob",
+          "description": "Global multiplier for the Resonance envelope.",
+          "vibe_impact": "Character, whistle"
+        },
+        {
+          "name": "Routing (Next/Out)",
+          "type": "button",
+          "description": "Determines if signal goes to the next unit or the exit.",
+          "vibe_impact": "Complexity, scale"
+        }
+      ]
+    }
+  },
+  "presets": {
+    "formant-talker": {
+      "presetName": "Formant Talker",
+      "plugin": "Fruity Love Philter",
+      "description": "Uses the 'Vowel' filter type to mimic speech.",
+      "settings": {
+        "unit1": {
+          "filter": "Formant",
+          "x_mod": "Vowel A-E",
+          "y_mod": "Vowel I-O"
+        }
+      },
+      "usage": "Automate the X/Y pad to make your synth 'talk'."
+    },
+    "gated-noise": {
+      "presetName": "Gated Noise",
+      "plugin": "Fruity Love Philter",
+      "description": "Uses a noise gate envelope to rhythmically chop audio.",
+      "settings": {
+        "unit1": {
+          "vol": "Gate Pattern 1",
+          "filter": "Off"
+        }
+      },
+      "usage": "Instant 'Trance Gate' effect without sidechaining."
+    },
+    "phaser-jet": {
+      "presetName": "Phaser Jet",
+      "plugin": "Fruity Love Philter",
+      "description": "Complex 8-stage phaser using multiple filter units.",
+      "settings": {
+        "unit1": "Phaser",
+        "unit2": "Phaser",
+        "routing": "Series"
+      },
+      "usage": "Thick, swirling modulation for pads."
+    },
+    "simple-low-pass": {
+      "presetName": "Simple Low Pass",
+      "plugin": "Fruity Love Philter",
+      "description": "A high-quality, resonant low pass filter.",
+      "settings": {
+        "unit1": {
+          "filter": "Vanilla Low Pass",
+          "cutoff": 0.5,
+          "resonance": 0.2
+        }
+      },
+      "usage": "Cleaner alternative to Fast LP."
+    },
+    "trance-gate": {
+      "presetName": "Trance Gate",
+      "plugin": "Fruity Love Philter",
+      "description": "Rhythmic volume gating using the pattern sequencer.",
+      "settings": {
+        "unit1": {
+          "type": "Vol",
+          "pattern": "16th notes on/off"
+        }
+      },
+      "usage": "Turn a sustained pad into a rhythmic chord progression."
+    },
+    "wub-bass-filter": {
+      "presetName": "Wub Bass Filter",
+      "plugin": "Fruity Love Philter",
+      "description": "LFO-driven low pass filter for Dubstep wobble.",
+      "settings": {
+        "unit1": {
+          "filter": "Mango Low Pass",
+          "lfo": "Sine",
+          "speed": "Tempo Sync 1/4"
+        }
+      },
+      "usage": "Apply to a Reese bass for instant wobble."
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity Love Philter\n\n## Purpose & Identity\nFruity Love Philter is the **advanced filter workstation** of FL Studio. Its primary identity is a modular filter synthesizer that can process external audio. It consists of 8 independent Filter Units that can be routed in series, parallel, or complex matrices. Every parameter has its own dedicated multi-point envelope and LFO editor. [SRC: IL-MAN]\n\n## 60-Second Mental Model\nThink of it as a \"Filter Laboratory.\" Instead of just one knob, you have 8 different filter units (tabs 1-8). Each unit can be a different filter type (Low Pass, Band Pass, etc.). The \"Love\" comes from the modulation: you can draw exact rhythmic patterns for the volume, panning, and cutoff of each filter, making it a powerful rhythmic gate and sound design tool.\n\n## Hip-Hop / R&B Context\n- **The \"Trance Gate\" Vocal:** Drawing a staggered volume pattern to turn a long vocal \"Ooh\" into a rhythmic, chopped-up texture (Upbeat).\n- **Phonk Bass Grit:** Using the built-in **Waveshaper** on a filter unit to add aggressive harmonic distortion to an 808 sweep (Psychedelic).\n- **Warped R&B Rhodes:** Using parallel filters with slow, wide LFOs to create an evolving, liquid piano texture (Spacey).\n\n## When To Use\n- When you need **rhythmic gating** (Trance gate effects).\n- When you want **complex multi-stage filtering** (e.g., Low Pass followed by a Notch).\n- When you need a filter that **reacts to MIDI notes** (using the Keyboard Mapping tab).\n\n## When NOT To Use\n- **Simple Sweeps:** Use **Fruity Free Filter** if you just need one basic cutoff knob.\n- **Mastering EQ:** Love Philter is for creative character, not surgical mix balance. [SRC: REPUTABLE]",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Fruity Love Philter\n\n## UI Tour\nThe interface is dense and relies heavily on tab switching. [SRC: IL-MAN]\n\n### 1. The Unit Tabs (Top)\n- **1-8**: Selects the active filter unit. Each is a full duplicate of the controls below.\n- **Enabled (LED)**: Must be on for the unit to process audio.\n\n### 2. The Modulation Engine (The Centerpiece)\n- **Target Tabs**: Choose what you want to move: **Vol** (Volume), **Pan**, **Cut** (Cutoff), **Res** (Resonance).\n- **IES Sub-Tabs**: \n  - **Env**: The standard ADSR/Graphic Envelope.\n  - **LFO**: A repeating oscillator.\n  - **Map**: Keyboard mapping (MIDI note to value).\n\n### 3. The Filter Controls (Right)\n- **Type**: Selector for filter algorithms (Mango, Vanilla, etc.).\n- **Cut/Res Knobs**: Master offsets for the current unit.\n- **Drive/Waveshaper**: Built-in distortion stage.\n\n### 4. The Routing (Bottom Right)\n- **Next**: Sends the output of this unit to the next unit (Serial).\n- **Out**: Sends the output of this unit to the plugin's final output (Parallel).\n\n## Signal Flow\n1. **Input**: Audio enters Unit 1.\n2. **Pre-Filter Waveshaper**: (If active) the sound is distorted before filtering.\n3. **Filter Unit**: The specific filter algorithm is applied.\n4. **Modulation Summing**: The Envelope, LFO, and Map values are summed to move the knobs.\n5. **Post-Filter Waveshaper**: (If active) final saturation.\n6. **Routing Decision**: \n   - If **Next** is active: Unit 1 -> Unit 2.\n   - If **Out** is active: Unit 1 -> Output Mix.\n7. **Final Summing**: All units routed to \"Out\" are mixed together.\n\n## Things Beginners Misunderstand\n- **\"Why is there no sound?\"**: Check the **Routing**. If Unit 1 is set to \"Next\" but Unit 2 is disabled, the sound stops at Unit 1.\n- **\"The filter isn't moving\"**: You must enable the **Freeze** or **LED** in the envelope editor for the modulation to take effect.\n- **Global Knobs**: The large Cut/Res knobs on the main UI act as \"Multipliers\" for whatever you've drawn in the envelope.\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques And Best Practices: Fruity Love Philter\n\n## 1. The \"Ghost\" Sidechain\nUse Love Philter to create sidechain ducking without a kick drum.\n- **Technique**: Select Unit 1. Go to the **Vol** tab -> **Env** sub-tab. Draw a curve that starts low and ends high. Set **Sync** to \"Beat.\"\n- **Listen For**: The sound \"inhaling\" on every beat.\n\n## 2. Serial \"Brickwall\" Filtering\nFruity Free Filter is 12dB/octave. Love Philter can go much steeper.\n- **Technique**: Set Unit 1 to Low Pass. Set Unit 2 to Low Pass. Route Unit 1 to \"Next.\"\n- **Benefit**: You now have a 24dB/octave filter. Stack more units for even steeper, more aggressive cuts.\n\n## 3. Formant \"Talking\" Sweeps\nCreate a synthesizer that sounds like it's saying \"A-E-I-O-U.\"\n- **Technique**: Set Unit 1 to a **Peaking** filter with high Q. Set Unit 2 to another Peaking filter.\n- **Move**: Modulate the Cutoff of both in opposite directions.\n- **Listen For**: Human-like vowel resonances. [SRC: REPUTABLE]\n\n## 4. Pattern Swapping via MIDI\nTrigger different rhythmic gates using your Piano Roll.\n- **Technique**: Change the **Pattern** selector (bottom left) to 1. Draw a gate. Change to 2. Draw a different gate.\n- **Performance**: Use MIDI notes C5 and D5 to switch between them in real-time.\n\n## 5. Low-End Protection Rules\n- **Protocol**: When using the **Waveshaper** (distortion) in Love Philter, the low end can become unstable.\n- **Fix**: Use Unit 1 as a dedicated Low-Pass at 200Hz (routed to Out). Use Unit 2 for your creative distortion and filtering (routed to Out). This keeps your sub-bass clean and separate from the \"creative\" processing.\n\n## Common Pitfalls + Fixes\n| Pitfall | The Fix |\n| :--- | :--- |\n| **Resonant Peaks** | The resonance can be much louder than the original signal. Use the internal **Waveshaper** as a limiter by flattening the top of the curve. |\n| **Clicking Gates** | In the **Vol** envelope, add a tiny bit of \"Attack\" or curve to the sharp edges of your squares. |\n| **Silent Units** | Verify that the unit is not set to \"Next\" if the following unit is off. |\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity Love Philter\n\nLove Philter translates vibes through **Complex Modulation** and **Unit Stacking**.\n\n## 1. Upbeat (Kinetic, Rhythmic, Chopped)\n- **Concept:** \"The Rhythmic Gate.\"\n- **Levers:**\n  - **Tab:** VOL (Volume).\n  - **Source:** Envelope (ENV).\n  - **Action:** Draw a 16-step \"Pulse\" (Square wave) curve.\n- **Listen For:** Sharp volume cuts that turn a static sound into a rhythmic pattern.\n- **Don't Do This:** Don't use smoothing; keep the gate boundaries vertical for maximum snap.\n\n## 2. Psychedelic (Morphing, Liquid, Resonant)\n- **Concept:** \"Series Squelch.\"\n- **Levers:**\n  - **Routing:** Unit 1 (Low Pass) -> Unit 2 (Band Pass).\n  - **Modulation:** Link both to different LFO speeds.\n  - **Waveshaper:** Add a \"S-curve\" distortion to Unit 2.\n- **Listen For:** A squelchy, whistling resonance that feels like it’s evolving and folding into itself.\n\n## 3. Spacey (Galactic, Resonant, Airy)\n- **Concept:** \"Parallel Spectral Split.\"\n- **Levers:**\n  - **Unit 1:** High Pass @ 5kHz (Air).\n  - **Unit 2:** Low Pass @ 500Hz (Weight).\n  - **Pan:** Pan Unit 1 Left and Unit 2 Right.\n- **Listen For:** A hollow, wide sound where the high-end and low-end move independently in the stereo field.\n\n## 4. Vibey (Smooth, Glossy, Lo-Fi)\n- **Concept:** \"The Warm Envelope.\"\n- **Levers:**\n  - **Filter Type:** Mango (or standard Low Pass).\n  - **Tab:** CUT (Cutoff).\n  - **Source:** Envelope.\n  - **Shape:** A slow, swelling curve.\n- **Listen For:** A \"soft-open\" filter effect that makes melodies feel like they are gently blooming.\n\n## 5. Moody (Heavy, Damp, Distressed)\n- **Concept:** \"The Crushed Muffle.\"\n- **Levers:**\n  - **Filter Type:** Vanilla LP.\n  - **Waveshaper:** Heavy \"Bit-crush\" style curve (Stepped).\n  - **Freq:** Low (Around 400Hz).\n- **Listen For:** A dark, distorted crunch that feels like audio recorded onto a broken tape head. [SRC: REPUTABLE]",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Love Philter\r\n\r\n## What It Is\r\nFruity Love Philter is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Fruity Love Philter\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: Fruity Love Philter (5 Minutes)\n\n1.  **Insert:** Load **Fruity Love Philter** into an effect slot.\n2.  **Enable Unit:** Ensure **UNIT 1** is selected at the top.\n3.  **Choose Filter:** Select **Low Pass 2** from the dropdown menu.\n4.  **Draw Modulation:**\n    - Click the **CUT** (Cutoff) tab.\n    - Click the **ENV** (Envelope) sub-tab.\n    - Click the **Enable** LED (bottom left of the graph).\n    - Draw a mountain-shaped curve.\n5.  **Sync:** Press Play. The filter will now sweep based on the curve you drew.\n6.  **Gating:** Click the **VOL** (Volume) tab and draw some gaps in the envelope to create rhythmic silence.\n7.  **Tip:** Use the **Waveshaper** tab to add distortion specifically to the filtered signal. [SRC: IL-MAN]",
+      "envelope-editor-basics": "# Quick Reference: Envelope Editor Basics\n\nHow to draw your sound in Love Philter. [SRC: IL-MAN]\n\n## 1. The Tabs\n- **Env**: A one-shot or repeating envelope.\n- **LFO**: A periodic wave (Sine, Square, etc.).\n- **Map**: Links a MIDI value (Key, Velocity) to the parameter.\n\n## 2. Tools & Shortcuts\n- **Right-Click Node**: Change curve type (Single curve, Double curve, Step, etc.).\n- **Shift + Click**: Lock horizontal/vertical movement.\n- **Alt + Click**: Reset node to default.\n- **Articulator Options (Small Triangle)**: \n  - **Copy/Paste**: Move curves between Cut, Res, and Vol.\n  - **Analyze Audio**: (If available) creates a curve based on an audio file.\n\n## 3. The \"Sync\" Control\n- **Snap**: Snaps nodes to the grid.\n- **Sync**: Locks the envelope to the project tempo (Beats/Bars).\n- **Global**: If ON, all notes share the same LFO phase. If OFF, every new note restarts the LFO from the beginning.\n\n## 4. Tension Handle\n- Drag the small circle between two nodes to change the \"tension.\"\n- **Concave**: Slow start, fast finish.\n- **Convex**: Fast start, slow finish.\n- **Linear**: Straight line.\n",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Love Philter\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Love Philter to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Love Philter\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Love Philter\r\n\r\nThis section contains learning information for the fruity-love-philter plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: The Trap Trance Gate (Fruity Love Philter)\n\n## Routing Context\n- **Target:** A sustained Synth Pad or R&B Vocal \"Ooh.\"\n- **Position:** Insert FX (After Reverb).\n\n## Step-by-Step Setup\n1.  On the synth track, load **Fruity Love Philter**.\n2.  Go to the **VOL** (Volume) tab.\n3.  Click the **ENV** (Envelope) sub-tab and enable it.\n4.  Right-click the graph -> **Articulator tools -> Create sequence**.\n5.  Set the sequence to a `1/16th note` pattern with gaps (silence).\n6.  **The Result:** The synth is now \"chopped\" into a rhythmic pattern that follows the tempo of your beat.\n\n## Vibe Check\n- **Upbeat/Kinetic:** Adds rhythmic energy to boring, static sounds. Essential for \"Hyperpop\" and modern trap.\n\n## Variation\n- **Smooth Swell:** Change the square steps to **Bezier curves** for a \"breathing\" effect rather than a \"chopping\" effect. [SRC: REPUTABLE]\n"
+    },
+    "by-instrument": {
+      "synths-xy": "# Instrument: Synths (X/Y Performance)\n\nLove Philter is designed for live performance.\n\n## The X/Y Pad Workflow\n1. Link **Cutoff** to X.\n2. Link **Resonance** to Y.\n3. **Usage**: In a live set or recording, drag the puck around. Top-right = Screaming high resonance filter. Bottom-left = Muffled, dark filter.\n\n## Parallel Filtering (The 8 Units)\nLove Philter has 8 independent filter units that can be routed in parallel or series.\n- **Workflow**: \n  - Unit 1: Low Pass (Left Panned)\n  - Unit 2: High Pass (Right Panned)\n  - **Result**: Complex stereo separation where lows are left and highs are right, but both are moving.\n",
+      "vocals": "# Instrument Workflow: Vocals (Silky Presence)\n\n## 1. R&B \"Silky\" Air\n- **Recipe**: Bank 1 -> Boost 12kHz+ using **Line** tool.\n- **Move**: Set **Mix** to 40% for transparency.\n- **Vibe**: Adds a professional, expensive-sounding \"sheen\" to melodic rap vocals.\n\n## 2. The \"Radio\" Ad-lib\n- **Recipe**: Bank 1 -> Band Pass (Peaking) at 2.5kHz.\n- **Move**: Set **BW** knob to 20% for a sharp, narrow focus.\n- **Vibe**: Creates a focused \"telephone\" texture that separates background ad-libs from the main lead.\n\n## 3. Formant Morphing (Robotic)\n- **Recipe**: Bank 1 -> Peak at 1kHz. Bank 2 -> Peak at 3kHz.\n- **Move**: Automate **Morph** at 1/2 note speeds.\n- **Vibe**: Adds a subtle \"talking\" character to the vocal, popular in experimental hip-hop and electronic R&B.\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Love Philter\r\n\r\nThis section contains workflow information for the fruity-love-philter plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Love Philter\r\n\r\nThis section contains reference information for the fruity-love-philter plugin.\r\n"
+    }
+  }
+}

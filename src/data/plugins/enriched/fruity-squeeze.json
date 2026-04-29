@@ -1,0 +1,1321 @@
+{
+  "id": "fruity-squeeze",
+  "name": "Fruity Squeeze",
+  "category": "Dynamics",
+  "tier": "Free",
+  "type": "Dynamics",
+  "description": "Fruity Squeeze - Dynamics",
+  "tags": [
+    "mixing",
+    "mastering",
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "compression",
+    "limiting",
+    "dynamics",
+    "mixing",
+    "audio"
+  ],
+  "icon": "/plugins/fruity-squeeze-icon.svg",
+  "color": "#10B981",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-squeeze",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "plugin": "Fruity Squeeze",
+    "version": "Latest",
+    "category": "Dynamics / Multiband Compressor",
+    "parameters": [
+      {
+        "name": "Low/Mid Crossover",
+        "type": "Frequency",
+        "range": "~50 Hz - 1 kHz",
+        "default": "250 Hz",
+        "description": "Sets the frequency that separates the low band from the mid band",
+        "unit": "Hz",
+        "automation": true,
+        "notes": "Lower values isolate more bass frequencies; higher values include more low-mids with bass"
+      },
+      {
+        "name": "Mid/High Crossover",
+        "type": "Frequency",
+        "range": "~500 Hz - 10 kHz",
+        "default": "2 kHz",
+        "description": "Sets the frequency that separates the mid band from the high band",
+        "unit": "Hz",
+        "automation": true,
+        "notes": "Lower values create brighter overall sound; higher values keep more presence in mids"
+      },
+      {
+        "name": "Low Threshold",
+        "type": "Level",
+        "range": "-∞ to 0 dB",
+        "default": "-12 dB",
+        "description": "Sets the level where low band compression begins",
+        "unit": "dB",
+        "automation": true,
+        "notes": "Lower threshold = more compression; -∞ bypasses low band"
+      },
+      {
+        "name": "Low Ratio",
+        "type": "Ratio",
+        "range": "1:1 to ∞:1",
+        "default": "4:1",
+        "description": "Controls the intensity of low band compression",
+        "unit": ":1",
+        "automation": true,
+        "notes": "∞:1 acts as a brick-wall limiter"
+      },
+      {
+        "name": "Low Volume",
+        "type": "Level",
+        "range": "-∞ to +12 dB",
+        "default": "0 dB",
+        "description": "Output level for the low band after compression",
+        "unit": "dB",
+        "automation": true,
+        "notes": "Use to compensate for gain reduction or reshape tonal balance"
+      },
+      {
+        "name": "Mid Threshold",
+        "type": "Level",
+        "range": "-∞ to 0 dB",
+        "default": "-12 dB",
+        "description": "Sets the level where mid band compression begins",
+        "unit": "dB",
+        "automation": true,
+        "notes": "Lower threshold = more compression; -∞ bypasses mid band"
+      },
+      {
+        "name": "Mid Ratio",
+        "type": "Ratio",
+        "range": "1:1 to ∞:1",
+        "default": "4:1",
+        "description": "Controls the intensity of mid band compression",
+        "unit": ":1",
+        "automation": true,
+        "notes": "Mids often need moderate ratios (4:1-6:1) for natural sound"
+      },
+      {
+        "name": "Mid Volume",
+        "type": "Level",
+        "range": "-∞ to +12 dB",
+        "default": "0 dB",
+        "description": "Output level for the mid band after compression",
+        "unit": "dB",
+        "automation": true,
+        "notes": "Critical for vocal presence and instrument clarity"
+      },
+      {
+        "name": "High Threshold",
+        "type": "Level",
+        "range": "-∞ to 0 dB",
+        "default": "-12 dB",
+        "description": "Sets the level where high band compression begins",
+        "unit": "dB",
+        "automation": true,
+        "notes": "Lower threshold = more compression; -∞ bypasses high band"
+      },
+      {
+        "name": "High Ratio",
+        "type": "Ratio",
+        "range": "1:1 to ∞:1",
+        "default": "4:1",
+        "description": "Controls the intensity of high band compression",
+        "unit": ":1",
+        "automation": true,
+        "notes": "Higher ratios useful for de-essing (6:1-10:1)"
+      },
+      {
+        "name": "High Volume",
+        "type": "Level",
+        "range": "-∞ to +12 dB",
+        "default": "0 dB",
+        "description": "Output level for the high band after compression",
+        "unit": "dB",
+        "automation": true,
+        "notes": "Adjust to control brightness or tame harshness"
+      },
+      {
+        "name": "Input Level",
+        "type": "Level",
+        "range": "-12 dB to +12 dB",
+        "default": "0 dB",
+        "description": "Adjusts signal level entering Fruity Squeeze",
+        "unit": "dB",
+        "automation": true,
+        "notes": "Higher input drives more waveshaping/harmonic distortion"
+      },
+      {
+        "name": "Output Level",
+        "type": "Level",
+        "range": "-12 dB to +12 dB",
+        "default": "0 dB",
+        "description": "Final gain stage after all processing",
+        "unit": "dB",
+        "automation": true,
+        "notes": "Use to match output to input level or adjust final loudness"
+      },
+      {
+        "name": "Dry/Wet Mix",
+        "type": "Percentage",
+        "range": "0% to 100%",
+        "default": "100%",
+        "description": "Blends compressed signal with original dry signal",
+        "unit": "%",
+        "automation": true,
+        "notes": "50% enables parallel compression for more natural dynamics"
+      }
+    ],
+    "metering": [
+      {
+        "name": "Input Meter",
+        "description": "Shows incoming signal level before processing"
+      },
+      {
+        "name": "Low Band Gain Reduction",
+        "description": "Visual feedback for low band compression amount"
+      },
+      {
+        "name": "Mid Band Gain Reduction",
+        "description": "Visual feedback for mid band compression amount"
+      },
+      {
+        "name": "High Band Gain Reduction",
+        "description": "Visual feedback for high band compression amount"
+      },
+      {
+        "name": "Output Meter",
+        "description": "Shows final output level after all processing"
+      }
+    ],
+    "technicalSpecs": {
+      "bands": 3,
+      "filterType": "Linkwitz-Riley crossover",
+      "processingType": "Waveshaper-based compression",
+      "attackTime": "0 ms (instant)",
+      "releaseTime": "0 ms (instant)",
+      "harmonicCharacter": "Odd-order harmonics",
+      "latency": "Minimal"
+    },
+    "squeeze-params": {
+      "plugin_name": "Fruity Squeeze",
+      "plugin_type": "Effect",
+      "category": "Distortion / Lo-Fi / Bit-Crusher",
+      "version": "Latest",
+      "manufacturer": "Image-Line",
+      "parameters": [
+        {
+          "name": "Squarize",
+          "type": "knob",
+          "range": "0-100%",
+          "default": "0%",
+          "description": "Bit depth reduction amount - creates digital grit and stepped artifacts",
+          "use_cases": [
+            "8-bit sound creation",
+            "Digital degradation",
+            "Retro game sounds",
+            "Lo-fi character",
+            "Aliasing generation"
+          ],
+          "ranges": {
+            "subtle": "0-20%",
+            "moderate": "20-50%",
+            "aggressive": "50-80%",
+            "extreme": "80-100%"
+          },
+          "tips": [
+            "Start low and increase gradually",
+            "Higher values create more aliasing",
+            "Use Post-LP filtering to tame harshness",
+            "Automate for evolving degradation"
+          ]
+        },
+        {
+          "name": "Preserve",
+          "type": "knob",
+          "range": "0-100%",
+          "default": "50%",
+          "description": "Amount of original samples to keep - maintains clarity and transients",
+          "use_cases": [
+            "Transient preservation",
+            "Maintaining punch",
+            "Clarity retention",
+            "Balanced processing",
+            "Dynamic control"
+          ],
+          "ranges": {
+            "low": "0-30% - Aggressive processing",
+            "medium": "30-70% - Balanced character",
+            "high": "70-100% - Subtle enhancement"
+          },
+          "tips": [
+            "Keep high (50-70%) for drums",
+            "Use high values to maintain punch",
+            "Balance with Impact for intensity",
+            "Higher values = more original content"
+          ]
+        },
+        {
+          "name": "Impact",
+          "type": "knob",
+          "range": "0-100%",
+          "default": "50%",
+          "description": "Amount of processed/distorted samples to add - adds crushed character",
+          "use_cases": [
+            "Adding distortion",
+            "Character enhancement",
+            "Aggressive processing",
+            "Lo-fi effects",
+            "Texture creation"
+          ],
+          "ranges": {
+            "subtle": "0-30%",
+            "moderate": "30-70%",
+            "aggressive": "70-100%"
+          },
+          "tips": [
+            "Balance with Preserve",
+            "Higher values = more processed content",
+            "Use Relation to fine-tune interaction",
+            "Start moderate and adjust"
+          ]
+        },
+        {
+          "name": "Relation",
+          "type": "knob",
+          "range": "Variable ratio control",
+          "default": "Centered",
+          "description": "Ratio between Preserve and Impact - fine-tunes processing character",
+          "use_cases": [
+            "Processing balance",
+            "Character fine-tuning",
+            "Dynamic control",
+            "Texture shaping",
+            "Ratio optimization"
+          ],
+          "positions": {
+            "left": "Favor Preserve - More original content",
+            "center": "Balanced - Equal weighting",
+            "right": "Favor Impact - More processed content"
+          },
+          "tips": [
+            "Adjust after setting Preserve/Impact",
+            "Small changes = big character shifts",
+            "Automate for evolving textures",
+            "Center is a good starting point"
+          ]
+        },
+        {
+          "name": "Filter Frequency",
+          "type": "knob",
+          "range": "20 Hz - 20 kHz",
+          "default": "~10 kHz",
+          "description": "Filter cutoff frequency for tone shaping",
+          "use_cases": [
+            "Taming harshness",
+            "Tone shaping",
+            "Artifact control",
+            "Frequency selection",
+            "Character control"
+          ],
+          "modes": {
+            "low_pass": "Cuts highs - tames harshness",
+            "high_pass": "Cuts lows - cleans muddiness"
+          },
+          "tips": [
+            "Use Post-LP to tame aliasing",
+            "Set to 8-12 kHz for most applications",
+            "Lower for darker tones",
+            "Higher for brighter character"
+          ]
+        },
+        {
+          "name": "Filter Resonance",
+          "type": "knob",
+          "range": "0-100%",
+          "default": "0%",
+          "description": "Emphasis at filter cutoff frequency - creates resonant peak",
+          "use_cases": [
+            "Character addition",
+            "Frequency emphasis",
+            "Vintage simulation",
+            "Creative effects",
+            "Tone coloring"
+          ],
+          "ranges": {
+            "subtle": "0-20% - Gentle emphasis",
+            "moderate": "20-40% - Noticeable peak",
+            "extreme": "40-100% - Self-oscillation possible"
+          },
+          "tips": [
+            "Keep below 30% to avoid whistling",
+            "Higher values can cause self-oscillation",
+            "Use for vintage radio effects",
+            "Combine with automation for sweeps"
+          ]
+        },
+        {
+          "name": "Filter Position",
+          "type": "switch",
+          "options": [
+            "Pre",
+            "Post"
+          ],
+          "default": "Post",
+          "description": "Filter placement relative to distortion",
+          "modes": {
+            "pre": {
+              "description": "Filters BEFORE distortion",
+              "use_for": "Tone shaping input signal",
+              "effect": "Distortion reacts to filtered signal"
+            },
+            "post": {
+              "description": "Filters AFTER distortion",
+              "use_for": "Taming harsh artifacts",
+              "effect": "Cleans up processed signal"
+            }
+          },
+          "tips": [
+            "Use Post for most applications",
+            "Use Pre for creative tone shaping",
+            "Post-LP is best for taming harshness",
+            "Pre changes distortion character"
+          ]
+        },
+        {
+          "name": "Mix",
+          "type": "knob",
+          "range": "0-100%",
+          "default": "100%",
+          "description": "Dry/wet balance - parallel processing control",
+          "use_cases": [
+            "Parallel processing",
+            "Dynamics preservation",
+            "Subtle enhancement",
+            "Transparency control",
+            "Character blending"
+          ],
+          "ranges": {
+            "parallel": "20-50% - Maintains dynamics",
+            "blended": "50-80% - Balanced mix",
+            "full": "100% - Complete replacement"
+          },
+          "tips": [
+            "Use 30-50% for parallel drum processing",
+            "100% for full effect replacement",
+            "Lower values preserve dynamics",
+            "Essential for maintaining punch"
+          ]
+        },
+        {
+          "name": "Gain",
+          "type": "knob",
+          "range": "Variable gain control",
+          "default": "0 dB",
+          "description": "Output level compensation",
+          "use_cases": [
+            "Level matching",
+            "Headroom management",
+            "Volume compensation",
+            "Gain staging",
+            "Output control"
+          ],
+          "tips": [
+            "Bit reduction often reduces perceived loudness",
+            "Use to match processed/unprocessed levels",
+            "Check levels with bypass comparison",
+            "Adjust for consistent output"
+          ]
+        }
+      ],
+      "parameter_interactions": [
+        {
+          "parameters": [
+            "Squarize",
+            "Filter Position"
+          ],
+          "relationship": "High Squarize creates aliasing; use Post-LP filtering to tame",
+          "recommendation": "Squarize > 30% → Filter Position: Post-LP"
+        },
+        {
+          "parameters": [
+            "Preserve",
+            "Impact",
+            "Relation"
+          ],
+          "relationship": "These three work together as a sample selection system",
+          "recommendation": "Set Preserve/Impact first, then fine-tune with Relation"
+        },
+        {
+          "parameters": [
+            "Mix",
+            "Gain"
+          ],
+          "relationship": "Lower Mix often requires higher Gain to match levels",
+          "recommendation": "Adjust Gain after setting Mix for consistent output"
+        },
+        {
+          "parameters": [
+            "Resonance",
+            "Frequency"
+          ],
+          "relationship": "High Resonance creates peaks; set Frequency carefully",
+          "recommendation": "Keep Resonance < 30% for most applications"
+        },
+        {
+          "parameters": [
+            "Impact",
+            "Filter Pre"
+          ],
+          "relationship": "Pre-filtering changes what Impact processes",
+          "recommendation": "Use Pre filtering for creative tone shaping before distortion"
+        }
+      ],
+      "common_presets": [
+        {
+          "name": "Crunchy Drum Bus",
+          "parameters": {
+            "Squarize": "15%",
+            "Preserve": "60%",
+            "Impact": "40%",
+            "Relation": "Centered",
+            "Filter_Frequency": "10 kHz",
+            "Filter_Resonance": "10%",
+            "Filter_Position": "Post-LP",
+            "Mix": "35%"
+          },
+          "use_case": "Parallel drum processing with maintained dynamics"
+        },
+        {
+          "name": "8-Bit Destruction",
+          "parameters": {
+            "Squarize": "90%",
+            "Preserve": "20%",
+            "Impact": "80%",
+            "Relation": "Favor Impact",
+            "Filter_Frequency": "8 kHz",
+            "Filter_Resonance": "5%",
+            "Filter_Position": "Post-LP",
+            "Mix": "100%"
+          },
+          "use_case": "Extreme digital degradation for retro game sounds"
+        },
+        {
+          "name": "Vintage Radio",
+          "parameters": {
+            "Squarize": "45%",
+            "Preserve": "30%",
+            "Impact": "70%",
+            "Relation": "Favor Impact",
+            "Filter_Frequency": "2.5 kHz",
+            "Filter_Resonance": "40%",
+            "Filter_Position": "Pre-BP",
+            "Mix": "80%"
+          },
+          "use_case": "Vintage radio simulation with band-pass filtering"
+        },
+        {
+          "name": "Subtle Lo-Fi",
+          "parameters": {
+            "Squarize": "8%",
+            "Preserve": "80%",
+            "Impact": "20%",
+            "Relation": "Favor Preserve",
+            "Filter_Frequency": "15 kHz",
+            "Filter_Resonance": "0%",
+            "Filter_Position": "Post-LP",
+            "Mix": "25%"
+          },
+          "use_case": "Gentle lo-fi character without losing clarity"
+        },
+        {
+          "name": "Industrial Bass",
+          "parameters": {
+            "Squarize": "35%",
+            "Preserve": "40%",
+            "Impact": "60%",
+            "Relation": "Centered",
+            "Filter_Frequency": "80 Hz",
+            "Filter_Resonance": "15%",
+            "Filter_Position": "Post-HP",
+            "Mix": "60%"
+          },
+          "use_case": "Adding grit to bass while protecting low end"
+        }
+      ],
+      "workflow_recommendations": {
+        "drums": {
+          "Squarize": "10-25%",
+          "Preserve": "50-70%",
+          "Mix": "30-50%",
+          "notes": "Use parallel processing to maintain punch"
+        },
+        "synths": {
+          "Squarize": "15-40%",
+          "Preserve": "40-60%",
+          "Mix": "60-100%",
+          "notes": "Higher Squarize for retro character"
+        },
+        "vocals": {
+          "Squarize": "5-15%",
+          "Preserve": "70-85%",
+          "Mix": "20-40%",
+          "notes": "Subtle parallel processing for lo-fi character"
+        },
+        "bass": {
+          "Squarize": "10-30%",
+          "Preserve": "50-65%",
+          "Filter_Position": "Post-HP",
+          "notes": "Protect lows with high-pass filtering"
+        }
+      },
+      "troubleshooting": [
+        {
+          "problem": "Sound is too harsh/bright",
+          "solution": "Lower Squarize, set Filter to Post-LP, reduce high frequencies"
+        },
+        {
+          "problem": "Losing punch/transients",
+          "solution": "Increase Preserve, lower Mix for parallel processing"
+        },
+        {
+          "problem": "Whistling/ringing artifacts",
+          "solution": "Lower Filter Resonance below 20%"
+        },
+        {
+          "problem": "Sound getting too quiet",
+          "solution": "Increase Gain, check Mix slider isn't too low"
+        },
+        {
+          "problem": "Too muddy/unclear",
+          "solution": "Use Filter in Post-HP mode, reduce low-frequency Squarize"
+        },
+        {
+          "problem": "Not enough character",
+          "solution": "Increase Squarize and Impact, balance with Preserve"
+        }
+      ]
+    }
+  },
+  "presets": {
+    "808-control": {
+      "presetName": "808 Control",
+      "genre": "All Hip-Hop Subgenres",
+      "application": "Bass bus compression specifically for 808 control",
+      "parameters": {
+        "lowBand": {
+          "threshold": -16,
+          "ratio": 5,
+          "attack": 8,
+          "release": 120,
+          "gain": 1.5
+        },
+        "midBand": {
+          "threshold": -20,
+          "ratio": 1.2,
+          "attack": 15,
+          "release": 100,
+          "gain": 0
+        },
+        "highBand": {
+          "threshold": -25,
+          "ratio": 1,
+          "attack": 5,
+          "release": 60,
+          "gain": -1
+        },
+        "crossovers": {
+          "lowMid": 250,
+          "midHigh": 2000
+        },
+        "globalSettings": {
+          "outputGain": 0,
+          "mix": 100
+        }
+      },
+      "description": "Aggressive low-band compression for consistent 808s with minimal mid/high processing",
+      "tags": [
+        "808",
+        "bass",
+        "sub",
+        "control",
+        "tight"
+      ]
+    },
+    "electronic-pump": {
+      "presetName": "Electronic Pump",
+      "genre": "Electronic/Experimental Hip-Hop",
+      "application": "Heavy compression for pumping, energetic electronic hip-hop",
+      "parameters": {
+        "lowBand": {
+          "threshold": -12,
+          "ratio": 6,
+          "attack": 1,
+          "release": 80,
+          "gain": 2
+        },
+        "midBand": {
+          "threshold": -8,
+          "ratio": 4,
+          "attack": 3,
+          "release": 70,
+          "gain": 1.5
+        },
+        "highBand": {
+          "threshold": -10,
+          "ratio": 3,
+          "attack": 0.5,
+          "release": 50,
+          "gain": 1
+        },
+        "crossovers": {
+          "lowMid": 120,
+          "midHigh": 3500
+        },
+        "globalSettings": {
+          "outputGain": 1.5,
+          "mix": 100
+        }
+      },
+      "description": "Aggressive ratios and fast attack for pumping, rhythmic compression effects",
+      "tags": [
+        "electronic",
+        "experimental",
+        "pumping",
+        "aggressive",
+        "creative"
+      ]
+    },
+    "melodic-rnb": {
+      "presetName": "Melodic R&B Polish",
+      "genre": "Melodic/R&B Hip-Hop",
+      "application": "Smooth, polished production for melodic rap and R&B",
+      "parameters": {
+        "lowBand": {
+          "threshold": -20,
+          "ratio": 2,
+          "attack": 20,
+          "release": 150,
+          "gain": 0
+        },
+        "midBand": {
+          "threshold": -15,
+          "ratio": 1.5,
+          "attack": 15,
+          "release": 100,
+          "gain": 0.5
+        },
+        "highBand": {
+          "threshold": -18,
+          "ratio": 1.5,
+          "attack": 3,
+          "release": 80,
+          "gain": 0
+        },
+        "crossovers": {
+          "lowMid": 180,
+          "midHigh": 6000
+        },
+        "globalSettings": {
+          "outputGain": 0.3,
+          "mix": 85
+        }
+      },
+      "description": "Gentle compression for smooth, transparent sound with vocal clarity",
+      "tags": [
+        "melodic",
+        "rnb",
+        "smooth",
+        "vocals",
+        "polished"
+      ]
+    },
+    "moody-trap-master": {
+      "presetName": "Moody Trap Master",
+      "genre": "Moody/Dark Trap",
+      "application": "Master bus multiband compression for dark, atmospheric trap beats",
+      "parameters": {
+        "lowBand": {
+          "threshold": -18,
+          "ratio": 4,
+          "attack": 5,
+          "release": 100,
+          "gain": 0
+        },
+        "midBand": {
+          "threshold": -12,
+          "ratio": 2,
+          "attack": 10,
+          "release": 80,
+          "gain": 0
+        },
+        "highBand": {
+          "threshold": -15,
+          "ratio": 1.5,
+          "attack": 1,
+          "release": 50,
+          "gain": -0.5
+        },
+        "crossovers": {
+          "lowMid": 150,
+          "midHigh": 4000
+        },
+        "globalSettings": {
+          "outputGain": 0.5,
+          "mix": 100
+        }
+      },
+      "description": "Heavy low-end control for tight 808s, transparent mids for atmosphere, gentle highs for dark aesthetic",
+      "tags": [
+        "trap",
+        "moody",
+        "dark",
+        "808s",
+        "master"
+      ]
+    },
+    "preset-library": {
+      "plugin": "Fruity Squeeze",
+      "presets": [
+        {
+          "name": "Maximum Loudness",
+          "category": "Mastering",
+          "description": "Aggressive multiband limiting for maximum loudness",
+          "settings": {
+            "lowMidCrossover": "100 Hz",
+            "midHighCrossover": "3 kHz",
+            "lowThreshold": "-10 dB",
+            "lowRatio": "8:1",
+            "lowVolume": "+3 dB",
+            "midThreshold": "-12 dB",
+            "midRatio": "6:1",
+            "midVolume": "+2 dB",
+            "highThreshold": "-15 dB",
+            "highRatio": "4:1",
+            "highVolume": "+1 dB",
+            "inputLevel": "0 dB",
+            "outputLevel": "+2 dB",
+            "dryWet": "100%"
+          },
+          "useCase": "Final mastering, competitive loudness"
+        },
+        {
+          "name": "Punchy Kick",
+          "category": "Drums",
+          "description": "Tight, controlled kick drum with enhanced attack",
+          "settings": {
+            "lowMidCrossover": "80 Hz",
+            "midHighCrossover": "3 kHz",
+            "lowThreshold": "-8 dB",
+            "lowRatio": "10:1",
+            "lowVolume": "+4 dB",
+            "midThreshold": "-15 dB",
+            "midRatio": "3:1",
+            "midVolume": "0 dB",
+            "highThreshold": "-12 dB",
+            "highRatio": "6:1",
+            "highVolume": "+2 dB",
+            "inputLevel": "+2 dB",
+            "outputLevel": "0 dB",
+            "dryWet": "100%"
+          },
+          "useCase": "Individual kick drum processing"
+        },
+        {
+          "name": "Vocal De-Esser",
+          "category": "Vocals",
+          "description": "Tames sibilance while preserving vocal clarity",
+          "settings": {
+            "lowMidCrossover": "300 Hz",
+            "midHighCrossover": "5 kHz",
+            "lowThreshold": "-∞",
+            "lowRatio": "1:1",
+            "lowVolume": "0 dB",
+            "midThreshold": "-18 dB",
+            "midRatio": "2:1",
+            "midVolume": "0 dB",
+            "highThreshold": "-10 dB",
+            "highRatio": "8:1",
+            "highVolume": "-2 dB",
+            "inputLevel": "0 dB",
+            "outputLevel": "0 dB",
+            "dryWet": "70%"
+          },
+          "useCase": "Controlling harsh 's' sounds in vocals"
+        },
+        {
+          "name": "Fat Bass",
+          "category": "Bass",
+          "description": "Thick, sustained bass with harmonic richness",
+          "settings": {
+            "lowMidCrossover": "120 Hz",
+            "midHighCrossover": "2 kHz",
+            "lowThreshold": "-10 dB",
+            "lowRatio": "6:1",
+            "lowVolume": "+3 dB",
+            "midThreshold": "-12 dB",
+            "midRatio": "8:1",
+            "midVolume": "+2 dB",
+            "highThreshold": "-∞",
+            "highRatio": "1:1",
+            "highVolume": "0 dB",
+            "inputLevel": "+2 dB",
+            "outputLevel": "0 dB",
+            "dryWet": "100%"
+          },
+          "useCase": "Bass guitar, synth bass"
+        },
+        {
+          "name": "Parallel Drum Crush",
+          "category": "Drums",
+          "description": "New York style parallel compression for drums",
+          "settings": {
+            "lowMidCrossover": "200 Hz",
+            "midHighCrossover": "2.5 kHz",
+            "lowThreshold": "-6 dB",
+            "lowRatio": "10:1",
+            "lowVolume": "+5 dB",
+            "midThreshold": "-6 dB",
+            "midRatio": "10:1",
+            "midVolume": "+5 dB",
+            "highThreshold": "-6 dB",
+            "highRatio": "10:1",
+            "highVolume": "+5 dB",
+            "inputLevel": "0 dB",
+            "outputLevel": "0 dB",
+            "dryWet": "40%"
+          },
+          "useCase": "Drum bus, full drum mix"
+        },
+        {
+          "name": "808 Sub Control",
+          "category": "Bass",
+          "description": "Tight, consistent sub-bass without overpowering",
+          "settings": {
+            "lowMidCrossover": "60 Hz",
+            "midHighCrossover": "150 Hz",
+            "lowThreshold": "-8 dB",
+            "lowRatio": "∞:1",
+            "lowVolume": "+2 dB",
+            "midThreshold": "-12 dB",
+            "midRatio": "6:1",
+            "midVolume": "0 dB",
+            "highThreshold": "-∞",
+            "highRatio": "1:1",
+            "highVolume": "0 dB",
+            "inputLevel": "0 dB",
+            "outputLevel": "0 dB",
+            "dryWet": "100%"
+          },
+          "useCase": "808s, sub-bass synths"
+        },
+        {
+          "name": "Mix Glue",
+          "category": "Mastering",
+          "description": "Gentle multiband compression for cohesive mix",
+          "settings": {
+            "lowMidCrossover": "200 Hz",
+            "midHighCrossover": "2 kHz",
+            "lowThreshold": "-18 dB",
+            "lowRatio": "3:1",
+            "lowVolume": "+1 dB",
+            "midThreshold": "-15 dB",
+            "midRatio": "4:1",
+            "midVolume": "+1 dB",
+            "highThreshold": "-18 dB",
+            "highRatio": "2:1",
+            "highVolume": "0 dB",
+            "inputLevel": "0 dB",
+            "outputLevel": "0 dB",
+            "dryWet": "85%"
+          },
+          "useCase": "Master bus, subtle gluing"
+        },
+        {
+          "name": "EDM Drum Smash",
+          "category": "Drums",
+          "description": "Aggressive, loud drums for EDM/trap",
+          "settings": {
+            "lowMidCrossover": "100 Hz",
+            "midHighCrossover": "4 kHz",
+            "lowThreshold": "-6 dB",
+            "lowRatio": "10:1",
+            "lowVolume": "+5 dB",
+            "midThreshold": "-6 dB",
+            "midRatio": "8:1",
+            "midVolume": "+4 dB",
+            "highThreshold": "-6 dB",
+            "highRatio": "8:1",
+            "highVolume": "+4 dB",
+            "inputLevel": "+4 dB",
+            "outputLevel": "0 dB",
+            "dryWet": "100%"
+          },
+          "useCase": "EDM, trap, hard-hitting electronic drums"
+        },
+        {
+          "name": "Warm Synth",
+          "category": "Synths",
+          "description": "Adds analog-style warmth to digital synths",
+          "settings": {
+            "lowMidCrossover": "250 Hz",
+            "midHighCrossover": "2.5 kHz",
+            "lowThreshold": "-15 dB",
+            "lowRatio": "4:1",
+            "lowVolume": "+2 dB",
+            "midThreshold": "-12 dB",
+            "midRatio": "5:1",
+            "midVolume": "+1 dB",
+            "highThreshold": "-18 dB",
+            "highRatio": "3:1",
+            "highVolume": "0 dB",
+            "inputLevel": "+3 dB",
+            "outputLevel": "0 dB",
+            "dryWet": "100%"
+          },
+          "useCase": "Digital synths, pads, leads"
+        },
+        {
+          "name": "Brighten Mix",
+          "category": "Mastering",
+          "description": "Adds presence and air to dull mixes",
+          "settings": {
+            "lowMidCrossover": "200 Hz",
+            "midHighCrossover": "3 kHz",
+            "lowThreshold": "-∞",
+            "lowRatio": "1:1",
+            "lowVolume": "0 dB",
+            "midThreshold": "-15 dB",
+            "midRatio": "3:1",
+            "midVolume": "+1 dB",
+            "highThreshold": "-12 dB",
+            "highRatio": "6:1",
+            "highVolume": "+5 dB",
+            "inputLevel": "+1 dB",
+            "outputLevel": "0 dB",
+            "dryWet": "100%"
+          },
+          "useCase": "Dull recordings, lack of high-end"
+        },
+        {
+          "name": "Tighten Bass Mix",
+          "category": "Mastering",
+          "description": "Controls boomy low-end without losing power",
+          "settings": {
+            "lowMidCrossover": "150 Hz",
+            "midHighCrossover": "2 kHz",
+            "lowThreshold": "-10 dB",
+            "lowRatio": "8:1",
+            "lowVolume": "+1 dB",
+            "midThreshold": "-15 dB",
+            "midRatio": "4:1",
+            "midVolume": "0 dB",
+            "highThreshold": "-∞",
+            "highRatio": "1:1",
+            "highVolume": "0 dB",
+            "inputLevel": "0 dB",
+            "outputLevel": "0 dB",
+            "dryWet": "100%"
+          },
+          "useCase": "Boomy mixes, muddy low-end"
+        },
+        {
+          "name": "Cymbal Control",
+          "category": "Drums",
+          "description": "Tames harsh cymbals and hi-hats",
+          "settings": {
+            "lowMidCrossover": "300 Hz",
+            "midHighCrossover": "6 kHz",
+            "lowThreshold": "-∞",
+            "lowRatio": "1:1",
+            "lowVolume": "0 dB",
+            "midThreshold": "-∞",
+            "midRatio": "1:1",
+            "midVolume": "0 dB",
+            "highThreshold": "-12 dB",
+            "highRatio": "8:1",
+            "highVolume": "-3 dB",
+            "inputLevel": "0 dB",
+            "outputLevel": "0 dB",
+            "dryWet": "70%"
+          },
+          "useCase": "Overly bright cymbals, harsh hi-hats"
+        }
+      ]
+    },
+    "upbeat-bounce": {
+      "presetName": "Upbeat Bounce",
+      "genre": "Upbeat Hip-Hop",
+      "application": "Energetic beats with consistent punch and movement",
+      "parameters": {
+        "lowBand": {
+          "threshold": -15,
+          "ratio": 3,
+          "attack": 10,
+          "release": 120,
+          "gain": 0.5
+        },
+        "midBand": {
+          "threshold": -10,
+          "ratio": 2.5,
+          "attack": 5,
+          "release": 90,
+          "gain": 1
+        },
+        "highBand": {
+          "threshold": -12,
+          "ratio": 2,
+          "attack": 1,
+          "release": 60,
+          "gain": 0.5
+        },
+        "crossovers": {
+          "lowMid": 200,
+          "midHigh": 5000
+        },
+        "globalSettings": {
+          "outputGain": 1,
+          "mix": 100
+        }
+      },
+      "description": "Moderate compression across all bands for consistent energy and forward momentum",
+      "tags": [
+        "upbeat",
+        "energetic",
+        "bounce",
+        "club",
+        "master"
+      ]
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# Fruity Squeeze - What It Is And When To Use\r\n\r\n## 60-Second Mental Model\r\n\r\nFruity Squeeze is FL Studio's **lo-fi bit-crusher and transient puncher**. Think of it as a \"sample reducer\" that intentionally degrades audio for creative effect. It combines two distinct distortion engines: **Squarize** (reduces bit depth → 8-bit/retro digital crunch) and **Puncher** (replaces samples with distorted versions → controlled transient destruction). Use it to add lo-fi character, create glitchy textures, or punch drums harder without traditional compression. [SRC: IL-MAN]\r\n\r\n**Core Identity:**\r\n- **Lo-fi degradation tool** (intentional quality reduction)\r\n- **Dual-mode distortion** (bit reduction + sample replacement)\r\n- **Creative FX**, not mastering processor\r\n\r\n## Purpose & FL Studio Role\r\n\r\n### What It Does\r\n1. **Squarize (Bit Reduction)**: Reduces bit depth from 24-bit → 8-bit/4-bit/1-bit (stepped \"quantization\" artifacts)\r\n2. **Puncher Section**: Replaces audio samples with distorted nominal-level versions (transient enhancement/destruction)\r\n3. **Preserve/Impact/Relation**: Controls ratio of clean vs. crushed samples\r\n4. **Built-in Filter**: Pre or Post distortion filtering (LP/HP with resonance)\r\n5. **Mix/Gain Controls**: Dry/wet blend + output level compensation\r\n\r\n### What It Is NOT\r\n- **Not a clean compressor** (use Fruity Compressor for transparent dynamics)\r\n- **Not a mastering limiter** (use Fruity Limiter for transparent loudness)\r\n- **Not subtle** (Squeeze is intentionally aggressive/lo-fi)\r\n- **Not a clipper** (use Fruity Soft Clipper for waveform clipping)\r\n\r\n## When To Use Fruity Squeeze\r\n\r\n### Primary Use Cases (High Confidence)\r\n✅ **Lo-Fi 8-Bit Textures**\r\n- Drum loops → crunchy, retro video game sound\r\n- Vocals → phone/radio/broken speaker effect\r\n- Synths → chip-tune/Game Boy aesthetic\r\n\r\n✅ **Transient Punching (Puncher Mode)**\r\n- Kick drums → harder attack without compression\r\n- Snares → sharper crack\r\n- Hi-hats → more bite\r\n\r\n✅ **Glitch/Psychedelic FX**\r\n- Extreme Squarize → stepped, robotic artifacts\r\n- Automate Squarize → \"bit-depth dive\" effect (like tape stop but digital)\r\n- Randomize Preserve/Impact → glitchy stutters\r\n\r\n✅ **Parallel Lo-Fi Layer**\r\n- Send drums to Squeeze on parallel bus\r\n- Blend crushed layer (30-40%) with clean (70-60%)\r\n- Result: Punch + character without full degradation\r\n\r\n✅ **Industrial/Harsh Sound Design**\r\n- Combine Squarize + Puncher + Pre-Filter\r\n- Max settings → destroyed, distorted textures\r\n- Use on pads, bass, vocals for experimental genres\r\n\r\n### When NOT To Use\r\n❌ **Transparent Dynamics Control**: Use Fruity Compressor (Squeeze adds obvious artifacts)\r\n❌ **Mastering Chain**: Use Fruity Limiter or Maximus (Squeeze is too colored)\r\n❌ **Subtle Warmth**: Use Fruity Fast Dist or saturation (Squeeze is aggressive)\r\n❌ **Bass Preservation**: Squeeze can destroy sub-bass punch (use with caution <100Hz)\r\n\r\n## Hip-Hop/R&B/Pop-Hip-Hop Context\r\n\r\n### Where It Fits in the Modern Workflow\r\n**Lo-Fi Hip-Hop (Boom-Bap Revival):**\r\n- Drum breaks → Squarize 30-50% (8-bit crunch, vintage sampler vibe)\r\n- Vocal samples → Squarize 20-30% + LP filter (phone call effect)\r\n- Bass → AVOID (destroys low-end punch)\r\n\r\n**Trap/Drill:**\r\n- Hi-hats → Puncher mode (sharper transients, cut through mix)\r\n- 808s → AVOID (Squeeze destroys sub-bass weight)\r\n- Snares → Puncher mode 20-40% parallel (add crack)\r\n\r\n**R&B/Pop-Hip-Hop:**\r\n- Vocal FX layer → Squarize 40-60% (robotic doubled vocal)\r\n- Texture pads → Squarize 10-20% (subtle digital character)\r\n- Drum bus (parallel) → Puncher 30% blend (add grit)\r\n\r\n**Experimental/Psychedelic:**\r\n- Everything → Extreme Squarize + automation (intentional destruction)\r\n- Glitch drums → Randomized Preserve/Impact (stutter effect)\r\n- Bass → Low-pass + moderate Squarize (controlled distortion)\r\n\r\n### Producer vs. Engineer Mindset\r\n| **Producer Mindset** | **Engineer Mindset** |\r\n|---|---|\r\n| \"Does this add vibe?\" | \"Is this destroying the mix?\" |\r\n| Use Squeeze creatively (FX) | Use Squeeze cautiously (can ruin dynamics) |\r\n| Automate for movement | Static settings for consistency |\r\n| Parallel processing (blend) | Insert processing (all or nothing) |\r\n\r\n**Key Insight**: Squeeze is a **character tool**, not a mixing tool. Add it for vibe, not to \"fix\" something. If your drums lack punch, use compression first, Squeeze second (for color).  \r\n[SRC: HIPHOP, Mixing Best Practices]\r\n\r\n## Typical Roles in a Session\r\n\r\n### 1. Insert FX (Lo-Fi Character)\r\n- **Insert on drum loop channel** (after EQ, before reverb)\r\n- **Squarize 20-40%** (8-bit crunch)\r\n- **Filter Post, LP 3-5kHz** (remove harsh digital artifacts)\r\n- **Mix 60-80%** (blend with clean signal)\r\n\r\n### 2. Parallel Bus (Drum Punch)\r\n- **Send drums to separate mixer track** (via Fruity Send or mixer routing)\r\n- **Fruity Squeeze on parallel track** (Puncher mode)\r\n- **Impact 50-70%** (transient enhancement)\r\n- **Blend parallel track at -12 dB** (subtle punch layer)\r\n\r\n### 3. FX Send (Glitch Automation)\r\n- **Create FX return track** with Squeeze\r\n- **Send vocal/drum hits** to FX track (via send knob)\r\n- **Automate Squarize 0% → 100%** (bit-depth dive effect)\r\n- **Use sparingly** (transitions, fills, drops)\r\n\r\n### 4. Sound Design Layer\r\n- **Load on synth pad/texture** (insert)\r\n- **Squarize 40-60%** (intentional degradation)\r\n- **Pre-Filter HP 200Hz** (preserve low-end weight)\r\n- **Result**: Broken radio/cassette tape aesthetic\r\n\r\n## Common Misconceptions\r\n\r\n### \"Squeeze Makes Things Louder\"\r\n**PARTIALLY TRUE**. The **Puncher** section can increase perceived loudness by enhancing transients, but this often comes with distortion. True loudness increase requires limiting (Fruity Limiter). Squeeze adds *punch*, not clean *volume*.  \r\n[SRC: IL-MAN]\r\n\r\n### \"Squarize and Puncher Are the Same Thing\"\r\n**FALSE**.  \r\n- **Squarize**: Reduces bit depth (digital quantization artifacts, 8-bit crunch)\r\n- **Puncher**: Replaces samples with distorted versions (transient enhancement/destruction)\r\n\r\nThey can be used together or separately. Many users never touch Puncher and only use Squarize for lo-fi vibes.  \r\n[SRC: IL-MAN]\r\n\r\n### \"Squeeze Is Safe on Bass/Kicks\"\r\n**FALSE**. Squeeze can destroy low-end punch by adding phase distortion and reducing dynamic range. Use **very cautiously** on bass/kicks. If used, apply:\r\n- Low Squarize (10-20% max)\r\n- Pre-Filter HP to protect sub-bass\r\n- Parallel processing (blend, don't replace)\r\n\r\n[SRC: Mixing Best Practices]\r\n\r\n### \"More Squarize = Better Lo-Fi\"\r\n**FALSE**. Extreme Squarize (>70%) creates **unusable artifacts** (aliasing, stepping). Sweet spot for musical lo-fi: **30-50% Squarize**. Higher values = experimental/glitch only.  \r\n[SRC: HIPHOP, Lo-Fi Production]\r\n\r\n## Quick Decision Matrix\r\n\r\n**Load Fruity Squeeze when:**\r\n- [ ] You want intentional lo-fi/8-bit character\r\n- [ ] Drums need aggressive punch (parallel Puncher mode)\r\n- [ ] Creating glitchy/psychedelic FX\r\n- [ ] Layering crushed texture with clean sound (parallel)\r\n- [ ] Sound design requires broken/distorted aesthetic\r\n\r\n**Skip Fruity Squeeze when:**\r\n- [ ] You need transparent dynamics control (→ Fruity Compressor)\r\n- [ ] Mastering or final bus processing (→ Fruity Limiter)\r\n- [ ] Subtle warmth or analog saturation (→ Fruity Fast Dist)\r\n- [ ] Processing bass/kicks without degradation (→ use cautiously or skip)\r\n\r\n---\r\n\r\n## Vibe-Specific Use Cases\r\n\r\n### MOODY\r\n**Application**: Dark, degraded textures  \r\n**Settings**:\r\n- Squarize 30-40% (subtle lo-fi character)\r\n- Filter Post, LP 1-2kHz (dark, muffled)\r\n- Preserve HIGH, Impact LOW (keep some clean signal)\r\n- Mix 50-60% (blend, don't replace)\r\n\r\n**What To Listen For**: Muffled, distant quality (not harsh/bright)  \r\n**Avoid**: High Squarize (too digital/glitchy for moody vibe)  \r\n[SRC: HIPHOP]\r\n\r\n---\r\n\r\n### UPBEAT\r\n**Application**: Punchy drum transients  \r\n**Settings**:\r\n- **Puncher mode** (Preserve LOW, Impact HIGH)\r\n- Squarize 10-20% (subtle digital edge)\r\n- Filter Pre, HP 100Hz (protect bass punch)\r\n- Parallel blend 30-40% (add punch without crushing)\r\n\r\n**What To Listen For**: Sharper transients, more attack (not distorted mess)  \r\n**Avoid**: Over-squarizing (dulls transients instead of enhancing)  \r\n[SRC: Mixing Best Practices]\r\n\r\n---\r\n\r\n### PSYCHEDELIC\r\n**Application**: Extreme bit-depth manipulation  \r\n**Settings**:\r\n- Squarize 70-90% (extreme degradation)\r\n- Automate Squarize (0% → 100% dive effects)\r\n- Puncher randomized (Preserve/Impact automation)\r\n- Filter sweeps (automate cutoff)\r\n\r\n**What To Listen For**: Intentional digital artifacts, glitchy chaos  \r\n**Avoid**: Static settings (psychedelic needs movement/automation)  \r\n[SRC: Sound Design]\r\n\r\n---\r\n\r\n### JAZZY\r\n**Application**: Lo-fi vinyl/cassette warmth  \r\n**Settings**:\r\n- Squarize 20-30% (subtle tape degradation)\r\n- Filter Post, LP 2.5-3kHz (warm, not harsh)\r\n- Preserve 60-70% (keep musical integrity)\r\n- Mix 40-50% (blend with clean)\r\n\r\n**Post-FX**: Add Effector → Vinyl preset (layer crackle)\r\n\r\n**What To Listen For**: Warm degradation (not digital/harsh)  \r\n**Avoid**: Puncher mode (too aggressive for jazzy vibe)  \r\n[SRC: Lo-Fi Production]\r\n\r\n---\r\n\r\n### VIBEY\r\n**Application**: Textured background layer  \r\n**Settings**:\r\n- Squarize 10-20% (subtle character)\r\n- Filter Pre, LP 1.5kHz (subdued presence)\r\n- Mix 30-40% (background texture, not focal)\r\n- Parallel processing (blend under main sound)\r\n\r\n**What To Listen For**: Subtle degradation (adds texture without dominating)  \r\n**Avoid**: High Squarize (too aggressive for background role)  \r\n[SRC: Mixing]\r\n\r\n---\r\n\r\n## Critical Mixing Rules (Hip-Hop/R&B)\r\n\r\n### Rule 1: Protect Low-End (<150Hz)\r\n**Problem**: Squeeze destroys bass punch via phase distortion.\r\n\r\n**Solution**:\r\n- **Pre-Filter HP 100-150Hz** (protect sub-bass)\r\n- **OR**: Use only on mid/high content (hats, snares, vocals)\r\n- **OR**: Parallel processing (blend crushed layer, keep clean bass)\r\n\r\n**Red Flag**: If bass/kicks thin out after Squeeze → REMOVE or re-route.  \r\n[SRC: Mixing Best Practices]\r\n\r\n---\r\n\r\n### Rule 2: Mono Check for Stereo Crushing\r\n**Problem**: Squarize can create phase issues in stereo.\r\n\r\n**Workflow**:\r\n1. Apply Squeeze on stereo track\r\n2. Check in mono (Fruity Stereo Shaper → Separation 0%)\r\n3. If sound thins/disappears → reduce Squarize or sum to mono before Squeeze\r\n\r\n**Safe Approach**: Use Squeeze on mono sources (kick, snare, lead vocal).  \r\n[SRC: Mixing Best Practices]\r\n\r\n---\r\n\r\n### Rule 3: Gain Stage After Squeeze\r\n**Problem**: Squeeze changes output level unpredictably (can clip).\r\n\r\n**Workflow**:\r\n1. Apply Squeeze\r\n2. Adjust **Gain** knob to match output to input level\r\n3. Check mixer meters (peak should not exceed -6 dB)\r\n\r\n**Tool**: Fruity Limiter after Squeeze (CEIL -0.3 dB, safety catch).  \r\n[SRC: Mixing Best Practices]\r\n\r\n---\r\n\r\n### Rule 4: Parallel > Insert for Drums\r\n**Best Practice**: Use Squeeze on **parallel bus** (blend), not **insert** (replace).\r\n\r\n**Why**: Preserves transient punch of clean signal while adding crushed character.\r\n\r\n**Workflow**:\r\n1. Send drums to parallel track (Fruity Send or mixer routing)\r\n2. Fruity Squeeze on parallel track (Puncher or Squarize)\r\n3. Blend parallel at -10 to -15 dB\r\n\r\n**Result**: Punch + character without full degradation.  \r\n[SRC: HIPHOP, NY Compression Techniques]\r\n\r\n---\r\n\r\n## 60-Second Quick Workflow\r\n\r\n**Add Lo-Fi Character to Drum Loop:**\r\n1. **Insert Fruity Squeeze** on drum loop channel\r\n2. **Squarize 30-40%** (8-bit crunch)\r\n3. **Filter Post, LP 3kHz** (remove harsh highs)\r\n4. **Mix 60-70%** (blend with clean)\r\n5. **A/B check**: Bypass → should add character without destroying punch\r\n6. **If bass/kicks thinned**: Reduce Squarize or use Pre-Filter HP 100Hz\r\n\r\n---\r\n\r\n**Source Tags:**\r\n- [SRC: IL-MAN] = Image-Line Official Manual\r\n- [SRC: HIPHOP] = Hip-Hop Production Best Practices\r\n- [SRC: Mixing Best Practices] = Industry Mixing Standards\r\n- [SRC: Lo-Fi Production] = Lo-Fi Aesthetic Techniques\r\n- [SRC: Sound Design] = Experimental Sound Design Approaches\r\n- [SRC: NY Compression] = Parallel Processing Techniques\r\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Squeeze\r\n\r\n## What It Is\r\nFruity Squeeze is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "crossover-frequency-theory": "# Crossover Frequency Theory\r\n\r\n## What Are Crossover Frequencies?\r\n\r\nCrossover frequencies are the points where Fruity Squeeze splits your audio spectrum into separate bands for independent processing.\r\n\r\n## Fruity Squeeze Band Structure\r\n\r\n```\r\nLow Band ←─────→ Mid Band ←─────→ High Band\r\n    0 Hz ─── X1 ─── X2 ─── 20 kHz\r\n```\r\n\r\n- **Low Band**: 0 Hz to X1 (Crossover 1)\r\n- **Mid Band**: X1 to X2 (Crossover 2)\r\n- **High Band**: X2 to 20 kHz+\r\n\r\n## Default Crossover Points\r\n\r\n- **Crossover 1**: ~250 Hz (separates bass from mids)\r\n- **Crossover 2**: ~2 kHz (separates mids from highs)\r\n\r\nThese defaults work well for most full-range material.\r\n\r\n## Choosing Crossover Points\r\n\r\n### Bass/Low Crossover (X1)\r\n\r\n#### Common Ranges\r\n- **80–120 Hz**: Isolate sub-bass (kick fundamentals, 808s)\r\n- **150–250 Hz**: Separate bass guitar/synth bass from mids\r\n- **300–400 Hz**: Keep low-mids with bass (warmer, fuller)\r\n\r\n#### Material-Specific\r\n- **Kick drums**: 80–100 Hz (isolate thump)\r\n- **Bass guitar**: 150–200 Hz (preserve body)\r\n- **Synth bass**: 120–180 Hz (depends on patch)\r\n- **Full mix**: 200–300 Hz (general-purpose split)\r\n\r\n### Mid/High Crossover (X2)\r\n\r\n#### Common Ranges\r\n- **1.5–2.5 kHz**: General vocal/instrument presence range\r\n- **3–5 kHz**: Brighten without harshness\r\n- **6–8 kHz**: Isolate air and brilliance\r\n- **10+ kHz**: Ultra-high sparkle only\r\n\r\n#### Material-Specific\r\n- **Vocals**: 2–3 kHz (control presence without affecting air)\r\n- **Guitars**: 2.5–4 kHz (tame pick attack separately)\r\n- **Drums**: 4–6 kHz (control cymbals independently)\r\n- **Full mix**: 2–3 kHz (standard mastering split)\r\n\r\n## Musical Frequency Ranges Reference\r\n\r\n| Range | Frequencies | Character |\r\n|-------|-------------|-----------|\r\n| Sub-bass | 20–60 Hz | Feel, rumble, power |\r\n| Bass | 60–250 Hz | Fundamental, warmth, body |\r\n| Low-mids | 250–500 Hz | Fullness, muddiness if excessive |\r\n| Mids | 500 Hz–2 kHz | Body, presence, clarity |\r\n| Upper-mids | 2–4 kHz | Definition, vocal presence |\r\n| Highs | 4–8 kHz | Brilliance, edge, sibilance |\r\n| Air | 8–20 kHz | Sparkle, space, openness |\r\n\r\n## Crossover Strategy by Goal\r\n\r\n### Maximum Loudness\r\n- X1: 100 Hz, X2: 3 kHz\r\n- Heavy compression on all bands\r\n- Aggressive ratios (8:1 or higher)\r\n\r\n### Natural Dynamics\r\n- X1: 200 Hz, X2: 2 kHz\r\n- Light compression (2:1–4:1)\r\n- Preserve transients in highs\r\n\r\n### Tonal Reshaping\r\n- X1: 150 Hz (boost bass presence)\r\n- X2: 4 kHz (tame harshness independently)\r\n- Use volume knobs to rebalance\r\n\r\n### Vocal Processing\r\n- X1: 300 Hz (keep low-mids with body)\r\n- X2: 3 kHz (control sibilance separately)\r\n- Light mid compression, moderate high limiting\r\n\r\n## Technical Considerations\r\n\r\n### Filter Slopes\r\n- Fruity Squeeze uses Linkwitz-Riley filters (standard for crossovers)\r\n- Creates minimal phase distortion at crossover points\r\n- Smooth transition between bands\r\n\r\n### Overlapping Regions\r\n- Bands overlap slightly around crossover points\r\n- Prevents gaps in frequency response\r\n- Maintains phase coherence\r\n\r\n### Interaction Effects\r\n- Compressing one band affects perceived balance of others\r\n- Lower crossover = more isolated bass processing\r\n- Higher crossover = more holistic mid/high treatment\r\n\r\n## Common Crossover Mistakes\r\n\r\n❌ **Too many narrow bands** → Fruity Squeeze has 3 bands; use them wisely  \r\n❌ **Crossovers in wrong spots** → Splits instruments awkwardly  \r\n❌ **Ignoring source material** → Drums vs. vocals need different splits  \r\n❌ **Set and forget** → Adjust per project/sound\r\n\r\n## Practical Workflow\r\n\r\n1. **Analyze your source**: Where are the problem frequencies?\r\n2. **Set crossovers around problem areas**: Isolate what needs control\r\n3. **Solo bands**: Listen to each band individually\r\n4. **Adjust if needed**: Move crossovers if bands sound unbalanced\r\n5. **Process**: Apply appropriate compression per band\r\n\r\n## Frequency-Specific Examples\r\n\r\n### Kick Drum Punch\r\n- X1 at 80 Hz (isolate sub-thump)\r\n- X2 at 3 kHz (separate click/attack)\r\n- Heavy low compression, light high limiting\r\n\r\n### Vocal Clarity\r\n- X1 at 250 Hz (body vs. presence)\r\n- X2 at 5 kHz (presence vs. air)\r\n- Moderate mid compression, gentle high control\r\n\r\n### Bass Synth Fatness\r\n- X1 at 120 Hz (sub vs. harmonics)\r\n- X2 at 2 kHz (warmth vs. brightness)\r\n- Heavy low limiting, light mid squashing\r\n\r\n### Full Mix Glue\r\n- X1 at 200 Hz (bass elements vs. instruments)\r\n- X2 at 2.5 kHz (body vs. clarity)\r\n- Gentle compression across all bands (3:1–4:1)\r\n",
+      "how-multiband-compression-works": "# How Multiband Compression Works in Fruity Squeeze\r\n\r\n## Overview\r\nFruity Squeeze is a multiband waveshaper that divides your audio into 3 frequency bands and applies independent compression/limiting to each band.\r\n\r\n## Signal Flow\r\n\r\n1. **Input Signal** → Crossover Filter (splits into 3 bands)\r\n2. **Low Band** → Threshold + Ratio → Waveshaping\r\n3. **Mid Band** → Threshold + Ratio → Waveshaping  \r\n4. **High Band** → Threshold + Ratio → Waveshaping\r\n5. **Mixed Bands** → Output\r\n\r\n## Key Concepts\r\n\r\n### Frequency Splitting\r\n- Uses **crossover filters** to divide spectrum into Low/Mid/High\r\n- Crossover points are adjustable (default: 250 Hz and 2 kHz)\r\n- Each band processes independently without affecting others\r\n\r\n### Waveshaping vs. Traditional Compression\r\n- **Traditional compressor**: Gain reduction based on envelope follower\r\n- **Waveshaper**: Directly reshapes waveform amplitude\r\n- Result: Faster, more aggressive compression with harmonic coloration\r\n- No attack/release controls—instant response\r\n\r\n### Per-Band Controls\r\n\r\n#### Threshold\r\n- Sets the level where compression begins\r\n- Lower threshold = more compression\r\n- Range: -∞ to 0 dB\r\n\r\n#### Ratio\r\n- Controls compression intensity\r\n- Higher ratio = more aggressive squashing\r\n- ∞:1 = hard limiting\r\n\r\n#### Volume\r\n- Post-compression output level for each band\r\n- Compensate for gain reduction\r\n- Shape tonal balance\r\n\r\n## Why Multiband?\r\n\r\n### Tonal Control\r\n- Compress bass without affecting highs\r\n- Tame harsh highs without dulling the mix\r\n- Bring up quieter frequency ranges independently\r\n\r\n### Mixing Applications\r\n- **Kick/Bass**: Heavy low compression, light mid/high\r\n- **Vocals**: Smooth mid compression, gentle high limiting\r\n- **Master**: Glue bands together with different ratios\r\n\r\n## Waveshaping Character\r\n\r\n### Harmonic Addition\r\n- Waveshaping adds harmonics (especially odd-order)\r\n- Creates \"warmth\" or \"grit\" depending on settings\r\n- More aggressive than clean compression\r\n\r\n### Transparency vs. Color\r\n- **Light ratios (2:1–4:1)**: Relatively transparent\r\n- **Heavy ratios (10:1+)**: Audible distortion/coloration\r\n- **Limiter mode (∞:1)**: Hard clipping with artifacts\r\n\r\n## Practical Understanding\r\n\r\n### Level Management\r\n1. Signal exceeds threshold → waveshaping activates\r\n2. Ratio determines how much level is reduced\r\n3. Volume knob compensates for lost loudness\r\n4. Result: Controlled dynamics with tonal shaping\r\n\r\n### Crossover Interaction\r\n- Bands overlap slightly at crossover points\r\n- Smooth transition prevents phase issues\r\n- Adjust crossovers to match your source material\r\n\r\n## Common Misconceptions\r\n\r\n❌ **\"It's just a limiter\"** → It's a multiband waveshaper with compression characteristics  \r\n❌ **\"No attack/release = bad\"** → Instant response is intentional and useful  \r\n❌ **\"Only for heavy limiting\"** → Works great for subtle dynamic control too\r\n\r\n✅ **Fast, colored multiband dynamics**  \r\n✅ **Tonal shaping via band-specific compression**  \r\n✅ **Adds harmonics and character to sound**\r\n",
+      "multiband-compression-fundamentals": "# Multiband Compression Fundamentals\r\n\r\n## What is Multiband Compression?\r\n\r\nFruity Squeeze splits the frequency spectrum into multiple bands (Low, Mid, High) and applies independent compression to each. This allows precise dynamic control across different frequency ranges without affecting the entire signal.\r\n\r\n## Core Concepts\r\n\r\n### Frequency Band Splitting\r\n- **Low Band**: Sub/bass frequencies (typically 20-250 Hz)\r\n- **Mid Band**: Body and presence (250 Hz - 5 kHz)\r\n- **High Band**: Air and brilliance (5 kHz - 20 kHz)\r\n\r\n### Independent Compression Per Band\r\nEach band has its own:\r\n- **Threshold**: Level where compression begins\r\n- **Ratio**: Amount of gain reduction applied\r\n- **Attack/Release**: How quickly compression responds\r\n\r\n### Crossover Points\r\nThe frequencies where bands transition. Proper crossover selection prevents frequency masking and phase issues.\r\n\r\n## Why Use Multiband Compression in Hip-Hop?\r\n\r\n### Taming Muddy Low-End\r\nCompress only the low frequencies to control boomy kicks and sub-bass without dulling the entire mix.\r\n\r\n### Controlling Harsh Highs\r\nApply gentle compression to hi-hats and cymbals without affecting vocal presence in the mids.\r\n\r\n### Gluing Elements Together\r\nMakes disparate sounds feel cohesive—essential for sample-heavy production.\r\n\r\n### Creating Movement\r\nSidechain individual bands for rhythmic pumping effects popular in modern trap and electronic hip-hop.\r\n\r\n## Common Applications\r\n\r\n### On Master Bus\r\n- Gentle multiband compression for final glue\r\n- Control dynamic range without squashing transients\r\n- Add subtle warmth and cohesion\r\n\r\n### On Vocal Bus\r\n- Compress mids for consistent presence\r\n- Control sibilance in high band\r\n- Preserve low-end body\r\n\r\n### On Drum Bus\r\n- Tighten kick and bass relationship\r\n- Add punch to snares without affecting hi-hats\r\n- Control overall drum dynamics\r\n\r\n### On Bass/Sub\r\n- Even out inconsistent low-end\r\n- Prevent bass from overwhelming mix\r\n- Preserve transient attack while controlling sustain\r\n\r\n## Hip-Hop Production Tips\r\n\r\n### For Moody/Dark Trap\r\n- Heavy low-band compression for tight, controlled 808s\r\n- Light mid compression to preserve atmospheric pads\r\n- Minimal high compression to keep dark aesthetic\r\n\r\n### For Upbeat/Energetic\r\n- Moderate compression across all bands for consistent energy\r\n- Faster attack on high band to control bright elements\r\n- Medium ratio to maintain dynamics while adding cohesion\r\n\r\n### For Melodic/R&B\r\n- Gentle low compression to support melodic bass\r\n- Transparent mid compression for vocal clarity\r\n- Subtle high compression for silky smooth top-end\r\n\r\n### For Electronic/Experimental\r\n- Aggressive ratios for pumping effects\r\n- Sidechain individual bands for rhythmic movement\r\n- Extreme settings for creative sound design\r\n",
+      "puncher-mechanics": "# Understanding the Puncher Algorithm\r\n\r\n## What is the \"Puncher\"?\r\n\r\nThe Puncher is Fruity Squeeze's unique sample-replacement distortion algorithm. Unlike traditional clipping or saturation, the Puncher **replaces original audio samples with distorted nominal-level versions** based on the signal's characteristics.\r\n\r\nThink of it as a \"sample substitution engine\" rather than a wave-shaping algorithm.\r\n\r\n## How It Differs from Standard Distortion\r\n\r\n### Traditional Clipping/Saturation:\r\n- Amplifies signal → clips peaks → creates harmonics\r\n- **Continuous wave shaping**\r\n- Affects all samples equally based on amplitude\r\n\r\n### Fruity Squeeze Puncher:\r\n- Analyzes incoming samples\r\n- **Replaces specific samples** with pre-distorted versions\r\n- Creates a \"punched\" or \"stuttered\" quality\r\n- **Selective sample processing** based on Preserve/Impact ratio\r\n\r\n## The Three-Part Control System\r\n\r\n### 1. Preserve\r\n**What it does:** Determines how many of the **original** samples pass through untouched.\r\n\r\n- **High Preserve (70-100%):** Most samples remain clean\r\n- **Low Preserve (0-30%):** Few original samples survive\r\n- **Use case:** Maintaining transient punch and clarity\r\n\r\n**Analogy:** Think of it as a \"gatekeeper\" that lets clean samples through.\r\n\r\n### 2. Impact\r\n**What it does:** Determines how many **processed/distorted** samples are added.\r\n\r\n- **High Impact (70-100%):** Aggressive sample replacement\r\n- **Low Impact (0-30%):** Subtle distortion content\r\n- **Use case:** Adding character and degradation\r\n\r\n**Analogy:** Think of it as the \"distortion injection\" amount.\r\n\r\n### 3. Relation\r\n**What it does:** Sets the **ratio** between Preserve and Impact.\r\n\r\nThis is the most misunderstood parameter. It's NOT a simple mix control—it adjusts how Preserve and Impact **interact**.\r\n\r\n- **Left (Favor Preserve):** Original samples are prioritized\r\n- **Center (Balanced):** Equal weighting\r\n- **Right (Favor Impact):** Distorted samples dominate\r\n\r\n**Analogy:** Think of it as a \"bias control\" for the sample replacement algorithm.\r\n\r\n## How the Algorithm Works (Simplified)\r\n\r\n```\r\n1. Audio sample arrives\r\n2. Puncher analyzes sample characteristics (amplitude, timing)\r\n3. Based on Preserve/Impact/Relation settings:\r\n   - Keep original sample? (Preserve)\r\n   - Replace with distorted version? (Impact)\r\n   - What's the probability? (Relation)\r\n4. Output the chosen sample\r\n5. Repeat for next sample\r\n```\r\n\r\n## Squarize vs. Puncher\r\n\r\nThese are **two separate processes** in Fruity Squeeze:\r\n\r\n### Squarize (Bit Reduction)\r\n- Reduces bit depth\r\n- Creates \"stepped\" waveforms\r\n- Generates aliasing artifacts\r\n- **Affects ALL samples equally**\r\n\r\n### Puncher (Sample Replacement)\r\n- Selectively replaces samples\r\n- Creates \"punchy\" distortion character\r\n- **Affects samples based on Preserve/Impact/Relation**\r\n\r\nThey work **in series:**\r\n1. Squarize processes the signal first\r\n2. Puncher operates on the squarized signal (or vice versa, depending on routing)\r\n\r\n## Practical Applications\r\n\r\n### Preserving Transients While Adding Body\r\n```\r\nPreserve: 70%\r\nImpact: 50%\r\nRelation: Favor Preserve\r\n```\r\n**Result:** Drum hits stay punchy, but body/tail gets crunchy character.\r\n\r\n### Aggressive Lo-Fi Destruction\r\n```\r\nPreserve: 20%\r\nImpact: 80%\r\nRelation: Favor Impact\r\n```\r\n**Result:** Most samples are replaced with distorted versions—heavy degradation.\r\n\r\n### Subtle Vintage Character\r\n```\r\nPreserve: 60%\r\nImpact: 30%\r\nRelation: Centered\r\n```\r\n**Result:** Gentle \"broken transistor\" vibe without losing clarity.\r\n\r\n### Glitch/Stutter Effect\r\n```\r\nPreserve: 40%\r\nImpact: 60%\r\nRelation: Extreme Right\r\n```\r\n**Result:** Creates irregular sample replacement—sounds like digital glitching.\r\n\r\n## Common Misconceptions\r\n\r\n### ❌ \"Preserve and Impact are just a dry/wet mix\"\r\n**Reality:** They control **sample selection probability**, not signal mixing. The Relation knob further modifies this probability.\r\n\r\n### ❌ \"The Puncher is just another waveshaper\"\r\n**Reality:** It's a **sample replacement algorithm**, not continuous wave shaping. This creates its unique \"punched\" character.\r\n\r\n### ❌ \"Relation is redundant if I set Preserve/Impact correctly\"\r\n**Reality:** Relation fundamentally changes **how** the algorithm prioritizes samples. Small Relation changes = big character shifts.\r\n\r\n## Advanced Techniques\r\n\r\n### Dynamic Puncher Control\r\nAutomate Relation for evolving textures:\r\n- **Intro:** Favor Preserve (clean)\r\n- **Build:** Move toward Center (balanced)\r\n- **Drop:** Favor Impact (crushed)\r\n\r\n### Frequency-Specific Punching\r\nUse Fruity Squeeze on specific frequency bands (via Patcher or multiband routing):\r\n- **Lows:** High Preserve (keep punch)\r\n- **Mids:** Balanced (add character)\r\n- **Highs:** High Impact (crush cymbals/hats)\r\n\r\n### Parallel Puncher Processing\r\nTwo instances in parallel:\r\n- **Instance 1:** High Preserve, low Mix (transient preservation)\r\n- **Instance 2:** High Impact, medium Mix (body distortion)\r\n\r\n## Why It Sounds Different\r\n\r\nThe Puncher creates a **non-linear, sample-selective** distortion that:\r\n1. Preserves micro-dynamics (unlike heavy compression + distortion)\r\n2. Creates irregular harmonic content (not standard odd/even harmonics)\r\n3. Maintains transient clarity while adding body (if configured correctly)\r\n4. Generates a \"digital artifact\" quality unique to sample replacement\r\n\r\nThis is why Fruity Squeeze sounds distinct from:\r\n- Fruity Fast Dist (waveshaper)\r\n- Fruity Blood Overdrive (tube simulation)\r\n- Distructor (multiband saturation)\r\n\r\n## Troubleshooting\r\n\r\n### \"I hear crackling/popping\"\r\n- **Cause:** Too much Impact with low Preserve\r\n- **Fix:** Increase Preserve or reduce Impact\r\n\r\n### \"It sounds too clean\"\r\n- **Cause:** Too much Preserve, not enough Impact\r\n- **Fix:** Increase Impact and adjust Relation toward Impact\r\n\r\n### \"The effect is too inconsistent\"\r\n- **Cause:** Extreme Relation settings create unpredictable sample selection\r\n- **Fix:** Move Relation toward Center for more stable processing\r\n\r\n### \"I can't hear any difference\"\r\n- **Cause:** Preserve and Impact might be balanced too evenly with centered Relation\r\n- **Fix:** Push Impact higher and/or move Relation to extremes\r\n\r\n## The \"Broken Transistor\" Sound\r\n\r\nWhen you push the Puncher hard:\r\n```\r\nSquarize: 50%+\r\nPreserve: 10-30%\r\nImpact: 70-90%\r\nRelation: Favor Impact\r\n```\r\n\r\nYou get the classic \"broken radio\" / \"failing hardware\" sound because:\r\n1. Squarize introduces aliasing\r\n2. Puncher replaces most samples with distorted versions\r\n3. The irregular sample selection mimics hardware failure\r\n4. Combined effect = vintage/lo-fi degradation\r\n\r\n## Conclusion\r\n\r\nThe Puncher is Fruity Squeeze's secret weapon. Understanding Preserve/Impact/Relation as a **sample selection system** rather than simple gain controls unlocks its full potential.\r\n\r\n**Key Takeaway:** The Puncher doesn't just \"add distortion\"—it **rebuilds your audio from a mix of clean and crushed samples** based on intelligent probability.\r\n\r\n---\r\n\r\n**Experiment:** Load a simple drum loop. Set Preserve to 100%, Impact to 0%, and slowly increase Impact while watching Relation. You'll hear exactly when and how samples get replaced.\r\n",
+      "signal-flow": "# Signal Flow: Fruity Squeeze\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n",
+      "waveshaping-vs-compression": "# Waveshaping vs. Traditional Compression\r\n\r\n## Core Difference\r\n\r\n**Traditional Compressor**: Analyzes signal level → Reduces gain over time  \r\n**Waveshaper (Fruity Squeeze)**: Reshapes waveform amplitude directly\r\n\r\n## How Traditional Compressors Work\r\n\r\n### Envelope Detection\r\n1. Signal enters compressor\r\n2. Envelope follower tracks signal level\r\n3. When level exceeds threshold, gain reduction begins\r\n4. Attack/release times smooth the gain changes\r\n5. Output = input × gain reduction amount\r\n\r\n### Time-Based Response\r\n- **Attack**: How quickly compression starts (1–100 ms typical)\r\n- **Release**: How quickly compression stops (50–500 ms typical)\r\n- **Natural pumping**: Compression tracks dynamics over time\r\n\r\n## How Waveshapers Work\r\n\r\n### Direct Waveform Manipulation\r\n1. Signal enters waveshaper\r\n2. Transfer function maps input amplitude to output amplitude\r\n3. Any sample above threshold is immediately reshaped\r\n4. No time-based smoothing—instant, sample-accurate response\r\n\r\n### Mathematical Transformation\r\n```\r\nIf input > threshold:\r\n    output = threshold + (input - threshold) / ratio\r\nElse:\r\n    output = input\r\n```\r\n\r\n## Key Differences\r\n\r\n| Feature | Traditional Compressor | Waveshaper (Squeeze) |\r\n|---------|----------------------|----------------------|\r\n| Response time | Attack/release (ms) | Instant (0 ms) |\r\n| Dynamics tracking | RMS or peak detection | Direct amplitude |\r\n| Harmonic distortion | Minimal (clean) | Audible (adds harmonics) |\r\n| Pumping/breathing | Common artifact | Not possible |\r\n| Transparency | Can be very clean | Always colors sound |\r\n| CPU usage | Moderate | Low |\r\n\r\n## When to Use Each\r\n\r\n### Use Traditional Compressor For:\r\n- ✅ Smooth, transparent dynamic control\r\n- ✅ Musical pumping effects (sidechain, glue)\r\n- ✅ Preserving tonal character\r\n- ✅ Gentle ratio control (2:1–4:1)\r\n- ✅ Time-based envelope shaping\r\n\r\n### Use Waveshaper (Fruity Squeeze) For:\r\n- ✅ Fast transient control (drums, percussion)\r\n- ✅ Adding harmonic excitement\r\n- ✅ Aggressive limiting/squashing\r\n- ✅ Instant brick-wall limiting\r\n- ✅ Lo-fi/distorted compression effects\r\n- ✅ Multiband tonal shaping\r\n\r\n## Sonic Character Differences\r\n\r\n### Traditional Compressor\r\n- **Clean**: Minimal harmonic addition\r\n- **Smooth**: Gradual gain changes\r\n- **Natural**: Mimics analog compression behavior\r\n- **Musical pumping**: Rhythmic gain reduction\r\n- **Examples**: 1176, LA-2A, SSL Bus Compressor\r\n\r\n### Waveshaper (Fruity Squeeze)\r\n- **Colored**: Adds odd-order harmonics\r\n- **Aggressive**: Instant, hard response\r\n- **Gritty**: Audible when pushed hard\r\n- **No pumping**: Instant on/off\r\n- **Examples**: Digital clipping, saturation, hard limiting\r\n\r\n## Harmonic Content\r\n\r\n### Traditional Compressor\r\n- Adds **even-order harmonics** (if analog-modeled)\r\n- Warm, pleasing distortion at high ratios\r\n- Generally transparent at moderate settings\r\n\r\n### Waveshaper\r\n- Adds **odd-order harmonics** (3rd, 5th, 7th)\r\n- Creates \"edge,\" \"bite,\" or \"harshness\"\r\n- Always audible to some degree when active\r\n\r\n## Practical Sound Examples\r\n\r\n### Kick Drum\r\n\r\n**Traditional compressor**:\r\n- Smooth, punchy attack\r\n- Controlled sustain with natural decay\r\n- Clean low-end thump\r\n\r\n**Fruity Squeeze**:\r\n- Instant transient clipping\r\n- Aggressive, clicky attack\r\n- Harmonics in mid-range (adds \"click\")\r\n\r\n### Vocals\r\n\r\n**Traditional compressor**:\r\n- Even loudness across phrases\r\n- Natural breath dynamics\r\n- Transparent at 3:1–4:1 ratio\r\n\r\n**Fruity Squeeze**:\r\n- Hard-limited peaks (sibilance control)\r\n- Less natural dynamic feel\r\n- Adds edge/presence via harmonics\r\n\r\n### Bass Guitar\r\n\r\n**Traditional compressor**:\r\n- Sustained, even notes\r\n- Warm, round tone\r\n- Smooth pick/finger attack\r\n\r\n**Fruity Squeeze**:\r\n- Fast, aggressive attack control\r\n- Adds brightness and grit\r\n- More \"modern\" compressed bass tone\r\n\r\n## Attack & Release Implications\r\n\r\n### No Attack/Release in Fruity Squeeze\r\n\r\n**Advantages**:\r\n- Zero latency response\r\n- Perfect for fast transients (drums, plucks)\r\n- Predictable, consistent behavior\r\n- No phase smearing from lookahead\r\n\r\n**Disadvantages**:\r\n- Can't create smooth, musical pumping\r\n- No control over compression \"feel\"\r\n- Always sounds \"instant\"\r\n- Less forgiving on complex material\r\n\r\n## Multiband Context\r\n\r\n### Why Waveshaping Works in Multiband\r\n\r\n- **Per-band coloration**: Harmonics in one band don't affect others\r\n- **Crossover isolation**: Each band's distortion stays contained\r\n- **Tonal sculpting**: Use harmonic addition as a mixing tool\r\n- **Fast response**: Great for controlling specific frequency ranges instantly\r\n\r\n### Traditional Multiband Compressors\r\n\r\n- Examples: Waves C6, FabFilter MB\r\n- More transparent, musical compression\r\n- Better for mastering and subtle dynamics\r\n- Slower, more CPU-intensive\r\n\r\n## Hybrid Approach\r\n\r\nMany engineers use **both**:\r\n\r\n1. **Traditional compressor** → Smooth overall dynamics\r\n2. **Fruity Squeeze** → Fast transient control + coloration\r\n\r\nExample: Compress vocals with a standard compressor, then use Fruity Squeeze on highs to tame sibilance with harmonic edge.\r\n\r\n## Bottom Line\r\n\r\n- **Fruity Squeeze = Fast, colored, aggressive multiband waveshaping**\r\n- **Traditional compressor = Musical, transparent, time-based dynamics**\r\n- Neither is \"better\"—they're different tools for different jobs\r\n"
+    },
+    "Quick-Reference": {
+      "common-use-cases": "# Fruity Squeeze Common Use Cases\r\n\r\n## 1. Maximizing Loudness (Mastering/Final Mix)\r\n\r\n**Goal**: Make your track as loud as possible without destroying it.\r\n\r\n### Settings\r\n- **Crossovers**: 100 Hz, 3 kHz\r\n- **Low**: Threshold -10 dB, Ratio 8:1, Volume +3 dB\r\n- **Mid**: Threshold -12 dB, Ratio 6:1, Volume +2 dB\r\n- **High**: Threshold -15 dB, Ratio 4:1, Volume +1 dB\r\n- **Output**: Adjust to taste (often +2 to +4 dB)\r\n\r\n### Why It Works\r\n- Heavy low-end compression prevents bass from eating up headroom\r\n- Mid compression adds density and presence\r\n- Lighter high compression preserves clarity\r\n- Result: Loud, full-range track\r\n\r\n---\r\n\r\n## 2. Punchy Kick Drum\r\n\r\n**Goal**: Make kick drum hit hard with controlled low-end.\r\n\r\n### Settings\r\n- **Crossovers**: 80 Hz, 3 kHz\r\n- **Low**: Threshold -8 dB, Ratio 10:1, Volume +4 dB\r\n- **Mid**: Threshold -15 dB, Ratio 3:1\r\n- **High**: Threshold -12 dB, Ratio 6:1, Volume +2 dB\r\n- **Input**: +1 to +3 dB for extra drive\r\n\r\n### Why It Works\r\n- Isolates sub-bass punch below 80 Hz\r\n- Heavy low compression = tight, controlled thump\r\n- Mid-range stays clean\r\n- High compression adds click/attack without harshness\r\n\r\n---\r\n\r\n## 3. Vocal De-Essing\r\n\r\n**Goal**: Tame sibilance (harsh \"s\" sounds) without dulling the voice.\r\n\r\n### Settings\r\n- **Crossovers**: 300 Hz, 5 kHz\r\n- **Low**: Threshold -∞ (bypass)\r\n- **Mid**: Threshold -18 dB, Ratio 2:1\r\n- **High**: Threshold -10 dB, Ratio 8:1, Volume -2 dB\r\n- **Dry/Wet**: 60–80%\r\n\r\n### Why It Works\r\n- Low band bypassed (no need to compress bass on vocals)\r\n- Light mid compression for evenness\r\n- Aggressive high compression targets sibilance (5 kHz+)\r\n- Lower high volume reduces harsh frequencies\r\n- Dry/wet blend keeps natural dynamics\r\n\r\n---\r\n\r\n## 4. Bass Guitar Fatness\r\n\r\n**Goal**: Thick, sustained bass with harmonic richness.\r\n\r\n### Settings\r\n- **Crossovers**: 120 Hz, 2 kHz\r\n- **Low**: Threshold -10 dB, Ratio 6:1, Volume +3 dB\r\n- **Mid**: Threshold -12 dB, Ratio 8:1, Volume +2 dB\r\n- **High**: Threshold -∞ (bypass or very light)\r\n- **Input**: +2 dB\r\n\r\n### Why It Works\r\n- Compresses fundamental (low band) for sustain\r\n- Heavy mid compression adds harmonics and presence\r\n- Highs left alone or lightly controlled\r\n- Input gain drives waveshaping for \"grit\"\r\n\r\n---\r\n\r\n## 5. Parallel Compression (Drums/Mix)\r\n\r\n**Goal**: Add density and aggression while preserving natural dynamics.\r\n\r\n### Settings\r\n- **Crossovers**: 200 Hz, 2.5 kHz\r\n- **All bands**: Threshold -6 dB, Ratio 10:1+\r\n- **Volumes**: +4 to +6 dB per band\r\n- **Dry/Wet**: 30–50%\r\n- **Output**: Adjust to match input level\r\n\r\n### Why It Works\r\n- Aggressive compression on wet signal\r\n- Dry signal preserves transients and dynamics\r\n- Blend creates \"New York\" style compression\r\n- Multiband allows tonal shaping in parallel chain\r\n\r\n---\r\n\r\n## 6. 808/Sub-Bass Control\r\n\r\n**Goal**: Tight, consistent sub-bass that doesn't overpower the mix.\r\n\r\n### Settings\r\n- **Crossovers**: 60 Hz, 150 Hz\r\n- **Low**: Threshold -8 dB, Ratio ∞:1 (limiter mode), Volume +2 dB\r\n- **Mid**: Threshold -12 dB, Ratio 6:1\r\n- **High**: Threshold -∞ (bypass)\r\n\r\n### Why It Works\r\n- Ultra-low crossover isolates pure sub frequencies\r\n- Limiting mode prevents bass spikes\r\n- Mid band controls harmonics for definition\r\n- Highs bypassed (no high content in 808s)\r\n\r\n---\r\n\r\n## 7. Full Mix Glue\r\n\r\n**Goal**: Make all elements sit together cohesively without overcompression.\r\n\r\n### Settings\r\n- **Crossovers**: 200 Hz, 2 kHz\r\n- **Low**: Threshold -18 dB, Ratio 3:1, Volume +1 dB\r\n- **Mid**: Threshold -15 dB, Ratio 4:1, Volume +1 dB\r\n- **High**: Threshold -18 dB, Ratio 2:1\r\n- **Dry/Wet**: 70–100%\r\n\r\n### Why It Works\r\n- Gentle ratios preserve musicality\r\n- Even compression across bands\r\n- Slight volume boosts add cohesion\r\n- Not too aggressive—lets mix breathe\r\n\r\n---\r\n\r\n## 8. Aggressive EDM/Trap Drums\r\n\r\n**Goal**: Hard-hitting, loud drums with punchy transients.\r\n\r\n### Settings\r\n- **Crossovers**: 100 Hz, 4 kHz\r\n- **All bands**: Threshold -6 dB, Ratio 8:1+\r\n- **Volumes**: +4 to +6 dB\r\n- **Input**: +3 to +6 dB (drive hard!)\r\n- **Output**: Adjust to prevent clipping\r\n\r\n### Why It Works\r\n- High input drives waveshaping for distortion\r\n- Aggressive ratios squash dynamics hard\r\n- Volume boosts compensate for gain reduction\r\n- Result: Loud, aggressive, modern drum sound\r\n\r\n---\r\n\r\n## 9. Warming Up Digital Synths\r\n\r\n**Goal**: Add analog-style warmth and character to clean digital synths.\r\n\r\n### Settings\r\n- **Crossovers**: 250 Hz, 2.5 kHz\r\n- **Low**: Threshold -15 dB, Ratio 4:1, Volume +2 dB\r\n- **Mid**: Threshold -12 dB, Ratio 5:1, Volume +1 dB\r\n- **High**: Threshold -18 dB, Ratio 3:1\r\n- **Input**: +2 to +4 dB\r\n\r\n### Why It Works\r\n- Moderate compression across all bands\r\n- Input gain drives harmonic distortion\r\n- Waveshaping adds odd-order harmonics (warmth)\r\n- Not too aggressive—preserves synth character\r\n\r\n---\r\n\r\n## 10. Brightening Dull Recordings\r\n\r\n**Goal**: Add presence and air to recordings lacking high-frequency content.\r\n\r\n### Settings\r\n- **Crossovers**: 200 Hz, 3 kHz\r\n- **Low**: Threshold -∞ (bypass)\r\n- **Mid**: Threshold -15 dB, Ratio 3:1, Volume +1 dB\r\n- **High**: Threshold -12 dB, Ratio 6:1, Volume +4 to +6 dB\r\n- **Input**: +1 dB\r\n\r\n### Why It Works\r\n- Low band bypassed (no change to bass)\r\n- Mid compression brings up presence\r\n- Heavy high boost adds sparkle and air\r\n- Waveshaping harmonics enhance brilliance\r\n\r\n---\r\n\r\n## 11. Tightening Loose Bass Mixes\r\n\r\n**Goal**: Control boomy, unfocused low-end without losing power.\r\n\r\n### Settings\r\n- **Crossovers**: 150 Hz, 2 kHz\r\n- **Low**: Threshold -10 dB, Ratio 8:1, Volume +1 dB\r\n- **Mid**: Threshold -15 dB, Ratio 4:1\r\n- **High**: Threshold -∞ (bypass)\r\n\r\n### Why It Works\r\n- Heavy low compression tames boom\r\n- Crossover at 150 Hz isolates problematic bass\r\n- Mid compression adds definition\r\n- Highs left alone to preserve clarity\r\n\r\n---\r\n\r\n## 12. Controlling Harsh Cymbals/Hi-Hats\r\n\r\n**Goal**: Tame overly bright or harsh cymbals without dulling them.\r\n\r\n### Settings\r\n- **Crossovers**: 300 Hz, 6 kHz\r\n- **Low**: Threshold -∞ (bypass)\r\n- **Mid**: Threshold -∞ (bypass)\r\n- **High**: Threshold -12 dB, Ratio 6:1–10:1, Volume -3 dB\r\n- **Dry/Wet**: 70%\r\n\r\n### Why It Works\r\n- Only high band active (targets 6 kHz+)\r\n- Compression reduces cymbal peaks\r\n- Lower volume reduces harshness\r\n- Dry/wet preserves some natural sparkle\r\n\r\n---\r\n\r\n## Quick Reference Table\r\n\r\n| Use Case | Low Crossover | High Crossover | Focus Band | Ratio Range |\r\n|----------|--------------|----------------|------------|-------------|\r\n| Mastering | 100–150 Hz | 2.5–3 kHz | All | 4:1–8:1 |\r\n| Kick drum | 80–100 Hz | 3–4 kHz | Low + High | 8:1–∞:1 |\r\n| Vocals | 250–300 Hz | 4–5 kHz | Mid + High | 2:1–8:1 |\r\n| Bass | 100–150 Hz | 2–3 kHz | Low + Mid | 6:1–10:1 |\r\n| Drums | 100–120 Hz | 3–5 kHz | All | 6:1–10:1 |\r\n| Synths | 200–300 Hz | 2–3 kHz | All | 3:1–6:1 |\r\n| De-essing | Any | 5–8 kHz | High only | 6:1–10:1 |\r\n| Brightening | Any | 3–5 kHz | High only | 4:1–8:1 |\r\n",
+      "hip-hop-quick-start": "# Hip-Hop Quick Start Guide\r\n\r\n## Genre-Specific Presets\r\n\r\n### Moody/Dark Trap\r\n**Use Case**: Controlling 808s and dark atmospheres\r\n- **Low**: Threshold -18 dB, Ratio 4:1, Attack 5ms, Release 100ms\r\n- **Mid**: Threshold -12 dB, Ratio 2:1, Attack 10ms, Release 80ms\r\n- **High**: Threshold -15 dB, Ratio 1.5:1, Attack 1ms, Release 50ms\r\n- **Crossovers**: 150 Hz / 4 kHz\r\n\r\n### Upbeat/Bounce\r\n**Use Case**: Energetic beats with consistent punch\r\n- **Low**: Threshold -15 dB, Ratio 3:1, Attack 10ms, Release 120ms\r\n- **Mid**: Threshold -10 dB, Ratio 2.5:1, Attack 5ms, Release 90ms\r\n- **High**: Threshold -12 dB, Ratio 2:1, Attack 1ms, Release 60ms\r\n- **Crossovers**: 200 Hz / 5 kHz\r\n\r\n### Melodic/R&B\r\n**Use Case**: Smooth, polished production\r\n- **Low**: Threshold -20 dB, Ratio 2:1, Attack 20ms, Release 150ms\r\n- **Mid**: Threshold -15 dB, Ratio 1.5:1, Attack 15ms, Release 100ms\r\n- **High**: Threshold -18 dB, Ratio 1.5:1, Attack 3ms, Release 80ms\r\n- **Crossovers**: 180 Hz / 6 kHz\r\n\r\n### Funky/Boom-Bap\r\n**Use Case**: Classic hip-hop with vintage vibe\r\n- **Low**: Threshold -16 dB, Ratio 3:1, Attack 15ms, Release 140ms\r\n- **Mid**: Threshold -12 dB, Ratio 2:1, Attack 10ms, Release 110ms\r\n- **High**: Threshold -20 dB, Ratio 1.2:1, Attack 5ms, Release 90ms\r\n- **Crossovers**: 220 Hz / 4.5 kHz\r\n\r\n### Electronic/Experimental\r\n**Use Case**: Heavy processing and creative effects\r\n- **Low**: Threshold -12 dB, Ratio 6:1, Attack 1ms, Release 80ms\r\n- **Mid**: Threshold -8 dB, Ratio 4:1, Attack 3ms, Release 70ms\r\n- **High**: Threshold -10 dB, Ratio 3:1, Attack 0.5ms, Release 50ms\r\n- **Crossovers**: 120 Hz / 3.5 kHz\r\n\r\n## Common Issues & Quick Fixes\r\n\r\n### 808s Sound Weak\r\n- Increase low-band ratio to 4:1 or higher\r\n- Lower threshold to -20 dB to catch quieter notes\r\n- Slower attack (10-20ms) to preserve punch\r\n\r\n### Mix Sounds Harsh\r\n- Reduce high-band ratio to 1.5:1 or lower\r\n- Raise threshold to only compress peaks\r\n- Increase attack time to preserve transients\r\n\r\n### Vocals Get Lost\r\n- Reduce mid-band compression\r\n- Adjust crossover to isolate vocal range (800 Hz - 4 kHz)\r\n- Use slower attack to preserve consonants\r\n\r\n### Loss of Energy\r\n- Reduce ratios across all bands\r\n- Use faster release times for quicker recovery\r\n- Bypass individual bands to identify problem area\r\n\r\n### Pumping/Breathing\r\n- Slower release times (100ms+)\r\n- Reduce ratios for gentler compression\r\n- Adjust threshold higher to compress less\r\n\r\n## 5-Minute Workflow\r\n\r\n1. **Insert Fruity Squeeze** on master or bus\r\n2. **Solo each band** to understand frequency content\r\n3. **Set crossovers** based on genre (trap = lower, R&B = higher)\r\n4. **Start with low band** - control bass/808s first\r\n5. **Move to mid band** - balance body and vocals\r\n6. **Finish with high band** - control brightness\r\n7. **Listen in context** - adjust for overall balance\r\n8. **A/B test** - bypass to compare against unprocessed\r\n",
+      "parameter-cheat-sheet": "# Fruity Squeeze - Parameter Cheat Sheet\r\n\r\n## Core Parameters\r\n\r\n### Squarize\r\n- **Function:** Bit depth reduction amount\r\n- **Range:** 0-100%\r\n- **Effect:** Creates digital grit and \"stepped\" artifacts\r\n- **Low (0-30%):** Subtle character, warm digital texture\r\n- **Medium (30-70%):** Noticeable 8-bit degradation, retro vibe\r\n- **High (70-100%):** Extreme digital crushing, aliasing artifacts\r\n- **Pro Tip:** Start at 10-20% for drums, increase gradually to taste\r\n\r\n### Preserve\r\n- **Function:** Amount of original samples to keep\r\n- **Range:** 0-100%\r\n- **Effect:** Maintains clean transients and clarity\r\n- **Low:** More processed content, aggressive distortion\r\n- **High:** More original content, subtle enhancement\r\n- **Pro Tip:** Keep at 50-70% for drums to maintain punch\r\n\r\n### Impact\r\n- **Function:** Amount of processed (distorted) samples to add\r\n- **Range:** 0-100%\r\n- **Effect:** Adds crushed/distorted character\r\n- **Low:** Subtle enhancement\r\n- **High:** Aggressive lo-fi distortion\r\n- **Pro Tip:** Balance with Preserve for desired intensity\r\n\r\n### Relation\r\n- **Function:** Ratio between Preserve and Impact\r\n- **Range:** Variable ratio control\r\n- **Effect:** Fine-tunes the balance between clean and crushed\r\n- **Left:** More Preserve relative to Impact\r\n- **Right:** More Impact relative to Preserve\r\n- **Pro Tip:** Adjust after setting Preserve/Impact for character fine-tuning\r\n\r\n## Filter Section\r\n\r\n### Frequency\r\n- **Function:** Filter cutoff frequency\r\n- **Range:** 20 Hz - 20 kHz\r\n- **Low-Pass Mode:** Cuts highs, tames harshness\r\n- **High-Pass Mode:** Cuts lows, cleans up muddiness\r\n- **Pro Tip:** Use Post-LP to tame harsh aliasing from high Squarize\r\n\r\n### Resonance (Res)\r\n- **Function:** Emphasis at cutoff frequency\r\n- **Range:** 0-100%\r\n- **Effect:** Creates peak at filter cutoff\r\n- **Low:** Smooth filtering\r\n- **High:** Resonant peak, self-oscillation possible\r\n- **Pro Tip:** Keep below 30% to avoid \"whistling\" artifacts\r\n\r\n### Filter Position\r\n- **Pre:** Filters BEFORE distortion\r\n  - Use for: Tone shaping input signal\r\n  - Effect: Distortion reacts to filtered signal\r\n- **Post:** Filters AFTER distortion\r\n  - Use for: Taming harsh artifacts\r\n  - Effect: Cleans up processed signal\r\n- **Pro Tip:** Use Post for most applications, Pre for creative tone shaping\r\n\r\n## Mix & Output\r\n\r\n### Mix\r\n- **Function:** Dry/wet balance\r\n- **Range:** 0% (dry) - 100% (wet)\r\n- **Low:** Subtle parallel processing\r\n- **100%:** Full effect replacement\r\n- **Pro Tip:** Use 30-50% for parallel drum processing to maintain dynamics\r\n\r\n### Gain\r\n- **Function:** Output level compensation\r\n- **Effect:** Adjusts final output volume\r\n- **Pro Tip:** Bit reduction often reduces perceived loudness, compensate here\r\n\r\n## Common Parameter Combinations\r\n\r\n### Crunchy Drum Bus\r\n```\r\nSquarize: 15%\r\nPreserve: 60%\r\nImpact: 40%\r\nRelation: Centered\r\nFilter: Post-LP @ 10kHz, Res 10%\r\nMix: 35%\r\n```\r\n\r\n### Total 8-Bit Destruction\r\n```\r\nSquarize: 90%\r\nPreserve: 20%\r\nImpact: 80%\r\nRelation: Favor Impact\r\nFilter: Post-LP @ 8kHz, Res 5%\r\nMix: 100%\r\n```\r\n\r\n### Vintage Radio Effect\r\n```\r\nSquarize: 45%\r\nPreserve: 30%\r\nImpact: 70%\r\nRelation: Favor Impact\r\nFilter: Pre-BP @ 2.5kHz, Res 40%\r\nMix: 80%\r\n```\r\n\r\n### Subtle Lo-Fi Character\r\n```\r\nSquarize: 8%\r\nPreserve: 80%\r\nImpact: 20%\r\nRelation: Favor Preserve\r\nFilter: Post-LP @ 15kHz, Res 0%\r\nMix: 25%\r\n```\r\n\r\n### Industrial Bass Grit\r\n```\r\nSquarize: 35%\r\nPreserve: 40%\r\nImpact: 60%\r\nRelation: Centered\r\nFilter: Post-HP @ 80Hz, Res 15%\r\nMix: 60%\r\n```\r\n\r\n## Quick Troubleshooting\r\n\r\n### Problem: Sound is too harsh/bright\r\n- **Solution:** Lower Squarize, set Filter to Post-LP, reduce high frequencies\r\n\r\n### Problem: Losing punch/transients\r\n- **Solution:** Increase Preserve, lower Mix for parallel processing\r\n\r\n### Problem: Whistling/ringing artifacts\r\n- **Solution:** Lower Filter Resonance below 20%\r\n\r\n### Problem: Sound is getting too quiet\r\n- **Solution:** Increase Gain, check Mix slider isn't too low\r\n\r\n### Problem: Too muddy/unclear\r\n- **Solution:** Use Filter in Post-HP mode, reduce low-frequency Squarize\r\n\r\n### Problem: Not enough character\r\n- **Solution:** Increase Squarize and Impact, balance with Preserve\r\n\r\n## Parameter Interaction Tips\r\n\r\n1. **Squarize + Filter Position:** High Squarize creates aliasing; use Post-LP filtering\r\n2. **Preserve + Impact:** These work together via Relation - balance is key\r\n3. **Mix + Gain:** Lower Mix often requires higher Gain to match levels\r\n4. **Resonance + Frequency:** High Res creates peaks; set Frequency carefully\r\n5. **Impact + Filter Pre:** Pre-filtering changes what Impact processes\r\n\r\n## Quick Reference Values\r\n\r\n### For Drums\r\n- Squarize: 10-25%\r\n- Preserve: 50-70%\r\n- Mix: 30-50% (parallel)\r\n\r\n### For Synths\r\n- Squarize: 15-40%\r\n- Preserve: 40-60%\r\n- Mix: 60-100%\r\n\r\n### For Vocals\r\n- Squarize: 5-15%\r\n- Preserve: 70-85%\r\n- Mix: 20-40% (parallel)\r\n\r\n### For Bass\r\n- Squarize: 10-30%\r\n- Preserve: 50-65%\r\n- Filter: Post-HP to protect lows\r\n\r\n---\r\n\r\n**Pro Tip:** Always A/B compare with the bypassed plugin to ensure you're adding value, not just different!\r\n",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Squeeze\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Squeeze to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Squeeze\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Squeeze\r\n\r\nThis section contains learning information for the fruity-squeeze plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "8-bit-sound-creation": "# 8-Bit Sound Creation\r\n\r\n## Goal\r\nTransform modern audio into authentic retro video game sounds with extreme bit reduction and digital artifacts.\r\n\r\n## When to Use\r\n- Chiptune and 8-bit music production\r\n- Retro video game sound effects\r\n- Nostalgic/vintage electronic music\r\n- Creative lo-fi textures\r\n- Glitch and experimental sound design\r\n\r\n## The Setup\r\n\r\n### Core 8-Bit Settings\r\n```\r\nSquarize: 85-95%\r\nPreserve: 15-25%\r\nImpact: 75-85%\r\nRelation: Favor Impact (75% right)\r\nFilter Frequency: 6-8 kHz (Post-LP)\r\nFilter Resonance: 5-10%\r\nMix: 100%\r\nGain: +4 to +6 dB\r\n```\r\n\r\n## Understanding 8-Bit Sound\r\n\r\n### What Makes It \"8-Bit\"?\r\n1. **Severe bit depth reduction:** Limited resolution creates stepped waveforms\r\n2. **Heavy aliasing:** Digital artifacts that sound \"wrong\" but nostalgic\r\n3. **Loss of dynamic range:** Extreme compression of dynamics\r\n4. **Harmonic distortion:** Non-musical harmonics from quantization\r\n5. **Limited frequency response:** Missing high and low frequencies\r\n\r\n### Fruity Squeeze's Role\r\n- **Squarize:** Reduces bit depth (mimics old ADCs)\r\n- **Puncher:** Adds sample-based distortion (mimics cheap DACs)\r\n- **Filter:** Removes frequencies beyond vintage system capabilities\r\n\r\n## Step-by-Step Process\r\n\r\n### Step 1: Extreme Bit Reduction\r\n1. Set Squarize to 85%\r\n2. Play your audio\r\n3. **Listen for:** Severe \"stepping\" and digital artifacts\r\n4. **Adjust:** 80% (less extreme) to 95% (most extreme)\r\n\r\n**What you're hearing:** The bit depth is so low that the waveform is \"quantized\" into discrete steps, like early video game hardware.\r\n\r\n### Step 2: Aggressive Puncher Settings\r\n1. Set Preserve to 20%\r\n2. Set Impact to 80%\r\n3. Set Relation to favor Impact\r\n4. **Result:** Most samples are replaced with heavily distorted versions\r\n\r\n**Why this works:** Mimics the aggressive sample replacement of old sound chips.\r\n\r\n### Step 3: Frequency Limitation\r\n1. Enable Post-LP filtering\r\n2. Set Frequency to 6-8 kHz\r\n3. Keep Resonance low (5-10%)\r\n4. **Purpose:** Old systems couldn't reproduce high frequencies\r\n\r\n**Historical accuracy:** NES/Game Boy maxed out around 5-8 kHz\r\n\r\n### Step 4: Full Wet Mix\r\n- Set Mix to 100%\r\n- This is a destructive effect—we want full replacement\r\n- No parallel processing for authentic 8-bit\r\n\r\n### Step 5: Gain Compensation\r\n- Increase Gain by +4 to +6 dB\r\n- Extreme bit reduction severely reduces perceived loudness\r\n- Match to original level for fair comparison\r\n\r\n## Source Material Considerations\r\n\r\n### Best Sources for 8-Bit Conversion\r\n\r\n#### Synth Leads/Arps\r\n- **Settings:** Squarize 90%, Impact 80%\r\n- Simple waveforms (square/saw) convert best\r\n- Complex wavetables create interesting artifacts\r\n\r\n#### Drum Loops\r\n- **Settings:** Squarize 85%, Preserve 25% (keep some transients)\r\n- Kicks become punchy, lo-fi thumps\r\n- Snares get crunchy, distorted snap\r\n\r\n#### Chord Stabs\r\n- **Settings:** Squarize 88%, Filter @ 7 kHz\r\n- Rich chords create complex aliasing (cool textures)\r\n\r\n#### Bass Lines\r\n- **Settings:** Squarize 80%, Post-HP @ 100 Hz (protect lows)\r\n- Less extreme to maintain low-end presence\r\n\r\n### Problematic Sources\r\n- **Complex vocals:** Usually sound unintelligible (can be a feature!)\r\n- **Acoustic instruments:** Lose too much character (unless that's the goal)\r\n- **Wide stereo content:** Collapse to mono for authenticity\r\n\r\n## System-Specific Emulations\r\n\r\n### NES (Nintendo Entertainment System)\r\n```\r\nSquarize: 85%\r\nPreserve: 20%\r\nImpact: 80%\r\nFilter: Post-LP @ 8 kHz, Res 8%\r\nCharacter: Crunchy, bright, limited range\r\n```\r\n**Pro Tip:** Add subtle PWM modulation to synths before Squeeze\r\n\r\n### Game Boy (Original)\r\n```\r\nSquarize: 90%\r\nPreserve: 15%\r\nImpact: 85%\r\nFilter: Post-LP @ 6 kHz, Res 5%\r\nCharacter: Dark, crunchy, severe limitations\r\n```\r\n**Pro Tip:** Lower filter cutoff for authentic muddiness\r\n\r\n### Sega Genesis/Mega Drive\r\n```\r\nSquarize: 70%\r\nPreserve: 30%\r\nImpact: 70%\r\nFilter: Post-LP @ 10 kHz, Res 10%\r\nCharacter: Less crunchy, more hi-fi than NES/GB\r\n```\r\n**Pro Tip:** Less extreme settings for \"16-bit\" sound\r\n\r\n### Commodore 64 (SID Chip)\r\n```\r\nSquarize: 75%\r\nPreserve: 25%\r\nImpact: 75%\r\nFilter: Post-LP @ 9 kHz, Res 25%\r\nCharacter: Distinctive resonant filtering\r\n```\r\n**Pro Tip:** Higher resonance for classic SID character\r\n\r\n### Atari 2600\r\n```\r\nSquarize: 95%\r\nPreserve: 10%\r\nImpact: 90%\r\nFilter: Post-LP @ 5 kHz, Res 5%\r\nCharacter: Most extreme, very lo-fi\r\n```\r\n**Pro Tip:** Push Squarize to maximum for authentic Atari harshness\r\n\r\n## Genre-Specific 8-Bit Styles\r\n\r\n### Chiptune/8-Bit Music\r\n- Full destruction (Squarize 90%+)\r\n- Monophonic melodies for authenticity\r\n- Simple, punchy drums\r\n- Arpeggiated chords (like hardware limitations)\r\n\r\n### Lo-Fi Hip-Hop (8-Bit Influenced)\r\n- Moderate destruction (Squarize 60-75%)\r\n- Higher Preserve (35-45%) to keep some fidelity\r\n- Apply to samples, not full mix\r\n- Blend with clean elements\r\n\r\n### Glitch/Experimental\r\n- Maximum destruction (Squarize 95%)\r\n- Automate Preserve/Impact for evolving textures\r\n- Use on unexpected sources (vocals, acoustics)\r\n- Layer with clean signals for contrast\r\n\r\n### Vaporwave/Future Funk\r\n- Medium destruction (Squarize 50-70%)\r\n- Apply to specific elements (not full mix)\r\n- Blend with reverb/delay for dreamlike quality\r\n- Use for nostalgic callbacks\r\n\r\n## Advanced 8-Bit Techniques\r\n\r\n### Dynamic 8-Bit Conversion\r\nAutomate Squarize for evolving degradation:\r\n- **Intro:** Squarize 0% (clean)\r\n- **Build:** Squarize 20% → 80% (progressive crush)\r\n- **Drop:** Squarize 90% (full 8-bit)\r\n- **Outro:** Squarize 90% → 0% (return to clarity)\r\n\r\n### Frequency-Specific 8-Bit\r\nUse Patcher to split frequency bands:\r\n- **Lows (< 200 Hz):** Squarize 50% (protect bass)\r\n- **Mids (200 Hz - 2 kHz):** Squarize 90% (full crush)\r\n- **Highs (> 2 kHz):** Filtered out completely\r\n**Result:** Punchy lows, crunchy mids, no highs (like real hardware)\r\n\r\n### Layered 8-Bit Processing\r\nLayer multiple instances with different extremes:\r\n- **Layer 1:** Squarize 95%, Mix 60%\r\n- **Layer 2:** Squarize 70%, Mix 40%\r\n**Result:** Complex, stratified digital artifacts\r\n\r\n### Rhythmic 8-Bit Glitching\r\nUse LFO to modulate Squarize rhythmically:\r\n- Assign LFO to Squarize (0% to 90%)\r\n- Set LFO to 1/16 note rhythm\r\n- Creates rhythmic digital glitching\r\n**Perfect for:** Breakdowns and build-ups\r\n\r\n## Enhancing 8-Bit Sounds\r\n\r\n### Pre-Processing (Before Squeeze)\r\n- **Simplify waveform:** Use simple synth shapes (square, saw)\r\n- **Monophonic melodies:** More authentic to old hardware\r\n- **Transient shaping:** Enhance attack for punchier 8-bit\r\n\r\n### Post-Processing (After Squeeze)\r\n- **Additional filtering:** Use Parametric EQ 2 to shape\r\n- **Stereo widening:** Subtle widening (old systems were mono)\r\n- **Reverb:** Short, lo-fi reverb for space\r\n- **Bit depth reduction:** Additional bit crusher in series for more extreme effect\r\n\r\n### Parallel Blending (Optional)\r\nFor \"modern 8-bit\" hybrid sounds:\r\n- Main chain: Full 8-bit settings (Mix 100%)\r\n- Parallel chain: Clean signal\r\n- Blend: 80% 8-bit / 20% clean\r\n**Result:** Maintains some fidelity while preserving character\r\n\r\n## Common Issues & Fixes\r\n\r\n### Problem: Sound is too harsh/painful\r\n**Fix:**\r\n- Lower Filter cutoff to 6 kHz or below\r\n- Reduce Filter Resonance to 0-5%\r\n- Lower Squarize slightly (85% instead of 95%)\r\n\r\n### Problem: Losing all low-end punch\r\n**Fix:**\r\n- Use Post-HP filtering to protect subs\r\n- Lower Squarize on bass elements (70-80%)\r\n- Consider multiband approach (protect lows)\r\n\r\n### Problem: Too much aliasing noise\r\n**Fix:**\r\n- Lower Filter cutoff (5-7 kHz)\r\n- Reduce Impact slightly (75% instead of 85%)\r\n- Use Parametric EQ after to notch out harsh frequencies\r\n\r\n### Problem: Effect sounds too modern/clean\r\n**Fix:**\r\n- Increase Squarize to 90-95%\r\n- Lower Preserve to 10-15%\r\n- Favor Impact more aggressively in Relation\r\n- Lower Filter cutoff to 6 kHz or below\r\n\r\n### Problem: Unintelligible audio\r\n**Fix:**\r\n- This is often desired for 8-bit! But if not:\r\n- Increase Preserve to 30-40%\r\n- Lower Squarize to 75-85%\r\n- Increase Filter cutoff to 8-10 kHz\r\n\r\n## Integration with Other Plugins\r\n\r\n### Fruity Chorus (Before Squeeze)\r\n- Adds analog-style modulation\r\n- Thickens sound before crushing\r\n- Use subtle settings\r\n\r\n### Fruity WaveShaper (After Squeeze)\r\n- Additional harmonic distortion\r\n- Use for even more aggressive crushing\r\n- Stack effects for extreme results\r\n\r\n### Parametric EQ 2 (After Squeeze)\r\n- Notch out harsh aliasing frequencies\r\n- Boost/cut for character\r\n- Shape final tone\r\n\r\n### Gross Beat (After Squeeze)\r\n- Time manipulation of 8-bit sounds\r\n- Glitch effects on crushed audio\r\n- Perfect for experimental production\r\n\r\n## Export Considerations\r\n\r\n### For Chiptune Production\r\n- Export at 44.1 kHz (standard for most DAWs)\r\n- Consider downsampling to 22.05 kHz for more authentic aliasing\r\n- Add subtle dithering if exporting at 16-bit\r\n\r\n### For Modern Production\r\n- Keep at project sample rate (48 kHz typical)\r\n- Export with headroom (-3 dB to -6 dB peak)\r\n- Maintain 24-bit or 32-bit float for further processing\r\n\r\n## Authenticity vs. Musicality\r\n\r\n### Historically Accurate 8-Bit\r\n- Extreme settings (Squarize 90%+)\r\n- Low filter cutoff (5-7 kHz)\r\n- Mono output\r\n- No reverb/delay (or very short)\r\n- Limited dynamic range\r\n\r\n### Modern \"8-Bit Inspired\"\r\n- Moderate settings (Squarize 60-80%)\r\n- Higher filter cutoff (8-12 kHz)\r\n- Stereo width (subtle)\r\n- Modern effects (reverb, delay)\r\n- More dynamic range\r\n\r\n**Choose based on your goal:** Authentic chiptune or modern lo-fi aesthetic?\r\n\r\n## Final Pro Tips\r\n\r\n1. **Reference real hardware:** Listen to actual NES/Game Boy music for accuracy\r\n2. **Less is more (sometimes):** Squarize at 80% can sound better than 95%\r\n3. **Layer with clean:** Blend 8-bit with clean elements for hybrid sounds\r\n4. **Automate for movement:** Static 8-bit can get boring—automate parameters\r\n5. **Embrace artifacts:** Aliasing and distortion are features, not bugs\r\n6. **Save presets:** Create system-specific presets for quick recall\r\n7. **Experiment with sources:** Try unexpected inputs for unique textures\r\n\r\n---\r\n\r\n**Remember:** Authentic 8-bit is about limitation and character. Embrace the harshness, aliasing, and digital artifacts—that's what makes it nostalgic!\r\n",
+      "controlling-808s": "# Controlling 808s with Fruity Squeeze\r\n\r\n## Objective\r\nAchieve consistent, tight 808 bass that sits perfectly in the mix without overpowering or getting lost.\r\n\r\n## When to Use This Workflow\r\n- Inconsistent 808 velocity across notes\r\n- 808s overwhelming the mix on certain notes\r\n- Need to glue 808s with kick drums\r\n- Creating space for vocals and melodic elements\r\n\r\n## Step-by-Step Process\r\n\r\n### 1. Insert on Bass Bus\r\nRoute all bass elements (808s, sub-bass) to a dedicated bus and insert Fruity Squeeze.\r\n\r\n### 2. Set Crossover Points\r\n- **Low/Mid Crossover**: 250 Hz (isolate sub frequencies)\r\n- **Mid/High Crossover**: 2 kHz (keep 808 harmonics separate)\r\n\r\n### 3. Configure Low Band (Main Focus)\r\n- **Threshold**: -16 dB (catches most 808 hits)\r\n- **Ratio**: 4:1 to 6:1 (moderate to aggressive)\r\n- **Attack**: 5-10ms (preserves transient punch)\r\n- **Release**: 100-150ms (follows 808 decay naturally)\r\n- **Gain**: +1 to +2 dB (compensate for compression)\r\n\r\n### 4. Configure Mid Band (Light Touch)\r\n- **Threshold**: -20 dB (only compress peaks)\r\n- **Ratio**: 1.5:1 (very gentle)\r\n- **Attack**: 15ms\r\n- **Release**: 100ms\r\n- **Gain**: 0 dB\r\n\r\n### 5. Configure High Band (Minimal)\r\n- **Threshold**: -25 dB (barely compressing)\r\n- **Ratio**: 1:1 to 1.2:1\r\n- **Attack**: 5ms\r\n- **Release**: 60ms\r\n- **Gain**: -1 dB (reduce brightness if needed)\r\n\r\n### 6. Fine-Tune by Genre\r\n\r\n**Moody/Dark Trap**\r\n- Higher ratio (6:1) for extremely tight control\r\n- Lower threshold (-18 dB) to compress more\r\n- Longer release (150ms) for smooth tail\r\n\r\n**Upbeat/Energetic**\r\n- Medium ratio (4:1) for punch with control\r\n- Moderate threshold (-15 dB)\r\n- Medium release (120ms)\r\n\r\n**Melodic/R&B**\r\n- Lower ratio (2.5:1) for natural feel\r\n- Higher threshold (-20 dB) to compress less\r\n- Longer attack (15ms) to preserve musicality\r\n\r\n**Electronic/Experimental**\r\n- Extreme ratio (8:1+) for heavy compression\r\n- Very low threshold (-12 dB)\r\n- Fast attack (1-3ms) for aggressive sound\r\n\r\n### 7. A/B Testing\r\n- Bypass Fruity Squeeze to compare\r\n- Check consistency across different notes\r\n- Ensure low-end doesn't overwhelm when layered with kick\r\n\r\n### 8. Output Gain Compensation\r\nAdd output gain to match bypassed level, then add 0.5-1 dB for presence.\r\n\r\n## Common Adjustments\r\n\r\n### 808s Sound Weak\r\n- Increase low-band gain\r\n- Lower threshold to compress more\r\n- Increase ratio for more consistent level\r\n\r\n### 808s Sound Lifeless\r\n- Faster attack to preserve transient\r\n- Lower ratio for more dynamics\r\n- Reduce amount of compression (higher threshold)\r\n\r\n### 808s Clash with Kick\r\n- Sidechain low band to kick\r\n- Adjust crossover point to separate frequencies\r\n- Use faster attack for quicker ducking\r\n\r\n## Pro Tips for Hip-Hop\r\n\r\n1. **Layer with Kick**: Use parallel compression on 808 bus for extra thickness\r\n2. **Automate Threshold**: Lower threshold during verses, raise during chorus for dynamic variation\r\n3. **Monitor in Mono**: Check low-end consistency in mono to ensure translation\r\n4. **Reference Tracks**: Compare your 808 level/consistency to professional references\r\n5. **Room for Vocals**: Leave 3-6 dB headroom between compressed 808 and vocal fundamental\r\n\r\n## Genre-Specific Settings Summary\r\n\r\n| Genre | Ratio | Threshold | Attack | Release |\r\n|-------|-------|-----------|--------|---------|\r\n| Moody Trap | 6:1 | -18 dB | 5ms | 150ms |\r\n| Upbeat | 4:1 | -15 dB | 10ms | 120ms |\r\n| Melodic | 2.5:1 | -20 dB | 15ms | 140ms |\r\n| Electronic | 8:1 | -12 dB | 1ms | 80ms |\r\n",
+      "crunchy-drum-bus": "# Crunchy Drum Bus Processing\r\n\r\n## Goal\r\nAdd analog-style grit and character to drum groups while maintaining punch and transients.\r\n\r\n## When to Use\r\n- Electronic drums need more character\r\n- Clean samples sound too sterile\r\n- Need lo-fi hip-hop drum textures\r\n- Want \"sampled from vinyl\" vibe\r\n- Mixing modern drums with vintage sounds\r\n\r\n## The Setup\r\n\r\n### Routing\r\n1. Create a send track or bus for your drum group\r\n2. Add Fruity Squeeze as an insert effect\r\n3. OR use Squeeze directly on drum bus with parallel Mix setting\r\n\r\n### Core Settings\r\n```\r\nSquarize: 15%\r\nPreserve: 60%\r\nImpact: 40%\r\nRelation: Centered\r\nFilter Frequency: 10 kHz (Post-LP)\r\nFilter Resonance: 10%\r\nMix: 35%\r\nGain: +2 dB (compensate for perceived volume loss)\r\n```\r\n\r\n## Step-by-Step Process\r\n\r\n### Step 1: Set Up Parallel Processing\r\n- **Why parallel?** Maintains original transients while adding crushed character\r\n- Set Mix to 30-40% initially\r\n- Keep dry signal punchy, add Squeeze for body\r\n\r\n### Step 2: Dial In Bit Reduction\r\n- Start with Squarize at 0%\r\n- Slowly increase to 10-20%\r\n- **Listen for:** Subtle digital \"crunch\" on snare hits\r\n- **Stop when:** You hear character without harshness\r\n\r\n### Step 3: Balance Preserve/Impact\r\n- Set Preserve to 60% (keeps transients clean)\r\n- Set Impact to 40% (adds crushed body/tail)\r\n- Relation centered (balanced character)\r\n- **Result:** Kick/snare attacks stay punchy, tails get crunchy\r\n\r\n### Step 4: Tame High-End Artifacts\r\n- Enable Post-LP filtering\r\n- Set Frequency to 8-12 kHz\r\n- Resonance at 5-10% (minimal)\r\n- **Why:** Bit reduction creates aliasing; filtering prevents harshness\r\n\r\n### Step 5: Fine-Tune Mix\r\n- A/B between 25%, 35%, and 50% Mix\r\n- **25%:** Subtle enhancement\r\n- **35%:** Noticeable character (sweet spot)\r\n- **50%:** Aggressive lo-fi\r\n- Adjust to taste for your track\r\n\r\n### Step 6: Level Match\r\n- Bypass Squeeze and note perceived loudness\r\n- Increase Gain to match processed volume\r\n- **Important:** Bit reduction often reduces perceived loudness\r\n\r\n## Genre-Specific Variations\r\n\r\n### Lo-Fi Hip-Hop\r\n```\r\nSquarize: 20%\r\nPreserve: 55%\r\nImpact: 45%\r\nMix: 40%\r\nFilter: Post-LP @ 9 kHz, Res 5%\r\n```\r\n**Character:** Warm, vinyl-sampled vibe\r\n\r\n### Trap/Modern Hip-Hop\r\n```\r\nSquarize: 10%\r\nPreserve: 70%\r\nImpact: 30%\r\nMix: 25%\r\nFilter: Post-LP @ 12 kHz, Res 8%\r\n```\r\n**Character:** Subtle grit, maintains punch\r\n\r\n### Electronic/IDM\r\n```\r\nSquarize: 18%\r\nPreserve: 50%\r\nImpact: 50%\r\nRelation: Slight favor to Impact\r\nMix: 45%\r\nFilter: Post-LP @ 10 kHz, Res 12%\r\n```\r\n**Character:** Digital crunch, noticeable artifacts\r\n\r\n### House/Techno\r\n```\r\nSquarize: 12%\r\nPreserve: 65%\r\nImpact: 35%\r\nMix: 30%\r\nFilter: Post-LP @ 11 kHz, Res 6%\r\n```\r\n**Character:** Warmth and body without losing clarity\r\n\r\n## Element-Specific Tips\r\n\r\n### Kick Drums\r\n- Keep Preserve high (65-75%) to maintain sub presence\r\n- Use Post-HP filtering at 30-50 Hz if low-end gets muddy\r\n- Lower Mix (20-30%) for subtle enhancement\r\n\r\n### Snare/Claps\r\n- Preserve at 55-65% maintains snap\r\n- Squarize adds body to the tail\r\n- Can push Mix higher (40-50%) for more character\r\n\r\n### Hi-Hats/Cymbals\r\n- Be careful with high Squarize (creates harshness)\r\n- Use aggressive Post-LP filtering (8-10 kHz)\r\n- Keep Mix lower (20-30%) to avoid brittle sound\r\n\r\n### Toms/Percussion\r\n- Benefit from higher Impact (45-55%)\r\n- Preserve transients with 60%+ Preserve\r\n- Squarize adds texture to resonance\r\n\r\n## Common Issues & Fixes\r\n\r\n### Problem: Kick loses punch\r\n**Cause:** Too much Impact, Preserve too low\r\n**Fix:** \r\n- Increase Preserve to 70%\r\n- Lower Mix to 25%\r\n- Consider sidechain filtering (use Patcher + EQ before Squeeze)\r\n\r\n### Problem: Cymbals sound harsh/brittle\r\n**Cause:** High-frequency aliasing from Squarize\r\n**Fix:**\r\n- Lower Squarize to 10-12%\r\n- Set Filter to Post-LP at 8 kHz\r\n- Reduce Filter Resonance to 0-5%\r\n\r\n### Problem: Effect is too subtle\r\n**Cause:** Mix too low, Squarize too conservative\r\n**Fix:**\r\n- Increase Squarize to 18-22%\r\n- Push Mix to 40-50%\r\n- Increase Impact to 50%\r\n\r\n### Problem: Drums sound muddy\r\n**Cause:** Low-frequency bit reduction\r\n**Fix:**\r\n- Use Post-HP filtering at 80-100 Hz\r\n- Lower Impact in low frequencies\r\n- Consider multiband routing (Patcher)\r\n\r\n### Problem: Losing dynamics\r\n**Cause:** Mix too high, parallel processing lost\r\n**Fix:**\r\n- Reduce Mix to 25-35%\r\n- Increase Preserve to 70%\r\n- Use true parallel routing (send track)\r\n\r\n## Advanced Techniques\r\n\r\n### Multiband Squeeze\r\n1. Route drums through Patcher\r\n2. Split into Low/Mid/High bands\r\n3. Apply different Squeeze settings per band:\r\n   - **Lows:** Squarize 5%, high Preserve (protect kick)\r\n   - **Mids:** Squarize 20%, balanced Preserve/Impact (snare body)\r\n   - **Highs:** Squarize 10%, heavy Post-LP filtering (tame cymbals)\r\n\r\n### Dynamic Squeeze Automation\r\n- **Intro:** Mix at 20% (subtle)\r\n- **Verse:** Mix at 35% (noticeable)\r\n- **Chorus:** Mix at 50% (aggressive lo-fi)\r\n- **Breakdown:** Mix at 0% (clean contrast)\r\n- Creates evolving texture throughout the track\r\n\r\n### Layered Parallel Processing\r\nUse two instances:\r\n- **Instance 1 (Transient Layer):**\r\n  - Squarize: 5%\r\n  - Preserve: 90%\r\n  - Mix: 20%\r\n  - Preserves punch\r\n- **Instance 2 (Body Layer):**\r\n  - Squarize: 25%\r\n  - Impact: 70%\r\n  - Mix: 30%\r\n  - Adds crushed character\r\n\r\n### Genre-Switching Presets\r\nSave snapshots for different sections:\r\n- **Clean Section:** Bypass or Mix 0%\r\n- **Lo-Fi Section:** Mix 50%, Squarize 25%\r\n- **Hybrid Section:** Mix 35%, Squarize 15%\r\n- Automate between them for dynamic arrangements\r\n\r\n## Integration with Other Effects\r\n\r\n### Before Squeeze\r\n- **Compression:** Control dynamics before adding grit\r\n- **Transient Shaper:** Enhance/reduce attack before processing\r\n- **EQ:** Remove problem frequencies before bit reduction\r\n\r\n### After Squeeze\r\n- **Parametric EQ 2:** Surgical cleanup of harsh frequencies\r\n- **Limiter:** Catch any peaks from aliasing artifacts\r\n- **Reverb/Delay:** Add space to the crushed drums\r\n\r\n### Parallel Chain\r\nRun Squeeze in parallel with:\r\n- Clean compression (maintain dynamics)\r\n- Saturation (add different harmonic character)\r\n- Reverb (blend crushed dry with clean space)\r\n\r\n## A/B Comparison Checklist\r\n\r\nWhen dialing in your settings, compare:\r\n- [ ] Bypassed vs. processed (is it better?)\r\n- [ ] Mix at 0% vs. current setting (right amount?)\r\n- [ ] Squarize at 0% vs. current (just enough grit?)\r\n- [ ] Preserve/Impact balance (maintaining punch?)\r\n- [ ] Filter on vs. off (taming harshness?)\r\n- [ ] Gain matched (same perceived loudness?)\r\n\r\n## Export/Rendering Considerations\r\n\r\nWhen bouncing drums with Squeeze:\r\n- Check for clipping from aliasing artifacts\r\n- Compare processed vs. unprocessed in full mix context\r\n- Consider bouncing with headroom (leave ~3 dB for mastering)\r\n- Save preset for recall if revisions needed\r\n\r\n## Recommended Chain\r\n\r\n```\r\n[Drums Bus] \r\n    → Compression (glue/control)\r\n    → EQ (corrective)\r\n    → Fruity Squeeze (character)\r\n    → Parametric EQ 2 (surgical cleanup)\r\n    → Limiter (safety/ceiling)\r\n    → [Mix Bus]\r\n```\r\n\r\n## Final Pro Tips\r\n\r\n1. **Less is more:** Start with subtle settings, increase as needed\r\n2. **A/B constantly:** Bypass frequently to ensure you're adding value\r\n3. **Save presets:** Once you find a sound, save it for future projects\r\n4. **Gain stage:** Always match levels when comparing processed/unprocessed\r\n5. **Trust your ears:** If it sounds good, it is good—specs don't matter\r\n\r\n---\r\n\r\n**Remember:** The goal is character, not destruction. Keep drums punchy and musical while adding that crushed, lo-fi vibe.\r\n",
+      "mastering-glue": "# Mastering Glue with Fruity Squeeze\r\n\r\n## Objective\r\nCreate cohesion and polish on the master bus without squashing dynamics or losing energy.\r\n\r\n## When to Use This Workflow\r\n- Mix elements feel disconnected\r\n- Need subtle \"finished\" sound\r\n- Final polish before limiting\r\n- Controlling frequency-specific dynamics\r\n\r\n## Step-by-Step Process\r\n\r\n### 1. Insert on Master Bus\r\nPlace Fruity Squeeze before your final limiter, after EQ and other mastering effects.\r\n\r\n### 2. Genre-Specific Crossover Settings\r\n\r\n**Moody/Dark Trap**\r\n- Low/Mid: 150 Hz\r\n- Mid/High: 4 kHz\r\n- (Emphasizes sub/bass control, darker top-end)\r\n\r\n**Upbeat/Bounce**\r\n- Low/Mid: 200 Hz\r\n- Mid/High: 5 kHz\r\n- (Balanced, energetic response)\r\n\r\n**Melodic/R&B**\r\n- Low/Mid: 180 Hz\r\n- Mid/High: 6 kHz\r\n- (Warmer, more air in high frequencies)\r\n\r\n**Funky/Boom-Bap**\r\n- Low/Mid: 220 Hz\r\n- Mid/High: 4.5 kHz\r\n- (Classic vintage frequency balance)\r\n\r\n**Electronic/Experimental**\r\n- Low/Mid: 120 Hz\r\n- Mid/High: 3.5 kHz\r\n- (Extended sub, aggressive mid/high split)\r\n\r\n### 3. Start with Gentle Settings\r\n\r\n**All Bands Initial Settings**\r\n- **Threshold**: -15 to -20 dB\r\n- **Ratio**: 1.5:1 to 2:1\r\n- **Attack**: 10-30ms\r\n- **Release**: 80-150ms\r\n- **Gain**: 0 dB\r\n\r\n### 4. Configure Each Band by Priority\r\n\r\n**Low Band (Sub/Bass)**\r\n- Most critical for hip-hop\r\n- **Threshold**: -18 dB\r\n- **Ratio**: 2.5:1 to 3:1\r\n- **Attack**: 15-20ms (preserve kick punch)\r\n- **Release**: 120-150ms (follow bass decay)\r\n\r\n**Mid Band (Body/Vocals)**\r\n- Affects vocal presence most\r\n- **Threshold**: -15 dB\r\n- **Ratio**: 1.5:1 to 2:1\r\n- **Attack**: 20-30ms (preserve transients)\r\n- **Release**: 100-120ms\r\n\r\n**High Band (Air/Brightness)**\r\n- Most transparent, least compression\r\n- **Threshold**: -12 to -15 dB\r\n- **Ratio**: 1.2:1 to 1.5:1\r\n- **Attack**: 5-10ms (control harsh transients)\r\n- **Release**: 80-100ms\r\n\r\n### 5. Genre-Specific Adjustments\r\n\r\n**Moody/Dark Trap**\r\n- **Low**: Ratio 3:1, Threshold -18 dB (tight bass control)\r\n- **Mid**: Ratio 2:1, Threshold -12 dB (preserve atmosphere)\r\n- **High**: Ratio 1.3:1, Threshold -15 dB, Gain -0.5 dB (darker aesthetic)\r\n\r\n**Upbeat/Energetic**\r\n- **Low**: Ratio 2.5:1, Threshold -15 dB (punchy low-end)\r\n- **Mid**: Ratio 2:1, Threshold -10 dB (forward energy)\r\n- **High**: Ratio 1.8:1, Threshold -12 dB (bright, present)\r\n\r\n**Melodic/R&B**\r\n- **Low**: Ratio 2:1, Threshold -20 dB (subtle, natural)\r\n- **Mid**: Ratio 1.5:1, Threshold -15 dB (vocal clarity)\r\n- **High**: Ratio 1.5:1, Threshold -18 dB (silky smooth)\r\n\r\n**Electronic/Experimental**\r\n- **Low**: Ratio 4:1, Threshold -12 dB (aggressive)\r\n- **Mid**: Ratio 3:1, Threshold -8 dB (pumping)\r\n- **High**: Ratio 2.5:1, Threshold -10 dB (energetic)\r\n\r\n### 6. Critical Listening Checks\r\n- **A/B with bypass**: Should sound more cohesive, not quieter\r\n- **Check transients**: Snares and kicks should still punch\r\n- **Vocal clarity**: Vocals shouldn't get buried\r\n- **Low-end control**: Bass should be tight but not thin\r\n- **Overall energy**: Should feel polished, not lifeless\r\n\r\n### 7. Fine-Tuning\r\n- Adjust individual band gains to balance frequency spectrum\r\n- Use slower release for smoother, less noticeable compression\r\n- Reduce ratio if losing too much dynamic range\r\n- Increase threshold if squashing too much\r\n\r\n### 8. Output Gain Staging\r\n- Match bypassed level first\r\n- Add 0.3-0.8 dB for perceived loudness without clipping\r\n\r\n## Common Issues & Solutions\r\n\r\n### Lost Punch\r\n- Increase attack times (30ms+)\r\n- Reduce ratios to 1.5:1 or lower\r\n- Raise thresholds to compress less\r\n\r\n### Too Bright/Harsh\r\n- Reduce high-band gain by -0.5 to -1 dB\r\n- Increase high-band threshold\r\n- Lower high-band ratio to 1.2:1\r\n\r\n### Muddy Low-End\r\n- Lower low/mid crossover point\r\n- Increase low-band ratio to 3:1+\r\n- Faster attack on low band (10-15ms)\r\n\r\n### Lifeless Mix\r\n- Increase all attack times\r\n- Reduce all ratios by 0.5\r\n- Use parallel processing (mix at 70-85%)\r\n\r\n## Advanced Techniques\r\n\r\n### Parallel Multiband Compression\r\nSet mix to 70-80% for NY-style parallel compression effect.\r\n\r\n### Dynamic Crossover Movement\r\nAutomate crossover points for different song sections (verse vs. chorus).\r\n\r\n### Band-Specific Sidechaining\r\nSidechain mid-band to vocal for automatic ducking.\r\n\r\n### Upward Compression Emulation\r\nUse very low threshold with low ratio to bring up quiet parts.\r\n\r\n## Final Mastering Chain Position\r\nTypical order:\r\n1. Subtractive EQ\r\n2. **Fruity Squeeze** ← You are here\r\n3. Additive EQ (if needed)\r\n4. Stereo imaging\r\n5. Final limiter\r\n\r\n## Settings Reference Card\r\n\r\n| Genre | Low Ratio | Mid Ratio | High Ratio | Low/Mid X | Mid/High X |\r\n|-------|-----------|-----------|------------|-----------|------------|\r\n| Moody | 3:1 | 2:1 | 1.3:1 | 150 Hz | 4 kHz |\r\n| Upbeat | 2.5:1 | 2:1 | 1.8:1 | 200 Hz | 5 kHz |\r\n| Melodic | 2:1 | 1.5:1 | 1.5:1 | 180 Hz | 6 kHz |\r\n| Electronic | 4:1 | 3:1 | 2.5:1 | 120 Hz | 3.5 kHz |\r\n",
+      "maximum-loudness-workflow": "# Maximum Loudness Workflow\r\n\r\n## Goal\r\nAchieve competitive loudness for mastering or mix bus processing without destroying dynamics or creating excessive distortion.\r\n\r\n---\r\n\r\n## Prerequisites\r\n- Well-balanced mix with good headroom (-6 dB or more)\r\n- No clipping on master bus\r\n- Proper gain staging throughout mix\r\n\r\n---\r\n\r\n## Step-by-Step Workflow\r\n\r\n### 1. Insert Fruity Squeeze on Master Bus\r\n- Place after EQ but before limiter (if using one)\r\n- Bypass initially to establish baseline\r\n\r\n### 2. Set Crossover Points\r\n- **Low/Mid Crossover**: 100–150 Hz\r\n  - Why: Isolates bass for independent heavy compression\r\n- **Mid/High Crossover**: 2.5–3 kHz\r\n  - Why: Separates body from presence/air\r\n\r\n### 3. Configure Low Band (Bass)\r\n1. **Threshold**: Start at -12 dB\r\n2. **Ratio**: 6:1–8:1\r\n3. **Volume**: +2 to +4 dB\r\n4. Listen: Bass should be tight, controlled, not boomy\r\n\r\n**Why heavy low compression?**\r\n- Bass frequencies contain massive energy\r\n- Compressing them frees headroom for other elements\r\n- Creates perceived loudness without actually increasing peak level\r\n\r\n### 4. Configure Mid Band (Body/Presence)\r\n1. **Threshold**: -12 to -15 dB\r\n2. **Ratio**: 4:1–6:1\r\n3. **Volume**: +1 to +3 dB\r\n4. Listen: Mids should be dense, present, not thin\r\n\r\n**Why moderate mid compression?**\r\n- Most musical information lives here\r\n- Too much = lifeless, too little = inconsistent\r\n- Adds density and \"glue\"\r\n\r\n### 5. Configure High Band (Clarity/Air)\r\n1. **Threshold**: -15 to -18 dB\r\n2. **Ratio**: 2:1–4:1\r\n3. **Volume**: 0 to +2 dB\r\n4. Listen: Highs should be controlled but not dull\r\n\r\n**Why light high compression?**\r\n- Over-compressed highs = harshness and fatigue\r\n- High frequencies need air and space\r\n- Transparency is key here\r\n\r\n### 6. Adjust Input Level\r\n- Start at 0 dB\r\n- Increase to +1 to +3 dB for extra drive/warmth\r\n- Don't exceed +4 dB unless you want aggressive distortion\r\n\r\n### 7. Set Output Level\r\n1. Check output meter\r\n2. Adjust output level to match input level (for fair comparison)\r\n3. Bypass and A/B compare\r\n4. Aim for 2–4 dB louder than bypassed signal\r\n\r\n### 8. Fine-Tune Per Band\r\n**Solo each band and listen:**\r\n- **Low**: Should be tight, punchy, controlled\r\n- **Mid**: Should have body and density\r\n- **High**: Should have clarity without harshness\r\n\r\n**Adjust volume knobs to taste:**\r\n- More bass? Boost low volume\r\n- More presence? Boost mid volume\r\n- Brighter? Boost high volume\r\n\r\n### 9. Check for Artifacts\r\nListen for:\r\n- ❌ Pumping/breathing (shouldn't happen with waveshaper, but check anyway)\r\n- ❌ Excessive distortion (especially in mids/highs)\r\n- ❌ Loss of transients (kick/snare punch)\r\n- ❌ Muddiness (too much low-mid compression)\r\n\r\n### 10. Compare Bypassed vs. Processed\r\n1. Loop a representative section\r\n2. Bypass Fruity Squeeze\r\n3. Match perceived loudness (turn down monitor if needed)\r\n4. Listen for:\r\n   - ✅ Increased density\r\n   - ✅ Better tonal balance\r\n   - ✅ Louder perceived level\r\n   - ❌ Loss of dynamics (if too much, reduce ratios)\r\n\r\n### 11. Optional: Add Limiter After\r\n- If still not loud enough, add a limiter after Fruity Squeeze\r\n- Fruity Limiter or Maximus works well\r\n- Set ceiling to -0.3 dB\r\n- Gain reduction should be minimal (2–3 dB max)\r\n\r\n---\r\n\r\n## Recommended Settings (Starting Point)\r\n\r\n| Parameter | Value |\r\n|-----------|-------|\r\n| Low/Mid Crossover | 120 Hz |\r\n| Mid/High Crossover | 2.8 kHz |\r\n| Low Threshold | -12 dB |\r\n| Low Ratio | 7:1 |\r\n| Low Volume | +3 dB |\r\n| Mid Threshold | -13 dB |\r\n| Mid Ratio | 5:1 |\r\n| Mid Volume | +2 dB |\r\n| High Threshold | -16 dB |\r\n| High Ratio | 3:1 |\r\n| High Volume | +1 dB |\r\n| Input Level | +1 dB |\r\n| Output Level | +2 dB |\r\n| Dry/Wet | 100% |\r\n\r\n---\r\n\r\n## Common Mistakes to Avoid\r\n\r\n❌ **Over-compressing highs** → Creates fatigue and harshness  \r\n❌ **Threshold too low** → Squashes everything, no dynamics left  \r\n❌ **Forgetting volume compensation** → Processed sounds quieter than bypass  \r\n❌ **Not checking in context** → Solo sounds great, mix sounds squashed  \r\n❌ **Ignoring crossover points** → Generic settings don't fit your mix  \r\n\r\n---\r\n\r\n## Genre-Specific Adjustments\r\n\r\n### EDM/Electronic\r\n- More aggressive low compression (10:1+)\r\n- Higher input gain (+3 to +5 dB)\r\n- Brighter high band (+3 dB volume)\r\n\r\n### Hip-Hop/Trap\r\n- Heavy low compression for 808s (8:1–10:1)\r\n- Lower low/mid crossover (80–100 Hz)\r\n- Moderate mid compression for vocals (5:1)\r\n\r\n### Rock/Pop\r\n- Balanced compression across all bands (4:1–6:1)\r\n- Standard crossovers (150 Hz, 2.5 kHz)\r\n- Light high compression to preserve cymbals\r\n\r\n### Acoustic/Jazz\r\n- Gentle ratios (2:1–4:1)\r\n- Higher thresholds (-18 dB or higher)\r\n- Minimal input gain (0 to +1 dB)\r\n\r\n---\r\n\r\n## Troubleshooting\r\n\r\n| Problem | Solution |\r\n|---------|----------|\r\n| Not loud enough | Increase ratios, lower thresholds, boost volumes |\r\n| Sounds distorted | Reduce input gain, lower ratios, raise thresholds |\r\n| Bass too boomy | Raise low/mid crossover to 150–200 Hz |\r\n| Lacks clarity | Boost high volume or lower mid/high crossover |\r\n| Sounds lifeless | Reduce ratios, raise thresholds, use dry/wet blend |\r\n| Harsh highs | Reduce high volume or increase high threshold |\r\n\r\n---\r\n\r\n## Final Check\r\n\r\nBefore bouncing:\r\n1. ✅ A/B with reference track of similar genre\r\n2. ✅ Check on multiple playback systems (headphones, speakers, phone)\r\n3. ✅ Verify no clipping on output meter\r\n4. ✅ Confirm dynamics aren't completely destroyed (some transients should remain)\r\n5. ✅ Listen to full track from start to finish\r\n\r\n---\r\n\r\n## Advanced Tip: Parallel Processing\r\n\r\nFor even more control:\r\n1. Duplicate master bus to two channels\r\n2. Process one with aggressive Fruity Squeeze settings\r\n3. Leave other clean\r\n4. Blend to taste (usually 30–50% compressed)\r\n\r\nThis preserves more natural dynamics while still adding loudness and density.\r\n",
+      "vintage-radio-effect": "# Vintage Radio Effect\r\n\r\n## Goal\r\nCreate authentic AM/FM radio, walkie-talkie, or telephone transmission effects using bit reduction and aggressive filtering.\r\n\r\n## When to Use\r\n- Lo-fi hip-hop production (radio interludes)\r\n- Cinematic sound design (communication scenes)\r\n- Transition effects between sections\r\n- Vintage aesthetic in modern music\r\n- Vocal processing for character\r\n- Sound effects for games/film\r\n\r\n## The Setup\r\n\r\n### Core Radio Settings\r\n```\r\nSquarize: 40-50%\r\nPreserve: 25-35%\r\nImpact: 65-75%\r\nRelation: Favor Impact (65% right)\r\nFilter Frequency: 2-3 kHz (Band-Pass)\r\nFilter Resonance: 30-45%\r\nMix: 70-100%\r\nGain: +3 to +5 dB\r\n```\r\n\r\n## Understanding Radio Sound\r\n\r\n### What Makes Radio Sound Like Radio?\r\n\r\n1. **Limited bandwidth:** AM/FM transmissions cut lows and highs\r\n2. **Compression:** Heavy broadcast compression flattens dynamics\r\n3. **Distortion:** Transmission artifacts and interference\r\n4. **Noise:** Static, hiss, electromagnetic interference\r\n5. **Resonance:** Speaker/receiver coloration\r\n\r\n### Fruity Squeeze's Role\r\n- **Squarize:** Transmission degradation and artifacts\r\n- **Filter:** Bandwidth limitation (most important!)\r\n- **Puncher:** Sample distortion mimicking poor receivers\r\n- **Resonance:** Speaker coloration\r\n\r\n## Radio Types & Settings\r\n\r\n### AM Radio (1930s-1950s)\r\n```\r\nSquarize: 55%\r\nPreserve: 20%\r\nImpact: 80%\r\nRelation: Favor Impact\r\nFilter: Band-Pass @ 1.5-3 kHz, Res 40%\r\nMix: 100%\r\n```\r\n**Character:** Tinny, narrow, heavy distortion\r\n**Use for:** Vintage broadcasts, old recordings\r\n\r\n### FM Radio (1960s-1980s)\r\n```\r\nSquarize: 35%\r\nPreserve: 40%\r\nImpact: 60%\r\nRelation: Balanced\r\nFilter: Band-Pass @ 2-5 kHz, Res 25%\r\nMix: 90%\r\n```\r\n**Character:** Clearer than AM, still limited bandwidth\r\n**Use for:** Retro radio references, less extreme\r\n\r\n### Walkie-Talkie / CB Radio\r\n```\r\nSquarize: 50%\r\nPreserve: 25%\r\nImpact: 75%\r\nRelation: Favor Impact\r\nFilter: Band-Pass @ 1-2.5 kHz, Res 45%\r\nMix: 100%\r\n```\r\n**Character:** Harsh, compressed, \"over\" sound\r\n**Use for:** Military/police comms, two-way radio\r\n\r\n### Telephone (Landline)\r\n```\r\nSquarize: 40%\r\nPreserve: 30%\r\nImpact: 70%\r\nRelation: Slight favor to Impact\r\nFilter: Band-Pass @ 300 Hz-3.4 kHz, Res 20%\r\nMix: 95%\r\n```\r\n**Character:** Narrow bandwidth, recognizable voice\r\n**Use for:** Phone conversation effects\r\n\r\n### Transistor Radio (Portable)\r\n```\r\nSquarize: 45%\r\nPreserve: 30%\r\nImpact: 70%\r\nRelation: Favor Impact\r\nFilter: Band-Pass @ 2-4 kHz, Res 35%\r\nMix: 100%\r\n```\r\n**Character:** Tinny, distorted, low-fi speaker coloration\r\n**Use for:** Beach radio, vintage portable sound\r\n\r\n### Intercom / PA System\r\n```\r\nSquarize: 38%\r\nPreserve: 35%\r\nImpact: 65%\r\nRelation: Balanced\r\nFilter: Band-Pass @ 500 Hz-4 kHz, Res 30%\r\nMix: 90%\r\n```\r\n**Character:** Slightly muffled, public address sound\r\n**Use for:** Announcement effects, store intercom\r\n\r\n## Step-by-Step Process\r\n\r\n### Step 1: Set Up Band-Pass Filtering\r\n**This is the most important step for radio sound!**\r\n\r\n1. Enable the internal filter\r\n2. Set to Band-Pass mode (or use Pre/Post creatively)\r\n3. Set Frequency to 2-3 kHz (center of speech intelligibility)\r\n4. **Result:** Removes lows and highs, leaving narrow midrange\r\n\r\n**Why it works:** Real radios have limited speaker/transmission range—this mimics that physical limitation.\r\n\r\n### Step 2: Add Bit Reduction\r\n1. Set Squarize to 40-50%\r\n2. **Listen for:** Digital artifacts and transmission \"crunch\"\r\n3. **Adjust:** Lower for cleaner radio, higher for degraded\r\n\r\n**What it mimics:** Transmission degradation, poor signal quality, interference.\r\n\r\n### Step 3: Aggressive Puncher Settings\r\n1. Set Preserve to 25-35%\r\n2. Set Impact to 65-75%\r\n3. Favor Impact in Relation\r\n4. **Result:** Aggressive sample replacement for distorted character\r\n\r\n**Why it works:** Mimics poor receivers and overdriven transmitters.\r\n\r\n### Step 4: Emphasize Resonance\r\n1. Set Filter Resonance to 30-45%\r\n2. **Listen for:** \"Tinny\" speaker coloration\r\n3. **Adjust:** Higher for smaller speakers, lower for larger\r\n\r\n**What it mimics:** Cheap speaker resonance, radio cabinet coloration.\r\n\r\n### Step 5: Full or Near-Full Mix\r\n- Set Mix to 70-100%\r\n- This is usually a replacement effect, not parallel\r\n- Lower Mix (70-80%) for \"radio in the distance\"\r\n- Full Mix (100%) for direct transmission\r\n\r\n### Step 6: Compensate Gain\r\n- Increase Gain +3 to +5 dB\r\n- Bandwidth limitation reduces perceived loudness\r\n- Match to original for fair comparison\r\n\r\n## Source Material Considerations\r\n\r\n### Best Sources\r\n\r\n#### Vocals\r\n- **Perfect for radio effects**\r\n- Speech intelligibility remains even with extreme processing\r\n- Use for: Interludes, radio announcements, phone conversations\r\n\r\n#### Speech/Dialog\r\n- **Ideal use case**\r\n- Narrow midrange keeps words clear\r\n- Use for: Film/game dialog, storytelling elements\r\n\r\n#### Music (Full Mix)\r\n- **Works well for lo-fi aesthetic**\r\n- Sounds like \"music playing through a radio\"\r\n- Use for: Lo-fi hip-hop, transition effects\r\n\r\n#### Individual Instruments\r\n- **Less common but creative**\r\n- Guitar through \"radio amp\" effect\r\n- Keys/synths for vintage tone\r\n\r\n### Problematic Sources\r\n- **Basslines:** Bandwidth limiting removes fundamental (use sparingly)\r\n- **Kick drums:** Lose impact without low frequencies\r\n- **Cymbals/Hi-hats:** Filtered out entirely (can be desirable)\r\n\r\n## Advanced Techniques\r\n\r\n### Dynamic Radio Tuning\r\nAutomate Filter Frequency for \"tuning in\" effect:\r\n```\r\nStart: 500 Hz (off-station static)\r\nMiddle: 2.5 kHz (tuning in)\r\nEnd: 2.5 kHz (locked on)\r\n```\r\n**Combined with:** Noise/static layer for realism\r\n\r\n### Distance Simulation\r\nUse Mix automation for radio \"in another room\":\r\n- **Close:** Mix 100%, full effect\r\n- **Medium:** Mix 60%, blend with reverb\r\n- **Far:** Mix 40%, add room reverb, lower volume\r\n\r\n### Signal Degradation\r\nAutomate Squarize for poor reception:\r\n```\r\nGood signal: Squarize 30%\r\nInterference: Squarize 60%\r\nLost signal: Squarize 80% + automation bursts\r\n```\r\n\r\n### Stereo to Mono Conversion\r\nReal radios are often mono. For authenticity:\r\n1. Route to Fruity Stereo Shaper before Squeeze\r\n2. Set to mono (0% width)\r\n3. Apply Squeeze\r\n4. **Result:** Authentic mono radio sound\r\n\r\n### \"Radio Switch-On\" Effect\r\nAutomate multiple parameters:\r\n```\r\n0:00 - Off (Mix 0%, muted)\r\n0:01 - Static (Squarize 80%, noise layer)\r\n0:02 - Tuning (Filter Frequency sweep)\r\n0:03 - Locked (Settings stabilize)\r\n```\r\n\r\n## Layering Additional Elements\r\n\r\n### Static/Noise Layer\r\nAdd white/pink noise:\r\n1. Noise generator → same radio filtering\r\n2. Layer at -20 to -30 dB under main signal\r\n3. **Result:** Authentic transmission noise\r\n\r\n### Interference/Hum\r\nAdd 50/60 Hz tone:\r\n1. Subtle sine wave at electrical frequency\r\n2. Layer at -35 to -40 dB\r\n3. **Result:** AC hum from old equipment\r\n\r\n### Crackle/Vinyl Noise\r\nFor vintage broadcasts:\r\n1. Vinyl crackle sample or generator\r\n2. Filter to same bandwidth as main signal\r\n3. Layer subtly for texture\r\n\r\n## Genre-Specific Applications\r\n\r\n### Lo-Fi Hip-Hop\r\n```\r\nUse for: Intro/outro, transition between sections\r\nSettings: FM Radio preset (less extreme)\r\nAdditional: Layer with vinyl crackle\r\nMix: 80% (blend with clean elements)\r\n```\r\n\r\n### Cinematic/Film\r\n```\r\nUse for: Dialog scenes, period pieces, communication\r\nSettings: Walkie-talkie or AM radio (depending on era)\r\nAdditional: Foley layers (button clicks, static bursts)\r\nMix: 100% (replace clean dialog)\r\n```\r\n\r\n### Electronic/Experimental\r\n```\r\nUse for: Creative vocal processing, textural elements\r\nSettings: Extreme settings, automate for movement\r\nAdditional: Granular synthesis, reverb\r\nMix: Variable automation\r\n```\r\n\r\n### Vaporwave/Future Funk\r\n```\r\nUse for: Nostalgic callbacks, sample processing\r\nSettings: FM Radio preset (1980s aesthetic)\r\nAdditional: Reverb, chorus for dreamlike quality\r\nMix: 70-90% (blend with other processing)\r\n```\r\n\r\n## Integration with Other Plugins\r\n\r\n### Before Squeeze\r\n\r\n**Compression:**\r\n- Heavy compression (4:1 to 10:1 ratio)\r\n- Mimics broadcast compression\r\n- Flattens dynamics like real radio\r\n\r\n**EQ (Pre-shaping):**\r\n- Boost 1-3 kHz (speech intelligibility)\r\n- Cut below 100 Hz and above 8 kHz\r\n- Prepares signal for radio processing\r\n\r\n**De-esser (for vocals):**\r\n- Tame harsh sibilants before distortion\r\n- Prevents excessive harshness\r\n\r\n### After Squeeze\r\n\r\n**Parametric EQ 2:**\r\n- Notch out harsh resonances\r\n- Further shape bandwidth\r\n- Clean up artifacts\r\n\r\n**Reverb (optional):**\r\n- Short room reverb for \"radio in a space\"\r\n- Subtle settings (decay 0.3-0.8s)\r\n- Creates distance\r\n\r\n**Noise/Static Layer:**\r\n- Add realism with subtle noise\r\n- Filter noise to same bandwidth\r\n- Adjust level to taste\r\n\r\n**Fruity Limiter:**\r\n- Catch any peaks\r\n- Further compress dynamics\r\n- Mimics broadcast limiting\r\n\r\n## Troubleshooting\r\n\r\n### Problem: Vocals are unintelligible\r\n**Fix:**\r\n- Widen filter bandwidth (1-4 kHz range)\r\n- Lower Squarize (30-40%)\r\n- Increase Preserve (35-45%)\r\n\r\n### Problem: Not enough \"radio\" character\r\n**Fix:**\r\n- Increase Filter Resonance (35-50%)\r\n- Narrow filter bandwidth (2-3 kHz peak)\r\n- Increase Impact (75-80%)\r\n\r\n### Problem: Too harsh/painful\r\n**Fix:**\r\n- Lower Filter Resonance (20-30%)\r\n- Reduce Squarize (30-40%)\r\n- Use Parametric EQ after to notch harsh frequencies\r\n\r\n### Problem: Sounds too modern/clean\r\n**Fix:**\r\n- Increase Squarize (50-60%)\r\n- Favor Impact more in Relation\r\n- Add noise/static layers\r\n- Convert to mono\r\n\r\n### Problem: Losing too much low-end\r\n**Fix:**\r\n- This is often desired for radio! But if not:\r\n- Widen filter bandwidth (include 200-500 Hz)\r\n- Use less extreme filtering\r\n- Blend with clean signal (Mix 70-80%)\r\n\r\n## Preset Variations\r\n\r\n### \"Radio Station Broadcast\"\r\n```\r\nSquarize: 35%\r\nPreserve: 40%\r\nImpact: 60%\r\nFilter: BP @ 2-5 kHz, Res 25%\r\nMix: 90%\r\nAdditional: Compression before Squeeze\r\n```\r\n\r\n### \"Distressed Walkie-Talkie\"\r\n```\r\nSquarize: 60%\r\nPreserve: 20%\r\nImpact: 80%\r\nFilter: BP @ 1-2 kHz, Res 50%\r\nMix: 100%\r\nAdditional: Static noise layer, automation bursts\r\n```\r\n\r\n### \"Old Telephone Call\"\r\n```\r\nSquarize: 45%\r\nPreserve: 30%\r\nImpact: 70%\r\nFilter: BP @ 300 Hz-3 kHz, Res 20%\r\nMix: 95%\r\nAdditional: Subtle 50/60 Hz hum\r\n```\r\n\r\n### \"Portable Transistor Radio\"\r\n```\r\nSquarize: 48%\r\nPreserve: 28%\r\nImpact: 72%\r\nFilter: BP @ 2-4 kHz, Res 40%\r\nMix: 100%\r\nAdditional: Mono conversion, room reverb\r\n```\r\n\r\n## Final Pro Tips\r\n\r\n1. **Bandwidth is key:** Filtering is more important than bit reduction for radio sound\r\n2. **Add realism:** Layer noise, static, and hum for authenticity\r\n3. **Automate for movement:** Static radio sounds are boring—add tuning/interference\r\n4. **Convert to mono:** Most radios are mono—this adds authenticity\r\n5. **Compress first:** Heavy compression before Squeeze mimics broadcast chain\r\n6. **Reference real radios:** Listen to actual AM/FM broadcasts for accuracy\r\n7. **Less resonance for clarity:** High resonance is cool but can hurt intelligibility\r\n8. **Blend when appropriate:** Not all radio effects need 100% Mix\r\n\r\n---\r\n\r\n**Remember:** The goal is recognizable, characterful radio sound—not total destruction. Keep speech/music intelligible unless going for extreme degradation!\r\n",
+      "vocal-processing-workflow": "# Vocal Processing Workflow\r\n\r\n## Goal\r\nControl vocal dynamics, tame sibilance, and add presence using Fruity Squeeze's multiband waveshaping.\r\n\r\n---\r\n\r\n## When to Use Fruity Squeeze on Vocals\r\n\r\n**Good for:**\r\n- ✅ De-essing (controlling harsh \"s\" sounds)\r\n- ✅ Adding edge and presence via harmonic distortion\r\n- ✅ Fast sibilance control\r\n- ✅ Aggressive vocal compression (rap, EDM vocals)\r\n\r\n**Not ideal for:**\r\n- ❌ Transparent, natural vocal compression (use standard compressor)\r\n- ❌ Smooth, musical dynamics control\r\n- ❌ Subtle envelope shaping\r\n\r\n---\r\n\r\n## Step-by-Step Workflow\r\n\r\n### 1. Prepare Your Vocal\r\n- Remove DC offset if present\r\n- Apply high-pass filter (80–100 Hz) to remove rumble\r\n- Ensure no clipping or distortion in recording\r\n\r\n### 2. Insert Fruity Squeeze\r\n- Place after EQ and before reverb/delay\r\n- Can be used in series with traditional compressor:\r\n  - Standard compressor → smooth dynamics\r\n  - Fruity Squeeze → de-essing and character\r\n\r\n### 3. Set Crossover Points\r\n\r\n**For De-Essing (Primary Goal)**\r\n- **Low/Mid Crossover**: 300–400 Hz\r\n  - Keeps body and warmth together\r\n- **Mid/High Crossover**: 4.5–6 kHz\r\n  - Isolates sibilance range\r\n\r\n**For General Compression**\r\n- **Low/Mid Crossover**: 250–300 Hz\r\n  - Separates chest resonance from presence\r\n- **Mid/High Crossover**: 2.5–3.5 kHz\r\n  - Separates body from air/brilliance\r\n\r\n### 4. Configure Low Band\r\n**For De-Essing Setup:**\r\n- **Threshold**: -∞ (bypass)\r\n- **Ratio**: 1:1\r\n- **Volume**: 0 dB\r\n\r\n**For General Compression:**\r\n- **Threshold**: -∞ (bypass) or -20 dB (very light)\r\n- **Ratio**: 2:1–3:1\r\n- **Volume**: 0 dB\r\n\r\n**Why bypass/light on lows?**\r\n- Vocal fundamentals are mostly in mid range\r\n- Over-compressing lows creates muddiness\r\n\r\n### 5. Configure Mid Band (Presence/Body)\r\n\r\n**For De-Essing Setup:**\r\n- **Threshold**: -18 to -20 dB\r\n- **Ratio**: 2:1–3:1\r\n- **Volume**: 0 to +1 dB\r\n\r\n**For General Compression:**\r\n- **Threshold**: -15 to -18 dB\r\n- **Ratio**: 3:1–5:1\r\n- **Volume**: +1 to +2 dB\r\n\r\n**Why compress mids?**\r\n- Most vocal energy lives here\r\n- Creates even, present vocal tone\r\n- Adds slight harmonic richness\r\n\r\n### 6. Configure High Band (Sibilance Control)\r\n\r\n**For De-Essing Setup:**\r\n- **Threshold**: -8 to -12 dB\r\n- **Ratio**: 6:1–10:1\r\n- **Volume**: -2 to -3 dB\r\n\r\n**For General Compression:**\r\n- **Threshold**: -15 to -18 dB\r\n- **Ratio**: 4:1–6:1\r\n- **Volume**: 0 to +1 dB\r\n\r\n**Why aggressive high compression?**\r\n- Sibilance peaks are much louder than vocal body\r\n- High ratio = de-essing effect\r\n- Lower volume reduces overall harshness\r\n\r\n### 7. Adjust Input and Output\r\n- **Input**: 0 to +1 dB (don't overdrive vocals)\r\n- **Output**: Match to bypass level for comparison\r\n- Higher input adds grit (good for aggressive rap/EDM vocals)\r\n\r\n### 8. Fine-Tune with Dry/Wet\r\n\r\n**For transparent de-essing:**\r\n- Set dry/wet to 60–80%\r\n- Preserves natural vocal dynamics\r\n\r\n**For aggressive compression:**\r\n- Keep dry/wet at 100%\r\n- Full processing for maximum control\r\n\r\n### 9. Listen and Adjust\r\n**What to listen for:**\r\n- ✅ Even loudness across phrases\r\n- ✅ Reduced sibilance (not completely removed)\r\n- ✅ Clear, present vocal\r\n- ❌ Lisp or muffled \"s\" sounds (too much high compression)\r\n- ❌ Thin or hollow tone (too much mid compression)\r\n\r\n### 10. A/B Compare\r\n1. Bypass Fruity Squeeze\r\n2. Listen to sibilant phrases (\"sister,\" \"sing,\" \"six\")\r\n3. Re-enable and compare\r\n4. Sibilance should be tamed but still audible\r\n\r\n---\r\n\r\n## Recommended Settings\r\n\r\n### De-Essing Setup\r\n\r\n| Parameter | Value |\r\n|-----------|-------|\r\n| Low/Mid Crossover | 350 Hz |\r\n| Mid/High Crossover | 5.5 kHz |\r\n| Low Threshold | -∞ (bypass) |\r\n| Low Ratio | 1:1 |\r\n| Low Volume | 0 dB |\r\n| Mid Threshold | -18 dB |\r\n| Mid Ratio | 2:1 |\r\n| Mid Volume | +1 dB |\r\n| High Threshold | -10 dB |\r\n| High Ratio | 8:1 |\r\n| High Volume | -2 dB |\r\n| Input Level | 0 dB |\r\n| Output Level | 0 dB |\r\n| Dry/Wet | 70% |\r\n\r\n### General Vocal Compression\r\n\r\n| Parameter | Value |\r\n|-----------|-------|\r\n| Low/Mid Crossover | 280 Hz |\r\n| Mid/High Crossover | 3 kHz |\r\n| Low Threshold | -∞ (bypass) |\r\n| Low Ratio | 1:1 |\r\n| Low Volume | 0 dB |\r\n| Mid Threshold | -15 dB |\r\n| Mid Ratio | 4:1 |\r\n| Mid Volume | +2 dB |\r\n| High Threshold | -15 dB |\r\n| High Ratio | 5:1 |\r\n| High Volume | +1 dB |\r\n| Input Level | 0 dB |\r\n| Output Level | 0 dB |\r\n| Dry/Wet | 100% |\r\n\r\n### Aggressive Rap/EDM Vocal\r\n\r\n| Parameter | Value |\r\n|-----------|-------|\r\n| Low/Mid Crossover | 300 Hz |\r\n| Mid/High Crossover | 3.5 kHz |\r\n| Low Threshold | -∞ (bypass) |\r\n| Low Ratio | 1:1 |\r\n| Low Volume | 0 dB |\r\n| Mid Threshold | -10 dB |\r\n| Mid Ratio | 6:1 |\r\n| Mid Volume | +3 dB |\r\n| High Threshold | -12 dB |\r\n| High Ratio | 6:1 |\r\n| High Volume | +2 dB |\r\n| Input Level | +2 dB |\r\n| Output Level | 0 dB |\r\n| Dry/Wet | 100% |\r\n\r\n---\r\n\r\n## Common Vocal Issues and Solutions\r\n\r\n### Problem: Sibilance Too Harsh\r\n\r\n**Solution:**\r\n- Lower high band volume (-3 to -4 dB)\r\n- Increase high band ratio (8:1–10:1)\r\n- Lower mid/high crossover to 4.5–5 kHz\r\n- Increase high threshold to compress less\r\n\r\n### Problem: Vocal Sounds Lifeless\r\n\r\n**Solution:**\r\n- Reduce mid band ratio (2:1–3:1)\r\n- Raise mid threshold (-20 dB or higher)\r\n- Use dry/wet blend (60–80%)\r\n- Lower input gain to reduce distortion\r\n\r\n### Problem: Vocal Lacks Presence\r\n\r\n**Solution:**\r\n- Boost mid band volume (+2 to +3 dB)\r\n- Lower mid band threshold (-12 to -15 dB)\r\n- Increase mid band ratio slightly (5:1)\r\n\r\n### Problem: Thin or Hollow Sound\r\n\r\n**Solution:**\r\n- Don't compress low band (set to -∞)\r\n- Raise low/mid crossover to 300–400 Hz\r\n- Reduce mid compression (higher threshold or lower ratio)\r\n\r\n### Problem: Muffled \"S\" Sounds (Over-De-essing)\r\n\r\n**Solution:**\r\n- Raise high band threshold (-15 dB or higher)\r\n- Reduce high band ratio (4:1–6:1)\r\n- Increase high band volume (0 dB or higher)\r\n- Use dry/wet blend (50–60%)\r\n\r\n---\r\n\r\n## Signal Chain Recommendation\r\n\r\n**Optimal order for vocal processing:**\r\n1. High-pass filter (EQ)\r\n2. De-esser (Fruity Squeeze or dedicated)\r\n3. Standard compressor (smooth dynamics)\r\n4. EQ (tone shaping)\r\n5. Saturation/exciter (optional)\r\n6. Reverb/Delay (sends)\r\n\r\n**Alternate order (Fruity Squeeze for character):**\r\n1. High-pass filter\r\n2. Standard compressor\r\n3. Fruity Squeeze (de-essing + character)\r\n4. EQ\r\n5. Reverb/Delay\r\n\r\n---\r\n\r\n## Genre-Specific Tips\r\n\r\n### Pop Vocals\r\n- Light-to-moderate compression (3:1–5:1)\r\n- Standard crossovers (280 Hz, 3 kHz)\r\n- Transparent settings, minimal distortion\r\n\r\n### Rap/Hip-Hop\r\n- Moderate-to-heavy compression (5:1–8:1)\r\n- Boost mid volume for presence (+2 to +3 dB)\r\n- Input gain +1 to +2 dB for edge\r\n\r\n### EDM/Electronic\r\n- Aggressive compression (6:1–10:1)\r\n- Heavy de-essing (high ratio 8:1+)\r\n- Input gain +2 to +4 dB for distortion/grit\r\n\r\n### Rock/Metal\r\n- Moderate compression (4:1–6:1)\r\n- Control harshness with high band\r\n- Preserve aggression (don't over-compress)\r\n\r\n---\r\n\r\n## Workflow Checklist\r\n\r\nBefore finalizing vocal:\r\n- ✅ De-essing effective but not excessive\r\n- ✅ Even loudness across all phrases\r\n- ✅ Natural sibilance still present\r\n- ✅ Vocal sits well in mix (not too loud or quiet)\r\n- ✅ No pumping or breathing artifacts\r\n- ✅ Harmonic distortion is musical (if desired)\r\n- ✅ A/B compared with bypass\r\n\r\n---\r\n\r\n## Advanced Tip: Dual-Stage Processing\r\n\r\nFor maximum control:\r\n1. **First stage**: Traditional compressor (e.g., Fruity Compressor)\r\n   - Smooth, transparent dynamic control\r\n   - Attack: 10–30 ms, Release: 100–200 ms\r\n   - Ratio: 3:1–4:1\r\n2. **Second stage**: Fruity Squeeze\r\n   - De-essing only (high band compression)\r\n   - Add character with input gain\r\n\r\nThis combines the musicality of traditional compression with the precision of multiband de-essing.\r\n"
+    },
+    "by-instrument": {
+      "bass-workflow": "# Bass Guitar/Synth Bass Processing\r\n\r\n## Goal\r\nAchieve thick, sustained bass with harmonic richness and consistent low-end.\r\n\r\n---\r\n\r\n## Step-by-Step Workflow\r\n\r\n### 1. Insert Fruity Squeeze on Bass Track\r\n- Works for bass guitar, synth bass, 808s\r\n- Place after distortion/saturation but before spatial effects\r\n\r\n### 2. Set Crossover Points\r\n\r\n**Low/Mid Crossover: 100–150 Hz**\r\n- **100–120 Hz**: Tighter, more isolated sub-bass\r\n- **130–150 Hz**: Fuller, warmer bass with harmonics included\r\n\r\n**Mid/High Crossover: 1.5–2.5 kHz**\r\n- **1.5–2 kHz**: Brighter, more presence\r\n- **2–2.5 kHz**: Warmer, less aggressive\r\n\r\n### 3. Process Low Band (Fundamental/Sub)\r\n\r\n**Settings:**\r\n- **Threshold**: -10 to -12 dB\r\n- **Ratio**: 6:1–10:1\r\n- **Volume**: +2 to +4 dB\r\n\r\n**Why:**\r\n- Creates tight, consistent low-end foundation\r\n- Prevents bass from overpowering mix\r\n- Sustains notes evenly\r\n\r\n### 4. Process Mid Band (Harmonics/Presence)\r\n\r\n**Settings:**\r\n- **Threshold**: -10 to -12 dB\r\n- **Ratio**: 6:1–10:1\r\n- **Volume**: +2 to +3 dB\r\n\r\n**Why:**\r\n- Most audible \"bass tone\" lives here\r\n- Heavy compression adds harmonic richness\r\n- Waveshaping creates grit and definition\r\n\r\n### 5. Process High Band (Brightness/Attack)\r\n\r\n**Settings:**\r\n- **Threshold**: -∞ (bypass) or -18 dB\r\n- **Ratio**: 2:1–4:1 (if not bypassed)\r\n- **Volume**: 0 dB or -1 dB\r\n\r\n**Why:**\r\n- Bass typically doesn't need high compression\r\n- Bypass preserves natural pick/finger attack\r\n- Light compression if bass is very bright\r\n\r\n### 6. Drive Input for Grit\r\n\r\n**Settings:**\r\n- **Input Level**: +1 to +3 dB\r\n\r\n**Why:**\r\n- Adds harmonic distortion for \"modern\" bass tone\r\n- Creates warmth and saturation\r\n- +2 dB is sweet spot for most basses\r\n\r\n### 7. Adjust Output\r\n- Match to input level\r\n- Usually +1 to +2 dB after processing\r\n\r\n### 8. Check in Mix Context\r\n- Solo bass with kick drum\r\n- Ensure bass doesn't mask kick or vice versa\r\n- Adjust crossovers if needed\r\n\r\n---\r\n\r\n## Recommended Settings\r\n\r\n### Standard Bass Guitar\r\n\r\n| Parameter | Value |\r\n|-----------|-------|\r\n| Low/Mid Crossover | 130 Hz |\r\n| Mid/High Crossover | 2 kHz |\r\n| Low Threshold | -11 dB |\r\n| Low Ratio | 7:1 |\r\n| Low Volume | +3 dB |\r\n| Mid Threshold | -11 dB |\r\n| Mid Ratio | 8:1 |\r\n| Mid Volume | +2 dB |\r\n| High Threshold | -∞ (bypass) |\r\n| High Ratio | 1:1 |\r\n| High Volume | 0 dB |\r\n| Input Level | +2 dB |\r\n| Output Level | +1 dB |\r\n\r\n### Synth Bass (Modern/EDM)\r\n\r\n| Parameter | Value |\r\n|-----------|-------|\r\n| Low/Mid Crossover | 120 Hz |\r\n| Mid/High Crossover | 2.5 kHz |\r\n| Low Threshold | -10 dB |\r\n| Low Ratio | 8:1 |\r\n| Low Volume | +4 dB |\r\n| Mid Threshold | -10 dB |\r\n| Mid Ratio | 10:1 |\r\n| Mid Volume | +3 dB |\r\n| High Threshold | -18 dB |\r\n| High Ratio | 3:1 |\r\n| High Volume | +1 dB |\r\n| Input Level | +3 dB |\r\n| Output Level | +1 dB |\r\n\r\n### 808/Sub-Bass\r\n\r\n| Parameter | Value |\r\n|-----------|-------|\r\n| Low/Mid Crossover | 80 Hz |\r\n| Mid/High Crossover | 150 Hz |\r\n| Low Threshold | -8 dB |\r\n| Low Ratio | ∞:1 (limiter) |\r\n| Low Volume | +4 dB |\r\n| Mid Threshold | -12 dB |\r\n| Mid Ratio | 6:1 |\r\n| Mid Volume | +2 dB |\r\n| High Threshold | -∞ (bypass) |\r\n| High Ratio | 1:1 |\r\n| High Volume | 0 dB |\r\n| Input Level | +1 dB |\r\n| Output Level | +1 dB |\r\n\r\n### Warm/Vintage Bass\r\n\r\n| Parameter | Value |\r\n|-----------|-------|\r\n| Low/Mid Crossover | 150 Hz |\r\n| Mid/High Crossover | 2 kHz |\r\n| Low Threshold | -12 dB |\r\n| Low Ratio | 5:1 |\r\n| Low Volume | +2 dB |\r\n| Mid Threshold | -12 dB |\r\n| Mid Ratio | 6:1 |\r\n| Mid Volume | +2 dB |\r\n| High Threshold | -∞ (bypass) |\r\n| High Ratio | 1:1 |\r\n| High Volume | 0 dB |\r\n| Input Level | +2 dB |\r\n| Output Level | +1 dB |\r\n\r\n---\r\n\r\n## Troubleshooting\r\n\r\n| Problem | Solution |\r\n|---------|----------|\r\n| Bass too boomy | Lower low/mid crossover to 100–120 Hz; increase low ratio |\r\n| Lacks definition | Boost mid volume; increase mid ratio |\r\n| Too bright/harsh | Lower high volume or bypass high band |\r\n| Sounds thin | Raise low/mid crossover to 150 Hz; boost low volume |\r\n| Inconsistent notes | Lower thresholds; increase ratios |\r\n| Too distorted | Reduce input gain; lower ratios |\r\n\r\n---\r\n\r\n## Integration with Kick Drum\r\n\r\n### Kick/Bass Frequency Management\r\n\r\n**Option 1: Separate Ranges**\r\n- **Kick**: Focus 60–80 Hz (sub-thump)\r\n- **Bass**: Focus 100–200 Hz (body/warmth)\r\n- Set bass low/mid crossover at 100–120 Hz\r\n- Minimal low-end overlap\r\n\r\n**Option 2: Shared Low-End**\r\n- **Kick + Bass**: Both occupy 60–100 Hz\r\n- Use sidechain compression (separate plugin) to duck bass when kick hits\r\n- Fruity Squeeze controls bass consistency between kicks\r\n\r\n---\r\n\r\n## Genre-Specific Tips\r\n\r\n### Hip-Hop/Trap\r\n- Heavy low limiting (∞:1) for 808s\r\n- Lower crossover (80 Hz) for sub isolation\r\n- Moderate input gain (+2 dB)\r\n\r\n### Rock/Metal\r\n- Balanced low/mid compression (6:1–8:1)\r\n- Crossover around 130–150 Hz\r\n- Input gain +1 to +2 dB for warmth\r\n\r\n### EDM/House\r\n- Aggressive compression (8:1–10:1)\r\n- Lower crossover (100–120 Hz) for punch\r\n- Higher input gain (+3 dB) for grit\r\n\r\n### Funk/R&B\r\n- Moderate compression (5:1–7:1)\r\n- Higher crossover (140–160 Hz) for fullness\r\n- Light input gain (+1 dB) for cleaner tone\r\n\r\n### Jazz/Acoustic\r\n- Light compression (4:1–6:1)\r\n- Higher crossover (150 Hz+) for natural warmth\r\n- Minimal input gain (0 to +1 dB)\r\n\r\n---\r\n\r\n## Advanced Techniques\r\n\r\n### Parallel Bass Processing\r\n1. Duplicate bass track\r\n2. Process one with aggressive Fruity Squeeze (10:1 ratios, +4 dB input)\r\n3. Leave other clean or lightly compressed\r\n4. Blend for controlled aggression\r\n\r\n### Multiband Saturation\r\n- Use input gain to drive harmonic distortion\r\n- Mid band creates most audible harmonics\r\n- Experiment with +2 to +5 dB input for character\r\n\r\n### Dynamic Crossover Automation\r\n- Automate low/mid crossover for different sections\r\n- Lower during verses (tighter bass)\r\n- Higher during chorus (fuller bass)\r\n\r\n---\r\n\r\n## Workflow Checklist\r\n\r\n- ✅ Low-end tight and controlled\r\n- ✅ Note sustain even across range\r\n- ✅ Harmonics audible on small speakers\r\n- ✅ Doesn't mask kick drum\r\n- ✅ Sits well in mix (not overpowering)\r\n- ✅ Minimal distortion (unless intentional)\r\n",
+      "drum-bus-glue": "# Drum Bus Glue with Fruity Squeeze\r\n\r\n## Objective\r\nMake drum elements (kick, snare, hi-hats, percussion) feel cohesive and punchy while maintaining individual character.\r\n\r\n## When to Use This Workflow\r\n- Drums from different sources sound disconnected\r\n- Hi-hats overpower snare or vice versa\r\n- Need to control drum dynamics without affecting individual processing\r\n- Creating space for vocals and melodic elements\r\n\r\n## Step-by-Step Process\r\n\r\n### 1. Setup Drum Bus\r\nRoute all drum elements to a dedicated drum bus. Insert Fruity Squeeze after individual drum processing but before bus effects (saturation, reverb).\r\n\r\n### 2. Set Drum-Optimized Crossovers\r\n\r\n**Standard Drum Split**\r\n- **Low/Mid**: 150-200 Hz (separate kick/sub from snare body)\r\n- **Mid/High**: 3-5 kHz (separate snare crack from hi-hats)\r\n\r\n**Genre-Specific Crossovers**\r\n\r\n| Genre | Low/Mid | Mid/High | Reasoning |\r\n|-------|---------|----------|-----------|\r\n| Moody Trap | 120 Hz | 3 kHz | Extended sub, darker overall |\r\n| Upbeat | 180 Hz | 4.5 kHz | Balanced, energetic |\r\n| Boom-Bap | 220 Hz | 4 kHz | Classic hip-hop split |\r\n| Electronic | 100 Hz | 5 kHz | Deep sub, bright highs |\r\n\r\n### 3. Configure Low Band (Kick/Sub Control)\r\n\r\n**Purpose**: Tighten kick and control low-end punch\r\n\r\n**Moody/Dark Trap Settings**\r\n- **Threshold**: -15 dB\r\n- **Ratio**: 3:1 to 4:1\r\n- **Attack**: 5-10ms (preserve kick punch)\r\n- **Release**: 100-120ms (follow kick decay)\r\n- **Gain**: +1 dB\r\n\r\n**Upbeat/Energetic Settings**\r\n- **Threshold**: -12 dB\r\n- **Ratio**: 2.5:1 to 3:1\r\n- **Attack**: 10-15ms (more transient)\r\n- **Release**: 120-140ms\r\n- **Gain**: +1.5 dB\r\n\r\n**Boom-Bap Settings**\r\n- **Threshold**: -18 dB\r\n- **Ratio**: 2:1 to 2.5:1\r\n- **Attack**: 15-20ms (preserve vintage feel)\r\n- **Release**: 140-160ms\r\n- **Gain**: +0.5 dB\r\n\r\n### 4. Configure Mid Band (Snare/Tom Control)\r\n\r\n**Purpose**: Control snare body and overall drum presence\r\n\r\n**Moody/Dark Trap Settings**\r\n- **Threshold**: -10 dB\r\n- **Ratio**: 2:1\r\n- **Attack**: 5ms (catch snare transient)\r\n- **Release**: 70-90ms\r\n- **Gain**: +0.5 dB\r\n\r\n**Upbeat/Energetic Settings**\r\n- **Threshold**: -8 dB\r\n- **Ratio**: 2.5:1 to 3:1\r\n- **Attack**: 3-5ms (punchy)\r\n- **Release**: 80-100ms\r\n- **Gain**: +1 dB\r\n\r\n**Boom-Bap Settings**\r\n- **Threshold**: -12 dB\r\n- **Ratio**: 1.5:1 to 2:1\r\n- **Attack**: 10ms (preserve vintage snap)\r\n- **Release**: 100-120ms\r\n- **Gain**: +0.5 dB\r\n\r\n### 5. Configure High Band (Hi-Hat/Cymbal Control)\r\n\r\n**Purpose**: Control bright transients without dulling\r\n\r\n**Moody/Dark Trap Settings**\r\n- **Threshold**: -12 dB\r\n- **Ratio**: 1.5:1\r\n- **Attack**: 1-2ms (catch fast transients)\r\n- **Release**: 50-60ms\r\n- **Gain**: -0.5 dB (darker aesthetic)\r\n\r\n**Upbeat/Energetic Settings**\r\n- **Threshold**: -10 dB\r\n- **Ratio**: 2:1\r\n- **Attack**: 1ms\r\n- **Release**: 60-70ms\r\n- **Gain**: +0.5 dB (bright, present)\r\n\r\n**Boom-Bap Settings**\r\n- **Threshold**: -15 dB\r\n- **Ratio**: 1.2:1 to 1.5:1\r\n- **Attack**: 2-3ms\r\n- **Release**: 70-80ms\r\n- **Gain**: 0 dB (natural)\r\n\r\n### 6. Genre-Specific Complete Settings\r\n\r\n**Moody/Dark Trap Drums**\r\n```\r\nLow: -15 dB, 3.5:1, 8ms, 110ms, +1 dB\r\nMid: -10 dB, 2:1, 5ms, 80ms, +0.5 dB\r\nHigh: -12 dB, 1.5:1, 1ms, 55ms, -0.5 dB\r\nCrossovers: 120 Hz / 3 kHz\r\n```\r\n**Character**: Tight, controlled, dark\r\n\r\n**Upbeat/Energetic Drums**\r\n```\r\nLow: -12 dB, 3:1, 12ms, 130ms, +1.5 dB\r\nMid: -8 dB, 2.5:1, 4ms, 90ms, +1 dB\r\nHigh: -10 dB, 2:1, 1ms, 65ms, +0.5 dB\r\nCrossovers: 180 Hz / 4.5 kHz\r\n```\r\n**Character**: Punchy, forward, bright\r\n\r\n**Melodic/R&B Drums**\r\n```\r\nLow: -18 dB, 2:1, 15ms, 140ms, +0.5 dB\r\nMid: -12 dB, 1.5:1, 8ms, 100ms, 0 dB\r\nHigh: -15 dB, 1.5:1, 2ms, 70ms, 0 dB\r\nCrossovers: 200 Hz / 5 kHz\r\n```\r\n**Character**: Smooth, natural, polished\r\n\r\n**Boom-Bap Drums**\r\n```\r\nLow: -18 dB, 2.5:1, 18ms, 150ms, +0.5 dB\r\nMid: -12 dB, 2:1, 10ms, 110ms, +0.5 dB\r\nHigh: -15 dB, 1.3:1, 3ms, 75ms, 0 dB\r\nCrossovers: 220 Hz / 4 kHz\r\n```\r\n**Character**: Vintage, warm, punchy\r\n\r\n**Electronic/Experimental Drums**\r\n```\r\nLow: -10 dB, 5:1, 3ms, 90ms, +2 dB\r\nMid: -6 dB, 4:1, 2ms, 70ms, +1.5 dB\r\nHigh: -8 dB, 3:1, 0.5ms, 50ms, +1 dB\r\nCrossovers: 100 Hz / 5 kHz\r\n```\r\n**Character**: Aggressive, pumping, energetic\r\n\r\n### 7. Critical Listening Checklist\r\n\r\n- **Kick Punch**: Should hit hard without overwhelming\r\n- **Snare Snap**: Clear and present, not buried or harsh\r\n- **Hi-Hat Control**: Consistent level, not splashy or dull\r\n- **Overall Cohesion**: Drums feel like one unit\r\n- **Dynamics**: Still breathes, not brick-walled\r\n- **Separation**: Individual elements still identifiable\r\n\r\n### 8. Common Issues & Solutions\r\n\r\n**Kick Sounds Weak**\r\n- Lower low-band threshold to -18 dB\r\n- Increase low-band gain to +2 dB\r\n- Faster attack (5ms) for more punch\r\n\r\n**Snare Gets Lost**\r\n- Increase mid-band gain (+1 to +2 dB)\r\n- Lower mid-band threshold\r\n- Adjust crossovers to isolate snare fundamental (200-300 Hz)\r\n\r\n**Hi-Hats Too Loud/Harsh**\r\n- Lower high-band gain (-1 dB)\r\n- Increase high-band ratio to 2.5:1\r\n- Lower high-band threshold for more control\r\n\r\n**Drums Sound Squashed**\r\n- Increase attack times across all bands\r\n- Reduce ratios by 0.5\r\n- Raise thresholds to compress less\r\n\r\n**Muddy Low-End**\r\n- Lower low/mid crossover to 120-150 Hz\r\n- Increase low-band ratio to 4:1+\r\n- Reduce low-band gain\r\n\r\n### 9. Advanced Techniques\r\n\r\n**Parallel Drum Compression**\r\nDuplicate drum bus, compress heavily with Fruity Squeeze, blend at 30-50%.\r\n\r\n**Sidechain to Kick**\r\nSidechain low and mid bands to kick for rhythmic pumping.\r\n\r\n**Dynamic Processing Per Section**\r\nAutomate threshold/ratio for different song sections (verse light, chorus heavy).\r\n\r\n**Frequency-Specific Saturation**\r\nAdd saturation before Fruity Squeeze, use compression to control harmonics.\r\n\r\n## Integration with Drum Chain\r\n\r\n**Typical Drum Bus Chain**\r\n1. EQ (subtractive)\r\n2. **Fruity Squeeze** ← You are here\r\n3. Saturation/distortion\r\n4. Transient shaper\r\n5. Reverb/room ambience\r\n\r\n## Quick Start by Genre\r\n\r\nPick your genre, apply these settings, then adjust to taste:\r\n\r\n**Trap**: Tight low-end, controlled highs, forward mids\r\n**Boom-Bap**: Natural dynamics, warm tone, vintage feel\r\n**Electronic**: Heavy compression, aggressive, pumping\r\n**R&B**: Smooth, polished, transparent\r\n**Upbeat**: Energetic, punchy, bright\r\n\r\n## Pro Tips for Hip-Hop Drums\r\n\r\n1. **Leave Headroom**: Aim for 3-5 dB gain reduction max on any band\r\n2. **Solo Bands**: Understand what each frequency range contributes\r\n3. **A/B Constantly**: Compare bypassed vs. processed frequently\r\n4. **Check with Vocals**: Ensure drums don't overpower or get buried\r\n5. **Reference Tracks**: Compare your drum balance to pro mixes\r\n6. **Mono Check**: Verify low-end control translates in mono\r\n7. **Save Presets**: Build library of go-to settings per genre\r\n8. **Automate Mix**: Reduce compression intensity during quiet sections\r\n",
+      "drum-bus-workflow": "# Drum Bus Processing\r\n\r\n## Goal\r\nAdd cohesion, punch, and density to full drum mix using multiband compression.\r\n\r\n---\r\n\r\n## Step-by-Step Workflow\r\n\r\n### 1. Route All Drums to Bus\r\n- Create drum bus/submix channel\r\n- Route kick, snare, hi-hats, toms, percussion to this bus\r\n- Insert Fruity Squeeze on drum bus\r\n\r\n### 2. Set Crossover Points\r\n\r\n**Low/Mid Crossover: 150–250 Hz**\r\n- **150–180 Hz**: Tighter, more controlled lows (good for heavy music)\r\n- **200–250 Hz**: Fuller, warmer lows (good for organic drums)\r\n\r\n**Mid/High Crossover: 3–5 kHz**\r\n- **3–4 kHz**: More presence/attack emphasis\r\n- **4–5 kHz**: More natural, less aggressive\r\n\r\n**Recommended starting point:** 200 Hz / 4 kHz\r\n\r\n### 3. Process Low Band (Kick/Low Toms)\r\n\r\n**Settings:**\r\n- **Threshold**: -15 to -18 dB\r\n- **Ratio**: 4:1–6:1\r\n- **Volume**: +1 to +2 dB\r\n\r\n**Why:**\r\n- Tightens kick and low toms\r\n- Moderate compression preserves punch\r\n- Too much = drums lose power\r\n\r\n### 4. Process Mid Band (Snare Body/Tom Resonance)\r\n\r\n**Settings:**\r\n- **Threshold**: -12 to -15 dB\r\n- **Ratio**: 5:1–7:1\r\n- **Volume**: +2 to +3 dB\r\n\r\n**Why:**\r\n- Creates density and impact\r\n- Glues drums together\r\n- Mid-range contains most \"meat\" of drum sound\r\n\r\n### 5. Process High Band (Cymbals/Hi-Hats/Snare Attack)\r\n\r\n**Settings:**\r\n- **Threshold**: -15 to -18 dB\r\n- **Ratio**: 3:1–5:1\r\n- **Volume**: 0 to +1 dB\r\n\r\n**Why:**\r\n- Controls cymbal peaks without dulling them\r\n- Lighter compression preserves sparkle\r\n- Snare crack lives here\r\n\r\n### 6. Use Parallel Compression for Aggression\r\n\r\n**Settings:**\r\n- Set all ratios higher (8:1–10:1)\r\n- Set all thresholds lower (-6 to -10 dB)\r\n- **Dry/Wet**: 30–50%\r\n\r\n**Why:**\r\n- Preserves natural transients (dry signal)\r\n- Adds density and loudness (wet signal)\r\n- Classic \"New York\" drum sound\r\n\r\n### 7. Adjust Input for Character\r\n- **Input**: 0 to +2 dB\r\n- Higher input adds harmonic grit\r\n- Good for rock/metal/EDM\r\n\r\n### 8. Set Output Level\r\n- Match to bypass level\r\n- Usually +1 to +3 dB louder after processing\r\n\r\n### 9. Check Individual Elements\r\n- Solo kick: Should be tight and punchy\r\n- Solo snare: Should have body and crack\r\n- Solo cymbals: Should be controlled but not dull\r\n\r\n---\r\n\r\n## Recommended Settings\r\n\r\n### Natural Drum Glue\r\n\r\n| Parameter | Value |\r\n|-----------|-------|\r\n| Low/Mid Crossover | 220 Hz |\r\n| Mid/High Crossover | 4 kHz |\r\n| Low Threshold | -16 dB |\r\n| Low Ratio | 5:1 |\r\n| Low Volume | +1 dB |\r\n| Mid Threshold | -14 dB |\r\n| Mid Ratio | 6:1 |\r\n| Mid Volume | +2 dB |\r\n| High Threshold | -16 dB |\r\n| High Ratio | 4:1 |\r\n| High Volume | +1 dB |\r\n| Input Level | 0 dB |\r\n| Output Level | +1 dB |\r\n| Dry/Wet | 100% |\r\n\r\n### Parallel Drum Crush\r\n\r\n| Parameter | Value |\r\n|-----------|-------|\r\n| Low/Mid Crossover | 200 Hz |\r\n| Mid/High Crossover | 3.5 kHz |\r\n| Low Threshold | -8 dB |\r\n| Low Ratio | 10:1 |\r\n| Low Volume | +4 dB |\r\n| Mid Threshold | -8 dB |\r\n| Mid Ratio | 10:1 |\r\n| Mid Volume | +4 dB |\r\n| High Threshold | -8 dB |\r\n| High Ratio | 8:1 |\r\n| High Volume | +3 dB |\r\n| Input Level | +1 dB |\r\n| Output Level | 0 dB |\r\n| Dry/Wet | 40% |\r\n\r\n### Aggressive EDM/Trap Drums\r\n\r\n| Parameter | Value |\r\n|-----------|-------|\r\n| Low/Mid Crossover | 180 Hz |\r\n| Mid/High Crossover | 4.5 kHz |\r\n| Low Threshold | -10 dB |\r\n| Low Ratio | 8:1 |\r\n| Low Volume | +3 dB |\r\n| Mid Threshold | -10 dB |\r\n| Mid Ratio | 10:1 |\r\n| Mid Volume | +4 dB |\r\n| High Threshold | -12 dB |\r\n| High Ratio | 6:1 |\r\n| High Volume | +2 dB |\r\n| Input Level | +3 dB |\r\n| Output Level | +2 dB |\r\n| Dry/Wet | 100% |\r\n\r\n### Vintage/Warm Drums\r\n\r\n| Parameter | Value |\r\n|-----------|-------|\r\n| Low/Mid Crossover | 250 Hz |\r\n| Mid/High Crossover | 3 kHz |\r\n| Low Threshold | -18 dB |\r\n| Low Ratio | 4:1 |\r\n| Low Volume | +2 dB |\r\n| Mid Threshold | -15 dB |\r\n| Mid Ratio | 5:1 |\r\n| Mid Volume | +2 dB |\r\n| High Threshold | -18 dB |\r\n| High Ratio | 3:1 |\r\n| High Volume | 0 dB |\r\n| Input Level | +2 dB |\r\n| Output Level | +1 dB |\r\n| Dry/Wet | 100% |\r\n\r\n---\r\n\r\n## Troubleshooting\r\n\r\n| Problem | Solution |\r\n|---------|----------|\r\n| Drums sound squashed | Reduce ratios; raise thresholds; use parallel (dry/wet) |\r\n| Kick lacks punch | Lower low/mid crossover; reduce low compression |\r\n| Snare sounds weak | Boost mid volume; increase mid ratio |\r\n| Cymbals too harsh | Reduce high volume; raise high threshold |\r\n| Mix sounds unnatural | Use dry/wet blend (60–80%) |\r\n| Too much distortion | Reduce input gain; lower ratios |\r\n\r\n---\r\n\r\n## Genre-Specific Tips\r\n\r\n### Rock/Pop\r\n- Moderate compression (4:1–6:1)\r\n- Standard crossovers (200 Hz, 4 kHz)\r\n- Light input gain for warmth (+1 dB)\r\n\r\n### Hip-Hop/Trap\r\n- Heavy low compression (8:1+) for tight kicks\r\n- Lower crossover (150–180 Hz)\r\n- Moderate input gain (+2 dB)\r\n\r\n### EDM/House\r\n- Aggressive compression across all bands (8:1–10:1)\r\n- Input gain +2 to +4 dB for character\r\n- Often use parallel for maximum aggression\r\n\r\n### Metal\r\n- Heavy mid compression for density (8:1–10:1)\r\n- Crossovers around 180 Hz / 4.5 kHz\r\n- Input gain +1 to +2 dB for grit\r\n\r\n### Jazz/Acoustic\r\n- Light compression (2:1–4:1)\r\n- Higher thresholds (-20 dB)\r\n- Minimal input gain (0 dB)\r\n\r\n---\r\n\r\n## Advanced Techniques\r\n\r\n### Serial + Parallel Combo\r\n1. Insert Fruity Squeeze in serial mode (100% wet)\r\n   - Light-to-moderate settings for glue\r\n2. Send to parallel bus with second Fruity Squeeze\r\n   - Aggressive settings, blend to taste\r\n\r\n### Dynamic Crossover Automation\r\n- Automate low/mid crossover during song\r\n- Lower during heavy sections (tighter kick)\r\n- Higher during sparse sections (fuller drums)\r\n\r\n### Multiband Sidechain\r\n- Use Fruity Peak Controller to sidechain mid/high bands from kick\r\n- Creates pumping effect on snare/cymbals when kick hits\r\n- Advanced rhythmic effect\r\n\r\n---\r\n\r\n## Integration with Other Processing\r\n\r\n### Recommended Signal Chain\r\n1. **Individual drum tracks**: EQ, compression\r\n2. **Drum bus**: Fruity Squeeze (glue)\r\n3. **Drum bus**: EQ (final tone shaping)\r\n4. **Drum bus**: Saturation/exciter (optional)\r\n5. **Drum bus**: Reverb send (room glue)\r\n\r\n---\r\n\r\n## Workflow Checklist\r\n\r\n- ✅ Drums glued together cohesively\r\n- ✅ Kick punchy and controlled\r\n- ✅ Snare cuts through with body\r\n- ✅ Cymbals controlled but not dull\r\n- ✅ Transients preserved (if not using extreme settings)\r\n- ✅ Drums sit well in full mix\r\n- ✅ A/B compared with bypass\r\n",
+      "kick-drum-workflow": "# Kick Drum Processing with Fruity Squeeze\r\n\r\n## Goal\r\nCreate punchy, controlled kick drums with tight low-end and enhanced attack.\r\n\r\n---\r\n\r\n## Step-by-Step Workflow\r\n\r\n### 1. Insert Fruity Squeeze on Kick Channel\r\n- Solo the kick drum track\r\n- Insert Fruity Squeeze in effects slot\r\n\r\n### 2. Set Crossover Points\r\n\r\n**Low/Mid Crossover: 80–100 Hz**\r\n- Isolates sub-bass thump from body\r\n- Lower (60–80 Hz) = more sub isolation\r\n- Higher (100–120 Hz) = fuller, warmer kick\r\n\r\n**Mid/High Crossover: 3–4 kHz**\r\n- Separates body from beater click\r\n- Lower (2–3 kHz) = more click emphasis\r\n- Higher (4–5 kHz) = more natural attack\r\n\r\n### 3. Process Low Band (Sub-Bass Punch)\r\n\r\n**Settings:**\r\n- **Threshold**: -8 to -10 dB\r\n- **Ratio**: 8:1–∞:1 (limiter mode)\r\n- **Volume**: +3 to +5 dB\r\n\r\n**Why:**\r\n- Heavy compression creates tight, controlled thump\r\n- Limiter mode prevents bass from spiking\r\n- Volume boost restores power after gain reduction\r\n\r\n### 4. Process Mid Band (Body)\r\n\r\n**Settings:**\r\n- **Threshold**: -15 to -18 dB\r\n- **Ratio**: 3:1–5:1\r\n- **Volume**: 0 to +1 dB\r\n\r\n**Why:**\r\n- Light-to-moderate compression preserves natural body\r\n- Too much compression here = hollow kick\r\n- Minimal adjustment often best\r\n\r\n### 5. Process High Band (Beater Click/Attack)\r\n\r\n**Settings:**\r\n- **Threshold**: -10 to -12 dB\r\n- **Ratio**: 6:1–8:1\r\n- **Volume**: +2 to +4 dB\r\n\r\n**Why:**\r\n- Controls transient peaks\r\n- Adds harmonic click via waveshaping\r\n- Volume boost brings out attack\r\n\r\n### 6. Drive Input for Character\r\n\r\n**Settings:**\r\n- **Input Level**: +1 to +4 dB\r\n\r\n**Why:**\r\n- Drives waveshaping for harmonic distortion\r\n- Adds edge and presence\r\n- +2 dB = subtle grit, +4 dB = aggressive color\r\n\r\n### 7. Adjust Output Level\r\n- Match to input level for fair comparison\r\n- Usually 0 to +2 dB after processing\r\n\r\n### 8. Fine-Tune by Listening\r\n\r\n**Check for:**\r\n- ✅ Tight, punchy low-end (not boomy)\r\n- ✅ Clear beater attack (not harsh)\r\n- ✅ Controlled dynamics (no wild volume changes)\r\n- ❌ Excessive distortion (reduce input gain)\r\n- ❌ Hollow sound (reduce mid compression)\r\n\r\n---\r\n\r\n## Recommended Settings\r\n\r\n### Standard Punchy Kick\r\n\r\n| Parameter | Value |\r\n|-----------|-------|\r\n| Low/Mid Crossover | 85 Hz |\r\n| Mid/High Crossover | 3.5 kHz |\r\n| Low Threshold | -9 dB |\r\n| Low Ratio | 10:1 |\r\n| Low Volume | +4 dB |\r\n| Mid Threshold | -16 dB |\r\n| Mid Ratio | 4:1 |\r\n| Mid Volume | 0 dB |\r\n| High Threshold | -11 dB |\r\n| High Ratio | 7:1 |\r\n| High Volume | +3 dB |\r\n| Input Level | +2 dB |\r\n| Output Level | +1 dB |\r\n\r\n### Deep 808-Style Kick\r\n\r\n| Parameter | Value |\r\n|-----------|-------|\r\n| Low/Mid Crossover | 60 Hz |\r\n| Mid/High Crossover | 2 kHz |\r\n| Low Threshold | -8 dB |\r\n| Low Ratio | ∞:1 (limiter) |\r\n| Low Volume | +5 dB |\r\n| Mid Threshold | -18 dB |\r\n| Mid Ratio | 3:1 |\r\n| Mid Volume | +1 dB |\r\n| High Threshold | -∞ (bypass) |\r\n| High Ratio | 1:1 |\r\n| High Volume | 0 dB |\r\n| Input Level | +1 dB |\r\n| Output Level | +1 dB |\r\n\r\n### Clicky EDM Kick\r\n\r\n| Parameter | Value |\r\n|-----------|-------|\r\n| Low/Mid Crossover | 100 Hz |\r\n| Mid/High Crossover | 4 kHz |\r\n| Low Threshold | -10 dB |\r\n| Low Ratio | 8:1 |\r\n| Low Volume | +3 dB |\r\n| Mid Threshold | -15 dB |\r\n| Mid Ratio | 5:1 |\r\n| Mid Volume | +1 dB |\r\n| High Threshold | -8 dB |\r\n| High Ratio | 10:1 |\r\n| High Volume | +5 dB |\r\n| Input Level | +4 dB |\r\n| Output Level | +2 dB |\r\n\r\n---\r\n\r\n## Troubleshooting\r\n\r\n| Problem | Solution |\r\n|---------|----------|\r\n| Kick sounds boomy | Lower low/mid crossover to 70–80 Hz; increase low ratio |\r\n| Lacks punch | Boost low volume; increase low ratio |\r\n| Too much click | Reduce high volume; raise high threshold |\r\n| Not enough click | Boost high volume; lower mid/high crossover |\r\n| Sounds distorted | Reduce input gain; lower ratios |\r\n| Hollow/thin | Reduce mid compression; raise low/mid crossover |\r\n\r\n---\r\n\r\n## Genre-Specific Tips\r\n\r\n### Hip-Hop/Trap\r\n- Deep sub focus (low/mid crossover at 60–70 Hz)\r\n- Heavy low limiting (∞:1)\r\n- Moderate high boost for attack\r\n\r\n### EDM/House\r\n- Balanced punch (low/mid at 80–100 Hz)\r\n- Heavy compression across all bands\r\n- High input gain for aggressive character\r\n\r\n### Rock/Pop\r\n- Natural body (low/mid at 100–120 Hz)\r\n- Moderate compression (5:1–7:1)\r\n- Light input gain for cleaner tone\r\n\r\n---\r\n\r\n## Workflow Checklist\r\n\r\n- ✅ Low-end tight and controlled\r\n- ✅ Attack cuts through mix\r\n- ✅ No excessive distortion\r\n- ✅ Sits well with bass\r\n- ✅ Consistent volume across hits\r\n",
+      "vocal-bus-processing": "# Vocal Bus Processing with Fruity Squeeze\r\n\r\n## Objective\r\nControl vocal dynamics across different frequency ranges for clarity, presence, and professional polish.\r\n\r\n## When to Use This Workflow\r\n- Inconsistent vocal dynamics across register\r\n- Harsh sibilance or plosives\r\n- Vocals getting lost in busy hip-hop mixes\r\n- Need to control multiple vocal layers together\r\n\r\n## Step-by-Step Process\r\n\r\n### 1. Setup Vocal Bus\r\nRoute all lead vocals (main, doubles, ad-libs) to a dedicated vocal bus. Insert Fruity Squeeze after basic EQ and before reverb/delay sends.\r\n\r\n### 2. Set Vocal-Optimized Crossovers\r\n\r\n**Standard Vocal Split**\r\n- **Low/Mid**: 200-250 Hz (separate body from warmth)\r\n- **Mid/High**: 4-6 kHz (separate presence from air/sibilance)\r\n\r\n**Genre-Specific Adjustments**\r\n- **Moody/Dark**: 180 Hz / 4 kHz (warmer, less bright)\r\n- **Upbeat**: 220 Hz / 5.5 kHz (balanced, energetic)\r\n- **Melodic/R&B**: 200 Hz / 6 kHz (smooth, silky)\r\n- **Aggressive Rap**: 250 Hz / 4.5 kHz (forward, punchy)\r\n\r\n### 3. Configure Low Band (Body Control)\r\n\r\n**Purpose**: Control low-end muddiness and proximity effect\r\n\r\n**Settings**\r\n- **Threshold**: -20 to -24 dB\r\n- **Ratio**: 1.5:1 to 2:1 (gentle)\r\n- **Attack**: 20-30ms (preserve natural warmth)\r\n- **Release**: 120-150ms (smooth, natural)\r\n- **Gain**: -0.5 to 0 dB\r\n\r\n**Why These Settings**\r\n- Gentle ratio preserves natural body\r\n- Slower attack maintains warmth\r\n- Higher threshold compresses only excessive low-end\r\n\r\n### 4. Configure Mid Band (Presence Control)\r\n\r\n**Purpose**: Main vocal presence and consistency\r\n\r\n**Settings**\r\n- **Threshold**: -12 to -18 dB\r\n- **Ratio**: 2:1 to 3:1 (moderate)\r\n- **Attack**: 10-15ms (quick enough for control)\r\n- **Release**: 80-100ms (follows vocal phrases)\r\n- **Gain**: +0.5 to +1.5 dB (bring forward in mix)\r\n\r\n**Why These Settings**\r\n- Moderate ratio for consistent presence\r\n- Medium attack preserves consonant clarity\r\n- Medium release follows natural vocal dynamics\r\n\r\n### 5. Configure High Band (De-Essing/Air Control)\r\n\r\n**Purpose**: Control sibilance and harshness\r\n\r\n**Settings**\r\n- **Threshold**: -15 to -20 dB\r\n- **Ratio**: 2:1 to 3:1 (moderate to aggressive)\r\n- **Attack**: 1-3ms (catch sibilant transients)\r\n- **Release**: 50-70ms (quick recovery)\r\n- **Gain**: -0.5 to -1 dB (tame brightness)\r\n\r\n**Why These Settings**\r\n- Fast attack catches sibilance\r\n- Quick release avoids dulling voice\r\n- Lower gain reduces harshness\r\n\r\n### 6. Genre-Specific Vocal Settings\r\n\r\n**Moody/Dark Trap Vocals**\r\n- **Low**: Ratio 2:1, Threshold -22 dB, Gain 0 dB\r\n- **Mid**: Ratio 2.5:1, Threshold -15 dB, Gain +1 dB\r\n- **High**: Ratio 2.5:1, Threshold -18 dB, Gain -1 dB\r\n- **Goal**: Warm, intimate, controlled\r\n\r\n**Upbeat/Energetic Rap**\r\n- **Low**: Ratio 1.5:1, Threshold -24 dB, Gain -0.5 dB\r\n- **Mid**: Ratio 3:1, Threshold -12 dB, Gain +1.5 dB\r\n- **High**: Ratio 2:1, Threshold -15 dB, Gain 0 dB\r\n- **Goal**: Forward, punchy, clear\r\n\r\n**Melodic/Sung Vocals (R&B)**\r\n- **Low**: Ratio 1.5:1, Threshold -24 dB, Gain 0 dB\r\n- **Mid**: Ratio 2:1, Threshold -18 dB, Gain +0.5 dB\r\n- **High**: Ratio 3:1, Threshold -16 dB, Gain -0.5 dB\r\n- **Goal**: Smooth, polished, silky\r\n\r\n**Aggressive/Shouted Vocals**\r\n- **Low**: Ratio 2.5:1, Threshold -20 dB, Gain -1 dB\r\n- **Mid**: Ratio 3.5:1, Threshold -10 dB, Gain +2 dB\r\n- **High**: Ratio 3:1, Threshold -12 dB, Gain -1 dB\r\n- **Goal**: Controlled aggression, clarity\r\n\r\n### 7. Critical Listening Checks\r\n\r\n- **Sibilance**: \"S\" and \"T\" sounds should be controlled but not lispy\r\n- **Body**: Low-end should feel warm, not boomy or thin\r\n- **Presence**: Vocals should sit on top of beat consistently\r\n- **Intelligibility**: Every word should be clear\r\n- **Naturalness**: Shouldn't sound obviously compressed\r\n\r\n### 8. Common Adjustments\r\n\r\n**Vocals Sound Thin**\r\n- Increase low-band gain (+1 to +2 dB)\r\n- Raise low/mid crossover to 250-300 Hz\r\n- Reduce low-band ratio to 1.2:1\r\n\r\n**Vocals Sound Muddy**\r\n- Reduce low-band gain (-1 dB)\r\n- Lower low/mid crossover to 180 Hz\r\n- Increase low-band ratio to 2.5:1\r\n\r\n**Harsh Sibilance**\r\n- Lower high-band threshold to -18 dB\r\n- Increase high-band ratio to 4:1\r\n- Reduce high-band gain to -1.5 dB\r\n\r\n**Vocals Getting Lost**\r\n- Increase mid-band gain (+2 dB)\r\n- Lower mid-band threshold to -15 dB\r\n- Adjust mid/high crossover to isolate vocal sweet spot\r\n\r\n**Over-Compressed Sound**\r\n- Increase all attack times\r\n- Reduce ratios across all bands\r\n- Raise thresholds to compress less\r\n\r\n## Advanced Techniques\r\n\r\n### Multiband Sidechain De-Essing\r\nRoute high band sidechain to instrumental, ducking sibilance when beat is busy.\r\n\r\n### Dynamic Crossover Automation\r\nAutomate crossover points for different vocal sections (verse vs. hook).\r\n\r\n### Parallel Multiband Processing\r\nSet mix to 60-80% and blend with dry vocal for transparent control.\r\n\r\n### Genre-Switching Presets\r\nSave presets for different vocal styles and switch between takes.\r\n\r\n## Integration with Vocal Chain\r\n\r\n**Typical Vocal Chain Order**\r\n1. Subtractive EQ (remove mud)\r\n2. Standard compressor (overall dynamics)\r\n3. **Fruity Squeeze** ← You are here (frequency-specific control)\r\n4. De-esser (if more sibilance control needed)\r\n5. Additive EQ (presence boost)\r\n6. Saturation/exciter\r\n7. Reverb/delay sends\r\n\r\n## Quick Reference by Vocal Type\r\n\r\n| Vocal Type | Low Ratio | Mid Ratio | High Ratio | Mid Gain |\r\n|------------|-----------|-----------|------------|----------|\r\n| Moody/Intimate | 2:1 | 2.5:1 | 2.5:1 | +1 dB |\r\n| Energetic Rap | 1.5:1 | 3:1 | 2:1 | +1.5 dB |\r\n| Melodic/Sung | 1.5:1 | 2:1 | 3:1 | +0.5 dB |\r\n| Aggressive | 2.5:1 | 3.5:1 | 3:1 | +2 dB |\r\n\r\n## Pro Tips\r\n\r\n1. **Solo Each Band**: Understand what frequencies you're affecting\r\n2. **A/B Frequently**: Compare against bypassed signal often\r\n3. **Check Against Beat**: Always listen in context with instrumental\r\n4. **Automate for Sections**: Different settings for verse vs. chorus\r\n5. **Monitor Gain Reduction**: Aim for 3-6 dB reduction on mid band max\r\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Squeeze\r\n\r\nThis section contains workflow information for the fruity-squeeze plugin.\r\n"
+    }
+  },
+  "rules": {
+    "mixing-rules": {
+      "plugin": "Fruity Squeeze",
+      "mixingRules": [
+        {
+          "rule": "Lower threshold = more compression",
+          "category": "Fundamentals",
+          "explanation": "Threshold sets where compression begins. Lower values mean more of the signal exceeds the threshold and gets compressed.",
+          "example": "-6 dB threshold compresses more signal than -18 dB threshold"
+        },
+        {
+          "rule": "Higher ratio = more aggressive compression",
+          "category": "Fundamentals",
+          "explanation": "Ratio controls how much the signal is reduced above the threshold. Higher ratios create more dramatic compression.",
+          "example": "10:1 ratio is much more aggressive than 3:1"
+        },
+        {
+          "rule": "Compensate gain reduction with volume boost",
+          "category": "Gain Staging",
+          "explanation": "Heavy compression reduces overall level. Increase the band's volume parameter to restore loudness.",
+          "example": "8:1 ratio at -10 dB threshold often needs +3 to +5 dB volume boost"
+        },
+        {
+          "rule": "Match input and output levels when A/B comparing",
+          "category": "Gain Staging",
+          "explanation": "Louder sounds better. Match output to input level to make fair comparisons of compression quality.",
+          "example": "If compression makes signal quieter, boost output level to match bypass level"
+        },
+        {
+          "rule": "Higher input = more harmonic distortion",
+          "category": "Character",
+          "explanation": "Fruity Squeeze is a waveshaper. Driving the input harder creates more harmonic coloration.",
+          "example": "+4 dB input adds grit and warmth; 0 dB input is cleaner"
+        },
+        {
+          "rule": "Use dry/wet for parallel compression",
+          "category": "Technique",
+          "explanation": "Blending compressed and dry signals preserves natural dynamics while adding density.",
+          "example": "40% wet = aggressive compression on 40%, natural dynamics on 60%"
+        },
+        {
+          "rule": "Set crossovers based on source material",
+          "category": "Crossovers",
+          "explanation": "Different instruments have energy in different frequency ranges. Adjust crossovers accordingly.",
+          "example": "Kick drum: 80 Hz crossover isolates sub-thump; Vocals: 300 Hz keeps low-mids with body"
+        },
+        {
+          "rule": "Lower low/mid crossover = more isolated bass",
+          "category": "Crossovers",
+          "explanation": "Moving the low/mid crossover down isolates more sub-bass frequencies for independent processing.",
+          "example": "60 Hz crossover = tight sub control; 300 Hz crossover = fuller, warmer bass"
+        },
+        {
+          "rule": "Lower mid/high crossover = brighter sound",
+          "category": "Crossovers",
+          "explanation": "Moving the mid/high crossover down puts more frequencies in the high band, which can then be boosted.",
+          "example": "1.5 kHz crossover = more frequencies in bright range; 5 kHz crossover = darker overall"
+        },
+        {
+          "rule": "Bypass bands you don't need to process",
+          "category": "Efficiency",
+          "explanation": "Set threshold to -∞ to bypass a band. Only process what needs processing.",
+          "example": "Vocal de-essing: bypass low and mid, only compress highs"
+        },
+        {
+          "rule": "Heavy low compression prevents bass from eating headroom",
+          "category": "Mastering",
+          "explanation": "Bass frequencies contain a lot of energy. Compress them heavily to free up headroom for other elements.",
+          "example": "Mastering: 8:1 low ratio creates space for louder mid/high content"
+        },
+        {
+          "rule": "Light high compression preserves clarity",
+          "category": "Mastering",
+          "explanation": "Over-compressing highs creates harshness and fatigue. Use lower ratios on high band.",
+          "example": "High band at 2:1–4:1 keeps air and detail; 10:1 sounds harsh"
+        },
+        {
+          "rule": "Solo bands to hear processing individually",
+          "category": "Workflow",
+          "explanation": "Listen to each band in isolation to understand what each band is doing.",
+          "example": "Bypass mid and high to hear only low band compression"
+        },
+        {
+          "rule": "Use volume knobs for tonal shaping",
+          "category": "Tone Shaping",
+          "explanation": "Band volume controls reshape tonal balance after compression. Boost bands you want louder.",
+          "example": "Boost high volume +3 dB for brighter sound; reduce for darker tone"
+        },
+        {
+          "rule": "∞:1 ratio = brick-wall limiter",
+          "category": "Limiting",
+          "explanation": "Infinite ratio prevents any signal from exceeding the threshold. Hard limiting.",
+          "example": "Low band at ∞:1 and -8 dB threshold prevents bass from ever exceeding -8 dB"
+        },
+        {
+          "rule": "Waveshaping adds odd-order harmonics",
+          "category": "Character",
+          "explanation": "Fruity Squeeze is not a clean compressor. It adds harmonic distortion, especially odd harmonics.",
+          "example": "Gentle 3rd and 5th harmonics add warmth; excessive adds harshness"
+        },
+        {
+          "rule": "No attack/release = instant response",
+          "category": "Behavior",
+          "explanation": "Fruity Squeeze reacts instantly to signal changes. Great for fast transients, but no musical pumping.",
+          "example": "Perfect for controlling drum hits; less natural on sustained vocals"
+        },
+        {
+          "rule": "Adjust crossovers if bands sound unbalanced",
+          "category": "Troubleshooting",
+          "explanation": "If one band dominates or sounds isolated, move the crossover points.",
+          "example": "Muddy low-mids? Raise low/mid crossover to 300 Hz"
+        },
+        {
+          "rule": "Use moderate ratios for transparency",
+          "category": "Subtlety",
+          "explanation": "Ratios between 2:1 and 4:1 provide control without obvious compression artifacts.",
+          "example": "Mix glue: all bands at 3:1–4:1 for cohesion without squashing"
+        },
+        {
+          "rule": "Aggressive settings for EDM/electronic, gentle for acoustic",
+          "category": "Genre",
+          "explanation": "Electronic music tolerates heavy compression and distortion. Acoustic music needs lighter touch.",
+          "example": "EDM drums: 10:1 ratios; Jazz: 2:1–3:1 ratios"
+        },
+        {
+          "rule": "Watch gain reduction meters for feedback",
+          "category": "Workflow",
+          "explanation": "Visual meters show how much compression is happening per band. Adjust based on meter activity.",
+          "example": "If low band meter constantly maxed, threshold is too low or ratio too high"
+        },
+        {
+          "rule": "Use on individual tracks AND mix bus",
+          "category": "Workflow",
+          "explanation": "Fruity Squeeze works well on individual instruments (kick, bass, vocals) and full mixes (mastering).",
+          "example": "Heavy on kick drum for punch, light on master for glue"
+        },
+        {
+          "rule": "Parallel compression = aggressive settings + dry/wet blend",
+          "category": "Technique",
+          "explanation": "Crush the signal hard (low threshold, high ratio) then blend with dry signal for natural dynamics.",
+          "example": "All bands at 10:1, then set dry/wet to 30–50%"
+        },
+        {
+          "rule": "De-essing: high band only, moderate-to-heavy ratio",
+          "category": "Vocals",
+          "explanation": "Control sibilance by compressing only the high band (5–8 kHz) with 6:1–10:1 ratio.",
+          "example": "Mid/high crossover at 5 kHz, high threshold -10 dB, ratio 8:1"
+        },
+        {
+          "rule": "Bass control: low band heavy, mid/high light",
+          "category": "Bass",
+          "explanation": "Compress bass frequencies aggressively, leave harmonics relatively dynamic.",
+          "example": "Low at 8:1, mid at 3:1, high bypassed or 2:1"
+        },
+        {
+          "rule": "Check mix in context after processing",
+          "category": "Workflow",
+          "explanation": "Always listen to processed track in full mix. Solo can be misleading.",
+          "example": "Kick might sound over-compressed solo but perfect in mix"
+        },
+        {
+          "rule": "Less is often more with multiband compression",
+          "category": "Philosophy",
+          "explanation": "Multiband compression is powerful. Easy to overdo. Start subtle, add more if needed.",
+          "example": "Try 3:1 ratios first; increase to 6:1 only if not enough control"
+        },
+        {
+          "rule": "Use Fruity Squeeze for color, traditional compressor for transparency",
+          "category": "Tool Selection",
+          "explanation": "Fruity Squeeze adds harmonic character. Use when you want coloration or speed.",
+          "example": "Clean vocal compression: use standard compressor; aggressive drum crush: use Fruity Squeeze"
+        }
+      ]
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Squeeze\r\n\r\nThis section contains reference information for the fruity-squeeze plugin.\r\n"
+    }
+  }
+}

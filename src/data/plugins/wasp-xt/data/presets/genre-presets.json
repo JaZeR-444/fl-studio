@@ -1,0 +1,86 @@
+{
+  "presetArchetypes": {
+    "supersawLead": {
+      "description": "Massive, wide lead for EDM choruses",
+      "settings": {
+        "oscillators": { "count": 3, "detune": 15 },
+        "filter1": { "type": "lowpass", "cutoff": 55, "resonance": 30 },
+        "filter2": { "type": "lowpass", "cutoff": 65, "resonance": 20 },
+        "routing": "serial",
+        "env1": { "to": "filter1", "attack": 5, "decay": 200, "sustain": 70, "release": 150 },
+        "chorus": { "enabled": true, "depth": 70 }
+      },
+      "useCases": ["EDM drops", "big choruses", "anthem leads"],
+      "tags": ["electric", "upbeat", "psychedelic"]
+    },
+    "darkPad": {
+      "description": "Moody, atmospheric foundation",
+      "settings": {
+        "oscillators": { "count": 2, "detune": 5 },
+        "filter1": { "type": "lowpass", "cutoff": 45, "resonance": 20 },
+        "filter2": { "type": "lowpass", "cutoff": 55, "resonance": 15 },
+        "routing": "parallel",
+        "env1": { "to": "filter1", "attack": 500, "decay": 500, "sustain": 80, "release": 500 },
+        "chorus": { "enabled": true, "depth": 50 }
+      },
+      "useCases": ["moody intros", "background texture", "cinematic"],
+      "tags": ["moody", "atmospheric", "dark"]
+    },
+    "aggressiveBass": {
+      "description": "Cutting bass for hip-hop drops",
+      "settings": {
+        "oscillators": { "count": 2, "detune": 10 },
+        "filter1": { "type": "lowpass", "cutoff": 35, "resonance": 45 },
+        "filter2": { "type": "lowpass", "cutoff": 40, "resonance": 35 },
+        "routing": "serial",
+        "env1": { "to": "filter1", "attack": 10, "decay": 100, "sustain": 80, "release": 50 },
+        "chorus": { "enabled": false, "depth": 0 }
+      },
+      "useCases": ["hip-hop bass", "trap drops", "aggressive hooks"],
+      "tags": ["hip-hop/rap", "electric", "intense"]
+    },
+    "acidRipper": {
+      "description": "Resonant, TB-303 style sound",
+      "settings": {
+        "oscillators": { "count": 1, "wave": "saw" },
+        "filter1": { "type": "lowpass", "cutoff": 50, "resonance": 70 },
+        "filter2": { "type": "highpass", "cutoff": 80, "resonance": 30 },
+        "routing": "serial",
+        "env1": { "to": "filter1", "attack": 1, "decay": 150, "sustain": 40, "release": 100 },
+        "chorus": { "enabled": false, "depth": 0 }
+      },
+      "useCases": ["acid lines", "rhythmic riffs", "techno"],
+      "tags": ["electric", "psychedelic", "intense"]
+    },
+    "shimmerPad": {
+      "description": "Bright, airy, ethereal texture",
+      "settings": {
+        "oscillators": { "count": 2, "detune": 8 },
+        "filter1": { "type": "lowpass", "cutoff": 70, "resonance": 15 },
+        "filter2": { "type": "lowpass", "cutoff": 85, "resonance": 10 },
+        "routing": "parallel",
+        "env1": { "to": "filter2", "attack": 800, "decay": 400, "sustain": 90, "release": 600 },
+        "ch chorus": { "enabled": true, "depth": 60 }
+      },
+      "useCases": ["breakdowns", "intros", "ethereal sections"],
+      "tags": ["moody", "upbeat", "shimmer"]
+    }
+  },
+  "genreSettings": {
+    "hipHop": {
+      "subBass": { "filter1": 28, "res": 30, "routing": "single", "chorus": true },
+      "midBass": { "filter1": 40, "res": 40, "routing": "serial", "chorus": true },
+      "texture": { "filter1": 55, "res": 25, "routing": "parallel", "chorus": true }
+    },
+    "rnb": {
+      "smoothBass": { "filter1": 35, "res": 28, "routing": "serial", "chorus": true },
+      "keys": { "filter1": 65, "res": 18, "routing": "parallel", "chorus": true },
+      "pad": { "filter1": 50, "res": 20, "routing": "parallel", "chorus": true }
+    },
+    "deepBassEDM": {
+      "wobble": { "filter1": 35, "res": 50, "routing": "serial", "chorus": false },
+      "supersaw": { "filter1": 50, "res": 35, "routing": "serial", "chorus": true },
+      "texture": { "filter1": 45, "res": 40, "routing": "parallel", "chorus": true }
+    }
+  }
+}

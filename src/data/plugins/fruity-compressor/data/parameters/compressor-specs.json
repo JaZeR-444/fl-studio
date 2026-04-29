@@ -1,0 +1,64 @@
+{
+  "plugin": {
+    "name": "Fruity Compressor",
+    "category": "Dynamics",
+    "type": "Compressor",
+    "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Compressor.htm"
+  },
+  "parameters": {
+    "core": [
+      {
+        "id": "threshold",
+        "name": "Threshold",
+        "range": "-60 to 0 dB",
+        "default": "-15 dB",
+        "description": "Sets the level at which the compressor starts working."
+      },
+      {
+        "id": "ratio",
+        "name": "Ratio",
+        "range": "1.0:1 to 100.0:1",
+        "default": "4.0:1",
+        "description": "Sets the amount of compression applied."
+      },
+      {
+        "id": "gain",
+        "name": "Gain",
+        "range": "-30 to +30 dB",
+        "default": "0 dB",
+        "description": "Makeup gain to compensate for volume loss."
+      }
+    ],
+    "envelope": [
+      {
+        "id": "attack",
+        "name": "Attack",
+        "range": "0 to 400 ms",
+        "unit": "ms",
+        "description": "Time taken to reach full compression."
+      },
+      {
+        "id": "release",
+        "name": "Release",
+        "range": "1 to 4000 ms",
+        "unit": "ms",
+        "description": "Time taken to return to unity gain."
+      }
+    ],
+    "types": [
+      "Hard", "Medium", "Vintage", "Soft",
+      "Hard R", "Medium R", "Vintage R", "Soft R"
+    ]
+  },
+  "workflows": [
+    {
+      "name": "Sidechain Ducking",
+      "steps": [
+        "Route trigger track (e.g. Kick) to bass track's mixer insert.",
+        "Insert Fruity Compressor on bass track.",
+        "Right-click 'Threshold' or 'Ratio' and link to internal controller if using Peak Controller, or use Wrapper routing for direct sidechain.",
+        "Set high Ratio (10:1) and fast Attack (0.1ms) for aggressive ducking."
+      ]
+    }
+  ]
+}

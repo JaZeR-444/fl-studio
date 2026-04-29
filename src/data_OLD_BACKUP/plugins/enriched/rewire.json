@@ -1,0 +1,221 @@
+{
+  "id": "rewire",
+  "name": "ReWire",
+  "presets": {
+    "rewire-templates": {
+      "rewireConfigurations": {
+        "studioSetup": {
+          "host": "FL Studio",
+          "clients": [
+            "Reason",
+            "Live"
+          ],
+          "sampleRate": 44100,
+          "bufferSize": 512,
+          "syncMode": "internal",
+          "audioRouting": {
+            "mainOutput": "FL Studio Master",
+            "clientOutputs": [
+              "FL Studio Mixer Channels"
+            ]
+          }
+        },
+        "liveSetup": {
+          "host": "FL Studio",
+          "clients": [
+            "Ableton Live"
+          ],
+          "sampleRate": 48000,
+          "bufferSize": 256,
+          "syncMode": "midi",
+          "audioRouting": {
+            "mainOutput": "Hardware Interface",
+            "clientOutputs": [
+              "Individual Channels"
+            ]
+          }
+        },
+        "collaborativeSetup": {
+          "host": "FL Studio",
+          "clients": [
+            "Logic Pro",
+            "Pro Tools"
+          ],
+          "sampleRate": 44100,
+          "bufferSize": 1024,
+          "syncMode": "external",
+          "audioRouting": {
+            "mainOutput": "Aggregate Device",
+            "clientOutputs": [
+              "Stereo Bus"
+            ]
+          }
+        }
+      },
+      "deviceTemplates": {
+        "audioInterface": {
+          "recommended": [
+            "Focusrite Scarlett",
+            "Universal Audio Apollo",
+            "Motu M-Series"
+          ],
+          "compatibility": "ASIO/Core Audio required",
+          "latencyOptimization": "Direct Monitoring preferred"
+        },
+        "midiInterfaces": {
+          "recommended": [
+            "M-Audio Midisport",
+            "iConnectivity",
+            "Motu Micro Lite"
+          ],
+          "timing": "Hardware timestamping preferred",
+          "channels": "Minimum 16 channels recommended"
+        },
+        "controlSurfaces": {
+          "compatible": [
+            "Mackie Control",
+            "Novation SL",
+            "Behringer X-Touch"
+          ],
+          "mapping": "HUI or Mackie Control protocol",
+          "feedback": "LED feedback supported"
+        }
+      },
+      "troubleshootingMatrix": {
+        "syncIssues": {
+          "symptoms": [
+            "Drift",
+            "Phase problems",
+            "Timing jitter"
+          ],
+          "causes": [
+            "Sample rate mismatch",
+            "Buffer size differences",
+            "Clock source conflicts"
+          ],
+          "solutions": [
+            "Match sample rates",
+            "Align buffer sizes",
+            "Set clear clock master"
+          ]
+        },
+        "audioProblems": {
+          "symptoms": [
+            "Crackling",
+            "Dropouts",
+            "Latency"
+          ],
+          "causes": [
+            "Buffer too low",
+            "Driver conflicts",
+            "CPU overload"
+          ],
+          "solutions": [
+            "Increase buffer size",
+            "Update drivers",
+            "Optimize CPU usage"
+          ]
+        },
+        "connectionFailures": {
+          "symptoms": [
+            "No connection",
+            "Intermittent drops",
+            "Application crashes"
+          ],
+          "causes": [
+            "ReWire not installed",
+            "Version incompatibility",
+            "Memory issues"
+          ],
+          "solutions": [
+            "Reinstall ReWire",
+            "Update applications",
+            "Increase memory allocation"
+          ]
+        }
+      }
+    }
+  },
+  "parameters": {
+    "rewire-specs": {
+      "plugin_name": "ReWire",
+      "status": "Deprecated",
+      "replacement": "FL Studio VSTi",
+      "historical_use_in_hip_hop_rb": [
+        "Connecting FL Studio to other DAWs for specialized sound libraries",
+        "Integrating hardware controllers with multiple software environments",
+        "Collaborative workflows between producers using different DAWs",
+        "Combining sequencing capabilities of different applications"
+      ],
+      "modern_alternatives": [
+        "FL Studio as VST plugin in other DAWs",
+        "Internal routing within single DAW",
+        "Virtual audio cables (Voicemeeter, Blackhole)",
+        "Project exchange formats (AAF, OMF)"
+      ],
+      "discontinued_year": 2020,
+      "cpu_usage_when_active": "Low to moderate depending on connected applications",
+      "audio_channels_supported": "Up to 64 channels per application",
+      "latency_characteristics": "Low latency with proper buffer settings",
+      "common_hip_hop_rb_workflows": [
+        "FL Studio as client for beat production within main DAW",
+        "Reason as client for vintage synth emulations",
+        "Pro Tools as host for professional mixing with FL Studio for sound design"
+      ]
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "Rewire Integration",
+      "filename": "rewire-integration.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "Index",
+      "category": "general",
+      "filename": "INDEX.md"
+    },
+    {
+      "title": "Hip Hop Production Workflows",
+      "category": "by-context",
+      "filename": "hip-hop-production-workflows.md"
+    },
+    {
+      "title": "Rb Production Workflows",
+      "category": "by-context",
+      "filename": "rb-production-workflows.md"
+    },
+    {
+      "title": "Hardware Sync Workflows",
+      "category": "by-goal",
+      "filename": "hardware-sync-workflows.md"
+    },
+    {
+      "title": "Hip Hop Rewire Integration",
+      "category": "by-goal",
+      "filename": "hip-hop-rewire-integration.md"
+    },
+    {
+      "title": "Index",
+      "category": "by-goal",
+      "filename": "INDEX.md"
+    },
+    {
+      "title": "Rnb Rewire Integration",
+      "category": "by-goal",
+      "filename": "rnb-rewire-integration.md"
+    },
+    {
+      "title": "Workflows Index",
+      "category": "by-goal",
+      "filename": "workflows-INDEX.md"
+    },
+    {
+      "title": "Rewire Hardware Sync",
+      "category": "by-instrument",
+      "filename": "rewire-hardware-sync.md"
+    }
+  ]
+}

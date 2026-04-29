@@ -1,0 +1,566 @@
+{
+  "plugin_name": "Drumpad",
+  "category": "Instrument",
+  "manufacturer": "Image-Line",
+  "plugin_type": "MPC-Style Drum Sampler",
+  "version": "1.0.0",
+  "parameters": [
+    {
+      "name": "Pad_Sensitivity",
+      "type": "range",
+      "min": 1,
+      "max": 127,
+      "default": 64,
+      "unit": "velocity",
+      "description": "Adjusts pad response to touch",
+      "use_cases": ["performance", "programming", "velocity_response"],
+      "hip_hop_applications": ["drum_programming", "pad_responsiveness", "velocity_sensitivity"]
+    },
+    {
+      "name": "Velocity_Curve",
+      "type": "selector",
+      "options": [
+        {
+          "value": "linear",
+          "label": "Linear",
+          "description": "Direct proportional response",
+          "use_cases": ["direct_response", "proportional_control", "linear_mapping"],
+          "hip_hop_applications": ["precise_programming", "linear_velocity_response", "direct_mapping"]
+        },
+        {
+          "value": "exponential",
+          "label": "Exponential",
+          "description": "Emphasizes soft hits, compresses loud hits",
+          "use_cases": ["dynamic_expression", "soft_hit_emphasis", "compression_simulation"],
+          "hip_hop_applications": ["dynamic_drum_expression", "soft_hit_enhancement", "natural_feel"]
+        },
+        {
+          "value": "logarithmic",
+          "label": "Logarithmic",
+          "description": "Emphasizes loud hits, compresses soft hits",
+          "use_cases": ["loud_hit_emphasis", "compression_simulation", "hard_hit_enhancement"],
+          "hip_hop_applications": ["hard_hit_enhancement", "aggressive_drum_sound", "loud_hit_emphasis"]
+        },
+        {
+          "value": "custom",
+          "label": "Custom",
+          "description": "User-defined velocity curve",
+          "use_cases": ["personal_preference", "specific_response", "custom_mapping"],
+          "hip_hop_applications": ["custom_velocity_mapping", "personal_feel", "specific_response"]
+        }
+      ],
+      "description": "Maps input velocity to output",
+      "use_cases": ["velocity_mapping", "response_curve", "dynamic_control"],
+      "hip_hop_applications": ["velocity_mapping", "dynamic_expression", "personal_response"]
+    },
+    {
+      "name": "Pressure_Sensitivity",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "default": 50,
+      "unit": "percentage",
+      "description": "Response to pad pressure after initial hit",
+      "use_cases": ["pressure_response", "aftertouch", "expression"],
+      "hip_hop_applications": ["expressive_playing", "pressure_expression", "dynamic_response"]
+    },
+    {
+      "name": "Response_Time",
+      "type": "selector",
+      "options": [
+        {
+          "value": "fast",
+          "label": "Fast",
+          "description": "Immediate response, good for precise timing",
+          "use_cases": ["precise_timing", "immediate_response", "accurate_triggering"],
+          "hip_hop_applications": ["precise_beat_programming", "accurate_triggering", "tight_timing"]
+        },
+        {
+          "value": "medium",
+          "label": "Medium",
+          "description": "Balanced response, good for general use",
+          "use_cases": ["balanced_response", "general_use", "moderate_response"],
+          "hip_hop_applications": ["balanced_programming", "general_drumming", "moderate_response"]
+        },
+        {
+          "value": "slow",
+          "label": "Slow",
+          "description": "Smoothed response, good for expressive playing",
+          "use_cases": ["expressive_playing", "smoothed_response", "artistic_expression"],
+          "hip_hop_applications": ["expressive_drumming", "smoothed_response", "artistic_expression"]
+        }
+      ],
+      "description": "Pad response speed adjustment",
+      "use_cases": ["response_speed", "trigger_timing", "pad_response"],
+      "hip_hop_applications": ["pad_response_timing", "trigger_accuracy", "response_character"]
+    },
+    {
+      "name": "Velocity_Layers",
+      "type": "range",
+      "min": 1,
+      "max": 8,
+      "default": 1,
+      "unit": "layers",
+      "description": "Number of velocity layers per pad",
+      "use_cases": ["dynamic_expression", "velocity_mapping", "layered_samples"],
+      "hip_hop_applications": ["drum_expression", "velocity_mapping", "layered_drum_sounds"]
+    },
+    {
+      "name": "Round_Robin",
+      "type": "selector",
+      "options": [
+        {
+          "value": "off",
+          "label": "Off",
+          "description": "No round-robin cycling",
+          "use_cases": ["single_sample", "no_cycling", "static_sound"],
+          "hip_hop_applications": ["single_drum_sound", "static_sample", "no_alternation"]
+        },
+        {
+          "value": "2_way",
+          "label": "2-Way",
+          "description": "Alternates between 2 samples",
+          "use_cases": ["sample_alternation", "2_sample_cycle", "basic_round_robin"],
+          "hip_hop_applications": ["drum_alternation", "2_sample_cycling", "basic_realism"]
+        },
+        {
+          "value": "3_way",
+          "label": "3-Way",
+          "description": "Cycles through 3 samples",
+          "use_cases": ["sample_cycling", "3_sample_cycle", "moderate_round_robin"],
+          "hip_hop_applications": ["moderate_realism", "3_sample_cycling", "natural_feel"]
+        },
+        {
+          "value": "4_way",
+          "label": "4-Way",
+          "description": "Cycles through 4 samples",
+          "use_cases": ["advanced_cycling", "4_sample_cycle", "advanced_round_robin"],
+          "hip_hop_applications": ["advanced_realism", "4_sample_cycling", "natural_drum_feel"]
+        }
+      ],
+      "description": "Alternating samples for realism",
+      "use_cases": ["realism", "sample_alternation", "cycling"],
+      "hip_hop_applications": ["realistic_drumming", "sample_alternation", "natural_feel"]
+    },
+    {
+      "name": "Crossfade_Time",
+      "type": "range",
+      "min": 0,
+      "max": 20,
+      "default": 5,
+      "unit": "ms",
+      "description": "Smooth transitions between samples",
+      "use_cases": ["click_reduction", "smooth_transitions", "artifact_elimination"],
+      "hip_hop_applications": ["click_reduction", "smooth_drum_transitions", "artifact_elimination"]
+    },
+    {
+      "name": "Sample_Attenuation",
+      "type": "range",
+      "min": -70,
+      "max": 12,
+      "default": 0,
+      "unit": "dB",
+      "description": "Volume scaling per pad",
+      "use_cases": ["level_control", "volume_scaling", "gain_staging"],
+      "hip_hop_applications": ["drum_leveling", "volume_balancing", "gain_staging"]
+    },
+    {
+      "name": "Fine_Tune",
+      "type": "range",
+      "min": -100,
+      "max": 100,
+      "default": 0,
+      "unit": "cents",
+      "description": "Precise pitch adjustment in cents",
+      "use_cases": ["pitch_correction", "fine_tuning", "tuning_precision"],
+      "hip_hop_applications": ["sample_tuning", "pitch_correction", "precise_tuning"]
+    },
+    {
+      "name": "Stretch_Mode",
+      "type": "selector",
+      "options": [
+        {
+          "value": "formant_preserving",
+          "label": "Formant Preserving",
+          "description": "Preserves formants during pitch shifting",
+          "use_cases": ["vocal_processing", "natural_pitching", "formant_preservation"],
+          "hip_hop_applications": ["vocal_chop_tuning", "natural_sample_pitching", "formant_preservation"]
+        },
+        {
+          "value": "natural",
+          "label": "Natural",
+          "description": "Balanced algorithm for general use",
+          "use_cases": ["general_pitching", "balanced_algorithm", "versatile_application"],
+          "hip_hop_applications": ["drum_sample_pitching", "balanced_processing", "general_use"]
+        },
+        {
+          "value": "complex",
+          "label": "Complex",
+          "description": "High-quality algorithm for complex material",
+          "use_cases": ["high_quality", "complex_material", "detailed_processing"],
+          "hip_hop_applications": ["vocal_sample_processing", "complex_sound_design", "high_quality"]
+        }
+      ],
+      "description": "Time stretching algorithm selection",
+      "use_cases": ["pitch_shifting", "time_stretching", "algorithm_selection"],
+      "hip_hop_applications": ["sample_manipulation", "pitch_shifting", "time_stretching"]
+    },
+    {
+      "name": "Step_Resolution",
+      "type": "selector",
+      "options": [
+        {
+          "value": "quarter",
+          "label": "1/4",
+          "description": "Quarter note steps",
+          "use_cases": ["simple_patterns", "quarter_note", "basic_sequencing"],
+          "hip_hop_applications": ["simple_beats", "quarter_note_patterns", "basic_hip_hop"]
+        },
+        {
+          "value": "eighth",
+          "label": "1/8",
+          "description": "Eighth note steps",
+          "use_cases": ["basic_patterns", "eighth_note", "standard_sequencing"],
+          "hip_hop_applications": ["standard_beats", "eighth_note_patterns", "basic_hip_hop"]
+        },
+        {
+          "value": "sixteenth",
+          "label": "1/16",
+          "description": "Sixteenth note steps (most common)",
+          "use_cases": ["standard_patterns", "sixteenth_note", "common_sequencing"],
+          "hip_hop_applications": ["standard_hip_hop", "sixteenth_note_patterns", "common_use"]
+        },
+        {
+          "value": "thirty_second",
+          "label": "1/32",
+          "description": "Thirty-second note steps (for complex patterns)",
+          "use_cases": ["complex_patterns", "thirty_second_note", "detailed_sequencing"],
+          "hip_hop_applications": ["complex_hip_hop", "thirty_second_patterns", "detailed_programming"]
+        },
+        {
+          "value": "sixty_fourth",
+          "label": "1/64",
+          "description": "Sixty-fourth note steps (for very complex patterns)",
+          "use_cases": ["very_complex_patterns", "sixty_fourth_note", "detailed_sequencing"],
+          "hip_hop_applications": ["very_complex_hip_hop", "sixty_fourth_patterns", "detailed_programming"]
+        }
+      ],
+      "description": "Timing division options",
+      "use_cases": ["timing_division", "step_resolution", "pattern_complexity"],
+      "hip_hop_applications": ["pattern_resolution", "timing_accuracy", "complex_programming"]
+    },
+    {
+      "name": "Pattern_Length",
+      "type": "range",
+      "min": 4,
+      "max": 64,
+      "default": 16,
+      "unit": "steps",
+      "description": "Adjustable number of steps",
+      "use_cases": ["pattern_length", "step_count", "sequence_length"],
+      "hip_hop_applications": ["pattern_length", "sequence_length", "hip_hop_patterns"]
+    },
+    {
+      "name": "Swing",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "default": 50,
+      "unit": "percentage",
+      "description": "Timing offset for groove feel",
+      "use_cases": ["groove_feel", "timing_offset", "swing_timing"],
+      "hip_hop_applications": ["hip_hop_swing", "groove_feel", "classic_hip_hop"]
+    },
+    {
+      "name": "Tempo_Sync",
+      "type": "selector",
+      "options": [
+        {
+          "value": "off",
+          "label": "Off",
+          "description": "Fixed timing regardless of tempo",
+          "use_cases": ["fixed_timing", "tempo_independence", "independent_timing"],
+          "hip_hop_applications": ["fixed_beats", "tempo_independence", "independent_timing"]
+        },
+        {
+          "value": "on",
+          "label": "On",
+          "description": "Syncs to project tempo changes",
+          "use_cases": ["tempo_sync", "project_sync", "synced_timing"],
+          "hip_hop_applications": ["synced_beats", "project_sync", "tempo_sync"]
+        }
+      ],
+      "description": "Synchronization with project tempo",
+      "use_cases": ["tempo_sync", "project_sync", "timing_sync"],
+      "hip_hop_applications": ["synced_programming", "tempo_sync", "project_sync"]
+    },
+    {
+      "name": "Step_Velocity",
+      "type": "range",
+      "min": 1,
+      "max": 127,
+      "default": 100,
+      "unit": "velocity",
+      "description": "Dynamic level per step",
+      "use_cases": ["dynamic_level", "step_velocity", "velocity_per_step"],
+      "hip_hop_applications": ["drum_velocity", "dynamic_expression", "step_leveling"]
+    },
+    {
+      "name": "Step_Duration",
+      "type": "range",
+      "min": 1,
+      "max": 100,
+      "default": 100,
+      "unit": "percentage",
+      "description": "Note length per step",
+      "use_cases": ["note_length", "step_duration", "note_timing"],
+      "hip_hop_applications": ["drum_duration", "note_length", "hi_hat_timing"]
+    },
+    {
+      "name": "Filter_Type",
+      "type": "selector",
+      "options": [
+        {
+          "value": "low_pass",
+          "label": "Low Pass",
+          "description": "Removes high frequencies",
+          "use_cases": ["brightness_reduction", "frequency_removal", "tone_shaping"],
+          "hip_hop_applications": ["warming_filters", "brightness_control", "tone_shaping"]
+        },
+        {
+          "value": "high_pass",
+          "label": "High Pass",
+          "description": "Removes low frequencies",
+          "use_cases": ["bass_removal", "frequency_removal", "clarity_enhancement"],
+          "hip_hop_applications": ["rumble_removal", "clarity_enhancement", "bass_cleaning"]
+        },
+        {
+          "value": "band_pass",
+          "label": "Band Pass",
+          "description": "Allows mid frequencies",
+          "use_cases": ["frequency_isolation", "band_extraction", "selective_filtering"],
+          "hip_hop_applications": ["vocal_isolation", "frequency_extraction", "selective_processing"]
+        }
+      ],
+      "description": "Filter algorithm selection",
+      "use_cases": ["filtering", "tone_shaping", "frequency_control"],
+      "hip_hop_applications": ["sample_toning", "frequency_control", "tone_shaping"]
+    },
+    {
+      "name": "Cutoff",
+      "type": "range",
+      "min": 20,
+      "max": 20000,
+      "default": 20000,
+      "unit": "Hz",
+      "description": "Filter frequency boundary",
+      "use_cases": ["frequency_boundary", "filter_control", "tone_shaping"],
+      "hip_hop_applications": ["sample_brightening", "tone_control", "frequency_shaping"]
+    },
+    {
+      "name": "Resonance",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "default": 0,
+      "unit": "percentage",
+      "description": "Filter emphasis at cutoff frequency",
+      "use_cases": ["filter_emphasis", "resonance", "frequency_boost"],
+      "hip_hop_applications": ["filter_character", "frequency_emphasis", "resonant_effects"]
+    },
+    {
+      "name": "Attack",
+      "type": "range",
+      "min": 0,
+      "max": 10000,
+      "default": 0,
+      "unit": "ms",
+      "description": "Initial volume rise time",
+      "use_cases": ["envelope_shaping", "attack_time", "volume_rise"],
+      "hip_hop_applications": ["drum_attack", "instrument_shaping", "envelope_design"]
+    },
+    {
+      "name": "Decay",
+      "type": "range",
+      "min": 0,
+      "max": 10000,
+      "default": 1000,
+      "unit": "ms",
+      "description": "Volume fall time to sustain",
+      "use_cases": ["envelope_shaping", "decay_time", "volume_fall"],
+      "hip_hop_applications": ["drum_decay", "instrument_shaping", "envelope_design"]
+    },
+    {
+      "name": "Sustain",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "default": 100,
+      "unit": "percentage",
+      "description": "Volume level during note hold",
+      "use_cases": ["envelope_shaping", "sustain_level", "steady_state_volume"],
+      "hip_hop_applications": ["pad_sustain", "instrument_level", "steady_state_control"]
+    },
+    {
+      "name": "Release",
+      "type": "range",
+      "min": 0,
+      "max": 10000,
+      "default": 250,
+      "unit": "ms",
+      "description": "Volume fall time after note release",
+      "use_cases": ["envelope_shaping", "release_time", "volume_fall_after_release"],
+      "hip_hop_applications": ["drum_release", "instrument_tail", "fade_out_control"]
+    }
+  ],
+  "preset_categories": [
+    {
+      "category": "Drum Kits",
+      "presets": [
+        {
+          "name": "Classic Hip-Hop Kit",
+          "description": "Standard drum kit mapping for hip-hop production",
+          "parameters": {
+            "pad_mappings": [
+              {"pad": "C1", "sample": "kick.wav", "key_start": 36, "key_end": 36, "root_key": 36},
+              {"pad": "D1", "sample": "snare.wav", "key_start": 38, "key_end": 38, "root_key": 38},
+              {"pad": "F1", "sample": "closed_hat.wav", "key_start": 42, "key_end": 42, "root_key": 42},
+              {"pad": "G1", "sample": "open_hat.wav", "key_start": 46, "key_end": 46, "root_key": 46}
+            ],
+            "default_velocity_response": 75,
+            "velocity_curve": "exponential",
+            "pattern_length": 16,
+            "step_resolution": "sixteenth",
+            "swing": 55
+          }
+        },
+        {
+          "name": "808 Power Kit",
+          "description": "808-focused kit with various sub-bass options",
+          "parameters": {
+            "pad_mappings": [
+              {"pad": "C0", "sample": "808_deep.wav", "key_start": 24, "key_end": 24, "root_key": 24},
+              {"pad": "D0", "sample": "808_mid.wav", "key_start": 26, "key_end": 26, "root_key": 26},
+              {"pad": "C1", "sample": "808_tight.wav", "key_start": 36, "key_end": 36, "root_key": 36}
+            ],
+            "filter_type": "high_pass",
+            "cutoff": 80,
+            "envelope": {"attack": 0, "decay": 2000, "sustain": 20, "release": 1000}
+          }
+        }
+      ]
+    },
+    {
+      "category": "Melodic Instruments",
+      "presets": [
+        {
+          "name": "Jazz Piano",
+          "description": "Velocity-sensitive jazz piano with expression",
+          "parameters": {
+            "velocity_layers": [
+              {"start": 1, "end": 42, "sample": "piano_soft.wav"},
+              {"start": 43, "end": 84, "sample": "piano_medium.wav"},
+              {"start": 85, "end": 127, "sample": "piano_hard.wav"}
+            ],
+            "envelope": {"attack": 5, "decay": 5000, "sustain": 80, "release": 1000},
+            "filter": {"type": "low_pass", "cutoff": 5000, "resonance": 20}
+          }
+        },
+        {
+          "name": "Electric Piano",
+          "description": "Warm electric piano with subtle modulation",
+          "parameters": {
+            "round_robin_count": 4,
+            "envelope": {"attack": 10, "decay": 3000, "sustain": 60, "release": 800}
+          }
+        }
+      ]
+    },
+    {
+      "category": "Sound Design",
+      "presets": [
+        {
+          "name": "Atmospheric Pads",
+          "description": "Evolved textures and atmospheric elements",
+          "parameters": {
+            "envelope": {"attack": 2000, "decay": 5000, "sustain": 90, "release": 3000},
+            "filter": {"type": "low_pass", "cutoff": 1200, "resonance": 40}
+          }
+        },
+        {
+          "name": "Percussive Textures",
+          "description": "Rhythmic textures and percussive elements",
+          "parameters": {
+            "envelope": {"attack": 5, "decay": 800, "sustain": 0, "release": 50},
+            "filter": {"type": "band_pass", "cutoff": 2000, "resonance": 70},
+            "round_robin": "4_way"
+          }
+        }
+      ]
+    }
+  ],
+  "integration_notes": {
+    "compatible_plugins": [
+      "Patcher",
+      "Fruity Formula Controller",
+      "Fruity Envelope Controller",
+      "Edison",
+      "Fruity Parametric EQ 2"
+    ],
+    "common_workflows": [
+      "sample_preparation",
+      "pad_mapping",
+      "velocity_layering",
+      "round_robin_setup",
+      "pattern_programming"
+    ],
+    "recommended_settings_by_context": {
+      "hip_hop_drum_programming": {
+        "velocity_response": 75,
+        "step_resolution": "sixteenth",
+        "pattern_length": 16,
+        "swing": 55,
+        "envelope": {"attack": 0, "release": 100}
+      },
+      "rnb_melodic_sampling": {
+        "velocity_layers": 3,
+        "envelope": {"attack": 10, "decay": 3000, "sustain": 70, "release": 500},
+        "filter_resonance": 30
+      },
+      "sound_design": {
+        "round_robin": "4_way",
+        "envelope": {"attack": 1500, "decay": 8000, "sustain": 85, "release": 2000}
+      }
+    }
+  },
+  "genre_specific_applications": {
+    "hip_hop": {
+      "primary_use": "drum programming and sample chopping",
+      "key_features": ["pad_mapping", "velocity_layering", "round_robin"],
+      "typical_settings": {
+        "velocity_response": 75,
+        "step_resolution": "sixteenth",
+        "pattern_length": 16,
+        "swing": 55
+      }
+    },
+    "rap": {
+      "primary_use": "vocal chop arrangement and ad-lib programming",
+      "key_features": ["pad_mapping", "velocity_response", "effects_processing"],
+      "typical_settings": {
+        "velocity_response": 70,
+        "envelope": {"attack": 2, "release": 150},
+        "filter": {"type": "low_pass", "cutoff": 8000}
+      }
+    },
+    "rnb": {
+      "primary_use": "smooth instrument emulation and vocal arrangement",
+      "key_features": ["velocity_layering", "modulation", "effects"],
+      "typical_settings": {
+        "velocity_layers": 3,
+        "envelope": {"attack": 15, "decay": 4000, "sustain": 75, "release": 600},
+        "velocity_curve": "exponential"
+      }
+    }
+  }
+}

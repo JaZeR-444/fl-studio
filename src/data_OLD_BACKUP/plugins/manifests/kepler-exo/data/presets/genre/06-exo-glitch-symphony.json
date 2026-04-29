@@ -1,0 +1,37 @@
+{
+  "metadata": {
+    "plugin": "Kepler Exo",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "presetName": "Exo Glitch Symphony",
+    "category": "genre",
+    "genre": "trap",
+    "mood": "dark",
+    "exoFeatures": ["sub-oscillator", "expanded-modulation", "dual-filter"]
+  },
+  "settings": {
+    "oscillator1": { "waveform": "square", "octave": "+1", "detune": 0, "mix": 100 },
+    "oscillator2": { "waveform": "saw", "octave": "0", "detune": 12, "mix": 75 },
+    "oscillator3": { "waveform": "square", "octave": "0", "detune": 5, "mix": 60 },
+    "oscillator4": { "waveform": "saw", "octave": "+1", "detune": 20, "mix": 50 },
+    "subOscillator": { "waveform": "sine", "octave": "-2", "mix": 0 },
+    "filterA": { "type": "lowpass", "cutoff": 3200, "resonance": 50, "drive": 12 },
+    "filterB": { "type": "bandpass", "cutoff": 1500, "resonance": 40, "drive": 8 },
+    "envelope": { "attack": 1, "decay": 70, "sustain": 0, "release": 45 },
+    "modulation": { "envToFilterA": 95, "lfo1ToPitch": 35, "lfo2ToFilterB": 45 }
+  },
+  "chain": {
+    "pre": ["Teq4 - High-pass 600Hz"],
+    "post": ["Fruily Reverb 2 - Plate, Decay 1s, Mix 20%", "Bitcrusher - 10-bit, 60% wet"]
+  },
+  "genreTags": ["trap", "dark", "glitch", "experimental"],
+  "a/bTesting": {
+    "testA": "Sample-hold LFO for random glitches",
+    "testB": "Sine LFO for regular vibrato"
+  },
+  "troubleshooting": {
+    "tooChaotic": "Reduce LFO amounts to 20%",
+    "tooThin": "Add sub osc at 40%"
+  }
+}

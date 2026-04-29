@@ -1,0 +1,38 @@
+{
+  "metadata": {
+    "plugin": "Kepler Exo",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "presetName": "Exo Sci-Fi Textures",
+    "category": "genre",
+    "genre": "experimental",
+    "mood": "spacey",
+    "exoFeatures": ["sub-oscillator", "expanded-modulation", "dual-filter", "stereo-width"]
+  },
+  "settings": {
+    "oscillator1": { "waveform": "saw", "octave": "0", "detune": 0, "mix": 80 },
+    "oscillator2": { "waveform": "saw", "octave": "+1", "detune": 50, "mix": 70 },
+    "oscillator3": { "waveform": "square", "octave": "-1", "detune": 25, "mix": 60 },
+    "oscillator4": { "waveform": "triangle", "octave": "0", "detune": 75, "mix": 50 },
+    "subOscillator": { "waveform": "sine", "octave": "-2", "mix": 50 },
+    "filterA": { "type": "lowpass", "cutoff": 5000, "resonance": 55, "drive": 15 },
+    "filterB": { "type": "bandpass", "cutoff": 2500, "resonance": 45, "drive": 10 },
+    "envelope": { "attack": 50, "decay": 800, "sustain": 70, "release": 1200 },
+    "modulation": { "envToFilterA": 60, "lfo1ToFilterB": 80, "lfo2ToPitch": 50 },
+    "stereoWidth": 200
+  },
+  "chain": {
+    "pre": ["Fruily Parametric EQ 2 - Multi-band processing"],
+    "post": ["Fruily Reverb 2 - Gated, Decay 1.5s, Mix 40%", "Delay - Stereo ping-pong, 600ms, Feedback 50%"]
+  },
+  "genreTags": ["experimental", "spacey", "cinematic", "ambient"],
+  "a/bTesting": {
+    "testA": "Extreme detune for metallic textures",
+    "testB": "Tighter detune for harmonious clusters"
+  },
+  "troubleshooting": {
+    "tooHarsh": "Filter A cutoff to 3500Hz",
+    "lossOfControl": "Reduce modulation amounts by half"
+  }
+}

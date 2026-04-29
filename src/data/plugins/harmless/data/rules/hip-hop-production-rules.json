@@ -1,0 +1,204 @@
+{
+  "metadata": {
+    "plugin": "Harmless",
+    "ruleSet": "hip-hop-production",
+    "lastUpdated": "2026-02-03"
+  },
+  "rules": [
+    {
+      "id": "bass-production",
+      "name": "Bass Production Rules",
+      "priority": "critical",
+      "category": "bass",
+      "rules": [
+        {
+          "rule": "Unison OFF for sub bass",
+          "explanation": "Multiple voices create phase issues in low frequencies in mono systems",
+          "action": "Set unison voices to 1 for pure sub bass"
+        },
+        {
+          "rule": "Fundamental + Sub osc",
+          "explanation": "Combine main oscillator with -12 sub for 808-style weight",
+          "settings": {
+            "mask": "Sine or fundamental-focused",
+            "subOscillator": -12,
+            "subLevel": 40
+          }
+        },
+        {
+          "rule": "12dB slope for warmth",
+          "explanation": "Gentler filter slope preserves more harmonic content",
+          "guideline": "Use 12dB or 24dB for bass, avoid 48dB"
+        },
+        {
+          "rule": "Short attack, full sustain",
+          "explanation": "Bass needs immediate presence but sustained body",
+          "envelope": {
+            "attack": "5ms",
+            "sustain": "95%+",
+            "release": "200ms"
+          }
+        },
+        {
+          "rule": "Maximus for punch",
+          "explanation": "Multiband compression adds snap and controls dynamics",
+          "mix": "30-40% Maximus mix"
+        }
+      ]
+    },
+    {
+      "id": "lead-production",
+      "name": "Lead Production Rules",
+      "priority": "high",
+      "category": "lead",
+      "rules": [
+        {
+          "rule": "Sawtooth for brightness",
+          "explanation": "All harmonics present = full spectrum presence",
+          "mask": "Sawtooth shape (1/n decay)"
+        },
+        {
+          "rule": "Unison for width",
+          "explanation": "3-7 voices with detune creates stereo presence",
+          "settings": {
+            "voices": "3-7",
+            "detune": "25-40%",
+            "stereo": "70-100%"
+          }
+        },
+        {
+          "rule": "Pluck for character",
+          "explanation": "Even leads benefit from slight pluck (10-20%) for attack definition",
+          "guideline": "Add 15% pluck to sustained leads"
+        },
+        {
+          "rule": "Phaser for movement",
+          "explanation": "Slow phaser adds evolving character without obvious effect",
+          "settings": {
+            "rate": "0.2-0.8 Hz",
+            "depth": "60-80%"
+          }
+        },
+        {
+          "rule": "Filter envelope for interest",
+          "explanation": "Modulating cutoff adds life to sustained notes",
+          "amount": "+30 to +60%"
+        }
+      ]
+    },
+    {
+      "id": "pluck-production",
+      "name": "Pluck Production Rules",
+      "priority": "high",
+      "category": "pluck",
+      "rules": [
+        {
+          "rule": "Pluck filter 40-70%",
+          "explanation": "Sweet spot for realistic string decay",
+          "guideline": "Lower for synth plucks, higher for realistic strings"
+        },
+        {
+          "rule": "0% sustain for true decay",
+          "explanation": "Pluck effect needs to decay to silence",
+          "envelope": {
+            "sustain": "0%",
+            "decay": "200-600ms"
+          }
+        },
+        {
+          "rule": "Sparse masks for clarity",
+          "explanation": "Too many harmonics = muddy decay",
+          "guideline": "Limit to H1-H16 for clean plucks"
+        },
+        {
+          "rule": "Reverb for space",
+          "explanation": "Plucks benefit from room ambience",
+          "mix": "25-40% reverb"
+        },
+        {
+          "rule": "Velocity to filter",
+          "explanation": "Harder hits = brighter plucks",
+          "setup": "Map velocity to filter cutoff"
+        }
+      ]
+    },
+    {
+      "id": "pad-production",
+      "name": "Pad Production Rules",
+      "priority": "medium",
+      "category": "pad",
+      "rules": [
+        {
+          "rule": "Slow attack essential",
+          "explanation": "Pads need to fade in smoothly",
+          "envelope": {
+            "attack": "500ms-2s",
+            "release": "1-3s"
+          }
+        },
+        {
+          "rule": "Wide unison for atmosphere",
+          "explanation": "5+ voices creates lush stereo field",
+          "settings": {
+            "voices": "5-9",
+            "stereo": "90-100%"
+          }
+        },
+        {
+          "rule": "Gentle filter slope",
+          "explanation": "12dB slope preserves warmth",
+          "recommendation": "12dB or 24dB only"
+        },
+        {
+          "rule": "Phaser for evolution",
+          "explanation": "Slow phaser creates breathing texture",
+          "settings": {
+            "rate": "0.1-0.5 Hz",
+            "depth": "70-90%"
+          }
+        },
+        {
+          "rule": "Heavy effects acceptable",
+          "explanation": "Pads can handle 40%+ reverb and chorus",
+          "effects": {
+            "reverb": "40-60%",
+            "chorus": "30-50%"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mixing-rules",
+      "name": "Mixing Integration Rules",
+      "priority": "high",
+      "category": "mixing",
+      "rules": [
+        {
+          "rule": "Harmless + 808 compatibility",
+          "explanation": "Additive engine plays well with 808 samples",
+          "tip": "No phase issues when layering with samples"
+        },
+        {
+          "rule": "Brickwall filter for clarity",
+          "explanation": "Use extreme slopes to isolate frequency ranges",
+          "useCase": "Remove mud with 48dB slope at 300Hz"
+        },
+        {
+          "rule": "Maximus as glue",
+          "explanation": "Built-in Maximus adds cohesion to sounds",
+          "guideline": "25-40% mix on most sounds"
+        },
+        {
+          "rule": "Alien phaser sparingly",
+          "explanation": "High-rate phaser effects are intense",
+          "tip": "Use for special moments, not entire arrangement"
+        },
+        {
+          "rule": "Mono bass, stereo leads",
+          "explanation": "Follow hip-hop conventions for width",
+          "guideline": "Bass <200Hz mono, leads wide stereo"
+        }
+      ]
+    }
+  ]
+}

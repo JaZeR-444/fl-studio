@@ -1,0 +1,587 @@
+{
+  "id": "vintage-phaser",
+  "name": "Vintage Phaser",
+  "category": "Modulation",
+  "tier": "Free",
+  "type": "Modulation",
+  "description": "Vintage Phaser - Modulation",
+  "tags": [
+    "specialized"
+  ],
+  "capabilities": [
+    "modulation",
+    "fx",
+    "audio"
+  ],
+  "icon": "/plugins/vintage-phaser-icon.svg",
+  "color": "#A855F7",
+  "version": "1.0",
+  "data_dir": "plugins\\vintage-phaser",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "vintage-phaser-params": {
+      "$schema": "./schema.json",
+      "plugin": {
+        "name": "Vintage Phaser",
+        "version": "1.x",
+        "category": "Effect",
+        "type": "BBD Phaser",
+        "emulates": "Electro-Harmonix Small Stone",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Vintage%20Phaser.htm"
+      },
+      "parameters": {
+        "main": [
+          {
+            "id": "rate",
+            "name": "Rate",
+            "type": "slider",
+            "range": "0.01-10 Hz",
+            "unit": "Hz",
+            "default": "0.5 Hz",
+            "description": "LFO modulation speed",
+            "sweetSpot": "0.3-0.8 Hz for classic psychedelic swirl"
+          },
+          {
+            "id": "depth",
+            "name": "Depth",
+            "type": "slider",
+            "range": "0-100%",
+            "unit": "%",
+            "default": "70%",
+            "description": "Modulation intensity",
+            "sweetSpot": "70-90% for pronounced phasing"
+          },
+          {
+            "id": "feedback",
+            "name": "Feedback",
+            "type": "slider",
+            "range": "0-100%",
+            "unit": "%",
+            "default": "50%",
+            "description": "Regeneration/resonance amount",
+            "warning": "High values (90%+) can cause resonant peaks"
+          },
+          {
+            "id": "stages",
+            "name": "Stages",
+            "type": "selector",
+            "options": [
+              2,
+              4,
+              6,
+              8
+            ],
+            "default": 4,
+            "description": "Number of phase shift stages",
+            "note": "Small Stone = 4 stages"
+          },
+          {
+            "id": "dryWet",
+            "name": "Dry/Wet",
+            "type": "slider",
+            "range": "0-100%",
+            "unit": "%",
+            "default": "50%",
+            "description": "Effect mix level"
+          }
+        ],
+        "character": [
+          {
+            "id": "colorSwitch",
+            "name": "Color Switch",
+            "type": "toggle",
+            "range": "Off/On",
+            "default": "Off",
+            "description": "Adds resonance and BBD character",
+            "note": "Enable for authentic Small Stone tone"
+          },
+          {
+            "id": "noise",
+            "name": "Noise",
+            "type": "slider",
+            "range": "0-100%",
+            "unit": "%",
+            "default": "15%",
+            "description": "Vintage BBD noise simulation"
+          },
+          {
+            "id": "stereoMode",
+            "name": "Stereo Mode",
+            "type": "toggle",
+            "options": [
+              "Mono",
+              "Stereo"
+            ],
+            "default": "Stereo",
+            "description": "Output configuration"
+          }
+        ]
+      },
+      "historicalReference": {
+        "hardware": "Electro-Harmonix Small Stone",
+        "released": 1974,
+        "type": "4-stage analog phaser",
+        "artists": [
+          "Eddie Van Halen",
+          "David Gilmour",
+          "Erykah Badu"
+        ]
+      },
+      "cpuUsage": "Low",
+      "latency": "Minimal",
+      "realtimeSafe": true
+    }
+  },
+  "presets": {
+    "comprehensive-phaser-presets": {
+      "classicPhaserPresets": {
+        "mxrPhase90": {
+          "stages": 4,
+          "rate": 3.8,
+          "depth": 75,
+          "feedback": 45,
+          "color": 50,
+          "mix": 50,
+          "stereoWidth": 100,
+          "characteristic": "MXR Phase 90 classic orange pedal"
+        },
+        "electroHarmonix": {
+          "stages": 6,
+          "rate": 4.5,
+          "depth": 80,
+          "feedback": 60,
+          "color": 60,
+          "mix": 55,
+          "stereoWidth": 90,
+          "characteristic": "Electro-Harmonix Small Stone style"
+        },
+        "muTronIII": {
+          "stages": 8,
+          "rate": 2.8,
+          "depth": 70,
+          "feedback": 50,
+          "color": 40,
+          "mix": 60,
+          "stereoWidth": 85,
+          "characteristic": "Musitronics Mu-Tron III swirling phaser"
+        }
+      },
+      "vintageStudioPresets": {
+        "studioQuadra": {
+          "stages": 4,
+          "rate": 5.2,
+          "depth": 85,
+          "feedback": 65,
+          "color": 70,
+          "mix": 45,
+          "stereoWidth": 100,
+          "characteristic": "Studio quadraphonic phaser"
+        },
+        "tapePhase": {
+          "stages": 6,
+          "rate": 3.2,
+          "depth": 65,
+          "feedback": 55,
+          "color": 45,
+          "mix": 40,
+          "stereoWidth": 80,
+          "characteristic": "Tape-based studio phaser"
+        },
+        "vocalEnhancer": {
+          "stages": 2,
+          "rate": 1.8,
+          "depth": 40,
+          "feedback": 20,
+          "color": 30,
+          "mix": 25,
+          "stereoWidth": 60,
+          "characteristic": "Subtle vocal enhancement"
+        }
+      },
+      "guitarPresets": {
+        "classicRock": {
+          "stages": 4,
+          "rate": 4,
+          "depth": 70,
+          "feedback": 50,
+          "color": 55,
+          "mix": 40,
+          "stereoWidth": 75,
+          "guitarType": "humbucker",
+          "description": "Classic 70s rock guitar phaser"
+        },
+        " HendrixExperience": {
+          "stages": 6,
+          "rate": 6.5,
+          "depth": 90,
+          "feedback": 75,
+          "color": 80,
+          "mix": 60,
+          "stereoWidth": 90,
+          "guitarType": "stratocaster",
+          "description": "Jimi Hendrix Uni-Vibe style phasing"
+        },
+        "vanHalenBrown": {
+          "stages": 4,
+          "rate": 2.5,
+          "depth": 60,
+          "feedback": 40,
+          "color": 35,
+          "mix": 35,
+          "stereoWidth": 70,
+          "guitarType": "humbucker",
+          "description": "Eddie Van Halen phaser chorus blend"
+        }
+      },
+      "keyboardPresets": {
+        "rhodesPhase": {
+          "stages": 4,
+          "rate": 3.5,
+          "depth": 65,
+          "feedback": 45,
+          "color": 50,
+          "mix": 45,
+          "stereoWidth": 85,
+          "instrumentType": "electric piano",
+          "description": "Rhodes electric piano phasing"
+        },
+        "wurlyPhase": {
+          "stages": 6,
+          "rate": 4.2,
+          "depth": 75,
+          "feedback": 60,
+          "color": 65,
+          "mix": 50,
+          "stereoWidth": 90,
+          "instrumentType": "electric piano",
+          "description": "Wurlitzer electric piano phaser"
+        },
+        "synthPhase": {
+          "stages": 8,
+          "rate": 5.8,
+          "depth": 85,
+          "feedback": 70,
+          "color": 75,
+          "mix": 55,
+          "stereoWidth": 95,
+          "instrumentType": "synthesizer",
+          "description": "Synthesizer sweeping phaser"
+        }
+      },
+      "experimentalPresets": {
+        "alienCommunication": {
+          "stages": 12,
+          "rate": 8.5,
+          "depth": 100,
+          "feedback": 90,
+          "color": 90,
+          "mix": 80,
+          "stereoWidth": 100,
+          "specialEffect": "Science fiction communication",
+          "description": "Extraterrestrial radio transmission effect"
+        },
+        "underwater": {
+          "stages": 6,
+          "rate": 1.2,
+          "depth": 90,
+          "feedback": 30,
+          "color": 20,
+          "mix": 70,
+          "stereoWidth": 80,
+          "specialEffect": "submerged audio environment",
+          "description": "Underwater movement and filtering"
+        },
+        "rotarySimulation": {
+          "stages": 4,
+          "rate": 0.8,
+          "depth": 95,
+          "feedback": 85,
+          "color": 70,
+          "mix": 100,
+          "stereoWidth": 100,
+          "specialEffect": "Leslie rotating speaker",
+          "description": "Rotating cabinet simulation"
+        }
+      },
+      "bassPresets": {
+        "subtleBass": {
+          "stages": 2,
+          "rate": 1.5,
+          "depth": 30,
+          "feedback": 25,
+          "color": 20,
+          "mix": 20,
+          "stereoWidth": 50,
+          "bassType": "electric",
+          "description": "Subtle bass movement without losing punch"
+        },
+        "funkyBass": {
+          "stages": 4,
+          "rate": 3,
+          "depth": 50,
+          "feedback": 35,
+          "color": 40,
+          "mix": 30,
+          "stereoWidth": 60,
+          "bassType": "electric",
+          "description": "Funk bass rhythmic phasing"
+        }
+      },
+      "drumPresets": {
+        "cymbalShimmer": {
+          "stages": 6,
+          "rate": 4,
+          "depth": 60,
+          "feedback": 50,
+          "color": 80,
+          "mix": 35,
+          "stereoWidth": 100,
+          "drumType": "cymbals",
+          "description": "Cymbal shimmer and movement"
+        },
+        "roomPhase": {
+          "stages": 2,
+          "rate": 0.8,
+          "depth": 25,
+          "feedback": 15,
+          "color": 30,
+          "mix": 15,
+          "stereoWidth": 70,
+          "drumType": "overheads",
+          "description": "Subtle drum room enhancement"
+        }
+      },
+      "genreSpecific": {
+        "psychedelicRock": {
+          "stages": 6,
+          "rate": 5.5,
+          "depth": 90,
+          "feedback": 75,
+          "color": 85,
+          "mix": 70,
+          "stereoWidth": 100,
+          "genre": "Psychedelic/Progressive Rock",
+          "description": "Late 60s swirling phaser"
+        },
+        "newWave": {
+          "stages": 4,
+          "rate": 7.2,
+          "depth": 80,
+          "feedback": 60,
+          "color": 70,
+          "mix": 55,
+          "stereoWidth": 90,
+          "genre": "New Wave/Synthpop",
+          "description": "1980s synthpop phasing"
+        },
+        "shoegaze": {
+          "stages": 8,
+          "rate": 2.8,
+          "depth": 85,
+          "feedback": 65,
+          "color": 60,
+          "mix": 75,
+          "stereoWidth": 100,
+          "genre": "Shoegaze/Dream Pop",
+          "description": "Lush shoegaze guitar swirling"
+        }
+      }
+    },
+    "genre-presets": {
+      "presetArchetypes": {
+        "subtleWarmth": {
+          "description": "Barely-there warmth for mixing polish",
+          "settings": {
+            "rate": "0.08",
+            "stages": "4",
+            "depth": "0.5",
+            "feedback": "0.35",
+            "dryWet": "0.3"
+          },
+          "useCases": [
+            "mix polish",
+            "vocal warmth",
+            "smoothing harshness"
+          ],
+          "tags": [
+            "hip-hop/rap",
+            "R&B",
+            "subtle"
+          ]
+        },
+        "classicSweep": {
+          "description": "Traditional phaser sweep for movement",
+          "settings": {
+            "rate": "0.2",
+            "stages": "6",
+            "depth": "0.7",
+            "feedback": "0.45",
+            "dryWet": "0.4"
+          },
+          "useCases": [
+            "guitar solos",
+            "synth leads",
+            "breakdown effects"
+          ],
+          "tags": [
+            "moody",
+            "psychedelic",
+            "funky"
+          ]
+        },
+        "intenseResonance": {
+          "description": "Deep, resonant sweeps for emphasis",
+          "settings": {
+            "rate": "0.3",
+            "stages": "8",
+            "depth": "0.85",
+            "feedback": "0.6",
+            "dryWet": "0.5"
+          },
+          "useCases": [
+            "intros",
+            "builds",
+            "climax moments"
+          ],
+          "tags": [
+            "psychedelic",
+            "electric",
+            "intense"
+          ]
+        },
+        "bassFriendly": {
+          "description": "Subtle phaser that respects low-end",
+          "settings": {
+            "rate": "0.1",
+            "stages": "4",
+            "depth": "0.4",
+            "feedback": "0.3",
+            "dryWet": "0.25"
+          },
+          "useCases": [
+            "bass guitar",
+            "808 top",
+            "low synths"
+          ],
+          "tags": [
+            "deep bass edm",
+            "hip-hop/rap",
+            "safe"
+          ]
+        }
+      },
+      "genreSettings": {
+        "hipHop": {
+          "vocalWarmth": {
+            "rate": 0.1,
+            "stages": 4,
+            "depth": 0.5,
+            "feedback": 0.35,
+            "wet": 0.3
+          },
+          "melodicMovement": {
+            "rate": 0.15,
+            "stages": 6,
+            "depth": 0.6,
+            "feedback": 0.4,
+            "wet": 0.35
+          },
+          "hiHatTexture": {
+            "rate": 0.25,
+            "stages": 4,
+            "depth": 0.5,
+            "feedback": 0.25,
+            "wet": 0.25
+          }
+        },
+        "rnb": {
+          "smoothVocal": {
+            "rate": 0.12,
+            "stages": 6,
+            "depth": 0.55,
+            "feedback": 0.4,
+            "wet": 0.35
+          },
+          "keysWarmth": {
+            "rate": 0.18,
+            "stages": 6,
+            "depth": 0.65,
+            "feedback": 0.45,
+            "wet": 0.4
+          },
+          "padDepth": {
+            "rate": 0.2,
+            "stages": 8,
+            "depth": 0.7,
+            "feedback": 0.5,
+            "wet": 0.45
+          }
+        },
+        "deepBassEDM": {
+          "subtleTexturing": {
+            "rate": 0.08,
+            "stages": 4,
+            "depth": 0.4,
+            "feedback": 0.3,
+            "wet": 0.2
+          },
+          "bassMovement": {
+            "rate": 0.12,
+            "stages": 6,
+            "depth": 0.5,
+            "feedback": 0.35,
+            "wet": 0.3
+          },
+          "buildSweep": {
+            "rate": 0.25,
+            "stages": 8,
+            "depth": 0.8,
+            "feedback": 0.55,
+            "wet": 0.45
+          }
+        }
+      }
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "concepts-and-best-uses": "# Concepts & Best Uses: Vintage Phaser\r\n\r\n## What It Is\r\nVintage Phaser is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Vintage Phaser\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n",
+      "what-is-vintage-phaser": "Tags: moody | psychedelic | hip-hop/rap\n\n## What Is Vintage Phaser?\n\nVintage Phaser is FL Studio's analog-modeled phaser effect inspired by classic studio rack units from the 1974-1984 era. It creates moving peaks and notches in the frequency spectrum using all-pass filters, producing that characteristic sweeping \"whoosh\" sound.\n\n### How It Differs from Flanger\n\n| Characteristic | Phaser | Flanger |\n|---------------|--------|---------|\n| Frequency spots | Notches move through spectrum | Comb filter creates multiple peaks/nulls |\n| Sound quality | Smooth, sweeping | More metallic, resonant |\n| Vintage feel | More authentic | Can sound more digital |\n| Best for | Warmth, movement | Intensity, dimension |\n\n### Why It Matters for Your Genre\n\n**Tone targets:**\n- **Moody:** Slow sweeps, deep notches, warm resonance\n- **Psychedelic:** Fast sweeps, high resonance, intense movement\n- **Funky/Electric:** Moderate speed, tight resonance, rhythmic feel\n\n### What It Actually Does\n\n1. Splits audio into wet and dry paths\n2. Wet signal passes through 4-12 all-pass filters\n3. Filters create notches at specific frequencies\n4. Notches sweep up/down based on Rate\n5. Wet and dry signals recombine, creating phase interference\n\n### How to Hear It\n\n1. Insert on a clean electric guitar or synth\n2. Set Rate to minimum (0.05Hz), Depth/Feedback to 50%\n3. Slowly increase Rate\n4. Listen for the \"sweeping\" sensation—frequency notches moving through the sound\n5. Increase Feedback to hear more pronounced, resonant notches\n\n### Typical Mistakes\n\n| Mistake | Sound | Fix |\n|---------|-------|-----|\n| Too much Feedback | Harsh, metallic, whistling | Keep Feedback under 60% for general use |\n| Rate too fast | Disorienting, nauseating | Slow to 0.1-0.3Hz for musical use |\n| Depth too low | Barely audible effect | Increase Depth to 50%+ |\n| No dry signal | Hollow, weak sound | Keep 30-50% Dry blend |\n\n### First Adjustment Priority\n\n**For hip-hop/R&B:**\n- Start with Rate at 0.1Hz (very slow)\n- Depth at 60%\n- Feedback at 40%\n- Dry/Wet at 35%\n- This adds subtle warmth without obvious sweeping\n\n**For psychedelic/moody:**\n- Rate at 0.3Hz\n- Depth at 75%\n- Feedback at 55%\n- Dry/Wet at 45%\n- Intended movement is more noticeable\n\n**For funky/electric:**\n- Rate at 0.2Hz with moderate resonance\n- Sync to tempo for rhythmic sweeps\n- Lower Feedback for cleaner sound\n"
+    },
+    "Quick-Reference": {
+      "parameter-cheat-sheet": "# Vintage Phaser - Parameter Cheat Sheet\n\n**Plugin Type:** BBD Phaser Effect\n**Category:** Modulation / Time-Based Effect\n**Emulates:** Electro-Harmonix Small Stone Phaser\n**Official Manual:** [Vintage Phaser](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Vintage%20Phaser.htm)\n\n---\n\n## Main Parameters\n\n| Parameter | Range | Function | Quick Tip |\n|-----------|-------|----------|-----------|\n| **Rate** | 0.01-10 Hz | LFO modulation speed | Slow (0.1-0.5 Hz) = swirl, fast (2-5 Hz) = vibrato |\n| **Depth** | 0-100% | Modulation intensity | 70-90% for classic phaser sweep |\n| **Feedback** | 0-100% | Regeneration amount | Higher = more pronounced peaks/notches |\n| **Stages** | 2 / 4 / 6 / 8 | Number of phase shift stages | More stages = deeper, more complex sound |\n| **Dry/Wet** | 0-100% | Effect mix | 40-60% for classic phaser |\n\n---\n\n## BBD Character Controls\n\n| Parameter | Range | Function | When to Use |\n|-----------|-------|----------|-------------|\n| **Color Switch** | Off/On | Adds resonance and BBD character | Enable for vintage Small Stone tone |\n| **Noise** | 0-100% | Vintage BBD noise simulation | 15-30% for authenticity |\n| **Stereo Mode** | Mono/Stereo | Output configuration | Stereo for width, mono for focus |\n\n---\n\n## Stage Count Guide\n\n| Stages | Character | Sound Description | Use Case |\n|--------|-----------|-------------------|----------|\n| **2** | Subtle | Gentle, mild phasing | Subtle movement, modern clean |\n| **4** | Classic | Standard phaser sound | General purpose, Small Stone default |\n| **6** | Deep | Rich, complex phasing | Dramatic sweeps, psychedelic |\n| **8** | Extreme | Very deep, filter-like | Special effects, intense modulation |\n\n**Note:** Small Stone is 4-stage phaser\n\n---\n\n## Quick Start Presets\n\n| Use Case | Settings |\n|----------|----------|\n| **Classic Psychedelic** | Stages: 4, Rate: 0.3 Hz, Depth: 85%, Feedback: 70%, Color: On |\n| **Van Halen Phase** | Stages: 6, Rate: 0.5 Hz, Depth: 75%, Feedback: 60%, Dry/Wet: 50% |\n| **Subtle Synth** | Stages: 2, Rate: 0.8 Hz, Depth: 40%, Feedback: 30%, Color: Off |\n| **Jet Plane** | Stages: 8, Rate: 2.5 Hz, Depth: 95%, Feedback: 85% |\n| **Slow Swirl** | Stages: 4, Rate: 0.1 Hz, Depth: 80%, Feedback: 50% |\n\n---\n\n## Rate (Speed) Guide\n\n| Hz Range | Musical Effect | Application |\n|----------|----------------|-------------|\n| **0.01-0.1 Hz** | Ultra-slow evolve | Ambient pads, soundscapes |\n| **0.1-0.5 Hz** | Classic swirl | Psychedelic rock, funk |\n| **0.5-1.5 Hz** | Medium phase | Modern rock, synth leads |\n| **1.5-3.0 Hz** | Fast modulation | Special FX, vibrato-like |\n| **3.0+ Hz** | Vibrato/tremolo | Extreme effects |\n\n---\n\n## Feedback Guide\n\n| Feedback % | Character | Use Case |\n|------------|-----------|----------|\n| **0-20%** | Gentle | Subtle enhancement |\n| **20-40%** | Mild | Natural-sounding phase |\n| **40-60%** | Classic | Standard phaser tone |\n| **60-80%** | Pronounced | Obvious phasing effect |\n| **80-100%** | Extreme | Aggressive, resonant peaks |\n\n**Warning:** Very high feedback (90%+) can resonate at specific frequencies\n\n---\n\n## Color Switch Explained\n\n### Off (Bypass)\n- Clean, transparent phasing\n- Modern, hi-fi sound\n- Less character, more neutral\n\n### On (Engaged)\n- Adds resonance peaks\n- Authentic Small Stone tone\n- More \"vintage\" and colored\n- Emphasizes certain frequencies\n\n**Recommendation:** Enable for authentic 70s/80s phaser tone\n\n---\n\n## Stereo Processing\n\n### Mono Mode\n- Single phaser applied to center\n- Good mono compatibility\n- Focused sound\n\n### Stereo Mode\n- Phase-offset LFOs for left/right\n- Creates width and movement\n- May have phase cancellation in mono\n\n**Tip:** Use stereo for synths/pads, mono for guitars\n\n---\n\n## Genre Applications\n\n| Genre | Typical Settings |\n|-------|------------------|\n| **70s Rock** | Stages: 4, Rate: 0.4 Hz, Feedback: 60%, Color: On |\n| **Funk** | Stages: 4, Rate: 0.8 Hz, Feedback: 50%, Moderate wet |\n| **Psychedelic** | Stages: 6-8, Slow rate, High feedback |\n| **Synthwave** | Stages: 4, Rate: 0.5 Hz, Clean (Color off) |\n| **Trance** | Stages: 6, Rate: 1.2 Hz, Medium feedback |\n\n---\n\n## Famous Phaser Sounds\n\n### Small Stone Reference Tracks\n1. **Pink Floyd** - \"Have a Cigar\" (guitar)\n2. **Van Halen** - \"Eruption\" (guitar solo)\n3. **Erykah Badu** - \"On & On\" (Rhodes piano)\n4. **Jean-Michel Jarre** - Synth phasing\n\n### Technique Origins\n- **Eddie Van Halen:** Used MXR Phase 90 (similar to Small Stone)\n- **Brian May (Queen):** Layered phasing on guitars\n- **Kraftwerk:** Synth phasing in electronic music\n\n---\n\n## Routing Strategies\n\n### Insert Effect\n- Place directly on track\n- Use moderate dry/wet (40-60%)\n- Best for individual instruments\n\n### Send Effect\n- Place on send track (100% wet)\n- Parallel blend with dry signal\n- More control over effect intensity\n\n### Automation\n- Automate rate for build-ups\n- Increase depth during choruses\n- Sweep feedback for dynamic interest\n\n---\n\n## Phaser vs Flanger vs Chorus\n\n| Effect | Delay Time | Sound Character |\n|--------|------------|-----------------|\n| **Phaser** | No delay (phase shift only) | Swooshing, peaks/notches |\n| **Flanger** | Very short delay (1-10ms) | Metallic, jet-plane, comb filtering |\n| **Chorus** | Longer delay (10-30ms) | Doubling, thickening, detuning |\n\n**Vintage Phaser = Pure phase shifting (no delay)**\n\n---\n\n## Common Mistakes to Avoid\n\n1. **Too Fast Rate:** Above 2 Hz sounds like vibrato, not phaser\n2. **Excessive Feedback:** Can cause harsh resonance\n3. **Too Much Wet:** 100% wet loses low-end body (unless on send)\n4. **Wrong Stage Count:** More stages ≠ always better\n5. **Ignoring Color Switch:** Massive tone difference when enabled\n\n---\n\n## Mixing Integration\n\n### Frequency Considerations\n- **Phasing Creates Notches:** Can thin out tone\n- **Solution:** Use parallel processing (send track)\n- **EQ After:** Boost frequencies that get phased out\n\n### Stereo Width\n- **Stereo Mode:** Creates movement in stereo field\n- **Mono Check:** Verify no excessive phase cancellation\n- **Width Enhancement:** Combine with stereo shaper carefully\n\n### Automation Ideas\n1. **Verse:** Dry or subtle phase (20% wet)\n2. **Chorus:** Full phase (60% wet)\n3. **Bridge:** Slow down rate, increase depth\n4. **Build-Up:** Automate rate from slow to fast\n\n---\n\n## CPU & Performance\n\n- **CPU Usage:** Low\n- **Latency:** Minimal\n- **Realtime Safe:** Yes\n- **Quality:** Digital BBD emulation\n\n---\n\n## Combining with Other Effects\n\n### Before Phaser\n- **Compression:** Even out dynamics first\n- **Distortion/Drive:** Phaser reacts to harmonics\n- **EQ:** Shape tone before phasing\n\n### After Phaser\n- **Reverb:** Add space to phased signal\n- **Delay:** Echo the phaser movement\n- **Compression:** Tame peaks from high feedback\n\n---\n\n## Historical Context\n\n### Electro-Harmonix Small Stone\n- **Released:** 1974\n- **Type:** 4-stage analog phaser\n- **Famous For:** Simplicity and distinctive tone\n- **Artists:** Van Halen, Pink Floyd, countless others\n\n### BBD Technology\n- **Function:** Phase-shifting via all-pass filters\n- **Character:** Warm, slightly noisy, musical\n- **Advantage:** Predictable, smooth sweeps\n\n---\n\n## Related Plugins\n\n- **Vintage Chorus** - Companion BBD chorus effect\n- **Fruity Phaser** - Clean digital phaser\n- **Fruity Flanger** - For flanging effects\n- **Fruity Love Philter** - Advanced filtering with phaser-like sweeps\n\n---\n\n**Last Updated:** February 3, 2026\n**Status:** Complete reference material\n",
+      "quick-start-checklist": "# Quick Start Checklist: Vintage Phaser\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Vintage Phaser to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "quickstart-guide": "# Vintage Phaser Quick Start Guide\n\n## What is Vintage Phaser?\nVintage Phaser is a faithful recreation of classic analog phaser effects from the 1960s-1980s, providing the sweeping, resonant filter movement that defined the sound of that era.\n\n## 5-Minute Setup\n1. Load Vintage Phaser on your instrument or vocal track\n2. Start with the \"Classic 4-Stage\" preset\n3. Set rate to 3.0Hz for gentle sweeping\n4. Set depth to 70% for noticeable phasing\n5. Adjust mix to 40% for balanced effect\n\n## Essential Controls\n- **Rate**: Speed of the phaser sweep (0.1Hz - 10Hz)\n- **Depth**: Amount of filter modulation (0-100%)\n- **Mix**: Balance between dry and wet signal (0-100%)\n- **Stages**: Number of filter stages (2, 4, 6, 8, or 12)\n- **Feedback**: Amount of signal fed back (0-95%)\n- **Color**: High-frequency response shaping\n\n## Quick Settings\n- **Subtle Movement**: Rate 2Hz, Depth 30%, Mix 20%\n- **Classic 70s**: Rate 4Hz, Depth 80%, Mix 50%\n- **Heavy Phaser**: Rate 6Hz, Depth 90%, Mix 60%\n- **Vibrato-Style**: Rate 5Hz, Depth 100%, Mix 100%\n\n## Pro Tips\n- Use 4-stage for classic sounds, 6+ for more intense effects\n- Slow rates work well on pads, faster on guitars and vocals\n- Higher feedback creates more resonant, dramatic sounds\n- Use color control to match source material brightness\n- Try with guitar solos for that classic rock sound",
+      "top-controls": "# Top Controls: Vintage Phaser\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Vintage Phaser\r\n\r\nThis section contains learning information for the vintage-phaser plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-context": {
+      "integration-guide": "# Vintage Phaser Integration Guide\n\n## DAW Integration Strategies\n\n### FL Studio Native Integration\n**Optimal Signal Flow**:\n```\nAudio Source → Vintage Phaser → Mixer Channel → Effects → Master\n```\n\n**Best Practices**:\n- Use on individual mixer channels for precise control\n- Create preset banks for different instruments\n- Utilize playlist automation for dynamic changes\n- Use Patcher for complex phaser routing\n\n**Patcher Integration**:\n- **Multi-Phaser Layering**: Multiple phaser instances\n- **Parameter Linking**: Synchronized parameter control\n- **MIDI Distribution**: Complex MIDI routing\n- **Effect Chain Management**: Built-in processing chain\n\n### Cross-DAW Compatibility\n**Plugin Format Support**:\n- **VST2**: Universal Windows/Linux compatibility\n- **VST3**: Enhanced performance and modern features\n- **AU**: macOS native format with Logic integration\n- **AAX**: Pro Tools professional integration\n\n**Migration Considerations**:\n- **Settings Transfer**: Cross-platform preset compatibility\n- **Automation Translation**: DAW-specific automation handling\n- **Workflow Adaptation**: Interface differences between DAWs\n- **Performance Optimization**: DAW-specific performance tips\n\n## Plugin Chain Integration\n\n### Classic Signal Chain Order\n**Traditional Chain**:\n```\nInstrument → Vintage Phaser → Delay → Reverb → EQ → Compression → Master\n```\n\n**Modern Chain**:\n```\nInstrument → EQ → Vintage Phaser → Stereo Enhancement → Reverb → Limiter\n```\n\n### Chain Positioning Strategies\n\n#### Pre-Effect Processing\n**Before Phaser**:\n- **Equalization**: Shape source before modulation\n- **Dynamics Control**: Compression before phaser\n- **Noise Reduction**: Clean signal preparation\n- **Distortion**: Add character before modulation\n\n**Instrument-Specific Pre-Processing**:\n- **Guitar**: Wah, compression, distortion\n- **Vocals**: EQ, de-essing, compression\n- **Keyboards**: Compression, EQ, other effects\n- **Drums**: Gate, EQ, compression\n\n#### Post-Effect Processing\n**After Phaser**:\n- **Spatial Effects**: Reverb, delay for space\n- **Stereo Enhancement**: Width processors, imagers\n- **Mastering**: EQ, limiting, compression\n- **Final Polish**: Harmonic excitement, tape emulation\n\n### Parallel Processing Configurations\n\n#### Send/Return Setup\n**Parallel Phaser**:\n```\nDry Signal → Master Bus\n                ↘\n                → Vintage Phaser → Return Bus → Master Bus\n```\n\n**Benefits**:\n- **Dry Signal Preservation**: Maintain original character\n- **Wet Signal Processing**: Process phaser signal separately\n- **Mix Control**: Independent dry/wet balance\n- **Creative Possibilities**: Different processing for wet signal\n\n#### Multi-Bus Configuration\n**Frequency-Specific Phaser**:\n- **Low Bus**: Bass-specific phaser settings\n- **Mid Bus**: Vocal/guitar phaser processing\n- **High Bus**: Percussion/cymbal enhancement\n- **Master Bus**: Final blend and control\n\n## Hardware Integration\n\n### MIDI Controller Setup\n**Recommended Controllers**:\n\n#### Foot Controller Setup\n```\nFootswitch 1: Phaser Bypass/Enable\nFootswitch 2: Preset Next\nFootswitch 3: Preset Previous  \nFootswitch 4: Tap Tempo (if supported)\nExpression Pedal: Phaser Depth/Feedback\n```\n\n#### MIDI Keyboard Mapping\n```\nMod Wheel: Phaser Rate\nPitch Bend: Phaser Mix\nAftertouch: Phaser Feedback\nSustain: Phaser Bypass\nProgram Change: Preset Selection\nControl Change: Stage Count/Color\n```\n\n#### Knob/Fader Controllers\n```\nKnob 1: Phaser Rate (0.1-10Hz)\nKnob 2: Phaser Depth (0-100%)\nKnob 3: Feedback Amount (0-95%)\nKnob 4: Stage Count (2-12)\nFader 1: Mix Level (0-100%)\nFader 2: Stereo Width (0-200%)\n```\n\n### Audio Interface Integration\n**Connection Types**:\n- **Line Level**: Studio connections\n- **Instrument Level**: Direct guitar/bass connections\n- **Microphone Level**: Vocal recording setups\n- **Send/Return**: Effect loop integration\n\n**Optimization Settings**:\n- **Sample Rate**: 44.1kHz or higher for quality\n- **Buffer Size**: Balance latency and stability\n- **Clock Source**: Internal or external synchronization\n- **Gain Staging**: Optimal signal levels\n\n### External Hardware Chaining\n\n#### Vintage Hardware Integration\n**Analog Chain**:\n```\nVintage Phaser → Analog Compressor → Analog Reverb → Audio Interface\n```\n\n**Digital Integration**:\n```\nVintage Phaser (Plugin) → Hardware Effects → Audio Interface\n```\n\n**Benefits**:\n- **Analog Character**: Warmth from hardware\n- **Hybrid Processing**: Best of both worlds\n- **Hardware Knobs**: Tactile control\n- **Unique Algorithms**: Hardware-only processing\n\n## Software Integration\n\n### Third-Party Plugin Compatibility\n\n#### Complementary Effects\n**Modulation Effects**:\n- **Choruses**: Different movement characteristics\n- **Flangers**: Metallic, jet-like effects\n- **Vibratos**: Pure pitch modulation\n- **Ring Modulators**: Complex metallic textures\n\n**Dynamic Processing**:\n- **Compressors**: Post-phaser dynamics control\n- **Expanders**: Add punch and presence\n- **Limiters**: Output protection and glue\n- **Gates**: Noise control and rhythmic effects\n\n#### Creative Processing\n**Spatial Effects**:\n- **Reverbs**: Space and ambiance\n- **Delays**: Rhythmic complexity\n- **Echoes**: Vintage delay emulation\n- **Stereo Imagers**: Width and spatial enhancement\n\n### Max for Live Integration\n**Custom Interfaces**:\n- **Dedicated Phaser Controller**: Visual parameter control\n- **Preset Manager**: Advanced preset organization\n- **MIDI Learn**: Enhanced parameter mapping\n- **Performance Recorder**: Capture parameter automation\n\n**Advanced Features**:\n- **Randomization**: Generate unexpected settings\n- **Pattern Generation**: Automated parameter changes\n- **Data Visualization**: Real-time parameter display\n- **Remote Control**: Network-based parameter control\n\n## Workflow Optimization\n\n### Template Creation\n**Project Templates**:\n- **Instrument Templates**: Pre-configured phaser settings\n- **Genre Templates**: Genre-specific chain setup\n- **Performance Templates**: Live performance configurations\n- **Mixing Templates**: Final stage processing chains\n\n**Template Elements**:\n- **Pre-Configured Tracks**: Labeled and ready\n- **MIDI Routing**: Automatic MIDI assignments\n- **Effect Chains**: Basic processing setup\n- **Automation Templates**: Common automation patterns\n\n### Preset Management System\n**Organization Strategy**:\n- **By Instrument**: Separate folders for each instrument type\n- **By Stage Count**: 2-stage, 4-stage, 6+ stage categories\n- **By Era**: 60s, 70s, 80s, Modern Vintage\n- **By Use Case**: Recording, live, sound design, mixing\n\n**Backup and Sharing**:\n- **Cloud Storage**: Automatic preset backup\n- **Version Control**: Track preset evolution\n- **Export Formats**: Multiple format options\n- **Community Sharing**: Share and download presets\n\n## Advanced Integration Concepts\n\n### Multi-Instance Coordination\n**Parallel Processing**:\n- **Instance 1**: Low-frequency phaser\n- **Instance 2**: Mid-frequency phaser  \n- **Instance 3**: High-frequency phaser\n- **Master Control**: Synchronized parameter changes\n\n**Parameter Linking**:\n- **Global Rate**: All instances share LFO rate\n- **Depth Scaling**: Proportional depth changes\n- **Stage Coordination**: Synchronized stage count changes\n- **Mix Automation**: Coordinated mix control\n\n### External Control Integration\n\n#### OSC and Network Control\n**Network Capabilities**:\n- **Wi-Fi Control**: Tablet/smartphone control\n- **Web Interface**: Browser-based parameter control\n- **Remote Monitoring**: Real-time parameter display\n- **Collaborative Control**: Multiple operators\n\n#### Advanced MIDI Integration\n**MIDI Learn**:\n- **Automatic Detection**: Learn controller mapping automatically\n- **Custom Scaling**: Non-linear parameter mapping\n- **Conditional Logic**: If-then parameter relationships\n- **Layer Mapping**: Multiple controllers per parameter\n\n## Performance Optimization\n\n### CPU Management\n**Efficient Usage**:\n- **Stage Count Management**: Use minimum necessary stages\n- **Instance Limiting**: Use fewer instances when possible\n- **Quality Settings**: Balance quality vs performance\n- **Bouncing**: Render completed tracks to audio\n\n**Memory Optimization**:\n- **Preset Caching**: Efficient preset loading\n- **Cache Management**: Clear unnecessary data\n- **Plugin Chain**: Efficient signal flow\n- **System Resources**: Optimize OS settings\n\n### Audio Quality Optimization\n**Signal Path Quality**:\n- **Gain Staging**: Proper level management\n- **Noise Floor**: Minimize added noise\n- **Headroom**: Avoid clipping and distortion\n- **Dithering**: Proper bit depth conversion\n\n**Monitoring Setup**:\n- **Studio Monitors**: Accurate monitoring environment\n- **Headphone Monitoring**: Detailed checking of artifacts\n- **Metering**: Visual level and frequency analysis\n- **A/B Testing**: Compare with/without phaser\n\n## Troubleshooting Integration Issues\n\n### Common Problems\n\n#### Plugin Loading Issues\n**Symptoms**: Plugin doesn't appear or load\n**Solutions**:\n1. Check installation path and permissions\n2. Verify plugin format compatibility with DAW\n3. Rescan plugin database in DAW\n4. Reinstall plugin if necessary\n5. Check for conflicting plugins\n\n#### Automation Problems\n**Symptoms**: Parameters not automating or responding\n**Solutions**:\n1. Verify parameter is automatable\n2. Check automation lane assignments\n3. Test with simple automation\n4. Check DAW automation settings\n5. Verify MIDI controller mappings\n\n#### Audio Issues\n**Symptoms**: No sound, distortion, glitches\n**Solutions**:\n1. Check signal chain routing\n2. Verify input levels and gain staging\n3. Check for clipping at any stage\n4. Test buffer size adjustments\n5. Update audio interface drivers\n\n### Performance Issues\n\n**CPU Overload**:\n- Reduce stage count from 8+ to 4-6\n- Increase buffer size to 256-512 samples\n- Disable unused parameters\n- Render to audio when possible\n- Close background applications\n\n**Latency Problems**:\n- Adjust buffer sizes\n- Check for software monitoring\n- Verify direct monitoring settings\n- Optimize system performance\n\n## Best Practices\n\n### Professional Workflow\n**Planning**:\n- Document phaser settings for each project\n- Create preset libraries for common uses\n- Plan effect chain before recording\n- Test settings before critical sessions\n\n**Execution**:\n- Use consistent gain staging\n- A/B test phaser settings\n- Monitor levels and artifacts\n- Save successful settings immediately\n\n### Creative Integration\n**Sound Design**:\n- Experiment with unconventional stage counts\n- Layer different phaser types\n- Combine with other effects creatively\n- Document successful combinations\n\n**Performance**:\n- Map essential parameters to controllers\n- Create performance preset banks\n- Practice real-time parameter changes\n- Have backup equipment ready\n\n### Maintenance\n**Regular Updates**:\n- Keep plugin updated\n- Update DAW software\n- Maintain audio interface drivers\n- Update MIDI controller firmware\n\n**System Care**:\n- Regular system maintenance\n- Backup important presets\n- Monitor system performance\n- Clean up temporary files",
+      "live-performance": "# Vintage Phaser Live Performance Guide\n\n## Performance Setup Configuration\n\n### Essential Equipment Requirements\n**Core Equipment**:\n- Laptop with adequate CPU (8GB+ RAM recommended)\n- Professional audio interface (low latency)\n- MIDI controller for real-time parameter control\n- High-quality headphones or monitoring system\n- Backup power supply and essential cables\n\n**Enhanced Setup**:\n- Foot pedals for hands-free control\n- Tablet for preset management and control\n- Backup audio interface and cables\n- Power conditioning for stable performance\n\n### Controller Mapping for Live Use\n\n#### Essential Parameters to Map\n**Primary Controls**:\n- **Phaser Rate**: Speed of the sweep (critical for live)\n- **Phaser Depth**: Amount of modulation (intensity)\n- **Mix Level**: Wet/dry balance (practical control)\n- **Feedback**: Resonance and character (expressive control)\n\n**Secondary Controls**:\n- **Stage Count**: Complexity and richness control\n- **Color/Tone**: Frequency response shaping\n- **Bypass/Enable**: Turn effect on/off\n- **Preset Selection**: Quick preset switching\n\n#### Controller Types and Mappings\n\n**Foot Controller Setup**:\n```\nFootswitch 1: Phaser Bypass/Enable\nFootswitch 2: Preset Next\nFootswitch 3: Preset Previous  \nFootswitch 4: Tap Tempo (if supported)\nExpression Pedal: Phaser Rate or Depth\n```\n\n**MIDI Keyboard Mapping**:\n```\nMod Wheel: Phaser Rate\nPitch Bend: Phaser Mix\nAftertouch: Phaser Feedback\nSustain: Phaser Bypass\nProgram Change: Preset Selection\nControl Change: Stage Count/Color\n```\n\n## Live Performance Techniques\n\n### Real-Time Phaser Control\n\n#### Rate Modulation Techniques\n**Dynamic Rate Changes**:\n- **Slow to Fast**: Gradual acceleration for builds\n- **Fast to Slow**: Deceleration for breakdowns\n- **Rhythmic Changes**: Sync rate to song sections\n- **Random Variations**: Add organic feel to performances\n\n**Musical Rate Applications**:\n- **Verse**: Subtle rates (2-4Hz) for support\n- **Chorus**: Moderate rates (4-6Hz) for enhancement\n- **Bridge**: Increasing rates for tension building\n- **Solo**: Maximum rates for dramatic effect\n- **Outro**: Decreasing rates for resolution\n\n#### Depth Control Strategies\n**Performance Depth Modulation**:\n- **Gentle Enhancement**: 20-40% for subtle support\n- **Moderate Effect**: 40-60% for presence\n- **Heavy Modulation**: 60-80% for dramatic sections\n- **Dynamic Control**: Real-time depth automation\n\n**Feedback Control**:\n- **Subtle Resonance**: 20-40% for natural character\n- **Moderate Resonance**: 40-60% for classic phasing\n- **Heavy Resonance**: 60-80% for intense effects\n- **Dynamic Control**: Expressive feedback changes\n\n### Set Structure Management\n\n#### Song Section Phaser Settings\n**Performance Mapping**:\n```json\n{\n  \"songStructure\": {\n    \"intro\": {\n      \"stages\": 4,\n      \"rate\": 2.5,\n      \"depth\": 40,\n      \"feedback\": 30,\n      \"mix\": 20,\n      \"description\": \"Subtle support for opening\"\n    },\n    \"verse\": {\n      \"stages\": 4,\n      \"rate\": 3.5,\n      \"depth\": 50,\n      \"feedback\": 45,\n      \"mix\": 30,\n      \"description\": \"Classic phasing for verses\"\n    },\n    \"preChorus\": {\n      \"stages\": 6,\n      \"rate\": 5.0,\n      \"depth\": 70,\n      \"feedback\": 60,\n      \"mix\": 45,\n      \"description\": \"Building tension before chorus\"\n    },\n    \"chorus\": {\n      \"stages\": 6,\n      \"rate\": 6.5,\n      \"depth\": 80,\n      \"feedback\": 70,\n      \"mix\": 55,\n      \"description\": \"Maximum effect for main section\"\n    },\n    \"bridge\": {\n      \"stages\": 4,\n      \"rate\": 4.8,\n      \"depth\": 60,\n      \"feedback\": 50,\n      \"mix\": 40,\n      \"description\": \"Different character for bridge\"\n    },\n    \"outro\": {\n      \"stages\": 2,\n      \"rate\": 2.0,\n      \"depth\": 30,\n      \"feedback\": 25,\n      \"mix\": 25,\n      \"description\": \"Fade out with minimal phasing\"\n    }\n  }\n}\n```\n\n#### Genre-Specific Setups\n**Rock Performances**:\n- **Guitar Focus**: 4-stage for classic rock sounds\n- **Solo Enhancement**: 6-stage for dramatic solo sections\n- **Rhythm Support**: 2-4 stage for rhythm parts\n- **Dynamic Changes**: Automate intensity with song energy\n\n**Electronic Music Sets**:\n- **Synth Enhancement**: 6-8 stage for complex modulation\n- **Build-Ups**: Gradual stage count increases\n- **Drops**: Maximum stage engagement and rate\n- **Ambient Sections**: Slow, evolving 2-4 stage settings\n\n### Improvisation and Expression\n\n#### Real-Time Sound Manipulation\n**Expressive Techniques**:\n- **Rate Ramping**: Smooth transitions between rates\n- **Depth Swells**: Automated intensity changes\n- **Feedback Morphing**: Dynamic resonance changes\n- **Stage Switching**: Change complexity live\n\n**Creative Performance Approaches**:\n- **Rhythmic Phaser**: Tap tempo for rhythmic effects\n- **Feedback Integration**: Combine with delay feedback\n- **Multi-Preset Morphing**: Crossfade between presets\n- **Parameter Locking**: Lock certain parameters while varying others\n\n### Multi-Instrument Performances\n\n#### Guitar Performance Setup\n**Electric Guitar Chain**:\n```\nGuitar → Wah → Distortion → Vintage Phaser → Delay → Reverb → Amp\n```\n\n**Performance Settings**:\n- **Clean Tones**: 4-stage, moderate rates for rhythm\n- **Lead Tones**: 6-stage, higher rates for solos\n- **Rhythm vs Lead**: Different stage counts for different roles\n- **Tap Tempo**: Sync phaser rate to song tempo\n\n#### Vocal Performance Setup\n**Vocal Chain Configuration**:\n```\nMicrophone → Preamp → EQ → Vintage Phaser → Reverb → PA System\n```\n\n**Vocal Phaser Strategies**:\n- **Lead Vocals**: Very subtle, mainly for mix enhancement\n- **Backing Vocals**: More pronounced phaser for stereo width\n- **Harmony Vocals**: Moderate phaser for blend\n- **Spoken Word**: Minimal phaser to maintain clarity\n\n#### Keyboard Performance Setup\n**Keyboard/Synth Chain**:\n```\nKeyboard → Volume Pedal → Vintage Phaser → Chorus → Reverb → Master\n```\n\n**Keyboard Phaser Strategies**:\n- **Electric Piano**: 4-6 stage for classic sounds\n- **Synth Leads**: 6-8 stage for electronic music\n- **Organ Sounds**: 4-stage for Leslie-like effects\n- **Pad Sounds**: Slow 2-4 stage for ambient movement\n\n## Advanced Live Applications\n\n### Multi-Phaser Layering\n**Parallel Processing**:\n- **Instance 1**: Subtle, slow phaser for foundation\n- **Instance 2**: Moderate, medium phaser for body\n- **Instance 3**: Heavy, fast phaser for accent\n- **Master Mix**: Controlled blend of all instances\n\n**Dynamic Layer Control**:\n- **Section Switching**: Different combinations for song sections\n- **Real-Time Blending**: Crossfade between combinations\n- **Automated Changes**: Programmed intensity variations\n- **Manual Override**: Take control during performance\n\n### Creative Performance Techniques\n\n#### Tempo-Synced Performance\n**Musical Applications**:\n- **Quarter Note Phaser**: Slow, sweeping modulation\n- **Eighth Note Phaser**: Medium, rhythmic movement\n- **Sixteenth Note Phaser**: Fast, intense modulation\n- **Triplet Phaser**: Swung, syncopated feel\n\n**Sync Strategies**:\n- **Tap Tempo**: Real-time tempo detection\n- **MIDI Clock**: External synchronization\n- **Host Sync**: DAW tempo following\n- **Manual Sync**: Visual tempo matching\n\n#### Experimental Performance\n**Creative Techniques**:\n- **Rate Modulation**: LFO controlling phaser rate\n- **Depth Randomization**: Random depth variations\n- **Stage Morphing**: Dynamic stage count changes\n- **Feedback Integration**: Phaser feeding into itself\n\n## Troubleshooting Live Issues\n\n### Technical Problems\n\n#### Audio Issues\n**No Sound or Distorted Sound**:\n1. Check all audio connections\n2. Verify mixer gain staging\n3. Test bypass vs. engaged phaser\n4. Check for clipping at any stage\n5. Verify audio interface functionality\n\n**Clicks, Pops, or Glitches**:\n1. Increase audio interface buffer size\n2. Check CPU usage during performance\n3. Verify MIDI controller connections\n4. Test with simplified settings\n5. Restart audio interface if needed\n\n#### MIDI Controller Problems\n**Controller Not Responding**:\n1. Check MIDI cable connections\n2. Verify MIDI channel assignments\n3. Test with different controller if available\n4. Update MIDI controller firmware\n5. Re-learn parameter mappings\n\n**Mapping Issues**:\n1. Verify correct CC assignments\n2. Check controller range (0-127 vs. 0-16383)\n3. Test with simple automation\n4. Reset and re-learn if necessary\n5. Document working mappings for future\n\n### Creative Problems\n\n#### Phaser Sounds Unnatural\n**Solutions**:\n- Reduce depth for more natural sound\n- Lower rate to avoid obvious modulation\n- Adjust stage count to appropriate level\n- Use instrument-specific presets\n- Try different feedback levels\n\n#### Performance Fatigue\n**Mental Fatigue Solutions**:\n- Simplify control assignments\n- Use preset changes rather than continuous control\n- Take breaks between long performances\n- Have backup simpler setup ready\n\n**Physical Fatigue Solutions**:\n- Use ergonomic controller setup\n- Map most-used parameters to easily accessible controls\n- Use foot pedals for frequently used functions\n- Maintain comfortable playing posture\n\n## Preparation and Practice\n\n### Pre-Performance Setup\n**Equipment Check**:\n- [ ] Audio interface connected and tested\n- [ ] MIDI controllers mapped and working\n- [ ] Presets organized and loaded\n- [ ] Backup equipment available and tested\n- [ ] Monitor levels set appropriately\n- [ ] Power conditioning system connected\n\n**Technical Preparation**:\n- [ ] System optimized for performance\n- [ ] Background processes disabled\n- [ ] Power management configured\n- [ ] All drivers updated\n- [ ] Backup power sources ready\n\n### Practice Techniques\n\n#### Skill Development\n**Parameter Control Practice**:\n- Practice smooth rate and depth changes\n- Master preset switching without disrupting flow\n- Develop muscle memory for controller layout\n- Practice troubleshooting while continuing performance\n\n**Performance Rehearsal**:\n- Practice entire set with all changes\n- Test transitions between songs and sections\n- Verify equipment works under performance conditions\n- Practice emergency procedures\n\n#### Set Design Practice\n**Structural Planning**:\n- Map phaser intensity to song dynamics\n- Plan preset changes for smooth transitions\n- Design control flow for intuitive operation\n- Prepare backup plans for equipment failures\n\n## Professional Best Practices\n\n### Set Management\n\n#### Energy Planning\n- **Dynamic Arc**: Plan phaser intensity throughout performance\n- **Audience Engagement**: Adjust for crowd response\n- **Song Flow**: Smooth transitions between songs\n- **Peak Moments**: Maximum effect for impact points\n\n#### Repertoire Organization\n- **Preset Banks**: Organized by song or set section\n- **Quick Access**: Frequently used presets easily reachable\n- **Backup Plans**: Alternative settings for each song\n- **Documentation**: Notes on successful settings\n\n### Technical Excellence\n\n#### Reliability Measures\n- **Equipment Redundancy**: Critical systems doubled\n- **Backup Configuration**: Quick switch to simple setup\n- **Testing Protocol**: Thorough pre-show verification\n- **Emergency Procedures**: Clear action plans for failures\n\n#### Performance Optimization\n- **Buffer Management**: Balance latency and stability\n- **CPU Monitoring**: Watch system performance\n- **Audio Quality**: Maintain consistent monitoring\n- **Adaptability**: Adjust to venue acoustics\n\n### Post-Performance\n\n#### Review and Documentation\n- **Performance Notes**: Record what worked and didn't\n- **Settings Archive**: Save successful configurations\n- **Equipment Notes**: Document any issues or needs\n- **Improvement Planning**: Plan adjustments for next performance\n\n#### Maintenance Routine\n- **Equipment Check**: Inspect all gear after performance\n- **Software Updates**: Update plugins and drivers\n- **Backup Verification**: Verify all settings are backed up\n- **Skill Development**: Plan practice based on performance experience",
+      "troubleshooting-workflows": "# Vintage Phaser Troubleshooting Guide\n\n## Sound Issues\n\n### No Phaser Effect\n**Causes**:\n- Mix knob at 0%\n- Plugin bypassed\n- No input signal\n- Wrong routing in mixer\n- Stages set too low\n\n**Solutions**:\n1. Increase mix to at least 20%\n2. Disable plugin bypass\n3. Verify signal reaching the plugin\n4. Check mixer routing and send levels\n5. Increase stage count to minimum 4\n\n### Phaser Sounds Too Thin or Weak\n**Causes**:\n- Depth too low\n- Rate too slow\n- Insufficient feedback\n- Not enough stages\n- Color control too dark\n\n**Solutions**:\n1. Increase depth to 50-80%\n2. Set rate to 3-6Hz for movement\n3. Raise feedback to 30-60%\n4. Use 4-6 stages for richer sound\n5. Adjust color control appropriately\n\n### Phaser Creates Unwanted Resonance\n**Causes**:\n- Feedback too high\n- Too many stages\n- Color control too bright\n- High settings on bright sources\n- Aggressive depth settings\n\n**Solutions**:\n1. Reduce feedback to 40-70%\n2. Use 4-6 stages instead of 8-12\n3. Lower color control for warmer tone\n4. Reduce depth to 50-70%\n5. Test with darker source material\n\n## Performance Issues\n\n### Audio Glitches and Artifacts\n**Causes**:\n- CPU overload\n- Low buffer size\n- Multiple phaser instances\n- Extreme feedback settings\n- High stage counts\n\n**Solutions**:\n1. Reduce buffer size or disable other plugins\n2. Increase audio buffer to 256-512 samples\n3. Limit to 1-2 phaser instances\n4. Use moderate feedback (under 70%)\n5. Use 4-6 stages instead of maximum\n\n### High CPU Usage\n**Causes**:\n- Multiple stages (8-12)\n- High feedback with resonance\n- Multiple instances\n- High sample rates\n- Complex modulation\n\n**Solutions**:\n1. Reduce stage count to 4-6\n2. Lower feedback settings\n3. Close other applications\n4. Use lower sample rates when possible\n5. Freeze tracks when possible\n\n### Timing and Synchronization Problems\n**Causes**:\n- Wrong tempo sync settings\n- LFO drift issues\n- Host timing problems\n- Buffer compensation errors\n- Manual rate vs sync confusion\n\n**Solutions**:\n1. Enable host tempo sync if needed\n2. Check synchronization settings\n3. Verify DAW timing and PDC\n4. Choose between manual and sync modes\n5. Test rate stability with metronome\n\n## Creative Problems\n\n### Can't Get Classic 70s Sound\n**Solutions**:\n- Use 4-stage phaser for classic character\n- Set rate to 4-6Hz for authentic feel\n- Use moderate feedback (40-60%)\n- Set depth to 70-85% for pronounced effect\n- Adjust color for warm, slightly dark tone\n\n### Phaser Makes Mix Muddy or Harsh\n**Causes**:\n- Too much wet signal\n- Low frequencies being over-modulated\n- High feedback with bright sources\n- Too many stages creating complexity\n- Poor source signal quality\n\n**Solutions**:\n1. Reduce mix to 20-40%\n2. Use high-pass filtering after phaser\n3. Lower feedback for bright sources\n4. Use 4-6 stages maximum\n5. Improve source recording quality\n\n### Stereo Image Problems\n**Issues**:\n- Mono phaser sound\n- Unbalanced stereo field\n- Phase cancellation\n- Weak stereo width\n- Inconsistent movement\n\n**Solutions**:\n1. Ensure proper stereo input to phaser\n2. Check stereo output routing\n3. Verify phase relationships\n4. Use stereo widener after phaser if needed\n5. Test with stereo test signals\n\n## Instrument-Specific Issues\n\n### Guitar Phaser Problems\n**Common Issues**:\n- Phaser sounds artificial on guitar\n- Too much sweep affecting rhythm\n- Loss of attack clarity\n- Poor sustain characteristics\n\n**Solutions**:\n1. Use 4-6Hz rates for natural guitar sound\n2. Reduce depth to 50-70% for musical enhancement\n3. Add compression after phaser for sustain\n4. Use post-distortion placement for classic rock\n5. Adjust color control for guitar's frequency range\n\n### Vocal Phaser Problems\n**Common Problems**:\n- Vocals sound processed and unnatural\n- Sibilance enhancement\n- Loss of intelligibility\n- Unwanted movement on sustained notes\n\n**Solutions**:\n1. Keep mix low (15-30%) for natural vocal sound\n2. Use slower rates (1.5-3Hz) for subtle movement\n3. Apply de-essing before phaser\n4. Use lower feedback (20-40%) for vocals\n5. Automate phaser only for specific sections\n\n### Bass Phaser Problems\n**Common Issues**:\n- Low-frequency modulation sounds unnatural\n- Bass loses punch and definition\n- Muddy low end\n- Pitch instability\n\n**Solutions**:\n1. Use very slow rates (0.5-2Hz) for bass\n2. Limit depth to 20-40% to maintain definition\n3. Use 2-4 stages maximum for clarity\n4. Add high-pass filter after phaser\n5. Use moderate feedback (20-35%)\n\n### Keyboard/Synth Phaser Problems\n**Common Issues**:\n- Phaser conflicts with synth filters\n- Over-modulation creating artifacts\n- Loss of synth character\n- Frequency masking\n\n**Solutions**:\n1. Place phaser after synth's own filter\n2. Use moderate rates (3-5Hz) for synths\n3. Match phaser character to synth type\n4. Use lower depth on already modulated sounds\n5. Consider pre-filter placement for different character\n\n## Advanced Troubleshooting\n\n### Complex Signal Chain Issues\n**Multi-Effect Problems**:\n- Phaser conflicts with other modulation\n- Phase cancellation between effects\n- Gain staging problems\n- Frequency masking and overlapping\n\n**Diagnostic Steps**:\n1. Test phaser in isolation\n2. Add effects one at a time\n3. Check gain structure with metering\n4. Analyze frequency spectrum with analyzer\n5. Test with different source material\n\n### Environmental and System Issues\n**System Performance**:\n- Background processes affecting performance\n- Driver compatibility problems\n- Hardware limitations\n- Operating system conflicts\n\n**Optimization Steps**:\n1. Disable unnecessary background applications\n2. Update audio drivers and firmware\n3. Check hardware meets requirements\n4. Optimize operating system for audio\n5. Test with simplified signal chain\n\n### Quality Assurance\n**Sound Quality Verification**:\n- A/B test with bypass signal\n- Check on multiple monitoring systems\n- Verify at different volume levels\n- Test with various source materials\n- Use reference tracks for comparison\n\n**Reference Comparisons**:\n- Compare with classic phaser units\n- Reference iconic recordings\n- Use test signals for analysis\n- Document successful settings for future\n\n## Creative Block Solutions\n\n### When Phaser Sounds Wrong\n**Back to Basics**:\n1. Reset to default settings\n2. Start with simple 4-stage configuration\n3. Use classic presets as starting points\n4. Gradually add complexity\n5. Document what works and why\n\n### Alternative Approaches\n**Different Techniques**:\n1. Try unconventional parameter combinations\n2. Use phaser on unexpected sources\n3. Combine with other effects creatively\n4. Use extreme settings for special effects\n5. Record and analyze results\n\n### Learning and Development\n**Skill Building**:\n1. Study classic phaser circuit designs\n2. Listen to iconic phaser recordings\n3. Practice parameter relationships\n4. Experiment with different instruments\n5. Join user communities for tips and tricks"
+    },
+    "by-goal": {
+      "advanced-phaser-techniques": "# Advanced Vintage Phaser Techniques\n\n## Classic Emulation Mastery\n\n### Understanding Analog Phaser Technology\n\n#### Historical Context\n**1960s-1970s Phaser Development**:\n- **Maestro PS-1A** (1968): First popular guitar phaser\n- **MXR Phase 90** (1974): Iconic orange pedal\n- **Electro-Harmonix Small Stone** (1975): Multiple stage options\n- **Musitronics Mu-Tron** (1970s): Swirling, distinctive sound\n\n**Technical Characteristics**:\n- **Photo-Cell Modulation**: Early photo-resistor designs\n- **FET-Based Designs**: More reliable and consistent\n- **BBD Elements**: Some units used delay elements\n- **Component Imperfections**: Created unique character\n\n#### Circuit Analysis\n**Stage Configuration**:\n- **2-Stage**: Subtle, gentle movement\n- **4-Stage**: Classic, balanced character\n- **6-Stage**: Rich, complex movement\n- **8-Stage+**: Intense, swirling effects\n\n**All-Pass Filter Networks**:\n- **Notch Generation**: Creates frequency cancellation\n- **Phase Cancellation**: Sweeps through frequency spectrum\n- **Resonance Control**: Feedback determines intensity\n- **Harmonic Generation**: Creates complex overtones\n\n### Hardware Emulation Techniques\n\n#### Component-Level Modeling\n**FET Transistor Characteristics**:\n- **Nonlinear Response**: Gentle saturation characteristics\n- **Temperature Drift**: Slight parameter variations\n- **Voltage Dependence**: Response to power supply variations\n- **Aging Effects**: Component degradation simulation\n\n**Photo-Cell Simulation**:\n- **Light-Dependent Resistance**: LDR (Light Dependent Resistor) modeling\n- **Recovery Time**: Slow response to rapid changes\n- **Hysteresis**: Different response for increasing vs decreasing\n- **Noise Characteristics**: Inherent noise floor simulation\n\n#### Power Supply Modeling\n**Voltage Variations**:\n- **Battery Drain**: Gradual parameter changes\n- **AC Ripple**: Subtle power supply modulation\n- **Sag Effects**: Heavy load compression\n- **Current Limiting**: Soft clipping characteristics\n\n## Advanced Modulation Programming\n\n### LFO and Rate Control\n\n#### Multi-LFO Architectures\n**Dual LFO System**:\n- **LFO1**: Primary rate modulation (0.1-10Hz)\n- **LFO2**: Depth and character modulation (0.05-2Hz)\n- **Cross-Modulation**: LFO2 modulates LFO1 rate\n- **Phase Relationship**: Independent phase control per LFO\n\n**Advanced Waveform Programming**:\n```json\n{\n  \"lfoWaveforms\": {\n    \"sine\": \"Smooth, musical modulation\",\n    \"triangle\": \"Linear, sweeping movement\",\n    \"sawtooth\": \"Sharp, aggressive transitions\",\n    \"square\": \"Abrupt, rhythmic changes\",\n    \"random\": \"Unpredictable, organic variation\",\n    \"stepped\": \"Digital, quantized changes\",\n    \"custom\": \"User-drawn waveforms\"\n  }\n}\n```\n\n#### Rate-Synchronized Modulation\n**Musical Applications**:\n- **Quarter Note Rate**: Slow, evolving phaser\n- **Eighth Note Rate**: Medium, rhythmic movement\n- **Sixteenth Note Rate**: Fast, intense phasing\n- **Triplet Divisions**: Swung, syncopated feel\n\n**Complex Rhythms**:\n- **Dotted Rhythms**: Push-pull timing\n- **Polyrhythms**: Overlapping rhythmic patterns\n- **Programmed Changes**: Automation of rate over time\n- **Tap Tempo Integration**: Real-time tempo detection\n\n### Feedback and Resonance Control\n\n#### Feedback Path Design\n**Positive Feedback**:\n- **Regeneration**: Signal reinforcement\n- **Resonance Peaks**: Frequency emphasis\n- **Oscillation Threshold**: Point of self-oscillation\n- **Musical Control**: Tunable resonant frequencies\n\n**Negative Feedback**:\n- **Stabilization**: More controlled response\n- **Damping**: Natural decay characteristics\n- **Color Control**: Frequency-dependent feedback\n- **Dynamic Feedback**: Time-variable feedback amount\n\n#### Multi-Stage Feedback\n**Per-Stage Feedback**:\n- **Variable Feedback**: Different feedback per stage\n- **Feedback Sequencing**: Changing feedback patterns\n- **Phase-Controlled**: Feedback phase relationships\n- **Frequency-Dependent**: Variable feedback by frequency\n\n## Creative Sound Design\n\n### Stage Configuration Strategies\n\n#### Progressive Stage Count\n**Dynamic Staging**:\n- **2-Stage Start**: Simple introduction\n- **4-Stage Development**: Classic phasing\n- **6-Stage Build**: Richer complexity\n- **8-Stage+ Climax**: Maximum intensity\n\n**Automated Transitions**:\n- **Smooth Morphing**: Gradual stage count changes\n- **Step Sequencing**: Precise stage switching\n- **Randomized Selection**: Unpredictable variations\n- **Musically Controlled**: Sync to song sections\n\n#### Voice Distribution\n**Stereo Voice Placement**:\n- **Dual Mono**: Two mono signals in stereo\n- **True Stereo**: Different left/right phasing\n- **Mid/Side Processing**: Frequency-specific stereo control\n- **Rotating Effects**: Circular movement patterns\n\n**Phase Relationships**:\n- **In-Phase**: Coherent stereo image\n- **Out-of-Phase**: Wide, spacious effect\n- **Phase Modulation**: Dynamic phase changes\n- **Phase Randomization**: Natural variation\n\n### Instrument-Specific Applications\n\n#### Guitar Phaser Design\n**Electric Guitar Considerations**:\n- **Pickup Type**: Single-coil vs humbucker response\n- **Playing Style**: Clean vs distorted tones\n- **Genre Requirements**: Blues, rock, metal needs\n- **Signal Chain**: Pre/post-distortion placement\n\n**Configuration Examples**:\n```json\n{\n  \"guitarPhaser\": {\n    \"classicRock\": {\n      \"stages\": 4,\n      \"rate\": 4.2,\n      \"depth\": 70,\n      \"feedback\": 50,\n      \"placement\": \"post-distortion\"\n    },\n    \"cleanTone\": {\n      \"stages\": 6,\n      \"rate\": 3.5,\n      \"depth\": 60,\n      \"feedback\": 45,\n      \"placement\": \"pre-distortion\"\n    }\n  }\n}\n```\n\n#### Keyboard and Synth Applications\n**Electric Piano Enhancement**:\n- **Rhodes Character**: Warm, soulful phasing\n- **Wurlitzer Sound**: Brighter, more movement\n- **Acoustic Piano**: Very subtle enhancement\n- **Clavinet**: Funky, rhythmic phasing\n\n**Synthesizer Integration**:\n- **Pre-Filter Phasing**: Modulates oscillator signal\n- **Post-Filter Phasing**: Modulates filtered signal\n- **Parallel Processing**: Multiple phaser instances\n- **Multi-Layer Design**: Different phasing per layer\n\n#### Vocal Processing\n**Vocal Enhancement Goals**:\n- **Natural Movement**: Subtle pitch variation\n- **Presence Enhancement**: Without artificial quality\n- **Genre Appropriateness**: Pop, rock, classical styles\n- **Intelligibility Preservation**: Maintain vocal clarity\n\n**Vocal Phaser Strategies**:\n1. Use lower stage counts (2-4)\n2. Keep rates slow (1-3Hz)\n3. Limit depth to 20-40%\n4. Apply gentle feedback (15-30%)\n5. Use pre- or post-effects depending on style\n\n## Performance Techniques\n\n### Real-Time Control\n\n#### Essential Parameter Mapping\n**Live Performance Controls**:\n```json\n{\n  \"performanceMapping\": {\n    \"modWheel\": \"phaserRate\",\n    \"expression\": \"phaserDepth\", \n    \"footswitch1\": \"phaserBypass\",\n    \"footswitch2\": \"presetNext\",\n    \"aftertouch\": \"feedbackAmount\",\n    \"pitchBend\": \"stageCount\"\n  }\n}\n```\n\n#### Advanced Control Strategies\n**Dynamic Parameter Control**:\n- **Rate Automation**: Create movement over time\n- **Depth Morphing**: Smooth intensity changes\n- **Stage Morphing**: Switch complexity dynamically\n- **Feedback Control**: Adjust resonance in real-time\n\n**Expressive Techniques**:\n- **Velocity Sensitivity**: Parameter response to playing dynamics\n- **Aftertouch Response**: Pressure-based parameter changes\n- **Breath Control**: Wind controller integration\n- **Gesture Control**: Physical movement control\n\n### Creative Performance Applications\n\n#### Multi-Phaser Layering\n**Parallel Processing**:\n- **Instance 1**: Slow, subtle foundation phaser\n- **Instance 2**: Medium, rhythmic phaser\n- **Instance 3**: Fast, intense accent phaser\n- **Master Control**: Synchronized parameter changes\n\n**Series Processing**:\n- **Phaser into Chorus**: Complex modulation\n- **Phaser into Flanger**: Dual modulation effects\n- **Phaser into Delay**: Rhythmic complexity\n- **Feedback Loops**: Phaser into itself\n\n## Experimental Techniques\n\n### Unconventional Applications\n\n#### Extreme Settings\n**Maximum Stages**:\n- **12-Stage Phaser**: Ultimate complexity\n- **High Feedback**: Self-oscillation effects\n- **Maximum Rate**: Audio-rate modulation\n- **Extreme Color**: Radical frequency shaping\n\n**Creative Misuse**:\n- **Phaser as Resonant Filter**: Static, filtering mode\n- **Phaser as Distortion**: High feedback, saturation\n- **Phaser as Rhythmic Tool**: Fast, percussive effects\n- **Phaser as Spatial Tool**: Wide, ambient movement\n\n#### Multi-Effect Integration\n**Modulation Chains**:\n- **Phaser → Chorus**: Thick, complex movement\n- **Phaser → Reverb**: Spatial, ambient effects\n- **Phaser → Delay**: Rhythmic complexity\n- **Multiple Phasers**: Different rates per frequency band\n\n**External Control**:\n- **MIDI Clock**: External synchronization\n- **CV/Gate**: Modular synthesizer integration\n- **Audio Rate**: High-speed modulation\n- **Network Control**: Remote parameter adjustment\n\n## Technical Deep Dive\n\n### Mathematical Foundations\n\n#### All-Pass Filter Theory\n**Frequency Response**:\n```\nH(z) = (z^N - a) / (z^N + a)\n```\nWhere N = number of stages, a = feedback coefficient\n\n**Phase Response**:\n- **Linear Phase**: Minimal phase distortion\n- **Minimum Phase**: Optimized causal response\n- **Nonlinear Phase**: Analog character simulation\n- **Variable Phase**: Dynamic phase manipulation\n\n#### Modulation Mathematics\n**Frequency Modulation**:\n- **FM Synthesis**: Phaser as FM source\n- **PM Synthesis**: Phase modulation techniques\n- **Ring Modulation**: Multiplication of signals\n- **AM Synthesis**: Amplitude modulation applications\n\n### Advanced Signal Processing\n\n#### Multi-Band Processing\n**Frequency-Specific Phaser**:\n- **Low-Frequency Phaser**: Bass-specific processing\n- **Mid-Frequency Phaser**: Vocal/guitar enhancement\n- **High-Frequency Phaser**: Percussion/cymbal effects\n- **Crossover Networks**: Frequency splitting\n\n**Dynamic Processing**:\n- **Envelope Following**: Phaser response to source dynamics\n- **Compressor Integration**: Post-phaser dynamics control\n- **Sidechain Control**: External modulation source\n- **Adaptive Processing**: Intelligent parameter adjustment\n\n#### Stereo and Spatial Processing\n**Advanced Stereo Techniques**:\n- **Binaural Processing**: Headphone optimization\n- **Surround Integration**: Multi-channel expansion\n- **3D Audio**: Spatial positioning\n- **Ambient Processing**: Space and atmosphere creation",
+      "psychedelic-guitar-tone": "# Psychedelic Guitar Tone with Vintage Phaser\n\n**Difficulty:** Beginner\n**Time Required:** 10 minutes\n**Goal:** Create classic 70s psychedelic phased guitar sound\n**Genre:** Psychedelic Rock, Classic Rock, Progressive\n\n---\n\n## Prerequisites\n\n- Vintage Phaser plugin\n- Clean electric guitar recording or DI signal\n- Understanding of guitar effects chain order\n- Reference: Pink Floyd, Van Halen phaser tones\n\n---\n\n## Workflow Steps\n\n### Step 1: Signal Chain Setup\n\n1. **Guitar Signal:**\n   - Record clean DI guitar or load clean guitar track\n   - Ensure good input level (no clipping)\n\n2. **Effects Order:**\n   - Compression (optional, first)\n   - Light overdrive/distortion (optional)\n   - **Vintage Phaser** (key effect)\n   - Reverb (optional, after phaser)\n\n---\n\n### Step 2: Phaser Configuration\n\n3. **Stages:** Set to **4**\n   - *Why:* Matches Small Stone (classic sound)\n\n4. **Rate:** **0.3-0.5 Hz**\n   - *Why:* Slow sweep = psychedelic swirl\n   - *Try:* 0.3 Hz for ultra-slow, 0.5 Hz for more movement\n\n5. **Depth:** **80-90%**\n   - *Why:* Deep modulation for obvious effect\n   - *Sweet Spot:* 85%\n\n6. **Feedback:** **60-70%**\n   - *Why:* Pronounced peaks without harshness\n   - *Caution:* Don't exceed 80%\n\n7. **Color Switch:** **On**\n   - *Why:* Authentic Small Stone character\n   - *Result:* More resonance and vintage tone\n\n8. **Dry/Wet:** **50-60%**\n   - *Why:* Balanced mix of dry and phased signal\n\n---\n\n### Step 3: Fine-Tuning\n\n9. **Noise Amount:** **20-30%**\n   - *Why:* Adds vintage BBD character\n   - *Optional:* Set to 0% for clean modern tone\n\n10. **Stereo Mode:** **Stereo**\n    - *Why:* Creates movement in stereo field\n    - *Alternative:* Mono for focused center tone\n\n---\n\n### Step 4: Supporting Effects (Optional)\n\n11. **Light Overdrive (Before Phaser):**\n    - Drive: 20-30%\n    - Tone: Balanced\n    - *Why:* Phaser reacts well to harmonic content\n\n12. **Reverb (After Phaser):**\n    - Type: Hall or Spring\n    - Size: Medium\n    - Mix: 15-25%\n    - *Why:* Adds space and psychedelic atmosphere\n\n13. **Delay (Optional):**\n    - Time: 1/4 or dotted 1/8\n    - Feedback: 20-30%\n    - *Why:* Echoes the phaser movement\n\n---\n\n## Genre Variations\n\n### 70s Psychedelic (Pink Floyd Style)\n- Stages: 6\n- Rate: 0.2 Hz (very slow)\n- Depth: 90%\n- Feedback: 75%\n- Add: Long reverb (30%+ mix)\n\n### Funk Guitar (Erykah Badu Style)\n- Stages: 4\n- Rate: 0.8 Hz (faster)\n- Depth: 65%\n- Feedback: 50%\n- Dry/Wet: 40% (more subtle)\n\n### Van Halen-Style Phaser\n- Stages: 6\n- Rate: 0.5 Hz\n- Depth: 75%\n- Feedback: 60%\n- Add: Overdrive before phaser\n\n---\n\n## Playing Techniques\n\n### Chord Work\n- Open chords sound huge with phaser\n- Arpeggiated chords create moving textures\n- Sus chords (sus2, sus4) especially effective\n\n### Lead Lines\n- Long sustained notes let phaser sweep\n- Slow bends interact with phaser movement\n- Vibrato combines with phase for complex tone\n\n### Rhythm\n- Funky rhythm parts benefit from moderate phaser\n- Palm muting creates percussive phased accents\n\n---\n\n## Common Issues\n\n### Too Harsh/Piercing\n- **Solution:** Reduce feedback to 50%\n- Lower depth to 70%\n- Try fewer stages (2 or 4)\n\n### Lost in Mix\n- **Solution:** Increase dry/wet to 70%\n- Boost mids (800Hz-2kHz) with EQ\n- Use parallel processing (send track)\n\n### Too Wobbly\n- **Solution:** Slow down rate to 0.2-0.3 Hz\n- Reduce depth to 60-70%\n\n---\n\n**Related Workflows:**\n- [Vintage Synth Phasing](./vintage-synth-phasing.md)\n- [Keyboard Phaser Effects](./keyboard-phaser.md)\n\n---\n\n**Last Updated:** February 3, 2026\n**Status:** Complete workflow\n"
+    },
+    "by-instrument": {
+      "instrument-phaser-workflows": "Tags: hip-hop/rap | R&B | electric\n\n## Instrument-Specific Phaser Workflows\n\n### 808/Bass Phaser\n\n**Starting Point:**\n- Rate: 0.08Hz (very slow)\n- Stages: 4\n- Depth: 40%\n- Feedback: 30%\n- Dry/Wet: 20%\n\n**Why These Settings:**\n- Slow rate prevents the \"sweeping\" from distracting from the fundamental\n- 4 stages keeps notches spread out, less likely to cancel bass frequencies\n- Low Wet percentage means most energy stays in the dry signal (mono-safe)\n- Moderate feedback adds slight harmonic enhancement without mud\n\n**A/B Test:**\n1. Play 808 pattern\n2. Toggle between Dry and Wet\n3. Listen for: \"Is there subtle movement without lost punch?\"\n4. If movement is inaudible → Increase Depth by 5%\n5. If punch is lost → Reduce Wet by 5%\n\n**Quick Fix Path:**\n- If muddy → High-pass Wet signal at 80Hz\n- If too subtle → Increase Rate to 0.1Hz\n- If phasey in mono → Increase Dry to 50%\n\n### Lead Vocal Phaser\n\n**Starting Point:**\n- Rate: 0.1Hz\n- Stages: 6\n- Depth: 55%\n- Feedback: 40%\n- Dry/Wet: 35%\n\n**When to Use:**\n- Bridge/breakdown sections\n- Emo/conscious hip-hop verses\n- R&B \"vulnerable\" moments\n- Doubled vocal layers\n\n**When NOT to Use:**\n- Main verse vocals that need clarity\n- Aggressive rap vocals\n- Songs with already busy frequency spectrum\n- Lead vocals competing with dense instrumentation\n\n**Troubleshooting:**\n- If sweeps distract from lyrics → Slow Rate to 0.08Hz\n- If too subtle → Bump Depth to 60%\n- If harshness develops → Reduce Feedback to 30%\n\n### Guitar/Keys Rhythm Phaser\n\n**Starting Point:**\n- Rate: 0.2Hz (or sync to 1/8 note)\n- Stages: 6\n- Depth: 65%\n- Feedback: 45%\n- Dry/Wet: 40%\n\n**Best For:**\n- Funky rhythm guitar parts\n- Electric piano grooves\n- Synth rhythm patterns\n- Adding movement to static chord progressions\n\n**Rhythmic Sync Settings:**\n| Tempo Feel | Sync Setting | Rate Result |\n|------------|--------------|-------------|\n| Slow/atmospheric | 1/4 note | 0.25Hz @ 120BPM |\n| Moderate groove | 1/8 note | 0.5Hz @ 120BPM |\n| Fast energy | 1/8th triplet | 1Hz @ 120BPM |\n| Intense | 1/16 note | 2Hz @ 120BPM |\n\n### Synth Pad Phaser\n\n**Starting Point:**\n- Rate: 0.25Hz\n- Stages: 8\n- Depth: 75%\n- Feedback: 50%\n- Dry/Wet: 50%\n\n**Exit Criteria:**\n- Pad should feel \"alive\" and moving\n- Sweeps should enhance the emotional arc, not distract\n- Should work well at low volumes (late night listening)\n- Test: Does it sound good on headphones AND speakers?\n\n### Quick Reference Table\n\n| Instrument | Rate | Stages | Depth | Feedback | Wet | Primary Use |\n|------------|------|--------|-------|----------|-----|-------------|\n| 808/Bass | 0.08 | 4 | 40% | 30% | 20% | Subtle texture |\n| Lead Vocal | 0.1 | 6 | 55% | 40% | 35% | Emotional moments |\n| Rhythm Guitar | 0.2 | 6 | 65% | 45% | 40% | Groove/movement |\n| Synth Pad | 0.25 | 8 | 75% | 50% | 50% | Atmosphere |\n| Hi-hats | 0.3 | 4 | 50% | 25% | 25% | Air/space |\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Vintage Phaser\r\n\r\nThis section contains workflow information for the vintage-phaser plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Vintage Phaser\r\n\r\nThis section contains reference information for the vintage-phaser plugin.\r\n"
+    }
+  }
+}

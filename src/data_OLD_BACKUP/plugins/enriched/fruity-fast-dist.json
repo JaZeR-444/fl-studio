@@ -1,0 +1,297 @@
+{
+  "id": "fruity-fast-dist",
+  "name": "Fruity Fast Dist",
+  "presets": {
+    "cool-vocal-grit": {
+      "coolVocalArchetypes": [
+        {
+          "name": "Lo-Fi Soul Heat",
+          "settings": {
+            "preAmp": "15%",
+            "type": "A",
+            "mix": "25%",
+            "postFilter": "20%"
+          },
+          "vibe": "Subtle vintage warmth for R&B vocals."
+        },
+        {
+          "name": "Distorted Rap Edge",
+          "settings": {
+            "preAmp": "45%",
+            "type": "B",
+            "mix": "15%",
+            "postFilter": "60%"
+          },
+          "vibe": "Adding 'bite' and presence to aggressive rap verses."
+        }
+      ]
+    },
+    "distortion-archetypes": {
+      "archetypes": [
+        {
+          "name": "Subtle Warmth",
+          "settings": {
+            "preAmp": "15%",
+            "type": "A",
+            "mix": "100%",
+            "postFilter": "50%"
+          },
+          "useCase": "Adding 'analog' character to clean digital synths."
+        },
+        {
+          "name": "Aggressive Fuzz",
+          "settings": {
+            "preAmp": "85%",
+            "thres": "20%",
+            "type": "B",
+            "postFilter": "20%"
+          },
+          "useCase": "Industrial snare drums or extreme synth destruction."
+        }
+      ]
+    }
+  },
+  "parameters": {
+    "fast-dist-specs": {
+      "plugin": {
+        "name": "Fruity Fast Dist",
+        "category": "Distortion",
+        "type": "Waveshaper",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Fast%20Dist.htm"
+      },
+      "parameters": {
+        "gain": [
+          {
+            "id": "preAmp",
+            "name": "Pre Amp"
+          },
+          {
+            "id": "postGain",
+            "name": "Post Gain"
+          }
+        ],
+        "clipping": [
+          {
+            "id": "thres",
+            "name": "Threshold"
+          },
+          {
+            "id": "type",
+            "name": "Distortion Type",
+            "options": [
+              "A",
+              "B"
+            ]
+          }
+        ],
+        "filter": [
+          {
+            "id": "postFilter",
+            "name": "Post Filter"
+          }
+        ],
+        "mix": [
+          {
+            "id": "mix",
+            "name": "Dry/Wet Mix"
+          }
+        ]
+      }
+    },
+    "parameters": {
+      "pluginName": "Fruity Fast Dist",
+      "category": "Distortion",
+      "parameters": [
+        {
+          "section": "Drive",
+          "id": "pre",
+          "name": "Preamp",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Input gain."
+        },
+        {
+          "section": "Drive",
+          "id": "thresh",
+          "name": "Threshold",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Distortion ceiling."
+        },
+        {
+          "section": "Drive",
+          "id": "mode",
+          "name": "Mode Choice",
+          "options": [
+            "Type A",
+            "Type B"
+          ],
+          "description": "Distortion curve."
+        },
+        {
+          "section": "Output",
+          "id": "mix",
+          "name": "Mix",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Dry/Wet blend."
+        },
+        {
+          "section": "Output",
+          "id": "post",
+          "name": "Post Gain",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Output volume compensation."
+        }
+      ]
+    }
+  },
+  "rules": {
+    "distortion-rules": {
+      "rules": [
+        {
+          "scenario": "Distortion is too 'fizzy' or high-pitched",
+          "action": "Increase Post Filter to cut high frequencies."
+        },
+        {
+          "scenario": "Losing the 'punch' of the drums",
+          "action": "Lower the Mix knob to 20-30% for parallel processing."
+        }
+      ]
+    },
+    "saturation-interaction-rules": {
+      "saturationInteractionRules": {
+        "philosophy": "This rule-set defines how Fruity Fast Dist should be positioned and calibrated within a professional signal chain to maximize energy and clarity.",
+        "routingProtocols": [
+          {
+            "stage": "Pre-Compression (The Density Build)",
+            "logic": "Place Fast Dist BEFORE the compressor.",
+            "benefit": "Distortion rounds off the peaks, allowing the compressor to work more smoothly. This is the secret to 'Invisible' vocal leveling in R&B.",
+            "targetTHD": "5-10%"
+          },
+          {
+            "stage": "Post-EQ (The Tone Sculpt)",
+            "logic": "Place Fast Dist AFTER a boost EQ.",
+            "benefit": "The distortion will emphasize the frequencies you boosted. If you boost 3kHz for 'Presence,' Fast Dist will add harmonics to that presence, making it sound 'Expensive'.",
+            "targetTHD": "15%"
+          },
+          {
+            "stage": "Parallel Master Bus (The Glue)",
+            "logic": "Use Fast Dist in a Patcher parallel chain on the Master.",
+            "benefit": "Adds harmonic density to the entire mix without destroying the transients. This is how you achieve -8 LUFS club loudness.",
+            "targetMix": "5-8%"
+          }
+        ],
+        "frequencyRules": [
+          {
+            "range": "Low-End (20-150Hz)",
+            "rule": "Avoid Type B on clean sub-bass. It creates 3rd-order harmonics that clash with the 808 fundamental. Use Type A for warmth.",
+            "action": "High-Pass the distortion input at 100Hz if the low-end gets flabby."
+          },
+          {
+            "range": "High-End (8kHz+)",
+            "rule": "Aggressive distortion creates 'Fizz'.",
+            "action": "Set Fast Dist 'Post Filter' to <40% to preserve the vocal's 'Air' while adding mid-range grit."
+          }
+        ],
+        "genreSpecificLogic": [
+          {
+            "genre": "Moody R&B",
+            "rule": "Intimacy is priority.",
+            "action": "Type A, Mix 15%, Pre-Amp 10%. Adds second-order 'Tube' warmth that makes the singer sound like they are in the room."
+          },
+          {
+            "genre": "Upbeat Trap",
+            "rule": "Impact is priority.",
+            "action": "Type B, Mix 100%, Pre-Amp 40%, High Threshold. Shaves off transients to increase RMS density for heavy 808s."
+          }
+        ]
+      }
+    }
+  },
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    },
+    {
+      "title": "Lofi Sampled Theory",
+      "filename": "lofi-sampled-theory.md"
+    },
+    {
+      "title": "Parallel Processing Psychoacoustics",
+      "filename": "parallel-processing-psychoacoustics.md"
+    },
+    {
+      "title": "Waveshaping Physics",
+      "filename": "waveshaping-physics.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "Common Usage",
+      "category": "general",
+      "filename": "common-usage.md"
+    },
+    {
+      "title": "00 Goal Quick Result",
+      "category": "by-goal",
+      "filename": "00_Goal_Quick_Result.md"
+    },
+    {
+      "title": "02 Goal Mix Or Control",
+      "category": "by-goal",
+      "filename": "02_Goal_Mix_Or_Control.md"
+    },
+    {
+      "title": "Multi Band Saturation Chains",
+      "category": "by-goal",
+      "filename": "multi-band-saturation-chains.md"
+    },
+    {
+      "title": "Parallel Drum Saturation",
+      "category": "by-goal",
+      "filename": "parallel-drum-saturation.md"
+    },
+    {
+      "title": "Parallel Master Saturation",
+      "category": "by-goal",
+      "filename": "parallel-master-saturation.md"
+    },
+    {
+      "title": "Acoustic Guitar Saturation",
+      "category": "by-instrument",
+      "filename": "acoustic-guitar-saturation.md"
+    },
+    {
+      "title": "Saturated Melodic 808S",
+      "category": "by-instrument",
+      "filename": "saturated-melodic-808s.md"
+    }
+  ]
+}

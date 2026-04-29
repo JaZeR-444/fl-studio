@@ -1,0 +1,110 @@
+{
+  "pluginName": "Fruity WaveShaper",
+  "version": "FL Studio 20.8+",
+  "category": "Distortion / Waveshaper",
+  "parameters": [
+    {
+      "id": "pre",
+      "name": "Pre",
+      "section": "Gain",
+      "range": { "min": -24, "max": 24, "default": 0, "unit": "dB" },
+      "description": "Input gain driving the transfer curve",
+      "automation": true,
+      "vibeTags": ["drive", "input", "saturation-amount"],
+      "mixImpact": "Controls how much signal hits the non-linear curve portion",
+      "safetyNotes": "Higher values increase distortion; compensate with Post gain"
+    },
+    {
+      "id": "mix",
+      "name": "Mix",
+      "section": "Blend",
+      "range": { "min": 0, "max": 100, "default": 100, "unit": "%" },
+      "description": "Dry/wet balance for parallel processing",
+      "automation": true,
+      "vibeTags": ["blend", "parallel", "transparency"],
+      "mixImpact": "Higher values = more processed signal; lower = more original",
+      "safetyNotes": "Use 20-50% for subtle enhancement, 100% for effect"
+    },
+    {
+      "id": "post",
+      "name": "Post",
+      "section": "Gain",
+      "range": { "min": -24, "max": 24, "default": 0, "unit": "dB" },
+      "description": "Output gain compensation after processing",
+      "automation": true,
+      "vibeTags": ["output", "compensation", "gain-staging"],
+      "mixImpact": "Critical for matching processed and unprocessed levels",
+      "safetyNotes": "Adjust to prevent channel or master bus clipping"
+    },
+    {
+      "id": "center",
+      "name": "Center",
+      "section": "Processing",
+      "type": "toggle",
+      "default": true,
+      "description": "DC offset removal",
+      "automation": false,
+      "vibeTags": ["dc-offset", "low-end-protection"],
+      "mixImpact": "Prevents cumulative DC buildup on buses",
+      "safetyNotes": "Leave enabled except for experimental purposes"
+    },
+    {
+      "id": "mode",
+      "name": "Mode",
+      "section": "Processing",
+      "type": "selector",
+      "options": ["Unipolar", "Bipolar"],
+      "default": "Unipolar",
+      "description": "Symmetric vs asymmetric curve application",
+      "automation": true,
+      "vibeTags": ["symmetry", "harmonics", "character"],
+      "mixImpact": "Unipolar=even harmonics(warm), Bipolar=mixed harmonics(aggressive)",
+      "safetyNotes": "Unipolar safer for mixing; Bipolar more aggressive"
+    },
+    {
+      "id": "oversample",
+      "name": "Oversample",
+      "section": "Quality",
+      "type": "selector",
+      "options": ["Off", "2x", "4x", "8x", "16x"],
+      "default": "Off",
+      "description": "Internal processing rate multiplier for aliasing reduction",
+      "automation": false,
+      "vibeTags": ["quality", "anti-aliasing", "fidelity"],
+      "mixImpact": "Higher values reduce high-frequency artifacts",
+      "safetyNotes": "Use 4x+ for hard clipping or high-frequency sources"
+    },
+    {
+      "id": "hq",
+      "name": "HQ",
+      "section": "Quality",
+      "type": "toggle",
+      "default": false,
+      "description": "High-quality processing for ultra-low level signals",
+      "automation": false,
+      "vibeTags": ["fidelity", "low-level"],
+      "mixImpact": "Preserves very quiet signal details",
+      "safetyNotes": "Slight CPU increase; use for critical applications"
+    }
+  ],
+  "transferCurve": {
+    "type": "spline-graph",
+    "editable": true,
+    "xRange": [-1.0, 1.0],
+    "yRange": [-1.0, 1.0],
+    "defaultShape": "linear",
+    "pointLimit": "unlimited",
+    "interpolation": "spline",
+    "description": "Custom transfer function mapping input to output amplitude"
+  },
+  "automationSupport": {
+    "allParameters": true,
+    "curvePoints": true,
+    "recommendedAutomationTargets": ["pre", "mix", "post", "mode"]
+  },
+  "latency": {
+    "standard": "0 samples",
+    "withOversampling": "Minimal PDC (plugin delay compensation)"
+  },
+  "source": "[SRC: IL-MAN]"
+}

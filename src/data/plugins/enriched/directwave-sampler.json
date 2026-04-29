@@ -1,0 +1,1252 @@
+{
+  "id": "directwave-sampler",
+  "name": "DirectWave Sampler",
+  "category": "Sampler",
+  "tier": "Premium",
+  "type": "Sampler",
+  "description": "DirectWave Sampler - Sampler",
+  "tags": [
+    "sampling",
+    "drums",
+    "specialized"
+  ],
+  "capabilities": [
+    "sampling",
+    "midi",
+    "audio"
+  ],
+  "icon": "/plugins/directwave-sampler-icon.svg",
+  "color": "#EC4899",
+  "version": "1.0",
+  "data_dir": "plugins\\directwave-sampler",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "pluginName": "DirectWave",
+    "category": "Sampler / Rompler",
+    "parameters": [
+      {
+        "section": "Zone",
+        "id": "root_key",
+        "name": "Root Note",
+        "range": {
+          "min": 0,
+          "max": 127,
+          "unit": "Note"
+        },
+        "description": "The pitch where the sample plays at original speed."
+      },
+      {
+        "section": "Filter",
+        "id": "filter_type",
+        "name": "Filter Type",
+        "options": [
+          "Off",
+          "LowPass",
+          "HighPass",
+          "BandPass",
+          "Notch",
+          "AllPass",
+          "MiniSynth",
+          "Vox"
+        ],
+        "description": "Algorithm used for the synthesis filter."
+      },
+      {
+        "section": "Filter",
+        "id": "cutoff",
+        "name": "Cutoff Frequency",
+        "range": {
+          "min": 10,
+          "max": 20000,
+          "unit": "Hz"
+        },
+        "description": "Filter corner frequency."
+      },
+      {
+        "section": "Envelope",
+        "id": "amp_attack",
+        "name": "Amp Attack",
+        "range": {
+          "min": 0,
+          "max": 10000,
+          "unit": "ms"
+        },
+        "description": "Volume fade-in time."
+      },
+      {
+        "section": "Effects (Per Voice)",
+        "id": "decimator_mix",
+        "name": "Decimator Mix",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "Bitcrusher dry/wet mix."
+      },
+      {
+        "section": "Effects (Global)",
+        "id": "reverb_send",
+        "name": "Reverb Send",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "Send level to the global Reverb unit."
+      },
+      {
+        "section": "Modulation",
+        "id": "lfo1_rate",
+        "name": "LFO 1 Rate",
+        "range": {
+          "min": 0,
+          "max": 20,
+          "unit": "Hz"
+        },
+        "description": "Speed of Low Frequency Oscillator 1."
+      }
+    ]
+  },
+  "presets": {
+    "sampling-presets": {
+      "plugin_name": "DirectWave Sampler",
+      "preset_collection": "Sampling Presets",
+      "version": "1.0.0",
+      "created_date": "2026-02-03",
+      "author": "FL Studio Plugin Deep Dives Research Team",
+      "description": "Collection of optimized DirectWave configurations for different sampling scenarios in hip-hop, rap, and R&B production",
+      "presets": [
+        {
+          "id": "hiphop-drum-kit-standard",
+          "name": "Hip-Hop Standard Drum Kit",
+          "category": "Drum Kits",
+          "sub_category": "General",
+          "genre_focus": [
+            "hip-hop",
+            "rap",
+            "rnb"
+          ],
+          "production_stage": "programming",
+          "description": "Standard drum kit mapping optimized for hip-hop beat creation with classic key assignments",
+          "zones": [
+            {
+              "name": "Kick",
+              "sample": "generic_kick.wav",
+              "key_start": 60,
+              "key_end": 60,
+              "root_key": 60,
+              "velocity_start": 1,
+              "velocity_end": 127,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -3,
+              "pan": 0,
+              "filter_type": "high_pass",
+              "cutoff": 80,
+              "resonance": 10,
+              "envelope": {
+                "attack": 0,
+                "decay": 1500,
+                "sustain": 0,
+                "release": 100
+              },
+              "effects": {
+                "type": "none",
+                "amount": 0
+              }
+            },
+            {
+              "name": "Snare",
+              "sample": "generic_snare.wav",
+              "key_start": 62,
+              "key_end": 62,
+              "root_key": 62,
+              "velocity_start": 1,
+              "velocity_end": 127,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -6,
+              "pan": 0,
+              "filter_type": "low_pass",
+              "cutoff": 5000,
+              "resonance": 20,
+              "envelope": {
+                "attack": 0,
+                "decay": 800,
+                "sustain": 0,
+                "release": 50
+              },
+              "effects": {
+                "type": "reverb",
+                "amount": 15
+              }
+            },
+            {
+              "name": "Closed Hi-Hat",
+              "sample": "generic_closed_hat.wav",
+              "key_start": 65,
+              "key_end": 65,
+              "root_key": 65,
+              "velocity_start": 1,
+              "velocity_end": 127,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -9,
+              "pan": -15,
+              "filter_type": "high_pass",
+              "cutoff": 300,
+              "resonance": 5,
+              "envelope": {
+                "attack": 0,
+                "decay": 200,
+                "sustain": 0,
+                "release": 50
+              },
+              "effects": {
+                "type": "none",
+                "amount": 0
+              }
+            },
+            {
+              "name": "Open Hi-Hat",
+              "sample": "generic_open_hat.wav",
+              "key_start": 67,
+              "key_end": 67,
+              "root_key": 67,
+              "velocity_start": 1,
+              "velocity_end": 127,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -12,
+              "pan": 15,
+              "filter_type": "low_pass",
+              "cutoff": 8000,
+              "resonance": 10,
+              "envelope": {
+                "attack": 0,
+                "decay": 600,
+                "sustain": 0,
+                "release": 100
+              },
+              "effects": {
+                "type": "none",
+                "amount": 0
+              }
+            }
+          ],
+          "global_settings": {
+            "polyphony": 16,
+            "voice_priority": "last",
+            "streaming": false
+          },
+          "use_case": "General hip-hop beat creation with standard drum mapping",
+          "benefits": [
+            "Standard GM mapping for pattern compatibility",
+            "Optimized for classic hip-hop drum sounds",
+            "Balanced levels across all kit pieces",
+            "Appropriate filtering for each drum type"
+          ],
+          "notes": "Perfect for beginners learning hip-hop drum programming or for quick beat creation sessions."
+        },
+        {
+          "id": "trap-808-multiplicity",
+          "name": "Trap 808 Multiplicity",
+          "category": "Bass Instruments",
+          "sub_category": "808s",
+          "genre_focus": [
+            "trap",
+            "drill",
+            "southern_hip_hop"
+          ],
+          "production_stage": "programming",
+          "description": "Multiple 808 samples mapped across a range for varied bass programming in trap music",
+          "zones": [
+            {
+              "name": "808 Deep A#1",
+              "sample": "808_deep_1.wav",
+              "key_start": 33,
+              "key_end": 33,
+              "root_key": 33,
+              "velocity_start": 1,
+              "velocity_end": 42,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -6,
+              "pan": -5,
+              "filter_type": "high_pass",
+              "cutoff": 40,
+              "resonance": 15,
+              "envelope": {
+                "attack": 0,
+                "decay": 3000,
+                "sustain": 20,
+                "release": 500
+              },
+              "effects": {
+                "type": "none",
+                "amount": 0
+              }
+            },
+            {
+              "name": "808 Deep A#2",
+              "sample": "808_deep_2.wav",
+              "key_start": 33,
+              "key_end": 33,
+              "root_key": 33,
+              "velocity_start": 43,
+              "velocity_end": 84,
+              "coarse_tune": 0,
+              "fine_tune": 5,
+              "volume": -6,
+              "pan": 0,
+              "filter_type": "high_pass",
+              "cutoff": 40,
+              "resonance": 15,
+              "envelope": {
+                "attack": 0,
+                "decay": 3000,
+                "sustain": 20,
+                "release": 500
+              },
+              "effects": {
+                "type": "none",
+                "amount": 0
+              }
+            },
+            {
+              "name": "808 Deep A#3",
+              "sample": "808_deep_3.wav",
+              "key_start": 33,
+              "key_end": 33,
+              "root_key": 33,
+              "velocity_start": 85,
+              "velocity_end": 127,
+              "coarse_tune": 0,
+              "fine_tune": -3,
+              "volume": -6,
+              "pan": 5,
+              "filter_type": "high_pass",
+              "cutoff": 40,
+              "resonance": 15,
+              "envelope": {
+                "attack": 0,
+                "decay": 3000,
+                "sustain": 20,
+                "release": 500
+              },
+              "effects": {
+                "type": "none",
+                "amount": 0
+              }
+            },
+            {
+              "name": "808 Mid C2",
+              "sample": "808_mid_1.wav",
+              "key_start": 36,
+              "key_end": 36,
+              "root_key": 36,
+              "velocity_start": 1,
+              "velocity_end": 127,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -8,
+              "pan": 0,
+              "filter_type": "high_pass",
+              "cutoff": 60,
+              "resonance": 10,
+              "envelope": {
+                "attack": 0,
+                "decay": 2500,
+                "sustain": 25,
+                "release": 400
+              },
+              "effects": {
+                "type": "saturation",
+                "amount": 10
+              }
+            }
+          ],
+          "global_settings": {
+            "polyphony": 8,
+            "voice_priority": "last",
+            "streaming": false
+          },
+          "use_case": "Trap music production with varied 808 sounds for melodic bass lines",
+          "benefits": [
+            "Multiple 808 variations for melodic programming",
+            "Velocity switching for expression",
+            "Optimized for trap-style bass lines",
+            "Clean low-end with appropriate filtering"
+          ],
+          "notes": "Use for creating melodic 808 patterns common in trap music. The velocity layers provide expression for melodic bass lines."
+        },
+        {
+          "id": "rap-vocal-chops",
+          "name": "Rap Vocal Chop Arrangement",
+          "category": "Vocal Instruments",
+          "sub_category": "Vocal Samples",
+          "genre_focus": [
+            "rap",
+            "hip_hop",
+            "mixtape_rap"
+          ],
+          "production_stage": "arrangement",
+          "description": "Mapped vocal chops across the keyboard for rap hook and ad-lib arrangement",
+          "zones": [
+            {
+              "name": "Vocal Ad-lib 1",
+              "sample": "vocal_adlib_1.wav",
+              "key_start": 60,
+              "key_end": 60,
+              "root_key": 60,
+              "velocity_start": 1,
+              "velocity_end": 127,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -6,
+              "pan": -10,
+              "filter_type": "low_pass",
+              "cutoff": 6000,
+              "resonance": 5,
+              "envelope": {
+                "attack": 2,
+                "decay": 400,
+                "sustain": 0,
+                "release": 50
+              },
+              "effects": {
+                "type": "delay",
+                "amount": 20
+              }
+            },
+            {
+              "name": "Vocal Ad-lib 2",
+              "sample": "vocal_adlib_2.wav",
+              "key_start": 62,
+              "key_end": 62,
+              "root_key": 62,
+              "velocity_start": 1,
+              "velocity_end": 127,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -6,
+              "pan": 10,
+              "filter_type": "low_pass",
+              "cutoff": 6000,
+              "resonance": 5,
+              "envelope": {
+                "attack": 2,
+                "decay": 400,
+                "sustain": 0,
+                "release": 50
+              },
+              "effects": {
+                "type": "reverb",
+                "amount": 25
+              }
+            },
+            {
+              "name": "Vocal Hook A",
+              "sample": "vocal_hook_a.wav",
+              "key_start": 64,
+              "key_end": 64,
+              "root_key": 64,
+              "velocity_start": 1,
+              "velocity_end": 127,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -4,
+              "pan": 0,
+              "filter_type": "low_pass",
+              "cutoff": 7000,
+              "resonance": 10,
+              "envelope": {
+                "attack": 5,
+                "decay": 800,
+                "sustain": 0,
+                "release": 100
+              },
+              "effects": {
+                "type": "chorus",
+                "amount": 30
+              }
+            },
+            {
+              "name": "Vocal Hook B",
+              "sample": "vocal_hook_b.wav",
+              "key_start": 65,
+              "key_end": 65,
+              "root_key": 65,
+              "velocity_start": 1,
+              "velocity_end": 127,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -4,
+              "pan": 0,
+              "filter_type": "low_pass",
+              "cutoff": 7000,
+              "resonance": 10,
+              "envelope": {
+                "attack": 5,
+                "decay": 800,
+                "sustain": 0,
+                "release": 100
+              },
+              "effects": {
+                "type": "harmony",
+                "amount": 25
+              }
+            }
+          ],
+          "global_settings": {
+            "polyphony": 8,
+            "voice_priority": "last",
+            "streaming": false
+          },
+          "use_case": "Arranging vocal hooks and ad-libs in rap production",
+          "benefits": [
+            "Easy arrangement of vocal elements",
+            "Different effects per vocal sample",
+            "Appropriate processing for each element",
+            "Convenient keyboard mapping for programming"
+          ],
+          "notes": "Perfect for arranging vocal hooks and ad-libs in rap tracks. Each sample has appropriate effects processing."
+        },
+        {
+          "id": "rnb-smooth-piano",
+          "name": "R&B Smooth Piano",
+          "category": "Melodic Instruments",
+          "sub_category": "Keyboards",
+          "genre_focus": [
+            "rnb",
+            "neo_soul",
+            "contemporary_rnb"
+          ],
+          "production_stage": "composition",
+          "description": "Velocity-sensitive piano with smooth response for R&B chord progressions and melodies",
+          "zones": [
+            {
+              "name": "Piano Soft",
+              "sample": "piano_soft.wav",
+              "key_start": 48,
+              "key_end": 72,
+              "root_key": 60,
+              "velocity_start": 1,
+              "velocity_end": 50,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -8,
+              "pan": 0,
+              "filter_type": "low_pass",
+              "cutoff": 5000,
+              "resonance": 15,
+              "envelope": {
+                "attack": 10,
+                "decay": 4000,
+                "sustain": 70,
+                "release": 800
+              },
+              "effects": {
+                "type": "reverb",
+                "amount": 40
+              }
+            },
+            {
+              "name": "Piano Medium",
+              "sample": "piano_medium.wav",
+              "key_start": 48,
+              "key_end": 72,
+              "root_key": 60,
+              "velocity_start": 40,
+              "velocity_end": 85,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -7,
+              "pan": 0,
+              "filter_type": "low_pass",
+              "cutoff": 5500,
+              "resonance": 15,
+              "envelope": {
+                "attack": 8,
+                "decay": 3500,
+                "sustain": 75,
+                "release": 700
+              },
+              "effects": {
+                "type": "reverb",
+                "amount": 35
+              }
+            },
+            {
+              "name": "Piano Hard",
+              "sample": "piano_hard.wav",
+              "key_start": 48,
+              "key_end": 72,
+              "root_key": 60,
+              "velocity_start": 75,
+              "velocity_end": 127,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -6,
+              "pan": 0,
+              "filter_type": "low_pass",
+              "cutoff": 6000,
+              "resonance": 15,
+              "envelope": {
+                "attack": 5,
+                "decay": 3000,
+                "sustain": 80,
+                "release": 600
+              },
+              "effects": {
+                "type": "reverb",
+                "amount": 30
+              }
+            }
+          ],
+          "global_settings": {
+            "polyphony": 32,
+            "voice_priority": "lowest",
+            "streaming": false
+          },
+          "use_case": "Playing smooth R&B piano chords and melodies with expression",
+          "benefits": [
+            "Three velocity layers for expression",
+            "Smooth envelope settings for R&B feel",
+            "Appropriate reverb for intimate sound",
+            "Wide keyboard range for versatility"
+          ],
+          "notes": "Perfect for R&B piano parts that require dynamic expression and smooth transitions between soft and hard playing."
+        },
+        {
+          "id": "hiphop-string-section",
+          "name": "Hip-Hop String Section",
+          "category": "Orchestral Instruments",
+          "sub_category": "Strings",
+          "genre_focus": [
+            "hip_hop",
+            "rnb",
+            "urban_contemporary"
+          ],
+          "production_stage": "arrangement",
+          "description": "String samples with round-robin for realistic orchestral sections in hip-hop productions",
+          "zones": [
+            {
+              "name": "Strings Legato 1",
+              "sample": "strings_legato_1.wav",
+              "key_start": 48,
+              "key_end": 60,
+              "root_key": 55,
+              "velocity_start": 1,
+              "velocity_end": 127,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -10,
+              "pan": -20,
+              "filter_type": "low_pass",
+              "cutoff": 4000,
+              "resonance": 20,
+              "envelope": {
+                "attack": 20,
+                "decay": 5000,
+                "sustain": 85,
+                "release": 1200
+              },
+              "effects": {
+                "type": "reverb",
+                "amount": 50
+              }
+            },
+            {
+              "name": "Strings Legato 2",
+              "sample": "strings_legato_2.wav",
+              "key_start": 48,
+              "key_end": 60,
+              "root_key": 55,
+              "velocity_start": 1,
+              "velocity_end": 127,
+              "coarse_tune": 0,
+              "fine_tune": 2,
+              "volume": -10,
+              "pan": 0,
+              "filter_type": "low_pass",
+              "cutoff": 4000,
+              "resonance": 20,
+              "envelope": {
+                "attack": 20,
+                "decay": 5000,
+                "sustain": 85,
+                "release": 1200
+              },
+              "effects": {
+                "type": "reverb",
+                "amount": 50
+              }
+            },
+            {
+              "name": "Strings Staccato",
+              "sample": "strings_staccato.wav",
+              "key_start": 60,
+              "key_end": 72,
+              "root_key": 67,
+              "velocity_start": 1,
+              "velocity_end": 127,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -12,
+              "pan": 20,
+              "filter_type": "low_pass",
+              "cutoff": 5000,
+              "resonance": 15,
+              "envelope": {
+                "attack": 5,
+                "decay": 800,
+                "sustain": 0,
+                "release": 200
+              },
+              "effects": {
+                "type": "reverb",
+                "amount": 40
+              }
+            }
+          ],
+          "global_settings": {
+            "polyphony": 24,
+            "voice_priority": "lowest",
+            "streaming": false
+          },
+          "use_case": "Adding orchestral elements to hip-hop productions",
+          "benefits": [
+            "Round-robin for realistic string sections",
+            "Legato and staccato articulations",
+            "Appropriate reverb for orchestral feel",
+            "Separate ranges for different articulations"
+          ],
+          "notes": "Use for adding lush string sections to hip-hop tracks. The round-robin provides realistic ensemble feel."
+        },
+        {
+          "id": "hiphop-percussion-kit",
+          "name": "Hip-Hop Percussion Kit",
+          "category": "Drum Kits",
+          "sub_category": "Percussion",
+          "genre_focus": [
+            "hip_hop",
+            "rap",
+            "rnb"
+          ],
+          "production_stage": "programming",
+          "description": "Extended percussion kit for adding rhythmic elements to hip-hop productions",
+          "zones": [
+            {
+              "name": "Cowbell",
+              "sample": "cowbell.wav",
+              "key_start": 57,
+              "key_end": 57,
+              "root_key": 57,
+              "velocity_start": 1,
+              "velocity_end": 127,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -15,
+              "pan": 30,
+              "filter_type": "low_pass",
+              "cutoff": 8000,
+              "resonance": 10,
+              "envelope": {
+                "attack": 0,
+                "decay": 300,
+                "sustain": 0,
+                "release": 50
+              },
+              "effects": {
+                "type": "none",
+                "amount": 0
+              }
+            },
+            {
+              "name": "Conga Low",
+              "sample": "conga_low.wav",
+              "key_start": 60,
+              "key_end": 60,
+              "root_key": 60,
+              "velocity_start": 1,
+              "velocity_end": 127,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -12,
+              "pan": -15,
+              "filter_type": "low_pass",
+              "cutoff": 3000,
+              "resonance": 15,
+              "envelope": {
+                "attack": 0,
+                "decay": 500,
+                "sustain": 0,
+                "release": 100
+              },
+              "effects": {
+                "type": "none",
+                "amount": 0
+              }
+            },
+            {
+              "name": "Conga High",
+              "sample": "conga_high.wav",
+              "key_start": 62,
+              "key_end": 62,
+              "root_key": 62,
+              "velocity_start": 1,
+              "velocity_end": 127,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -12,
+              "pan": 15,
+              "filter_type": "low_pass",
+              "cutoff": 4000,
+              "resonance": 15,
+              "envelope": {
+                "attack": 0,
+                "decay": 400,
+                "sustain": 0,
+                "release": 80
+              },
+              "effects": {
+                "type": "none",
+                "amount": 0
+              }
+            },
+            {
+              "name": "Shaker",
+              "sample": "shaker.wav",
+              "key_start": 64,
+              "key_end": 64,
+              "root_key": 64,
+              "velocity_start": 1,
+              "velocity_end": 127,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -18,
+              "pan": 0,
+              "filter_type": "low_pass",
+              "cutoff": 10000,
+              "resonance": 5,
+              "envelope": {
+                "attack": 0,
+                "decay": 200,
+                "sustain": 0,
+                "release": 30
+              },
+              "effects": {
+                "type": "none",
+                "amount": 0
+              }
+            }
+          ],
+          "global_settings": {
+            "polyphony": 16,
+            "voice_priority": "last",
+            "streaming": false
+          },
+          "use_case": "Adding rhythmic percussion elements to hip-hop beats",
+          "benefits": [
+            "Classic percussion sounds for hip-hop",
+            "Appropriate levels and panning",
+            "Clean filtering for each element",
+            "Standard key mapping for easy programming"
+          ],
+          "notes": "Perfect for adding classic percussion elements to hip-hop productions. Each sound is appropriately processed for the mix."
+        },
+        {
+          "id": "rnb-brass-section",
+          "name": "R&B Brass Section",
+          "category": "Orchestral Instruments",
+          "sub_category": "Brass",
+          "genre_focus": [
+            "rnb",
+            "soul",
+            "funk"
+          ],
+          "production_stage": "arrangement",
+          "description": "Brass samples with velocity layers for expressive R&B horn sections",
+          "zones": [
+            {
+              "name": "Brass Soft",
+              "sample": "brass_soft.wav",
+              "key_start": 53,
+              "key_end": 65,
+              "root_key": 58,
+              "velocity_start": 1,
+              "velocity_end": 60,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -8,
+              "pan": -10,
+              "filter_type": "low_pass",
+              "cutoff": 5000,
+              "resonance": 25,
+              "envelope": {
+                "attack": 15,
+                "decay": 2000,
+                "sustain": 75,
+                "release": 600
+              },
+              "effects": {
+                "type": "reverb",
+                "amount": 30
+              }
+            },
+            {
+              "name": "Brass Medium",
+              "sample": "brass_medium.wav",
+              "key_start": 53,
+              "key_end": 65,
+              "root_key": 58,
+              "velocity_start": 50,
+              "velocity_end": 90,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -7,
+              "pan": 0,
+              "filter_type": "low_pass",
+              "cutoff": 5500,
+              "resonance": 25,
+              "envelope": {
+                "attack": 12,
+                "decay": 1800,
+                "sustain": 80,
+                "release": 500
+              },
+              "effects": {
+                "type": "reverb",
+                "amount": 25
+              }
+            },
+            {
+              "name": "Brass Loud",
+              "sample": "brass_loud.wav",
+              "key_start": 53,
+              "key_end": 65,
+              "root_key": 58,
+              "velocity_start": 80,
+              "velocity_end": 127,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -6,
+              "pan": 10,
+              "filter_type": "low_pass",
+              "cutoff": 6000,
+              "resonance": 25,
+              "envelope": {
+                "attack": 8,
+                "decay": 1500,
+                "sustain": 85,
+                "release": 400
+              },
+              "effects": {
+                "type": "reverb",
+                "amount": 20
+              }
+            }
+          ],
+          "global_settings": {
+            "polyphony": 16,
+            "voice_priority": "lowest",
+            "streaming": false
+          },
+          "use_case": "Creating expressive brass sections for R&B productions",
+          "benefits": [
+            "Three velocity layers for expression",
+            "Appropriate envelopes for brass feel",
+            "Subtle reverb for cohesion",
+            "Bright filtering for brass character"
+          ],
+          "notes": "Perfect for R&B brass sections that need dynamic expression. The velocity layers allow for realistic crescendos and diminuendos."
+        },
+        {
+          "id": "hiphop-atmospheric-textures",
+          "name": "Hip-Hop Atmospheric Textures",
+          "category": "Sound Design",
+          "sub_category": "Ambient",
+          "genre_focus": [
+            "hip_hop",
+            "trap",
+            "lo_fi_hip_hop"
+          ],
+          "production_stage": "composition",
+          "description": "Atmospheric textures and ambient sounds for hip-hop background elements",
+          "zones": [
+            {
+              "name": "Vinyl Crackle",
+              "sample": "vinyl_crackle.wav",
+              "key_start": 36,
+              "key_end": 36,
+              "root_key": 36,
+              "velocity_start": 1,
+              "velocity_end": 127,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -25,
+              "pan": 0,
+              "filter_type": "low_pass",
+              "cutoff": 3000,
+              "resonance": 5,
+              "envelope": {
+                "attack": 1000,
+                "decay": 10000,
+                "sustain": 90,
+                "release": 2000
+              },
+              "effects": {
+                "type": "none",
+                "amount": 0
+              },
+              "play_direction": "ping_pong",
+              "loop_mode": "ping_pong"
+            },
+            {
+              "name": "Ambient Pad",
+              "sample": "ambient_pad.wav",
+              "key_start": 48,
+              "key_end": 48,
+              "root_key": 48,
+              "velocity_start": 1,
+              "velocity_end": 127,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -18,
+              "pan": 0,
+              "filter_type": "low_pass",
+              "cutoff": 2000,
+              "resonance": 10,
+              "envelope": {
+                "attack": 2000,
+                "decay": 8000,
+                "sustain": 95,
+                "release": 3000
+              },
+              "effects": {
+                "type": "reverb",
+                "amount": 70
+              },
+              "play_direction": "ping_pong",
+              "loop_mode": "ping_pong"
+            },
+            {
+              "name": "Urban Atmosphere",
+              "sample": "urban_ambience.wav",
+              "key_start": 60,
+              "key_end": 60,
+              "root_key": 60,
+              "velocity_start": 1,
+              "velocity_end": 127,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -22,
+              "pan": 0,
+              "filter_type": "band_pass",
+              "cutoff": 1000,
+              "resonance": 30,
+              "envelope": {
+                "attack": 1500,
+                "decay": 12000,
+                "sustain": 85,
+                "release": 2500
+              },
+              "effects": {
+                "type": "reverb",
+                "amount": 60
+              },
+              "play_direction": "ping_pong",
+              "loop_mode": "ping_pong"
+            }
+          ],
+          "global_settings": {
+            "polyphony": 8,
+            "voice_priority": "lowest",
+            "streaming": true
+          },
+          "use_case": "Creating atmospheric backgrounds for hip-hop productions",
+          "benefits": [
+            "Long, evolving textures",
+            "Ping-pong looping for smooth evolution",
+            "Appropriate filtering for ambient feel",
+            "Streaming to save memory on long samples"
+          ],
+          "notes": "Use for creating atmospheric backgrounds in hip-hop tracks. The ping-pong looping creates evolving textures without obvious repeats."
+        },
+        {
+          "id": "rap-vocal-processing-chain",
+          "name": "Rap Vocal Processing Chain",
+          "category": "Vocal Instruments",
+          "sub_category": "Processed Vocals",
+          "genre_focus": [
+            "rap",
+            "trap",
+            "modern_hip_hop"
+          ],
+          "production_stage": "production",
+          "description": "Vocal samples with built-in processing for modern rap production styles",
+          "zones": [
+            {
+              "name": "Processed Verse",
+              "sample": "rap_verse_processed.wav",
+              "key_start": 60,
+              "key_end": 60,
+              "root_key": 60,
+              "velocity_start": 1,
+              "velocity_end": 80,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -6,
+              "pan": 0,
+              "filter_type": "low_pass",
+              "cutoff": 8000,
+              "resonance": 10,
+              "envelope": {
+                "attack": 3,
+                "decay": 600,
+                "sustain": 0,
+                "release": 100
+              },
+              "effects": {
+                "type": "compression",
+                "amount": 40
+              }
+            },
+            {
+              "name": "Processed Hook",
+              "sample": "rap_hook_processed.wav",
+              "key_start": 62,
+              "key_end": 62,
+              "root_key": 62,
+              "velocity_start": 1,
+              "velocity_end": 127,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -4,
+              "pan": 0,
+              "filter_type": "low_pass",
+              "cutoff": 9000,
+              "resonance": 15,
+              "envelope": {
+                "attack": 2,
+                "decay": 800,
+                "sustain": 0,
+                "release": 150
+              },
+              "effects": {
+                "type": "harmony",
+                "amount": 35
+              }
+            },
+            {
+              "name": "Ad-lib Harmony",
+              "sample": "rap_adlib_harmony.wav",
+              "key_start": 64,
+              "key_end": 64,
+              "root_key": 64,
+              "velocity_start": 1,
+              "velocity_end": 127,
+              "coarse_tune": 0,
+              "fine_tune": 0,
+              "volume": -10,
+              "pan": 25,
+              "filter_type": "low_pass",
+              "cutoff": 7000,
+              "resonance": 5,
+              "envelope": {
+                "attack": 5,
+                "decay": 400,
+                "sustain": 0,
+                "release": 80
+              },
+              "effects": {
+                "type": "delay",
+                "amount": 25
+              }
+            }
+          ],
+          "global_settings": {
+            "polyphony": 8,
+            "voice_priority": "last",
+            "streaming": false
+          },
+          "use_case": "Modern rap production with processed vocal elements",
+          "benefits": [
+            "Built-in processing for modern sound",
+            "Harmony and delay effects included",
+            "Appropriate levels for mix integration",
+            "Different processing for different vocal roles"
+          ],
+          "notes": "Perfect for modern rap production where vocals have built-in processing. Each vocal element has appropriate effects for its role."
+        }
+      ],
+      "metadata": {
+        "last_updated": "2026-02-03",
+        "compatible_versions": [
+          "FL Studio 20+",
+          "FL Studio 21+"
+        ],
+        "tags": [
+          "hip-hop",
+          "rap",
+          "rnb",
+          "sampling",
+          "drums",
+          "vocals",
+          "instruments",
+          "presets",
+          "directwave"
+        ],
+        "license": "CC BY-SA 4.0",
+        "documentation_links": [
+          "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/DirectWave.htm",
+          "https://www.image-line.com/support/flstudio_online_manual/plugin_hints/directwave_hint.htm"
+        ]
+      }
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: DirectWave Sampler\n\n## Purpose & Identity\nDirectWave is FL Studio's **professional multi-sampler**. Its primary identity is a virtual instrument builder. Unlike the simple Fruity Sampler, DirectWave can manage hundreds of samples at once, mapping them to different keys and velocities. It is also a \"Plugin Sampler,\" capable of automatically sampling your other VSTs to turn them into lightweight DirectWave banks. [SRC: IL-MAN]\n\n## 60-Second Mental Model\nThink of it as a \"Library Creator.\" \n- If the standard sampler is a single book, DirectWave is the entire library. \n- You can layer a soft piano sample for light playing and a loud piano sample for hard playing (**Velocity Layering**).\n- You can assign different flute notes to different keys so the pitch sounds natural (**Key Mapping**).\n\n## Hip-Hop / R&B Context\n- **Custom VST Ripping:** Sampling a heavy Kontakt library or Serum patch so you can use it without lagging your session (Upbeat).\n- **Intimate R&B Pianos:** Using multi-sampled banks with high velocity sensitivity to capture the \"feel\" of a real player (Jazzy/Vibey).\n- **Vocal Textures:** Mapping different vocal ad-libs across the keyboard to play them as a \"Melodic Chop\" kit (Melodic).\n\n## When To Use\n- When you want to build a **realistic instrument** from multiple audio files.\n- When you need to **save CPU** by sampling a complex plugin chain into a single instrument.\n- When you are working with **Soundfonts (.sf2)** or other professional sample bank formats.\n\n## When NOT To Use\n- **Simple One-Shots:** Use the standard **Sampler** or **Slicex** for single kicks or vocal chops.\n- **CPU Savings (Simple):** Just \"Consolidating\" a track in the playlist is faster if you don't need to play the sound via MIDI. [SRC: REPUTABLE]\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: DirectWave Sampler\n\nDirectWave translates vibes through **Dynamic Multi-Sampling** and **Zonal Texture**.\n\n## 1. Jazzy (Organic, Responsive, Human)\n- **Concept:** \"The Multi-Layered Instrument.\"\n- **Levers:**\n  - **Velocity Layers:** Use at least 3-4 samples per key (Soft, Med, Hard).\n  - **Mapping:** Use the **Zone Editor** to set narrow velocity ranges.\n  - **Filter:** Link velocity to the Low Pass filter cutoff.\n- **Listen For:** The instrument changing \"Tone\" based on how hard you play, mimicking a real upright bass or piano.\n\n## 2. Moody (Intimate, Deep, Distant)\n- **Concept:** \"The Low-Velocity Focus.\"\n- **Levers:**\n  - **ADSR:** Increase the **Attack** time slightly (50ms).\n  - **Filter:** Set a static Low Pass at 800Hz.\n  - **Sample:** Use \"Muted\" or \"Soft\" sample layers exclusively.\n- **Listen For:** A breathy, fragile sound that feels close to the listener's ear.\n\n## 3. Upbeat (Kinetic, Sharp, Lightweight)\n- **Concept:** \"The Sampled VST Pluck.\"\n- **Levers:**\n  - **Action:** Use the **Channel Sampling** feature to rip a pluck from a heavy VST.\n  - **Looping:** Disable looping for a clean \"one-shot\" feel.\n  - **Polyphony:** High (to allow fast melodic runs).\n- **Listen For:** A snappy, consistent response that allows for rapid melodic patterns without CPU spikes.\n\n## 4. Spacey (Ethereal, Infinite, Smeared)\n- **Concept:** \"The Reverb Freeze.\"\n- **Levers:**\n  - **Sample:** Sample a 100% wet reverb tail.\n  - **Looping:** Set to **Sustain Loop** with a long crossfade.\n  - **Release:** Long (2 seconds+).\n- **Listen For:** An infinite, shimmering pad that sounds like a frozen moment in space.\n\n## 5. Psychedelic (Warped, Backwards, Shifting)\n- **Concept:** \"The Micro-Loop Glitch.\"\n- **Levers:**\n  - **Loop Mode:** Ping-Pong.\n  - **Loop Length:** Very short (micro-loops).\n  - **Modulation:** Link the LFO to the **Loop Start** position.\n- **Listen For:** A granulating, vibrating texture that shifts through the sample in an unnatural way. [SRC: REPUTABLE]\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Directwave Sampler\r\n\r\n## What It Is\r\nDirectwave Sampler is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Directwave Sampler\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: DirectWave Sampler (5 Minutes)\n\n1.  **Insert:** Load **DirectWave** into the Channel Rack.\n2.  **Import:** Drag and drop a WAV file into the **Zone** window.\n3.  **Map:** Drag the edges of the sample box in the zone editor to set its **Key Range** (which notes play it) and **Velocity Range**.\n4.  **Edit:** Click the **ZONE** tab to adjust Pitch, Filter, and ADSR for that specific sample.\n5.  **Loop:** Click the **LOOP** tab to set a sustain loop if you want the sound to hold indefinitely.\n6.  **VST Sampling:** Right-click a plugin in the Browser -> **Create DirectWave instrument**. This is the fastest way to turn a VST into a DirectWave bank.\n7.  **Tip:** Use the **MASTER** tab to add global Reverb and Chorus to your multi-sampled kit. [SRC: IL-MAN]\n",
+      "cheat-sheet": "# DirectWave: The Samper Flagship\r\n\r\n> **Scope:** Multi-Sampling, SoundFont Import, and Subtractive Synthesis.\r\n> **Source:** Image-Line Official Manual (v21.2) + Direct Analysis.\r\n> **Complexity:** Very High (Sampler Architecture).\r\n\r\n## 🧠 The \"Zone\" Concept\r\nDirectWave is not just a sample player; it is a **Zone-Based Synthesizer**.\r\n*   **Zone:** A single sample file mapped to a specific Key Range and Velocity Range.\r\n*   **Program:** A collection of Zones (a \"Patch\").\r\n*   **Bank:** A collection of 16 Programs (Multi-timbral).\r\n\r\n**Signal Flow:**\r\n`MIDI Note` -> **[ZONE SELECTION]** -> **[VOICE START]** -> **[FILTER 1/2]** -> **[AMP ENV]** -> **[INSERT FX]** -> **[SEND FX]** -> **[OUTPUT]**\r\n\r\n*   **Critical Nuance:** DirectWave has two types of effects:\r\n    1.  **Insert FX (Per Voice):** Ring Mod, Decimator, Quantizer, Phaser. These are polyphonic and computed *per note*.\r\n    2.  **Send FX (Global):** Chorus, Delay, Reverb. These are computed *once* for the whole mix.\r\n\r\n---\r\n\r\n## 🎛️ Section 1: The Modulation Matrix\r\n\r\nThe Matrix is the brain of DirectWave. It allows you to wire anything to anything.\r\n\r\n| Source | Target | The \"Mod Amt\" Trick |\r\n| :--- | :--- | :--- |\r\n| **LFO 1** | **Filter Cutoff** | Standard Wobble Bass. |\r\n| **Velocity** | **Sample Start** | Harder hits start later in the sample (or earlier). |\r\n| **Key Track** | **Pan** | Low notes Left, High notes Right (Piano spacing). |\r\n| **Mod Amt** | **(Self)** | This is a \"Meta-Modulator\". You uses this to modulate the *strength* of another modulation row (e.g., LFO 2 modulates the *Amount* of LFO 1 -> Pitch). |\r\n\r\n---\r\n\r\n## 🔁 Section 2: Filter Topology\r\n\r\nDirectWave borrows filters from other Image-Line synths.\r\n\r\n*   **Serial vs Parallel:** You can route Filter 1 into Filter 2 (Serial) or run them side-by-side (Parallel).\r\n*   **Types:**\r\n    *   **Vanilla:** LP, HP, BP, Notch ( Standard).\r\n    *   **MiniSynth:** The gritty, dirty filter from the FL Mobile \"MiniSynth\".\r\n    *   **Vox:** Formant filter (A, E, I, O, U vowels).\r\n*   **Drive:** The \"Shape\" knob adds hard-clipping distortion *post-filter*.\r\n\r\n---\r\n\r\n## ⚡ Technical Specs: The \"Monolothic\" Mode\r\n\r\n*   **Standard Mode:** DirectWave references samples on your hard drive. If you move the files, the patch breaks.\r\n*   **Monolithic Mode:** Saves the audio data *inside* the `.dwp` (DirectWave Preset) file.\r\n    *   **Pros:** Totally portable. Shareable.\r\n    *   **Cons:** Giant file sizes. Long load times.\r\n*   **Total Recall:** In FL Studio, if you don't use Monolithic mode, FL saves the sample paths in the project.\r\n\r\n---\r\n\r\n## 🧪 \"Secret Sauce\" Workflows\r\n\r\n### 1. VST Sampling (The \"Cloner\")\r\nDirectWave can steal sounds from other VSTs.\r\n1.  **Right-Click:** The Channel Button of any VST (e.g., Serum).\r\n2.  **Select:** \"Create DirectWave instrument\".\r\n3.  **Settings:**\r\n    *   *Keys to sample:* Every 3 semitones (reduces size).\r\n    *   *Velocity Layers:* 3 (Soft, Med, Hard).\r\n4.  **Result:** FL Studio automates the VST, records every note, and builds a perfect DirectWave patch. You can now delete Serum to save CPU.\r\n\r\n### 2. The \"Breakbeat\" Slicer\r\n1.  **Load:** Drag a Drum Loop into the Zone window.\r\n2.  **Right-Click:** Select \"Remix Sliced Loop\" (if pre-sliced) or \"Automap Zone\".\r\n3.  **Grid:** You can set Loop Points (Sustain Loop) inside the wave editor.\r\n4.  **Time Stretch:** DirectWave has a high-quality (Elastique) time-stretch engine PER ZONE. Enable \"Time\" in the Sample tab to lock the loop to BPM regardless of pitch.\r\n\r\n### 3. Granular Pads\r\n1.  **Sample:** Load a vocal texture.\r\n2.  **Loop:** Set a very short loop (100ms) in the middle of the file.\r\n3.  **Loop Type:** Set to \"Ping Pong\" or \"Forward Crossfade\".\r\n4.  **Modulation:** Route LFO 1 to \"Loop Start\".\r\n5.  **Result:** The loop point scans through the wavetable, creating a shifting granular cloud.\r\n",
+      "paramater-cheat-sheet": "# DirectWave Sampler Parameter Cheat Sheet\n\n## Overview\nDirectWave is FL Studio's advanced sampling engine that provides professional-grade sample manipulation and playback capabilities. This cheat sheet details all parameters and their applications in hip-hop, rap, and R&B production.\n\n## Sample Mapping Parameters\n\n### Sample Assignment and Loading\n- **Sample Slot**: Container for individual audio samples\n  - Supports multiple formats (WAV, FLAC, MP3, etc.)\n  - Allows drag-and-drop sample loading\n  - Supports sample preview before loading\n  - Hip-hop tip: Load drum samples individually for precise control\n\n- **Sample Path**: Location of loaded sample file\n  - Shows current sample location\n  - Allows sample reloading if path changes\n  - Supports sample replacement workflows\n  - Hip-hop tip: Organize samples in logical folder structures\n\n### Key Mapping Controls\n- **Key Start**: Beginning of key range for sample playback\n  - Range: C-2 to G8 (MIDI notes 0-127)\n  - Defines which keys trigger the sample\n  - Can be adjusted for sample-specific ranges\n  - Hip-hop tip: Map kick drums to C3-C4 for standard drum programming\n\n- **Key End**: End of key range for sample playback\n  - Range: C-2 to G8 (MIDI notes 0-127)\n  - Defines upper limit of triggering range\n  - Together with Key Start, sets zone boundaries\n  - Hip-hop tip: Use narrow ranges for single-sound triggers\n\n- **Root Key**: Reference pitch for sample playback\n  - Default: Set automatically based on sample\n  - Can be manually adjusted for pitch correction\n  - Affects playback pitch across keyboard\n  - Hip-hop tip: Set accurately for pitched samples like pianos or horns\n\n### Velocity Mapping Controls\n- **Velocity Start**: Minimum velocity for sample triggering\n  - Range: 1-127 (MIDI velocity values)\n  - Sample plays only when velocity exceeds this value\n  - Allows velocity layering with other samples\n  - Hip-hop tip: Use for dynamic drum programming\n\n- **Velocity End**: Maximum velocity for sample triggering\n  - Range: 1-127 (MIDI velocity values)\n  - Sample plays only when velocity is below this value\n  - Enables velocity switching between samples\n  - Hip-hop tip: Create velocity layers for different drum sounds\n\n### Playback Parameters\n\n#### Pitch Controls\n- **Coarse Tune**: Major pitch adjustment in semitones\n  - Range: -60 to +60 semitones\n  - Moves pitch in semitone increments\n  - Used for sample key matching\n  - Hip-hop tip: Adjust 808 samples to match track key\n\n- **Fine Tune**: Precise pitch adjustment in cents\n  - Range: -100 to +100 cents\n  - Provides fine-tuning capability\n  - 100 cents = 1 semitone\n  - Hip-hop tip: Use for perfect sample tuning\n\n- **Stretch Mode**: Time stretching algorithm selection\n  - Options: Formant, Natural, Complex, etc.\n  - Affects pitch shifting quality\n  - Different modes for different sample types\n  - Hip-hop tip: Use Natural mode for drums, Complex for vocals\n\n#### Playback Controls\n- **Play Direction**: Sample playback direction\n  - Forward: Normal playback\n  - Reverse: Plays sample backwards\n  - Ping-Pong: Loops with alternating direction\n  - Hip-hop tip: Use reverse for atmospheric effects\n\n- **Loop Mode**: Sample looping behavior\n  - Off: Plays sample once\n  - On: Loops sample continuously\n  - Ping-Pong: Loops with alternating direction\n  - Hip-hop tip: Use for sustained sounds and textures\n\n- **Loop Start/End**: Loop point positions\n  - Defines specific loop boundaries\n  - Allows precise loop point setting\n  - Critical for seamless looping\n  - Hip-hop tip: Set carefully to avoid clicks in drum loops\n\n### Volume and Pan Controls\n\n#### Level Parameters\n- **Volume**: Sample playback volume\n  - Range: -∞ to +12 dB\n  - Adjusts individual sample level\n  - Independent of channel fader\n  - Hip-hop tip: Set drum samples to appropriate levels\n\n- **Pan**: Sample stereo positioning\n  - Range: -100% (hard left) to +100% (hard right)\n  - Positions sample in stereo field\n  - Independent of channel pan\n  - Hip-hop tip: Use for drum kit positioning\n\n- **Attenuate**: Global volume scaling\n  - Adjusts overall output level\n  - Applied after other volume controls\n  - Useful for balancing multiple samples\n  - Hip-hop tip: Use for overall sample level matching\n\n#### Velocity Response\n- **Vel -> Vol**: Velocity to volume sensitivity\n  - Range: -100% to +100%\n  - Controls how velocity affects volume\n  - Negative values: Softer hits are louder\n  - Hip-hop tip: Use positive values for natural response\n\n- **Vel -> Filter**: Velocity to filter cutoff sensitivity\n  - Range: -100% to +100%\n  - Controls how velocity affects brightness\n  - Higher velocities can brighten or darken\n  - Hip-hop tip: Use for dynamic drum responses\n\n### Filter Parameters\n\n#### Filter Controls\n- **Filter Type**: Filter algorithm selection\n  - Low Pass: Removes high frequencies\n  - High Pass: Removes low frequencies\n  - Band Pass: Allows mid frequencies\n  - Hip-hop tip: Use HPF to clean up rumble in drum samples\n\n- **Cutoff**: Filter frequency boundary\n  - Range: 20Hz to 20kHz\n  - Controls frequency where filtering begins\n  - Affects overall brightness/darkness\n  - Hip-hop tip: Adjust for sample-appropriate brightness\n\n- **Resonance**: Filter emphasis at cutoff frequency\n  - Range: 0% to 100%\n  - Adds emphasis at cutoff point\n  - Creates \"ringing\" effect when high\n  - Hip-hop tip: Use moderately for extra character\n\n#### Filter Envelope\n- **Env Amount**: Envelope influence on filter\n  - Range: -100% to +100%\n  - Controls how envelope affects filter\n  - Positive: Opens filter when envelope rises\n  - Hip-hop tip: Use for classic filter sweep effects\n\n- **Env Time**: Filter envelope duration\n  - Controls envelope speed\n  - Longer times = slower filter movement\n  - Shorter times = faster filter movement\n  - Hip-hop tip: Adjust for appropriate filter evolution\n\n### Envelope Parameters\n\n#### Amplitude Envelope\n- **Attack**: Initial volume rise time\n  - Range: 0ms to several seconds\n  - Time to reach full volume\n  - Short for percussive, long for smooth\n  - Hip-hop tip: Fast attack for drums, variable for instruments\n\n- **Decay**: Volume fall time to sustain\n  - Time from attack peak to sustain level\n  - Controls initial volume drop\n  - Short for percussive, long for sustained\n  - Hip-hop tip: Adjust based on sample characteristics\n\n- **Sustain**: Volume level during note hold\n  - Range: 0% to 100% of maximum\n  - Volume level while note is held\n  - 0% = continues to release\n  - Hip-hop tip: Set appropriately for sample type\n\n- **Release**: Volume fall time after note release\n  - Time from note end to silence\n  - Controls fade-out speed\n  - Short for percussive, long for smooth\n  - Hip-hop tip: Adjust for natural sample ending\n\n#### Filter Envelope\n- **Env Attack**: Filter envelope rise time\n  - Time for filter to reach maximum effect\n  - Controls speed of filter change\n  - Short for quick changes, long for gradual\n  - Hip-hop tip: Use for classic synth filter effects\n\n### Modulation Parameters\n\n#### LFO Controls\n- **LFO Rate**: Low-frequency oscillator speed\n  - Range: 0.1Hz to 20Hz\n  - Controls modulation speed\n  - Slow for subtle effects, fast for tremolo\n  - Hip-hop tip: Use for subtle vibrato or tremolo effects\n\n- **LFO Amount**: Modulation intensity\n  - Range: 0% to 100%\n  - Controls depth of modulation\n  - Higher values = stronger effect\n  - Hip-hop tip: Use subtly for natural instrument feel\n\n- **LFO Destination**: What LFO modulates\n  - Options: Pitch, Filter, Volume, Pan\n  - Determines what parameter is affected\n  - Different destinations create different effects\n  - Hip-hop tip: Pitch modulation for vintage synth feel\n\n#### Pitch Modulation\n- **Pitch Bend Range**: Pitch bend wheel effect\n  - Range: 0 to 24 semitones\n  - Controls how much pitch bend wheel affects pitch\n  - Higher values = more dramatic pitch changes\n  - Hip-hop tip: Set appropriately for melodic samples\n\n### Effects Section Parameters\n\n#### Built-in Effects\n- **Effect Type**: Effect algorithm selection\n  - Options vary by implementation\n  - Common: Reverb, Delay, Chorus, Flanger\n  - Allows per-sample effect processing\n  - Hip-hop tip: Add subtle reverb to snares for space\n\n- **Effect Amount**: Effect intensity\n  - Range: 0% to 100%\n  - Controls how much effect is applied\n  - Higher values = stronger effect\n  - Hip-hop tip: Use subtly to enhance without overwhelming\n\n- **Effect Parameters**: Effect-specific controls\n  - Vary by effect type\n  - Reverb: Size, Decay, Pre-delay\n  - Delay: Time, Feedback, Mix\n  - Hip-hop tip: Adjust based on mix requirements\n\n### Performance Parameters\n\n#### Voice Management\n- **Polyphony**: Maximum simultaneous voices\n  - Range: 1 to maximum available\n  - Controls how many notes play simultaneously\n  - Higher values = more voices, more CPU usage\n  - Hip-hop tip: Balance between realism and performance\n\n- **Voice Priority**: Note stealing behavior\n  - Determines which notes are cut when polyphony is exceeded\n  - Options: Lowest, Highest, Last, First\n  - Affects which notes continue playing\n  - Hip-hop tip: Use Last for drum programming\n\n#### Memory Management\n- **Streaming**: Sample streaming vs. preloading\n  - Streaming: Loads samples as needed\n  - Preload: Loads samples into memory\n  - Streaming saves RAM but uses disk I/O\n  - Hip-hop tip: Stream large samples, preload small ones\n\n## Genre-Specific Parameter Sets\n\n### Hip-Hop Drum Kit Setup\n- **Key Mapping**: Kick=C3, Snare=D3, Closed HH=F3, Open HH=G3\n- **Velocity Response**: Vel->Vol at 80% for natural feel\n- **Envelopes**: Fast attack, medium decay, low sustain, medium release\n- **Filters**: HPF at 80Hz to remove rumble, moderate resonance\n- **Effects**: Subtle reverb on snares, slight delay on hats\n\n### Rap Vocal Chop Programming\n- **Key Mapping**: Map vocal chops across keyboard octaves\n- **Pitch Control**: Fine-tune each chop to appropriate pitch\n- **Envelopes**: Medium attack, medium decay, medium sustain, medium release\n- **Filter**: Moderate LPF to match vocal characteristics\n- **Effects**: Light chorus or delay for texture\n\n### R&B Instrument Layering\n- **Velocity Layers**: Multiple samples per key range\n- **Crossfades**: Smooth transitions between velocity layers\n- **Envelopes**: Longer attack and release for smoothness\n- **Modulation**: Subtle LFO on pitch and filter for movement\n- **Effects**: Warm reverb and gentle compression\n\n## Workflow Applications\n\n### Sample Mapping Workflows\n1. **Drum Kit Creation**:\n   - Load individual drum samples\n   - Map to standard drum key map (GM standard)\n   - Set appropriate velocity ranges\n   - Adjust levels and tuning per sample\n\n2. **Melodic Instrument**:\n   - Load multisampled instrument\n   - Map samples to appropriate key ranges\n   - Set velocity switching for expression\n   - Adjust tuning and envelopes per sample\n\n3. **Sound Design**:\n   - Load textural samples\n   - Apply creative filtering and effects\n   - Use modulation for evolving textures\n   - Set appropriate envelopes for character\n\n### Performance Optimization\n1. **CPU Management**:\n   - Reduce polyphony for complex patches\n   - Disable unused effects\n   - Use appropriate stretch modes\n   - Stream large samples when possible\n\n2. **Memory Management**:\n   - Preload small, frequently used samples\n   - Stream large samples to save RAM\n   - Remove unused samples from patches\n   - Optimize sample bit depth and length\n\n### Integration with Hip-Hop Production Chain\n\n#### With Sequencers\n- Map samples to convenient key layouts\n- Use velocity for dynamic expression\n- Apply appropriate tuning to samples\n- Set envelopes for natural response\n\n#### With Effects\n- Apply per-sample effects processing\n- Use insert vs. send effects appropriately\n- Match effects to sample characteristics\n- Ensure effects enhance rather than mask\n\n## Quick Reference for Session Start\n\n### Standard Hip-Hop Setup\n1. Sample mapping: Standard drum key map\n2. Velocity response: 70-80% for natural feel\n3. Envelopes: Fast attack, medium decay/release\n4. Filtering: HPF at 80Hz, moderate resonance\n5. Effects: Subtle reverb on snares\n\n### Melodic Instrument Setup\n1. Sample mapping: Appropriate key ranges\n2. Velocity response: 60-70% for expression\n3. Envelopes: Medium attack/release for smoothness\n4. Filtering: Moderate LPF for warmth\n5. Effects: Warm reverb and subtle modulation\n\n### Sound Design Setup\n1. Sample mapping: Creative key assignments\n2. Velocity response: Variable for expression\n3. Envelopes: Long for evolving textures\n4. Filtering: Creative filter settings\n5. Effects: Experimental effect combinations\n\n---\n\n**Last Updated**: February 2026\n**Focus**: Hip-Hop, Rap, R&B Production Applications\n**Primary Use Cases**: Sampling, Drum Programming, Sound Design, Instrument Emulation",
+      "quick-start-checklist": "# Quick Start Checklist: Directwave Sampler\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Directwave Sampler to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "sample-mapping-workflows": "# Sample Mapping Workflows for DirectWave Sampler\n\n## Overview\nThis document details comprehensive workflows for mapping samples in DirectWave Sampler, with specific focus on hip-hop, rap, and R&B production techniques. These workflows cover everything from basic sample loading to advanced multi-layered instrument creation.\n\n## Basic Sample Mapping Workflow\n\n### 1. Single Sample Mapping (10 minutes)\n\n#### Objective\nLoad and map a single sample to a specific key range.\n\n#### Prerequisites\n- Sample file ready for import\n- DirectWave Sampler inserted on a channel\n- Basic understanding of MIDI note values\n\n#### Steps\n1. **Load Sample** (2 minutes)\n   - Click the sample slot in DirectWave\n   - Browse to your sample file\n   - Select and load the sample\n   - Verify sample loads correctly\n\n2. **Set Key Range** (3 minutes)\n   - Set Key Start to desired note (e.g., C3 for kick)\n   - Set Key End to same note for single-key triggering\n   - Adjust Root Key to match sample pitch if needed\n   - Test playback across intended range\n\n3. **Configure Playback** (3 minutes)\n   - Set appropriate volume level\n   - Adjust tuning if necessary\n   - Configure loop settings (usually off for drums)\n   - Set envelope parameters for natural decay\n\n4. **Test and Verify** (2 minutes)\n   - Play the mapped key to test sample\n   - Adjust parameters as needed\n   - Verify sample behaves as expected\n   - Document settings for future reference\n\n#### Hip-Hop Application\n- Use for mapping individual drum sounds (kicks, snares, hats)\n- Map vocal ad-libs to convenient keys\n- Create simple one-shot sample instruments\n\n### 2. Multi-Sample Drum Kit Mapping (20 minutes)\n\n#### Objective\nCreate a complete drum kit with multiple samples mapped across the keyboard.\n\n#### Prerequisites\n- Complete drum sample kit (kicks, snares, hats, cymbals, etc.)\n- Understanding of GM drum map standard\n- Basic mapping experience\n\n#### Steps\n1. **Organize Sample Kit** (5 minutes)\n   - Sort drum samples by type (kick, snare, hat, etc.)\n   - Verify sample quality and consistency\n   - Group samples logically for mapping\n   - Prepare for systematic mapping approach\n\n2. **Map Foundation Sounds** (8 minutes)\n   - Map kick drum to C3 (MIDI note 60)\n   - Map snare to D3 (MIDI note 62)\n   - Map closed hi-hat to F3 (MIDI note 65)\n   - Map open hi-hat to G3 (MIDI note 67)\n   - Adjust individual sample levels and tuning\n\n3. **Add Additional Sounds** (5 minutes)\n   - Map crash cymbal to B3 (MIDI note 71)\n   - Map ride cymbal to C4 (MIDI note 72)\n   - Map toms to appropriate keys (F#3, G#3, A#3)\n   - Map percussion sounds to upper keys\n   - Fine-tune all sample parameters\n\n4. **Test and Optimize** (2 minutes)\n   - Play through all mapped sounds\n   - Adjust levels for balanced kit\n   - Verify no unwanted bleed-through\n   - Test velocity response across all samples\n\n#### Hip-Hop Application\n- Essential for classic drum programming\n- Use GM standard for compatibility with patterns\n- Map 808 sounds to lower keys for bass programming\n- Include vocal chops and ad-libs in kit mapping\n\n## Advanced Mapping Workflows\n\n### 3. Velocity Layering for Dynamic Expression (25 minutes)\n\n#### Objective\nCreate multiple samples per key range that trigger based on velocity values.\n\n#### Prerequisites\n- Multiple samples of the same sound at different velocities\n- Understanding of velocity values (1-127)\n- Experience with basic mapping\n\n#### Steps\n1. **Prepare Velocity Samples** (5 minutes)\n   - Organize samples by velocity level (soft, medium, hard hits)\n   - Ensure samples are recorded at consistent pitch\n   - Name samples clearly for identification\n   - Verify sample quality and consistency\n\n2. **Map First Velocity Layer** (6 minutes)\n   - Load soft hit sample\n   - Set Key Start/End to desired range\n   - Set Velocity Start to 1, Velocity End to 64\n   - Adjust tuning and level appropriately\n   - Set appropriate envelopes for soft hit\n\n3. **Map Second Velocity Layer** (6 minutes)\n   - Load medium hit sample\n   - Set same Key Start/End as first layer\n   - Set Velocity Start to 45, Velocity End to 96\n   - Adjust tuning to match first layer\n   - Set envelopes for medium hit character\n\n4. **Map Third Velocity Layer** (6 minutes)\n   - Load hard hit sample\n   - Set same Key Start/End as previous layers\n   - Set Velocity Start to 77, Velocity End to 127\n   - Adjust tuning to match other layers\n   - Set envelopes for hard hit characteristics\n\n5. **Test and Refine** (2 minutes)\n   - Play across different velocity levels\n   - Verify smooth transitions between layers\n   - Adjust velocity ranges if needed\n   - Fine-tune levels for consistent output\n\n#### Hip-Hop Application\n- Essential for realistic drum programming\n- Use for creating expressive 808 patterns\n- Apply to vocal samples for dynamic expression\n- Create expressive instrumental samples\n\n### 4. Round-Robin Mapping for Realism (30 minutes)\n\n#### Objective\nCreate multiple samples per key that alternate to prevent repetition and add realism.\n\n#### Prerequisites\n- Multiple samples of the same sound (3-6 variations)\n- Understanding of sample variation techniques\n- Experience with velocity layering\n\n#### Steps\n1. **Prepare Round-Robin Samples** (5 minutes)\n   - Collect 3-6 slightly different samples of the same sound\n   - Ensure samples are at consistent pitch and level\n   - Name samples clearly for identification\n   - Verify all samples are of high quality\n\n2. **Map First Round-Robin Instance** (6 minutes)\n   - Load first sample variation\n   - Set Key Start/End to desired range\n   - Set Velocity Start/End to cover full range (1-127)\n   - Adjust tuning and level appropriately\n   - Set appropriate envelopes\n\n3. **Map Additional Instances** (15 minutes)\n   - Repeat for each additional sample variation\n   - Use identical Key and Velocity ranges\n   - Adjust tuning to match other instances\n   - Set consistent envelope parameters\n   - Ensure all samples have similar levels\n   - (Repeat for 2-5 more instances)\n\n4. **Configure Alternation Logic** (2 minutes)\n   - Verify DirectWave alternates between samples\n   - Test rapid triggering to confirm alternation\n   - Adjust if needed for proper alternation\n   - Ensure no stuck samples occur\n\n5. **Test and Optimize** (2 minutes)\n   - Rapidly trigger the mapped key\n   - Verify samples alternate properly\n   - Listen for consistency in output\n   - Adjust levels if needed for consistency\n\n#### Hip-Hop Application\n- Perfect for realistic drum programming\n- Use for 808 multiplicity (different 808 hits)\n- Apply to vocal ad-libs for variety\n- Create realistic instrumental textures\n\n### 5. Multi-Zone Mapping for Complex Instruments (35 minutes)\n\n#### Objective\nCreate complex instruments with multiple zones covering different key and velocity ranges.\n\n#### Prerequisites\n- Comprehensive sample set for instrument\n- Understanding of instrument range and articulation\n- Experience with velocity layering and round-robin\n\n#### Steps\n1. **Analyze Instrument Structure** (5 minutes)\n   - Identify different articulations (staccato, legato, etc.)\n   - Determine key ranges for different registers\n   - Plan velocity layers for expression\n   - Organize samples by articulation and register\n\n2. **Map Lower Register** (10 minutes)\n   - Load samples for lower register\n   - Set appropriate Key Start/End for range\n   - Implement velocity layers if needed\n   - Apply round-robin if multiple samples exist\n   - Set tuning and envelopes for register\n\n3. **Map Middle Register** (10 minutes)\n   - Load samples for middle register\n   - Set Key Start/End to avoid overlap with lower\n   - Implement velocity layers and round-robin\n   - Match tuning and character to lower register\n   - Adjust envelopes for register characteristics\n\n4. **Map Upper Register** (8 minutes)\n   - Load samples for upper register\n   - Set Key Start/End to avoid overlap\n   - Apply appropriate articulations\n   - Match tuning and character to other registers\n   - Adjust for register-specific characteristics\n\n5. **Test and Integrate** (2 minutes)\n   - Play across full keyboard range\n   - Verify smooth transitions between zones\n   - Check for consistent character across registers\n   - Adjust levels and tuning as needed\n\n#### Hip-Hop Application\n- Create realistic piano or keyboard instruments\n- Build complex vocal instrument patches\n- Construct multi-sampled horn sections\n- Design expressive string arrangements\n\n## Genre-Specific Mapping Workflows\n\n### Hip-Hop Drum Programming Workflow\n\n#### Objective\nCreate a professional hip-hop drum kit optimized for beat creation.\n\n#### Steps\n1. **Foundation Kit Setup** (15 minutes)\n   - Map classic kick drum to C3\n   - Map crisp snare to D3\n   - Map tight closed hi-hat to F3\n   - Map open hi-hat to G3\n   - Add clap to D#3 for extra snap\n\n2. **808 Integration** (10 minutes)\n   - Map 808 sounds to lower octave (C2, D2, etc.)\n   - Use velocity layering for 808 expression\n   - Apply appropriate tuning to match track key\n   - Set envelopes for appropriate 808 decay\n\n3. **Percussion Addition** (10 minutes)\n   - Add shakers and tambourines to upper keys\n   - Include vocal chops and ad-libs\n   - Map additional percussion sounds\n   - Organize for convenient programming access\n\n4. **Optimization** (5 minutes)\n   - Balance levels across all kit pieces\n   - Ensure consistent tuning\n   - Test with hip-hop patterns\n   - Fine-tune for genre-appropriate response\n\n### Rap Vocal Arrangement Workflow\n\n#### Objective\nCreate a vocal arrangement toolkit for rap production.\n\n#### Steps\n1. **Ad-Lib Mapping** (15 minutes)\n   - Map vocal ad-libs across convenient keys\n   - Use velocity layering for different takes\n   - Apply pitch correction if needed\n   - Set appropriate envelopes for clean attacks\n\n2. **Hook Arrangement** (15 minutes)\n   - Map hook phrases to playable range\n   - Use round-robin for phrase variations\n   - Apply harmonization if needed\n   - Set effects for hook enhancement\n\n3. **Vocal Texture Creation** (10 minutes)\n   - Map vocal textures and atmospheres\n   - Create layered vocal arrangements\n   - Apply appropriate processing\n   - Organize for easy access during production\n\n### R&B Instrumentation Workflow\n\n#### Objective\nCreate smooth, expressive instruments for R&B production.\n\n#### Steps\n1. **Piano/Key Setup** (20 minutes)\n   - Load multisampled piano or electric piano\n   - Map across full keyboard range\n   - Implement velocity layers for expression\n   - Apply appropriate tuning and effects\n\n2. **String Arrangement** (15 minutes)\n   - Map string samples across appropriate range\n   - Use round-robin for natural response\n   - Apply smooth envelopes for legato feel\n   - Add subtle modulation for movement\n\n3. **Horn Section** (15 minutes)\n   - Map brass samples with appropriate articulations\n   - Use velocity layering for expression\n   - Apply characteristic effects\n   - Organize for section playing\n\n## Performance Optimization Workflows\n\n### 6. Memory-Efficient Mapping (20 minutes)\n\n#### Objective\nCreate sample mappings that optimize memory usage while maintaining quality.\n\n#### Steps\n1. **Sample Analysis** (5 minutes)\n   - Identify large samples that can be streamed\n   - Locate samples with long tails that can be truncated\n   - Find samples that can be shared across zones\n   - Plan optimization strategy\n\n2. **Streaming Configuration** (8 minutes)\n   - Set large samples to stream rather than preload\n   - Verify streaming doesn't cause performance issues\n   - Test with typical usage patterns\n   - Adjust if disk I/O becomes problematic\n\n3. **Sample Optimization** (5 minutes)\n   - Truncate unnecessary silence from samples\n   - Reduce bit depth where quality permits\n   - Use sample normalization efficiently\n   - Verify optimized samples maintain quality\n\n4. **Verification** (2 minutes)\n   - Test optimized mapping under load\n   - Verify no degradation in quality\n   - Confirm performance improvements\n   - Document optimization settings\n\n### 7. CPU-Efficient Mapping (15 minutes)\n\n#### Objective\nCreate mappings that minimize CPU usage while maintaining functionality.\n\n#### Steps\n1. **Effect Reduction** (5 minutes)\n   - Remove unnecessary effects from samples\n   - Use simpler effects algorithms where possible\n   - Consolidate effects to channel level when appropriate\n   - Verify sound quality remains acceptable\n\n2. **Algorithm Optimization** (5 minutes)\n   - Use simpler stretch algorithms where quality permits\n   - Reduce polyphony to necessary levels\n   - Disable unused modulation sources\n   - Optimize envelope complexity\n\n3. **Testing** (5 minutes)\n   - Test optimized mapping under typical load\n   - Verify CPU usage reduction\n   - Confirm sound quality maintenance\n   - Document performance gains\n\n## Troubleshooting Mapping Issues\n\n### Common Problems and Solutions\n\n#### 1. Sample Not Triggering\n- **Problem**: Sample doesn't play when key is pressed\n- **Solution**: Check key range settings, verify sample path, ensure velocity range matches\n\n#### 2. Clicking or Popping\n- **Problem**: Audible artifacts when sample plays\n- **Solution**: Adjust loop points, enable crossfades, check sample start/end points\n\n#### 3. Wrong Pitch\n- **Problem**: Sample plays at incorrect pitch\n- **Solution**: Adjust Root Key setting, verify sample's original pitch\n\n#### 4. Velocity Not Responding\n- **Problem**: Sample doesn't respond to velocity changes\n- **Solution**: Check velocity range settings, verify velocity curve\n\n#### 5. Polyphony Issues\n- **Problem**: Voices cut off unexpectedly\n- **Solution**: Adjust voice priority settings, increase polyphony if needed\n\n## Integration Workflows\n\n### 8. DAW Integration (10 minutes)\n\n#### Objective\nIntegrate DirectWave mappings with DAW sequencing and automation.\n\n#### Steps\n1. **MIDI Mapping** (3 minutes)\n   - Verify key mappings align with DAW expectations\n   - Set up any necessary MIDI CC mappings\n   - Test automation of DirectWave parameters\n   - Ensure compatibility with DAW features\n\n2. **Template Creation** (4 minutes)\n   - Save frequently used mappings as templates\n   - Create genre-specific starting points\n   - Organize templates for easy access\n   - Document template purposes\n\n3. **Session Management** (3 minutes)\n   - Implement sample path management\n   - Create backup strategies for mapping work\n   - Organize sessions for efficient recall\n   - Document mapping decisions for future reference\n\n## Quality Control Procedures\n\n### Mapping Verification Checklist\n- [ ] All samples trigger correctly\n- [ ] Key ranges are appropriate and non-overlapping\n- [ ] Velocity layers respond as expected\n- [ ] Round-robin alternates properly\n- [ ] Tuning is consistent across zones\n- [ ] Envelopes provide natural response\n- [ ] Levels are balanced appropriately\n- [ ] No unwanted artifacts or noise\n- [ ] Performance is optimized for project needs\n- [ ] Mapping serves musical purpose effectively\n\n## Advanced Techniques\n\n### 9. Microtonal Mapping (25 minutes)\n\n#### Objective\nCreate mappings that support non-Western scales and microtonal music.\n\n#### Steps\n1. **Scale Analysis** (5 minutes)\n   - Determine microtonal scale requirements\n   - Calculate cent offsets for each note\n   - Plan keyboard mapping strategy\n   - Prepare for non-standard tunings\n\n2. **Fine Tuning Setup** (15 minutes)\n   - Adjust Root Key with fine tuning for each sample\n   - Map samples to achieve desired intervals\n   - Test scale accuracy across range\n   - Verify musical coherence\n\n3. **Verification** (5 minutes)\n   - Play through scale to verify accuracy\n   - Test chord formations if applicable\n   - Confirm musical usability\n   - Document tuning specifications\n\n### 10. Granular Mapping (30 minutes)\n\n#### Objective\nUse DirectWave for granular synthesis techniques with tiny sample grains.\n\n#### Steps\n1. **Grain Preparation** (10 minutes)\n   - Create or obtain tiny sample grains (10-100ms)\n   - Organize grains by character and texture\n   - Ensure consistent levels and tuning\n   - Prepare for granular playback\n\n2. **Mapping Strategy** (15 minutes)\n   - Map grains across keyboard for textural control\n   - Use velocity for grain density or character\n   - Apply appropriate envelopes for granular response\n   - Set up modulation for texture evolution\n\n3. **Sound Design** (5 minutes)\n   - Combine grains for evolving textures\n   - Use effects for granular enhancement\n   - Create atmospheric and textural elements\n   - Test with various playing techniques\n\n## Success Metrics\n\n### During Mapping Sessions\n- [ ] Samples load and trigger reliably\n- [ ] Mappings serve the musical purpose\n- [ ] Performance is optimized for the project\n- [ ] Mappings are intuitive to use\n- [ ] Quality is maintained throughout\n\n### Final Mapping Quality\n- [ ] All samples respond appropriately to MIDI input\n- [ ] Velocity layers provide musical expression\n- [ ] Round-robin functions smoothly\n- [ ] Tuning is accurate and consistent\n- [ ] Performance is optimized for the project requirements\n\n## Conclusion\n\nEffective sample mapping in DirectWave Sampler is crucial for professional hip-hop, rap, and R&B production. By following these systematic workflows, you can create mappings that are both musically expressive and technically efficient. The key is to balance creative possibilities with practical performance considerations, ensuring that your mappings enhance rather than hinder your creative process.\n\nRegular practice with these mapping workflows will improve your efficiency and enable you to create increasingly sophisticated sample-based instruments and arrangements. Remember to document your successful approaches to build a personal library of effective mapping techniques.\n\n---\n\n**Created**: February 2026  \n**Focus**: Sample Mapping for Hip-Hop, Rap, and R&B  \n**Skill Level**: Intermediate to Advanced  \n**Estimated Implementation Time**: 15-25 minutes per workflow",
+      "top-controls": "# Top Controls: Directwave Sampler\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Directwave Sampler\r\n\r\nThis section contains learning information for the directwave-sampler plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-context": {
+      "hip-hop-sampling": "# Hip-Hop Sampling Workflows with DirectWave Sampler\n\n## Overview\nThis comprehensive guide details advanced sampling workflows specifically tailored for hip-hop production using DirectWave Sampler. Hip-hop's foundation in sampling requires specialized techniques for chopping, mapping, and manipulating samples to create the distinctive rhythmic and melodic elements that define the genre.\n\n## Prerequisites\n- FL Studio with DirectWave Sampler\n- Collection of hip-hop-appropriate samples (breakbeats, loops, instrumental sections)\n- Understanding of hip-hop production techniques\n- Basic knowledge of DirectWave interface and sampling concepts\n\n## Sample Preparation for Hip-Hop\n\n### 1. Breakbeat Analysis and Chopping (25 minutes)\n\n#### Objective\nAnalyze and prepare classic breakbeats for hip-hop drum programming.\n\n#### Steps\n1. **Breakbeat Selection** (5 minutes)\n   - Choose classic breakbeats (Amen, Funky Drummer, Apache, etc.)\n   - Identify distinctive drum hits and patterns\n   - Listen for unique snare, kick, and hi-hat moments\n   - Note any distinctive fills or variations\n\n2. **Hit Isolation** (10 minutes)\n   - Load breakbeat into Edison for detailed analysis\n   - Identify individual drum hits within the break\n   - Mark hit boundaries for precise chopping\n   - Export individual hits as separate samples\n   - Name samples clearly for identification\n\n3. **Quality Enhancement** (10 minutes)\n   - Apply gentle EQ to enhance hit clarity\n   - Remove any unwanted noise or artifacts\n   - Normalize individual hits to consistent levels\n   - Apply subtle compression if needed\n   - Verify all hits are properly trimmed\n\n#### Hip-Hop Specific Considerations\n- Focus on preserving the authentic character of classic breaks\n- Maintain the original groove and feel of the break\n- Ensure hits are precisely timed for accurate programming\n- Consider the historical significance of classic breaks\n\n### 2. Loop Preparation and Mapping (20 minutes)\n\n#### Objective\nPrepare and map instrumental loops for melodic hip-hop elements.\n\n#### Steps\n1. **Loop Selection** (5 minutes)\n   - Choose loops with appropriate harmonic content\n   - Identify loops with interesting melodic or harmonic elements\n   - Consider key and tempo compatibility\n   - Verify loop quality and consistency\n\n2. **Loop Mapping** (10 minutes)\n   - Load loop into DirectWave\n   - Set appropriate loop points to avoid clicks\n   - Adjust timing if needed to align with grid\n   - Apply crossfades for seamless looping\n   - Set appropriate envelope for smooth entry/exit\n\n3. **Harmonic Mapping** (5 minutes)\n   - Map loop to appropriate key range\n   - Adjust pitch if needed to match track key\n   - Consider harmonic content when mapping\n   - Set appropriate tuning for musical integration\n\n#### Hip-Hop Specific Considerations\n- Preserve the original character of classic loops\n- Ensure loops fit well with hip-hop drum patterns\n- Consider the cultural significance of sampled material\n- Respect copyright and licensing requirements\n\n## Advanced Hip-Hop Sampling Techniques\n\n### 3. Sample Chopping and Arrangement (35 minutes)\n\n#### Objective\nCreate complex arrangements using chopped sample segments.\n\n#### Steps\n1. **Sample Analysis** (8 minutes)\n   - Analyze sample for musical phrases and motifs\n   - Identify interesting melodic fragments\n   - Locate rhythmic elements within sample\n   - Mark potential chop points for musical sense\n\n2. **Chop Planning** (10 minutes)\n   - Plan chop sequence based on musical phrases\n   - Consider rhythmic patterns and subdivisions\n   - Map chops to convenient keyboard layout\n   - Plan for variation and repetition in sequence\n\n3. **Chop Execution** (12 minutes)\n   - Create individual sample chops from source\n   - Load each chop into DirectWave zone\n   - Map chops to appropriate keyboard keys\n   - Adjust timing and pitch as needed\n   - Set appropriate envelopes for clean attacks\n\n4. **Arrangement Setup** (5 minutes)\n   - Organize chops for intuitive programming\n   - Consider musical flow in key arrangement\n   - Plan for melodic and rhythmic variations\n   - Set up for easy pattern creation\n\n#### Hip-Hop Specific Considerations\n- Focus on preserving the soul and feeling of original samples\n- Create chop sequences that complement drum patterns\n- Consider the cultural context of sampled material\n- Maintain the groove and swing of original recordings\n\n### 4. Pitch-Shifting and Time-Stretching Workflows (30 minutes)\n\n#### Objective\nApply advanced pitch-shifting and time-stretching for creative hip-hop production.\n\n#### Steps\n1. **Pitch-Shifting Setup** (12 minutes)\n   - Load sample into DirectWave\n   - Apply pitch-shifting to create melodic variations\n   - Use appropriate algorithms for sample type\n   - Test different pitch intervals for musical sense\n   - Adjust timing if needed after pitch shift\n\n2. **Time-Stretching Application** (12 minutes)\n   - Apply time-stretching to match tempo\n   - Use appropriate algorithms for different sample types\n   - Test different stretch modes for quality\n   - Verify timing accuracy after stretching\n   - Adjust if artifacts are introduced\n\n3. **Creative Applications** (6 minutes)\n   - Combine pitch-shifting and time-stretching\n   - Create evolving textures and atmospheres\n   - Apply to both rhythmic and melodic elements\n   - Experiment with extreme settings for creative effects\n   - Consider how effects serve the hip-hop aesthetic\n\n#### Hip-Hop Specific Considerations\n- Maintain the authenticity of original samples\n- Use pitch-shifting to create melodic interest\n- Apply time-stretching while preserving groove\n- Consider the impact on the original recording's character\n\n## 808 and Bass Programming\n\n### 5. 808 Sound Design and Mapping (40 minutes)\n\n#### Objective\nCreate and map 808 sounds for contemporary hip-hop production.\n\n#### Steps\n1. **808 Sample Creation** (15 minutes)\n   - Generate or obtain 808 samples with appropriate character\n   - Create multiple 808 variations for round-robin\n   - Ensure samples have appropriate low-end content\n   - Verify samples are properly tuned and pitched\n   - Apply any necessary processing for clarity\n\n2. **808 Mapping** (15 minutes)\n   - Map 808 samples to lower keyboard range (C2, D2, etc.)\n   - Apply velocity layering for expression\n   - Use round-robin for 808 multiplicity\n   - Set appropriate envelopes for 808 decay\n   - Apply filtering to clean up unnecessary frequencies\n\n3. **808 Integration** (10 minutes)\n   - Test 808 sounds with hip-hop drum patterns\n   - Verify 808s don't clash with kick drums\n   - Adjust levels for appropriate balance\n   - Apply processing for genre-appropriate sound\n   - Ensure 808s translate well to different systems\n\n#### Hip-Hop Specific Considerations\n- Focus on the fundamental low-end that defines 808s\n- Create 808 sounds appropriate for trap and modern hip-hop\n- Ensure 808s complement rather than compete with kicks\n- Consider the cultural evolution of 808 usage in hip-hop\n\n### 6. Bass Line Programming (35 minutes)\n\n#### Objective\nCreate melodic bass lines using sampled and synthesized elements.\n\n#### Steps\n1. **Bass Sample Selection** (10 minutes)\n   - Choose appropriate bass samples or recordings\n   - Consider the harmonic content and character\n   - Verify samples are in appropriate key\n   - Check for consistent tuning and timing\n   - Prepare samples for mapping\n\n2. **Bass Mapping** (15 minutes)\n   - Map bass samples across appropriate keyboard range\n   - Apply velocity layering for expression\n   - Use round-robin for natural feel\n   - Set appropriate envelopes for bass response\n   - Apply filtering to enhance bass character\n\n3. **Bass Integration** (10 minutes)\n   - Test bass lines with drum patterns\n   - Verify bass doesn't conflict with 808s or kicks\n   - Adjust levels for appropriate balance\n   - Apply processing for genre-appropriate sound\n   - Ensure bass supports the harmonic structure\n\n#### Hip-Hop Specific Considerations\n- Create bass lines that complement the rhythm\n- Ensure bass integrates well with 808s\n- Focus on the groove and pocket of bass lines\n- Consider the role of bass in hip-hop's evolution\n\n## Vocal Sample Integration\n\n### 7. Vocal Chop Programming (30 minutes)\n\n#### Objective\nProgram vocal samples and chops for hooks and ad-libs.\n\n#### Steps\n1. **Vocal Sample Preparation** (10 minutes)\n   - Select appropriate vocal samples for chopping\n   - Clean up any unwanted noise or artifacts\n   - Verify vocal samples are in appropriate key\n   - Prepare individual vocal chops for mapping\n   - Name samples clearly for identification\n\n2. **Vocal Mapping** (12 minutes)\n   - Map vocal chops to convenient keyboard layout\n   - Apply appropriate pitch correction if needed\n   - Set envelopes for clean vocal attacks\n   - Apply processing for vocal enhancement\n   - Consider stereo placement for vocals\n\n3. **Vocal Arrangement** (8 minutes)\n   - Arrange vocal chops for hook creation\n   - Plan ad-lib arrangements and fills\n   - Test vocal arrangements with instrumental\n   - Adjust timing and tuning as needed\n   - Ensure vocals sit well in the mix\n\n#### Hip-Hop Specific Considerations\n- Respect the cultural significance of vocal samples\n- Focus on the lyrical and rhythmic elements\n- Consider the role of vocal samples in hip-hop culture\n- Ensure vocal arrangements enhance the track\n\n## Creative Sampling Techniques\n\n### 8. Reverse and Granular Sampling (35 minutes)\n\n#### Objective\nApply reverse and granular techniques for creative hip-hop sound design.\n\n#### Steps\n1. **Reverse Sampling Setup** (15 minutes)\n   - Create reversed versions of samples\n   - Map reversed samples to specific keys\n   - Apply appropriate envelopes for reverse effects\n   - Combine with forward samples for interest\n   - Test reverse samples in context\n\n2. **Granular Techniques** (15 minutes)\n   - Create granular textures from samples\n   - Apply granular processing for evolving sounds\n   - Map granular textures to appropriate ranges\n   - Combine with traditional sampling techniques\n   - Experiment with granular parameters\n\n3. **Creative Integration** (5 minutes)\n   - Integrate reverse and granular elements\n   - Test creative elements with traditional samples\n   - Adjust for appropriate balance and interest\n   - Ensure creative elements serve the music\n   - Document successful creative approaches\n\n#### Hip-Hop Specific Considerations\n- Use creative techniques to enhance the hip-hop aesthetic\n- Maintain the groove and feel while experimenting\n- Consider how creative elements fit the genre\n- Balance innovation with tradition in hip-hop\n\n## Performance Optimization for Hip-Hop\n\n### 9. Memory-Efficient Sampling (20 minutes)\n\n#### Objective\nOptimize sampling setup for efficient memory usage in hip-hop production.\n\n#### Steps\n1. **Sample Optimization** (8 minutes)\n   - Trim unnecessary portions from samples\n   - Reduce bit depth where quality permits\n   - Use sample normalization efficiently\n   - Verify optimized samples maintain quality\n   - Consider streaming for large samples\n\n2. **Mapping Efficiency** (7 minutes)\n   - Optimize sample mapping for memory usage\n   - Use sample sharing where appropriate\n   - Consider multi-zone mapping for efficiency\n   - Verify no redundant samples exist\n   - Test memory usage under load\n\n3. **Verification** (5 minutes)\n   - Test optimized setup under typical load\n   - Verify no degradation in quality\n   - Confirm performance improvements\n   - Document optimization settings\n\n### 10. CPU-Efficient Sampling (15 minutes)\n\n#### Objective\nOptimize sampling setup for efficient CPU usage in hip-hop production.\n\n#### Steps\n1. **Effect Reduction** (6 minutes)\n   - Remove unnecessary effects from samples\n   - Use simpler effects algorithms where possible\n   - Consolidate effects to channel level when appropriate\n   - Verify sound quality remains acceptable\n   - Test CPU usage after changes\n\n2. **Algorithm Optimization** (5 minutes)\n   - Use simpler stretch algorithms where quality permits\n   - Reduce polyphony to necessary levels\n   - Disable unused modulation sources\n   - Optimize envelope complexity\n   - Verify performance improvements\n\n3. **Testing** (4 minutes)\n   - Test optimized setup under typical load\n   - Verify CPU usage reduction\n   - Confirm sound quality maintenance\n   - Document performance gains\n\n## Integration Workflows\n\n### 11. DAW Integration for Hip-Hop (15 minutes)\n\n#### Objective\nIntegrate sampling workflows with DAW sequencing and automation for hip-hop production.\n\n#### Steps\n1. **MIDI Mapping** (5 minutes)\n   - Verify key mappings align with hip-hop programming conventions\n   - Set up any necessary MIDI CC mappings\n   - Test automation of DirectWave parameters\n   - Ensure compatibility with hip-hop pattern creation\n   - Verify mapping supports typical hip-hop workflows\n\n2. **Template Creation** (6 minutes)\n   - Save frequently used sampling setups as templates\n   - Create hip-hop-specific starting points\n   - Organize templates for easy access\n   - Document template purposes\n   - Include genre-appropriate defaults\n\n3. **Session Management** (4 minutes)\n   - Implement sample path management\n   - Create backup strategies for sampling work\n   - Organize sessions for efficient recall\n   - Document sampling decisions for future reference\n   - Ensure project portability\n\n## Quality Control Procedures\n\n### Sampling Verification Checklist\n- [ ] All samples trigger correctly\n- [ ] Sample mapping follows hip-hop conventions\n- [ ] Chops and arrangements serve the music\n- [ ] 808 and bass elements integrate well\n- [ ] Vocal samples are appropriately handled\n- [ ] Creative techniques enhance rather than distract\n- [ ] Performance is optimized for project needs\n- [ ] Sampling respects cultural context\n- [ ] All elements contribute to hip-hop aesthetic\n\n### Testing Protocols\n1. **Pattern Testing** (5 minutes)\n   - Test samples with various hip-hop patterns\n   - Verify appropriate response to programming\n   - Check for any timing or tuning issues\n   - Ensure samples maintain groove and feel\n\n2. **Mix Integration** (5 minutes)\n   - Test samples in context with drums and bass\n   - Verify appropriate balance in mix\n   - Check for frequency conflicts\n   - Ensure samples sit well in hip-hop context\n\n## Troubleshooting Common Issues\n\n### 1. Sample Timing Issues\n- **Problem**: Samples don't align properly with grid\n- **Solution**: Use Edison for precise timing adjustment, apply quantization if needed\n\n### 2. Pitch Problems\n- **Problem**: Samples play at wrong pitch\n- **Solution**: Adjust Root Key setting, verify sample's original pitch\n\n### 3. Loop Artifacts\n- **Problem**: Clicks or pops in looped samples\n- **Solution**: Adjust loop points, apply crossfades, check sample boundaries\n\n### 4. Performance Issues\n- **Problem**: High CPU or memory usage\n- **Solution**: Optimize sample settings, reduce polyphony, use streaming\n\n### 5. Cultural Appropriateness\n- **Problem**: Samples don't fit hip-hop aesthetic\n- **Solution**: Consider cultural context, choose appropriate samples, respect genre traditions\n\n## Advanced Techniques\n\n### 12. Micro-Chopping for Complex Patterns (40 minutes)\n\n#### Objective\nCreate complex rhythmic patterns using micro-chopped sample segments.\n\n#### Steps\n1. **Micro-Chop Planning** (10 minutes)\n   - Analyze source sample for micro-rhythmic elements\n   - Plan complex rhythmic patterns using small segments\n   - Consider how micro-chops interact with drums\n   - Map micro-chops to intuitive keyboard layout\n\n2. **Micro-Chop Creation** (20 minutes)\n   - Create numerous small sample chops from source\n   - Load each chop into DirectWave with appropriate mapping\n   - Apply timing and pitch adjustments as needed\n   - Set envelopes for clean, precise attacks\n   - Organize chops for efficient programming\n\n3. **Pattern Development** (10 minutes)\n   - Create complex rhythmic patterns using micro-chops\n   - Test patterns with hip-hop drum programming\n   - Adjust timing and levels for musical sense\n   - Develop variations and fills using micro-chops\n\n#### Hip-Hop Specific Considerations\n- Focus on creating intricate rhythmic interest\n- Maintain connection to original sample's character\n- Ensure micro-chops complement rather than compete with drums\n- Consider the evolution of complex chopping in hip-hop\n\n## Success Metrics\n\n### During Sampling Sessions\n- [ ] Samples maintain their musical character\n- [ ] Chops and arrangements serve the hip-hop aesthetic\n- [ ] Technical quality is maintained throughout\n- [ ] Cultural appropriateness is considered\n- [ ] Performance is optimized for the project\n\n### Final Sampling Quality\n- [ ] All samples respond appropriately to programming\n- [ ] Chops and arrangements enhance the music\n- [ ] 808 and bass elements integrate well\n- [ ] Creative techniques serve the hip-hop aesthetic\n- [ ] Sampling respects cultural context and traditions\n- [ ] All elements contribute to authentic hip-hop sound\n\n## Conclusion\n\nHip-hop sampling with DirectWave Sampler requires a deep understanding of both technical capabilities and cultural context. The key to successful hip-hop sampling lies in respecting the genre's traditions while leveraging DirectWave's powerful features to create compelling musical arrangements.\n\nBy following these systematic workflows, you can create sampling setups that honor hip-hop's roots while pushing creative boundaries. Remember that hip-hop sampling is both a technical craft and a cultural practice that requires sensitivity to the music's origins and evolution.\n\nThe most important aspect of hip-hop sampling is ensuring that your technical choices serve the music and respect the cultural significance of the samples you use. Whether you're chopping classic breaks, programming 808s, or arranging vocal samples, always keep the groove, feel, and cultural context of hip-hop at the forefront of your creative decisions.\n\n---\n\n**Created**: February 2026  \n**Focus**: Hip-Hop Sampling with DirectWave Sampler  \n**Skill Level**: Intermediate to Advanced  \n**Estimated Implementation Time**: 3-4 hours for complete workflow"
+    },
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: Converting Heavy VSTs to DirectWave (Upbeat)\n\n## The Concept\nTurning a CPU-heavy melodic synth into a lightweight, stable sampler bank so you can finish your arrangement without lag.\n\n## Step-by-Step Setup\n1.  Open the **Heavy VST** (e.g., Serum, Kontakt) and pick your preset.\n2.  In the FL Studio Browser, right-click the plugin name under **Generators**.\n3.  Select **Create DirectWave instrument**.\n4.  **Sampling Settings:**\n    - **Note Range:** C2 to C7.\n    - **Layers:** 1 (if it's a simple synth) or 3 (if it has velocity dynamics).\n    - **Stride:** 3 (samples every 3rd note to save memory).\n5.  Press **Start**. FL Studio will automatically \"Play\" and \"Record\" every note of the synth into a new DirectWave bank.\n\n## Result\n- You now have a custom `.dwp` file that sounds identical to the expensive VST but uses almost zero CPU.\n\n## Vibe Check\n- **Upbeat/Productive:** This allows you to stack 50+ instruments in a high-energy track without the DAW crashing.\n\n## Pitfalls\n- **Looping:** If the original synth had a long sustain, you will need to set **Loop Points** manually in DirectWave afterward. [SRC: REPUTABLE]\n",
+      "drum-kit-creation": "# Drum Kit Creation with DirectWave Sampler\n\n## Overview\nCreating professional drum kits in DirectWave Sampler is essential for hip-hop, rap, and R&B production. This comprehensive guide covers everything from basic drum kit assembly to advanced programming techniques, with specific focus on genre-appropriate sounds and workflows.\n\n## Prerequisites\n- FL Studio with DirectWave Sampler\n- Collection of drum samples (kicks, snares, hi-hats, cymbals, percussion)\n- Understanding of standard drum kit mapping (GM standard)\n- Basic knowledge of DirectWave interface\n\n## Basic Drum Kit Assembly\n\n### 1. Sample Preparation (15 minutes)\n\n#### Objective\nPrepare and organize drum samples for kit assembly.\n\n#### Steps\n1. **Sample Collection** (5 minutes)\n   - Gather kick drum samples (2-3 variations)\n   - Collect snare samples (regular and sidestick)\n   - Assemble hi-hat samples (closed, open, foot)\n   - Collect additional percussion (cymbals, toms, claps)\n\n2. **Quality Assessment** (5 minutes)\n   - Listen to each sample for quality\n   - Check for unwanted noise or artifacts\n   - Verify consistent levels across samples\n   - Ensure samples are properly trimmed\n\n3. **Organization** (5 minutes)\n   - Sort samples by type and function\n   - Name samples clearly for identification\n   - Group similar sounds together\n   - Prepare for systematic mapping\n\n#### Hip-Hop Specific Considerations\n- Focus on punchy kicks with strong fundamental\n- Include both crisp and loose snares\n- Gather both tight and washy hi-hats\n- Include 808-style sub-bass sounds\n\n### 2. Foundation Kit Mapping (20 minutes)\n\n#### Objective\nCreate the basic drum kit with essential sounds mapped to standard positions.\n\n#### Steps\n1. **Kick Drum Setup** (5 minutes)\n   - Load primary kick sample into DirectWave\n   - Map to C3 (MIDI note 60) - standard GM position\n   - Set Key Start and Key End to 60\n   - Adjust Root Key if needed for proper pitch\n   - Set volume to -3dB for appropriate level\n\n2. **Snare Drum Setup** (5 minutes)\n   - Load snare sample into new zone\n   - Map to D3 (MIDI note 62) - standard GM position\n   - Set appropriate tuning if needed\n   - Apply subtle reverb (15-20%) for space\n   - Set volume to -6dB to sit behind kick\n\n3. **Hi-Hat Setup** (5 minutes)\n   - Map closed hi-hat to F3 (MIDI note 65)\n   - Map open hi-hat to G3 (MIDI note 67)\n   - Add foot splash to F#3 (MIDI note 66) if available\n   - Set hi-hat volumes lower (-9 to -12dB)\n   - Apply high-pass filter to remove unnecessary low-end\n\n4. **Clap Addition** (5 minutes)\n   - Map clap sound to D#3 (MIDI note 63)\n   - Set to same key range as snare if using as alternative\n   - Adjust level to blend with snare\n   - Add slight delay or reverb for extra snap\n   - Ensure it complements rather than competes with snare\n\n#### Hip-Hop Specific Considerations\n- Use harder kicks for aggressive hip-hop\n- Include both acoustic and electronic snares\n- Map 808 sounds to lower keys for bass programming\n- Include vocal ad-libs in kit mapping\n\n### 3. Additional Kit Pieces (15 minutes)\n\n#### Objective\nExpand the kit with additional percussion and specialty sounds.\n\n#### Steps\n1. **Cymbal Mapping** (5 minutes)\n   - Map crash cymbal to B3 (MIDI note 71)\n   - Add ride cymbal to C4 (MIDI note 72) if needed\n   - Apply long release settings for natural decay\n   - Set appropriate levels (usually lower than drums)\n   - Consider stereo positioning\n\n2. **Tom Mapping** (5 minutes)\n   - Map low tom to F#3 (MIDI note 66)\n   - Map mid tom to G#3 (MIDI note 68)\n   - Map high tom to A#3 (MIDI note 70)\n   - Adjust tuning to create musical intervals\n   - Set appropriate decay times\n\n3. **Percussion Addition** (5 minutes)\n   - Add shakers to higher keys (C5, D5)\n   - Include congas, bongos, or other percussion\n   - Map cowbells and other specialty sounds\n   - Consider round-robin for repeated hits\n   - Set levels appropriate for mix context\n\n#### Hip-Hop Specific Considerations\n- Include trap-style 808 rolls and fills\n- Add vocal chops and ad-libs to kit\n- Include turntable scratch samples\n- Consider mapping multiple kick variations\n\n## Advanced Kit Programming\n\n### 4. Velocity Layering for Expression (25 minutes)\n\n#### Objective\nCreate multiple samples per drum sound that trigger based on velocity for realistic expression.\n\n#### Steps\n1. **Kick Velocity Layers** (8 minutes)\n   - Load soft kick sample (velocity 1-42)\n   - Load medium kick sample (velocity 43-84)\n   - Load hard kick sample (velocity 85-127)\n   - Ensure all samples are tuned consistently\n   - Adjust levels for even output across layers\n\n2. **Snare Velocity Layers** (8 minutes)\n   - Load soft snare for quiet hits\n   - Load medium snare for normal hits\n   - Load hard snare for accented hits\n   - Include sidestick samples for quieter hits\n   - Set appropriate envelopes for each layer\n\n3. **Hi-Hat Velocity Response** (9 minutes)\n   - Create velocity layers for closed hi-hats\n   - Adjust tone based on velocity (harder hits brighter)\n   - Map open hi-hats with velocity response\n   - Consider adding foot splashes for mid-velocities\n   - Test for natural response across velocity range\n\n#### Hip-Hop Specific Considerations\n- Use harder velocity layers for aggressive rap\n- Include both acoustic and electronic options\n- Create layers that complement each other\n- Consider genre-appropriate sound characteristics\n\n### 5. Round-Robin Programming (20 minutes)\n\n#### Objective\nCreate multiple samples per sound that alternate to prevent repetition and add realism.\n\n#### Steps\n1. **Kick Round-Robin** (6 minutes)\n   - Load 3-4 slightly different kick samples\n   - Map all to same key range (C3)\n   - Set identical velocity ranges (1-127)\n   - Ensure consistent tuning and level\n   - Test rapid triggering to verify alternation\n\n2. **Snare Round-Robin** (6 minutes)\n   - Load multiple snare samples with similar character\n   - Map to same key range (D3)\n   - Set identical velocity ranges\n   - Adjust tuning to match other layers\n   - Verify consistent output level\n\n3. **Hi-Hat Round-Robin** (8 minutes)\n   - Create round-robin for closed hi-hats\n   - Apply to open hi-hats if multiple samples exist\n   - Consider different round-robin for different velocities\n   - Test for natural variation without obvious patterns\n   - Ensure all samples blend well together\n\n#### Hip-Hop Specific Considerations\n- Use round-robin for more realistic drum feel\n- Include both tight and loose variations\n- Consider genre-appropriate sound characteristics\n- Balance variation with consistency\n\n## Genre-Specific Kit Configurations\n\n### 6. Classic Hip-Hop Kit (30 minutes)\n\n#### Objective\nCreate a drum kit optimized for classic hip-hop production with warm, punchy sounds.\n\n#### Steps\n1. **Kick Configuration** (8 minutes)\n   - Use samples with strong fundamental around 60Hz\n   - Apply high-pass filter around 40Hz to remove subsonic content\n   - Set moderate attack for punch without click\n   - Use longer decay for fullness\n   - Add slight saturation for extra grit\n\n2. **Snare Configuration** (8 minutes)\n   - Choose snares with crisp attack and full body\n   - Apply EQ to emphasize crack (2-5kHz) and body (200-400Hz)\n   - Set appropriate decay for track length\n   - Add subtle reverb for space (15-25%)\n   - Consider using both acoustic and electronic options\n\n3. **Hi-Hat Configuration** (7 minutes)\n   - Use tight, clean hi-hats for closed sounds\n   - Choose washy, open sounds for open hi-hats\n   - Apply high-pass filtering to remove unnecessary low-end\n   - Set appropriate decay times for pattern complexity\n   - Consider velocity response for natural feel\n\n4. **Kit Integration** (7 minutes)\n   - Balance levels for classic hip-hop mix\n   - Ensure kick and snare sit well together\n   - Test with classic patterns to verify response\n   - Adjust for appropriate punch and warmth\n   - Verify mono compatibility\n\n#### Hip-Hop Specific Considerations\n- Focus on punch and clarity over complexity\n- Emphasize the fundamental frequencies\n- Ensure compatibility with classic patterns\n- Maintain warmth and musicality\n\n### 7. Modern Trap Kit (35 minutes)\n\n#### Objective\nCreate a drum kit optimized for modern trap music with aggressive, saturated sounds.\n\n#### Steps\n1. **808 Integration** (10 minutes)\n   - Map multiple 808 samples to lower keys (C2, D2, etc.)\n   - Use velocity layers for 808 expression\n   - Apply appropriate tuning to match track key\n   - Set long decays for sustained low-end\n   - Consider round-robin for 808 multiplicity\n\n2. **Snare Configuration** (10 minutes)\n   - Use crisp, loud snares with strong attack\n   - Apply saturation/distortion for extra snap\n   - Set short decay to avoid muddying the mix\n   - Add reverb for space but keep tight\n   - Consider layered snares for extra punch\n\n3. **Hi-Hat Configuration** (8 minutes)\n   - Use bright, cutting hi-hats\n   - Apply EQ to emphasize presence\n   - Set appropriate velocity response\n   - Consider multiple open hat options\n   - Ensure hi-hats cut through dense mixes\n\n4. **Percussion Addition** (7 minutes)\n   - Add trap-style percussion (808 rolls, fills)\n   - Include vocal ad-libs and chops\n   - Map turntable scratch samples\n   - Consider risers and transition effects\n   - Organize for convenient pattern creation\n\n#### Hip-Hop Specific Considerations\n- Emphasize aggressive, saturated sounds\n- Include 808 integration as primary element\n- Focus on punch and cut for dense mixes\n- Include trap-specific percussion elements\n\n### 8. R&B Kit Configuration (30 minutes)\n\n#### Objective\nCreate a drum kit optimized for smooth R&B production with musical, expressive sounds.\n\n#### Steps\n1. **Kick Configuration** (8 minutes)\n   - Choose warm, musical kick sounds\n   - Avoid overly aggressive or distorted kicks\n   - Set appropriate attack for musical feel\n   - Use moderate decay for fullness\n   - Apply subtle compression for consistency\n\n2. **Snare Configuration** (8 minutes)\n   - Select snares with musical character\n   - Apply subtle reverb for space and depth\n   - Set appropriate decay for song length\n   - Consider both crisp and softer options\n   - Focus on musical rather than aggressive sounds\n\n3. **Hi-Hat Configuration** (7 minutes)\n   - Use musical, not overly bright hi-hats\n   - Apply gentle EQ for smoothness\n   - Set appropriate velocity response\n   - Consider round-robin for natural feel\n   - Ensure hi-hats complement rather than dominate\n\n4. **Kit Integration** (7 minutes)\n   - Balance levels for smooth, musical mix\n   - Ensure all elements work together harmoniously\n   - Test with R&B-style patterns\n   - Adjust for appropriate musical expression\n   - Verify smooth transitions between elements\n\n#### R&B Specific Considerations\n- Focus on musicality and expression\n- Emphasize smooth, warm sounds\n- Ensure all elements complement each other\n- Maintain dynamic range for expression\n\n## Performance Optimization\n\n### 9. Memory-Efficient Kit Setup (15 minutes)\n\n#### Objective\nCreate drum kits that optimize memory usage while maintaining quality.\n\n#### Steps\n1. **Sample Optimization** (5 minutes)\n   - Trim unnecessary silence from samples\n   - Reduce bit depth where quality permits\n   - Use sample normalization efficiently\n   - Verify optimized samples maintain quality\n\n2. **Streaming Configuration** (5 minutes)\n   - Set large samples to stream rather than preload\n   - Verify streaming doesn't cause performance issues\n   - Test with typical usage patterns\n   - Adjust if disk I/O becomes problematic\n\n3. **Verification** (5 minutes)\n   - Test optimized kit under load\n   - Verify no degradation in quality\n   - Confirm performance improvements\n   - Document optimization settings\n\n### 10. CPU-Efficient Kit Setup (12 minutes)\n\n#### Objective\nCreate drum kits that minimize CPU usage while maintaining functionality.\n\n#### Steps\n1. **Effect Reduction** (5 minutes)\n   - Remove unnecessary effects from samples\n   - Use simpler effects algorithms where possible\n   - Consolidate effects to channel level when appropriate\n   - Verify sound quality remains acceptable\n\n2. **Algorithm Optimization** (4 minutes)\n   - Use simpler stretch algorithms where quality permits\n   - Reduce polyphony to necessary levels\n   - Disable unused modulation sources\n   - Optimize envelope complexity\n\n3. **Testing** (3 minutes)\n   - Test optimized kit under typical load\n   - Verify CPU usage reduction\n   - Confirm sound quality maintenance\n   - Document performance gains\n\n## Integration Workflows\n\n### 11. DAW Integration (10 minutes)\n\n#### Objective\nIntegrate drum kit mappings with DAW sequencing and automation.\n\n#### Steps\n1. **MIDI Mapping** (3 minutes)\n   - Verify key mappings align with DAW expectations\n   - Set up any necessary MIDI CC mappings\n   - Test automation of DirectWave parameters\n   - Ensure compatibility with DAW features\n\n2. **Template Creation** (4 minutes)\n   - Save frequently used kits as templates\n   - Create genre-specific starting points\n   - Organize templates for easy access\n   - Document template purposes\n\n3. **Session Management** (3 minutes)\n   - Implement sample path management\n   - Create backup strategies for kit work\n   - Organize sessions for efficient recall\n   - Document kit decisions for future reference\n\n## Quality Control Procedures\n\n### Kit Verification Checklist\n- [ ] All drum sounds trigger correctly\n- [ ] Key mappings follow standard conventions\n- [ ] Velocity layers respond as expected\n- [ ] Round-robin alternates properly\n- [ ] Tuning is consistent across kit pieces\n- [ ] Envelopes provide natural response\n- [ ] Levels are balanced appropriately\n- [ ] No unwanted artifacts or noise\n- [ ] Performance is optimized for project needs\n- [ ] Kit serves musical purpose effectively\n\n### Testing Protocols\n1. **Pattern Testing** (5 minutes)\n   - Play through various drum patterns\n   - Test all velocity levels\n   - Verify smooth transitions between sounds\n   - Check for any sticking or hanging notes\n\n2. **Mix Integration** (5 minutes)\n   - Test kit in context with other elements\n   - Verify appropriate balance in mix\n   - Check for frequency conflicts\n   - Ensure kit sits well in overall arrangement\n\n## Troubleshooting Common Issues\n\n### 1. Sample Not Triggering\n- **Problem**: Drum sound doesn't play when key is pressed\n- **Solution**: Check key range settings, verify sample path, ensure velocity range matches\n\n### 2. Clicking or Popping\n- **Problem**: Audible artifacts when drum sounds play\n- **Solution**: Adjust loop points, enable crossfades, check sample start/end points\n\n### 3. Wrong Pitch\n- **Problem**: Drum sounds play at incorrect pitch\n- **Solution**: Adjust Root Key setting, verify sample's original pitch\n\n### 4. Velocity Not Responding\n- **Problem**: Drum sounds don't respond to velocity changes\n- **Solution**: Check velocity range settings, verify velocity curve\n\n### 5. Polyphony Issues\n- **Problem**: Voices cut off unexpectedly during complex patterns\n- **Solution**: Adjust voice priority settings, increase polyphony if needed\n\n## Advanced Techniques\n\n### 12. Creative Kit Modifications (25 minutes)\n\n#### Objective\nModify standard kits for unique creative applications.\n\n#### Steps\n1. **Sound Transformation** (10 minutes)\n   - Apply creative effects to drum sounds\n   - Use pitch modulation for evolving textures\n   - Create hybrid sounds by layering\n   - Experiment with reverse and granular techniques\n\n2. **Rhythmic Innovation** (10 minutes)\n   - Map unconventional sounds to drum keys\n   - Create custom percussion arrangements\n   - Use samples for non-traditional purposes\n   - Experiment with polyrhythmic possibilities\n\n3. **Textural Expansion** (5 minutes)\n   - Add atmospheric elements to kit\n   - Include transition and riser sounds\n   - Create evolving textural elements\n   - Integrate with melodic elements\n\n## Success Metrics\n\n### During Kit Creation\n- [ ] All drum sounds trigger reliably\n- [ ] Kit serves the musical purpose\n- [ ] Performance is optimized for the project\n- [ ] Kit is intuitive to use\n- [ ] Quality is maintained throughout\n\n### Final Kit Quality\n- [ ] All drum sounds respond appropriately to MIDI input\n- [ ] Velocity layers provide musical expression\n- [ ] Round-robin functions smoothly\n- [ ] Tuning is accurate and consistent\n- [ ] Performance is optimized for the project requirements\n- [ ] Kit enhances rather than hinders creativity\n\n## Conclusion\n\nCreating effective drum kits in DirectWave Sampler is fundamental to successful hip-hop, rap, and R&B production. By following these systematic approaches, you can create kits that are both musically expressive and technically efficient. The key is to balance creative possibilities with practical performance considerations, ensuring that your kits enhance rather than hinder your creative process.\n\nRegular practice with these kit creation workflows will improve your efficiency and enable you to create increasingly sophisticated drum programming setups. Remember to document your successful approaches to build a personal library of effective kit configurations.\n\nThe most important aspect of drum kit creation is ensuring that the kit serves the music. Whether you're creating classic boom-bap sounds, modern trap kits, or smooth R&B grooves, always keep the musical context in mind when making configuration decisions.\n\n---\n\n**Created**: February 2026  \n**Focus**: Drum Kit Creation for Hip-Hop, Rap, and R&B  \n**Skill Level**: Intermediate to Advanced  \n**Estimated Implementation Time**: 2-3 hours for complete kit creation"
+    },
+    "common-usage.md": {
+      "common-usage": "# Common Workflows: DirectWave\r\n\r\n## 1. The \"CPU Saver\" (Bouncing VSTs)\r\n\r\nYour project is crackling because you have 5 instances of Diva.\r\n\r\n1.  **Identify:** Find a heavy chord progression.\r\n2.  **Automate:** Right-click the Diva Channel -> **Create DirectWave instrument**.\r\n3.  **Config:**\r\n    *   range: C2 to C6.\r\n    *   Zone spacing: 1 note (Chromatic) for max quality.\r\n4.  **Replace:** Delete Diva. Load the `.dwp` file.\r\n5.  **Benefit:** CPU usage drops from 40% to 1%.\r\n\r\n## 2. Using SoundFonts (.sf2)\r\n\r\nDirectWave is the native SF2 player of FL Studio.\r\n\r\n1.  **Load:** Drag a `.sf2` file from the Browser onto DirectWave.\r\n2.  **Bank:** It automatically maps all zones, velocity layers, and release samples.\r\n3.  **Tweak:** Often SF2 files are dry.\r\n    *   Go to the **Zone** tab.\r\n    *   Enable **Reverb** (Global FX).\r\n    *   Increase **Release** (Amp Envelope) if the strings cut off too abruptly.\r\n\r\n## 3. Multi-Timbral Setup (16 Instruments)\r\n\r\nDirectWave can play 16 different instruments on one instance.\r\n\r\n1.  **Programs:** On the left \"Browser\" list, you see 1 through 16.\r\n2.  **Load:**\r\n    *   Click Slot 1: Load Piano.\r\n    *   Click Slot 2: Load Bass.\r\n    *   Click Slot 3: Load Strings.\r\n3.  **MIDI Channels:**\r\n    *   Give DirectWave a Port (e.g., 10) in Wrapper Settings.\r\n    *   Add **MIDI Out** channels in the Channel Rack.\r\n    *   Configure MIDI Out 1 to Channel 1 (Piano).\r\n    *   Configure MIDI Out 2 to Channel 2 (Bass).\r\n4.  **Outputs:** Go to the \"Mix\" tab in DirectWave and assign different **Output Offsets** per Program to route them to separate Mixer Tracks.\r\n\r\n## 4. The \"Round Robin\" Humanizer\r\n\r\n1.  **Concept:** Play a different sample every time you hit the same key (Machine Gun effect killer).\r\n2.  **Zones:** Load 4 variations of a Snare sample on the same Key (C5).\r\n3.  **Trigger Group:** Set all 4 zones to **Group 1**.\r\n4.  **Type:** Set the Group Type to **\"Cycle\"** or **\"Random\"**.\r\n5.  **Result:** DirectWave cycles through the samples automatically.\r\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Directwave Sampler\r\n\r\nThis section contains workflow information for the directwave-sampler plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Directwave Sampler\r\n\r\nThis section contains reference information for the directwave-sampler plugin.\r\n"
+    }
+  }
+}

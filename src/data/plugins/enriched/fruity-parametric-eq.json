@@ -1,0 +1,154 @@
+{
+  "id": "fruity-parametric-eq",
+  "name": "Fruity Parametric EQ",
+  "category": "EQ",
+  "tier": "Free",
+  "type": "EQ",
+  "description": "Fruity Parametric EQ - EQ",
+  "tags": [
+    "mixing",
+    "tone-shaping",
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "eq",
+    "tone-shaping",
+    "mixing",
+    "audio"
+  ],
+  "icon": "/plugins/fruity-parametric-eq-icon.svg",
+  "color": "#84CC16",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-parametric-eq",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "pluginName": "Fruity Parametric EQ",
+    "parameters": [
+      {
+        "id": "band_1_freq",
+        "name": "Band 1 Frequency",
+        "type": "knob",
+        "range": {
+          "min": 10,
+          "max": 20000,
+          "unit": "Hz"
+        },
+        "description": "Center frequency for Band 1."
+      },
+      {
+        "id": "band_1_gain",
+        "name": "Band 1 Gain",
+        "type": "knob",
+        "range": {
+          "min": -18,
+          "max": 18,
+          "unit": "dB"
+        },
+        "defaultValue": 0,
+        "description": "Boost or cut amount."
+      },
+      {
+        "id": "band_1_bw",
+        "name": "Band 1 Bandwidth",
+        "type": "knob",
+        "range": {
+          "min": 0,
+          "max": 100
+        },
+        "description": "Width of the EQ curve."
+      }
+    ]
+  },
+  "presets": {
+    "mud-cleaner": {
+      "presetName": "Mud Cleaner",
+      "plugin": "Fruity Parametric EQ",
+      "description": "Standard cut for cleaning up low-mid resonance.",
+      "settings": {
+        "band3": {
+          "freq": 350,
+          "gain": -4,
+          "bw": 1.5,
+          "type": "Peaking"
+        }
+      },
+      "usage": "Apply to synth pads or snare drums."
+    },
+    "old-telephone": {
+      "presetName": "Old Telephone",
+      "plugin": "Fruity Parametric EQ",
+      "description": "Band-pass filter to simulate limited bandwidth.",
+      "settings": {
+        "band1": {
+          "freq": 400,
+          "gain": -18,
+          "bw": 1,
+          "type": "High Pass"
+        },
+        "band7": {
+          "freq": 3000,
+          "gain": -18,
+          "bw": 1,
+          "type": "Low Pass"
+        },
+        "band4": {
+          "freq": 1500,
+          "gain": 6,
+          "bw": 0.5,
+          "type": "Peaking"
+        }
+      },
+      "usage": "Use on vocals or master bus for a lo-fi intro effect."
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity Parametric EQ\n\n## Purpose & Identity\nFruity Parametric EQ (PEQ1) is a classic, 7-band parametric equalizer. Unlike the modern PEQ2, it features a slider-based interface and **no visual spectrogram**. It is designed for engineers who prefer to make mixing decisions based on what they hear rather than what they see on a graph. [SRC: IL-MAN]\n\n## 60-Second Mental Model\nThink of PEQ1 as a physical \"console\" EQ rack. Each of the 7 sliders corresponds to a specific frequency band. You move the slider up to boost or down to cut. Since there’s no screen telling you where the \"peaks\" are, you are forced to sweep the frequency knob until your ears tell you the sound is right.\n\n## Hip-Hop / R&B Context\nIn modern urban production, \"Ear-First\" mixing is a secret weapon for authenticity.\n- **Vocal Pocketing:** Quickly carving out 300Hz-500Hz from a melody to let the vocal sit \"inside\" the beat.\n- **Phone/Radio Filters:** Using Band 1 (HP) and Band 7 (LP) to instantly create that nostalgic lo-fi intro effect.\n- **Percussion Snap:** Boosting the 2kHz-5kHz range on a snare drum to make it cut through a heavy R&B mix.\n\n## When To Use\n- When you want to **avoid visual bias** (mixing with your eyes).\n- When you need a **CPU-light** EQ for large projects with hundreds of tracks.\n- When you are using a **MIDI controller with physical faders** (sliders are easier to map than graph dots).\n\n## When NOT To Use\n- **Surgical Precision:** Use **PEQ2** or **FabFilter Pro-Q3** if you need to see exactly where a resonant frequency is \"ringing.\"\n- **Phase Linear Tasks:** PEQ1 is a standard IIR filter; use a linear-phase EQ for mastering if phase-smearing is a concern. [SRC: REPUTABLE]\n",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Fruity Parametric EQ\n\n## UI Tour\n1.  **7 Frequency Sliders:** The main vertical controls.\n    - **Top (Center):** 0dB (No change).\n    - **Up:** Boost (up to +18dB).\n    - **Down:** Cut (down to -18dB).\n2.  **FREQ Knobs (Below Sliders):** Adjusts the center frequency of each band.\n3.  **BW (Bandwidth/Q) Knobs:** Controls how \"wide\" or \"narrow\" the curve is. [SRC: IL-MAN]\n4.  **Shape Selector (Icons):** Click the symbols at the bottom to change filter types (Peaking, Shelf, LP, HP, Notch, BP).\n\n## Functional Flow\n1.  **Input:** Audio enters the plugin.\n2.  **Series Processing:** The signal passes through Band 1, then Band 2, and so on, until Band 7.\n3.  **Coefficient Calculation:** The IIR (Infinite Impulse Response) algorithm calculates the gain/phase shift based on your slider positions.\n4.  **Output:** Processed audio is sent to the next mixer slot.\n\n## Things Beginners Misunderstand\n- **No Visualizer:** Many beginners open PEQ1 and think it’s \"broken\" because there’s no waveform. This is a feature, not a bug.\n- **Band Overlap:** If you boost 500Hz on Band 3 and cut 500Hz on Band 4, they will cancel each other out.\n- **Band 1 & 7 Defaults:** By default, Band 1 is often a Low Shelf and Band 7 is a High Shelf. You must click the icons to change them to High Pass or Low Pass. [SRC: REPUTABLE]\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques And Best Practices: Fruity Parametric EQ\n\n## 1. The \"Blind Sweep\" (Corrective EQ)\n- **Technique:** Pick an unused band (e.g., Band 4). Set the BW (Q) knob to be very narrow. Boost the slider to +12dB.\n- **Execution:** Slowly turn the FREQ knob while the audio plays. Listen for the moment the sound becomes \"harsh\" or \"whistle-like.\"\n- **The Fix:** Once found, pull the slider down to -6dB to \"notch out\" the problem.\n\n## 2. Low-Shelf Discipline (The 808 Mix)\n- **Technique:** Set Band 1 to **Low Shelf**.\n- **Execution:** Set Freq to ~100Hz. If your 808 is too loud, pull the slider down slightly instead of using the mixer fader.\n- **Why:** This reduces the energy of the bass without losing the \"snap\" of the higher-frequency harmonics.\n\n## 3. The \"Air\" Boost (R&B Vocals)\n- **Technique:** Set Band 7 to **High Shelf**.\n- **Execution:** Set Freq to 12kHz. Set BW to be very wide. Boost the slider by 3-5dB.\n- **Result:** Adds a professional \"gloss\" to melodic rap vocals that makes them sound expensive.\n\n## 4. Automation Risers\n- **Technique:** Automate the **FREQ** knob of Band 7 (set to Low Pass).\n- **Execution:** During a 4-bar build-up, move the knob from 200Hz up to 20kHz.\n- **Benefit:** The slider UI makes it very clear where your \"ceiling\" is compared to a graph-based EQ. [SRC: REPUTABLE]\n\n## Common Pitfalls + Fixes\n- **Pitfall:** \"The mix sounds thin/hollow.\"\n  - **Fix:** Check if you accidentally turned on a **High Pass (HP)** filter on Band 1 with a high frequency. \n- **Pitfall:** \"Clipping in the mixer.\"\n  - **Fix:** EQ is additive. If you boost multiple bands, you are increasing the total volume. Pull down the **Main Volume** of the mixer track to compensate. [SRC: IL-MAN]\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity Parametric EQ\n\nEQ is the primary tool for carving the \"physical\" space of a vibe.\n\n## 1. Moody (Submerged, Dark, Nostalgic)\n- **Concept:** Removing the \"light\" (high frequencies).\n- **Levers:**\n  - **Band 7 (Low Pass):** Set to 2kHz. Everything will sound like it's in the next room.\n  - **Band 2 (Low Mid Boost):** Boost 300Hz by 3dB with a wide Q to add \"muddy warmth.\"\n- **Listen For:** A sense of isolation and heaviness.\n- **Don't Do This:** Don't boost 5kHz+; it will break the dark immersion.\n\n## 2. Upbeat (Punchy, Bright, Pop)\n- **Concept:** Emphasizing the \"snap\" and transients.\n- **Levers:**\n  - **Band 1 (High Pass):** Set to 150Hz to remove all rumble.\n  - **Band 5 (Presence):** Boost 3kHz-5kHz by 4dB. This makes vocals and snares \"pop\" forward.\n- **Listen For:** Immediate clarity and movement.\n- **Don't Do This:** Don't over-boost the sub-bass; it will make the mix \"slow.\"\n\n## 3. Psychedelic (Morphing, Resonance, Liquid)\n- **Concept:** Extreme filter shapes and movement.\n- **Levers:**\n  - **Band 4 (Bandpass):** Use a narrow Q and automate the FREQ knob to sweep across the spectrum.\n  - **Notch Chains:** Use two narrow notches (Bands 3 and 5) and automate them moving in opposite directions.\n- **Listen For:** \"Phasing\" sounds and vowel-like movements.\n- **Don't Do This:** Avoid flat EQ lines; something should always be moving.\n\n## 4. Jazzy (Organic, Balanced, Acoustic)\n- **Concept:** Respecting the natural instrument tone.\n- **Levers:**\n  - **Band 3 (Wood/Body):** Gentle boost at 400Hz-600Hz for acoustic guitar or sax.\n  - **Wide Q Cuts:** Instead of narrow notches, use very wide, shallow cuts (-2dB) to gently push background elements away.\n- **Listen For:** Separation where you can hear every instrument's \"wood.\"\n- **Don't Do This:** Never use 100% High Pass or Low Pass filters; they sound too \"digital\" for jazz.\n\n## 5. Vibey (Smooth, Glossy, Modern R&B)\n- **Concept:** The \"Expensive\" High-End.\n- **Levers:**\n  - **Band 7 (High Shelf):** Gentle 3dB boost at 15kHz (\"Air\").\n  - **The \"Mid-Scoop\":** Wide, shallow cut at 1kHz. This makes room for the lush reverb and background vocals.\n- **Listen For:** A \"sheen\" that feels polished and high-fidelity.\n- **Don't Do This:** Don't leave any \"harsh\" frequencies in the 2kHz-4kHz range. [SRC: REPUTABLE]\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Parametric Eq\r\n\r\n## What It Is\r\nFruity Parametric Eq is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "peq1-vs-peq2": "# PEQ vs. PEQ2: Efficiency\n\nWhy use the original Parametric EQ when EQ 2 exists?\n\n## 1. CPU Footprint\nThe original Fruity Parametric EQ is significantly lighter on CPU than its successor. If you have a project with 100+ channels and need a simple high-pass on every track, the original PEQ is a valid choice to save resources.\n\n## 2. The \"Dirty\" Sound\nPEQ 1 uses older filter algorithms that some producers find have a grittier, less \"surgical\" character than PEQ 2. It can add a subtle coloration that works well for aggressive genres like Dubstep or Industrial.\n\n## 3. Workflow Speed\nWith fewer visual distractions (no spectrogram), PEQ 1 forces you to use your ears.\n",
+      "signal-flow": "# Signal Flow: Fruity Parametric Eq\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: Fruity Parametric EQ (5 Minutes)\n\n1.  **Insert:** Load **Fruity Parametric EQ** into any mixer slot.\n2.  **Pick a Band:** Start with **Band 1** (Low) or **Band 7** (High).\n3.  **Choose Shape:** Click the icons at the bottom. Start with **Shelf** for tonal changes or **HP/LP** for cutting.\n4.  **Boost/Cut:** Move the vertical slider up to boost or down to cut.\n5.  **Target Frequency:** Turn the **FREQ** knob below the slider until you hear the desired part of the sound change.\n6.  **Tip:** Hold **Alt+Click** on a slider to reset it to 0dB (Center). [SRC: IL-MAN]\n",
+      "01_Common_Mistakes": "# Common Mistakes: Fruity Parametric EQ\n\n- **Mixing with Eyes:** Trying to \"guess\" where the frequencies are because there's no visualizer. **Fix:** Close your eyes, move the FREQ knob, and stop when it sounds better.\n- **Narrow Q Boosting:** Boosting a very narrow bandwidth (high Q) by +10dB. This creates a painful \"ringing\" or \"whistling\" sound. **Fix:** Use wide bandwidths for boosts, narrow for cuts.\n- **Over-EQing:** Using all 7 bands on every track. **Fix:** Most tracks only need 1 or 2 moves (usually a High Pass and a small Mid cut).\n- **Ignoring Phasing:** Drastic HP filters on sub-bass can shift the phase of the kick drum. **Fix:** Use a gentle slope or High Shelf instead of High Pass for bass management.\n- **Loudness Confusion:** Not realizing that boosting an EQ band makes the whole track louder. **Fix:** Check your mixer peak meters after ogni EQ move. [SRC: REPUTABLE]\n",
+      "02_Best_Settings_Starting_Points": "# Best Settings Starting Points: Fruity Parametric EQ\n\n| Target Sound | Band | Shape | Freq | Gain | Use Case |\n| :--- | :--- | :--- | :--- | :--- | :--- |\n| **Thump Kick** | 2 | Peaking | 60Hz | +3dB | Adding weight to a weak kick. |\n| **Clean Vocal** | 1 | High Pass | 150Hz | N/A | Removing chest mud/rumble. |\n| **Vocal Air** | 7 | High Shelf | 12kHz | +4dB | Adding \"Gloss\" to R&B vocals. |\n| **Melody Pocket**| 4 | Peaking | 500Hz | -4dB | Making room for the lead vocal. |\n| **Snare Snap** | 5 | Peaking | 3kHz | +3dB | Adding definition to drum hits. |\n\n*Note: Frequencies are targets—sweep the FREQ knob to find the exact \"sweet spot\" for your sample.* [SRC: IL-MAN]\n",
+      "03_Vibe_Starting_Points_Moody": "# Vibe Starting Points: Moody (Fruity Parametric EQ)\n\n- **The Goal:** A submerged, underwater sound common in Drake/40 style hip-hop.\n- **Recipe:**\n  1. Set **Band 7** to **Low Pass (LP)**.\n  2. Turn the FREQ knob down to **800 Hz**.\n  3. Set **Band 1** to **High Pass (HP)**.\n  4. Turn the FREQ knob up to **200 Hz**.\n  5. Boost **Band 3** (Peaking) at **400 Hz** by +2dB with a wide Q.\n- **Result:** The melody is trapped in a narrow mid-range \"pocket,\" making it feel distant and melancholic.\n- **Mix Tip:** Place a Reverb *after* this EQ to add \"atmosphere\" to the muffled sound. [SRC: REPUTABLE]\n",
+      "04_Vibe_Starting_Points_Upbeat_Psychedelic_Jazzy_Vibey": "# Vibe Starting Points: Upbeat, Psychedelic, Jazzy, Vibey\n\n## Upbeat (The \"Mainstream Pop\" Look)\n- **Settings:** Band 1 HP @ 180Hz, Band 7 High Shelf @ 10kHz (+5dB).\n- **Tip:** Drastically cut the 300Hz range on the melody to remove all \"thickness,\" leaving only the \"shine.\"\n\n## Psychedelic (The \"Resonant Sweep\")\n- **Settings:** Band 4 Bandpass (BP), High Q (Narrow).\n- **Automation:** Right-click Band 4 FREQ knob -> Create Automation Clip.\n- **Effect:** Sweep across the spectrum for a \"wah-wah\" or \"trippy\" texture.\n\n## Jazzy (The \"Warm Console\")\n- **Settings:** Band 2 Low Shelf @ 250Hz (+2dB), Band 6 Peaking @ 2kHz (-2dB).\n- **Context:** Softens the digital harshness of modern VSTs to make them sound like analog jazz recordings.\n\n## Vibey (The \"Expensive Sheen\")\n- **Settings:** Band 7 High Shelf @ 16kHz (+3dB), Band 4 Peaking @ 1kHz (-3dB, Wide Q).\n- **Context:** The classic \"smiley face\" curve for R&B buses. [SRC: REPUTABLE]\n",
+      "cheat-sheet": "# Fruity Parametric EQ (v1): Cheat Sheet\r\n\r\nThe legacy 7-band parametric equalizer. While PEQ2 is superior visually, PEQ1 is slightly lower CPU and offers a different \"sound\" to its curves.\r\n\r\n## Parameters\r\n\r\n| Parameter | Function | Context / Tip |\r\n| :--- | :--- | :--- |\r\n| **Frequency (Freq)** | The center frequency of the band. | **Tip:** Ranges from 10Hz to 20kHz. |\r\n| **Amount (Gain)** | Boost or Cut level. | **Tip:** Center is 0dB. Up is Boost, Down is Cut. |\r\n| **Bandwidth (BW)** | The width (Q) of the bell curve. | **Tip:** Narrow BW = Surgical cuts. Wide BW = Musical tone shaping. |\r\n| **Band Type** | Shape of the band (Peaking, Low Shelf, High Shelf, etc). | **Tip:** Usually selected via the icons or right-click menu. |\r\n| **Global Gain** | Overall output volume. | **Tip:** Use to compensate if you boost too many frequencies. |\r\n\r\n## Quick Reference\r\n*   **Best For:** Simple high-passing, lightweight automation.\r\n*   **Why use it over PEQ2?** Sometimes the fixed bands feel faster to map to a MIDI controller (7 knobs for 7 bands).\r\n",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Parametric Eq\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Parametric Eq to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Parametric Eq\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Parametric Eq\r\n\r\nThis section contains learning information for the fruity-parametric-eq plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: Telephone / Radio Effect (PEQ1)\n\n## Step-by-Step Setup\n1.  Load **Fruity Parametric EQ**.\n2.  **Band 1 (HP):** Set to High Pass. Freq @ **400 Hz**. (Removes all bass/body).\n3.  **Band 7 (LP):** Set to Low Pass. Freq @ **3.5 kHz**. (Removes all high-end air).\n4.  **Band 4 (Presence):** Set to Peaking. Freq @ **1.5 kHz**. Boost by **+6dB**. (Adds the nasal \"speaker\" sound).\n5.  **Band 5:** Boost **2.5 kHz** by **+3dB** for extra harshness.\n\n## Context Application\n- **Hip-Hop Intro:** Perfect for making a vocal intro sound like a phone call or an old radio broadcast.\n- **Vibe:** Moody/Psychedelic.\n\n## Automation Idea\n- Automate the **Mix Level** of the plugin slot so the \"Radio\" effect slowly fades into the full-fidelity song as the beat drops. [SRC: REPUTABLE]\n",
+      "01_Goal_Shaping_And_Control": "# Goal: Mixing with Ears (The PEQ1 Philosophy)\n\n## The Concept\nModern mixing relies too heavily on looking at spectrograms. PEQ1 forces you to focus on the **tone** rather than the **picture**.\n\n## Step-by-Step Setup\n1.  Load **Fruity Parametric EQ**.\n2.  **Close your eyes.** (Seriously).\n3.  Select a band (e.g., Band 4). \n4.  Move the slider up to **+6dB**.\n5.  Slowly turn the **FREQ** knob from left to right.\n6.  **Stop** when the sound feels \"right\" or when you find a frequency that sounds unpleasant.\n7.  Adjust the **BW (Q)** knob to refine the shape.\n8.  Pull the slider down to your final setting.\n\n## Vibe Check\n- **Jazzy/Vibey:** This technique results in more musical decisions that \"fit\" the groove, rather than just chasing a flat frequency line.\n\n## Variation\n- **A/B Comparison:** Toggle the plugin on/off using the green light in the mixer. If you can't hear a clear improvement, you've over-EQ'd. [SRC: REPUTABLE]\n"
+    },
+    "by-instrument": {
+      "bass": "# Workflow: 808 & Kick Pocketing (PEQ1)\n\n## The Concept\nCarving out space so your low-end feels \"locked in\" and punchy.\n\n## Step-by-Step\n1.  Load PEQ1 on the **808 Mixer Track**.\n2.  **Band 1 (High Pass):** Set to 30Hz. (Kills sub-rumble that speakers can't play).\n3.  **Band 2 (The Pocket):** Set to Peaking. Freq @ **60 Hz** (or wherever your Kick hits).\n4.  **Cut:** Pull the slider down to **-4dB**. \n5.  **Band 3 (The Knock):** Boost **100 Hz** by **+2dB** to add \"punch\" to the 808.\n\n## Vibe Check\n- **Upbeat:** This creates a tight, aggressive low-end that makes people want to move.\n- **Mono Check:** Ensure your Master is in mono while doing this to check for phase-cancellation.\n\n## Pitfalls\n- **Over-Cutting:** If you cut too much at 60Hz, the 808 will lose its power. Keep cuts subtle (-3dB to -6dB). [SRC: REPUTABLE]\n",
+      "drums": "# Instrument: Drums\n\nUsing the original PEQ on drums.\n\n## Kick\n- **Band 1**: Low shelf boost at 80Hz.\n- **Band 3**: Dip at 400Hz to remove \"cardboard\" sound.\n- **Band 7**: High shelf boost at 5kHz for click.\n\n## Snare\n- **Band 1**: High pass at 100Hz.\n- **Band 4**: Boost at 200Hz for body.\n- **Band 6**: Boost at 5kHz for snap.\n"
+    },
+    "common-usage.md": {
+      "common-usage": "# Common Workflows: Fruity Parametric EQ\r\n\r\n## 1. The \"Old School\" Low Cut\r\n**Goal:** Clean up mud using Band 1.\r\n\r\n1.  Select **Band 1**.\r\n2.  Set Type to **Low Cut** (High Pass) or **Low Shelf**.\r\n3.  Drag the Frequency knob to around 100-200Hz.\r\n4.  Reduce the Gain (if Shelf) essentially \"killing\" the bass.\r\n\r\n## 2. Automating a Telephone Filter\r\n**Goal:** Transition effect.\r\n\r\n1.  Use **Band 1** as a High Pass (Low Cut).\r\n2.  Use **Band 7** as a Low Pass (High Cut).\r\n3.  Create an Automation Clip for the **Frequency** of both bands.\r\n4.  Start with them wide open.\r\n5.  Automate them to close in on the center (1kHz - 3kHz).\r\n    *   *Result:* The sound gets \"smaller\" and thinner, like moving away into a distance or through a phone.\r\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Parametric Eq\r\n\r\nThis section contains workflow information for the fruity-parametric-eq plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Parametric Eq\r\n\r\nThis section contains reference information for the fruity-parametric-eq plugin.\r\n"
+    }
+  }
+}

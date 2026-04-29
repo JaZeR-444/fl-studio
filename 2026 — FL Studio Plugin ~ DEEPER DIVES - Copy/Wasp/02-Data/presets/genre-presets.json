@@ -1,0 +1,73 @@
+{
+  "presetArchetypes": {
+    "classicBass": {
+      "description": "Dark, punchy bass for hip-hop foundation",
+      "settings": {
+        "osc1": { "wave": "saw", "octave": -1, "detune": 0 },
+        "osc2": { "wave": "square", "octave": -1, "detune": 5 },
+        "filter": { "cutoff": 35, "resonance": 35 },
+        "filterEnv": { "attack": 10, "decay": 200, "sustain": 50, "release": 100 },
+        "ampEnv": { "attack": 5, "decay": 100, "sustain": 80, "release": 50 },
+        "chorus": "on"
+      },
+      "useCases": ["hip-hop bass", "R&B sub", "foundation layer"],
+      "tags": ["hip-hop/rap", "R&B", "dark"]
+    },
+    "buzzyLead": {
+      "description": "Cutting lead for hooks and melodies",
+      "settings": {
+        "osc1": { "wave": "saw", "octave": 0, "detune": 10 },
+        "osc2": { "wave": "saw", "octave": 0, "detune": -10 },
+        "filter": { "cutoff": 60, "resonance": 25 },
+        "filterEnv": { "attack": 5, "decay": 150, "sustain": 70, "release": 100 },
+        "ampEnv": { "attack": 10, "decay": 200, "sustain": 60, "release": 150 },
+        "chorus": "on"
+      },
+      "useCases": ["synth lead", "hook melody", "arpeggio"],
+      "tags": ["electric", "upbeat", "cutting"]
+    },
+    "electricKeys": {
+      "description": "Retro electric piano sound",
+      "settings": {
+        "osc1": { "wave": "square", "octave": 0, "detune": 0 },
+        "osc2": { "wave": "square", "octave": 1, "detune": 3 },
+        "filter": { "cutoff": 70, "resonance": 15 },
+        "filterEnv": { "attack": 2, "decay": 100, "sustain": 80, "release": 200 },
+        "ampEnv": { "attack": 5, "decay": 50, "sustain": 90, "release": 100 },
+        "chorus": "on"
+      },
+      "useCases": ["electric piano", "_keys", "chords"],
+      "tags": ["funky", "R&B", "smooth"]
+    },
+    "syncGrowl": {
+      "description": "Aggressive sync sound for emphasis",
+      "settings": {
+        "osc1": { "wave": "saw", "octave": 0, "detune": 0 },
+        "osc2": { "wave": "saw", "octave": 0, "detune": 0, "sync": true },
+        "filter": { "cutoff": 45, "resonance": 50 },
+        "filterEnv": { "attack": 1, "decay": 300, "sustain": 60, "release": 200 },
+        "ampEnv": { "attack": 1, "decay": 50, "sustain": 100, "release": 100 },
+        "chorus": "off"
+      },
+      "useCases": ["builds", "drops", "aggressive hooks"],
+      "tags": ["electric", "intense", "psychedelic"]
+    }
+  },
+  "genreStartingPoints": {
+    "hipHop": {
+      "subBass": { "cutoff": 25, "resonance": 25, "chorus": true },
+      "midBass": { "cutoff": 40, "resonance": 40, "chorus": true },
+      "keys": { "cutoff": 65, "resonance": 20, "chorus": true }
+    },
+    "rnb": {
+      "smoothBass": { "cutoff": 35, "resonance": 30, "chorus": true },
+      "electricKeys": { "cutoff": 70, "resonance": 15, "chorus": true },
+      "pad": { "cutoff": 75, "resonance": 10, "chorus": true }
+    },
+    "deepBassEDM": {
+      "wobble": { "cutoff": 35, "resonance": 45, "chorus": false },
+      "growl": { "cutoff": 45, "resonance": 55, "chorus": false },
+      "layer": { "cutoff": 55, "resonance": 35, "chorus": true }
+    }
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "id": "fruity-granulizer",
+  "name": "Fruity Granulizer",
+  "category": "Creative",
+  "tier": "Free",
+  "type": "Creative",
+  "description": "Fruity Granulizer - Creative",
+  "tags": [
+    "creative",
+    "experimental",
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "creative",
+    "experimental",
+    "fx",
+    "audio"
+  ],
+  "icon": "/plugins/fruity-granulizer-icon.svg",
+  "color": "#EC4899",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-granulizer",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "granulizer-params": {
+      "plugin_name": "Fruity Granulizer",
+      "category": "Granular Synth",
+      "parameters": [
+        {
+          "name": "ATT",
+          "type": "knob",
+          "description": "Grain Attack - Fades the grain in and out.",
+          "vibe_impact": "Smoothness, silk, ethereal",
+          "mix_impact_tags": [
+            "transient",
+            "artifact"
+          ]
+        },
+        {
+          "name": "HOLD",
+          "type": "knob",
+          "description": "Grain Hold - The duration of each grain.",
+          "vibe_impact": "Body, weight, harmonic focus",
+          "mix_impact_tags": [
+            "depth",
+            "loudness"
+          ]
+        },
+        {
+          "name": "G.SPACING",
+          "type": "knob",
+          "description": "Grain Spacing - The spawn rate of new grains.",
+          "vibe_impact": "Rhythm, jitter, energy",
+          "mix_impact_tags": [
+            "motion",
+            "rhythm"
+          ]
+        },
+        {
+          "name": "W.SPACING",
+          "type": "knob",
+          "description": "Wave Spacing - Traversal speed through the sample.",
+          "vibe_impact": "Time warpage, reverse, freeze",
+          "mix_impact_tags": [
+            "motion",
+            "direction"
+          ]
+        },
+        {
+          "name": "RAND",
+          "type": "knob",
+          "description": "Randomness - Randomizes grain start position.",
+          "vibe_impact": "Chaos, trippy, organic",
+          "mix_impact_tags": [
+            "depth",
+            "width"
+          ]
+        },
+        {
+          "name": "PAN",
+          "type": "knob",
+          "description": "Pan Spread - Randomly pans grains.",
+          "vibe_impact": "Width, immersion, vibe",
+          "mix_impact_tags": [
+            "width",
+            "stereo"
+          ]
+        }
+      ]
+    }
+  },
+  "presets": {
+    "ambient-cloud": {
+      "presetName": "Ambient Cloud",
+      "plugin": "Fruity Granulizer",
+      "description": "Smears the sample into a seamless pad.",
+      "settings": {
+        "grainSpacing": 30,
+        "waveSpacing": 0,
+        "attack": 50,
+        "release": 50,
+        "hold": 0
+      },
+      "usage": "Turn any short sample (like a bell or pluck) into an infinite drone."
+    },
+    "stutter-bass": {
+      "presetName": "Stutter Bass",
+      "plugin": "Fruity Granulizer",
+      "description": "Aggressive, fast-retriggering bass texture.",
+      "settings": {
+        "grainSpacing": 20,
+        "waveSpacing": 0,
+        "attack": 0,
+        "hold": 10
+      },
+      "usage": "Use with a saw wave sample for Neuro-style bass movement."
+    },
+    "vocal-chops": {
+      "presetName": "Vocal Chops",
+      "plugin": "Fruity Granulizer",
+      "description": "Stuttery, glitchy vocal settings.",
+      "settings": {
+        "grainSpacing": 80,
+        "waveSpacing": 100,
+        "attack": 5,
+        "hold": 0,
+        "loop": true
+      },
+      "usage": "Load a vocal sample and play chords to create a choppy texture."
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity Granulizer\n\n## Purpose & Identity\nFruity Granulizer is a specialized **Granular Sampler**. Its primary identity is a texture-generation engine. Instead of playing back a sample normally, it breaks the audio into thousands of tiny pieces called \"grains.\" By replaying, overlapping, and staggering these grains, Granulizer can \"freeze\" time, change pitch without affecting speed, and create ethereal clouds of sound. [SRC: IL-MAN]\n\n## 60-Second Mental Model\nImagine a photograph. A standard sampler plays the whole photo. Granulizer cuts the photo into tiny confetti-sized squares. It then throws the confetti into the air and lets you control how fast it falls, which direction it blows, and how much it overlaps. You can make a 1-second vocal \"Ah\" last for an eternity.\n\n## Hip-Hop / R&B Context\n- **Vocal Clouds:** Turning a single word from a vocal take into a wide, shimmering background pad (Spacey).\n- **Glitchy Hats:** Using short grain sizes to turn a hi-hat sample into a robotic, stuttering texture (Upbeat).\n- **Ambient Outros:** Stretching the final chord of a beat into an infinite, drifting atmosphere (Vibey).\n\n## When To Use\n- When you want to **time-stretch** a sample to extreme lengths (1% speed).\n- When you need a **ghostly or ethereal** texture.\n- When you want to create **glitchy, robotic artifacts** intentionally.\n\n## When NOT To Use\n- **Pristine Sampling:** If you want a sample to sound exactly like the original, use the standard **Fruity Sampler**.\n- **Real-time Performance:** Granulizer can have a small \"startup\" lag as it fills its grain buffer. [SRC: REPUTABLE]",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Fruity Granulizer\n\n## UI Tour\nThe interface is divided into sample properties, grain engine settings, and modulation. [SRC: IL-MAN]\n\n### 1. Grain Engine (The \"Confetti\")\n- **ATT (Grain Attack)**: Fades each grain in. High values create smooth washes; low values create clicks.\n- **HOLD (Grain Hold)**: The length of each individual grain.\n- **G.SPACING (Grain Spacing)**: How often a new grain is spawned. This effectively controls the \"speed\" of the playback.\n\n### 2. Wave Engine (The \"Flow\")\n- **W.SPACING (Wave Spacing)**: Controls where the next grain is pulled from in the sample. \n  - *Positive*: Forward flow.\n  - *Zero*: Frozen at one spot.\n  - *Negative*: Reversed flow.\n\n### 3. Mod & FX (The \"Chaos\")\n- **RAND (Randomness)**: Randomizes the starting position of each grain.\n- **PAN (Pan Spread)**: Randomly pans each grain across the stereo field.\n- **LFO Section**: Automates the wave spacing for vibrato or rhythmic patterns.\n\n## Signal Flow\n1. **Sample Load**: Audio file is loaded into the buffer.\n2. **Grain Slicing**: The engine identifies a window of audio based on **HOLD**.\n3. **Envelope Application**: Each grain is shaped by the **ATT** (Attack) curve.\n4. **Spatial Positioning**: Grains are panned based on the **PAN** setting.\n5. **Traversal**: The engine moves through the sample based on **W.SPACING**.\n6. **Summing**: Multiple overlapping grains (polyphony) are mixed into the output.\n\n## Things Beginners Misunderstand\n- **\"It sounds like a robot\"**: This happens when grains are too short and spacing is too regular. Increase **ATT** and **RAND** to \"humanize\" the grain cloud.\n- **Polyphony**: Granulizer can play many grains at once. If your CPU is spiking, lower the grain density by increasing **G.SPACING**.\n- **W.SPACING vs G.SPACING**: Spacing is *how often* a grain is triggered; Wave Spacing is *where* the engine looks for the next grain.\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques And Best Practices: Fruity Granulizer\n\n## 1. The \"Infinite Cloud\" (Audio Freezing)\nSet **W.SPACING** to 0 and **G.SPACING** to a low value.\n- **Technique**: Use a long **ATT** (50%+) and a long **HOLD**.\n- **Listen For**: A smooth, never-ending sustain of whatever millisecond of audio the cursor is currently touching.\n\n## 2. Reversed Grain Swirl\nSet **W.SPACING** to a negative value.\n- **Technique**: This makes the grains play in reverse order, but the individual grains themselves still play forward.\n- **Listen For**: A \"sucking\" or \"rising\" texture that is perfect for psychedelic transitions.\n\n## 3. The \"Spectral Smear\"\nCrank the **RAND** (Randomness) knob to 100%.\n- **Technique**: Use this on a busy sample like a city street or a drum loop.\n- **Listen For**: The recognizable rhythms disappear and turn into a \"texture cloud\" or \"wall of sound.\"\n\n## 4. Key-to-Sample Mapping\nIn the \"Time\" tab, adjust the **START** position while holding different keys.\n- **Technique**: You can make the Piano Roll play different parts of a vocal sample depending on the MIDI note.\n- **Benefit**: \"Performing\" a sample across the keys.\n\n## 5. Mono-Check and Phase\n- **Protocol**: High **PAN** spread settings create massive width but can vanish in mono.\n- **Fix**: Check Mono. If the sound thins out too much, lower the **PAN** knob until the \"core\" of the grain is audible in the center. [SRC: REPUTABLE]\n\n## Common Pitfalls + Fixes\n| Pitfall | The Fix |\n| :--- | :--- |\n| **Metallic Ringing** | Increase **ATT** or use a Low-Pass filter to remove aliasing. |\n| **Losing the Beat** | Sync **G.SPACING** manually to your project tempo. |\n| **Clicks and Pops** | Increase **ATT** (Attack) to smooth the grain edges. |\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity Granulizer\n\nGranulizer translates vibes through **Temporal Manipulation** and **Spectral Smearing**.\n\n## 1. Spacey (Galactic, Infinite, Weightless)\n- **Concept:** \"The Infinite Freeze.\"\n- **Levers:**\n  - **Grain Spacing:** Set to maximum (Clockwise).\n  - **Hold:** High (50%+).\n  - **Attack:** High (ensure smooth crossfades).\n- **Listen For:** The audio \"stopping\" in time but continuing to shimmer. It sounds like being frozen in a nebula.\n\n## 2. Psychedelic (Backwards, Warped, Liquid)\n- **Concept:** \"Reverse Grain Flow.\"\n- **Levers:**\n  - **Wave Spacing:** Negative (Counter-clockwise).\n  - **Randomness:** Medium (30%).\n- **Listen For:** The sample playing \"backwards\" grain-by-grain, creating a sucking, surreal texture that feels physically impossible.\n\n## 3. Upbeat (Glitchy, Robotic, Kinetic)\n- **Concept:** \"The Digital Stutter.\"\n- **Levers:**\n  - **Hold:** Very short (10-20ms).\n  - **Attack:** Zero (to encourage clicking).\n  - **Speed:** High.\n- **Listen For:** Metallic, high-speed repetitions that sound like a computer glitching in time with the beat.\n\n## 4. Vibey (Lush, Shimmering, Polished)\n- **Concept:** \"The Vocal Halo.\"\n- **Levers:**\n  - **Pan Spread:** Maximum (100%).\n  - **Randomness:** High (70%+).\n  - **Sample:** A smooth R&B vocal \"Ooh.\"\n- **Listen For:** A wide, airy wash of sound where you can no longer hear the individual words, only the \"vibe\" of the voice.\n\n## 5. Moody (Dark, Distant, Submerged)\n- **Concept:** \"The Grainy Shadow.\"\n- **Levers:**\n  - **Sample Start:** Set to a quiet part of the sample.\n  - **LFO Depth:** Low.\n  - **Post-Filter:** Low Pass @ 500Hz.\n- **Listen For:** A muffled, crackling atmosphere that feels like a dusty old record being stretched. [SRC: REPUTABLE]",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Granulizer\r\n\r\n## What It Is\r\nFruity Granulizer is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "grain-envelopes": "# Grain Envelopes Explained\n\nThe shape of the individual grain is crucial for the texture.\n\n## Attack and Decay\n- **Sharp Attack/Decay**: Creates a buzzing, \"zipper\" noise. Good for aggressive bass or leads.\n- **Slow Attack/Decay**: Creates a blurred, smooth, \"cloud-like\" texture. Essential for pads.\n\n## Hold\n- Determines how long the grain stays at full volume before decaying.\n- **Short Hold**: Staccato grains.\n- **Long Hold**: Overlapping grains (smearing).\n\n## Randomness\n- Granulizer allows you to randomize the **Stereo Pan** of each grain.\n- **Workflow**: Turn up the stereo randomness to make a mono vocal sample sound incredibly wide and immersive.\n",
+      "granular-basics": "# Granular Synthesis Basics\n\nFruity Granulizer breaks audio into tiny pieces called \"grains.\"\n\n## Core Parameters\n- **Grain Spacing**: Determines how often a new grain is generated. Lower values = smoother sound, higher values = more \"buzz\" or stutter.\n- **Wave Spacing**: Controls the playback speed of the grains relative to the original sample.\n- **Attack/Hold/Decay**: This is the envelope *per grain*, not for the whole sound. Adjusting this changes the texture from \"clicking\" (fast attack/decay) to \"smooth\" (slow attack/decay).\n\n## The \"Transient\" Loop\nGranulizer is often better than a standard sampler for loops because it can stretch the loop to fit the tempo (using the 'Fit' option) while allowing you to completely deconstruct the texture of the sound without changing the pitch.\n",
+      "signal-flow": "# Signal Flow: Fruity Granulizer\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: Fruity Granulizer (5 Minutes)\n\n1.  **Load:** Drag a vocal or piano sample into the **Fruity Granulizer** window.\n2.  **Play:** Hold a MIDI note. It will likely sound like a choppy version of the original.\n3.  **Smooth:** Increase the **Grain Attack (ATT)** and **Hold** until the \"clicks\" disappear.\n4.  **Stretch:** Turn the **Grain Spacing** knob to the right. The sample will slow down significantly without changing pitch.\n5.  **Widen:** Turn the **Pan Spread** knob to the right to fill the stereo field.\n6.  **Tip:** Use the **Sample Start** knob to \"scan\" through different parts of the audio while playing. [SRC: IL-MAN]",
+      "grain-mechanics-visualized": "# Quick Reference: Grain Mechanics Visualized\n\nUnderstanding the \"Guts\" of the Granulizer engine. [SRC: IL-MAN]\n\n## 1. What is a Grain?\nA grain is a tiny \"window\" into your audio.\n- `[---Audio Sample---]`\n- `   [Grain 1]`\n- `      [Grain 2]`\n- `         [Grain 3]`\n\n## 2. Attack (ATT) vs. Hold (HOLD)\n- **HOLD**: The width of the window. `[HOLD]`\n- **ATT**: The \"curtain\" at the edges of the window.\n  - `0% ATT`: `[#######]` (Sharp edges = Clicks)\n  - `50% ATT`: `[/#####\\]` (Smoothed edges = Lush)\n\n## 3. Wave Spacing (W.SPACING)\nThe \"Step Size\" between the start of Grain 1 and Grain 2.\n- **Positive**: `G1 -> G2 -> G3` (Forward)\n- **Zero**: `G1, G1, G1` (Frozen in place)\n- **Negative**: `G3 -> G2 -> G1` (Backward)\n\n## 4. Grain Spacing (G.SPACING)\nThe \"Spawn Rate\" of new grains.\n- **Low Values**: Grains are triggered rapidly (creates a smooth, dense \"Cloud\").\n- **High Values**: Grains are triggered slowly (creates distinct rhythmic \"Steps\").\n\n## 5. Density vs. CPU\n- Higher density (Low G.SPACING + Long HOLD) = **High CPU**.\n- Lower density (High G.SPACING + Short HOLD) = **Low CPU**.\n",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Granulizer\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Granulizer to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Granulizer\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Granulizer\r\n\r\nThis section contains learning information for the fruity-granulizer plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: The \"Vocal Cloud\" (Fruity Granulizer)\n\n## Routing Context\n- **Target:** A single sustained vocal note (e.g., a \"Hey\" or \"Ooh\").\n- **Position:** Parallel Send (Wet 100%) followed by a massive Reverb.\n\n## Step-by-Step Setup\n1.  Drag your vocal sample into **Fruity Granulizer**.\n2.  Set **Grain ATT** to `40%` and **Grain HOLD** to `60%`.\n3.  Set **Grain Spacing** to `80%` (to slow it down).\n4.  Set **Pan Spread** to `100%`.\n5.  Set **Randomness** to `50%`.\n6.  **The Result:** The vocal is transformed into a wide, shimmering \"cloud\" where you can still hear the texture of the voice but no recognizable words.\n\n## Vibe Check\n- **Vibey/Spacey:** This is the foundational texture for high-end ambient R&B (think PARTYNEXTDOOR or 6LACK).\n\n## Automation Idea\n- Automate the **Wave Spacing** from positive to negative during a bridge to make the \"Cloud\" feel like it's reversing into itself. [SRC: REPUTABLE]\n",
+      "12_Vibe_Psychedelic": "# Vibe Workflow: Psychedelic (Re-Chop Melt)\n\n*Goal: Create a disorienting, melting sonic landscape that evolves unpredictably.*\n\n## 🎛️ Routing Context\n- **Routing**: Vocal phrase or Melodic sample -> Fruity Granulizer.\n- **Mix Status**: 100% Wet.\n\n## 🚶 Step-by-Step Setup\n1. **Initialize**: Set **W.SPACING** to -20% (Slow reverse traversal).\n2. **Thickness**: Set **HOLD** to 60%. **ATT** to 40%.\n3. **Chaos**: Crank **RAND** to 100%. Set **PAN** to 100%.\n4. **Modulation**: Automate **G.SPACING** using a random LFO so the grain density changes constantly.\n5. **Recording**: Arm your mixer and record 8 bars of this \"melted\" audio.\n6. **The Re-Chop**: Take the recorded audio, slice it into random 1/4 note segments, and reverse every second segment.\n7. **Mono Check**: Toggle Mono. Ensure the wide grains still have enough center energy to be heard.\n\n## 🔄 Variations\n- **The \"Data-Mosh\"**: Set **HOLD** to 5% and **ATT** to 0%. The sound will turn into digital static.\n- **The \"Pitch-Glitch\"**: Automate the **Pitch** knob in the Granulizer during the recording.\n\n## ⚠️ Pitfalls & Fixes\n- **Problem**: CPU Overload.\n- **Fix**: Increase **G.SPACING** (Slow down grain spawning) or reduce the number of active MIDI notes.\n",
+      "14_Vibe_Vibey": "# Vibe Workflow: Vibey (Silky Vocal Halo)\n\n*Goal: Add a luxurious, wide, and expensive-sounding atmosphere to a dry vocal.*\n\n## 🎛️ Routing Context\n- **Routing**: Lead Vocal -> Send Track (Fruity Granulizer) -> Reverb.\n- **Mix Status**: 100% Wet on the Send.\n\n## 🚶 Step-by-Step Setup\n1. **Source**: Load a 1-bar snippet of the lead vocal into the Granulizer.\n2. **Smoothness**: Set **ATT** to 80% (Long fades). Set **HOLD** to 50%.\n3. **Density**: Set **G.SPACING** to 10% (Very fast triggers).\n4. **Width**: Set **PAN** to 80%. **RAND** to 30% (Organic drift).\n5. **Slow Movement**: Set **W.SPACING** to 5% (Barely moving through the sample).\n6. **Integration**: Blend the Send fader until the vocal feels like it has a shimmering \"halo.\"\n7. **Mono Check**: Ensure the halo doesn't thin out the main vocal when summed to mono.\n\n## 🔄 Variations\n- **The \"High-End Cloud\"**: High-Pass the send track at 5kHz so you only flange/granulate the \"air.\"\n- **The \"Resampled Pad\"**: Record this halo to audio and use it as a separate pad instrument.\n\n## ⚠️ Pitfalls & Fixes\n- **Problem**: The grains are too \"jittery.\"\n- **Fix**: Increase **ATT** and reduce **RAND**.\n"
+    },
+    "by-instrument": {
+      "pads": "# Instrument: Pads (From Anything)\n\nHow to turn any noise into a pad.\n\n1. Load a sample of a spoken word or a foley sound (like keys jingling).\n2. Set **Attack** and **Release** to 50%.\n3. Set **Grain Spacing** low (20-40ms).\n4. Automate the **Sample Start** knob.\n5. **Result**: A spectral wash that retains the tonal characteristics of the original sound but loses all rhythmic context.\n"
+    },
+    "key-mapping-pitch.md": {
+      "key-mapping-pitch": "# Key Mapping for Pitch\n\nBy default, Granulizer changes speed when you change pitch (like a tape). To fix this:\n\n1. Go to **SMP** tab.\n2. Right-click **Pitch** knob -> **Reset**.\n3. In Granulizer parameters, set **Wave Spacing** to 100%.\n4. **Result**: Now, playing higher notes changes the pitch of the grains but NOT the speed of the sample playback. This is \"Time Stretching\" in real-time.\n"
+    },
+    "legacy-time-stretch.md": {
+      "legacy-time-stretch": "# Legacy Time Stretching\n\nBefore audio clips had advanced time-stretching algorithms (e3 generic, etc.), Granulizer was the king of tempo matching.\n\n## The Workflow\n1. Load a vocal loop that is 100bpm.\n2. Your project is 128bpm.\n3. Open Granulizer.\n4. Right-click the **Root Key** on the piano keyboard (C5) and select \"Autodetect\".\n5. OR simply use the **Time Stretching** knobs (Pitch/Mul) on the SMP tab, but Granulizer offers a texture that standard stretching doesn't.\n6. **Key Feature**: Turn the **Wave Spacing** to 100%. This locks the playback speed to the original sample speed. If you lower it, the sample plays slower *without* changing pitch (if Grain Spacing is set correctly).\n\n## The \"Freeze\" Effect\n1. Set **Wave Spacing** to 0%.\n2. Now the sample is frozen at the **Start** point.\n3. Automate the **Start** knob to scrub through the audio manually.\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Granulizer\r\n\r\nThis section contains workflow information for the fruity-granulizer plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Granulizer\r\n\r\nThis section contains reference information for the fruity-granulizer plugin.\r\n"
+    }
+  }
+}

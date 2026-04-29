@@ -1,0 +1,201 @@
+{
+  "description": "Genre-specific synthesis guidelines for GMS",
+  "usage": "Follow these rules when designing sounds for specific musical genres",
+  "genres": {
+    "edm": {
+      "name": "Electronic Dance Music",
+      "subgenres": ["House", "Trance", "Big Room", "Future Bass"],
+      "rules": {
+        "leads": {
+          "waveform": "Sawtooth for all oscillators",
+          "unisono": "6-8 voices, 70-80% stereo, 50-60% detune",
+          "filter": "LP with medium resonance (15-25%)",
+          "fx": "FLNG + RVRB + optional DIST for saturation",
+          "envelope": "Fast attack, medium decay, high sustain"
+        },
+        "bass": {
+          "waveform": "Sawtooth or FM sines",
+          "unisono": "2-4 voices max, 20-30% stereo",
+          "filter": "LP with modulation, try BP for midrange",
+          "fx": "DIST essential, HPF to clean mud",
+          "modulation": "LFO to cutoff for wobble"
+        },
+        "pads": {
+          "waveform": "Sawtooth or triangle",
+          "unisono": "8-12 voices, 90-100% stereo, 60-70% detune",
+          "filter": "LP with slow envelope modulation",
+          "fx": "PHSR + ECHO + RVRB",
+          "lfo": "Slow filter movement, pan modulation"
+        }
+      },
+      "vibeTargets": {
+        "brightAir": {
+          "unisono": "8 voices, wide stereo",
+          "filter": "85-95% cutoff",
+          "fx": "FLNG + high shelf EQ boost",
+          "result": "Shimmering, airy leads"
+        },
+        "subWeight": {
+          "modulation": "FM mode with sines",
+          "osc3": "Sub octave sine",
+          "unisono": "1 voice mono",
+          "result": "Deep, powerful subs"
+        },
+        "presentMid": {
+          "filter": "Resonant LP around 70-80%",
+          "fx": "Light DIST for edge",
+          "eq": "Boost 1.5-3kHz range",
+          "result": "Forward, present sounds"
+        }
+      }
+    },
+    "trap": {
+      "name": "Trap / Hip-Hop",
+      "subgenres": ["Drill", "Cloud Rap", "Dark Trap"],
+      "rules": {
+        "808Bass": {
+          "waveform": "Sine waves for all",
+          "modulation": "FM mode, 40% amount",
+          "envelope": "Pitch drop (negative pitch env)",
+          "unisono": "1 voice mono",
+          "fx": "Light DIST, HPF at 15%",
+          "osc3": "Sub layer at -12 semitones"
+        },
+        "melodicLeads": {
+          "waveform": "Sawtooth or triangle",
+          "unisono": "4-6 voices, 50-60% stereo",
+          "filter": "LP with envelope modulation",
+          "fx": "DIST + ECHO",
+          "glide": "Medium portamento for slides"
+        },
+        "darkPads": {
+          "waveform": "Sawtooth or pulse",
+          "unisono": "6-8 voices, 70% stereo",
+          "filter": "Lower cutoff (50-60%)",
+          "fx": "RVRB + PHSR",
+          "lfo": "Slow filter sweep"
+        }
+      },
+      "vibeTargets": {
+        "darkMood": {
+          "filter": "Low cutoff (45-55%)",
+          "waveform": "Pulse or sawtooth",
+          "fx": "Heavy RVRB, dark EQ",
+          "result": "Atmospheric, dark"
+        },
+        "aggressiveEdge": {
+          "modulation": "Sync or FM",
+          "fx": "DIST at 35-50%",
+          "filter": "Resonant with envelope",
+          "result": "Aggressive, cutting"
+        },
+        "wideAir": {
+          "unisono": "8 voices, wide spread",
+          "fx": "RVRB + stereo widening",
+          "result": " Spacious leads"
+        }
+      }
+    },
+    "pop": {
+      "name": "Pop Music",
+      "subgenres": ["Synth Pop", "Electropop", "Alt-Pop"],
+      "rules": {
+        "brightLeads": {
+          "waveform": "Sawtooth or mix of saw+triangle",
+          "unisono": "4-6 voices, 60% stereo",
+          "filter": "Bright LP (80-90% cutoff)",
+          "fx": "Subtle FLNG + ECHO",
+          "eq": "Boost presence range"
+        },
+        "warmKeys": {
+          "waveform": "Triangle or pulse",
+          "unisono": "2-4 voices, 40% stereo",
+          "filter": "Gentle LP",
+          "fx": "Light CHRS + ECHO",
+          "modulation": "Subtle pitch drift"
+        },
+        "modernBass": {
+          "waveform": "Sawtooth or FM",
+          "unisono": "2-3 voices, 15-25% stereo",
+          "filter": "Tight envelope modulation",
+          "fx": "Light saturation"
+        }
+      },
+      "vibeTargets": {
+        "brightAir": {
+          "filter": "High cutoff, light resonance",
+          "fx": "Subtle shimmer effects",
+          "unisono": "Medium width for clarity",
+          "result": "Bright, polished"
+        },
+        "presentMid": {
+          "eq": "Presence boost (2-3kHz)",
+          "fx": "Light compression",
+          "filter": "Mid-focused",
+          "result": "Forward in mix"
+        },
+        "warmLow": {
+          "osc3": "Warm sub layer",
+          "filter": "Gentle slope",
+          "fx": "Analog-style saturation",
+          "result": "Warm, full-bodied"
+        }
+      }
+    },
+    "experimental": {
+      "name": "Experimental / Avant-Garde",
+      "subgenres": ["IDM", "Glitch", "Ambient"],
+      "rules": {
+        "textures": {
+          "modulation": "Ring Modulation for inharmonic",
+          "waveform": "Any combination",
+          "unisono": "High voices (10-16) for chaos",
+          "fx": "CRSH + extreme processing",
+          "lfo": "Multiple LFOs at different rates"
+        },
+        "rhythmic": {
+          "modulation": "FM with high amounts",
+          "fx": "TRNC gate essential",
+          "lfo": "Synced to beat divisions",
+          "envelope": "Percussive, staccato"
+        },
+        "ambient": {
+          "waveform": "Sine, triangle",
+          "unisono": "Max voices, wide stereo",
+          "fx": "All spatial effects maxed",
+          "envelope": "Very long attack and release"
+        }
+      },
+      "vibeTargets": {
+        "textureWeird": {
+          "modulation": "RM with extreme settings",
+          "fx": "CRSH + PHSR",
+          "result": "Alien textures"
+        }
+      }
+    }
+  },
+  "crossGenrePrinciples": [
+    {
+      "principle": "Bass must be mono-compatible",
+      "application": "All genres",
+      "rule": "Keep sub frequencies in mono (0% stereo spread)"
+    },
+    {
+      "principle": "Leads need presence",
+      "application": "All genres except ambient",
+      "rule": "3-6kHz range must be audible for intelligibility"
+    },
+    {
+      "principle": "Pads create space",
+      "application": "All genres",
+      "rule": "Use reverb and wide stereo for atmospheric elements"
+    },
+    {
+      "principle": "FX serve the sound",
+      "application": "All genres",
+      "rule": "Effects should enhance, not dominate"
+    }
+  ],
+  "source": "Image-Line GMS Manual"
+}

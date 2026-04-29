@@ -1,0 +1,139 @@
+{
+  "id": "fruity-filter",
+  "name": "Fruity Filter",
+  "category": "Filter",
+  "tier": "Free",
+  "type": "Filter",
+  "description": "Fruity Filter - Filter",
+  "tags": [
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "filtering",
+    "tone-shaping",
+    "audio"
+  ],
+  "icon": "/plugins/fruity-filter-icon.svg",
+  "color": "#F97316",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-filter",
+  "has_presets": false,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "pluginName": "Fruity Filter",
+    "category": "Filter",
+    "parameters": [
+      {
+        "section": "Filter Core",
+        "id": "cutoff",
+        "name": "Cutoff Freq",
+        "range": {
+          "min": 10,
+          "max": 20000,
+          "unit": "Hz"
+        },
+        "description": "Center frequency."
+      },
+      {
+        "section": "Filter Core",
+        "id": "res",
+        "name": "Resonance",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "Feedback/Q amount."
+      },
+      {
+        "section": "Mix",
+        "id": "low_pass",
+        "name": "Low Pass",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "LP Output Level."
+      },
+      {
+        "section": "Mix",
+        "id": "band_pass",
+        "name": "Band Pass",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "BP Output Level."
+      },
+      {
+        "section": "Mix",
+        "id": "high_pass",
+        "name": "High Pass",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "HP Output Level."
+      },
+      {
+        "section": "Options",
+        "id": "oversample",
+        "name": "x 2",
+        "options": [
+          "Off",
+          "On"
+        ],
+        "description": "2x Oversampling."
+      }
+    ]
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity Filter\n\n## The 60-Second Mental Model\nFruity Filter is a **State Variable Filter (SVF)**. Unlike standard EQ plugins that are designed for \"clean\" carving, an SVF is designed for **character**. It uses an internal feedback loop to create Low Pass, High Pass, and Band Pass shapes. Its standout feature is the **2x Oversampling** switch, which allows the filter to sweep through high frequencies with less digital \"grit\" and more analog smoothness. [SRC: IL-MAN]\n\n## Purpose & Identity\n*   **Identity:** A legacy tonal shaper with a distinctive resonant \"peak.\"\n*   **Where it fits:** It's an Effect. Use it when you want your filter sweeps to sound \"liquid\" or when you need a quick Band Pass for a telephone effect.\n\n## Hip-Hop / R&B Context\n*   **Ghostly Melodies:** Use the **Band Pass (BP)** mode to isolate the mid-range of a piano, making it sound like a haunted sample from an old vinyl.\n*   **High-End Sparkle:** Apply a High Pass (HP) sweep to hi-hats during a transition. Turn on **2x mode** to ensure the shimmer stays clean and high-fidelity.\n*   **Ambient Noise Sweeps:** Filter a white noise source with high resonance to create wind or \"whoosh\" risers for transition FX.\n\n## When To Use\n*   When you want a filter with a **distinct personality** or \"whistle.\"\n*   When performing **fast automation** (risers/drops) where digital aliasing might be an issue.\n*   When you need a simple **High Pass** to clean up 808 rumble without loading a complex EQ.\n\n## When NOT To Use\n*   **Surgical Precision:** Use **Parametric EQ 2** for cutting specific bad frequencies.\n*   **Steep Brickwalls:** SVFs like Fruity Filter have a relatively gentle slope (approx 12dB/oct). If you need a \"brickwall\" cut, use **Fruity Fast LP** or **EQ 2**. [SRC: REPUTABLE]\n",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Fruity Filter\n\n## UI Tour\n1.  **Cutoff Knob:** The main frequency control.\n2.  **Resonance (Res) Knob:** Controls the sharpness of the peak at the cutoff point.\n3.  **Filter Type Toggle:** \n    *   **Low Pass (LP):** Removes highs.\n    *   **High Pass (HP):** Removes lows.\n    *   **Band Pass (BP):** Removes both, leaving only a \"band.\"\n4.  **2x Switch:** Toggles oversampling for higher audio quality. [SRC: IL-MAN]\n5.  **Mix Faders:** (In some versions) allows independent control of the Dry and Filtered signals.\n\n## Signal Flow\n1.  **Input:** Audio enters.\n2.  **State Selection:** The signal is routed through the chosen filter algorithm (LP/HP/BP).\n3.  **Resonance Loop:** A portion of the signal is fed back into the filter to create the resonant peak.\n4.  **Oversampling:** If **2x** is ON, the internal processing rate is doubled to prevent aliasing.\n5.  **Output:** Summed signal is sent to the mixer.\n\n## Things Beginners Misunderstand\n*   **Resonance and Volume:** High resonance doesn't just change the tone; it **boosts volume** significantly. **Fix:** Lower the mixer fader before cranking the Res knob.\n*   **The 2x Mode CPU:** It uses more CPU than standard mode. Don't leave it on for every track if your project is large.\n*   **Frequency Range:** The Cutoff knob is extremely sensitive. A tiny movement in the low range (left side) changes the sound more than a large movement in the high range (right side). [SRC: REPUTABLE]\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques And Best Practices: Fruity Filter\n\n## Technique 1: The \"Radio\" Vocal\n*   **Goal:** Make a vocal sound like it’s coming through a telephone or small speaker.\n*   **Action:** \n    *   Select **BP (Band Pass)** mode.\n    *   Set **Cutoff** to ~1.5kHz (approx 1 o'clock).\n    *   Set **Resonance** to 20%.\n*   **Result:** The lows and highs are stripped away, leaving a focused, \"nasal\" sound perfect for R&B intros.\n\n## Technique 2: High-Fi Shimmer Risers\n*   **Goal:** A clean filter sweep during a build-up.\n*   **Setup:** Use White Noise or a bright synth pad.\n*   **Action:** \n    *   Engage **2x Oversampling**. \n    *   Automate the **Cutoff** from 0 to 100%.\n    *   Set **Resonance** to 50%.\n*   **Benefit:** The \"whistling\" peak will sound smooth and detailed rather than \"pixelated\" as it reaches the highest frequencies. [SRC: REPUTABLE]\n\n## Technique 3: Sub-Bass Protection\n*   **Goal:** Clearing space for the 808.\n*   **Action:** Place Fruity Filter on your Melody/Synth bus.\n*   **Settings:** Mode = **HP (High Pass)**. Cutoff = 300Hz (approx 9 o'clock).\n*   **Result:** All \"rumble\" is removed from the melodies, ensuring the 808 hits with maximum clarity.\n\n## Technique 4: \"Liquid\" Phasing Effect\n*   **Goal:** A trippy, moving texture.\n*   **Action:** Set Mode to **BP**. Turn Resonance to `70%`.\n*   **Automation:** Link the Cutoff to a slow LFO (Peak Controller).\n*   **Listen For:** The focused frequency band will slide up and down, creating a sound similar to a phaser but with more \"weight.\" [SRC: REPUTABLE]\n\n## Common Pitfalls + Fixes\n*   **Pitfall:** \"Digital distortion/clipping.\"\n    *   **Fix:** Resonance is likely too high. Turn the **Res** knob down or use a **Fruity Limiter** after the filter.\n*   **Pitfall:** \"The filter sweep sounds 'staticy'.\"\n    *   **Fix:** Enable **2x Oversampling**. This fixes the digital artifacts that occur when filter peaks move rapidly. [SRC: IL-MAN]\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity Filter\n\nFilter modes are the \"Environment\" of your track.\n\n## 1. Moody (Lonely, Ghostly, Distant)\n*   **Production Lever:** **Band Pass Mode + Low Cutoff.**\n*   **Action:** Mode: **BP**. Cutoff: ~500Hz. Resonance: 10%.\n*   **Listen For:** A muffled, \"trapped\" sound. It feels like the melody is playing in another room. \n*   **Don't Do This:** Avoid High Pass; it makes sounds feel \"thin\" rather than \"moody.\"\n\n## 2. Upbeat (Kinetic, Polished, Energetic)\n*   **Production Lever:** **2x Oversampling + High Pass Sweeps.**\n*   **Action:** Mode: **HP**. Use 2x mode. Automate the Cutoff to \"Reveal\" the sound on the downbeat.\n*   **Listen For:** A \"burst\" of clarity that makes the listener want to dance.\n*   **Don't Do This:** Don't keep the cutoff low; upbeat vibes need full-spectrum brightness.\n\n## 3. Psychedelic (Vibrant, Warped, Liquid)\n*   **Production Lever:** **High Resonance + Modulated BP.**\n*   **Action:** Mode: **BP**. Resonance: 80%. LFO on Cutoff.\n*   **Listen For:** A \"squelchy,\" metallic texture that feels like it’s moving in your brain.\n*   **Don't Do This:** Avoid Low Pass; BP is much more \"vocal\" and trippy.\n\n## 4. Jazzy (Warm, Antique, Soft)\n*   **Production Lever:** **Low Pass Mode + 2x Oversampling.**\n*   **Action:** Mode: **LP**. Cutoff: ~3kHz. Resonance: 0%.\n*   **Listen For:** A \"rounded\" tone that mimics vintage microphones. It softens the digital edges of modern VSTs.\n*   **Don't Do This:** Avoid resonance; keep the filter curve as flat and natural as possible.\n\n## 5. Vibey (Smooth, Shimmering, Airy)\n*   **Production Lever:** **Parallel HP Filtering.**\n*   **Action:** Place on a background pad. Mode: **HP**. Cutoff: 1kHz. Mix at 40%.\n*   **Listen For:** A \"shimmering\" high-end layer that sits on top of the main sound like a silk sheet.\n*   **Don't Do This:** Don't cut the mids too hard; you want a \"lush\" blend. [SRC: REPUTABLE]\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Filter\r\n\r\n## What It Is\r\nFruity Filter is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Fruity Filter\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: Fruity Filter (5 Minutes)\n\n1.  **Insert:** Load **Fruity Filter** onto any track (e.g., Vocals or a Pad).\n2.  **Mode:** Select the mode. `LP` for dark tones, `HP` for thin tones, `BP` for a radio sound.\n3.  **Frequency:** Move the **Cutoff** knob until you find the \"gap\" you want.\n4.  **Resonance:** Increase **RES** to make the filter \"sing.\"\n5.  **Quality:** Switch on **2x** if you are automating the Cutoff rapidly.\n6.  **Tip:** Use the **Mix** slider in the plugin (if available) or the mixer slot to blend the effect. [SRC: IL-MAN]\n",
+      "01_Common_Mistakes": "# Common Mistakes: Fruity Filter\n\n*   **Leaving 2x OFF for Risers:** Automating a high-resonance sweep with 2x disabled. This results in \"stepping\" noise and digital distortion in the high-end. **Fix:** Enable 2x for all transition sweeps.\n*   **Resonance Clipping:** Turning up RES to 100% and wondering why the whole project is distorting. **Fix:** Resonance is a volume boost. Turn down the mixer fader first.\n*   **Wrong Mode Choice:** Using LP when you want a telephone effect. **Fix:** **BP (Band Pass)** is the correct mode for the \"Phone/Radio\" sound.\n*   **Ignoring Input Gain:** Sending a signal that is already at 0dB into the filter. The resonance will immediately cause clipping. **Fix:** Keep input levels around -6dB to -12dB.\n*   **Static Filtering:** Loading the plugin and never automating it. Fruity Filter’s strength is in its **movement**. [SRC: REPUTABLE]\n",
+      "cheat-sheet": "# Fruity Filter: The State Variable\r\n\r\n> **Scope:** Sweeps, Notch Filtering, and Phase Cancellation.\r\n> **Source:** Image-Line Official Manual (v21.2) + Direct Analysis.\r\n> **Complexity:** Low (Academic).\r\n\r\n## 🧠 The \"Mix\" Concept\r\nMost filters give you a switch: LP **OR** HP.\r\nFruity Filter gives you **Faders**: LP **AND** HP.\r\n*   **State Variable:** It calculates all filter states simultaneously.\r\n*   **Topology:** Likely a 12dB/Octave (2-Pole) design.\r\n*   **Benefits:** You can create custom filter shapes by blending the outputs.\r\n\r\n**Signal Flow:**\r\n`Input` -> **[SV FILTER CORE]** -> **[LP/BP/HP MIX]** -> **[OVERSAMPLING]** -> **[OUTPUT]**\r\n\r\n---\r\n\r\n## 🎛️ Section 1: The Mix Knobs\r\n\r\n*   **Low Pass:** Frequencies below Cutoff.\r\n*   **High Pass:** Frequencies above Cutoff.\r\n*   **Band Pass:** Frequencies around Cutoff.\r\n*   **Combinations:**\r\n    *   *LP + HP:* **Notch Filter** (Band Stop). This removes the middle but keeps the lows and highs.\r\n    *   *All 3:* All Pass / Phasing effect (if phase relationships align).\r\n\r\n---\r\n\r\n## 🔁 Section 2: \"Center\" & \"x2\"\r\n\r\n*   **Center:** Removes DC Offset.\r\n    *   *Why:* Fast filter sweeps can generate low-frequency \"thumps\" or direct current bias. This fixes it.\r\n*   **x2 (Oversampling):** Runs the internal loop at double sample rate.\r\n    *   *Use:* Essential for High Resonance sweeps to prevent the filter from \"exploding\" or aliasing near Nyquist.\r\n\r\n---\r\n\r\n## ⚡ Technical Specs: 12dB Slope\r\n\r\n*   **Steepness:** The filter is gentle (12dB/Oct). It is not a brickwall.\r\n*   **Resonance:** Self-oscillates easily. The Resonance boosts the Cutoff frequency significantly.\r\n*   **Sound:** It has a \"wet\", \"acid\" character typical of State Variable filters (like the Oberheim SEM).\r\n\r\n---\r\n\r\n## 🧪 \"Secret Sauce\" Workflows\r\n\r\n### 1. Manual Notch Sweep (Phaser)\r\n1.  **Low Pass:** 100%.\r\n2.  **High Pass:** 100%.\r\n3.  **Band Pass:** 0%.\r\n4.  **Action:** Sweep the **Cutoff**.\r\n5.  **Result:** You hear a \"hole\" moving through the spectrum. This is the classic DJ \"Nutella\" effect (removing bass/mids without losing energy).\r\n\r\n### 2. The \"DJ\" Kill Switch\r\n1.  **Low Pass:** Link to a button.\r\n2.  **High Pass:** Link to a button.\r\n3.  **Cutoff:** Set to 200Hz.\r\n4.  **Action:** Toggle LP Off and HP On instantly (Bass Kill).\r\n\r\n### 3. Parallel Resonant Peak\r\n1.  **Context:** You want to boost a specific frequency without cutting others (Peaking EQ behavior).\r\n2.  **Setup:**\r\n    *   **Band Pass:** 100%.\r\n    *   **Resonance:** High.\r\n    *   **Mix:** Use the FL Mixer's Dry/Wet knob (Fruity Filter doesn't have a Dry knob, only filter outputs).\r\n    *   *Wait:* If you blend the Filter output with the Dry signal, you create a Peaking EQ.\r\n",
+      "free-filter-vs-fruity-filter": "# Free Filter vs. Fruity Filter: The Difference\n\nFL Studio has two \"standard\" filters. Here is when to use each.\n\n| Feature | Fruity Filter (Legacy) | Fruity Free Filter (Modern) |\n| :--- | :--- | :--- |\n| **Oversampling** | **YES (2x Switch)** | NO |\n| **Filter Types** | LP, HP, BP | LP, HP, BP, Notch, Low Shelf, High Shelf, Peaking |\n| **Resonance** | Aggressive / Whistling | Balanced / Musical |\n| **Slope** | Fixed (~12dB/oct) | Fixed (~12dB/oct) |\n| **Best For** | **Sound Design & Risers** | **Utility EQ & Tone Shaping** |\n\n## Why choose Fruity Filter?\nThe **2x Oversampling** makes it objectively better for high-speed automation and risers. The resonance also has a more \"vocal\" character compared to the transparent sound of Free Filter. [SRC: IL-MAN]\n",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Filter\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Filter to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Filter\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "quick-start-guide.md": {
+      "quick-start-guide": "# Fruity Filter Quick Start Guide\n\n## Getting Started in 60 Seconds\n\n### Basic Low-Pass Filter\n1. **Load Fruity Filter** on any track or mixer channel\n2. **Set Type to Low-Pass** (default)\n3. **Set Cutoff to 2kHz** for gentle high-frequency roll-off\n4. **Set Resonance to 25%** for musical warmth\n5. **Keep Mix at 100%** for full filtering effect\n\n## Filter Types Explained\n\n### Low-Pass (LP)\n**What it does**: Passes frequencies below cutoff, attenuates above\n**Best for**: Sub-bass, warmth, anti-aliasing\n**Starting point**: Cutoff 2-4kHz, Resonance 20-40%\n\n### High-Pass (HP) \n**What it does**: Passes frequencies above cutoff, attenuates below\n**Best for**: Removing rumble, creating space, cleaning tracks\n**Starting point**: Cutoff 80-150Hz, Resonance 10-30%\n\n### Band-Pass (BP)\n**What it does**: Passes frequencies around cutoff, attenuates outside\n**Best for**: Isolating frequency ranges, special effects\n**Starting point**: Cutoff 800-1200Hz, Resonance 30-50%\n\n### Notch Filter\n**What it does**: Cuts frequencies at cutoff, passes others\n**Best for**: Removing problem frequencies, feedback elimination\n**Starting point**: Cut 400-600Hz, narrow Q (70-90%)\n\n### Band-Reject (BR)\n**What it does**: Wide notch with selectable width\n**Best for**: General frequency reduction, room correction\n**Starting point**: Cut 300-800Hz, moderate width (40-60%)\n\n## Essential Parameters\n\n### Cutoff Frequency\n- **Range**: 20Hz to 20kHz\n- **Low Cutoff** (20-200Hz): Sub-bass focus\n- **Mid Cutoff** (200-2kHz): Musical filtering\n- **High Cutoff** (2-10kHz): Air and presence\n- **Very High** (10-20kHz): Anti-aliasing, clean processing\n\n### Resonance (Q)\n- **Range**: 0% to 100%\n- **Low Q** (0-20%): Natural response, gentle character\n- **Medium Q** (20-50%): Musical emphasis, moderate character\n- **High Q** (50-80%): Strong emphasis, creative effects\n- **Very High Q** (80-100%): Extreme effects, potential oscillation\n\n### Drive Control\n- **Range**: 0% to 100%\n- **Clean** (0-15%): Pure filtering\n- **Warm** (15-35%): Subtle saturation\n- **Driven** (35-60%): Noticeable character\n- **Distorted** (60-100%): Heavy saturation, creative use\n\n## Quick Problem Solvers\n\n### Track Sounds Muddy\n**Solution**: Use high-pass filter at 100-150Hz\n**Settings**: Type HP, Cutoff 120Hz, Resonance 15%, Mix 100%\n\n### Need More High Frequencies\n**Solution**: Use band-pass filter targeting high frequencies\n**Settings**: Type BP, Cutoff 8kHz, Resonance 30%, Mix 50%\n\n### Frequency Problems\n**Solution**: Use notch filter to remove problem frequencies\n**Settings**: Type Notch, Cut at problem freq, High Q (70-90%), Mix 100%\n\n### Creative Sound Design\n**Solution**: Experiment with extreme settings and automation\n**Settings**: Any type, extreme cutoff/resonance, add drive, automate parameters\n\n## Genre-Specific Starting Points\n\n### Electronic Music\n```\nBass Filtering: LP, 200Hz cutoff, 15% resonance\nLead Filtering: HP, 80Hz cutoff, 20% resonance  \nFX Filtering: BP, 1.2kHz cutoff, 40% resonance\n```\n\n### Hip-Hop Production\n```\n808 Cleaning: HP, 60Hz cutoff, 10% resonance\nVocal Space: BP, 2-4kHz cutoff, 35% resonance\nMix Polish: LP, 12kHz cutoff, 25% resonance\n```\n\n### Rock Music\n```\nGuitar Clearing: HP, 120Hz cutoff, 25% resonance\nDrum Punch: BP, 200-400Hz cutoff, 50% resonance\nMaster Warmth: LP, 8kHz cutoff, 30% resonance\n```\n\n### Sound Design\n```\nTelephone: LP, 1.5kHz cutoff, 45% resonance\nUnderwater: LP, 800Hz cutoff, 60% resonance\nSci-Fi: Complex settings with automation\n```\n\n## Pro Tips\n\n### Filter Selection Guidelines\n- **Low-Pass**: For sub-bass, warmth, anti-aliasing\n- **High-Pass**: For cleaning, creating space, removing rumble\n- **Band-Pass**: For isolating frequencies, special effects\n- **Notch**: For removing problem frequencies, feedback control\n\n### Resonance Usage\n- **Musical Resonance** (20-50%): Adds warmth and character\n- **Creative Resonance** (50-80%): Creates dramatic effects\n- **Extreme Resonance** (80-100%): Special effects, use carefully\n\n### Creative Applications\n- **Filter Sweeps**: Automate cutoff for musical effects\n- **Resonance Modulation**: Add LFO to Q for movement\n- **Parallel Filtering**: Combine multiple filter types\n- **Drive Blending**: Add saturation for character\n\n## Common Mistakes to Avoid\n\n❌ Using wrong filter type for the job\n❌ Extreme resonance causing oscillation\n❌ Cutoff too low killing important frequencies\n❌ Excessive drive creating unwanted distortion\n❌ Not checking in mix context\n\n## Filter Type Decision Chart\n\n| Goal | Best Filter Type | Why |\n|-------|-----------------|------|\n| Remove Sub-Rumble | High-Pass | Eliminates low frequencies |\n| Add Warmth | Low-Pass | Gentle high-frequency roll-off |\n| Isolate Frequency | Band-Pass | Focuses on specific range |\n| Remove Problem | Notch | Precise frequency removal |\n| Clean Air | Low-Pass | Controls high frequencies |\n\nThis quick start guide provides immediate functionality while teaching fundamental filtering concepts. Start here, then explore advanced filter techniques and creative applications as you gain experience."
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Filter\r\n\r\nThis section contains learning information for the fruity-filter plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: Lo-Fi Telephone EQ (Fruity Filter)\n\n## Routing Context\n*   **Target:** Vocals or Background Melody.\n*   **Setup:** Insert FX.\n\n## Step-by-Step Setup\n1.  Load **Fruity Filter**.\n2.  Set Type to **BP (Band Pass)**.\n3.  Turn **Cutoff** to approximately `1 o'clock` (~1.5kHz).\n4.  Set **Resonance** to `25%`. (Adds a slight nasal \"bite\" found in telephone speakers).\n5.  **Tweak:** Switch on **2x Oversampling** to ensure the high-mid frequencies stay clear.\n\n## Result\n*   A classic, focused \"small speaker\" effect that strips the weight and air from the sound, perfect for intros, outros, or transition ad-libs.\n\n## Variations\n*   **Old Radio:** Move the Cutoff slightly lower (~800Hz) and increase Resonance to 40%.\n*   **Intercom:** Add a small amount of **Fruity Fast Dist** after the filter to simulate speaker distortion.\n\n## Pitfalls + Fixes\n*   **Volume Drop:** Band Pass mode removes a lot of signal energy. **Fix:** Use the **Post-Gain** or the Mixer Fader to boost the volume back to audible levels. [SRC: REPUTABLE]\n",
+      "01_Goal_Space_And_Motion": "# Workflow: Resonant Riser Sweeps (Fruity Filter)\n\n## The Concept\nCreating intense white-noise risers using high resonance and automated band-pass filtering.\n\n## Step-by-Step\n1.  Load a **White Noise** source (e.g., from 3x Osc).\n2.  Place **Fruity Filter** on the track.\n3.  Set Type to **BP**.\n4.  Engage **2x Oversampling**.\n5.  Set **Resonance** to `80%`. (It should sound like a whistle).\n6.  Right-click **Cutoff** -> **Create Automation Clip**.\n7.  **The Sweep:** In the Playlist, draw a line that rises from 0% to 100% over 8 bars.\n\n## Vibe Check\n*   **Psychedelic / Upbeat:** The result is a \"wind-like\" rushing sound that builds massive pressure before a drop.\n\n## Automation Idea\n*   Link the **Resonance** knob to the same automation clip, but inverted, so the \"whistle\" gets quieter as the frequency gets higher. [SRC: REPUTABLE]\n",
+      "03_Goal_Creative_Effect": "# Workflow: Melodic \"Pluck\" Shaping (Fruity Filter)\n\n## The Concept\nUsing a Low Pass filter to turn a sustained synth sound into a percussive \"pluck.\"\n\n## Step-by-Step\n1.  Load a bright **Sawtooth Pad**.\n2.  Place **Fruity Filter** on the track.\n3.  Set Type to **LP**.\n4.  Set **Cutoff** to `0%`. (Silent).\n5.  Set **Resonance** to `30%`.\n6.  Open **Fruity Envelope Controller** on a separate channel.\n7.  Link the **Filter Cutoff** to Articulator 1 of the Envelope Controller.\n8.  **Draw the Pluck:** Create a sharp attack and a fast decay (~200ms) in the envelope.\n\n## Vibe Check\n*   **Moody / Vibey:** Creates a \"rubbery\" synth texture perfect for modern R&B melodies.\n\n## Pitfalls\n*   **Resonance Artifacts:** If the pluck \"clicks\" too hard, lower the Resonance. [SRC: REPUTABLE]\n"
+    },
+    "common-usage.md": {
+      "common-usage": "# Common Workflows: Fruity Filter\r\n\r\n## 1. The \"Acid\" Bassline\r\n\r\n1.  **Input:** Saw wave.\r\n2.  **Knobs:**\r\n    *   **Low Pass:** 100%.\r\n    *   **Resonance:** 75% (Singing).\r\n3.  **Automation:**\r\n    *   Link specific notes' Velocity to the **Cutoff** knob (using Fruity Envelope Controller or Patcher).\r\n    *   Or simply draw an LFO loop.\r\n4.  **Why:** The 12dB slope is classic \"303\" territory (although 303 is technically 18dB/24dB diode ladder, the SVF topology offers a similar \"squelch\").\r\n\r\n## 2. Transition Wash\r\n\r\n1.  **Setup:** Put Fruity Filter on the Master (or Submix).\r\n2.  **State:**\r\n    *   **Low Pass:** 100%.\r\n    *   **High Pass:** 0%.\r\n3.  **Build-up:**\r\n    *   Automate **Low Pass** down to 0%.\r\n    *   Automate **High Pass** up to 100%.\r\n    *   Simultaneously sweep **Cutoff** from Low to High.\r\n4.  **Result:** The \"Endless Wash\" effect where the energy moves from Bass to Treble and disappears, ready for the drop.\r\n\r\n## 3. LFO Wah-Wah\r\n\r\n1.  **Knobs:** **Band Pass** only.\r\n2.  **Cutoff:** Link to \"Fruity Peak Controller\" LFO.\r\n3.  **Input:** Electric Guitar or Clavinet.\r\n4.  **Result:** Classic 70s Auto-Wah funk effect.\r\n\r\n## 4. Anti-Aliasing Guard\r\n\r\n1.  **Context:** You are using a distortion plugin that creates dirty high-end.\r\n2.  **Action:** Place Fruity Filter *after* the distortion.\r\n3.  **Setting:** Low Pass, x2 Oversampling On. Cutoff at 16kHz.\r\n4.  **Why:** The Oversampling switch on Fruity Filter ensures that the filter itself handles the high-frequency content cleanly, acting as a \"roof\" for the distortion.\r\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Filter\r\n\r\nThis section contains workflow information for the fruity-filter plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Filter\r\n\r\nThis section contains reference information for the fruity-filter plugin.\r\n"
+    }
+  }
+}

@@ -1,0 +1,1086 @@
+{
+  "id": "patcher",
+  "name": "Patcher",
+  "presets": {
+    "01-standard-mix-chain": {
+      "name": "Standard Mix Chain",
+      "genre": "universal",
+      "mood": "upbeat",
+      "description": "Standard EQ → Compression → Limiting chain for general mixing",
+      "parameters": {
+        "chain": [
+          {
+            "slot": 1,
+            "type": "EQ",
+            "plugin": "Fruity Parametric EQ 2"
+          },
+          {
+            "slot": 2,
+            "type": "Compressor",
+            "plugin": "Fruity Compressor"
+          },
+          {
+            "slot": 3,
+            "type": "Limiter",
+            "plugin": "Fruity Limiter"
+          }
+        ],
+        "routing": "Series",
+        "parallelPaths": 0
+      },
+      "workflow": {
+        "useCase": "General mix chain",
+        "steps": [
+          "Load EQ for corrective shaping",
+          "Add compression for dynamics",
+          "Apply limiting for safety",
+          "Adjust order as needed"
+        ],
+        "troubleshooting": [
+          {
+            "issue": "No effect",
+            "fix": "Check plugin order"
+          },
+          {
+            "issue": "Distortion",
+            "fix": "Check limiter threshold"
+          }
+        ]
+      },
+      "abTest": {
+        "listenFor": "Clean, balanced signal",
+        "duration": "Full mix"
+      }
+    },
+    "02-parallel-drums": {
+      "name": "Parallel Drum Buss",
+      "genre": "hip-hop/rap",
+      "mood": "electric",
+      "description": "Parallel compression chain for punchy drums",
+      "parameters": {
+        "chain": [
+          {
+            "slot": 1,
+            "type": "Compressor",
+            "plugin": "Fruity Compressor",
+            "settings": "Heavy compression"
+          },
+          {
+            "slot": 2,
+            "type": "EQ",
+            "plugin": "Fruity Parametric EQ 2",
+            "settings": "High-pass, add punch"
+          }
+        ],
+        "routing": "Parallel",
+        "parallelPaths": 1,
+        "mixControl": true
+      },
+      "workflow": {
+        "useCase": "Punchy drum processing",
+        "steps": [
+          "Set up parallel chain",
+          "Heavy compression on parallel",
+          "Blend with dry signal",
+          "Add EQ for character"
+        ],
+        "troubleshooting": [
+          {
+            "issue": "Too compressed",
+            "fix": "Reduce compression ratio"
+          },
+          {
+            "issue": "No punch",
+            "fix": "Increase parallel blend"
+          }
+        ]
+      },
+      "abTest": {
+        "listenFor": "Punchy, powerful drums",
+        "duration": "8-bar drum pattern"
+      }
+    },
+    "03-vocal-chain": {
+      "name": "Vocal Chain",
+      "genre": "universal",
+      "mood": "smooth",
+      "description": "Complete vocal processing chain with de-essing and compression",
+      "parameters": {
+        "chain": [
+          {
+            "slot": 1,
+            "type": "EQ",
+            "plugin": "Fruity Parametric EQ 2",
+            "settings": "Corrective EQ"
+          },
+          {
+            "slot": 2,
+            "type": "De-Esser",
+            "plugin": "Fruity Parametric EQ 2",
+            "settings": "Sibilance control"
+          },
+          {
+            "slot": 3,
+            "type": "Compressor",
+            "plugin": "Fruity Compressor",
+            "settings": "Gentle compression"
+          },
+          {
+            "slot": 4,
+            "type": "Reverb",
+            "plugin": "Fruity Reverb",
+            "settings": "Subtle reverb"
+          }
+        ],
+        "routing": "Series",
+        "parallelPaths": 0
+      },
+      "workflow": {
+        "useCase": "Complete vocal processing",
+        "steps": [
+          "Apply corrective EQ",
+          "Control sibilance",
+          "Add compression",
+          "Add subtle reverb"
+        ],
+        "troubleshooting": [
+          {
+            "issue": "Sibilant",
+            "fix": "Increase de-essing"
+          },
+          {
+            "issue": "Unstable",
+            "fix": "Reduce compression"
+          }
+        ]
+      },
+      "abTest": {
+        "listenFor": "Clear, present vocals",
+        "duration": "Full vocal phrase"
+      }
+    },
+    "04-distortion-chain": {
+      "name": "Distortion Stack",
+      "genre": "EDM",
+      "mood": "electric",
+      "description": "Series of distortion effects for aggressive sounds",
+      "parameters": {
+        "chain": [
+          {
+            "slot": 1,
+            "type": "Distortion",
+            "plugin": "Fruity Distock",
+            "settings": "Light drive"
+          },
+          {
+            "slot": 2,
+            "type": "Distortion",
+            "plugin": "Wave Shaper",
+            "settings": "Additional saturation"
+          },
+          {
+            "slot": 3,
+            "type": "EQ",
+            "plugin": "Fruity Parametric EQ 2",
+            "settings": "Tone shaping"
+          }
+        ],
+        "routing": "Series",
+        "parallelPaths": 0
+      },
+      "workflow": {
+        "useCase": "Aggressive guitar or synth",
+        "steps": [
+          "Apply light distortion",
+          "Add saturation",
+          "Shape final tone"
+        ],
+        "troubleshooting": [
+          {
+            "issue": "Too harsh",
+            "fix": "Reduce distortion amount"
+          },
+          {
+            "issue": "No grit",
+            "fix": "Increase drive"
+          }
+        ]
+      },
+      "abTest": {
+        "listenFor": "Aggressive, distorted tone",
+        "duration": "Sustained note or riff"
+      }
+    },
+    "05-reverb-sends": {
+      "name": "Dual Reverb Space",
+      "genre": "universal",
+      "mood": "moody",
+      "description": "Two parallel reverb paths for spatial depth",
+      "parameters": {
+        "chain": [
+          {
+            "slot": 1,
+            "type": "Reverb",
+            "plugin": "Fruity Reverb",
+            "settings": "Short room"
+          },
+          {
+            "slot": 2,
+            "type": "Reverb",
+            "plugin": "Fruity Reverb",
+            "settings": "Long hall"
+          }
+        ],
+        "routing": "Parallel",
+        "parallelPaths": 2,
+        "mixControl": true
+      },
+      "workflow": {
+        "useCase": "Creating space and depth",
+        "steps": [
+          "Set up two reverb paths",
+          "Short reverb for clarity",
+          "Long reverb for atmosphere",
+          "Blend to taste"
+        ],
+        "troubleshooting": [
+          {
+            "issue": "Muddy mix",
+            "fix": "Increase high-pass on reverbs"
+          },
+          {
+            "issue": "Too washed out",
+            "fix": "Reduce reverb levels"
+          }
+        ]
+      },
+      "abTest": {
+        "listenFor": "Spacious, dimensional sound",
+        "duration": "Full mix section"
+      }
+    },
+    "06-master-chain": {
+      "name": "Master Bus Chain",
+      "genre": "universal",
+      "mood": "upbeat",
+      "description": "Complete master bus processing chain",
+      "parameters": {
+        "chain": [
+          {
+            "slot": 1,
+            "type": "EQ",
+            "plugin": "Fruity Parametric EQ 2",
+            "settings": "Mastering EQ"
+          },
+          {
+            "slot": 2,
+            "type": "Compressor",
+            "plugin": "Fruity Compressor",
+            "settings": "Gentle glue"
+          },
+          {
+            "slot": 3,
+            "type": "Limiter",
+            "plugin": "Fruity Limiter",
+            "settings": "Final limiting"
+          }
+        ],
+        "routing": "Series",
+        "parallelPaths": 0
+      },
+      "workflow": {
+        "useCase": "Final mix processing",
+        "steps": [
+          "Apply gentle EQ",
+          "Add glue compression",
+          "Apply final limiting"
+        ],
+        "troubleshooting": [
+          {
+            "issue": "Too compressed",
+            "fix": "Reduce compression ratio"
+          },
+          {
+            "issue": "Clipping",
+            "fix": "Check limiter ceiling"
+          }
+        ]
+      },
+      "abTest": {
+        "listenFor": "Polished, loud master",
+        "duration": "Full song"
+      }
+    },
+    "electro-hip-hop": {
+      "name": "Electro Hip-Hop",
+      "genre": "hip-hop/rap",
+      "mood": "electric",
+      "description": "Electronic-infused processing for electro hip-hop",
+      "parameters": {
+        "chain": [
+          {
+            "slot": 1,
+            "type": "EQ",
+            "plugin": "Fruity Parametric EQ 2",
+            "settings": {
+              "highPass": "50Hz",
+              "bell": "+3dB at 4kHz",
+              "highShelf": "+3dB at 10kHz"
+            }
+          },
+          {
+            "slot": 2,
+            "type": "Distortion",
+            "plugin": "Fruity Distock",
+            "settings": {
+              "drive": "20%",
+              "tone": "70%"
+            }
+          },
+          {
+            "slot": 3,
+            "type": "Compressor",
+            "plugin": "Fruity Compressor",
+            "settings": {
+              "ratio": "6:1",
+              "attack": "2ms",
+              "release": "60ms",
+              "threshold": "-22dB"
+            }
+          }
+        ],
+        "characteristics": [
+          "Electronic edge",
+          "Aggressive transients",
+          "Modern sound"
+        ]
+      },
+      "workflow": {
+        "useCase": "Electro hip-hop, experimental rap",
+        "steps": [
+          "High-pass for clarity",
+          "Boost presence frequencies",
+          "Add subtle distortion",
+          "Aggressive compression",
+          "Check for harshness"
+        ],
+        "tips": [
+          "Great for futuristic sounds",
+          "Perfect for 808 subgenres",
+          "Use on synths and drums",
+          "Automate distortion for effect"
+        ]
+      }
+    },
+    "energetic-drill": {
+      "name": "Energetic Drill",
+      "genre": "hip-hop/rap",
+      "mood": "energetic",
+      "description": "Aggressive, high-energy chain for drill music",
+      "parameters": {
+        "chain": [
+          {
+            "slot": 1,
+            "type": "EQ",
+            "plugin": "Fruity Parametric EQ 2",
+            "settings": {
+              "highPass": "70Hz",
+              "bell": "+3dB at 2kHz",
+              "highShelf": "+2dB at 12kHz"
+            }
+          },
+          {
+            "slot": 2,
+            "type": "Distortion",
+            "plugin": "Fruity Distock",
+            "settings": {
+              "drive": "45%",
+              "tone": "60%"
+            }
+          },
+          {
+            "slot": 3,
+            "type": "Compressor",
+            "plugin": "Fruity Compressor",
+            "settings": {
+              "ratio": "8:1",
+              "attack": "1ms",
+              "release": "50ms",
+              "threshold": "-25dB"
+            }
+          },
+          {
+            "slot": 4,
+            "type": "Limiter",
+            "plugin": "Fruity Limiter",
+            "settings": {
+              "ceiling": "-1dB",
+              "mode": "Brickwall"
+            }
+          }
+        ],
+        "characteristics": [
+          "Aggressive character",
+          "High energy",
+          "Intense impact"
+        ]
+      },
+      "workflow": {
+        "useCase": "Drill, trap, aggressive hip-hop",
+        "steps": [
+          "High-pass at 70Hz for intensity",
+          "Boost presence for attack",
+          "Heavy distortion for edge",
+          "Aggressive compression",
+          "Brick-wall limiting"
+        ],
+        "tips": [
+          "Perfect for modern drill",
+          "Great for aggressive flows",
+          "Use on 808s and snares",
+          "Check for distortion artifacts"
+        ]
+      }
+    },
+    "funky-groovy": {
+      "name": "Funky Groovy",
+      "genre": "hip-hop/rap",
+      "mood": "funky",
+      "description": "Punchy, groovy chain for funk-inspired hip-hop",
+      "parameters": {
+        "chain": [
+          {
+            "slot": 1,
+            "type": "EQ",
+            "plugin": "Fruity Parametric EQ 2",
+            "settings": {
+              "highPass": "45Hz",
+              "bell": "+2dB at 3kHz"
+            }
+          },
+          {
+            "slot": 2,
+            "type": "Compressor",
+            "plugin": "Fruity Compressor",
+            "settings": {
+              "ratio": "3:1",
+              "attack": "8ms",
+              "release": "90ms",
+              "threshold": "-18dB"
+            }
+          },
+          {
+            "slot": 3,
+            "type": "Distortion",
+            "plugin": "Fruity Distock",
+            "settings": {
+              "drive": "12%",
+              "tone": "55%"
+            }
+          }
+        ],
+        "characteristics": [
+          "Punchy transients",
+          "Groovy rhythm",
+          "Funky character"
+        ]
+      },
+      "workflow": {
+        "useCase": "G-funk, funk-inspired hip-hop",
+        "steps": [
+          "High-pass for clarity",
+          "Boost lows for body",
+          "Add presence for definition",
+          "Quick compression for punch",
+          "Subtle saturation for warmth"
+        ],
+        "tips": [
+          "Great for old-school vibes",
+          "Perfect for samples and live bass",
+          "Check on multiple speaker systems",
+          "Automate EQ for dynamics"
+        ]
+      }
+    },
+    "jazzy-smooth": {
+      "name": "Jazzy Smooth",
+      "genre": "hip-hop/rap",
+      "mood": "smooth",
+      "description": "Warm, smooth chain for jazzy hip-hop",
+      "parameters": {
+        "chain": [
+          {
+            "slot": 1,
+            "type": "EQ",
+            "plugin": "Fruity Parametric EQ 2",
+            "settings": {
+              "highPass": "30Hz",
+              "lowShelf": "+1dB at 150Hz",
+              "highShelf": "+1dB at 8kHz"
+            }
+          },
+          {
+            "slot": 2,
+            "type": "Saturation",
+            "plugin": "Fruity Distock",
+            "settings": {
+              "drive": "15%",
+              "tone": "40%"
+            }
+          },
+          {
+            "slot": 3,
+            "type": "Compressor",
+            "plugin": "Fruity Compressor",
+            "settings": {
+              "ratio": "2:1",
+              "attack": "25ms",
+              "release": "150ms",
+              "threshold": "-15dB"
+            }
+          }
+        ],
+        "characteristics": [
+          "Warm tonal character",
+          "Smooth dynamics",
+          "Jazzy feel"
+        ]
+      },
+      "workflow": {
+        "useCase": "Jazzy hip-hop, lo-fi, soulful rap",
+        "steps": [
+          "High-pass at 30Hz for warmth",
+          "Boost lows slightly for body",
+          "Add soft saturation",
+          "Gentle compression for glue",
+          "Maintain natural dynamics"
+        ],
+        "tips": [
+          "Perfect for sample-based tracks",
+          "Great for lo-fi aesthetic",
+          "Layer with vinyl crackle",
+          "Use on instruments and vocals"
+        ]
+      }
+    },
+    "moody-dark-trap": {
+      "name": "Moody Dark Trap",
+      "genre": "hip-hop/rap",
+      "mood": "moody",
+      "description": "Dark processing chain for moody trap productions",
+      "parameters": {
+        "chain": [
+          {
+            "slot": 1,
+            "type": "EQ",
+            "plugin": "Fruity Parametric EQ 2",
+            "settings": {
+              "highPass": "60Hz",
+              "lowShelf": "-3dB at 200Hz",
+              "highShelf": "-2dB at 10kHz"
+            }
+          },
+          {
+            "slot": 2,
+            "type": "Saturation",
+            "plugin": "Fruity Distock",
+            "settings": {
+              "drive": "35%",
+              "tone": "50%"
+            }
+          },
+          {
+            "slot": 3,
+            "type": "Compressor",
+            "plugin": "Fruity Compressor",
+            "settings": {
+              "ratio": "4:1",
+              "attack": "15ms",
+              "release": "100ms",
+              "threshold": "-18dB"
+            }
+          },
+          {
+            "slot": 4,
+            "type": "Limiter",
+            "plugin": "Fruity Limiter",
+            "settings": {
+              "ceiling": "-1dB",
+              "attack": "1ms"
+            }
+          }
+        ],
+        "characteristics": [
+          "Dark tonal character",
+          "Punchy low-end",
+          "Atmospheric mood"
+        ]
+      },
+      "workflow": {
+        "useCase": "Dark trap, drill, moody hip-hop",
+        "steps": [
+          "Apply high-pass at 60Hz for clean lows",
+          "Cut 200Hz slightly for darkness",
+          "Add saturation for harmonic warmth",
+          "Compress for consistent punch",
+          "Limit for headroom"
+        ],
+        "tips": [
+          "Perfect for 808-heavy tracks",
+          "Great for atmospheric samples",
+          "Check on phone speakers for bass",
+          "Automate filter for dynamics"
+        ]
+      }
+    },
+    "upbeat-bouncy": {
+      "name": "Upbeat Bouncy",
+      "genre": "hip-hop/rap",
+      "mood": "upbeat",
+      "description": "Bright, bouncy chain for energetic hip-hop",
+      "parameters": {
+        "chain": [
+          {
+            "slot": 1,
+            "type": "EQ",
+            "plugin": "Fruity Parametric EQ 2",
+            "settings": {
+              "highPass": "40Hz",
+              "bell": "+2dB at 3kHz",
+              "highShelf": "+2dB at 12kHz"
+            }
+          },
+          {
+            "slot": 2,
+            "type": "Compressor",
+            "plugin": "Fruity Compressor",
+            "settings": {
+              "ratio": "3:1",
+              "attack": "5ms",
+              "release": "80ms",
+              "threshold": "-20dB"
+            }
+          },
+          {
+            "slot": 3,
+            "type": "Enhancer",
+            "plugin": "Fruity parametric EQ 2",
+            "settings": {
+              "enhance": "25%"
+            }
+          }
+        ],
+        "characteristics": [
+          "Bright tonal character",
+          "Bouncy rhythm",
+          "Energetic feel"
+        ]
+      },
+      "workflow": {
+        "useCase": "Upbeat hip-hop, party tracks",
+        "steps": [
+          "High-pass at 40Hz for clarity",
+          "Boost 3kHz for presence",
+          "Add air at 12kHz",
+          "Light compression for bounce",
+          "Use Fruity Limiter for safety"
+        ],
+        "tips": [
+          "Perfect for dance tracks",
+          "Great for high-energy songs",
+          "Check on laptop speakers",
+          "Automate EQ for dynamics"
+        ]
+      }
+    },
+    "calvin-harris-style": {
+      "name": "Calvin Harris Style",
+      "producer": "Calvin Harris",
+      "description": "Clean, powerful chain for EDM productions",
+      "reference": "Summer, This Is What You Came For",
+      "parameters": {
+        "chain": [
+          {
+            "slot": 1,
+            "type": "EQ",
+            "plugin": "Fruity Parametric EQ 2"
+          },
+          {
+            "slot": 2,
+            "type": "Compressor",
+            "plugin": "Fruity Compressor"
+          },
+          {
+            "slot": 3,
+            "type": "Limiter",
+            "plugin": "Fruity Limiter"
+          }
+        ],
+        "characteristics": [
+          "Clean signal path",
+          "Powerful dynamics",
+          "Maximum loudness"
+        ]
+      },
+      "workflow": {
+        "useCase": "EDM and pop productions",
+        "steps": [
+          "Set EQ for clarity",
+          "Apply gentle compression",
+          "Limit for power"
+        ],
+        "tips": [
+          "Keep chain clean",
+          "Focus on loudness",
+          "Check on club systems"
+        ]
+      }
+    },
+    "deadmau5-modular": {
+      "name": "Deadmau5 Modular Style",
+      "producer": "deadmau5",
+      "description": "Progressive techno chain with sidechain compression and mid-side processing",
+      "reference": "Strobe, Some Chords",
+      "parameters": {
+        "chain": [
+          {
+            "slot": 1,
+            "type": "EQ",
+            "plugin": "Fruity Parametric EQ 2",
+            "settings": {
+              "highPass": "80Hz",
+              "lowPass": "16kHz"
+            }
+          },
+          {
+            "slot": 2,
+            "type": "Compressor",
+            "plugin": "Fruity Compressor",
+            "settings": {
+              "ratio": "4:1",
+              "attack": "10ms",
+              "release": "150ms",
+              "threshold": "-20dB"
+            }
+          },
+          {
+            "slot": 3,
+            "type": "Limiter",
+            "plugin": "Fruity Limiter",
+            "settings": {
+              "ceiling": "-1dB",
+              "attack": "1ms",
+              "release": "100ms"
+            }
+          }
+        ],
+        "characteristics": [
+          "Pulsating rhythm",
+          "Clean transients",
+          "Wide stereo image"
+        ]
+      },
+      "workflow": {
+        "useCase": "Progressive house, techno",
+        "steps": [
+          "Set high-pass at 80Hz to clean lows",
+          "Apply light compression for consistency",
+          "Limit to -1dB for headroom",
+          "Add sidechain from kick channel"
+        ],
+        "tips": [
+          "Use Fruity Limiter's TC mode for brick-wall limiting",
+          "Check mix in mono for phase issues",
+          "Adjust release time to tempo of track"
+        ]
+      }
+    },
+    "flume-future": {
+      "name": "Flume Future Style",
+      "producer": "Flume",
+      "description": "Widescreen future bass processing with mid-side EQ and parallel compression",
+      "reference": "Never Be Like You, Say It",
+      "parameters": {
+        "chain": [
+          {
+            "slot": 1,
+            "type": "EQ",
+            "plugin": "Fruity Parametric EQ 2",
+            "settings": {
+              "midHigh": "+3dB at 3kHz",
+              "sideHigh": "+4dB at 6kHz"
+            }
+          },
+          {
+            "slot": 2,
+            "type": "Compressor",
+            "plugin": "Fruity Compressor",
+            "settings": {
+              "ratio": "8:1",
+              "attack": "2ms",
+              "release": "50ms",
+              "threshold": "-30dB"
+            }
+          },
+          {
+            "slot": 3,
+            "type": "Limiter",
+            "plugin": "Fruity Limiter",
+            "settings": {
+              "ceiling": "-3dB",
+              "mode": "Brickwall"
+            }
+          }
+        ],
+        "characteristics": [
+          "Wide stereo image",
+          "Aggressive transients",
+          "Crystal clear highs"
+        ]
+      },
+      "workflow": {
+        "useCase": "Future bass, experimental electronic",
+        "steps": [
+          "Boost side frequencies for width",
+          "Apply aggressive transient compression",
+          "Brick-wall limit for loudness",
+          "Check mono compatibility"
+        ],
+        "tips": [
+          "Use mid-side EQ for precise stereo imaging",
+          "Keep attack fast for punchy transients",
+          "Test width with mono button frequently"
+        ]
+      }
+    },
+    "metro-boomin-style": {
+      "name": "Metro Boomin Style",
+      "producer": "Metro Boomin",
+      "description": "Dark, aggressive chain for trap productions",
+      "reference": "Harder, Creepin'",
+      "parameters": {
+        "chain": [
+          {
+            "slot": 1,
+            "type": "EQ",
+            "plugin": "Fruity Parametric EQ 2"
+          },
+          {
+            "slot": 2,
+            "type": "Distortion",
+            "plugin": "Fruity Distock"
+          },
+          {
+            "slot": 3,
+            "type": "Compressor",
+            "plugin": "Fruity Compressor"
+          }
+        ],
+        "characteristics": [
+          "Dark character",
+          "Aggressive tone",
+          "Punchy impact"
+        ]
+      },
+      "workflow": {
+        "useCase": "Trap and hip-hop",
+        "steps": [
+          "Apply dark EQ",
+          "Add subtle distortion",
+          "Compress for punch"
+        ],
+        "tips": [
+          "Focus on low-end",
+          "Add aggression subtly",
+          "Check on phone speakers"
+        ]
+      }
+    },
+    "timbaland-rhythm": {
+      "name": "Timbaland Rhythm Style",
+      "producer": "Timbaland",
+      "description": "Unconventional rhythmic processing with reverse delays and creative EQ",
+      "reference": "Dirt Off Your Shoulder, SexyBack",
+      "parameters": {
+        "chain": [
+          {
+            "slot": 1,
+            "type": "EQ",
+            "plugin": "Fruity Parametric EQ 2",
+            "settings": {
+              "notch": "-4dB at 2.5kHz"
+            }
+          },
+          {
+            "slot": 2,
+            "type": "Delay",
+            "plugin": "Fruity Delay 3",
+            "settings": {
+              "time": "1/8",
+              "feedback": "30%",
+              "mode": "Reverse"
+            }
+          },
+          {
+            "slot": 3,
+            "type": "Reverb",
+            "plugin": "Fruity Reeverb 2",
+            "settings": {
+              "size": "Small",
+              "damping": "High"
+            }
+          }
+        ],
+        "characteristics": [
+          "Experimental texture",
+          "Hypnotic rhythm",
+          "Unique character"
+        ]
+      },
+      "workflow": {
+        "useCase": "Experimental hip-hop, pop",
+        "steps": [
+          "Apply EQ cuts for clarity",
+          "Add reverse delay for texture",
+          "Blend small reverb for space",
+          "Experiment with unconventional settings"
+        ],
+        "tips": [
+          "Try delay times in tempo but with dotted rhythms",
+          "Use automation for dynamic effect changes",
+          "Layer multiple Patcher chains for complexity"
+        ]
+      }
+    },
+    "zaytoven-creative": {
+      "name": "Zaytoven Creative Style",
+      "producer": "Zaytoven",
+      "description": "Warm analog-style chain with tape saturation and soft compression",
+      "reference": "Easy, Where U At",
+      "parameters": {
+        "chain": [
+          {
+            "slot": 1,
+            "type": "EQ",
+            "plugin": "Fruity Parametric EQ 2",
+            "settings": {
+              "lowShelf": "+2dB at 100Hz",
+              "highShelf": "+1dB at 8kHz"
+            }
+          },
+          {
+            "slot": 2,
+            "type": "Saturation",
+            "plugin": "Fruity Distock",
+            "settings": {
+              "drive": "25%",
+              "tone": "60%"
+            }
+          },
+          {
+            "slot": 3,
+            "type": "Compressor",
+            "plugin": "Fruity Compressor",
+            "settings": {
+              "ratio": "2:1",
+              "attack": "20ms",
+              "release": "100ms",
+              "threshold": "-12dB"
+            }
+          }
+        ],
+        "characteristics": [
+          "Warm low-end",
+          "Smooth highs",
+          "Vintage character"
+        ]
+      },
+      "workflow": {
+        "useCase": "Trap, R&B, soulful hip-hop",
+        "steps": [
+          "Boost lows slightly for warmth",
+          "Add subtle tape saturation",
+          "Apply soft compression for glue",
+          "Maintain dynamic range"
+        ],
+        "tips": [
+          "Keep saturation subtle - more is not always better",
+          "Use Fruity Limiter after compression for safety",
+          "Check on laptop speakers for real-world testing"
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "patcher-signal-flow": {
+      "plugin_name": "Patcher",
+      "category": "Modular Environment",
+      "node_types": [
+        "Audio (Yellow)",
+        "Parameter (Red)",
+        "MIDI (Green)",
+        "Event"
+      ],
+      "capabilities": [
+        "Parallel Processing",
+        "Custom Control Surfaces",
+        "Multiband Splitting",
+        "MIDI Transformation"
+      ]
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "Modular Thinking Basics",
+      "filename": "modular-thinking-basics.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "01 Chain Creation",
+      "category": "by-goal",
+      "filename": "01-chain-creation.md"
+    },
+    {
+      "title": "02 Parallel Processing",
+      "category": "by-goal",
+      "filename": "02-parallel-processing.md"
+    },
+    {
+      "title": "Custom Synth Interface",
+      "category": "by-goal",
+      "filename": "custom-synth-interface.md"
+    },
+    {
+      "title": "Hop Hop Subgenre Chains",
+      "category": "by-goal",
+      "filename": "hop-hop-subgenre-chains.md"
+    },
+    {
+      "title": "Index",
+      "category": "by-goal",
+      "filename": "INDEX.md"
+    },
+    {
+      "title": "Multiband Distortion Rack",
+      "category": "by-goal",
+      "filename": "multiband-distortion-rack.md"
+    },
+    {
+      "title": "Index",
+      "category": "by-instrument",
+      "filename": "INDEX.md"
+    },
+    {
+      "title": "Urban Vocal Chain Patcher",
+      "category": "by-instrument",
+      "filename": "urban-vocal-chain-patcher.md"
+    },
+    {
+      "title": "Workflows Index",
+      "category": "by-instrument",
+      "filename": "workflows-INDEX.md"
+    }
+  ]
+}

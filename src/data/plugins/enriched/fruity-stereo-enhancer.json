@@ -1,0 +1,611 @@
+{
+  "id": "fruity-stereo-enhancer",
+  "name": "Fruity Stereo Enhancer",
+  "category": "Spatial",
+  "tier": "Free",
+  "type": "Spatial",
+  "description": "Fruity Stereo Enhancer - Spatial",
+  "tags": [
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "stereo",
+    "spatial",
+    "mixing",
+    "audio"
+  ],
+  "icon": "/plugins/fruity-stereo-enhancer-icon.svg",
+  "color": "#0EA5E9",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-stereo-enhancer",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "stereo-enhancer-params": {
+      "plugin_name": "Fruity Stereo Enhancer",
+      "category": "Stereo Utility",
+      "type": "Width Control",
+      "version": "Latest",
+      "parameters": [
+        {
+          "name": "Stereo Separation",
+          "type": "knob",
+          "range": "Wide to Mono",
+          "default": "Center",
+          "description": "Adjusts the Mid/Side balance to control stereo width",
+          "use_cases": [
+            "Widening stereo pads and synths",
+            "Collapsing stereo field to mono",
+            "Fixing overly wide mixes",
+            "Creating space in arrangement",
+            "Mono compatibility checking"
+          ],
+          "hip_hop_applications": {
+            "moody": "30-40% left for atmospheric pads and dark synths",
+            "upbeat": "50-60% left for hi-hats and percussion elements",
+            "melodic": "25-35% left for keys, strings, and harmonic elements",
+            "electronic": "45-55% left for synth pads and atmospheric layers",
+            "trap": "60-70% left for hi-hat rolls and percussion"
+          },
+          "frequency_response": "Affects entire frequency spectrum",
+          "mono_compatibility": "Does not affect pure mono signals",
+          "notes": "Left increases width, right narrows to mono"
+        },
+        {
+          "name": "Phase Offset",
+          "type": "knob",
+          "range": "0ms to 500ms",
+          "default": "0ms",
+          "description": "Delays one channel relative to the other to create psychoacoustic width",
+          "use_cases": [
+            "Creating Haas effect (20-40ms)",
+            "Widening mono sources",
+            "Adding character to mono recordings",
+            "Creating pseudo-stereo from mono",
+            "Experimental delay effects"
+          ],
+          "hip_hop_applications": {
+            "moody": "15-25ms for atmospheric vocal layers and background elements",
+            "upbeat": "20-35ms for vocal doubles and ad-libs",
+            "melodic": "20-40ms for vocal harmonies and stacked vocals",
+            "electronic": "15-30ms for vocal chops and synth leads",
+            "trap": "20-30ms for vocal ad-libs and background vocals"
+          },
+          "sweet_spots": {
+            "subtle_width": "1-20ms",
+            "haas_effect": "20-40ms",
+            "noticeable_delay": "40-100ms",
+            "echo_like": "100ms+"
+          },
+          "mono_compatibility": "Creates phase cancellation in mono - always check",
+          "notes": "Creates pan shift toward undelayed side - compensate with Pan control"
+        },
+        {
+          "name": "Invert Phase",
+          "type": "switch",
+          "range": "On/Off",
+          "default": "Off",
+          "description": "Flips the polarity of one channel",
+          "use_cases": [
+            "Creative phase effects",
+            "Creating hollow stereo sound",
+            "Experimental sound design",
+            "Phase relationship testing"
+          ],
+          "hip_hop_applications": {
+            "moody": "Rarely used - creates thin, hollow effects",
+            "upbeat": "Not recommended for main elements",
+            "melodic": "Creative effects on background layers only",
+            "electronic": "Experimental effects on synth layers",
+            "trap": "Not commonly used in trap production"
+          },
+          "mono_compatibility": "Severe cancellation in mono - use with extreme caution",
+          "notes": "Always check mono compatibility when enabled"
+        },
+        {
+          "name": "Pan",
+          "type": "knob",
+          "range": "Hard Left to Hard Right",
+          "default": "Center",
+          "description": "Adjusts final stereo positioning after processing",
+          "use_cases": [
+            "Compensating for phase offset pan shift",
+            "Re-centering after processing",
+            "Final positioning in stereo field",
+            "Balancing stereo image"
+          ],
+          "hip_hop_applications": {
+            "moody": "Center for main elements, compensate offset shifts",
+            "upbeat": "Use to re-center after Haas effect",
+            "melodic": "Fine-tune positioning after width processing",
+            "electronic": "Compensate for phase offset pan bias",
+            "trap": "Re-center vocal elements after offset"
+          },
+          "notes": "Essential for compensating phase offset pan shift"
+        },
+        {
+          "name": "Volume",
+          "type": "knob",
+          "range": "Negative to Positive dB",
+          "default": "0dB",
+          "description": "Adjusts output level after processing",
+          "use_cases": [
+            "Matching processed and unprocessed levels",
+            "Compensating for perceived loudness changes",
+            "A/B comparison at matched levels",
+            "Final output level adjustment"
+          ],
+          "hip_hop_applications": {
+            "moody": "Match levels for subtle processing",
+            "upbeat": "Compensate for any width-related level changes",
+            "melodic": "Ensure consistent levels across arrangement",
+            "electronic": "Match processed and dry signals",
+            "trap": "Maintain consistent vocal levels"
+          },
+          "notes": "Use for level-matched A/B comparisons"
+        }
+      ],
+      "processing_chain": [
+        "Input Stage",
+        "Mid/Side Conversion",
+        "Separation Processing",
+        "Phase Offset Application",
+        "Polarity Processing (if enabled)",
+        "Mid/Side to Stereo Conversion",
+        "Pan Application",
+        "Volume Application",
+        "Output Stage"
+      ],
+      "cpu_usage": "Very Low",
+      "latency": "Zero samples",
+      "audio_quality": {
+        "bit_depth": "32-bit floating point",
+        "sample_rate": "Project sample rate",
+        "processing": "High-quality Mid/Side conversion"
+      },
+      "common_mistakes": [
+        "Widening low-frequency elements (kick, bass)",
+        "Using Phase Offset without mono checking",
+        "Inverting phase without understanding consequences",
+        "Extreme separation on all tracks",
+        "Not compensating pan after phase offset",
+        "Using separation on mono sources (no effect)",
+        "Ignoring mono compatibility",
+        "Over-widening lead vocals"
+      ],
+      "best_practices": [
+        "Always check mono compatibility",
+        "Use 20-40ms for natural Haas effect",
+        "Apply separation to existing stereo sources",
+        "Use phase offset on mono sources for width",
+        "Compensate pan shift with Pan control",
+        "Keep low frequencies narrow (mono or minimal width)",
+        "Save presets for common scenarios",
+        "Use automation for dynamic width changes"
+      ]
+    }
+  },
+  "presets": {
+    "hip-hop-width-presets": {
+      "preset_collection": "Fruity Stereo Enhancer - Hip-Hop Width Presets",
+      "version": "1.0",
+      "genre": "Hip-Hop / Rap",
+      "presets": [
+        {
+          "name": "Moody Pad Widener",
+          "category": "Moody Hip-Hop",
+          "description": "Subtle width for dark, atmospheric pads",
+          "parameters": {
+            "stereo_separation": "30% left",
+            "phase_offset": "0ms",
+            "invert": false,
+            "pan": "center",
+            "volume": "0dB"
+          },
+          "use_on": [
+            "Synth pads",
+            "Atmospheric layers",
+            "Dark textures"
+          ],
+          "notes": "Creates space without losing focus"
+        },
+        {
+          "name": "Moody Vocal Layer",
+          "category": "Moody Hip-Hop",
+          "description": "Haas effect for background vocals in moody tracks",
+          "parameters": {
+            "stereo_separation": "center",
+            "phase_offset": "20ms",
+            "invert": false,
+            "pan": "slightly right (compensate)",
+            "volume": "0dB"
+          },
+          "use_on": [
+            "Background vocals",
+            "Vocal layers",
+            "Ad-libs"
+          ],
+          "notes": "Check mono compatibility - may need adjustment"
+        },
+        {
+          "name": "Moody Synth Atmosphere",
+          "category": "Moody Hip-Hop",
+          "description": "Wide atmospheric synths for moody productions",
+          "parameters": {
+            "stereo_separation": "40% left",
+            "phase_offset": "15ms",
+            "invert": false,
+            "pan": "center",
+            "volume": "-1dB"
+          },
+          "use_on": [
+            "Atmospheric synths",
+            "Drone pads",
+            "Background textures"
+          ],
+          "notes": "Combines separation and offset for immersive width"
+        },
+        {
+          "name": "Upbeat Hi-Hat Spread",
+          "category": "Upbeat Hip-Hop",
+          "description": "Wide, energetic hi-hats for upbeat tracks",
+          "parameters": {
+            "stereo_separation": "55% left",
+            "phase_offset": "0ms",
+            "invert": false,
+            "pan": "center",
+            "volume": "0dB"
+          },
+          "use_on": [
+            "Hi-hats",
+            "Shakers",
+            "Percussion loops"
+          ],
+          "notes": "Keeps highs wide and energetic"
+        },
+        {
+          "name": "Upbeat Vocal Double",
+          "category": "Upbeat Hip-Hop",
+          "description": "Natural double-tracking for upbeat vocals",
+          "parameters": {
+            "stereo_separation": "center",
+            "phase_offset": "30ms",
+            "invert": false,
+            "pan": "slightly right",
+            "volume": "0dB"
+          },
+          "use_on": [
+            "Vocal doubles",
+            "Ad-libs",
+            "Background vocals"
+          ],
+          "notes": "Creates natural double-tracked feel"
+        },
+        {
+          "name": "Upbeat Clap Width",
+          "category": "Upbeat Hip-Hop",
+          "description": "Slight width for claps without losing punch",
+          "parameters": {
+            "stereo_separation": "20% left",
+            "phase_offset": "0ms",
+            "invert": false,
+            "pan": "center",
+            "volume": "0dB"
+          },
+          "use_on": [
+            "Claps",
+            "Snares",
+            "Percussion hits"
+          ],
+          "notes": "Maintains punch while adding width"
+        },
+        {
+          "name": "Melodic Keys Spread",
+          "category": "Melodic Hip-Hop",
+          "description": "Clean width for piano and keys",
+          "parameters": {
+            "stereo_separation": "25% left",
+            "phase_offset": "0ms",
+            "invert": false,
+            "pan": "center",
+            "volume": "0dB"
+          },
+          "use_on": [
+            "Piano",
+            "Keys",
+            "Rhodes",
+            "Synth keys"
+          ],
+          "notes": "Natural width without phase issues"
+        },
+        {
+          "name": "Melodic String Width",
+          "category": "Melodic Hip-Hop",
+          "description": "Lush width for string sections",
+          "parameters": {
+            "stereo_separation": "35% left",
+            "phase_offset": "10ms",
+            "invert": false,
+            "pan": "center",
+            "volume": "-0.5dB"
+          },
+          "use_on": [
+            "Strings",
+            "Orchestral elements",
+            "String pads"
+          ],
+          "notes": "Combines techniques for depth and width"
+        },
+        {
+          "name": "Melodic Vocal Harmony",
+          "category": "Melodic Hip-Hop",
+          "description": "Haas effect for vocal harmonies",
+          "parameters": {
+            "stereo_separation": "center",
+            "phase_offset": "25ms",
+            "invert": false,
+            "pan": "slightly right",
+            "volume": "0dB"
+          },
+          "use_on": [
+            "Vocal harmonies",
+            "Stacked vocals",
+            "Choir elements"
+          ],
+          "notes": "Layer multiple with different offset times"
+        },
+        {
+          "name": "Electronic Synth Pad",
+          "category": "Electronic Hip-Hop",
+          "description": "Wide pads for electronic hip-hop",
+          "parameters": {
+            "stereo_separation": "50% left",
+            "phase_offset": "0ms",
+            "invert": false,
+            "pan": "center",
+            "volume": "0dB"
+          },
+          "use_on": [
+            "Synth pads",
+            "Atmospheric layers",
+            "Drone elements"
+          ],
+          "notes": "Creates spacious electronic textures"
+        },
+        {
+          "name": "Electronic Vocal Chop",
+          "category": "Electronic Hip-Hop",
+          "description": "Movement for vocal chops",
+          "parameters": {
+            "stereo_separation": "center",
+            "phase_offset": "20ms",
+            "invert": false,
+            "pan": "center",
+            "volume": "0dB"
+          },
+          "use_on": [
+            "Vocal chops",
+            "Vocal samples",
+            "Chopped vocals"
+          ],
+          "notes": "Adds character and movement"
+        },
+        {
+          "name": "Electronic Synth Lead Focus",
+          "category": "Electronic Hip-Hop",
+          "description": "Minimal width to keep leads focused",
+          "parameters": {
+            "stereo_separation": "15% left",
+            "phase_offset": "0ms",
+            "invert": false,
+            "pan": "center",
+            "volume": "0dB"
+          },
+          "use_on": [
+            "Synth leads",
+            "Lead melodies",
+            "Hook elements"
+          ],
+          "notes": "Keeps leads upfront and focused"
+        },
+        {
+          "name": "Trap Hi-Hat Roll",
+          "category": "Trap",
+          "description": "Extreme width for trap hi-hat rolls",
+          "parameters": {
+            "stereo_separation": "65% left",
+            "phase_offset": "0ms",
+            "invert": false,
+            "pan": "center",
+            "volume": "0dB"
+          },
+          "use_on": [
+            "Hi-hat rolls",
+            "Trap hats",
+            "Rapid hi-hats"
+          ],
+          "notes": "Classic trap wide hi-hats"
+        },
+        {
+          "name": "Trap Vocal Ad-lib",
+          "category": "Trap",
+          "description": "Haas effect for trap ad-libs",
+          "parameters": {
+            "stereo_separation": "center",
+            "phase_offset": "25ms",
+            "invert": false,
+            "pan": "slightly right",
+            "volume": "0dB"
+          },
+          "use_on": [
+            "Ad-libs",
+            "Vocal fills",
+            "Background vocals"
+          ],
+          "notes": "Creates space for ad-libs in mix"
+        },
+        {
+          "name": "Trap Snare Layer",
+          "category": "Trap",
+          "description": "Slight width for layered snares",
+          "parameters": {
+            "stereo_separation": "20% left",
+            "phase_offset": "0ms",
+            "invert": false,
+            "pan": "center",
+            "volume": "0dB"
+          },
+          "use_on": [
+            "Snare layers",
+            "Clap layers",
+            "Percussion"
+          ],
+          "notes": "Adds dimension without losing punch"
+        },
+        {
+          "name": "Instant Mono Check",
+          "category": "Utility",
+          "description": "Quick mono collapse for compatibility checking",
+          "parameters": {
+            "stereo_separation": "100% right (full mono)",
+            "phase_offset": "0ms",
+            "invert": false,
+            "pan": "center",
+            "volume": "0dB"
+          },
+          "use_on": [
+            "Any stereo source"
+          ],
+          "notes": "Use for quick mono compatibility checks"
+        },
+        {
+          "name": "Subtle Haas Effect",
+          "category": "Utility",
+          "description": "Natural Haas effect for general use",
+          "parameters": {
+            "stereo_separation": "center",
+            "phase_offset": "25ms",
+            "invert": false,
+            "pan": "slightly right (compensate)",
+            "volume": "0dB"
+          },
+          "use_on": [
+            "Mono sources needing width"
+          ],
+          "notes": "Sweet spot for natural width"
+        },
+        {
+          "name": "Boom-Bap Drum Width",
+          "category": "Boom-Bap",
+          "description": "Conservative width for classic boom-bap drums",
+          "parameters": {
+            "stereo_separation": "15% left",
+            "phase_offset": "0ms",
+            "invert": false,
+            "pan": "center",
+            "volume": "0dB"
+          },
+          "use_on": [
+            "Drum loops",
+            "Drum bus",
+            "Percussion"
+          ],
+          "notes": "Keeps drums punchy and centered"
+        },
+        {
+          "name": "Lo-Fi Vintage Width",
+          "category": "Lo-Fi Hip-Hop",
+          "description": "Gentle width for lo-fi productions",
+          "parameters": {
+            "stereo_separation": "20% left",
+            "phase_offset": "12ms",
+            "invert": false,
+            "pan": "center",
+            "volume": "-0.5dB"
+          },
+          "use_on": [
+            "Lo-fi pads",
+            "Jazz samples",
+            "Vinyl textures"
+          ],
+          "notes": "Subtle vintage character"
+        },
+        {
+          "name": "Experimental Wide FX",
+          "category": "Experimental",
+          "description": "Extreme width for creative effects",
+          "parameters": {
+            "stereo_separation": "70% left",
+            "phase_offset": "40ms",
+            "invert": false,
+            "pan": "center",
+            "volume": "-2dB"
+          },
+          "use_on": [
+            "FX layers",
+            "Risers",
+            "Transitions"
+          ],
+          "notes": "Check mono - expect significant cancellation"
+        }
+      ],
+      "usage_notes": {
+        "mono_checking": "Always verify mono compatibility after applying width",
+        "stacking": "Use different offset values when layering multiple instances",
+        "automation": "Automate separation for dynamic width changes",
+        "frequency_specific": "Consider using only on high frequencies for some presets",
+        "genre_mixing": "Combine techniques from different genres for hybrid styles"
+      },
+      "best_practices": [
+        "Start with conservative settings and increase gradually",
+        "Check mono compatibility frequently",
+        "Use phase offset primarily on non-critical elements",
+        "Keep low frequencies (kick, bass) narrow or mono",
+        "Save custom variations for your specific workflow",
+        "A/B compare with and without processing",
+        "Use automation for dynamic width changes in arrangements",
+        "Layer multiple instances with different settings for complex width"
+      ]
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity Stereo Enhancer\n\n## Purpose & Identity\nFruity Stereo Enhancer is a streamlined **spatial utility**. Its primary identity is a quick-access tool for adjusting the width of a signal. It uses two main methods: **Stereo Separation** (altering the balance between Mid and Side signals) and **Phase Offset** (applying a tiny delay to one channel to create psychoacoustic width). [SRC: IL-MAN]\n\n## 60-Second Mental Model\nThink of it as a \"Spatial Magnifying Glass.\"\n- Turn the big knob to the **Left**, and the sound stretches out to the sides.\n- Turn the big knob to the **Right**, and the sound collapses into a single point in the center (Mono).\n- Use the **Phase Offset** knob to make a mono sound \"pretend\" to be stereo by delaying one ear slightly.\n\n## Hip-Hop / R&B Context\n- **The Wide Melodic Bus:** Spreading your melodies to 40% width to make the beat feel massive and \"Spacey\" before the vocal starts.\n- **Mono-Safe 808s:** Using the right side of the knob to ensure your sub-bass is 100% mono, preventing phase issues in the club (Upbeat).\n- **Vocal \"Double\" Simulation:** Using Phase Offset on a single vocal track to make it sound like it was recorded twice (Vibey).\n\n## When To Use\n- When you need to **fix a mono compatibility issue** quickly.\n- When you want to **widen a synth pad** without complex matrix mixing.\n- When you want to **center a lopsided recording** using the Pan knob.\n\n## When NOT To Use\n- **Professional Mid/Side EQ:** Use **Stereo Shaper** or **Patcher** if you need to process the frequencies of the sides independently.\n- **Surgical Phase Fixing:** If you have severe correlation issues, **Stereo Shaper** provides more precise control. [SRC: REPUTABLE]\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity Stereo Enhancer\n\nStereo Enhancer translates vibes through **Spatial Contrast** and **Timing Differences**.\n\n## 1. Spacey (Vast, Immersive, Airy)\n- **Concept:** \"The Wide Horizon.\"\n- **Levers:**\n  - **Stereo Separation:** Turn far left (toward 100% Wide).\n  - **Phase Offset:** 20ms.\n- **Listen For:** The sound completely vacating the center channel, creating an immersive \"Halo\" around the listener.\n- **Don't Do This:** Don't do this to the Kick; keep the space for pads and ad-libs.\n\n## 2. Upbeat (Punchy, Centered, Impactful)\n- **Concept:** \"The Mono Core.\"\n- **Levers:**\n  - **Stereo Separation:** Turn to the right (Mono).\n  - **Target:** Kick, 808, and Snare.\n- **Listen For:** A more focused, \"in-your-face\" energy. The drums hit harder because all the energy is concentrated in the center.\n\n## 3. Psychedelic (Disorienting, Hollow, Shifting)\n- **Concept:** \"The Time Warp.\"\n- **Levers:**\n  - **Phase Offset:** 50ms - 100ms.\n  - **Invert:** ON.\n- **Listen For:** A strange, \"inside-out\" sound that feels like it's shifting through your brain. It sounds like a broken speaker in a cool, trippy way.\n\n## 4. Vibey (Smooth, Expensive, Polished)\n- **Concept:** \"The Natural Double.\"\n- **Levers:**\n  - **Phase Offset:** 15ms - 25ms.\n  - **Stereo Separation:** Default (Center).\n- **Listen For:** A single vocal or guitar sounding like two takes. It adds a professional \"Vibey\" thickness without the need for a chorus effect.\n\n## 5. Moody (Dark, Claustrophobic, Isolated)\n- **Concept:** \"The Focused Shadow.\"\n- **Levers:**\n  - **Stereo Separation:** 50% toward Mono.\n  - **Pan:** Slightly off-center (10% Left).\n- **Listen For:** A sound that feels \"trapped\" and small, creating a sense of isolation and intimacy in dark R&B tracks. [SRC: REPUTABLE]\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Stereo Enhancer\r\n\r\n## What It Is\r\nFruity Stereo Enhancer is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "separation-vs-offset": "# Stereo Separation vs Phase Offset - Understanding the Difference\r\n\r\n## Overview\r\nFruity Stereo Enhancer offers two fundamentally different approaches to creating stereo width: **Stereo Separation** (volume-based) and **Phase Offset** (timing-based). Understanding when and how to use each is critical for professional stereo imaging.\r\n\r\n## Quick Reference Table\r\n\r\n| Aspect | Stereo Separation | Phase Offset |\r\n|--------|------------------|--------------|\r\n| **Method** | Adjusts Mid/Side volume balance | Delays one channel vs the other |\r\n| **Works on** | Existing stereo signals | Mono signals (creates stereo) |\r\n| **Effect on Mono Source** | None (no change) | Creates width |\r\n| **Mono Compatibility** | Generally good | Often problematic |\r\n| **Artifacts** | Minimal | Comb filtering |\r\n| **Typical Use** | Synth pads, hi-hats, stereo sources | Mono vocals, mono instruments |\r\n| **Recommended Range** | 20-60% for most applications | 20-40ms for natural width |\r\n| **Genre Preference** | All genres | Selective use |\r\n\r\n## Stereo Separation Explained\r\n\r\n### What It Does\r\nStereo Separation adjusts the balance between the **Mid** signal (L+R, center content) and the **Side** signal (L-R, stereo content).\r\n\r\n**Mid Signal:** Everything that's identical in L and R channels\r\n**Side Signal:** Everything that's different between L and R channels\r\n\r\n**Left (Wide):** Increases Side signal, decreases Mid signal\r\n**Result:** Existing stereo content becomes more pronounced\r\n\r\n**Right (Mono):** Decreases Side signal, increases Mid signal\r\n**Result:** Stereo content collapses toward mono\r\n\r\n### How It Works Technically\r\n\r\n#### Mid/Side Conversion\r\n1. **Convert to Mid/Side:**\r\n   - Mid = L + R\r\n   - Side = L - R\r\n\r\n2. **Adjust Balance:**\r\n   - Separation left: Increase Side volume\r\n   - Separation right: Decrease Side volume\r\n\r\n3. **Convert Back to Stereo:**\r\n   - L = Mid + Side\r\n   - R = Mid - Side\r\n\r\n### When to Use Stereo Separation\r\n\r\n✅ **Perfect For:**\r\n- Synth pads with built-in stereo\r\n- Hi-hats from stereo samples\r\n- Stereo drum loops\r\n- Reverb/delay returns (already stereo)\r\n- Keys/piano with stereo spread\r\n- Guitar with stereo effects\r\n- Any source with existing L/R differences\r\n\r\n❌ **Won't Work On:**\r\n- Pure mono kick drums\r\n- Centered mono bass\r\n- Single mono vocal take\r\n- Mono instrument samples\r\n- Anything without existing stereo content\r\n\r\n### Stereo Separation Examples\r\n\r\n#### Example 1: Synth Pad\r\n**Source:** Stereo pad with chorus and reverb\r\n**Action:** Stereo Separation 40% left\r\n**Result:** Chorus movement and reverb tail become wider\r\n**Mono:** Good compatibility (slight thinning acceptable)\r\n\r\n#### Example 2: Hi-Hats\r\n**Source:** Stereo hi-hat sample\r\n**Action:** Stereo Separation 60% left\r\n**Result:** Hats spread wide in stereo field\r\n**Mono:** Fair compatibility (acceptable high-frequency loss)\r\n\r\n#### Example 3: Mono Kick (Mistake)\r\n**Source:** Centered mono kick\r\n**Action:** Stereo Separation 50% left\r\n**Result:** NO CHANGE (no stereo content to enhance)\r\n**Lesson:** Separation doesn't create stereo, only enhances existing\r\n\r\n## Phase Offset Explained\r\n\r\n### What It Does\r\nPhase Offset delays one channel (L or R) by a specified time relative to the other, creating a timing difference that our brain interprets as width.\r\n\r\n**This is the Haas Effect** (also called Precedence Effect)\r\n\r\n### How It Works Technically\r\n\r\n1. **Delay Applied:**\r\n   - One channel (typically Right) is delayed\r\n   - Left channel remains at original timing\r\n\r\n2. **Psychoacoustic Effect:**\r\n   - Brain localizes sound to the first-arriving channel\r\n   - But perceives width due to timing difference\r\n   - Creates \"double tracking\" or \"spatial\" effect\r\n\r\n3. **Side Effect:**\r\n   - Sound appears to pan toward the undelayed side\r\n   - Must compensate with Pan control\r\n\r\n### Timing Ranges and Effects\r\n\r\n**1-20ms (Subtle):**\r\n- Minimal comb filtering\r\n- Subtle width enhancement\r\n- Good mono compatibility\r\n- Natural sound\r\n\r\n**20-40ms (Sweet Spot):**\r\n- Natural \"double tracking\" feel\r\n- Noticeable width\r\n- Some comb filtering\r\n- Fair mono compatibility\r\n- **Most common range**\r\n\r\n**40-100ms (Obvious):**\r\n- Significant delay perceivable\r\n- Strong comb filtering\r\n- Width but also \"phasey\" sound\r\n- Poor mono compatibility\r\n\r\n**100ms+ (Delay):**\r\n- Perceived as echo, not width\r\n- Rhythmic delay effect\r\n- Not used for width enhancement\r\n\r\n### When to Use Phase Offset\r\n\r\n✅ **Perfect For:**\r\n- Mono vocal recordings (background/ad-libs)\r\n- Mono instrument takes\r\n- Single mono synth line\r\n- Mono guitar DI\r\n- Creating stereo from mono sources\r\n- Haas effect doubling\r\n\r\n❌ **Avoid On:**\r\n- Lead vocals (use real doubling)\r\n- Bass (creates phase issues)\r\n- Kick drums (mono is better)\r\n- Critical mix elements\r\n- Already stereo sources (use Separation instead)\r\n\r\n### Phase Offset Examples\r\n\r\n#### Example 1: Mono Vocal Ad-lib\r\n**Source:** Single mono vocal recording (\"yeah!\")\r\n**Action:** Phase Offset 25ms, Pan 10% right\r\n**Result:** Natural \"double tracked\" width\r\n**Mono:** Fair (some cancellation acceptable for ad-libs)\r\n\r\n#### Example 2: Mono Synth Lead\r\n**Source:** Single oscillator mono synth\r\n**Action:** Phase Offset 30ms, Pan 12% right\r\n**Result:** Wide, spacious synth\r\n**Mono:** Poor compatibility, use only if acceptable\r\n\r\n#### Example 3: Stereo Pad (Mistake)\r\n**Source:** Lush stereo pad\r\n**Action:** Phase Offset 25ms\r\n**Result:** Confusing phase relationships, sounds \"weird\"\r\n**Lesson:** Use Separation on stereo sources, not Offset\r\n\r\n## The Comb Filtering Problem\r\n\r\n### What is Comb Filtering?\r\nWhen identical signals are delayed and summed, certain frequencies cancel (destructive interference) while others reinforce (constructive interference), creating a \"comb\" pattern in the frequency response.\r\n\r\n**Phase Offset creates comb filtering** - this is unavoidable.\r\n\r\n### Why It Happens\r\n- Delayed signal combines with original\r\n- At some frequencies, they're in phase (boost)\r\n- At others, they're out of phase (cancel)\r\n- Creates notches in frequency spectrum\r\n\r\n### Audible Result\r\n- \"Phasey\" or \"flanged\" sound\r\n- Hollow quality\r\n- Frequency notches in the tone\r\n- Potentially unnatural character\r\n\r\n### How to Minimize\r\n\r\n1. **Keep offset low:** 20-30ms minimizes severity\r\n2. **Use only on backgrounds:** Not critical elements\r\n3. **Check mono:** Comb filtering is more obvious in mono\r\n4. **Accept it:** It's part of the Haas effect character\r\n\r\n## Choosing the Right Technique\r\n\r\n### Decision Flow\r\n\r\n**Is your source stereo?**\r\n- Yes → Use **Stereo Separation**\r\n- No → Consider **Phase Offset** OR create stereo at source\r\n\r\n**Is it a critical element (lead vocal, main melody)?**\r\n- Yes → Use real doubling, NOT Phase Offset\r\n- No → Phase Offset is acceptable\r\n\r\n**Does it need to be mono compatible?**\r\n- Yes → Use conservative Stereo Separation (20-35%)\r\n- No → Either technique is fine\r\n\r\n**Is it low-frequency content (kick, bass)?**\r\n- Yes → Keep mono, don't use either technique\r\n- No → Proceed with width enhancement\r\n\r\n## Combining Both Techniques\r\n\r\n### Can You Use Both?\r\nYes, but carefully:\r\n\r\n**Example Setup:**\r\n- Stereo Separation: 30% left (enhance existing stereo)\r\n- Phase Offset: 15ms (add subtle timing width)\r\n- Pan: Compensate for offset shift\r\n\r\n**Use Case:** Stereo source that needs extra width\r\n**Warning:** Compounds phase issues, check mono carefully\r\n\r\n### When to Combine\r\n- Experimental sound design\r\n- Extreme spatial effects\r\n- Background atmospheric elements\r\n- When mono compatibility is not critical\r\n\r\n### When NOT to Combine\r\n- Lead vocals\r\n- Critical mix elements\r\n- Bass or kick\r\n- When mono compatibility matters\r\n\r\n## Common Mistakes and Fixes\r\n\r\n### Mistake 1: Using Separation on Mono Source\r\n**Problem:** No effect, wasted effort\r\n**Fix:** Use Phase Offset instead (or add stereo at source)\r\n\r\n### Mistake 2: Using Phase Offset on Stereo Source\r\n**Problem:** Confusing phase relationships\r\n**Fix:** Use Stereo Separation instead\r\n\r\n### Mistake 3: Extreme Phase Offset (60ms+)\r\n**Problem:** Sounds like delay, severe comb filtering\r\n**Fix:** Reduce to 20-40ms range\r\n\r\n### Mistake 4: Not Compensating Pan Shift\r\n**Problem:** Offset makes sound pan to one side\r\n**Fix:** Use Pan control to re-center\r\n\r\n### Mistake 5: Ignoring Mono\r\n**Problem:** Elements disappear in mono playback\r\n**Fix:** Always check mono, reduce width if necessary\r\n\r\n## Genre-Specific Guidance\r\n\r\n### Trap\r\n- **Separation:** Aggressive on hi-hats (60-70%)\r\n- **Phase Offset:** Moderate on ad-libs (25-30ms)\r\n- **Mono:** Less critical for modern streaming\r\n\r\n### Boom-Bap\r\n- **Separation:** Conservative (15-25%)\r\n- **Phase Offset:** Rarely used\r\n- **Mono:** Very important for vintage vibe\r\n\r\n### Melodic Hip-Hop\r\n- **Separation:** Moderate on pads/strings (35-45%)\r\n- **Phase Offset:** Selective on harmonies (20-30ms)\r\n- **Mono:** Important for clarity\r\n\r\n### Electronic Hip-Hop\r\n- **Separation:** Aggressive on synths (50-60%)\r\n- **Phase Offset:** Experimental use (20-40ms)\r\n- **Mono:** Situational\r\n\r\n### Lo-Fi Hip-Hop\r\n- **Separation:** Subtle (25-35%)\r\n- **Phase Offset:** Minimal (15-20ms)\r\n- **Mono:** Important for warm, cohesive vibe\r\n\r\n## Technical Summary\r\n\r\n### Stereo Separation\r\n- **Physics:** Volume-based Mid/Side balance\r\n- **Creates:** Width from existing stereo content\r\n- **Artifacts:** Minimal\r\n- **Mono Behavior:** Reduces to original (Side cancels)\r\n- **CPU:** Negligible\r\n- **Latency:** Zero\r\n\r\n### Phase Offset\r\n- **Physics:** Time-based delay difference\r\n- **Creates:** Stereo from mono sources (Haas effect)\r\n- **Artifacts:** Comb filtering (frequency notches)\r\n- **Mono Behavior:** Partial cancellation\r\n- **CPU:** Negligible\r\n- **Latency:** Zero additional (delay is the effect)\r\n\r\n## Practical Workflow Integration\r\n\r\n### For Stereo Sources (Most Common)\r\n1. Load Fruity Stereo Enhancer\r\n2. Use **Stereo Separation** only\r\n3. Start at 30% left\r\n4. Increase/decrease based on genre and taste\r\n5. Check mono\r\n6. Done\r\n\r\n### For Mono Sources (Less Common)\r\n1. Consider if source-level stereo is better (unison, doubling)\r\n2. If using Enhancer, use **Phase Offset**\r\n3. Start at 25ms\r\n4. Adjust **Pan** to re-center\r\n5. Check mono (expect some loss)\r\n6. Evaluate if acceptable\r\n\r\n## Pro Tips\r\n\r\n1. **Default to Separation** - Most sources are already stereo\r\n2. **Offset is specialty** - Use Phase Offset sparingly\r\n3. **Check your source** - Know if it's stereo or mono before processing\r\n4. **Mono is king** - Always check compatibility\r\n5. **Less is more** - Subtle width often sounds more professional\r\n6. **Save presets** - Document your go-to settings\r\n7. **Genre matters** - Respect genre conventions\r\n8. **Automation** - Dynamic width creates interest\r\n9. **Layer strategically** - Different width on different layers\r\n10. **Trust your ears** - If it sounds good, it is good (but check mono!)\r\n\r\n---\r\n\r\n**Quick Decision:** Stereo source? → Stereo Separation. Mono source? → Phase Offset (or create stereo at source).\r\n",
+      "signal-flow": "# Signal Flow: Fruity Stereo Enhancer\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: Fruity Stereo Enhancer (5 Minutes)\n\n1.  **Insert:** Load **Fruity Stereo Enhancer** onto a pad or melodic loop.\n2.  **Width:** Turn the large **STEREO SEPARATION** knob to the left. Notice the sound getting wider.\n3.  **Mono:** Turn the same knob to the right to collapse the sound to the center.\n4.  **Pseudo-Stereo:** If your sound is purely Mono (centered):\n    - Turn the **PHASE OFFSET** knob to about 10 o'clock.\n    - The sound will instantly become wide.\n5.  **Fix:** If the sound feels \"pulled\" to one side after using Phase Offset, use the **PAN** knob to center it.\n6.  **Tip:** Use the **INVERT** switch to check if your sound has phase issues (it will sound hollow if it does). [SRC: IL-MAN]\n",
+      "parameter-cheat-sheet": "# Fruity Stereo Enhancer - Parameter Cheat Sheet\r\n\r\n## Core Controls\r\n\r\n### Stereo Separation\r\n**Function:** Adjusts Mid/Side balance for width control\r\n- **Left (Wide):** Increases Side signal, widens stereo field\r\n- **Center:** Original stereo width maintained\r\n- **Right (Mono):** Reduces Side signal, collapses to mono\r\n- **Range:** Wide ↔ Mono\r\n- **Use:** Control stereo width of existing stereo signals\r\n- **Note:** Does NOT affect pure mono signals\r\n\r\n### Phase Offset\r\n**Function:** Delays one channel to create psychoacoustic width\r\n- **0ms:** No delay, original timing\r\n- **1-20ms:** Subtle width, natural sound\r\n- **20-40ms:** Haas effect, \"double tracking\" feel\r\n- **40-100ms:** Noticeable delay, possible comb filtering\r\n- **100ms+:** Echo-like effects\r\n- **Use:** Create stereo from mono sources\r\n- **Warning:** Always check mono compatibility\r\n\r\n### Invert Phase\r\n**Function:** Flips polarity of one channel\r\n- **Off:** Normal operation\r\n- **On:** Creates phase cancellation effects\r\n- **Result:** Hollow, thin sound in stereo\r\n- **Warning:** Will cause severe cancellation in mono\r\n- **Use:** Creative effects only\r\n\r\n### Pan\r\n**Function:** Positions the final output in stereo field\r\n- **Use:** Compensate for pan shift from Phase Offset\r\n- **Tip:** After using Phase Offset, use Pan to re-center\r\n\r\n### Volume\r\n**Function:** Adjusts output level\r\n- **Use:** Compensate for perceived loudness changes\r\n- **Tip:** Match processed/unprocessed levels for A/B comparison\r\n\r\n## Quick Reference Table\r\n\r\n| Parameter | Function | Range | Mono Affects? | Common Use |\r\n|-----------|----------|-------|---------------|------------|\r\n| Stereo Separation | Width control | Wide ↔ Mono | No | Widening pads/hats |\r\n| Phase Offset | Timing delay | 0-500ms | Yes | Haas effect |\r\n| Invert | Polarity flip | On/Off | Creates issues | Creative FX |\r\n| Pan | Position | L ↔ R | Yes | Re-centering |\r\n| Volume | Level | -∞ to +∞ | Yes | Matching levels |\r\n\r\n## Common Workflows\r\n\r\n### Widen Stereo Pads\r\n1. Set Stereo Separation: 20-40% left\r\n2. Check mono compatibility\r\n3. Adjust volume to match\r\n\r\n### Create Pseudo-Stereo Vocal\r\n1. Set Phase Offset: 20-30ms\r\n2. Use Pan to re-center (usually slight right)\r\n3. Check mono compatibility\r\n4. Reduce offset if comb filtering occurs\r\n\r\n### Instant Mono Utility\r\n1. Set Stereo Separation: Fully right\r\n2. Use on elements that need mono checking\r\n3. Automate on/off for quick A/B testing\r\n\r\n### Haas Effect Width\r\n1. Phase Offset: 25-35ms\r\n2. Pan to center (compensate for shift)\r\n3. Check mono (expect some cancellation)\r\n4. Use only on non-critical elements\r\n\r\n## Hip-Hop Specific Quick Settings\r\n\r\n### Moody Hip-Hop\r\n- **Dark Pads:** Sep 30% left, no offset\r\n- **Atmospheric Synths:** Sep 40% left, offset 15ms\r\n- **Background Vocals:** Offset 25ms, pan to center\r\n\r\n### Upbeat Hip-Hop\r\n- **Hi-Hats:** Sep 50% left for width\r\n- **Claps:** Sep 20% left, minimal offset\r\n- **Vocal Doubles:** Offset 30ms, pan compensate\r\n\r\n### Melodic Hip-Hop\r\n- **Keys/Piano:** Sep 25% left, clean width\r\n- **Strings:** Sep 35% left, offset 10ms for depth\r\n- **Vocal Harmonies:** Offset 20-40ms per layer\r\n\r\n### Electronic Hip-Hop\r\n- **Synth Leads:** Sep 15% left (keep focused)\r\n- **Pads:** Sep 45% left for space\r\n- **Vocal Chops:** Offset 15-25ms for movement\r\n\r\n### Trap\r\n- **Hi-Hat Rolls:** Sep 60% left for width\r\n- **Snare Layers:** Sep 20% left\r\n- **Vocal Ad-libs:** Offset 20ms, pan left/right\r\n\r\n## Warning Signs\r\n\r\n### Too Much Width\r\n- Sound feels \"thin\" or \"hollow\"\r\n- Loses punch in mono\r\n- Phase cancellation audible\r\n- Elements sound distant\r\n\r\n### Phase Issues\r\n- Sound disappears in mono\r\n- Comb filtering (flanging sound)\r\n- Frequency notches appear\r\n- Lacks low-end punch\r\n\r\n### Incorrect Application\r\n- Mono kick/bass widened (bad)\r\n- Critical vocal too wide (bad)\r\n- Stereo separation on mono source (no effect)\r\n- Phase offset too high (sounds like delay)\r\n\r\n## Pro Tips\r\n\r\n1. **Always check mono** - Hit the mono button frequently\r\n2. **Haas sweet spot** - 20-40ms is most natural\r\n3. **Separation for stereo** - Use on existing stereo sources\r\n4. **Offset for mono** - Use on mono sources to create width\r\n5. **Pan compensation** - Phase offset shifts pan, compensate with Pan knob\r\n6. **Less is more** - Subtle settings sound more natural\r\n7. **Genre matters** - Trap = wide hats, Boom-bap = tighter stereo field\r\n8. **Stack carefully** - Multiple widening effects compound quickly\r\n9. **Save presets** - Create go-to settings for common scenarios\r\n10. **Automation** - Automate width for dynamic arrangements\r\n\r\n## Common Mistakes to Avoid\r\n\r\n1. ❌ Widening kick drums or bass\r\n2. ❌ Using Phase Offset without checking mono\r\n3. ❌ Inverting phase without understanding consequences\r\n4. ❌ Extreme separation settings on all tracks\r\n5. ❌ Forgetting to compensate pan after phase offset\r\n6. ❌ Using stereo separation on mono sources\r\n7. ❌ Ignoring mono compatibility for streaming platforms\r\n8. ❌ Over-widening lead vocals\r\n9. ❌ Not matching levels after processing\r\n10. ❌ Using multiple widening plugins without purpose\r\n\r\n## Frequency-Specific Considerations\r\n\r\n### Low Frequencies (20-200Hz)\r\n- **Keep narrow** - Mono or minimal width\r\n- **Reason:** Maintains punch and power\r\n- **Exception:** Creative bass width in electronic genres\r\n\r\n### Mid Frequencies (200Hz-5kHz)\r\n- **Moderate width** - 20-40% separation\r\n- **Reason:** Balances clarity and focus\r\n- **Application:** Vocals, keys, guitars\r\n\r\n### High Frequencies (5kHz+)\r\n- **Can be wider** - 40-60% separation\r\n- **Reason:** Creates air and space\r\n- **Application:** Hi-hats, cymbals, atmospheric elements\r\n\r\n## Integration with Other Plugins\r\n\r\n### Before Stereo Enhancer\r\n- **EQ:** Shape tone first\r\n- **Compression:** Control dynamics\r\n- **Saturation:** Add harmonics\r\n\r\n### After Stereo Enhancer\r\n- **Reverb:** Space and depth\r\n- **Delay:** Rhythmic elements\r\n- **Limiter:** Final level control\r\n\r\n### Parallel Processing\r\n- **Blend wet/dry:** Use mixer send for subtle enhancement\r\n- **Frequency-specific:** Process only highs/mids in parallel\r\n\r\n---\r\n\r\n**Quick Start:** Load on a synth pad → Move Stereo Separation 30% left → Check mono → Adjust to taste\r\n",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Stereo Enhancer\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Stereo Enhancer to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Stereo Enhancer\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Stereo Enhancer\r\n\r\nThis section contains learning information for the fruity-stereo-enhancer plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: Instant Pseudo-Stereo (Fruity Stereo Enhancer)\n\n## Routing Context\n- **Target:** A mono Synth Lead or dry Acoustic Guitar.\n- **Position:** Insert FX (Slot 1).\n\n## Step-by-Step Setup\n1.  On the mono track, load **Fruity Stereo Enhancer**.\n2.  Set **STEREO SEPARATION** to the middle (Default).\n3.  Slowly turn the **PHASE OFFSET** knob to the left (approx. 15ms-20ms).\n4.  **The Result:** The sound will immediately jump out to the sides.\n5.  **The Fix:** Notice the sound feels like it's coming more from the Right ear. Turn the **PAN** knob slightly to the Left until the sound feels centered again.\n\n## Vibe Check\n- **Vibey/Spacey:** Turns a boring mono sound into a 3D professional instrument. Essential for atmospheric R&B.\n\n## Variation\n- **Super Wide:** Use the **INVERT** switch along with the Phase Offset for an even wider, more psychedelic effect. (Warning: Check Mono!). [SRC: REPUTABLE]\n",
+      "haas-effect-vocal-width": "# Haas Effect for Vocal Width - Complete Workflow\r\n\r\n## Overview\r\nThe Haas effect uses timing differences between left and right channels to create a sense of stereo width from a mono source. This is perfect for making mono vocal recordings feel wider without traditional doubling.\r\n\r\n## What is the Haas Effect?\r\n\r\nThe Haas effect (also called precedence effect) occurs when the same sound reaches our ears at slightly different times. Our brain perceives this as a wider sound source while maintaining the localization of the first-arriving sound.\r\n\r\n**Key Timing Ranges:**\r\n- **1-20ms:** Subtle width, minimal comb filtering\r\n- **20-40ms:** Optimal Haas effect, natural \"double tracking\"\r\n- **40-100ms:** Noticeable delay, significant comb filtering\r\n- **100ms+:** Perceived as distinct echo, not width\r\n\r\n## When to Use Haas Effect\r\n\r\n### Best Applications\r\n✅ Background vocals\r\n✅ Vocal ad-libs\r\n✅ Vocal harmonies\r\n✅ Doubles/layers\r\n✅ Atmospheric vocal elements\r\n✅ Vocal chops\r\n\r\n### Avoid On\r\n❌ Lead vocals (use traditional doubling instead)\r\n❌ Rap verses (keep focused and upfront)\r\n❌ Hook vocals (maintain center position)\r\n❌ Elements that need mono compatibility\r\n\r\n## Step-by-Step Workflow\r\n\r\n### Step 1: Load the Plugin\r\n1. Select your mono vocal track in mixer\r\n2. Add **Fruity Stereo Enhancer** to an empty slot\r\n3. Ensure your vocal is properly gained and compressed first\r\n\r\n### Step 2: Set Phase Offset\r\n1. Turn the **Phase Offset** knob to **25ms**\r\n   - This is the sweet spot for most vocals\r\n   - Natural double-tracking feel\r\n   - Minimal harsh artifacts\r\n\r\n### Step 3: Compensate Pan Shift\r\nThe Haas effect creates a pan bias toward the *undelayed* channel:\r\n\r\n1. Play your vocal and listen for pan position\r\n2. Adjust the **Pan** knob slightly to the right (typically)\r\n3. Goal: Re-center the vocal in the stereo field\r\n4. Fine-tune by ear until it sounds centered\r\n\r\n**Typical Pan Compensation:**\r\n- 25ms offset → Pan ~5-10% right\r\n- 30ms offset → Pan ~10-15% right\r\n- 35ms offset → Pan ~15-20% right\r\n\r\n### Step 4: Check Mono Compatibility\r\n**CRITICAL STEP - Do not skip!**\r\n\r\n1. Hit the mono button in FL Studio\r\n2. Listen for:\r\n   - Thinning of the vocal\r\n   - Loss of body/weight\r\n   - Flanging/phasing artifacts\r\n   - Reduction in volume\r\n\r\n3. If mono cancellation is severe:\r\n   - Reduce Phase Offset to 15-20ms\r\n   - Or use traditional stereo doubling instead\r\n\r\n### Step 5: Volume Matching\r\n1. Bypass the plugin\r\n2. Note the perceived loudness\r\n3. Enable the plugin\r\n4. Adjust **Volume** knob to match bypass level\r\n5. This ensures accurate A/B comparison\r\n\r\n## Genre-Specific Settings\r\n\r\n### Moody Hip-Hop\r\n**Goal:** Atmospheric, wide background vocals\r\n\r\n- **Phase Offset:** 20ms\r\n- **Pan Compensation:** 8% right\r\n- **Volume:** -0.5dB\r\n- **Use on:** Background vocals, harmonies, vocal pads\r\n- **Notes:** Keep offset low to maintain dark, cohesive sound\r\n\r\n### Upbeat Hip-Hop\r\n**Goal:** Energetic, spacious doubles\r\n\r\n- **Phase Offset:** 30ms\r\n- **Pan Compensation:** 12% right\r\n- **Volume:** 0dB\r\n- **Use on:** Vocal doubles, ad-libs, energetic layers\r\n- **Notes:** Slightly higher offset for more noticeable width\r\n\r\n### Melodic Hip-Hop\r\n**Goal:** Lush, layered vocal harmonies\r\n\r\n- **Phase Offset:** 25ms\r\n- **Pan Compensation:** 10% right\r\n- **Volume:** -1dB\r\n- **Use on:** Harmonies, stacked vocals, melodic layers\r\n- **Notes:** Stack multiple with different offset times (20ms, 25ms, 30ms)\r\n\r\n### Electronic Hip-Hop\r\n**Goal:** Processed, synthetic vocal character\r\n\r\n- **Phase Offset:** 20ms\r\n- **Pan Compensation:** 8% right\r\n- **Volume:** 0dB\r\n- **Use on:** Vocal chops, processed vocals, robotic elements\r\n- **Notes:** Works well with vocoder and other FX\r\n\r\n### Trap\r\n**Goal:** Spacious ad-libs and background elements\r\n\r\n- **Phase Offset:** 25ms\r\n- **Pan Compensation:** 10% right\r\n- **Volume:** 0dB\r\n- **Use on:** Ad-libs (\"yeah,\" \"ay\"), background chants, vocal fills\r\n- **Notes:** Keeps ad-libs wide without interfering with centered lead\r\n\r\n## Advanced Techniques\r\n\r\n### Multi-Layer Haas\r\nCreate ultra-wide vocals by stacking multiple instances:\r\n\r\n**Layer 1 (Most Subtle):**\r\n- Phase Offset: 15ms\r\n- Pan: 5% right\r\n- Volume: -3dB\r\n\r\n**Layer 2 (Medium):**\r\n- Phase Offset: 25ms\r\n- Pan: 10% right\r\n- Volume: -3dB\r\n\r\n**Layer 3 (Widest):**\r\n- Phase Offset: 35ms\r\n- Pan: 15% right\r\n- Volume: -4dB\r\n\r\n**Result:** Gradually widening stereo field with depth\r\n\r\n### Frequency-Specific Haas\r\nApply Haas effect only to certain frequencies:\r\n\r\n1. Duplicate your vocal track (Ctrl+L)\r\n2. On Track 1:\r\n   - High-pass filter at 5kHz\r\n   - Apply Haas effect (25ms offset)\r\n3. On Track 2:\r\n   - Low-pass filter at 5kHz\r\n   - Keep centered (no Haas)\r\n\r\n**Result:** Wide highs, focused lows - best of both worlds\r\n\r\n### Automated Haas\r\nAutomate the Phase Offset for dynamic width:\r\n\r\n**Verse:** 0ms (mono, focused)\r\n**Pre-Chorus:** Ramp up to 25ms (building width)\r\n**Chorus:** 25ms (full width)\r\n**Post-Chorus:** Ramp down to 0ms (returning to focus)\r\n\r\n## Troubleshooting\r\n\r\n### Problem: Vocal sounds thin in stereo\r\n**Solution:** Reduce Phase Offset to 15-20ms\r\n\r\n### Problem: Severe mono cancellation\r\n**Solution:** \r\n- Reduce offset significantly (10-15ms)\r\n- Or use traditional stereo doubling instead\r\n- Or apply only to high frequencies\r\n\r\n### Problem: Vocal sounds flanged/phased\r\n**Solution:**\r\n- You're hearing comb filtering\r\n- Reduce Phase Offset\r\n- Try 20ms instead of 30ms\r\n\r\n### Problem: Vocal doesn't sound centered\r\n**Solution:** Adjust Pan compensation more aggressively\r\n\r\n### Problem: Inconsistent width perception\r\n**Solution:**\r\n- Your offset is too high (over 40ms)\r\n- Reduce to 25-30ms range\r\n- Check your monitoring environment\r\n\r\n## Comparison: Haas vs Traditional Doubling\r\n\r\n| Aspect | Haas Effect | Traditional Doubling |\r\n|--------|-------------|---------------------|\r\n| Setup Time | Instant | Requires recording |\r\n| Mono Compatibility | Poor to Fair | Excellent |\r\n| Natural Sound | Good | Excellent |\r\n| Control | Precise | Variable |\r\n| Artifacts | Comb filtering | None |\r\n| Best For | Background elements | Lead vocals |\r\n| Automation | Easy | Difficult |\r\n\r\n## Integration with Other Plugins\r\n\r\n### Before Stereo Enhancer\r\n1. **EQ:** Clean up vocal first\r\n2. **De-esser:** Control sibilance\r\n3. **Compressor:** Even out dynamics\r\n\r\n### After Stereo Enhancer\r\n1. **Reverb:** Add space (use pre-delay to avoid muddiness)\r\n2. **Delay:** Rhythmic elements (may increase width further)\r\n3. **Limiter:** Final level control\r\n\r\n### Parallel Processing\r\nFor maximum control:\r\n\r\n1. Send vocal to auxiliary channel\r\n2. Apply Haas effect on auxiliary\r\n3. Blend wet/dry with mixer fader\r\n4. Result: Precise control over width amount\r\n\r\n## Haas Effect Presets\r\n\r\n### \"Subtle Background\"\r\n- Offset: 15ms\r\n- Pan: 6% right\r\n- Use: Minimal width, maximum mono compatibility\r\n\r\n### \"Natural Double\"\r\n- Offset: 25ms\r\n- Pan: 10% right\r\n- Use: Sweet spot for most applications\r\n\r\n### \"Wide Atmosphere\"\r\n- Offset: 35ms\r\n- Pan: 15% right\r\n- Use: Maximum width, expect mono issues\r\n\r\n### \"Experimental Wide\"\r\n- Offset: 50ms\r\n- Pan: 20% right\r\n- Use: Creative effects, not for critical elements\r\n\r\n## Pro Tips\r\n\r\n1. **Start conservative** - Begin with 20ms and increase if needed\r\n2. **Trust your ears** - If it sounds good in stereo but bad in mono, reduce offset\r\n3. **Genre matters** - Trap/modern = wider acceptable, Boom-bap = tighter better\r\n4. **Streaming platforms** - Many use mono summation, always check\r\n5. **Reference tracks** - Compare your width to professional releases\r\n6. **Save presets** - Create your go-to settings for quick recall\r\n7. **Layer carefully** - Multiple Haas instances compound quickly\r\n8. **Frequency specific** - Consider applying only to highs (5kHz+)\r\n9. **Automation** - Use for dynamic arrangements and builds\r\n10. **Less is more** - Subtle width often sounds more professional\r\n\r\n## Common Mistakes\r\n\r\n❌ **Using on lead vocals** - Keep leads focused and centered\r\n❌ **Ignoring mono** - Always check mono compatibility\r\n❌ **Too high offset** - Over 40ms sounds like delay, not width\r\n❌ **Forgetting pan compensation** - Haas creates pan shift\r\n❌ **Stacking carelessly** - Multiple instances without purpose\r\n❌ **No level matching** - Compare at matched volumes\r\n❌ **Over-processing** - Subtle is often better\r\n❌ **Wrong elements** - Use on backgrounds, not critical parts\r\n\r\n## Success Metrics\r\n\r\nYou've nailed it when:\r\n- ✅ Vocal feels wide and spacious in stereo\r\n- ✅ Mono compatibility is acceptable for your genre\r\n- ✅ No obvious flanging or phasing artifacts\r\n- ✅ Pan position sounds centered after compensation\r\n- ✅ Width enhances the mix without dominating\r\n- ✅ A/B comparison shows clear improvement\r\n- ✅ Settings are documented in your preset\r\n\r\n## Further Reading\r\n\r\n- **Haas Effect Theory:** Understanding psychoacoustics\r\n- **Comb Filtering:** Why timing creates frequency cancellation\r\n- **Mid/Side Processing:** Alternative width techniques\r\n- **Stereo Imaging:** Comprehensive stereo field control\r\n- **Mono Compatibility:** Broadcasting and streaming standards\r\n\r\n---\r\n\r\n**Quick Start:** Load plugin → Set Phase Offset to 25ms → Pan 10% right → Check mono → Adjust to taste\r\n"
+    },
+    "by-instrument": {
+      "hi-hat-width-enhancement": "# Hi-Hat Width Enhancement - Complete Workflow\r\n\r\n## Overview\r\nHi-hats are perfect candidates for stereo widening because they occupy the high-frequency spectrum where width creates air and energy without sacrificing low-end punch. This workflow shows you how to make hi-hats feel wide and spacious in upbeat, trap, and electronic hip-hop productions.\r\n\r\n## Why Widen Hi-Hats?\r\n\r\n### Benefits\r\n✅ Creates energy and movement in the mix\r\n✅ Opens up space for vocals and other centered elements\r\n✅ Adds professional polish to drum programming\r\n✅ Enhances groove and rhythm perception\r\n✅ Makes tracks feel more \"expensive\" and polished\r\n✅ Minimal mono compatibility issues (highs are less critical)\r\n\r\n### Genre Applications\r\n- **Trap:** Wide hi-hat rolls are signature (60-70% width)\r\n- **Upbeat Hip-Hop:** Energetic, spacious hats (50-60% width)\r\n- **Electronic Hip-Hop:** Synthetic, wide hats (45-55% width)\r\n- **Boom-Bap:** Conservative width to maintain punch (15-25% width)\r\n- **Melodic Hip-Hop:** Moderate width for balance (30-40% width)\r\n\r\n## Core Technique: Stereo Separation\r\n\r\n**Use Stereo Separation (NOT Phase Offset) for hi-hats**\r\n\r\nWhy? Most hi-hats in FL Studio are already stereo:\r\n- Layered samples create natural stereo content\r\n- Panning creates stereo field\r\n- Effects (reverb/delay) add stereo information\r\n\r\n**Phase Offset** would only work on pure mono hi-hats (rare)\r\n\r\n## Step-by-Step Workflow\r\n\r\n### Step 1: Identify Your Hi-Hat Type\r\n\r\n**Stereo Hi-Hats (Most Common):**\r\n- Multiple layered samples\r\n- Stereo samples from packs\r\n- Already has L/R information\r\n\r\n**Action:** Use Stereo Separation control\r\n\r\n**Mono Hi-Hats (Less Common):**\r\n- Single mono sample\r\n- No stereo information\r\n\r\n**Action:** Consider Phase Offset OR use Stereo Shaper instead\r\n\r\n### Step 2: Load Fruity Stereo Enhancer\r\n1. Select your hi-hat channel in the mixer\r\n2. Load **Fruity Stereo Enhancer** in an empty effects slot\r\n3. Ensure it's AFTER any reverb/delay for maximum width\r\n\r\n### Step 3: Adjust Stereo Separation\r\n\r\n**Conservative Width (Boom-Bap):**\r\n- Turn knob **15-25% to the left**\r\n- Subtle width enhancement\r\n- Maintains punch and focus\r\n\r\n**Moderate Width (Melodic/Upbeat):**\r\n- Turn knob **40-50% to the left**\r\n- Noticeable width\r\n- Balanced and professional\r\n\r\n**Aggressive Width (Trap/Electronic):**\r\n- Turn knob **60-70% to the left**\r\n- Maximum width\r\n- Signature trap sound\r\n\r\n### Step 4: Check Mono Compatibility\r\n1. Enable mono monitoring in FL Studio\r\n2. Listen for thinning or loss of presence\r\n3. If hats disappear significantly, reduce width\r\n4. High frequencies are more forgiving in mono than mids/lows\r\n\r\n**Acceptable mono loss for hats:** 20-30% volume reduction is okay\r\n\r\n### Step 5: Volume Matching\r\n1. Bypass the plugin\r\n2. Note the perceived loudness\r\n3. Enable the plugin\r\n4. Slightly reduce volume if needed (typically -0.5 to -1dB)\r\n\r\n## Genre-Specific Settings\r\n\r\n### Trap Hi-Hats\r\n**Goal:** Signature wide, aggressive hats\r\n\r\n```\r\nStereo Separation: 65% left\r\nPhase Offset: 0ms\r\nPan: Center\r\nVolume: 0dB\r\n```\r\n\r\n**Use on:**\r\n- Hi-hat rolls\r\n- Rapid trap hats\r\n- 808 hi-hats\r\n- Triplet rolls\r\n\r\n**Notes:** This is a defining characteristic of trap - go wide!\r\n\r\n### Upbeat Hip-Hop Hats\r\n**Goal:** Energetic, spacious without being extreme\r\n\r\n```\r\nStereo Separation: 50% left\r\nPhase Offset: 0ms\r\nPan: Center\r\nVolume: -0.5dB\r\n```\r\n\r\n**Use on:**\r\n- Open hats\r\n- Closed hats\r\n- Shakers\r\n- Tambourines\r\n\r\n**Notes:** Balanced width that adds energy without dominating\r\n\r\n### Melodic Hip-Hop Hats\r\n**Goal:** Controlled width that doesn't overpower melodies\r\n\r\n```\r\nStereo Separation: 35% left\r\nPhase Offset: 0ms\r\nPan: Center\r\nVolume: 0dB\r\n```\r\n\r\n**Use on:**\r\n- Melodic hi-hats\r\n- Subtle percussion\r\n- Background rhythm\r\n\r\n**Notes:** Keep hats in the background to support melodies\r\n\r\n### Boom-Bap Hats\r\n**Goal:** Punchy, focused with minimal width\r\n\r\n```\r\nStereo Separation: 20% left\r\nPhase Offset: 0ms\r\nPan: Center\r\nVolume: 0dB\r\n```\r\n\r\n**Use on:**\r\n- Classic boom-bap hats\r\n- Jazz-sampled hats\r\n- Vintage drum breaks\r\n\r\n**Notes:** Maintains classic centered punch\r\n\r\n### Lo-Fi Hip-Hop Hats\r\n**Goal:** Warm, subtle width\r\n\r\n```\r\nStereo Separation: 25% left\r\nPhase Offset: 0ms\r\nPan: Center\r\nVolume: -0.5dB\r\n```\r\n\r\n**Use on:**\r\n- Dusty hats\r\n- Vinyl-sampled percussion\r\n- Jazzy hats\r\n\r\n**Notes:** Gentle width enhances lo-fi aesthetic\r\n\r\n## Advanced Techniques\r\n\r\n### Frequency-Specific Width\r\nApply width only to the highest frequencies:\r\n\r\n1. **Duplicate your hi-hat track**\r\n2. **Track 1 (Highs):**\r\n   - High-pass filter at 10kHz\r\n   - Apply Stereo Separation: 60% left\r\n3. **Track 2 (Body):**\r\n   - Low-pass filter at 10kHz\r\n   - Minimal or no width: 10% left\r\n\r\n**Result:** Extremely wide air, focused body\r\n\r\n### Automated Width for Builds\r\nCreate dynamic energy with automation:\r\n\r\n**Verse:** 30% left (moderate)\r\n**Pre-Chorus:** Automate from 30% → 60% (building)\r\n**Chorus:** 60% left (full width)\r\n**Bridge:** Drop to 20% (create contrast)\r\n\r\n### Stereo Delay Enhancement\r\nStack width techniques for maximum effect:\r\n\r\n1. **Slot 1:** Fruity Delay 3 (stereo pingpong)\r\n2. **Slot 2:** Fruity Stereo Enhancer (50% separation)\r\n\r\n**Result:** Rhythmic AND spatial width\r\n\r\n### Multi-Layer Hi-Hat Width\r\nDifferent width for different hat layers:\r\n\r\n**Layer 1 (Main Closed):** 40% width\r\n**Layer 2 (Sizzle/Air):** 65% width  \r\n**Layer 3 (Body/Attack):** 20% width\r\n\r\n**Result:** Complex, professional stereo field\r\n\r\n## Hi-Hat Specific Considerations\r\n\r\n### Open vs Closed Hats\r\n\r\n**Closed Hats:**\r\n- Can handle more width (50-65%)\r\n- Less sustain = less phase issues\r\n- Perfect for trap rolls\r\n\r\n**Open Hats:**\r\n- Be more conservative (30-45%)\r\n- Long sustain can create muddiness if too wide\r\n- Check mono carefully\r\n\r\n### Hi-Hat Rolls\r\nTrap rolls sound better VERY wide:\r\n\r\n```\r\nStereo Separation: 70% left\r\nPhase Offset: 0ms\r\nUse on: Rapid hi-hat rolls only\r\n```\r\n\r\nThis creates the characteristic \"swirling\" roll sound\r\n\r\n### Hi-Hat vs Other Percussion\r\n\r\n**Wider (50%+):**\r\n- Hi-hats\r\n- Shakers\r\n- Tambourines\r\n- Cymbals\r\n\r\n**Narrower (20-30%):**\r\n- Snares\r\n- Claps\r\n- Toms\r\n- Kicks (keep mono!)\r\n\r\n## Integration with Other Plugins\r\n\r\n### Effect Chain Order\r\n\r\n**Optimal Order:**\r\n1. **EQ** - Shape tone\r\n2. **Compression** - Control dynamics\r\n3. **Reverb/Delay** - Add space (creates stereo)\r\n4. **Stereo Enhancer** - Enhance existing stereo\r\n5. **Limiter** - Final level control\r\n\r\n### Plugin Combinations\r\n\r\n**With Fruity Delay 3:**\r\n- Delay creates stereo pingpong\r\n- Stereo Enhancer widens the delayed signal\r\n- Result: Extremely spacious rhythmic hats\r\n\r\n**With Fruity Reeverb 2:**\r\n- Reverb creates stereo field\r\n- Stereo Enhancer expands the reverb tail\r\n- Result: Massive atmospheric hats\r\n\r\n**With Fruity Parametric EQ 2:**\r\n- Boost air frequencies (12-16kHz)\r\n- Apply width to enhanced frequencies\r\n- Result: Brilliant, airy wide hats\r\n\r\n## Troubleshooting\r\n\r\n### Problem: Hats sound thin or weak\r\n**Solution:**\r\n- Width is too aggressive\r\n- Reduce Stereo Separation to 40% or less\r\n- Check if you're removing too many mids with EQ\r\n\r\n### Problem: Hats disappear in mono\r\n**Solution:**\r\n- This is somewhat expected with wide hats\r\n- Reduce width to 40-50% maximum\r\n- Consider if mono compatibility matters for your release\r\n\r\n### Problem: Hats sound phasey/flanged\r\n**Solution:**\r\n- You may have used Phase Offset accidentally\r\n- Or your hats have phase issues in the sample itself\r\n- Use Stereo Separation only (0ms Phase Offset)\r\n\r\n### Problem: Hats overpower the mix\r\n**Solution:**\r\n- Reduce Stereo Separation\r\n- Lower the volume -1 to -2dB\r\n- Use automation to reduce width in busy sections\r\n\r\n### Problem: Hats sound synthetic/fake\r\n**Solution:**\r\n- Width might be too uniform\r\n- Use automation for dynamic width\r\n- Layer multiple hats with different width amounts\r\n\r\n## Preset Quick Reference\r\n\r\n### \"Trap Roll Extreme\"\r\n```\r\nSeparation: 70% left\r\nUse: Hi-hat rolls only\r\nMono: Expect significant loss\r\n```\r\n\r\n### \"Upbeat Energy\"\r\n```\r\nSeparation: 50% left\r\nUse: General upbeat production\r\nMono: Good compatibility\r\n```\r\n\r\n### \"Subtle Polish\"\r\n```\r\nSeparation: 25% left\r\nUse: Boom-bap, lo-fi\r\nMono: Excellent compatibility\r\n```\r\n\r\n### \"Melodic Balance\"\r\n```\r\nSeparation: 35% left\r\nUse: Melodic hip-hop\r\nMono: Very good compatibility\r\n```\r\n\r\n### \"Electronic Wide\"\r\n```\r\nSeparation: 55% left\r\nUse: Electronic/future bass\r\nMono: Good compatibility\r\n```\r\n\r\n## Pro Tips\r\n\r\n1. **Go wider than you think** - Hats can handle aggressive width\r\n2. **Mono is less critical** - High frequencies are more forgiving\r\n3. **Trap = wide** - Don't be shy with trap hi-hat width\r\n4. **Automate it** - Dynamic width creates movement\r\n5. **Layer with different widths** - Creates depth and complexity\r\n6. **After reverb/delay** - Place Enhancer AFTER spatial effects\r\n7. **Check on multiple systems** - Ensure width translates\r\n8. **Combine with EQ** - Boost air + width = professional sound\r\n9. **Genre dictates width** - Trap wide, boom-bap narrow\r\n10. **Save your presets** - Create genre-specific quick recalls\r\n\r\n## Common Mistakes\r\n\r\n❌ **Widening kick or bass** - Keep lows centered!\r\n❌ **Using Phase Offset on stereo hats** - Use Separation instead\r\n❌ **Same width on all percussion** - Vary width for interest\r\n❌ **Ignoring the genre** - Trap needs more width than boom-bap\r\n❌ **Too early in chain** - Place after reverb/delay\r\n❌ **No volume compensation** - Match levels for fair comparison\r\n❌ **Over-thinking mono** - High frequencies are more forgiving\r\n❌ **Static width** - Use automation for dynamics\r\n\r\n## Success Metrics\r\n\r\nYou've nailed it when:\r\n- ✅ Hats feel spacious and energetic\r\n- ✅ Mix has more air and openness\r\n- ✅ Vocals have space to sit in the center\r\n- ✅ Groove feels more professional\r\n- ✅ Width matches the genre expectations\r\n- ✅ A/B comparison shows clear improvement\r\n- ✅ Mono compatibility is acceptable for your use case\r\n\r\n## Integration with Drum Bus\r\n\r\n### Should You Widen Individual Hats or Drum Bus?\r\n\r\n**Individual Hats (Recommended):**\r\n- More control\r\n- Can be more aggressive\r\n- Better for modern production\r\n- Trap/electronic styles\r\n\r\n**Drum Bus (Conservative):**\r\n- Affects all drums\r\n- More natural/cohesive\r\n- Better for boom-bap/lo-fi\r\n- Maximum mono compatibility\r\n\r\n**Hybrid Approach:**\r\n- Wide hats individually (60%)\r\n- Subtle drum bus width (15%)\r\n- Maximum control and cohesion\r\n\r\n## Further Applications\r\n\r\nOnce you master hi-hat widening:\r\n- Apply to shakers and tambourines\r\n- Experiment with cymbal crashes\r\n- Try on percussion loops\r\n- Use on synth arpeggios (similar frequency range)\r\n\r\n---\r\n\r\n**Quick Start:** Hi-hat channel → Stereo Enhancer → Separation 50% left → Check in mix → Adjust to genre\r\n",
+      "synth-pad-widening": "# Synth Pad Widening - Complete Workflow\r\n\r\n## Overview\r\nSynth pads are ideal candidates for stereo widening. They occupy the mid-to-high frequency range, provide harmonic and atmospheric content, and benefit greatly from spatial enhancement. This workflow covers everything from subtle enhancement to immersive soundscapes across all hip-hop subgenres.\r\n\r\n## Why Widen Synth Pads?\r\n\r\n### Benefits\r\n✅ Creates immersive, atmospheric textures\r\n✅ Fills the stereo field without cluttering the center\r\n✅ Enhances emotional impact of moody/melodic productions\r\n✅ Provides contrast to centered elements (vocals, bass, kick)\r\n✅ Adds professional polish and depth\r\n✅ Generally good mono compatibility (depends on technique)\r\n\r\n### Genre Applications\r\n- **Moody Hip-Hop:** Wide pads create dark, immersive atmospheres (40-50% width)\r\n- **Melodic Hip-Hop:** Lush, spacious pads support melodies (35-45% width)\r\n- **Electronic Hip-Hop:** Synthetic, expansive pads (50-60% width)\r\n- **Ambient/Experimental:** Maximum width for soundscapes (60-70% width)\r\n- **Lo-Fi Hip-Hop:** Subtle width for warmth (25-35% width)\r\n\r\n## Understanding Pad Stereo Content\r\n\r\n### Most Pads Are Already Stereo\r\nModern synth pads typically have:\r\n- **Multiple oscillators** with stereo spreading\r\n- **Unison/detune** creating natural width\r\n- **Built-in effects** (chorus, reverb, delay)\r\n- **Stereo samples** from preset libraries\r\n\r\n**This means:** Use **Stereo Separation** (not Phase Offset)\r\n\r\n### Mono Pads (Less Common)\r\n- Single oscillator, no unison\r\n- Mono samples or recordings\r\n- Dry, minimal processing\r\n\r\n**For these:** Phase Offset can work, but Stereo Separation won't help\r\n\r\n## Step-by-Step Workflow\r\n\r\n### Step 1: Analyze Your Pad\r\n1. Load the pad in mixer\r\n2. Check the stereo field visually (Wave Candy or Stereo Shaper)\r\n3. Determine if it has existing stereo content\r\n\r\n**If stereo:** Proceed with Stereo Separation\r\n**If mono:** Consider Phase Offset (20-40ms) or use source-level width first\r\n\r\n### Step 2: Apply Fruity Stereo Enhancer\r\n1. Select your pad channel in mixer\r\n2. Load **Fruity Stereo Enhancer** in an empty effects slot\r\n3. Place AFTER reverb/chorus/delay for maximum effect\r\n\r\n### Step 3: Set Stereo Separation\r\n\r\n**Subtle Enhancement (Lo-Fi, Boom-Bap):**\r\n- Turn knob **25-35% to the left**\r\n- Natural, warm width\r\n- Excellent mono compatibility\r\n\r\n**Moderate Width (Melodic, Moody):**\r\n- Turn knob **35-45% to the left**\r\n- Noticeable but balanced\r\n- Professional sound\r\n\r\n**Aggressive Width (Electronic, Experimental):**\r\n- Turn knob **50-60% to the left**\r\n- Immersive, expansive\r\n- Check mono carefully\r\n\r\n**Maximum Width (Ambient, FX):**\r\n- Turn knob **60-70% to the left**\r\n- Extreme spatial enhancement\r\n- Mono compatibility compromised\r\n\r\n### Step 4: Fine-Tune with Volume\r\nWidening can create perceived loudness changes:\r\n\r\n1. Bypass the plugin\r\n2. Note the level\r\n3. Enable and adjust **Volume** to match (-0.5 to -1dB typically)\r\n\r\n### Step 5: Check Mono Compatibility\r\n1. Enable mono monitoring\r\n2. Listen for:\r\n   - Thinning of pad body\r\n   - Loss of harmonic richness\r\n   - Phase cancellation artifacts\r\n3. If severe issues, reduce width by 10-20%\r\n\r\n### Step 6: Context Check\r\nPlay in full mix context:\r\n- Does it support the vocals?\r\n- Is there room for other elements?\r\n- Does it match the genre vibe?\r\n\r\n## Genre-Specific Settings\r\n\r\n### Moody Hip-Hop Pads\r\n**Goal:** Dark, atmospheric, immersive\r\n\r\n```\r\nStereo Separation: 40% left\r\nPhase Offset: 0ms\r\nPan: Center\r\nVolume: -0.5dB\r\n```\r\n\r\n**Use on:**\r\n- Dark ambient pads\r\n- Drone textures\r\n- Atmospheric layers\r\n- Cinematic soundscapes\r\n\r\n**Notes:** Creates space without losing the moody, cohesive feel\r\n\r\n### Melodic Hip-Hop Pads\r\n**Goal:** Lush, supportive, balanced\r\n\r\n```\r\nStereo Separation: 35% left\r\nPhase Offset: 0ms\r\nPan: Center\r\nVolume: -0.5dB\r\n```\r\n\r\n**Use on:**\r\n- String pads\r\n- Synth pads\r\n- Orchestral layers\r\n- Piano pad textures\r\n\r\n**Notes:** Wide enough to be lush, focused enough to support melodies\r\n\r\n### Electronic Hip-Hop Pads\r\n**Goal:** Synthetic, expansive, modern\r\n\r\n```\r\nStereo Separation: 50% left\r\nPhase Offset: 0ms\r\nPan: Center\r\nVolume: -1dB\r\n```\r\n\r\n**Use on:**\r\n- Synth pads\r\n- Digital textures\r\n- Future bass pads\r\n- Experimental sounds\r\n\r\n**Notes:** Embraces the synthetic, processed aesthetic\r\n\r\n### Lo-Fi Hip-Hop Pads\r\n**Goal:** Warm, vintage, subtle\r\n\r\n```\r\nStereo Separation: 30% left\r\nPhase Offset: 0ms\r\nPan: Center\r\nVolume: -0.5dB\r\n```\r\n\r\n**Use on:**\r\n- Vintage synth emulations\r\n- Sampled pads\r\n- Warm analog textures\r\n- Jazz-influenced pads\r\n\r\n**Notes:** Subtle enhancement maintains lo-fi warmth\r\n\r\n### Ambient/Experimental Pads\r\n**Goal:** Maximum immersion, soundscape\r\n\r\n```\r\nStereo Separation: 65% left\r\nPhase Offset: 0ms\r\nPan: Center\r\nVolume: -1.5dB\r\n```\r\n\r\n**Use on:**\r\n- Ambient drones\r\n- Experimental textures\r\n- Sound design elements\r\n- Cinematic atmospheres\r\n\r\n**Notes:** Push boundaries, mono compatibility less critical\r\n\r\n## Advanced Techniques\r\n\r\n### Frequency-Specific Pad Widening\r\nWiden only certain frequency ranges:\r\n\r\n**Setup:**\r\n1. Duplicate pad track\r\n2. **Track 1 (Highs - Wide):**\r\n   - High-pass at 2kHz\r\n   - Stereo Separation: 60% left\r\n3. **Track 2 (Lows/Mids - Focused):**\r\n   - Low-pass at 2kHz\r\n   - Stereo Separation: 20% left\r\n\r\n**Result:** Wide air and shimmer, focused low-mid body\r\n\r\n### Mid/Side Pad Processing\r\nUse Stereo Enhancer with Mid/Side EQ:\r\n\r\n**Workflow:**\r\n1. **Fruity Parametric EQ 2** (Mid/Side mode)\r\n   - Boost Side signal at 5kHz+ for air\r\n2. **Fruity Stereo Enhancer**\r\n   - Stereo Separation: 40% left (enhances the boosted side)\r\n\r\n**Result:** Precise control over stereo content enhancement\r\n\r\n### Layered Pad Width Strategy\r\nDifferent width for different pad layers:\r\n\r\n**Layer 1 (Foundation):** 25% width (mono-compatible body)\r\n**Layer 2 (Texture):** 45% width (adds space)\r\n**Layer 3 (Air/Shimmer):** 65% width (extreme width for sparkle)\r\n\r\n**Result:** Professional, dimensional pad sound\r\n\r\n### Automated Width for Dynamics\r\nCreate movement and build-ups:\r\n\r\n**Intro:** 20% (intimate)\r\n**Verse:** 35% (supportive)\r\n**Pre-Chorus:** Automate 35% → 55% (building)\r\n**Chorus:** 55% (expansive)\r\n**Outro:** Automate 55% → 70% (floating away)\r\n\r\n### Haas Effect for Mono Pads\r\nIf your pad is truly mono:\r\n\r\n```\r\nStereo Separation: Center\r\nPhase Offset: 25ms\r\nPan: 10% right (compensate)\r\nVolume: -0.5dB\r\n```\r\n\r\n**Use:** Creates natural \"double tracking\" feel\r\n**Warning:** Check mono compatibility carefully\r\n\r\n## Pad-Specific Considerations\r\n\r\n### Drone Pads\r\nLong, sustained tones:\r\n- Can handle aggressive width (50-65%)\r\n- Excellent mono compatibility (smooth frequency content)\r\n- Use for ambient/experimental genres\r\n\r\n### Chord Pads\r\nHarmonic chord progressions:\r\n- Moderate width (35-45%)\r\n- Balance clarity and space\r\n- Ensure chords remain intelligible in mono\r\n\r\n### Arpeggiated Pads\r\nMoving, rhythmic pad textures:\r\n- Conservative to moderate (25-40%)\r\n- Too much width can blur the rhythm\r\n- Consider stereo delay instead for rhythmic width\r\n\r\n### String Pads\r\nOrchestral string textures:\r\n- Moderate width (35-45%)\r\n- Mimics natural orchestra placement\r\n- Excellent mono compatibility\r\n\r\n### Vocal Pads\r\nProcessed vocal textures:\r\n- Moderate width (30-40%)\r\n- Maintain vocal intelligibility\r\n- Check mono for streaming platforms\r\n\r\n## Integration with Other Effects\r\n\r\n### Effect Chain Order\r\n\r\n**Optimal Order:**\r\n1. **EQ** - Shape tone\r\n2. **Compression** - Control dynamics (optional for pads)\r\n3. **Saturation** - Add harmonics\r\n4. **Chorus/Flanger** - Creates stereo movement\r\n5. **Reverb** - Adds space (creates more stereo)\r\n6. **Delay** - Rhythmic/spatial elements\r\n7. **Fruity Stereo Enhancer** - Enhance all stereo content\r\n8. **Limiter** - Final level control\r\n\r\n### Why Place Enhancer Near the End?\r\nReverb, chorus, and delay create stereo information. Enhancing AFTER these effects widens the spatial content they create.\r\n\r\n### Plugin Combinations\r\n\r\n**With Fruity Reeverb 2:**\r\n- Reverb creates stereo tail\r\n- Stereo Enhancer expands reverb width\r\n- Result: Massive, atmospheric pad\r\n\r\n**With Fruity Chorus:**\r\n- Chorus creates stereo movement\r\n- Stereo Enhancer widens the movement\r\n- Result: Lush, animated texture\r\n\r\n**With Fruity Delay 3:**\r\n- Delay creates rhythmic stereo\r\n- Stereo Enhancer expands spatial field\r\n- Result: Expansive rhythmic pad\r\n\r\n**With Fruity Love Philter:**\r\n- Filter sweeps create movement\r\n- Stereo Enhancer adds spatial dimension\r\n- Result: Dynamic, wide filtered pad\r\n\r\n## Troubleshooting\r\n\r\n### Problem: Pad sounds thin or weak\r\n**Solution:**\r\n- Width too aggressive, reduce to 35-40%\r\n- May need to boost low-mids (200-500Hz) with EQ\r\n- Check if source pad has enough body\r\n\r\n### Problem: Pad loses body in mono\r\n**Solution:**\r\n- Reduce Stereo Separation to 30-35%\r\n- Use frequency-specific widening (only highs)\r\n- Ensure source pad has strong mono core\r\n\r\n### Problem: Pad sounds phasey/flanged\r\n**Solution:**\r\n- If you used Phase Offset, reduce or remove it\r\n- Source pad may have phase issues\r\n- Use Stereo Separation only (0ms offset)\r\n\r\n### Problem: Pad overpowers the mix\r\n**Solution:**\r\n- Reduce width to 30-35%\r\n- Lower volume by 1-2dB\r\n- EQ to reduce frequency overlap with vocals\r\n\r\n### Problem: Pad feels distant/disconnected\r\n**Solution:**\r\n- Width may be too extreme (60%+)\r\n- Reduce to 35-45% for more cohesion\r\n- Add slight mid-range presence with EQ\r\n\r\n## Preset Quick Reference\r\n\r\n### \"Moody Atmosphere\"\r\n```\r\nSeparation: 40% left\r\nUse: Dark, moody hip-hop pads\r\nMono: Good compatibility\r\n```\r\n\r\n### \"Melodic Lush\"\r\n```\r\nSeparation: 35% left\r\nUse: Melodic, harmonic pads\r\nMono: Excellent compatibility\r\n```\r\n\r\n### \"Electronic Expansive\"\r\n```\r\nSeparation: 50% left\r\nUse: Synthetic, modern pads\r\nMono: Fair compatibility\r\n```\r\n\r\n### \"Lo-Fi Warmth\"\r\n```\r\nSeparation: 30% left\r\nUse: Vintage, lo-fi pads\r\nMono: Excellent compatibility\r\n```\r\n\r\n### \"Ambient Immersion\"\r\n```\r\nSeparation: 65% left\r\nUse: Experimental soundscapes\r\nMono: Poor compatibility (not a concern)\r\n```\r\n\r\n## Pro Tips\r\n\r\n1. **After spatial FX** - Place Enhancer after reverb/chorus/delay\r\n2. **Less for chords** - Harmonic pads need clarity, keep moderate\r\n3. **More for drones** - Sustained tones can go very wide\r\n4. **Automate for dynamics** - Create builds and movement\r\n5. **Layer different widths** - Professional dimensional sound\r\n6. **Check in context** - Always test in full mix\r\n7. **Frequency-specific** - Widen highs, keep lows focused\r\n8. **Genre dictates width** - Match expectations\r\n9. **Mono is important** - Streaming platforms use mono summing\r\n10. **Save presets** - Build your go-to pad enhancement library\r\n\r\n## Common Mistakes\r\n\r\n❌ **Widening before reverb** - Place after spatial effects\r\n❌ **Too wide for melodic content** - Chords need clarity\r\n❌ **Same width for all pads** - Vary for depth and interest\r\n❌ **Ignoring mono** - Always check compatibility\r\n❌ **Using Phase Offset on stereo pads** - Use Separation instead\r\n❌ **Over-widening low frequencies** - Keep lows focused\r\n❌ **No volume compensation** - Match levels for comparison\r\n❌ **Forgetting genre context** - Trap ≠ Boom-bap\r\n\r\n## Success Metrics\r\n\r\nYou've nailed it when:\r\n- ✅ Pad feels immersive and atmospheric\r\n- ✅ Creates space without overpowering mix\r\n- ✅ Supports vocals and centered elements\r\n- ✅ Mono compatibility is acceptable\r\n- ✅ Width matches genre expectations\r\n- ✅ Emotional impact is enhanced\r\n- ✅ A/B comparison shows clear improvement\r\n\r\n## Further Applications\r\n\r\nMaster pad widening and apply to:\r\n- String sections\r\n- Brass layers\r\n- Choir/vocal pads\r\n- Textural sound design\r\n- Ambient FX and risers\r\n\r\n---\r\n\r\n**Quick Start:** Pad channel → Stereo Enhancer (after reverb) → Separation 40% left → Check mono → Adjust to genre and taste\r\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Stereo Enhancer\r\n\r\nThis section contains workflow information for the fruity-stereo-enhancer plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Stereo Enhancer\r\n\r\nThis section contains reference information for the fruity-stereo-enhancer plugin.\r\n"
+    }
+  }
+}

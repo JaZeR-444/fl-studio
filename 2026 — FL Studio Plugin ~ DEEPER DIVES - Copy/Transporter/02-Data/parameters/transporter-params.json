@@ -1,0 +1,198 @@
+{
+  "$schema": "./schema.json",
+  "plugin": {
+    "name": "Transporter",
+    "version": "1.x",
+    "category": "Effect",
+    "type": "Realtime Relooping Effect",
+    "description": "Transient-based loop buffer effect",
+    "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Transporter.htm"
+  },
+  "parameters": {
+    "loopControls": [
+      {
+        "id": "loopLength",
+        "name": "Loop Length",
+        "type": "selector",
+        "range": "1/64 - 4 bars",
+        "default": "1/4",
+        "description": "Size of the looped audio buffer",
+        "automatable": true,
+        "bpmSync": true,
+        "sweetSpot": "1/16 - 1/4 for glitch, 1/2 - 1 bar for musical loops"
+      },
+      {
+        "id": "loopPosition",
+        "name": "Loop Position",
+        "type": "slider",
+        "range": "0-100%",
+        "unit": "%",
+        "default": "0%",
+        "description": "Starting point within the buffer for loop playback",
+        "automatable": true,
+        "performanceUse": "Sweep for dynamic repositioning effects"
+      },
+      {
+        "id": "freeze",
+        "name": "Freeze",
+        "type": "toggle",
+        "range": "On/Off",
+        "default": "Off",
+        "description": "Locks current loop content for sustained playback",
+        "performanceUse": "Enable during builds, release on drops"
+      },
+      {
+        "id": "snapToTransients",
+        "name": "Snap to Transients",
+        "type": "toggle",
+        "range": "On/Off",
+        "default": "On",
+        "description": "Quantizes loop points to detected transient hits",
+        "note": "Disable for smooth, non-rhythmic sources"
+      },
+      {
+        "id": "transientSensitivity",
+        "name": "Transient Sensitivity",
+        "type": "slider",
+        "range": "0-100%",
+        "unit": "%",
+        "default": "50%",
+        "description": "Detection threshold for transient hits",
+        "sweetSpot": "60-80% for percussive material, 30-50% for dense mixes"
+      }
+    ],
+    "transport": [
+      {
+        "id": "speed",
+        "name": "Speed",
+        "type": "slider",
+        "range": "0.5x - 2x",
+        "default": "1x",
+        "description": "Playback speed multiplier",
+        "automatable": true,
+        "performanceUse": "Automate to 0 for vinyl-stop effect"
+      },
+      {
+        "id": "direction",
+        "name": "Direction",
+        "type": "toggle",
+        "options": ["Forward", "Reverse"],
+        "default": "Forward",
+        "description": "Loop playback direction",
+        "performanceUse": "Switch to reverse for build-up effects"
+      }
+    ],
+    "stutter": [
+      {
+        "id": "stutterEnable",
+        "name": "Stutter",
+        "type": "selector",
+        "range": "Off / 1-16 steps",
+        "default": "Off",
+        "description": "Repeats loop segment rhythmically",
+        "sweetSpot": "4 or 8 steps for musical stutters"
+      },
+      {
+        "id": "stutterRate",
+        "name": "Stutter Rate",
+        "type": "selector",
+        "range": "1/64 - 1 bar",
+        "default": "1/16",
+        "description": "Length of each stutter repeat",
+        "bpmSync": true,
+        "sweetSpot": "1/16 or 1/32 for glitch effects"
+      }
+    ],
+    "mix": [
+      {
+        "id": "dryWet",
+        "name": "Dry/Wet Mix",
+        "type": "slider",
+        "range": "0-100%",
+        "unit": "%",
+        "default": "50%",
+        "description": "Balance between original and effected signal",
+        "automatable": true,
+        "note": "Use 100% wet on send tracks, variable on inserts"
+      },
+      {
+        "id": "outputGain",
+        "name": "Output Gain",
+        "type": "slider",
+        "range": "-inf to +6dB",
+        "unit": "dB",
+        "default": "0dB",
+        "description": "Overall output level compensation"
+      },
+      {
+        "id": "crossfadeTime",
+        "name": "Crossfade Time",
+        "type": "slider",
+        "range": "0-100ms",
+        "unit": "ms",
+        "default": "25ms",
+        "description": "Smoothness of loop transitions",
+        "sweetSpot": "25-40ms for clean glitch, lower for aggressive cuts"
+      }
+    ],
+    "modulation": [
+      {
+        "id": "lfoRate",
+        "name": "LFO Rate",
+        "type": "slider",
+        "range": "0.01 Hz - 20 Hz",
+        "unit": "Hz",
+        "description": "Modulation oscillation speed",
+        "bpmSync": true,
+        "sweetSpot": "Sync to 1/4 or 1/8 for rhythmic modulation"
+      },
+      {
+        "id": "lfoDepth",
+        "name": "LFO Depth",
+        "type": "slider",
+        "range": "0-100%",
+        "unit": "%",
+        "default": "0%",
+        "description": "Intensity of LFO modulation",
+        "sweetSpot": "30-50% for subtle movement, 70%+ for chaos"
+      },
+      {
+        "id": "lfoTarget",
+        "name": "LFO Target",
+        "type": "selector",
+        "options": ["Loop Position", "Loop Length", "Speed"],
+        "default": "Loop Position",
+        "description": "Parameter affected by LFO",
+        "note": "Loop Position creates scanning effect"
+      }
+    ]
+  },
+  "performanceMappings": {
+    "essential": [
+      "loopLength",
+      "loopPosition",
+      "freeze"
+    ],
+    "advanced": [
+      "stutterEnable",
+      "speed",
+      "direction",
+      "transientSensitivity"
+    ],
+    "safety": [
+      "dryWet",
+      "outputGain"
+    ]
+  },
+  "presetCategories": [
+    "Glitch Stutter",
+    "Beat Repeat",
+    "Reverse Effects",
+    "Vinyl Stop",
+    "Build-Ups",
+    "Transient Gate"
+  ],
+  "cpuUsage": "Low to Moderate",
+  "latency": "Minimal (transient lookahead dependent)",
+  "realtimeSafe": true
+}

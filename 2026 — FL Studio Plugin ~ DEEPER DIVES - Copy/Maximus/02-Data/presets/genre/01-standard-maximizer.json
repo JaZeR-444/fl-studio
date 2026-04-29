@@ -1,0 +1,39 @@
+{
+  "name": "Standard Maximizer",
+  "genre": "universal",
+  "mood": "upbeat",
+  "description": "Clean, transparent limiting for general-purpose loudness",
+  "parameters": {
+    "inputGain": 0,
+    "threshold": -3.0,
+    "ratio": 4.0,
+    "attack": 0.5,
+    "release": 100,
+    "outputGain": 0,
+    "ceiling": -0.3,
+    "link": true,
+    "channelMode": "LR",
+    "s/C": false,
+    "limiterMode": "Hard"
+  },
+  "workflow": {
+    "useCase": "General mix or master bus",
+    "steps": [
+      "Set ceiling to -0.3 for headroom",
+      "Start with threshold at -6dB",
+      "Lower threshold gradually until gain reduction is 2-4dB",
+      "Adjust attack for transients (0.3-1.0ms)",
+      "Set release to auto or 100ms for music",
+      "Add output gain to compensate"
+    ],
+    "troubleshooting": [
+      { "issue": "Pumping", "fix": "Increase release time or reduce ratio" },
+      { "issue": "Distortion", "fix": "Increase threshold or reduce ratio" },
+      { "issue": "Dull sound", "fix": "Decrease attack time" }
+    ]
+  },
+  "abTest": {
+    "listenFor": "Transparent loudness increase without artifacts",
+    "duration": "Full song"
+  }
+}

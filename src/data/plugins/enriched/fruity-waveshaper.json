@@ -1,0 +1,2091 @@
+{
+  "id": "fruity-waveshaper",
+  "name": "Fruity WaveShaper",
+  "category": "Distortion",
+  "tier": "Free",
+  "type": "Distortion",
+  "description": "Fruity WaveShaper - Distortion",
+  "tags": [
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "distortion",
+    "saturation",
+    "fx",
+    "audio"
+  ],
+  "icon": "/plugins/fruity-waveshaper-icon.svg",
+  "color": "#DC2626",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-waveshaper",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "waveshaper-params": {
+      "pluginName": "Fruity WaveShaper",
+      "version": "FL Studio 20.8+",
+      "category": "Distortion / Waveshaper",
+      "parameters": [
+        {
+          "id": "pre",
+          "name": "Pre",
+          "section": "Gain",
+          "range": {
+            "min": -24,
+            "max": 24,
+            "default": 0,
+            "unit": "dB"
+          },
+          "description": "Input gain driving the transfer curve",
+          "automation": true,
+          "vibeTags": [
+            "drive",
+            "input",
+            "saturation-amount"
+          ],
+          "mixImpact": "Controls how much signal hits the non-linear curve portion",
+          "safetyNotes": "Higher values increase distortion; compensate with Post gain"
+        },
+        {
+          "id": "mix",
+          "name": "Mix",
+          "section": "Blend",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "default": 100,
+            "unit": "%"
+          },
+          "description": "Dry/wet balance for parallel processing",
+          "automation": true,
+          "vibeTags": [
+            "blend",
+            "parallel",
+            "transparency"
+          ],
+          "mixImpact": "Higher values = more processed signal; lower = more original",
+          "safetyNotes": "Use 20-50% for subtle enhancement, 100% for effect"
+        },
+        {
+          "id": "post",
+          "name": "Post",
+          "section": "Gain",
+          "range": {
+            "min": -24,
+            "max": 24,
+            "default": 0,
+            "unit": "dB"
+          },
+          "description": "Output gain compensation after processing",
+          "automation": true,
+          "vibeTags": [
+            "output",
+            "compensation",
+            "gain-staging"
+          ],
+          "mixImpact": "Critical for matching processed and unprocessed levels",
+          "safetyNotes": "Adjust to prevent channel or master bus clipping"
+        },
+        {
+          "id": "center",
+          "name": "Center",
+          "section": "Processing",
+          "type": "toggle",
+          "default": true,
+          "description": "DC offset removal",
+          "automation": false,
+          "vibeTags": [
+            "dc-offset",
+            "low-end-protection"
+          ],
+          "mixImpact": "Prevents cumulative DC buildup on buses",
+          "safetyNotes": "Leave enabled except for experimental purposes"
+        },
+        {
+          "id": "mode",
+          "name": "Mode",
+          "section": "Processing",
+          "type": "selector",
+          "options": [
+            "Unipolar",
+            "Bipolar"
+          ],
+          "default": "Unipolar",
+          "description": "Symmetric vs asymmetric curve application",
+          "automation": true,
+          "vibeTags": [
+            "symmetry",
+            "harmonics",
+            "character"
+          ],
+          "mixImpact": "Unipolar=even harmonics(warm), Bipolar=mixed harmonics(aggressive)",
+          "safetyNotes": "Unipolar safer for mixing; Bipolar more aggressive"
+        },
+        {
+          "id": "oversample",
+          "name": "Oversample",
+          "section": "Quality",
+          "type": "selector",
+          "options": [
+            "Off",
+            "2x",
+            "4x",
+            "8x",
+            "16x"
+          ],
+          "default": "Off",
+          "description": "Internal processing rate multiplier for aliasing reduction",
+          "automation": false,
+          "vibeTags": [
+            "quality",
+            "anti-aliasing",
+            "fidelity"
+          ],
+          "mixImpact": "Higher values reduce high-frequency artifacts",
+          "safetyNotes": "Use 4x+ for hard clipping or high-frequency sources"
+        },
+        {
+          "id": "hq",
+          "name": "HQ",
+          "section": "Quality",
+          "type": "toggle",
+          "default": false,
+          "description": "High-quality processing for ultra-low level signals",
+          "automation": false,
+          "vibeTags": [
+            "fidelity",
+            "low-level"
+          ],
+          "mixImpact": "Preserves very quiet signal details",
+          "safetyNotes": "Slight CPU increase; use for critical applications"
+        }
+      ],
+      "transferCurve": {
+        "type": "spline-graph",
+        "editable": true,
+        "xRange": [
+          -1,
+          1
+        ],
+        "yRange": [
+          -1,
+          1
+        ],
+        "defaultShape": "linear",
+        "pointLimit": "unlimited",
+        "interpolation": "spline",
+        "description": "Custom transfer function mapping input to output amplitude"
+      },
+      "automationSupport": {
+        "allParameters": true,
+        "curvePoints": true,
+        "recommendedAutomationTargets": [
+          "pre",
+          "mix",
+          "post",
+          "mode"
+        ]
+      },
+      "latency": {
+        "standard": "0 samples",
+        "withOversampling": "Minimal PDC (plugin delay compensation)"
+      },
+      "source": "[SRC: IL-MAN]"
+    }
+  },
+  "presets": {
+    "curve-shapes": {
+      "curveLibrary": {
+        "name": "Fruity WaveShaper Curve Shapes",
+        "version": "1.0",
+        "curveTypes": [
+          {
+            "id": "linear",
+            "name": "Linear (Unity)",
+            "description": "No distortion, bypass reference",
+            "points": [
+              {
+                "x": -1,
+                "y": -1
+              },
+              {
+                "x": 0,
+                "y": 0
+              },
+              {
+                "x": 1,
+                "y": 1
+              }
+            ],
+            "characteristics": {
+              "harmonics": "none",
+              "symmetry": "symmetric",
+              "suggestedMode": "Unipolar",
+              "useCase": "Reference, subtle saturation starting point"
+            }
+          },
+          {
+            "id": "soft-clip",
+            "name": "Soft Clip (S-Curve)",
+            "description": "Gentle saturation with even harmonics",
+            "points": [
+              {
+                "x": -1,
+                "y": -0.85
+              },
+              {
+                "x": -0.5,
+                "y": -0.4
+              },
+              {
+                "x": 0,
+                "y": 0
+              },
+              {
+                "x": 0.5,
+                "y": 0.4
+              },
+              {
+                "x": 1,
+                "y": 0.85
+              }
+            ],
+            "characteristics": {
+              "harmonics": "even-order (warm)",
+              "symmetry": "symmetric",
+              "suggestedMode": "Unipolar",
+              "useCase": "808 warmth, vocal saturation, mix glue"
+            }
+          },
+          {
+            "id": "hard-clip",
+            "name": "Hard Clip (Limiter)",
+            "description": "Aggressive limiting with odd harmonics",
+            "points": [
+              {
+                "x": -1,
+                "y": -0.8
+              },
+              {
+                "x": -0.8,
+                "y": -0.8
+              },
+              {
+                "x": 0,
+                "y": 0
+              },
+              {
+                "x": 0.8,
+                "y": 0.8
+              },
+              {
+                "x": 1,
+                "y": 0.8
+              }
+            ],
+            "characteristics": {
+              "harmonics": "odd-order (aggressive)",
+              "symmetry": "symmetric",
+              "suggestedMode": "Unipolar or Bipolar",
+              "useCase": "Drum punch, hard limiting, EDM leads"
+            }
+          },
+          {
+            "id": "soft-limiter",
+            "name": "Soft Limiter",
+            "description": "Controlled peak reduction with smooth transition",
+            "points": [
+              {
+                "x": -1,
+                "y": -0.9
+              },
+              {
+                "x": -0.7,
+                "y": -0.7
+              },
+              {
+                "x": -0.4,
+                "y": -0.4
+              },
+              {
+                "x": 0,
+                "y": 0
+              },
+              {
+                "x": 0.4,
+                "y": 0.4
+              },
+              {
+                "x": 0.7,
+                "y": 0.7
+              },
+              {
+                "x": 1,
+                "y": 0.9
+              }
+            ],
+            "characteristics": {
+              "harmonics": "mixed (controlled)",
+              "symmetry": "symmetric",
+              "suggestedMode": "Unipolar",
+              "useCase": "Transparent limiting, loudness control"
+            }
+          },
+          {
+            "id": "foldback",
+            "name": "Foldback (Wavefolding)",
+            "description": "Complex folding for metallic textures",
+            "points": [
+              {
+                "x": -1,
+                "y": 0.5
+              },
+              {
+                "x": -0.75,
+                "y": 0
+              },
+              {
+                "x": -0.5,
+                "y": 0.5
+              },
+              {
+                "x": -0.25,
+                "y": 0
+              },
+              {
+                "x": 0,
+                "y": 0
+              },
+              {
+                "x": 0.25,
+                "y": 0
+              },
+              {
+                "x": 0.5,
+                "y": 0.5
+              },
+              {
+                "x": 0.75,
+                "y": 0
+              },
+              {
+                "x": 1,
+                "y": 0.5
+              }
+            ],
+            "characteristics": {
+              "harmonics": "complex (all orders)",
+              "symmetry": "symmetric",
+              "suggestedMode": "Bipolar",
+              "useCase": "Experimental, modular-style distortion"
+            }
+          },
+          {
+            "id": "asymmetric-soft",
+            "name": "Asymmetric Soft",
+            "description": "Different positive/negative shaping for tube-like character",
+            "bipolar": {
+              "positive": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 0.5,
+                  "y": 0.4
+                },
+                {
+                  "x": 1,
+                  "y": 0.75
+                }
+              ],
+              "negative": [
+                {
+                  "x": -1,
+                  "y": -0.85
+                },
+                {
+                  "x": -0.5,
+                  "y": -0.45
+                },
+                {
+                  "x": 0,
+                  "y": 0
+                }
+              ]
+            },
+            "characteristics": {
+              "harmonics": "mixed (odd+even)",
+              "symmetry": "asymmetric",
+              "suggestedMode": "Bipolar",
+              "useCase": "Character distortion, amp simulation"
+            }
+          },
+          {
+            "id": "asymmetric-hard",
+            "name": "Asymmetric Hard",
+            "description": "Aggressive asymmetric clipping for edge",
+            "bipolar": {
+              "positive": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 0.4,
+                  "y": 0.5
+                },
+                {
+                  "x": 0.7,
+                  "y": 0.75
+                },
+                {
+                  "x": 1,
+                  "y": 0.8
+                }
+              ],
+              "negative": [
+                {
+                  "x": -1,
+                  "y": -0.6
+                },
+                {
+                  "x": -0.5,
+                  "y": -0.4
+                },
+                {
+                  "x": 0,
+                  "y": 0
+                }
+              ]
+            },
+            "characteristics": {
+              "harmonics": "complex (aggressive)",
+              "symmetry": "asymmetric",
+              "suggestedMode": "Bipolar",
+              "useCase": "Drum crunch, vocal attitude, experimental"
+            }
+          },
+          {
+            "id": "staircase-8",
+            "name": "Bitcrush 8-Step",
+            "description": "8-step quantization for lo-fi sound",
+            "type": "staircase",
+            "steps": 8,
+            "characteristics": {
+              "harmonics": "aliased, digital artifacts",
+              "symmetry": "symmetric",
+              "suggestedMode": "Unipolar",
+              "useCase": "Lo-fi, retro, creative destruction"
+            }
+          },
+          {
+            "id": "staircase-16",
+            "name": "Bitcrush 16-Step",
+            "description": "16-step quantization for subtle degradation",
+            "type": "staircase",
+            "steps": 16,
+            "characteristics": {
+              "harmonics": "aliased, less severe",
+              "symmetry": "symmetric",
+              "suggestedMode": "Unipolar",
+              "useCase": "Subtle lo-fi, vintage character"
+            }
+          },
+          {
+            "id": "s-curve-aggressive",
+            "name": "Aggressive S-Curve",
+            "description": "Heavy saturation with pronounced S-shape",
+            "points": [
+              {
+                "x": -1,
+                "y": -0.7
+              },
+              {
+                "x": -0.6,
+                "y": -0.5
+              },
+              {
+                "x": -0.3,
+                "y": -0.2
+              },
+              {
+                "x": 0,
+                "y": 0
+              },
+              {
+                "x": 0.3,
+                "y": 0.2
+              },
+              {
+                "x": 0.6,
+                "y": 0.5
+              },
+              {
+                "x": 1,
+                "y": 0.7
+              }
+            ],
+            "characteristics": {
+              "harmonics": "even-order (strong)",
+              "symmetry": "symmetric",
+              "suggestedMode": "Unipolar",
+              "useCase": "Heavy saturation, 808s, bass"
+            }
+          }
+        ],
+        "drawingGuidelines": {
+          "smoothCurves": {
+            "points": "3-5 for basic shapes",
+            "spacing": "Even horizontal distribution",
+            "corners": "Avoid sharp angles for musical results",
+            "center": "Always pass through (0,0)"
+          },
+          "steppedCurves": {
+            "points": "8-16 for bitcrushing",
+            "alignment": "Horizontal segments with vertical jumps",
+            "oversampling": "Required: 4x minimum"
+          },
+          "asymmetricCurves": {
+            "mode": "Bipolar required",
+            "balance": "Keep some relationship between halves",
+            "experimentation": "Try different positive/negative ratios"
+          }
+        }
+      }
+    },
+    "preset-archetypes": {
+      "presetLibrary": {
+        "name": "Fruity WaveShaper Preset Archetypes",
+        "version": "1.0",
+        "categories": [
+          {
+            "name": "808 Bass",
+            "presets": [
+              {
+                "id": "808-warmth",
+                "name": "808 Warm Saturation",
+                "description": "Gentle saturation for 808 presence on small speakers",
+                "curve": {
+                  "type": "s-curve",
+                  "points": [
+                    {
+                      "x": -1,
+                      "y": -0.9
+                    },
+                    {
+                      "x": -0.5,
+                      "y": -0.45
+                    },
+                    {
+                      "x": 0,
+                      "y": 0
+                    },
+                    {
+                      "x": 0.5,
+                      "y": 0.45
+                    },
+                    {
+                      "x": 1,
+                      "y": 0.9
+                    }
+                  ]
+                },
+                "parameters": {
+                  "pre": 10,
+                  "mix": 60,
+                  "post": -8,
+                  "mode": "Unipolar",
+                  "oversample": "4x",
+                  "center": true
+                },
+                "tags": [
+                  "808",
+                  "sub-bass",
+                  "warmth",
+                  "hip-hop",
+                  "trap"
+                ],
+                "vibeTarget": [
+                  "Moody",
+                  "Vibey"
+                ]
+              },
+              {
+                "id": "808-aggressive",
+                "name": "808 Aggressive",
+                "description": "Harder saturation for distorted 808 character",
+                "curve": {
+                  "type": "hard-clip",
+                  "points": [
+                    {
+                      "x": -1,
+                      "y": -0.85
+                    },
+                    {
+                      "x": -0.7,
+                      "y": -0.7
+                    },
+                    {
+                      "x": 0,
+                      "y": 0
+                    },
+                    {
+                      "x": 0.7,
+                      "y": 0.7
+                    },
+                    {
+                      "x": 1,
+                      "y": 0.85
+                    }
+                  ]
+                },
+                "parameters": {
+                  "pre": 14,
+                  "mix": 70,
+                  "post": -12,
+                  "mode": "Unipolar",
+                  "oversample": "4x",
+                  "center": true
+                },
+                "tags": [
+                  "808",
+                  "aggressive",
+                  "distorted",
+                  "trap",
+                  "experimental"
+                ],
+                "vibeTarget": [
+                  "Psychedelic",
+                  "Upbeat"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Drums",
+            "presets": [
+              {
+                "id": "drum-punch",
+                "name": "Drum Punch Enhancer",
+                "description": "Transient bite for kicks and snares",
+                "curve": {
+                  "type": "hard-clip",
+                  "points": [
+                    {
+                      "x": -1,
+                      "y": -0.9
+                    },
+                    {
+                      "x": -0.5,
+                      "y": -0.5
+                    },
+                    {
+                      "x": 0,
+                      "y": 0
+                    },
+                    {
+                      "x": 0.6,
+                      "y": 0.7
+                    },
+                    {
+                      "x": 0.8,
+                      "y": 0.8
+                    },
+                    {
+                      "x": 1,
+                      "y": 0.8
+                    }
+                  ]
+                },
+                "parameters": {
+                  "pre": 16,
+                  "mix": 65,
+                  "post": -14,
+                  "mode": "Bipolar",
+                  "oversample": "4x",
+                  "center": true
+                },
+                "tags": [
+                  "drums",
+                  "transient",
+                  "punch",
+                  "edm",
+                  "hip-hop"
+                ],
+                "vibeTarget": [
+                  "Upbeat",
+                  "Vibey"
+                ]
+              },
+              {
+                "id": "drum-saturation",
+                "name": "Drum Saturation",
+                "description": "Warm drum bus saturation",
+                "curve": {
+                  "type": "s-curve",
+                  "points": [
+                    {
+                      "x": -1,
+                      "y": -0.85
+                    },
+                    {
+                      "x": -0.3,
+                      "y": -0.25
+                    },
+                    {
+                      "x": 0,
+                      "y": 0
+                    },
+                    {
+                      "x": 0.3,
+                      "y": 0.25
+                    },
+                    {
+                      "x": 1,
+                      "y": 0.85
+                    }
+                  ]
+                },
+                "parameters": {
+                  "pre": 8,
+                  "mix": 50,
+                  "post": -6,
+                  "mode": "Unipolar",
+                  "oversample": "2x",
+                  "center": true
+                },
+                "tags": [
+                  "drums",
+                  "warm",
+                  "glue",
+                  "mix-bus"
+                ],
+                "vibeTarget": [
+                  "Jazzy",
+                  "Moody"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Vocals",
+            "presets": [
+              {
+                "id": "vocal-warmth",
+                "name": "Vocal Warmth",
+                "description": "Subtle saturation for vocal presence",
+                "curve": {
+                  "type": "s-curve",
+                  "points": [
+                    {
+                      "x": -1,
+                      "y": -0.92
+                    },
+                    {
+                      "x": -0.4,
+                      "y": -0.35
+                    },
+                    {
+                      "x": 0,
+                      "y": 0
+                    },
+                    {
+                      "x": 0.4,
+                      "y": 0.35
+                    },
+                    {
+                      "x": 1,
+                      "y": 0.92
+                    }
+                  ]
+                },
+                "parameters": {
+                  "pre": 6,
+                  "mix": 30,
+                  "post": -4,
+                  "mode": "Unipolar",
+                  "oversample": "4x",
+                  "center": true
+                },
+                "tags": [
+                  "vocals",
+                  "warmth",
+                  "presence",
+                  "rnb",
+                  "soul"
+                ],
+                "vibeTarget": [
+                  "Moody",
+                  "Jazzy",
+                  "Vibey"
+                ]
+              },
+              {
+                "id": "vocal-grit",
+                "name": "Vocal Grit",
+                "description": "Aggressive vocal character for attitude",
+                "curve": {
+                  "type": "hard-clip",
+                  "points": [
+                    {
+                      "x": -1,
+                      "y": -0.85
+                    },
+                    {
+                      "x": -0.6,
+                      "y": -0.6
+                    },
+                    {
+                      "x": 0,
+                      "y": 0
+                    },
+                    {
+                      "x": 0.6,
+                      "y": 0.75
+                    },
+                    {
+                      "x": 0.9,
+                      "y": 0.85
+                    },
+                    {
+                      "x": 1,
+                      "y": 0.85
+                    }
+                  ]
+                },
+                "parameters": {
+                  "pre": 12,
+                  "mix": 40,
+                  "post": -10,
+                  "mode": "Bipolar",
+                  "oversample": "4x",
+                  "center": true
+                },
+                "tags": [
+                  "vocals",
+                  "grit",
+                  "attitude",
+                  "hip-hop",
+                  "rap"
+                ],
+                "vibeTarget": [
+                  "Upbeat",
+                  "Psychedelic"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Mix Bus",
+            "presets": [
+              {
+                "id": "mix-glue",
+                "name": "Mix Bus Glue",
+                "description": "Subtle saturation for mix cohesion",
+                "curve": {
+                  "type": "s-curve",
+                  "points": [
+                    {
+                      "x": -1,
+                      "y": -0.95
+                    },
+                    {
+                      "x": -0.5,
+                      "y": -0.45
+                    },
+                    {
+                      "x": 0,
+                      "y": 0
+                    },
+                    {
+                      "x": 0.5,
+                      "y": 0.45
+                    },
+                    {
+                      "x": 1,
+                      "y": 0.95
+                    }
+                  ]
+                },
+                "parameters": {
+                  "pre": 4,
+                  "mix": 20,
+                  "post": -2,
+                  "mode": "Unipolar",
+                  "oversample": "4x",
+                  "center": true
+                },
+                "tags": [
+                  "mix-bus",
+                  "glue",
+                  "subtle",
+                  "mastering"
+                ],
+                "vibeTarget": [
+                  "Vibey",
+                  "Jazzy",
+                  "Moody"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Creative",
+            "presets": [
+              {
+                "id": "bitcrush",
+                "name": "Bitcrusher",
+                "description": "Digital degradation staircase",
+                "curve": {
+                  "type": "staircase",
+                  "steps": 8,
+                  "points": "auto-generated"
+                },
+                "parameters": {
+                  "pre": 18,
+                  "mix": 80,
+                  "post": -15,
+                  "mode": "Unipolar",
+                  "oversample": "8x",
+                  "center": true
+                },
+                "tags": [
+                  "creative",
+                  "lo-fi",
+                  "destruction",
+                  "experimental"
+                ],
+                "vibeTarget": [
+                  "Psychedelic"
+                ]
+              },
+              {
+                "id": "limiter",
+                "name": "Soft Limiter",
+                "description": "Transparent peak control",
+                "curve": {
+                  "type": "limiter",
+                  "threshold": 0.8,
+                  "points": [
+                    {
+                      "x": -1,
+                      "y": -1
+                    },
+                    {
+                      "x": -0.8,
+                      "y": -0.8
+                    },
+                    {
+                      "x": 0,
+                      "y": 0
+                    },
+                    {
+                      "x": 0.8,
+                      "y": 0.8
+                    },
+                    {
+                      "x": 1,
+                      "y": 0.8
+                    }
+                  ]
+                },
+                "parameters": {
+                  "pre": 6,
+                  "mix": 100,
+                  "post": 0,
+                  "mode": "Unipolar",
+                  "oversample": "4x",
+                  "center": true
+                },
+                "tags": [
+                  "limiter",
+                  "peak-control",
+                  "utility"
+                ],
+                "vibeTarget": [
+                  "Upbeat"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "vibe-presets": {
+      "vibePresets": {
+        "name": "Fruity WaveShaper Vibe-Targeted Presets",
+        "version": "1.0",
+        "description": "Curated presets organized by vibe targets for quick selection",
+        "vibes": [
+          {
+            "id": "moody",
+            "name": "Moody",
+            "description": "Warm, atmospheric, introspective saturation",
+            "characteristics": [
+              "Warm",
+              "Smooth",
+              "Even harmonics",
+              "Subtle"
+            ],
+            "presets": [
+              {
+                "name": "Moody 808",
+                "curve": "soft-clip",
+                "parameters": {
+                  "pre": 8,
+                  "mix": 50,
+                  "post": -6,
+                  "mode": "Unipolar",
+                  "oversample": "2x"
+                },
+                "application": "Subtle 808 warmth for emotional tracks"
+              },
+              {
+                "name": "Moody Vocals",
+                "curve": "soft-clip",
+                "parameters": {
+                  "pre": 4,
+                  "mix": 25,
+                  "post": -3,
+                  "mode": "Unipolar",
+                  "oversample": "4x"
+                },
+                "application": "Gentle vocal presence without edge"
+              },
+              {
+                "name": "Moody Mix Bus",
+                "curve": "soft-clip",
+                "parameters": {
+                  "pre": 3,
+                  "mix": 20,
+                  "post": -2,
+                  "mode": "Unipolar",
+                  "oversample": "4x"
+                },
+                "application": "Subtle glue for emotional cohesion"
+              }
+            ]
+          },
+          {
+            "id": "upbeat",
+            "name": "Upbeat",
+            "description": "Energetic, punchy, driving distortion",
+            "characteristics": [
+              "Aggressive",
+              "Punchy",
+              "Mixed harmonics",
+              "Forward"
+            ],
+            "presets": [
+              {
+                "name": "Upbeat Drums",
+                "curve": "hard-clip",
+                "parameters": {
+                  "pre": 14,
+                  "mix": 70,
+                  "post": -12,
+                  "mode": "Bipolar",
+                  "oversample": "4x"
+                },
+                "application": "Maximum impact for dance/EDM drums"
+              },
+              {
+                "name": "Upbeat 808",
+                "curve": "s-curve-aggressive",
+                "parameters": {
+                  "pre": 12,
+                  "mix": 65,
+                  "post": -10,
+                  "mode": "Unipolar",
+                  "oversample": "4x"
+                },
+                "application": "Hard-hitting 808s for club tracks"
+              },
+              {
+                "name": "Upbeat Vocals",
+                "curve": "asymmetric-hard",
+                "parameters": {
+                  "pre": 10,
+                  "mix": 45,
+                  "post": -8,
+                  "mode": "Bipolar",
+                  "oversample": "4x"
+                },
+                "application": "Attitude and presence for hype vocals"
+              }
+            ]
+          },
+          {
+            "id": "psychedelic",
+            "name": "Psychedelic",
+            "description": "Experimental, complex, mind-bending textures",
+            "characteristics": [
+              "Complex",
+              "Weird",
+              "All harmonics",
+              "Creative"
+            ],
+            "presets": [
+              {
+                "name": "Psychedelic Drums",
+                "curve": "foldback",
+                "parameters": {
+                  "pre": 16,
+                  "mix": 60,
+                  "post": -14,
+                  "mode": "Bipolar",
+                  "oversample": "8x"
+                },
+                "application": "Modular-style drum destruction"
+              },
+              {
+                "name": "Psychedelic Bass",
+                "curve": "asymmetric-soft",
+                "parameters": {
+                  "pre": 12,
+                  "mix": 70,
+                  "post": -10,
+                  "mode": "Bipolar",
+                  "oversample": "8x"
+                },
+                "application": "Warped bass textures for experimental"
+              },
+              {
+                "name": "Psychedelic Effects",
+                "curve": "staircase-8",
+                "parameters": {
+                  "pre": 20,
+                  "mix": 80,
+                  "post": -18,
+                  "mode": "Unipolar",
+                  "oversample": "16x"
+                },
+                "application": "Digital artifacts and lo-fi destruction"
+              }
+            ]
+          },
+          {
+            "id": "jazzy",
+            "name": "Jazzy",
+            "description": "Smooth, sophisticated, vintage warmth",
+            "characteristics": [
+              "Warm",
+              "Smooth",
+              "Even harmonics",
+              "Musical"
+            ],
+            "presets": [
+              {
+                "name": "Jazzy Mix Bus",
+                "curve": "soft-clip",
+                "parameters": {
+                  "pre": 2,
+                  "mix": 15,
+                  "post": -1,
+                  "mode": "Unipolar",
+                  "oversample": "2x"
+                },
+                "application": "Ultra-subtle glue for jazz/R&B"
+              },
+              {
+                "name": "Jazzy Drums",
+                "curve": "soft-clip",
+                "parameters": {
+                  "pre": 6,
+                  "mix": 40,
+                  "post": -5,
+                  "mode": "Unipolar",
+                  "oversample": "2x"
+                },
+                "application": "Warm drum character without aggression"
+              },
+              {
+                "name": "Jazzy Keys",
+                "curve": "soft-limiter",
+                "parameters": {
+                  "pre": 5,
+                  "mix": 30,
+                  "post": -4,
+                  "mode": "Unipolar",
+                  "oversample": "4x"
+                },
+                "application": "Controlled piano/rhodes warmth"
+              }
+            ]
+          },
+          {
+            "id": "vibey",
+            "name": "Vibey",
+            "description": "Cool, relaxed, smooth character",
+            "characteristics": [
+              "Warm",
+              "Relaxed",
+              "Even harmonics",
+              "Chill"
+            ],
+            "presets": [
+              {
+                "name": "Vibey 808",
+                "curve": "soft-clip",
+                "parameters": {
+                  "pre": 6,
+                  "mix": 55,
+                  "post": -5,
+                  "mode": "Unipolar",
+                  "oversample": "2x"
+                },
+                "application": "Relaxed sub-bass for chill tracks"
+              },
+              {
+                "name": "Vibey Vocals",
+                "curve": "soft-clip",
+                "parameters": {
+                  "pre": 5,
+                  "mix": 35,
+                  "post": -4,
+                  "mode": "Unipolar",
+                  "oversample": "4x"
+                },
+                "application": "Smooth vocal presence for laid-back vibes"
+              },
+              {
+                "name": "Vibey Atmosphere",
+                "curve": "soft-clip",
+                "parameters": {
+                  "pre": 3,
+                  "mix": 45,
+                  "post": -2,
+                  "mode": "Unipolar",
+                  "oversample": "4x"
+                },
+                "application": "Subtle saturation for ambient layers"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity WaveShaper\n\n## Purpose & Identity\nFruity WaveShaper is a **graph-based distortion engine**. Its primary identity is a precision transfer-function mapper. It allows you to draw an exact curve that dictates how input volume maps to output volume. This makes it the most surgical tool in FL Studio for creating saturation, clipping, and digital destruction. [SRC: IL-MAN]\n\n## 60-Second Mental Model\nThink of it as a \"Level Translator.\"\n- If the line is a straight 45-degree angle, the sound is clean (In = Out).\n- If you flatten the top of the line, you are **Clipping** the sound.\n- If you make the line a \"staircase,\" you are **Bitcrushing** the sound.\nYou are physically reshaping the waveform's peaks with your mouse.\n\n## Hip-Hop / R&B Context\n- **Custom 808 Grit:** Drawing a curve that only distorts the loudest peaks of an 808, keeping the sub-fundamental clean but adding \"buzz\" to the top (Moody).\n- **Vocal Warming:** Using a subtle \"S\" curve to add tube-like harmonics to an R&B lead vocal (Vibey).\n- **Digital Screams:** Using complex, jagged curves on a synth lead to create aggressive, metallic overtones (Psychedelic).\n\n## When To Use\n- When you need a **specific type of distortion** that other plugins can't provide.\n- When you want to **Hard Clip** a drum bus with 100% precision.\n- When you want to **Bitcrush** without using a dedicated bitcrusher plugin.\n\n## When NOT To Use\n- **Simple Tasks:** Use **Fruity Soft Clipper** if you just want basic peak rounding; it's faster and uses less CPU.\n- **Dynamic Control:** WaveShaper is a static distortion. Use a compressor if you want the volume to change based on timing rather than just amplitude. [SRC: REPUTABLE]",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Fruity WaveShaper\n\n## UI Tour\n1.  **The Graph:** Your \"Transfer Function.\"\n    *   **X-Axis:** Input volume (Quiet to Loud).\n    *   **Y-Axis:** Output volume.\n2.  **Pre-Gain:** Drives the signal into the graph. Higher Pre = more distortion.\n3.  **Post-Gain:** Adjusts the volume *after* it leaves the graph. Use this to compensate for loudness increases.\n4.  **Oversampling (HQ):** Multiplies the internal sample rate (up to 16x) to prevent aliasing. [SRC: IL-MAN]\n5.  **Unipolar/Bipolar Switch:**\n    *   **Unipolar (Half-Wave):** Processes the positive and negative sides of the wave the same way.\n    *   **Bipolar (Full-Wave):** Allows you to shape the top half and bottom half of the wave independently. [SRC: IL-MAN]\n\n## Signal Flow\n1.  **Input:** Audio enters the plugin.\n2.  **Pre-Gain:** The signal is boosted or cut before hitting the graph.\n3.  **Mapping:** Each sample's volume is checked against the X-axis of the graph and output according to the Y-axis.\n4.  **Oversampling:** The signal is filtered to remove digital artifacts (if enabled).\n5.  **Post-Gain/Mix:** The final level is adjusted and blended with the dry signal.\n\n## Things Beginners Misunderstand\n*   **The Flat Line:** If you draw a horizontal line at the top, you are **Clipping**. If you draw it in the middle, you are drastically lowering the volume.\n*   **Pre-Gain vs Graph:** You can achieve the same distortion by either boosting the Pre-Gain or moving the graph points up. Most pros prefer a subtle graph and a high Pre-Gain for better control.\n*   **Bipolar Mode:** In Bipolar mode, the center of the graph is \"Zero.\" Everything above is positive voltage, everything below is negative. [SRC: REPUTABLE]\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity WaveShaper\n\nWaveShaper translates vibes through **Waveform Geometry** and **Harmonic Sculpting**.\n\n## 1. Upbeat (Punchy, Aggressive, Modern)\n- **Concept:** \"The Hard Ceiling.\"\n- **Levers:**\n  - **Graph:** A horizontal line starting at the very top edge.\n  - **Pre-Gain:** Drive the input +6dB.\n- **Listen For:** A sharp, aggressive \"Snap.\" The transients are flattened instantly, making the drums sound louder and more modern.\n- **Don't Do This:** Don't use oversampling if you want the \"aliased\" high-end grit common in underground trap.\n\n## 2. Psychedelic (Complex, Warped, Metallic)\n- **Concept:** \"Asymmetric Folding.\"\n- **Levers:**\n  - **Mode:** Bipolar (Two-sided graph).\n  - **Graph:** Draw a \"Z\" shape on the top half and an \"S\" shape on the bottom.\n- **Listen For:** Strange, ringing overtones that sound \"alien\" or synthetic. The asymmetry creates a disorienting harmonic series.\n\n## 3. Spacey (Dense, Textured, Saturated)\n- **Concept:** \"The Dense Reverb.\"\n- **Levers:**\n  - **Placement:** AFTER a Reverb plugin.\n  - **Graph:** A very gentle \"Soft Clip\" curve.\n- **Listen For:** The reverb tail sounding \"thicker\" and more filled-out. It makes the digital space feel like it has physical \"air\" and weight.\n\n## 4. Vibey (Warm, Analog, Smooth)\n- **Concept:** \"The Tube Simulator.\"\n- **Levers:**\n  - **Mode:** Unipolar.\n  - **Graph:** A smooth, rounded \"S\" curve.\n  - **Oversampling:** 8x or 16x (to keep it clean).\n- **Listen For:** Gentle harmonic saturation that adds a \"glow\" to vocals or keys. It mimics the warmth of a high-end analog preamp.\n\n## 5. Moody (Crushed, Lo-Fi, Distressed)\n- **Concept:** \"The Staircase Crush.\"\n- **Levers:**\n  - **Graph:** Draw a \"Staircase\" (Stepped) line.\n  - **Post-Gain:** Turn down to compensate for harshness.\n- **Listen For:** A digital, \"crunchy\" texture that sounds like 8-bit audio or a low-quality sample rip. [SRC: REPUTABLE]",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Waveshaper\r\n\r\n## What It Is\r\nFruity Waveshaper is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "curve-design-philosophy": "# Curve Design Philosophy\n\n## The Art of Drawing Distortion\n\nFruity WaveShaper's graph editor is both a technical tool and a creative instrument. Understanding curve design philosophy helps you move from random experimentation to intentional sonic sculpting.\n\n[SRC: IL-MAN] The spline-based graph editor allows drawing custom transfer functions with precision control over the input-to-output mapping.\n\n## Curve Archetypes\n\n### 1. The Gentle Saturation (S-Curve)\n```\nOutput\n  1.0│      ╭──────\n     │    ╭╯\n  0.5│  ╭╯\n     │ ╭╯\n  0.0├●─────────────────\n     │╯\n -0.5│\n     │\n -1.0│\n     └──────────────────\n       -1.0  0.0  1.0   Input\n```\n\n**Characteristics:**\n- Soft compression of peaks\n- Gradual transition zones\n- Even harmonic emphasis\n- Analog/tube character\n\n**Use When:** You want warmth without obvious distortion\n\n### 2. The Hard Limiter (Plateau)\n```\nOutput\n  1.0│███████████████\n     │\n  0.5│\n     │\n  0.0├────────●───────\n     │\n -0.5│\n     │\n-1.0│████████████████\n     └──────────────────\n       -1.0  0.0  1.0   Input\n```\n\n**Characteristics:**\n- Sharp threshold behavior\n- Zero transients above threshold\n- Aggressive odd harmonics\n- Digital/punchy character\n\n**Use When:** You need maximum control or aggressive bite\n\n### 3. The Soft Limiter (Rounded Plateau)\n```\nOutput\n  1.0│      ╭──────╮\n     │    ╭╯      ╰╮\n  0.5│  ╭╯          ╰╮\n     │ ╭╯              ╰╮\n  0.0├●───────────────────\n     │╯\n -0.5│\n     │\n -1.0│\n     └──────────────────\n       -1.0  0.0  1.0   Input\n```\n\n**Characteristics:**\n- Gradual limiting\n- Controlled peak reduction\n- Mix of harmonics\n- Smooth yet controlled\n\n**Use When:** You want loudness without harshness\n\n### 4. The Bitcrusher (Staircase)\n```\nOutput\n  1.0│██████████████████\n 0.75│        ███████████\n 0.50│  █████████████████\n 0.25│        ███████████\n  0.0├●──────────────────\n-0.25│\n-0.50│\n-0.75│\n -1.0│██████████████████\n      └──────────────────\n        -1.0  0.0  1.0   Input\n```\n\n**Characteristics:**\n- Quantized steps\n- Digital artifacts and aliasing\n- Extreme harmonic complexity\n- Lo-fi/creative destruction\n\n**Use When:** You want intentional degradation\n\n[SRC: IL-MAN] The graph supports unlimited points for complex curve shapes including stepped \"bitcrush\" patterns.\n\n## Design Principles\n\n### Principle 1: Smoothness = Musicality\n**Sharp corners** in curves create high-frequency harmonics that can sound harsh.\n**Smooth curves** create more even, musical distortion.\n\n**Rule:** Round your corners unless you want aggressive edge.\n\n### Principle 2: Threshold is Everything\nWhere your curve **deviates from diagonal** determines when distortion kicks in.\n\n**Earlier deviation** = More distortion (good for character)\n**Later deviation** = Less distortion (good for headroom)\n\n### Principle 3: Symmetry Controls Character\n- **Symmetric curves** (Unipolar): Even harmonics, warmth\n- **Asymmetric curves** (Bipolar): Complex harmonics, edge\n\n### Principle 4: Pre-Gain is Your Friend\nDon't flatten the curve—**drive the signal into the curve** using Pre gain.\nThis maintains curve flexibility while controlling distortion amount.\n\n## Practical Design Workflows\n\n### Workflow 1: Analog-Style Saturation\n1. Draw soft S-curve with gentle compression\n2. Use Unipolar mode\n3. Add Pre gain to taste (+6 to +12dB)\n4. Compensate with Post gain (-6 to -12dB)\n5. Mix at 30-50% for parallel processing\n\n### Workflow 2: Hard Clipper/Limiter\n1. Draw horizontal line at desired threshold (0.7-0.8)\n2. Use Unipolar mode\n3. Add Pre gain to push signals into the ceiling\n4. Mix at 100% for full limiting\n\n### Workflow 3: Asymmetric Character\n1. Switch to Bipolar mode\n2. Shape positive half with soft curve\n3. Shape negative half with harder curve (or vice versa)\n4. Adjust Pre gain to balance distortion\n5. Mix to taste\n\n[SRC: IL-MAN] The spline interpolation ensures smooth transitions between curve points for artifact-free distortion.\n\n## Common Curve Mistakes\n\n### Mistake 1: Flat Curve at Bottom\n**Problem:** Signal disappears when input is negative\n**Fix:** Ensure curve passes through (0,0) and maintains unity gain slope near center\n\n### Mistake 2: Over-Compression\n**Problem:** Curve too flat across wide range = \"squashed\" sound\n**Fix:** Limit flat sections to only the loudest peaks\n\n### Mistake 3: Extreme Asymmetry\n**Problem:** Positive and negative halves too different = phase issues\n**Fix:** Keep some relationship between halves for stability\n\n## Curve Library Quick Reference\n\n| Goal | Mode | Shape | Pre Gain | Mix |\n|------|------|-------|----------|-----|\n| 808 Warmth | Unipolar | Soft S-curve | +8dB | 40% |\n| Vocal Grit | Bipolar | Asymmetric soft | +6dB | 25% |\n| Drum Punch | Unipolar | Hard clip | +12dB | 60% |\n| Mix Glue | Unipolar | Gentle saturation | +4dB | 20% |\n| Creative Destroy | Bipolar | Random complex | +20dB | 100% |\n\n---\n\n**Version:** 1.0  \n**Last Updated:** 2026-02-03\n",
+      "oversampling-and-aliasing": "# Oversampling and Aliasing\n\n## The Aliasing Problem\n\nWhen you heavily distort a signal, you create new frequencies (harmonics). Some of these frequencies exceed the Nyquist limit (half your sample rate). When this happens, those frequencies \"fold back\" into the audible range as unwanted artifacts—this is **aliasing**.\n\n```\nSample Rate: 44.1kHz → Nyquist: 22.05kHz\n\nOriginal:    ████████\nHarmonics:         ████████ (above 22kHz)\n                    ↓ ALIASING\nFolded back:             ████ (unwanted mirror)\n```\n\n[SRC: IL-MAN] Oversampling increases the internal processing rate to reduce aliasing artifacts that occur during extreme distortion.\n\n## How Oversampling Works\n\n### The Math\n- **2x:** Processes at 88.2kHz (Nyquist: 44.1kHz)\n- **4x:** Processes at 176.4kHz (Nyquist: 88.2kHz)\n- **8x:** Processes at 352.8kHz (Nyquist: 176.4kHz)\n- **16x:** Processes at 705.6kHz (Nyquist: 352.8kHz)\n\nHigher internal Nyquist = more \"room\" for harmonics before aliasing occurs.\n\n### The Trade-Offs\n\n| Setting | Quality | CPU Usage | Latency | Best For |\n|---------|---------|-----------|---------|----------|\n| Off | Standard | Minimal | 0 | Subtle saturation |\n| 2x | Improved | Low | Minimal | Light distortion |\n| 4x | High | Moderate | Minimal | Standard distortion |\n| 8x | Very High | High | Slight | Heavy distortion |\n| 16x | Maximum | Very High | Noticeable | Extreme destruction |\n\n[SRC: IL-MAN] Higher oversampling values reduce CPU efficiency but improve audio quality during aggressive distortion.\n\n## When You Need Oversampling\n\n### Always Use Oversampling (4x minimum):\n- **Hard clipping** at high drive levels\n- **Bitcrushing** effects (staircase curves)\n- **High-frequency content** being distorted (leads, cymbals)\n- **Multiple WaveShaper instances** in series\n\n### Can Skip Oversampling:\n- **Very subtle** saturation (S-curve, low drive)\n- **Low-frequency sources** (808s, kicks below 100Hz)\n- **Unipolar mode** with gentle curves\n- **Mix bus** applications with conservative settings\n\n## Hearing Aliasing: Training Your Ears\n\nAliasing typically manifests as:\n1. **\"Digital shimmer\"** on high notes\n2. **Unpleasant overtones** that don't belong\n3. **Harshness** that EQ can't fix\n4. **Chime-like artifacts** on transient edges\n\n**Test:** Put WaveShaper on a pure sine wave at 5kHz. Use hard clipping with high drive.\n- **No oversampling:** You'll hear extra \"bells\" and artifacts\n- **16x oversampling:** Clean harmonics only\n\n[SRC: IL-MAN] Aliasing appears as unwanted high-frequency artifacts that sound \"metallic\" or \"digital\" compared to the desired harmonic content.\n\n## CPU Optimization Strategy\n\n### Project-Wide Approach\n1. **Mixing stage:** Use 2x-4x for most instances\n2. **Critical tracks only:** Use 8x-16x (leads, vocals)\n3. **Bounce/freezing:** Use high oversampling, then render\n4. **Final mix:** Use conservative settings on master bus\n\n### Smart Instance Management\n```\nTrack Level:    2x-4x (acceptable quality)\nBus Level:      4x-8x (higher stakes)\nMaster Bus:     4x (balance quality/CPU)\nExperimental:   8x-16x (when sound design)\n```\n\n## Safety Rules for Aliasing Prevention\n\n1. **When in doubt, use 4x** — good balance of quality/performance\n2. **High drive = High oversampling** — protect against artifacts\n3. **Test with sine waves** — reveals aliasing clearly\n4. **Monitor high frequencies** — aliasing lives there\n5. **Export with oversampling** — final renders should be clean\n\n[SRC: IL-MAN] The Oversample selector offers 2x, 4x, 8x, and 16x options to balance quality against CPU usage.\n\n## Common Mistakes\n\n### Mistake 1: Never Using Oversampling\n- **Result:** \"Cheap\" sounding distortion\n- **Fix:** Use minimum 4x for noticeable distortion\n\n### Mistake 2: Always Using 16x\n- **Result:** CPU overload, session crashes\n- **Fix:** Match oversampling to the distortion intensity\n\n### Mistake 3: Ignoring Aliasing on Buses\n- **Result:** Cumulative artifacts across multiple tracks\n- **Fix:** Use 4x-8x on parallel/distortion buses\n\n---\n\n**Version:** 1.0  \n**Last Updated:** 2026-02-03\n",
+      "signal-flow": "# Signal Flow: Fruity Waveshaper\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n",
+      "transfer-function-fundamentals": "# Transfer Function Fundamentals\n\n## What is a Transfer Function?\n\nA transfer function maps input signal amplitude to output amplitude. In Fruity WaveShaper, the graph IS the transfer function—the diagonal line represents the relationship between what goes in and what comes out.\n\n```\nInput Level ─┐\n             │    ╭─────╮\n      +1.0   │   ╱       ╲    ← Output clipped at +0.8\n             │  ╱         ╲\n       0.0   ├─●───────────●─  ← Unity gain (no change)\n             │╱             ╲\n      -1.0   │               ← Output clipped at -0.8\n             │\n             └────────────────\n                -1.0   +1.0   Input Level\n```\n\n[SRC: IL-MAN] The graph diagonal represents unity gain (1:1 mapping). Any deviation creates distortion.\n\n## Curve Shapes and Their Sonic Signatures\n\n### Linear (45° Diagonal)\n- **Sound:** Clean, transparent\n- **Harmonics:** None (pure signal)\n- **Use:** Bypass reference, subtle saturation starting point\n\n### Soft Clip (S-Curve)\n- **Sound:** Warm, analog-like\n- **Harmonics:** Even-order predominance\n- **Use:** 808 warmth, vocal saturation, bus glue\n\n### Hard Clip (Horizontal Plateau)\n- **Sound:** Aggressive, punchy\n- **Harmonics:** Odd-order predominance\n- **Use:** Drum transients, EDM leads, hard distortion\n\n### Bitcrush (Staircase)\n- **Sound:** Digital, lo-fi, degraded\n- **Harmonics:** Aliasing artifacts, quantization noise\n- **Use:** Creative destruction, retro effects\n\n[SRC: IL-MAN] Spline-based graph allows infinite curve variations between these archetypes.\n\n## Harmonic Generation Mechanics\n\n### Symmetric Curves (Unipolar Mode)\n- **Mathematical Property:** f(-x) = -f(x)\n- **Harmonic Content:** Primarily even-order harmonics\n- **Character:** Tube-like, warm, musical\n- **Examples:** S-curves, gentle saturation\n\n### Asymmetric Curves (Bipolar Mode)\n- **Mathematical Property:** f(-x) ≠ -f(x)\n- **Harmonic Content:** Mix of odd and even harmonics\n- **Character:** Transistor-like, aggressive, complex\n- **Examples:** Different positive/negative shaping\n\n[SRC: IL-MAN] Unipolar mode mirrors the curve for both halves of the waveform. Bipolar allows independent positive/negative half-wave processing.\n\n## Input/Output Mapping Examples\n\n| Input Level | Soft Clip Output | Hard Clip Output | Linear Output |\n|-------------|------------------|------------------|---------------|\n| -1.0 (full negative) | -0.85 | -0.80 | -1.0 |\n| -0.5 | -0.45 | -0.50 | -0.5 |\n| 0.0 | 0.0 | 0.0 | 0.0 |\n| +0.5 | +0.45 | +0.50 | +0.5 |\n| +1.0 (full positive) | +0.85 | +0.80 | +1.0 |\n\n## Key Insight: Pre-Gain Drives the Curve\n\nThe **Pre** knob pushes your signal into the curve. Higher pre-gain means:\n- More signal hits the non-linear portion\n- More harmonic generation\n- More distortion/saturation\n\n**Safety Rule:** Always monitor output with **Post** gain to compensate. [SRC: IL-MAN] Pre/Post gain controls allow proper gain staging through the waveshaping process.\n\n## Visual Debugging Tips\n\n1. **Flat Line at Bottom:** Signal completely muted (check Pre gain)\n2. **Flat Line at Top:** Hard limiter behavior (good for safety)\n3. **Wavy Curves:** Complex harmonic structures (experimental territory)\n4. **Sharp Corners:** Abrupt transitions = more high-frequency harmonics\n\n---\n\n**Version:** 1.0  \n**Last Updated:** 2026-02-03\n",
+      "unipolar-vs-bipolar": "# Unipolar vs Bipolar Mode\n\n## Mode Selection: The First Decision\n\nFruity WaveShaper's **Unipolar/Bipolar** switch fundamentally changes how the plugin processes your audio. This is the most important creative decision you'll make.\n\n[SRC: IL-MAN] Unipolar mode applies the same curve to both positive and negative signal halves. Bipolar mode allows independent shaping of positive and negative halves.\n\n## Unipolar Mode (Symmetric Processing)\n\n### How It Works\n```\nPositive Half ─┐\n               │    ╭──╮\n               │   ╱    ╲\n               │  ╱      ╲\n    Input ─────┼─●────────●──\n               │╲        ╱\n               │ ╲______╱\n               │\nNegative Half ─┘   (Mirrored shape)\n```\n\n### Sonic Character\n- **Warm, musical, analog-like**\n- **Even harmonics** (2nd, 4th, 6th, etc.)\n- **Tube/tape saturation** quality\n- **Smooth, pleasing** distortion\n\n### Best Applications\n- **808 saturation** (add warmth without aggression)\n- **Vocal tracking** (smooth presence)\n- **Mix bus glue** (cohesive saturation)\n- **Acoustic instruments** (natural enhancement)\n\n### Safety Note\nEven harmonics are generally more musical and less fatiguing. This is the \"safe\" mode for most mixing applications. [SRC: IL-MAN] Even harmonics create consonant intervals that blend musically with the fundamental.\n\n## Bipolar Mode (Asymmetric Processing)\n\n### How It Works\n```\nPositive Half ─┐\n               │    ╭──╮\n               │   ╱    ╲\n               │  ╱      ╲\n    Input ─────┼─●──────────\n               │╲          \n               │ ╲________  ← Different shape!\n               │           \nNegative Half ─┘\n```\n\n### Sonic Character\n- **Aggressive, complex, modern**\n- **Mix of odd and even harmonics**\n- **Transistor/diode** clipping quality\n- **Punchy, characterful** distortion\n\n### Best Applications\n- **Drum crunch** (transient bite)\n- **EDM leads** (aggressive presence)\n- **Electric guitars** (amp-like distortion)\n- **Creative destruction** (experimental)\n\n### Critical Warning\nOdd harmonics can sound harsh and cause listener fatigue. Use with **Mix** control at 30-50% for transparent results. [SRC: IL-MAN] Odd harmonics create dissonant intervals that can sound aggressive or \"honky.\"\n\n## Mode Comparison Chart\n\n| Aspect | Unipolar | Bipolar |\n|--------|----------|---------|\n| Curve Behavior | Mirrored symmetric | Independent halves |\n| Harmonic Type | Even-order | Mixed odd+even |\n| Character | Warm, analog | Aggressive, modern |\n| Fatigue Level | Low | Higher |\n| CPU Usage | Slightly lower | Slightly higher |\n| Best For | Saturation, warmth | Distortion, punch |\n\n## When to Switch Modes\n\n### Start with Unipolar when:\n- Working with low-end (808s, kicks, bass)\n- Processing vocals or acoustic sources\n- Adding subtle mix bus saturation\n- You want \"character\" without \"edge\"\n\n### Switch to Bipolar when:\n- Drums need more transient bite\n- Synths need more aggressive presence\n- Creating distortion effects (not mixing)\n- Designing unique character sounds\n\n## Pro Workflow: A/B Testing Modes\n\n1. **Set your curve** (start with soft clip)\n2. **Process in Unipolar** — listen for warmth\n3. **Switch to Bipolar** — listen for added edge/complexity\n4. **Choose based on the vibe you want**\n\n**Remember:** Bipolar isn't \"better\" — it's different. Unipolar often wins in hip-hop/R&B mixing for its warmth. [SRC: IL-MAN] Both modes are equally valid creative choices depending on the desired sonic outcome.\n\n---\n\n**Version:** 1.0  \n**Last Updated:** 2026-02-03\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: Fruity WaveShaper (5 Minutes)\n\n1.  **Insert:** Load **Fruity WaveShaper** onto a synth or drum track.\n2.  **Mode:** Ensure it is in **Unipolar** mode (the default).\n3.  **Draw:** Click in the graph window. The line is your \"Logic.\"\n    - *Curve the middle up:* Adds volume/warmth.\n    - *Flatten the top:* Creates clipping.\n4.  **Drive:** Increase the **PRE** knob to push more sound into your curve.\n5.  **Clean:** If it sounds \"fuzzy\" in a bad way, set the **OVERSAMPLING** to 4x.\n6.  **Tip:** Right-click the graph to find **Presets** for common shapes like \"Soft Clip\" or \"Bitcrush.\" [SRC: IL-MAN]\n",
+      "distortion-curves-visualized": "# Distortion Curves Visual Reference\n\n## Visual Curve Library\n\n[SRC: IL-MAN] The graph editor allows drawing custom transfer functions. The diagonal line represents unity gain (input = output).\n\n### 1. Linear (Bypass/Unity)\n```\nOutput\n  1.0│          ╱\n  0.5│        ╱\n  0.0├──────●──────\n -0.5│    ╱\n -1.0│  ╱\n     └────────────────\n       -1.0  0.0  1.0  Input\n\nSonic Character: Clean, transparent\nUse: Reference point, subtle saturation start\n```\n\n### 2. Soft Clip (S-Curve)\n```\nOutput\n  1.0│          ╭──────\n  0.5│        ╭╯\n  0.0├──────●──────\n -0.5│    ╱\n -1.0│  ╱\n     └────────────────\n       -1.0  0.0  1.0  Input\n\nSonic Character: Warm, analog-like, even harmonics\nUse: 808 saturation, vocal warmth, mix glue\nMode: Unipolar recommended\n```\n\n### 3. Hard Clip (Limiter)\n```\nOutput\n  1.0│███████████████\n  0.5│\n  0.0├────────●──────\n -0.5│\n -1.0│████████████████\n     └────────────────\n       -1.0  0.0  1.0  Input\n\nSonic Character: Aggressive, punchy, odd harmonics\nUse: Drum transients, hard limiting, EDM aggression\nMode: Either (Unipolar = warmer, Bipolar = punchier)\n```\n\n### 4. Soft Limiter (Rounded Ceiling)\n```\nOutput\n  1.0│        ╭─────╮\n  0.5│      ╭╯     ╰╮\n  0.0├──────●───────\n -0.5│    ╱\n -1.0│  ╱\n     └────────────────\n       -1.0  0.0  1.0  Input\n\nSonic Character: Controlled, loud, smooth limiting\nUse: Gentle peak control, transparent limiting\nMode: Unipolar for warmth\n```\n\n### 5. Foldback Distortion (Wavefolding)\n```\nOutput\n  1.0│    ╭╮      ╭╮\n  0.5│   ╱  ╲    ╱  ╲\n  0.0├─●────●────●───\n -0.5│╱      ╲  ╱\n -1.0│        ╲╱\n     └────────────────\n       -1.0  0.0  1.0  Input\n\nSonic Character: Metallic, complex, modular synth-like\nUse: Creative sound design, experimental textures\nMode: Bipolar for maximum complexity\n```\n\n### 6. Bitcrush (Staircase)\n```\nOutput\n  1.0│█████████████████\n 0.75│       ▓▓▓▓▓▓▓▓▓▓\n 0.50│  █████████████████\n 0.25│       ▓▓▓▓▓▓▓▓▓▓\n  0.0├─●──────────────────\n-0.25│\n-0.50│\n-0.75│\n -1.0│███████████████████\n      └──────────────────\n        -1.0  0.0  1.0  Input\n\nSonic Character: Digital, lo-fi, quantized\nUse: Retro video game sounds, creative destruction\nMode: Either (aliasing increases with drive)\n```\n\n### 7. Asymmetric (Bipolar Mode Special)\n```\nOutput (Positive)     Output (Negative)\n  1.0│  ╭────╮        1.0│\n  0.5│ ╱      ╲       0.5│\n  0.0├●────────        0.0├────────\n -0.5│               -0.5│    ╲\n -1.0│               -1.0│███████\n     └────────              └────────\n\nSonic Character: Complex, textured, transistor-like\nUse: Unique character, amp simulation, edge\nMode: Bipolar ONLY\n```\n\n## Curve Drawing Tips\n\n### Creating Smooth Curves\n1. **Use 3-5 points** for basic shapes\n2. **Space points evenly** horizontally\n3. **Avoid sharp corners** unless you want harshness\n4. **Keep center at (0,0)** for unity gain at low levels\n\n### Creating Stepped Curves (Bitcrush)\n1. **Add multiple horizontal segments**\n2. **Keep vertical jumps** between steps\n3. **Use 8-16 steps** for typical bitcrushing\n4. **Enable oversampling** to reduce aliasing\n\n[SRC: IL-MAN] Points can be added by clicking on the graph. Right-click points to delete.\n\n## Harmonic Generation by Curve\n\n| Curve Type | Primary Harmonics | Character | Best For |\n|------------|-------------------|-----------|----------|\n| Linear | None | Clean | Reference |\n| Soft Clip | Even (2nd, 4th, 6th) | Warm, musical | Mixing, warmth |\n| Hard Clip | Odd (3rd, 5th, 7th) | Aggressive, punchy | Drums, EDM |\n| Foldback | All (complex) | Metallic, modular | Experimental |\n| Bitcrush | Aliased artifacts | Digital, degraded | Creative |\n| Asymmetric | Mixed odd/even | Complex, textured | Character |\n\n## Quick Curve Selection Guide\n\n### Goal: Add Warmth\n→ **Soft S-curve** + Unipolar + Medium Pre gain\n\n### Goal: Add Punch\n→ **Hard clip** + Bipolar + High Pre gain\n\n### Goal: Control Peaks\n→ **Limiter shape** + Unipolar + Adjust threshold\n\n### Goal: Creative Destruction\n→ **Any complex shape** + Bipolar + High drive + High oversampling\n\n### Goal: Lo-fi Character\n→ **Staircase** + High drive + Moderate oversampling\n\n---\n\n**Version:** 1.0  \n**Last Updated:** 2026-02-03\n",
+      "gain-staging-safety": "# Gain Staging Safety Guide\n\n## The Golden Rule of Distortion\n\n**Input + Curve = Output.** If any stage clips unexpectedly, your mix suffers. Proper gain staging through WaveShaper prevents disasters.\n\n[SRC: IL-MAN] Pre and Post gain controls allow proper gain staging through the waveshaping process.\n\n## The Signal Flow\n\n```\nInput → [Pre Gain] → [Transfer Curve] → [Post Gain] → Output\n        (Drive)         (Distortion)       (Compensate)\n```\n\n## Stage-by-Stage Safety\n\n### Stage 1: Input Level (Before WaveShaper)\n\n**Check:** Is your input peaking near -6dB to -12dB?\n\n**Safety Rules:**\n- Never feed clipped audio into WaveShaper\n- If channel meter shows red, reduce level before the plugin\n- Leave headroom for Pre gain amplification\n\n**How to Check:**\n1. Bypass WaveShaper\n2. Monitor channel meter\n3. Adjust input gain if needed\n4. Re-enable WaveShaper\n\n### Stage 2: Pre Gain (Driving the Curve)\n\n**Check:** How much are you amplifying?\n\n**Safety Tiers:**\n\n| Pre Gain | Risk Level | Typical Use |\n|----------|------------|-------------|\n| 0 to +6dB | Safe | Subtle saturation |\n| +6 to +12dB | Moderate | Standard distortion |\n| +12 to +18dB | High | Aggressive processing |\n| +18 to +24dB | Extreme | Creative destruction |\n\n**Safety Rules:**\n- Start at 0dB, increase gradually\n- Watch the channel meter after WaveShaper\n- Higher Pre gain = more distortion = need more Post gain reduction\n\n[SRC: IL-MAN] Pre gain increases signal level before the transfer function, controlling how much distortion is applied.\n\n### Stage 3: Transfer Curve (The Distortion)\n\n**Check:** Is your curve design reasonable?\n\n**Safety Checks:**\n- Ensure curve passes through (0,0) for unity gain at low levels\n- Avoid completely flat curves (signal kills)\n- Extreme curves need higher oversampling\n\n**Common Mistakes:**\n- **Mistake:** Flat line at -1.0 = silent negative signal\n- **Fix:** Ensure minimum -0.8 to -1.0 output range\n\n### Stage 4: Post Gain (Output Compensation)\n\n**Check:** Is output level reasonable?\n\n**The Compensation Formula:**\n```\nIf Pre = +12dB → Post should be approximately -8 to -12dB\nIf Pre = +6dB → Post should be approximately -4 to -6dB\n```\n\n**Safety Rules:**\n- Match processed level to unprocessed for A/B comparison\n- Never exceed 0dB on master bus\n- Use Post gain to prevent channel/master clipping\n\n[SRC: IL-MAN] Post gain adjusts output level to compensate for distortion-induced level changes.\n\n### Stage 5: Mix Control (Parallel Safety)\n\n**Check:** Is the blend appropriate?\n\n**Safety Guidelines:**\n\n| Mix % | Risk | Use Case |\n|-------|------|----------|\n| 100% | High | Effect is dominant—ensure it sounds good solo |\n| 50-70% | Moderate | Parallel processing—balance with dry |\n| 20-40% | Safe | Enhancement—dry signal dominates |\n| 0-20% | Very Safe | Subtle spice—barely noticeable |\n\n## Complete Gain Staging Checklist\n\nBefore finalizing any WaveShaper setting:\n\n- [ ] Input level healthy (-12dB to -6dB before plugin)\n- [ ] Pre gain appropriate for desired distortion\n- [ ] Curve passes through (0,0)\n- [ ] Oversampling adequate for curve intensity\n- [ ] Post gain compensates for distortion level increase\n- [ ] Output level matches reference (dry signal)\n- [ ] Mix percentage appropriate for context\n- [ ] Master bus not clipping with new settings\n- [ ] No unwanted DC offset (Center enabled)\n\n## Aliasing Prevention Safety\n\n### When Aliasing Occurs\n- Hard clipping with high drive\n- Stepped/bitcrush curves\n- No oversampling enabled\n- High-frequency sources (>5kHz)\n\n### Safety Settings\n\n| Distortion Intensity | Minimum Oversampling | CPU Impact |\n|---------------------|---------------------|------------|\n| Subtle (S-curve, low drive) | Off or 2x | Low |\n| Moderate (soft clip, medium drive) | 2x or 4x | Medium |\n| Heavy (hard clip, high drive) | 4x or 8x | High |\n| Extreme (bitcrush, max drive) | 8x or 16x | Very High |\n\n[SRC: IL-MAN] Oversampling increases internal processing rate to reduce aliasing artifacts.\n\n## Hip-Hop/R&B Specific Safety\n\n### 808s and Sub Bass\n- **Danger:** Hard clipping removes low-end punch\n- **Safety:** Use soft S-curve, Unipolar mode\n- **Pre Gain:** +6 to +12dB max\n- **Mix:** Keep at 40-60% to preserve original sub\n\n### Drums\n- **Danger:** Over-distortion = mushy transients\n- **Safety:** Bipolar mode for punch, but watch mix level\n- **Pre Gain:** +8 to +16dB\n- **Mix:** 50-70% for aggression, less for subtlety\n\n### Vocals\n- **Danger:** Distortion causes sibilance and harshness\n- **Safety:** De-esser BEFORE WaveShaper, low mix\n- **Pre Gain:** +3 to +8dB\n- **Mix:** 20-35% for grit without losing intelligibility\n\n### Mix Bus\n- **Danger:** Cumulative distortion across all tracks\n- **Safety:** Very conservative settings, Unipolar only\n- **Pre Gain:** +2 to +6dB max\n- **Mix:** 15-25% maximum\n\n## Emergency Troubleshooting\n\n### Problem: Output Suddenly Clipping\n**Solution:** Reduce Post gain by 6-12dB immediately\n\n### Problem: Sound Disappeared\n**Solution:** Check if curve has flat section at bottom; redraw with proper unity gain\n\n### Problem: Harsh, Digital Sound\n**Solution:** Enable 4x+ oversampling, reduce Pre gain, or switch to Unipolar\n\n### Problem: Low End Lost\n**Solution:** Check Center is enabled, reduce drive, use softer curve\n\n---\n\n**Version:** 1.0  \n**Last Updated:** 2026-02-03\n",
+      "hiphop-rnb-applications": "# Hip-Hop/R&B Application Guide\n\n## WaveShaper in Urban Music Production\n\nFruity WaveShaper is essential for modern hip-hop and R&B production. This guide covers genre-specific applications from 808 saturation to vocal grit.\n\n[SRC: IL-MAN] WaveShaper provides precise control over distortion characteristics for creative sound design and mixing.\n\n## 808s and Sub Bass\n\n### The Challenge\n808s need to cut through on small speakers (phones, earbuds) while maintaining sub-bass impact on systems that can reproduce it.\n\n### WaveShaper Solution: Harmonic Saturation\n**Goal:** Add upper harmonics that create \"presence\" without losing the fundamental sub.\n\n**Settings:**\n- **Mode:** Unipolar (even harmonics = warmth)\n- **Curve:** Soft S-curve with gentle compression\n- **Pre:** +8 to +12dB\n- **Mix:** 50-70% (blend for best of both worlds)\n- **Post:** -8 to -12dB (compensate for drive)\n- **Oversample:** 4x\n\n**Why This Works:**\n- Unipolar preserves low-end warmth\n- S-curve adds harmonics that translate to small speakers\n- High mix preserves original 808 punch\n- Even harmonics sound \"musical\" in hip-hop context\n\n### Pro Tips\n1. **Place after initial EQ** but before final compression\n2. **Mono the lows** (below 100Hz) before distortion to prevent phase issues\n3. **Layer approach:** Distort the \"presence\" layer, keep original for sub\n\n[SRC: IL-MAN] Unipolar mode creates even-order harmonics that blend musically with hip-hop and R&B productions.\n\n## Drums (Kicks, Snares, Hats)\n\n### Kicks: Hard Punch\n**Goal:** Maximum transient impact for hard-hitting beats.\n\n**Settings:**\n- **Mode:** Bipolar (asymmetric = punch)\n- **Curve:** Hard clip at 0.7-0.8 threshold\n- **Pre:** +12 to +18dB\n- **Mix:** 60-80%\n- **Post:** -12 to -18dB\n- **Oversample:** 4x-8x\n\n### Snares: Crack and Body\n**Goal:** Add crack to the transient, warmth to the body.\n\n**Settings:**\n- **Mode:** Bipolar\n- **Curve:** Asymmetric—harder on positive (crack), softer on negative (body)\n- **Pre:** +10 to +14dB\n- **Mix:** 50-70%\n- **Post:** -10 to -14dB\n- **Oversample:** 4x\n\n### Hi-Hats: Sizzle Control\n**Goal:** Add density without harshness.\n\n**Settings:**\n- **Mode:** Unipolar\n- **Curve:** Very soft saturation\n- **Pre:** +4 to +8dB\n- **Mix:** 30-50%\n- **Post:** -4 to -8dB\n- **Oversample:** 8x (hats have high frequency content)\n\n## Vocals\n\n### Lead Vocals: Presence and Grit\n**Goal:** Add \"attitude\" and presence without destroying intelligibility.\n\n**Settings:**\n- **Mode:** Start Unipolar, try Bipolar for edge\n- **Curve:** Soft S-curve\n- **Pre:** +4 to +8dB\n- **Mix:** 20-35% (conservative for transparency)\n- **Post:** -4 to -8dB\n- **Oversample:** 4x\n\n**Processing Chain:**\n1. EQ (remove mud, boost presence)\n2. **WaveShaper** (grit and saturation)\n3. De-esser (if sibilance increased)\n4. Compression\n\n### Ad-libs and Doubles: Creative Destruction\n**Goal:** Extreme character for background vocals.\n\n**Settings:**\n- **Mode:** Bipolar\n- **Curve:** Hard clip or complex asymmetric\n- **Pre:** +12 to +20dB\n- **Mix:** 70-100%\n- **Post:** -12 to -20dB\n- **Oversample:** 4x-8x\n\n### Background Vocals: Blend and Warmth\n**Settings:**\n- **Mode:** Unipolar\n- **Curve:** Gentle saturation\n- **Pre:** +6 to +10dB\n- **Mix:** 40-60%\n- **Post:** -6 to -10dB\n\n## Mix Bus Processing\n\n### Glue and Saturation\n**Goal:** Cohesive \"analog\" feel across the whole mix.\n\n**Settings:**\n- **Mode:** Unipolar (safer for full mix)\n- **Curve:** Very gentle S-curve\n- **Pre:** +2 to +6dB\n- **Mix:** 15-25% (very conservative)\n- **Post:** -2 to -6dB\n- **Oversample:** 4x\n\n**Critical Warnings:**\n- Keep it subtle—easy to overdo\n- Use Pre gain sparingly\n- Monitor master bus carefully\n- Consider parallel bus instead of insert\n\n[SRC: IL-MAN] Mix bus saturation should be subtle to avoid cumulative distortion across multiple tracks.\n\n## Genre-Specific Applications\n\n### Trap\n**808 Focus:** Heavy saturation for speaker presence\n- Pre: +10 to +16dB\n- Mix: 60-80%\n- Oversample: 4x minimum\n\n### Boom Bap\n**Drum Punch:** Classic hard-hitting sound\n- Bipolar mode for transients\n- Hard clip curve\n- Moderate oversampling\n\n### R&B/Soul\n**Warmth and Smoothness:** Gentle saturation\n- Unipolar mode\n- Soft curves\n- Low mix percentages\n\n### Experimental/Alt\n**Creative Destruction:** Push boundaries\n- Bipolar mode\n- Complex curves\n- High drive\n- Varies by track\n\n## Parallel Processing Setup\n\n### Creating a Distortion Bus\n1. **Route drums to bus**\n2. **Insert WaveShaper on bus**\n3. **Heavy settings:** Bipolar, hard clip, high drive\n4. **Blend with original:** Use Mix control or bus fader\n\n### Vocal Distortion Layer\n1. **Duplicate vocal track**\n2. **Heavy distortion on duplicate** (100% wet)\n3. **EQ the distorted layer** (high-pass to reduce mud)\n4. **Blend underneath** main vocal\n\n## Common Hip-Hop Mistakes\n\n### Mistake 1: Over-Saturating 808s\n**Problem:** 808s become mushy, lose punch\n**Fix:** Use Unipolar, keep Mix above 50%\n\n### Mistake 2: Too Much Vocal Distortion\n**Problem:** Lyrics unintelligible, sibilance harsh\n**Fix:** Keep Mix under 35%, de-ess after\n\n### Mistake 3: Ignoring Aliasing\n**Problem:** \"Cheap\" digital sound on high frequencies\n**Fix:** Use 4x+ oversampling on hats, snares, leads\n\n### Mistake 4: Master Bus Overload\n**Problem:** Mix becomes harsh and fatiguing\n**Fix:** Use parallel bus instead, keep mix bus subtle\n\n---\n\n**Version:** 1.0  \n**Last Updated:** 2026-02-03\n",
+      "parameter-cheat-sheet": "# Fruity WaveShaper Parameter Cheat Sheet\n\n## Quick Parameter Reference\n\n| Parameter | Range | Default | Vibe Impact | Mix Impact |\n|-----------|-------|---------|-------------|------------|\n| **Pre** | -24dB to +24dB | 0dB | Drive level into curve | Controls distortion amount |\n| **Mix** | 0% to 100% | 100% | Dry/wet balance | Parallel processing control |\n| **Post** | -24dB to +24dB | 0dB | Output compensation | Gain staging safety |\n| **Center** | On/Off | On | DC offset removal | Prevents low-end mud |\n| **Mode** | Unipolar/Bipolar | Unipolar | Harmonic character | Symmetry vs. asymmetry |\n| **Oversample** | Off, 2x, 4x, 8x, 16x | Off | Aliasing prevention | Quality vs. CPU trade-off |\n| **HQ** | On/Off | Off | Ultra-low level processing | Prevents signal degradation |\n\n[SRC: IL-MAN] All parameters are available as automation targets in FL Studio's browser.\n\n## Pre (Input Drive)\n\n### What It Does\nAmplifies the input signal before it hits the transfer curve. Higher values push the signal deeper into the non-linear portion of your curve.\n\n### Vibe Tags\n- **Subtle:** -12dB to -6dB (gentle harmonic addition)\n- **Standard:** 0dB to +6dB (noticeable character)\n- **Aggressive:** +12dB to +20dB (heavy distortion)\n- **Extreme:** +20dB+ (creative destruction)\n\n### Mix Impact\nLow values preserve dynamics; high values create consistent saturation. Use **Post** gain to compensate.\n\n### Safety Notes\n- Always monitor output level with Post gain\n- Watch for clipping in the channel meter\n- High values + hard clipping = aliasing (use oversampling)\n\n[SRC: IL-MAN] Pre gain increases input level to drive the transfer function harder.\n\n## Mix (Dry/Wet)\n\n### What It Does\nBlends the processed (distorted) signal with the original (dry) signal.\n\n### Vibe Tags\n- **Transparent:** 10-25% (subtle enhancement)\n- **Standard:** 30-50% (parallel distortion)\n- **Aggressive:** 60-80% (dominant effect)\n- **Full:** 100% (complete replacement)\n\n### Mix Impact\nEssential for parallel processing. Lower values maintain original dynamics while adding harmonic character.\n\n### Pro Tips\n- **Hip-hop vocals:** 20-30% for grit without losing clarity\n- **808 saturation:** 40-60% for warmth with punch intact\n- **Drums:** 50-70% for punchy aggression\n\n[SRC: IL-MAN] Mix controls the balance between dry and processed signal for parallel processing effects.\n\n## Post (Output Level)\n\n### What It Does\nAttenuates or amplifies the signal after processing. Critical for gain staging.\n\n### Vibe Tags\n- **Attenuate:** -6dB to -12dB (match original level after heavy distortion)\n- **Unity:** 0dB (no change)\n- **Boost:** +3dB to +6dB (intentional level increase)\n\n### Mix Impact\nUse to A/B test distortion—match processed and unprocessed levels for fair comparison.\n\n### Safety Notes\n- Compensate for Pre gain increases\n- Watch master bus clipping\n- Critical for consistent loudness\n\n[SRC: IL-MAN] Post gain adjusts output level to compensate for distortion-induced level changes.\n\n## Center (DC Offset Removal)\n\n### What It Does\nRemoves DC offset from the signal to prevent low-frequency buildup.\n\n### Vibe Tags\n- **Always On:** Prevents DC accumulation\n- **Rarely Off:** Only for experimental sound design\n\n### Mix Impact\nEssential for clean low-end. DC offset can cause headroom issues and muddy bass.\n\n### Safety Notes\n- Leave enabled for 99% of applications\n- Disabling may cause cumulative DC buildup on buses\n\n[SRC: IL-MAN] Center removes DC offset to prevent low-frequency accumulation and headroom loss.\n\n## Mode (Unipolar/Bipolar)\n\n### What It Does\nSwitches between symmetric (Unipolar) and asymmetric (Bipolar) curve application.\n\n### Vibe Tags\n- **Unipolar:** Warm, analog, even harmonics\n- **Bipolar:** Aggressive, complex, mixed harmonics\n\n### Mix Impact\nUnipolar = safer for mixing. Bipolar = more character but potential harshness.\n\n### Decision Tree\n```\nNeed warmth? → Unipolar\nNeed punch? → Bipolar\n808/bass? → Unipolar\nDrums/leads? → Bipolar\n```\n\n[SRC: IL-MAN] Unipolar applies the same curve to both positive and negative signal halves. Bipolar allows independent shaping.\n\n## Oversample\n\n### What It Does\nIncreases internal processing rate to reduce aliasing artifacts.\n\n### Vibe Tags\n- **Off:** Standard quality, low CPU\n- **2x:** Minimal improvement\n- **4x:** Good balance (recommended default)\n- **8x:** High quality for aggressive distortion\n- **16x:** Maximum quality for extreme settings\n\n### Mix Impact\nHigher = cleaner high frequencies, lower = potential aliasing artifacts.\n\n### Safety Notes\n- Use minimum 4x for hard clipping or bitcrushing\n- High values increase CPU usage\n- Critical for high-frequency sources\n\n[SRC: IL-MAN] Oversampling multiplies the internal processing rate to reduce aliasing during distortion.\n\n## HQ (High Quality)\n\n### What It Does\nEnables processing of ultra-low level signals that might otherwise be lost.\n\n### Vibe Tags\n- **On:** Better quality at low levels\n- **Off:** Standard processing\n\n### Mix Impact\nGenerally leave on for critical applications. Slight CPU increase.\n\n[SRC: IL-MAN] HQ mode ensures processing fidelity for very low-level signals.\n\n## Quick Settings Reference\n\n### For 808s\n- Pre: +6 to +12dB\n- Mix: 40-60%\n- Post: -6 to -12dB\n- Mode: Unipolar\n- Oversample: 2x or 4x\n\n### For Drums\n- Pre: +8 to +16dB\n- Mix: 50-70%\n- Post: -8 to -16dB\n- Mode: Bipolar\n- Oversample: 4x or 8x\n\n### For Vocals\n- Pre: +3 to +8dB\n- Mix: 20-35%\n- Post: -3 to -8dB\n- Mode: Unipolar or Bipolar\n- Oversample: 4x\n\n### For Mix Bus\n- Pre: +2 to +6dB\n- Mix: 15-25%\n- Post: -2 to -6dB\n- Mode: Unipolar\n- Oversample: 4x\n\n---\n\n**Version:** 1.0  \n**Last Updated:** 2026-02-03\n",
+      "problem-solver": "# Problem Solver Quick Reference\n\n## Symptom-to-Solution Lookup\n\n[SRC: IL-MAN] This guide maps common distortion problems to WaveShaper solutions.\n\n## Sound Problems\n\n### Problem: \"My 808 Lost Its Punch\"\n**Symptoms:**\n- Sub-bass feels weaker after WaveShaper\n- Low-end sounds \"sucked out\"\n- Kick and bass no longer hit hard\n\n**Solutions:**\n1. **Switch to Unipolar mode** (preserves even harmonics, warmer)\n2. **Use softer S-curve** instead of hard clipping\n3. **Reduce Pre gain** to +6dB or less\n4. **Increase Mix to 60-80%** to keep more original signal\n5. **Enable Center** to prevent DC offset issues\n\n### Problem: \"Drums Sound Mushy\"\n**Symptoms:**\n- Transients lost\n- Attack feels blurred\n- No snap or punch\n\n**Solutions:**\n1. **Switch to Bipolar mode** for more transient bite\n2. **Use hard clip curve** for aggressive limiting\n3. **Increase Pre gain** to +12dB or more\n4. **Keep Mix at 50-70%** to blend with dry\n5. **Use 4x or 8x oversampling** to prevent aliasing smear\n\n### Problem: \"Vocals Sound Harsh\"\n**Symptoms:**\n- Sibilance increased\n- Upper mids grating\n- Listener fatigue\n\n**Solutions:**\n1. **Switch to Unipolar mode** (fewer odd harmonics)\n2. **Reduce Pre gain** to +4dB or less\n3. **Decrease Mix to 20-30%** for subtlety\n4. **Add oversampling** (4x minimum)\n5. **Consider de-esser before WaveShaper**\n\n### Problem: \"It Sounds Digital/Metallic\"\n**Symptoms:**\n- High-frequency artifacts\n- Unwanted \"shimmer\"\n- Doesn't sound \"analog\"\n\n**Solutions:**\n1. **Enable 4x or 8x oversampling** immediately\n2. **Use softer curve** (reduce sharp corners)\n3. **Reduce Pre gain** to moderate levels\n4. **Switch to Unipolar** for even harmonics\n5. **Check for stepped curves** (bitcrushing creates artifacts)\n\n[SRC: IL-MAN] Aliasing artifacts manifest as unwanted high-frequency content that sounds \"metallic\" or \"digital.\"\n\n## Technical Problems\n\n### Problem: \"Output Clipping Red Lights\"\n**Symptoms:**\n- Channel meter in red\n- Master bus clipping\n- Distortion even with gentle curve\n\n**Solutions:**\n1. **Reduce Post gain** by 6-12dB immediately\n2. **Check Pre gain** isn't too high\n3. **Verify input level** before WaveShaper\n4. **Add limiter after WaveShaper** if needed\n\n### Problem: \"Signal Disappeared\"\n**Symptoms:**\n- Complete silence\n- Only some frequencies audible\n- Negative half of wave gone\n\n**Solutions:**\n1. **Check curve passes through (0,0)**\n2. **Ensure no flat line at -1.0** in graph\n3. **Reset curve and start over**\n4. **Verify Pre gain isn't negative** (rare)\n\n### Problem: \"CPU Overload\"\n**Symptoms:**\n- FL Studio lagging\n- Audio dropouts\n- High CPU meter\n\n**Solutions:**\n1. **Reduce oversampling** to 4x or 2x\n2. **Freeze/render** tracks with heavy distortion\n3. **Consolidate** multiple WaveShaper instances\n4. **Use less extreme curves** (fewer points)\n\n### Problem: \"Can't Hear The Effect\"\n**Symptoms:**\n- No audible change\n- Mix sounds the same\n- Plugin seems bypassed\n\n**Solutions:**\n1. **Increase Pre gain** significantly (+12dB or more)\n2. **Check Mix isn't at 0%**\n3. **Verify curve deviates from diagonal**\n4. **Try extreme curve** temporarily to confirm it's working\n5. **Check plugin isn't bypassed** in channel rack\n\n## Vibe-Based Problem Solving\n\n### Need More Warmth (Moody/Jazzy vibes)\n- **Mode:** Unipolar\n- **Curve:** Soft S-curve\n- **Pre:** +6 to +10dB\n- **Mix:** 40-60%\n- **Oversample:** 2x-4x\n\n### Need More Energy (Upbeat vibes)\n- **Mode:** Bipolar\n- **Curve:** Hard clip or aggressive S-curve\n- **Pre:** +10 to +16dB\n- **Mix:** 60-80%\n- **Oversample:** 4x-8x\n\n### Need Weird Textures (Psychedelic vibes)\n- **Mode:** Bipolar\n- **Curve:** Complex asymmetric or foldback\n- **Pre:** +12 to +20dB\n- **Mix:** 30-50%\n- **Oversample:** 8x-16x\n\n### Need Vintage Character (Jazzy/Vibey vibes)\n- **Mode:** Unipolar\n- **Curve:** Gentle saturation with rounded corners\n- **Pre:** +4 to +8dB\n- **Mix:** 20-40%\n- **Oversample:** 2x-4x\n\n[SRC: IL-MAN] The sonic character depends on curve shape, mode selection, and gain staging combined.\n\n## Decision Tree: Which Setting First?\n\n```\nProblem identified\n       │\n       ├─→ Sound quality issue?\n       │       ├─→ Harsh/Digital → Check oversampling + mode\n       │       ├─→ Weak/Lost low-end → Check curve shape + Center\n       │       └─→ No character → Check Pre gain + curve\n       │\n       └─→ Technical issue?\n               ├─→ Clipping → Reduce Post gain\n               ├─→ Silence → Check curve at (0,0)\n               ├─→ CPU → Reduce oversampling\n               └─→ Not working → Verify plugin active\n```\n\n## Quick Fixes Table\n\n| Symptom | First Try | Second Try | Third Try |\n|---------|-----------|------------|-----------|\n| Too harsh | Unipolar mode | Reduce Pre gain | Add oversampling |\n| Too weak | Increase Pre gain | Bipolar mode | Increase Mix |\n| Digital artifacts | 8x oversampling | Softer curve | Reduce drive |\n| Lost low-end | Check Center | Unipolar mode | Softer curve |\n| Clipping | Reduce Post gain | Reduce Pre gain | Check input |\n| CPU high | 2x oversampling | Freeze track | Remove instances |\n\n---\n\n**Version:** 1.0  \n**Last Updated:** 2026-02-03\n",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Waveshaper\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Waveshaper to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Waveshaper\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Waveshaper\r\n\r\nThis section contains learning information for the fruity-waveshaper plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_808_Saturation_Guide": "# Goal: 808 Saturation Guide (Fruity WaveShaper)\n\n## Routing Context\n*   **Track:** 808 Mixer Track.\n*   **Placement:** After EQ, before Limiter.\n\n## Step-by-Step Setup\n1.  Load **Fruity WaveShaper**.\n2.  Enable **Unipolar** mode (default).\n3.  Draw a subtle curve: \n    *   Create a point at the 50% mark on the X-axis.\n    *   Push that point slightly upward toward the top-left corner.\n4.  Play your 808. Increase **Pre-Gain** until you hear the sub-bass start to \"growl\" or \"hum.\"\n5.  Check the \"Post-Gain\" to ensure you aren't clipping the mixer track red.\n\n## Starting Settings\n*   **Curve:** Gentle \"S\" or soft-arc.\n*   **Pre-Gain:** +3dB to +6dB.\n*   **Oversampling:** 2x or 4x.\n\n## What to Listen For\n*   Listen for \"mid-range presence.\" You want the 808 to feel audible on laptop/phone speakers without losing the deep sub power.\n\n## Variations\n1.  **Aggressive:** Draw a sharper curve for a \"fuzzy\" distorted 808 (great for dark trap).\n2.  **Tube-Warmth:** In **Bipolar** mode, draw a slightly different curve for the top and bottom to add \"warm\" asymmetric saturation.\n\n## Pitfall\n*   **Loss of Sub:** If you drive the Pre-Gain too hard, you might actually flatten the 808 so much it loses its low-end impact. Back off the Pre-Gain if the sub feels \"thin.\"\n",
+      "00_Goal_Quick_Result": "# Goal: Asymmetric \"Tube\" Saturation (WaveShaper)\n\n## Routing Context\n- **Target:** Lead R&B Vocal or Rhodes Piano.\n- **Position:** Insert FX (Slot 1).\n\n## Step-by-Step Setup\n1.  On your track, load **Fruity WaveShaper**.\n2.  Switch the mode to **BIPOLAR** (the icon with two halves).\n3.  **Top Half (Positive Peaks):** Draw a smooth, rounded curve that flattens slightly at the top.\n4.  **Bottom Half (Negative Peaks):** Leave it as a perfectly straight 45-degree line (Clean).\n5.  **The Play:** Increase the **PRE** knob until you hear a subtle \"warmth\" in the vocal.\n6.  **Oversampling:** Set to `8x`.\n\n## Result\n- By only distorting one side of the waveform, you are creating specific \"Even Harmonics.\" This mimics the behavior of real analog vacuum tubes, adding a rich, \"Vibey\" character that sounds organic and expensive.\n\n## Vibe Check\n- **Vibey/Jazzy:** Perfect for adding \"Soul\" to digital instruments.\n\n## Pitfalls + Fixes\n- **Pitfall:** \"The volume is too quiet.\"\n  - **Fix:** Increase the **POST** knob. Waveshaping often reduces the peak volume of a signal. [SRC: REPUTABLE]\n",
+      "11_Vibe_Upbeat": "# Vibe: Upbeat Kick Clipping (Loudness Hack)\n\n## The Concept\nUse WaveShaper as a \"Hard Clipper\" to shave off the invisible peaks of your kick drum. This allows you to turn the kick up louder in the mix without it hitting 0dB.\n\n## Setup\n*   **Track:** Kick Mixer Track.\n*   **Placement:** Last plugin in the chain.\n\n## Starting Settings\n1.  Draw a perfectly straight diagonal line from the bottom-left to the top-right.\n2.  Now, grab the top-right point and drag it **to the left** (making the line flat at the very top).\n3.  **Bands:** Set Oversampling to **16x** (Important for transients).\n\n## Workflow\n1.  Play your Kick. \n2.  Increase **Pre-Gain** until you see the waveform being \"squashed\" against that top flat line.\n3.  Stop when the kick starts to sound \"fuzzy\" or \"distorted.\" Back it off slightly.\n4.  The kick should now sound louder and punchier, but the peaks are capped.\n\n## Variations\n*   **Soft Clip:** Instead of a flat line, make the very end of the line a smooth curve. This is more musical but less aggressive.\n\n## Pitfalls\n*   **Aliasing:** Without high oversampling, clipping transients can create \"digital clicking.\" Always use 8x or 16x for drums. [SRC: REPUTABLE]\n",
+      "12_Vibe_Psychedelic": "# Vibe: Psychedelic Vocal Grit (Bipolar Asymmetry)\n\n## The Concept\nUsing Bipolar mode to create \"unstable\" and harmonically complex distortion that sounds otherworldly.\n\n## Setup\n*   **Carrier:** Lead Vocal.\n*   **Plugin:** Fruity WaveShaper.\n*   **Mode:** **Bipolar** (Essential).\n\n## Recipe\n1.  In the graph, notice the center line.\n2.  **Top Half (Positive):** Draw a smooth \"S\" curve for warmth.\n3.  **Bottom Half (Negative):** Draw a \"Staircase\" (Stepped) shape.\n4.  Increase **Pre-Gain**.\n\n## What to Listen For\n*   The vocal will sound \"split.\" The vowels will have a warm analog texture, while the consonants and low-level noise will have a \"crunchy\" digital bit-crushed texture. \n\n## Automation\n*   Automate the **Pre-Gain** to increase during high-energy words or ad-libs.\n*   Automate the **Mix** knob to bring this grit in and out for \"psychedelic\" transitions.\n\n## Variation\n*   **Mirror World:** Swap the shapes (Staircase on top, S-curve on bottom) and listen to how the vocal character changes.\n",
+      "808-saturation": "# 808 Saturation Masterclass\n\n## The Goal\n\nMake 808s audible on small speakers (phones, earbuds) while maintaining sub-bass impact on systems that can reproduce it.\n\n[SRC: IL-MAN] WaveShaper adds upper harmonics to 808s that create the perception of bass even on speakers that cannot reproduce the fundamental frequency.\n\n## Why 808s Need Distortion\n\n### The Physics Problem\n- 808 fundamental: 30-60Hz\n- Phone speaker response: Often rolls off below 200Hz\n- Result: 808s disappear on phones\n\n### The WaveShaper Solution\nAdd harmonics (60Hz, 90Hz, 120Hz, 180Hz...) that phones CAN reproduce.\n\n```\nFundamental:  ████████  (40Hz - inaudible on phones)\n2nd Harmonic:    ████████  (80Hz - barely audible)\n3rd Harmonic:      ████████  (120Hz - audible!)\n5th Harmonic:          ████████  (200Hz - clear!)\n```\n\n## The Perfect 808 Saturation Chain\n\n### Step 1: Clean Up\n**Before WaveShaper:**\n- High-pass at 25-30Hz (remove rumble)\n- Cut 200-400Hz mud if needed\n- Boost 60-100Hz for body (optional)\n\n### Step 2: WaveShaper Settings\n**For Warm, Musical 808s:**\n- **Mode:** Unipolar (even harmonics = warmth)\n- **Curve:** Soft S-curve\n- **Pre:** +8 to +12dB\n- **Mix:** 50-70%\n- **Post:** -8 to -12dB\n- **Oversample:** 4x\n- **Center:** Enabled\n\n### Step 3: Post-Processing\n**After WaveShaper:**\n- Compression (glue the saturation)\n- EQ (cut any harshness added by distortion)\n- Limiter (control peaks)\n\n## Three 808 Saturation Recipes\n\n### Recipe 1: Warm Trap 808\nBest for: Modern trap, melodic hip-hop\n- **Mode:** Unipolar\n- **Pre:** +10dB\n- **Mix:** 60%\n- **Curve:** Soft S-curve\n- **Sound:** Present but warm, translates everywhere\n\n### Recipe 2: Hard 808\nBest for: Hard trap, drill\n- **Mode:** Unipolar (or Bipolar for extra edge)\n- **Pre:** +14dB\n- **Mix:** 70%\n- **Curve:** Hard clip\n- **Sound:** Aggressive, distorted character\n\n### Recipe 3: Subtle 808\nBest for: R&B, soul, boom bap\n- **Mode:** Unipolar\n- **Pre:** +6dB\n- **Mix:** 45%\n- **Curve:** Gentle S-curve\n- **Sound:** Natural enhancement, barely noticeable\n\n## Common 808 Mistakes\n\n### Mistake 1: Hard Clipping\n**Problem:** Removes low-end punch\n**Fix:** Use soft S-curve, not hard clip\n\n### Mistake 2: 100% Mix\n**Problem:** Loses original sub impact\n**Fix:** Blend 50-70% to keep the fundamental\n\n### Mistake 3: Bipolar Mode\n**Problem:** Can cause phase issues in low-end\n**Fix:** Use Unipolar unless you want aggressive distortion\n\n### Mistake 4: No Oversampling\n**Problem:** Aliasing creates harsh artifacts\n**Fix:** Use 4x minimum\n\n### Mistake 5: Too Much Distortion\n**Problem:** 808 becomes mushy, loses definition\n**Fix:** If you cannot hear the note, reduce Pre gain\n\n## Advanced Techniques\n\n### Parallel 808 Distortion\n1. **Duplicate the 808 track**\n2. **Original track:** Keep clean (100% sub)\n3. **Duplicate track:** Heavy distortion (100% wet, no Mix)\n4. **High-pass the distorted layer** at 100-150Hz\n5. **Blend to taste**\n\n**Why This Works:** Complete separation of sub and harmonics. Maximum control.\n\n### Multi-Band Distortion\n1. **Split 808 into bands** (use Maximus or similar)\n2. **Sub band (30-80Hz):** Clean, no distortion\n3. **Mid band (80-200Hz):** Light saturation\n4. **High band (200Hz+):** Heavy saturation\n5. **Blend bands**\n\n**Why This Works:** Precise control over what gets distorted.\n\n### Dynamic Distortion\n- **Automate Pre gain:** More saturation on longer notes\n- **Automate Mix:** Less distortion during busy sections\n- **Sidechain to kick:** Distortion pumps with the beat\n\n## Testing Your 808 Saturation\n\n### Phone Test\n1. Bounce mix\n2. Play on phone speaker\n3. Can you hear the 808 melody?\n4. If yes, your saturation is working\n\n### Car Test\n1. Play in car with subwoofer\n2. Is the sub too overwhelming?\n3. Adjust Mix percentage accordingly\n\n### Mono Test\n1. Collapse mix to mono\n2. Does 808 disappear?\n3. If yes, check for phase issues (mono low-end BEFORE WaveShaper)\n\n## Troubleshooting\n\n### 808 Sounds Weak\n- Increase Pre gain (+2-4dB)\n- Increase Mix percentage\n- Check for conflicting frequencies in other instruments\n\n### 808 Sounds Harsh\n- Switch to Unipolar mode\n- Use softer curve\n- Enable 4x+ oversampling\n\n### 808 Disappears on Phones\n- Increase Pre gain for more harmonics\n- Check Mix is at least 50%\n- Ensure you are not high-passing too aggressively\n\n---\n\n**Version:** 1.0  \n**Last Updated:** 2026-02-03\n",
+      "drum-punch": "# Drum Punch Enhancement\n\n## The Goal\n\nAdd punch, crack, and aggression to drums while maintaining dynamic control.\n\n[SRC: IL-MAN] Bipolar mode preserves transient bite through asymmetric distortion of drum hits.\n\n## Drum Distortion Philosophy\n\nDrums are about **transients**—the initial attack that makes a kick punch and a snare crack. WaveShaper can enhance or destroy these transients depending on your settings.\n\n## Kick Drums: Maximum Impact\n\n### The Challenge\nKicks need to hit hard without becoming muddy or losing low-end weight.\n\n### Settings for Hard-Hitting Kicks\n- **Mode:** Bipolar (asymmetric = bite)\n- **Curve:** Hard clip or asymmetric\n- **Pre:** +12 to +16dB\n- **Mix:** 60-75%\n- **Post:** -12 to -16dB\n- **Oversample:** 4x-8x\n\n### Asymmetric Kick Curve\n**Positive half:** Hard clip (sharp attack)  \n**Negative half:** Softer curve (sustain control)  \n\nThis emphasizes the transient while controlling the body.\n\n### Technique\n1. Solo the kick\n2. Apply settings above\n3. Adjust Mix until punch is maximized without losing body\n4. Check in context with bass/808\n\n## Snare Drums: Crack and Body\n\n### The Challenge\nSnares need crack (transient) AND body (ring). Different distortion for each.\n\n### Settings for Cracking Snares\n- **Mode:** Bipolar\n- **Curve:** Asymmetric—hard positive, soft negative\n- **Pre:** +10 to +14dB\n- **Mix:** 55-70%\n- **Post:** -10 to -14dB\n- **Oversample:** 4x\n\n### Technique\n**Parallel Processing:**\n1. **Main snare:** Light saturation (Unipolar, 30% Mix)\n2. **Parallel bus:** Heavy distortion (Bipolar, 100% Mix)\n3. **Blend parallel bus** underneath for crack\n4. **EQ the parallel layer** (boost 3-5kHz for crack)\n\n## Hi-Hats: Sizzle and Control\n\n### The Challenge\nHats need density but can become harsh with distortion.\n\n### Settings for Controlled Hats\n- **Mode:** Unipolar (safer for highs)\n- **Curve:** Gentle saturation\n- **Pre:** +4 to +8dB\n- **Mix:** 30-50%\n- **Post:** -4 to -8dB\n- **Oversample:** 8x (critical for high frequencies)\n\n### Technique\n**High-Frequency Protection:**\n- Distort BEFORE any high-shelf boosts\n- Or boost highs AFTER distortion\n- Prevents excessive harshness\n\n## Drum Bus Processing\n\n### Settings for Cohesive Drum Sound\n- **Mode:** Unipolar (glue) OR Bipolar (aggression)\n- **Curve:** Soft clip or gentle saturation\n- **Pre:** +6 to +10dB\n- **Mix:** 40-60%\n- **Post:** -6 to -10dB\n- **Oversample:** 4x\n\n### Philosophy\nDrum bus saturation ties the kit together. Each drum gets individual character; the bus adds cohesion.\n\n## Genre-Specific Drum Recipes\n\n### Trap Drums\n- **Mode:** Bipolar\n- **Pre:** +14dB\n- **Mix:** 70%\n- **Oversample:** 4x\n- **Character:** Aggressive, modern, hard-hitting\n\n### Boom Bap Drums\n- **Mode:** Unipolar\n- **Pre:** +8dB\n- **Mix:** 50%\n- **Oversample:** 2x\n- **Character:** Warm, vintage, punchy\n\n### EDM Drums\n- **Mode:** Bipolar\n- **Pre:** +16dB\n- **Mix:** 75%\n- **Oversample:** 8x\n- **Character:** Maximum impact, cutting through synths\n\n### Lo-Fi Drums\n- **Mode:** Unipolar\n- **Pre:** +6dB\n- **Mix:** 45%\n- **Oversample:** 2x\n- **Additional:** Bitcrush some elements\n- **Character:** Warm, crushed, \"vinyl\" feel\n\n## Advanced Drum Techniques\n\n### Transient Shaping with Curves\n**Goal:** Isolate and enhance just the transient\n\n**Method:**\n1. Use hard clip threshold at 0.6-0.7\n2. Everything below threshold = clean\n3. Everything above = clipped (enhanced transient)\n4. Blend with Mix control\n\n### Room Mic Distortion\n1. Send drums to room reverb\n2. Distort the room return heavily\n3. Blend room distortion under dry drums\n4. Creates \"crushed room\" sound\n\n### Ghost Note Enhancement\n- **Increase Pre gain** for ghost notes\n- **Harder curve** for clear articulation\n- **Lower Mix** to keep subtle\n- Brings quiet notes forward without crushing loud ones\n\n## Common Drum Mistakes\n\n### Mistake 1: Too Much Distortion\n**Problem:** Drums sound like white noise\n**Fix:** Reduce Mix, use softer curve\n\n### Mistake 2: Destroying Transients\n**Problem:** Soft curve rounds off attacks\n**Fix:** Use Bipolar mode, hard clip curve\n\n### Mistake 3: Ignoring Phase\n**Problem:** Distorted kick and 808 conflict\n**Fix:** Check mono compatibility\n\n### Mistake 4: No Oversampling on Hats\n**Problem:** Harsh, digital-sounding cymbals\n**Fix:** Use 8x+ oversampling\n\n## Testing Your Drum Distortion\n\n### Punch Test\n1. Solo drums\n2. Bypass WaveShaper\n3. Re-enable WaveShaper\n4. Should hear more attack, not just loudness\n\n### Context Test\n1. Play drums with music\n2. Do drums cut through?\n3. If not, increase Mix or Pre gain\n\n### Fatigue Test\n1. Listen for 30 seconds\n2. Do ears tire?\n3. If yes, reduce drive or switch to Unipolar\n\n---\n\n**Version:** 1.0  \n**Last Updated:** 2026-02-03\n",
+      "mix-bus-glue": "# Mix Bus Glue\n\n## The Goal\n\nCreate cohesive, \"glued\" mixes with subtle saturation that makes everything sound like it belongs together.\n\n[SRC: IL-MAN] Gentle mix bus saturation adds even harmonics that create musical cohesion across all track elements.\n\n## Mix Bus Philosophy\n\nMix bus processing affects EVERYTHING. Small changes have big impacts. Conservative settings are essential.\n\n**Warning:** It's easy to overdo mix bus distortion. When in doubt, use less.\n\n## The Safe Mix Bus Recipe\n\n### Settings\n- **Mode:** Unipolar (even harmonics = musical cohesion)\n- **Curve:** Gentle S-curve\n- **Pre:** +2 to +4dB\n- **Mix:** 15-25%\n- **Post:** -2 to -4dB\n- **Oversample:** 4x\n- **HQ:** Enabled\n\n### Why These Settings?\n- **Unipolar:** Even harmonics create consonance, not dissonance\n- **Low Pre:** Just enough drive for cohesion, not destruction\n- **Low Mix:** Effect should be barely perceptible\n- **HQ:** Ensures quality at these subtle levels\n\n## Alternative: Parallel Mix Bus\n\n### Method\n1. Route all tracks to a \"Mix Bus Distortion\" send\n2. Insert WaveShaper on the send bus\n3. Heavier settings on the bus\n4. Blend send bus underneath main mix\n\n### Settings for Parallel Bus\n- **Mode:** Unipolar or Bipolar\n- **Pre:** +6 to +10dB\n- **Mix:** 100% (on the bus)\n- **Blend:** 10-20% of bus into main mix\n\n### Why Parallel?\n- More control over the amount\n- Can EQ the distorted signal separately\n- Easier to adjust after the fact\n\n## Genre-Specific Mix Bus Approaches\n\n### Hip-Hop Mix Bus\n- **Mode:** Unipolar\n- **Pre:** +3dB\n- **Mix:** 20%\n- **Character:** Warm, punchy, cohesive\n\n### R&B/Soul Mix Bus\n- **Mode:** Unipolar\n- **Pre:** +2dB\n- **Mix:** 15%\n- **HQ:** Enabled\n- **Character:** Smooth, expensive, musical\n\n### EDM Mix Bus\n- **Mode:** Unipolar\n- **Pre:** +4dB\n- **Mix:** 25%\n- **Character:** Energetic, glued, punchy\n\n### Lo-Fi Mix Bus\n- **Mode:** Unipolar\n- **Pre:** +3dB\n- **Mix:** 30%\n- **Oversample:** 2x\n- **Character:** Warm, crushed, \"vintage\"\n\n## When to Use Mix Bus Saturation\n\n### Good Candidates\n- Mix sounds \"sterile\" or \"digital\"\n- Tracks feel disconnected from each other\n- Need subtle \"analog\" character\n- Final polish before limiting\n\n### Skip Mix Bus Saturation When\n- Individual tracks already heavily saturated\n- Mix is already warm/dark\n- You are not sure (can always add later)\n\n## Testing Mix Bus Saturation\n\n### A/B Test\n1. Disable WaveShaper\n2. Match loudness (adjust master fader)\n3. Enable WaveShaper\n4. Should hear cohesion, not \"effect\"\n\n### Fatigue Test\n1. Listen to full mix for 60 seconds\n2. Do ears tire or feel stressed?\n3. If yes, reduce Mix to 15% or less\n\n### Element Check\n1. Solo each element (kick, snare, vocal, etc.)\n2. Does each element still sound good?\n3. If any element suffers, reduce Pre or Mix\n\n## Common Mix Bus Mistakes\n\n### Mistake 1: Too Aggressive\n**Problem:** Mix becomes harsh and fatiguing\n**Fix:** Reduce Pre to +2dB, Mix to 15%\n\n### Mistake 2: Bipolar Mode\n**Problem:** Cumulative harshness across all tracks\n**Fix:** Use Unipolar for mix bus\n\n### Mistake 3: No Oversampling\n**Problem:** Subtle aliasing artifacts\n**Fix:** Use 4x minimum\n\n### Mistake 4: Forgetting Post Gain\n**Problem:** Mix bus level change affects everything\n**Fix:** Compensate with Post gain\n\n## Integration with Mastering Chain\n\n### Position in Chain\n```\nMix Elements → Mix Bus EQ → WaveShaper (Mix Bus Glue) → \nMaster Bus Compression → Master Bus EQ → Limiter\n```\n\n### Before the Limiter\nWaveShaper should come BEFORE the final limiter. Let the limiter catch any peaks created by saturation.\n\n### With Master Bus Compression\n- Saturation adds harmonics\n- Compression controls dynamics\n- Together create \"finished\" sound\n\n## Advanced Mix Bus Techniques\n\n### Dynamic Saturation\n- Automate Mix percentage\n- More saturation during choruses\n- Less during verses\n- Creates dynamic interest\n\n### Frequency-Conscious Saturation\n**Goal:** Saturation that respects frequency balance\n\n**Method:**\n1. Use multi-band approach\n2. Different saturation for lows/mids/highs\n3. Or: Use EQ before/after WaveShaper\n4. Shape the tonal result\n\n### Mid/Side Mix Bus\n**Goal:** Different saturation for center and sides\n\n**Method:**\n1. Use M/S processing plugin\n2. More saturation on sides (width)\n3. Less on center (focus)\n4. Creates \"3D\" mix depth\n\n## Safety Checklist\n\nBefore committing to mix bus WaveShaper:\n\n- [ ] Unipolar mode enabled\n- [ ] Pre gain at +4dB or less\n- [ ] Mix at 25% or less\n- [ ] 4x oversampling enabled\n- [ ] Post gain compensates for level change\n- [ ] No clipping on master bus\n- [ ] Mix sounds cohesive, not \"effected\"\n- [ ] No listener fatigue after 60 seconds\n\n---\n\n**Version:** 1.0  \n**Last Updated:** 2026-02-03\n",
+      "vibe-jazzy": "# Mood: Jazzy - Sophisticated Saturation\n\n## Vibe Target: Jazzy\n\n**Characteristics:** Smooth, sophisticated, musical, warm  \n**Goal:** Enhance musicality without obvious processing  \n**Best For:** Jazz-influenced hip-hop, soul, R&B, lo-fi\n\n[SRC: IL-MAN] Even harmonics from Unipolar mode create the musical consonance that fits jazzy productions.\n\n## The Jazzy Philosophy\n\nJazzy distortion is about **musical enhancement**. You're adding harmonics that blend with the chord progressions, not fighting them. Think \"vintage studio\" not \"modern plugin.\"\n\n## 808s: Walking Bass Feel\n\n### The Challenge\nJazzy 808s should feel like a walking bass line—present but not overwhelming. They need to groove, not just hit.\n\n### Settings\n- **Mode:** Unipolar (even harmonics = musical)\n- **Curve:** Gentle S-curve with smooth transitions\n- **Pre:** +6dB\n- **Mix:** 50%\n- **Post:** -5dB\n- **Oversample:** 2x\n\n### Technique\n1. Longer 808 notes that \"bloom\"\n2. Gentle saturation for note-to-note consistency\n3. Less distortion on sustained notes\n4. Follow the chord changes\n\n**Why This Works:** Even harmonics (octave, fifth) harmonize with jazz chord voicings rather than clashing.\n\n## Drums: Pocket and Swing\n\n### Settings\n- **Mode:** Unipolar\n- **Curve:** Soft saturation\n- **Pre:** +5dB\n- **Mix:** 40%\n- **Post:** -4dB\n\n### Technique\nFocus on \"pocket\" not punch. The drums should sit in the groove, not on top of it.\n\n**Jazz Tip:** Less is more. Jazzy drums often benefit from subtle saturation that you barely notice but miss when it's gone.\n\n## Vocals: Smooth and Sophisticated\n\n### The Challenge\nJazzy vocals need to sound effortless and intimate. The production should disappear—only the performance matters.\n\n### Settings\n- **Mode:** Unipolar\n- **Curve:** Very soft S-curve\n- **Pre:** +3dB\n- **Mix:** 20%\n- **Post:** -2dB\n- **Oversample:** 4x\n\n### Chain\n1. Minimal EQ (let the voice be natural)\n2. **WaveShaper** (ultra-subtle warmth)\n3. Gentle compression (2:1, slow attack)\n4. Optional tape saturation after\n\n**Philosophy:** The listener shouldn't hear the WaveShaper—just a \"good sounding\" vocal.\n\n## Keys and Rhodes: Vintage Character\n\n### Settings\n- **Mode:** Unipolar\n- **Curve:** Soft limiter shape\n- **Pre:** +4dB\n- **Mix:** 35%\n- **Post:** -3dB\n\n### Technique\nRhodes and electric pianos love gentle saturation—it mimics vintage amp and tape characteristics.\n\n**Specific:** Rhodes often benefit from asymmetric curves (Bipolar) to simulate the \"bark\" of the tines.\n\n## Mix Bus: Cohesive Warmth\n\n### Settings\n- **Mode:** Unipolar\n- **Curve:** Gentle S-curve\n- **Pre:** +2dB\n- **Mix:** 15%\n- **Post:** -1dB\n- **HQ:** Enabled\n\n### Philosophy\nThis is \"invisible\" processing. The goal is a mix that sounds like it came from a vintage console—warm, cohesive, expensive.\n\n## Brass and Horns: Controlled Edge\n\n### Settings\n- **Mode:** Unipolar (standard) OR Bipolar (for \"brass bite\")\n- **Curve:** Soft clip\n- **Pre:** +6dB\n- **Mix:** 30%\n\n### Technique\nBrass can handle slightly more aggressive distortion than vocals. The \"bite\" helps them cut through without harshness.\n\n## Example Track Breakdown\n\n### Jazz-Hop Single\n**808:** Walking bass (Pre: +6, Mix: 50%)  \n**Drums:** Pocket groove (Pre: +5, Mix: 40%)  \n**Vocals:** Smooth intimacy (Pre: +3, Mix: 20%)  \n**Rhodes:** Vintage warmth (Pre: +4, Mix: 35%)  \n**Mix Bus:** Cohesive glue (Pre: +2, Mix: 15%)  \n\n**Result:** Sophisticated production that feels vintage and expensive.\n\n## Harmonic Theory for Jazz\n\n### Why Even Harmonics Work\n- **2nd harmonic:** Octave above (perfect consonance)\n- **4th harmonic:** Two octaves above (perfect consonance)\n- **6th harmonic:** Octave + fifth (consonant interval)\n\nThese harmonics create \"chord tones\" that enhance rather than clash with jazz harmonies.\n\n### Chord-Specific Tips\n- **Major 7th chords:** Even harmonics emphasize the major 3rd and 7th\n- **Minor chords:** Even harmonics add warmth to the minor 3rd\n- **Dominant chords:** Even harmonics support the tension\n\n## Safety for Jazzy Vibes\n\n### Do\n- Use Unipolar for musical even harmonics\n- Keep everything subtle (low Pre, low Mix)\n- Enable HQ mode for critical applications\n- Follow the chord changes with 808 notes\n\n### Don't\n- Use aggressive curves (breaks the smooth vibe)\n- Push Mix above 40% on any element\n- Use Bipolar unless specifically wanted\n- Over-process (jazz is about performance, not production)\n\n## Quick Settings Reference\n\n| Element | Mode | Curve | Pre | Mix | Post |\n|---------|------|-------|-----|-----|------|\n| 808 | Unipolar | Gentle S | +6 | 50% | -5 |\n| Drums | Unipolar | Soft | +5 | 40% | -4 |\n| Vocals | Unipolar | Very soft | +3 | 20% | -2 |\n| Keys | Unipolar | Soft | +4 | 35% | -3 |\n| Mix Bus | Unipolar | Gentle | +2 | 15% | -1 |\n| Brass | Unipolar | Soft | +6 | 30% | -5 |\n\n---\n\n**Vibe:** Jazzy  \n**Version:** 1.0  \n**Last Updated:** 2026-02-03\n",
+      "vibe-moody": "# Mood: Moody - Atmospheric Distortion\n\n## Vibe Target: Moody\n\n**Characteristics:** Warm, introspective, atmospheric, emotional  \n**Goal:** Create depth and warmth without aggression  \n**Best For:** Emotional hip-hop, R&B ballads, atmospheric productions\n\n[SRC: IL-MAN] Unipolar mode creates even-order harmonics that blend musically with moody productions.\n\n## The Moody Philosophy\n\nMoody distortion is about **presence, not aggression**. You're adding harmonic richness that supports the emotional weight of the track, not competing with it.\n\n## 808s: Warm Sub Presence\n\n### The Challenge\nMoody 808s need to rumble without overwhelming. The goal is \"felt\" bass that adds weight to emotional moments.\n\n### Settings\n- **Mode:** Unipolar (warmth preservation)\n- **Curve:** Soft S-curve with gentle compression\n- **Pre:** +8dB\n- **Mix:** 55%\n- **Post:** -6dB\n- **Oversample:** 2x (low frequencies, subtle processing)\n\n### Technique\n1. Start with 808 peaking at -12dB\n2. Apply WaveShaper as described\n3. High-pass other elements at 80Hz to give 808 space\n4. Blend until 808 \"hums\" on small speakers\n\n**Why This Works:** Unipolar even harmonics add presence that translates to earbuds without subwoofer muddiness.\n\n## Drums: Subtle Pocket\n\n### Settings\n- **Mode:** Unipolar\n- **Curve:** Gentle saturation\n- **Pre:** +6dB\n- **Mix:** 40%\n- **Post:** -4dB\n\n### Technique\nFocus on the snare body and kick warmth, not transients. The goal is \"vintage\" character that sits back in the mix.\n\n## Vocals: Intimate Warmth\n\n### The Challenge\nMoody vocals need to feel close and personal without harshness.\n\n### Settings\n- **Mode:** Unipolar\n- **Curve:** Very soft S-curve\n- **Pre:** +4dB\n- **Mix:** 25%\n- **Post:** -3dB\n- **Oversample:** 4x\n\n### Chain\n1. EQ (remove mud 200-400Hz)\n2. **WaveShaper** (warmth)\n3. Compression (gentle, 2:1 ratio)\n4. De-ess if needed\n\n## Mix Bus: Cohesive Atmosphere\n\n### Settings\n- **Mode:** Unipolar\n- **Curve:** Gentle S-curve\n- **Pre:** +3dB\n- **Mix:** 20%\n- **Post:** -2dB\n\n### Philosophy\nThis is \"glue\" not \"effect.\" Should be barely perceptible—just a sense that everything belongs together.\n\n## Synth Pads and Textures\n\n### Settings\n- **Mode:** Unipolar\n- **Curve:** Soft saturation\n- **Pre:** +5dB\n- **Mix:** 45%\n- **Post:** -4dB\n\n### Technique\nPads love saturation—it adds movement and prevents \"digital sterility.\" Blend generously for a \"living\" sound.\n\n## Example Track Breakdown\n\n### Moody Trap Ballad\n**808:** Warm saturation (Pre: +8, Mix: 55%)  \n**Drums:** Gentle saturation (Pre: +6, Mix: 40%)  \n**Vocals:** Intimate warmth (Pre: +4, Mix: 25%)  \n**Mix Bus:** Subtle glue (Pre: +3, Mix: 20%)  \n**Pads:** Heavy saturation (Pre: +5, Mix: 45%)  \n\n**Result:** Cohesive, warm, introspective mix that feels \"expensive\" and emotional.\n\n## Safety for Moody Vibes\n\n### Do\n- Use Unipolar mode for warmth\n- Keep Pre gain moderate (4-10dB)\n- Blend with Mix at 25-60%\n- Focus on low-mid warmth\n\n### Don't\n- Use Bipolar mode (too aggressive)\n- Hard clipping (removes emotion)\n- High Mix on vocals (loses intimacy)\n- Forget to de-ess (moody ≠ muddy)\n\n## Quick Settings Reference\n\n| Element | Mode | Curve | Pre | Mix | Post |\n|---------|------|-------|-----|-----|------|\n| 808 | Unipolar | Soft S | +8 | 55% | -6 |\n| Drums | Unipolar | Gentle | +6 | 40% | -4 |\n| Vocals | Unipolar | Soft S | +4 | 25% | -3 |\n| Mix Bus | Unipolar | Gentle | +3 | 20% | -2 |\n| Pads | Unipolar | Soft | +5 | 45% | -4 |\n\n---\n\n**Vibe:** Moody  \n**Version:** 1.0  \n**Last Updated:** 2026-02-03\n",
+      "vibe-psychedelic": "# Mood: Psychedelic - Experimental Distortion\n\n## Vibe Target: Psychedelic\n\n**Characteristics:** Weird, complex, mind-bending, experimental  \n**Goal:** Create unique textures and unexpected sounds  \n**Best For:** Experimental hip-hop, alt-R&B, psychedelic productions\n\n[SRC: IL-MAN] Bipolar mode with complex curves creates the harmonic complexity needed for experimental sounds.\n\n## The Psychedelic Philosophy\n\nPsychedelic distortion is about **breaking rules and exploring**. WaveShaper becomes a sound design tool, not just a mixing effect. Embrace the weird.\n\n## 808s: Warped Reality\n\n### The Challenge\nPsychedelic 808s shouldn't sound like typical trap. They need character, movement, and unexpected qualities.\n\n### Settings\n- **Mode:** Bipolar (asymmetric weirdness)\n- **Curve:** Asymmetric—soft on positive, hard on negative\n- **Pre:** +12dB\n- **Mix:** 70%\n- **Post:** -10dB\n- **Oversample:** 8x\n\n### Experimental Variations\n\n**Foldback 808:**\n- Use foldback/wavefolding curve\n- Creates \"buzzing\" metallic harmonics\n- Automate Pre gain for morphing character\n\n**Staircase 808:**\n- Bitcrush curve (8-16 steps)\n- Digital degradation meets sub-bass\n- Use 16x oversampling to control artifacts\n\n## Drums: Glitched Percussion\n\n### Settings\n- **Mode:** Bipolar\n- **Curve:** Complex asymmetric or foldback\n- **Pre:** +14dB\n- **Mix:** 60%\n- **Post:** -12dB\n- **Oversample:** 8x-16x\n\n### Techniques\n\n**Rhythmic Distortion:**\n- Automate Mix parameter\n- Creates \"breathing\" distortion that pulses with the beat\n\n**Transient Destruction:**\n- Extreme hard clipping\n- Crushes transients into new textures\n- Best on background percussion, not main kick\n\n## Vocals: Alien Transmission\n\n### Settings\n- **Mode:** Bipolar\n- **Curve:** Complex asymmetric or stepped\n- **Pre:** +12dB\n- **Mix:** 50%\n- **Post:** -10dB\n- **Oversample:** 8x\n\n### Creative Techniques\n\n**Granular-Style Distortion:**\n- Use stepped curve (bitcrush)\n- Creates \"pixelated\" vocal effect\n- Blend at 40-60% for intelligibility\n\n**Formant Shifting:**\n- Asymmetric curve affects different frequency ranges differently\n- Creates \"voice character\" changes\n- Try inverted asymmetry (hard positive, soft negative)\n\n## Textures and Pads: Atmospheric Weirdness\n\n### Settings\n- **Mode:** Bipolar\n- **Curve:** Foldback or custom wavy\n- **Pre:** +10dB\n- **Mix:** 60%\n- **Post:** -8dB\n\n### Techniques\n\n**Evolving Distortion:**\n- Automate curve points over time\n- Morphs from soft to hard saturation\n- Creates \"living\" textures\n\n**Frequency-Specific:**\n- Put WaveShaper on frequency-split bus\n- Distort only mids, keep highs clean\n- Create \"focused\" weirdness\n\n## Leads: Sonic Destruction\n\n### Settings\n- **Mode:** Bipolar\n- **Curve:** Extreme hard clip or complex custom\n- **Pre:** +18dB\n- **Mix:** 80%\n- **Post:** -16dB\n- **Oversample:** 16x\n\n### Techniques\n\n**Resonant Destruction:**\n- Use comb-filter before WaveShaper\n- Distortion reacts to resonant frequencies\n- Creates \"screaming\" leads\n\n**Parallel Madness:**\n- Heavy distorted layer (100% Mix)\n- Blend with clean layer\n- Creates \"double-tracked\" weirdness\n\n## Example Track Breakdown\n\n### Experimental Alt-R&B\n**808:** Warped foldback (Pre: +12, Mix: 70%)  \n**Drums:** Glitched percussion (Pre: +14, Mix: 60%)  \n**Vocals:** Alien transmission (Pre: +12, Mix: 50%)  \n**Textures:** Evolving weirdness (automated)  \n**Leads:** Sonic destruction (Pre: +18, Mix: 80%)  \n\n**Result:** Otherworldly production that challenges expectations.\n\n## Creative Curve Designs\n\n### The \"Broken Radio\"\n```\nPoints: Stepped with irregular spacing\nCreates: Gaps and dropouts like bad reception\nUse on: Background vocals, texture layers\n```\n\n### The \"Alien Speech\"\n```\nMode: Bipolar\nPositive: Soft S-curve\nNegative: Hard clip\nCreates: Different vowel sounds, formant shift\nUse on: Lead vocals, spoken word\n```\n\n### The \"Glitch Step\"\n```\nType: Staircase with 8 steps\nPositive: Compressed steps\nNegative: Expanded steps\nCreates: Digital artifacts with dynamic range\nUse on: Drums, percussion, transitions\n```\n\n## Safety for Psychedelic Vibes\n\n### Do\n- Experiment with extreme settings\n- Use high oversampling (8x-16x)\n- Automate parameters for movement\n- Create parallel processed layers\n- Break all the \"normal\" rules\n\n### Don't\n- Use on everything (creates mush)\n- Forget about the song (effect should serve the music)\n- Skip oversampling (experimental ≠ low quality)\n- Ignore phase issues (check mono compatibility)\n\n## Quick Settings Reference\n\n| Element | Mode | Curve | Pre | Mix | Post | Oversample |\n|---------|------|-------|-----|-----|------|------------|\n| 808 | Bipolar | Asymmetric | +12 | 70% | -10 | 8x |\n| Drums | Bipolar | Foldback | +14 | 60% | -12 | 8x-16x |\n| Vocals | Bipolar | Complex | +12 | 50% | -10 | 8x |\n| Textures | Bipolar | Wavy | +10 | 60% | -8 | 8x |\n| Leads | Bipolar | Extreme | +18 | 80% | -16 | 16x |\n\n---\n\n**Vibe:** Psychedelic  \n**Version:** 1.0  \n**Last Updated:** 2026-02-03\n",
+      "vibe-upbeat": "# Mood: Upbeat - Energetic Distortion\n\n## Vibe Target: Upbeat\n\n**Characteristics:** Punchy, energetic, driving, forward  \n**Goal:** Maximum impact and excitement  \n**Best For:** Club bangers, dance tracks, high-energy hip-hop\n\n[SRC: IL-MAN] Bipolar mode creates mixed harmonics that add punch and aggressive presence.\n\n## The Upbeat Philosophy\n\nUpbeat distortion is about **impact and excitement**. Every element needs to hit hard and cut through the mix. This is where you push WaveShaper into aggressive territory.\n\n## 808s: Hard-Hitting Subs\n\n### The Challenge\nUpbeat 808s need to rattle trunks AND punch through on club systems. They need to be felt AND heard.\n\n### Settings\n- **Mode:** Unipolar (warmth) OR Bipolar (aggressive)\n- **Curve:** Hard clip or aggressive S-curve\n- **Pre:** +12dB\n- **Mix:** 65%\n- **Post:** -10dB\n- **Oversample:** 4x\n\n### Technique\n1. Drive hard into the curve (+12dB Pre)\n2. Keep Mix high (65%) for dominant saturation\n3. Compensate with Post gain (-10dB)\n4. Sidechain to kick for dynamic pocket\n\n**Aggressive Variation:** Switch to Bipolar for even more bite. This adds odd harmonics that cut through dense mixes.\n\n## Drums: Maximum Punch\n\n### Settings\n- **Mode:** Bipolar (asymmetric = bite)\n- **Curve:** Hard clip with sharp threshold\n- **Pre:** +16dB\n- **Mix:** 70%\n- **Post:** -14dB\n- **Oversample:** 4x-8x\n\n### Technique\nThe goal is transient aggression. Bipolar mode preserves the \"crack\" of snares and the \"punch\" of kicks.\n\n**Kick-Specific:** Use asymmetric curve—harder on positive (attack), softer on negative (sustain).\n\n## Vocals: Attitude and Presence\n\n### The Challenge\nUpbeat vocals need to command attention without getting lost in busy production.\n\n### Settings\n- **Mode:** Bipolar\n- **Curve:** Asymmetric hard clip\n- **Pre:** +10dB\n- **Mix:** 45%\n- **Post:** -8dB\n- **Oversample:** 4x\n\n### Chain\n1. EQ (boost 3-5kHz presence)\n2. De-esser (essential with high drive)\n3. **WaveShaper** (attitude)\n4. Compression (aggressive, 4:1)\n5. Limiter (safety)\n\n**Ad-libs:** Push harder (Mix: 70%, Pre: +14dB) for hype background vocals.\n\n## Mix Bus: Energetic Glue\n\n### Settings\n- **Mode:** Unipolar (safer for full mix)\n- **Curve:** Moderate S-curve\n- **Pre:** +5dB\n- **Mix:** 25%\n- **Post:** -4dB\n\n### Philosophy\nKeep it musical but present. Upbeat doesn't mean harsh—maintain energy without listener fatigue.\n\n## Leads and Synths: Cutting Through\n\n### Settings\n- **Mode:** Bipolar\n- **Curve:** Hard clip\n- **Pre:** +12dB\n- **Mix:** 60%\n- **Post:** -10dB\n\n### Technique\nLead elements can take aggressive distortion. Bipolar mode adds the edge needed to cut through drums and bass.\n\n## Example Track Breakdown\n\n### Club Banger\n**808:** Hard saturation (Pre: +12, Mix: 65%)  \n**Kicks:** Aggressive clip (Pre: +16, Mix: 70%)  \n**Snares:** Asymmetric bite (Pre: +14, Mix: 65%)  \n**Vocals:** Attitude (Pre: +10, Mix: 45%)  \n**Leads:** Cutting distortion (Pre: +12, Mix: 60%)  \n**Mix Bus:** Energetic glue (Pre: +5, Mix: 25%)  \n\n**Result:** High-energy mix that hits hard in clubs and car systems.\n\n## Safety for Upbeat Vibes\n\n### Do\n- Use Bipolar for drums and aggressive elements\n- Drive Pre gain hard (+10 to +16dB)\n- Use 4x+ oversampling to prevent harshness\n- De-ess vocals before distortion\n\n### Don't\n- Forget Post gain compensation (will clip!)\n- Use 100% Mix on everything (fatigue)\n- Skip oversampling (will sound cheap)\n- Overdo mix bus (harsh final result)\n\n## Quick Settings Reference\n\n| Element | Mode | Curve | Pre | Mix | Post | Oversample |\n|---------|------|-------|-----|-----|------|------------|\n| 808 | Unipolar/Bipolar | Hard clip | +12 | 65% | -10 | 4x |\n| Kicks | Bipolar | Hard clip | +16 | 70% | -14 | 4x-8x |\n| Snares | Bipolar | Asymmetric | +14 | 65% | -12 | 4x |\n| Vocals | Bipolar | Hard clip | +10 | 45% | -8 | 4x |\n| Leads | Bipolar | Hard clip | +12 | 60% | -10 | 4x |\n| Mix Bus | Unipolar | Moderate S | +5 | 25% | -4 | 4x |\n\n---\n\n**Vibe:** Upbeat  \n**Version:** 1.0  \n**Last Updated:** 2026-02-03\n",
+      "vibe-vibey": "# Mood: Vibey - Cool and Relaxed\n\n## Vibe Target: Vibey\n\n**Characteristics:** Cool, relaxed, smooth, effortless  \n**Goal:** Create a laid-back atmosphere without sounding sleepy  \n**Best For:** Chill-hop, lo-fi, relaxed R&B, vibey hip-hop\n\n[SRC: IL-MAN] Soft curves and moderate settings create the relaxed character that defines vibey productions.\n\n## The Vibey Philosophy\n\nVibey distortion is about effortless cool. Nothing should sound like it is trying too hard. The saturation adds vibe without calling attention to itself.\n\n## 808s: Relaxed Subs\n\n### The Challenge\nVibey 808s should support the groove without demanding attention. They are the foundation, not the feature.\n\n### Settings\n- **Mode:** Unipolar (warm, relaxed)\n- **Curve:** Soft S-curve with gentle knee\n- **Pre:** +6dB\n- **Mix:** 55%\n- **Post:** -5dB\n- **Oversample:** 2x\n\n### Technique\n1. Longer decay times\n2. Less transient emphasis\n3. Blend with original for pillowy low-end\n4. Sidechain gently to kick\n\n**The Vibey Difference:** Less aggressive than upbeat, more present than moody. The sweet spot.\n\n## Drums: Relaxed Pocket\n\n### Settings\n- **Mode:** Unipolar\n- **Curve:** Gentle saturation\n- **Pre:** +6dB\n- **Mix:** 45%\n- **Post:** -5dB\n\n### Technique\nFocus on swing and pocket rather than punch. The drums should feel like they are breathing with the track.\n\n**Lo-Fi Tip:** Combine with vinyl noise and tape saturation for authentic vibey character.\n\n## Vocals: Effortless Cool\n\n### The Challenge\nVibey vocals need to sound like the singer just woke up and delivered a flawless take. Relaxed but compelling.\n\n### Settings\n- **Mode:** Unipolar\n- **Curve:** Soft S-curve\n- **Pre:** +5dB\n- **Mix:** 35%\n- **Post:** -4dB\n- **Oversample:** 4x\n\n### Chain\n1. Gentle EQ (high-pass 80Hz, slight 3kHz boost)\n2. **WaveShaper** (relaxed warmth)\n3. Light compression (3:1, medium attack)\n4. Optional chorus for width\n\n**Vocal Texture:** Vibey productions often benefit from slight imperfections. WaveShaper adds character that feels human.\n\n## Textures and Atmosphere: Chill Layers\n\n### Settings\n- **Mode:** Unipolar\n- **Curve:** Gentle saturation\n- **Pre:** +4dB\n- **Mix:** 50%\n- **Post:** -3dB\n\n### Technique\nPads and textures can take more saturation in vibey tracks. They create the atmosphere that defines the mood.\n\n**Layering:** Saturated textures + clean leads = depth without clutter.\n\n## Mix Bus: Relaxed Glue\n\n### Settings\n- **Mode:** Unipolar\n- **Curve:** Gentle S-curve\n- **Pre:** +3dB\n- **Mix:** 20%\n- **Post:** -2dB\n\n### Philosophy\nThe mix should feel like a warm blanket. Everything belongs together in a relaxed way.\n\n## Keys and Guitars: Laid-Back Character\n\n### Settings\n- **Mode:** Unipolar\n- **Curve:** Soft saturation\n- **Pre:** +5dB\n- **Mix:** 40%\n- **Post:** -4dB\n\n### Technique\nElectric pianos and guitars love gentle saturation in vibey productions. It adds analog warmth to digital sources.\n\n## Example Track Breakdown\n\n### Chill-Hop Beat\n**808:** Relaxed subs (Pre: +6, Mix: 55%)  \n**Drums:** Pocket groove (Pre: +6, Mix: 45%)  \n**Vocals:** Effortless cool (Pre: +5, Mix: 35%)  \n**Textures:** Chill layers (Pre: +4, Mix: 50%)  \n**Mix Bus:** Relaxed glue (Pre: +3, Mix: 20%)  \n\n**Result:** Laid-back production that feels effortless and cool.\n\n## Quick Settings Reference\n\n| Element | Mode | Curve | Pre | Mix | Post |\n|---------|------|-------|-----|-----|------|\n| 808 | Unipolar | Soft S | +6 | 55% | -5 |\n| Drums | Unipolar | Gentle | +6 | 45% | -5 |\n| Vocals | Unipolar | Soft | +5 | 35% | -4 |\n| Textures | Unipolar | Gentle | +4 | 50% | -3 |\n| Mix Bus | Unipolar | Gentle S | +3 | 20% | -2 |\n\n---\n\n**Vibe:** Vibey  \n**Version:** 1.0  \n**Last Updated:** 2026-02-03\n",
+      "vocal-saturation": "# Vocal Saturation and Grit\n\n## The Goal\n\nAdd presence, warmth, and attitude to vocals while maintaining intelligibility and clarity.\n\n[SRC: IL-MAN] Careful saturation adds harmonic content that helps vocals cut through dense mixes without harshness.\n\n## Vocal Distortion Philosophy\n\nVocals are the most important element in most hip-hop/R&B tracks. WaveShaper should enhance, not compete.\n\n**Golden Rule:** Always de-ess vocals BEFORE applying distortion. Distortion amplifies sibilance.\n\n## Lead Vocals: Warm Presence\n\n### The Challenge\nLead vocals need to command attention without harshness or sibilance issues.\n\n### Settings for Warm Lead Vocals\n- **Mode:** Unipolar (even harmonics = warmth)\n- **Curve:** Soft S-curve\n- **Pre:** +4 to +8dB\n- **Mix:** 25-40%\n- **Post:** -4 to -8dB\n- **Oversample:** 4x\n- **Chain Position:** After EQ, before compression\n\n### Complete Vocal Chain\n```\nInput → High-Pass (80Hz) → EQ (presence boost 3-5kHz) → \nDe-Esser → WaveShaper → Compression (3:1) → \nEQ (carve space) → Limiter (safety)\n```\n\n### Technique\n1. Start conservative (Pre: +4dB, Mix: 25%)\n2. Increase until presence improves\n3. Back off if sibilance increases\n4. A/B with bypass to verify improvement\n\n## Rap Vocals: Attitude and Edge\n\n### The Challenge\nRap vocals need aggression and articulation without harshness.\n\n### Settings for Rap Vocals\n- **Mode:** Bipolar (aggression) OR Unipolar (warmth)\n- **Curve:** Hard clip (Bipolar) or soft S (Unipolar)\n- **Pre:** +6 to +10dB\n- **Mix:** 30-45%\n- **Post:** -6 to -10dB\n- **Oversample:** 4x\n\n### Aggressive Rap Recipe\n- **Mode:** Bipolar\n- **Pre:** +10dB\n- **Mix:** 40%\n- **Curve:** Hard clip\n- **Character:** Gritty, in-your-face, modern\n\n### Smooth Rap Recipe\n- **Mode:** Unipolar\n- **Pre:** +6dB\n- **Mix:** 35%\n- **Curve:** Soft S-curve\n- **Character:** Warm, articulate, classic\n\n## R&B/Soul Vocals: Smooth Intimacy\n\n### The Challenge\nR&B vocals should feel close and intimate without obvious processing.\n\n### Settings for R&B Vocals\n- **Mode:** Unipolar\n- **Curve:** Very soft S-curve\n- **Pre:** +3 to +6dB\n- **Mix:** 20-35%\n- **Post:** -3 to -6dB\n- **Oversample:** 4x\n\n### Technique\nFocus on subtle enhancement. The saturation should be felt, not heard.\n\n## Background Vocals: Blend and Texture\n\n### The Challenge\nBackground vocals should support the lead without competing.\n\n### Settings for Background Vocals\n- **Mode:** Unipolar\n- **Curve:** Soft saturation\n- **Pre:** +5 to +8dB\n- **Mix:** 40-60%\n- **Post:** -5 to -8dB\n\n### Technique\nMore saturation than lead vocals—helps them sit back in the mix while adding texture.\n\n## Ad-libs: Creative Destruction\n\n### The Challenge\nAd-libs can handle (and often benefit from) heavy creative distortion.\n\n### Settings for Ad-libs\n- **Mode:** Bipolar\n- **Curve:** Hard clip or asymmetric\n- **Pre:** +10 to +16dB\n- **Mix:** 60-80%\n- **Post:** -10 to -16dB\n- **Oversample:** 4x\n\n### Creative Techniques\n**Double-Track Distortion:**\n1. Main ad-lib: 100% wet, heavy distortion\n2. Doubled ad-lib: Clean\n3. Pan slightly different\n4. Creates wide, aggressive ad-lib texture\n\n## Vocal Saturation Recipes\n\n### Presence Boost\n- Pre: +6dB\n- Mix: 30%\n- Mode: Unipolar\n- Use: Vocals not cutting through mix\n\n### Vintage Warmth\n- Pre: +4dB\n- Mix: 25%\n- Mode: Unipolar\n- HQ: Enabled\n- Use: Soul/R&B intimacy\n\n### Modern Aggression\n- Pre: +10dB\n- Mix: 40%\n- Mode: Bipolar\n- Use: Trap rap, hype vocals\n\n### Lo-Fi Texture\n- Pre: +8dB\n- Mix: 50%\n- Mode: Unipolar\n- Oversample: 2x\n- Use: Chill-hop, bedroom pop\n\n## Common Vocal Mistakes\n\n### Mistake 1: No De-esser\n**Problem:** Sibilance becomes unbearable\n**Fix:** ALWAYS de-ess before WaveShaper\n\n### Mistake 2: Too Much Distortion\n**Problem:** Lyrics unintelligible\n**Fix:** Keep Mix at 40% or below for leads\n\n### Mistake 3: Wrong Mode\n**Problem:** Harsh, fatiguing vocals\n**Fix:** Use Unipolar for warmth\n\n### Mistake 4: Ignoring Oversampling\n**Problem:** Harsh high-end artifacts\n**Fix:** Use 4x minimum\n\n### Mistake 5: Post-Gain Mismatch\n**Problem:** Cannot A/B accurately\n**Fix:** Match processed/unprocessed loudness\n\n## Advanced Vocal Techniques\n\n### Formant Shifting with Asymmetry\n**Goal:** Change vocal character without pitch shift\n\n**Method:**\n1. Bipolar mode\n2. Different curves for positive/negative\n3. Adjust Pre gain to taste\n4. Creates \"vowel shift\" effect\n\n### Frequency-Specific Saturation\n**Goal:** Distort only specific vocal ranges\n\n**Method:**\n1. Use Maximus or multi-band splitter\n2. Distort only mid-range (presence)\n3. Keep lows and highs clean\n4. Maximum clarity with added character\n\n### Dynamic Saturation\n**Goal:** Different distortion for different vocal intensities\n\n**Method:**\n1. Automate Pre gain\n2. More saturation on quiet parts\n3. Less on loud/screamed parts\n4. Balances vocal dynamics\n\n## Testing Your Vocal Saturation\n\n### Intelligibility Test\n1. Play vocal in mix\n2. Can you understand every word?\n3. If not, reduce Mix or Pre gain\n\n### Sibilance Test\n1. Listen to S and T sounds\n2. Should not be harsh or painful\n3. If harsh, add de-esser or reduce drive\n\n### Context Test\n1. Solo vocal: sounds great\n2. In mix: disappears?\n3. May need more presence (increase Pre or Mix)\n\n---\n\n**Version:** 1.0  \n**Last Updated:** 2026-02-03\n"
+    },
+    "by-instrument": {
+      "808s": "# 808 Workflow\n\n## 808s in Hip-Hop Production\n\n808s are the foundation of modern hip-hop. WaveShaper transforms them from simple sub-bass to present, punchy low-end instruments.\n\n[SRC: IL-MAN] WaveShaper adds upper harmonics that make 808s audible on systems that cannot reproduce the fundamental sub-bass frequency.\n\n## The 808 Challenge\n\n### The Problem\n- 808 fundamental: 30-60Hz (sub-bass)\n- Phone speakers: Often roll off below 200Hz\n- Result: 808 melody disappears on phones\n\n### The WaveShaper Solution\nAdd harmonics at 60Hz, 90Hz, 120Hz, 180Hz, 200Hz+ that phones CAN reproduce.\n\n## Standard 808 Workflow\n\n### Step 1: Pre-Processing\n**Before WaveShaper:**\n1. **High-pass** at 25-30Hz (remove rumble)\n2. **Cut 200-400Hz** if muddy\n3. **Optional:** Boost 60-100Hz for body\n4. **Check mono** (stereo 808s cause phase issues)\n\n### Step 2: WaveShaper Settings\n\n**For Warm, Musical 808s:**\n```\nMode:       Unipolar (even harmonics = warmth)\nCurve:      Soft S-curve\nPre:        +8 to +12dB\nMix:        50-70%\nPost:       -8 to -12dB\nOversample: 4x\nCenter:     Enabled\n```\n\n**Why Unipolar?** Even harmonics (octave, fifth) blend musically and preserve low-end warmth.\n\n### Step 3: Post-Processing\n**After WaveShaper:**\n1. **Compression** (2:1 ratio, glue the saturation)\n2. **EQ** (cut any harshness from distortion)\n3. **Sidechain** to kick (dynamic pocket)\n4. **Limiter** (control peaks, not for loudness)\n\n## Three 808 Saturation Recipes\n\n### Recipe 1: Warm Trap 808\nBest for: Modern trap, melodic hip-hop, R&B\n- **Pre:** +10dB\n- **Mix:** 60%\n- **Curve:** Soft S-curve\n- **Mode:** Unipolar\n- **Character:** Present, warm, translates everywhere\n\n### Recipe 2: Hard 808\nBest for: Hard trap, drill, aggressive beats\n- **Pre:** +14dB\n- **Mix:** 70%\n- **Curve:** Hard clip\n- **Mode:** Unipolar (or Bipolar for extra edge)\n- **Character:** Distorted, aggressive, modern\n\n### Recipe 3: Subtle 808\nBest for: Boom bap, soul, R&B ballads\n- **Pre:** +6dB\n- **Mix:** 45%\n- **Curve:** Gentle S-curve\n- **Mode:** Unipolar\n- **Character:** Natural, barely noticeable enhancement\n\n## Common 808 Mistakes\n\n### Mistake 1: Hard Clipping\n**Problem:** Removes low-end punch\n**Solution:** Use soft S-curve, not hard clip\n\n### Mistake 2: 100% Mix\n**Problem:** Loses original sub impact\n**Solution:** Blend 50-70% to keep the fundamental\n\n### Mistake 3: Bipolar Mode\n**Problem:** Can cause phase issues\n**Solution:** Use Unipolar unless you want aggressive distortion\n\n### Mistake 4: No Oversampling\n**Problem:** Aliasing creates harsh artifacts\n**Solution:** Use 4x minimum\n\n### Mistake 5: No Pre-Processing\n**Problem:** Distorting mud and rumble\n**Solution:** High-pass and clean up BEFORE WaveShaper\n\n## Advanced 808 Techniques\n\n### Parallel 808 Distortion\n1. **Duplicate the 808 track**\n2. **Original:** Clean, full range (100% dry)\n3. **Duplicate:** Heavy distortion (100% wet, no Mix)\n4. **High-pass duplicate** at 100-150Hz\n5. **Blend to taste**\n\n**Result:** Complete separation of sub and harmonics. Maximum control.\n\n### Multi-Band 808 Distortion\n1. **Split 808** into frequency bands\n2. **Sub (30-80Hz):** Clean, no distortion\n3. **Low-mids (80-200Hz):** Light saturation\n4. **Mids (200Hz+):** Heavy saturation\n5. **Blend bands**\n\n**Result:** Precise control over what gets distorted.\n\n### 808 Note Variation\n- **Long notes:** More saturation (sustained harmonics)\n- **Short notes:** Less saturation (transient focus)\n- Automate Pre gain or Mix for note-to-note variation\n\n## Testing Your 808 Saturation\n\n### Phone Test\n1. Bounce mix\n2. Play on phone speaker\n3. Can you hear the 808 melody?\n4. If yes, your saturation is working\n\n### Car Test\n1. Play in car with subwoofer\n2. Is the sub too overwhelming?\n3. Adjust Mix percentage\n\n### Mono Test\n1. Collapse mix to mono\n2. Does 808 disappear?\n3. If yes, check for phase issues\n\n## 808 Workflow Summary\n\n```\nInput 808\n    ↓\nHigh-pass 25Hz (remove rumble)\n    ↓\nEQ cleanup (cut 200-400Hz mud)\n    ↓\nWaveShaper (Unipolar, Soft S-curve, Pre: +8-12dB, Mix: 50-70%)\n    ↓\nCompression (2:1, glue saturation)\n    ↓\nEQ shaping (remove any harshness)\n    ↓\nSidechain to kick (dynamic pocket)\n    ↓\nLimiter (control peaks)\n    ↓\nOutput: Present, punchy 808 that translates everywhere\n```\n\n## Troubleshooting\n\n### 808 Sounds Weak\n- Increase Pre gain (+2-4dB)\n- Increase Mix percentage\n- Check for conflicting frequencies\n\n### 808 Sounds Harsh\n- Switch to Unipolar mode\n- Use softer curve\n- Enable 4x+ oversampling\n- Add low-pass filter after (soften highs)\n\n### 808 Disappears on Phones\n- Increase Pre gain for more harmonics\n- Check Mix is at least 50%\n- Ensure you are not high-passing too aggressively\n\n### 808 Too Loud in Mix\n- Reduce 808 channel fader\n- Or reduce WaveShaper Mix\n- Or reduce Post gain\n\n---\n\n**Instrument:** 808 Bass  \n**Version:** 1.0  \n**Last Updated:** 2026-02-03\n",
+      "kick-drums": "# Kick Drum Workflow\n\n## Kicks in Hip-Hop and Electronic Music\n\nKicks provide the rhythmic foundation and transient punch. WaveShaper can enhance attack, control sustain, and add character without losing impact.\n\n[SRC: IL-MAN] Bipolar mode with asymmetric curves preserves transient bite while controlling the body of kick drums.\n\n## The Kick Challenge\n\n### The Problem\nKicks need to:\n- Punch through the mix (attack)\n- Support the low-end (body)\n- Not conflict with 808s/bass\n- Translate on all systems\n\n### WaveShaper Solutions\n- **Transient enhancement:** Hard clip positive half\n- **Sustain control:** Softer curve on negative half\n- **Character addition:** Harmonics that cut through\n\n## Standard Kick Workflow\n\n### Step 1: Pre-Processing\n**Before WaveShaper:**\n1. **Tune the kick** to match the key\n2. **High-pass** at 30-40Hz (remove useless sub)\n3. **Cut 300-400Hz** if boxy\n4. **Optional:** Boost 60-80Hz for weight\n\n### Step 2: WaveShaper Settings\n\n**For Punchy Kicks:**\n```\nMode:       Bipolar (asymmetric = bite)\nCurve:      Hard clip positive, soft negative\nPre:        +12 to +16dB\nMix:        60-75%\nPost:       -12 to -16dB\nOversample: 4x-8x\nCenter:     Enabled\n```\n\n**Why Bipolar?** Asymmetric distortion preserves transient attack while shaping the body.\n\n### Step 3: Post-Processing\n**After WaveShaper:**\n1. **Compression** (control the enhanced attack)\n2. **EQ** (carve space for 808s below)\n3. **Transient shaper** (if needed)\n4. **Sidechain** to 808 (or vice versa)\n\n## Asymmetric Kick Curve Design\n\n### Positive Half (Attack)\n- **Hard clip** at 0.7-0.8 threshold\n- Sharp transition\n- Emphasizes the \"click\" and \"punch\"\n\n### Negative Half (Sustain/Body)\n- **Soft S-curve** or gentle saturation\n- Gradual transition\n- Controls the \"boom\" without removing it\n\n### Why This Works\n- **Positive = transient:** Hard clipping adds bite\n- **Negative = sustain:** Soft curve maintains body\n- Result: Punchy attack + controlled sustain\n\n## Kick Recipes by Genre\n\n### Trap Kicks\n- **Mode:** Bipolar\n- **Pre:** +14dB\n- **Mix:** 70%\n- **Curve:** Hard clip positive, moderate negative\n- **Character:** Maximum punch, modern aggression\n\n### Boom Bap Kicks\n- **Mode:** Unipolar\n- **Pre:** +8dB\n- **Mix:** 55%\n- **Curve:** Soft S-curve\n- **Character:** Warm, vintage punch\n\n### EDM Kicks\n- **Mode:** Bipolar\n- **Pre:** +16dB\n- **Mix:** 75%\n- **Curve:** Extreme hard clip\n- **Oversample:** 8x\n- **Character:** Maximum impact, cutting through synths\n\n### Lo-Fi Kicks\n- **Mode:** Unipolar\n- **Pre:** +6dB\n- **Mix:** 50%\n- **Curve:** Gentle saturation\n- **Oversample:** 2x\n- **Additional:** Slight bitcrush on room mic\n- **Character:** Warm, crushed, \"vinyl\"\n\n## Kick and 808 Relationship\n\n### The Frequency Conflict\n- Kick: Typically 50-80Hz + click at 2-5kHz\n- 808: Typically 40-60Hz + harmonics\n- Problem: They occupy similar frequency ranges\n\n### WaveShaper Solutions\n\n**Option 1: Distort Kick, Keep 808 Clean**\n- Kick gets bite from WaveShaper\n- 808 provides the sub foundation\n- Natural separation\n\n**Option 2: Distort Both Differently**\n- Kick: Bipolar, hard clip (transient)\n- 808: Unipolar, soft S-curve (warmth)\n- Different characters = separation\n\n**Option 3: Parallel Distortion**\n- Distort a parallel kick layer\n- Blend with clean kick\n- Control the amount of \"click\" vs \"thud\"\n\n## Common Kick Mistakes\n\n### Mistake 1: Too Much Distortion\n**Problem:** Kick sounds like noise, loses definition\n**Solution:** Reduce Mix to 60-70%, use softer curve\n\n### Mistake 2: Destroying the Low-End\n**Problem:** Hard clipping removes sub frequencies\n**Solution:** Use asymmetric curve or reduce drive\n\n### Mistake 3: Phase Issues with 808\n**Problem:** Kick and 808 cancel each other\n**Solution:** Sidechain kick to 808, or offset timing\n\n### Mistake 4: No Oversampling\n**Problem:** Digital artifacts on transient\n**Solution:** Use 4x minimum, 8x for aggressive settings\n\n## Advanced Kick Techniques\n\n### Transient Isolation\n1. **Hard clip threshold** at 0.6-0.7\n2. Everything below = clean sustain\n3. Everything above = enhanced transient\n4. Blend with Mix control\n\n### Layered Kick Distortion\n1. **Sub layer (40-80Hz):** Clean, no distortion\n2. **Click layer (2-5kHz):** Distorted for bite\n3. **Body layer (100-200Hz):** Light saturation\n4. **Blend all three**\n\n### Dynamic Kick Distortion\n- **Automate Pre gain:** More distortion on beat 1\n- **Less distortion:** On off-beats or ghost notes\n- Creates rhythmic variation\n\n## Testing Your Kick Distortion\n\n### Punch Test\n1. Solo the kick\n2. Bypass WaveShaper\n3. Re-enable\n4. Should hear more attack, not just volume\n\n### Context Test\n1. Play kick with 808\n2. Do they complement or fight?\n3. Adjust settings for separation\n\n### System Test\n1. Play on different systems\n2. Does kick punch through everywhere?\n3. If not, increase Pre gain or adjust curve\n\n## Kick Workflow Summary\n\n```\nInput Kick\n    ↓\nTuning and basic EQ\n    ↓\nHigh-pass 30-40Hz\n    ↓\nWaveShaper (Bipolar, Asymmetric, Pre: +12-16dB, Mix: 60-75%)\n    ↓\nCompression (control enhanced transient)\n    ↓\nEQ (carve space, boost click if needed)\n    ↓\nSidechain to 808 (or 808 to kick)\n    ↓\nOutput: Punchy kick that cuts through the mix\n```\n\n## Troubleshooting\n\n### Kick Sounds Weak\n- Increase Pre gain (+2-4dB)\n- Check Mix is at least 60%\n- Ensure curve emphasizes positive half\n\n### Kick Sounds Harsh\n- Use softer curve\n- Switch to Unipolar mode\n- Enable 8x oversampling\n\n### Kick Conflicts with 808\n- Sidechain one to the other\n- EQ separation (kick higher, 808 lower)\n- Different distortion settings\n\n---\n\n**Instrument:** Kick Drum  \n**Version:** 1.0  \n**Last Updated:** 2026-02-03\n",
+      "lead-vocals": "# Lead Vocal Workflow\n\n## Vocals in Hip-Hop and R&B\n\nVocals are the most important element. WaveShaper should enhance presence and character while maintaining complete intelligibility.\n\n[SRC: IL-MAN] Gentle saturation adds harmonics that help vocals cut through dense productions without harshness.\n\n## The Vocal Challenge\n\n### The Problem\nVocals need to:\n- Cut through the mix (presence)\n- Sound warm and intimate (character)\n- Remain 100% intelligible (clarity)\n- Handle dynamic range (control)\n\n### WaveShaper Solutions\n- **Presence boost:** Harmonics in upper-mids\n- **Warmth:** Even harmonics from Unipolar mode\n- **Clarity:** Conservative settings (low Mix)\n- **Control:** Proper gain staging\n\n**CRITICAL RULE:** Always de-ess vocals BEFORE WaveShaper. Distortion amplifies sibilance.\n\n## Standard Lead Vocal Workflow\n\n### Step 1: Pre-Processing (Before WaveShaper)\n1. **High-pass** at 80-100Hz (remove rumble)\n2. **Cut 200-400Hz** if muddy\n3. **Boost 2-5kHz** for presence (optional)\n4. **De-esser** (ESSENTIAL - must come before distortion)\n\n### Step 2: WaveShaper Settings\n\n**For Warm Lead Vocals:**\n```\nMode:       Unipolar (even harmonics = warmth)\nCurve:      Soft S-curve\nPre:        +4 to +8dB\nMix:        25-40%\nPost:       -4 to -8dB\nOversample: 4x\nCenter:     Enabled\n```\n\n**Why Unipolar?** Even harmonics are musical and forgiving on vocals. Bipolar can add harshness.\n\n### Step 3: Post-Processing (After WaveShaper)\n1. **Compression** (3:1 to 6:1, control dynamics)\n2. **EQ** (carve space, de-ess if needed)\n3. **Optional de-esser** (if sibilance increased)\n4. **Limiter** (safety, prevent peaks)\n\n## Complete Vocal Chain\n\n```\nInput Vocal\n    ↓\nHigh-Pass (80-100Hz)\n    ↓\nEQ (presence boost 2-5kHz, cut mud 200-400Hz)\n    ↓\nDe-esser (CRITICAL - must be before WaveShaper)\n    ↓\nWaveShaper (Unipolar, Soft S-curve, Pre: +4-8dB, Mix: 25-40%)\n    ↓\nCompression (3:1-6:1 ratio)\n    ↓\nEQ (fine-tuning, de-ess if needed)\n    ↓\nOptional: Second de-esser\n    ↓\nLimiter (safety)\n    ↓\nOutput: Present, warm, clear vocal\n```\n\n## Vocal Recipes by Genre\n\n### Rap/Hip-Hop Vocals\n- **Mode:** Unipolar (warmth) OR Bipolar (aggression)\n- **Pre:** +6 to +10dB\n- **Mix:** 30-45%\n- **Curve:** Soft S-curve (Unipolar) or hard clip (Bipolar)\n- **Character:** Presence and attitude\n\n### R&B/Soul Vocals\n- **Mode:** Unipolar\n- **Pre:** +3 to +6dB\n- **Mix:** 20-35%\n- **Curve:** Very soft S-curve\n- **Character:** Smooth, intimate, sophisticated\n\n### Pop Vocals\n- **Mode:** Unipolar\n- **Pre:** +4 to +8dB\n- **Mix:** 25-40%\n- **Curve:** Soft S-curve\n- **Character:** Clear, present, radio-ready\n\n### Lo-Fi/Alt Vocals\n- **Mode:** Unipolar\n- **Pre:** +6 to +10dB\n- **Mix:** 40-60%\n- **Curve:** Gentle saturation\n- **Character:** Warm, textured, \"imperfect\"\n\n## Background Vocals\n\n### Settings\n- **Mode:** Unipolar\n- **Pre:** +5 to +8dB\n- **Mix:** 40-60%\n- **Reason:** More saturation helps them sit back in the mix\n\n### Technique\nBackground vocals can take more distortion than leads:\n- Adds texture and interest\n- Helps them blend rather than compete\n- Creates \"choir\" effect\n\n## Ad-libs and Extras\n\n### Settings\n- **Mode:** Bipolar (creative destruction)\n- **Pre:** +10 to +16dB\n- **Mix:** 60-80%\n- **Reason:** Ad-libs can be aggressive and weird\n\n### Creative Techniques\n**Double-Track Distortion:**\n1. Main ad-lib: Clean or light saturation\n2. Double: Heavy distortion, 100% wet\n3. Pan slightly different\n4. Creates wide, textured ad-lib layer\n\n## Common Vocal Mistakes\n\n### Mistake 1: No De-esser\n**Problem:** Sibilance becomes unbearable\n**Solution:** ALWAYS de-ess before WaveShaper\n\n### Mistake 2: Too Much Distortion\n**Problem:** Lyrics unintelligible\n**Solution:** Keep Mix at 40% or below for leads\n\n### Mistake 3: Bipolar Mode\n**Problem:** Harsh, fatiguing vocals\n**Solution:** Use Unipolar for warmth and smoothness\n\n### Mistake 4: Ignoring Oversampling\n**Problem:** Harsh high-frequency artifacts\n**Solution:** Use 4x minimum\n\n### Mistake 5: Wrong Chain Order\n**Problem:** Distortion before de-esser = disaster\n**Solution:** De-esser must come FIRST\n\n## Advanced Vocal Techniques\n\n### Frequency-Specific Saturation\n1. **Use multi-band splitter** (Maximus, etc.)\n2. **Distort only the mid-range** (presence area)\n3. **Keep lows clean** (no rumble distortion)\n4. **Keep highs controlled** (prevent sibilance)\n\n### Formant Shifting\n1. **Bipolar mode**\n2. **Different curves** for positive/negative\n3. **Adjust Pre gain**\n4. Creates \"vowel character\" changes\n\n### Dynamic Saturation\n- **Automate Pre gain**\n- More saturation on quiet passages\n- Less on loud/screamed sections\n- Balances vocal dynamics\n\n### Parallel Vocal Distortion\n1. **Create parallel bus**\n2. **Heavy distortion** on bus (100% wet)\n3. **High-pass the bus** at 200Hz\n4. **Blend under** main vocal\n5. Adds presence without affecting low-end\n\n## Testing Your Vocal Saturation\n\n### Intelligibility Test\n1. Play vocal in mix\n2. Can you understand every word?\n3. If not, reduce Mix or Pre gain\n\n### Sibilance Test\n1. Listen to S and T sounds\n2. Should not be harsh or painful\n3. If harsh, add de-esser or reduce drive\n\n### Context Test\n1. Solo vocal: sounds great\n2. In mix: disappears?\n3. May need more presence (increase Pre or Mix)\n\n### Fatigue Test\n1. Listen for 60 seconds\n2. Do ears tire?\n3. If yes, use Unipolar mode, reduce drive\n\n## Vocal Workflow Summary\n\n```\nInput Vocal\n    ↓\nHigh-pass 80-100Hz\n    ↓\nEQ (presence boost, mud cut)\n    ↓\nDE-ESSER (CRITICAL FIRST STEP)\n    ↓\nWaveShaper (Unipolar, Soft S-curve, Pre: +4-8dB, Mix: 25-40%)\n    ↓\nCompression (3:1-6:1, control dynamics)\n    ↓\nEQ (fine-tuning)\n    ↓\nOptional: Second de-esser\n    ↓\nLimiter (safety)\n    ↓\nOutput: Professional vocal with presence and warmth\n```\n\n## Troubleshooting\n\n### Vocal Sounds Harsh\n- Switch to Unipolar mode\n- Enable 4x+ oversampling\n- Reduce Pre gain by 2-4dB\n\n### Vocal Sounds Muddy\n- High-pass higher (100Hz)\n- Cut 200-400Hz more aggressively\n- Check Center is enabled\n\n### Sibilance Increased\n- De-ess BEFORE WaveShaper (must be in chain)\n- Reduce Pre gain\n- Add second de-esser after WaveShaper\n\n### Vocal Not Cutting Through\n- Increase Pre gain (+2-4dB)\n- Increase Mix to 35-40%\n- Boost 3-5kHz in Post-EQ\n\n---\n\n**Instrument:** Lead Vocal  \n**Version:** 1.0  \n**Last Updated:** 2026-02-03\n",
+      "snare-drums": "# Snare Drum Workflow\n\n## Snares in Hip-Hop and Modern Production\n\nSnares provide the backbeat and rhythmic anchor. They need body, crack, and presence to drive the groove.\n\n[SRC: IL-MAN] Asymmetric distortion in Bipolar mode can enhance snare crack (transient) while maintaining body (sustain).\n\n## The Snare Challenge\n\n### The Problem\nSnares need:\n- **Crack:** Initial transient impact\n- **Body:** Sustained tone and ring\n- **Presence:** Cut through dense mixes\n- **Control:** Not overwhelming\n\n### WaveShaper Solutions\n- **Transient emphasis:** Hard positive curve\n- **Body warmth:** Soft negative curve\n- **Presence boost:** Harmonics that cut through\n- **Dynamic control:** Blending with Mix\n\n## Standard Snare Workflow\n\n### Step 1: Pre-Processing\n**Before WaveShaper:**\n1. **Tune the snare** to complement the key\n2. **High-pass** at 100-150Hz (remove kick bleed)\n3. **Cut 200-400Hz** if boxy\n4. **Boost 3-5kHz** for crack (optional)\n\n### Step 2: WaveShaper Settings\n\n**For Cracking Snares:**\n```\nMode:       Bipolar (asymmetric character)\nCurve:      Hard clip positive, soft negative\nPre:        +10 to +14dB\nMix:        55-70%\nPost:       -10 to -14dB\nOversample: 4x\nCenter:     Enabled\n```\n\n**Why Bipolar?** Different positive/negative shaping emphasizes crack while preserving body.\n\n### Step 3: Post-Processing\n**After WaveShaper:**\n1. **EQ** (fine-tune presence)\n2. **Compression** (2:1 to 4:1, control dynamics)\n3. **Reverb** (add space and tail)\n4. **Transient shaper** (if needed)\n\n## Asymmetric Snare Curve Design\n\n### Positive Half (Crack/Attack)\n- **Hard clip** at 0.7-0.8 threshold\n- Sharp knee\n- Emphasizes the \"snap\" and \"crack\"\n\n### Negative Half (Body/Sustain)\n- **Soft S-curve**\n- Gradual saturation\n- Maintains the \"tone\" and \"ring\"\n\n### Why This Works\n- **Positive = crack:** Hard clipping emphasizes transient\n- **Negative = body:** Soft curve warms the sustain\n- Result: Punchy crack + warm body\n\n## Snare Recipes by Style\n\n### Trap Snares\n- **Mode:** Bipolar\n- **Pre:** +12dB\n- **Mix:** 65%\n- **Curve:** Hard clip positive, moderate negative\n- **Post-EQ:** Boost 3-5kHz\n- **Character:** Maximum crack, modern aggression\n\n### Boom Bap Snares\n- **Mode:** Unipolar\n- **Pre:** +8dB\n- **Mix:** 50%\n- **Curve:** Soft S-curve\n- **Post-EQ:** Gentle high-mid boost\n- **Character:** Warm, vintage, thick\n\n### R&B Snares\n- **Mode:** Unipolar\n- **Pre:** +6dB\n- **Mix:** 45%\n- **Curve:** Gentle saturation\n- **Post-EQ:** Smooth top end\n- **Character:** Smooth, present, controlled\n\n### EDM Snares\n- **Mode:** Bipolar\n- **Pre:** +14dB\n- **Mix:** 70%\n- **Curve:** Extreme asymmetric\n- **Post-EQ:** Aggressive presence boost\n- **Character:** Maximum cut, synthetic edge\n\n## Parallel Snare Distortion\n\n### Method\n1. **Main snare track:** Light saturation (30% Mix)\n2. **Create parallel bus:** Send snare to new channel\n3. **Heavy distortion on bus:** Bipolar, 100% Mix, high drive\n4. **EQ the bus:** High-pass 200Hz, boost 3-5kHz\n5. **Blend bus** under main snare\n\n### Why This Works\n- **Main snare:** Natural, controlled\n- **Distorted layer:** Extra crack and aggression\n- **Blended:** Best of both worlds\n- **EQ'd layer:** Only adds desired frequencies\n\n## Snare and Clap Layering\n\n### Clap Enhancement\nClaps often need extra \"smack\" to cut through:\n- **Mode:** Bipolar\n- **Pre:** +12dB\n- **Mix:** 60%\n- **Curve:** Hard clip\n\n### Layered Distortion\nWhen snare and clap are layered:\n1. **Distort them together** on a bus\n2. Or: **Distort the clap** more than the snare\n3. Creates cohesive \"snap\" between elements\n\n## Common Snare Mistakes\n\n### Mistake 1: Too Much Distortion\n**Problem:** Snare sounds like noise\n**Solution:** Reduce Mix to 50-60%\n\n### Mistake 2: Losing the Ring\n**Problem:** Snare becomes \"dead\"\n**Solution:** Use softer curve on negative half\n\n### Mistake 3: Harshness\n**Problem:** Snare hurts the ears\n**Solution:** Enable 4x+ oversampling\n\n### Mistake 4: No Crack\n**Problem:** Snare has body but no attack\n**Solution:** Ensure positive half is clipped harder\n\n## Advanced Snare Techniques\n\n### Transient Design with Curves\n1. **Set hard threshold** at 0.6\n2. Transients above threshold = clipped\n3. Creates consistent \"snap\" across all hits\n4. Use Mix to blend with natural transients\n\n### Ghost Note Enhancement\nQuiet snare hits need help to be heard:\n- **Higher Pre gain** (they hit the curve less)\n- **Brings quiet notes** forward\n- **Does not crush** loud notes (already hitting ceiling)\n\n### Room Distortion\n1. **Send snare to room reverb**\n2. **Distort the room return** heavily\n3. **Blend room distortion** under dry snare\n4. Creates \"crushed room\" snare sound\n\n## Testing Your Snare Distortion\n\n### Crack Test\n1. Solo the snare\n2. Should have clear \"snap\" on attack\n3. Should not be all sustain/body\n\n### Context Test\n1. Play snare in mix\n2. Does it provide clear backbeat?\n3. If lost, increase Pre or Mix\n\n### Ring Test\n1. Listen to snare tail\n2. Should have pleasant ring/tone\n3. If \"dead,\" use softer negative curve\n\n## Snare Workflow Summary\n\n```\nInput Snare\n    ↓\nTuning and basic EQ (high-pass, cut mud)\n    ↓\nOptional: Boost 3-5kHz for crack\n    ↓\nWaveShaper (Bipolar, Asymmetric, Pre: +10-14dB, Mix: 55-70%)\n    ↓\nEQ refinement (carve space in mix)\n    ↓\nCompression (2:1-4:1, control dynamics)\n    ↓\nReverb (add space and tail)\n    ↓\nOutput: Snare with crack, body, and presence\n```\n\n## Troubleshooting\n\n### Snare Sounds Thin\n- Reduce high-pass frequency\n- Use softer negative curve\n- Add body with Post-EQ\n\n### Snare Sounds Harsh\n- Switch to Unipolar mode\n- Enable 4x+ oversampling\n- Add gentle low-pass after\n\n### Snare Lacks Crack\n- Increase Pre gain\n- Ensure positive half is clipped harder\n- Check Mix is at least 55%\n\n### Snare Too Loud\n- Reduce channel fader\n- Or reduce WaveShaper Mix\n- Or reduce Pre gain\n\n---\n\n**Instrument:** Snare Drum  \n**Version:** 1.0  \n**Last Updated:** 2026-02-03\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Waveshaper\r\n\r\nThis section contains workflow information for the fruity-waveshaper plugin.\r\n"
+    }
+  },
+  "rules": {
+    "safety-rules": {
+      "safetyRules": {
+        "name": "Fruity WaveShaper Safety Rules",
+        "version": "1.0",
+        "description": "Critical safety rules for preventing distortion disasters",
+        "source": "[SRC: IL-MAN]",
+        "categories": [
+          {
+            "name": "Gain Staging",
+            "priority": "CRITICAL",
+            "rules": [
+              {
+                "id": "gs-1",
+                "rule": "Always compensate Post gain for Pre gain increases",
+                "explanation": "Input drive increases output level; compensation prevents clipping",
+                "formula": "Post ≈ -(Pre × 0.6 to 0.8)",
+                "example": "If Pre = +12dB, set Post to -8 to -10dB",
+                "consequence": "Channel or master bus clipping"
+              },
+              {
+                "id": "gs-2",
+                "rule": "Monitor channel meter after WaveShaper",
+                "explanation": "Visual feedback confirms gain staging is correct",
+                "action": "Watch for red indicators on channel and master meters",
+                "consequence": "Unintentional clipping distortion"
+              },
+              {
+                "id": "gs-3",
+                "rule": "Leave Center enabled at all times",
+                "explanation": "DC offset removal prevents cumulative low-frequency buildup",
+                "exception": "Only disable for specific experimental sound design",
+                "consequence": "Headroom loss, speaker damage, muddy low-end"
+              },
+              {
+                "id": "gs-4",
+                "rule": "Match processed/unprocessed levels for A/B comparison",
+                "explanation": "Fair comparison requires equal loudness",
+                "method": "Adjust Post gain until perceived loudness matches bypassed",
+                "consequence": "Preference for louder option (not necessarily better)"
+              }
+            ]
+          },
+          {
+            "name": "Aliasing Prevention",
+            "priority": "HIGH",
+            "rules": [
+              {
+                "id": "ap-1",
+                "rule": "Use minimum 4x oversampling for hard clipping",
+                "explanation": "Hard clipping generates high frequencies that alias without oversampling",
+                "threshold": "Apply when Pre > +10dB or curve has sharp corners",
+                "consequence": "Digital artifacts, 'metallic' sound, harshness"
+              },
+              {
+                "id": "ap-2",
+                "rule": "Use 8x-16x oversampling for bitcrushing effects",
+                "explanation": "Stepped curves create extreme aliasing",
+                "threshold": "Any stepped/staircase curve shape",
+                "consequence": "Severe digital artifacts, unmusical distortion"
+              },
+              {
+                "id": "ap-3",
+                "rule": "Use 4x oversampling for high-frequency sources",
+                "explanation": "Sources > 5kHz are more prone to audible aliasing",
+                "sources": [
+                  "Hi-hats",
+                  "Cymbals",
+                  "High leads",
+                  "Vocal sibilance"
+                ],
+                "consequence": "Harsh high-end, listener fatigue"
+              },
+              {
+                "id": "ap-4",
+                "rule": "Balance oversampling with CPU usage",
+                "explanation": "Higher oversampling = higher CPU load",
+                "guideline": "Use 2x-4x for most instances, 8x-16x only for critical tracks",
+                "consequence": "Session lag, audio dropouts, crashes"
+              }
+            ]
+          },
+          {
+            "name": "Mode Selection",
+            "priority": "MEDIUM",
+            "rules": [
+              {
+                "id": "ms-1",
+                "rule": "Use Unipolar for low-end sources (808s, bass, kicks)",
+                "explanation": "Even harmonics preserve low-end warmth and punch",
+                "rationale": "Odd harmonics can cause phase issues and mud in lows",
+                "consequence": "Weak or muddy low-end, loss of sub impact"
+              },
+              {
+                "id": "ms-2",
+                "rule": "Use conservative Mix settings with Bipolar mode",
+                "explanation": "Bipolar generates more aggressive harmonics",
+                "guideline": "Keep Mix at 30-50% for Bipolar unless full distortion effect desired",
+                "consequence": "Harshness, listener fatigue, difficult to mix"
+              },
+              {
+                "id": "ms-3",
+                "rule": "Start with Unipolar for mix bus applications",
+                "explanation": "Even harmonics are safer for full mix processing",
+                "rationale": "Bipolar on mix bus can create cumulative harshness",
+                "consequence": "Harsh, fatiguing mix, unprofessional sound"
+              },
+              {
+                "id": "ms-4",
+                "rule": "Match mode to distortion intensity",
+                "explanation": "Aggressive distortion in Bipolar = very aggressive sound",
+                "guideline": "Subtle saturation = Unipolar; Heavy crunch = Bipolar",
+                "consequence": "Unintentional harshness or weak character"
+              }
+            ]
+          },
+          {
+            "name": "Curve Design",
+            "priority": "MEDIUM",
+            "rules": [
+              {
+                "id": "cd-1",
+                "rule": "Ensure curve passes through (0,0)",
+                "explanation": "Unity gain at zero prevents signal cancellation",
+                "check": "Verify graph shows diagonal through center point",
+                "consequence": "Signal attenuation or cancellation at low levels"
+              },
+              {
+                "id": "cd-2",
+                "rule": "Avoid completely flat sections at extremes",
+                "explanation": "Flat line = no signal; kills negative or positive half",
+                "check": "Maintain minimum -0.8 to -1.0 and +0.8 to +1.0 range",
+                "consequence": "Missing half of waveform, severe distortion"
+              },
+              {
+                "id": "cd-3",
+                "rule": "Round sharp corners for musical results",
+                "explanation": "Sharp corners generate high-frequency harshness",
+                "technique": "Use spline smoothing, add intermediate points",
+                "consequence": "Unpleasant high-end, digital artifacts"
+              },
+              {
+                "id": "cd-4",
+                "rule": "Test extreme curves with sine waves",
+                "explanation": "Pure tones reveal curve behavior clearly",
+                "method": "Apply WaveShaper to 1kHz sine, analyze output spectrum",
+                "consequence": "Unexpected harmonic content, aliasing"
+              }
+            ]
+          },
+          {
+            "name": "Hip-Hop/R&B Specific",
+            "priority": "HIGH",
+            "rules": [
+              {
+                "id": "hh-1",
+                "rule": "Never hard-clip 808s at high mix percentages",
+                "explanation": "Hard clipping removes low-end punch and creates mud",
+                "alternative": "Use soft S-curve with 50-70% Mix",
+                "consequence": "Weak 808s, lost sub impact, muddy mix"
+              },
+              {
+                "id": "hh-2",
+                "rule": "De-ess vocals BEFORE WaveShaper",
+                "explanation": "Distortion amplifies sibilance",
+                "chain": "EQ → De-esser → WaveShaper → Compression",
+                "consequence": "Harsh sibilance, unintelligible vocals"
+              },
+              {
+                "id": "hh-3",
+                "rule": "Keep vocal Mix at 35% or below",
+                "explanation": "Vocals need intelligibility; heavy distortion conflicts",
+                "exception": "Creative ad-libs or intentional effect",
+                "consequence": "Lyrics unintelligible, amateur sound"
+              },
+              {
+                "id": "hh-4",
+                "rule": "Use parallel processing instead of mix bus distortion",
+                "explanation": "Cumulative distortion across many tracks = harsh mix",
+                "technique": "Create dedicated distortion bus, blend to taste",
+                "consequence": "Fatiguing, over-compressed sound"
+              },
+              {
+                "id": "hh-5",
+                "rule": "Mono low frequencies before distortion",
+                "explanation": "Stereo distortion of low frequencies = phase issues",
+                "method": "Use stereo separation plugin or mono compatibility check",
+                "consequence": "Phase cancellation, weak bass on mono systems"
+              }
+            ]
+          }
+        ],
+        "emergencyProcedures": {
+          "clipping": "Immediately reduce Post gain by 6-12dB",
+          "silence": "Check curve passes through (0,0); redraw if needed",
+          "harshness": "Enable 4x+ oversampling, switch to Unipolar, reduce Mix",
+          "cpuOverload": "Reduce oversampling to 2x, freeze/render tracks",
+          "lostLowEnd": "Enable Center, reduce Pre gain, use Unipolar"
+        }
+      }
+    },
+    "symptom-solutions": {
+      "symptomSolutions": {
+        "name": "Fruity WaveShaper Symptom-Solution Mapping",
+        "version": "1.0",
+        "description": "Decision tree for solving common distortion problems",
+        "source": "[SRC: IL-MAN]",
+        "symptoms": [
+          {
+            "id": "weak-low-end",
+            "symptom": "808s or bass sound weak after WaveShaper",
+            "priority": 1,
+            "causes": [
+              "Hard clipping removing low-end punch",
+              "DC offset issues",
+              "Bipolar mode on low frequencies",
+              "Low Mix percentage"
+            ],
+            "solutions": [
+              {
+                "action": "Switch to Unipolar mode",
+                "reason": "Even harmonics preserve low-end warmth",
+                "priority": 1
+              },
+              {
+                "action": "Use soft S-curve instead of hard clip",
+                "reason": "Gentle saturation maintains fundamental",
+                "priority": 1
+              },
+              {
+                "action": "Increase Mix to 50-70%",
+                "reason": "Blend more original signal",
+                "priority": 2
+              },
+              {
+                "action": "Verify Center is enabled",
+                "reason": "DC offset can attenuate lows",
+                "priority": 2
+              }
+            ],
+            "prevention": "Always use Unipolar for 808s unless intentional effect"
+          },
+          {
+            "id": "harsh-sound",
+            "symptom": "Sound is harsh, grating, or fatiguing",
+            "priority": 1,
+            "causes": [
+              "Aliasing from insufficient oversampling",
+              "Bipolar mode generating odd harmonics",
+              "Sharp corners in curve",
+              "Too high Pre gain"
+            ],
+            "solutions": [
+              {
+                "action": "Enable 4x-8x oversampling",
+                "reason": "Reduces aliasing artifacts",
+                "priority": 1
+              },
+              {
+                "action": "Switch to Unipolar mode",
+                "reason": "Even harmonics are more musical",
+                "priority": 1
+              },
+              {
+                "action": "Round curve corners",
+                "reason": "Sharp corners generate high frequencies",
+                "priority": 2
+              },
+              {
+                "action": "Reduce Pre gain by 3-6dB",
+                "reason": "Less drive = less harmonic generation",
+                "priority": 2
+              }
+            ],
+            "prevention": "Use minimum 4x oversampling for any noticeable distortion"
+          },
+          {
+            "id": "digital-artifacts",
+            "symptom": "Metallic, shimmering, or 'digital' artifacts",
+            "priority": 1,
+            "causes": [
+              "Aliasing from no oversampling",
+              "Bitcrushing without oversampling",
+              "High-frequency sources with hard clipping"
+            ],
+            "solutions": [
+              {
+                "action": "Enable 8x-16x oversampling",
+                "reason": "High-frequency sources need more oversampling",
+                "priority": 1
+              },
+              {
+                "action": "Use softer curve",
+                "reason": "Less aggressive curves generate fewer artifacts",
+                "priority": 2
+              },
+              {
+                "action": "Switch to Unipolar mode",
+                "reason": "Even harmonics less prone to aliasing",
+                "priority": 2
+              }
+            ],
+            "prevention": "Test with sine waves to identify aliasing before mixing"
+          },
+          {
+            "id": "no-effect",
+            "symptom": "Can't hear any distortion effect",
+            "priority": 2,
+            "causes": [
+              "Mix set to 0%",
+              "Pre gain too low",
+              "Curve is linear",
+              "Plugin bypassed"
+            ],
+            "solutions": [
+              {
+                "action": "Verify Mix is above 0%",
+                "reason": "0% Mix = no processed signal",
+                "priority": 1
+              },
+              {
+                "action": "Increase Pre gain to +10dB or higher",
+                "reason": "Low drive = minimal curve interaction",
+                "priority": 1
+              },
+              {
+                "action": "Check curve deviates from diagonal",
+                "reason": "Linear curve = no distortion",
+                "priority": 1
+              },
+              {
+                "action": "Confirm plugin is not bypassed",
+                "reason": "Bypassed plugins pass audio unchanged",
+                "priority": 1
+              }
+            ],
+            "prevention": "Start with moderate Pre gain (+8dB) and adjust to taste"
+          },
+          {
+            "id": "signal-loss",
+            "symptom": "Audio disappears or becomes very quiet",
+            "priority": 1,
+            "causes": [
+              "Curve has flat section at bottom",
+              "Not passing through (0,0)",
+              "Negative half completely clipped"
+            ],
+            "solutions": [
+              {
+                "action": "Reset curve to linear",
+                "reason": "Restores proper signal flow",
+                "priority": 1
+              },
+              {
+                "action": "Ensure curve passes through (0,0)",
+                "reason": "Center point must maintain unity gain",
+                "priority": 1
+              },
+              {
+                "action": "Verify output range covers -0.8 to +0.8 minimum",
+                "reason": "Extreme clipping kills half the signal",
+                "priority": 1
+              }
+            ],
+            "prevention": "Always verify curve passes through center before finalizing"
+          },
+          {
+            "id": "vocals-sibilant",
+            "symptom": "Vocals become too sibilant after WaveShaper",
+            "priority": 2,
+            "causes": [
+              "Distortion amplifies existing sibilance",
+              "Bipolar mode emphasizing transients",
+              "High Pre gain on vocal track"
+            ],
+            "solutions": [
+              {
+                "action": "Add de-esser BEFORE WaveShaper",
+                "reason": "Remove sibilance before distortion amplifies it",
+                "priority": 1
+              },
+              {
+                "action": "Reduce Mix to 20-30%",
+                "reason": "Less processed signal = less sibilance",
+                "priority": 2
+              },
+              {
+                "action": "Switch to Unipolar mode",
+                "reason": "Even harmonics less aggressive on transients",
+                "priority": 2
+              },
+              {
+                "action": "Reduce Pre gain",
+                "reason": "Less drive = less harmonic generation",
+                "priority": 3
+              }
+            ],
+            "prevention": "Always de-ess vocals before applying distortion"
+          },
+          {
+            "id": "drums-mushy",
+            "symptom": "Drums lose punch and sound mushy",
+            "priority": 2,
+            "causes": [
+              "Soft curve rounding off transients",
+              "Too high Mix percentage",
+              "Unipolar mode on transients"
+            ],
+            "solutions": [
+              {
+                "action": "Switch to Bipolar mode",
+                "reason": "Asymmetric distortion preserves transient bite",
+                "priority": 1
+              },
+              {
+                "action": "Use hard clip curve",
+                "reason": "Sharp threshold maintains transient edge",
+                "priority": 1
+              },
+              {
+                "action": "Reduce Mix slightly",
+                "reason": "Blend more dry transient",
+                "priority": 2
+              }
+            ],
+            "prevention": "Use Bipolar mode for drum transients and punch"
+          },
+          {
+            "id": "cpu-overload",
+            "symptom": "FL Studio lagging or audio dropouts",
+            "priority": 3,
+            "causes": [
+              "Too many instances with high oversampling",
+              "16x oversampling on all tracks",
+              "Complex curves with many points"
+            ],
+            "solutions": [
+              {
+                "action": "Reduce oversampling to 2x-4x on non-critical tracks",
+                "reason": "Lower quality setting reduces CPU",
+                "priority": 1
+              },
+              {
+                "action": "Freeze or render distorted tracks",
+                "reason": "Baked-in distortion frees CPU",
+                "priority": 1
+              },
+              {
+                "action": "Consolidate multiple instances into buses",
+                "reason": "Group processing reduces instance count",
+                "priority": 2
+              }
+            ],
+            "prevention": "Use 4x as default; reserve 8x-16x for critical tracks only"
+          }
+        ],
+        "decisionTree": {
+          "firstQuestion": "What is the primary problem?",
+          "branches": {
+            "soundQuality": {
+              "question": "What does it sound like?",
+              "options": {
+                "harsh": "harsh-sound",
+                "digital": "digital-artifacts",
+                "weak": "weak-low-end",
+                "mushy": "drums-mushy",
+                "sibilant": "vocals-sibilant"
+              }
+            },
+            "technical": {
+              "question": "What is happening?",
+              "options": {
+                "noSound": "signal-loss",
+                "noEffect": "no-effect",
+                "lag": "cpu-overload"
+              }
+            }
+          }
+        }
+      }
+    },
+    "workflow-rules": {
+      "workflowRules": {
+        "name": "Fruity WaveShaper Workflow Decision Rules",
+        "version": "1.0",
+        "description": "Rules for selecting appropriate WaveShaper settings by context",
+        "source": "[SRC: IL-MAN]",
+        "contexts": [
+          {
+            "name": "808s and Sub Bass",
+            "rules": {
+              "mode": {
+                "value": "Unipolar",
+                "reason": "Even harmonics preserve low-end warmth and punch",
+                "exception": "Aggressive distorted 808s may use Bipolar with caution"
+              },
+              "curve": {
+                "value": "soft-s-curve",
+                "reason": "Gentle saturation maintains fundamental frequency",
+                "avoid": "hard-clipping (removes punch)"
+              },
+              "preGain": {
+                "min": 6,
+                "max": 14,
+                "sweetSpot": "8-12dB",
+                "reason": "Enough drive for harmonics, not enough to lose sub"
+              },
+              "mix": {
+                "min": 40,
+                "max": 70,
+                "sweetSpot": "50-60%",
+                "reason": "Blend original punch with saturated presence"
+              },
+              "oversample": {
+                "minimum": "2x",
+                "recommended": "4x",
+                "reason": "Low-frequency sources less prone to aliasing"
+              },
+              "chainPosition": {
+                "after": "Initial EQ (high-pass cleanup)",
+                "before": "Compression and limiting",
+                "reason": "Saturation before compression preserves character"
+              }
+            }
+          },
+          {
+            "name": "Drums (Kicks, Snares, Hats)",
+            "rules": {
+              "mode": {
+                "value": "Bipolar",
+                "reason": "Asymmetric distortion preserves transient bite",
+                "exception": "Subtle drum bus may use Unipolar"
+              },
+              "curve": {
+                "value": "hard-clip",
+                "reason": "Sharp threshold enhances transients",
+                "options": [
+                  "hard-clip",
+                  "asymmetric-hard"
+                ]
+              },
+              "preGain": {
+                "min": 10,
+                "max": 18,
+                "sweetSpot": "12-16dB",
+                "reason": "High drive for aggressive transient control"
+              },
+              "mix": {
+                "min": 50,
+                "max": 80,
+                "sweetSpot": "60-70%",
+                "reason": "Aggressive distortion for impact"
+              },
+              "oversample": {
+                "minimum": "4x",
+                "recommended": "4x-8x",
+                "reason": "Hats and cymbals have high-frequency content"
+              },
+              "hiHatSpecific": {
+                "mode": "Unipolar preferred",
+                "preGain": "4-8dB",
+                "oversample": "8x minimum",
+                "reason": "High frequencies need more anti-aliasing"
+              }
+            }
+          },
+          {
+            "name": "Vocals",
+            "rules": {
+              "mode": {
+                "primary": "Unipolar",
+                "alternative": "Bipolar (for attitude/grit)",
+                "reason": "Even harmonics are more forgiving on vocals"
+              },
+              "curve": {
+                "value": "soft-s-curve",
+                "reason": "Gentle saturation maintains intelligibility",
+                "avoid": "hard-clipping (causes sibilance issues)"
+              },
+              "preGain": {
+                "min": 3,
+                "max": 10,
+                "sweetSpot": "5-8dB",
+                "reason": "Conservative drive preserves vocal clarity"
+              },
+              "mix": {
+                "min": 15,
+                "max": 40,
+                "sweetSpot": "25-35%",
+                "reason": "Transparency - keep lyrics intelligible"
+              },
+              "oversample": {
+                "minimum": "4x",
+                "recommended": "4x",
+                "reason": "Vocals have sibilance in high frequencies"
+              },
+              "chainRequirements": {
+                "before": "De-esser",
+                "reason": "Distortion amplifies sibilance - de-ess first"
+              },
+              "adLibs": {
+                "mix": "60-80%",
+                "curve": "asymmetric",
+                "reason": "Background vocals can be more aggressive"
+              }
+            }
+          },
+          {
+            "name": "Mix Bus",
+            "rules": {
+              "mode": {
+                "value": "Unipolar",
+                "critical": true,
+                "reason": "Even harmonics safer for full mix; Bipolar creates cumulative harshness"
+              },
+              "curve": {
+                "value": "soft-s-curve",
+                "reason": "Very gentle saturation for glue effect",
+                "avoid": [
+                  "hard-clip",
+                  "bipolar",
+                  "aggressive"
+                ]
+              },
+              "preGain": {
+                "min": 1,
+                "max": 6,
+                "sweetSpot": "2-4dB",
+                "reason": "Extremely conservative for mix cohesion"
+              },
+              "mix": {
+                "min": 10,
+                "max": 25,
+                "sweetSpot": "15-20%",
+                "reason": "Subtle effect - full mix context"
+              },
+              "oversample": {
+                "minimum": "4x",
+                "recommended": "4x",
+                "reason": "Full mix has all frequencies"
+              },
+              "alternativeApproach": {
+                "method": "Parallel bus instead of insert",
+                "reason": "More control, less cumulative distortion",
+                "recommended": true
+              },
+              "warning": "Mix bus distortion is powerful - easy to overdo"
+            }
+          },
+          {
+            "name": "Creative Sound Design",
+            "rules": {
+              "mode": {
+                "value": "Bipolar",
+                "reason": "Maximum flexibility and complexity",
+                "option": "Either - experiment freely"
+              },
+              "curve": {
+                "options": [
+                  "foldback",
+                  "staircase",
+                  "asymmetric",
+                  "custom"
+                ],
+                "reason": "No rules - create unique textures"
+              },
+              "preGain": {
+                "range": "0 to +24dB",
+                "reason": "Extreme drive for creative destruction"
+              },
+              "mix": {
+                "range": "0 to 100%",
+                "reason": "Context-dependent - full creative freedom"
+              },
+              "oversample": {
+                "minimum": "8x",
+                "recommended": "16x for extreme cases",
+                "reason": "Creative distortion often needs maximum quality"
+              },
+              "guideline": "No safety rules - experiment freely"
+            }
+          }
+        ],
+        "vibeMapping": {
+          "Moody": {
+            "mode": "Unipolar",
+            "curve": "soft-s-curve",
+            "preGainRange": "4-10dB",
+            "mixRange": "30-60%",
+            "characteristics": [
+              "Warm",
+              "Even harmonics",
+              "Introspective"
+            ]
+          },
+          "Upbeat": {
+            "mode": "Bipolar",
+            "curve": "hard-clip or asymmetric",
+            "preGainRange": "10-16dB",
+            "mixRange": "60-80%",
+            "characteristics": [
+              "Aggressive",
+              "Punchy",
+              "Energetic"
+            ]
+          },
+          "Psychedelic": {
+            "mode": "Bipolar",
+            "curve": "foldback or custom",
+            "preGainRange": "12-20dB",
+            "mixRange": "40-70%",
+            "characteristics": [
+              "Complex",
+              "Weird",
+              "Experimental"
+            ]
+          },
+          "Jazzy": {
+            "mode": "Unipolar",
+            "curve": "soft-s-curve or soft-limiter",
+            "preGainRange": "2-8dB",
+            "mixRange": "20-45%",
+            "characteristics": [
+              "Smooth",
+              "Musical",
+              "Sophisticated"
+            ]
+          },
+          "Vibey": {
+            "mode": "Unipolar",
+            "curve": "soft-s-curve",
+            "preGainRange": "4-8dB",
+            "mixRange": "35-60%",
+            "characteristics": [
+              "Relaxed",
+              "Warm",
+              "Cool"
+            ]
+          }
+        },
+        "safetyChecklist": {
+          "beforeApplying": [
+            "Input level is healthy (-12dB to -6dB)",
+            "Center is enabled",
+            "Oversampling appropriate for distortion level"
+          ],
+          "afterApplying": [
+            "Output level matches input (use Post gain)",
+            "No clipping on channel or master meter",
+            "Effect is audible and appropriate"
+          ],
+          "beforeFinalizing": [
+            "Aliasing checked with high-frequency sources",
+            "Low-end preserved on bass/808s",
+            "Vocals remain intelligible"
+          ]
+        }
+      }
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Waveshaper\r\n\r\nThis section contains reference information for the fruity-waveshaper plugin.\r\n"
+    }
+  }
+}

@@ -1,0 +1,529 @@
+{
+  "id": "distructor",
+  "name": "Distructor",
+  "category": "Distortion",
+  "tier": "Free",
+  "type": "Distortion",
+  "description": "Distructor - Distortion",
+  "tags": [],
+  "capabilities": [
+    "distortion",
+    "saturation",
+    "fx",
+    "audio"
+  ],
+  "icon": "/plugins/distructor-icon.svg",
+  "color": "#DC2626",
+  "version": "1.0",
+  "data_dir": "plugins\\distructor",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "pluginName": "Distructor",
+    "category": "Multi-FX / Distortion",
+    "parameters": [
+      {
+        "section": "Distortion",
+        "id": "dist_model",
+        "name": "Model",
+        "options": [
+          "Blood",
+          "Soft",
+          "Hard",
+          "Harmor Classic",
+          "Harmor Log",
+          "Wavefolder",
+          "Aperture",
+          "Bitcrush"
+        ],
+        "description": "The algorithmic core of the drive stage."
+      },
+      {
+        "section": "Distortion",
+        "id": "drive",
+        "name": "Pre-amp Drive",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "Input gain pushing into the waveshaper."
+      },
+      {
+        "section": "Filter",
+        "id": "cutoff",
+        "name": "Cutoff / Phaser Freq",
+        "range": {
+          "min": 10,
+          "max": 20000,
+          "unit": "Hz"
+        },
+        "description": "Center frequency or Delay time (Comb/Phaser)."
+      },
+      {
+        "section": "Filter",
+        "id": "resonance",
+        "name": "Resonance / Width",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "Peak feedback amount."
+      },
+      {
+        "section": "Speaker Cab",
+        "id": "stereo_sep",
+        "name": "Stereo Separation",
+        "range": {
+          "min": -100,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "Merges to Mono (Left) or Widens visual (Right)."
+      },
+      {
+        "section": "Chorus",
+        "id": "chorus_mode",
+        "name": "Chorus Topology",
+        "options": [
+          "Mono",
+          "Stereo",
+          "Wide"
+        ],
+        "description": "Phase relationship between Left and Right delay lines."
+      }
+    ]
+  },
+  "presets": {
+    "distortion-presets": {
+      "plugin_name": "Distructor",
+      "preset_collection": "Distortion Presets",
+      "version": "1.0.0",
+      "created_date": "2026-02-03",
+      "author": "FL Studio Plugin Deep Dives Research Team",
+      "description": "Collection of optimized Distructor configurations for different distortion scenarios in hip-hop, rap, and R&B production",
+      "presets": [
+        {
+          "id": "hiphop-kick-enhancement",
+          "name": "Hip-Hop Kick Enhancement",
+          "category": "Drum Enhancement",
+          "sub_category": "Kicks",
+          "genre_focus": [
+            "hip-hop",
+            "rap",
+            "rnb"
+          ],
+          "production_stage": "mixing",
+          "description": "Adds punch and weight to hip-hop kick drums while maintaining clarity",
+          "parameters": {
+            "algorithm": "transistor",
+            "drive": 20,
+            "input_gain": 0,
+            "output_gain": 3,
+            "tone": 2,
+            "high_freq_control": 1,
+            "low_freq_control": 0,
+            "clean_blend": 60,
+            "dry_wet_mix": 100,
+            "transient_preservation": 80,
+            "harmonic_balance": 10,
+            "adaptive_processing": 0
+          },
+          "use_case": "Enhancing hip-hop kick drums for more punch and presence in the mix",
+          "benefits": [
+            "Adds punch without muddying low-end",
+            "Maintains kick drum attack and transient",
+            "Enhances presence in busy mixes",
+            "Works well with 808s and bass"
+          ],
+          "notes": "Perfect for modern hip-hop productions where kicks need to cut through dense arrangements."
+        },
+        {
+          "id": "trap-808-saturation",
+          "name": "Trap 808 Saturation",
+          "category": "Bass Enhancement",
+          "sub_category": "808s",
+          "genre_focus": [
+            "trap",
+            "drill",
+            "southern_hip_hop"
+          ],
+          "production_stage": "mixing",
+          "description": "Adds warmth and harmonic content to 808s for modern trap music",
+          "parameters": {
+            "algorithm": "asymmetric",
+            "drive": 25,
+            "input_gain": 0,
+            "output_gain": 4,
+            "tone": 0,
+            "high_freq_control": 0,
+            "low_freq_control": 2,
+            "clean_blend": 65,
+            "dry_wet_mix": 100,
+            "transient_preservation": 70,
+            "harmonic_balance": -15,
+            "adaptive_processing": 0,
+            "crossover_frequency": 200,
+            "low_band_drive": 30,
+            "high_band_drive": 10
+          },
+          "use_case": "Adding warmth and character to 808s in trap productions",
+          "benefits": [
+            "Enhances 808 harmonic content",
+            "Adds warmth without harshness",
+            "Maintains fundamental frequencies",
+            "Improves 808 presence in mix"
+          ],
+          "notes": "Use with dual-band processing to add harmonic content to low-end while keeping highs clean."
+        },
+        {
+          "id": "rap-vocal-saturation",
+          "name": "Rap Vocal Saturation",
+          "category": "Vocal Processing",
+          "sub_category": "Rap Vocals",
+          "genre_focus": [
+            "rap",
+            "conscious_rap",
+            "mixtape_rap"
+          ],
+          "production_stage": "mixing",
+          "description": "Subtle saturation to add warmth and presence to rap vocals",
+          "parameters": {
+            "algorithm": "tube",
+            "drive": 12,
+            "input_gain": 0,
+            "output_gain": 1,
+            "tone": -1,
+            "high_freq_control": 0,
+            "low_freq_control": 0,
+            "clean_blend": 80,
+            "dry_wet_mix": 100,
+            "transient_preservation": 90,
+            "harmonic_balance": -30,
+            "adaptive_processing": 0
+          },
+          "use_case": "Adding warmth and presence to rap vocals without harshness",
+          "benefits": [
+            "Adds warmth without harshness",
+            "Maintains vocal clarity and intelligibility",
+            "Enhances presence in dense mixes",
+            "Preserves natural vocal character"
+          ],
+          "notes": "Perfect for rap vocals that need subtle enhancement without changing the natural character."
+        },
+        {
+          "id": "rnb-vocal-smooth",
+          "name": "R&B Vocal Smoothing",
+          "category": "Vocal Processing",
+          "sub_category": "R&B Vocals",
+          "genre_focus": [
+            "rnb",
+            "neo_soul",
+            "contemporary_rnb"
+          ],
+          "production_stage": "mixing",
+          "description": "Gentle saturation to add smoothness and warmth to R&B vocals",
+          "parameters": {
+            "algorithm": "tube",
+            "drive": 8,
+            "input_gain": 0,
+            "output_gain": 0,
+            "tone": -2,
+            "high_freq_control": -1,
+            "low_freq_control": 0,
+            "clean_blend": 85,
+            "dry_wet_mix": 100,
+            "transient_preservation": 95,
+            "harmonic_balance": -40,
+            "adaptive_processing": 0
+          },
+          "use_case": "Adding smoothness and warmth to R&B vocals",
+          "benefits": [
+            "Adds smooth, warm character",
+            "Maintains vocal clarity",
+            "Enhances emotional expression",
+            "Preserves natural vocal tone"
+          ],
+          "notes": "Ideal for R&B vocals that need subtle warmth and smoothness without changing the fundamental character."
+        },
+        {
+          "id": "hiphop-snare-crack",
+          "name": "Hip-Hop Snare Crack",
+          "category": "Drum Enhancement",
+          "sub_category": "Snares",
+          "genre_focus": [
+            "hip-hop",
+            "rap",
+            "rnb"
+          ],
+          "production_stage": "mixing",
+          "description": "Increases snare crack and presence in hip-hop productions",
+          "parameters": {
+            "algorithm": "transistor",
+            "drive": 30,
+            "input_gain": 0,
+            "output_gain": 5,
+            "tone": 4,
+            "high_freq_control": 3,
+            "low_freq_control": -1,
+            "clean_blend": 45,
+            "dry_wet_mix": 100,
+            "transient_preservation": 85,
+            "harmonic_balance": 20,
+            "adaptive_processing": 0
+          },
+          "use_case": "Adding crack and presence to hip-hop snares",
+          "benefits": [
+            "Increases snare presence",
+            "Adds harmonic content",
+            "Maintains snare body",
+            "Helps snare cut through mix"
+          ],
+          "notes": "Use for snares that need more presence and crack in busy hip-hop productions."
+        },
+        {
+          "id": "hiphop-bass-overdrive",
+          "name": "Hip-Hop Bass Overdrive",
+          "category": "Bass Enhancement",
+          "sub_category": "Synth Bass",
+          "genre_focus": [
+            "hip-hop",
+            "rap",
+            "rnb"
+          ],
+          "production_stage": "mixing",
+          "description": "Musical overdrive for hip-hop synth bass lines",
+          "parameters": {
+            "algorithm": "tube",
+            "drive": 35,
+            "input_gain": 0,
+            "output_gain": 6,
+            "tone": 1,
+            "high_freq_control": 1,
+            "low_freq_control": 2,
+            "clean_blend": 55,
+            "dry_wet_mix": 100,
+            "transient_preservation": 75,
+            "harmonic_balance": -20,
+            "adaptive_processing": 0
+          },
+          "use_case": "Adding warmth and character to hip-hop bass lines",
+          "benefits": [
+            "Adds musical overdrive",
+            "Enhances harmonic content",
+            "Maintains bass clarity",
+            "Improves presence in mix"
+          ],
+          "notes": "Perfect for synth bass lines that need warmth and character without becoming muddy."
+        },
+        {
+          "id": "trap-aggressive-808",
+          "name": "Trap Aggressive 808",
+          "category": "Bass Enhancement",
+          "sub_category": "808s",
+          "genre_focus": [
+            "trap",
+            "aggressive_hip_hop"
+          ],
+          "production_stage": "mixing",
+          "description": "Aggressive distortion for in-your-face trap 808s",
+          "parameters": {
+            "algorithm": "hard_clip",
+            "drive": 65,
+            "input_gain": 0,
+            "output_gain": 2,
+            "tone": 3,
+            "high_freq_control": 2,
+            "low_freq_control": 1,
+            "clean_blend": 30,
+            "dry_wet_mix": 100,
+            "transient_preservation": 60,
+            "harmonic_balance": 40,
+            "adaptive_processing": 0,
+            "crossover_frequency": 150,
+            "low_band_drive": 70,
+            "high_band_drive": 40
+          },
+          "use_case": "Creating aggressive, in-your-face 808s for modern trap music",
+          "benefits": [
+            "Creates aggressive 808 sound",
+            "Adds harmonic complexity",
+            "Ensures 808s cut through mix",
+            "Provides modern trap character"
+          ],
+          "notes": "Use sparingly for aggressive trap productions where 808s need to be very prominent."
+        },
+        {
+          "id": "boom-bap-warmth",
+          "name": "Boom-Bap Warmth",
+          "category": "Drum Enhancement",
+          "sub_category": "Classic Hip-Hop",
+          "genre_focus": [
+            "boom_bap",
+            "classic_hip_hop"
+          ],
+          "production_stage": "mixing",
+          "description": "Subtle warmth and character for classic boom-bap drum sounds",
+          "parameters": {
+            "algorithm": "asymmetric",
+            "drive": 15,
+            "input_gain": 0,
+            "output_gain": 2,
+            "tone": 0,
+            "high_freq_control": 0,
+            "low_freq_control": 1,
+            "clean_blend": 75,
+            "dry_wet_mix": 100,
+            "transient_preservation": 85,
+            "harmonic_balance": -10,
+            "adaptive_processing": 0
+          },
+          "use_case": "Adding warmth and character to classic boom-bap drum sounds",
+          "benefits": [
+            "Adds vintage warmth",
+            "Maintains drum character",
+            "Subtle enhancement",
+            "Preserves boom-bap feel"
+          ],
+          "notes": "Perfect for classic boom-bap productions where subtle enhancement is needed."
+        },
+        {
+          "id": "hihat-harshness",
+          "name": "Hi-Hat Enhancement",
+          "category": "Drum Enhancement",
+          "sub_category": "Hi-Hats",
+          "genre_focus": [
+            "hip-hop",
+            "rap",
+            "rnb"
+          ],
+          "production_stage": "mixing",
+          "description": "Enhances hi-hat presence and clarity in hip-hop productions",
+          "parameters": {
+            "algorithm": "soft_clip",
+            "drive": 18,
+            "input_gain": 0,
+            "output_gain": 3,
+            "tone": 3,
+            "high_freq_control": 4,
+            "low_freq_control": -2,
+            "clean_blend": 50,
+            "dry_wet_mix": 100,
+            "transient_preservation": 90,
+            "harmonic_balance": 15,
+            "adaptive_processing": 0
+          },
+          "use_case": "Adding presence and clarity to hi-hats in hip-hop productions",
+          "benefits": [
+            "Increases hi-hat presence",
+            "Adds harmonic content",
+            "Maintains hi-hat clarity",
+            "Helps hi-hats cut through mix"
+          ],
+          "notes": "Use for hi-hats that need more presence in dense hip-hop productions."
+        },
+        {
+          "id": "creative-texture",
+          "name": "Creative Texture Generator",
+          "category": "Creative Effects",
+          "sub_category": "Sound Design",
+          "genre_focus": [
+            "experimental_hip_hop",
+            "abstract_hip_hop",
+            "sound_design"
+          ],
+          "production_stage": "production",
+          "description": "Experimental settings for creating unique textures and soundscapes",
+          "parameters": {
+            "algorithm": "hard_clip",
+            "drive": 85,
+            "input_gain": 3,
+            "output_gain": -1,
+            "tone": 5,
+            "high_freq_control": 5,
+            "low_freq_control": -3,
+            "clean_blend": 15,
+            "dry_wet_mix": 100,
+            "transient_preservation": 40,
+            "harmonic_balance": 60,
+            "adaptive_processing": 25,
+            "crossover_frequency": 800,
+            "low_band_drive": 90,
+            "high_band_drive": 70
+          },
+          "use_case": "Creating experimental textures and soundscapes",
+          "benefits": [
+            "Generates unique textures",
+            "Creates harmonic complexity",
+            "Produces interesting artifacts",
+            "Useful for sound design"
+          ],
+          "notes": "Use for experimental productions where unique textures and sounds are desired."
+        }
+      ],
+      "metadata": {
+        "last_updated": "2026-02-03",
+        "compatible_versions": [
+          "FL Studio 20+",
+          "FL Studio 21+"
+        ],
+        "tags": [
+          "hip-hop",
+          "rap",
+          "rnb",
+          "distortion",
+          "saturation",
+          "drums",
+          "vocals",
+          "bass",
+          "808",
+          "presets",
+          "distructor"
+        ],
+        "license": "CC BY-SA 4.0",
+        "documentation_links": [
+          "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Distructor.htm",
+          "https://www.image-line.com/support/flstudio_online_manual/plugin_hints/distructor_hint.htm"
+        ]
+      }
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "concepts-and-best-uses": "# Concepts & Best Uses: Distructor\r\n\r\n## What It Is\r\nDistructor is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Distructor\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "cheat-sheet": "# Distructor: The Modular Crunch\r\n\r\n> **Scope:** Modular Distortion, Filter Banks, and Cabinet Simulation.\r\n> **Source:** Image-Line Official Manual (v21.2) + Direct Analysis.\r\n> **Complexity:** Medium (Modular Signal Flow).\r\n\r\n## 🧠 The \"Rack\" Concept\r\nDistructor is a simplified **Modular Effect Chain**. Unlike a standard distortion unit (Input -> Drive -> Output), Distructor allows you to place Filters *before* or *after* distortion, which drastically changes the sound.\r\n*   **Modules:** Distortion, Filter, Chorus, Speaker Cab.\r\n*   **Signal Flow:** Linear (Left to Right).\r\n*   **Reordering:** You can move modules using the arrows.\r\n\r\n**Signal Flow (Example):**\r\n`Input` -> **[FILTER (High Pass)]** -> **[DISTORTION (Hard Clip)]** -> **[CABINET (4x12)]** -> **[OUTPUT]**\r\n*   *Why this matters:* Distortion adds harmonics. If you filter *before* distortion, you distort a cleaner signal. If you filter *after*, you remove the fizz created by the distortion.\r\n\r\n---\r\n\r\n## 🎛️ Section 1: Distortion Flavors\r\n\r\nDistructor aggregates algorithms from older FL plugins.\r\n\r\n| Type | Origin | Character |\r\n| :--- | :--- | :--- |\r\n| **Blood Overdrive** | Legacy Plugin | Analog-style warmth. Good for bass. |\r\n| **Soft Clipper** | Fruity Soft Clipper | Transparent rounding. Good for mastering/drums. |\r\n| **Hard Clipping** | Digital | Brickwall limit. Creates harsh odd harmonics. |\r\n| **Harmor (Rubbery/Log)** | Harmor | Exotic waveshaping curves. Very digital/sci-fi. |\r\n| **Wavefolder** | Distructor Exclusive | \"Folds\" the waveform back on itself instead of clipping. Creates metallic \"West Coast Synthesis\" tones. |\r\n| **Aperture** | Distructor Exclusive | Dynamic warping. |\r\n\r\n---\r\n\r\n## 🔁 Section 2: The Filter Module\r\n\r\nThis isn't just an EQ; it's a creative tool.\r\n\r\n*   **Placement Strategy:**\r\n    *   **Pre-Distortion:** Use a \"Peaking\" filter to boost specific frequencies (e.g., 800Hz) into the distortion threshold. This creates a \"Wah\" or vowel-like scream.\r\n    *   **Post-Distortion:** Use a \"Low Pass\" filter to tame the high-end harshness (Cab simulation style).\r\n*   **Special Modes:**\r\n    *   **Vowel:** A Formant filter (A-E-I-O-U).\r\n    *   **Phaser:** A multi-stage All-Pass filter structure.\r\n    *   **Comb:** Creates metallic ringing (delay-based resonance).\r\n\r\n---\r\n\r\n## ⚡ Technical Specs: The Speaker Cabinet\r\n\r\n*   **Engine:** Convolution (Impulse Response).\r\n*   **Latency:** Zero Latency (Time-domain convolution often optimized for real-time).\r\n*   **Stereo handling:**\r\n    *   **Mono Models:** Most guitar cabs are mono sources. Distructor sums the input to mono before the cab.\r\n    *   **Stereo Separation:** The \"Sep\" knob allows you to re-introduce stereo width *after* the cab, or widen the signal *before* it hits a stereo-friendly algorithm.\r\n\r\n---\r\n\r\n## 🧪 \"Secret Sauce\" Workflows\r\n\r\n### 1. The \"Acid\" Bass\r\n1.  **Module 1:** Filter (Low Pass 12dB). High Resonance.\r\n2.  **Module 2:** Distortion (Hard Clip or Wavefolder).\r\n3.  **Action:** Automate the **Cutoff** of Module 1.\r\n4.  **Physics:** As the filter sweep hits the resonant peak, the volume spikes. The Distortion module clips this spike, creating that squelchy \"303\" sound where the resonance turns into grit.\r\n\r\n### 2. The Guitar Amp Replacement\r\n1.  **Module 1:** Distortion (Blood Overdrive). Drive ~40%.\r\n2.  **Module 2:** Speaker Cab (4x12 Vintage).\r\n3.  **Module 3:** Filter (High Pass). Cut everything below 100Hz to remove mud.\r\n4.  **Module 4:** Chorus (Stereo). Depth 20%.\r\n5.  **Result:** A fully produced Lead Guitar tone in one plugin slot, using 1% CPU.\r\n\r\n### 3. Drum Bus Glue\r\n1.  **Order:** Distortion -> Filter.\r\n2.  **Mode:** Soft Saturation (Log).\r\n3.  **Drive:** Very low.\r\n4.  **Mix Knob:** 30% (Parallel Processing).\r\n5.  **Result:** Adds \"density\" to the drums without killing the transients. The specific \"Log\" curve from Harmor is excellent for punch.\r\n",
+      "distortion-algorithms": "# Distructor Distortion Algorithms Deep Dive\n\n## Overview\nDistructor provides multiple distortion algorithms, each with unique sonic characteristics and applications. Understanding these algorithms is crucial for effective hip-hop, rap, and R&B production, as each algorithm imparts different harmonic content and tonal characteristics to the processed signal.\n\n## Algorithm Categories\n\n### 1. Clipping Algorithms\n\n#### Soft Clip Algorithm\n- **Technical Description**: Applies a smooth, rounded clipping function that gently limits the signal\n- **Harmonic Content**: Generates even harmonics for warm, musical distortion\n- **Characteristics**: \n  - Gentle onset of distortion\n  - Maintains dynamic range better than hard clipping\n  - Produces warm, tube-like saturation\n  - Preserves transient response well\n- **Hip-Hop Applications**:\n  - Subtle vocal saturation for warmth\n  - Bass line enhancement without harshness\n  - Adding character to 808s without aggression\n  - Gentle drum enhancement\n- **R&B Applications**:\n  - Vocal processing for smoothness\n  - Instrument saturation for warmth\n  - Adding musicality to synths\n- **Settings Recommendations**:\n  - Drive: 10-30% for subtle enhancement\n  - Tone: -2 to +2dB for musical balance\n  - Clean Blend: 60-80% for parallel processing\n\n#### Hard Clip Algorithm\n- **Technical Description**: Applies a sharp, rectangular clipping function that abruptly limits the signal\n- **Harmonic Content**: Generates odd harmonics for aggressive, edgy distortion\n- **Characteristics**:\n  - Abrupt onset of distortion\n  - Creates harsh, digital artifacts\n  - Emphasizes high-frequency content\n  - Reduces dynamic range significantly\n- **Hip-Hop Applications**:\n  - Aggressive drum processing for modern trap\n  - Creating harsh textures and effects\n  - Extreme 808 processing for aggressive sounds\n  - Creative sound design elements\n- **R&B Applications**:\n  - Gritty vocal effects\n  - Experimental instrument processing\n  - Adding edge to smooth elements\n- **Settings Recommendations**:\n  - Drive: 40-80% for controlled aggression\n  - Tone: -3 to 0dB to tame harshness\n  - Clean Blend: 20-50% to maintain clarity\n\n### 2. Emulation Algorithms\n\n#### Asymmetric Algorithm\n- **Technical Description**: Applies an asymmetrical clipping function that mimics tube amplifier behavior\n- **Harmonic Content**: Generates even harmonics with tube-like character\n- **Characteristics**:\n  - Creates even-order harmonics\n  - Produces warm, musical saturation\n  - Mimics the behavior of tube circuits\n  - Maintains musicality while adding character\n- **Hip-Hop Applications**:\n  - 808 enhancement for warmth and character\n  - Bass line processing for musical overdrive\n  - Vocal saturation for natural warmth\n  - Adding tube-like character to digital sounds\n- **R&B Applications**:\n  - Vocal processing for vintage warmth\n  - Instrument saturation for analog character\n  - Adding musicality to synthetic sounds\n- **Settings Recommendations**:\n  - Drive: 15-40% for musical enhancement\n  - Tone: -1 to +1dB for neutral character\n  - Clean Blend: 50-70% for natural sound\n\n#### Tube Algorithm\n- **Technical Description**: Emulates the harmonic generation and compression characteristics of vacuum tube amplifiers\n- **Harmonic Content**: Rich even-harmonic content with natural compression\n- **Characteristics**:\n  - Emulates tube amplifier behavior\n  - Adds natural compression and saturation\n  - Generates warm, musical harmonics\n  - Provides smooth, musical distortion\n- **Hip-Hop Applications**:\n  - Bass enhancement for warmth and presence\n  - 808 processing for analog character\n  - Vocal saturation for natural warmth\n  - Adding vintage character to modern sounds\n- **R&B Applications**:\n  - Vocal processing for smooth, warm character\n  - Instrument saturation for vintage feel\n  - Adding analog warmth to digital elements\n- **Settings Recommendations**:\n  - Drive: 10-35% for subtle enhancement\n  - Tone: -2 to 0dB for warm character\n  - Clean Blend: 60-80% for natural sound\n\n#### Transistor Algorithm\n- **Technical Description**: Emulates the clipping and harmonic generation characteristics of transistor circuits\n- **Harmonic Content**: Musical distortion with characteristic transistor sound\n- **Characteristics**:\n  - Emulates transistor amplifier behavior\n  - Provides musical but edgy distortion\n  - Adds presence and character without harshness\n  - Maintains clarity while adding edge\n- **Hip-Hop Applications**:\n  - Drum enhancement for added punch and character\n  - Bass processing for presence and edge\n  - Adding transistor character to digital sounds\n  - Modern hip-hop sound design\n- **R&B Applications**:\n  - Adding subtle edge to smooth elements\n  - Instrument processing for character\n  - Vocal enhancement for presence\n- **Settings Recommendations**:\n  - Drive: 20-50% for musical enhancement\n  - Tone: 0 to +2dB for presence\n  - Clean Blend: 40-70% for natural sound\n\n## Algorithm-Specific Applications\n\n### Hip-Hop Production Algorithms\n\n#### For Drum Enhancement\n- **Primary Choice**: Transistor Algorithm\n  - Adds punch and character without harshness\n  - Enhances snare crack and kick weight\n  - Maintains transient response\n  - Settings: Drive 15-35%, Clean Blend 40-60%\n\n- **Alternative**: Asymmetric Algorithm\n  - Adds musical character to drums\n  - Warmer than transistor processing\n  - Good for vintage hip-hop sounds\n  - Settings: Drive 10-30%, Tone -1 to +1dB\n\n#### For 808 and Bass Processing\n- **Primary Choice**: Tube Algorithm\n  - Adds warm, musical character\n  - Enhances low-end presence\n  - Maintains fundamental frequencies\n  - Settings: Drive 10-25%, Clean Blend 60-80%\n\n- **Alternative**: Asymmetric Algorithm\n  - Provides tube-like warmth\n  - Adds harmonic content without aggression\n  - Good for subtle enhancement\n  - Settings: Drive 15-30%, Tone -1 to +1dB\n\n#### For Vocal Processing\n- **Primary Choice**: Tube Algorithm\n  - Adds warm, musical saturation\n  - Enhances vocal presence naturally\n  - Maintains clarity and intelligibility\n  - Settings: Drive 5-20%, Clean Blend 70-85%\n\n- **Alternative**: Soft Clip Algorithm\n  - Provides gentle saturation\n  - Adds warmth without harshness\n  - Good for subtle enhancement\n  - Settings: Drive 5-15%, Tone -2 to 0dB\n\n### R&B Production Algorithms\n\n#### For Smooth Vocal Enhancement\n- **Primary Choice**: Tube Algorithm\n  - Adds vintage warmth to vocals\n  - Maintains smooth, musical character\n  - Enhances presence naturally\n  - Settings: Drive 5-15%, Clean Blend 75-90%\n\n- **Alternative**: Soft Clip Algorithm\n  - Provides gentle saturation\n  - Adds warmth without harshness\n  - Preserves vocal clarity\n  - Settings: Drive 5-12%, Tone -2 to -1dB\n\n#### For Instrument Processing\n- **Primary Choice**: Asymmetric Algorithm\n  - Adds musical character to instruments\n  - Provides tube-like warmth\n  - Maintains instrument identity\n  - Settings: Drive 10-25%, Clean Blend 60-80%\n\n- **Alternative**: Tube Algorithm\n  - Adds vintage character to instruments\n  - Provides warm, musical saturation\n  - Enhances harmonic content\n  - Settings: Drive 8-20%, Tone -1 to +1dB\n\n## Algorithm Comparison Chart\n\n| Algorithm | Harmonic Content | Character | Best For | Drive Range |\n|-----------|------------------|-----------|----------|-------------|\n| Soft Clip | Even harmonics | Warm, smooth | Vocals, bass | 5-30% |\n| Hard Clip | Odd harmonics | Aggressive, harsh | Effects, drums | 40-80% |\n| Asymmetric | Even harmonics | Tube-like, musical | 808s, bass | 10-40% |\n| Tube | Rich even harmonics | Warm, vintage | Vocals, instruments | 5-35% |\n| Transistor | Musical, edgy | Present, punchy | Drums, bass | 15-50% |\n\n## Advanced Algorithm Techniques\n\n### Algorithm Blending\n- **Concept**: Using multiple algorithms simultaneously\n- **Implementation**: Route to separate instances and blend\n- **Benefits**: Combine characteristics of different algorithms\n- **Applications**: Complex sound design, hybrid processing\n- **Hip-Hop Use**: Combine Tube + Transistor for warmth + punch\n\n### Dynamic Algorithm Switching\n- **Concept**: Changing algorithms based on input characteristics\n- **Implementation**: Use sidechain or MIDI control\n- **Benefits**: Adaptive processing based on content\n- **Applications**: Dynamic processing, creative effects\n- **Hip-Hop Use**: Different algorithms for verse/chorus\n\n### Algorithm-Specific EQing\n- **Soft Clip**: May need high-frequency taming\n- **Hard Clip**: Requires high-pass filtering and tone adjustment\n- **Asymmetric**: Generally needs minimal EQ adjustment\n- **Tube**: May benefit from high-frequency enhancement\n- **Transistor**: Often benefits from mid-range enhancement\n\n## Genre-Specific Algorithm Selection\n\n### Trap Music Applications\n- **Primary**: Transistor for drum enhancement\n- **Secondary**: Hard Clip for aggressive effects\n- **808 Processing**: Asymmetric for warmth\n- **Vocal Processing**: Tube for subtle enhancement\n- **Recommended Settings**: Higher Drive values (30-60%)\n\n### Boom-Bap Applications\n- **Primary**: Tube for warm, vintage character\n- **Secondary**: Asymmetric for musical enhancement\n- **Drum Processing**: Transistor for punch\n- **Bass Processing**: Tube for warmth\n- **Recommended Settings**: Lower Drive values (10-30%)\n\n### Modern R&B Applications\n- **Primary**: Tube for smooth vocal enhancement\n- **Secondary**: Soft Clip for gentle saturation\n- **Instrument Processing**: Asymmetric for character\n- **Vocal Processing**: Tube for warmth\n- **Recommended Settings**: Low Drive values (5-20%)\n\n### Conscious Rap Applications\n- **Primary**: Soft Clip for subtle enhancement\n- **Secondary**: Tube for warmth\n- **Vocal Processing**: Tube for presence\n- **Instrument Processing**: Asymmetric for character\n- **Recommended Settings**: Very low Drive values (5-15%)\n\n## Troubleshooting Algorithm Issues\n\n### When to Use Each Algorithm\n- **Too Harsh**: Switch from Hard Clip to Soft Clip or Tube\n- **Too Weak**: Switch from Soft Clip to Transistor or Asymmetric\n- **Lacking Character**: Try Asymmetric or Tube instead of Soft Clip\n- **Not Aggressive Enough**: Try Hard Clip or increase Drive on Transistor\n\n### Algorithm-Specific Problems\n- **Soft Clip**: May require more Drive for noticeable effect\n- **Hard Clip**: Almost always requires EQ and/or Clean Blend\n- **Asymmetric**: May add too much warmth if overused\n- **Tube**: Can become muddy if Drive is too high\n- **Transistor**: May add too much presence if not controlled\n\n## Integration with Other Effects\n\n### With EQ\n- **Before Distructor**: High-pass filter to remove rumble\n- **After Distructor**: High-frequency taming for harsh algorithms\n- **During Processing**: Use to emphasize specific frequencies\n- **Hip-Hop Tip**: High-pass around 80Hz before processing\n\n### With Compression\n- **Pre-Compression**: Distort dynamics for character\n- **Post-Compression**: Control dynamics after distortion\n- **Parallel**: Compress dry and wet signals separately\n- **Hip-Hop Tip**: Often works better before compression\n\n### With Reverb/Delay\n- **Pre-Reverb**: Distort before spatial effects\n- **Post-Reverb**: Add distortion to spatial reflections\n- **Parallel**: Distort dry signal, leave reverb clean\n- **Hip-Hop Tip**: Pre-reverb for cohesive sound\n\n## Performance Considerations\n\n### CPU Usage by Algorithm\n- **Soft Clip**: Low CPU usage\n- **Hard Clip**: Low CPU usage\n- **Asymmetric**: Medium CPU usage\n- **Tube**: Medium CPU usage\n- **Transistor**: Medium CPU usage\n\n### Latency Considerations\n- All algorithms have minimal latency\n- No significant latency differences between algorithms\n- Real-time performance suitable for all algorithms\n\n## Creative Algorithm Applications\n\n### Experimental Techniques\n- **Extreme Settings**: Push algorithms beyond musical ranges\n- **Modulation**: Modulate algorithm selection for evolving sounds\n- **Layering**: Use multiple algorithms in parallel\n- **Automation**: Change algorithms during tracks for variation\n\n### Sound Design Applications\n- **Hard Clip**: Create harsh, industrial textures\n- **Tube**: Create warm, analog textures\n- **Asymmetric**: Create musical, harmonic textures\n- **Transistor**: Create punchy, present textures\n- **Soft Clip**: Create subtle, harmonic textures\n\n## Success Metrics\n\n### Algorithm Selection Criteria\n- [ ] Algorithm matches the musical context\n- [ ] Harmonic content enhances the source material\n- [ ] Character complements the genre\n- [ ] Drive level is appropriate for the application\n- [ ] Overall sound enhances the mix\n\n### Genre-Specific Success\n- **Hip-Hop**: Adds punch and character without harshness\n- **R&B**: Provides warmth and musicality\n- **Trap**: Delivers aggression while maintaining clarity\n- **Boom-Bap**: Offers vintage warmth and character\n\n## Conclusion\n\nChoosing the right Distructor algorithm is crucial for achieving the desired sonic result in hip-hop, rap, and R&B production. Each algorithm imparts unique harmonic content and tonal characteristics that can enhance or detract from the source material depending on the application.\n\nThe key to successful algorithm selection is understanding the harmonic content and character of each algorithm, and matching these characteristics to the musical context and genre requirements. Regular experimentation with different algorithms will expand your sonic palette and provide new creative possibilities.\n\nRemember that algorithm selection is just one part of the equation – proper Drive, Tone, and Blend settings are equally important for achieving the best results.\n\n---\n\n**Created**: February 2026  \n**Focus**: Distortion Algorithms for Hip-Hop, Rap, and R&B  \n**Skill Level**: Intermediate to Advanced  \n**Application**: Algorithm Selection and Application",
+      "paramater-cheat-sheet": "# Distructor Parameter Cheat Sheet\n\n## Overview\nDistructor is FL Studio's versatile distortion and saturation plugin that provides multiple algorithms for adding character, warmth, and edge to audio signals. This cheat sheet details all parameters and their applications in hip-hop, rap, and R&B production.\n\n## Drive and Gain Parameters\n\n### Drive Control\n- **Drive**: Input gain for distortion processing\n  - Range: 0% to 100%\n  - Function: Amplifies input signal before distortion stage\n  - Low values (0-20%): Subtle saturation and warmth\n  - Medium values (20-60%): Moderate harmonic enhancement\n  - High values (60-100%): Aggressive distortion and clipping\n  - Hip-hop tip: Use 10-30% for subtle drum enhancement\n\n- **Input Gain**: Additional input amplification\n  - Range: -12dB to +12dB\n  - Function: Pre-distortion gain adjustment\n  - Positive values: Increase distortion intensity\n  - Negative values: Reduce distortion intensity\n  - Hip-hop tip: Boost for 808s that need more harmonic content\n\n### Output Control\n- **Output Gain**: Post-distortion level adjustment\n  - Range: -12dB to +12dB\n  - Function: Compensates for level changes after distortion\n  - Positive values: Increase output level\n  - Negative values: Decrease output level\n  - Hip-hop tip: Reduce if distortion is too loud in mix\n\n- **Dry/Wet Mix**: Blend between original and processed signal\n  - Range: 0% to 100%\n  - 0%: Completely dry (no effect)\n  - 50%: Equal parts dry and wet\n  - 100%: Completely wet (full effect)\n  - Hip-hop tip: Use 20-40% for subtle enhancement\n\n## Distortion Algorithm Parameters\n\n### Algorithm Selection\n- **Soft Clip**: Gentle saturation with smooth transitions\n  - Characteristics: Even harmonic generation, musical distortion\n  - Applications: Adding warmth to vocals, subtle bass enhancement\n  - Hip-hop use: Vocal saturation, bass line warming\n\n- **Hard Clip**: Aggressive digital clipping\n  - Characteristics: Odd harmonic generation, harsh distortion\n  - Applications: Creating aggressive effects, extreme processing\n  - Hip-hop use: Aggressive drum effects, creative textures\n\n- **Asymmetric**: Asymmetrical clipping for tube-like character\n  - Characteristics: Even harmonics, warm tube-like saturation\n  - Applications: Adding musical warmth and character\n  - Hip-hop use: 808 enhancement, vocal character\n\n- **Tube**: Vacuum tube saturation emulation\n  - Characteristics: Warm, musical harmonics, soft clipping\n  - Applications: Adding tube-like warmth and character\n  - Hip-hop use: Bass enhancement, vocal warmth\n\n- **Transistor**: Transistor circuit overdrive simulation\n  - Characteristics: Musical distortion with character\n  - Applications: Adding edge and presence\n  - Hip-hop use: Drum enhancement, bass overdrive\n\n### Algorithm-Specific Controls\n- **Saturation Level**: Algorithm-specific intensity control\n  - Range: 0% to 100%\n  - Function: Adjusts the specific characteristics of each algorithm\n  - Low values: Subtle application of algorithm\n  - High values: Full intensity of algorithm\n  - Hip-hop tip: Use medium values for musical enhancement\n\n## Tone Shaping Parameters\n\n### Post-Distortion EQ\n- **Tone**: Post-distortion EQ for brightness control\n  - Range: -12dB to +12dB\n  - Negative values: Reduce high frequencies, warmer sound\n  - Positive values: Increase high frequencies, brighter sound\n  - Center (0dB): Neutral, no change\n  - Hip-hop tip: Slightly negative for drums, positive for vocals\n\n- **High-Frequency Control**: Specific high-frequency adjustment\n  - Range: -12dB to +12dB\n  - Function: Adjusts presence and clarity after distortion\n  - Negative values: Tame harsh harmonics\n  - Positive values: Enhance presence and clarity\n  - Hip-hop tip: Use negative for aggressive distortion\n\n- **Low-Frequency Control**: Specific low-frequency adjustment\n  - Range: -12dB to +12dB\n  - Function: Adjusts bottom end after distortion\n  - Negative values: Reduce low-end muddiness\n  - Positive values: Enhance low-end warmth\n  - Hip-hop tip: Slightly positive for bass enhancement\n\n## Dual-Band Processing Parameters\n\n### Crossover Controls\n- **Crossover Frequency**: Divides signal for separate processing\n  - Range: 20Hz to 20kHz\n  - Function: Sets frequency boundary between low and high bands\n  - Low values: More frequencies in low band\n  - High values: More frequencies in high band\n  - Hip-hop tip: Set around 200-500Hz for bass/drums separation\n\n- **Low Band Drive**: Distortion applied to low frequencies\n  - Range: 0% to 100%\n  - Function: Controls distortion intensity in low frequencies\n  - Low values: Subtle low-end processing\n  - High values: Heavy low-end distortion\n  - Hip-hop tip: Use moderate values for 808 enhancement\n\n- **High Band Drive**: Distortion applied to high frequencies\n  - Range: 0% to 100%\n  - Function: Controls distortion intensity in high frequencies\n  - Low values: Subtle high-end processing\n  - High values: Heavy high-end distortion\n  - Hip-hop tip: Use lower values to avoid harshness\n\n### Band-Specific Controls\n- **Low Band Algorithm**: Distortion type for low frequencies\n  - Options: Soft Clip, Hard Clip, Asymmetric, Tube, Transistor\n  - Function: Selects algorithm for low-frequency band\n  - Hip-hop tip: Use Tube or Asymmetric for low-end warmth\n\n- **High Band Algorithm**: Distortion type for high frequencies\n  - Options: Soft Clip, Hard Clip, Asymmetric, Tube, Transistor\n  - Function: Selects algorithm for high-frequency band\n  - Hip-hop tip: Use Soft Clip to avoid harshness\n\n## Blend and Mix Controls\n\n### Parallel Processing\n- **Clean Blend**: Amount of unprocessed signal in output\n  - Range: 0% to 100%\n  - 0%: No clean signal, fully processed\n  - 50%: Equal parts clean and processed\n  - 100%: Full clean signal, no effect\n  - Hip-hop tip: Use 30-70% for parallel processing\n\n- **Effect Level**: Level of processed signal\n  - Range: 0% to 100%\n  - Function: Controls level of distorted signal in mix\n  - Low values: Subtle effect presence\n  - High values: Dominant effect presence\n  - Hip-hop tip: Balance with Clean Blend for desired effect\n\n### Mix Optimization\n- **Blend Curve**: Shape of the dry/wet transition\n  - Options: Linear, Logarithmic, Exponential\n  - Linear: Equal change throughout range\n  - Logarithmic: More sensitive at low values\n  - Exponential: More sensitive at high values\n  - Hip-hop tip: Linear for most applications\n\n## Advanced Parameters\n\n### Dynamic Processing\n- **Adaptive Processing**: Dynamic response to input level\n  - Range: 0% to 100%\n  - Function: Makes distortion respond to input dynamics\n  - Low values: Static distortion processing\n  - High values: Dynamic distortion response\n  - Hip-hop tip: Use for more natural-sounding processing\n\n- **Transient Preservation**: Maintains attack characteristics\n  - Range: 0% to 100%\n  - Function: Preserves original transient response\n  - Low values: Distorts transients normally\n  - High values: Preserves original transients\n  - Hip-hop tip: High values for drums to maintain punch\n\n### Harmonic Control\n- **Harmonic Balance**: Even vs. odd harmonic generation\n  - Range: -100% to +100%\n  - Negative values: Emphasize even harmonics (warmer)\n  - Positive values: Emphasize odd harmonics (edgier)\n  - Center (0%): Balanced harmonic content\n  - Hip-hop tip: Negative for vocals, positive for drums\n\n## Genre-Specific Parameter Sets\n\n### Hip-Hop Drum Enhancement\n- **Algorithm**: Transistor or Asymmetric\n- **Drive**: 15-35%\n- **Tone**: -2 to +2dB (slightly bright)\n- **Clean Blend**: 40-60% (parallel processing)\n- **Output Gain**: +2 to +4dB (compensate for losses)\n- **Transient Preservation**: 70-90%\n\n### R&B Vocal Saturation\n- **Algorithm**: Tube or Soft Clip\n- **Drive**: 5-20%\n- **Tone**: -3 to 0dB (warm, not harsh)\n- **Clean Blend**: 70-85% (subtle enhancement)\n- **Output Gain**: 0 to +2dB\n- **Harmonic Balance**: -20 to -40% (even harmonics)\n\n### 808 Enhancement\n- **Algorithm**: Asymmetric or Tube\n- **Drive**: 10-25%\n- **Tone**: -1 to +1dB (neutral)\n- **Crossover**: 200Hz (separate low/high processing)\n- **Low Band Drive**: 15-30%\n- **High Band Drive**: 5-15%\n\n### Bass Overdrive\n- **Algorithm**: Transistor or Tube\n- **Drive**: 20-40%\n- **Tone**: -2 to +1dB\n- **Clean Blend**: 50-70%\n- **Output Gain**: +2 to +6dB\n- **Low-Frequency Control**: +1 to +3dB\n\n## Workflow Applications\n\n### Drum Enhancement Workflow\n1. Insert Distructor on drum bus or individual drum tracks\n2. Select Transistor or Asymmetric algorithm\n3. Set Drive to 15-35% for subtle enhancement\n4. Use Clean Blend at 40-60% for parallel processing\n5. Adjust Tone to taste (often slightly bright)\n6. Boost Output Gain to compensate for level changes\n\n### Bass Enhancement Workflow\n1. Insert Distructor on bass track or bus\n2. Select Tube or Transistor algorithm\n3. Set Drive to 20-40% for musical overdrive\n4. Use Clean Blend at 50-70% for natural sound\n5. Adjust Low-Frequency Control if needed\n6. Compensate with Output Gain\n\n### Vocal Saturation Workflow\n1. Insert Distructor on vocal track\n2. Select Tube or Soft Clip algorithm\n3. Set Drive to 5-20% for subtle warmth\n4. Use Clean Blend at 70-85% for subtlety\n5. Adjust Tone to taste (often slightly darker)\n6. Use Harmonic Balance with negative values\n\n### Creative Effects Workflow\n1. Insert Distructor on auxiliary track\n2. Select Hard Clip or Asymmetric algorithm\n3. Set Drive to 60-100% for aggressive effects\n4. Adjust Tone and frequency controls for character\n5. Use low Clean Blend for full effect\n6. Process through reverb or delay for textures\n\n## Integration with Hip-Hop Production Chain\n\n### With Compressors\n- Place Distructor before compressor to distort dynamics\n- Place Distructor after compressor for controlled distortion\n- Use parallel processing with both\n- Hip-hop tip: Often works better before compression\n\n### With EQs\n- Use pre-EQ to shape signal before distortion\n- Use post-EQ to refine distorted signal\n- High-pass before distortion to avoid low-end mess\n- Hip-hop tip: High-pass around 80Hz before distortion\n\n### With Limiters\n- Use limiter after Distructor to control output\n- Be careful not to over-limit distorted signals\n- Consider using limiter on parallel path\n- Hip-hop tip: Conservative limiting after distortion\n\n## Quick Reference for Session Start\n\n### Standard Hip-Hop Setup\n1. Algorithm: Transistor\n2. Drive: 20%\n3. Tone: 0dB\n4. Clean Blend: 50%\n5. Output Gain: +2dB\n6. Transient Preservation: 80%\n\n### Subtle Enhancement Setup\n1. Algorithm: Tube\n2. Drive: 10%\n3. Tone: -1dB\n4. Clean Blend: 70%\n5. Output Gain: 0dB\n6. Harmonic Balance: -30%\n\n### Aggressive Effects Setup\n1. Algorithm: Hard Clip\n2. Drive: 70%\n3. Tone: +3dB\n4. Clean Blend: 20%\n5. Output Gain: -2dB\n6. Transient Preservation: 30%\n\n---\n\n**Last Updated**: February 2026\n**Focus**: Hip-Hop, Rap, R&B Production Applications\n**Primary Use Cases**: Drum Enhancement, Bass Processing, Vocal Saturation, Creative Effects",
+      "quick-start-checklist": "# Quick Start Checklist: Distructor\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Distructor to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Distructor\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Distructor\r\n\r\nThis section contains learning information for the distructor plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "drum-enhancement": "# Drum Enhancement with Distructor\n\n## Overview\nThis comprehensive guide details how to use Distructor for enhancing drum sounds in hip-hop, rap, and R&B productions. Drum enhancement through distortion can add punch, character, and presence to drum sounds, making them cut through dense mixes while maintaining their fundamental qualities.\n\n## Prerequisites\n- FL Studio with Distructor plugin\n- Drum samples or drum machine sounds\n- Understanding of basic drum processing concepts\n- Knowledge of Distructor's interface and parameters\n\n## Basic Drum Enhancement Concepts\n\n### 1. Understanding Drum Enhancement Through Distortion\n\n#### The Role of Distortion in Drum Enhancement\nDistortion adds harmonic content to drum sounds, which can:\n- Increase perceived loudness and presence\n- Add harmonic complexity for character\n- Enhance transients for more punch\n- Fill frequency gaps in the mix\n- Create cohesion in drum sounds\n\n#### Key Considerations for Drum Enhancement\n- **Transient Preservation**: Maintaining the initial attack of drums\n- **Frequency Balance**: Adding harmonics without muddying\n- **Dynamic Retention**: Keeping the natural feel of drums\n- **Mix Integration**: Ensuring drums sit well in the mix\n- **Genre Appropriateness**: Matching enhancement to musical style\n\n### 2. Distructor Settings for Drums\n\n#### Algorithm Selection for Drums\n- **Transistor Algorithm**: Best for adding punch and presence\n  - Characteristics: Musical distortion with edge\n  - Applications: Kicks, snares, and percussion\n  - Benefits: Adds character without harshness\n\n- **Asymmetric Algorithm**: Ideal for warmth and musicality\n  - Characteristics: Tube-like harmonic generation\n  - Applications: 808s and bass drums\n  - Benefits: Adds warmth while maintaining musicality\n\n- **Soft Clip Algorithm**: For subtle enhancement\n  - Characteristics: Gentle saturation\n  - Applications: Subtle enhancement of all drum types\n  - Benefits: Adds warmth without obvious distortion\n\n#### Drive Settings for Drums\n- **Low Drive (5-20%)**: Subtle harmonic enhancement\n  - Applications: Gentle enhancement of all drums\n  - Benefits: Adds warmth without obvious distortion\n  - Risks: May be inaudible on some drums\n\n- **Medium Drive (20-40%)**: Noticeable enhancement\n  - Applications: Kicks and snares that need more character\n  - Benefits: Adds punch and presence\n  - Risks: May add unwanted harshness\n\n- **High Drive (40-60%)**: Aggressive enhancement\n  - Applications: Creative effects and aggressive styles\n  - Benefits: Significant character addition\n  - Risks: May overwhelm drum sound\n\n## Hip-Hop Specific Drum Enhancement\n\n### 3. Kick Drum Enhancement (25 minutes)\n\n#### Objective\nEnhance hip-hop kick drums for more punch and weight while maintaining fundamental frequencies.\n\n#### Prerequisites\n- Hip-hop kick drum samples\n- Understanding of kick drum characteristics\n- Basic Distructor knowledge\n\n#### Steps\n1. **Initial Setup** (5 minutes)\n   - Insert Distructor on kick drum track\n   - Select Transistor algorithm for punch\n   - Set Drive to 15% for subtle enhancement\n   - Set Clean Blend to 60% for parallel processing\n   - Adjust Output Gain to compensate for level changes\n\n2. **Tone Adjustment** (5 minutes)\n   - Adjust Tone control to taste (often +1 to +3dB)\n   - Listen for added presence without harshness\n   - Ensure low-end is not compromised\n   - Verify kick still has fundamental weight\n\n3. **Transient Preservation** (5 minutes)\n   - Set Transient Preservation to 80-90%\n   - Ensure kick attack remains punchy\n   - Listen for any loss of initial transient\n   - Adjust if kick becomes too soft or too harsh\n\n4. **Fine-Tuning** (5 minutes)\n   - Adjust Drive between 10-30% based on desired effect\n   - Fine-tune Clean Blend for natural sound\n   - Verify kick sits well in mix context\n   - Test with full arrangement to ensure compatibility\n\n5. **Verification** (5 minutes)\n   - Listen to kick in solo and in mix\n   - Verify no unwanted artifacts or harshness\n   - Ensure kick maintains low-end weight\n   - Test on different playback systems\n\n#### Hip-Hop Specific Considerations\n- Focus on maintaining low-end weight and punch\n- Ensure kick cuts through dense arrangements\n- Consider how enhancement affects 808 integration\n- Match enhancement to the style of hip-hop\n\n### 4. Snare Enhancement (20 minutes)\n\n#### Objective\nAdd crack and presence to hip-hop snares while maintaining body and character.\n\n#### Prerequisites\n- Hip-hop snare samples\n- Understanding of snare characteristics\n- Basic Distructor knowledge\n\n#### Steps\n1. **Algorithm Selection** (3 minutes)\n   - Use Transistor algorithm for presence\n   - Set Drive to 20% for initial test\n   - Set Clean Blend to 50% for balance\n   - Adjust Output Gain to match input level\n\n2. **Brightness Adjustment** (5 minutes)\n   - Increase Tone control to add presence (+2 to +4dB)\n   - Use High-Frequency Control to enhance crack (+1 to +3dB)\n   - Listen for added snap without harshness\n   - Ensure snare body is not compromised\n\n3. **Transient Optimization** (5 minutes)\n   - Set Transient Preservation to 85-95%\n   - Ensure snare attack remains sharp\n   - Listen for any softening of the initial hit\n   - Adjust Drive if snare becomes too aggressive\n\n4. **Harmonic Balance** (4 minutes)\n   - Adjust Harmonic Balance for desired character\n   - Positive values add edge and presence\n   - Negative values add warmth and smoothness\n   - Find balance that enhances without harshness\n\n5. **Mix Integration** (3 minutes)\n   - Test snare in full mix context\n   - Ensure it cuts through without being harsh\n   - Verify compatibility with other elements\n   - Adjust Clean Blend if needed for natural sound\n\n#### Hip-Hop Specific Considerations\n- Enhance snare crack for presence in mix\n- Maintain snare body and character\n- Consider how enhancement affects rap vocal clarity\n- Match enhancement to the energy level of the track\n\n### 5. Hi-Hat Enhancement (15 minutes)\n\n#### Objective\nAdd presence and clarity to hi-hats while maintaining their delicate character.\n\n#### Prerequisites\n- Hi-hat samples or patterns\n- Understanding of hi-hat characteristics\n- Basic Distructor knowledge\n\n#### Steps\n1. **Subtle Approach** (5 minutes)\n   - Use Soft Clip algorithm for gentleness\n   - Set Drive to 10-20% for subtle enhancement\n   - Set Clean Blend to 70-80% to preserve character\n   - Adjust Output Gain to match input level\n\n2. **Brightness Control** (5 minutes)\n   - Use High-Frequency Control to enhance presence (+2 to +4dB)\n   - Be conservative with Tone control to avoid harshness\n   - Listen for added clarity without brittleness\n   - Ensure hi-hats don't become piercing\n\n3. **Integration Check** (5 minutes)\n   - Test hi-hats in full mix context\n   - Ensure they're audible but not harsh\n   - Verify they complement rather than compete with vocals\n   - Adjust if hi-hats become too prominent\n\n#### Hip-Hop Specific Considerations\n- Maintain hi-hat delicacy while adding presence\n- Ensure hi-hats don't compete with vocals\n- Consider the role of hi-hats in the overall groove\n- Match enhancement to the complexity of the pattern\n\n## Advanced Drum Enhancement Techniques\n\n### 6. 808 Enhancement (30 minutes)\n\n#### Objective\nAdd harmonic content and character to 808 sounds without compromising low-end.\n\n#### Prerequisites\n- 808 samples or synthesizer\n- Understanding of 808 characteristics\n- Experience with bass enhancement\n\n#### Steps\n1. **Algorithm Selection** (5 minutes)\n   - Choose Asymmetric or Tube algorithm for warmth\n   - Set Drive to 15-25% for subtle enhancement\n   - Set Clean Blend to 60-70% for natural sound\n   - Adjust Output Gain to compensate for level changes\n\n2. **Dual-Band Processing** (10 minutes)\n   - Set Crossover Frequency to 200Hz\n   - Apply moderate Drive (20-30%) to low band\n   - Apply lighter Drive (5-15%) to high band\n   - Use Asymmetric algorithm for low band, Soft Clip for high band\n\n3. **Tone Shaping** (8 minutes)\n   - Adjust Low-Frequency Control for warmth (+1 to +3dB)\n   - Be conservative with High-Frequency Control to avoid harshness\n   - Ensure fundamental frequencies remain strong\n   - Listen for added harmonic content without muddiness\n\n4. **Integration Verification** (7 minutes)\n   - Test 808 with kick drum to ensure compatibility\n   - Verify low-end remains tight and defined\n   - Check for any phase issues\n   - Ensure 808 sits well in the mix\n\n#### Hip-Hop Specific Considerations\n- Preserve 808's fundamental low-end character\n- Add harmonic content for presence and definition\n- Ensure compatibility with kick drums\n- Match enhancement to the style of hip-hop\n\n### 7. Percussion Enhancement (20 minutes)\n\n#### Objective\nAdd character and presence to various percussion elements in hip-hop productions.\n\n#### Prerequisites\n- Various percussion samples (congas, shakers, etc.)\n- Understanding of percussion roles\n- Basic Distructor knowledge\n\n#### Steps\n1. **Individual Treatment** (10 minutes)\n   - Process each percussion element separately\n   - Use Transistor algorithm for presence\n   - Set Drive to 15-30% based on element\n   - Adjust Clean Blend to preserve original character\n\n2. **Frequency-Specific Enhancement** (5 minutes)\n   - Use High-Frequency Control to enhance brightness\n   - Apply Tone control for presence\n   - Be conservative to avoid harshness\n   - Ensure percussion elements remain musical\n\n3. **Mix Integration** (5 minutes)\n   - Test percussion in full mix context\n   - Ensure elements add to rather than detract from groove\n   - Verify percussion doesn't compete with vocals\n   - Adjust if elements become too prominent\n\n#### Hip-Hop Specific Considerations\n- Enhance percussion to support the groove\n- Maintain the musical character of percussion\n- Consider how enhancement affects the overall rhythm\n- Match enhancement to the style and energy of the track\n\n## Genre-Specific Enhancement Approaches\n\n### 8. Trap Music Drum Enhancement (35 minutes)\n\n#### Objective\nCreate aggressive, in-your-face drum sounds characteristic of modern trap music.\n\n#### Steps\n1. **Kick Enhancement** (10 minutes)\n   - Use Transistor algorithm with higher Drive (25-35%)\n   - Set Clean Blend to 50-60% for balance\n   - Add slight High-Frequency Control for attack (+1 to +2dB)\n   - Ensure kick has enough weight to complement 808s\n\n2. **808 Processing** (10 minutes)\n   - Use Hard Clip algorithm for aggression (Drive 40-60%)\n   - Apply dual-band processing with higher low-band Drive\n   - Set Clean Blend to 30-40% for full effect\n   - Focus on adding harmonic content without losing fundamentals\n\n3. **Snare Enhancement** (10 minutes)\n   - Use Transistor algorithm with high Drive (30-45%)\n   - Increase Tone and High-Frequency Control for crack\n   - Set Clean Blend to 40-50% for presence\n   - Add slight reverb after distortion for space\n\n4. **Integration** (5 minutes)\n   - Ensure all elements work together cohesively\n   - Verify the aggressive sound fits the trap aesthetic\n   - Test on various playback systems\n   - Adjust if elements become too harsh\n\n#### Trap-Specific Considerations\n- Focus on aggressive, prominent sounds\n- Ensure elements cut through dense arrangements\n- Balance aggression with musicality\n- Consider the role of each element in the trap aesthetic\n\n### 9. Boom-Bap Drum Enhancement (30 minutes)\n\n#### Objective\nAdd warmth and character to boom-bap drums while preserving the vintage aesthetic.\n\n#### Steps\n1. **Vintage Character** (10 minutes)\n   - Use Tube or Asymmetric algorithm for warmth\n   - Set Drive to 10-20% for subtle enhancement\n   - Use Clean Blend at 70-80% to preserve original sound\n   - Apply gentle Tone adjustments for warmth\n\n2. **Groove Preservation** (10 minutes)\n   - Focus on enhancing without changing the feel\n   - Use Transient Preservation at 85-95%\n   - Maintain the natural dynamics of the drums\n   - Ensure the vintage character is preserved\n\n3. **Integration** (10 minutes)\n   - Test with sampled loops if applicable\n   - Ensure enhancement complements the vintage aesthetic\n   - Verify drums support the musical elements\n   - Adjust for natural, musical enhancement\n\n#### Boom-Bap Specific Considerations\n- Preserve the vintage, organic feel\n- Add warmth without losing character\n- Maintain the natural groove and dynamics\n- Ensure enhancement supports the musical aesthetic\n\n## Performance Optimization\n\n### 10. CPU-Efficient Drum Enhancement (15 minutes)\n\n#### Objective\nOptimize Distructor settings for efficient CPU usage when processing multiple drum elements.\n\n#### Steps\n1. **Algorithm Selection** (5 minutes)\n   - Choose simpler algorithms when possible\n   - Soft Clip and Transistor use less CPU than others\n   - Avoid unnecessary dual-band processing\n   - Consider using simpler settings for background elements\n\n2. **Setting Optimization** (5 minutes)\n   - Reduce Drive on less important drum elements\n   - Use moderate Clean Blend settings\n   - Avoid extreme settings that require more processing\n   - Consider bypassing when not needed\n\n3. **Verification** (5 minutes)\n   - Monitor CPU usage during playback\n   - Verify sound quality is maintained\n   - Test with full project load\n   - Adjust if performance issues occur\n\n### 11. Mix Integration Techniques (20 minutes)\n\n#### Objective\nEnsure enhanced drums integrate well with the overall mix.\n\n#### Steps\n1. **Context Testing** (10 minutes)\n   - Always test drum enhancement in full mix context\n   - Verify drums sit well with other elements\n   - Check for frequency conflicts\n   - Ensure enhancement supports the musical arrangement\n\n2. **Balance Adjustment** (5 minutes)\n   - Adjust Clean Blend based on mix requirements\n   - Modify Output Gain to maintain proper balance\n   - Consider using automation for dynamic enhancement\n   - Ensure drums don't overpower other elements\n\n3. **Translation Verification** (5 minutes)\n   - Test on different playback systems\n   - Verify enhancement translates well\n   - Check for any artifacts on various systems\n   - Adjust if enhancement doesn't translate well\n\n## Troubleshooting Common Issues\n\n### 12. Common Drum Enhancement Problems (25 minutes)\n\n#### Problem: Harsh or Unmusical Distortion\n- **Cause**: Too much Drive or inappropriate algorithm\n- **Solution**: Reduce Drive, change algorithm, increase Clean Blend\n- **Prevention**: Start with conservative settings\n\n#### Problem: Loss of Transient/Punch\n- **Cause**: Excessive Drive or inappropriate settings\n- **Solution**: Increase Transient Preservation, reduce Drive\n- **Prevention**: Monitor transient response during adjustment\n\n#### Problem: Muddy Low-End\n- **Cause**: Distortion adding low-frequency artifacts\n- **Solution**: Use dual-band processing, apply high-pass filtering\n- **Prevention**: Consider pre-EQ before distortion\n\n#### Problem: Harsh High-End\n- **Cause**: Excessive high-frequency enhancement\n- **Solution**: Reduce Tone/High-Freq Control, use Clean Blend\n- **Prevention**: Be conservative with brightness controls\n\n#### Problem: Phase Issues\n- **Cause**: Distortion affecting stereo image\n- **Solution**: Check phase correlation, adjust stereo processing\n- **Prevention**: Monitor phase during adjustment\n\n## Integration Workflows\n\n### 13. DAW Integration for Drum Enhancement (10 minutes)\n\n#### Objective\nIntegrate drum enhancement techniques with DAW workflows.\n\n#### Steps\n1. **Template Creation** (5 minutes)\n   - Create templates with common drum enhancement settings\n   - Save presets for different drum types\n   - Organize templates by genre/style\n   - Document effective settings for future use\n\n2. **Automation Integration** (3 minutes)\n   - Automate Distructor parameters for dynamic enhancement\n   - Use automation for build-ups and breakdowns\n   - Consider automating Clean Blend for variation\n   - Document automation moves for consistency\n\n3. **Session Management** (2 minutes)\n   - Organize drum enhancement chains efficiently\n   - Create color coding for processed elements\n   - Document processing decisions\n   - Maintain session organization\n\n## Quality Control Procedures\n\n### Drum Enhancement Verification Checklist\n- [ ] All drum elements maintain their fundamental character\n- [ ] Enhancement adds to rather than detracts from the sound\n- [ ] No unwanted artifacts or harshness\n- [ ] Drums sit well in the overall mix\n- [ ] Enhancement is appropriate for the genre\n- [ ] Transient response is preserved\n- [ ] Frequency balance is maintained\n- [ ] Performance is optimized for the project\n- [ ] Enhancement supports the musical arrangement\n\n### Testing Protocols\n1. **Solo Testing** (5 minutes)\n   - Listen to each enhanced drum element in solo\n   - Verify enhancement is musical and appropriate\n   - Check for any artifacts or issues\n   - Ensure enhancement serves the musical purpose\n\n2. **Mix Context Testing** (5 minutes)\n   - Test enhanced drums in full mix context\n   - Verify they integrate well with other elements\n   - Check for frequency conflicts\n   - Ensure enhancement supports the overall arrangement\n\n## Advanced Techniques\n\n### 14. Parallel Processing for Drums (25 minutes)\n\n#### Objective\nUse parallel processing to blend enhanced and original drum sounds.\n\n#### Steps\n1. **Setup** (5 minutes)\n   - Create parallel processing chain with Distructor\n   - Use more aggressive settings on parallel chain\n   - Blend with original signal using Clean Blend or routing\n   - Adjust balance between chains\n\n2. **Processing** (10 minutes)\n   - Apply more Drive on parallel chain for enhancement\n   - Use different algorithms on parallel vs. original\n   - Process parallel chain separately if needed\n   - Maintain original transient response\n\n3. **Blending** (10 minutes)\n   - Adjust blend for desired effect\n   - Ensure parallel processing adds to rather than masks original\n   - Test with various blend ratios\n   - Verify the result serves the music\n\n#### Hip-Hop Applications\n- Maintain drum transients while adding character\n- Add harmonic content without losing original feel\n- Create fuller, more present drum sounds\n- Enhance drums without overwhelming the mix\n\n## Success Metrics\n\n### During Enhancement Sessions\n- [ ] Drum enhancement adds musical value\n- [ ] Original drum character is preserved\n- [ ] Enhancement is appropriate for the genre\n- [ ] No unwanted artifacts or harshness\n- [ ] Drums integrate well with the mix\n\n### Final Enhancement Quality\n- [ ] All drum elements are enhanced appropriately\n- [ ] Enhancement adds punch and presence\n- [ ] Transient response is maintained\n- [ ] Frequency balance is preserved\n- [ ] Enhancement supports the musical arrangement\n- [ ] Enhancement translates well to different systems\n\n## Conclusion\n\nDrum enhancement with Distructor is a powerful technique for adding character, punch, and presence to hip-hop, rap, and R&B productions. The key to successful drum enhancement is understanding how different algorithms and settings affect the sound, and matching the enhancement to the musical context and genre requirements.\n\nWhen applying drum enhancement, always prioritize the musical result over technical perfection. The enhancement should serve the music and support the overall arrangement. Regular practice with these techniques will improve your ability to enhance drums effectively while maintaining their natural character and groove.\n\nRemember to always test your enhancements in the context of the full mix, as what sounds good in solo may not work as well in the context of the complete arrangement. The goal is to create drums that enhance the music without drawing attention away from the core elements of the production.\n\n---\n\n**Created**: February 2026  \n**Focus**: Drum Enhancement with Distructor for Hip-Hop, Rap, and R&B  \n**Skill Level**: Intermediate to Advanced  \n**Estimated Implementation Time**: 2-3 hours for complete workflow"
+    },
+    "by-instrument": {
+      "hip-hop-drums": "# Hip-Hop Drum Enhancement with Distructor\n\n## Overview\nThis comprehensive guide focuses specifically on using Distructor to enhance hip-hop drum sounds. Hip-hop drum enhancement requires a nuanced approach that adds punch, character, and presence while preserving the fundamental qualities that make hip-hop drums distinctive. This guide covers techniques for all elements of the hip-hop drum palette.\n\n## Prerequisites\n- FL Studio with Distructor plugin\n- Hip-hop drum samples (kicks, snares, hi-hats, percussion)\n- Understanding of hip-hop drum aesthetics\n- Knowledge of Distructor's interface and parameters\n\n## Hip-Hop Drum Aesthetics\n\n### 1. Understanding Hip-Hop Drum Characteristics\n\n#### The Foundation of Hip-Hop Drums\nHip-hop drums have distinct characteristics that define the genre:\n- **Punchy Kicks**: Strong fundamental with tight attack\n- **Snappy Snares**: Crisp crack with full body\n- **Clean Hi-Hats**: Defined presence without harshness\n- **Groovy Percussion**: Musical elements that support the rhythm\n\n#### The Role of Distortion in Hip-Hop\nDistortion in hip-hop serves specific purposes:\n- **Enhancing Punch**: Adding harmonic content to kicks\n- **Increasing Presence**: Making snares cut through dense mixes\n- **Adding Character**: Giving personality to drum sounds\n- **Creating Cohesion**: Unifying different drum elements\n- **Modern Sound**: Achieving contemporary hip-hop aesthetics\n\n### 2. Distructor Settings Philosophy for Hip-Hop\n\n#### The Subtlety Principle\nHip-hop drum enhancement should be subtle:\n- Enhancement should be felt rather than heard\n- Original drum character must be preserved\n- Enhancement should support the groove\n- Avoid obvious distortion artifacts\n- Focus on musical enhancement over technical demonstration\n\n#### The Genre-Specific Approach\nDifferent hip-hop subgenres require different approaches:\n- **Classic Boom-Bap**: Subtle warmth and character\n- **Modern Trap**: Aggressive presence and punch\n- **Conscious Rap**: Clean enhancement without coloration\n- **Gangsta Rap**: Hard, aggressive character\n- **Alternative Hip-Hop**: Creative and experimental approaches\n\n## Kick Drum Enhancement\n\n### 3. Classic Hip-Hop Kick Enhancement (25 minutes)\n\n#### Objective\nEnhance classic hip-hop kicks for more punch and weight while maintaining their iconic character.\n\n#### Prerequisites\n- Classic hip-hop kick samples\n- Understanding of boom-bap aesthetics\n- Basic Distructor knowledge\n\n#### Steps\n1. **Algorithm Selection** (5 minutes)\n   - Choose Transistor algorithm for musical punch\n   - Set Drive to 15-20% for subtle enhancement\n   - Set Clean Blend to 60-70% for natural sound\n   - Adjust Output Gain to compensate for level changes\n\n2. **Tone Adjustment** (5 minutes)\n   - Set Tone to +1 to +2dB for added presence\n   - Use Low-Frequency Control to enhance weight (+1 to +2dB)\n   - Avoid excessive high-frequency enhancement\n   - Ensure kick maintains its fundamental character\n\n3. **Transient Preservation** (5 minutes)\n   - Set Transient Preservation to 80-90%\n   - Ensure kick attack remains punchy\n   - Listen for any softening of the initial hit\n   - Adjust Drive if kick becomes too soft or too aggressive\n\n4. **Harmonic Balance** (5 minutes)\n   - Set Harmonic Balance to -10 to +10% for musical enhancement\n   - Focus on even harmonics for warmth\n   - Avoid excessive odd harmonics that add harshness\n   - Ensure harmonic content supports the low-end\n\n5. **Verification** (5 minutes)\n   - Listen to kick with 808s to ensure compatibility\n   - Verify kick maintains its iconic character\n   - Test in full mix context\n   - Ensure kick cuts through without muddiness\n\n#### Classic Hip-Hop Considerations\n- Preserve the iconic boom-bap kick character\n- Enhance without changing the fundamental feel\n- Ensure compatibility with 808s and bass\n- Maintain the organic, sample-based aesthetic\n\n### 4. Modern Trap Kick Enhancement (30 minutes)\n\n#### Objective\nCreate aggressive, in-your-face trap kicks that cut through dense arrangements.\n\n#### Steps\n1. **Aggressive Algorithm** (8 minutes)\n   - Use Transistor algorithm with higher Drive (25-35%)\n   - Set Clean Blend to 50-60% for balance\n   - Add slight High-Frequency Control for attack (+1 to +2dB)\n   - Ensure kick has enough weight to complement 808s\n\n2. **Dual-Band Processing** (10 minutes)\n   - Set Crossover Frequency to 150Hz\n   - Apply higher Drive (30-40%) to low band for weight\n   - Apply moderate Drive (15-25%) to high band for presence\n   - Use Transistor algorithm for low band, Soft Clip for high band\n\n3. **Punch Enhancement** (7 minutes)\n   - Increase Transient Preservation to 85-95%\n   - Use Adaptive Processing at 10-20% for dynamic response\n   - Focus on maintaining attack while adding harmonic content\n   - Ensure kick remains punchy and aggressive\n\n4. **Integration** (5 minutes)\n   - Test with trap-style 808s for compatibility\n   - Verify kick cuts through dense arrangements\n   - Ensure no phase issues with low-end elements\n   - Adjust if kick becomes too harsh or muddy\n\n#### Trap-Specific Considerations\n- Focus on aggressive, prominent sound\n- Ensure kick cuts through dense trap arrangements\n- Balance aggression with musicality\n- Consider compatibility with trap 808s\n\n## Snare Drum Enhancement\n\n### 5. Classic Boom-Bap Snare Enhancement (20 minutes)\n\n#### Objective\nEnhance boom-bap snares for more crack and presence while maintaining their distinctive character.\n\n#### Steps\n1. **Algorithm Selection** (5 minutes)\n   - Use Transistor algorithm for musical presence\n   - Set Drive to 20-30% for noticeable enhancement\n   - Set Clean Blend to 50-60% for balance\n   - Adjust Output Gain to match input level\n\n2. **Brightness Adjustment** (5 minutes)\n   - Increase Tone control to add presence (+2 to +4dB)\n   - Use High-Frequency Control to enhance crack (+1 to +3dB)\n   - Listen for added snap without harshness\n   - Ensure snare body is not compromised\n\n3. **Transient Optimization** (5 minutes)\n   - Set Transient Preservation to 85-95%\n   - Ensure snare attack remains sharp\n   - Listen for any loss of initial transient\n   - Adjust if snare becomes too soft or too harsh\n\n4. **Integration** (5 minutes)\n   - Test snare in full mix context\n   - Ensure it cuts through without being harsh\n   - Verify compatibility with rap vocals\n   - Adjust Clean Blend if needed for natural sound\n\n#### Boom-Bap Considerations\n- Maintain the distinctive boom-bap snare character\n- Enhance crack without losing body\n- Ensure compatibility with sampled loops\n- Preserve the organic, sample-based aesthetic\n\n### 6. Modern Trap Snare Enhancement (25 minutes)\n\n#### Objective\nCreate aggressive, cutting trap snares that stand out in dense productions.\n\n#### Steps\n1. **Aggressive Processing** (8 minutes)\n   - Use Transistor algorithm with high Drive (30-45%)\n   - Set Clean Blend to 40-50% for presence\n   - Increase Tone and High-Frequency Control for crack (+3 to +5dB)\n   - Add slight reverb after distortion for space\n\n2. **Harmonic Enhancement** (7 minutes)\n   - Adjust Harmonic Balance to +20 to +40% for edge\n   - Focus on odd harmonics for aggression\n   - Ensure harmonic content adds to rather than detracts from crack\n   - Avoid excessive harmonics that cause harshness\n\n3. **Dynamic Processing** (5 minutes)\n   - Use Adaptive Processing at 15-25% for dynamic response\n   - Ensure snare responds to playing dynamics\n   - Maintain consistency across different playing intensities\n   - Adjust for musical rather than mechanical response\n\n4. **Mix Integration** (5 minutes)\n   - Test snare in dense trap mix context\n   - Ensure it cuts through without being harsh\n   - Verify compatibility with hi-hats and 808s\n   - Adjust if snare becomes too prominent\n\n#### Trap-Specific Considerations\n- Focus on aggressive, cutting presence\n- Ensure snare stands out in dense arrangements\n- Balance aggression with musicality\n- Consider compatibility with trap aesthetic\n\n## Hi-Hat Enhancement\n\n### 7. Classic Hip-Hop Hi-Hat Enhancement (15 minutes)\n\n#### Objective\nAdd presence and clarity to classic hip-hop hi-hats while maintaining their delicate character.\n\n#### Steps\n1. **Subtle Approach** (5 minutes)\n   - Use Soft Clip algorithm for gentleness\n   - Set Drive to 10-20% for subtle enhancement\n   - Set Clean Blend to 70-80% to preserve character\n   - Adjust Output Gain to match input level\n\n2. **Brightness Control** (5 minutes)\n   - Use High-Frequency Control to enhance presence (+2 to +4dB)\n   - Be conservative with Tone control to avoid harshness\n   - Listen for added clarity without brittleness\n   - Ensure hi-hats don't become piercing\n\n3. **Integration Check** (5 minutes)\n   - Test hi-hats in full mix context\n   - Ensure they're audible but not harsh\n   - Verify they complement rather than compete with vocals\n   - Adjust if hi-hats become too prominent\n\n#### Classic Hip-Hop Considerations\n- Maintain hi-hat delicacy while adding presence\n- Ensure hi-hats don't compete with vocals\n- Consider the role of hi-hats in the overall groove\n- Preserve the organic, sample-based aesthetic\n\n### 8. Modern Trap Hi-Hat Enhancement (20 minutes)\n\n#### Objective\nCreate aggressive, cutting trap hi-hats that enhance the modern aesthetic.\n\n#### Steps\n1. **Aggressive Approach** (8 minutes)\n   - Use Transistor algorithm for presence\n   - Set Drive to 20-35% for noticeable enhancement\n   - Set Clean Blend to 50-60% for balance\n   - Increase High-Frequency Control for cutting presence (+3 to +5dB)\n\n2. **Character Enhancement** (7 minutes)\n   - Adjust Harmonic Balance for desired character\n   - Positive values add edge and presence\n   - Negative values add warmth and smoothness\n   - Find balance that enhances without harshness\n\n3. **Mix Integration** (5 minutes)\n   - Test hi-hats in dense trap mix context\n   - Ensure they cut through without being harsh\n   - Verify compatibility with other elements\n   - Adjust if hi-hats become too prominent\n\n#### Trap-Specific Considerations\n- Focus on cutting presence in dense arrangements\n- Ensure hi-hats enhance the modern aesthetic\n- Balance aggression with musicality\n- Consider compatibility with trap production style\n\n## 808 Enhancement\n\n### 9. Classic Hip-Hop 808 Enhancement (30 minutes)\n\n#### Objective\nAdd harmonic content and character to classic hip-hop 808s without compromising low-end.\n\n#### Steps\n1. **Algorithm Selection** (8 minutes)\n   - Choose Asymmetric or Tube algorithm for warmth\n   - Set Drive to 15-25% for subtle enhancement\n   - Set Clean Blend to 60-70% for natural sound\n   - Adjust Output Gain to compensate for level changes\n\n2. **Dual-Band Processing** (10 minutes)\n   - Set Crossover Frequency to 200Hz\n   - Apply moderate Drive (20-30%) to low band\n   - Apply lighter Drive (5-15%) to high band\n   - Use Asymmetric algorithm for low band, Soft Clip for high band\n\n3. **Tone Shaping** (7 minutes)\n   - Adjust Low-Frequency Control for warmth (+1 to +3dB)\n   - Be conservative with High-Frequency Control to avoid harshness\n   - Ensure fundamental frequencies remain strong\n   - Listen for added harmonic content without muddiness\n\n4. **Integration Verification** (5 minutes)\n   - Test 808 with kick drum to ensure compatibility\n   - Verify low-end remains tight and defined\n   - Check for any phase issues\n   - Ensure 808 sits well in the mix\n\n#### Classic Hip-Hop Considerations\n- Preserve 808's fundamental low-end character\n- Add harmonic content for presence and definition\n- Ensure compatibility with kick drums\n- Maintain the organic, sample-based aesthetic\n\n### 10. Modern Trap 808 Enhancement (35 minutes)\n\n#### Objective\nCreate aggressive, prominent trap 808s that define the modern sound.\n\n#### Steps\n1. **Aggressive Algorithm** (10 minutes)\n   - Use Hard Clip algorithm for aggression (Drive 40-60%)\n   - Apply dual-band processing with higher low-band Drive\n   - Set Clean Blend to 30-40% for full effect\n   - Focus on adding harmonic content without losing fundamentals\n\n2. **Harmonic Enhancement** (10 minutes)\n   - Adjust Harmonic Balance to +30 to +50% for aggression\n   - Focus on creating harmonic complexity\n   - Ensure harmonics add to rather than detract from character\n   - Avoid excessive harmonics that cause harshness\n\n3. **Weight and Presence** (10 minutes)\n   - Use Low-Frequency Control to enhance weight (+2 to +4dB)\n   - Apply High-Frequency Control for presence (+1 to +2dB)\n   - Balance weight and presence for the trap aesthetic\n   - Ensure 808s remain musical despite aggression\n\n4. **Integration** (5 minutes)\n   - Test with trap kicks for compatibility\n   - Verify 808s cut through dense arrangements\n   - Check for phase issues in low-end\n   - Adjust if 808s become too harsh or muddy\n\n#### Trap-Specific Considerations\n- Focus on aggressive, prominent sound\n- Ensure 808s define the modern trap aesthetic\n- Balance aggression with musicality\n- Consider compatibility with trap production style\n\n## Percussion Enhancement\n\n### 11. Hip-Hop Percussion Enhancement (25 minutes)\n\n#### Objective\nAdd character and presence to various percussion elements in hip-hop productions.\n\n#### Steps\n1. **Individual Treatment** (10 minutes)\n   - Process each percussion element separately\n   - Use Transistor algorithm for presence\n   - Set Drive to 15-30% based on element\n   - Adjust Clean Blend to preserve original character\n\n2. **Frequency-Specific Enhancement** (8 minutes)\n   - Use High-Frequency Control to enhance brightness\n   - Apply Tone control for presence\n   - Be conservative to avoid harshness\n   - Ensure percussion elements remain musical\n\n3. **Mix Integration** (7 minutes)\n   - Test percussion in full mix context\n   - Ensure elements add to rather than detract from groove\n   - Verify percussion doesn't compete with vocals\n   - Adjust if elements become too prominent\n\n#### Hip-Hop Specific Considerations\n- Enhance percussion to support the groove\n- Maintain the musical character of percussion\n- Consider how enhancement affects the overall rhythm\n- Match enhancement to the style and energy of the track\n\n## Subgenre-Specific Approaches\n\n### 12. Boom-Bap Enhancement Approach (30 minutes)\n\n#### Objective\nApply subtle enhancement that preserves the classic boom-bap aesthetic.\n\n#### Steps\n1. **Vintage Character** (10 minutes)\n   - Use Tube or Asymmetric algorithm for warmth\n   - Set Drive to 10-20% for subtle enhancement\n   - Use Clean Blend at 70-80% to preserve original sound\n   - Apply gentle Tone adjustments for warmth\n\n2. **Groove Preservation** (10 minutes)\n   - Focus on enhancing without changing the feel\n   - Use Transient Preservation at 85-95%\n   - Maintain the natural dynamics of the drums\n   - Ensure the vintage character is preserved\n\n3. **Integration** (10 minutes)\n   - Test with sampled loops if applicable\n   - Ensure enhancement complements the vintage aesthetic\n   - Verify drums support the musical elements\n   - Adjust for natural, musical enhancement\n\n#### Boom-Bap Considerations\n- Preserve the vintage, organic feel\n- Add warmth without losing character\n- Maintain the natural groove and dynamics\n- Ensure enhancement supports the musical aesthetic\n\n### 13. Trap Enhancement Approach (35 minutes)\n\n#### Objective\nCreate aggressive enhancement that defines the modern trap sound.\n\n#### Steps\n1. **Aggressive Enhancement** (12 minutes)\n   - Use Hard Clip and Transistor algorithms for aggression\n   - Set Drive to 30-60% for prominent enhancement\n   - Use Clean Blend at 30-60% for full effect\n   - Apply Tone adjustments for cutting presence\n\n2. **Modern Aesthetic** (12 minutes)\n   - Focus on creating the modern trap sound\n   - Ensure elements cut through dense arrangements\n   - Add harmonic complexity for contemporary feel\n   - Balance aggression with musicality\n\n3. **Integration** (11 minutes)\n   - Test with trap-style arrangements\n   - Ensure enhancement defines the trap aesthetic\n   - Verify elements work cohesively\n   - Adjust for the modern trap production style\n\n#### Trap Considerations\n- Focus on aggressive, prominent sounds\n- Ensure elements cut through dense arrangements\n- Balance aggression with musicality\n- Consider the role of each element in the trap aesthetic\n\n## Performance Optimization\n\n### 14. CPU-Efficient Hip-Hop Enhancement (15 minutes)\n\n#### Objective\nOptimize Distructor settings for efficient CPU usage in hip-hop productions.\n\n#### Steps\n1. **Algorithm Selection** (5 minutes)\n   - Choose simpler algorithms when possible\n   - Soft Clip and Transistor use less CPU than others\n   - Avoid unnecessary dual-band processing\n   - Consider using simpler settings for background elements\n\n2. **Setting Optimization** (5 minutes)\n   - Reduce Drive on less important drum elements\n   - Use moderate Clean Blend settings\n   - Avoid extreme settings that require more processing\n   - Consider bypassing when not needed\n\n3. **Verification** (5 minutes)\n   - Monitor CPU usage during playback\n   - Verify sound quality is maintained\n   - Test with full project load\n   - Adjust if performance issues occur\n\n### 15. Mix Integration Techniques (20 minutes)\n\n#### Objective\nEnsure enhanced drums integrate well with hip-hop mixes.\n\n#### Steps\n1. **Context Testing** (10 minutes)\n   - Always test drum enhancement in full mix context\n   - Verify drums sit well with other elements\n   - Check for frequency conflicts\n   - Ensure enhancement supports the musical arrangement\n\n2. **Balance Adjustment** (5 minutes)\n   - Adjust Clean Blend based on mix requirements\n   - Modify Output Gain to maintain proper balance\n   - Consider using automation for dynamic enhancement\n   - Ensure drums don't overpower other elements\n\n3. **Translation Verification** (5 minutes)\n   - Test on different playback systems\n   - Verify enhancement translates well\n   - Check for any artifacts on various systems\n   - Adjust if enhancement doesn't translate well\n\n## Troubleshooting Common Issues\n\n### 16. Common Hip-Hop Enhancement Problems (25 minutes)\n\n#### Problem: Loss of Hip-Hop Character\n- **Cause**: Too much enhancement or wrong algorithm\n- **Solution**: Reduce Drive, change algorithm, increase Clean Blend\n- **Prevention**: Start with conservative settings\n\n#### Problem: Phase Issues with Low-End\n- **Cause**: Distortion affecting stereo image\n- **Solution**: Check phase correlation, adjust stereo processing\n- **Prevention**: Monitor phase during adjustment\n\n#### Problem: Competition with Vocals\n- **Cause**: Drums too prominent or harsh\n- **Solution**: Reduce Drive, adjust frequency content, use Clean Blend\n- **Prevention**: Test with vocals during adjustment\n\n#### Problem: Muddy Low-End\n- **Cause**: Distortion adding low-frequency artifacts\n- **Solution**: Use dual-band processing, apply high-pass filtering\n- **Prevention**: Consider pre-EQ before distortion\n\n#### Problem: Harsh High-End\n- **Cause**: Excessive high-frequency enhancement\n- **Solution**: Reduce Tone/High-Freq Control, use Clean Blend\n- **Prevention**: Be conservative with brightness controls\n\n## Integration Workflows\n\n### 17. DAW Integration for Hip-Hop (10 minutes)\n\n#### Objective\nIntegrate hip-hop drum enhancement techniques with DAW workflows.\n\n#### Steps\n1. **Template Creation** (5 minutes)\n   - Create templates with common hip-hop enhancement settings\n   - Save presets for different drum types\n   - Organize templates by subgenre/style\n   - Document effective settings for future use\n\n2. **Automation Integration** (3 minutes)\n   - Automate Distructor parameters for dynamic enhancement\n   - Use automation for build-ups and breakdowns\n   - Consider automating Clean Blend for variation\n   - Document automation moves for consistency\n\n3. **Session Management** (2 minutes)\n   - Organize drum enhancement chains efficiently\n   - Create color coding for processed elements\n   - Document processing decisions\n   - Maintain session organization\n\n## Quality Control Procedures\n\n### Hip-Hop Enhancement Verification Checklist\n- [ ] All drum elements maintain their hip-hop character\n- [ ] Enhancement adds to rather than detracts from the sound\n- [ ] No unwanted artifacts or harshness\n- [ ] Drums sit well in the hip-hop mix\n- [ ] Enhancement is appropriate for the subgenre\n- [ ] Transient response is preserved\n- [ ] Frequency balance is maintained\n- [ ] Performance is optimized for the project\n- [ ] Enhancement supports the hip-hop aesthetic\n\n### Testing Protocols\n1. **Solo Testing** (5 minutes)\n   - Listen to each enhanced drum element in solo\n   - Verify enhancement is musical and appropriate\n   - Check for any artifacts or issues\n   - Ensure enhancement serves the hip-hop aesthetic\n\n2. **Mix Context Testing** (5 minutes)\n   - Test enhanced drums in full hip-hop mix context\n   - Verify they integrate well with other elements\n   - Check for frequency conflicts\n   - Ensure enhancement supports the overall arrangement\n\n## Advanced Techniques\n\n### 18. Subgenre-Specific Enhancement (30 minutes)\n\n#### Objective\nApply enhancement techniques specific to different hip-hop subgenres.\n\n#### Steps\n1. **Boom-Bap Enhancement** (8 minutes)\n   - Use subtle, warm enhancement\n   - Focus on preserving organic character\n   - Use Tube or Asymmetric algorithms\n   - Apply conservative Drive settings\n\n2. **Trap Enhancement** (8 minutes)\n   - Use aggressive, prominent enhancement\n   - Focus on cutting presence\n   - Use Hard Clip and Transistor algorithms\n   - Apply higher Drive settings\n\n3. **Conscious Rap Enhancement** (7 minutes)\n   - Use clean, subtle enhancement\n   - Focus on clarity and presence\n   - Use Soft Clip algorithm\n   - Apply minimal Drive settings\n\n4. **Gangsta Rap Enhancement** (7 minutes)\n   - Use hard, aggressive enhancement\n   - Focus on power and presence\n   - Use Transistor algorithm\n   - Apply moderate to high Drive settings\n\n#### Subgenre Applications\n- Match enhancement to the specific aesthetic\n- Consider the cultural context of each subgenre\n- Apply appropriate intensity levels\n- Ensure enhancement supports the subgenre's characteristics\n\n## Success Metrics\n\n### During Enhancement Sessions\n- [ ] Hip-hop drum enhancement adds musical value\n- [ ] Original drum character is preserved\n- [ ] Enhancement is appropriate for the subgenre\n- [ ] No unwanted artifacts or harshness\n- [ ] Drums integrate well with the hip-hop mix\n\n### Final Enhancement Quality\n- [ ] All drum elements are enhanced appropriately\n- [ ] Enhancement adds punch and presence\n- [ ] Transient response is maintained\n- [ ] Frequency balance is preserved\n- [ ] Enhancement supports the hip-hop aesthetic\n- [ ] Enhancement translates well to different systems\n\n## Conclusion\n\nHip-hop drum enhancement with Distructor is a powerful technique for adding character, punch, and presence to hip-hop productions. The key to successful enhancement is understanding the specific requirements of different hip-hop subgenres and matching the enhancement to the musical context and aesthetic requirements.\n\nWhen applying drum enhancement in hip-hop, always prioritize the preservation of the genre's distinctive characteristics while adding the desired enhancement. The enhancement should serve the music and support the overall arrangement. Regular practice with these techniques will improve your ability to enhance hip-hop drums effectively while maintaining their fundamental character and groove.\n\nRemember to always test your enhancements in the context of the full mix, as what sounds good in solo may not work as well in the context of the complete arrangement. The goal is to create drums that enhance the hip-hop music without drawing attention away from the core elements of the production.\n\n---\n\n**Created**: February 2026  \n**Focus**: Hip-Hop Drum Enhancement with Distructor  \n**Skill Level**: Intermediate to Advanced  \n**Estimated Implementation Time**: 3-4 hours for complete workflow"
+    },
+    "common-usage.md": {
+      "common-usage": "# Common Workflows: Distructor\r\n\r\n## 1. Parallel Distortion (The \"Mix\" Knob)\r\n\r\nDistortion often kills dynamic range (transients). Parallel processing restores it.\r\n\r\n1.  **Goal:** Add grit to a Snare but keep the \"Pop\".\r\n2.  **Setup:**\r\n    *   Slot 1: Distortion (Bitcrush).\r\n    *   Slot 2: Filter (High Pass).\r\n3.  **Tweak:**\r\n    *   Crank the **Drive** on the Bitcrusher until the snare is destroyed.\r\n    *   Turn the **Mix** knob of the Distortion Module to 25%.\r\n4.  **Result:** You hear the clean snare (75%) with a layer of digital noise (25%) on top.\r\n\r\n## 2. Artificial Stereo Width\r\n\r\n1.  **Source:** A Mono Synth line.\r\n2.  **Module:** Chorus.\r\n3.  **Mode:** \"Wide\".\r\n4.  **Settings:**\r\n    *   Speed: Slow.\r\n    *   Depth: High.\r\n    *   Blur: Medium.\r\n5.  **Result:** The \"Wide\" mode in Distructor inverts the phase of the LFO for the Right channel, creating a massive stereo spread that collapses perfectly to mono (mathematically).\r\n\r\n## 3. The \"Lo-Fi\" Radio Vocal\r\n\r\n1.  **Chain Is Key:**\r\n    *   [Filter] -> [Distortion] -> [Cab].\r\n2.  **Filter:** Band Pass. Center it at 1000Hz (Telephone frequencies).\r\n3.  **Distortion:** Bitcrush. Rate at 8000Hz (8-bit era).\r\n4.  **Cab:** Small Radio / Combo.\r\n5.  **Why:** The Bandpass removes bass/treble. The Bitcrush adds digital artifacts. The Cab adds the \"boxiness\" of a small speaker.\r\n\r\n## 4. Wavefolding 808s\r\n\r\n1.  **Concept:** Wavefolding adds harmonics to simple waveforms (Sine/Triangle) by \"folding\" the peaks downwards when they hit the ceiling.\r\n2.  **Source:** A pure 808 Sine wave.\r\n3.  **Module:** Distortion -> Wavefolder.\r\n4.  **Action:** Increasing Drive doesn't just square the wave; it introduces complex, metallic overtones that evolve as the 808 decays.\r\n5.  **Sound:** This is the signature sound of \"West Coast\" synthesis (Buchla) applied to Trap bass.\r\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Distructor\r\n\r\nThis section contains workflow information for the distructor plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Distructor\r\n\r\nThis section contains reference information for the distructor plugin.\r\n"
+    }
+  }
+}

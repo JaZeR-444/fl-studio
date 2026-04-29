@@ -1,0 +1,101 @@
+{
+  "$schema": "./schema.json",
+  "plugin": {
+    "name": "Wasp XT",
+    "version": "1.x",
+    "category": "Instrument",
+    "type": "Enhanced 3-Oscillator Subtractive Synthesizer",
+    "status": "ACTIVE (Replaces discontinued Wasp)",
+    "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/WaspXT.htm"
+  },
+  "parameters": {
+    "oscillators": [
+      {
+        "id": "waveform",
+        "name": "Waveform",
+        "options": ["Sine", "Triangle", "Saw", "Square", "Pulse", "Noise"],
+        "count": 3
+      },
+      {
+        "id": "pitch",
+        "name": "Pitch",
+        "range": "-48 to +48 semitones"
+      },
+      {
+        "id": "detune",
+        "name": "Detune",
+        "range": "-100 to +100 cents"
+      }
+    ],
+    "filter": [
+      {
+        "id": "type",
+        "name": "Filter Type",
+        "options": ["LP", "HP", "BP", "BR", "Formant"]
+      },
+      {
+        "id": "cutoff",
+        "name": "Cutoff",
+        "range": "20Hz-20kHz",
+        "sweetSpot": "500-2000Hz for bass, 2-8kHz for leads"
+      },
+      {
+        "id": "resonance",
+        "name": "Resonance",
+        "range": "0-100%",
+        "sweetSpot": "40-70%"
+      },
+      {
+        "id": "drive",
+        "name": "Drive",
+        "range": "0-100%",
+        "description": "Pre-filter distortion"
+      }
+    ],
+    "unison": [
+      {
+        "id": "voices",
+        "name": "Unison Voices",
+        "range": "1-12",
+        "sweetSpot": "5-7 for leads, 2-3 for subtle width"
+      },
+      {
+        "id": "detune",
+        "name": "Unison Detune",
+        "range": "0-100%",
+        "sweetSpot": "35-45% for supersaw"
+      }
+    ],
+    "effects": [
+      {
+        "name": "Distortion",
+        "description": "Pre/post filter saturation"
+      },
+      {
+        "name": "Chorus",
+        "description": "Stereo width and thickness"
+      },
+      {
+        "name": "Delay",
+        "description": "Time-based echo"
+      },
+      {
+        "name": "Reverb",
+        "description": "Spatial ambience"
+      }
+    ]
+  },
+  "enhancements": {
+    "overWasp": [
+      "Unison mode (up to 12 voices)",
+      "Formant filter type",
+      "Built-in effects suite",
+      "Advanced modulation matrix",
+      "Improved sound quality"
+    ]
+  },
+  "cpuUsage": "Low to Moderate (depends on unison voices)",
+  "latency": "Minimal",
+  "realtimeSafe": true,
+  "status": "ACTIVE"
+}

@@ -1,0 +1,821 @@
+{
+  "id": "fruity-x-y-controller",
+  "name": "Fruity X-Y Controller",
+  "presets": {
+    "macro-drop-build": {
+      "schema": "x-y-controller-preset-v1",
+      "name": "Drop Build Macro",
+      "type": "macro-template",
+      "description": "Multi-parameter intensity builder - one gesture controls 6+ parameters simultaneously",
+      "author": "DEEPER DIVES",
+      "source": "IL-MAN",
+      "tags": [
+        "macro",
+        "build",
+        "drop",
+        "multi-parameter",
+        "performance"
+      ],
+      "hipHopCategory": "Performance Control",
+      "settings": {
+        "mode": "absolute",
+        "hold": false,
+        "smoothing": 5,
+        "xMin": 0,
+        "xMax": 100,
+        "yMin": 0,
+        "yMax": 100,
+        "xMap": {
+          "type": "linear",
+          "description": "Even distribution across X parameters"
+        },
+        "yMap": {
+          "type": "exponential",
+          "description": "Y parameters kick in later in gesture"
+        }
+      },
+      "mappings": [
+        {
+          "output": "X",
+          "target": "Filter Cutoff",
+          "targetMin": "200Hz",
+          "targetMax": "20kHz",
+          "curve": "linear",
+          "description": "Opens up frequency spectrum"
+        },
+        {
+          "output": "X",
+          "target": "Reverb Send",
+          "targetMin": "0%",
+          "targetMax": "70%",
+          "curve": "exponential",
+          "description": "Increases space wash (kicks in late)"
+        },
+        {
+          "output": "X",
+          "target": "Stereo Width",
+          "targetMin": "80%",
+          "targetMax": "150%",
+          "curve": "linear",
+          "description": "Widens stereo field"
+        },
+        {
+          "output": "Y",
+          "target": "Saturation Drive",
+          "targetMin": "0%",
+          "targetMax": "40%",
+          "curve": "exponential",
+          "description": "Adds harmonic excitement (late kick)"
+        },
+        {
+          "output": "Y",
+          "target": "Compression Ratio",
+          "targetMin": "2:1",
+          "targetMax": "8:1",
+          "curve": "linear",
+          "description": "Increases punch and glue"
+        },
+        {
+          "output": "Y",
+          "target": "Delay Feedback",
+          "targetMin": "10%",
+          "targetMax": "60%",
+          "curve": "exponential",
+          "description": "More echo intensity"
+        }
+      ],
+      "gestureGuide": {
+        "defaultPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "buildGesture": "Spiral from center outward over 8-16 bars",
+        "sweepGesture": "Diagonal from bottom-left to top-right",
+        "peakGesture": "Hold top-right corner at drop moment"
+      },
+      "hipHopUsage": {
+        "primaryUse": "Maximum impact pre-drop builds",
+        "secondaryUses": [
+          "Full mix builds",
+          "Chorus intensification",
+          "Breakdown-to-drop transitions"
+        ],
+        "genreFit": [
+          "Trap",
+          "EDM Trap",
+          "Pop-Hip-Hop",
+          "R&B"
+        ],
+        "vibeTarget": "BOUNCE",
+        "bestFor": "Creating massive energy before impact"
+      },
+      "performanceNotes": {
+        "recording": "Record multiple takes, pick most natural spiral",
+        "practice": "Practice spiral motion with accelerating speed",
+        "hybrid": "Live capture + playlist quantization for precision"
+      }
+    },
+    "macro-dual-control": {
+      "schema": "x-y-controller-preset-v1",
+      "name": "Dual Control Template",
+      "type": "macro-template",
+      "description": "Independent two-parameter control - perfect for blend, morph, and A/B situations",
+      "author": "DEEPER DIVES",
+      "source": "IL-MAN",
+      "tags": [
+        "dual",
+        "blend",
+        "morph",
+        "A/B",
+        "crossfade"
+      ],
+      "hipHopCategory": "Mix Control",
+      "settings": {
+        "mode": "absolute",
+        "hold": false,
+        "smoothing": 0,
+        "xMin": 0,
+        "xMax": 100,
+        "yMin": 0,
+        "yMax": 100,
+        "xMap": {
+          "type": "linear",
+          "description": "Direct 1:1 control of X parameter"
+        },
+        "yMap": {
+          "type": "linear",
+          "description": "Direct 1:1 control of Y parameter"
+        }
+      },
+      "mappings": [
+        {
+          "output": "X",
+          "target": "[USER DEFINED - Parameter A]",
+          "targetMin": "0%",
+          "targetMax": "100%",
+          "curve": "linear",
+          "description": "First independent parameter"
+        },
+        {
+          "output": "Y",
+          "target": "[USER DEFINED - Parameter B]",
+          "targetMin": "0%",
+          "targetMax": "100%",
+          "curve": "linear",
+          "description": "Second independent parameter"
+        }
+      ],
+      "configurationExamples": [
+        {
+          "name": "Dry/Wet Blend",
+          "xTarget": "Dry Signal Level",
+          "yTarget": "Wet Signal Level",
+          "description": "Crossfade between dry and processed signal"
+        },
+        {
+          "name": "Layer Morph",
+          "xTarget": "Layer A Volume",
+          "yTarget": "Layer B Volume",
+          "description": "Morph between two sound sources"
+        },
+        {
+          "name": "808 Tone Control",
+          "xTarget": "808 Click Amount",
+          "yTarget": "808 Sub Boost",
+          "description": "Balance between attack and sub elements"
+        },
+        {
+          "name": "Vocal FX Blend",
+          "xTarget": "Reverb Send",
+          "yTarget": "Delay Send",
+          "description": "Balance space vs echo on vocals"
+        }
+      ],
+      "gestureGuide": {
+        "corners": {
+          "bottomLeft": "Min X, Min Y",
+          "bottomRight": "Max X, Min Y",
+          "topLeft": "Min X, Max Y",
+          "topRight": "Max X, Max Y"
+        },
+        "center": "Both parameters at 50%",
+        "patterns": [
+          "Diagonal: Smooth transition between states",
+          "Circle: Continuous morph between all states",
+          "Corner jumps: Instant A/B/C/D switching"
+        ]
+      },
+      "hipHopUsage": {
+        "primaryUse": "Independent two-parameter control",
+        "secondaryUses": [
+          "Sound source morphing",
+          "Effect intensity balancing",
+          "Real-time mixing"
+        ],
+        "genreFit": [
+          "All Hip-Hop subgenres",
+          "R&B",
+          "Pop"
+        ],
+        "vibeTarget": "TEXTURE",
+        "bestFor": "Blending and morphing between sonic states"
+      },
+      "performanceNotes": {
+        "recording": "Map targets first, then record gestures",
+        "technique": "Use corners as preset states, center for blends",
+        "expression": "Small movements around sweet spots for subtle changes"
+      }
+    },
+    "macro-filter-sweep": {
+      "schema": "x-y-controller-preset-v1",
+      "name": "Filter Sweep Macro",
+      "type": "macro-template",
+      "description": "Single-axis filter sweep with optional resonance - classic drop effect",
+      "author": "DEEPER DIVES",
+      "source": "IL-MAN",
+      "tags": [
+        "filter",
+        "drop",
+        "build",
+        "macro"
+      ],
+      "hipHopCategory": "Drop Effects",
+      "settings": {
+        "mode": "absolute",
+        "hold": false,
+        "smoothing": 10,
+        "xMin": 0,
+        "xMax": 100,
+        "yMin": 50,
+        "yMax": 100,
+        "xMap": {
+          "type": "exponential",
+          "description": "Sensitive at filter open, subtle at closed"
+        },
+        "yMap": {
+          "type": "linear",
+          "description": "Direct resonance control"
+        }
+      },
+      "mappings": [
+        {
+          "output": "X",
+          "target": "Filter Cutoff",
+          "targetMin": "20Hz",
+          "targetMax": "20kHz",
+          "curve": "exponential",
+          "description": "Main filter sweep - full frequency range"
+        },
+        {
+          "output": "Y",
+          "target": "Filter Resonance",
+          "targetMin": "0%",
+          "targetMax": "60%",
+          "curve": "linear",
+          "description": "Add character peak at cutoff frequency"
+        }
+      ],
+      "gestureGuide": {
+        "defaultPosition": {
+          "x": 0,
+          "y": 50
+        },
+        "buildGesture": "Move X from 0% to 100% over 4-8 bars",
+        "accentGesture": "Quick X jitters on beats 2 and 4",
+        "releaseGesture": "Snap X to 0% for instant filter close"
+      },
+      "hipHopUsage": {
+        "primaryUse": "Pre-drop filter sweeps",
+        "secondaryUses": [
+          "Breakdown texture",
+          "Transition effects",
+          "Vocal filtering"
+        ],
+        "genreFit": [
+          "Trap",
+          "Drill",
+          "Hip-Hop",
+          "R&B"
+        ],
+        "vibeTarget": "TENSION",
+        "bestFor": "Creating anticipation before impact"
+      },
+      "performanceNotes": {
+        "recording": "Record in loop mode, comp best takes",
+        "timing": "Sync gestures to 1/4 or 1/2 note grid",
+        "modulation": "Add subtle Y movement for evolving resonance"
+      }
+    }
+  },
+  "parameters": {
+    "complete-list": {
+      "schema": "x-y-controller-params-v1",
+      "description": "Complete parameter reference for Fruity X-Y Controller",
+      "source": "IL-MAN",
+      "parameters": [
+        {
+          "id": "x-output",
+          "name": "X-Output",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "description": "Current horizontal axis output value",
+          "category": "output",
+          "modulatable": false,
+          "automation": true
+        },
+        {
+          "id": "y-output",
+          "name": "Y-Output",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "description": "Current vertical axis output value",
+          "category": "output",
+          "modulatable": false,
+          "automation": true
+        },
+        {
+          "id": "x-min",
+          "name": "X-Minimum",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "description": "Minimum value for X output range",
+          "category": "range",
+          "default": 0,
+          "modulatable": false
+        },
+        {
+          "id": "x-max",
+          "name": "X-Maximum",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "description": "Maximum value for X output range",
+          "category": "range",
+          "default": 100,
+          "modulatable": false
+        },
+        {
+          "id": "y-min",
+          "name": "Y-Minimum",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "description": "Minimum value for Y output range",
+          "category": "range",
+          "default": 0,
+          "modulatable": false
+        },
+        {
+          "id": "y-max",
+          "name": "Y-Maximum",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "description": "Maximum value for Y output range",
+          "category": "range",
+          "default": 100,
+          "modulatable": false
+        },
+        {
+          "id": "speed",
+          "name": "Speed",
+          "range": {
+            "min": 0,
+            "max": "unlimited",
+            "unit": "arbitrary"
+          },
+          "description": "Rate of pad movement (velocity)",
+          "category": "dynamics",
+          "modulatable": false,
+          "automation": true
+        },
+        {
+          "id": "acceleration",
+          "name": "Acceleration",
+          "range": {
+            "min": "-unlimited",
+            "max": "unlimited",
+            "unit": "arbitrary"
+          },
+          "description": "Change in speed (positive or negative)",
+          "category": "dynamics",
+          "modulatable": false,
+          "automation": true
+        },
+        {
+          "id": "smoothing",
+          "name": "Smoothing",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "description": "Interpolation amount between values",
+          "category": "processing",
+          "default": 0,
+          "modulatable": false
+        },
+        {
+          "id": "absolute-mode",
+          "name": "Absolute Mode",
+          "range": {
+            "values": [
+              "off",
+              "on"
+            ]
+          },
+          "description": "Output equals current position (vs. relative change)",
+          "category": "mode",
+          "default": "on",
+          "modulatable": false
+        },
+        {
+          "id": "relative-mode",
+          "name": "Relative Mode",
+          "range": {
+            "values": [
+              "off",
+              "on"
+            ]
+          },
+          "description": "Output equals change from previous position",
+          "category": "mode",
+          "default": "off",
+          "modulatable": false
+        },
+        {
+          "id": "hold",
+          "name": "Hold",
+          "range": {
+            "values": [
+              "off",
+              "on"
+            ]
+          },
+          "description": "Latch last position value",
+          "category": "mode",
+          "default": "off",
+          "modulatable": false
+        }
+      ],
+      "mappings": {
+        "x-map": {
+          "description": "Response curve for X axis",
+          "types": [
+            "linear",
+            "exponential",
+            "logarithmic",
+            "step",
+            "custom"
+          ],
+          "editable": true
+        },
+        "y-map": {
+          "description": "Response curve for Y axis",
+          "types": [
+            "linear",
+            "exponential",
+            "logarithmic",
+            "step",
+            "custom"
+          ],
+          "editable": true
+        }
+      }
+    },
+    "modulation-targets": {
+      "schema": "x-y-modulation-targets-v1",
+      "description": "Optimal modulation targets and mappings for hip-hop production",
+      "source": "IL-MAN",
+      "recommendedTargets": [
+        {
+          "category": "Filter",
+          "targets": [
+            {
+              "parameter": "Cutoff Frequency",
+              "xMap": "exponential",
+              "yMap": "linear",
+              "useCase": "Main filter sweep for drops and builds"
+            },
+            {
+              "parameter": "Resonance",
+              "xMap": "linear",
+              "yMap": "logarithmic",
+              "useCase": "Add character to filter movement"
+            },
+            {
+              "parameter": "Filter Drive",
+              "xMap": "exponential",
+              "yMap": "linear",
+              "useCase": "Distortion during aggressive sections"
+            }
+          ]
+        },
+        {
+          "category": "Dynamics",
+          "targets": [
+            {
+              "parameter": "Compression Ratio",
+              "xMap": "linear",
+              "yMap": "linear",
+              "useCase": "Glue or punch control"
+            },
+            {
+              "parameter": "Threshold",
+              "xMap": "linear",
+              "yMap": "linear",
+              "useCase": "When compression kicks in"
+            },
+            {
+              "parameter": "Makeup Gain",
+              "xMap": "linear",
+              "yMap": "linear",
+              "useCase": "Level compensation"
+            }
+          ]
+        },
+        {
+          "category": "Space",
+          "targets": [
+            {
+              "parameter": "Reverb Size/Room",
+              "xMap": "exponential",
+              "yMap": "linear",
+              "useCase": "Spatial dimension changes"
+            },
+            {
+              "parameter": "Reverb Pre-delay",
+              "xMap": "linear",
+              "yMap": "logarithmic",
+              "useCase": "Perceived distance"
+            },
+            {
+              "parameter": "Delay Feedback",
+              "xMap": "linear",
+              "yMap": "exponential",
+              "useCase": "Echo intensity"
+            },
+            {
+              "parameter": "Delay Time",
+              "xMap": "step",
+              "yMap": "linear",
+              "useCase": "Rhythmic subdivision changes"
+            }
+          ]
+        },
+        {
+          "category": "Stereo",
+          "targets": [
+            {
+              "parameter": "Stereo Width",
+              "xMap": "linear",
+              "yMap": "linear",
+              "useCase": "Mono to wide field"
+            },
+            {
+              "parameter": "Pan",
+              "xMap": "linear",
+              "yMap": "linear",
+              "useCase": "Left-right positioning"
+            }
+          ]
+        },
+        {
+          "category": "Distortion",
+          "targets": [
+            {
+              "parameter": "Drive Amount",
+              "xMap": "exponential",
+              "yMap": "linear",
+              "useCase": "Subtle warmth to full saturation"
+            },
+            {
+              "parameter": "Mix/Wet",
+              "xMap": "linear",
+              "yMap": "linear",
+              "useCase": "Parallel processing blend"
+            }
+          ]
+        },
+        {
+          "category": "Pitch",
+          "targets": [
+            {
+              "parameter": "Pitch Shift",
+              "xMap": "linear",
+              "yMap": "linear",
+              "range": "±12 semitones",
+              "useCase": "Tuning and harmony effects"
+            },
+            {
+              "parameter": "Formant",
+              "xMap": "linear",
+              "yMap": "linear",
+              "useCase": "Vocal character changes"
+            }
+          ]
+        }
+      ],
+      "specialTargets": [
+        {
+          "parameter": "Speed",
+          "description": "Controller's own velocity output",
+          "useCase": "Dynamic-based modulation - faster movements = more effect"
+        },
+        {
+          "parameter": "Acceleration",
+          "description": "Change in speed output",
+          "useCase": "Accent detection - only triggers on speed changes"
+        }
+      ],
+      "macroCombinations": [
+        {
+          "name": "The Drop Build",
+          "description": "All parameters that increase intensity",
+          "targets": [
+            {
+              "source": "X",
+              "target": "Filter Cutoff",
+              "range": "20Hz-20kHz"
+            },
+            {
+              "source": "X",
+              "target": "Reverb Send",
+              "range": "0-80%"
+            },
+            {
+              "source": "Y",
+              "target": "Saturation",
+              "range": "0-50%"
+            },
+            {
+              "source": "Y",
+              "target": "Stereo Width",
+              "range": "50-150%"
+            }
+          ]
+        },
+        {
+          "name": "The Vibe Kill",
+          "description": "Frequency isolation for breakdowns",
+          "targets": [
+            {
+              "source": "X",
+              "target": "High-pass Filter",
+              "range": "20Hz-2kHz"
+            },
+            {
+              "source": "Y",
+              "target": "Low-pass Filter",
+              "range": "200Hz-20kHz"
+            }
+          ]
+        },
+        {
+          "name": "808 Punch",
+          "description": "808 bass enhancement",
+          "targets": [
+            {
+              "source": "X",
+              "target": "Volume",
+              "range": "100-120%"
+            },
+            {
+              "source": "Y",
+              "target": "Distortion",
+              "range": "0-30%"
+            },
+            {
+              "source": "Speed",
+              "target": "Compression",
+              "range": "2:1-8:1"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    },
+    {
+      "title": "How It Works",
+      "filename": "how-it-works.md"
+    },
+    {
+      "title": "Macro Mapping",
+      "filename": "macro-mapping.md"
+    },
+    {
+      "title": "Performance Modes",
+      "filename": "performance-modes.md"
+    },
+    {
+      "title": "Vibe Engine",
+      "filename": "vibe-engine.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "00 The Vibe Pad Setup",
+      "category": "by-goal",
+      "filename": "00_The_Vibe_Pad_Setup.md"
+    },
+    {
+      "title": "02 Joystick Performance",
+      "category": "by-goal",
+      "filename": "02_Joystick_Performance.md"
+    },
+    {
+      "title": "Adding Texture Movement",
+      "category": "by-goal",
+      "filename": "adding-texture-movement.md"
+    },
+    {
+      "title": "Building Tension Release",
+      "category": "by-goal",
+      "filename": "building-tension-release.md"
+    },
+    {
+      "title": "Creating Bounce",
+      "category": "by-goal",
+      "filename": "creating-bounce.md"
+    },
+    {
+      "title": "Macro Mapping One To Many",
+      "category": "by-goal",
+      "filename": "macro-mapping-one-to-many.md"
+    },
+    {
+      "title": "Multi Parameter Control",
+      "category": "by-goal",
+      "filename": "multi-parameter-control.md"
+    },
+    {
+      "title": "Performance Recording Live",
+      "category": "by-goal",
+      "filename": "performance-recording-live.md"
+    },
+    {
+      "title": "Preventing Stasis Movement",
+      "category": "by-goal",
+      "filename": "preventing-stasis-movement.md"
+    },
+    {
+      "title": "Quick Parameter Switches",
+      "category": "by-goal",
+      "filename": "quick-parameter-switches.md"
+    },
+    {
+      "title": "Spatial Modulation",
+      "category": "by-goal",
+      "filename": "spatial-modulation.md"
+    },
+    {
+      "title": "808 Bass Control",
+      "category": "by-instrument",
+      "filename": "808-bass-control.md"
+    },
+    {
+      "title": "Drum Bus Processing",
+      "category": "by-instrument",
+      "filename": "drum-bus-processing.md"
+    },
+    {
+      "title": "Sample Chop Performance",
+      "category": "by-instrument",
+      "filename": "sample-chop-performance.md"
+    },
+    {
+      "title": "Vocal Chain Modulation",
+      "category": "by-instrument",
+      "filename": "vocal-chain-modulation.md"
+    }
+  ]
+}

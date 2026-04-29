@@ -1,0 +1,789 @@
+{
+  "id": "fruity-x-y-controller",
+  "name": "Fruity X-Y Controller",
+  "category": "Controller",
+  "tier": "Free",
+  "type": "Controller",
+  "description": "Fruity X-Y Controller - Controller",
+  "tags": [
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "automation",
+    "modulation",
+    "control"
+  ],
+  "icon": "/plugins/fruity-x-y-controller-icon.svg",
+  "color": "#78716C",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-x-y-controller",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "complete-list": {
+      "schema": "x-y-controller-params-v1",
+      "description": "Complete parameter reference for Fruity X-Y Controller",
+      "source": "IL-MAN",
+      "parameters": [
+        {
+          "id": "x-output",
+          "name": "X-Output",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "description": "Current horizontal axis output value",
+          "category": "output",
+          "modulatable": false,
+          "automation": true
+        },
+        {
+          "id": "y-output",
+          "name": "Y-Output",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "description": "Current vertical axis output value",
+          "category": "output",
+          "modulatable": false,
+          "automation": true
+        },
+        {
+          "id": "x-min",
+          "name": "X-Minimum",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "description": "Minimum value for X output range",
+          "category": "range",
+          "default": 0,
+          "modulatable": false
+        },
+        {
+          "id": "x-max",
+          "name": "X-Maximum",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "description": "Maximum value for X output range",
+          "category": "range",
+          "default": 100,
+          "modulatable": false
+        },
+        {
+          "id": "y-min",
+          "name": "Y-Minimum",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "description": "Minimum value for Y output range",
+          "category": "range",
+          "default": 0,
+          "modulatable": false
+        },
+        {
+          "id": "y-max",
+          "name": "Y-Maximum",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "description": "Maximum value for Y output range",
+          "category": "range",
+          "default": 100,
+          "modulatable": false
+        },
+        {
+          "id": "speed",
+          "name": "Speed",
+          "range": {
+            "min": 0,
+            "max": "unlimited",
+            "unit": "arbitrary"
+          },
+          "description": "Rate of pad movement (velocity)",
+          "category": "dynamics",
+          "modulatable": false,
+          "automation": true
+        },
+        {
+          "id": "acceleration",
+          "name": "Acceleration",
+          "range": {
+            "min": "-unlimited",
+            "max": "unlimited",
+            "unit": "arbitrary"
+          },
+          "description": "Change in speed (positive or negative)",
+          "category": "dynamics",
+          "modulatable": false,
+          "automation": true
+        },
+        {
+          "id": "smoothing",
+          "name": "Smoothing",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "description": "Interpolation amount between values",
+          "category": "processing",
+          "default": 0,
+          "modulatable": false
+        },
+        {
+          "id": "absolute-mode",
+          "name": "Absolute Mode",
+          "range": {
+            "values": [
+              "off",
+              "on"
+            ]
+          },
+          "description": "Output equals current position (vs. relative change)",
+          "category": "mode",
+          "default": "on",
+          "modulatable": false
+        },
+        {
+          "id": "relative-mode",
+          "name": "Relative Mode",
+          "range": {
+            "values": [
+              "off",
+              "on"
+            ]
+          },
+          "description": "Output equals change from previous position",
+          "category": "mode",
+          "default": "off",
+          "modulatable": false
+        },
+        {
+          "id": "hold",
+          "name": "Hold",
+          "range": {
+            "values": [
+              "off",
+              "on"
+            ]
+          },
+          "description": "Latch last position value",
+          "category": "mode",
+          "default": "off",
+          "modulatable": false
+        }
+      ],
+      "mappings": {
+        "x-map": {
+          "description": "Response curve for X axis",
+          "types": [
+            "linear",
+            "exponential",
+            "logarithmic",
+            "step",
+            "custom"
+          ],
+          "editable": true
+        },
+        "y-map": {
+          "description": "Response curve for Y axis",
+          "types": [
+            "linear",
+            "exponential",
+            "logarithmic",
+            "step",
+            "custom"
+          ],
+          "editable": true
+        }
+      }
+    },
+    "modulation-targets": {
+      "schema": "x-y-modulation-targets-v1",
+      "description": "Optimal modulation targets and mappings for hip-hop production",
+      "source": "IL-MAN",
+      "recommendedTargets": [
+        {
+          "category": "Filter",
+          "targets": [
+            {
+              "parameter": "Cutoff Frequency",
+              "xMap": "exponential",
+              "yMap": "linear",
+              "useCase": "Main filter sweep for drops and builds"
+            },
+            {
+              "parameter": "Resonance",
+              "xMap": "linear",
+              "yMap": "logarithmic",
+              "useCase": "Add character to filter movement"
+            },
+            {
+              "parameter": "Filter Drive",
+              "xMap": "exponential",
+              "yMap": "linear",
+              "useCase": "Distortion during aggressive sections"
+            }
+          ]
+        },
+        {
+          "category": "Dynamics",
+          "targets": [
+            {
+              "parameter": "Compression Ratio",
+              "xMap": "linear",
+              "yMap": "linear",
+              "useCase": "Glue or punch control"
+            },
+            {
+              "parameter": "Threshold",
+              "xMap": "linear",
+              "yMap": "linear",
+              "useCase": "When compression kicks in"
+            },
+            {
+              "parameter": "Makeup Gain",
+              "xMap": "linear",
+              "yMap": "linear",
+              "useCase": "Level compensation"
+            }
+          ]
+        },
+        {
+          "category": "Space",
+          "targets": [
+            {
+              "parameter": "Reverb Size/Room",
+              "xMap": "exponential",
+              "yMap": "linear",
+              "useCase": "Spatial dimension changes"
+            },
+            {
+              "parameter": "Reverb Pre-delay",
+              "xMap": "linear",
+              "yMap": "logarithmic",
+              "useCase": "Perceived distance"
+            },
+            {
+              "parameter": "Delay Feedback",
+              "xMap": "linear",
+              "yMap": "exponential",
+              "useCase": "Echo intensity"
+            },
+            {
+              "parameter": "Delay Time",
+              "xMap": "step",
+              "yMap": "linear",
+              "useCase": "Rhythmic subdivision changes"
+            }
+          ]
+        },
+        {
+          "category": "Stereo",
+          "targets": [
+            {
+              "parameter": "Stereo Width",
+              "xMap": "linear",
+              "yMap": "linear",
+              "useCase": "Mono to wide field"
+            },
+            {
+              "parameter": "Pan",
+              "xMap": "linear",
+              "yMap": "linear",
+              "useCase": "Left-right positioning"
+            }
+          ]
+        },
+        {
+          "category": "Distortion",
+          "targets": [
+            {
+              "parameter": "Drive Amount",
+              "xMap": "exponential",
+              "yMap": "linear",
+              "useCase": "Subtle warmth to full saturation"
+            },
+            {
+              "parameter": "Mix/Wet",
+              "xMap": "linear",
+              "yMap": "linear",
+              "useCase": "Parallel processing blend"
+            }
+          ]
+        },
+        {
+          "category": "Pitch",
+          "targets": [
+            {
+              "parameter": "Pitch Shift",
+              "xMap": "linear",
+              "yMap": "linear",
+              "range": "±12 semitones",
+              "useCase": "Tuning and harmony effects"
+            },
+            {
+              "parameter": "Formant",
+              "xMap": "linear",
+              "yMap": "linear",
+              "useCase": "Vocal character changes"
+            }
+          ]
+        }
+      ],
+      "specialTargets": [
+        {
+          "parameter": "Speed",
+          "description": "Controller's own velocity output",
+          "useCase": "Dynamic-based modulation - faster movements = more effect"
+        },
+        {
+          "parameter": "Acceleration",
+          "description": "Change in speed output",
+          "useCase": "Accent detection - only triggers on speed changes"
+        }
+      ],
+      "macroCombinations": [
+        {
+          "name": "The Drop Build",
+          "description": "All parameters that increase intensity",
+          "targets": [
+            {
+              "source": "X",
+              "target": "Filter Cutoff",
+              "range": "20Hz-20kHz"
+            },
+            {
+              "source": "X",
+              "target": "Reverb Send",
+              "range": "0-80%"
+            },
+            {
+              "source": "Y",
+              "target": "Saturation",
+              "range": "0-50%"
+            },
+            {
+              "source": "Y",
+              "target": "Stereo Width",
+              "range": "50-150%"
+            }
+          ]
+        },
+        {
+          "name": "The Vibe Kill",
+          "description": "Frequency isolation for breakdowns",
+          "targets": [
+            {
+              "source": "X",
+              "target": "High-pass Filter",
+              "range": "20Hz-2kHz"
+            },
+            {
+              "source": "Y",
+              "target": "Low-pass Filter",
+              "range": "200Hz-20kHz"
+            }
+          ]
+        },
+        {
+          "name": "808 Punch",
+          "description": "808 bass enhancement",
+          "targets": [
+            {
+              "source": "X",
+              "target": "Volume",
+              "range": "100-120%"
+            },
+            {
+              "source": "Y",
+              "target": "Distortion",
+              "range": "0-30%"
+            },
+            {
+              "source": "Speed",
+              "target": "Compression",
+              "range": "2:1-8:1"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "presets": {
+    "macro-drop-build": {
+      "schema": "x-y-controller-preset-v1",
+      "name": "Drop Build Macro",
+      "type": "macro-template",
+      "description": "Multi-parameter intensity builder - one gesture controls 6+ parameters simultaneously",
+      "author": "DEEPER DIVES",
+      "source": "IL-MAN",
+      "tags": [
+        "macro",
+        "build",
+        "drop",
+        "multi-parameter",
+        "performance"
+      ],
+      "hipHopCategory": "Performance Control",
+      "settings": {
+        "mode": "absolute",
+        "hold": false,
+        "smoothing": 5,
+        "xMin": 0,
+        "xMax": 100,
+        "yMin": 0,
+        "yMax": 100,
+        "xMap": {
+          "type": "linear",
+          "description": "Even distribution across X parameters"
+        },
+        "yMap": {
+          "type": "exponential",
+          "description": "Y parameters kick in later in gesture"
+        }
+      },
+      "mappings": [
+        {
+          "output": "X",
+          "target": "Filter Cutoff",
+          "targetMin": "200Hz",
+          "targetMax": "20kHz",
+          "curve": "linear",
+          "description": "Opens up frequency spectrum"
+        },
+        {
+          "output": "X",
+          "target": "Reverb Send",
+          "targetMin": "0%",
+          "targetMax": "70%",
+          "curve": "exponential",
+          "description": "Increases space wash (kicks in late)"
+        },
+        {
+          "output": "X",
+          "target": "Stereo Width",
+          "targetMin": "80%",
+          "targetMax": "150%",
+          "curve": "linear",
+          "description": "Widens stereo field"
+        },
+        {
+          "output": "Y",
+          "target": "Saturation Drive",
+          "targetMin": "0%",
+          "targetMax": "40%",
+          "curve": "exponential",
+          "description": "Adds harmonic excitement (late kick)"
+        },
+        {
+          "output": "Y",
+          "target": "Compression Ratio",
+          "targetMin": "2:1",
+          "targetMax": "8:1",
+          "curve": "linear",
+          "description": "Increases punch and glue"
+        },
+        {
+          "output": "Y",
+          "target": "Delay Feedback",
+          "targetMin": "10%",
+          "targetMax": "60%",
+          "curve": "exponential",
+          "description": "More echo intensity"
+        }
+      ],
+      "gestureGuide": {
+        "defaultPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "buildGesture": "Spiral from center outward over 8-16 bars",
+        "sweepGesture": "Diagonal from bottom-left to top-right",
+        "peakGesture": "Hold top-right corner at drop moment"
+      },
+      "hipHopUsage": {
+        "primaryUse": "Maximum impact pre-drop builds",
+        "secondaryUses": [
+          "Full mix builds",
+          "Chorus intensification",
+          "Breakdown-to-drop transitions"
+        ],
+        "genreFit": [
+          "Trap",
+          "EDM Trap",
+          "Pop-Hip-Hop",
+          "R&B"
+        ],
+        "vibeTarget": "BOUNCE",
+        "bestFor": "Creating massive energy before impact"
+      },
+      "performanceNotes": {
+        "recording": "Record multiple takes, pick most natural spiral",
+        "practice": "Practice spiral motion with accelerating speed",
+        "hybrid": "Live capture + playlist quantization for precision"
+      }
+    },
+    "macro-dual-control": {
+      "schema": "x-y-controller-preset-v1",
+      "name": "Dual Control Template",
+      "type": "macro-template",
+      "description": "Independent two-parameter control - perfect for blend, morph, and A/B situations",
+      "author": "DEEPER DIVES",
+      "source": "IL-MAN",
+      "tags": [
+        "dual",
+        "blend",
+        "morph",
+        "A/B",
+        "crossfade"
+      ],
+      "hipHopCategory": "Mix Control",
+      "settings": {
+        "mode": "absolute",
+        "hold": false,
+        "smoothing": 0,
+        "xMin": 0,
+        "xMax": 100,
+        "yMin": 0,
+        "yMax": 100,
+        "xMap": {
+          "type": "linear",
+          "description": "Direct 1:1 control of X parameter"
+        },
+        "yMap": {
+          "type": "linear",
+          "description": "Direct 1:1 control of Y parameter"
+        }
+      },
+      "mappings": [
+        {
+          "output": "X",
+          "target": "[USER DEFINED - Parameter A]",
+          "targetMin": "0%",
+          "targetMax": "100%",
+          "curve": "linear",
+          "description": "First independent parameter"
+        },
+        {
+          "output": "Y",
+          "target": "[USER DEFINED - Parameter B]",
+          "targetMin": "0%",
+          "targetMax": "100%",
+          "curve": "linear",
+          "description": "Second independent parameter"
+        }
+      ],
+      "configurationExamples": [
+        {
+          "name": "Dry/Wet Blend",
+          "xTarget": "Dry Signal Level",
+          "yTarget": "Wet Signal Level",
+          "description": "Crossfade between dry and processed signal"
+        },
+        {
+          "name": "Layer Morph",
+          "xTarget": "Layer A Volume",
+          "yTarget": "Layer B Volume",
+          "description": "Morph between two sound sources"
+        },
+        {
+          "name": "808 Tone Control",
+          "xTarget": "808 Click Amount",
+          "yTarget": "808 Sub Boost",
+          "description": "Balance between attack and sub elements"
+        },
+        {
+          "name": "Vocal FX Blend",
+          "xTarget": "Reverb Send",
+          "yTarget": "Delay Send",
+          "description": "Balance space vs echo on vocals"
+        }
+      ],
+      "gestureGuide": {
+        "corners": {
+          "bottomLeft": "Min X, Min Y",
+          "bottomRight": "Max X, Min Y",
+          "topLeft": "Min X, Max Y",
+          "topRight": "Max X, Max Y"
+        },
+        "center": "Both parameters at 50%",
+        "patterns": [
+          "Diagonal: Smooth transition between states",
+          "Circle: Continuous morph between all states",
+          "Corner jumps: Instant A/B/C/D switching"
+        ]
+      },
+      "hipHopUsage": {
+        "primaryUse": "Independent two-parameter control",
+        "secondaryUses": [
+          "Sound source morphing",
+          "Effect intensity balancing",
+          "Real-time mixing"
+        ],
+        "genreFit": [
+          "All Hip-Hop subgenres",
+          "R&B",
+          "Pop"
+        ],
+        "vibeTarget": "TEXTURE",
+        "bestFor": "Blending and morphing between sonic states"
+      },
+      "performanceNotes": {
+        "recording": "Map targets first, then record gestures",
+        "technique": "Use corners as preset states, center for blends",
+        "expression": "Small movements around sweet spots for subtle changes"
+      }
+    },
+    "macro-filter-sweep": {
+      "schema": "x-y-controller-preset-v1",
+      "name": "Filter Sweep Macro",
+      "type": "macro-template",
+      "description": "Single-axis filter sweep with optional resonance - classic drop effect",
+      "author": "DEEPER DIVES",
+      "source": "IL-MAN",
+      "tags": [
+        "filter",
+        "drop",
+        "build",
+        "macro"
+      ],
+      "hipHopCategory": "Drop Effects",
+      "settings": {
+        "mode": "absolute",
+        "hold": false,
+        "smoothing": 10,
+        "xMin": 0,
+        "xMax": 100,
+        "yMin": 50,
+        "yMax": 100,
+        "xMap": {
+          "type": "exponential",
+          "description": "Sensitive at filter open, subtle at closed"
+        },
+        "yMap": {
+          "type": "linear",
+          "description": "Direct resonance control"
+        }
+      },
+      "mappings": [
+        {
+          "output": "X",
+          "target": "Filter Cutoff",
+          "targetMin": "20Hz",
+          "targetMax": "20kHz",
+          "curve": "exponential",
+          "description": "Main filter sweep - full frequency range"
+        },
+        {
+          "output": "Y",
+          "target": "Filter Resonance",
+          "targetMin": "0%",
+          "targetMax": "60%",
+          "curve": "linear",
+          "description": "Add character peak at cutoff frequency"
+        }
+      ],
+      "gestureGuide": {
+        "defaultPosition": {
+          "x": 0,
+          "y": 50
+        },
+        "buildGesture": "Move X from 0% to 100% over 4-8 bars",
+        "accentGesture": "Quick X jitters on beats 2 and 4",
+        "releaseGesture": "Snap X to 0% for instant filter close"
+      },
+      "hipHopUsage": {
+        "primaryUse": "Pre-drop filter sweeps",
+        "secondaryUses": [
+          "Breakdown texture",
+          "Transition effects",
+          "Vocal filtering"
+        ],
+        "genreFit": [
+          "Trap",
+          "Drill",
+          "Hip-Hop",
+          "R&B"
+        ],
+        "vibeTarget": "TENSION",
+        "bestFor": "Creating anticipation before impact"
+      },
+      "performanceNotes": {
+        "recording": "Record in loop mode, comp best takes",
+        "timing": "Sync gestures to 1/4 or 1/2 note grid",
+        "modulation": "Add subtle Y movement for evolving resonance"
+      }
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity X-Y Controller\n\n## The 60-Second Mental Model\nFruity X-Y Controller is a **2D Remote Control**. Imagine having a joystick that moves two knobs at the same time—one when you move it left-to-right (X), and another when you move it up-and-down (Y). It doesn't make sound itself; it just tells other knobs what to do. [SRC: IL-MAN]\n\n## Purpose & Identity\n*   **Identity:** A visual bridge for multi-parameter automation.\n*   **Where it fits:** It is an internal controller plugin that can be placed on any mixer track. Its outputs are visible to the \"Link to Controller\" menu globally in your project.\n\n## Hip-Hop / R&B Context\n*   **The \"Vibe Pad\":** Link it to a filter and a reverb. Use it to \"wash out\" a melody during an intro or transition.\n*   **Modern Ad-libs:** Control the \"Pitch\" and \"Formant\" of a vocoder or pitch shifter simultaneously to create weird, shifting vocal textures.\n*   **Performance Mode:** Use a touchscreen or mouse to \"perform\" the energy of a synth lead during a live recording.\n\n## When To Use\n*   When you want to control **two parameters with one hand**.\n*   When you need a visual representation of how two effects interact (e.g., finding the balance between \"Dry\" and \"Space\").\n*   When using a physical X-Y pad on a MIDI controller or a game joystick.\n\n## When NOT To Use\n*   **Simple Automation:** If you only need to move one knob, a standard Automation Clip is easier and uses less screen space.\n*   **Precise Values:** If you need a knob to be exactly \"42.5%\", the X-Y pad can be too \"loose\" or \"fiddly.\"\n",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Fruity X-Y Controller\n\n## UI Tour\n1.  **The Pad:** The large black square where you drag the target.\n2.  **X-Knob:** Controls the horizontal position manually.\n3.  **Y-Knob:** Controls the vertical position manually.\n4.  **Speed/Smoothing (In reference):** Controls how fast the signals follow your mouse. [SRC: IL-MAN]\n\n## Signal Flow\n1.  **Input:** User moves the mouse/target on the grid.\n2.  **Output X:** A signal (0% to 100%) is generated based on the horizontal position.\n3.  **Output Y:** A signal (0% to 100%) is generated based on the vertical position.\n4.  **Target Link:** These signals are sent to any FL Studio parameter linked via \"Remote Control.\"\n\n## The \"Internal Controller\" Connection\nUnlike an effect plugin, X-Y Controller \"broadcasts\" its position to the whole project.\n*   **Step 1:** Load X-Y Controller.\n*   **Step 2:** Right-click your target (e.g., Filter Cutoff) -> **Link to controller**.\n*   **Step 3:** In the \"Internal Controller\" dropdown, look for **X-Y Controller - X**.\n*   **Step 4:** Click Accept. Now moving the pad horizontally moves the filter. [SRC: REPUTABLE]\n\n## Things Beginners Misunderstand\n*   **\"It's Silent\":** It doesn't process audio. If you put it on a track, the audio passes through it untouched.\n*   **Recording:** To record your movements, you must be in **Record Mode** (Automation) and move the target while the project is playing.\n*   **Independence:** X and Y are completely independent. You can link X to a synth in the Channel Rack and Y to a reverb in the Mixer simultaneously.\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity X-Y Controller\n\n## Moody (Atmospheric, Receding, Dark)\n*   **Production Levers:**\n    *   **X Mapping:** Filter Cutoff (Low-pass).\n    *   **Y Mapping:** Reverb Mix (Wet).\n    *   **Movement:** Move the target from Top-Left (Clear/Dry) to Bottom-Right (Muffled/Distant) to create a \"receding\" effect.\n*   **Don't Do This:** Avoid fast, jerky movements; moody vibes need slow, liquid transitions.\n\n## Upbeat (Energetic, Rhythmic, Kinetic)\n*   **Production Levers:**\n    *   **X Mapping:** Distortion Pre-Gain.\n    *   **Y Mapping:** High-Pass Filter or EQ High-Shelf.\n    *   **Movement:** Move the target rapidly to add \"shimmer\" and \"grit\" during drum fills or build-ups.\n*   **Don't Do This:** Don't let the target sit still; keep the energy moving.\n\n## Psychedelic (Trippy, Morphing, Spacey)\n*   **Production Levers:**\n    *   **X Mapping:** Flanger/Phaser Rate.\n    *   **Y Mapping:** Delay Feedback.\n    *   **Movement:** Move in **circular patterns**. This creates a \"swirling\" effect where the phase and the echoes morph into each other.\n*   **Don't Do This:** Avoid linear movements; stay \"loopy.\"\n\n## Jazzy (Organic, Expressive, Human)\n*   **Production Levers:**\n    *   **X Mapping:** Vibrato Speed/Depth.\n    *   **Y Mapping:** Volume or Expression.\n    *   **Movement:** Use the pad like a \"breath\" or \"bow\" controller to add human-like swells to trumpet or sax samples.\n*   **Don't Do This:** Avoid 100% values; stay in the 30-70% range for \"natural\" dynamics.\n\n## Vibey (Smooth, Glossy, Modern R&B)\n*   **Production Levers:**\n    *   **X Mapping:** Stereo Width (Stereo Shaper).\n    *   **Y Mapping:** Chorus Depth.\n    *   **Movement:** Find the \"Sweet Spot\" in the middle of the pad where the vocal feels wide and lush but doesn't lose its mono compatibility.\n*   **Don't Do This:** Don't overdo the width; keep the center solid. [SRC: REPUTABLE]\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity X Y Controller\r\n\r\n## What It Is\r\nFruity X Y Controller is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "how-it-works": "# How Fruity X-Y Controller Works\n\n## Core Architecture\n\nFruity X-Y Controller is a 2D vector modulation source that converts mouse/touch position into two independent automation signals. [SRC: IL-MAN]\n\n### Signal Flow\n\n```\nMouse Position (X, Y)\n    ↓\nSpeed/Acceleration Processing\n    ↓\nAbsolute OR Relative Mode\n    ↓\nMapping Graphs (X-Map, Y-Map)\n    ↓\nX-Output & Y-Output → Linked Parameters\n```\n\n## The Two Dimensions\n\n| Axis | Range | Behavior |\n|------|-------|----------|\n| X (Horizontal) | 0-100% | Left to Right sweep |\n| Y (Vertical) | 0-100% | Bottom to Top sweep |\n\nEach axis operates independently with separate mapping graphs and output routing.\n\n## Speed & Acceleration\n\nThe controller tracks movement dynamics:\n\n- **Speed**: Rate of position change over time\n- **Acceleration**: Change in speed (positive = speeding up, negative = slowing down)\n\nThese create \"gesture energy\" that can modulate parameters based on HOW you move, not just WHERE you move.\n\n## Absolute vs Relative Modes\n\n| Mode | Behavior | Use Case |\n|------|----------|----------|\n| **Absolute** | Output = current position value | Direct control, precise positioning |\n| **Relative** | Output = change from previous position | Continuous adjustment, fine tweaks |\n\n## Mapping Graphs\n\nBoth X and Y have customizable response curves:\n\n- **Linear**: 1:1 input-to-output ratio\n- **Exponential**: Sensitive at start, compressed at end\n- **Logarithmic**: Compressed at start, sensitive at end\n- **Step**: Discrete jumps between values\n- **Custom**: Draw your own response curve\n\n## Vibe Engine Concept\n\nThe X-Y Controller IS a vibe engine:\n\n1. **Movement creates modulation** - Your hand gestures become automation\n2. **Two-axis independence** - Control unrelated parameters simultaneously\n3. **Macro potential** - One pad movement can drive 8+ parameters\n4. **Performance capture** - Record your gestures as automation data\n\n## Hip-Hop Relevance\n\nControllers excel at:\n- **Live filter sweeps** during verses → drops\n- **Performance fills** - sudden X-Y jumps on drum fills\n- **Macro builds** - multiple riser elements controlled together\n- **Humanized automation** - natural hand movement vs robotic LFOs\n",
+      "macro-mapping": "# Macro Mapping with X-Y Controller\n\n## What is Macro Mapping?\n\nMacro mapping = controlling multiple parameters with a single gesture. With X-Y Controller, one 2D movement can simultaneously drive 6-10+ parameters across your mix. [SRC: IL-MAN]\n\n## The Math\n\nX-Y Controller provides 2 outputs (X and Y), but through creative routing:\n\n- X-Output → Parameter A, Parameter B, Parameter C\n- Y-Output → Parameter D, Parameter E, Parameter F\n- Speed → Parameter G\n- Acceleration → Parameter H\n\n**Result**: 1 hand gesture = 8+ parameter changes\n\n## Setting Up Macro Maps\n\n### Step 1: Choose Your Targets\n\nSelect parameters that should move together logically:\n\n**Drop Build Macro:**\n- Filter cutoff (opens up)\n- Reverb send (increases)\n- Saturation (adds harmonics)\n- Stereo width (widens)\n- Compression threshold (tightens)\n\n**Vibe Kill Macro:**\n- Low cut (removes bass)\n- High cut (removes treble)\n- Reverb size (maxes out)\n- Delay feedback (infinite)\n\n### Step 2: Route the Controller\n\n1. Right-click target parameter → \"Link to controller\"\n2. Select X-Y Controller from list\n3. Choose X or Y output\n4. Set mapping graph (usually linear for transparent control)\n\n### Step 3: Calibrate Ranges\n\nUse the mapping dialog to set:\n- **Min/Max**: What range of the parameter should the controller affect?\n- **Curve**: Linear (equal) or non-linear (sensitive in certain zones)\n- **Invert**: Reverse the relationship if needed\n\n## Advanced Macro Techniques\n\n### Nested Macros\n\nController 1 → Parameter A → Parameter B (linked)\n- Moving A automatically moves B\n- Chain reactions create complex systems\n\n### Conditional Macros\n\nUse Formula Controller as middleman:\n- X-Y → Formula → Target\n- Formula logic: \"Only affect reverb if filter > 50%\"\n\n### Layered Intensity\n\nSame X-Output to multiple targets with different curves:\n- Target A: Linear (full range)\n- Target B: Exponential (kicks in late)\n- Target C: Logarithmic (strong early, subtle late)\n\n## Hip-Hop Macro Examples\n\n### The \"808 Punch\" Macro\n- X = Volume (0-120%)\n- Y = Distortion amount (0-50%)\n- Speed = Compression ratio (gentle → aggressive)\n\nGesture: Hard punch top-right = loud + distorted + compressed\n\n### The \"Vocal Presence\" Macro\n- X = EQ high-mid boost (add clarity)\n- Y = Saturation (add warmth)\n- Speed = De-esser intensity (tame harshness)\n\nGesture: Gentle curve = smooth vocal enhancement\n\n### The \"Mix Collapse\" Macro\n- X = High-pass filter (removes lows)\n- Y = Low-pass filter (removes highs)\n\nGesture: Center to edge = full frequency kill (breakdown effect)\n\n## Performance Tips\n\n1. **Practice gestures** - Muscle memory for common moves\n2. **Mark sweet spots** - Memorize positions for \"perfect\" sounds\n3. **Use relative mode** for fine adjustments without losing position\n4. **Record multiple passes** - Comp takes for macro builds\n",
+      "performance-modes": "# Performance Modes & Recording\n\n## Performance vs Programming\n\nFruity X-Y Controller bridges the gap between live performance and studio precision. [SRC: IL-MAN]\n\n| Mode | Approach | Best For |\n|------|----------|----------|\n| **Live Performance** | Real-time hand control | Shows, jam sessions, happy accidents |\n| **Recorded Automation** | Captured gestures edited in playlist | Studio productions, precise timing |\n| **Hybrid** | Live gesture + playlist editing | Best of both worlds |\n\n## Recording Controller Automation\n\n### Method 1: Live Recording\n\n1. Enable record mode (red button in transport)\n2. Select \"Automation\" in recording filter\n3. Move X-Y pad while playing\n4. FL captures every position change\n\n**Pro tip**: Record in loop mode - comp multiple takes from the playlist\n\n### Method 2: Draw Mode\n\n1. Right-click parameter → \"Edit events\"\n2. Draw X-Y position curve manually\n3. Fine-tune with precision\n\n**Pro tip**: Use snap to grid for rhythmically precise movements\n\n### Method 3: Capture Performance\n\n1. Set up controller mappings\n2. Play through section\n3. Right-click playlist → \"Capture performance\"\n4. Automation clip created from your moves\n\n## Absolute vs Relative for Performance\n\n### Absolute Mode\n- **Pros**: Direct correlation between position and value\n- **Cons**: Jumps when you first touch the pad\n- **Best for**: Defined sweeps, known positions\n\n### Relative Mode\n- **Pros**: Pick up from current value, no jumps\n- **Cons**: Harder to hit exact positions\n- **Best for**: Continuous adjustment, existing automation\n\n## Performance Techniques\n\n### The One-Hand Build\n1. Set up: X = filter open, Y = reverb size\n2. During pre-drop: Move from BL → TR diagonal\n3. Record in one continuous motion\n4. Edit timing in playlist if needed\n\n### The Quick Switch\n1. Set \"Snap to\" positions (memorized corners)\n2. Jump between states instantly\n3. Great for drum fills and transitions\n\n### The Micro-Move\n1. Tiny circular motions around sweet spot\n2. Creates subtle \"alive\" movement\n3. Perfect for pad sounds and sustained elements\n\n## Playlist Editing\n\nAfter recording:\n\n1. **Quantize**: Snap movements to grid\n2. **Smooth**: Reduce point density for cleaner curves\n3. **Scale**: Multiply all values (make movement more/less extreme)\n4. **Invert**: Flip the direction\n5. **Duplicate**: Copy gestures to other sections\n\n## Performance Checklist\n\nBefore going live with X-Y Controller:\n\n- [ ] All target parameters properly mapped\n- [ ] Mapping ranges calibrated (no sudden jumps)\n- [ ] Absolute/Relative mode selected appropriately\n- [ ] Recording settings configured\n- [ ] Playlist visible for real-time monitoring\n- [ ] Practice gestures 3-5 times\n- [ ] Set up backup (static value if controller fails)\n\n## Recording Quality Tips\n\n1. **Lower latency** = tighter sync between gesture and sound\n2. **Higher sample rate** = smoother automation resolution\n3. **Disable plugins** that cause lag during recording\n4. **Use hybrid approach** - live capture + playlist cleanup\n",
+      "signal-flow": "# Signal Flow: Fruity X Y Controller\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n",
+      "vibe-engine": "# The Vibe Engine Concept\n\n## What is a Vibe Engine?\n\nA \"vibe engine\" is any tool that creates organic, human-driven movement and energy in your production. Fruity X-Y Controller IS a vibe engine - it transforms physical gestures into sonic motion. [SRC: IL-MAN]\n\n## Five Vibe Targets\n\nHip-hop and R&B production relies on five key vibe targets:\n\n### 1. **BOUNCE** (Rhythmic Energy)\n- X-Y gestures sync'd to beat divisions\n- Quick diagonal sweeps on snare hits\n- Circular motions during groove sections\n- **Controller strategy**: Map X to filter cutoff, Y to resonance\n\n### 2. **TEXTURE** (Timbre Variation)\n- Layer movement across drum bus\n- Morph between dry/wet on effects\n- Blend multiple sound sources\n- **Controller strategy**: X = source A level, Y = source B level\n\n### 3. **SPACE** (Dimension & Depth)\n- Reverb size and pre-delay sweeps\n- Delay feedback manipulation\n- Stereo width modulation\n- **Controller strategy**: Map both axes to spatial parameters\n\n### 4. **TENSION** (Build & Release)\n- Pre-drop filter sweeps\n- Riser intensity curves\n- Breakdown minimalism → maximalism\n- **Controller strategy**: Diagonal sweeps for maximum impact\n\n### 5. **MOVEMENT** (Avoiding Stasis)\n- Micro-modulations during verses\n- Macro changes during transitions\n- Humanized vs robotic automation\n- **Controller strategy**: Small X jitters + smooth Y curves\n\n## Creating Movement Patterns\n\n### The Circle Pattern\n1. Start center → move clockwise over 4 bars\n2. X modulates filter, Y modulates drive\n3. Complete loop every phrase change\n\n### The Figure-8\n1. Cross pattern: UL → LR → UR → LL → repeat\n2. Creates interesting parameter interplay\n3. Great for dual-filter setups\n\n### The Stab Pattern\n1. Quick corners: Bottom-Left → Top-Right snaps\n2. Instant parameter switches\n3. Perfect for drum fill impacts\n\n## Bounce Engineering\n\nTo engineer bounce with X-Y Controller:\n\n1. **Sync to grid** - 1/4, 1/8, or 1/16 note gestures\n2. **Accent beats** - harder movements on 2 and 4\n3. **Call & response** - gesture left side, then right side\n4. **Velocity dynamics** - fast movements = more extreme values\n\n## The Human Factor\n\nUnlike LFOs, your hand:\n- Has intentional \"errors\" that sound musical\n- Can react to the music in real-time\n- Creates unique performances every time\n- Can't be perfectly replicated (that's good!)\n\n## Recording Vibe\n\nBest practice: Record 5-10 takes and comp the best gestures. Each take has different energy - pick the one that fits the song's vibe.\n"
+    },
+    "Quick-Reference": {
+      "common-patterns": "# Common X-Y Controller Patterns\n\n## Pattern Library\n\nReady-to-use gesture patterns for hip-hop production. [SRC: IL-MAN]\n\n---\n\n## Filter Patterns\n\n### Pattern 1: The Drop Sweep\n**Gesture**: Bottom-Left → Top-Right diagonal\n**Timing**: 4 bars, accelerating curve\n**Maps**: X = Filter cutoff, Y = Drive\n**Use**: Pre-drop build\n\n```\nBar 1-2: Slow diagonal start\nBar 3: Accelerate\nBar 4: Quick finish at TR corner\nResult: Filter opens + drive increases\n```\n\n### Pattern 2: The Talking Filter\n**Gesture**: Figure-8 pattern\n**Timing**: Sync'd to vocal phrase\n**Maps**: X = Filter freq, Y = Resonance\n**Use**: Vocal processing, wah effect\n\n```\nContinuous figure-8:\n- Top loop = open vowel sounds\n- Bottom loop = closed consonants\n- Speed = emphasis amount\n```\n\n---\n\n## Drum Patterns\n\n### Pattern 3: The Beat Bounce\n**Gesture**: Small horizontal jitters\n**Timing**: On 2 and 4 (backbeat)\n**Maps**: X = Transient shaper, Y = Parallel compression\n**Use**: Add groove to stiff drums\n\n```\nPattern: • • X • • • X •\n         (rest)(hit)(rest)(hit)\nX position: small 10% jitter on beat\nResult: Dynamic beat emphasis\n```\n\n### Pattern 4: The Fill Impact\n**Gesture**: Quick corner-to-corner snap\n**Timing**: 1 bar before section change\n**Maps**: X = Volume, Y = Reverb send\n**Use**: Drum fills that explode\n\n```\nStep 1: Hold bottom-left (quiet)\nStep 2: At fill start, snap to top-right\nStep 3: Hold through fill\nStep 4: Return to center\nResult: Fill is LOUD + WASHY\n```\n\n---\n\n## Space Patterns\n\n### Pattern 5: The Room Morph\n**Gesture**: Smooth vertical arc\n**Timing**: 8 bars, section transition\n**Maps**: X = Reverb size, Y = Pre-delay\n**Use**: Transform room size gradually\n\n```\nBar 1-4: Y slowly rises (increasing pre-delay)\nBar 5-8: X slowly rises (increasing size)\nResult: Room grows organically\n```\n\n### Pattern 6: The Tunnel Effect\n**Gesture**: Center → Edge → Center\n**Timing**: 2 bars, symmetric\n**Maps**: X = High-pass, Y = Low-pass\n**Use**: Temporary \"underwater\" effect\n\n```\nBar 1: Center to edge (filters engage)\nBar 2: Edge back to center (filters release)\nResult: Temporary frequency isolation\n```\n\n---\n\n## Macro Patterns\n\n### Pattern 7: The Full Build\n**Gesture**: Spiral from center outward\n**Timing**: 8-16 bars\n**Maps**: Multiple targets (see below)\n**Use**: Maximum impact pre-drop\n\n```\nMaps:\n- X → Filter (0-100%)\n- X → Reverb send (0-80%)\n- Y → Saturation (0-50%)\n- Y → Stereo width (0-150%)\n- Speed → Compression ratio\n\nGesture: Spiral outward, accelerating\nResult: Everything gets bigger\n```\n\n### Pattern 8: The Vibe Kill\n**Gesture**: Sharp center-to-bottom-left\n**Timing**: Instant\n**Maps**: X = High-pass freq, Y = Low-pass freq\n**Use**: Breakdown frequency isolation\n\n```\nGesture: Snap to bottom-left corner\nPosition: Removes both bass AND treble\nResult: Only mids remain (thin sound)\nReverse gesture: Full frequency restoration\n```\n\n---\n\n## Performance Patterns\n\n### Pattern 9: The Live Wiggle\n**Gesture**: Small random movements around sweet spot\n**Timing**: Continuous\n**Maps**: X = Pitch drift, Y = Formant\n**Use**: \"Human\" vocal effects\n\n```\nRange: ±10% from center\nSpeed: Slow, breathing-like\nResult: Natural imperfection\n```\n\n### Pattern 10: The Stutter\n**Gesture**: Rapid back-and-forth on X axis\n**Timing**: 1/16 or 1/32 notes\n**Maps**: X = Gate threshold, Y = Volume\n**Use**: Rhythmic stutter effect\n\n```\nSpeed: Very fast alternating\nPattern: Left-right-left-right\nResult: Machine-gate effect\n```\n\n---\n\n## Custom Pattern Template\n\nCreate your own patterns:\n\n```\nName: [Pattern Name]\nGesture: [Description]\nTiming: [Bars/Beats]\nMaps: [X target], [Y target]\nUse: [Application]\n\nSteps:\n1. [First movement]\n2. [Second movement]\n3. [Result]\n```\n\n## Pattern Combinations\n\n**Verse → Drop**:\n1. Pattern 9 (subtle movement during verse)\n2. Pattern 7 (spiral build for 8 bars)\n3. Pattern 1 (final sweep into drop)\n\n**Breakdown → Build**:\n1. Pattern 8 (vibe kill at breakdown start)\n2. Pattern 5 (room morph during breakdown)\n3. Pattern 7 (full build to drop)\n",
+      "mapping-graphs-guide": "# Mapping Graphs Guide\n\n## Understanding Response Curves\n\nMapping graphs determine how input position translates to output values. [SRC: IL-MAN]\n\n## Curve Types\n\n### Linear (1:1)\n\n**Shape**: Straight diagonal line\n\n**Behavior**: Input value directly equals output value\n\n**Use when**: Transparent control, predictable response\n\n**Hip-hop application**: Direct filter sweeps, volume fades\n\n```\nInput:  0% → 25% → 50% → 75% → 100%\nOutput: 0% → 25% → 50% → 75% → 100%\n```\n\n### Exponential (Exp)\n\n**Shape**: Curve starting flat, getting steeper\n\n**Behavior**: Small changes early, large changes late\n\n**Use when**: Need fine control at low end, fast sweep at high end\n\n**Hip-hop application**: Filter sweeps (subtle → aggressive)\n\n```\nInput:  0% → 25% → 50% → 75% → 100%\nOutput: 0% → 10% → 30% → 60% → 100%\n```\n\n### Logarithmic (Log)\n\n**Shape**: Curve starting steep, flattening out\n\n**Behavior**: Large changes early, fine control at high end\n\n**Use when**: Strong effect at start, subtle at end\n\n**Hip-hop application**: Reverb sends (wash out quickly, then fine-tune)\n\n```\nInput:  0% → 25% → 50% → 75% → 100%\nOutput: 0% → 40% → 70% → 90% → 100%\n```\n\n### Step\n\n**Shape**: Staircase pattern\n\n**Behavior**: Discrete jumps between values\n\n**Use when**: Switching between preset states\n\n**Hip-hop application**: Mode switches, FX on/off, filter states\n\n```\nInput:  0-20% → 21-40% → 41-60% → 61-80% → 81-100%\nOutput:   0%   →   25%   →   50%   →   75%   → 100%\n```\n\n### Custom\n\n**Shape**: User-drawn curve\n\n**Behavior**: Completely customizable response\n\n**Use when**: Specific non-standard behavior needed\n\n**Hip-hop application**: Complex filter responses, special FX builds\n\n## Creating Custom Curves\n\n### Drawing Basics\n\n1. Open mapping graph (right-click output value)\n2. Left-click and drag to draw\n3. Right-click to add precise points\n4. Hold Shift for straight lines\n\n### Curve Shaping Tips\n\n**For \"Sweet Spot\" Zones:**\n1. Draw flat section in middle range\n2. Add steep sections on either side\n3. Result: Most of pad movement = subtle changes, edges = extreme\n\n**For \"Binary\" Behavior:**\n1. Draw step-like curve\n2. Sharp vertical transitions\n3. Result: Two or three distinct states\n\n**For \"Inverted\" Response:**\n1. Draw curve from top-left to bottom-right\n2. Or click \"Invert\" button\n3. Result: Moving right = decreasing value\n\n## Hip-Hop Curve Recipes\n\n### The Drop Curve (Exponential)\n```\nX-Map: Exponential\nUse: Pre-drop filter opening\nEffect: Starts subtle, gets crazy at the peak\n```\n\n### The Vibe Stabilizer (Flat with bumps)\n```\nCustom curve:\n- Flat from 0-40% (stable zone)\n- Ramp to 100% from 40-60%\n- Flat from 60-100% (maxed zone)\nUse: Two-state switching with dead zone in middle\n```\n\n### The Gradual Build (Log)\n```\nY-Map: Logarithmic\nUse: Reverb size during intros\nEffect: Big wash quickly, then fine-tune tail\n```\n\n### The Trigger Curve (Step)\n```\nCustom step curve with 3 levels\nUse: Switching between 808 patterns\nValues: Pattern A (0-33%), Pattern B (34-66%), Pattern C (67-100%)\n```\n\n## Multiple Target Curves\n\nSame X-Output with different curves:\n\n**Example - The Full Mix Macro:**\n- Target A (Filter): Linear (follows exactly)\n- Target B (Reverb): Exponential (kicks in late)\n- Target C (Distortion): Step (off → on at 80%)\n\nOne gesture = layered, complex response\n\n## Common Mistakes\n\n❌ **Too steep**: Small pad movement = huge parameter jump\n✅ **Solution**: Add smoothing or flatten curve\n\n❌ **Wrong direction**: Moving pad right makes filter close\n✅ **Solution**: Click \"Invert\" or redraw curve\n\n❌ **Dead zones**: Large pad areas with no change\n✅ **Solution**: Redistribute curve evenly unless intentional\n",
+      "parameter-cheat-sheet": "# Parameter Cheat Sheet\n\n## Main Panel Controls\n\n### X Section (Left)\n\n| Parameter | Range | Function |\n|-----------|-------|----------|\n| **X-Output** | 0-100% | Current horizontal value output |\n| **X-Min** | 0-100% | Minimum output value |\n| **X-Max** | 0-100% | Maximum output value |\n\n### Y Section (Right)\n\n| Parameter | Range | Function |\n|-----------|-------|----------|\n| **Y-Output** | 0-100% | Current vertical value output |\n| **Y-Min** | 0-100% | Minimum output value |\n| **Y-Max** | 0-100% | Maximum output value |\n\n### Speed/Acceleration (Bottom)\n\n| Parameter | Range | Function |\n|-----------|-------|----------|\n| **Speed** | 0-∞ | Movement velocity value |\n| **Acceleration** | -∞ to +∞ | Change in speed (positive/negative) |\n\n## Mode Settings\n\n| Setting | Options | Description |\n|---------|---------|-------------|\n| **Absolute** | On/Off | Output = current position |\n| **Relative** | On/Off | Output = change from previous |\n| **Hold** | On/Off | Latch last position |\n\n## Global Settings\n\n| Setting | Range | Purpose |\n|---------|-------|---------|\n| **Smoothing** | 0-100% | Interpolation between values |\n| **Grid Snap** | Off/On | Snap to grid positions |\n| **Reset on Play** | On/Off | Return to start position on playback |\n\n## Output Targets\n\nEach output can drive unlimited parameters:\n\n**X-Output Targets:**\n- Any automatable parameter in FL Studio\n- Third-party plugin parameters\n- Mixer track levels, pan, sends\n\n**Y-Output Targets:**\n- Same as X - completely independent routing\n\n**Speed/Acceleration Targets:**\n- Less commonly used but powerful\n- Great for dynamics-based modulation\n\n## Mapping Dialog Parameters\n\nWhen linking to controller:\n\n| Option | Values | Function |\n|--------|--------|----------|\n| **Min** | 0-100% | Lowest output value |\n| **Max** | 0-100% | Highest output value |\n| **Curve** | Linear/Exp/Log/Step/Custom | Response shape |\n| **Invert** | On/Off | Reverse direction |\n| **Offset** | ±50% | Shift entire range |\n\n## Default Values\n\nFactory reset values for quick restoration:\n\n```\nX-Min: 0%\nX-Max: 100%\nY-Min: 0%\nY-Max: 100%\nSmoothing: 0%\nMode: Absolute\nHold: Off\nReset on Play: Off\n```\n\n## Hip-Hop Quick Settings\n\n### Filter Sweep\n- X-Min: 0%, X-Max: 100%\n- Map to: Filter Cutoff\n- Curve: Exponential\n\n### Dual Control\n- X: Parameter A (0-100%)\n- Y: Parameter B (0-100%)\n- Both curves: Linear\n\n### Dynamics Control\n- Speed mapped to: Compression ratio\n- Threshold: 20% speed\n- Use: Fast movements = more compression\n\n## Reference Grid\n\nPosition values at each corner:\n\n```\nTop-Left:     X=0%,  Y=100%\nTop-Center:   X=50%, Y=100%\nTop-Right:    X=100%, Y=100%\nCenter:       X=50%, Y=50%\nBottom-Left:  X=0%,  Y=0%\nBottom-Right: X=100%, Y=0%\n```\n",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity X Y Controller\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity X Y Controller to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "shortcuts": "# Keyboard Shortcuts & Quick Actions\n\n## Controller Shortcuts\n\n### Navigation\n\n| Shortcut | Action |\n|----------|--------|\n| **Right-click pad** | Reset to center (50%, 50%) |\n| **Double-click pad** | Reset to default position |\n| **Ctrl + click** | Fine control mode (slower response) |\n| **Shift + drag** | Constrain to axis (horizontal or vertical only) |\n\n### Mode Switching\n\n| Action | Method |\n|--------|--------|\n| Toggle Absolute/Relative | Click mode button |\n| Toggle Hold | Click HOLD button |\n| Reset position | Click RESET button |\n| Smooth on/off | Toggle smoothing dial |\n\n## Parameter Linking Shortcuts\n\n### Quick Link\n\n1. **Right-click** target parameter\n2. Select **\"Link to controller\"**\n3. Choose **Fruity X-Y Controller**\n4. Select X or Y output\n\n### Batch Link\n\n1. **Right-click** first parameter → Link to controller\n2. **Right-click** additional parameters\n3. Select **\"Link to last tweaked controller\"**\n4. Faster workflow for macro mapping\n\n## Playlist Shortcuts\n\n### Automation Editing\n\n| Shortcut | Action |\n|----------|--------|\n| **F9** | Toggle draw mode |\n| **Shift + drag point** | Fine adjustment |\n| **Ctrl + click** | Add point |\n| **Alt + click** | Delete point |\n| **Right-click line** | Change curve type |\n\n### Recording\n\n| Shortcut | Action |\n|----------|--------|\n| **Ctrl + R** | Start/stop recording |\n| **Shift + R** | Toggle record mode |\n| **Space** | Start/stop playback |\n\n## Workflow Shortcuts\n\n### Common Actions\n\n| Task | Fast Method |\n|------|-------------|\n| Copy controller settings | Right-click plugin header → Save preset as |\n| Paste to new instance | Load preset in new controller |\n| Clear all mappings | Right-click X-Output → Unlink all |\n| Solo mapping | Click chain icon in wrapper |\n\n### Browser Integration\n\n| Shortcut | Action |\n|----------|--------|\n| **F8** | Open browser |\n| **Type \"X-Y\"** | Filter to controller presets |\n| **Drag preset** | Load into channel rack |\n\n## Hip-Hop Workflow Shortcuts\n\n### Live Performance\n\n| Scenario | Shortcut Combo |\n|----------|----------------|\n| Quick filter sweep | Shift + drag from left to right |\n| Stutter effect | Rapid small movements + Hold on/off |\n| Fine adjustment | Ctrl + small movements |\n| Reset all | Double-click pad center |\n\n### Recording Takes\n\n| Step | Action |\n|------|--------|\n| 1. Set up | Map targets, test range |\n| 2. Arm | Ctrl + R to record enable |\n| 3. Capture | Space to play, move pad |\n| 4. Stop | Space |\n| 5. Review | F9 to edit automation |\n\n## Touch/Mouse Tips\n\n### Touchscreen (if available)\n\n- Multi-touch = simultaneous X and Y control\n- Velocity sensitive (faster = more extreme values)\n- Natural for gestures and sweeps\n\n### Mouse\n\n- Precision mode: Ctrl key\n- Axis lock: Shift key\n- Quick jumps: Click corners directly\n\n## Window Management\n\n| Shortcut | Action |\n|----------|--------|\n| **F12** | Close all windows |\n| **F5** | Toggle playlist |\n| **F6** | Toggle channel rack |\n| **F7** | Toggle piano roll |\n| **Ctrl + Shift + H** | Hide/show all controllers |\n\n## Reference: Quick Link Menu\n\nRight-click any automatable parameter:\n\n```\nLink to controller\n├── Fruity X-Y Controller\n│   ├── X\n│   ├── Y\n│   ├── Speed\n│   └── Acceleration\n├── Recent controllers\n├── Browse parameters\n└── Automation clip → Create\n```\n",
+      "top-controls": "# Top Controls: Fruity X Y Controller\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n",
+      "vibe-targets": "# Vibe Targets Quick Reference\n\n## The 5 Vibe Targets\n\nHip-hop and R&B production focuses on five key areas that create emotional response. [SRC: IL-MAN]\n\n---\n\n## 1. BOUNCE (Rhythmic Energy)\n\n**What it is**: The groove, the pocket, the head-nod factor\n\n**Controller Strategy**:\n- Map X to filter cutoff with rhythmic automation\n- Use Y for subtle mix bus compression\n- Speed output → sidechain amount\n\n**Hip-Hop Applications**:\n| Technique | X-Map | Y-Map | Result |\n|-----------|-------|-------|--------|\n| **Beat drop** | Filter sweep open | Reverb wash out | Maximum impact |\n| **Groove accent** | Small X jitters on 2 & 4 | Steady Y value | Rhythmic movement |\n| **Drum fill** | Quick BL → TR diagonal | Simultaneous volume bump | Fill energy |\n\n**Gesture Patterns**:\n- Circle clockwise on downbeats\n- Figure-8 during hi-hat sections\n- Sharp corners for snare accents\n\n---\n\n## 2. TEXTURE (Timbre Variation)\n\n**What it is**: Sonic character, rough vs smooth, vintage vs modern\n\n**Controller Strategy**:\n- X = Saturation/drive amount\n- Y = Filter resonance (adds character)\n- Speed → Bitcrusher intensity\n\n**Hip-Hop Applications**:\n| Technique | X-Map | Y-Map | Result |\n|-----------|-------|-------|--------|\n| **Vintage warm** | Low saturation | Low resonance | Old-school feel |\n| **Modern edge** | High saturation | High resonance | Aggressive bite |\n| **Morphing pad** | Slow X sweep | Slow Y sweep | Evolving texture |\n\n**Gesture Patterns**:\n- Slow circles for pad evolution\n- Small jitters for \"alive\" drums\n- Diagonal sweeps for dramatic shifts\n\n---\n\n## 3. SPACE (Dimension & Depth)\n\n**What it is**: 3D positioning, room size, distance perception\n\n**Controller Strategy**:\n- X = Reverb size/pre-delay\n- Y = Delay feedback/time\n- Both = Stereo width spread\n\n**Hip-Hop Applications**:\n| Technique | X-Map | Y-Map | Result |\n|-----------|-------|-------|--------|\n| **Intimate verse** | Small reverb | Minimal delay | Close, personal |\n| **Epic chorus** | Large reverb | Heavy delay | Massive space |\n| **Tunnel effect** | Max reverb | 0% dry signal | Underwater vibe |\n\n**Gesture Patterns**:\n- Corner-to-corner for dramatic space changes\n- Center position = \"dry\" reference point\n- Top edge = maximum space wash\n\n---\n\n## 4. TENSION (Build & Release)\n\n**What it is**: Anticipation, pressure, the journey to impact\n\n**Controller Strategy**:\n- X = Low-pass filter (removes high end = tension)\n- Y = High-pass filter (removes low end = release)\n- Combined = Frequency isolation for impact\n\n**Hip-Hop Applications**:\n| Technique | X-Map | Y-Map | Result |\n|-----------|-------|-------|--------|\n| **Pre-drop tension** | Filter close from left | Keep neutral Y | Build anticipation |\n| **Breakdown isolation** | X = keep mids | Y = remove bass | Thin texture |\n| **Impact release** | Quick X open | Quick Y neutral | Frequency explosion |\n\n**Gesture Patterns**:\n- Slow sweep from left edge = building tension\n- Sharp rightward snap = tension release\n- Bottom-left position = minimal, thin sound\n\n---\n\n## 5. MOVEMENT (Avoiding Stasis)\n\n**What it is**: Life, breath, imperfection that sounds human\n\n**Controller Strategy**:\n- X = Micro-modulation target (±5% range)\n- Y = Secondary modulation\n- Speed = Only activate on fast movements\n\n**Hip-Hop Applications**:\n| Technique | X-Map | Y-Map | Result |\n|-----------|-------|-------|--------|\n| **Vocal presence** | Tiny X jitters | Steady Y | Natural vocal movement |\n| **Drum \"air\"** | Small circular X | Subtle Y rise | Drums sound \"played\" |\n| **Pad evolution** | Slow X drift | Slow Y drift | Never static |\n\n**Gesture Patterns**:\n- Small circles around sweet spot\n- Random micro-jitters\n- Slow breathing-like motion\n\n---\n\n## Multi-Vibe Combinations\n\n### The Full Drop\n- **Bounce**: Sharp diagonal sweep\n- **Tension**: Left edge to center\n- **Space**: Y = reverb wash\n- **Texture**: X = filter + drive\n\n### The Vibe Loop\n- **Movement**: Continuous small circles\n- **Texture**: Slow Y evolution\n- **Bounce**: Sync'd to beat\n\n### The Breakdown\n- **Space**: Max reverb/delay\n- **Texture**: Heavy saturation\n- **Movement**: Minimal (create contrast)\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity X Y Controller\r\n\r\nThis section contains learning information for the fruity-x-y-controller plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_The_Vibe_Pad_Setup": "# Goal: The \"Vibe Pad\" (Filter + Reverb Morph)\n\n## Routing Context\n*   **Target Plugin:** Any Melody Synth (e.g., Sytrus, FLEX).\n*   **Mixer Track:** The track where the synth is routed.\n*   **Controller:** Fruity X-Y Controller (placed anywhere).\n\n## Step-by-Step Setup\n1.  Load **Fruity X-Y Controller**.\n2.  Open your Synth's Mixer Track and load **Fruity Parametric EQ 2**.\n3.  Right-click the **Main Filter Cutoff** in the EQ -> **Link to controller**.\n4.  Select **X-Y Controller - X** from the Internal Controllers list.\n5.  In the Mixer, load a **Reverb** (e.g., Fruity Reeverb 2).\n6.  Right-click the **Wet/Mix** knob of the Reverb -> **Link to controller**.\n7.  Select **X-Y Controller - Y**.\n\n## Starting Moves\n*   **Bottom-Left:** Muffled and Dry.\n*   **Top-Right:** Bright and Lush.\n*   **Bottom-Right:** Bright and Dry (Standard lead sound).\n*   **Top-Left:** Muffled and Lush (Deep atmospheric sound).\n\n## What to Listen For\n*   Find the \"diagonal sweet spot\" where the melody feels like it's blooming from a distance.\n\n## Automation Idea\n*   Record yourself \"drawing\" a large circle on the pad over 4 bars to create a \"breathing\" movement in the mix.\n",
+      "02_Joystick_Performance": "# Workflow: Joystick/Touch Performance Setup\n\n## The Concept\nUse a physical game controller (joystick) or a touchscreen to perform vector automation live, giving your digital synths a \"human\" and expressive touch.\n\n## Setup\n1.  Go to **Options -> MIDI Settings**.\n2.  Ensure your Controller/Joystick is enabled.\n3.  Load **Fruity X-Y Controller**.\n4.  Link your hardware X-axis and Y-axis to the X and Y knobs inside the plugin using the **Remote Control** settings. [SRC: IL-MAN]\n\n## Performance Recipe\n1.  **Map:** Link X to Filter Cutoff and Y to LFO Speed.\n2.  **Record:** Hit the Record button in FL Studio and select \"Automation.\"\n3.  **Play:** While the beat plays, move your physical joystick to create \"Acid\" style growls and rhythmic shifts.\n4.  **Edit:** After recording, go to the Playlist. You will see two automation clips (one for X, one for Y). You can now \"clean up\" any mistakes with the pencil tool.\n\n## Vibe Check\n*   **Psychedelic:** This is the best way to create those trippy \"alien\" sounds found in experimental hip-hop—mouse clicks are too robotic; joysticks feel \"liquid.\"\n\n## Pitfalls\n*   **Sensitivity:** If the movement is too fast, increase the **Speed/Smoothing** knob in the plugin to 50%.\n",
+      "adding-texture-movement": "# Workflow: Adding Texture Movement\n\n## Goal\nUse X-Y Controller to create evolving timbral character that keeps sounds interesting over time. Transform static sounds into living, breathing textures. [SRC: IL-MAN]\n\n## Understanding Texture in Hip-Hop\n\nTexture = the \"character\" of the sound - rough vs smooth, vintage vs modern, clean vs degraded.\n\n### Texture Modulation Targets\n- Saturation/Drive amount\n- Bitcrusher/Sample rate\n- Filter resonance\n- Noise/Crackle levels\n- Harmonic enhancement\n\n## Setup\n\n### Step 1: Choose Your Texture Engine\n\n**Option A: Saturation-Based**\n- X = Drive amount (0-50%)\n- Y = Character/EQ curve\n- Result: Smooth warmth to aggressive bite\n\n**Option B: Degradation-Based**\n- X = Bitcrusher resolution\n- Y = Sample rate\n- Result: Pristine to \"broken\" digital\n\n**Option C: Layer-Based**\n- X = Dry layer volume\n- Y = Processed layer volume\n- Result: Morph between two textures\n\n### Step 2: Configure Response Curves\n\n**Saturation Curve**: Exponential\n- 0-40% pad = subtle warmth\n- 40-100% pad = aggressive drive\n\n**Degradation Curve**: Logarithmic\n- Quick drop into degraded territory\n- Fine control in the \"broken\" zone\n\n**Layer Blend Curve**: Linear\n- Even crossfade between sources\n- Predictable A/B morphing\n\n## Gesture Patterns for Texture\n\n### Pattern 1: The Slow Evolution\n```\nDuration: 8-16 bars\nGesture: Large circular motion\nSpeed: Very slow, almost imperceptible\nResult: Gradual texture shift over entire section\nUse: Pads, sustained elements\n```\n\n### Pattern 2: The Micro-Jitter\n```\nDuration: Continuous\nGesture: ±5% random movements\nSpeed: Fast, jittery\nResult: \"Alive\" texture that never sits still\nUse: Drums, bass, anything that needs \"air\"\n```\n\n### Pattern 3: The Section Morph\n```\nDuration: 4 bars\nGesture: Bottom-left → Top-right diagonal\nSpeed: Smooth acceleration\nResult: Complete texture transformation\nUse: Verse → Chorus transitions\n```\n\n### Pattern 4: The Stutter Texture\n```\nDuration: 1 bar (fill or transition)\nGesture: Rapid corner-to-corner jumps\nSpeed: Very fast, 1/16 note timing\nResult: Glitchy, broken texture\nUse: Drum fills, impact moments\n```\n\n## Hip-Hop Genre Applications\n\n### Lo-Fi Texture\n**Setup**:\n- X = Wow/flutter amount (tape pitch drift)\n- Y = Degradation (bitcrusher + noise)\n- Curve: Exponential for \"authentic\" lofi feel\n\n**Gesture**: Slow, wandering movements\n**Target**: Samples, background textures\n\n### Trap Edge\n**Setup**:\n- X = Distortion drive (0-60%)\n- Y = High-frequency boost\n- Curve: Linear for direct control\n\n**Gesture**: Sharp movements on accents\n**Target**: 808s, drums, synths\n\n### R&B Warmth\n**Setup**:\n- X = Tape saturation\n- Y = Subtle harmonic enhancement\n- Curve: Gentle exponential\n\n**Gesture**: Breathing-like slow movements\n**Target**: Vocals, pads, keys\n\n### Drill Darkness\n**Setup**:\n- X = Low-pass filter (darkening)\n- Y = Reverb pre-delay (depth)\n- Curve: Logarithmic for quick darkening\n\n**Gesture**: Hold positions for sustained mood\n**Target**: Everything (drill = dark)\n\n## Layered Texture Workflows\n\n### The Dual-Source Morph\n1. Source A: Clean drums\n2. Source B: Heavily distorted drums\n3. X-Y Controller → Crossfade between sources\n4. Gesture: Continuous slow morph\n5. Result: Drums that evolve from clean to dirty\n\n### The Parallel Chain\n1. Main sound: Untouched\n2. Parallel chain: Saturated + filtered\n3. X-Y → Parallel blend amount\n4. Gesture: Subtle Y movements\n5. Result: Dynamic \"air\" and character\n\n### The Frequency-Based Texture\n1. Split: Low, Mid, High bands\n2. X → Mid-band saturation\n3. Y → High-band exciter\n4. Gesture: Independent control per band\n5. Result: Timbre that evolves across spectrum\n\n## Performance Recording Tips\n\n### Texture Takes Strategy\n1. **Take 1**: Discover the range\n2. **Take 2**: Find the \"sweet spots\"\n3. **Take 3**: Slow, meditative evolution\n4. **Take 4**: Active, jittery movement\n5. **Take 5**: The \"perfect\" performance\n\n### Comping Approach\n- Use Take 3 for verse sections (smooth)\n- Use Take 4 for choruses (energetic)\n- Blend Takes 1-2 for transitions\n- Result: Dynamic texture arc\n\n## Common Texture Mistakes\n\n❌ **Too much all the time**: 100% saturation for entire track\n✅ **Solution**: Modulate - use range 0-40% with occasional peaks\n\n❌ **Wrong texture for genre**: Heavy distortion on R&B ballad\n✅ **Solution**: Match texture to genre conventions\n\n❌ **Static texture**: Set to one value and leave it\n✅ **Solution**: Even subtle movement (±2%) adds life\n\n## Quick Texture Recipes\n\n### Vintage Sample Texture\n- X = Tape saturation (0-30%)\n- Y = Subtle wow/flutter\n- Gesture: Slow circles, 8 bars\n- Result: Authentic vinyl feel\n\n### Modern Trap Edge\n- X = Distortion (0-50%)\n- Y = High-shelf boost\n- Gesture: Sharp on accents, smooth elsewhere\n- Result: Aggressive but controlled\n\n### Atmospheric Drift\n- X = Reverb size\n- Y = Delay feedback\n- Gesture: Continuous slow evolution\n- Result: Ever-changing space\n\n**Time to Complete**: 10-15 minutes\n**Impact**: Prevents listener fatigue, adds depth\n",
+      "building-tension-release": "# Workflow: Building Tension and Release\n\n## Goal\nUse X-Y Controller to create anticipation and emotional impact through controlled tension and satisfying release moments. Master the art of the build-up and drop. [SRC: IL-MAN]\n\n## Understanding Tension in Hip-Hop\n\nTension = the feeling of anticipation before an impact moment. It's what makes drops hit harder.\n\n### Tension Building Elements\n- Frequency restriction (filters closing)\n- Dynamic compression (squashing)\n- Space reduction (drying out)\n- Volume automation (pulling back)\n- Rhythmic acceleration (intensifying)\n\n## The Tension Architecture\n\n### Phase 1: The Hint (4-8 bars before)\n**Goal**: Subtle suggestion that something is coming\n- X-Y position: 10-20% from normal\n- Movement: Minimal, almost imperceptible\n- Result: Listener subconsciously notices change\n\n### Phase 2: The Build (2-4 bars before)\n**Goal**: Clear anticipation building\n- X-Y position: Moving from 20% → 60%\n- Movement: Gradual, accelerating\n- Result: Listener knows something big is coming\n\n### Phase 3: The Peak (2 beats - 1 bar before)\n**Goal**: Maximum tension\n- X-Y position: 60% → 90%\n- Movement: Rapid, intense\n- Result: Edge-of-seat anticipation\n\n### Phase 4: The Release (The drop moment)\n**Goal**: Impact and satisfaction\n- X-Y position: 90% → 10% (or 0% → 100%)\n- Movement: Instant snap\n- Result: Maximum emotional impact\n\n## Setup\n\n### Step 1: Choose Tension Strategy\n\n**Strategy A: The Filter Build**\n- X = Low-pass filter cutoff\n- Range: 200Hz → 20kHz\n- Curve: Exponential (subtle at first, rapid at end)\n- Result: Frequency restriction builds tension\n\n**Strategy B: The Mix Collapse**\n- X = High-pass filter (removes bass)\n- Y = Low-pass filter (removes treble)\n- Range: Isolates only mid frequencies\n- Result: \"Thin\" sound that explodes full frequency\n\n**Strategy C: The Space Dry-Out**\n- X = Reverb send (wet → dry)\n- Y = Delay feedback (wash → discrete)\n- Result: Intimate, dry sound that explodes into space\n\n**Strategy D: The Dynamic Squeeze**\n- X = Compression ratio (gentle → aggressive)\n- Y = Threshold (higher → lower)\n- Result: Squashed dynamics that \"explode\" on release\n\n### Step 2: Configure Curves for Maximum Impact\n\n**Tension Build**: Exponential\n- 0-60% = subtle restriction\n- 60-100% = rapid tightening\n\n**Release**: Instant (step curve)\n- 100% → 0% in one sample\n- No gradual release - maximum contrast\n\n## Gesture Patterns for Tension\n\n### Pattern 1: The Classic Filter Sweep\n```\nDuration: 8 bars\nGesture: Left edge → Right edge\nX-axis: Exponential curve\nY-axis: Optional (resonance boost at peak)\n\nTiming:\nBars 1-4: Slow movement (20% progress)\nBars 5-6: Accelerating (to 60%)\nBars 7: Rapid (to 90%)\nBar 8 Beat 1: Hold at 90%\nBar 8 Beat 3-4: SNAP to 0% (drop)\nResult: Maximum filter impact\n```\n\n### Pattern 2: The Frequency Isolation\n```\nDuration: 4 bars\nGesture: Center → Bottom-Left corner\nX-axis: High-pass (cuts bass)\nY-axis: Low-pass (cuts treble)\n\nTiming:\nBar 1: Center (full frequency)\nBar 2: Move to 30% (subtle isolation)\nBar 3: Move to 60% (clearly thin)\nBar 4 Beat 1: Hold at bottom-left\nBar 4 Beat 3-4: SNAP to center (full frequency explosion)\nResult: Mid-range only, then full spectrum\n```\n\n### Pattern 3: The Spiral Tension\n```\nDuration: 16 bars\nGesture: Spiral from center outward\nX-axis: Increasing intensity\nY-axis: Increasing intensity\n\nTiming:\nBars 1-8: Tight spiral, subtle changes\nBars 9-12: Spiral expands, building\nBars 13-14: Rapid spiral, maximum\nBar 15: Hold at edge\nBar 16 Beat 1: SNAP to center\nResult: Complex, evolving tension\n```\n\n### Pattern 4: The Stutter Build\n```\nDuration: 4 bars\nGesture: Rapid left-right oscillation\nX-axis: Filter cutoff\nSpeed: Accelerating\n\nTiming:\nBar 1: 1/4 note oscillation\nBar 2: 1/8 note oscillation\nBar 3: 1/16 note oscillation\nBar 4: 1/32 note + snap to 0%\nResult: Rhythmic tension acceleration\n```\n\n## Hip-Hop Genre Tension Conventions\n\n### Trap Tension\n**Strategy**: Filter + Space combination\n- X = Filter cutoff (restriction)\n- Y = Reverb reduction (dry-out)\n- Gesture: Diagonal from bottom-right (filtered + dry) → top-right (open + wet)\n- Peak: Hold filtered position, then SNAP open\n\n### R&B Tension\n**Strategy**: Subtle frequency + dynamics\n- X = High-shelf reduction (darkening)\n- Y = Gentle compression\n- Gesture: Slow, smooth curves\n- Peak: Minimal but meaningful release\n\n### Drill Tension\n**Strategy**: Maximum isolation\n- X = Low-pass (dark)\n- Y = Width collapse (mono)\n- Gesture: Aggressive push to corner\n- Peak: Explosive return with 808 hit\n\n### Boom Bap Tension\n**Strategy**: Sample manipulation\n- X = Sample chop position\n- Y = Filter + pitch\n- Gesture: Step changes (emulate DJ cuts)\n- Peak: Return to full sample\n\n## Advanced Tension Techniques\n\n### The False Peak\n1. Build to 80% over 8 bars\n2. Brief release to 60% (listener thinks drop is coming)\n3. Build again to 95%\n4. ACTUAL drop\n5. Result: Double anticipation\n\n### The Layered Tension\n1. Controller 1: Filter (most important)\n2. Controller 2: Space (secondary)\n3. Controller 3: Dynamics (tertiary)\n4. Each builds at different rates\n5. Result: Complex, rich tension architecture\n\n### The Reverse Tension\n1. Start extreme (fully filtered)\n2. Release over time (filter opens)\n3. Creates \"relief\" tension\n4. At drop, everything is already open\n5. Result: Different kind of anticipation\n\n## Recording Tension Gestures\n\n### Tension Take Strategy\nTension requires precision timing:\n\n1. **Take 1**: Map the full gesture range\n2. **Take 2**: Practice the acceleration curve\n3. **Take 3**: Focus on the SNAP moment\n4. **Take 4**: Full performance, relaxed\n5. **Take 5**: Intentional, focused build\n\n### Timing the Drop\nThe drop moment is EVERYTHING:\n\n- Use visual grid to see the beat\n- Practice the snap 10+ times\n- Record the drop moment separately if needed\n- Crossfade from build to drop for smooth transition\n\n## Common Tension Mistakes\n\n❌ **Building too long**: 16+ bars of build loses impact\n✅ **Solution**: 4-8 bars is the sweet spot\n\n❌ **Linear build**: Same rate of increase throughout\n✅ **Solution**: Exponential curve - subtle then explosive\n\n❌ **Weak release**: Gradual return instead of snap\n✅ **Solution**: Instant release for maximum contrast\n\n❌ **Too much tension**: Everything restricted (no groove)\n✅ **Solution**: Keep some elements (like drums) relatively open\n\n## Quick Tension Recipes\n\n### The Trap Drop\n- X = Low-pass (200Hz → 20kHz)\n- Curve: Exponential\n- Timing: 4 bars, snap on drop beat\n- Result: Classic trap impact\n\n### The R&B Lift\n- X = High-shelf boost (dark → bright)\n- Y = Reverb expansion\n- Timing: 8 bars, smooth release\n- Result: Elegant, emotional lift\n\n### The Drill Darkness\n- X = Low-pass + width collapse\n- Timing: 2 bars, aggressive\n- Result: Dark, intense release\n\n**Time to Complete**: 15-30 minutes (tension requires precision)\n**Impact**: Transform flat arrangements into impactful experiences\n",
+      "creating-bounce": "# Workflow: Creating Bounce with X-Y Controller\n\n## Goal\nUse X-Y Controller to inject rhythmic energy and groove into static tracks. Create the \"head-nod\" factor that defines hip-hop. [SRC: IL-MAN]\n\n## Understanding Bounce\n\nBounce = the feeling of the track \"moving\" in time with the groove. It's what makes people nod their heads instinctively.\n\n### Bounce Sources\n- Filter movement synced to beat\n- Dynamic compression changes\n- Stereo width modulation\n- Space (reverb/delay) pumping\n\n## Setup\n\n### Step 1: Map to Groove Parameters\n\n**X-Output → Filter Cutoff**\n- Range: 200Hz - 8kHz (don't go too extreme)\n- Curve: Exponential (subtle at low, more open at high)\n- Sync to: Hi-hat rhythm or snare backbeat\n\n**Y-Output → Mix Bus Compression**\n- Range: Gentle (2:1) to Punchy (4:1)\n- Curve: Linear\n- Sync to: Kick drum for \"pump\" effect\n\n**Speed (optional) → Transient Shaper**\n- Fast movements = more transient emphasis\n- Use for accent beats\n\n### Step 2: Configure Timing\n\n**Grid Settings**:\n- Snap: 1/16 notes for trap\n- Snap: 1/8 notes for boom bap\n- Free timing: For loose, organic feel\n\n**Quantize Strategy**:\n1. Record free (human timing)\n2. Quantize to 1/16\n3. Humanize by ±5-10%\n4. Result: Tight but alive\n\n## Gesture Patterns\n\n### Pattern 1: The Hi-Hat Jitter\n```\nTiming: Every hi-hat hit (1/16 or 1/8 notes)\nGesture: Small ±10% X jitters\nResult: Filter \"dances\" with hi-hat pattern\n```\n\n### Pattern 2: The Snare Snap\n```\nTiming: Beats 2 and 4\nGesture: Quick X movement (5% → 15% → 5%)\nDuration: 1/16 note\nResult: Snare \"pops\" with filter emphasis\n```\n\n### Pattern 3: The Groove Loop\n```\nTiming: 2-bar loop\nGesture: Figure-8 pattern\nX-axis: Responds to kick pattern\nY-axis: Responds to snare pattern\nResult: Full groove interaction\n```\n\n### Pattern 4: The Drop Pump\n```\nTiming: Last 4 beats before drop\nGesture: Accelerating X jitters\nStart: 1/4 note intervals\nEnd: 1/32 note frenzy\nResult: Maximum tension release\n```\n\n## Recording Workflow\n\n### Step 1: Practice the Pattern\n1. Set metronome to track BPM\n2. Practice gesture without recording\n3. Focus on timing accuracy\n4. Do 5 practice passes\n\n### Step 2: Capture Performance\n1. Enable recording (Ctrl + R)\n2. Enable loop for section\n3. Record 3-5 takes\n4. Don't stop if you make mistakes\n\n### Step 3: Edit and Comp\n1. Review all takes in playlist\n2. Cut best moments from each\n3. Crossfade between sections\n4. Smooth automation curves\n\n## Hip-Hop Applications\n\n### Trap Bounce\n**Target**: Drum bus\n**Gesture**: Sharp X jitters on hi-hats\n**Settings**: Exponential curve, fast return\n\n### Boom Bap Swing\n**Target**: Sample chop\n**Gesture**: Loose Y curves behind the beat\n**Settings**: Linear curve, swung timing\n\n### Drill Aggression\n**Target**: 808 + drums\n**Gesture**: Hard X snaps on every snare\n**Settings**: Step curve for discrete changes\n\n### R&B Groove\n**Target**: Full mix\n**Gesture**: Smooth figure-8 over 4 bars\n**Settings**: High smoothing, gentle curves\n\n## Advanced Techniques\n\n### Layered Bounce\n1. Controller 1: X-Y → Drum bus (tight timing)\n2. Controller 2: X-Y → Bass (loose timing)\n3. Result: Multiple groove layers interacting\n\n### Conditional Bounce\nUse Formula Controller as middleman:\n- X-Y → Formula → Target\n- Logic: \"Only modulate if kick is present\"\n- Result: Bounce that responds to the music\n\n### Polyrhythmic Bounce\n- Map X to 1/4 note timing\n- Map Y to 1/6 note timing (triplets)\n- Result: Complex, evolving groove\n\n## Common Mistakes\n\n❌ **Too extreme**: Filter goes from 0-20kHz (sounds like on/off)\n✅ **Solution**: Limit range to musical zone (200Hz-8kHz)\n\n❌ **Out of time**: Gestures not synced to beat\n✅ **Solution**: Use grid snap or quantize after recording\n\n❌ **Static for too long**: No movement for 4+ bars\n✅ **Solution**: Even subtle movement keeps it alive\n\n## Quick Reference\n\n**Bounce Recipe**:\n1. Map X to filter (200Hz-8kHz range)\n2. Map Y to compression (gentle ratio)\n3. Record hi-hat synced jitters\n4. Quantize to 1/16\n5. Smooth curves\n6. Done\n\n**Time to Complete**: 5-10 minutes per section\n**Impact**: Instant groove improvement\n",
+      "macro-mapping-one-to-many": "# Workflow: Macro Mapping (One Gesture → Many Parameters)\n\n## Goal\nSet up X-Y Controller to control 6+ parameters simultaneously with a single gesture. Create powerful macro controls that transform your entire mix with one hand movement. [SRC: IL-MAN]\n\n## Understanding Macro Mapping\n\nMacro = controlling multiple parameters with a single control source.\n\nWith X-Y Controller:\n- X-Output → Multiple targets\n- Y-Output → Multiple targets  \n- Speed → Target\n- Acceleration → Target\n\n**Result**: One gesture can affect 8-10+ parameters simultaneously\n\n## Setup\n\n### Step 1: Define the Macro Intent\n\n**What should this macro DO?**\n\nExamples:\n- \"Drop Build\" = everything gets bigger\n- \"Vibe Kill\" = strip down to essentials\n- \"808 Punch\" = maximize bass impact\n- \"Vocal Presence\" = enhance voice clarity\n- \"Space Explosion\" = maximum reverb wash\n\n### Step 2: Choose Target Parameters\n\nSelect 4-8 parameters that support the macro intent:\n\n**Drop Build Macro**:\n1. Filter cutoff (opens up)\n2. Reverb send (increases)\n3. Saturation (adds harmonics)\n4. Stereo width (widens)\n5. Compression ratio (tightens)\n6. Delay feedback (more echoes)\n\n### Step 3: Map with Different Curves\n\n**Same output, different responses**:\n\n```\nX-Output → Filter Cutoff: Linear (follows exactly)\nX-Output → Reverb Send: Exponential (kicks in at 60%)\nX-Output → Saturation: Step (off until 80%, then on)\nX-Output → Width: Linear (steady increase)\n```\n\n**Why different curves?**\n- Creates \"layered\" macro effect\n- Some parameters respond early, others late\n- More complex and interesting than uniform response\n\n### Step 4: Route All Mappings\n\n**Quick routing technique**:\n\n1. Right-click Target 1 → \"Link to controller\" → X-Y Controller → X\n2. Right-click Target 2 → \"Link to last tweaked controller\"\n3. Repeat for all targets\n4. Faster than full menu navigation every time\n\n## Macro Mapping Recipes\n\n### Recipe 1: The Full Drop Build\n**Intent**: Maximum intensity before drop\n\n**Parameters**:\n- X → Filter cutoff (200Hz-20kHz, linear)\n- X → Reverb send (0-70%, exponential)\n- X → Stereo width (80-150%, linear)\n- Y → Saturation (0-40%, exponential)\n- Y → Compression ratio (2:1-6:1, linear)\n- Y → Delay feedback (10-60%, exponential)\n\n**Gesture**: Spiral outward from center over 8 bars\n\n**Timing**:\n- 0-50% pad: Subtle changes\n- 50-80% pad: Noticeable build\n- 80-100% pad: Intense, rapid change\n\n### Recipe 2: The Vibe Kill\n**Intent**: Frequency isolation for breakdowns\n\n**Parameters**:\n- X → High-pass filter (20Hz-2kHz, linear)\n- Y → Low-pass filter (200Hz-20kHz, linear)\n\n**Gesture**: Snap to bottom-left corner\n\n**Positions**:\n- Center (50%, 50%): Full frequency spectrum\n- Bottom-Left (0%, 0%): Only mid-range (300Hz-2kHz)\n- Top-Right (100%, 100%): Full spectrum with boost\n\n### Recipe 3: 808 Punch Macro\n**Intent**: Maximize 808 impact\n\n**Parameters**:\n- X → Volume (100-120%, linear)\n- Y → Distortion (0-30%, exponential)\n- Speed → Compression ratio (gentle-aggressive)\n\n**Gesture**: Hard punch to top-right = loud + distorted + compressed\n\n### Recipe 4: Vocal Presence\n**Intent**: Enhance vocal clarity and warmth\n\n**Parameters**:\n- X → High-mid EQ boost (presence)\n- Y → Saturation (warmth)\n- Speed → De-esser (tame harshness on fast transients)\n\n**Gesture**: Gentle curve to top-right\n\n### Recipe 5: Space Explosion\n**Intent**: Transform room size instantly\n\n**Parameters**:\n- X → Reverb size (small room → cathedral)\n- X → Pre-delay (tight → spacious)\n- Y → Delay feedback (discrete → infinite)\n- Y → Stereo width (mono → ultra-wide)\n\n**Gesture**: Vertical sweep to top\n\n## Advanced Macro Techniques\n\n### Nested Macros\nChain effects together:\n\n1. X-Y → Parameter A\n2. Parameter A → Parameter B (linked)\n3. Result: Moving X-Y moves A, which automatically moves B\n4. Use for complex, interdependent changes\n\n### Conditional Macros\nUse Formula Controller:\n\n- X-Y → Formula → Targets\n- Formula logic: \"If X > 50%, affect reverb; else affect delay\"\n- Result: Context-dependent macro behavior\n\n### Inverted Macros\nReverse the relationship:\n\n- X-Output → Target A (increasing)\n- X-Output → Target B (decreasing via invert)\n- Result: A goes up while B goes down\n- Example: Filter opens while reverb dries out\n\n### Macro Switching\nChange active macro per section:\n\n**Verse**: X-Y → Vocal presence macro\n**Pre-Chorus**: X-Y → Build macro\n**Chorus**: X-Y → Width/spatial macro\n\nUse automation clips to switch between mapping sets.\n\n## Performance with Macros\n\n### The Macro Gesture Library\n\nDevelop repeatable gestures for each macro:\n\n1. **The Spiral**: Drop builds (increasing intensity)\n2. **The Snap**: Vibe kills (instant transformation)\n3. **The Punch**: Impact moments (hard corner hit)\n4. **The Wiggle**: Subtle modulation (center ±10%)\n\n### Recording Macro Performance\n\n1. **Practice**: 3-5 reps without recording\n2. **Calibrate**: Check all targets respond correctly\n3. **Capture**: 3-5 takes, varying intensity\n4. **Comp**: Select best moments per section\n5. **Refine**: Adjust individual targets if needed\n\n## Common Macro Mistakes\n\n❌ **Too many targets**: 15+ parameters (uncontrollable chaos)\n✅ **Solution**: 4-8 well-chosen targets\n\n❌ **No clear intent**: \"Map everything to everything\"\n✅ **Solution**: Define the macro's purpose first\n\n❌ **Uniform curves**: All targets use linear\n✅ **Solution**: Mix curves for layered response\n\n❌ **Fighting parameters**: Two targets work against each other\n✅ **Solution**: All targets should support the same musical goal\n\n❌ **Static macros**: Mapped but never automated\n✅ **Solution**: Perform the macro gestures - don't just set values\n\n## Quick Macro Setup Checklist\n\n- [ ] Define macro intent (one sentence)\n- [ ] Select 4-8 supporting parameters\n- [ ] Choose appropriate curves for each\n- [ ] Set min/max values that make sense together\n- [ ] Test all targets respond correctly\n- [ ] Practice the gesture 3-5 times\n- [ ] Record performance takes\n- [ ] Comp and refine\n\n## Macro Templates\n\nSave your macros as presets:\n\n```\n1. Load X-Y Controller preset\n2. All mappings load automatically\n3. Ready to perform\n```\n\nShare macros with collaborators:\n- Save .fst preset file\n- Include mapping documentation\n- Note intended gesture patterns\n\n**Time to Complete**: 15-30 minutes per macro\n**Impact**: Transform entire sections with single gestures\n",
+      "multi-parameter-control": "# Workflow: Multi-Parameter Simultaneous Control\n\n## Goal\nUse X-Y Controller to manipulate 3+ parameters at the same time, creating complex, interdependent sonic transformations with single gestures. [SRC: IL-MAN]\n\n## The Power of Simultaneous Control\n\nTraditional automation: One parameter at a time\nX-Y Controller: Multiple parameters responding together\n\n**Advantages**:\n- Coherent, unified changes\n- Complex transformations with simple gestures\n- Performable in real-time\n- Relationships between parameters feel \"musical\"\n\n## Setup\n\n### Step 1: Select Parameter Groups\n\nGroup parameters by relationship:\n\n**Frequency Group**:\n- Filter cutoff\n- Resonance\n- Drive/distortion\n\n**Dynamics Group**:\n- Compression ratio\n- Threshold\n- Makeup gain\n\n**Spatial Group**:\n- Reverb size\n- Pre-delay\n- Delay feedback\n\n**Mix Group**:\n- Wet/dry balance\n- Volume\n- Pan/width\n\n### Step 2: Assign to X-Y Axes\n\n**Option A: Independent Groups**\n- X → Frequency parameters\n- Y → Spatial parameters\n- Result: Frequency and space controlled independently\n\n**Option B: Blended Groups**\n- X → Mix of frequency + dynamics\n- Y → Mix of spatial + texture\n- Result: Complex, interdependent response\n\n**Option C: All on One Axis**\n- X → All parameters (3-5 targets)\n- Y → Modulation amount/intensity\n- Result: X controls WHAT, Y controls HOW MUCH\n\n### Step 3: Configure Response Relationships\n\n**Linear relationships** (all move together):\n```\nX-Output → Filter: Linear\nX-Output → Reverb: Linear\nX-Output → Width: Linear\n```\n\n**Staggered relationships** (some lead, some follow):\n```\nX-Output → Filter: Linear (starts immediately)\nX-Output → Reverb: Exponential (kicks in at 60%)\nX-Output → Saturation: Step (starts at 80%)\n```\n\n**Inverted relationships** (opposite directions):\n```\nX-Output → Dry: Linear (increasing)\nX-Output → Wet: Inverted Linear (decreasing)\nResult: Crossfade between dry and wet\n```\n\n## Simultaneous Control Recipes\n\n### Recipe 1: The 3D Filter\n**Parameters**:\n1. Filter cutoff (X-Output)\n2. Resonance (X-Output, exponential)\n3. Drive (X-Output, step - kicks in at 70%)\n\n**Gesture**: Horizontal sweep\n**Result**: Filter that adds character as it opens\n\n**Curve Strategy**:\n- Cutoff: Linear (predictable)\n- Resonance: Exponential (subtle boost)\n- Drive: Step (clean until 70%, then gritty)\n\n### Recipe 2: The Space Morph\n**Parameters**:\n1. Reverb size (Y-Output)\n2. Pre-delay (Y-Output, logarithmic)\n3. Stereo width (Y-Output, linear)\n4. Delay feedback (Y-Output, exponential)\n\n**Gesture**: Vertical sweep\n**Result**: Complete spatial transformation\n\n**Curve Strategy**:\n- Size: Linear (even growth)\n- Pre-delay: Logarithmic (quick then fine-tune)\n- Width: Linear (predictable)\n- Feedback: Exponential (wash at top)\n\n### Recipe 3: The Dynamics Chain\n**Parameters**:\n1. Compression ratio (X-Output)\n2. Threshold (X-Output, linked ratio)\n3. Makeup gain (X-Output, compensate for gain reduction)\n\n**Gesture**: Horizontal with subtle Y modulation\n**Result**: Intelligent compression that adapts\n\n**Setup**:\n- Ratio: Linear increase\n- Threshold: Follows ratio (lower threshold as ratio increases)\n- Makeup: Compensates (automatic gain staging)\n\n### Recipe 4: The Mix Collapse/Expand\n**Parameters**:\n1. High-pass filter (X-Output, linear)\n2. Low-pass filter (Y-Output, linear)\n3. Volume (X-Output, inverted - boost as frequencies cut)\n4. Reverb send (Y-Output, boost as dry signal thins)\n\n**Gesture**: Move to corners for different states\n**Result**: Four distinct mix configurations\n\n**Positions**:\n- Center: Full mix\n- Bottom-Left: Mid-range only (thin)\n- Top-Left: Bright only (treble focus)\n- Bottom-Right: Dark only (bass focus)\n- Top-Right: Full mix + boost\n\n### Recipe 5: The Vocal Chain\n**Parameters**:\n1. EQ presence (X-Output)\n2. De-esser threshold (Speed output)\n3. Saturation warmth (Y-Output)\n4. Reverb send (Y-Output, exponential)\n5. Delay feedback (X-Output, subtle)\n\n**Gesture**: Complex curves combining X, Y, and Speed\n**Result**: Complete vocal transformation\n\n## Advanced Multi-Parameter Techniques\n\n### The Parameter Ladder\nDifferent parameters respond at different X-Y percentages:\n\n```\n0-30% X:   Subtle filter change only\n30-60% X:  Filter + subtle reverb\n60-80% X:  Filter + reverb + saturation\n80-100% X: Everything + delay\n```\n\n**Implementation**: Use different curves for each target\n\n### The Conditional Cascade\nParameters activate based on previous parameters:\n\n1. X → Filter (always active)\n2. X → Reverb (only when filter > 50%)\n3. X → Saturation (only when reverb > 50%)\n\n**Implementation**: Formula Controller or step curves\n\n### The Vector Field\n2D positioning controls complex parameter space:\n\n```\nPad Position → Result\nTop-Left:     Bright + Spacious\nTop-Right:    Bright + Intimate\nBottom-Left:  Dark + Spacious  \nBottom-Right: Dark + Intimate\nCenter:       Neutral + Balanced\n```\n\n**Implementation**: Both X and Y mapped to multiple parameters with careful calibration\n\n## Performance with Multi-Parameter Control\n\n### The Gesture Vocabulary\n\nDevelop repeatable multi-parameter gestures:\n\n1. **The Circle**: All parameters evolve cyclically\n2. **The Figure-8**: Complex interplay between X and Y targets\n3. **The Diagonal**: Coherent transformation across all parameters\n4. **The Corner Jump**: Instant switching between states\n\n### Recording Multi-Parameter Performance\n\n**Challenge**: Harder to \"feel\" multiple parameters at once\n\n**Solution**:\n1. Practice listening to ONE parameter at a time\n2. Once comfortable, add second parameter\n3. Build up to full multi-parameter awareness\n4. Record when you can \"feel\" the relationships\n\n### Monitoring Multi-Parameter Changes\n\n**Visual feedback**:\n1. Open target plugin GUIs\n2. Watch parameters move as you perform\n3. Helps develop multi-parameter awareness\n4. Use mixer meters for level-based parameters\n\n## Common Multi-Parameter Mistakes\n\n❌ **Too many unrelated parameters**: Chaos instead of coherence\n✅ **Solution**: Parameters should share a musical purpose\n\n❌ **All same curve**: Boring, uniform response\n✅ **Solution**: Mix curves for staggered response\n\n❌ **Fighting relationships**: Parameters work against each other\n✅ **Solution**: All changes should support the same goal\n\n❌ **Overwhelming the performer**: Can't \"feel\" the relationships\n✅ **Solution**: Start with 2-3 parameters, add gradually\n\n## Quick Multi-Parameter Recipes\n\n### The Drop Build (4 parameters)\n- X → Filter (linear)\n- X → Reverb (exponential)\n- Y → Saturation (step at 70%)\n- Y → Width (linear)\n\n### The Drum Glue (3 parameters)\n- X → Compression ratio\n- X → Threshold (linked)\n- Speed → Transient emphasis\n\n### The Vocal Polish (5 parameters)\n- X → EQ presence\n- Y → Reverb\n- Speed → De-essing\n- Y → Saturation (exponential)\n- X → Delay (subtle)\n\n**Time to Complete**: 20-40 minutes per multi-parameter setup\n**Impact**: Complex, professional-sounding transformations\n",
+      "performance-recording-live": "# Workflow: Performance Recording (Live Capture)\n\n## Goal\nCapture live, human-performed automation gestures using X-Y Controller. Record the organic, imperfect movements that bring productions to life. [SRC: IL-MAN]\n\n## Why Live Performance Matters\n\n**Computer-generated automation**:\n- Perfect timing\n- Predictable curves\n- Sounds robotic\n\n**Human performance**:\n- Intentional \"errors\" that sound musical\n- Reacts to the music in real-time\n- Unique every time\n- Has \"feel\" and \"groove\"\n\n## Setup for Performance Recording\n\n### Step 1: Optimize System\n\n**Latency reduction**:\n- Lower buffer size (128-256 samples if possible)\n- Freeze CPU-heavy tracks\n- Disable non-essential plugins during recording\n\n**Monitoring**:\n- Ensure X-Y Controller window is visible\n- Open playlist to see automation being recorded\n- Set up visual grid alignment aids\n\n### Step 2: Configure Controller\n\n**Mode selection**:\n- **Absolute**: For defined gestures and known positions\n- **Relative**: For continuing existing automation or live shows\n\n**Settings**:\n- Smoothing: 0-10% (don't over-smooth live performance)\n- Grid snap: Off for human timing, On for tight sections\n- Reset on Play: On for consistent starts\n\n### Step 3: Arm for Recording\n\n**Recording filter**:\n1. Enable record button (red circle in transport)\n2. Right-click record button → \"Recording filter\"\n3. Check \"Automation\"\n4. Ensure \"X-Y Controller\" is not filtered out\n\n**Loop setup**:\n1. Set loop region around target section\n2. Enable loop mode\n3. This allows comping multiple takes\n\n## The Performance Recording Process\n\n### Phase 1: Rehearsal (No Recording)\n\n**Goal**: Develop muscle memory\n\n1. Play section 2-3 times\n2. Practice gesture without recording\n3. Focus on timing and feel\n4. Find the \"sweet spots\" on the pad\n5. Do 3-5 full practice runs\n\n### Phase 2: Warm-Up Takes\n\n**Goal**: Calibrate and test\n\n**Take 1**: Explore extremes\n- Move to all corners\n- Test full range\n- Verify all targets respond\n\n**Take 2**: Find the groove\n- Looser, feel-based performance\n- Don't worry about mistakes\n- Focus on musicality\n\n### Phase 3: Performance Takes\n\n**Goal**: Capture the magic\n\n**Take 3**: Intentional and focused\n- Know exactly what you're going to do\n- Execute with confidence\n\n**Take 4**: Relaxed performance\n- Don't overthink\n- Let muscle memory take over\n\n**Take 5**: The \"perfect\" take\n- Combine best elements of previous takes\n- Focus on timing accuracy\n\n### Phase 4: Comping\n\n**Goal**: Assemble the best performance\n\n1. Review all takes in playlist\n2. Identify best moments from each\n3. Cut and crossfade between sections\n4. Smooth any rough transitions\n5. Apply light quantization if needed (±10-20%)\n\n## Performance Techniques\n\n### Technique 1: The One-Hand Build\n**Use**: Pre-drop filter sweeps\n\n1. Set up: X = filter cutoff, Y = reverb\n2. Position hand on bottom-left\n3. Start playback\n4. Move diagonal to top-right over 4-8 bars\n5. Record the full gesture\n6. Done in one continuous motion\n\n### Technique 2: Quick Switching\n**Use**: Drum fills and transitions\n\n1. Memorize corner positions\n2. Jump between states instantly\n3. Perfect for A/B/C/D switching\n4. Practice the jumps 5-10 times\n5. Record with confidence\n\n### Technique 3: Micro-Movement\n**Use**: Subtle \"alive\" modulation\n\n1. Small ±10% movements around center\n2. Creates human imperfection\n3. Perfect for vocals, pads, bass\n4. Almost subconscious movement\n5. Record 2-3 takes, pick most natural\n\n### Technique 4: The Live Stutter\n**Use**: Rhythmic glitch effects\n\n1. Rapid back-and-forth on X axis\n2. Sync to 1/16 or 1/32 notes\n3. Requires practice for timing\n4. Record multiple attempts\n5. Quantize to grid after if needed\n\n## Editing Recorded Performance\n\n### Cleaning Up Takes\n\n**Remove excess points**:\n1. Open automation clip\n2. Tools → \"Smooth\" or reduce point density\n3. Keep the feel, remove data clutter\n\n**Quantize timing**:\n1. Select automation points\n2. Use quantize tool\n3. Strength: 50-70% (keep some human feel)\n4. Grid: 1/16 or 1/8 notes\n\n**Normalize extremes**:\n1. Check min/max values\n2. Scale if some gestures are too extreme\n3. Maintain relative relationships\n\n### Humanizing Over-Edited Automation\n\nIf you over-edited and it sounds robotic:\n\n1. Add small random variations (±2-5%)\n2. Use \"humanize\" function in FL\n3. Re-record specific sections\n4. Blend live and edited versions\n\n## Hybrid Workflow (Best of Both Worlds)\n\n**The optimal approach**:\n\n1. **Capture live** - get the human feel\n2. **Quantize timing** - tighten the groove\n3. **Smooth curves** - remove data noise\n4. **Refine extremes** - normalize if needed\n5. **Blend takes** - comp best moments\n\n**Result**: Human feel + studio precision\n\n## Common Performance Mistakes\n\n❌ **Starting without practicing**: First take is learning\n✅ **Solution**: Always do 3-5 practice passes\n\n❌ **Stopping when you mess up**: Breaks the flow\n✅ **Solution**: Keep going, fix in post\n\n❌ **Over-editing**: Removes all human feel\n✅ **Solution**: Light touch on editing - keep the imperfections\n\n❌ **Only one take**: No options to comp\n✅ **Solution**: Minimum 3-5 takes\n\n❌ **Wrong mode**: Absolute jumps when you touch pad\n✅ **Solution**: Use Relative mode for live situations\n\n## Performance Checklist\n\nBefore hitting record:\n\n- [ ] Latency minimized\n- [ ] All targets mapped and tested\n- [ ] Controller window visible\n- [ ] Loop region set\n- [ ] Recording filter configured\n- [ ] Mode selected (Absolute/Relative)\n- [ ] Practice gestures 3-5 times\n- [ ] Sweet spots memorized\n- [ ] Backup position set\n- [ ] 5 takes planned minimum\n\n**Time to Complete**: 10-30 minutes per section\n**Impact**: Human feel that separates good from great productions\n",
+      "preventing-stasis-movement": "# Workflow: Preventing Stasis (Adding Movement)\n\n## Goal\nUse X-Y Controller to add subtle, continuous movement that prevents tracks from sounding static or \"dead.\" Create the \"alive\" feeling that keeps listeners engaged. [SRC: IL-MAN]\n\n## Understanding Movement in Hip-Hop\n\nMovement = subtle, continuous change that mimics the imperfection of real instruments and human performance.\n\n### Why Stasis is Bad\n- Human ears tune out static sounds\n- Robotic, lifeless production\n- Listener fatigue\n- Sounds \"programmed\" rather than \"played\"\n\n### Movement Sources\n- Micro-modulation (±2-5%)\n- Slow evolution (over 8-16 bars)\n- Subtle parameter drift\n- \"Breathing\" dynamics\n\n## Setup\n\n### Step 1: Choose Movement Strategy\n\n**Strategy A: Micro-Jitter**\n- X = Target parameter (±3% range)\n- Y = Secondary parameter (±3% range)\n- Result: Imperceptible but present movement\n\n**Strategy B: Slow Drift**\n- X = Parameter with 8-16 bar cycle\n- Y = Complementary parameter\n- Result: Gradual evolution over sections\n\n**Strategy C: Conditional Movement**\n- Speed output → Target\n- Only moves when you move the pad\n- Result: Performance-based movement\n\n### Step 2: Configure for Subtlety\n\n**Ranges**: Minimal\n- X-Min: 48%, X-Max: 52% (±2% movement)\n- Y-Min: 48%, Y-Max: 52%\n\n**Curves**: Linear\n- Predictable, subtle response\n- No sudden jumps\n\n**Smoothing**: High (20-50%)\n- Interpolates between values\n- Removes sharp edges\n\n## Movement Patterns\n\n### Pattern 1: The Breathing Loop\n```\nDuration: Continuous\nGesture: Small vertical oscillation\nRange: Center ±5%\nSpeed: Slow, 4-8 bar cycle\nResult: \"Breathing\" dynamics\nUse: Pads, sustained chords, atmospheres\n```\n\n### Pattern 2: The Micro-Wander\n```\nDuration: Continuous\nGesture: Random small movements\nRange: ±3% from center\nSpeed: Variable, human-like\nResult: \"Alive\" imperfection\nUse: Drums, bass, vocals (everything)\n```\n\n### Pattern 3: The Slow Orbit\n```\nDuration: 16 bars\nGesture: Large circle around center\nRange: ±10% from sweet spot\nSpeed: Very slow, almost imperceptible\nResult: Long-term evolution\nUse: Section-long modulation\n```\n\n### Pattern 4: The Pulse\n```\nDuration: Beat-sync'd\nGesture: Tiny jitters on rhythmic accents\nRange: ±2%\nSpeed: 1/4 or 1/8 note timing\nResult: Rhythmic \"heartbeat\"\nUse: Groove enhancement\n```\n\n## Hip-Hop Genre Movement Conventions\n\n### Trap Micro-Movement\n**Setup**:\n- X = Filter cutoff (±3%)\n- Y = Saturation (±2%)\n- Smoothing: 30%\n\n**Gesture**: Random micro-jitter\n**Target**: 808s and bass\n**Result**: Subtle \"wobble\" that adds weight\n\n### Boom Bap Drift\n**Setup**:\n- X = Sample pitch (±10 cents)\n- Y = Wow/flutter (tape emulation)\n- Smoothing: 50%\n\n**Gesture**: Slow orbit over 16 bars\n**Target**: Sample chops\n**Result**: Vintage, drifting feel\n\n### R&B Breathing\n**Setup**:\n- X = Vocal formant (±5%)\n- Y = Subtle pitch drift (±5 cents)\n- Smoothing: 40%\n\n**Gesture**: Breathing loop\n**Target**: Lead vocals\n**Result**: Natural, intimate presence\n\n### Lo-Fi Imperfection\n**Setup**:\n- X = Pitch drift (tape wow)\n- Y = Degradation (crackle/noise)\n- Smoothing: 20%\n\n**Gesture**: Random wander\n**Target**: Everything\n**Result: \"Broken\" but musical imperfection\n\n## Layered Movement Strategy\n\n### The Full Mix Movement\n1. **808s**: Micro-jitter on filter (weight)\n2. **Drums**: Small timing variations (groove)\n3. **Samples**: Slow pitch drift (vintage)\n4. **Vocals**: Formant breathing (presence)\n5. **Pads**: Long orbit (evolution)\n\n**Result**: Every element moves subtly, creating an \"alive\" mix\n\n### The Movement Hierarchy\n- **Primary**: Most noticeable (filter, pitch)\n- **Secondary**: Supporting (saturation, width)\n- **Tertiary**: Felt not heard (micro-parameters)\n\nCombine all three for rich, evolving texture.\n\n## Performance Recording for Movement\n\n### Movement Take Strategy\nMovement should be subtle and natural:\n\n1. **Take 1**: Set range, find sweet spots\n2. **Take 2**: Relaxed, almost unconscious movement\n3. **Take 3**: The \"perfect\" natural drift\n4. **Take 4**: Slightly more active version\n5. **Take 5**: Minimal, conservative movement\n\n**Comping**: Blend Takes 2 and 3 for natural feel\n\n### The \"Happy Accident\"\nDon't over-edit movement:\n- Unintentional overshoots sound human\n- Timing variations add groove\n- \"Mistakes\" often sound better than perfection\n\n## Movement vs. Modulation\n\n| Movement | Modulation |\n|----------|------------|\n| Subtle (±2-5%) | Obvious (±20-100%) |\n| Continuous | Section-based |\n| Imperceptible | Noticeable |\n| Prevents stasis | Creates effect |\n| Background | Foreground |\n\n**Best practice**: Movement on every element, Modulation on key moments\n\n## Common Movement Mistakes\n\n❌ **Too much movement**: ±20% on everything (chaos)\n✅ **Solution**: Keep to ±2-5% for subtle enhancement\n\n❌ **Movement too fast**: 1/16 note jitter on pads (nervous)\n✅ **Solution**: Slow cycles - 4-8 bars for pads\n\n❌ **No movement at all**: Static = dead\n✅ **Solution**: Even ±1% adds life\n\n❌ **Same movement on everything**: Monotonous\n✅ **Solution**: Different speeds and ranges per element\n\n## Quick Movement Recipes\n\n### The Living 808\n- X = Filter (±2%)\n- Smoothing: 25%\n- Gesture: Random micro-jitter\n- Result: Subtle weight movement\n\n### The Breathing Vocal\n- X = Formant (±3%)\n- Y = Presence EQ (±2%)\n- Smoothing: 35%\n- Gesture: 4-bar breathing loop\n- Result: Natural vocal presence\n\n### The Drifting Pad\n- X = Filter (±5%)\n- Y = Stereo width (±10%)\n- Smoothing: 50%\n- Gesture: 16-bar orbit\n- Result: Evolving atmosphere\n\n### The Grooving Drums\n- Speed → Transient shaper\n- Threshold: Low (triggers often)\n- Result: Dynamic drum emphasis\n\n**Time to Complete**: 5-10 minutes per element\n**Impact**: Transforms static mixes into living productions\n",
+      "quick-parameter-switches": "# Workflow: Quick Parameter Switching (Instant States)\n\n## Goal\nUse X-Y Controller to instantly switch between preset parameter states. Create A/B/C/D switching for real-time sound design and performance. [SRC: IL-MAN]\n\n## Understanding State-Based Control\n\nInstead of continuous modulation, use X-Y as a \"switchboard\" - each corner or zone represents a different preset configuration.\n\n**Advantages**:\n- Instant sound changes\n- Recallable presets\n- Perfect for live performance\n- No gradual transitions (if desired)\n\n## Setup\n\n### Step 1: Define Your States\n\n**What states do you need?**\n\nCommon hip-hop state sets:\n\n**Drum Kit States**:\n- State A: Punchy, tight\n- State B: Lofi, degraded\n- State C: Wide, spacious\n- State D: Compressed, aggressive\n\n**Vocal Chain States**:\n- State A: Intimate, dry\n- State B: Spacious, wet\n- State C: Radio-ready, polished\n- State D: Creative, effected\n\n**Mix Bus States**:\n- State A: Verse (tight, focused)\n- State B: Pre-chorus (building)\n- State C: Chorus (wide, loud)\n- State D: Breakdown (minimal)\n\n### Step 2: Configure Step Curves\n\nStep curves create discrete states instead of smooth transitions:\n\n**Curve Setup**:\n```\nX-Map: Step curve with 4 levels\n0-25%  → State A value\n25-50% → State B value  \n50-75% → State C value\n75-100% → State D value\n```\n\n**Implementation**:\n1. Right-click X-Output\n2. Select \"Map\"\n3. Choose \"Step\" curve type\n4. Draw or edit steps\n\n### Step 3: Map States to Pad Zones\n\n**Zone Layout**:\n```\n[TL: State A] [TC: State B] [TR: State C]\n[CL: -      ] [CC: Off/Def] [CR: -     ]\n[BL: State D] [BC: -       ] [BR: State E]\n```\n\n**Or Corner-Only**:\n- Top-Left: State A\n- Top-Right: State B\n- Bottom-Left: State C\n- Bottom-Right: State D\n\n## State Switching Recipes\n\n### Recipe 1: The 4-State Drum Kit\n\n**States**:\n- **State A (TL)**: Clean, punchy (dry, tight compression)\n- **State B (TR)**: Lofi (bitcrusher, tape saturation)\n- **State C (BL)**: Wide (stereo expansion, hall reverb)\n- **State D (BR)**: Aggressive (distortion, heavy compression)\n\n**Mapping**:\n- X → Filter + Compression (different settings per zone)\n- Y → Saturation + Width (different settings per zone)\n\n**Use**: Live drum variation, fills, section changes\n\n### Recipe 2: The 3-Mode Vocal Processor\n\n**States**:\n- **State A (Left)**: Intimate (small room, subtle EQ)\n- **State B (Center)**: Lead (balanced processing)\n- **State C (Right)**: Ad-lib (creative effects, delays)\n\n**Mapping**:\n- X → Reverb size + EQ profile (3 distinct curves)\n- Y → Effect intensity (optional continuous control)\n\n**Use**: Verse/chorus/ad-lib switching\n\n### Recipe 3: The Section Switcher\n\n**States**:\n- **State A**: Verse (minimal processing)\n- **State B**: Build (increasing intensity)\n- **State C**: Drop (maximum impact)\n- **State D**: Breakdown (isolated, thin)\n\n**Mapping**:\n- X → Mix-wide macro (different settings per zone)\n- Y → Secondary variations\n\n**Use**: Section transitions, DJ-style mixing\n\n### Recipe 4: The Creative FX Bank\n\n**States**:\n- **State A**: Reverse reverb\n- **State B**: Heavy delay\n- **State C**: Bitcrusher\n- **State D**: Pitch shift\n\n**Mapping**:\n- Each state activates different FX chain\n- X-Y → FX mix or send levels\n\n**Use**: Creative transitions, ear candy\n\n## Performance with State Switching\n\n### The State Performance\n\nUnlike continuous gestures, state switching is about **decisive movements**:\n\n1. **Know your zones**: Memorize what each corner does\n2. **Plan transitions**: When will you switch states?\n3. **Practice jumps**: Snap movements between zones\n4. **Hold positions**: Stay in zone for duration of state\n\n### Recording State Switches\n\n**Timing precision is key**:\n\n1. **Practice jumps**: 10+ repetitions to develop muscle memory\n2. **Mark the beat**: Know exactly when to switch\n3. **Record 5 takes**: Options for best timing\n4. **Quantize after**: Snap to 1/4 or 1/2 note grid\n\n### Live State Switching\n\n**For live performance**:\n\n1. **Absolute mode**: Predictable state recall\n2. **Visual markers**: Consider marking pad with tape\n3. **Simple layouts**: Start with 2-3 states max\n4. **Backup plan**: Default state if you miss the zone\n\n## Advanced State Techniques\n\n### The Fading State\nCombine step and continuous:\n\n```\nX: Step curve (discrete states)\nY: Linear curve (continuous fade)\n\nResult: Switch between states, then fade within state\n```\n\n### The Morphing State\nSmooth transitions between states:\n\n1. Use linear curves instead of step\n2. Position = state blend\n3. Center = blend of adjacent states\n4. Corners = 100% that state\n\n**Example**:\n- Position 25% = 75% State A + 25% State B\n- Position 50% = 50% A + 50% B\n- Position 75% = 25% A + 75% B\n\n### The Conditional State\nStates that depend on other conditions:\n\n- State A only active when kick plays\n- State B triggered by velocity\n- State C manual override\n\n**Implementation**: Use Formula Controller or Peak Controller\n\n### The Macro State\nEach state = entire macro configuration:\n\n**State A**: X-Y → Filter sweep macro\n**State B**: X-Y → Space expansion macro\n**State C**: X-Y → Drop build macro\n\nSwitch between different macro setups per section.\n\n## Common State Switching Mistakes\n\n❌ **Too many states**: 8+ states (hard to remember)\n✅ **Solution**: 2-4 states maximum for usability\n\n❌ **Unclear differences**: States sound too similar\n✅ **Solution**: Make state changes dramatic and obvious\n\n❌ **Accidental triggering**: Grazing pad edge changes state\n✅ **Solution**: Add dead zones between states\n\n❌ **No default state**: Nowhere to \"reset\" to\n✅ **Solution**: Always have a \"normal\" state (usually center)\n\n## Quick State Setup Checklist\n\n- [ ] Define 2-4 clear, distinct states\n- [ ] Configure step curves (or linear for morphing)\n- [ ] Map zones to pad positions\n- [ ] Test each state sounds correct\n- [ ] Practice zone jumps 10+ times\n- [ ] Plan state change timing\n- [ ] Record 3-5 takes\n- [ ] Quantize if needed\n- [ ] Add dead zones if accidental triggers occur\n\n## State Switching vs Continuous Control\n\n| State Switching | Continuous Control |\n|-----------------|-------------------|\n| Discrete changes | Smooth transitions |\n| A/B/C/D presets | Full range control |\n| Perfect for live | Better for studio |\n| Decisive gestures | Fluid movements |\n| Section-based | Real-time modulation |\n\n**Best practice**: Use both - states for sections, continuous for performance moments\n\n**Time to Complete**: 10-20 minutes per state setup\n**Impact**: Instant, recallable sound variations\n",
+      "spatial-modulation": "# Workflow: Spatial Modulation (Space)\n\n## Goal\nUse X-Y Controller to create dynamic 3D positioning and room evolution. Transform flat mixes into immersive spatial experiences. [SRC: IL-MAN]\n\n## Understanding Space in Hip-Hop\n\nSpace = the perceived environment around sounds - room size, distance, width, depth.\n\n### Space Modulation Targets\n- Reverb size/room\n- Reverb pre-delay\n- Delay feedback/time\n- Stereo width\n- Pan position\n- Early reflections\n\n## Setup\n\n### Step 1: Choose Spatial Strategy\n\n**Strategy A: Room Morph**\n- X = Reverb size (small room → large hall)\n- Y = Pre-delay (tight → spacious)\n- Result: Transform the \"room\" the track lives in\n\n**Strategy B: Dimension Stack**\n- X = Stereo width (mono → wide)\n- Y = Distance (close → far)\n- Result: 2D positioning on the X-Y pad = 2D audio positioning\n\n**Strategy C: Echo Evolution**\n- X = Delay feedback (discrete echoes → infinite wash)\n- Y = Delay time (rhythmic subdivision changes)\n- Result: Echo that evolves and transforms\n\n### Step 2: Configure Curves for Natural Space\n\n**Reverb Size**: Logarithmic\n- Quick jump into \"room\" territory\n- Fine control at hall/cathedral sizes\n\n**Stereo Width**: Linear\n- Predictable positioning\n- Center = mono, edges = maximum width\n\n**Delay Feedback**: Exponential\n- Subtle echoes at low values\n- Infinite wash at high values\n\n## Gesture Patterns for Space\n\n### Pattern 1: The Room Expansion\n```\nDuration: 8-16 bars\nGesture: Bottom → Top vertical arc\nX-axis: Constant or subtle movement\nY-axis: Smooth increase (small room → large hall)\nUse: Intros, build-ups, section transitions\n```\n\n### Pattern 2: The Tunnel Effect\n```\nDuration: 2-4 bars\nGesture: Center → Edge → Center\nX-axis: Width collapse (wide → mono)\nY-axis: Distance push (close → far)\nResult: Temporary \"underwater\" or \"tunnel\" effect\nUse: Breakdowns, vocal effects, transitions\n```\n\n### Pattern 3: The Echo Cascade\n```\nDuration: 4 bars\nGesture: Diagonal bottom-left → top-right\nX-axis: Feedback increase (echoes multiply)\nY-axis: Time shift (delay gets longer)\nResult: Echoes that cascade and evolve\nUse: Outros, ambient sections, breakdowns\n```\n\n### Pattern 4: The 3D Positioning\n```\nDuration: Continuous\nGesture: Free movement across pad\nTop-left: Wide + close\nTop-right: Wide + far\nBottom-left: Mono + close\nBottom-right: Mono + far\nResult: True 2D spatial positioning\nUse: Creative vocal effects, ear-candy moments\n```\n\n## Hip-Hop Genre Space Conventions\n\n### Trap Space\n**Setup**:\n- X = Reverb size (tight room → massive hall)\n- Y = Delay feedback (discrete → wash)\n\n**Gesture**: Sharp movements for \"explosive\" moments\n**Timing**: Accents and fills\n**Character**: Big, exaggerated space\n\n### R&B Intimacy\n**Setup**:\n- X = Pre-delay (immediate → spacious)\n- Y = Stereo width (mono → wide)\n\n**Gesture**: Slow, subtle movements\n**Timing**: Phrase-long evolution\n**Character**: Intimate to expansive\n\n### Drill Tunnels\n**Setup**:\n- X = Width (wide → collapsed)\n- Y = Reverb (dry → underwater)\n\n**Gesture**: Hold positions for sustained moods\n**Timing: Hold bottom-left for \"tunnel\" vibe\n**Character**: Dark, isolated, claustrophobic\n\n### Boom Bap Vintage\n**Setup**:\n- X = Room type (chamber → plate)\n- Y = Decay time\n\n**Gesture**: Step-like changes (emulate room switching)\n**Timing: Switch on phrase boundaries\n**Character**: Classic sample vibe\n\n## Advanced Spatial Techniques\n\n### The Dimension Filter\n1. Use X-Y to control reverb EQ\n2. X = Low-cut frequency (remove mud)\n3. Y = High-cut frequency (darken space)\n4. Result: Space that adapts to the mix\n\n### The Moving Listener\n1. X = Pan position (left → right)\n2. Y = Distance (close → far)\n3. Gesture: Circle around the stereo field\n4. Result: Listener moves through the space\n\n### Layered Space\n1. Controller 1: X-Y → Main reverb\n2. Controller 2: X-Y → Delay\n3. Different gesture patterns per controller\n4. Result: Complex, evolving spatial field\n\n### The Space Build\n```\nSection 1: Minimal space (center of pad)\nSection 2: Slight expansion (move up)\nSection 3: Full space (top of pad)\nDrop: Collapse to center, then explode to edges\nResult: Maximum spatial impact\n```\n\n## Recording Spatial Gestures\n\n### Spatial Take Strategy\nSpatial modulation is about the long arc:\n\n1. **Take 1**: Map the full range\n2. **Take 2**: Smooth 16-bar evolution\n3. **Take 3**: Quick tunnel effect\n4. **Take 4**: Creative 3D positioning\n5. **Take 5**: The \"perfect\" spatial build\n\n### Comping Spatial Automation\n- Use linear interpolation between key points\n- Smooth curves for room size (reverb changes should be gradual)\n- Sharper curves for delay time (can be rhythmic)\n- Crossfade between different spatial zones\n\n## Common Space Mistakes\n\n❌ **Too much reverb all the time**: Track gets washed out\n✅ **Solution**: Modulate - intense reverb for impact moments, pull back for clarity\n\n❌ **Spatial changes too fast**: Rooms don't change instantly\n✅ **Solution**: Use smoothing (10-20%) for natural room transitions\n\n❌ **Competing spaces**: Multiple reverbs fighting each other\n✅ **Solution**: Use one X-Y controller to control multiple sends proportionally\n\n## Quick Spatial Recipes\n\n### The Expansive Hook\n- X = Stereo width (80% → 150%)\n- Y = Reverb size (tight → hall)\n- Gesture: Spiral outward over 8 bars\n- Result: Chorus explodes into space\n\n### The Tunnel Breakdown\n- X = Width (100% → 0%)\n- Y = Reverb (dry → maximum)\n- Gesture: Snap to bottom-left, hold 4 bars\n- Result: Isolated, distant sound\n\n### The 3D Vocal\n- X = Pan (left → right)\n- Y = Distance (close → far)\n- Gesture: Circle around pad\n- Result: Vocal moves in 3D space\n\n**Time to Complete**: 10-20 minutes\n**Impact**: Adds dimension and depth to flat mixes\n"
+    },
+    "by-instrument": {
+      "808-bass-control": "# Workflow: 808 Bass Control\n\n## Goal\nMaster X-Y Controller techniques for shaping, enhancing, and performing 808 bass lines. Transform static 808s into dynamic, punchy low-end elements. [SRC: IL-MAN]\n\n## Understanding 808 Control\n\n808s are the foundation of modern hip-hop. Static 808s sound boring - dynamic 808s create movement and impact.\n\n### Why Modulate 808s?\n- Pre-drop pitch slides\n- Dynamic punch variation\n- Tonal character shifts\n- Call-and-response patterns\n\n## Setup\n\n### Step 1: 808 Routing\n\n**Mono compatibility check**:\n- 808s should stay centered (mono or very narrow)\n- Be careful with stereo width modulation\n- If using X for width, keep range tight (0-20%)\n\n**Signal chain**:\n```\n808 Generator → X-Y Controller → 808 Processing Chain\n```\n\n### Step 2: Core 808 Mapping\n\n**Essential 808 parameters**:\n\n**X-Axis: Volume/Punch**\n- Range: 100-120%\n- Curve: Linear\n- Purpose: Extra punch on accents\n\n**Y-Axis: Distortion/Character**\n- Range: 0-30%\n- Curve: Exponential\n- Purpose: Add harmonics and aggression\n\n**Speed: Compression**\n- Target: Glue compressor ratio\n- Threshold: Low (triggers on every note)\n- Purpose: Dynamic punch control\n\n### Step 3: Advanced 808 Mapping\n\n**Pitch control** (for 808 slides):\n- X → Pitch bend (±2 semitones)\n- Use: 808 note slides\n- Curve: Linear\n\n**Envelope shaping**:\n- Y → Attack time\n- Range: 0-10ms\n- Purpose: Tight vs. loose 808s\n\n**Sub enhancement**:\n- X → Sub-octave generator\n- Range: 0-50% blend\n- Purpose: Extend low-end presence\n\n## 808 Gesture Patterns\n\n### Pattern 1: The 808 Slide\n```\nTarget: Pitch bend or portamento\nDuration: Follows 808 note length\nGesture: X follows note pitch pattern\n\nTechnique:\n1. Map X to pitch (±2 semitones)\n2. Set 808 to legato/glide mode\n3. Perform X gestures that match note slides\n4. Long slides = smooth X curves\n5. Short slides = quick X snaps\n```\n\n### Pattern 2: The Punch Accent\n```\nTarget: Volume boost + compression\nTiming: Every kick hit or accents\nGesture: Sharp X-Y punch\n\nTechnique:\n1. Map X to volume (100-115%)\n2. Map Speed to compression ratio\n3. Hard pad movement = louder + more compressed\n4. Soft movement = subtle enhancement\n5. Use for emphasized beats\n```\n\n### Pattern 3: The Pre-Drop Build\n```\nTarget: Filter + distortion building\nDuration: 4-8 bars before drop\nGesture: Increasing intensity\n\nTechnique:\n1. Map X to filter cutoff (opens up)\n2. Map Y to distortion (increases)\n3. Start subtle (0-20% pad)\n4. Build to intense (80-100% pad)\n5. Snap to open at drop moment\n```\n\n### Pattern 4: The Tonal Shift\n```\nTarget: Distortion character + EQ\nDuration: Section changes\nGesture: Position changes\n\nTechnique:\n1. TL corner = Clean, sub-focused\n2. TR corner = Driven, harmonics\n3. BL corner = Dark, filtered\n4. BR corner = Bright, aggressive\n5. Jump between corners for tonal variation\n```\n\n## Genre-Specific 808 Techniques\n\n### Trap 808s\n**Setup**:\n- X = Pitch slides (essential for trap)\n- Y = Distortion (0-40%)\n- Speed = Compression (dynamic glue)\n\n**Gesture**: Follow 808 note patterns exactly\n**Character**: Aggressive, sliding, punchy\n\n### Drill 808s\n**Setup**:\n- X = Filter (dark, controlled)\n- Y = Sub-boost (low-end emphasis)\n- Speed = Transient shaping\n\n**Gesture**: Dark zones on pad, occasional bright accents\n**Character**: Dark, heavy, minimal high-end\n\n### Boom Bap 808s\n**Setup**:\n- X = Saturation (tape warmth)\n- Y = Compression (glue)\n- Minimal pitch modulation\n\n**Gesture**: Subtle, vintage-style warmth\n**Character**: Warm, analog, punchy\n\n### R&B 808s\n**Setup**:\n- X = Smooth pitch bends\n- Y = Subtle saturation\n- High smoothing setting (20%+)\n\n**Gesture**: Smooth, flowing curves\n**Character**: Musical, melodic, controlled\n\n## 808 Performance Techniques\n\n### Recording 808 Slides\n\n1. **Enable 808 legato/glide**\n2. **Map X to pitch**\n3. **Practice matching X to note pattern**\n4. **Record 3-5 takes**\n5. **Quantize to 808 note timing**\n6. **Comp best slide moments**\n\n### The 808 Pump\n\nCreate dynamic pumping:\n\n1. **X → Volume (100-110%)**\n2. **Speed → Compression ratio**\n3. **Fast gestures = heavy compression**\n4. **Different pump per 808 hit**\n5. **Humanized pump timing**\n\n### 808-Bass Separation\n\nControl 808 interaction with bass:\n\n1. **808 channel**: X-Y → 808-specific parameters\n2. **Bass channel**: X-Y → Bass-specific parameters\n3. **Different gestures per channel**\n4. **Create call-and-response**\n5. **Prevent frequency masking**\n\n## Common 808 Mistakes\n\n❌ **Too much stereo width**: 808s phase in mono\n✅ **Solution**: Keep 808s mono or use minimal width (0-10%)\n\n❌ **Extreme pitch slides**: 808s become muddy\n✅ **Solution**: Limit pitch range (±2 semitones max)\n\n❌ **Over-distortion**: Loses low-end punch\n✅ **Solution**: Blend distortion (0-30% max)\n\n❌ **Static throughout**: Boring, lifeless 808s\n✅ **Solution**: Even subtle modulation adds life\n\n## Quick 808 Recipes\n\n### The Trap Slide\n- X = Pitch (±2 semitones)\n- Gesture: Follow note pattern\n- Result: Classic trap 808 slides\n\n### The Punch Boost\n- X = Volume (100-120%)\n- Speed = Compression\n- Gesture: Hard punches on accents\n- Result: Dynamic 808 punch\n\n### The Dark Drill\n- X = Low-pass filter\n- Y = Sub-boost\n- Gesture: Hold dark positions\n- Result: Heavy drill bass\n\n### The Warm Analog\n- X = Tape saturation\n- Smoothing: 30%\n- Gesture: Gentle curves\n- Result: Vintage boom bap feel\n\n## 808 + Kick Relationship\n\n**Sync X-Y to kick pattern**:\n\n- 808 hits on kick = X-Y emphasis\n- 808 hits off kick = X-Y subtle\n- Creates locked-in relationship\n- Use Speed output for kick detection\n\n**Sidechain integration**:\n\n1. **Kick triggers ducking**\n2. **X-Y controls ducking depth**\n3. **More X-Y = more sidechain**\n4. **Different ducking per section**\n\n**Time to Complete**: 10-20 minutes per 808 pattern\n**Impact**: Transform static 808s into dynamic, performed bass lines\n",
+      "drum-bus-processing": "# Workflow: Drum Bus Processing\n\n## Goal\nUse X-Y Controller to dynamically process and enhance drum buses. Create punch, glue, texture, and movement across your entire drum mix. [SRC: IL-MAN]\n\n## Understanding Drum Bus Control\n\nThe drum bus is where individual drum elements combine. X-Y Controller can transform the entire drum character with single gestures.\n\n### Why Modulate Drum Bus?\n- Create cohesive drum builds\n- Add groove and movement\n- Section-based drum character changes\n- Live performance flexibility\n\n## Setup\n\n### Step 1: Drum Bus Signal Chain\n\n**Standard hip-hop drum bus**:\n```\nDrum Channels → Bus Channel → X-Y Controller → Processing\n```\n\n**Processing chain**:\n1. EQ (shape tone)\n2. Compression (glue and punch)\n3. Saturation (character)\n4. Transient shaping (attack control)\n5. Width/Space (dimension)\n\n### Step 2: Drum Bus Mapping\n\n**Core mappings**:\n\n**X-Axis: Transient + Punch**\n- Transient shaper attack (soft → punchy)\n- Compression ratio (gentle → aggressive)\n- Curve: Exponential\n\n**Y-Axis: Character + Glue**\n- Saturation drive (clean → driven)\n- Mix bus compression threshold\n- Curve: Linear\n\n**Speed: Dynamic response**\n- Only affects parameters when drums hit hard\n- Accent detection\n\n### Step 3: Advanced Drum Bus Mapping\n\n**Frequency shaping**:\n- X → EQ high-mid boost (2-5kHz)\n- Adds \"air\" and presence\n- Hip-hop drums need this range\n\n**Space control**:\n- Y → Drum reverb send\n- Y → Parallel compression blend\n- Creates depth and dimension\n\n**Width modulation**:\n- X → Stereo width (careful with phase)\n- Range: 80-120% (subtle)\n- Enhances stereo imaging\n\n## Drum Bus Gesture Patterns\n\n### Pattern 1: The Groove Pump\n```\nTarget: Compression + saturation\nTiming: Sync'd to groove\nGesture: Small, rhythmic X-Y movements\n\nTechnique:\n1. Map X to compression ratio\n2. Map Y to saturation\n3. Small ±15% movements\n4. Sync to 1/8 or 1/16 notes\n5. Result: Drums \"breathe\" with the track\n```\n\n### Pattern 2: The Build-Up Punch\n```\nTarget: Transient + saturation building\nDuration: 4-8 bars\nGesture: Increasing intensity\n\nTechnique:\n1. Start with subtle settings (20% pad)\n2. Gradually increase (to 80% pad)\n3. Add transient emphasis\n4. Increase saturation harmonics\n5. Peak right before section change\n```\n\n### Pattern 3: The Section Switch\n```\nTarget: Complete drum character\nTiming: Section boundaries\nGesture: Snap to different pad zones\n\nTechnique:\n1. TL = Tight, punchy (verse)\n2. TR = Wide, spacious (chorus)\n3. BL = Lofi, degraded (breakdown)\n4. BR = Compressed, aggressive (drop)\n5. Jump between zones for instant changes\n```\n\n### Pattern 4: The Drum Fill Impact\n```\nTarget: Transient + volume + reverb\nTiming: Fill moments\nGesture: Sharp pad punch\n\nTechnique:\n1. Map X to transient emphasis\n2. Map Y to volume boost + reverb\n3. Quick movement to corner\n4. Hold during fill\n5. Return after fill\n6. Result: Fills that explode\n```\n\n## Genre-Specific Drum Bus Techniques\n\n### Trap Drums\n**Setup**:\n- X = Transient shaper (essential for trap punch)\n- Y = Saturation (0-40% for edge)\n- Speed = Accent emphasis\n\n**Gesture**: Sharp, precise movements\n**Character**: Hard-hitting, aggressive, modern\n\n### Boom Bap Drums\n**Setup**:\n- X = Tape saturation (warmth)\n- Y = Gentle compression (glue)\n- Minimal transient shaping\n\n**Gesture**: Smooth, behind-the-beat\n**Character**: Warm, vintage, swung\n\n### Drill Drums\n**Setup**:\n- X = Hard compression (slammed)\n- Y = Dark filtering\n- Aggressive transient shaping\n\n**Gesture**: Hard corners, minimal nuance\n**Character**: Dark, heavy, punchy\n\n### R&B Drums\n**Setup**:\n- X = Gentle transient (not too aggressive)\n- Y = Smooth saturation\n- High smoothing setting\n\n**Gesture**: Subtle, flowing movements\n**Character**: Polished, dynamic, musical\n\n## Drum Bus Performance Techniques\n\n### The Live Drum Mix\n\nPerform drum bus like a live mix engineer:\n\n1. **Verse**: Subtle settings (30-40% pad)\n2. **Pre-chorus**: Building (50-60% pad)\n3. **Chorus**: Intense (70-80% pad)\n4. **Fill**: Snap to max (100% pad)\n5. **Record live performance**\n6. **Comp best moments**\n\n### Dynamic Drum Glue\n\nCreate glue that responds to the music:\n\n1. **X → Compression ratio**\n2. **Range**: 2:1 to 6:1\n3. **Low X**: Light glue\n4. **High X**: Heavy, punchy glue\n5. **Different glue per section**\n\n### Transient Performance\n\nSculpt drum transients in real-time:\n\n1. **X → Transient shaper**\n2. **Soft transients**: Low X (vintage feel)\n3. **Hard transients**: High X (modern punch)\n4. **Vary throughout track**\n5. **Record nuanced performance**\n\n## Drum Bus + Individual Drum Control\n\n### Layered Control Strategy\n\n**Drum Bus X-Y**: Broad character changes\n**Individual drums**: Specific processing\n\nExample:\n- **Bus**: Compression + saturation\n- **Kick**: Specific EQ\n- **Snare**: Specific reverb\n- **Hi-hats**: Specific width\n\n### Coordinated Modulation\n\nSame gesture affects multiple levels:\n\n1. **X-Y → Drum Bus** (glue and character)\n2. **X-Y → Kick** (specific EQ)\n3. **X-Y → Snare** (specific compression)\n4. **One gesture = cohesive drum transformation**\n\n## Common Drum Bus Mistakes\n\n❌ **Over-compression**: Squashed, lifeless drums\n✅ **Solution**: Modulate ratio - light to medium, not always heavy\n\n❌ **Phase issues**: Wide stereo processing\n✅ **Solution**: Check mono compatibility, limit width range\n\n❌ **Static processing**: Same settings throughout\n✅ **Solution**: Even subtle modulation adds life\n\n❌ **Conflicting with individual drums**: Bus and individual fighting\n✅ **Solution**: Bus = glue/cohesion, individual = specific character\n\n## Quick Drum Bus Recipes\n\n### The Trap Punch\n- X = Transient shaper (soft → hard)\n- Y = Saturation (0-40%)\n- Result: Hard-hitting modern drums\n\n### The Vintage Glue\n- X = Tape saturation\n- Y = Gentle compression\n- Smoothing: 25%\n- Result: Warm, cohesive boom bap\n\n### The Dynamic Groove\n- X = Compression ratio\n- Speed = Accent emphasis\n- Gesture: Groove-sync'd movements\n- Result: Drums that breathe\n\n### The Fill Explosion\n- X = Transient + volume\n- Y = Reverb send\n- Gesture: Hard corner punch\n- Result: Impactful fills\n\n**Time to Complete**: 10-15 minutes per drum section\n**Impact**: Transform disjointed drums into cohesive, dynamic grooves\n",
+      "sample-chop-performance": "# Workflow: Sample Chop Performance\n\n## Goal\nUse X-Y Controller to perform, manipulate, and enhance sample-based productions. Create dynamic, played sample arrangements that feel alive and responsive. [SRC: IL-MAN]\n\n## Understanding Sample Control\n\nSamples are the foundation of boom bap and lo-fi hip-hop. Static samples sound like loops - performed samples sound like instruments.\n\n### Why Modulate Samples?\n- Real-time chop variations\n- Pitch and time manipulation\n- Tonal character evolution\n- \"DJ-style\" performance effects\n\n## Setup\n\n### Step 1: Sample Chop Architecture\n\n**Sample playback options**:\n```\nSampler (FPC, Slicex, DirectWave) → X-Y Controller → Processing\n```\n\n**X-Y integration points**:\n- Chop position (which slice plays)\n- Pitch/time manipulation\n- Filter and character\n- Playback direction\n\n### Step 2: Sample Mapping Strategy\n\n**X-Axis: Chop Position + Pitch**\n- Slice selection (step curve for discrete chops)\n- Pitch shift (±12 semitones for melodic variation)\n- Playback direction (forward/reverse)\n\n**Y-Axis: Character + Texture**\n- Filter cutoff (shape tone)\n- Saturation (add vintage character)\n- Bit depth/sample rate (degradation)\n\n**Speed: Dynamic response**\n- Trigger different chops based on movement speed\n- Fast movement = quick chop changes\n\n### Step 3: Advanced Sample Mapping\n\n**Time stretching**:\n- X → Time stretch ratio\n- Range: 50-150%\n- Use: Syncopated variations\n\n**Playback modes**:\n- Y → Playback direction (forward/reverse)\n- Step curve for A/B switching\n- One-shot vs. loop modes\n\n**Envelope control**:\n- X → Sample start point\n- Y → Sample end point\n- Real-time sample windowing\n\n## Sample Performance Patterns\n\n### Pattern 1: The Live Chop\n```\nTarget: Slice position\nDuration: Real-time performance\nGesture: Step movements between zones\n\nTechnique:\n1. Map X to slice position (step curve)\n2. Divide pad into zones (4-8 slices)\n3. Each zone = different sample slice\n4. Jump between zones = chop variations\n5. Record live performance\n6. Result: Performed, non-repeating chop\n```\n\n### Pattern 2: The Pitch Play\n```\nTarget: Sample pitch\nDuration: Phrase-level\nGesture: Smooth X curves\n\nTechnique:\n1. Map X to pitch (±7 semitones)\n2. Map Y to filter (compensate for pitch changes)\n3. Play melodies by moving X\n4. Y controls \"vinyl\" tone\n5. Result: Performed melodic variations\n```\n\n### Pattern 3: The Vinyl Effect\n```\nTarget: Wow/flutter + pitch drift\nDuration: Continuous\nGesture: Slow, wandering Y movements\n\nTechnique:\n1. Map X to wow/flutter (tape pitch drift)\n2. Map Y to subtle filter movement\n3. Slow, organic gestures\n4. Emulates real vinyl playback\n5. Result: Authentic lo-fi character\n```\n\n### Pattern 4: The Stutter Chop\n```\nTarget: Playback trigger + filter\nTiming: Rhythmic accents\nGesture: Rapid X oscillation\n\nTechnique:\n1. Map X to slice position\n2. Map Speed to retrigger\n3. Rapid X movements = stutter effect\n4. Sync to 1/16 or 1/32 notes\n5. Result: Glitchy, rhythmic variations\n```\n\n## Genre-Specific Sample Techniques\n\n### Boom Bap Chops\n**Setup**:\n- X = Slice position (step curve)\n- Y = Low-pass filter (vintage tone)\n- Speed = Occasional reverse trigger\n\n**Gesture**: DJ-style chop variations\n**Character**: Raw, authentic, soulful\n\n### Lo-Fi Sample Treatment\n**Setup**:\n- X = Bitcrusher/sample rate\n- Y = Wow/flutter + pitch drift\n- Smoothing: High (30%+)\n\n**Gesture**: Slow, imperfect movements\n**Character**: Degraded, nostalgic, warm\n\n### Trap Sample Flipping\n**Setup**:\n- X = Pitch shift (±12 semitones)\n- Y = Filter + time stretch\n- Speed = Chop retrigger\n\n**Gesture**: Bold, dramatic variations\n**Character**: Modern, transformed, unexpected\n\n### Drill Darkening\n**Setup**:\n- X = Low-pass filter (dark)\n- Y = Compression (slammed)\n- Minimal pitch variation\n\n**Gesture**: Dark pad positions\n**Character**: Gritty, heavy, minimal\n\n## Sample Performance Techniques\n\n### The Sample DJ Set\n\nPerform samples like a DJ:\n\n1. **Load sample** into Slicex or FPC\n2. **Map X** to slice position\n3. **Map Y** to filter (tone control)\n4. **Perform live**: Jump between slices\n5. **Add filter sweeps** for transitions\n6. **Record 5 takes**\n7. **Comp best chop moments**\n\n### The Melodic Sample\n\nTurn samples into instruments:\n\n1. **Map X to pitch** (±12 semitones)\n2. **Map Y to filter** (timbre control)\n3. **Play melodies** by moving X\n4. **Shape tone** with Y\n5. **One sample = infinite variations**\n\n### The Degraded Loop\n\nCreate evolving lo-fi textures:\n\n1. **Map X to bit depth** (16-bit → 8-bit → 4-bit)\n2. **Map Y to sample rate** (44.1k → 22k → 11k)\n3. **Slow degradation** over 16 bars\n4. **Add wow/flutter** (tape drift)\n5. **Result**: Loop that deteriorates organically\n\n## Sample + Drum Interaction\n\n### Chopped Breakbeat\n\nClassic hip-hop technique with X-Y control:\n\n1. **Load breakbeat** into slicer\n2. **Map X** to chop position\n3. **Map Y** to filter (remove high-end for vintage feel)\n4. **Perform chop variations** that interact with programmed drums\n5. **Create call-and-response** between sample and drums\n\n### The Sample Build\n\nSample intensity building:\n\n1. **Intro**: Filtered, minimal chop (20% pad)\n2. **Verse**: More active chopping (40-60% pad)\n3. **Hook**: Full chop variations (80-100% pad)\n4. **Different chop patterns per section**\n5. **Record as performance**\n\n## Common Sample Mistakes\n\n❌ **Extreme pitch shifts**: Samples sound unnatural\n✅ **Solution**: Limit to ±7 semitones for musical results\n\n❌ **Over-chopping**: Every beat = different slice (chaos)\n✅ **Solution**: Musical chop patterns, not random\n\n❌ **Static samples**: Loop plays unchanged for 16 bars\n✅ **Solution**: Even subtle filter movement adds life\n\n❌ **Conflicting timing**: Chops don't align with beat\n✅ **Solution**: Quantize to grid or practice timing\n\n## Quick Sample Recipes\n\n### The Soul Chop\n- X = Slice position (step, 4-8 zones)\n- Y = Low-pass filter (vintage tone)\n- Gesture: DJ-style variations\n- Result: Classic boom bap feel\n\n### The Lo-Fi Drift\n- X = Bitcrusher (16→8→4 bit)\n- Y = Wow/flutter (tape drift)\n- Smoothing: 40%\n- Result: Nostalgic degradation\n\n### The Trap Flip\n- X = Pitch shift (±12 semitones)\n- Y = Time stretch (50-150%)\n- Gesture: Bold melodic variations\n- Result: Transformed, modern sample\n\n### The Stutter Effect\n- X = Slice position\n- Speed = Retrigger\n- Gesture: Rapid oscillation\n- Result: Rhythmic glitch chops\n\n**Time to Complete**: 15-30 minutes per sample arrangement\n**Impact**: Transform static loops into performed, dynamic arrangements\n",
+      "vocal-chain-modulation": "# Workflow: Vocal Chain Modulation\n\n## Goal\nMaster X-Y Controller techniques for dynamic vocal processing. Create evolving, responsive vocal chains that adapt to the performance. [SRC: IL-MAN]\n\n## Understanding Vocal Chain Control\n\nVocals are the focal point of hip-hop and R&B. Static vocal chains sound sterile - dynamic chains bring vocals to life.\n\n### Why Modulate Vocals?\n- Adapt processing to phrase intensity\n- Create section-based vocal characters\n- Add \"performed\" feeling to static vocals\n- Enhance emotional moments\n\n## Setup\n\n### Step 1: Vocal Chain Architecture\n\n**Standard hip-hop vocal chain**:\n```\nVocal Recording → Gain Stage → EQ → Compression → Saturation → Space → X-Y Control\n```\n\n**X-Y integration points**:\n- Pre-EQ: Presence and character\n- Dynamics: Compression response\n- Tone: Saturation and warmth\n- Space: Reverb and delay\n\n### Step 2: Vocal Mapping Strategy\n\n**X-Axis: Presence + Clarity**\n- High-mid EQ boost (2-5kHz range)\n- De-esser threshold\n- Exciter/harmonic enhancement\n- Curve: Logarithmic (quick presence, then fine-tune)\n\n**Y-Axis: Warmth + Space**\n- Saturation drive (character)\n- Reverb send (intimacy → spacious)\n- Delay feedback (subtle → pronounced)\n- Curve: Exponential (subtle warmth, then bloom)\n\n**Speed: Dynamic response**\n- De-esser intensity (fast transients = more de-essing)\n- Only triggers on sibilants and plosives\n\n### Step 3: Advanced Vocal Mapping\n\n**Formant control** (for character changes):\n- X → Formant shift\n- Range: ±10%\n- Use: Character morphing without pitch change\n\n**Dynamic EQ**:\n- Y → Dynamic EQ threshold\n- Different response for loud vs. soft passages\n- Enhances vocal consistency\n\n**Doubler/Thickening**:\n- X → Doubler amount\n- Y → Doubler width\n- Adds dimension to lead vocals\n\n## Vocal Gesture Patterns\n\n### Pattern 1: The Presence Breath\n```\nTarget: EQ presence + subtle reverb\nDuration: Phrase-level (4-8 bars)\nGesture: Slow Y arc with small X jitters\n\nTechnique:\n1. Map X to presence EQ (±3dB range)\n2. Map Y to reverb send (intimate → spacious)\n3. Small X jitters = \"air\" around vocal\n4. Slow Y arc = evolving space\n5. Result: Breathing, living vocal\n```\n\n### Pattern 2: The Build-to-Chorus\n```\nTarget: Saturation + width + reverb\nDuration: 4-8 bars before chorus\nGesture: Gradual intensity increase\n\nTechnique:\n1. Verse: Low saturation, minimal space (20% pad)\n2. Pre-chorus: Building (40-60% pad)\n3. Chorus: Maximum (80-100% pad)\n4. Smooth curve, not stepped\n5. Result: Vocal \"lifts\" into chorus\n```\n\n### Pattern 3: The Intimate-to-Epic\n```\nTarget: Reverb size + stereo width\nTiming: Section changes\nGesture: Vertical sweep\n\nTechnique:\n1. Bottom of pad = Intimate, dry, close\n2. Top of pad = Epic, spacious, wide\n3. Map Y to reverb size (small → hall)\n4. Map X to width (mono → wide)\n5. Sweep vertically for dramatic change\n```\n\n### Pattern 4: The Ad-lib Accent\n```\nTarget: Saturation + delay throws\nTiming: Ad-lib moments\nGesture: Quick corner hits\n\nTechnique:\n1. Map X to saturation (add grit)\n2. Map Y to delay feedback (echo effect)\n3. Quick movement during ad-libs\n4. Return to normal after\n5. Result: Ad-libs pop with character\n```\n\n## Genre-Specific Vocal Techniques\n\n### Trap Vocals\n**Setup**:\n- X = Presence (cut through mix)\n- Y = Saturation (add edge)\n- Speed = De-esser (tame harshness)\n\n**Gesture**: Sharp, modern presence\n**Character**: Clear, aggressive, cuts through\n\n### R&B/Soul Vocals\n**Setup**:\n- X = Formant (character)\n- Y = Smooth reverb (space)\n- High smoothing (25%+)\n\n**Gesture**: Slow, sensual curves\n**Character**: Warm, intimate, emotive\n\n### Boom Bap Vocals\n**Setup**:\n- X = Tape saturation (vintage)\n- Y = Room reverb (small space)\n- Minimal processing\n\n**Gesture**: Subtle, analog-style warmth\n**Character**: Raw, authentic, sampled feel\n\n### Drill Vocals\n**Setup**:\n- X = Hard compression (slammed)\n- Y = Dark filtering\n- Aggressive de-essing\n\n**Gesture**: Dark zones, minimal high-end\n**Character**: Gritty, street, aggressive\n\n## Vocal Performance Techniques\n\n### Phrase-Based Modulation\n\nDifferent processing per phrase:\n\n1. **Quiet phrase**: Intimate settings (dry, subtle)\n2. **Build phrase**: Increasing intensity\n3. **Peak phrase**: Maximum presence\n4. **Release phrase**: Gentle return\n5. **Record 5 takes, comp phrase-by-phrase**\n\n### The Vocal Ride\n\nPerform vocal chain like a fader ride:\n\n1. **Subtle sections**: 20-30% pad\n2. **Building sections**: 40-60% pad\n3. **Peak moments**: 70-80% pad\n4. **Ad-libs**: Quick 90%+ hits\n5. **Smooth, musical curves**\n\n### Dynamic De-Essing\n\nSmart sibilance control:\n\n1. **Speed → De-esser threshold**\n2. **Fast vocal phrases** = more de-essing\n3. **Soft passages** = less de-essing\n4. **Only affects harsh moments**\n5. **Natural, transparent**\n\n## Vocal Chain + Backing Vocals\n\n### Layered Vocal Control\n\n**Lead vocal**: Primary X-Y mapping\n**Backing vocals**: Secondary, complementary mapping\n\nExample:\n- **Lead**: Presence + space\n- **Backings**: Width + detune\n- Same gesture affects both differently\n\n### Call-and-Response\n\n**Lead**: Intimate settings\n**Response**: Spacious settings\n\n1. X-Y different for each vocal layer\n2. Creates 3D vocal arrangement\n3. One gesture, multiple vocal spaces\n\n## Common Vocal Mistakes\n\n❌ **Over-processing**: Vocals sound robotic\n✅ **Solution**: Subtle ranges (±5-10%), high smoothing\n\n❌ **Static throughout**: Boring, sterile vocal\n✅ **Solution**: Even gentle curves add life\n\n❌ **Fighting the performance**: Processing contradicts emotion\n✅ **Solution**: Match processing intensity to vocal delivery\n\n❌ **Too much space**: Vocals get washed out\n✅ **Solution**: Modulate reverb - intimate for verses, spacious for hooks\n\n## Quick Vocal Recipes\n\n### The Trap Lead\n- X = Presence boost (2-5kHz)\n- Y = Subtle saturation (0-20%)\n- Speed = De-essing\n- Result: Clear, cutting vocal\n\n### The R&B Ballad\n- X = Formant (±5%)\n- Y = Hall reverb (0-60%)\n- Smoothing: 35%\n- Result: Intimate, spacious vocal\n\n### The Vintage Sample\n- X = Tape saturation\n- Y = Small room reverb\n- Gesture: Subtle curves\n- Result: Authentic boom bap vocal\n\n### The Hook Lift\n- X = Width + presence\n- Y = Reverb size\n- Gesture: Spiral build\n- Result: Chorus vocal that expands\n\n**Time to Complete**: 15-25 minutes per vocal section\n**Impact**: Transform static vocals into dynamic, performed leads\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity X Y Controller\r\n\r\nThis section contains workflow information for the fruity-x-y-controller plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity X Y Controller\r\n\r\nThis section contains reference information for the fruity-x-y-controller plugin.\r\n"
+    }
+  }
+}

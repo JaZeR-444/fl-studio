@@ -1,0 +1,124 @@
+{
+  "id": "fruity-flangus",
+  "name": "Fruity Flangus",
+  "category": "Modulation",
+  "tier": "Free",
+  "type": "Modulation",
+  "description": "Fruity Flangus - Modulation",
+  "tags": [
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "modulation",
+    "fx",
+    "audio"
+  ],
+  "icon": "/plugins/fruity-flangus-icon.svg",
+  "color": "#A855F7",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-flangus",
+  "has_presets": true,
+  "has_parameters": false,
+  "has_learning": true,
+  "has_workflows": true,
+  "presets": {
+    "chorus-style-ensemble": {
+      "presetName": "Chorus-Style Ensemble",
+      "plugin": "Fruity Flangus",
+      "description": "Mimics a classic ensemble chorus using high order and long delays.",
+      "settings": {
+        "order": 8,
+        "delay": 15,
+        "depth": 20,
+        "speed": 0.3,
+        "stereo": 1,
+        "feedback": 0
+      },
+      "usage": "Great for string pads or electric pianos where you want a lush, wide sound without the 'swish' of a flanger."
+    },
+    "subtle-thickener": {
+      "presetName": "Subtle Thickener",
+      "plugin": "Fruity Flangus",
+      "description": "Adds body without obvious modulation artifacts.",
+      "settings": {
+        "order": 1.5,
+        "delay": 5,
+        "depth": 10,
+        "speed": 0.1,
+        "stereo": 0.3,
+        "feedback": 0
+      },
+      "usage": "Use on vocals or background instruments to help them stand out in the mix."
+    },
+    "vintage-tape-flange": {
+      "presetName": "Vintage Tape Flange",
+      "plugin": "Fruity Flangus",
+      "description": "Classic tape-style flanging with negative feedback.",
+      "settings": {
+        "order": 2,
+        "delay": 1,
+        "depth": 80,
+        "speed": 0.2,
+        "stereo": 0.5,
+        "feedback": -0.6
+      },
+      "usage": "Best for drum fills or psychedelic guitar sections."
+    },
+    "wide-unison-lead": {
+      "presetName": "Wide Unison Lead",
+      "plugin": "Fruity Flangus",
+      "description": "Transforms a thin synth lead into a wide, powerful unison sound.",
+      "settings": {
+        "order": 4,
+        "delay": 2.5,
+        "depth": 50,
+        "speed": 0.5,
+        "stereo": 1,
+        "feedback": 0.3
+      },
+      "usage": "Use on EDM leads or pads to add weight and width."
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity Flangus\n\n## Purpose & Identity\nFruity Flangus is an **advanced multi-voice flanger** and unison simulator. Unlike the standard Fruity Flanger, Flangus is designed to stack multiple flanging voices (up to 8) to create rich, dense, and wide stereo textures. Its primary identity is a **Dimension Expander**—a tool for adding \"Thickness\" without the obvious \"Wobble\" of a traditional chorus. [SRC: IL-MAN]\n\n## 60-Second Mental Model\nThink of it as an \"Ensemble\" button. If Fruity Flanger is a single jet engine, Fruity Flangus is a whole fleet of jets flying in formation. By stacking these voices and spreading them across the stereo field, you can turn a thin, mono sound into a massive wall of audio.\n\n## Hip-Hop / R&B Context\n- **Vocal Thickening:** Making a thin R&B vocal sound like it was recorded with three microphones.\n- **Supersaw Leads:** Turning a simple Sawtooth synth into a wide, energetic \"Pop-Trap\" lead.\n- **Atmospheric Width:** Adding subtle dimension to spacey pads so they wrap around the listener's head.\n\n## When To Use\n- When you need **Unison** on a sound that doesn't have it built-in.\n- When you want **extreme stereo width** that stays cohesive (using Stereo Cross).\n- When a sound feels \"flat\" and needs a shimmering, expensive polish.\n\n## When NOT To Use\n- **Simple Mono Flanging:** Use **Fruity Flanger** if you just want a basic single-line sweep.\n- **High CPU Sessions:** Stacking 8 voices (Order 8) uses significantly more CPU than a single-voice effect. [SRC: REPUTABLE]",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Fruity Flangus\n\n## UI Tour\nFruity Flangus features a streamlined interface focused on voice count and stereo distribution. [SRC: IL-MAN]\n\n### 1. The Engine (The \"Thickness\")\n- **Order**: Determines the number of stacked flanger voices (1 to 8). This is the most important knob for \"thickness.\"\n- **Delay**: Sets the base delay time for the voices.\n- **Speed**: The rate of the LFO modulation.\n- **Depth**: How far the LFO modulates the delay lines.\n\n### 2. Stereo & Tonal (The \"Width & Color\")\n- **Spread**: Spreads the voices across the stereo field. 0% is mono; 100% is ultra-wide.\n- **Cross**: Adjusts the amount of left-to-right channel feedback and mixing.\n- **Damping**: A low-pass filter for the wet signal. Use this to make the effect sound \"darker\" or more \"distant.\"\n\n### 3. Mix Section\n- **Dry/Wet**: Balance between the original and processed signal.\n\n## Signal Flow\n1. **Input**: Signal enters.\n2. **Multi-Tap Generation**: The signal is split into multiple parallel paths based on the **Order** setting.\n3. **Staggered Modulation**: Each path receives an LFO modulation with a slight phase offset from the others.\n4. **Damping**: The high frequencies of the combined wet paths are attenuated.\n5. **Stereo Logic**: Each voice is panned across the field based on **Spread**, and channels are inter-mixed based on **Cross**.\n6. **Summing**: The multi-voice cloud is mixed back with the Dry signal.\n\n## Things Beginners Misunderstand\n- **\"Order is volume\"**: Increasing the order adds more voices, which increases the RMS level. You may need to lower the track fader.\n- **\"It's just a chorus\"**: Technically, flanging uses much shorter delay times than chorusing. Even with many voices, Flangus maintains a \"comb-filtered\" or \"phasy\" quality that standard chorus does not.\n- **The Cross Knob**: If you set Cross to high levels, you can create intense phase cancellation. Always check your meters.\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques And Best Practices: Fruity Flangus\n\n## 1. The \"Supersaw\" Transformation\nApply Flangus to a single Sawtooth wave (e.g., from 3xOsc).\n- **Technique**: Set **Order** to 8. Set **Spread** to 100%. Set **Speed** to 0.5Hz.\n- **Listen For**: The sound instantly expands from a thin line into a massive wall of sound.\n\n## 2. Dimension Expansion (The Width Trick)\nAdding width without making it sound \"wobbly.\"\n- **Technique**: Set **Depth** to <10%. Set **Speed** very low (<0.2Hz). Set **Spread** to 80%.\n- **Listen For**: The sound gets wider and \"larger\" without the listener noticing the pitch is shifting.\n\n## 3. Darkened Ensemble\nUse the **Damping** knob to push the effect into the background.\n- **Technique**: Turn **Damping** up to 70%. Use a high **Order** (6 or 8).\n- **Listen For**: A thick, warm \"blur\" that sits behind the dry signal. Excellent for background strings or pads.\n\n## 4. Phase Glue\nUsing the **Cross** knob to tighten the stereo image.\n- **Technique**: Set **Cross** to ~30%.\n- **Listen For**: The left and right channels start to \"bleed\" into each other, which can sometimes make an ultra-wide sound feel more cohesive and \"glued\" together.\n\n## 5. Mono-Compatibility Rules\n- **Protocol**: Every time you increase **Spread**, toggle the **Mono** button on your master track.\n- **Fix**: If the sound \"thins out\" too much in mono, decrease the **Order** or the **Spread** knob until the core of the sound remains solid. [SRC: REPUTABLE]\n\n## Common Pitfalls + Fixes\n| Pitfall | The Fix |\n| :--- | :--- |\n| **\"Muffled Sound\"** | Lower the **Damping** knob. |\n| **\"Nauseating Wobble\"** | Lower the **Speed** and **Depth**. |\n| **\"Lost in the Mix\"** | Increase **Dry** level and lower **Wet**. |\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity Flangus\n\nFlangus translates vibes through **Voice Density** and **Spatial Dimension**.\n\n## 1. Upbeat (High-Energy, Aggressive, Wide)\n- **Concept:** \"The Wall of Sound.\"\n- **Levers:**\n  - **Order:** 8 (Maximum thickness).\n  - **Spread:** 100%.\n  - **Depth:** 20%.\n- **Listen For:** A dense, \"Supersaw\" energy that makes melodic leads feel massive.\n- **Don't Do This:** Don't use slow speeds; keep the shimmer fast and energetic.\n\n## 2. Psychedelic (Morphing, Liquified, Wide)\n- **Concept:** \"The Stereo Melt.\"\n- **Levers:**\n  - **Stereo Cross:** 100% (Maximum channel bleeding).\n  - **Depth:** High (50%+).\n  - **Speed:** 1.5Hz.\n- **Listen For:** A disorienting width where the left and right channels feel like they are \"swapping\" places.\n\n## 3. Spacey (Ethereal, Galactic, Deep)\n- **Concept:** \"The Infinite Horizon.\"\n- **Levers:**\n  - **Delay:** High (20ms+).\n  - **Spread:** 100%.\n  - **Damping:** High (to darken the edges).\n- **Listen For:** A wide, dark atmosphere that feels like it’s stretching far beyond the speakers.\n\n## 4. Vibey (Smooth, Glossy, Polished)\n- **Concept:** \"The Silk Layer.\"\n- **Levers:**\n  - **Order:** 4.\n  - **Depth:** Very Low (5%).\n  - **Mix:** 20%.\n- **Listen For:** A subtle \"rounding\" of the sound that adds expensive-sounding width without being an obvious effect.\n\n## 5. Moody (Heavy, Dark, Damp)\n- **Concept:** \"The Underwater Unison.\"\n- **Levers:**\n  - **Order:** 2.\n  - **Damping:** Maximum.\n  - **Delay:** 15ms.\n- **Listen For:** A thick, muffled detuning that feels lonely and submerged. [SRC: REPUTABLE]",
+      "04_Unison_vs_Chorus": "# Unison vs. Chorus\n\nWhile both effects create multiple \"voices\" from a single source, Fruity Flangus is specifically designed for **Unison** and **Flanging** rather than standard Chorus.\n\n## The Difference\n- **Chorus**: Uses longer delay times (15ms-50ms) and slow modulation to simulate multiple players.\n- **Flangus/Unison**: Uses much shorter delay times (0.1ms-10ms). Because the delay is so short, the voices \"interfere\" with each other, creating a **comb filter** effect.\n\n## Why Use Flangus for Unison?\n1. **Thickness**: It makes a single-oscillator synth sound like a multi-oscillator beast.\n2. **Phase Movement**: The short delays create a \"swirling\" phase movement that feels more integrated with the original sound than a chorus.\n3. **Stereo Control**: Flangus excels at spreading these unison voices across the stereo field without making the sound feel \"detached.\"\n",
+      "05_Feedback_Polarity": "# Feedback Polarity\n\nFruity Flangus allows for both positive and negative feedback, which significantly changes the tone of the flanging effect.\n\n## Positive Feedback (+)\n- **Sound**: Resonant, hollow, and \"tube-like.\"\n- **Effect**: Boosts the frequencies where the original and delayed signals are in phase.\n- **Use Case**: Classic \"jet plane\" sweeps and metallic textures.\n\n## Negative Feedback (-)\n- **Sound**: Deep, \"scooped,\" and \"through-zero\" sounding.\n- **Effect**: Attenuates the frequencies where the signals are in phase, creating a distinctive \"hollow\" character.\n- **Use Case**: More subtle, sophisticated flanging that feels more \"underwater\" or \"spacey.\"\n\n## Phase Cancellation\nWhen feedback is high, the phase relationship becomes critical. If you find your sound disappearing, try switching the polarity of the feedback to see if it restores the fundamental frequency.\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Flangus\r\n\r\n## What It Is\r\nFruity Flangus is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Fruity Flangus\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: Fruity Flangus (5 Minutes)\n\n1.  **Insert:** Load **Fruity Flangus** onto a synth or vocal.\n2.  **Stack:** Turn the **Order** knob to `4`. You will immediately hear the sound get \"thicker.\"\n3.  **Widen:** Increase the **Spread** knob to move the voices to the edges of the stereo field.\n4.  **Polish:** Use the **Damping** knob to remove any harsh metallic high-end.\n5.  **Mix:** Adjust the **Mix** slider until the effect blends perfectly.\n6.  **Tip:** Use **Stereo Cross** at `50%` to \"glue\" the left and right sides together for a more natural sound. [SRC: IL-MAN]",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Flangus\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Flangus to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Flangus\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Flangus\r\n\r\nThis section contains learning information for the fruity-flangus plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: Creating Supersaw Leads (Fruity Flangus)\n\n## Routing Context\n- **Target:** A single Sawtooth wave (e.g., from 3x Osc).\n- **Position:** Insert FX (Before Distortion).\n\n## Step-by-Step Setup\n1.  Initialize a single Sawtooth oscillator. It will sound thin and centered.\n2.  Load **Fruity Flangus**.\n3.  Set **Order** to `8`.\n4.  Set **Spread** to `100%`.\n5.  Set **Depth** to `20%` and **Speed** to `1.5 Hz`.\n6.  **The Secret:** Set **Stereo Cross** to `30%` to keep the core centered while the edges shimmer.\n7.  **Result:** Your mono saw is now a massive, wide Supersaw lead.\n\n## Vibe Check\n- **Upbeat/Pop-Trap:** Perfect for the high-energy melodic leads found in Lil Uzi Vert or Travis Scott style tracks.\n\n## Pitfalls + Fixes\n- **Pitfall:** \"It sounds too metallic.\"\n  - **Fix:** Increase the **Damping** to `40%` to soften the high-frequency resonances. [SRC: REPUTABLE]\n",
+      "01_Goal_Shaping_And_Control": "# Goal: The \"Dimension Expander\" (Fruity Flangus)\n\n## The Concept\nAdding \"Invisible Width\" to a sound without the listener hearing a modulation effect.\n\n## Step-by-Step Setup\n1.  Load Flangus on a melodic instrument (e.g., Piano or Bells).\n2.  Set **Order** to `4`.\n3.  Set **Depth** to `0%` (Static voices).\n4.  Set **Delay** to `10ms`.\n5.  Set **Spread** to `80%`.\n6.  Set **Stereo Cross** to `50%`.\n7.  **The Mix:** Lower the Dry/Wet mix to `15%`.\n\n## Result\n- The sound simply feels \"bigger\" and more \"3D.\" It mimics the classic Roland Dimension D hardware, which is a staple for \"Vibey\" R&B production.\n\n## Vibe Check\n- **Vibey/Spacey:** Adds a sense of professional polish and expensive-sounding space.\n\n## Automation Idea\n- Automate the **Mix** slider to increase during the chorus, making the arrangement wider as it builds. [SRC: REPUTABLE]\n",
+      "02_Goal_Adding_Texture": "# Goal: Adding Texture\n\nHow to use Flangus as a texture generator rather than a melodic effect.\n\n## The Static Resonator\n1. Turn **Speed** and **Depth** to 0%.\n2. Set **Delay** to a very short value (0.5ms).\n3. Increase **Feedback** to 90%.\n4. **Action**: Manually move the **Delay** knob to find a \"sweet spot\" resonance.\n5. **Result**: Adds a fixed, metallic ringing to your sound, similar to a small room or a metal pipe.\n\n## The Subtle Thicken\n- Use **Order 8**.\n- Keep **Delay** at 5ms and **Depth** at 5%.\n- **Result**: Adds a microscopic amount of movement that makes a digital sound feel more \"real\" and less \"static.\"\n\n## Layering with Reverb\n- Place Flangus **after** a long reverb.\n- **Result**: Modulates the reverb tail, creating a \"shimmering\" or \"swirling\" atmosphere that feels more alive.\n"
+    },
+    "by-instrument": {
+      "drums": "# Instrument: Drums\n\nAdding movement to stagnant loops.\n\n## The Flanged Fill\n- Automate the **Mix** knob of Flangus to only kick in during a drum fill.\n- **Result**: Makes the fill stand out and feel more \"special.\"\n\n## Metallic Hats\n- Use high **Feedback** and short **Delay**.\n- **Result**: Transforms standard hi-hats into industrial, metallic percussion.\n",
+      "guitars": "# Instrument: Guitars\n\nCreative modulation for string instruments.\n\n## The Through-Zero Flange\n- Use negative **Feedback**.\n- Set **Depth** high.\n- **Result**: Creates that classic \"swoosh\" that sounds like the guitar is disappearing and reappearing.\n\n## 12-String Simulation\n- Use a short **Delay** (5ms).\n- Set **Order** to a high value.\n- **Result**: Adds a complex set of harmonics that mimic the richness of a 12-string acoustic guitar.\n",
+      "vocals": "# Instrument: Vocals\n\nUsing Flangus to add \"lushness\" to vocal tracks.\n\n## The \"Double\" Effect\n- Use a **Delay** of 10ms.\n- Keep **Feedback** at 0%.\n- **Result**: Sounds like a second vocal is singing along, adding thickness without the \"watery\" sound of a chorus.\n\n## Lo-Fi Robotic Vocals\n- Increase **Feedback** to 80%+.\n- Use a very short **Delay** (under 1ms).\n- **Result**: A metallic, resonant quality that works great for futuristic or robotic vocal textures.\n\n## Wide Backgrounds\n- Set **Stereo** to 100%.\n- Use a slow **Speed** (0.1Hz).\n- **Result**: Background vocals feel like they are wrapping around the lead.\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Flangus\r\n\r\nThis section contains workflow information for the fruity-flangus plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Flangus\r\n\r\nThis section contains reference information for the fruity-flangus plugin.\r\n"
+    }
+  }
+}

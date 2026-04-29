@@ -1,0 +1,216 @@
+{
+  "id": "fruity-phase-inverter",
+  "name": "Fruity Phase Inverter",
+  "category": "Utility",
+  "tier": "Free",
+  "type": "Utility",
+  "description": "Fruity Phase Inverter - Utility",
+  "tags": [
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "utility",
+    "routing"
+  ],
+  "icon": "/plugins/fruity-phase-inverter-icon.svg",
+  "color": "#64748B",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-phase-inverter",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "parameter-reference": {
+      "parameters": [
+        {
+          "name": "Invert Left",
+          "type": "toggle",
+          "default": "off",
+          "description": "Inverts the phase of the left audio channel",
+          "range": "on/off",
+          "impact": "Flips left channel waveform polarity",
+          "uses": [
+            "Fix phase issues in left channel",
+            "Create stereo phase effects",
+            "Part of mid-side processing"
+          ]
+        },
+        {
+          "name": "Invert Right",
+          "type": "toggle",
+          "default": "off",
+          "description": "Inverts the phase of the right audio channel",
+          "range": "on/off",
+          "impact": "Flips right channel waveform polarity",
+          "uses": [
+            "Fix phase issues in right channel",
+            "Create stereo phase effects",
+            "Part of mid-side processing"
+          ]
+        },
+        {
+          "name": "Swap L/R",
+          "type": "toggle",
+          "default": "off",
+          "description": "Exchanges left and right audio channels",
+          "range": "on/off",
+          "impact": "Swaps stereo image",
+          "uses": [
+            "Test for phase issues (if sound changes, phase problem exists)",
+            "Correct reversed stereo recordings",
+            "Creative stereo placement"
+          ]
+        }
+      ],
+      "combinations": [
+        {
+          "name": "Both Inverted",
+          "settings": {
+            "invertLeft": true,
+            "invertRight": true
+          },
+          "result": "Full polarity flip - sounds identical in isolation but affects phase when mixed with non-inverted signals"
+        },
+        {
+          "name": "Left Only Inverted",
+          "settings": {
+            "invertLeft": true,
+            "invertRight": false
+          },
+          "result": "Creates phase-based stereo effect, useful for stereo widening"
+        },
+        {
+          "name": "Right Only Inverted",
+          "settings": {
+            "invertLeft": false,
+            "invertRight": true
+          },
+          "result": "Creates phase-based stereo effect (opposite of left-only)"
+        },
+        {
+          "name": "Swap + Invert",
+          "settings": {
+            "swap": true,
+            "invertLeft": true
+          },
+          "result": "Complex stereo manipulation for advanced phase effects"
+        }
+      ]
+    }
+  },
+  "presets": {
+    "common-presets": {
+      "presets": [
+        {
+          "name": "Layered Kick Phase Fix",
+          "category": "correction",
+          "subgenre": "all",
+          "settings": {
+            "invertLeft": true,
+            "invertRight": true
+          },
+          "description": "Use on second kick layer to fix phase cancellation",
+          "workflow": "Add to layer, bypass to A/B test, keep if fuller"
+        },
+        {
+          "name": "Stereo Width (Left Invert)",
+          "category": "creative",
+          "subgenre": "all",
+          "settings": {
+            "invertLeft": true,
+            "invertRight": false
+          },
+          "description": "Duplicate track, pan L/R, use this on one side for width",
+          "workflow": "Creates phase-based stereo widening effect"
+        },
+        {
+          "name": "Stereo Width (Right Invert)",
+          "category": "creative",
+          "subgenre": "all",
+          "settings": {
+            "invertLeft": false,
+            "invertRight": true
+          },
+          "description": "Alternative stereo widening (opposite of left invert)",
+          "workflow": "Use with duplicated track panned opposite"
+        },
+        {
+          "name": "Phase Test (Swap)",
+          "category": "diagnostic",
+          "subgenre": "all",
+          "settings": {
+            "swap": true
+          },
+          "description": "Test for phase issues - if sound changes, phase problem exists",
+          "workflow": "Toggle swap on/off to identify phase problems"
+        },
+        {
+          "name": "Full Polarity Flip",
+          "category": "correction",
+          "subgenre": "all",
+          "settings": {
+            "invertLeft": true,
+            "invertRight": true
+          },
+          "description": "Complete phase inversion for fixing layered samples",
+          "workflow": "Use when stacking samples sounds thin"
+        },
+        {
+          "name": "Mid-Side Preparation",
+          "category": "advanced",
+          "subgenre": "all",
+          "settings": {
+            "invertLeft": true,
+            "invertRight": false
+          },
+          "description": "Part of manual mid-side processing chain",
+          "workflow": "Duplicate track, use this to create Side channel"
+        }
+      ]
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity Phase Inverter\n\n## Purpose & Identity\nFruity Phase Inverter is a foundational utility for **flipping the polarity** of an audio signal. It allows you to invert the positive and negative voltage swings of the Left and Right channels independently. This is primarily used to fix phase cancellation—where two signals \"fight\" and silence each other—or to create wide, immersive stereo effects. [SRC: IL-MAN]\n\n## 60-Second Mental Model\nImagine a jump-rope. Normal audio is the rope going UP then DOWN. Flipping the polarity makes it go DOWN then UP. If you have two ropes and one goes up while the other goes down, they cancel each other out. Fruity Phase Inverter ensures both ropes are moving in the same direction at the same time.\n\n## Hip-Hop / R&B Context\nPhysics rules the mix, especially in the low-end.\n- **Layered Kicks:** When you layer a \"Thump\" kick with a \"Click\" kick, they might partially cancel out, making the final kick sound thin. Flipping the phase on one often \"recovers\" the lost bass.\n- **Vocal Stacks:** If wide R&B vocal stacks sound \"hollow\" in the middle, one of the takes might be out of phase.\n- **The \"Wide\" Ad-lib:** Intentionally inverting one channel of a mono ad-lib to make it sound like it's coming from \"outside\" the speakers.\n\n## When To Use\n- When a sound gets **quieter or thinner** when you add a second layer.\n- When recording a snare with **two microphones** (Top and Bottom).\n- When you need to check if two tracks are identical (they will go silent if one is inverted).\n\n## When NOT To Use\n- **Standard Panning:** Use the Mixer Pan or **Fruity PanOMatic**.\n- **Delay-based Width:** If you want the Haas effect, use **Fruity Stereo Shaper**. Phase Inverter only does a 180-degree flip.\n- **Surgical EQ:** If a sound is \"muddy,\" use an EQ; phase inversion is for \"hollow\" sounds.\n",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Fruity Phase Inverter\n\n## UI Tour\nThe UI is purely functional, consisting of two main toggle switches:\n\n1.  **LEFT (L) Button:**\n    - **Off:** Normal polarity.\n    - **On (Lit):** Inverts the Left channel by 180 degrees. [SRC: IL-MAN]\n2.  **RIGHT (R) Button:**\n    - **Off:** Normal polarity.\n    - **On (Lit):** Inverts the Right channel by 180 degrees.\n3.  **BOTH Buttons On:** Inverts the entire stereo signal. (Audibly, this sounds identical to both being off, unless combined with other tracks).\n\n## Functional Flow\n1.  **Input:** Stereo audio enters the plugin.\n2.  **Polarity Check:** The plugin checks the state of the L/R buttons.\n3.  **Multiplication:** If a button is ON, the plugin multiplies every sample value in that channel by **-1**.\n4.  **Zero Latency:** This calculation is instantaneous. It does not delay the signal in time.\n5.  **Output:** Signal leaves with shifted polarity.\n\n## Polarity vs. Phase\n- **Polarity (What this plugin does):** An instantaneous flip of the \"positive\" and \"negative\" peaks.\n- **Phase:** A delay in time. \n- *Note:* While we call it \"Phase Inverter,\" it is technically a **Polarity Inverter**. Inverting polarity is equivalent to a 180-degree phase shift for a sine wave. [SRC: REPUTABLE]\n\n## Things Beginners Misunderstand\n- **\"It sounds the same\":** If you put this on a single track and flip the phase, it will sound identical. You only hear the effect when **combining** it with another signal (like a parallel bus or a layer).\n- **Mono Compatibility:** If you invert only ONE channel (L or R), the sound will completely disappear when summed to mono. Always check your master in mono! [SRC: IL-KB]\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques And Best Practices: Fruity Phase Inverter\n\n## 1. The \"Kick Recovery\" Check\n- **Technique:** Every time you layer two drum samples, load Phase Inverter on one of them.\n- **Execution:** Toggle the L and R buttons together.\n- **Listen For:** Does the low-end get \"bigger\" or \"thinner\"? Keep the setting that sounds **heavier**.\n- **Why:** Samples from different packs often have inverted polarity relative to each other.\n\n## 2. Snare Top/Bottom Alignment\n- **Technique:** If you record a live snare with a mic on top and one underneath.\n- **Execution:** Put Phase Inverter on the **Bottom Mic**. Flip both L and R.\n- **Reason:** When the stick hits the snare, the top head moves *away* from the top mic, but *toward* the bottom mic. They are naturally 180 degrees out of phase. Flipping the bottom mic brings the \"thump\" back. [SRC: REPUTABLE]\n\n## 3. Pseudo-Stereo \"Outside\" Width\n- **Technique:** Use this for background ad-libs that need to stay out of the way of the lead.\n- **Setup:** Send a mono vocal to a stereo mixer track. \n- **Execution:** Invert the **Left channel only**.\n- **Result:** The vocal will sound extremely wide, as if it's coming from outside the speakers.\n- **Warning:** This sound will **vanish** on phone speakers or mono systems. Use with caution.\n\n## 4. The \"Null Test\" (Plugin Comparison)\n- **Technique:** Checking if two plugins sound exactly the same.\n- **Execution:** Put Plugin A on Track 1, Plugin B on Track 2. Invert the phase on Track 2.\n- **Result:** If they are identical, you will hear **total silence**. Any sound you hear is the \"difference\" (distortion, noise, or EQ) between the two. [SRC: REPUTABLE]\n\n## Common Pitfalls + Fixes\n- **Pitfall:** \"The bass disappeared on my phone.\"\n  - **Fix:** You inverted one channel of your bass. Bass must always be in phase and ideally mono. \n- **Pitfall:** \"I'm losing volume.\"\n  - **Fix:** You might have partial phase cancellation. Try nudging the audio clip by a few milliseconds in the playlist instead of just using the 180-degree flip.\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity Phase Inverter\n\nPhase is about the **physicality** of the sound.\n\n## 1. Moody (Heavy, Solid, Immovable)\n- **Concept:** Ensuring the low-end is perfectly aligned so it feels \"heavy.\"\n- **Levers:**\n  - **Sub-Bass Alignment:** Align the phase of your 808 with your Kick. If the 808 \"pushes\" while the Kick \"pulls,\" the vibe feels weak and empty.\n- **Listen For:** A \"thud\" that you can feel in your chest.\n- **Don't Do This:** Avoid inverting channels on your low-end; keep it solid and mono.\n\n## 2. Upbeat (Snappy, Sharp, Energetic)\n- **Concept:** Maximizing transient \"crack.\"\n- **Levers:**\n  - **Snare Polarity:** If layering snares, ensure the initial \"transient\" peaks are all moving UP at the same time. Use Phase Inverter to flip any sample that is moving DOWN.\n- **Listen For:** A snare that \"cuts\" through the mix without needing more volume.\n- **Don't Do This:** Don't let your transients fight; it kills the energy.\n\n## 3. Psychedelic (Disorienting, Wide, Immersive)\n- **Concept:** Breaking the stereo \"center.\"\n- **Levers:**\n  - **One-Channel Inversion:** Invert the Right channel of a synth pad. It creates a \"phasey\" wide sensation that feels trippy and unnatural.\n- **Listen For:** Sounds that seem to wrap around the back of your head.\n- **Don't Do This:** Don't use this on the \"hook\" elements; keep the main focus stable.\n\n## 4. Jazzy (Organic, Roomy, Authentic)\n- **Concept:** Natural mic placement simulation.\n- **Levers:**\n  - **Overhead Alignment:** In a jazz drum kit, ensure the overheads and the kick mic aren't canceling each other's low frequencies.\n- **Listen For:** A \"natural\" kit sound where the kick feels integrated into the room.\n- **Don't Do This:** Avoid extreme widening; jazz vibes rely on a realistic soundstage.\n\n## 5. Vibey (Lush, Polished, Expensive)\n- **Concept:** Smooth layering without \"hollowness.\"\n- **Levers:**\n  - **Vocal Stack Check:** In R&B, you might have 10 layers of vocals. If they sound \"thin\" or \"comb-filtered,\" use Phase Inverter to find the rogue take that is out of phase.\n- **Listen For:** A \"thick\" vocal wall that sounds like a single giant voice.\n- **Don't Do This:** Don't ignore the mono-check; expensive vibes must work everywhere. [SRC: REPUTABLE]\n",
+      "complete-guide": "# Fruity Phase Inverter – Complete Guide\r\n\r\n## What It Does\r\nInverts the phase of audio signals (flips waveform polarity). Essential for phase alignment, stereo manipulation, and creative effects.\r\n\r\n## Parameters\r\n- **Left Channel Invert**: Flip left channel phase\r\n- **Right Channel Invert**: Flip right channel phase\r\n- **Swap L/R**: Exchange left and right channels\r\n\r\n## Core Concepts\r\n\r\n### Phase Inversion Basics\r\n- Flips waveform upside down (positive becomes negative)\r\n- Doesn't change sound when heard alone\r\n- Creates cancellation when mixed with non-inverted signal\r\n- Critical for fixing phase issues in multimic recordings\r\n\r\n### Common Applications\r\n1. **Phase Correction**: Fix phase issues between layered sounds\r\n2. **Stereo Width**: Create wider stereo image\r\n3. **Bass Management**: Mono bass frequencies\r\n4. **Creative Effects**: Phase cancellation tricks\r\n\r\n## Hip-Hop Production Uses\r\n\r\n### Layered Kicks\r\n**Problem**: Two kicks cancel each other out\r\n**Solution**: Invert phase on one kick\r\n- Test both ways to see which sounds fuller\r\n- May need to invert one or both channels\r\n\r\n### Sample Stacking\r\n**Problem**: Layered samples sound thin\r\n**Solution**: Flip phase on one layer\r\n- Creates constructive interference\r\n- Often makes sound fuller and punchier\r\n\r\n### Stereo Bass Fix\r\n**Problem**: Bass disappears on mono playback\r\n**Solution**: \r\n1. Split bass to stereo\r\n2. Invert one channel\r\n3. Creates phase-based stereo (mono-compatible)\r\n\r\n### Vocal Double Phase\r\n**Problem**: Doubled vocals sound muddy\r\n**Solution**:\r\n- Pan doubles left/right\r\n- Invert phase on one side\r\n- Creates spacious effect\r\n\r\n## Workflow Recipes\r\n\r\n### Make 808 Mono (Club-Ready)\r\n1. Route 808 to track with Phase Inverter\r\n2. Don't invert either channel\r\n3. Use \"Swap L/R\" to check for issues\r\n4. If swap changes sound, fix phase at source\r\n\r\n### Wider Hi-Hats\r\n1. Duplicate hi-hat track\r\n2. Pan one left, one right\r\n3. Add Phase Inverter to one side\r\n4. Invert both channels on one side\r\n5. Creates wide, phase-based stereo\r\n\r\n### Fix Thin Snare\r\n1. Layer two snare samples\r\n2. If sound is thin, add Phase Inverter\r\n3. Invert phase on second snare\r\n4. Test both ways for fuller sound\r\n\r\n### Vocal Clarity in Mix\r\n1. If vocal fights with sample\r\n2. Try inverting sample phase\r\n3. May reduce frequency masking\r\n4. Test in context\r\n\r\n## Advanced Techniques\r\n\r\n### Mid-Side Processing Setup\r\n1. Duplicate track\r\n2. One track: normal (Mid)\r\n3. Second track: Phase Inverter on one channel (Side)\r\n4. Process each differently\r\n5. Recombine for MS effect\r\n\r\n### Phase-Based Gating\r\n1. Send signal to two tracks\r\n2. Invert phase on one\r\n3. Mix together = silence\r\n4. Modulate mix for gating effect\r\n\r\n### Stereo Enhancement\r\n1. Duplicate mono source\r\n2. Pan copies left/right\r\n3. Invert one side\r\n4. Add slight delay to one\r\n5. Creates pseudo-stereo\r\n\r\n## Genre-Specific Tips\r\n\r\n### Trap\r\n- Use on layered 808s to maximize low-end\r\n- Fix phase on stacked claps\r\n- Mono check all bass elements\r\n\r\n### Boom Bap\r\n- Ensure sample phase coherency\r\n- Check when layering drum breaks\r\n- Fix vinyl rip phase issues\r\n\r\n### Lo-Fi\r\n- Create vintage phase effects\r\n- Subtle inversion for texture\r\n- Combine with filtering\r\n\r\n### Melodic\r\n- Wide stereo on pads\r\n- Phase-based vocal widening\r\n- Layered synth correction\r\n\r\n## Mixing Considerations\r\n\r\n### When to Use\r\n- ✓ Layered sounds seem thin\r\n- ✓ Multi-mic recordings\r\n- ✓ Stereo width creation\r\n- ✓ Bass mono compatibility\r\n\r\n### When to Avoid\r\n- ✗ If sound is already full\r\n- ✗ On individual mono sources (no effect)\r\n- ✗ Without A/B testing\r\n- ✗ On master bus (usually)\r\n\r\n## Troubleshooting\r\n\r\n**Problem**: Inverting phase makes sound worse\r\n- Try inverting different channel\r\n- May not be phase issue\r\n- Check source quality\r\n\r\n**Problem**: No audible difference\r\n- Normal if listening in mono\r\n- Check in stereo playback\r\n- Ensure signal has stereo content\r\n\r\n**Problem**: Sound completely cancels\r\n- Good! Shows phase was perfectly out\r\n- Use this to identify phase issues\r\n- Invert to fix\r\n\r\n**Problem**: Bass disappears on phone speakers\r\n- Bass has phase issues\r\n- Use Phase Inverter + EQ to mono low end\r\n- Test on various playback systems\r\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Phase Inverter\r\n\r\n## What It Is\r\nFruity Phase Inverter is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Fruity Phase Inverter\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: Fruity Phase Inverter (5 Minutes)\n\n1.  **Insert:** Load **Fruity Phase Inverter** on a mixer track (e.g., a Bass layer).\n2.  **Toggle Both:** Click both the **L** and **R** buttons to flip the total polarity.\n3.  **Listen:** Does the sound get louder or quieter when combined with your Kick drum?\n4.  **Decide:** If it sounds \"fuller\" when the lights are **ON**, leave it on.\n5.  **Stereo Width:** (Optional) Turn ON only the **L** button for an instant (but mono-unsafe) widening effect on background ad-libs. [SRC: IL-MAN]\n",
+      "01_Common_Mistakes": "# Common Mistakes: Fruity Phase Inverter\n\n- **Ignoring the Mix:** Toggling the phase while the track is soloed. Polarity flipping has **no audible effect** on a solo track. You must listen to it *in the mix*.\n- **One-Channel Bass:** Inverting only L or R on a sub-bass. This results in the bass completely disappearing on mono speakers (like most smartphones or club systems). **Fix:** Always flip L and R together for bass.\n- **Confusion with Delay:** Thinking that inverting phase will fix a timing issue. **Fix:** Phase Inverter only flips polarity (180 deg). If your samples are off by a few milliseconds, use the \"Track Latency\" offset in the mixer or nudge the clip.\n- **Null Test Failure:** Not realizing that if two sounds aren't *identical* in volume and timing, they won't fully cancel out even with inverted phase.\n- **Double Inversion:** Using a plugin that already has a phase flip (like Fruity Stereo Shaper) and also using Phase Inverter, resulting in a \"double flip\" that puts you back where you started. [SRC: REPUTABLE]\n",
+      "02_Best_Settings_Starting_Points": "# Best Settings Starting Points: Fruity Phase Inverter\n\n| Goal | L Button | R Button | Use Case |\n| :--- | :--- | :--- | :--- |\n| **Kick/Bass Align** | ON | ON | Fixing low-end cancellation between layers. |\n| **Snare Bottom Mic**| ON | ON | Aligning top/bottom snare phase. |\n| **Pseudo-Stereo** | ON | OFF | Massive width for non-essential ad-libs. |\n| **The Null Test** | ON | ON | Comparing two identical tracks for silence. |\n| **Mono Check** | OFF | OFF | Default state—start here first. |\n\n*Note: There are no knobs to turn. Success is a binary choice: Is it better or worse with the switch on?* [SRC: IL-MAN]\n",
+      "03_Vibe_Starting_Points_Moody": "# Vibe Starting Points: Moody (Fruity Phase Inverter)\n\n- **The Goal:** A \"solid\" and \"heavy\" low-end mood. \n- **Recipe:**\n  1. Load your Kick and 808 on separate tracks.\n  2. Load Phase Inverter on the **808 Track**.\n  3. While both play, toggle **L and R together**.\n  4. Listen for the \"weight.\" If the 808 feels like it \"sucks\" the energy out of the room when the switch is OFF, turn it ON.\n- **Vibe Lever:** The \"Physical Impact.\" A phase-aligned low-end feels immovable and heavy, essential for moody trap.\n- **Mono Check:** Ensure the 808 stays loud when you hit the mono switch on the master. [SRC: REPUTABLE]\n",
+      "04_Vibe_Starting_Points_Upbeat_Psychedelic_Jazzy_Vibey": "# Vibe Starting Points: Upbeat, Psychedelic, Jazzy, Vibey\n\n## Upbeat (The \"Transient Punch\")\n- **Setup:** Layered Snares.\n- **Move:** Flip phase on Layer 2. Keep it on if the \"snap\" of the snare gets louder.\n- **Effect:** Instant rhythmic clarity without adding volume.\n\n## Psychedelic (The \"Width Illusion\")\n- **Setup:** Mono Synth Pad.\n- **Move:** Invert **Left Channel only**.\n- **Effect:** The sound feels like it’s \"stretching\" your eardrums outward.\n\n## Jazzy (The \"Kit Cohesion\")\n- **Setup:** Drum Overheads vs Kick Mic.\n- **Move:** Flip phase on the Kick mic.\n- **Effect:** The kick should feel like it \"sits\" inside the drum kit rather than floating on top of it.\n\n## Vibey (The \"Thick Vocals\")\n- **Setup:** Vocal Doubles (Left and Right takes).\n- **Move:** Check phase by panning both doubles to center. If they sound hollow, one take is out of phase.\n- **Effect:** A rich, full vocal \"wall\" that feels expensive. [SRC: REPUTABLE]\n",
+      "cheat-sheet": "# Fruity Phase Inverter – Quick Reference\r\n\r\n## What It Does\r\nFlips audio phase to fix cancellation issues, create stereo width, or ensure mono compatibility.\r\n\r\n## 3 Simple Controls\r\n- **Invert Left**: Flip left channel phase\r\n- **Invert Right**: Flip right channel phase  \r\n- **Swap**: Exchange L/R channels\r\n\r\n## When to Use\r\n\r\n### Fix Thin Layered Sounds\r\nLayered kicks or snares sound weak? Invert phase on one layer.\r\n\r\n### Make Bass Mono-Compatible\r\nIf bass disappears on phone speakers, check phase with this tool.\r\n\r\n### Create Stereo Width\r\nDuplicate signal, pan L/R, invert one side = wider sound.\r\n\r\n### Correct Multi-Mic Issues\r\nIf two mics on same source, invert phase to avoid cancellation.\r\n\r\n## Quick Workflows\r\n\r\n**Layered Kick Fix**\r\n1. Add to second kick layer\r\n2. Invert left + right\r\n3. Listen - fuller or thinner?\r\n4. Keep whichever sounds better\r\n\r\n**Mono Bass Check**\r\n1. Add to bass track\r\n2. Press \"Swap L/R\"\r\n3. If sound changes = phase issue\r\n4. Fix at source or use EQ to mono low end\r\n\r\n**Wide Hi-Hats**\r\n1. Duplicate hi-hat track\r\n2. Pan one left, one right\r\n3. Invert both channels on right\r\n4. Instant width\r\n\r\n**Sample Phase Test**\r\n1. Add to layered sample\r\n2. Try different invert combinations\r\n3. Choose fullest sound\r\n\r\n## Pro Tips\r\n- Always A/B test (bypass on/off)\r\n- Use on layers, not individual tracks\r\n- Check in mono to test compatibility\r\n- If no change in mono = only affects stereo\r\n- Trust your ears over theory\r\n\r\n## Common Mistakes\r\n- ❌ Using on single mono track (does nothing)\r\n- ❌ Not testing in mono playback\r\n- ❌ Inverting without comparing\r\n- ❌ Assuming inversion always helps\r\n\r\n## Hip-Hop Applications\r\n- **808s**: Ensure mono compatibility\r\n- **Claps**: Fix layered clap phase\r\n- **Samples**: Stack samples without cancellation\r\n- **Vocals**: Create wide double effect\r\n",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Phase Inverter\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Phase Inverter to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Phase Inverter\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Phase Inverter\r\n\r\nThis section contains learning information for the fruity-phase-inverter plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: Kick & Bass Alignment (Low-End Check)\n\n## Routing Context\n- **Track 1:** Kick Drum.\n- **Track 2:** Sub-Bass or 808.\n- **Position:** Place **Fruity Phase Inverter** on Slot 1 of the **Bass Track**.\n\n## Step-by-Step Setup\n1.  Play both your Kick and Bass together.\n2.  Open **Fruity Phase Inverter** on the Bass track.\n3.  Click both **L** and **R** buttons to ON.\n4.  **Listen:** Does the low-end frequency (the \"thud\") get stronger or weaker?\n5.  **Decision:** If it sounds bigger with the buttons **ON**, leave them on. If it sounds thinner, turn them **OFF**.\n\n## What To Listen For\n- You are looking for \"constructive interference.\" When the phase is aligned, the two sounds add together to create a massive wall of sound. When misaligned, the bass \"hollows out\" the kick.\n\n## Variation\n- **Delayed Bass:** If the flip doesn't fix it, try nudging the Bass audio clip back by 5-10ms in the Playlist. This is \"Time-based Phase Alignment.\" [SRC: REPUTABLE]\n",
+      "03_Goal_Creative_Effect": "# Goal: Pseudo-Stereo Width (The \"Haas\" Flip)\n\n## Step-by-Step Setup\n1.  Take a **Mono Vocal** or Mono Lead.\n2.  Duplicate the track to a second mixer channel.\n3.  Pan Track 1 **Hard Left** (100%).\n4.  Pan Track 2 **Hard Right** (100%).\n5.  On Track 2, load **Fruity Phase Inverter**.\n6.  Click the **L** (Left) button to ON.\n7.  **Result:** You will hear an incredibly wide sound that feels like it’s \"stretching\" the room.\n\n## Vibe Check\n- **Psychedelic:** This effect is disorienting and trippy. Great for vocal ad-libs or transition sweeps.\n\n## Pitfalls + Fixes\n- **Pitfall:** \"The sound disappears on phone speakers.\"\n  - **Fix (Critical):** Check your master in **Mono**. If the sound vanishes, you MUST reduce the width or use a different widening technique (like a 10ms delay). **Pseudo-stereo from phase inversion is 100% mono-incompatible.** [SRC: IL-KB]\n"
+    },
+    "by-instrument": {
+      "drums": "# Workflow: Layered Kick Cleanup (Phase Inverter)\n\n## The Concept\nPreventing \"phase fighting\" between a punchy \"click\" kick and a deep \"sub\" kick.\n\n## Step-by-Step\n1.  Route your **Kick Click** and **Kick Sub** to a \"Kick Bus\" track.\n2.  On the **Kick Sub** track, load **Fruity Phase Inverter**.\n3.  Toggle the phase switches while listening to the Kick Bus.\n4.  **Tweak:** If one setting sounds \"tighter,\" keep it.\n5.  **Verification:** Use **Wave Candy** (Oscilloscope mode) to see if the two kick waveforms are moving in the same direction at the start of the sample.\n\n## Vibe Check\n- **Upbeat:** A phase-aligned kick has more \"crack\" and \"punch,\" driving the energy of pop-rap tracks.\n\n## Pitfalls\n- **Accidental L-only Inversion:** Ensure both L and R are toggled if the kick is mono. Inverting only one side will make the kick sound \"sideways\" and ruin the center of your mix. [SRC: REPUTABLE]\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Phase Inverter\r\n\r\nThis section contains workflow information for the fruity-phase-inverter plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Phase Inverter\r\n\r\nThis section contains reference information for the fruity-phase-inverter plugin.\r\n"
+    }
+  }
+}

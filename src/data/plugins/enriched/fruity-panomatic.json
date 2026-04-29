@@ -1,0 +1,98 @@
+{
+  "id": "fruity-panomatic",
+  "name": "Fruity PanOMatic",
+  "category": "Spatial",
+  "tier": "Free",
+  "type": "Spatial",
+  "description": "Fruity PanOMatic - Spatial",
+  "tags": [
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "stereo",
+    "spatial",
+    "mixing",
+    "audio"
+  ],
+  "icon": "/plugins/fruity-panomatic-icon.svg",
+  "color": "#0EA5E9",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-panomatic",
+  "has_presets": true,
+  "has_parameters": false,
+  "has_learning": true,
+  "has_workflows": true,
+  "presets": {
+    "auto-panner-quarter": {
+      "presetName": "Auto-Panner 1/4 Note",
+      "plugin": "Fruity PanOMatic",
+      "description": "Standard left-right panning synced to tempo.",
+      "settings": {
+        "panLFO": true,
+        "speed": "Tempo Sync 1/4",
+        "amount": 0.8,
+        "shape": "Sine"
+      },
+      "usage": "Apply to hi-hats or shakers to keep them moving."
+    },
+    "volume-tremolo": {
+      "presetName": "Volume Tremolo",
+      "plugin": "Fruity PanOMatic",
+      "description": "Uses the Volume LFO instead of Pan.",
+      "settings": {
+        "volLFO": true,
+        "panLFO": false,
+        "speed": "Tempo Sync 1/8",
+        "amount": 0.5,
+        "shape": "Triangle"
+      },
+      "usage": "Classic electric piano tremolo or stutter pads."
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity PanOMatic\n\n## Purpose & Identity\nFruity PanOMatic is a lightweight, dedicated **modulation utility**. Its primary identity is an auto-panner and tremolo unit. It uses a Low Frequency Oscillator (LFO) to move a sound between the left and right speakers (Auto-Pan) or to oscillate its volume (Tremolo). It is the simplest and most efficient way to add \"Life\" and \"Movement\" to static sounds. [SRC: IL-MAN]\n\n## 60-Second Mental Model\nThink of it as a \"Rhythmic Ghost\" sitting at your mixer. \n- In **Pan Mode**, the ghost grabs the Pan knob and swings it back and forth. \n- In **Vol Mode**, the ghost moves the Volume slider up and down. \nYou control how fast the ghost moves (**Speed**) and how far it moves (**Amount**).\n\n## Hip-Hop / R&B Context\n- **Rhythmic Hi-Hats:** Adding subtle auto-panning to a 1/16th note hi-hat pattern so it \"dances\" around the rapper's head (Upbeat).\n- **Rhodes Tremolo:** Adding a slow volume wobble to an electric piano for that classic 70s Soul/R&B vibe (Vibey).\n- **Spacey Pad Orbits:** Making an atmospheric synth pad slowly drift from left to right over 8 bars (Spacey).\n\n## When To Use\n- When you want a **quick and easy auto-panner**.\n- When you need a **rhythmic chopper/gate** effect (using Square LFO).\n- When you want to **separate two instruments** by having them pan in opposite directions.\n\n## When NOT To Use\n- **Precise BPM Sync:** PanOMatic is Hertz-based (Hz), not beat-based. Use **Fruity Peak Controller** or **Gross Beat** if you need the LFO to lock perfectly to the project grid without manual calculation. [SRC: REPUTABLE]",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Fruity PanOMatic\n\n## UI Tour\n1.  **PAN Section (Top Left):** Sets the base stereo position.\n2.  **VOL Section (Top Right):** Sets the base volume level.\n3.  **LFO Shape Selector:** \n    - **Sine:** Smooth, curved movement. [SRC: IL-MAN]\n    - **Triangle:** Linear rise and fall (more \"mechanical\").\n    - **Square:** Instant ON/OFF (Gating).\n4.  **SPEED Knob:** How fast the LFO cycles (measured in Hz, not BPM-synced).\n5.  **AMOUNT Knob:** How far the LFO pushes the parameter from its center position.\n6.  **Destination Toggle:** Choose whether the LFO affects **PAN** or **VOL**.\n\n## Functional Flow\n1.  **Input:** Stereo or Mono audio enters.\n2.  **LFO Generation:** The LFO generates a signal (0 to 1) based on the Speed and Shape.\n3.  **Mapping:** The LFO signal is multiplied by the Amount and applied to the chosen Destination.\n4.  **Offset:** The result is added to the base Pan/Vol setting.\n5.  **Output:** Audio leaves with modulated spatial/amplitude properties.\n\n## Things Beginners Misunderstand\n- **BPM Sync:** The Speed knob is **NOT** synced to your project tempo by default. You must tune it by ear or use a Hz-to-BPM calculation. [SRC: REPUTABLE]\n- **The Amount Knob:** If Amount is at 0, the LFO does nothing. Beginners often turn the Speed knob and wonder why they hear no change.\n- **Dual Modulation:** A single instance can only modulate ONE destination (Pan OR Vol). To modulate both at once, you need two instances of PanOMatic in series.\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques And Best Practices: Fruity PanOMatic\n\n## 1. The \"Human\" Hi-Hat\nStatic hi-hats in trap beats can be fatiguing.\n- **Technique:** Set Destination to **Pan**, Shape to **Sine**, and Amount to **15-20%**. \n- **Tweak:** Set Speed so it feels like it’s drifting slowly across the 16th notes.\n- **Result:** The hats feel \"alive\" and move around the center, leaving room for the snare and vocal.\n\n## 2. Square Wave \"Chopping\"\n- **Technique:** Set Destination to **Vol**, Shape to **Square**, and Amount to **100%**.\n- **Tweak:** Turn the Speed knob up until the sound \"flickers.\"\n- **Application:** Use this on a long, sustained sub-bass or vocal note to create a rhythmic glitch effect common in experimental hip-hop.\n\n## 3. The Vintage R&B Rhodes (Tremolo)\n- **Technique:** Set Destination to **Vol**, Shape to **Sine**, and Amount to **40%**.\n- **Tweak:** Set Speed to approx. **3-5 Hz**.\n- **Application:** Apply this to a clean electric piano. It simulates the \"Suitcase\" vibrato of a real Rhodes.\n\n## 4. Binaural \"Vortex\" Risers\n- **Technique:** Automate the **Speed** knob from 1Hz to 20Hz over 4 bars.\n- **Setup:** Target **Pan** with a **Triangle** wave.\n- **Effect:** The sound will swirl faster and faster until it becomes a blur, creating massive tension before a drop. [SRC: REPUTABLE]\n\n## Common Pitfalls + Fixes\n- **Pitfall:** \"The sound disappears entirely.\"\n  - **Fix:** You likely have Destination set to **Vol** with a **Square** wave and high Amount. Move the base **VOL** knob up to ensure the signal still passes during the \"On\" phase.\n- **Pitfall:** \"The panning makes me dizzy.\"\n  - **Fix:** Your Amount is too high. In a mix, panning should be felt more than heard. Keep Amount below 30% for background elements. [SRC: REPUTABLE]\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity PanOMatic\n\nPanOMatic translates vibes through **Spatial Motion** and **Dynamic Pulsing**.\n\n## 1. Upbeat (Kinetic, Chopped, High-Energy)\n- **Concept:** \"The Helicopter Gate.\"\n- **Levers:**\n  - **LFO Shape:** Square.\n  - **Destination:** Vol (Volume).\n  - **Speed:** Fast (match the hi-hat rhythm).\n- **Listen For:** Sharp, percussive volume cuts that turn a long synth note into a rhythmic \"stutter.\"\n- **Don't Do This:** Don't use Sine; you want the hard edges of the Square wave.\n\n## 2. Spacey (Galactic, Drifting, Immersive)\n- **Concept:** \"The Planetary Orbit.\"\n- **Levers:**\n  - **LFO Shape:** Sine.\n  - **Destination:** Pan.\n  - **Speed:** Very Slow (0.1Hz - 0.5Hz).\n  - **Amount:** 50% - 80%.\n- **Listen For:** The sound slowly traveling from one ear to the other, creating a vast sense of 3D space.\n\n## 3. Psychedelic (Warped, Disorienting, Liquid)\n- **Concept:** \"The Stereo Swirl.\"\n- **Levers:**\n  - **LFO Shape:** Sine.\n  - **Destination:** Pan.\n  - **Amount:** 100% (Maximum Width).\n  - **Speed:** Medium-Fast (2Hz+).\n- **Listen For:** A dizzying, circular motion that makes the listener feel like the room is spinning.\n\n## 4. Vibey (Smooth, Vintage, Soulful)\n- **Concept:** \"The R&B Tremolo.\"\n- **Levers:**\n  - **LFO Shape:** Sine.\n  - **Destination:** Vol.\n  - **Speed:** Moderate (match the \"bounce\" of the track).\n  - **Amount:** 30% (Subtle).\n- **Listen For:** A gentle \"breathing\" volume that mimics the vibrato of a vintage Rhodes piano or a Hammond organ.\n\n## 5. Moody (Stagnant, Tense, Heavy)\n- **Concept:** \"The Nervous Drift.\"\n- **Levers:**\n  - **LFO Shape:** Triangle.\n  - **Amount:** Low (10%).\n  - **Speed:** Very Fast.\n- **Listen For:** A micro-shiver in the sound that adds a sense of \"anxiety\" or instability to a dark pad. [SRC: REPUTABLE]",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Panomatic\r\n\r\n## What It Is\r\nFruity Panomatic is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "panning-law": "# The Law of Panning\n\nHow Fruity PanOMatic handles gain compensation.\n\n## Circular Panning Law\n- When a sound is panned hard left, it needs to be louder than when it is centered to maintain the same *perceived* volume.\n- PanOMatic handles this automatically.\n- **Warning**: If you automate Volume *and* Pan simultaneously, you might get unexpected volume dips. It is cleaner to use PanOMatic for Panning and a Fruity Balance for Volume automation.\n",
+      "signal-flow": "# Signal Flow: Fruity Panomatic\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: Fruity PanOMatic (5 Minutes)\n\n1.  **Insert:** Load **Fruity PanOMatic** onto a synth or hi-hat track.\n2.  **Target:** Choose the destination tab: **PAN** (movement) or **VOL** (tremolo).\n3.  **Shape:** Select the **Sine** wave for smooth motion or **Square** for chopping.\n4.  **Amount:** Turn the **AMT** knob up until you hear the movement.\n5.  **Speed:** Adjust the **SPD** knob to set the rate of the movement.\n6.  **Tip:** Right-click the **SPD** knob to see if there are any tempo-sync options (Note: In older versions, you must tune this by ear). [SRC: IL-MAN]",
+      "01_Common_Mistakes": "# Common Mistakes: Fruity PanOMatic\n\n- **Ignoring Destination:** Wondering why the volume isn't changing when the LFO is set to **Pan**. Always check the toggle.\n- **Over-Panning:** Setting Amount to 100% on a lead vocal. This creates \"Ear Fatigue\" and makes the mix sound unprofessional. **Fix:** Keep melodic panning below 40%.\n- **Zero Amount:** Turning the Speed knob but hearing no change because Amount is at 0.\n- **Sync Frustration:** Expecting the Speed knob to snap to 1/4 or 1/8 notes automatically. **Fix:** PanOMatic is free-running (Hz). You must sync it by ear or use the reference chart.\n- **Bass Panning:** Using Auto-Pan on a Kick or Sub-bass. This destroys the low-end energy and ruins mono-compatibility. **Fix:** Only pan elements above 200Hz. [SRC: REPUTABLE]\n",
+      "02_Best_Settings_Starting_Points": "# Best Settings Starting Points: Fruity PanOMatic\n\n| Goal | Dest | Shape | Speed | Amount | Use Case |\n| :--- | :--- | :--- | :--- | :--- | :--- |\n| **Drifting Hats** | Pan | Sine | 1.0 Hz | 20% | Subtle hi-hat movement. |\n| **Hard Chopper** | Vol | Square | 6.0 Hz | 100% | Rhythmic vocal glitch. |\n| **Leslie Speaker** | Pan | Triangle| 8.5 Hz | 60% | Fast organ/guitar swirl. |\n| **Soul Tremolo** | Vol | Sine | 4.2 Hz | 30% | Rhodes / Neo-soul keys. |\n| **Hypnotic Pad** | Pan | Sine | 0.3 Hz | 40% | Evolving ambient textures. |\n\n*Note: Hz values are approximate—always tune the Speed knob to your project's \"bounce.\"* [SRC: IL-MAN]\n",
+      "03_Vibe_Starting_Points_Moody": "# Vibe Starting Points: Moody (Fruity PanOMatic)\n\n- **The Goal:** A lonely, drifting atmosphere that feels like it’s floating in a cold room.\n- **Recipe:**\n  1. Load PanOMatic on a **Felt Piano** or **Rhodes**.\n  2. Set Destination to **PAN**.\n  3. Shape: **Sine**.\n  4. Amount: **25%**.\n  5. Speed: **0.2 Hz** (very slow).\n- **Result:** The sound subtly moves from left to right over several bars. The listener can't quite \"pinpoint\" the source, creating a sense of distance and melancholy.\n- **Mix Tip:** Place a dark Reverb *before* PanOMatic so the entire reverb tail drifts with the dry signal. [SRC: REPUTABLE]\n",
+      "04_Vibe_Starting_Points_Upbeat_Psychedelic_Jazzy_Vibey": "# Vibe Starting Points: Upbeat, Psychedelic, Jazzy, Vibey\n\n## Upbeat (The \"Energy Pump\")\n- **Setup:** Target **Vol** with **Square** wave.\n- **Speed:** ~1/8th note speed.\n- **Tip:** Use this on a background synth to add a rhythmic \"pulse\" that matches the snare.\n\n## Psychedelic (The \"Brain Massage\")\n- **Setup:** Target **Pan** with **Triangle** wave.\n- **Speed:** ~12-15 Hz (Very fast).\n- **Effect:** The audio vibrates between ears so fast it creates a binaural \"buzzing\" texture.\n\n## Jazzy (The \"Electric Soul\")\n- **Setup:** Target **Vol** with **Sine** wave.\n- **Speed:** 4.5 Hz.\n- **Amount:** 35%.\n- **Context:** The quintessential \"Suitcase Rhodes\" vibe.\n\n## Vibey (The \"Cloud Drift\")\n- **Setup:** Target **Pan** with **Sine** wave.\n- **Speed:** 0.5 Hz.\n- **Amount:** 15%.\n- **Context:** Apply to background vocal \"Oohs\" and \"Aahs\" to make them feel like a wide cloud of sound. [SRC: REPUTABLE]\n",
+      "lfo-sync-chart": "# LFO Sync Chart: Hz to BPM (Fruity PanOMatic)\n\nSince PanOMatic uses **Hertz (Hz)** instead of Beats, use this chart to find the \"Sweet Spot\" for your project tempo.\n\n| BPM | 1/1 Note (Hz) | 1/2 Note (Hz) | 1/4 Note (Hz) | 1/8 Note (Hz) |\n| :--- | :--- | :--- | :--- | :--- |\n| **80** | 1.33 | 2.66 | 5.33 | 10.66 |\n| **100** | 1.66 | 3.33 | 6.66 | 13.33 |\n| **120** | 2.00 | 4.00 | 8.00 | 16.00 |\n| **140** | 2.33 | 4.66 | 9.33 | 18.66 |\n| **160** | 2.66 | 5.33 | 10.66 | 21.32 |\n\n**The Formula:** `(BPM / 60) * (Multiplier)`\n- *Example for 1/4 notes at 120BPM:* `(120 / 60) * 4 = 8.00Hz`. [SRC: REPUTABLE]\n",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Panomatic\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Panomatic to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Panomatic\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Panomatic\r\n\r\nThis section contains learning information for the fruity-panomatic plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: Dynamic Hi-Hat Movement (PanOMatic)\n\n## Routing Context\n- **Target:** 1/16th Note Trap Hi-Hats.\n- **Position:** Insert FX (After EQ).\n\n## Step-by-Step Setup\n1.  On the hi-hat track, load **Fruity PanOMatic**.\n2.  Set **Target** to `PAN`.\n3.  Set **Shape** to `Sine`.\n4.  Set **SPD** (Speed) to a moderate rate (approx. `2Hz` for a slow drift, or `8Hz` for a fast shimmer).\n5.  **The Secret:** Keep **AMT** (Amount) very low (approx. `15%`).\n6.  **Result:** The hats subtly move back and forth in the stereo field.\n\n## What To Listen For\n- The hats shouldn't \"fly\" across the ears; they should just feel like they have a \"width\" that is alive. This clears room in the exact center for the rapper's voice.\n\n## Vibe Check\n- **Vibey/Upbeat:** Adds a professional, \"high-end\" polish to a standard trap beat.\n\n## Automation Idea\n- Automate the **AMT** knob to increase during the build-up, making the hats get wider and crazier before the drop. [SRC: REPUTABLE]",
+      "01_Goal_Shaping_And_Control": "# Goal: Rhythmic Gating (The \"Chopper\")\n\n## Routing Context\n- **Target:** Sustained Pad, Vocal Loop, or Sub-bass.\n- **Position:** End of the FX chain.\n\n## Step-by-Step Setup\n1.  Load **Fruity PanOMatic**.\n2.  Set toggle to **VOL**.\n3.  Set LFO Shape to **Square**.\n4.  Set **Amount** to 100%.\n5.  Set **VOL** knob to +3dB (to compensate for the silent phases).\n6.  Turn **Speed** to ~6 Hz. \n7.  **Refine:** Adjust Speed until the \"gaps\" in the volume match the 1/8th notes of your drum beat.\n\n## Vibe Check\n- **Upbeat:** This creates a \"stutter\" that adds intense energy to an otherwise boring pad.\n- **Psychedelic:** Turn the Speed up to **18 Hz** to create a metallic \"grating\" texture.\n\n## Pitfalls + Fixes\n- **Pitfall:** \"The gaps are too long.\"\n  - **Fix:** You cannot change the duty cycle (width) of the square wave in PanOMatic. If you need shorter gaps, use **Gross Beat** or **Fruity Love Philter**. [SRC: REPUTABLE]\n"
+    },
+    "by-instrument": {
+      "keys": "# Workflow: Soulful Rhodes Tremolo (PanOMatic)\n\n## The Concept\nSimulating the internal volume-vibrato of a vintage Fender Rhodes suitcase piano.\n\n## Step-by-Step\n1.  Place **Fruity PanOMatic** on your electric piano track.\n2.  Set toggle to **VOL**.\n3.  Set Shape to **Sine**.\n4.  Set Speed to **4.5 Hz**.\n5.  Set Amount to **35%**.\n6.  **Tweak:** Adjust the Amount while playing your chords. You want a \"pulsing\" warmth that doesn't sound like a hard cut.\n\n## Vibe Check\n- **Jazzy/Vibey:** This is the foundational sound of Neo-Soul and R&B keys.\n- **Variation:** Switch toggle to **PAN** at 1.0 Hz for a \"Ping-Pong\" Rhodes effect.\n\n## Pitfalls\n- **Speed Clashes:** If the tremolo is too fast or slow relative to the BPM, it can feel \"nervous.\" Use the formula `BPM / 60` to find the exact pulse of the beat. [SRC: REPUTABLE]\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Panomatic\r\n\r\nThis section contains workflow information for the fruity-panomatic plugin.\r\n"
+    },
+    "surround-and-sidechain.md": {
+      "surround-and-sidechain": "# Workflow: Surround Simulation\n\nPanOMatic was originally designed for basic surround panning before FL Studio had advanced routing.\n\n## The Circle Pan\n1. Use **Pan LFO** set to Sine.\n2. Use **Vol LFO** set to Cosine (offset by 90 degrees).\n3. **Result**: The sound appears to rotate around the listener's head (louder when centered, quieter when panned hard, or vice versa depending on phase).\n\n## Sidechain Hack\n- If you don't want to set up routing for a simple sidechain:\n  1. Load PanOMatic.\n  2. Set **Vol LFO** to a Saw wave (Ramp Down).\n  3. Sync speed to 1/4 beat.\n  4. Invert the phase if needed.\n  5. **Result**: A \"4-on-the-floor\" volume ducking effect (Pseudo-Sidechain).\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Panomatic\r\n\r\nThis section contains reference information for the fruity-panomatic plugin.\r\n"
+    }
+  }
+}

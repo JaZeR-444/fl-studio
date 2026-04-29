@@ -1,0 +1,183 @@
+{
+  "pluginName": "Fruity Stereo Shaper",
+  "category": "Frequency-Based Stereo Presets",
+  "description": "Stereo imaging organized by frequency range for targeted mix control",
+  "presets": [
+    {
+      "name": "Sub Bass Lock (0-100 Hz)",
+      "frequencyRange": "0-100 Hz",
+      "description": "Complete mono summing for sub frequencies",
+      "parameters": {
+        "lowFreqCutoff": "100 Hz",
+        "stereoSeparation": "0%",
+        "midSideMix": "Mid 100%",
+        "phase": "0°",
+        "outputGain": "0 dB"
+      },
+      "use": "Apply to any element with sub content (808s, kick, sub bass) to prevent phase cancellation",
+      "criticalFor": ["808 Bass", "Kick Drum", "Sub Bass"]
+    },
+    {
+      "name": "Bass Foundation Mono (100-250 Hz)",
+      "frequencyRange": "100-250 Hz",
+      "description": "Mono low-end for tight bass foundation",
+      "parameters": {
+        "lowFreqCutoff": "250 Hz",
+        "stereoSeparation": "0%",
+        "midSideMix": "Mid 100%",
+        "phase": "0°",
+        "outputGain": "0 dB"
+      },
+      "use": "Keeps bass notes and kick fundamentals focused and punchy",
+      "criticalFor": ["Bass Guitar", "Kick Body", "Tom Drums"]
+    },
+    {
+      "name": "Low-Mid Anchor (250-500 Hz)",
+      "frequencyRange": "250-500 Hz",
+      "description": "Centered low-mids with minimal stereo",
+      "parameters": {
+        "lowFreqCutoff": "500 Hz",
+        "stereoSeparation": "20%",
+        "midSideMix": "Mid 85%",
+        "phase": "0°",
+        "outputGain": "0 dB"
+      },
+      "use": "Maintains body and warmth while preventing mud in the mix",
+      "criticalFor": ["Snare Body", "Vocal Chest", "Guitar Low-Mids"]
+    },
+    {
+      "name": "Mid Presence (500-1000 Hz)",
+      "frequencyRange": "500-1000 Hz",
+      "description": "Moderate stereo for presence range",
+      "parameters": {
+        "lowFreqCutoff": "1000 Hz",
+        "stereoSeparation": "60%",
+        "midSideMix": "Stereo 100%",
+        "phase": "0°",
+        "outputGain": "0 dB"
+      },
+      "use": "Adds dimension to midrange instruments without losing focus",
+      "criticalFor": ["Vocals", "Guitars", "Keyboards"]
+    },
+    {
+      "name": "Upper Mid Spread (1-2 kHz)",
+      "frequencyRange": "1-2 kHz",
+      "description": "Enhanced stereo for clarity and presence",
+      "parameters": {
+        "lowFreqCutoff": "2000 Hz",
+        "stereoSeparation": "100%",
+        "midSideMix": "Stereo 100%",
+        "phase": "0°",
+        "outputGain": "-0.5 dB"
+      },
+      "use": "Opens up mix and adds clarity to melodic elements",
+      "criticalFor": ["Synth Leads", "Vocal Harmonies", "Piano"]
+    },
+    {
+      "name": "Presence Boost (2-4 kHz)",
+      "frequencyRange": "2-4 kHz",
+      "description": "Wide stereo for vocal/instrument presence",
+      "parameters": {
+        "lowFreqCutoff": "4000 Hz",
+        "stereoSeparation": "130%",
+        "midSideMix": "Side 70%",
+        "phase": "0°",
+        "outputGain": "-1 dB"
+      },
+      "use": "Enhances clarity and separation in crowded mixes",
+      "criticalFor": ["Lead Vocals", "Snare Crack", "Hi-Hats"]
+    },
+    {
+      "name": "Brilliance Range (4-8 kHz)",
+      "frequencyRange": "4-8 kHz",
+      "description": "Very wide stereo for air and shimmer",
+      "parameters": {
+        "lowFreqCutoff": "8000 Hz",
+        "stereoSeparation": "160%",
+        "midSideMix": "Side 80%",
+        "phase": "0°",
+        "outputGain": "-1.5 dB"
+      },
+      "use": "Creates spacious high-end without harshness",
+      "criticalFor": ["Cymbals", "Vocal Air", "String Harmonics"]
+    },
+    {
+      "name": "Ultra High Shimmer (8-16 kHz)",
+      "frequencyRange": "8-16 kHz",
+      "description": "Maximum stereo for top-end sparkle",
+      "parameters": {
+        "lowFreqCutoff": "16000 Hz",
+        "stereoSeparation": "180%",
+        "midSideMix": "Side 90%",
+        "phase": "0°",
+        "outputGain": "-2 dB"
+      },
+      "use": "Adds dimension and air to high-frequency content",
+      "criticalFor": ["Bells", "Shakers", "Reverb Tails"]
+    },
+    {
+      "name": "Full Spectrum Mono",
+      "frequencyRange": "Full Spectrum",
+      "description": "Complete mono summing across all frequencies",
+      "parameters": {
+        "lowFreqCutoff": "N/A",
+        "stereoSeparation": "0%",
+        "midSideMix": "Mid 100%",
+        "phase": "0°",
+        "outputGain": "0 dB"
+      },
+      "use": "For mono compatibility testing or vintage mono aesthetic",
+      "criticalFor": ["Lo-Fi Production", "Mono Compatibility Check"]
+    },
+    {
+      "name": "Progressive Width (Multiband)",
+      "frequencyRange": "Multi-Band",
+      "description": "Increasing stereo width by frequency (requires multiband setup)",
+      "parameters": {
+        "band1_0-200Hz": "0% stereo",
+        "band2_200-1kHz": "40% stereo",
+        "band3_1-4kHz": "100% stereo",
+        "band4_4kHz+": "160% stereo"
+      },
+      "use": "Ideal stereo distribution for full mixes or complex instruments",
+      "criticalFor": ["Master Bus", "Synth Pads", "Full Drum Bus"]
+    }
+  ],
+  "frequencyGuidelines": {
+    "subBass": {
+      "range": "0-60 Hz",
+      "recommendation": "Always mono (0% stereo)",
+      "reason": "Maximum power and mono compatibility"
+    },
+    "bass": {
+      "range": "60-250 Hz",
+      "recommendation": "Mono to minimal stereo (0-20%)",
+      "reason": "Maintain punch and prevent phase issues"
+    },
+    "lowMids": {
+      "range": "250-500 Hz",
+      "recommendation": "Minimal to moderate stereo (20-60%)",
+      "reason": "Body and warmth without muddiness"
+    },
+    "mids": {
+      "range": "500-2000 Hz",
+      "recommendation": "Moderate stereo (60-100%)",
+      "reason": "Presence and dimension"
+    },
+    "upperMids": {
+      "range": "2-4 kHz",
+      "recommendation": "Wide stereo (100-140%)",
+      "reason": "Clarity and separation"
+    },
+    "presence": {
+      "range": "4-8 kHz",
+      "recommendation": "Very wide stereo (140-180%)",
+      "reason": "Air and space"
+    },
+    "brilliance": {
+      "range": "8+ kHz",
+      "recommendation": "Ultra-wide stereo (160-200%)",
+      "reason": "Shimmer and dimension"
+    }
+  }
+}

@@ -1,0 +1,221 @@
+{
+  "pluginName": "Gross Beat",
+  "ruleType": "Safety and Warnings",
+  "description": "Critical safety rules to prevent audio damage and ensure professional results",
+  "rules": [
+    {
+      "id": "low-end-smear",
+      "name": "Low-End Smear Warning",
+      "severity": "CRITICAL",
+      "priority": 1,
+      "condition": "Applying time manipulation (half-time, stutter) to sub-bass or 808s",
+      "warning": "Time manipulation destroys transient definition in low frequencies, causing smearing and phase issues",
+      "symptoms": [
+        "Kick sounds 'flabby' or undefined",
+        "808 loses punch and impact",
+        "Low end sounds 'wobbly' or unstable",
+        "Phase correlation meter shows issues",
+        "Bass sounds 'washed out' in mono"
+      ],
+      "solutions": [
+        {
+          "method": "Parallel Processing",
+          "description": "Apply Gross Beat to a duplicate track, blend with dry bass",
+          "steps": [
+            "Duplicate the bass/808 track",
+            "Apply Gross Beat to duplicate only",
+            "Mix: 30-50% to preserve low-end punch",
+            "High-pass the Gross Beat track at 100-150Hz"
+          ]
+        },
+        {
+          "method": "Bus Processing",
+          "description": "Apply Gross Beat to the full mix bus instead of individual bass",
+          "steps": [
+            "Move Gross Beat to mix/master bus",
+            "Individual bass remains unaffected",
+            "Effect applies to mid/high frequencies only",
+            "Preserves low-end integrity"
+          ]
+        },
+        {
+          "method": "Pre-EQ",
+          "description": "High-pass before Gross Beat, blend with dry low-end",
+          "steps": [
+            "Add high-pass filter before Gross Beat",
+            "Cut below 100-150Hz",
+            "Parallel route dry low-end around effect",
+            "Blend wet/dry signals"
+          ]
+        }
+      ],
+      "prevention": "Never apply half-time or stutter directly to solo bass/808 tracks",
+      "whenToBreakRule": "Only for intentional 'degraded' texture effects, clearly labeled as experimental"
+    },
+    {
+      "id": "click-prevention",
+      "name": "Click and Pop Prevention",
+      "severity": "HIGH",
+      "priority": 2,
+      "condition": "Sharp envelope transitions in stutter or gate patterns",
+      "warning": "Attack times below 5ms often create digital clicks and artifacts",
+      "symptoms": [
+        "Hearing clicks on envelope transitions",
+        "Popping sounds during stutters",
+        "Digital artifacts in quiet sections",
+        "Harsh, unmusical transitions"
+      ],
+      "solutions": [
+        {
+          "method": "Increase Attack",
+          "description": "Set minimum 10ms attack for all stutter/gate patterns",
+          "recommendedValues": {
+            "tightStutter": "10-15ms",
+            "smoothStutter": "20-30ms",
+            "gentleEffect": "40-60ms"
+          }
+        },
+        {
+          "method": "Increase Release",
+          "description": "Set minimum 15ms release for smooth transitions",
+          "recommendedValues": {
+            "tight": "15-25ms",
+            "standard": "30-50ms",
+            "smooth": "60-100ms"
+          }
+        },
+        {
+          "method": "Envelope Smoothing",
+          "description": "Use Gross Beat's built-in smoothing feature",
+          "steps": [
+            "Enable 'Smooth' in envelope options",
+            "Reduces sharp transitions",
+            "Adds natural curve to steps"
+          ]
+        }
+      ],
+      "prevention": "Always start with Attack: 20ms, Release: 30ms as safe defaults",
+      "exception": "Intentional 'glitch' aesthetic may use 0-5ms for digital character"
+    },
+    {
+      "id": "tempo-sync",
+      "name": "Tempo Sync Requirement",
+      "severity": "MEDIUM",
+      "priority": 3,
+      "condition": "Gross Beat not tempo-synced to project",
+      "warning": "Effects will drift from beat, creating sloppy, unprofessional sound",
+      "symptoms": [
+        "Stutters don't align with beat",
+        "Gate patterns feel 'off'",
+        "Effect timing drifts over time",
+        "Sounds unprofessional and amateur"
+      ],
+      "solutions": [
+        {
+          "method": "Enable Tempo Sync",
+          "description": "Turn on tempo sync in Gross Beat settings",
+          "steps": [
+            "Open Gross Beat interface",
+            "Enable 'Sync' button",
+            "Set grid division (1/16 recommended)",
+            "Verify alignment with project tempo"
+          ]
+        },
+        {
+          "method": "Use Grid Snap",
+          "description": "Snap envelope drawing to beat divisions",
+          "steps": [
+            "Enable 'Snap' in envelope editor",
+            "Select appropriate division (1/8 or 1/16)",
+            "Draw envelopes with snap active",
+            "Quantize after drawing if needed"
+          ]
+        }
+      ],
+      "prevention": "Always verify tempo sync is enabled before programming envelopes",
+      "exception": "Freehand experimental effects may intentionally be unsynced"
+    },
+    {
+      "id": "commit-to-audio",
+      "name": "Commit to Audio Best Practice",
+      "severity": "MEDIUM",
+      "priority": 4,
+      "condition": "Leaving Gross Beat as real-time plugin in final mix",
+      "warning": "Real-time processing adds CPU load and can cause dropouts during playback/export",
+      "whenToCommit": [
+        "Final mix stage",
+        "CPU-intensive projects",
+        "Before mastering",
+        "When arrangement is locked"
+      ],
+      "commitProcess": {
+        "description": "Render Gross Beat effect to audio file",
+        "steps": [
+          "Solo the track with Gross Beat",
+          "Arm for recording if needed",
+          "Render to audio (WAV/FLAC)",
+          "Disable/remove Gross Beat plugin",
+          "Replace with rendered audio file",
+          "Keep original as backup (muted track)"
+        ],
+        "benefits": [
+          "Reduces CPU usage",
+          "Prevents dropouts",
+          "Locks effect timing",
+          "Simplifies mix",
+          "Faster export"
+        ]
+      },
+      "alternative": "Use FL Studio's 'Freeze' function for temporary CPU relief",
+      "prevention": "Plan to commit effects once arrangement is finalized"
+    },
+    {
+      "id": "buffer-overflow",
+      "name": "Buffer Position Warning",
+      "severity": "LOW",
+      "priority": 5,
+      "condition": "Pos control or envelope extends beyond buffer boundaries",
+      "warning": "Trying to read audio that hasn't been recorded yet",
+      "symptoms": [
+        "Silence instead of expected audio",
+        "Effect cuts out unexpectedly",
+        "Red warning indicator in interface",
+        "Inconsistent playback"
+      ],
+      "solutions": [
+        {
+          "method": "Reset Position",
+          "description": "Set Pos to 0% for real-time playback",
+          "steps": [
+            "Set Pos knob to 0%",
+            "Verify envelope doesn't exceed buffer",
+            "Check for red warning indicators",
+            "Test playback"
+          ]
+        },
+        {
+          "method": "Adjust Envelope",
+          "description": "Redraw envelope within buffer bounds",
+          "steps": [
+            "Open envelope editor",
+            "Keep envelope within visible grid",
+            "Use 'Snap to grid' for safety",
+            "Test at different project positions"
+          ]
+        }
+      ],
+      "prevention": "Always start with Pos at 0% unless intentionally using delay effect"
+    }
+  ],
+  "safetyChecklist": [
+    "Attack is 10ms or higher",
+    "Release is 15ms or higher",
+    "Mix level is appropriate for context",
+    "Tempo sync is enabled",
+    "Low-end instruments checked for smear",
+    "Pos is within buffer bounds",
+    "No clicking on transitions",
+    "Effect aligns with beat"
+  ],
+  "source": "[SRC: IL-MAN] Image-Line Gross Beat documentation and professional mixing best practices"
+}

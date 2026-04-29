@@ -1,0 +1,100 @@
+{
+  "$schema": "./schema.json",
+  "plugin": {
+    "name": "Vintage Phaser",
+    "version": "1.x",
+    "category": "Effect",
+    "type": "BBD Phaser",
+    "emulates": "Electro-Harmonix Small Stone",
+    "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Vintage%20Phaser.htm"
+  },
+  "parameters": {
+    "main": [
+      {
+        "id": "rate",
+        "name": "Rate",
+        "type": "slider",
+        "range": "0.01-10 Hz",
+        "unit": "Hz",
+        "default": "0.5 Hz",
+        "description": "LFO modulation speed",
+        "sweetSpot": "0.3-0.8 Hz for classic psychedelic swirl"
+      },
+      {
+        "id": "depth",
+        "name": "Depth",
+        "type": "slider",
+        "range": "0-100%",
+        "unit": "%",
+        "default": "70%",
+        "description": "Modulation intensity",
+        "sweetSpot": "70-90% for pronounced phasing"
+      },
+      {
+        "id": "feedback",
+        "name": "Feedback",
+        "type": "slider",
+        "range": "0-100%",
+        "unit": "%",
+        "default": "50%",
+        "description": "Regeneration/resonance amount",
+        "warning": "High values (90%+) can cause resonant peaks"
+      },
+      {
+        "id": "stages",
+        "name": "Stages",
+        "type": "selector",
+        "options": [2, 4, 6, 8],
+        "default": 4,
+        "description": "Number of phase shift stages",
+        "note": "Small Stone = 4 stages"
+      },
+      {
+        "id": "dryWet",
+        "name": "Dry/Wet",
+        "type": "slider",
+        "range": "0-100%",
+        "unit": "%",
+        "default": "50%",
+        "description": "Effect mix level"
+      }
+    ],
+    "character": [
+      {
+        "id": "colorSwitch",
+        "name": "Color Switch",
+        "type": "toggle",
+        "range": "Off/On",
+        "default": "Off",
+        "description": "Adds resonance and BBD character",
+        "note": "Enable for authentic Small Stone tone"
+      },
+      {
+        "id": "noise",
+        "name": "Noise",
+        "type": "slider",
+        "range": "0-100%",
+        "unit": "%",
+        "default": "15%",
+        "description": "Vintage BBD noise simulation"
+      },
+      {
+        "id": "stereoMode",
+        "name": "Stereo Mode",
+        "type": "toggle",
+        "options": ["Mono", "Stereo"],
+        "default": "Stereo",
+        "description": "Output configuration"
+      }
+    ]
+  },
+  "historicalReference": {
+    "hardware": "Electro-Harmonix Small Stone",
+    "released": 1974,
+    "type": "4-stage analog phaser",
+    "artists": ["Eddie Van Halen", "David Gilmour", "Erykah Badu"]
+  },
+  "cpuUsage": "Low",
+  "latency": "Minimal",
+  "realtimeSafe": true
+}

@@ -1,0 +1,477 @@
+{
+  "description": "Diagnostic decision tree mapping audio symptoms to EQ solutions",
+  "usage": "Use this to build smart assistants, troubleshooting guides, or learning tools that recommend specific band archetypes based on user-described problems",
+  "priorityLevels": {
+    "1": "Critical - Fix first, these cause major mix problems",
+    "2": "Important - Address after critical issues are resolved",
+    "3": "Polish - Final touches for professional sound"
+  },
+  "rules": [
+    {
+      "symptom": "rumble_or_headroom_loss",
+      "displayName": "Rumble / Headroom Loss",
+      "description": "Mix feels bloated, limiter pumps, or sounds like there's inaudible low-end taking up space",
+      "priority": 1,
+      "recommendations": [
+        {
+          "bandId": 1,
+          "archetype": "HP Clean 80",
+          "notes": "Use HP 70-100 Hz on all non-bass sources. This is the #1 fix for headroom issues.",
+          "gain": null,
+          "context": "Apply to: vocals, guitars, keys, synths, percussion (not kick/bass)"
+        }
+      ]
+    },
+    {
+      "symptom": "muddy_or_cloudy",
+      "displayName": "Muddy / Cloudy Mix",
+      "description": "Mix sounds like there's a blanket over the speakers, lacks definition, congested low-mids",
+      "priority": 1,
+      "recommendations": [
+        {
+          "bandId": 2,
+          "archetype": "De-Mud 250",
+          "notes": "Small cuts in 200-300 Hz clear mixes extremely quickly. Start with -2 dB.",
+          "gain": -2,
+          "context": "Apply to: multiple tracks with low-mid buildup, mix bus if widespread"
+        },
+        {
+          "bandId": 2,
+          "archetype": "De-Mud Wide 200",
+          "notes": "If 250 Hz cut is too aggressive, try wider cut at 200 Hz",
+          "gain": -1.5,
+          "context": "Alternative if you want to preserve some warmth"
+        }
+      ]
+    },
+    {
+      "symptom": "harsh_or_fatiguing",
+      "displayName": "Harsh / Ear Fatigue",
+      "description": "Mix hurts to listen to, causes ear fatigue, sounds sharp or aggressive",
+      "priority": 1,
+      "recommendations": [
+        {
+          "bandId": 6,
+          "archetype": "Tame Harsh 4500",
+          "notes": "Cut 4-6 kHz; use narrow BW only for obvious resonances. Start gentle.",
+          "gain": -2,
+          "context": "Common in vocals, guitars, cymbals - sweep to find exact frequency"
+        },
+        {
+          "bandId": 5,
+          "archetype": "Soften Bite 2800",
+          "notes": "If harshness is in presence range (2-3 kHz), cut here instead",
+          "gain": -1.5,
+          "context": "Alternative if the harshness is more 'edgy' than 'sharp'"
+        }
+      ]
+    },
+    {
+      "symptom": "boxy_or_cardboard",
+      "displayName": "Boxy / Cardboard Tone",
+      "description": "Sounds like it was recorded in a small room, enclosed, cardboard-like quality",
+      "priority": 2,
+      "recommendations": [
+        {
+          "bandId": 3,
+          "archetype": "De-Box 420",
+          "notes": "Use medium BW; avoid over-cutting or you'll lose life. Sweep 300-550 Hz to find it.",
+          "gain": -2.5,
+          "context": "Common in: vocals, acoustic guitars, drums, poorly recorded sources"
+        },
+        {
+          "bandId": 3,
+          "archetype": "Room Tone Cut",
+          "notes": "If boxiness is lower in frequency range",
+          "gain": -3,
+          "context": "Try 350 Hz if 420 Hz doesn't hit the right spot"
+        }
+      ]
+    },
+    {
+      "symptom": "nasal_or_honky",
+      "displayName": "Nasal / Honky",
+      "description": "Vocals or instruments sound pinched, nasal, honky, or have a cheap tone",
+      "priority": 2,
+      "recommendations": [
+        {
+          "bandId": 4,
+          "archetype": "Tame Honk 850",
+          "notes": "Small changes only - this range is very sensitive. Sweep 700-1000 Hz.",
+          "gain": -1.5,
+          "context": "Common in: vocals, guitars, brass, anything with midrange focus"
+        },
+        {
+          "bandId": 4,
+          "archetype": "De-Nasal 700",
+          "notes": "Try lower frequency for male vocals or lower-pitched sources",
+          "gain": -1.5,
+          "context": "Alternative for male vocals or deeper instruments"
+        },
+        {
+          "bandId": 4,
+          "archetype": "De-Nasal 950",
+          "notes": "Try higher frequency for female vocals or higher-pitched sources",
+          "gain": -2,
+          "context": "Alternative for female vocals or brighter instruments"
+        }
+      ]
+    },
+    {
+      "symptom": "buried_or_unclear",
+      "displayName": "Buried / Unclear",
+      "description": "Vocals or lead elements disappear in the mix, lack intelligibility, can't hear lyrics clearly",
+      "priority": 2,
+      "recommendations": [
+        {
+          "bandId": 5,
+          "archetype": "Lead Clarity 2500",
+          "notes": "Presence makes vocals and leads intelligible. Don't overdo it - can cause harshness.",
+          "gain": 2,
+          "context": "Apply to: lead vocals, lead synths, main melodic elements"
+        },
+        {
+          "bandId": 5,
+          "archetype": "Male Vocal Presence 2200",
+          "notes": "Try lower frequency for male vocals",
+          "gain": 2,
+          "context": "Better for deeper male voices"
+        },
+        {
+          "bandId": 5,
+          "archetype": "Vocal Presence 2800",
+          "notes": "Try higher frequency for female vocals",
+          "gain": 1.5,
+          "context": "Better for female voices or brighter sources"
+        }
+      ]
+    },
+    {
+      "symptom": "thin_or_weak",
+      "displayName": "Thin / Lacks Body",
+      "description": "Source sounds thin, weak, lacks weight or physical presence",
+      "priority": 2,
+      "recommendations": [
+        {
+          "bandId": 2,
+          "archetype": "Add Body 200",
+          "notes": "Add gentle warmth and thickness. Don't overdo - this range stacks fast.",
+          "gain": 1.5,
+          "context": "Apply to: thin vocals, weak guitars, sources needing fullness"
+        },
+        {
+          "bandId": 2,
+          "archetype": "Add Chest 180",
+          "notes": "Specifically for adding chest resonance to vocals",
+          "gain": 2,
+          "context": "Great for male vocals or adding depth/power"
+        },
+        {
+          "bandId": 3,
+          "archetype": "Add Mid Density",
+          "notes": "Rare boost in boxiness range for very thin sources",
+          "gain": 1,
+          "context": "Only if source is extremely thin and needs midrange weight"
+        }
+      ]
+    },
+    {
+      "symptom": "dull_or_closed",
+      "displayName": "Dull / Closed Sound",
+      "description": "Mix sounds dark, dull, closed, lacks excitement or sparkle",
+      "priority": 3,
+      "recommendations": [
+        {
+          "bandId": 7,
+          "archetype": "Air Shelf 12k",
+          "notes": "Use a wide high shelf for polish. Keep it subtle on buses/master.",
+          "gain": 2.5,
+          "context": "Final polish - apply to tracks, buses, or master for modern sheen"
+        },
+        {
+          "bandId": 7,
+          "archetype": "Air Shelf 10k",
+          "notes": "Lower shelf for more body to the air boost",
+          "gain": 2,
+          "context": "If 12k sounds too airy without enough presence"
+        },
+        {
+          "bandId": 6,
+          "archetype": "Add Detail 5000",
+          "notes": "If dullness is more about lack of detail than air",
+          "gain": 1,
+          "context": "Add definition and crispness before adding air"
+        }
+      ]
+    },
+    {
+      "symptom": "lacks_detail_or_definition",
+      "displayName": "Lacks Detail / Definition",
+      "description": "Source sounds soft, lacks snap, consonants are weak, transients are dull",
+      "priority": 3,
+      "recommendations": [
+        {
+          "bandId": 6,
+          "archetype": "Add Detail 5000",
+          "notes": "Small boosts add definition. Watch for sibilance and harshness.",
+          "gain": 1,
+          "context": "Apply to: vocals, percussion, anything needing articulation"
+        },
+        {
+          "bandId": 6,
+          "archetype": "Crispness 5500",
+          "notes": "Higher frequency for more snap and attack",
+          "gain": 1,
+          "context": "Better for percussion, drums, sharp transients"
+        }
+      ]
+    },
+    {
+      "symptom": "sibilant_or_too_bright",
+      "displayName": "Sibilant / Too Bright",
+      "description": "Harsh S sounds, overly bright cymbals, too much high-frequency energy",
+      "priority": 2,
+      "recommendations": [
+        {
+          "bandId": 6,
+          "archetype": "Tame Sibilance 6000",
+          "notes": "Cut upper harshness and sibilance. Use medium-narrow BW.",
+          "gain": -1.5,
+          "context": "Common issue with vocals - sweep 5-7 kHz to find exact frequency"
+        },
+        {
+          "bandId": 7,
+          "archetype": "Reduce Hiss Shelf",
+          "notes": "If entire top-end is too bright, not just one frequency",
+          "gain": -1.5,
+          "context": "Use high shelf cut for overly bright sources"
+        }
+      ]
+    },
+    {
+      "symptom": "noisy_or_hissy",
+      "displayName": "Noisy / Hissy",
+      "description": "Recording has noise, hiss, or unwanted high-frequency artifacts",
+      "priority": 2,
+      "recommendations": [
+        {
+          "bandId": 7,
+          "archetype": "Reduce Hiss Shelf",
+          "notes": "High shelf cut to reduce noise and artifacts. Keep it wide.",
+          "gain": -1.5,
+          "context": "For noisy recordings - but use noise reduction first if available"
+        }
+      ]
+    },
+    {
+      "symptom": "too_much_sub",
+      "displayName": "Too Much Sub / Boomy",
+      "description": "Excessive sub-bass, boomy low-end, sound feels out of control in the lows",
+      "priority": 1,
+      "recommendations": [
+        {
+          "bandId": 1,
+          "archetype": "HP Tight 100",
+          "notes": "More aggressive HP to tighten low-end. Adjust frequency to taste.",
+          "gain": 0,
+          "context": "For overly boomy sources or modern tight sound"
+        }
+      ]
+    },
+    {
+      "symptom": "sounds_cheap_or_amateur",
+      "displayName": "Sounds Cheap / Amateur",
+      "description": "Overall tone sounds unprofessional, cheap, or amateurish",
+      "priority": 2,
+      "recommendations": [
+        {
+          "bandId": 3,
+          "archetype": "De-Box 420",
+          "notes": "Boxiness is often what makes things sound cheap. Remove cardboard tone.",
+          "gain": -2.5,
+          "context": "First step in making things sound 'expensive'"
+        },
+        {
+          "bandId": 7,
+          "archetype": "Air Shelf 12k",
+          "notes": "Air adds professional polish and modern sheen",
+          "gain": 2.5,
+          "context": "Second step - add gloss and finish"
+        }
+      ]
+    },
+    {
+      "symptom": "lacks_punch_or_impact",
+      "displayName": "Lacks Punch / Impact",
+      "description": "Source doesn't hit hard, lacks punch or physical impact",
+      "priority": 2,
+      "recommendations": [
+        {
+          "bandId": 1,
+          "archetype": "Sub Bell Weight",
+          "notes": "Boost fundamental frequency for more weight (kick/bass only)",
+          "gain": 2.5,
+          "context": "Only for kick/bass - sweep 40-60 Hz to find fundamental"
+        },
+        {
+          "bandId": 5,
+          "archetype": "Lead Clarity 2500",
+          "notes": "Presence can add perceived punch and attack",
+          "gain": 2,
+          "context": "For non-bass elements - adds attack perception"
+        }
+      ]
+    },
+    {
+      "symptom": "sounds_distant",
+      "displayName": "Sounds Distant / Far Away",
+      "description": "Source sounds like it's in the back of the mix, far from the listener",
+      "priority": 2,
+      "recommendations": [
+        {
+          "bandId": 5,
+          "archetype": "Lead Clarity 2500",
+          "notes": "Presence brings sounds forward and closer to listener",
+          "gain": 2,
+          "context": "Primary tool for bringing sources forward"
+        },
+        {
+          "bandId": 2,
+          "archetype": "Add Body 200",
+          "notes": "Warmth can also add proximity/closeness",
+          "gain": 1.5,
+          "context": "Adds intimacy and 'close-mic' feel"
+        }
+      ]
+    },
+    {
+      "symptom": "lacks_warmth",
+      "displayName": "Lacks Warmth / Too Clinical",
+      "description": "Sound is too clean, clinical, lacks warmth and character",
+      "priority": 3,
+      "recommendations": [
+        {
+          "bandId": 2,
+          "archetype": "Warmth Shelf",
+          "notes": "Low shelf for broad warmth. Don't overdo - check for mud.",
+          "gain": 1.5,
+          "context": "Use on buses for overall warmth increase"
+        },
+        {
+          "bandId": 2,
+          "archetype": "Add Chest 180",
+          "notes": "More focused warmth boost",
+          "gain": 2,
+          "context": "For individual tracks needing warmth"
+        }
+      ]
+    },
+    {
+      "symptom": "mix_sounds_flat",
+      "displayName": "Mix Sounds Flat / One-Dimensional",
+      "description": "Mix lacks dimension, depth, or frequency spread - sounds flat",
+      "priority": 3,
+      "recommendations": [
+        {
+          "bandId": 6,
+          "archetype": "Add Detail 5000",
+          "notes": "Detail adds dimension and perceived depth",
+          "gain": 1,
+          "context": "Start with detail in upper-mids"
+        },
+        {
+          "bandId": 7,
+          "archetype": "Air Shelf 12k",
+          "notes": "Air opens up the top and adds space",
+          "gain": 2.5,
+          "context": "Then add air for complete dimension"
+        }
+      ]
+    },
+    {
+      "symptom": "resonance_or_ringing",
+      "displayName": "Obvious Resonance / Ringing",
+      "description": "Specific frequency that rings out or resonates unnaturally",
+      "priority": 1,
+      "recommendations": [
+        {
+          "bandId": 3,
+          "archetype": "Resonance Notch 400",
+          "notes": "Use notch filter for surgical removal. Sweep to find exact frequency.",
+          "gain": -4,
+          "context": "For obvious room modes or resonances - adjust frequency as needed"
+        },
+        {
+          "bandId": 4,
+          "archetype": "Honk Notch",
+          "notes": "If resonance is in honk range (700-1000 Hz)",
+          "gain": -3,
+          "context": "Common in brass, guitars, vocals"
+        },
+        {
+          "bandId": 6,
+          "archetype": "Harsh Notch 4800",
+          "notes": "If resonance is in upper-mid range (4-6 kHz)",
+          "gain": -3,
+          "context": "Sweep to find exact harsh resonance"
+        }
+      ]
+    },
+    {
+      "symptom": "vocals_fighting_with_bass",
+      "displayName": "Vocals Fighting with Bass",
+      "description": "Vocals and bass are masking each other in the low-end",
+      "priority": 1,
+      "recommendations": [
+        {
+          "bandId": 1,
+          "archetype": "HP Clean 80",
+          "notes": "HP the vocals to separate from bass. This is essential.",
+          "gain": 0,
+          "context": "Apply to vocals - frees low-end for bass/kick"
+        },
+        {
+          "bandId": 2,
+          "archetype": "De-Mud 250",
+          "notes": "Also cut low-mids on vocals if still masking",
+          "gain": -2,
+          "context": "Further separation in warmth range"
+        }
+      ]
+    },
+    {
+      "symptom": "drums_lack_clarity",
+      "displayName": "Drums Lack Clarity / Definition",
+      "description": "Drums sound mushy, lack separation, or don't cut through",
+      "priority": 2,
+      "recommendations": [
+        {
+          "bandId": 3,
+          "archetype": "De-Box 420",
+          "notes": "Remove boxiness from drum shells",
+          "gain": -2.5,
+          "context": "Common in snares, toms, room mics"
+        },
+        {
+          "bandId": 6,
+          "archetype": "Crispness 5500",
+          "notes": "Add attack and snap to drums",
+          "gain": 1,
+          "context": "Enhances stick definition and transients"
+        }
+      ]
+    }
+  ],
+  "contextualNotes": {
+    "trackLevel": "Use full gain ranges (up to ±6 dB), be more aggressive with EQ",
+    "busLevel": "Be gentler (max ±3 dB), changes affect multiple tracks",
+    "masterLevel": "Very subtle only (max ±1.5 dB), mostly for final polish",
+    "workflow": [
+      "1. Fix critical issues first (priority 1): rumble, mud, harshness",
+      "2. Address important issues (priority 2): boxiness, nasal, clarity, thin/thick",
+      "3. Apply final polish (priority 3): air, detail, dimension",
+      "4. Always A/B compare your changes",
+      "5. Less is more - don't over-EQ"
+    ]
+  }
+}

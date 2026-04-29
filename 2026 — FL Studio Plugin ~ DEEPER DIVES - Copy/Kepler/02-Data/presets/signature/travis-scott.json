@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "plugin": "Kepler",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "presetName": "Auto-Tune Lead",
+    "category": "signature",
+    "inspiredBy": "Travis Scott atmospheric leads"
+  },
+  "settings": {
+    "oscillator1": {
+      "waveform": "saw",
+      "octave": "0",
+      "detune": 0,
+      "mix": 85
+    },
+    "oscillator2": {
+      "waveform": "triangle",
+      "octave": "0",
+      "detune": 6,
+      "mix": 65
+    },
+    "filter": {
+      "type": "bandpass",
+      "cutoff": 2000,
+      "resonance": 35,
+      "drive": 10,
+      "envAmt": 40,
+      "envVel": 30
+    },
+    "envelope": {
+      "attack": 30,
+      "decay": 350,
+      "sustain": 70,
+      "release": 400
+    },
+    "lfo": {
+      "waveform": "sine",
+      "rate": 0.2,
+      "amt": 15,
+      "dest": "filterCutoff"
+    }
+  },
+  "chain": {
+    "pre": ["Fruily Parametric EQ 2 - Band-pass filter"],
+    "post": ["Fruily Reverb 2 - Large Room, Decay 2.5s, Mix 35%", "Tape Delay - 400ms, Feedback 35%, Mix 20%"]
+  },
+  "characteristics": ["spacey", "atmospheric", "wide", "melodic"],
+  "genreTags": ["hip-hop/rap", "trap", "atmospheric"],
+  "a/bTesting": {
+    "testA": "Bandpass filter for focused sound",
+    "testB": "Lowpass filter for warmer tone"
+  },
+  "troubleshooting": {
+    "tooMidFocused": "Widen bandpass Q to 25",
+    "lacksSpace": "Increase reverb mix to 45%"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "plugin": {
+    "name": "Frequency Splitter",
+    "category": "Utility",
+    "type": "Crossover / Splitter",
+    "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Frequency%20Splitter.htm"
+  },
+  "parameters": {
+    "global": [
+      {
+        "id": "splitMode",
+        "name": "Split Mode",
+        "options": ["2 Bands", "3 Bands"],
+        "description": "Determines the number of frequency ranges."
+      },
+      {
+        "id": "engineMode",
+        "name": "Engine Mode",
+        "options": ["Minimum Phase (IIR)", "Linear Phase"],
+        "description": "IIR for zero-latency; Linear Phase for phase-perfect recombination."
+      }
+    ],
+    "crossovers": [
+      {
+        "id": "xo1",
+        "name": "Low-Mid Crossover",
+        "range": "20Hz to 20kHz",
+        "default": "200Hz"
+      },
+      {
+        "id": "xo2",
+        "name": "Mid-High Crossover",
+        "range": "20Hz to 20kHz",
+        "default": "3000Hz"
+      },
+      {
+        "id": "slope",
+        "name": "Slope",
+        "options": [6, 12, 18, 24, 30, 36, 48, 60, 72, 84, 96],
+        "unit": "dB/oct"
+      }
+    ],
+    "perBand": [
+      "Mute", "Solo", "Gain", "Pan", "Output Send"
+    ]
+  },
+  "sweetSpots": {
+    "subIsolation": "120-180Hz",
+    "vocalPresence": "2.5k-4kHz",
+    "highAir": "8k-12kHz"
+  }
+}

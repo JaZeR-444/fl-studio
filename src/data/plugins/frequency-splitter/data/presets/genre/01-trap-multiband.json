@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "plugin": "Frequency Splitter",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "presetName": "Trap Multiband Chain",
+    "category": "genre",
+    "genre": "trap",
+    "mood": "dark"
+  },
+  "settings": {
+    "crossover1": 200,
+    "crossover2": 3000,
+    "slope": "24dB/oct",
+    "mode": "linear-phase",
+    "band1": { "gain": 0, "processing": "high-pass 30Hz" },
+    "band2": { "gain": 3, "processing": "frequency shifter down 100Hz, 25% mix" },
+    "band3": { "gain": -2, "processing": "high-pass 4kHz" }
+  },
+  "chain": {
+    "pre": ["Instance 1: Sub/bass band"],
+    "post": ["Instance 2: High band with transient enhancement"]
+  },
+  "workflow": "Use two instances: one for bass (cros 200Hz) with sub enhancement, one for highs (cros 3kHz) with air enhancement.",
+  "genreTags": ["trap", "dark", "multiband", "processing"],
+  "a/bTesting": {
+    "testA": "Linear phase for transparency",
+    "testB": "Butterworth slope for character"
+  },
+  "troubleshooting": {
+    "phaseIssues": "Use linear phase mode",
+    "crosstalk": "Increase crossover spacing"
+  }
+}

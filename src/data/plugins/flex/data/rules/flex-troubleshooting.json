@@ -1,0 +1,92 @@
+{
+  "rules": [
+    {
+      "symptom": "preset_too_wet_or_washed_out",
+      "displayName": "Preset Too Wet / Washed Out",
+      "description": "The sound is drowning in reverb or delay, losing its definition.",
+      "priority": 1,
+      "recommendations": [
+        {
+          "action": "Lower Reverb Mix",
+          "parameter": "Reverb Mix Knob",
+          "value": "0-20%",
+          "notes": "Turn down the Reverb Mix knob in the bottom effects row."
+        },
+        {
+          "action": "Lower Delay Mix",
+          "parameter": "Delay Mix Knob",
+          "value": "0-20%",
+          "notes": "Turn down the Delay Mix knob. Also check if Macro sliders 5-8 are controlling FX levels."
+        }
+      ]
+    },
+    {
+      "symptom": "sound_does_not_stop",
+      "displayName": "Sound Does Not Stop Playing",
+      "description": "After releasing the key, the sound continues for too long (long release tail).",
+      "priority": 1,
+      "recommendations": [
+        {
+          "action": "Reduce Release Time",
+          "parameter": "Envelope Release Slider (R)",
+          "value": "Lower",
+          "notes": "Drag the 'R' slider in the Volume Envelope section downwards to shorten the fade-out time."
+        }
+      ]
+    },
+    {
+      "symptom": "unwanted_rhythm_or_arpeggio",
+      "displayName": "Unwanted Rhythm / Arpeggio",
+      "description": "The preset plays a sequence or pattern instead of a sustained note.",
+      "priority": 2,
+      "recommendations": [
+        {
+          "action": "Disable Arpeggiator",
+          "parameter": "Arpeggiator Icon",
+          "value": "Off (Grey)",
+          "notes": "Click the pyramid-of-dots icon in the Pitch section. If it's orange, the arp is active. Click to turn it grey."
+        }
+      ]
+    },
+    {
+      "symptom": "sound_too_harsh_or_bright",
+      "displayName": "Sound Too Harsh / Bright",
+      "description": "The high frequencies are piercing or fatiguing.",
+      "priority": 2,
+      "recommendations": [
+        {
+          "action": "Lower Cutoff",
+          "parameter": "Filter Cutoff Knob",
+          "value": "Lower",
+          "notes": "Turn down the main Filter Cutoff knob. Also check Macro 1, which often controls brightness."
+        },
+        {
+          "action": "Engage Master Filter",
+          "parameter": "Master Filter",
+          "value": "Low Pass",
+          "notes": "Enable the Master Filter (bottom left) and set it to 'LP 12dB' to roll off highs."
+        }
+      ]
+    },
+    {
+      "symptom": "cpu_usage_too_high",
+      "displayName": "CPU Usage Too High",
+      "description": "FLEX is causing audio glitches or high CPU load.",
+      "priority": 3,
+      "recommendations": [
+        {
+          "action": "Disable Unison",
+          "parameter": "Macros",
+          "value": "Check Macros",
+          "notes": "Check if any Macro controls 'Unison' or 'Voices' and turn it down."
+        },
+        {
+          "action": "Increase Buffer Size",
+          "parameter": "FL Studio Audio Settings",
+          "value": "Higher Buffer",
+          "notes": "Increase your audio buffer size in FL Studio settings."
+        }
+      ]
+    }
+  ]
+}

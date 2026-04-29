@@ -1,0 +1,26 @@
+{
+  "plugin": {
+    "name": "Fruity Center",
+    "category": "Utility",
+    "type": "Mid-Side Matrix",
+    "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Center.htm"
+  },
+  "parameters": {
+    "center": {
+      "id": "center",
+      "name": "Center (Mid)",
+      "range": "0-100%",
+      "description": "Adjusts the level of correlated (identical) L/R audio."
+    },
+    "side": {
+      "id": "side",
+      "name": "Side",
+      "range": "0-100%",
+      "description": "Adjusts the level of uncorrelated (difference) L/R audio."
+    }
+  },
+  "math": {
+    "midCalculation": "L + R",
+    "sideCalculation": "L - R"
+  }
+}

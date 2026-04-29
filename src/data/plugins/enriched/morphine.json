@@ -1,0 +1,78 @@
+{
+  "id": "morphine",
+  "name": "Morphine",
+  "category": "Synthesizer",
+  "tier": "Premium",
+  "type": "Synthesizer",
+  "description": "Morphine - Synthesizer",
+  "tags": [
+    "synth",
+    "sound-design"
+  ],
+  "capabilities": [
+    "synthesis",
+    "midi",
+    "polyphonic"
+  ],
+  "icon": "/plugins/morphine-icon.svg",
+  "color": "#8B5CF6",
+  "version": "1.0",
+  "data_dir": "plugins\\morphine",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "morphine-signal-path": {
+      "plugin_name": "Morphine",
+      "synthesis": "Additive / Resynthesis",
+      "generators": 4,
+      "harmonics_per_voice": 128,
+      "keyboard_zones": 128,
+      "polyphony": 32,
+      "built_in_fx": [
+        "Chorus",
+        "Delay",
+        "Reverb",
+        "EQ",
+        "Distortion"
+      ]
+    }
+  },
+  "presets": {},
+  "learning": {
+    "Concepts": {
+      "additive-synthesis-basics": "# Learning: Additive Synthesis Basics (Morphine)\n**Goal:** Understanding why Morphine is the \"secret weapon\" for organic, soulful textures in R&B and Electronic music.\n\n## 1. What is Additive Synthesis?\nUnlike subtractive synthesis (which starts with a complex wave and filters it down), Additive synthesis (Morphine) builds a sound by stacking hundreds of individual sine waves (harmonics).\n\n## 2. The \"Resynthesis\" Advantage\n- **The Concept:** You can drag an audio sample (like a vocal or a bell) into Morphine, and it will \"re-create\" it using sine waves.\n- **The \"Moody\" Application:** Once a vocal is resynthesized, you can \"stretch\" the harmonics or shift them in ways that are impossible with standard audio, creating that \"otherworldly\" R&B background texture.\n\n## 3. The 4 Generator Layout\nMorphine has 4 independent \"Generators\" (A, B, C, D).\n- **Vibe Hack:** \n    - Use Generator A for the \"Transient\" (a short, sharp pluck).\n    - Use Generator B for the \"Sustain\" (a slow, evolving pad).\n    - Use the **Morphing** slider to blend between them over time.\n\n## 4. Why Morphine for \"Soulful\" Music?\n- **Harmonic Control:** You can manually \"draw\" in the harmonics you want. For a **Jazzy** Rhodes sound, you would emphasize the lower, warmer harmonics.\n- **Noise Layering:** Morphine allows you to add a dedicated \"Noise\" generator. Adding a small amount of \"Vinyl Noise\" or \"Breath\" makes the digital synth feel like an organic recording.\n\n## 5. Quick Reference: The \"Urban\" Patch Checklist\n- **Ethereal Pads:** Slow Attack, High Harmonic complexity, 50% Wet Reverb.\n- **Digital Rhodes:** Emphasis on the 1st and 3rd harmonics, 10% Noise (Tine sound).\n- **Hard Leads:** High Harmonic \"Spectrum\" shift, fast LFO to Pitch (Vibrato).\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Morphine\r\n\r\n## What It Is\r\nMorphine is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Morphine\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "parameter-cheat-sheet": "# Morphine Parameter Cheat Sheet\n\n## Generators (A, B, C, D)\n- **Concept:** 4 independent synth engines that can be blended.\n- **Harmonics:** Individual amplitude/frequency control for 128 sine waves.\n- **Noise Generator:** Replays the non-tonal part of a sound (breath, hits).\n\n## Modulation & Evolution\n- **Breakpoints:** Snapshots of the harmonic spectrum at specific points in time.\n- **Morph Envelope:** Blends between the 4 generators over the note duration.\n- **Keyboard Zones:** 128 zones to assign different sounds to different keys.\n\n## Spectral Tools\n- **PWM Filters:** Manipulates the spectrum to create unison and width effects.\n- **Resynthesis:** Imports WAV files and converts them into editable additive harmonics.\n",
+      "quick-start-checklist": "# Quick Start Checklist: Morphine\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Morphine to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Morphine\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Morphine\r\n\r\nThis section contains learning information for the morphine plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "creating-metallic-percussion": "# Creating Metallic Percussion (Morphine)\n\n## Goal\nDesign unique, bell-like hits or metallic stabs using inharmonic partials.\n\n## Technical Steps\n1. **Spectrum Grid:**\n   - Instead of a harmonic series (1, 2, 3...), draw \"random\" vertical bars in the **Harmonics** grid.\n   - **Pro Tip:** Gaps between bars create the metallic, \"cold\" character.\n2. **ADSR:**\n   - Set **Attack** to 0ms.\n   - Set **Decay** to 500ms.\n   - Set **Sustain** to 0%.\n3. **Noise Injection:**\n   - Enable the **Noise Generator**.\n   - Set its envelope to a very short burst (10ms) to simulate the \"impact\" of a mallet hitting metal.\n4. **Detune:**\n   - Go to the **Detune** tab for the partials and add slight random detuning to the higher harmonics to increase the \"discordant\" feel.\n\n## Why it works\nReal metal (like a pipe or bell) does not vibrate in a perfect harmonic series. By drawing inharmonic partials and using a noise impact, you precisely replicate the physical behavior of resonant metals.\n",
+      "evolving-ethereal-pads": "# Evolving Ethereal Pads (Morphine)\n\n## Goal\nCreate a pad that constantly shifts its spectral content, resulting in a \"living\" texture.\n\n## Technical Steps\n1. **Source Generation:**\n   - Go to **Generator A**. Set harmonics to a \"Bowed String\" profile (bright highs).\n   - Go to **Generator B**. Set harmonics to a \"Female Vocal\" profile (strong formants).\n2. **Morph Envelope:**\n   - In the **Morph** tab, click the **Envelope** button.\n   - Draw a slow, looping curve that moves between A and B over 8 seconds.\n   - Set **Loop Mode** to Forward-Backward.\n3. **PWM Filter:**\n   - Apply a **PWM Filter** to both generators.\n   - Set the PWM LFO to a slow rate.\n4. **FX:**\n   - Add a large internal **Reverb** (Decay 4s, Wet 60%).\n   - Add **Chorus** for stereo width.\n\n## Why it works\nBecause the sound is additive, Morphine is morphing the actual *frequencies* of the partials between the two states. This is spectral morphing, which is much smoother than a standard crossfade between two separate plugins.\n",
+      "hop-hop-subgenre-sounds": "# Hip-Hop Sub-Genre Morphine Workflows\n\n## Moody Dark Trap Pad\n| Parameter | Setting |\n|-----------|---------|\n| Fundamental | 70 |\n| Harmonics H2-H8 | 55/40/30/22/15/10/6 |\n| Morph | 60% |\n| Envelope | 800/1500/65/2000 |\n| Filter Cutoff | 2000Hz |\n| Resonance | 25% |\n\n### Tips\n- Lower fundamental for darkness\n- Slow morphing for atmosphere\n- Dark filter setting\n- Perfect for intros and outros\n\n---\n\n## Upbeat Bouncy Lead\n| Parameter | Setting |\n|-----------|---------|\n| Fundamental | 90 |\n| Harmonics H2-H8 | 80/65/55/45/35/25/15 |\n| Morph | 35% |\n| Envelope | 50/300/80/500 |\n| Filter Cutoff | 4500Hz |\n| Resonance | 35% |\n\n### Tips\n- High fundamental for brightness\n- Rich harmonic spectrum\n- Quick envelope for bounce\n- Perfect for hooks and melodies\n\n---\n\n## Electro Synth\n| Parameter | Setting |\n|-----------|---------|\n| Fundamental | 88 |\n| Harmonics H2-H8 | 78/65/55/45/35/25/18 |\n| Morph | 25% |\n| Envelope | 20/200/70/300 |\n| Filter Cutoff | 5000Hz |\n| Resonance | 50% |\n\n### Tips\n- Bright harmonic series\n- Quick envelope for punch\n- High resonance for character\n- Great for futuristic sounds\n\n---\n\n## Jazzy Keys\n| Parameter | Setting |\n|-----------|---------|\n| Fundamental | 78 |\n| Harmonics H2-H8 | 65/50/40/30/22/15/10 |\n| Morph | 45% |\n| Envelope | 150/600/75/1200 |\n| Filter Cutoff | 2800Hz |\n| Resonance | 20% |\n\n### Tips\n- Mid fundamental for warmth\n- Soft harmonic series\n- Warm filter setting\n- Perfect for melodic hooks\n\n---\n\n## Funky Bass\n| Parameter | Setting |\n|-----------|---------|\n| Fundamental | 92 |\n| Harmonics H2-H8 | 75/60/50/40/30/20/12 |\n| Morph | 30% |\n| Envelope | 10/150/75/400 |\n| Filter Cutoff | 3500Hz |\n| Resonance | 40% |\n\n### Tips\n- High fundamental for presence\n- Strong harmonics for character\n- Quick attack for punch\n- Perfect for slap-style sounds\n\n---\n\n## Energetic Drill Lead\n| Parameter | Setting |\n|-----------|---------|\n| Fundamental | 95 |\n| Harmonics H2-H8 | 85/70/60/50/40/30/20 |\n| Morph | 20% |\n| Envelope | 5/100/80/200 |\n| Filter Cutoff | 5500Hz |\n| Resonance | 55% |\n\n### Tips\n- Maximum fundamental for presence\n- Bright harmonic series\n- Instant attack for impact\n- Perfect for drill melodies\n\n---\n\n## Related Documentation\n- [Morphine Presets INDEX](../02-Data/presets/INDEX.md)\n- [Morphine Safety Rules](../02-Data/rules/morphine-safety-rules.md)\n",
+      "INDEX": "# Morphine Workflows INDEX\n\n## By-Goal Workflows\n\n| File | Focus |\n|------|-------|\n| [creating-metallic-percussion.md](creating-metallic-percussion.md) | Metallic percussion sounds |\n| [evolving-ethereal-pads.md](evolving-ethereal-pads.md) | Evolving pad creation |\n| [hop-hop-subgenre-sounds.md](hop-hop-subgenre-sounds.md) | Hip-Hop Sub-Genre Sounds |\n\n## Quick Reference\n\n| Goal | Workflow |\n|------|----------|\n| Metallic percussion | Creating Metallic Percussion |\n| Evolving pads | Evolving Ethereal Pads |\n| Dark trap pads | Hip-Hop Sub-Genre Sounds |\n| Bouncy leads | Hip-Hop Sub-Genre Sounds |\n| Electro synths | Hip-Hop Sub-Genre Sounds |\n| Jazzy keys | Hip-Hop Sub-Genre Sounds |\n| Funky bass | Hip-Hop Sub-Genre Sounds |\n| Drill leads | Hip-Hop Sub-Genre Sounds |\n\n## Related Documentation\n\n- [Morphine Presets](../02-Data/presets/INDEX.md)\n- [Morphine Safety Rules](../02-Data/rules/morphine-safety-rules.md)\n"
+    },
+    "by-instrument": {
+      "INDEX": "# Morphine Workflows INDEX\n\n## By-Instrument Workflows\n\n| File | Focus |\n|------|-------|\n| [by-instrument/01-pad-workflows.md](by-instrument/01-pad-workflows.md) | Pad creation |\n| [by-instrument/02-lead-workflows.md](by-instrument/02-lead-workflows.md) | Lead creation |\n| [by-instrument/03-bass-workflows.md](by-instrument/03-bass-workflows.md) | Bass creation |\n\n## Quick Reference\n\n| Sound Type | Start Preset |\n|------------|--------------|\n| Pads | Morphing Pad |\n| Leads | Aggressive Lead |\n| Bass | Warm Bass |\n| Textures | Ethereal Texture |\n\n## Related Documentation\n\n- [Morphine Presets](../02-Data/presets/INDEX.md)\n- [Morphine Safety Rules](../02-Data/rules/morphine-safety-rules.md)\n",
+      "organic-vocal-textures": "# Workflow: Organic Vocal Textures (Morphine)\n\nTags: r&b | moody | vocals | resynthesis\n\n## Goal: Transform a Single Vocal Note into an Evolving, Organic Pad\nThis workflow uses the unique \"Additive\" engine to create textures that sound like a human choir but with impossible movement.\n\n## 1. Starting Moves\n- **Source:** Find a clean, dry vocal sample (e.g., an \"Ahh\" or \"Ooh\").\n- **Generator A:** Drag the vocal sample into the **Resynthesis** window.\n- **Spectrum:** Once analyzed, check the \"Harmonic Filter.\"\n\n## 2. Adding the \"Soul\"\n- **Velocity Mapping:** Link \"Harmonic Filter\" to Velocity.\n- **Noise Generator:** Use the **\"Breath\"** noise setting at 10%. This adds the organic feeling of air flowing through a throat.\n- **Effects:** Apply **Chorus** and **LuxeVerb** (50% Wet).\n\n## 3. The Morphing Evolution\n- **Generator B:** Create a simple Sine wave pad with high harmonics.\n- **Morphing Slider:** Create an **Automation Clip** for the Morph slider (A to B).\n- **Result:** The sound starts as a \"Human\" vocal and slowly \"Morphs\" into a synthetic, glassy texture over 8 bars.\n\n## 4. A/B Test\n- **A:** Static vocal sample loop.\n- **B:** Morphine Resynthesized evolving vocal.\n- **Listen for:** The lack of \"loop points.\" Additive synthesis has no loop points—it's just pure sine waves, making it infinitely smooth.\n\n## 5. Quick Fix Path\n- **Vocal sounds \"robotic\"?** Increase \"Noise\" and decrease the Spectrum Shift.\n- **Vocal sounds \"thin\"?** Emphasize the 1st and 3rd harmonics in the Editor.\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Morphine\r\n\r\nThis section contains workflow information for the morphine plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Morphine\r\n\r\nThis section contains reference information for the morphine plugin.\r\n"
+    }
+  }
+}

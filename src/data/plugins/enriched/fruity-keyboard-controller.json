@@ -1,0 +1,150 @@
+{
+  "id": "fruity-keyboard-controller",
+  "name": "Fruity Keyboard Controller",
+  "category": "Controller",
+  "tier": "Free",
+  "type": "Controller",
+  "description": "Fruity Keyboard Controller - Controller",
+  "tags": [
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "automation",
+    "modulation",
+    "control"
+  ],
+  "icon": "/plugins/fruity-keyboard-controller-icon.svg",
+  "color": "#78716C",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-keyboard-controller",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "keyboard-controller-params": {
+      "plugin_name": "Fruity Keyboard Controller",
+      "category": "Controller",
+      "outputs": [
+        {
+          "name": "Note",
+          "description": "Output based on the pitch of the triggered MIDI key.",
+          "vibe_impact": "Melodic tracking, rhythmic steps"
+        },
+        {
+          "name": "Velocity",
+          "description": "Output based on the pressure/velocity of the triggered MIDI key.",
+          "vibe_impact": "Expressive dynamics, human touch"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "Attack",
+          "type": "knob",
+          "description": "The time it takes for the output to reach a new note's value.",
+          "vibe_impact": "Glide, silk, smoothness",
+          "mix_impact_tags": [
+            "motion",
+            "slew"
+          ]
+        },
+        {
+          "name": "Release",
+          "type": "knob",
+          "description": "The time it takes for the output to return to its default state after a note is released.",
+          "vibe_impact": "Decay, shadow, drift"
+        },
+        {
+          "name": "Note Map",
+          "type": "graph",
+          "description": "Defines the pitch-to-data relationship."
+        },
+        {
+          "name": "Velocity Map",
+          "type": "graph",
+          "description": "Defines the pressure-to-data relationship."
+        }
+      ]
+    }
+  },
+  "presets": {
+    "drum-trigger-map": {
+      "presetName": "Drum Trigger Map",
+      "plugin": "Fruity Keyboard Controller",
+      "description": "Specific mapping for triggering Slicex regions.",
+      "settings": {
+        "notes": "C3 to C4 linear"
+      },
+      "usage": "Use to re-order drum slices without moving the actual slice markers."
+    },
+    "major-scale-map": {
+      "presetName": "Major Scale White Keys",
+      "plugin": "Fruity Keyboard Controller",
+      "description": "Maps white keys to a major scale, ignoring black keys.",
+      "settings": {
+        "map": [
+          0,
+          2,
+          4,
+          5,
+          7,
+          9,
+          11
+        ]
+      },
+      "usage": "Link to a synth's pitch to play in key without knowing theory."
+    },
+    "velocity-inverter": {
+      "presetName": "Velocity Inverter",
+      "plugin": "Fruity Keyboard Controller",
+      "description": "Output drops as velocity increases.",
+      "settings": {
+        "velocityMap": "Inverted Line (1.0 to 0.0)"
+      },
+      "usage": "Creative ducking effects or controlling inverse parameters."
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity Keyboard Controller\n\n## Purpose & Identity\nFruity Keyboard Controller is a **note-to-automation bridge**. Its primary identity is a generator that doesn't make sound, but instead converts MIDI notes and velocity into data signals. It allows you to \"play\" an effect parameter (like a filter cutoff or reverb mix) using the Piano Roll as if it were a melodic instrument. [SRC: IL-MAN]\n\n## 60-Second Mental Model\nThink of it as a \"Translator.\" It takes the pitch of a note (C5, D5, etc.) or the hardness of a hit (Velocity) and turns it into a knob position (0 to 100%). You can then link any knob in FL Studio to this signal. If you play a scale in the Piano Roll, the target knob will follow that scale.\n\n## Hip-Hop / R&B Context\n- **Vocal Glitch Sequencing:** Mapping the \"Note\" output to a Mute plugin. You can then \"play\" rhythmic cuts in a vocal by drawing patterns in the Piano Roll (Upbeat).\n- **Expressive Electric Piano:** Mapping \"Velocity\" to a filter cutoff. Harder hits make the keys sound brighter and \"Vibey.\"\n- **Key-Tracked Distortion:** Mapping \"Note\" to a distortion drive. High-pitched melodies get grittier, while low-pitched ones stay clean (Psychedelic).\n\n## When To Use\n- When you want to **sequence automation** with the precision of the Piano Roll.\n- When you need a plugin to **react to the pitch** you are playing (Key Tracking).\n- When you want to use **MIDI Velocity** to control non-expressive effects.\n\n## When NOT To Use\n- **Simple LFOs:** Use **Fruity LFO** or **Formula Controller** if you just want a standard repeating wave.\n- **Envelope Control:** Use **Fruity Envelope Controller** if you need ADSR-style shaping rather than just note-to-value mapping. [SRC: REPUTABLE]",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Fruity Keyboard Controller\n\n## UI Tour\nThe interface is centered around two main mapping graphs. [SRC: IL-MAN]\n\n### 1. The Output Selectors\n- **Note**: Tracks the pitch of the incoming MIDI data.\n- **Velocity**: Tracks the intensity/hardness of the incoming MIDI data.\n\n### 2. The Mapping Graphs\n- **The Graph Window**: A visual editor where you define the relationship between MIDI input (Horizontal) and automation output (Vertical).\n- **Preset Buttons**: Quick access to linear, stepped, or inverted curves.\n\n### 3. The Slew Engine (The \"Smoothing\")\n- **Attack**: How long it takes the automation to \"reach\" the target value of a new note.\n- **Release**: How long it takes to \"slide back\" or transition when a note is released.\n\n### 4. Monitoring\n- **Output Meter**: A vertical bar showing the real-time data being broadcast (0.0 to 1.0).\n\n## Signal Flow\n1. **MIDI Trigger**: You play a note in the Keyboard Controller's Piano Roll.\n2. **Note Identification**: The engine looks at the pitch (e.g., C5) and the velocity (e.g., 100).\n3. **Graph Lookup**: The engine checks the **Note Map** to see what value C5 represents (e.g., 0.5).\n4. **Slew Processing**: The value transitions from the previous note's value to 0.5 based on the **Attack** time.\n5. **Output Broadcast**: The resulting value is sent to any parameter linked via \"Link to controller.\"\n\n## Things Beginners Misunderstand\n- **\"It's not working\"**: You must put notes into the **Keyboard Controller's** specific Piano Roll channel. It cannot \"hear\" the notes you play on your Serum or Harmless channel unless they are layered.\n- **Velocity vs. Note**: These are two independent signals. You can link one knob to the pitch and a different knob to the pressure.\n- **Polyphony**: Keyboard Controller is monophonic in its output logic. If you play a chord, it typically tracks only the **highest** note or the **most recent** one.\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques And Best Practices: Fruity Keyboard Controller\n\n## 1. The \"Effect Piano\"\nLink the **Note** output to a Reverb's Wet/Dry mix.\n- **Technique**: Map C5 to 0% and C6 to 100%. In your Piano Roll, play a low note for dry and a high note for a big wash.\n- **Benefit**: You can \"rhythmically play\" the reverb into your track.\n\n## 2. Velocity-Responsive Dirt\nLink the **Velocity** output to a Distortion's Drive.\n- **Technique**: Use a steep exponential curve in the Velocity Map.\n- **Listen For**: The sound stays clean during quiet passages but \"snarls\" aggressively when you strike the keys hard.\n\n## 3. Smooth Slew (The Glide)\nTurn the **Attack** knob to ~200ms.\n- **Technique**: Play two notes an octave apart.\n- **Watch**: The linked knob will \"slide\" smoothly from one position to the next rather than snapping.\n- **Use Case**: Creating smooth filter sweeps without drawing automation curves.\n\n## 4. The MIDI \"Toggle\" Switch\nUse two specific notes to turn an effect on and off.\n- **Technique**: In the Note Map, set C5 to 0 and D5 to 1. Leave all other notes at 0.\n- **Benefit**: In your Piano Roll, you can now \"trigger\" an effect with a single D5 note and \"kill\" it with a C5.\n\n## 5. Mono-Check Logic\n- **Protocol**: If using Keyboard Controller to drive Stereo Width, ensure your Note Map doesn't go below 0.2 to avoid complete phase cancellation.\n- **Fix**: Right-click the Note Map and use the \"Compress\" function to keep the values in a safe range.\n\n## Common Pitfalls + Fixes\n| Pitfall | The Fix |\n| :--- | :--- |\n| **Knob is \"jittery\"** | Increase the **Attack** smoothing. |\n| **Output is inverted** | Right-click the Graph and select \"Invert.\" |\n| **Not hearing synth** | Ensure you are Layering the Keyboard Controller with your actual Sound Generator. |\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity Keyboard Controller\n\nKeyboard Controller translates vibes through **Note-Responsive Expression**.\n\n## 1. Upbeat (Kinetic, Chopped, Rhythmic)\n- **Concept:** \"The Performance Gate.\"\n- **Levers:**\n  - **Output:** Note.\n  - **Mapping:** Set one note to 0 and another to 1.\n  - **Action:** Link to **Fruity Mute 2**.\n- **Listen For:** Sharp, perfectly timed volume chops that follow your drum pattern.\n- **Don't Do This:** Don't use too much smoothing; you want the cuts to be \"instant.\"\n\n## 2. Psychedelic (Liquid, Morphing, Intense)\n- **Concept:** \"The Whining Filter.\"\n- **Levers:**\n  - **Output:** Note.\n  - **Mapping:** Linear slope (C0=0, C10=1).\n  - **Action:** Link to **Fruity Phaser** Speed.\n- **Listen For:** The modulation speed accelerating as you play higher notes, creating a \"screaming\" psychedelic effect.\n\n## 3. Spacey (Galactic, Immersive, Floating)\n- **Concept:** \"Velocity Distance.\"\n- **Levers:**\n  - **Output:** Velocity.\n  - **Mapping:** Logarithmic curve (Softer hits = much less).\n  - **Action:** Link to **Reverb Wet** level.\n- **Listen For:** Hard notes sounding close, while soft notes vanish into an infinite \"Spacey\" abyss.\n\n## 4. Vibey (Smooth, Organic, Analog)\n- **Concept:** \"The Brightness Drift.\"\n- **Levers:**\n  - **Output:** Note.\n  - **Action:** Link to **Filter Cutoff**.\n- **Listen For:** A subtle brightening of the sound as the melody rises, mimicking how real acoustic instruments (like a piano) sound brighter in the upper octaves.\n\n## 5. Moody (Stagnant, Heavy, Under Pressure)\n- **Concept:** \"The Weighted Slew.\"\n- **Levers:**\n  - **Smoothing:** High Attack/Release.\n- **Listen For:** Automation that \"drags\" behind your notes, creating a heavy, sluggish feeling that fits dark, moody atmospheres. [SRC: REPUTABLE]",
+      "04_Ready_To_Use_Mapping_Patterns": "# Concepts: Ready-To-Use Mapping Patterns\n\nStandard performance configurations for the Keyboard Controller.\n\n---\n\n## 1. The \"Resonant Step-Filter\"\n- **Logic**: Maps each octave to a specific filter \"shelf.\"\n- **Setup**: In the **Note Map**, use the \"Staircase\" preset.\n- **Verification**: Link to a Filter Cutoff. C4 = 20%, C5 = 40%, C6 = 60%.\n- **Use Case**: Creating rhythmic \"stepped\" filter movements popular in G-Funk and modern Trap.\n\n## 2. \"Heavy Pressure\" Drive\n- **Logic**: Distortion only appears when you smash the keys.\n- **Setup**: In the **Velocity Map**, set all values to 0 except the very top (Velocity 110-127), which you set to 100%.\n- **Verification**: Link to a Distortion Drive knob. Only your loudest MIDI notes will cause \"snarling.\"\n- **Use Case**: Adding aggression to the peaks of a melody.\n\n## 3. The \"Ghost\" Reverb Swell\n- **Logic**: High notes trigger a huge wash; low notes trigger nothing.\n- **Setup**: In the **Note Map**, set a steep linear ramp starting at C6.\n- **Verification**: Link to a Reverb's Wet knob.\n- **Use Case**: Playing a melody where the \"climax\" notes naturally bloom into space.\n\n## 4. Rhythmic Toggle (Kill-Switch)\n- **Logic**: Use C5 to turn audio ON and C#5 to turn audio OFF.\n- **Setup**: Note Map -> C5 = 1.0; C#5 = 0.0. All other notes set to 0.\n- **Verification**: Link to a Mixer track's Volume.\n- **Use Case**: Creating manual \"Transform\" scratch patterns or rhythmic gates.\n\n## 5. Expressive Attack-Speed\n- **Logic**: Link velocity to the Attack time of an envelope.\n- **Move**: Note played harder = Shorter attack (snappy). Note played softer = Longer attack (ambient).\n- **Verification**: Requires Patcher or linking to an internal envelope controller.\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Keyboard Controller\r\n\r\n## What It Is\r\nFruity Keyboard Controller is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Fruity Keyboard Controller\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: Fruity Keyboard Controller (5 Minutes)\n\n1.  **Insert:** Load **Fruity Keyboard Controller** as a Channel (Generator).\n2.  **Target:** Right-click any knob on another plugin (e.g., a Filter Cutoff) -> **Link to controller**.\n3.  **Source:** From the \"Internal Controllers\" list, select **Keyboard Controller - Note**.\n4.  **Sequence:** Open the Piano Roll for the Keyboard Controller and draw some notes.\n5.  **Observe:** Press Play. The target knob will jump to different positions based on which notes you drew.\n6.  **Smooth:** Turn the **Smoothing** knob clockwise to make the transitions between notes glide smoothly.\n7.  **Tip:** Use the **Velocity** output if you want the knob to react to how hard you hit the keys. [SRC: IL-MAN]",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Keyboard Controller\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Keyboard Controller to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Keyboard Controller\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Keyboard Controller\r\n\r\nThis section contains learning information for the fruity-keyboard-controller plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: Playing the Filter Cutoff (Keyboard Controller)\n\n## Routing Context\n- **Target:** A Lead Synth or Bass.\n- **Position:** generator (Keyboard Controller) -> Effect (Fruity Free Filter).\n\n## Step-by-Step Setup\n1.  On your synth track, add **Fruity Free Filter**.\n2.  Load **Fruity Keyboard Controller**.\n3.  Right-click the **FREQ** knob on Free Filter -> **Link to controller**.\n4.  Select **Keyboard Controller - Note**.\n5.  **The Map:** In Keyboard Controller, draw a diagonal line from bottom-left to top-right in the Note Map.\n6.  **The Sequence:** Copy your synth's MIDI melody into the Keyboard Controller's Piano Roll.\n7.  **The Tweak:** Adjust the Synth's melody or the Keyboard Controller's notes to create \"Filter Counter-Melodies.\"\n\n## Result\n- The filter cutoff follows your melody perfectly. High notes are bright, low notes are dark. This creates an \"Analog Key Tracking\" feel that makes synths sound much more expensive.\n\n## Vibe Check\n- **Vibey/Jazzy:** Adds organic life to Rhodes and lead lines.\n\n## Pitfalls + Fixes\n- **Pitfall:** \"The filter range is too small.\"\n  - **Fix:** In the \"Remote Control Settings\" window (when linking), adjust the **Mapping Formula** to `Input*1.5` to expand the range. [SRC: REPUTABLE]\n"
+    },
+    "controlling-vsts.md": {
+      "controlling-vsts": "# Controlling 3rd Party Plugins\n\nThe Keyboard Controller isn't just for FL native plugins.\n\n1. **Browse Parameters**: Open your VST plugin. Go to the plugin menu -> \"Browse parameters\".\n2. **Link to Controller**: Find the parameter (e.g., Serum Filter Cutoff). Right-click -> \"Link to controller\".\n3. **Internal Controller**: In the \"Internal controller\" dropdown, select \"Fruity Keyboard Controller - Note\" or \"Velocity\".\n4. **Mapping**: Now you can use the Keyboard Controller's graphical mapping interface to create complex curves for your VST parameters that the VST itself doesn't support.\n"
+    },
+    "patcher-integration.md": {
+      "patcher-integration": "# Workflow: Patcher Control\n\nThe Keyboard Controller is powerful inside Patcher.\n\n1. **The Selector Switch**:\n   - Map the Keyboard Controller to specific keys (C, D, E).\n   - Link the output of the Keyboard Controller to a \"Fruity Balance\" gain knob on multiple signal paths.\n   - **Result**: Hitting 'C' activates Synth A, Hitting 'D' activates Synth B.\n\n2. **Key Tracking Filter**:\n   - Link the Note output to a filter cutoff.\n   - **Result**: Higher notes automatically sound brighter, lower notes sound darker. This mimics analog synth key tracking.\n\n3. **Velocity Inversion**:\n   - Use the velocity mapping curve.\n   - Draw a reverse line (High velocity = Low output).\n   - Link to attack time.\n   - **Result**: Hard hits have fast attack, soft hits have slow attack.\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Keyboard Controller\r\n\r\nThis section contains workflow information for the fruity-keyboard-controller plugin.\r\n"
+    },
+    "xyz-teleport.md": {
+      "xyz-teleport": "# Workflow: XYZ Controller Link\n\nCombining Keyboard Controller with Surface/XYZ Control.\n\n1. **Setup**: You have a complex Patcher preset with an X/Y pad.\n2. **Goal**: You want to jump to specific X/Y coordinates when you press a key.\n3. **Execution**:\n   - Use **Fruity Keyboard Controller**.\n   - Map Note C5 to `0.5` (Center).\n   - Map Note C#5 to `1.0` (Top Right).\n   - Link the Keyboard Controller Note output to the X parameter of the pad.\n   - Now, playing keys teleports your X/Y pad to specific \"presets\" instantly.\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Keyboard Controller\r\n\r\nThis section contains reference information for the fruity-keyboard-controller plugin.\r\n"
+    }
+  }
+}

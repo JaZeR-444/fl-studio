@@ -1,0 +1,348 @@
+{
+  "id": "newtime",
+  "name": "Newtime",
+  "category": "Pitch/Time",
+  "tier": "Premium",
+  "type": "Pitch/Time",
+  "description": "Newtime - Pitch/Time",
+  "tags": [],
+  "capabilities": [
+    "pitch-shift",
+    "time-stretch",
+    "fx",
+    "audio"
+  ],
+  "icon": "/plugins/newtime-icon.svg",
+  "color": "#7C3AED",
+  "version": "1.0",
+  "data_dir": "plugins\\newtime",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "newtime-specs": {
+      "plugin_name": "Newtime",
+      "category": "Audio Utility / Warping",
+      "engine_specs": {
+        "algorithms": [
+          "Slices",
+          "Tones",
+          "Tonal"
+        ],
+        "quality_modes": [
+          "Draft",
+          "High",
+          "Ultra"
+        ],
+        "pitch_range_semitones": 24,
+        "stretch_range_ratio": "0.1x to 10x"
+      },
+      "parameters": [
+        {
+          "name": "Time",
+          "type": "knob",
+          "description": "Sets the global stretch factor.",
+          "mix_impact": "Tempo matching, duration control"
+        },
+        {
+          "name": "Pitch",
+          "type": "knob",
+          "description": "Transposes frequency in semitones.",
+          "vibe_impact": "Key matching, creative transposition"
+        },
+        {
+          "name": "Formant",
+          "type": "toggle",
+          "description": "Preserves vocal characteristics during pitch shift.",
+          "vibe_impact": "Natural vs Artificial vocal tone"
+        },
+        {
+          "name": "Quantize",
+          "type": "button/macro",
+          "description": "Snaps markers to grid.",
+          "mix_impact": "Rhythmic correction, groove alignment"
+        },
+        {
+          "name": "Marker Smoothing",
+          "type": "knob",
+          "description": "Interpolates between stretched sections.",
+          "mix_impact": "Artifact reduction, click prevention"
+        }
+      ]
+    }
+  },
+  "presets": {
+    "01-time-stretch": {
+      "name": "Time Stretch",
+      "genre": "universal",
+      "description": "Standard time stretching for tempo adjustment",
+      "parameters": {
+        "mode": "Time Stretch",
+        "percentage": 100,
+        "preservePitch": true,
+        "quality": "High"
+      },
+      "workflow": {
+        "useCase": "Tempo matching",
+        "steps": [
+          "Load audio",
+          "Set stretch mode",
+          "Adjust percentage",
+          "Preserve pitch if needed"
+        ],
+        "tips": [
+          "Use High quality",
+          "Check for artifacts",
+          "Preserve pitch for melody"
+        ]
+      },
+      "abTest": {
+        "listenFor": "Natural time change",
+        "duration": "Full audio"
+      }
+    },
+    "02-beat-warping": {
+      "name": "Beat Warping",
+      "genre": "hip-hop/rap",
+      "description": "Beat-level time editing for rhythm manipulation",
+      "parameters": {
+        "mode": "Beat Edit",
+        "grid": "1/16",
+        "snap": true,
+        "fade": 5
+      },
+      "workflow": {
+        "useCase": "Beat editing and warping",
+        "steps": [
+          "Enable grid view",
+          "Snap to beat",
+          "Edit beat positions",
+          "Add fades"
+        ],
+        "tips": [
+          "Use short fades",
+          "Check transients",
+          "Preserve groove"
+        ]
+      },
+      "abTest": {
+        "listenFor": "Tight, edited rhythm",
+        "duration": "4-bar loop"
+      }
+    },
+    "electro-warp": {
+      "name": "Electro Warp",
+      "genre": "hip-hop/rap",
+      "mood": "electric",
+      "description": "Time manipulation for electronic hip-hop",
+      "parameters": {
+        "mode": "Complex",
+        "percentage": 110,
+        "preservePitch": true,
+        "quality": "Highest",
+        "transient": 60,
+        "smoothing": 40
+      },
+      "workflow": {
+        "useCase": "Electro hip-hop, experimental rap",
+        "steps": [
+          "Use Complex for quality",
+          "Subtle stretch for energy",
+          "Preserve pitch on synths",
+          "Balance transient and smooth",
+          "Check for artifacts"
+        ],
+        "tips": [
+          "Great on synth loops",
+          "Perfect for creating drops",
+          "Try extreme percentages",
+          "Layer with effects"
+        ]
+      }
+    },
+    "energetic-drill-warp": {
+      "name": "Dril",
+      "genre": "hip-hop/rap",
+      "mood": "energetic",
+      "description": "Aggressive time manipulation for drill energy",
+      "parameters": {
+        "mode": "Slices",
+        "percentage": 130,
+        "preservePitch": true,
+        "quality": "High",
+        "transient": 75,
+        "smoothing": 35
+      },
+      "workflow": {
+        "useCase": "Drill, trap, aggressive hip-hop",
+        "steps": [
+          "Use Slices for intensity",
+          "Stretch for heavy feel",
+          "Preserve pitch on 808s",
+          "High transient for impact",
+          "Moderate smoothing"
+        ],
+        "tips": [
+          "Perfect on 808 phrases",
+          "Great for double-time feel",
+          "Stretch vocals subtly",
+          "Check low-end impact"
+        ]
+      }
+    },
+    "funky-beat-edit": {
+      "name": "Funky Beat Edit",
+      "genre": "hip-hop/rap",
+      "mood": "funky",
+      "description": "Beat editing for funk-inspired grooves",
+      "parameters": {
+        "mode": "Slices",
+        "percentage": 100,
+        "preservePitch": true,
+        "quality": "High",
+        "transient": 80,
+        "smoothing": 20
+      },
+      "workflow": {
+        "useCase": "G-funk, funk-inspired hip-hop",
+        "steps": [
+          "Use Slices for groove",
+          "Match tempo precisely",
+          "Preserve pitch on bass",
+          "High transient for punch",
+          "Minimal smoothing"
+        ],
+        "tips": [
+          "Great on drum breaks",
+          "Perfect for sampling",
+          "Edit for swing timing",
+          "Layer with live instruments"
+        ]
+      }
+    },
+    "jazzy-stretch": {
+      "name": "Jazzy Stretch",
+      "genre": "hip-hop/rap",
+      "mood": "smooth",
+      "description": "Smooth stretching for jazzy hip-hop",
+      "parameters": {
+        "mode": "Sustain",
+        "percentage": 115,
+        "preservePitch": true,
+        "quality": "High",
+        "transient": 40,
+        "smoothing": 70
+      },
+      "workflow": {
+        "useCase": "Jazzy hip-hop, lo-fi, soulful rap",
+        "steps": [
+          "Use Sustain for smooth",
+          "Moderate stretch for flow",
+          "Preserve pitch strictly",
+          "Low transient for warmth",
+          "High smoothing for lo-fi"
+        ],
+        "tips": [
+          "Perfect on jazz samples",
+          "Great for creating space",
+          "Add vinyl crackle after",
+          "Check harmonic content"
+        ]
+      }
+    },
+    "moody-dark-trap-stretch": {
+      "name": "Dark Trap Stretch",
+      "genre": "hip-hop/rap",
+      "mood": "moody",
+      "description": "Time stretching for moody trap productions",
+      "parameters": {
+        "mode": "Sustain",
+        "percentage": 125,
+        "preservePitch": true,
+        "quality": "High",
+        "transient": 50,
+        "smoothing": 60
+      },
+      "workflow": {
+        "useCase": "Dark trap, drill, moody hip-hop",
+        "steps": [
+          "Use Sustain mode for smooth",
+          "Stretch moderately for mood",
+          "Preserve pitch on melodic",
+          "Adjust transient for body",
+          "Use smoothing for darkness"
+        ],
+        "tips": [
+          "Perfect on vocal chops",
+          "Great on pad sounds",
+          "Stretch 120-140% for effect",
+          "Check for artifacts"
+        ]
+      }
+    },
+    "upbeat-bouncy-warp": {
+      "name": "Bouncy Beat Warp",
+      "genre": "hip-hop/rap",
+      "mood": "upbeat",
+      "description": "Beat warping for energetic hip-hop grooves",
+      "parameters": {
+        "mode": "Slices",
+        "percentage": 100,
+        "preservePitch": true,
+        "quality": "High",
+        "transient": 70,
+        "smoothing": 30
+      },
+      "workflow": {
+        "useCase": "Upbeat hip-hop, party tracks",
+        "steps": [
+          "Use Slices for rhythmic",
+          "Set percentage to match tempo",
+          "Preserve pitch on drums",
+          "High transient for punch",
+          "Low smoothing for clarity"
+        ],
+        "tips": [
+          "Perfect for drum loops",
+          "Great for beat matching",
+          "Adjust percentage for feel",
+          "Check phase on bass"
+        ]
+      }
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Newtime\n\nHow to use a technical warping utility to shape the \"feeling\" of Hip-Hop, R&B, and Pop samples.\n\n---\n\n## 1. PSYCHEDELIC / TRIPPY\n*Extreme textures, liquid motion, and \"impossible\" time shifts.*\n- **The Mental Model:** A dream sequence or a melting clock (Travis Scott / Mike Dean vibes).\n- **Newtime Levers:**\n    - **Extreme Stretch:** Set **Time** to 4x or higher. Use the **Tonal** algorithm. This creates a grainy, \"liquid\" texture that evolves slowly.\n    - **Formant OFF:** Pitch a vocal down -12 semitones with Formant preservation **OFF**. This creates that \"monstrous\" deep voice popular in dark psychedelic rap.\n    - **Manual Warping:** Purposely drag markers *away* from the grid to create \"unstable\" or \"drunk\" rhythms.\n- **Listen For:** Granular artifacts and time that feels like it's \"bending.\"\n\n## 2. VIBEY / LUSH\n*Smooth transitions, warm natural tones, and \"soulful\" alignment.*\n- **The Mental Model:** An expensive-sounding R&B track where everything is perfectly in sync but feels natural.\n- **Newtime Levers:**\n    - **Formant ON:** Always keep Formant active when transposing R&B vocals to keep them \"human\" and \"lush.\"\n    - **Tones Algorithm:** Use this for melodies to ensure the harmonic \"shine\" stays intact.\n    - **Groove Templates:** Apply a 16th note \"Swing\" template to quantized markers to add a \"Vibey\" soul to a mechanical drum loop.\n- **Listen For:** Natural-sounding pitch changes and a \"swung\" organic pocket.\n\n## 3. UPBEAT / ENERGETIC\n*Tight rhythms, sharp transients, and rhythmic precision.*\n- **The Mental Model:** A high-energy Pop-Rap track where every drum hit is \"on the money.\"\n- **Newtime Levers:**\n    - **Slices Algorithm:** Use this for all drum loops to ensure the transients stay sharp and punchy during tempo changes.\n    - **Hard Quantize:** Use **Alt+Q** to snap all markers to the 1/16th note grid. This adds \"urgency\" and \"drive\" to the track.\n    - **High-Quality Mode:** Ensure you are in **Ultra** quality to prevent any \"smear\" that would lower the track's energy.\n- **Listen For:** Snappy transients and a rock-solid, driving groove.\n\n## 4. MOODY / DARK\n*Heavy low-end, slow \"dragging\" rhythms, and dark transposition.*\n- **The Mental Model:** Deep, melancholic R&B or \"Phonk\" style textures.\n- **Newtime Levers:**\n    - **Pitch Down:** Transpose melodic samples down -5 or -7 semitones. This naturally \"darkens\" the frequency profile.\n    - **Draft Quality:** (Creative use) Use a lower quality mode to purposely introduce \"gritty\" digital artifacts for a moody, lo-fi aesthetic.\n    - **Dragging Markers:** Move markers slightly *late* (to the right of the grid) to create a \"lazy\" or \"dragging\" moody pocket.\n- **Listen For:** A dark, heavy presence and a rhythm that feels like it's \"struggling\" to move forward.\n\n---\n\n## Vibe Check Matrix\n| Vibe | Algorithm | Pitch Move | Formant Status | Rhythmic Pocket |\n| :--- | :--- | :--- | :--- | :--- |\n| **Psyched**| Tonal | -12 ST | OFF | Off-Grid |\n| **Vibey** | Tones | +2 / -2 ST | ON | Swung |\n| **Upbeat** | Slices | 0 ST | N/A | Hard Grid |\n| **Moody** | Tonal | -7 ST | OFF | Dragging |\n| **Jazzy** | Tones | Variable | ON | Human Performance|\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Newtime\r\n\r\n## What It Is\r\nNewtime is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Newtime\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "parameter-cheat-sheet": "# Parameter Cheat Sheet: Newtime\n\nThe audio warping and quantization reference. [SRC: IL-MAN]\n\n---\n\n## 🕒 Warping & Timeline\n- **Markers (White Bars):** These represent \"anchors\" in the audio. Drag them to stretch the audio between them.\n- **Quantize (Magnet Icon):** Automatically snaps markers to the nearest grid line.\n- **Groove Template:** Applies a specific swing or feel to the markers.\n\n## 🎛️ Global Processing\n- **Time:** Multiplies the overall length of the audio clip (Stretch).\n- **Pitch:** Transposes the audio in semitones (-24 to +24).\n- **Formant (Toggle):** When ON, keeps the vocal character (the \"throat\") the same while shifting pitch. Essential for vocals.\n- **Fine (Cents):** Precise pitch tuning.\n\n## ⚙️ Algorithm Selector\n- **Slices:** Best for drums and percussion. Preserves transient \"hit\" sharpess.\n- **Tones:** Best for vocals and lead instruments. Maintains clear harmonic pitch.\n- **Tonal:** Best for complex polyphonic sounds (pads, full mixes). Preserves harmonic structure.\n\n## 📐 Quality & Edit\n- **Draft / High / Ultra:** Sets the processing resolution. High/Ultra is recommended for final renders.\n- **Marker Smoothing:** Blurs the transition between stretched sections to avoid \"clicks.\"\n- **Center Focus:** Keeps the selection in the middle of the screen during playback.\n\n---\n\n## 🎯 Quick Mastery Tips\n- **Perfect Loop:** Trim the sample to an exact bar length in the Playlist *before* sending it to Newtime.\n- **Transparent Transpose:** Use **Tones** mode with **Formant** ON for the most natural vocal pitch shifting.\n- **Heavy Quantize:** Use the **Alt + Q** shortcut to bring up the quantization menu for rapid timing correction.\n",
+      "quick-start-checklist": "# Quick Start Checklist: Newtime\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Newtime to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "time-stretching-algorithms": "# Time Stretching Algorithms: Choosing the Right Mode\n\nMatching the processing engine to your audio content. [SRC: IL-MAN]\n\n## 1. SLICES (The Rhythmic Engine)\n- **Philosophy:** Audio is cut into microscopic slices at transient peaks. The space between slices is filled or shortened.\n- **Character:** Sharp, punchy, and zero pitch artifacts.\n- **Best For:** Drum loops, Hi-Hat patterns, and percussive SFX.\n- **Caution:** Can sound \"choppy\" on sustained notes or vocals.\n\n## 2. TONES (The Melodic Engine)\n- **Philosophy:** Uses a phase vocoder to stretch harmonic information while keeping frequencies intact.\n- **Character:** Smooth, musical, and respects pitch.\n- **Best For:** Vocals, flute, monophonic synth leads, and basslines.\n- **Caution:** Rapid rhythmic drums may sound \"watery\" or \"blurred\" in this mode.\n\n## 3. TONAL (The Polyphonic Engine)\n- **Philosophy:** A more advanced version of Tones designed for multiple overlapping frequencies.\n- **Character:** Very high-fidelity, best for complex textures.\n- **Best For:** Chord progressions, full song stems, piano, and atmospheric pads.\n- **Caution:** Highest CPU usage of the three modes.\n\n---\n\n## Algorithm Selection Guide\n| If it sounds like... | Use this Algorithm |\n| :--- | :--- |\n| **\"Boom-Tap-Bap\"** (Drums) | **Slices** |\n| **\"La-La-La\"** (Singing) | **Tones** |\n| **\"Doo-Re-Mi\"** (Chords) | **Tonal** |\n| **\"Whoosh-Sweep\"** (FX) | **Tonal** or **Tones** |\n\n---\n*Pro Tip: If you get \"Metallic\" or \"Phasy\" artifacts, try switching from Tones to Tonal and increasing the Quality setting to High.*\n",
+      "top-controls": "# Top Controls: Newtime\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Newtime\r\n\r\nThis section contains learning information for the newtime plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "creative-texture-stretching": "# Workflow: Creative Texture Stretching (Granular Space)\n\n*Goal: Using extreme time-stretching to transform a simple sound (like a piano note or a vocal) into a long, evolving cinematic pad or \"Granular\" texture.*\n\n## Vibe Mapping\n- **Psychedelic:** ⭐⭐⭐⭐⭐ (Primary)\n- **Moody:** ⭐⭐⭐⭐⭐ (Primary)\n- **Vibey:** ⭐⭐⭐⭐\n\n## 🚶 Step-by-Step Setup\n1. **The Source:** Load a short, harmonic sample. A single piano chord or an \"Aah\" vocal note works best.\n2. **The Algorithm:** Select **Tonal**. This mode is best at handling the complex overlapping cycles created during extreme stretching.\n3. **The \"Impossible\" Stretch:**\n   - Set the **Time** knob to its maximum (e.g., **10.0x**).\n   - *Result:* Your 1-second sample is now a 10-second drone.\n4. **Sculpting the Motion:**\n   - Manually drag the markers far apart from each other.\n   - Purposefully create \"dead air\" or \"crowded\" spots in the timeline to make the drone feel like it is breathing and evolving inconsistently.\n5. **Texture Polish:**\n   - Increase **Marker Smoothing** to 50%. This creates a \"liquid\" feel as the algorithm interpolates the massive gaps.\n   - Set **Quality** to **Ultra** to preserve the delicate high-frequency spectral data.\n6. **Post-Processing (The Secret Sauce):**\n   - Drag the resulting 10-second drone into the Playlist.\n   - Route it to a Mixer track with **LuxeVerb** (Space mode) and **Hyper Chorus** (8 Voices).\n   - *Final Vibe:* You have created a purely unique atmospheric texture from a standard loop.\n\n## 🔄 Variations\n- **The \"Data-Mosh\":** Set Quality to **Draft**. The lower resolution will create gritty, \"broken\" digital artifacts that sound like a malfunctioning computer—perfect for industrial or experimental hip-hop.\n- **The \"Pitch-Time Sweep\":** Automate **Time** and **Pitch** simultaneously in opposite directions (e.g. Time gets shorter, Pitch gets lower).\n\n## ⚠️ Pitfalls & Fixes\n- **Problem:** Audio is \"clicking.\"\n- **Fix:** Ensure markers are placed at \"Zero Crossings\" or increase **Marker Smoothing**.\n- **Problem:** Sound is too quiet.\n- **Fix:** Extreme stretching thins out the energy. Use a **Compressor** or **Limiter** after the effect to bring the volume back up.\n\n## 🎚️ Automation Ideas\n- **Texture Morph:** Create two different stretches of the same sound and crossfade between them.\n- **Formant Breath:** Automate the **Formant** toggle to switch on and off during the drone to make it sound like it's \"waking up.\"\n",
+      "hop-hop-subgenre-warp": "# Hip-Hop Sub-Genre Newtime Workflows\n\n## Moody Dark Trap Stretch\n| Parameter | Setting |\n|-----------|---------|\n| Mode | Sustain |\n| Percentage | 125% |\n| Preserve Pitch | True |\n| Quality | High |\n| Transient | 50% |\n| Smoothing | 60% |\n\n### Tips\n- Use Sustain mode for smooth\n- Stretch moderately for mood\n- Preserves melodic content\n- Perfect on vocal chops\n\n---\n\n## Upbeat Bouncy Warp\n| Parameter | Setting |\n|-----------|---------|\n| Mode | Slices |\n| Percentage | 100% |\n| Preserve Pitch | True |\n| Quality | High |\n| Transient | 70% |\n| Smoothing | 30% |\n\n### Tips\n- Use Slices for rhythmic\n- Match tempo for groove\n- High transient for punch\n- Perfect for drum loops\n\n---\n\n## Electro Warp\n| Parameter | Setting |\n|-----------|---------|\n| Mode | Complex |\n| Percentage | 110% |\n| Preserve Pitch | True |\n| Quality | Highest |\n| Transient | 60% |\n| Smoothing | 40% |\n\n### Tips\n- Use Complex for quality\n- Subtle stretch for energy\n- Great on synth loops\n- Perfect for creating drops\n\n---\n\n## Jazzy Stretch\n| Parameter | Setting |\n|-----------|---------|\n| Mode | Sustain |\n| Percentage | 115% |\n| Preserve Pitch | True |\n| Quality | High |\n| Transient | 40% |\n| Smoothing | 70% |\n\n### Tips\n- Use Sustain for smooth\n- Moderate stretch for flow\n- High smoothing for lo-fi\n- Perfect on jazz samples\n\n---\n\n## Funky Beat Edit\n| Parameter | Setting |\n|-----------|---------|\n| Mode | Slices |\n| Percentage | 100% |\n| Preserve Pitch | True |\n| Quality | High |\n| Transient | 80% |\n| Smoothing | 20% |\n\n### Tips\n- Use Slices for groove\n- Match tempo precisely\n- High transient for punch\n- Great on drum breaks\n\n---\n\n## Energetic Drill Warp\n| Parameter | Setting |\n|-----------|---------|\n| Mode | Slices |\n| Percentage | 130% |\n| Preserve Pitch | True |\n| Quality | High |\n| Transient | 75% |\n| Smoothing | 35% |\n\n### Tips\n- Use Slices for intensity\n- Stretch for heavy feel\n- Perfect on 808 phrases\n- Great for double-time feel\n\n---\n\n## Related Documentation\n- [Newtime Presets INDEX](../02-Data/presets/INDEX.md)\n- [Newtime Safety Rules](../02-Data/rules/newtime-safety-rules.md)\n",
+      "INDEX": "# Newtime Workflows INDEX\n\n## By-Goal Workflows\n\n| File | Focus |\n|------|-------|\n| [creative-texture-stretching.md](creative-texture-stretching.md) | Creative stretching |\n| [key-transposition.md](key-transposition.md) | Key changes |\n| [tempo-matching-samples.md](tempo-matching-samples.md) | Sample tempo matching |\n| [hop-hop-subgenre-warp.md](hop-hop-subgenre-warp.md) | Hip-Hop Sub-Genre Warping |\n\n## Quick Reference\n\n| Goal | Workflow |\n|------|----------|\n| Creative textures | Creative Texture Stretching |\n| Key changes | Key Transposition |\n| Sample tempo matching | Tempo Matching Samples |\n| Dark trap stretch | Hip-Hop Sub-Genre Warping |\n| Bouncy warp | Hip-Hop Sub-Genre Warping |\n| Electro warp | Hip-Hop Sub-Genre Warping |\n| Jazzy stretch | Hip-Hop Sub-Genre Warping |\n| Funky beat edit | Hip-Hop Sub-Genre Warping |\n| Drill warp | Hip-Hop Sub-Genre Warping |\n\n## Related Documentation\n\n- [Newtime Presets](../02-Data/presets/INDEX.md)\n- [Newtime Safety Rules](../02-Data/rules/newtime-safety-rules.md)\n",
+      "key-transposition": "# Workflow: Key Transposition (Natural Shifting)\n\n*Goal: Shifting the pitch of an audio sample to match your project key while preserving its natural \"human\" character (formants).*\n\n## Vibe Mapping\n- **Vibey:** ⭐⭐⭐⭐⭐ (Primary)\n- **Moody:** ⭐⭐⭐⭐\n- **Jazzy:** ⭐⭐⭐⭐\n\n## 🚶 Step-by-Step Setup\n1. **The Algorithm:**\n   - Select **Tones** (for monophonic leads/vocals) or **Tonal** (for chords).\n2. **The \"Human\" Shield (Formant):**\n   - Locate the **Formant** toggle button. **Turn it ON**.\n   - *Why:* This prevents the \"Chipmunk\" effect when pitching up and the \"Darth Vader\" effect when pitching down.\n3. **The Move:**\n   - Turn the **Pitch** knob to your desired transposition.\n   - *Example:* If your sample is in C-Major and your track is in D-Major, set Pitch to **+2**.\n4. **Fine-Tuning:**\n   - If the sample sounds slightly \"out of tune\" with your project, adjust the **Fine** knob (Cents) while listening to your track's metronome or a piano.\n5. **Quality Check:**\n   - Switch the **Quality** selector to **Ultra**. This ensures the pitch shifting algorithm uses maximum resolution to avoid metallic ringing.\n6. **The Blend:**\n   - Drag the clip back into FL Studio. Use the Mixer to add a little Reverb (LuxeVerb) to \"glue\" the newly pitched sample into the track.\n\n## 🔄 Variations\n- **The \"Dark Haunt\":** Turn Formant **OFF** and pitch down **-12**. This is the secret to that \"heavy\" chopped and screwed vocal vibe.\n- **The \"Harmony Maker\":** Clone your sample. Pitch one up +7 (Fifth) and the other up +12 (Octave). Layer them for a massive thick vocal stack.\n\n## ⚠️ Pitfalls & Fixes\n- **Problem:** Vocal sounds \"nasal\" or \"plastic.\"\n- **Fix:** Your **Pitch** shift is too extreme (e.g. more than 7 semitones). The algorithm can only do so much. Try to keep shifts within +/- 5 semitones for realism.\n- **Problem:** Chords sound messy.\n- **Fix:** Ensure you are in **Tonal** mode, not Tones.\n\n## 🎚️ Automation Ideas\n- **Pitch Dive:** Automate the **Fine** pitch to drop at the end of a long vocal note for an emotional \"sag.\"\n- **Formant Warp:** Automate the **Formant** button (if possible) or the Pitch while Formant is off to create a \"liquid\" pitch effect.\n",
+      "tempo-matching-samples": "# Workflow: Tempo Matching Samples (The BPM Bridge)\n\n*Goal: Forcing any audio loop or sample—regardless of its original speed—to match your project tempo perfectly without changing its pitch.*\n\n## Vibe Mapping\n- **Upbeat:** ⭐⭐⭐⭐⭐ (Primary)\n- **Vibey:** ⭐⭐⭐⭐\n- **Moody:** ⭐⭐⭐⭐\n\n## 🚶 Step-by-Step Setup\n1. **The Grid Sync:**\n   - Ensure your project tempo is set (e.g., 140 BPM).\n   - Drag your sample (e.g., a 120 BPM drum loop) into Newtime.\n2. **Algorithm Selection:**\n   - If it's a drum loop, select **Slices**.\n   - If it's a melody, select **Tones**.\n3. **The Calculation:**\n   - Look at the top bar. Newtime will usually detect the original tempo.\n   - Click the **Time** knob and select **Project Tempo**.\n   - *Result:* Newtime will automatically stretch the markers to fit the 140 BPM project grid.\n4. **Fine-Tuning (Manual Warping):**\n   - If the rhythm still feels slightly \"off,\" zoom in.\n   - Click and drag the white markers to line up perfectly with the vertical grid lines.\n   - Hold **Shift** while dragging a marker to move it without moving neighboring markers (Lock Mode).\n5. **The Export:**\n   - Click the **Drag to Playlist** icon (the small paper/arrow icon) and drag the processed audio onto your Playlist.\n\n## 🔄 Variations\n- **The \"Double Time\":** Set the **Time** knob to **0.5x**. Your loop will now play twice as fast (useful for Trap/DnB).\n- **The \"Half Time\":** Set the **Time** knob to **2.0x**. Your loop will now play at half-speed (the \"Drake\" effect).\n\n## ⚠️ Pitfalls & Fixes\n- **Problem:** Audio sounds \"choppy\" after stretching.\n- **Fix:** Increase the **Marker Smoothing** knob to 20-30% to hide the slices.\n- **Problem:** Transients sound dull.\n- **Fix:** Switch from Tones back to **Slices** mode.\n\n## 🎚️ Automation Ideas\n- **Tempo Drift:** Automate the **Time** knob in the Playlist wrapper to slowly speed up a loop during a transition.\n- **Rhythmic Stutter:** Manually place 4 markers very close together to create a \"machine gun\" rhythmic stutter effect.\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Newtime\r\n\r\nThis section contains workflow information for the newtime plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Newtime\r\n\r\nThis section contains reference information for the newtime plugin.\r\n"
+    }
+  }
+}

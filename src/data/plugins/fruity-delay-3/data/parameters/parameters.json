@@ -1,0 +1,90 @@
+{
+  "pluginName": "Fruity Delay 3",
+  "tabs": ["DELAY", "FEEDBACK", "MODULATION", "DIFFUSION", "DISTORTION"],
+  "parameters": [
+    {
+      "section": "Input",
+      "id": "wet_input",
+      "name": "Input Wet",
+      "range": { "min": -60, "max": 6, "unit": "dB" },
+      "description": "Adjusts the input level sent to the delay engine. Useful for automating 'Dub Throws'."
+    },
+    {
+      "section": "Delay",
+      "id": "delay_time",
+      "name": "Time",
+      "range": { "min": 0, "max": 1000, "unit": "ms" },
+      "description": "Delay time. Units change to 'Step' when Tempo Sync is ON."
+    },
+    {
+      "section": "Delay",
+      "id": "delay_offset",
+      "name": "Offset",
+      "range": { "min": -100, "max": 100, "unit": "%" },
+      "description": "Stereo offset. Delays L or R channel relative to main time."
+    },
+    {
+      "section": "Feedback",
+      "id": "fb_level",
+      "name": "Feedback Level",
+      "range": { "min": 0, "max": 125, "unit": "%" },
+      "description": "Number of repeats. >100% causes self-oscillation."
+    },
+    {
+      "section": "Feedback",
+      "id": "fb_cutoff",
+      "name": "Filter Cutoff",
+      "range": { "min": 10, "max": 20000, "unit": "Hz" },
+      "description": "Frequency of the filter inside the feedback loop."
+    },
+    {
+      "section": "Feedback",
+      "id": "fb_res",
+      "name": "Resonance",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "description": "Filter peak amount."
+    },
+    {
+      "section": "Feedback",
+      "id": "sample_rate",
+      "name": "Sample Rate",
+      "range": { "min": 100, "max": 48000, "unit": "Hz" },
+      "description": "Downsampling quality. Low values create metallic aliasing."
+    },
+    {
+      "section": "Modulation",
+      "id": "mod_rate",
+      "name": "Mod Rate",
+      "range": { "min": 0, "max": 20, "unit": "Hz" },
+      "description": "Speed of the LFO."
+    },
+    {
+      "section": "Modulation",
+      "id": "mod_time",
+      "name": "Mod Time",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "description": "Amount of pitch wobble applied to delay repeats."
+    },
+    {
+      "section": "Diffusion",
+      "id": "diff_level",
+      "name": "Diffusion Level",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "description": "Smearing amount. Turns echoes into reverb."
+    },
+    {
+      "section": "Distortion",
+      "id": "dist_level",
+      "name": "Distortion Threshold",
+      "range": { "min": -60, "max": 0, "unit": "dB" },
+      "description": "Input level required to trigger saturation."
+    },
+    {
+      "section": "Distortion",
+      "id": "dist_knee",
+      "name": "Distortion Knee",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "description": "Transitions from clean to distorted."
+    }
+  ]
+}

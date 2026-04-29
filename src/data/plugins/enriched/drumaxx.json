@@ -1,0 +1,138 @@
+{
+  "id": "drumaxx",
+  "name": "Drumaxx",
+  "category": "Synthesizer",
+  "tier": "Premium",
+  "type": "Synthesizer",
+  "description": "Drumaxx - Synthesizer",
+  "tags": [
+    "synth",
+    "sound-design"
+  ],
+  "capabilities": [
+    "synthesis",
+    "midi",
+    "polyphonic"
+  ],
+  "icon": "/plugins/drumaxx-icon.svg",
+  "color": "#8B5CF6",
+  "version": "1.0",
+  "data_dir": "plugins\\drumaxx",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "pluginName": "Drumaxx",
+    "category": "Physical Modeling Percussion",
+    "parameters": [
+      {
+        "section": "Mallet",
+        "id": "mallet_amp",
+        "name": "Strike Force",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "Volume of the initial hit."
+      },
+      {
+        "section": "Mallet",
+        "id": "noise_level",
+        "name": "Noise",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "Brush/Wire texture mix."
+      },
+      {
+        "section": "Membrane",
+        "id": "tension",
+        "name": "Tension",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "Tuning of the drum head."
+      },
+      {
+        "section": "Membrane",
+        "id": "material",
+        "name": "Material",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "Damping factor (Wood to Metal)."
+      },
+      {
+        "section": "SOF",
+        "id": "sof_decay",
+        "name": "Kick Body Decay",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "Length of the Self-Oscillating filter sweep."
+      },
+      {
+        "section": "Effects",
+        "id": "eq_gain",
+        "name": "EQ Gain",
+        "range": {
+          "min": -18,
+          "max": 18,
+          "unit": "dB"
+        },
+        "description": "Output equalizer band gain."
+      }
+    ]
+  },
+  "presets": {},
+  "learning": {
+    "Concepts": {
+      "advanced-modeling": "Tags: hip-hop/rap | R&B | electric\n\n## Advanced Drumaxx Modeling Techniques\n\n### Membrane Physics Deep Dive\n\n**How Drumaxx models drums:**\n- Simulates drumhead (membrane)\n- Resonates based on tension\n- Damping simulates dampening\n- Mass distribution creates overtones\n\n**Tension Control:**\n| Tension | Effect | Best For |\n|---------|--------|----------|\n| Low (20-40) | Deep, loose, warm | Jazzy, smooth |\n| Medium (50-70) | Balanced, versatile | Most styles |\n| High (80-100) | Tight, punchy, cutting | Trap, EDM |\n\n**Damping Control:**\n| Damping | Effect | Best For |\n|---------|--------|----------|\n| Low (10-25) | Long decay, ringy | Vintage, ambient |\n| Medium (30-50) | Controlled, musical | R&B, hip-hop |\n| High (60-90) | Short, punchy | Aggressive, EDM |\n\n### Excitation Positioning\n\n**What it does:**\n- Where the \"stick\" hits the drum\n- Center = fundamental focus\n- Edge = more overtone, brighter\n\n**Position Map:**\n| Position | Effect | Sound |\n|----------|--------|-------|\n| 0-30% | Center | Fundamental, deep |\n| 30-60% | Mid | Balanced |\n| 60-100% | Edge | Bright, overtone-rich |\n\n**Creative Applications:**\n- Kick: Center position (20-40%)\n- Snare: Off-center (40-60%)\n- Tom: Edge (50-70%)\n- Experimental: Extreme positions (0% or 100%)\n\n### Multi-Drum Layering\n\n**Strategy:**\n1. Layer 2-3 Drumaxx instances\n2. Different drum \"physics\"\n3. Blend for unique sound\n\n**Example Layer:**\n| Layer | Tension | Mass | Position | Purpose |\n|-------|---------|------|----------|---------|\n| 1 | 75 | Center 60/40 | 25% | Punch |\n| 2 | 85 | Center 50/50 | 70% | Click |\n| 3 | 65 | Center 70/30 | 40% | Tone |\n\n**Blending:**\n- Layer 1: 70% wet\n- Layer 2: 30% wet\n- Layer 3: 40% wet\n- Result: Complex, unique drum\n\n### The \"Organic\" Drum\n\n**Goal:** Realistic, acoustic feel\n\n**Settings:**\n| Parameter | Value | Reasoning |\n|-----------|-------|-----------|\n| Tension | 65-75 | Balanced |\n| Damping | 35-45 | Controlled decay |\n| Mass Center | 55 | Fundamental focus |\n| Mass Edge | 45 | Harmonics |\n| Excitation Position | 50% | Center-middle |\n| Excitation Force | 60-70 | Realistic hit |\n\n**Why This Works:**\n- Medium tension = acoustic feel\n- Controlled damping = natural decay\n- Balanced mass = full spectrum\n\n### The \"Electric\" Drum\n\n**Goal:** Processed, synthetic feel\n\n**Settings:**\n| Parameter | Value | Reasoning |\n|-----------|-------|-----------|\n| Tension | 80-90 | Tight, punchy |\n| Damping | 25-35 | Some ring |\n| Mass Center | 45 | Fundamental |\n| Mass Edge | 55 | Bright |\n| Excitation Position | 40-60% | Variable |\n| Excitation Force | 80-90 | Strong hit |\n\n### Creating Sound Effects\n\n**Impact Sound:**\n| Parameter | Value |\n|-----------|-------|\n| Membrane | Kick preset |\n| Tension | 90 |\n| Damping | 15 |\n| Mass | Center-heavy |\n| Position | 20% |\n| Force | 100 |\n\n**Riser/Build:**\n| Parameter | Value |\n|-----------|-------|\n| Membrane | Tom preset |\n| Tension | Sweep automation |\n| Damping | 20 |\n| Position | Variable |\n| Force | Ramp up |\n\n### Troubleshooting Drum Sounds\n\n| Problem | Cause | Fix |\n|---------|-------|-----|\n| No punch | Tension too low | Increase to 75+ |\n| Too boomy | Damping too low | Increase damping |\n| No crack | Excitation too soft | Increase force |\n| Too ringy | Damping too low | Increase damping |\n| Thuddy | Position too center | Move toward edge |\n| Harsh | Position too edge | Move toward center |\n| No low-end | Tension too high | Lower to 65-70 |\n| Inconsistent | Force variation | Normalize force |\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Drumaxx\r\n\r\n## What It Is\r\nDrumaxx is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "physical-modeling-percussion": "# Concept: Physical Modeling Percussion (Drumaxx)\n\nTags: organic | hip-hop/rap | funky | hybrid\n\n## What It Is\nUnlike sampler-based drum machines (which play back recordings), Drumaxx uses **Physical Modeling**. It simulates the physical components of a drum: the membrane (skin), the mallet (stick), and the body (shell).\n\n## Why It Matters\n- **Dynamic Realism:** Samplers often suffer from \"machine gun effect\" (the same sound repeated). Drumaxx calculates each hit slightly differently, providing natural variation.\n- **Infinite Tuning:** You can change the \"material\" of the drum (e.g., from plastic to metal) mid-pattern.\n- **Unique Textures:** It excels at \"Hybrid\" sounds—drums that sound half-acoustic, half-electronic.\n\n## How to Hear It\n- **The \"Skin\" Tension:** Adjust the **Tension** knob. High tension sounds like a tight snare or bongo; low tension sounds like a loose kick or floor tom.\n- **The \"Mallet\" Impact:** Change the **Mallet** type. A hard mallet adds \"click\" and transient snap; a soft mallet creates a \"thump.\"\n\n## Typical Mistakes\n- **Over-Modeling:** Setting the \"Material\" too high can make drums sound \"metallic\" and \"thin\" in a way that doesn't sit well in a Hip-Hop mix.\n- **Ignoring Velocity:** Drumaxx is designed to respond to velocity. If all your MIDI notes are at 100%, you lose the physical modeling benefit.\n\n## What to Adjust First\n1. **Mallet Force:** This is your primary \"snap\" control.\n2. **Membrane Size:** This determines the fundamental pitch and weight of the drum.\n",
+      "signal-flow": "# Signal Flow: Drumaxx\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "cheat-sheet": "# Drumaxx: The Physical Percussionist\r\n\r\n> **Scope:** Physical Modeling (Drums), Sequencing, and Integrated FX.\r\n> **Source:** Image-Line Official Manual (v21.2) + Direct Analysis.\r\n> **Complexity:** High (Modeling Synthesis).\r\n\r\n## 🧠 The \"Mallet & Membrane\" Concept\r\nDrumaxx does not use samples. It calculates the physics of a drum head being struck.\r\n*   **Mallet:** The stick/beater. Controls volume, noise (brush), and attack stiffness.\r\n*   **Membrane:** The skin. Controls pitch (Tension), tone (Material), and decay.\r\n\r\n**Signal Flow:**\r\n`Trigger` -> **[MALLET GEN]** -> **[MEMBRANE MODEL]** -> **[SOF (KICK HELPER)]** -> **[EQ/FILTERS]** -> **[OUTPUT]**\r\n\r\n*   **Critical Nuance:** The **SOF** (Self Oscillating Filter) is a cheat code. Real physical models struggle to make the \"Sine Wave Thump\" of an 808. The SOF adds a dedicated sine sweep to the signal path to reinforce the low end.\r\n\r\n---\r\n\r\n## 🎛️ Section 1: The Geometry Controls\r\n\r\nYou don't select \"Snare\" or \"Tom\". You sculpt it.\r\n\r\n| Control | Function | Sonic Result |\r\n| :--- | :--- | :--- |\r\n| **Tension** | **Pitch.** | Higher tension = Higher pitch. Tighter skin. |\r\n| **Material** | **Stiffness/Mass.** | *Left:* Heavy, rubbery, dull (Toms). <br> *Right:* Metallic, thin, reflective (Cymbals). |\r\n| **Shape** | **Geometry.** | *Square:* Disharmonic, gong-like. <br> *Round:* Harmonic, clean drum. |\r\n| **Phase** | **Strike Position.** | Center hit vs Rim shot. Changes the harmonic ratio. |\r\n\r\n---\r\n\r\n## 🔁 Section 2: Mallet Physics\r\n\r\n*   **Noise Level:** Simulates the \"Chaotic\" sound of a snare wire or brush.\r\n*   **Retrig:**\r\n    *   *On:* Every hit sounds identical (Machine Gun).\r\n    *   *Off:* The noise seed is randomized. Vital for realistic Hi-Hats.\r\n*   **Decay:** The \"Hardness\" of the stick. Short decay = Wood tip. Long decay = Felt mallet.\r\n\r\n---\r\n\r\n## ⚡ Technical Specs: The Step Sequencer\r\n\r\nDrumaxx has a built-in step sequencer that runs *per pad*.\r\n*   **Capacity:** 16 Patterns per Pad. 64 Steps per Pattern.\r\n*   **Trigger Key:** You map a MIDI key (e.g., C3) to trigger a *Start* of the internal sequencer.\r\n*   **Usage:** You can press one key to play a complex Hi-Hat rolling rhythm, freeing up your hands to play chords.\r\n\r\n---\r\n\r\n## 🧪 \"Secret Sauce\" Workflows\r\n\r\n### 1. The \"Fake Acoustic\" Snare\r\n1.  **Mallet Noise:** High (Snare wires).\r\n2.  **Membrane Tension:** High (Pop).\r\n3.  **Material:** 70% Right (Metallic/Plastic skin).\r\n4.  **Velocity Mod:** Link Velocity to **Cutoff** (Filter).\r\n5.  **Result:** Hard hits open the filter (Crack). Soft hits are dull (Ghost notes).\r\n\r\n### 2. The Metallic Glitch\r\n1.  **Shape:** Square (Left).\r\n2.  **Material:** Max Right (Metal).\r\n3.  **Tension:** Automate this!\r\n4.  **Physics:** Changing tension while the model is vibrating creates a \"Pitch Slide\" that sounds like a talking drum or a warped gong.\r\n\r\n### 3. The SOF Sub-Kick\r\n1.  **Goal:** Massive TR-808 Kick.\r\n2.  **Membrane:** Mute it (Decay 0). We only want the SOF.\r\n3.  **SOF Freq:** 60Hz.\r\n4.  **SOF Decay:** Long.\r\n5.  **Result:** A pure, clean sine sweep generated by filter self-oscillation, which is cleaner than any sample.\r\n",
+      "parameter-cheat-sheet": "# Drumaxx Parameter Cheat Sheet\n\n## Membrane Controls\n- **Material (Stiffness):** Adjusts the rigidity. High = Metal/Glass, Low = Plastic/Skin.\n- **Shape:** Geometric boundary (Circular to Rectangular). Affects overtone series.\n- **Tension:** Controls the skin tightness (Fundamental Pitch).\n- **Damping:** Controls energy loss (Decay of high frequencies).\n\n## Mallet Controls\n- **Amplitude:** Strike force strength.\n- **Noise:** Adds white noise to simulate brushes or stick impact.\n- **Decay:** Length of the mallet's own sound.\n\n## Sequencing\n- **Trigger Key:** Key assigned to play the pad.\n- **Velocity Matrix:** Maps MIDI velocity to parameters (e.g., higher velocity = more \"Material\").\n",
+      "quick-reference-card": "Tags: hip-hop/rap | R&B | electric\n\n## Drumaxx Quick Reference Card\n\n### Membrane Types\n\n| Type | Sound | Best For |\n|------|-------|----------|\n| Kick | Deep, punchy | 808s, kicks |\n| Snare | Crisp, resonant | Snares, claps |\n| Tom | Pitched, warm | Toms, melodic |\n| Hat | Short, bright | Hi-hats, cymbals |\n| Clap | Short, snappy | Claps, hand claps |\n| Percussion | Varied | Special effects |\n\n### Tension Guide\n\n| Value | Feel | Use |\n|--------|------|-----|\n| 20-40 | Loose, warm | Jazz, smooth |\n| 50-70 | Balanced | General use |\n| 75-90 | Tight, punchy | Trap, EDM |\n| 90+ | Very tight | Extreme punch |\n\n### Damping Guide\n\n| Value | Decay | Use |\n|--------|-------|-----|\n| 10-20 | Long, ringy | Ambient, vintage |\n| 25-40 | Medium | Musical, general |\n| 45-60 | Short | Punchy, tight |\n| 70+ | Very short | Staccato, crisp |\n\n### Position Guide\n\n| Position | Sound | Use |\n|----------|-------|-----|\n| 0-25% | Center-heavy | Deep kicks |\n| 25-50% | Balanced | General use |\n| 50-75% | Edge emphasis | Bright, crisp |\n| 75-100% | Edge-heavy | Clicky, overtones |\n\n### Excitation Force\n\n| Force | Impact | Use |\n|--------|--------|-----|\n| 20-40% | Soft | Ghost notes |\n| 50-70% | Medium | Musical playing |\n| 80-100% | Hard | Aggressive, accents |\n\n### Troubleshooting Quick Fixes\n\n| Problem | Fix |\n|---------|-----|\n| No punch | Tension 75+, damping 25-35 |\n| Too boomy | Damping 40+, tension 65+ |\n| No crack | Force 80%+, position 45-60% |\n| Too ringy | Damping 40+, position 35-50% |\n| Thuddy | Position 30-40%, force 70%+ |\n| Harsh | Position 50-65%, damping 35% |\n| No low-end | Tension 65-75%, position 25-35% |\n\n### Genre Settings\n\n| Genre | Tension | Damping | Position |\n|-------|---------|---------|----------|\n| Hip-hop | 75-85 | 25-35 | 25-40% |\n| R&B | 65-75 | 35-45 | 35-50% |\n| Trap | 80-90 | 20-30 | 25-35% |\n| Jazz | 55-65 | 40-50 | 40-55% |\n| EDM | 80-90 | 20-30 | 30-40% |\n| Rock | 70-80 | 30-40 | 35-45% |\n\n### Recording/Export Checklist\n\n- [ ] Set tension appropriate for sound\n- [ ] Adjust damping for decay\n- [ ] Match position to sound\n- [ ] Set force appropriate\n- [ ] Test at multiple velocities\n- [ ] Check mono compatibility\n- [ ] Export at proper level\n- [ ] Document settings\n\n### Sound Design Quick Settings\n\n| Sound | Tension | Damping | Position |\n|-------|---------|---------|----------|\n| 808 Kick | 85 | 20 | 25% |\n| Vintage Snare | 65 | 45 | 45% |\n| Punchy Kick | 80 | 30 | 35% |\n| Crisp Hat | 75 | 15 | 60% |\n| Warm Tom | 60 | 40 | 45% |\n| Deep Sub | 70 | 35 | 20% |\n",
+      "quick-start-checklist": "# Quick Start Checklist: Drumaxx\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Drumaxx to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Drumaxx\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Drumaxx\r\n\r\nThis section contains learning information for the drumaxx plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "building-evolving-percussion": "# Building Evolving Percussion (Drumaxx)\n\n## Goal\nCreate a rhythmic element that slowly shifts its tonal character over time.\n\n## Technical Steps\n1. **Pad Initialization:**\n   - Select an unused pad. Set **Material** to Low (soft skin).\n2. **Internal LFO / Automation:**\n   - Right-click the **Tension** slider and select **Create Automation Clip**.\n   - Draw a slow, triangular wave over 8 bars.\n3. **The \"Talking Drum\" Effect:**\n   - Set the automation to shift Tension by +/- 20%.\n   - This causes the \"pitch\" of the drum to glide up and down while it's being played by the sequencer.\n4. **Sequencing:**\n   - Program a steady 1/8th note pattern in the Drumaxx step sequencer.\n   - Vary the **Velocity** of the steps to trigger different responses in the physical model.\n\n## Why it works\nBecause Drumaxx is a physical model, changing \"Tension\" doesn't just pitch-shift a static recording; it recalculates the vibration of the entire mesh. This results in organic, fluid transitions that sound like a drummer pressing their hand on the skin while playing.\n",
+      "creating-realistic-snares": "# Creating Realistic Snares (Drumaxx)\n\n## Goal\nDesign a responsive, natural-sounding snare drum that doesn't suffer from the \"machine-gun\" effect.\n\n## Technical Steps\n1. **Membrane Setup:**\n   - Set **Material** to a high-medium value (snare skins are tightly stretched plastic).\n   - Set **Shape** to Circular.\n   - Adjust **Tension** to the desired fundamental note (usually around 200Hz for a standard snare).\n2. **Mallet Interaction:**\n   - Set **Mallet Noise** to ~60%. This simulates the impact noise and the \"rattle\" of the snare wires.\n   - Adjust **Mallet Amplitude** for the desired \"hit\" strength.\n3. **Velocity Matrix (The Key to Realism):**\n   - In the **Velocity** tab, map MIDI Velocity to **Material**.\n   - **Result:** Harder hits sound brighter and more metallic, just like a real snare.\n   - Map Velocity to **Mallet Noise** so ghost notes have less rattle.\n4. **Damping:**\n   - Increase **Damping** to ~30% to simulate a studio snare with a dampening ring (moongel).\n\n## Why it works\nReal instruments change timbre based on how hard they are struck. By using the Velocity Matrix to modulate \"Material\" and \"Noise,\" you break the static nature of samples and create a dynamic performance.\n",
+      "sound-design": "Tags: electric | psychedelic | moody\n\n## Drumaxx Sound Design Workflows\n\n### Creating Signature Sounds\n\n**Trap 808 Kick:**\n1. Start: Membrane=Kick preset\n2. Tension: 85\n3. Damping: 20\n4. Mass: Center 65/35\n5. Position: 25%\n6. Force: 85\n7. Add slight pitch envelope (drop 5 semitones)\n\n**Creative Process:**\n1. Create basic drum\n2. Add variation: Second layer at 15%\n3. Process: Compress lightly\n4. Saturate: Add tube warmth\n5. Result: Signature 808 sound\n\n### Sci-Fi Texture\n\n**Goal:** Alien, futuristic sound\n\n**Settings:**\n| Layer | Type | Tension | Damping | Position | Purpose |\n|-------|------|---------|---------|----------|---------|\n| 1 | Kick | 90 | 10 | 15% | Thump |\n| 2 | Tom | 70 | 30 | 60% | Body |\n| 3 | Snare | 60 | 20 | 80% | Snap |\n\n**Processing Chain:**\n1. Drumaxx output → High-pass (remove sub)\n2. Distortion: Light tube saturation\n3. Reverb: Large space\n4. Delay: Ping-pong stereo\n5. Result: Sci-fi impact\n\n### Vintage Drum Sound\n\n**Goal:** 70s/80s warmth\n\n**Settings:**\n| Parameter | Value | Reason |\n|-----------|-------|--------|\n| Membrane | Kick+Snare blend |\n| Tension | 60-70 | Loose, warm |\n| Damping | 40-50 | Controlled |\n| Position | 45% | Slightly off-center |\n| Force | 65-75 | Medium hit |\n\n**Processing:**\n1. Drumaxx → Vintage compressor (2:1)\n2. Tape saturation: Light (15%)\n3. EQ: Slight low boost, high cut\n4. Result: Classic warmth\n\n### Deep House Kick\n\n**Goal:** Pulsing, groovy kick\n\n**Settings:**\n| Parameter | Value |\n|-----------|-------|\n| Membrane | Kick |\n| Tension | 75 |\n| Damping | 30 |\n| Mass | 55/45 |\n| Position | 35% |\n| Force | 70-80 (consistent) |\n\n**Key Techniques:**\n- Consistent velocity\n- Sidechain to bass\n- Pitch automation (subtle)\n- Result: Grooving kick\n\n### Glitch Drum Pattern\n\n**Goal:** Broken, rhythmic feel\n\n**Settings per Hit:**\n| Hit Type | Tension | Damping | Position | Force |\n|----------|---------|---------|----------|-------|\n| Standard | 75 | 30 | 40% | 80 |\n| Click | 90 | 10 | 60% | 100 |\n| Ghost | 80 | 50 | 50% | 30 |\n| Long | 65 | 70 | 30% | 70 |\n\n**Pattern Creation:**\n1. Program irregular rhythm\n2. Vary hit types\n3. Add silence between hits\n4. Result: Glitch aesthetic\n\n### One-Shot Export Workflow\n\n**Goal:** Create sample library\n\n**Steps:**\n1. Design drum sound\n2. Test at multiple velocities\n3. Record 5-10 variations\n4. Trim to consistent length (-20dB threshold)\n5. Add fades (2ms in, 20ms out)\n6. Export as WAV\n7. Tag with tempo and key\n\n### Layering with Samples\n\n**Hybrid Approach:**\n1. Drumaxx: Core punch and character\n2. Sample: Layer for consistency\n3. Blend: 70% Drumaxx / 30% sample\n\n**Best For:**\n- Consistency in mix\n- Unique character\n- Producer workflow\n\n### Quick Reference Table\n\n| Sound | Tension | Damping | Position | Force | Processing |\n|-------|---------|---------|----------|-------|------------|\n| 808 Kick | 85 | 20 | 25% | 85 | Pitch drop |\n| Vintage | 65 | 45 | 45% | 70 | Tape sat |\n| House | 75 | 30 | 35% | 75 | Comp |\n| Glitch | Varies | Varies | Varies | Varies | Irregular |\n| Sci-fi | 90 | 10 | 15% | 100 | Reverb+delay |\n"
+    },
+    "by-instrument": {
+      "funky-snare-creation": "# Workflow: Funky Snare Creation (Drumaxx)\n\nTags: funky | hip-hop/rap | snares\n\n## Goal: Create a \"Live-Feel\" Snare with Hip-Hop Snap\nThis recipe turns Drumaxx into a funky snare generator that sounds like a sampled breakbeat but hits like a modern Trap snare.\n\n## 1. Starting Moves (The Core)\n- **Select Pad:** Choose a Snare-type pad.\n- **Membrane Size:** Set to ~45% (A standard 14-inch snare size).\n- **Material:** Set to **\"Wood\"** or ~25%. This adds organic \"thud.\"\n\n## 2. Safe Moves (The Snap)\n- **Mallet Type:** Hard (increases the initial \"crack\").\n- **Tension:** Increase to ~75%. This \"tightens\" the drum skin for a funky, high-pitched pop.\n- **Velocity Mapping:** Link **Mallet Force** to Velocity.\n\n## 3. Risky Moves (The Character)\n- **Resonance:** Increase to 60%. This adds a \"ringing\" tone (like a metal rim-shot). If it's too much, it sounds like a trash can lid—pull it back if it hurts the ears.\n- **Phase:** Slightly adjust the Phase knob to find where the \"snare wires\" sound most crisp.\n\n## 4. A/B Test\n- **A:** Standard sampled snare.\n- **B:** Drumaxx Funky Snare.\n- **Listen for:** Does the Drumaxx version feel more \"alive\" when you play a ghost-note pattern (varying velocities)? If yes, you've succeeded.\n\n## 5. Quick Fix Path\n- **Too thin?** Increase Membrane Size.\n- **Too dull?** Increase Mallet Hardness.\n- **Too long?** Decrease Decay.\n",
+      "organic-hat-humanization": "# Workflow: Organic Hat Humanization (Drumaxx)\n\nTags: funky | r&b | hi-hats | humanization\n\n## Goal: Create Hi-Hats that \"Swing\" and \"Vary\" Naturally\nThis workflow eliminates the \"robotic\" feel of Trap hats by using Drumaxx's physical engine.\n\n## 1. Starting Moves\n- **Select Pad:** Choose a \"Hi-Hat\" or \"Percussion\" pad.\n- **Tension:** Set to **High** (80%).\n- **Material:** Set to **\"Metal\"** (~70%).\n\n## 2. The Humanization Trick\n- **Modulation:** Link the **Decay** or **Cutoff** to a random LFO or the \"Note Randomizer\" in FL Studio.\n- **Why:** In real life, a drummer never hits a cymbal in the exact same spot. Small changes in decay simulate the cymbal being choked or allowed to ring.\n\n## 3. Safe Moves\n- **Self-Muting:** Ensure the Hi-Hat pad is set to **Cut itself** (Group 1). This ensures that when a \"Closed\" hat hits, the \"Open\" hat stops immediately.\n- **Vel -> Cut:** Link Velocity to Filter Cutoff. Harder hits = Brighter hats.\n\n## 4. A/B Test\n- **A:** Loop a 1/8 note hi-hat pattern with 100% velocity.\n- **B:** Use the random velocity and Drumaxx model.\n- **Listen for:** \"Air\" and \"Movement.\" Does the hat pattern feel like it's \"breathing\"?\n\n## 5. Quick Fix Path\n- **Hats too \"noisy\"?** Decrease Resonance.\n- **Hats too \"electronic\"?** Decrease Material and increase \"Membrane Weight.\"\n"
+    },
+    "common-usage.md": {
+      "common-usage": "# Common Workflows: Drumaxx\r\n\r\n## 1. Multi-Output Routing\r\n\r\nDrumaxx is often used as a full drum kit. You need to mix the Kick and Snare separately.\r\n\r\n1.  **Wrapper:** Enable \"Multiple Outputs\".\r\n2.  **Drumaxx:**\r\n    *   Select the Kick Pad.\r\n    *   Look at the LCD display \"Output\". Change offset to 0.\r\n    *   Select the Snare Pad.\r\n    *   Change Output offset to 1.\r\n3.  **Mixer:** The Kick goes to the Main Track. The Snare goes to Main Track + 1.\r\n\r\n## 2. Humanizing Hi-Hats\r\n\r\nPhysical models excel at this.\r\n\r\n1.  **Setup:** Closed Hat on Pad 1.\r\n2.  **Modulation:**\r\n    *   Go to \"Velocity Modulation\" matrix.\r\n    *   Target 1: **Phasing**.\r\n    *   Target 2: **Tone (Material)**.\r\n3.  **Piano Roll:** Randomize the velocity of your Hi-Hat notes (Alt+R).\r\n4.  **Physics:**\r\n    *   Low velocity = Center hit (Darker).\r\n    *   High velocity = Edge hit (Brighter).\r\n    *   This is far more realistic than just volume changes.\r\n\r\n## 3. Creating \"Foley\" Textures\r\n\r\nDrumaxx can make weird wooden clicks and scrapes.\r\n\r\n1.  **Material:** All the way Left (Wood/Heavy).\r\n2.  **Shape:** Square.\r\n3.  **Decay:** Very Short.\r\n4.  **Sequencer:** Create a fast stream of 32nd notes.\r\n5.  **Result:** Sounds like a Geiger counter or rain hitting a tin roof. Add Reverb (Global FX) to wash it out.\r\n\r\n## 4. The \"Clap\" Stack\r\n\r\nClaps are hard to model because they are spread out in time (multiple hands).\r\n\r\n1.  **Mallet:** High Noise.\r\n2.  **Mid Filter:**\r\n    *   **Retrig**: Set to \"II\" or \"III\".\r\n3.  **Effect:** This causes the noise burst to re-trigger rapidly within a few milliseconds, simulating the \"flam\" of multiple hands clapping.\r\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Drumaxx\r\n\r\nThis section contains workflow information for the drumaxx plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Drumaxx\r\n\r\nThis section contains reference information for the drumaxx plugin.\r\n"
+    }
+  }
+}

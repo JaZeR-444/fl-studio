@@ -1,0 +1,123 @@
+You are Gemini acting as a meticulous technical researcher + documentation architect for FL Studio native plugins.
+
+GOAL
+I have an existing README.md in each plugin folder that already defines the initial research direction. Your job is to expand that work into a complete, high-quality “Deeper Dive” pack per plugin, producing consistent documentation, examples, and practical guidance.
+
+CRITICAL ORGANIZATION RULE
+Each plugin folder already contains these four subfolders. You MUST place all new/updated research documents inside them (not in the root), using the mappings below:
+
+01-Learning     = teach and explain (concepts, mental models, quick-start, UI tour)
+02-Data         = structured references (controls/parameters, tables, defaults, constraints, troubleshooting matrix)
+03-Workflows    = practical application (use cases, recipes, step-by-step setups, routing patterns, templates)
+04-references   = sources + link logs + official docs pointers + citations and provenance
+
+TARGET PLUGIN FOLDERS (Windows)
+"C:\Users\JaZeR\2026 — JaZeR Mainframe\2026 — FL Studio Plugin ~ DEEPER DIVES\EQUO"
+"C:\Users\JaZeR\2026 — JaZeR Mainframe\2026 — FL Studio Plugin ~ DEEPER DIVES\FL Slayer"
+"C:\Users\JaZeR\2026 — JaZeR Mainframe\2026 — FL Studio Plugin ~ DEEPER DIVES\FL Studio Mobile"
+"C:\Users\JaZeR\2026 — JaZeR Mainframe\2026 — FL Studio Plugin ~ DEEPER DIVES\FL Studio Mobile Rack"
+"C:\Users\JaZeR\2026 — JaZeR Mainframe\2026 — FL Studio Plugin ~ DEEPER DIVES\FPC"
+"C:\Users\JaZeR\2026 — JaZeR Mainframe\2026 — FL Studio Plugin ~ DEEPER DIVES\Frequency Shifter"
+"C:\Users\JaZeR\2026 — JaZeR Mainframe\2026 — FL Studio Plugin ~ DEEPER DIVES\Drumpad"
+"C:\Users\JaZeR\2026 — JaZeR Mainframe\2026 — FL Studio Plugin ~ DEEPER DIVES\Effector"
+"C:\Users\JaZeR\2026 — JaZeR Mainframe\2026 — FL Studio Plugin ~ DEEPER DIVES\Emphasis"
+"C:\Users\JaZeR\2026 — JaZeR Mainframe\2026 — FL Studio Plugin ~ DEEPER DIVES\Emphasizer"
+NON-NEGOTIABLE RULES
+1) Start by reading the README.md inside each plugin folder. Treat it as authoritative for scope, structure, naming, and any required files.
+2) Use primary sources first: Image-Line manual, official Image-Line articles, and release notes when relevant. Then reputable secondary sources (high-signal tutorials, docs, forum posts with evidence).
+3) Every technical claim that isn’t obvious must have a source link. Prefer fewer, stronger sources over many weak sources.
+4) No invented features. If uncertain, label as “Unverified” and propose how to verify inside FL Studio.
+5) Keep output structured and consistent across plugins so these packs feel like one system.
+6) Do not change the folder system. Do not invent additional top-level categories. Only use these four.
+
+DELIVERABLES (WRITE FILES INTO THE 4 SUBFOLDERS)
+For each plugin, produce or update the following documents. If the README.md specifies different filenames, follow the README.md. Otherwise use the default names below.
+
+A) 01-Learning\00_Overview.md
+- What the plugin is
+- Where it sits in FL Studio ecosystem (generator/effect/controller/utility)
+- What problem it solves and who it’s for
+- Quick “when to use it” and “when not to”
+- A simple mental model: how to think about it in 60 seconds
+- Links: official manual page + 2–5 best supporting sources
+
+B) 01-Learning\01_UI_Tour_And_Core_Concepts.md
+- UI tour (what each major area does)
+- Core concepts and terminology
+- Typical starting workflow (the first 5 minutes)
+- Common beginner traps (what people misunderstand)
+
+C) 02-Data\00_Controls_Reference.md
+- Parameter list with clear descriptions
+- Default values (if known) and safe starting ranges (if applicable)
+- Special behaviors, hidden interactions, right-click options, integration points
+- MIDI/automation notes and gotchas (if applicable)
+
+D) 02-Data\01_Troubleshooting_Notes.md
+- Known issues, limitations, weird behaviors
+- CPU/performance considerations
+- “Symptom -> Cause -> Fix -> How to verify” table
+- Version-specific notes labeled clearly (e.g., “as of FL Studio 21.x” when supported by sources)
+
+E) 03-Workflows\00_Practical_Use_Cases.md
+- 8–12 real use cases (not generic). Each use case must include:
+  - Goal
+  - Step-by-step setup inside FL Studio (clear enough to follow)
+  - Recommended starting settings/ranges (when applicable)
+  - Why it works / what to listen for
+  - Variations (at least 2)
+  - Pitfalls + quick fixes
+
+F) 03-Workflows\01_Workflow_Recipes.md
+- 6–10 “recipes” combining this plugin with other FL Studio tools (Patcher, automation clips, MIDI Out, layering, routing, etc. as relevant)
+- Include routing notes: where it lives in the chain, how to control it quickly, performance tips
+- Add a “Template pattern” section: reusable routing/control pattern that can be copied to new projects
+
+G) 04-references\00_Source_Log.md
+- A clean bibliography:
+  - Title
+  - URL
+  - Publisher/Author
+  - Date (if available)
+  - Why it’s credible / what it was used for
+- Keep it short and high-signal
+
+H) 04-references\01_Official_Links.md
+- Official manual link(s)
+- Official Image-Line knowledge-base links (if any)
+- Relevant release notes links (if they impact behavior)
+- Any “gold standard” community references
+
+OPTIONAL (ONLY IF THE README.md OR THE PLUGIN WARRANTS IT)
+- 02-Data\02_Parameter_Table.csv (if the plugin has many parameters and a table is useful)
+- 03-Workflows\02_Mini_Cheat_Sheet.md (a 1-page rapid reference: best starting points + do/don’t)
+
+QUALITY GATES (CHECK BEFORE FINALIZING)
+- Each file is skimmable with headings, bullets, and concise paragraphs.
+- Use cases are genuinely distinct and not duplicates.
+- Terms match FL Studio UI language exactly.
+- Every non-obvious claim has a source link captured in 04-references\00_Source_Log.md.
+- Any version-specific behavior is labeled and sourced.
+- No filler. If you can’t find something, explicitly list what’s missing + best next steps to verify in FL Studio.
+
+OUTPUT FORMAT
+- Create/update the files inside each plugin’s four subfolders.
+- Also print a short “Completion Summary” to the terminal for each plugin:
+  - Plugin name
+  - Files written/updated (with relative paths)
+  - Strongest 3 sources used
+  - Any gaps/unverified items + suggested verification steps
+
+EXECUTION ORDER
+1. drumpad
+2. effector
+3. emphasis
+4. emphasizer
+5. equo
+6. fl slayer
+7. fl studio mobile
+8. fl studio mobile rack
+9. fpc
+10. frequency shifter
+
+Begin now. First, open/read each README.md, extract its requirements, then produce the deliverables accordingly while respecting the four-folder organization.

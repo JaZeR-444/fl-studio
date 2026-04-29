@@ -1,0 +1,1639 @@
+{
+  "plugin_name": "Control Surface",
+  "preset_collection": "Controller Presets",
+  "version": "1.0.0",
+  "created_date": "2026-02-03",
+  "author": "FL Studio Plugin Deep Dives Research Team",
+  "description": "Collection of optimized Control Surface configurations for different controller types and production scenarios in hip-hop, rap, and R&B production",
+  "presets": [
+    {
+      "id": "akai-mpc-emulation",
+      "name": "Akai MPC Emulation",
+      "category": "Drum Controllers",
+      "sub_category": "Pad Controllers",
+      "genre_focus": ["hip-hop", "rap", "rnb"],
+      "production_stage": "programming",
+      "description": "Complete MPC-style controller mapping optimized for classic hip-hop beat creation with standard key assignments",
+      "controller_mapping": {
+        "device_type": "akai",
+        "protocol": "manufacturer_specific",
+        "template": "drum_pad",
+        "parameters": {
+          "pad_sensitivity": 75,
+          "velocity_curve": "exponential",
+          "pressure_sensitivity": 40,
+          "response_time": "fast",
+          "streaming_option": false
+        },
+        "pad_assignments": [
+          {
+            "pad": "C1",
+            "name": "Kick",
+            "sample": "generic_kick.wav",
+            "key_start": 36,
+            "key_end": 36,
+            "root_key": 36,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -3,
+            "pan": 0,
+            "filter_type": "high_pass",
+            "cutoff": 80,
+            "resonance": 10,
+            "envelope": {
+              "attack": 0,
+              "decay": 1500,
+              "sustain": 0,
+              "release": 100
+            },
+            "effects": {
+              "type": "none",
+              "amount": 0
+            }
+          },
+          {
+            "pad": "D1",
+            "name": "Snare",
+            "sample": "generic_snare.wav",
+            "key_start": 38,
+            "key_end": 38,
+            "root_key": 38,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -6,
+            "pan": 0,
+            "filter_type": "low_pass",
+            "cutoff": 5000,
+            "resonance": 20,
+            "envelope": {
+              "attack": 0,
+              "decay": 800,
+              "sustain": 0,
+              "release": 50
+            },
+            "effects": {
+              "type": "reverb",
+              "amount": 15
+            }
+          },
+          {
+            "pad": "F1",
+            "name": "Closed Hi-Hat",
+            "sample": "generic_closed_hat.wav",
+            "key_start": 42,
+            "key_end": 42,
+            "root_key": 42,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -9,
+            "pan": -15,
+            "filter_type": "high_pass",
+            "cutoff": 300,
+            "resonance": 5,
+            "envelope": {
+              "attack": 0,
+              "decay": 200,
+              "sustain": 0,
+              "release": 50
+            },
+            "effects": {
+              "type": "none",
+              "amount": 0
+            }
+          },
+          {
+            "pad": "G1",
+            "name": "Open Hi-Hat",
+            "sample": "generic_open_hat.wav",
+            "key_start": 46,
+            "key_end": 46,
+            "root_key": 46,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -12,
+            "pan": 15,
+            "filter_type": "low_pass",
+            "cutoff": 8000,
+            "resonance": 10,
+            "envelope": {
+              "attack": 0,
+              "decay": 600,
+              "sustain": 0,
+              "release": 100
+            },
+            "effects": {
+              "type": "none",
+              "amount": 0
+            }
+          },
+          {
+            "pad": "D#1",
+            "name": "Clap",
+            "sample": "generic_clap.wav",
+            "key_start": 39,
+            "key_end": 39,
+            "root_key": 39,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -6,
+            "pan": 0,
+            "filter_type": "low_pass",
+            "cutoff": 5000,
+            "resonance": 15,
+            "envelope": {
+              "attack": 0,
+              "decay": 400,
+              "sustain": 0,
+              "release": 80
+            },
+            "effects": {
+              "type": "reverb",
+              "amount": 20
+            }
+          }
+        ],
+        "transport_controls": {
+          "play": {"midi_message": "note", "channel": 1, "number": 60},
+          "stop": {"midi_message": "note", "channel": 1, "number": 61},
+          "record": {"midi_message": "note", "channel": 1, "number": 62},
+          "loop": {"midi_message": "note", "channel": 1, "number": 63},
+          "tap_tempo": {"midi_message": "note", "channel": 1, "number": 64}
+        },
+        "mixer_controls": {
+          "volume_faders": [
+            {"channel": 0, "midi_cc": 1, "channel": 1},
+            {"channel": 1, "midi_cc": 2, "channel": 1},
+            {"channel": 2, "midi_cc": 3, "channel": 1}
+          ],
+          "pan_knobs": [
+            {"channel": 0, "midi_cc": 16, "channel": 1},
+            {"channel": 1, "midi_cc": 17, "channel": 1},
+            {"channel": 2, "midi_cc": 18, "channel": 1}
+          ],
+          "mute_buttons": [
+            {"channel": 0, "midi_message": "note", "number": 48, "channel": 1},
+            {"channel": 1, "midi_message": "note", "number": 49, "channel": 1},
+            {"channel": 2, "midi_message": "note", "number": 50, "channel": 1}
+          ]
+        }
+      },
+      "use_case": "Classic hip-hop beat creation with MPC-style programming",
+      "benefits": [
+        "Standard GM mapping for pattern compatibility",
+        "Optimized for classic hip-hop drum sounds",
+        "Balanced levels across all kit pieces",
+        "Appropriate filtering for each drum type"
+      ],
+      "notes": "Perfect for beginners learning hip-hop drum programming or for quick beat creation sessions."
+    },
+    {
+      "id": "novation-launchpad-trap",
+      "name": "Novation Launchpad - Trap Production",
+      "category": "Drum Controllers",
+      "sub_category": "Grid Controllers",
+      "genre_focus": ["trap", "drill", "southern_hip_hop"],
+      "production_stage": "programming",
+      "description": "Grid-based controller mapping optimized for modern trap music with 808 integration and complex hi-hat patterns",
+      "controller_mapping": {
+        "device_type": "novation",
+        "protocol": "standard",
+        "template": "grid_pad",
+        "parameters": {
+          "pad_sensitivity": 70,
+          "velocity_curve": "linear",
+          "pressure_sensitivity": 25,
+          "response_time": "medium",
+          "streaming_option": false
+        },
+        "pad_assignments": [
+          {
+            "pad": "C1",
+            "name": "808 Deep A#1",
+            "sample": "808_deep_1.wav",
+            "key_start": 21,
+            "key_end": 21,
+            "root_key": 21,
+            "velocity_start": 1,
+            "velocity_end": 42,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -6,
+            "pan": -5,
+            "filter_type": "high_pass",
+            "cutoff": 40,
+            "resonance": 15,
+            "envelope": {
+              "attack": 0,
+              "decay": 3000,
+              "sustain": 20,
+              "release": 500
+            },
+            "effects": {
+              "type": "none",
+              "amount": 0
+            }
+          },
+          {
+            "pad": "C#1",
+            "name": "808 Deep A#2",
+            "sample": "808_deep_2.wav",
+            "key_start": 21,
+            "key_end": 21,
+            "root_key": 21,
+            "velocity_start": 43,
+            "velocity_end": 84,
+            "coarse_tune": 0,
+            "fine_tune": 5,
+            "volume": -6,
+            "pan": 0,
+            "filter_type": "high_pass",
+            "cutoff": 40,
+            "resonance": 15,
+            "envelope": {
+              "attack": 0,
+              "decay": 3000,
+              "sustain": 20,
+              "release": 500
+            },
+            "effects": {
+              "type": "none",
+              "amount": 0
+            }
+          },
+          {
+            "pad": "D1",
+            "name": "808 Deep A#3",
+            "sample": "808_deep_3.wav",
+            "key_start": 21,
+            "key_end": 21,
+            "root_key": 21,
+            "velocity_start": 85,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": -3,
+            "volume": -6,
+            "pan": 5,
+            "filter_type": "high_pass",
+            "cutoff": 40,
+            "resonance": 15,
+            "envelope": {
+              "attack": 0,
+              "decay": 3000,
+              "sustain": 20,
+              "release": 500
+            },
+            "effects": {
+              "type": "none",
+              "amount": 0
+            }
+          },
+          {
+            "pad": "C2",
+            "name": "808 Mid C2",
+            "sample": "808_mid_1.wav",
+            "key_start": 24,
+            "key_end": 24,
+            "root_key": 24,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -8,
+            "pan": 0,
+            "filter_type": "high_pass",
+            "cutoff": 60,
+            "resonance": 10,
+            "envelope": {
+              "attack": 0,
+              "decay": 2500,
+              "sustain": 25,
+              "release": 400
+            },
+            "effects": {
+              "type": "saturation",
+              "amount": 10
+            }
+          },
+          {
+            "pad": "D2",
+            "name": "Trap Kick",
+            "sample": "trap_kick.wav",
+            "key_start": 36,
+            "key_end": 36,
+            "root_key": 36,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -4,
+            "pan": 0,
+            "filter_type": "high_pass",
+            "cutoff": 80,
+            "resonance": 5,
+            "envelope": {
+              "attack": 0,
+              "decay": 1800,
+              "sustain": 0,
+              "release": 150
+            },
+            "effects": {
+              "type": "saturation",
+              "amount": 15
+            }
+          }
+        ],
+        "transport_controls": {
+          "play": {"midi_message": "note", "channel": 1, "number": 52},
+          "stop": {"midi_message": "note", "channel": 1, "number": 53},
+          "record": {"midi_message": "note", "channel": 1, "number": 54},
+          "loop": {"midi_message": "note", "channel": 1, "number": 55},
+          "tap_tempo": {"midi_message": "note", "channel": 1, "number": 56}
+        },
+        "pattern_controls": {
+          "scene_launch": [
+            {"scene": 1, "midi_message": "note", "number": 82, "channel": 1},
+            {"scene": 2, "midi_message": "note", "number": 83, "channel": 1},
+            {"scene": 3, "midi_message": "note", "number": 84, "channel": 1}
+          ],
+          "clip_launch": [
+            {"clip": 1, "midi_message": "note", "number": 64, "channel": 1},
+            {"clip": 2, "midi_message": "note", "number": 65, "channel": 1},
+            {"clip": 3, "midi_message": "note", "number": 66, "channel": 1}
+          ]
+        }
+      },
+      "use_case": "Modern trap music production with grid-based pattern creation",
+      "benefits": [
+        "Grid-based pattern creation for trap music",
+        "808 integration with velocity layers",
+        "Scene and clip launching capabilities",
+        "Pattern chaining and arrangement tools"
+      ],
+      "notes": "Perfect for modern trap production with grid-based pattern creation and 808 integration."
+    },
+    {
+      "id": "keyboard-rnb-performance",
+      "name": "Keyboard Controller - R&B Performance",
+      "category": "Melodic Instruments",
+      "sub_category": "Keyboard Controllers",
+      "genre_focus": ["rnb", "neo_soul", "contemporary_rnb"],
+      "production_stage": "performance",
+      "description": "Velocity-sensitive keyboard mapping optimized for R&B melodic work with expression controls",
+      "controller_mapping": {
+        "device_type": "generic",
+        "protocol": "standard",
+        "template": "keyboard",
+        "parameters": {
+          "pad_sensitivity": 65,
+          "velocity_curve": "logarithmic",
+          "pressure_sensitivity": 35,
+          "response_time": "slow",
+          "streaming_option": false
+        },
+        "pad_assignments": [
+          {
+            "pad": "C3",
+            "name": "Piano Soft",
+            "sample": "piano_soft.wav",
+            "key_start": 48,
+            "key_end": 72,
+            "root_key": 60,
+            "velocity_start": 1,
+            "velocity_end": 50,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -8,
+            "pan": 0,
+            "filter_type": "low_pass",
+            "cutoff": 5000,
+            "resonance": 15,
+            "envelope": {
+              "attack": 10,
+              "decay": 4000,
+              "sustain": 70,
+              "release": 800
+            },
+            "effects": {
+              "type": "reverb",
+              "amount": 40
+            }
+          },
+          {
+            "pad": "D3",
+            "name": "Piano Medium",
+            "sample": "piano_medium.wav",
+            "key_start": 48,
+            "key_end": 72,
+            "root_key": 60,
+            "velocity_start": 40,
+            "velocity_end": 85,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -7,
+            "pan": 0,
+            "filter_type": "low_pass",
+            "cutoff": 5500,
+            "resonance": 15,
+            "envelope": {
+              "attack": 8,
+              "decay": 3500,
+              "sustain": 75,
+              "release": 700
+            },
+            "effects": {
+              "type": "reverb",
+              "amount": 35
+            }
+          },
+          {
+            "pad": "E3",
+            "name": "Piano Hard",
+            "sample": "piano_hard.wav",
+            "key_start": 48,
+            "key_end": 72,
+            "root_key": 60,
+            "velocity_start": 75,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -6,
+            "pan": 0,
+            "filter_type": "low_pass",
+            "cutoff": 6000,
+            "resonance": 15,
+            "envelope": {
+              "attack": 5,
+              "decay": 3000,
+              "sustain": 80,
+              "release": 600
+            },
+            "effects": {
+              "type": "reverb",
+              "amount": 30
+            }
+          },
+          {
+            "pad": "F3",
+            "name": "Electric Piano",
+            "sample": "electric_piano.wav",
+            "key_start": 40,
+            "key_end": 80,
+            "root_key": 60,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -7,
+            "pan": 0,
+            "filter_type": "low_pass",
+            "cutoff": 7000,
+            "resonance": 10,
+            "envelope": {
+              "attack": 5,
+              "decay": 2000,
+              "sustain": 60,
+              "release": 400
+            },
+            "effects": {
+              "type": "chorus",
+              "amount": 25
+            }
+          }
+        ],
+        "expression_controls": {
+          "mod_wheel": {"parameter": "filter_cutoff", "amount": 30},
+          "pitch_bend": {"range": 2, "parameter": "pitch"},
+          "aftertouch": {"parameter": "volume", "amount": 15}
+        },
+        "transport_controls": {
+          "play": {"midi_message": "note", "channel": 1, "number": 60},
+          "stop": {"midi_message": "note", "channel": 1, "number": 61},
+          "record": {"midi_message": "note", "channel": 1, "number": 62}
+        }
+      },
+      "use_case": "R&B melodic work with expressive keyboard control",
+      "benefits": [
+        "Three velocity layers for expression",
+        "Smooth envelope settings for R&B feel",
+        "Appropriate reverb for intimate sound",
+        "Expression controls for musical performance"
+      ],
+      "notes": "Perfect for R&B melodic work that requires dynamic expression and smooth transitions between soft and hard playing."
+    },
+    {
+      "id": "hiphop-drum-essentials",
+      "name": "Hip-Hop Drum Essentials Kit",
+      "category": "Drum Controllers",
+      "sub_category": "Pad Controllers",
+      "genre_focus": ["hip_hop", "rap", "rnb"],
+      "production_stage": "programming",
+      "description": "Essential hip-hop drum kit with classic sounds and MPC-style mapping",
+      "controller_mapping": {
+        "device_type": "akai",
+        "protocol": "manufacturer_specific",
+        "template": "drum_pad",
+        "parameters": {
+          "pad_sensitivity": 72,
+          "velocity_curve": "exponential",
+          "pressure_sensitivity": 30,
+          "response_time": "fast",
+          "streaming_option": false
+        },
+        "pad_assignments": [
+          {
+            "pad": "C1",
+            "name": "Boom-Kick",
+            "sample": "boom_kick.wav",
+            "key_start": 36,
+            "key_end": 36,
+            "root_key": 36,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -3,
+            "pan": 0,
+            "filter_type": "high_pass",
+            "cutoff": 60,
+            "resonance": 5,
+            "envelope": {
+              "attack": 0,
+              "decay": 2000,
+              "sustain": 0,
+              "release": 100
+            },
+            "effects": {
+              "type": "saturation",
+              "amount": 10
+            }
+          },
+          {
+            "pad": "D1",
+            "name": "Crack-Snare",
+            "sample": "crack_snare.wav",
+            "key_start": 38,
+            "key_end": 38,
+            "root_key": 38,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -5,
+            "pan": 0,
+            "filter_type": "low_pass",
+            "cutoff": 4500,
+            "resonance": 15,
+            "envelope": {
+              "attack": 0,
+              "decay": 600,
+              "sustain": 0,
+              "release": 50
+            },
+            "effects": {
+              "type": "reverb",
+              "amount": 20
+            }
+          },
+          {
+            "pad": "F1",
+            "name": "Tight-HiHat",
+            "sample": "tight_hat.wav",
+            "key_start": 42,
+            "key_end": 42,
+            "root_key": 42,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -10,
+            "pan": -10,
+            "filter_type": "high_pass",
+            "cutoff": 400,
+            "resonance": 5,
+            "envelope": {
+              "attack": 0,
+              "decay": 150,
+              "sustain": 0,
+              "release": 30
+            },
+            "effects": {
+              "type": "none",
+              "amount": 0
+            }
+          },
+          {
+            "pad": "G1",
+            "name": "Washy-HiHat",
+            "sample": "washy_hat.wav",
+            "key_start": 46,
+            "key_end": 46,
+            "root_key": 46,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -12,
+            "pan": 10,
+            "filter_type": "low_pass",
+            "cutoff": 10000,
+            "resonance": 5,
+            "envelope": {
+              "attack": 0,
+              "decay": 400,
+              "sustain": 0,
+              "release": 80
+            },
+            "effects": {
+              "type": "none",
+              "amount": 0
+            }
+          },
+          {
+            "pad": "D#1",
+            "name": "Snap-Clap",
+            "sample": "snap_clap.wav",
+            "key_start": 39,
+            "key_end": 39,
+            "root_key": 39,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -6,
+            "pan": 0,
+            "filter_type": "low_pass",
+            "cutoff": 5000,
+            "resonance": 10,
+            "envelope": {
+              "attack": 0,
+              "decay": 300,
+              "sustain": 0,
+              "release": 60
+            },
+            "effects": {
+              "type": "reverb",
+              "amount": 25
+            }
+          },
+          {
+            "pad": "C2",
+            "name": "808-Sub",
+            "sample": "808_sub.wav",
+            "key_start": 24,
+            "key_end": 24,
+            "root_key": 24,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -8,
+            "pan": 0,
+            "filter_type": "high_pass",
+            "cutoff": 50,
+            "resonance": 5,
+            "envelope": {
+              "attack": 0,
+              "decay": 3000,
+              "sustain": 15,
+              "release": 500
+            },
+            "effects": {
+              "type": "saturation",
+              "amount": 5
+            }
+          }
+        ],
+        "transport_controls": {
+          "play": {"midi_message": "note", "channel": 1, "number": 60},
+          "stop": {"midi_message": "note", "channel": 1, "number": 61},
+          "record": {"midi_message": "note", "channel": 1, "number": 62},
+          "loop": {"midi_message": "note", "channel": 1, "number": 63}
+        },
+        "mixer_controls": {
+          "volume_faders": [
+            {"channel": 0, "midi_cc": 1, "channel": 1},
+            {"channel": 1, "midi_cc": 2, "channel": 1},
+            {"channel": 2, "midi_cc": 3, "channel": 1}
+          ],
+          "mute_buttons": [
+            {"channel": 0, "midi_message": "note", "number": 48, "channel": 1},
+            {"channel": 1, "midi_message": "note", "number": 49, "channel": 1},
+            {"channel": 2, "midi_message": "note", "number": 50, "channel": 1}
+          ]
+        }
+      },
+      "use_case": "Essential hip-hop drum programming with classic sounds",
+      "benefits": [
+        "Classic hip-hop drum sounds",
+        "MPC-style pad mapping",
+        "Appropriate filtering for each element",
+        "Standard transport and mixer controls"
+      ],
+      "notes": "Perfect for classic hip-hop beat creation with essential drum sounds and standard MPC-style mapping."
+    },
+    {
+      "id": "rap-vocal-chop-controller",
+      "name": "Rap Vocal Chop Controller",
+      "category": "Vocal Instruments",
+      "sub_category": "Vocal Samples",
+      "genre_focus": ["rap", "hip_hop", "mixtape_rap"],
+      "production_stage": "arrangement",
+      "description": "Mapped vocal chops across pads for rap hook and ad-lib arrangement",
+      "controller_mapping": {
+        "device_type": "novation",
+        "protocol": "standard",
+        "template": "drum_pad",
+        "parameters": {
+          "pad_sensitivity": 80,
+          "velocity_curve": "linear",
+          "pressure_sensitivity": 20,
+          "response_time": "medium",
+          "streaming_option": false
+        },
+        "pad_assignments": [
+          {
+            "pad": "C1",
+            "name": "Vocal Ad-lib 1",
+            "sample": "vocal_adlib_1.wav",
+            "key_start": 60,
+            "key_end": 60,
+            "root_key": 60,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -6,
+            "pan": -10,
+            "filter_type": "low_pass",
+            "cutoff": 8000,
+            "resonance": 5,
+            "envelope": {
+              "attack": 2,
+              "decay": 600,
+              "sustain": 0,
+              "release": 100
+            },
+            "effects": {
+              "type": "delay",
+              "amount": 20
+            }
+          },
+          {
+            "pad": "D1",
+            "name": "Vocal Ad-lib 2",
+            "sample": "vocal_adlib_2.wav",
+            "key_start": 62,
+            "key_end": 62,
+            "root_key": 62,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -6,
+            "pan": 10,
+            "filter_type": "low_pass",
+            "cutoff": 8000,
+            "resonance": 5,
+            "envelope": {
+              "attack": 2,
+              "decay": 600,
+              "sustain": 0,
+              "release": 100
+            },
+            "effects": {
+              "type": "reverb",
+              "amount": 25
+            }
+          },
+          {
+            "pad": "E1",
+            "name": "Hook Phrase A",
+            "sample": "hook_phrase_a.wav",
+            "key_start": 64,
+            "key_end": 64,
+            "root_key": 64,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -4,
+            "pan": 0,
+            "filter_type": "low_pass",
+            "cutoff": 9000,
+            "resonance": 10,
+            "envelope": {
+              "attack": 5,
+              "decay": 1000,
+              "sustain": 0,
+              "release": 150
+            },
+            "effects": {
+              "type": "harmony",
+              "amount": 30
+            }
+          },
+          {
+            "pad": "F1",
+            "name": "Hook Phrase B",
+            "sample": "hook_phrase_b.wav",
+            "key_start": 65,
+            "key_end": 65,
+            "root_key": 65,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -4,
+            "pan": 0,
+            "filter_type": "low_pass",
+            "cutoff": 9000,
+            "resonance": 10,
+            "envelope": {
+              "attack": 5,
+              "decay": 1000,
+              "sustain": 0,
+              "release": 150
+            },
+            "effects": {
+              "type": "harmony",
+              "amount": 30
+            }
+          },
+          {
+            "pad": "G1",
+            "name": "Vocal Ad-lib Harmony",
+            "sample": "vocal_adlib_harmony.wav",
+            "key_start": 67,
+            "key_end": 67,
+            "root_key": 67,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -8,
+            "pan": 25,
+            "filter_type": "low_pass",
+            "cutoff": 7000,
+            "resonance": 5,
+            "envelope": {
+              "attack": 5,
+              "decay": 400,
+              "sustain": 0,
+              "release": 80
+            },
+            "effects": {
+              "type": "delay",
+              "amount": 25
+            }
+          }
+        ],
+        "transport_controls": {
+          "play": {"midi_message": "note", "channel": 1, "number": 60},
+          "stop": {"midi_message": "note", "channel": 1, "number": 61},
+          "record": {"midi_message": "note", "channel": 1, "number": 62}
+        },
+        "performance_controls": {
+          "effect_knob_1": {"parameter": "delay_amount", "channel": 1, "cc": 16},
+          "effect_knob_2": {"parameter": "reverb_amount", "channel": 1, "cc": 17},
+          "effect_knob_3": {"parameter": "harmony_amount", "channel": 1, "cc": 18}
+        }
+      },
+      "use_case": "Arranging vocal hooks and ad-libs in rap production",
+      "benefits": [
+        "Easy arrangement of vocal elements",
+        "Different effects per vocal sample",
+        "Appropriate processing for each element",
+        "Convenient pad mapping for programming"
+      ],
+      "notes": "Perfect for arranging vocal hooks and ad-libs in rap tracks. Each sample has appropriate effects processing."
+    },
+    {
+      "id": "rnb-smooth-instruments",
+      "name": "R&B Smooth Instruments",
+      "category": "Melodic Instruments",
+      "sub_category": "Keyboards",
+      "genre_focus": ["rnb", "neo_soul", "contemporary_rnb"],
+      "production_stage": "composition",
+      "description": "Velocity-sensitive instruments with smooth response for R&B production",
+      "controller_mapping": {
+        "device_type": "generic",
+        "protocol": "standard",
+        "template": "keyboard",
+        "parameters": {
+          "pad_sensitivity": 68,
+          "velocity_curve": "logarithmic",
+          "pressure_sensitivity": 40,
+          "response_time": "slow",
+          "streaming_option": false
+        },
+        "pad_assignments": [
+          {
+            "pad": "C3",
+            "name": "Smooth Piano",
+            "sample": "smooth_piano.wav",
+            "key_start": 36,
+            "key_end": 84,
+            "root_key": 60,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -7,
+            "pan": 0,
+            "filter_type": "low_pass",
+            "cutoff": 6000,
+            "resonance": 10,
+            "envelope": {
+              "attack": 10,
+              "decay": 3000,
+              "sustain": 75,
+              "release": 600
+            },
+            "effects": {
+              "type": "reverb",
+              "amount": 35
+            }
+          },
+          {
+            "pad": "D3",
+            "name": "Electric Piano",
+            "sample": "electric_piano.wav",
+            "key_start": 36,
+            "key_end": 84,
+            "root_key": 60,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -7,
+            "pan": 0,
+            "filter_type": "low_pass",
+            "cutoff": 7000,
+            "resonance": 15,
+            "envelope": {
+              "attack": 5,
+              "decay": 2000,
+              "sustain": 65,
+              "release": 500
+            },
+            "effects": {
+              "type": "chorus",
+              "amount": 25
+            }
+          },
+          {
+            "pad": "E3",
+            "name": "Hammond Organ",
+            "sample": "hammond_organ.wav",
+            "key_start": 36,
+            "key_end": 84,
+            "root_key": 60,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -8,
+            "pan": 0,
+            "filter_type": "low_pass",
+            "cutoff": 8000,
+            "resonance": 5,
+            "envelope": {
+              "attack": 2,
+              "decay": 1000,
+              "sustain": 85,
+              "release": 300
+            },
+            "effects": {
+              "type": "rotary_speaker",
+              "amount": 40
+            }
+          },
+          {
+            "pad": "F3",
+            "name": "Strings Pad",
+            "sample": "strings_pad.wav",
+            "key_start": 48,
+            "key_end": 72,
+            "root_key": 60,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -10,
+            "pan": 0,
+            "filter_type": "low_pass",
+            "cutoff": 5000,
+            "resonance": 20,
+            "envelope": {
+              "attack": 1000,
+              "decay": 4000,
+              "sustain": 90,
+              "release": 1000
+            },
+            "effects": {
+              "type": "reverb",
+              "amount": 50
+            }
+          }
+        ],
+        "expression_controls": {
+          "mod_wheel": {"parameter": "filter_cutoff", "amount": 25},
+          "pitch_bend": {"range": 1, "parameter": "pitch"},
+          "aftertouch": {"parameter": "volume", "amount": 10}
+        },
+        "performance_controls": {
+          "sustain_pedal": {"parameter": "sustain", "message": "cc", "number": 64, "channel": 1}
+        }
+      },
+      "use_case": "Playing smooth R&B instruments with expression",
+      "benefits": [
+        "Three velocity layers for expression",
+        "Smooth envelope settings for R&B feel",
+        "Appropriate reverb for intimate sound",
+        "Expression controls for musical performance"
+      ],
+      "notes": "Perfect for R&B instrumental parts that require dynamic expression and smooth transitions between soft and hard playing."
+    },
+    {
+      "id": "hiphop-percussion-essentials",
+      "name": "Hip-Hop Percussion Essentials",
+      "category": "Drum Controllers",
+      "sub_category": "Percussion",
+      "genre_focus": ["hip_hop", "rap", "rnb"],
+      "production_stage": "programming",
+      "description": "Extended percussion kit for adding rhythmic elements to hip-hop productions",
+      "controller_mapping": {
+        "device_type": "akai",
+        "protocol": "manufacturer_specific",
+        "template": "drum_pad",
+        "parameters": {
+          "pad_sensitivity": 75,
+          "velocity_curve": "linear",
+          "pressure_sensitivity": 20,
+          "response_time": "fast",
+          "streaming_option": false
+        },
+        "pad_assignments": [
+          {
+            "pad": "C1",
+            "name": "Cowbell",
+            "sample": "cowbell.wav",
+            "key_start": 57,
+            "key_end": 57,
+            "root_key": 57,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -15,
+            "pan": 30,
+            "filter_type": "low_pass",
+            "cutoff": 8000,
+            "resonance": 10,
+            "envelope": {
+              "attack": 0,
+              "decay": 300,
+              "sustain": 0,
+              "release": 50
+            },
+            "effects": {
+              "type": "none",
+              "amount": 0
+            }
+          },
+          {
+            "pad": "D1",
+            "name": "Conga Low",
+            "sample": "conga_low.wav",
+            "key_start": 60,
+            "key_end": 60,
+            "root_key": 60,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -12,
+            "pan": -15,
+            "filter_type": "low_pass",
+            "cutoff": 3000,
+            "resonance": 15,
+            "envelope": {
+              "attack": 0,
+              "decay": 500,
+              "sustain": 0,
+              "release": 100
+            },
+            "effects": {
+              "type": "none",
+              "amount": 0
+            }
+          },
+          {
+            "pad": "E1",
+            "name": "Conga High",
+            "sample": "conga_high.wav",
+            "key_start": 62,
+            "key_end": 62,
+            "root_key": 62,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -12,
+            "pan": 15,
+            "filter_type": "low_pass",
+            "cutoff": 4000,
+            "resonance": 15,
+            "envelope": {
+              "attack": 0,
+              "decay": 400,
+              "sustain": 0,
+              "release": 80
+            },
+            "effects": {
+              "type": "none",
+              "amount": 0
+            }
+          },
+          {
+            "pad": "F1",
+            "name": "Shaker",
+            "sample": "shaker.wav",
+            "key_start": 64,
+            "key_end": 64,
+            "root_key": 64,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -18,
+            "pan": 0,
+            "filter_type": "low_pass",
+            "cutoff": 10000,
+            "resonance": 5,
+            "envelope": {
+              "attack": 0,
+              "decay": 200,
+              "sustain": 0,
+              "release": 30
+            },
+            "effects": {
+              "type": "none",
+              "amount": 0
+            }
+          },
+          {
+            "pad": "G1",
+            "name": "Guiro",
+            "sample": "guiro.wav",
+            "key_start": 66,
+            "key_end": 66,
+            "root_key": 66,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -16,
+            "pan": 20,
+            "filter_type": "low_pass",
+            "cutoff": 12000,
+            "resonance": 5,
+            "envelope": {
+              "attack": 0,
+              "decay": 100,
+              "sustain": 0,
+              "release": 20
+            },
+            "effects": {
+              "type": "none",
+              "amount": 0
+            }
+          },
+          {
+            "pad": "C2",
+            "name": "Cabasa",
+            "sample": "cabasa.wav",
+            "key_start": 68,
+            "key_end": 68,
+            "root_key": 68,
+            "velocity_start": 1,
+            "velocity_end": 127,
+            "coarse_tune": 0,
+            "fine_tune": 0,
+            "volume": -20,
+            "pan": -20,
+            "filter_type": "low_pass",
+            "cutoff": 10000,
+            "resonance": 5,
+            "envelope": {
+              "attack": 0,
+              "decay": 150,
+              "sustain": 0,
+              "release": 25
+            },
+            "effects": {
+              "type": "none",
+              "amount": 0
+            }
+          }
+        ],
+        "transport_controls": {
+          "play": {"midi_message": "note", "channel": 1, "number": 60},
+          "stop": {"midi_message": "note", "channel": 1, "number": 61},
+          "record": {"midi_message": "note", "channel": 1, "number": 62}
+        },
+        "mixer_controls": {
+          "volume_faders": [
+            {"channel": 0, "midi_cc": 1, "channel": 1},
+            {"channel": 1, "midi_cc": 2, "channel": 1},
+            {"channel": 2, "midi_cc": 3, "channel": 1}
+          ],
+          "pan_knobs": [
+            {"channel": 0, "midi_cc": 16, "channel": 1},
+            {"channel": 1, "midi_cc": 17, "channel": 1},
+            {"channel": 2, "midi_cc": 18, "channel": 1}
+          ]
+        }
+      },
+      "use_case": "Adding rhythmic percussion elements to hip-hop beats",
+      "benefits": [
+        "Classic percussion sounds for hip-hop",
+        "Appropriate levels and panning",
+        "Clean filtering for each element",
+        "Standard pad mapping for easy programming"
+      ],
+      "notes": "Perfect for adding classic percussion elements to hip-hop productions. Each sound is appropriately processed for the mix."
+    }
+  ],
+  "template_categories": [
+    {
+      "category": "Drum Kits",
+      "templates": [
+        {
+          "name": "Classic Hip-Hop Kit",
+          "description": "Standard drum kit mapping for hip-hop production",
+          "parameters": {
+            "device_type": "akai",
+            "protocol": "manufacturer_specific",
+            "pad_sensitivity": 75,
+            "velocity_curve": "exponential",
+            "response_time": "fast"
+          },
+          "pad_mapping": {
+            "C1": {"sample": "kick.wav", "key_start": 36, "key_end": 36, "root_key": 36},
+            "D1": {"sample": "snare.wav", "key_start": 38, "key_end": 38, "root_key": 38},
+            "F1": {"sample": "closed_hat.wav", "key_start": 42, "key_end": 42, "root_key": 42},
+            "G1": {"sample": "open_hat.wav", "key_start": 46, "key_end": 46, "root_key": 46}
+          }
+        },
+        {
+          "name": "Trap Production Kit",
+          "description": "Modern trap kit with 808 integration",
+          "parameters": {
+            "device_type": "novation",
+            "protocol": "standard",
+            "pad_sensitivity": 70,
+            "velocity_curve": "linear",
+            "response_time": "medium"
+          },
+          "pad_mapping": {
+            "C1": {"sample": "808_deep.wav", "key_start": 24, "key_end": 24, "root_key": 24},
+            "D1": {"sample": "trap_kick.wav", "key_start": 36, "key_end": 36, "root_key": 36},
+            "F1": {"sample": "closed_hat.wav", "key_start": 42, "key_end": 42, "root_key": 42}
+          }
+        }
+      ]
+    },
+    {
+      "category": "Melodic Instruments",
+      "templates": [
+        {
+          "name": "R&B Piano",
+          "description": "Velocity-sensitive piano for R&B production",
+          "parameters": {
+            "device_type": "generic",
+            "protocol": "standard",
+            "pad_sensitivity": 65,
+            "velocity_curve": "logarithmic",
+            "response_time": "slow"
+          },
+          "pad_mapping": {
+            "C3": {"sample": "piano_soft.wav", "key_start": 48, "key_end": 72, "root_key": 60, "velocity_start": 1, "velocity_end": 50},
+            "D3": {"sample": "piano_medium.wav", "key_start": 48, "key_end": 72, "root_key": 60, "velocity_start": 40, "velocity_end": 85},
+            "E3": {"sample": "piano_hard.wav", "key_start": 48, "key_end": 72, "root_key": 60, "velocity_start": 75, "velocity_end": 127}
+          }
+        },
+        {
+          "name": "Electric Keys",
+          "description": "Vintage electric piano sounds",
+          "parameters": {
+            "device_type": "generic",
+            "protocol": "standard",
+            "pad_sensitivity": 70,
+            "velocity_curve": "exponential",
+            "response_time": "medium"
+          },
+          "pad_mapping": {
+            "C3": {"sample": "rhodes_soft.wav", "key_start": 40, "key_end": 80, "root_key": 60},
+            "D3": {"sample": "rhodes_medium.wav", "key_start": 40, "key_end": 80, "root_key": 60},
+            "E3": {"sample": "rhodes_hard.wav", "key_start": 40, "key_end": 80, "root_key": 60}
+          }
+        }
+      ]
+    },
+    {
+      "category": "Vocal Instruments",
+      "templates": [
+        {
+          "name": "Rap Vocal Chops",
+          "description": "Mapped vocal samples for rap production",
+          "parameters": {
+            "device_type": "novation",
+            "protocol": "standard",
+            "pad_sensitivity": 80,
+            "velocity_curve": "linear",
+            "response_time": "medium"
+          },
+          "pad_mapping": {
+            "C1": {"sample": "vocal_chop_1.wav", "key_start": 60, "key_end": 60, "root_key": 60},
+            "D1": {"sample": "vocal_chop_2.wav", "key_start": 62, "key_end": 62, "root_key": 62},
+            "E1": {"sample": "vocal_hook_a.wav", "key_start": 64, "key_end": 64, "root_key": 64}
+          }
+        }
+      ]
+    },
+    {
+      "category": "Sound Design",
+      "templates": [
+        {
+          "name": "Atmospheric Textures",
+          "description": "Ambient and textural sounds",
+          "parameters": {
+            "device_type": "generic",
+            "protocol": "standard",
+            "pad_sensitivity": 60,
+            "velocity_curve": "linear",
+            "response_time": "slow"
+          },
+          "pad_mapping": {
+            "C1": {"sample": "atmosphere_1.wav", "key_start": 36, "key_end": 36, "root_key": 36, "loop_mode": "ping_pong"},
+            "D1": {"sample": "texture_1.wav", "key_start": 38, "key_end": 38, "root_key": 38, "loop_mode": "ping_pong"},
+            "F1": {"sample": "pad_1.wav", "key_start": 42, "key_end": 42, "root_key": 42, "loop_mode": "on"}
+          }
+        }
+      ]
+    }
+  ],
+  "integration_notes": {
+    "compatible_plugins": [
+      "Fruity Wrapper",
+      "Patcher",
+      "MIDI Controllers",
+      "Playlist",
+      "Fruity Formula Controller",
+      "Fruity Envelope Controller",
+      "Fruity Peak Controller"
+    ],
+    "common_workflows": [
+      "sample_loading",
+      "pad_mapping",
+      "velocity_layering",
+      "pattern_programming",
+      "performance_control"
+    ],
+    "recommended_settings_by_context": {
+      "hip_hop_drum_programming": {
+        "device_type": "akai",
+        "pad_sensitivity": 75,
+        "velocity_curve": "exponential",
+        "response_time": "fast",
+        "polyphony": 16
+      },
+      "rnb_melodic_programming": {
+        "device_type": "generic",
+        "pad_sensitivity": 65,
+        "velocity_curve": "logarithmic",
+        "response_time": "slow",
+        "polyphony": 24
+      },
+      "trap_production": {
+        "device_type": "novation",
+        "pad_sensitivity": 70,
+        "velocity_curve": "linear",
+        "response_time": "medium",
+        "polyphony": 8
+      }
+    }
+  },
+  "genre_specific_applications": {
+    "hip_hop": {
+      "primary_use": "drum programming and sample triggering",
+      "key_features": ["pad_mapping", "velocity_layering", "round_robin"],
+      "typical_settings": {
+        "device_type": "akai",
+        "pad_sensitivity": 75,
+        "velocity_curve": "exponential",
+        "polyphony": 16
+      }
+    },
+    "rap": {
+      "primary_use": "vocal chop arrangement and ad-lib triggering",
+      "key_features": ["pad_mapping", "velocity_response", "effects_processing"],
+      "typical_settings": {
+        "device_type": "novation",
+        "pad_sensitivity": 80,
+        "velocity_curve": "linear",
+        "effects_processing": true
+      }
+    },
+    "rnb": {
+      "primary_use": "smooth instrument triggering and vocal arrangement",
+      "key_features": ["velocity_layering", "expression", "effects"],
+      "typical_settings": {
+        "device_type": "generic",
+        "pad_sensitivity": 65,
+        "velocity_curve": "logarithmic",
+        "expression_controls": true
+      }
+    }
+  },
+  "performance_considerations": {
+    "cpu_usage": {
+      "baseline": "0.1% per instance",
+      "with_effects": "0.3% per instance",
+      "with_complex_mapping": "0.5% per instance"
+    },
+    "memory_usage": {
+      "per_sample": "2-10MB depending on size",
+      "preload_vs_stream": "preload uses more RAM but reduces disk I/O",
+      "recommended_for_live": "stream large samples, preload small ones"
+    },
+    "latency": {
+      "buffer_dependent": "lower with smaller buffers",
+      "typical_range": "5-20ms depending on system",
+      "optimization_tips": [
+        "use appropriate buffer sizes for performance needs",
+        "preload samples for low-latency response",
+        "stream large samples to save memory"
+      ]
+    }
+  },
+  "troubleshooting_common_issues": [
+    {
+      "issue": "samples_not_triggering",
+      "possible_causes": [
+        "incorrect sample paths",
+        "wrong key mappings",
+        "velocity ranges not matching",
+        "pad sensitivity too low"
+      ],
+      "solutions": [
+        "verify sample file paths",
+        "check key start/end settings",
+        "ensure velocity ranges overlap with input",
+        "increase pad sensitivity"
+      ]
+    },
+    {
+      "issue": "clicking_or_popping",
+      "possible_causes": [
+        "poor loop points",
+        "inadequate crossfades",
+        "sample start/end issues",
+        "velocity envelope problems"
+      ],
+      "solutions": [
+        "adjust loop points to zero crossings",
+        "enable crossfades between samples",
+        "trim samples to remove clicks",
+        "adjust velocity envelopes"
+      ]
+    },
+    {
+      "issue": "high_cpu_usage",
+      "possible_causes": [
+        "too many samples loaded",
+        "complex effects processing",
+        "high polyphony settings",
+        "streaming large samples"
+      ],
+      "solutions": [
+        "reduce number of loaded samples",
+        "simplify effects processing",
+        "lower polyphony settings",
+        "preload frequently used samples"
+      ]
+    }
+  ],
+  "advanced_techniques": [
+    {
+      "technique": "macro_pad_control",
+      "description": "Group multiple parameters to single pad controls",
+      "application": "control multiple effects with one pad",
+      "setup_steps": [
+        "assign primary parameter to pad",
+        "add secondary parameters to same control",
+        "set appropriate scaling ratios",
+        "test integrated control"
+      ]
+    },
+    {
+      "technique": "conditional_mapping",
+      "description": "change pad mappings based on context or mode",
+      "application": "different mappings for different song sections",
+      "setup_steps": [
+        "create multiple mapping configurations",
+        "assign mode switching mechanism",
+        "test context-sensitive behavior",
+        "optimize for performance"
+      ]
+    }
+  ],
+  "workflow_optimization": {
+    "template_creation": {
+      "purpose": "create reusable starting points for different projects",
+      "process": [
+        "develop standard mapping for each genre",
+        "save as template file",
+        "organize templates by category",
+        "document template purposes"
+      ],
+      "benefits": [
+        "faster project startup",
+        "consistent sound quality",
+        "reduced setup time",
+        "genre-appropriate defaults"
+      ]
+    },
+    "batch_processing": {
+      "purpose": "apply settings to multiple samples simultaneously",
+      "process": [
+        "select multiple samples",
+        "apply common parameters",
+        "adjust individual settings as needed",
+        "verify consistent results"
+      ],
+      "benefits": [
+        "increased efficiency",
+        "consistent processing",
+        "time savings",
+        "quality control"
+      ]
+    }
+  },
+  "quality_assurance": {
+    "verification_checklist": [
+      "all samples trigger reliably",
+      "pad mappings follow logical layout",
+      "velocity layers respond as expected",
+      "round-robin alternates properly",
+      "tuning is consistent across samples",
+      "envelopes provide natural response",
+      "levels are balanced appropriately",
+      "no unwanted artifacts or noise",
+      "performance is optimized for the project",
+      "kit serves musical purpose effectively"
+    ],
+    "testing_protocols": [
+      {
+        "test": "solo_testing",
+        "procedure": "listen to each sample in isolation",
+        "verification": "confirm proper triggering and quality"
+      },
+      {
+        "test": "mix_context_testing",
+        "procedure": "test samples in full mix context",
+        "verification": "verify appropriate balance and clarity"
+      },
+      {
+        "test": "performance_testing",
+        "procedure": "test under typical performance conditions",
+        "verification": "confirm reliability and responsiveness"
+      }
+    ]
+  },
+  "educational_resources": {
+    "official_documentation": [
+      "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Drumpad.htm",
+      "https://www.image-line.com/support/flstudio_online_manual/plugin_hints/drumpad_hint.htm"
+    ],
+    "community_resources": [
+      "https://forum.image-line.com/viewforum.php?f=193",
+      "https://www.kvraudio.com/forum/viewforum.php?f=232"
+    ],
+    "video_tutorials": [
+      "https://www.youtube.com/results?search_query=fl+studio+drumpad+tutorial",
+      "https://www.youtube.com/results?search_query=mpc+programming+fl+studio"
+    ]
+  }
+}

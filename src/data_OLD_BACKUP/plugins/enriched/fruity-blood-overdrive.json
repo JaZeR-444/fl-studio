@@ -1,0 +1,148 @@
+{
+  "id": "fruity-blood-overdrive",
+  "name": "Fruity Blood Overdrive",
+  "presets": {
+    "gentle-warmth": {
+      "presetName": "Gentle Warmth",
+      "plugin": "Fruity Blood Overdrive",
+      "description": "Adds subtle harmonic saturation without obvious distortion.",
+      "settings": {
+        "preamp": 0.2,
+        "dist": 0.1,
+        "color": 0.5,
+        "postGain": 0.8,
+        "postFilter": 0.5
+      },
+      "usage": "Use on a master bus or vocal group to glue the mix together."
+    },
+    "industrial-destruction": {
+      "presetName": "Industrial Destruction",
+      "plugin": "Fruity Blood Overdrive",
+      "description": "Extreme clipping that squares off the waveform.",
+      "settings": {
+        "preamp": 1.0,
+        "dist": 1.0,
+        "color": 0.2,
+        "postGain": 0.3,
+        "postFilter": 0.1
+      },
+      "usage": "Creative sound design, heavy industrial kick drums, or aggressive synth leads."
+    },
+    "lo-fi-crunch": {
+      "presetName": "Lo-Fi Crunch",
+      "plugin": "Fruity Blood Overdrive",
+      "description": "A gritty, mid-focused distortion for a vintage feel.",
+      "settings": {
+        "preamp": 0.6,
+        "dist": 0.4,
+        "color": 0.8,
+        "postGain": 0.5,
+        "postFilter": 0.3
+      },
+      "usage": "Best for electric pianos, drums, or sampled loops."
+    }
+  },
+  "parameters": {
+    "blood-overdrive-specs": {
+      "plugin": {
+        "name": "Fruity Blood Overdrive",
+        "category": "Distortion",
+        "type": "Analog Overdrive Modeling",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Blood%20Overdrive.htm"
+      },
+      "parameters": {
+        "driveChain": [
+          {
+            "id": "preBand",
+            "name": "Pre Band",
+            "type": "Low-Pass Filter (Pre)",
+            "description": "Filters input signal before it hits the gain stage."
+          },
+          {
+            "id": "preAmp",
+            "name": "Pre Amp",
+            "range": "1x to 100x",
+            "description": "Multiplier for input volume to trigger clipping."
+          }
+        ],
+        "toneShaping": [
+          {
+            "id": "color",
+            "name": "Color",
+            "description": "Adjusts the harmonic balance of the distorted signal."
+          },
+          {
+            "id": "postFilter",
+            "name": "Post Filter",
+            "type": "Low-Pass Filter (Post)",
+            "description": "Smooths out high-frequency artifacts after clipping."
+          }
+        ],
+        "output": [
+          {
+            "id": "postGain",
+            "name": "Post Gain",
+            "description": "Final output level adjustment."
+          }
+        ]
+      },
+      "clippingType": "Asymmetrical Soft-Clipping"
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "00 Goal Quick Result",
+      "category": "by-goal",
+      "filename": "00_Goal_Quick_Result.md"
+    },
+    {
+      "title": "01 Goal Shaping And Control",
+      "category": "by-goal",
+      "filename": "01_Goal_Shaping_And_Control.md"
+    },
+    {
+      "title": "Distorting Vocal Leads",
+      "category": "by-goal",
+      "filename": "distorting-vocal-leads.md"
+    },
+    {
+      "title": "Industrial Drum Distortion",
+      "category": "by-goal",
+      "filename": "industrial-drum-distortion.md"
+    },
+    {
+      "title": "Bass",
+      "category": "by-instrument",
+      "filename": "bass.md"
+    },
+    {
+      "title": "Drums",
+      "category": "by-instrument",
+      "filename": "drums.md"
+    },
+    {
+      "title": "Vocals",
+      "category": "by-instrument",
+      "filename": "vocals.md"
+    }
+  ]
+}

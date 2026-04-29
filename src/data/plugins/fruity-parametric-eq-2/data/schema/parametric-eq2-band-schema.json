@@ -1,0 +1,225 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jazer.app/schemas/fl-parametric-eq2-band.json",
+  "title": "Fruity Parametric EQ 2 - Band Schema",
+  "description": "JSON Schema for validating parametric EQ band configuration data",
+  "type": "object",
+  "required": [
+    "bandId",
+    "color",
+    "zone",
+    "frequencyHz",
+    "controls",
+    "roles",
+    "uiCopy"
+  ],
+  "properties": {
+    "bandId": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 7,
+      "description": "Band number (1-7)"
+    },
+    "color": {
+      "type": "string",
+      "enum": ["purple", "pink", "orange", "yellow", "green", "teal", "blue"],
+      "description": "Visual color identifier for the band"
+    },
+    "zone": {
+      "type": "string",
+      "description": "Human-readable frequency zone name (e.g., 'Sub / Foundation')"
+    },
+    "frequencyHz": {
+      "type": "object",
+      "required": ["typicalRange", "anchorTargets"],
+      "properties": {
+        "typicalRange": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 20,
+            "maximum": 20000
+          },
+          "minItems": 2,
+          "maxItems": 2,
+          "description": "Typical frequency range [min, max] in Hz"
+        },
+        "anchorTargets": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 20,
+            "maximum": 20000
+          },
+          "description": "Common preset frequencies for quick-action buttons"
+        }
+      }
+    },
+    "controls": {
+      "type": "object",
+      "required": ["typeOptions", "defaultType", "gainDb", "bwPercent"],
+      "properties": {
+        "typeOptions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["bell", "high_shelf", "low_shelf", "high_pass", "low_pass", "notch"]
+          },
+          "description": "Available filter types for this band"
+        },
+        "defaultType": {
+          "type": "string",
+          "enum": ["bell", "high_shelf", "low_shelf", "high_pass", "low_pass", "notch"],
+          "description": "Recommended default filter type"
+        },
+        "gainDb": {
+          "type": "object",
+          "required": ["typical", "safeMaxTrack", "safeMaxBus", "safeMaxMaster"],
+          "properties": {
+            "typical": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "minimum": -24,
+                "maximum": 24
+              },
+              "minItems": 2,
+              "maxItems": 2,
+              "description": "Typical gain range [min, max] in dB"
+            },
+            "safeMaxTrack": {
+              "type": "number",
+              "description": "Maximum safe gain on individual tracks (typically 6 dB)"
+            },
+            "safeMaxBus": {
+              "type": "number",
+              "description": "Maximum safe gain on buses (typically 3 dB)"
+            },
+            "safeMaxMaster": {
+              "type": "number",
+              "description": "Maximum safe gain on master channel (typically 1.5 dB)"
+            }
+          }
+        },
+        "bwPercent": {
+          "type": "object",
+          "required": ["meaning", "wide", "medium", "narrow", "default"],
+          "properties": {
+            "meaning": {
+              "type": "string",
+              "description": "Human explanation of bandwidth scale (0% = widest, 100% = narrowest)"
+            },
+            "wide": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "minItems": 2,
+              "maxItems": 2,
+              "description": "Wide bandwidth range [min, max] percentage"
+            },
+            "medium": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "minItems": 2,
+              "maxItems": 2,
+              "description": "Medium bandwidth range [min, max] percentage"
+            },
+            "narrow": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "minItems": 2,
+              "maxItems": 2,
+              "description": "Narrow bandwidth range [min, max] percentage"
+            },
+            "default": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100,
+              "description": "Default starting bandwidth percentage"
+            }
+          }
+        }
+      }
+    },
+    "roles": {
+      "type": "object",
+      "required": ["primary", "fixes", "creative", "warnings"],
+      "properties": {
+        "primary": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Core functions of this band"
+        },
+        "fixes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Common problems this band solves"
+        },
+        "creative": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Creative/artistic applications"
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Things to avoid or be cautious about"
+        }
+      }
+    },
+    "uiCopy": {
+      "type": "object",
+      "required": ["label", "oneLiner", "tooltip", "dos", "donts"],
+      "properties": {
+        "label": {
+          "type": "string",
+          "maxLength": 25,
+          "description": "Short band name (2-3 words)"
+        },
+        "oneLiner": {
+          "type": "string",
+          "maxLength": 60,
+          "description": "Brief summary (≤60 characters)"
+        },
+        "tooltip": {
+          "type": "string",
+          "maxLength": 200,
+          "description": "1-2 sentence guidance for users"
+        },
+        "dos": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Best practices for this band"
+        },
+        "donts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Things to avoid with this band"
+        }
+      }
+    }
+  }
+}

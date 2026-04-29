@@ -1,0 +1,127 @@
+{
+  "schema": "x-y-controller-params-v1",
+  "description": "Complete parameter reference for Fruity X-Y Controller",
+  "source": "IL-MAN",
+  "parameters": [
+    {
+      "id": "x-output",
+      "name": "X-Output",
+      "range": {"min": 0, "max": 100, "unit": "percent"},
+      "description": "Current horizontal axis output value",
+      "category": "output",
+      "modulatable": false,
+      "automation": true
+    },
+    {
+      "id": "y-output",
+      "name": "Y-Output",
+      "range": {"min": 0, "max": 100, "unit": "percent"},
+      "description": "Current vertical axis output value",
+      "category": "output",
+      "modulatable": false,
+      "automation": true
+    },
+    {
+      "id": "x-min",
+      "name": "X-Minimum",
+      "range": {"min": 0, "max": 100, "unit": "percent"},
+      "description": "Minimum value for X output range",
+      "category": "range",
+      "default": 0,
+      "modulatable": false
+    },
+    {
+      "id": "x-max",
+      "name": "X-Maximum",
+      "range": {"min": 0, "max": 100, "unit": "percent"},
+      "description": "Maximum value for X output range",
+      "category": "range",
+      "default": 100,
+      "modulatable": false
+    },
+    {
+      "id": "y-min",
+      "name": "Y-Minimum",
+      "range": {"min": 0, "max": 100, "unit": "percent"},
+      "description": "Minimum value for Y output range",
+      "category": "range",
+      "default": 0,
+      "modulatable": false
+    },
+    {
+      "id": "y-max",
+      "name": "Y-Maximum",
+      "range": {"min": 0, "max": 100, "unit": "percent"},
+      "description": "Maximum value for Y output range",
+      "category": "range",
+      "default": 100,
+      "modulatable": false
+    },
+    {
+      "id": "speed",
+      "name": "Speed",
+      "range": {"min": 0, "max": "unlimited", "unit": "arbitrary"},
+      "description": "Rate of pad movement (velocity)",
+      "category": "dynamics",
+      "modulatable": false,
+      "automation": true
+    },
+    {
+      "id": "acceleration",
+      "name": "Acceleration",
+      "range": {"min": "-unlimited", "max": "unlimited", "unit": "arbitrary"},
+      "description": "Change in speed (positive or negative)",
+      "category": "dynamics",
+      "modulatable": false,
+      "automation": true
+    },
+    {
+      "id": "smoothing",
+      "name": "Smoothing",
+      "range": {"min": 0, "max": 100, "unit": "percent"},
+      "description": "Interpolation amount between values",
+      "category": "processing",
+      "default": 0,
+      "modulatable": false
+    },
+    {
+      "id": "absolute-mode",
+      "name": "Absolute Mode",
+      "range": {"values": ["off", "on"]},
+      "description": "Output equals current position (vs. relative change)",
+      "category": "mode",
+      "default": "on",
+      "modulatable": false
+    },
+    {
+      "id": "relative-mode",
+      "name": "Relative Mode",
+      "range": {"values": ["off", "on"]},
+      "description": "Output equals change from previous position",
+      "category": "mode",
+      "default": "off",
+      "modulatable": false
+    },
+    {
+      "id": "hold",
+      "name": "Hold",
+      "range": {"values": ["off", "on"]},
+      "description": "Latch last position value",
+      "category": "mode",
+      "default": "off",
+      "modulatable": false
+    }
+  ],
+  "mappings": {
+    "x-map": {
+      "description": "Response curve for X axis",
+      "types": ["linear", "exponential", "logarithmic", "step", "custom"],
+      "editable": true
+    },
+    "y-map": {
+      "description": "Response curve for Y axis",
+      "types": ["linear", "exponential", "logarithmic", "step", "custom"],
+      "editable": true
+    }
+  }
+}

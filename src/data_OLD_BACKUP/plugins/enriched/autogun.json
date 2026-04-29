@@ -1,0 +1,190 @@
+{
+  "id": "autogun",
+  "name": "Autogun",
+  "presets": {},
+  "parameters": {
+    "autogun-engine-specs": {
+      "plugin_name": "Autogun",
+      "engine": "Ogun Additive Synthesis",
+      "total_presets": 4294967296,
+      "max_harmonics": 32767,
+      "internal_fx": "Soundgoodizer (Maximus Engine)"
+    },
+    "autogun-params": {
+      "plugin_name": "Autogun",
+      "category": "Instrument / Synth",
+      "engine": "Ogun Multi-Engine core",
+      "parameters": [
+        {
+          "name": "Preset Number",
+          "type": "integer",
+          "range": "0 - 4,294,967,295",
+          "description": "The unique ID of the synthesis topology.",
+          "vibe_impact": "Absolute identity"
+        },
+        {
+          "name": "Freq",
+          "type": "knob",
+          "description": "Master low-pass filter cutoff.",
+          "vibe_impact": "Brightness, mood, air"
+        },
+        {
+          "name": "Res",
+          "type": "knob",
+          "description": "Filter resonance.",
+          "vibe_impact": "Character, whistle, presence"
+        },
+        {
+          "name": "AM",
+          "type": "knob",
+          "description": "Engine-specific modulation depth.",
+          "vibe_impact": "Complexity, evolution, grit"
+        }
+      ],
+      "mix_impact_tags": [
+        "harmonic",
+        "texture",
+        "atmospheric"
+      ]
+    },
+    "parameters": {
+      "pluginName": "Autogun",
+      "category": "Synthesizer (Additive)",
+      "parameters": [
+        {
+          "section": "Global",
+          "id": "volume",
+          "name": "Master Volume",
+          "range": {
+            "min": 0,
+            "max": 200,
+            "unit": "%"
+          },
+          "description": "Output gain. Goes to 200% to compensate for quiet additive patches."
+        },
+        {
+          "section": "Global",
+          "id": "magic_dust",
+          "name": "Magic Dust",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Soundgoodizer amount. Adds compression and saturation."
+        },
+        {
+          "section": "Presets",
+          "id": "preset_selector",
+          "name": "Preset Number (Seed)",
+          "range": {
+            "min": 1,
+            "max": 4294967296,
+            "unit": "int"
+          },
+          "description": "The unique seed for the additive synthesis engine."
+        },
+        {
+          "section": "Options",
+          "id": "processing_quality",
+          "name": "Processing Quality",
+          "options": [
+            "High",
+            "Medium",
+            "Low"
+          ],
+          "description": "Determines the FFT resolution and interpolation."
+        }
+      ]
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Synthesis Guide",
+      "filename": "03_Vibe_Synthesis_Guide.md"
+    },
+    {
+      "title": "Additive Theory",
+      "filename": "additive_theory.md"
+    },
+    {
+      "title": "Algorithmic Inspiration",
+      "filename": "algorithmic_inspiration.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "00 Practical Use Cases",
+      "category": "general",
+      "filename": "00_Practical_Use_Cases.md"
+    },
+    {
+      "title": "01 Workflow Recipes",
+      "category": "general",
+      "filename": "01_Workflow_Recipes.md"
+    },
+    {
+      "title": "Common Usage",
+      "category": "general",
+      "filename": "common-usage.md"
+    },
+    {
+      "title": "Metallic Texture Hunting",
+      "category": "by-context",
+      "filename": "metallic-texture-hunting.md"
+    },
+    {
+      "title": "Sci Fi Atmospheric Generation",
+      "category": "by-context",
+      "filename": "sci-fi-atmospheric-generation.md"
+    },
+    {
+      "title": "Bass Sound Creation",
+      "category": "by-goal",
+      "filename": "bass-sound-creation.md"
+    },
+    {
+      "title": "Building A Personal Library",
+      "category": "by-goal",
+      "filename": "building-a-personal-library.md"
+    },
+    {
+      "title": "From Autogun To Pro Sound",
+      "category": "by-goal",
+      "filename": "from-autogun-to-pro-sound.md"
+    },
+    {
+      "title": "Lead Sound Creation",
+      "category": "by-goal",
+      "filename": "lead-sound-creation.md"
+    },
+    {
+      "title": "Atmospheric Sound Design",
+      "category": "by-instrument",
+      "filename": "atmospheric_sound_design.md"
+    },
+    {
+      "title": "Instrument Hunting",
+      "category": "by-instrument",
+      "filename": "instrument_hunting.md"
+    },
+    {
+      "title": "Percussion Mining",
+      "category": "by-instrument",
+      "filename": "percussion_mining.md"
+    }
+  ]
+}

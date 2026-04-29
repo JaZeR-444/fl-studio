@@ -1,0 +1,275 @@
+{
+  "plugin": "Hardcore",
+  "category": "Utility Presets",
+  "dataSource": "IL-MAN",
+  "presets": [
+    {
+      "name": "Clean Cabinet Only",
+      "description": "Cabinet simulation without stompboxes",
+      "chain": {
+        "distortion": { "enabled": false },
+        "chorus": { "enabled": false },
+        "flanger": { "enabled": false },
+        "phaser": { "enabled": false },
+        "reverb": { "enabled": false },
+        "delay": { "enabled": false },
+        "noiseGate": { "enabled": false },
+        "eqStompbox": { "enabled": false },
+        "compressor": { "enabled": false },
+        "modulator": { "enabled": false },
+        "wah": { "enabled": false },
+        "cabinet": 4,
+        "cabinetMix": 100,
+        "masterEQ": {
+          "band1": 0,
+          "band2": 0,
+          "band3": 0,
+          "band4": 0,
+          "band5": 0,
+          "band6": 0,
+          "band7": 0,
+          "band8": 0
+        }
+      },
+      "useCase": "Subtle speaker emulation, general-purpose tone shaping"
+    },
+    {
+      "name": "Noise Gate Only",
+      "description": "Clean noise gate for removing unwanted noise",
+      "chain": {
+        "noiseGate": {
+          "enabled": true,
+          "threshold": -35,
+          "attack": 5,
+          "hold": 50,
+          "release": 100
+        },
+        "cabinet": 4,
+        "masterEQ": {
+          "band1": 0,
+          "band2": 0,
+          "band3": 0,
+          "band4": 0,
+          "band5": 0,
+          "band6": 0,
+          "band7": 0,
+          "band8": 0
+        }
+      },
+      "useCase": "Guitar recordings, noisy sources, cleaning up tracks"
+    },
+    {
+      "name": "High-Pass Filter",
+      "description": "Remove low-end rumble",
+      "chain": {
+        "eqStompbox": {
+          "enabled": true,
+          "lowFreq": 80,
+          "lowGain": -15,
+          "midFreq": 1000,
+          "midGain": 0,
+          "highFreq": 5000,
+          "highGain": 0
+        },
+        "cabinet": 4,
+        "masterEQ": {
+          "band1": -12,
+          "band2": 0,
+          "band3": 0,
+          "band4": 0,
+          "band5": 0,
+          "band6": 0,
+          "band7": 0,
+          "band8": 0
+        }
+      },
+      "useCase": "Remove rumble from vocals, clean up muddy recordings"
+    },
+    {
+      "name": "Low-Pass Filter",
+      "description": "Remove high-end harshness",
+      "chain": {
+        "eqStompbox": {
+          "enabled": true,
+          "lowFreq": 100,
+          "lowGain": 0,
+          "midFreq": 1000,
+          "midGain": 0,
+          "highFreq": 4000,
+          "highGain": -15
+        },
+        "cabinet": 2,
+        "masterEQ": {
+          "band1": 0,
+          "band2": 0,
+          "band3": 0,
+          "band4": 0,
+          "band5": 0,
+          "band6": 0,
+          "band7": -6,
+          "band8": -12
+        }
+      },
+      "useCase": "Tame harsh highs, create lo-fi effect, vintage character"
+    },
+    {
+      "name": "Mid-Scoop Modern",
+      "description": "V-shaped EQ for modern productions",
+      "chain": {
+        "cabinet": 4,
+        "masterEQ": {
+          "band1": 2,
+          "band2": 1,
+          "band3": -2,
+          "band4": -3,
+          "band5": -2,
+          "band6": 0,
+          "band7": 2,
+          "band8": 3
+        }
+      },
+      "useCase": "Modern mixes, EDM, contemporary productions"
+    },
+    {
+      "name": "Mid-Boost Vintage",
+      "description": "Forward mids for vintage/retro character",
+      "chain": {
+        "cabinet": 2,
+        "masterEQ": {
+          "band1": 0,
+          "band2": 0,
+          "band3": 1,
+          "band4": 2,
+          "band5": 3,
+          "band6": 2,
+          "band7": 1,
+          "band8": 0
+        }
+      },
+      "useCase": "Classic rock, vintage hip-hop, retro aesthetic"
+    },
+    {
+      "name": "Subtle Saturation",
+      "description": "Light warmth without obvious distortion",
+      "chain": {
+        "distortion": {
+          "enabled": true,
+          "drive": 12,
+          "tone": 0,
+          "level": 95
+        },
+        "compressor": {
+          "enabled": true,
+          "threshold": -24,
+          "ratio": 2,
+          "attack": 20,
+          "release": 300,
+          "makeup": 2
+        },
+        "cabinet": 4,
+        "masterEQ": {
+          "band1": 0,
+          "band2": 0,
+          "band3": 0,
+          "band4": 0,
+          "band5": 0,
+          "band6": 0,
+          "band7": 0,
+          "band8": 0
+        }
+      },
+      "useCase": "Master bus, subtle enhancement, analog warmth"
+    },
+    {
+      "name": "Telephone Effect",
+      "description": "Classic telephone/bandpass sound",
+      "chain": {
+        "eqStompbox": {
+          "enabled": true,
+          "lowFreq": 300,
+          "lowGain": -15,
+          "midFreq": 2500,
+          "midGain": 4,
+          "highFreq": 3500,
+          "highGain": -12
+        },
+        "distortion": {
+          "enabled": true,
+          "drive": 20,
+          "tone": 0,
+          "level": 85
+        },
+        "compressor": {
+          "enabled": true,
+          "threshold": -15,
+          "ratio": 6,
+          "attack": 2,
+          "release": 100,
+          "makeup": 5
+        },
+        "cabinet": 5,
+        "masterEQ": {
+          "band1": -12,
+          "band2": -8,
+          "band3": 0,
+          "band4": 3,
+          "band5": 5,
+          "band6": 2,
+          "band7": -4,
+          "band8": -10
+        }
+      },
+      "useCase": "Telephone vocals, radio effects, filtered sounds"
+    },
+    {
+      "name": "Slapback Delay",
+      "description": "Classic rockabilly slapback",
+      "chain": {
+        "delay": {
+          "enabled": true,
+          "time": 100,
+          "feedback": 8,
+          "mix": 35,
+          "level": 85
+        },
+        "cabinet": 2,
+        "masterEQ": {
+          "band1": 0,
+          "band2": 0,
+          "band3": 0,
+          "band4": 0,
+          "band5": 0,
+          "band6": 0,
+          "band7": 0,
+          "band8": 0
+        }
+      },
+      "useCase": "Rockabilly, country, vocal slapback, guitar ambience"
+    },
+    {
+      "name": "Room Ambience",
+      "description": "Short room reverb simulation",
+      "chain": {
+        "reverb": {
+          "enabled": true,
+          "size": 35,
+          "damp": 70,
+          "mix": 25,
+          "level": 80
+        },
+        "cabinet": 4,
+        "masterEQ": {
+          "band1": 0,
+          "band2": 0,
+          "band3": 0,
+          "band4": 0,
+          "band5": 0,
+          "band6": 0,
+          "band7": 0,
+          "band8": 0
+        }
+      },
+      "useCase": "Drum room sound, vocal space, subtle ambience"
+    }
+  ]
+}

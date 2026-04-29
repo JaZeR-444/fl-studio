@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLEX Research Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(124, 58, 237, 0.3); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(124, 58, 237, 0.5); }
+        
+        /* Tab Styles */
+        .tab-active {
+            background-color: rgba(124, 58, 237, 0.2);
+            color: #fff;
+            border-bottom: 2px solid #a78bfa;
+            box-shadow: 0 0 12px rgba(124, 58, 237, 0.2);
+        }
+        .tab-inactive {
+            color: #9ca3af;
+            border-bottom: 2px solid transparent;
+        }
+        .tab-inactive:hover {
+            color: #e5e7eb;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .hidden-content { display: none !important; }
+        .fade-in { animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Glassmorphism from globals.css */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+            transition: all 0.2s ease;
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(124, 58, 237, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .glass-sidebar {
+            background: rgba(10, 6, 18, 0.85);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-right: 1px solid rgba(139, 92, 246, 0.15);
+        }
+
+        .glass-topnav {
+            background: rgba(10, 6, 18, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.15);
+        }
+
+        .sidebar-label { transition: opacity 0.2s; }
+        
+        .bg-noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+
+        @keyframes textGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .animate-text-gradient {
+            background-size: 200% auto;
+            animation: textGradient 4s ease infinite;
+        }
+
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            mask-image: radial-gradient(circle at 50% 50%, black, transparent 80%);
+            -webkit-mask-image: radial-gradient(circle at 50% 50%, black, transparent 80%);
+            transform: perspective(1000px) rotateX(20deg) scale(1.5);
+            transform-origin: top center;
+            opacity: 0.5;
+        }
+
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        app: {
+                            bg: '#0a0612',
+                            secondary: '#0f0a1a',
+                            sidebar: '#1a0b2e', 
+                            header: '#1e1333',
+                            card: 'rgba(15, 10, 26, 0.6)',
+                            accent: '#7c3aed', // Purple 700
+                            accentLight: '#a78bfa', // Purple 400
+                            cyan: '#06b6d4',
+                            pill: '#4c4668',
+                            textMain: '#ffffff',
+                            textSec: '#c4b5fd',
+                            textMuted: '#8b7faa'
+                        }
+                    }
+                }
+            }
+        }
+
+        // Switch Tabs inside Study View
+        function switchTab(tabName) {
+            const tabs = ['learning', 'data', 'workflow', 'reference'];
+            const activeClasses = {
+                'learning': ['bg-app-cyan', 'text-black', 'shadow-[0_0_20px_rgba(6,182,212,0.4)]', 'scale-105', 'font-extrabold'],
+                'data': ['bg-app-accent', 'text-white', 'shadow-[0_0_20px_rgba(124,58,237,0.4)]', 'scale-105', 'font-extrabold'],
+                'workflow': ['bg-indigo-600', 'text-white', 'shadow-[0_0_20px_rgba(79,70,229,0.4)]', 'scale-105', 'font-extrabold'],
+                'reference': ['bg-violet-500', 'text-white', 'shadow-[0_0_20px_rgba(139,92,246,0.4)]', 'scale-105', 'font-extrabold']
+            };
+
+            tabs.forEach(t => {
+                const el = document.getElementById('section-' + t);
+                const btn = document.getElementById('btn-' + t);
+                
+                // Reset all
+                if (el) {
+                    el.classList.add('hidden-content');
+                    el.classList.remove('fade-in');
+                }
+                
+                if (btn) {
+                    // Reset to inactive pill state
+                    btn.classList.add('bg-white/5', 'text-app-textMuted', 'hover:bg-white/10', 'hover:text-white');
+                    // Remove all possible active classes
+                    Object.values(activeClasses).forEach(classes => {
+                        btn.classList.remove(...classes);
+                    });
+                }
+            });
+
+            const activeEl = document.getElementById('section-' + tabName);
+            const activeBtn = document.getElementById('btn-' + tabName);
+
+            if (activeEl && activeBtn) {
+                activeEl.classList.remove('hidden-content');
+                void activeEl.offsetWidth; // Trigger reflow
+                activeEl.classList.add('fade-in');
+                
+                // Apply active pill state
+                activeBtn.classList.remove('bg-white/5', 'text-app-textMuted', 'hover:bg-white/10', 'hover:text-white');
+                activeBtn.classList.add(...activeClasses[tabName]);
+            }
+        }
+
+        // Toggle Sidebar
+        function toggleSidebar() {
+            const sidebar = document.getElementById('app-sidebar');
+            const labels = document.querySelectorAll('.sidebar-label');
+            const isCollapsed = sidebar.classList.contains('w-16');
+            
+            if (isCollapsed) {
+                // Expand
+                sidebar.classList.remove('w-16');
+                sidebar.classList.add('w-64');
+                labels.forEach(l => l.classList.remove('hidden'));
+            } else {
+                // Collapse
+                sidebar.classList.remove('w-64');
+                sidebar.classList.add('w-16');
+                labels.forEach(l => l.classList.add('hidden'));
+            }
+        }
+
+        // Toggle Search
+        function toggleSearch() {
+            const input = document.getElementById('top-search-input');
+            const wrapper = document.getElementById('search-wrapper');
+            
+            if (input.classList.contains('w-0')) {
+                // Expand
+                input.classList.remove('w-0', 'opacity-0', 'px-0');
+                input.classList.add('w-64', 'opacity-100', 'pl-2', 'pr-4');
+                wrapper.classList.add('border', 'border-white/5', 'bg-[#2e2640]');
+                input.focus();
+            } else {
+                // Collapse
+                input.classList.remove('w-64', 'opacity-100', 'pl-2', 'pr-4');
+                input.classList.add('w-0', 'opacity-0', 'px-0');
+                wrapper.classList.remove('border', 'border-white/5', 'bg-[#2e2640]');
+            }
+        }
+    </script>
+</head>
+<body class="bg-app-bg text-app-textMain h-screen flex flex-col font-sans selection:bg-app-accent selection:text-white overflow-hidden relative">
+    
+    <!-- NOISE OVERLAY -->
+    <div class="bg-noise"></div>
+
+    <!-- BACKGROUND LAYERS -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <!-- Aurora Blobs -->
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-app-accent/20 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob"></div>
+        <div class="absolute top-0 right-1/4 w-96 h-96 bg-app-cyan/20 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-32 left-1/3 w-96 h-96 bg-pink-500/20 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob animation-delay-4000"></div>
+        
+        <!-- 3D Grid -->
+        <div class="absolute inset-0 bg-grid"></div>
+
+        <!-- Floating Particles -->
+        <div class="absolute top-1/4 left-1/4 w-1 h-1 bg-white rounded-full opacity-40 animate-blob animation-delay-2000"></div>
+        <div class="absolute top-3/4 right-1/3 w-1.5 h-1.5 bg-app-cyan rounded-full opacity-30 animate-blob"></div>
+        <div class="absolute bottom-1/4 left-2/3 w-1 h-1 bg-app-accent rounded-full opacity-40 animate-blob animation-delay-4000"></div>
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="w-full h-full flex flex-col relative z-10 bg-gradient-to-b from-app-bg/80 via-app-secondary/80 to-app-bg/80 backdrop-blur-[2px]">
+        
+        <!-- TOP NAVIGATION BAR -->
+        <div class="h-14 glass-topnav flex items-center justify-between px-4 shrink-0 z-30 select-none">
+            <!-- Left: Icon -->
+            <div class="flex items-center">
+                 <img src="FL-Studio-Master-Hub-ICON (500 x 500 px).png" alt="FL Studio" class="h-8 w-8 object-contain">
+            </div>
+            <!-- Center: Toggle Pill -->
+            <div class="flex items-center bg-white/5 rounded-full p-1 border border-white/5 backdrop-blur-md">
+                <button class="px-4 py-1.5 rounded-full text-xs font-bold text-white bg-app-accent shadow-lg shadow-purple-500/20 transition-all">Home</button>
+                <button class="px-4 py-1.5 rounded-full text-xs font-bold text-app-textMuted hover:text-white transition-all">Studio Hub</button>
+            </div>
+            <!-- Right: Search -->
+            <div class="flex items-center">
+                 <div id="search-wrapper" class="flex items-center rounded-lg transition-all duration-300">
+                    <button onclick="toggleSearch()" class="p-2 text-app-textMuted hover:text-white transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    </button>
+                    <input id="top-search-input" type="text" class="bg-transparent border-none text-app-textMain text-sm focus:outline-none w-0 opacity-0 transition-all duration-300 ease-in-out px-0 placeholder-white/20" placeholder="Search...">
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN APP BODY (Sidebar + Content) -->
+        <div class="flex flex-1 overflow-hidden relative">
+            
+            <!-- SIDEBAR -->
+            <div id="app-sidebar" class="w-64 glass-sidebar flex flex-col shrink-0 transition-all duration-300 ease-in-out z-20 pt-6 relative">
+                
+                <!-- Toggle Button (Absolute to save space or Top Right) -->
+                <button onclick="toggleSidebar()" class="absolute top-2 right-2 text-app-textMuted hover:text-white transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/></svg>
+                </button>
+
+                <!-- Menu Items -->
+                <div class="flex-1 overflow-y-auto space-y-1 py-2">
+                    
+                    <!-- BROWSE -->
+                    <div class="group flex items-center h-10 px-4 cursor-pointer text-app-textMuted hover:text-white transition-colors gap-3 hover:bg-white/5 border-l-2 border-transparent hover:border-app-accent">
+                        <svg class="w-5 h-5 shrink-0 transition-colors group-hover:text-app-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+                        <span class="text-xs font-bold tracking-wider sidebar-label flex-1">BROWSE</span>
+                        <svg class="w-4 h-4 opacity-50 group-hover:opacity-100 sidebar-label" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
+                    
+                    <!-- WORKFLOW -->
+                    <div class="group flex items-center h-10 px-4 cursor-pointer text-app-textMuted hover:text-white transition-colors gap-3 hover:bg-white/5 border-l-2 border-transparent hover:border-app-accent">
+                        <svg class="w-5 h-5 shrink-0 transition-colors group-hover:text-app-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+                        <span class="text-xs font-bold tracking-wider sidebar-label flex-1">WORKFLOW</span>
+                        <svg class="w-4 h-4 opacity-50 group-hover:opacity-100 sidebar-label" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
+
+                    <!-- PRODUCTION -->
+                    <div class="group flex items-center h-10 px-4 cursor-pointer text-app-textMuted hover:text-white transition-colors gap-3 hover:bg-white/5 border-l-2 border-transparent hover:border-app-accent">
+                        <svg class="w-5 h-5 shrink-0 transition-colors group-hover:text-app-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg>
+                        <span class="text-xs font-bold tracking-wider sidebar-label flex-1">PRODUCTION</span>
+                        <svg class="w-4 h-4 opacity-50 group-hover:opacity-100 sidebar-label" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
+
+                    <!-- TEMPLATES -->
+                    <div class="group flex items-center h-10 px-4 cursor-pointer text-app-textMuted hover:text-white transition-colors gap-3 hover:bg-white/5 border-l-2 border-transparent hover:border-app-accent">
+                        <svg class="w-5 h-5 shrink-0 transition-colors group-hover:text-app-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+                        <span class="text-xs font-bold tracking-wider sidebar-label flex-1">TEMPLATES</span>
+                        <svg class="w-4 h-4 opacity-50 group-hover:opacity-100 sidebar-label" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
+
+                    <!-- LEARNING -->
+                    <div class="group flex items-center h-10 px-4 cursor-pointer text-app-textMuted hover:text-white transition-colors gap-3 hover:bg-white/5 border-l-2 border-transparent hover:border-app-accent">
+                        <svg class="w-5 h-5 shrink-0 transition-colors group-hover:text-app-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                        <span class="text-xs font-bold tracking-wider sidebar-label flex-1">LEARNING</span>
+                        <svg class="w-4 h-4 opacity-50 group-hover:opacity-100 sidebar-label" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
+
+                    <!-- TOOLS -->
+                    <div class="group flex items-center h-10 px-4 cursor-pointer text-app-textMuted hover:text-white transition-colors gap-3 hover:bg-white/5 border-l-2 border-transparent hover:border-app-accent">
+                        <svg class="w-5 h-5 shrink-0 transition-colors group-hover:text-app-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        <span class="text-xs font-bold tracking-wider sidebar-label flex-1">TOOLS</span>
+                        <svg class="w-4 h-4 opacity-50 group-hover:opacity-100 sidebar-label" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
+
+                    <!-- SMART -->
+                    <div class="group flex items-center h-10 px-4 cursor-pointer text-app-textMuted hover:text-white transition-colors gap-3 hover:bg-white/5 border-l-2 border-transparent hover:border-app-accent">
+                        <svg class="w-5 h-5 shrink-0 transition-colors group-hover:text-app-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        <span class="text-xs font-bold tracking-wider sidebar-label flex-1">SMART</span>
+                        <svg class="w-4 h-4 opacity-50 group-hover:opacity-100 sidebar-label" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
+                </div>
+
+                <!-- Footer Section -->
+                <div class="mt-auto border-t border-white/5 p-4 flex flex-col gap-4">
+                    <div class="flex items-center gap-3">
+                        <img src="FL-Studio-Master-Hub-ICON (500 x 500 px).png" alt="Logo" class="w-8 h-8 object-contain shrink-0">
+                        <div class="sidebar-label">
+                            <h3 class="text-sm font-bold text-white leading-none whitespace-nowrap">FL Studio</h3>
+                            <p class="text-[10px] text-app-textMuted whitespace-nowrap">Producer Edition</p>
+                        </div>
+                    </div>
+                    <button class="w-full bg-white/5 hover:bg-app-accent/20 border border-white/5 rounded-lg py-2 flex items-center justify-center gap-2 text-app-textSec hover:text-white transition-all group overflow-hidden">
+                         <svg class="w-4 h-4 group-hover:rotate-90 transition-transform duration-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                         <span class="text-xs font-medium sidebar-label whitespace-nowrap">Settings</span>
+                    </button>
+                </div>
+            </div>
+
+        <!-- CONTENT CONTAINER (Scrollable) -->
+        <div class="flex-1 overflow-y-auto p-6 scroll-smooth flex flex-col gap-8">
+            
+            <!-- DASHBOARD SECTION (Header + Cards) -->
+            <div class="flex gap-4 h-[600px] shrink-0">
+                
+                <!-- LEFT COLUMN: Title + Info + Big Card A -->
+                <div class="w-[35%] flex flex-col gap-4 relative">
+                    
+                    <!-- Title & Tags -->
+                    <div class="px-2 flex flex-col items-center text-center relative z-10">
+                        <h1 class="text-[7rem] leading-none font-black text-transparent bg-clip-text bg-gradient-to-r from-app-cyan via-indigo-500 to-app-accent animate-text-gradient mb-2 tracking-tighter select-none filter drop-shadow-[0_0_30px_rgba(124,58,237,0.2)]">FLEX</h1>
+                        <p class="text-xs text-app-textMuted font-medium tracking-[0.2em] mb-6 uppercase opacity-60">Advanced Production Synthesizer</p>
+                        
+                        <div class="flex flex-wrap justify-center gap-3">
+                            <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-[10px] font-bold text-app-textSec tracking-widest backdrop-blur-md hover:bg-white/10 hover:border-app-accent/50 hover:shadow-[0_0_20px_rgba(124,58,237,0.4)] hover:text-white hover:scale-105 transition-all duration-300 cursor-default">SYNTHESIZER</span>
+                            <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-[10px] font-bold text-app-textSec tracking-widest backdrop-blur-md hover:bg-white/10 hover:border-app-cyan/50 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:text-white hover:scale-105 transition-all duration-300 cursor-default">HYBRID</span>
+                            <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-[10px] font-bold text-app-textSec tracking-widest backdrop-blur-md hover:bg-white/10 hover:border-pink-500/50 hover:shadow-[0_0_20px_rgba(236,72,153,0.4)] hover:text-white hover:scale-105 transition-all duration-300 cursor-default">PRESET-BASED</span>
+                        </div>
+                    </div>
+
+                    <!-- CARD A: Big Left (Concept) -->
+                    <div class="flex-1 glass-card p-6 flex flex-col relative group cursor-pointer hover:shadow-[0_0_40px_rgba(124,58,237,0.1)] transition-all duration-500">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h2 class="text-xl font-bold text-white mb-1">Concept & Best Uses</h2>
+                                <p class="text-xs text-app-textMuted">Subtractive/Wavetable Hybrid Engine</p>
+                            </div>
+                            <div class="w-8 h-8 rounded bg-gradient-to-br from-app-accent to-app-cyan flex items-center justify-center font-bold text-lg shadow-lg shadow-purple-500/30">A</div>
+                        </div>
+                        <div class="space-y-4 flex-1 overflow-y-auto">
+                            <div class="bg-white/5 rounded p-3 border-l-2 border-app-accent backdrop-blur-sm">
+                                <p class="text-sm text-app-textSec font-medium">"Instant polished sound with macro-based control."</p>
+                            </div>
+                            
+                            <!-- Visual Analysis -->
+                            <div>
+                                <h3 class="text-[10px] uppercase font-bold text-white tracking-wider mb-2">Visual Analysis</h3>
+                                <div class="flex gap-2">
+                                    <span class="text-[10px] bg-white/10 px-2 py-1 rounded text-app-textMuted">Oscilloscope</span>
+                                    <span class="text-[10px] bg-white/10 px-2 py-1 rounded text-app-textMuted">Spectrogram</span>
+                                    <span class="text-[10px] bg-white/10 px-2 py-1 rounded text-app-textMuted">Vectorscope</span>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <h3 class="text-[10px] uppercase font-bold text-app-cyan tracking-wider mb-2">Best For</h3>
+                                    <ul class="space-y-1.5">
+                                        <li class="flex items-center gap-2 text-xs text-app-textMuted"><div class="w-1.5 h-1.5 bg-green-400 rounded-full shadow-[0_0_8px_rgba(74,222,128,0.6)]"></div> Trap / Hip-Hop 808s</li>
+                                        <li class="flex items-center gap-2 text-xs text-app-textMuted"><div class="w-1.5 h-1.5 bg-green-400 rounded-full shadow-[0_0_8px_rgba(74,222,128,0.6)]"></div> Cinematic Scores</li>
+                                        <li class="flex items-center gap-2 text-xs text-app-textMuted"><div class="w-1.5 h-1.5 bg-green-400 rounded-full shadow-[0_0_8px_rgba(74,222,128,0.6)]"></div> Lo-Fi Keys & Pads</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3 class="text-[10px] uppercase font-bold text-red-400 tracking-wider mb-2">Avoid When</h3>
+                                    <ul class="space-y-1.5">
+                                        <li class="flex items-center gap-2 text-xs text-app-textMuted"><div class="w-1.5 h-1.5 bg-red-500 rounded-full shadow-[0_0_8px_rgba(239,68,68,0.6)]"></div> Deep Sound Design</li>
+                                        <li class="flex items-center gap-2 text-xs text-app-textMuted"><div class="w-1.5 h-1.5 bg-red-500 rounded-full shadow-[0_0_8px_rgba(239,68,68,0.6)]"></div> Sampling Import</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mt-auto pt-2 border-t border-white/10">
+                                <h3 class="text-[10px] uppercase font-bold text-app-textMuted tracking-wider mb-1 opacity-70">Alternatives</h3>
+                                <p class="text-xs text-app-textMuted">Sytrus (FM/RM), Harmor (Additive), DirectWave (Sampling)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN -->
+                <div class="w-[65%] flex flex-col gap-4">
+                    <!-- TOP ROW: Cards B & C -->
+                    <div class="flex gap-4 h-[200px] shrink-0">
+                        <!-- CARD B: Top Controls -->
+                        <div class="w-1/2 glass-card p-4 flex flex-col cursor-pointer hover:border-app-cyan/30 transition-colors">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-sm font-bold text-white">Top Controls</h3>
+                                <div class="text-[10px] bg-white/10 px-1.5 rounded text-app-textMuted">B</div>
+                            </div>
+                            <div class="space-y-2 flex-1 overflow-y-auto text-xs">
+                                <div class="flex justify-between border-b border-white/5 pb-1"><span class="text-app-cyan font-bold">Macros 1-8</span><span class="text-app-textMuted">Timbre, Space, Movement</span></div>
+                                <div class="flex justify-between border-b border-white/5 pb-1"><span class="text-app-textSec">Analysis</span><span class="text-app-textMuted">Visualizer, Logo, Meters</span></div>
+                                <div class="flex justify-between border-b border-white/5 pb-1"><span class="text-app-textSec">Master</span><span class="text-app-textMuted">Vol, Pitch, Polyphony</span></div>
+                                <div class="mt-1 text-[10px] text-app-textMuted"><strong>Pro Tip:</strong> Ctrl + Click to reset any slider.</div>
+                            </div>
+                        </div>
+                        <!-- CARD C: Routing Rules -->
+                        <div class="w-1/2 glass-card p-4 flex flex-col cursor-pointer hover:border-app-cyan/30 transition-colors">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-sm font-bold text-white">Routing Rules</h3>
+                                <div class="text-[10px] bg-white/10 px-1.5 rounded text-app-textMuted">C</div>
+                            </div>
+                            <ul class="text-xs space-y-2 text-app-textMuted list-disc list-inside">
+                                <li>Use <span class="text-white font-bold">Lock Icon</span> for efficient preset surfing.</li>
+                                <li><strong>Filter:</strong> Try "Acid Squelch" or "Anti-Fizz".</li>
+                                <li><strong>Limiter:</strong> "Warmth" for vintage, "Glue" for mix.</li>
+                                <li>Place early in FX chain for low CPU load.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- CARD D: Quick Start (Wide) -->
+                    <div class="flex-1 glass-card p-5 flex flex-col cursor-pointer hover:border-app-accent/30 transition-colors">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-sm font-bold text-app-accent">Quick Start Checklist</h3>
+                            <div class="text-[10px] bg-white/10 px-1.5 rounded text-app-textMuted">D</div>
+                        </div>
+                        <div class="flex flex-col gap-3 h-full justify-between">
+                            <div class="flex items-center gap-3 p-2 rounded hover:bg-white/5 transition-colors border border-transparent hover:border-white/5">
+                                <div class="w-8 h-8 rounded-full bg-app-accent text-white font-bold flex items-center justify-center text-sm shadow-lg shadow-purple-500/30 shrink-0">1</div>
+                                <div class="flex flex-col">
+                                    <span class="text-xs font-bold text-white uppercase tracking-wide">Load & Favorite</span>
+                                    <span class="text-[10px] text-app-textMuted">Use <strong>Tags</strong> and mark <strong>Favorites</strong> for instant recall.</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 p-2 rounded hover:bg-white/5 transition-colors border border-transparent hover:border-white/5">
+                                <div class="w-8 h-8 rounded-full bg-white/10 text-app-textSec font-bold flex items-center justify-center text-sm shrink-0">2</div>
+                                <div class="flex flex-col">
+                                    <span class="text-xs font-bold text-white uppercase tracking-wide">Visual Analysis</span>
+                                    <span class="text-[10px] text-app-textMuted">Check <strong>Oscilloscope</strong> to confirm transient shape.</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 p-2 rounded hover:bg-white/5 transition-colors border border-transparent hover:border-white/5">
+                                <div class="w-8 h-8 rounded-full bg-white/10 text-app-textSec font-bold flex items-center justify-center text-sm shrink-0">3</div>
+                                <div class="flex flex-col">
+                                    <span class="text-xs font-bold text-white uppercase tracking-wide">Intelligent Lock</span>
+                                    <span class="text-[10px] text-app-textMuted">Lock <strong>Master Filter</strong> to audition sounds in context.</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 p-2 rounded hover:bg-white/5 transition-colors border border-transparent hover:border-white/5">
+                                <div class="w-8 h-8 rounded-full bg-white/10 text-app-textSec font-bold flex items-center justify-center text-sm shrink-0">4</div>
+                                <div class="flex flex-col">
+                                    <span class="text-xs font-bold text-white uppercase tracking-wide">Dynamic Check</span>
+                                    <span class="text-[10px] text-app-textMuted">Bypass Limiter to ensure <strong>True Peak</strong> health.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STUDY MODULES SECTION -->
+            <div class="relative">
+            <!-- 2. STUDY MODULES HEADER -->
+            <div class="sticky top-0 bg-app-bg/60 backdrop-blur-md z-30 pt-8 mb-8 flex flex-col items-center justify-center gap-6 pb-2">
+                <div class="flex items-center gap-6 w-full justify-center opacity-80">
+                     <div class="h-px w-32 bg-gradient-to-r from-transparent to-app-textMuted"></div>
+                     <h3 class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-app-cyan via-indigo-500 to-app-accent animate-text-gradient uppercase tracking-[0.3em] filter drop-shadow-[0_0_30px_rgba(124,58,237,0.3)]">Study Modules</h3>
+                     <div class="h-px w-32 bg-gradient-to-l from-transparent to-app-textMuted"></div>
+                </div>
+                
+                <div class="flex gap-4 p-1 bg-white/5 rounded-full backdrop-blur-xl border border-white/5">
+                    <button id="btn-learning" onclick="switchTab('learning')" class="rounded-full px-6 py-2 text-xs font-extrabold transition-all duration-300 bg-app-cyan text-black shadow-[0_0_20px_rgba(6,182,212,0.4)] scale-105">Learning</button>
+                    <button id="btn-data" onclick="switchTab('data')" class="rounded-full px-6 py-2 text-xs font-bold transition-all duration-300 bg-white/5 text-app-textMuted hover:bg-white/10 hover:text-white">Data</button>
+                    <button id="btn-workflow" onclick="switchTab('workflow')" class="rounded-full px-6 py-2 text-xs font-bold transition-all duration-300 bg-white/5 text-app-textMuted hover:bg-white/10 hover:text-white">Workflow</button>
+                    <button id="btn-reference" onclick="switchTab('reference')" class="rounded-full px-6 py-2 text-xs font-bold transition-all duration-300 bg-white/5 text-app-textMuted hover:bg-white/10 hover:text-white">Reference</button>
+                </div>
+            </div>
+
+            <!-- 3. SECTION CONTENT -->
+            <div id="section-container" class="min-h-[500px]">
+                
+                <!-- LEARNING TAB -->
+                <div id="section-learning" class="flex flex-col gap-4 fade-in">
+                    <!-- Top Row: 3 Small -->
+                    <div class="grid grid-cols-3 gap-4 h-[280px]">
+                        <!-- Visual Analysis -->
+                        <div class="glass-card p-5 overflow-y-auto hover:border-app-cyan/40 transition-colors">
+                            <h3 class="text-xs font-bold text-app-cyan mb-3 flex items-center gap-2">Visual Analysis</h3>
+                            <ul class="text-[11px] text-app-textMuted space-y-2 list-none">
+                                <li class="bg-white/5 p-2 rounded border-l-2 border-app-cyan"><strong class="text-white block">Oscilloscope</strong>Check waveform shape/transients.</li>
+                                <li class="bg-white/5 p-2 rounded border-l-2 border-green-400"><strong class="text-white block">Vectorscope</strong>Check stereo width & phase.</li>
+                                <li class="bg-white/5 p-2 rounded border-l-2 border-pink-400"><strong class="text-white block">Spectrogram</strong>Check frequency balance.</li>
+                            </ul>
+                        </div>
+                        <!-- Master Effects -->
+                        <div class="glass-card p-5 overflow-y-auto hover:border-app-cyan/40 transition-colors">
+                            <h3 class="text-xs font-bold text-app-cyan mb-3 flex items-center gap-2">Master Effects Modes</h3>
+                            <table class="w-full text-[10px] text-left">
+                                <tr class="text-app-textMuted border-b border-white/10"><th class="pb-1">Type</th><th>Character</th><th>Use For</th></tr>
+                                <tr class="text-app-textMuted"><td class="py-1 text-white font-bold">Limiter</td><td>Warmth/Glue</td><td>Mastering</td></tr>
+                                <tr class="text-app-textMuted"><td class="py-1 text-white font-bold">Reverb</td><td>Plate/Hall</td><td>Space</td></tr>
+                                <tr class="text-app-textMuted"><td class="py-1 text-white font-bold">Delay</td><td>Tape/Digital</td><td>Rhythm</td></tr>
+                            </table>
+                            <div class="mt-2 text-[9px] text-app-textMuted italic">"Bypass limiter to hear true dynamics."</div>
+                        </div>
+                        <!-- Visual Diagrams -->
+                        <div class="glass-card p-5 overflow-y-auto hover:border-app-cyan/40 transition-colors">
+                            <h3 class="text-xs font-bold text-app-cyan mb-3 flex items-center gap-2">Visual Diagrams</h3>
+                            <div class="space-y-2">
+                                <div class="bg-black/20 p-2 rounded font-mono text-[9px] text-green-400 leading-tight">
+                                    |\ <br>
+                                    | \___ ADSR <br>
+                                    |     \
+                                </div>
+                                <ul class="text-[10px] text-app-textMuted space-y-1 list-disc list-inside">
+                                    <li>Signal Flow Map</li>
+                                    <li>Filter Response Curves</li>
+                                    <li>Envelope Shapes (A-H-D-S-R)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Bottom Row: 2 Wide -->
+                    <div class="grid grid-cols-2 gap-4 h-[320px] mt-4">
+                        <!-- One-Page Reference -->
+                        <div class="glass-card p-6 overflow-y-auto hover:border-app-cyan/40 transition-colors">
+                            <h3 class="text-sm font-bold text-white mb-4">One-Page Reference Summary</h3>
+                            <div class="grid grid-cols-2 gap-6 text-[11px]">
+                                <div>
+                                    <strong class="text-app-cyan block mb-1">Golden Rules</strong>
+                                    <ul class="list-disc list-inside text-app-textMuted space-y-1">
+                                        <li>Always check <strong>Master Limiter</strong> gain.</li>
+                                        <li>Use <strong>Lock</strong> when browsing.</li>
+                                        <li>Reset macros with <strong>Ctrl+Click</strong>.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <strong class="text-app-cyan block mb-1">Quick Fixes</strong>
+                                    <ul class="list-disc list-inside text-app-textMuted space-y-1">
+                                        <li><strong>Too Bright?</strong> Low Pass Filter.</li>
+                                        <li><strong>Muddy?</strong> High Pass / Eq.</li>
+                                        <li><strong>Weak?</strong> Increase Sustain.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Skill Paths -->
+                        <div class="glass-card p-6 flex flex-col hover:border-app-cyan/40 transition-colors">
+                            <h3 class="text-sm font-bold text-white mb-4">Skill Learning Paths</h3>
+                            <div class="flex gap-2 h-full items-center justify-center text-center">
+                                <div class="bg-white/5 p-4 rounded border border-white/10 w-1/3 hover:bg-white/10 transition-colors cursor-pointer group">
+                                    <span class="text-xs font-bold block text-green-400 group-hover:scale-105 transition-transform">Beginner</span>
+                                    <span class="text-[9px] text-app-textMuted">Presets & Macros</span>
+                                </div>
+                                <div class="text-app-textMuted">&rarr;</div>
+                                <div class="bg-white/5 p-4 rounded border border-white/10 w-1/3 hover:bg-white/10 transition-colors cursor-pointer group">
+                                    <span class="text-xs font-bold block text-app-cyan group-hover:scale-105 transition-transform">Intermediate</span>
+                                    <span class="text-[9px] text-app-textMuted">Sound Design</span>
+                                </div>
+                                <div class="text-app-textMuted">&rarr;</div>
+                                <div class="bg-white/5 p-4 rounded border border-white/10 w-1/3 hover:bg-white/10 transition-colors cursor-pointer group">
+                                    <span class="text-xs font-bold block text-purple-400 group-hover:scale-105 transition-transform">Advanced</span>
+                                    <span class="text-[9px] text-app-textMuted">Custom Data</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DATA TAB -->
+                <div id="section-data" class="flex flex-col gap-4 hidden-content">
+                    <!-- Top Row: 3 Small -->
+                    <div class="grid grid-cols-3 gap-4 h-[280px]">
+                        <!-- Parameter Map -->
+                        <div class="glass-card p-5 overflow-y-auto hover:border-app-accent/40 transition-colors">
+                            <h3 class="text-xs font-bold text-app-accent mb-3 flex items-center gap-2">Parameter Map (JSON)</h3>
+                            <ul class="text-[11px] space-y-2">
+                                <li class="text-app-textMuted"><strong class="text-white">Macros 1-8:</strong> Timbre, Space, Motion</li>
+                                <li class="text-app-textMuted"><strong class="text-white">Filter:</strong> Cutoff, Res, Env Amt</li>
+                                <li class="text-app-textMuted"><strong class="text-white">Master:</strong> Vol, Pitch, Velocity</li>
+                                <li class="text-app-textMuted"><strong class="text-white">Effects:</strong> Delay Mix, Reverb Size</li>
+                            </ul>
+                        </div>
+                        <!-- Genre Templates -->
+                        <div class="glass-card p-5 overflow-y-auto hover:border-app-accent/40 transition-colors">
+                            <h3 class="text-xs font-bold text-app-accent mb-3 flex items-center gap-2">Genre Templates</h3>
+                            <div class="flex flex-col gap-2">
+                                <div class="flex justify-between items-center bg-white/5 p-1.5 rounded"><span class="text-[10px] text-white font-bold">Trap</span><span class="text-[9px] text-app-textMuted">Hard Clipping</span></div>
+                                <div class="flex justify-between items-center bg-white/5 p-1.5 rounded"><span class="text-[10px] text-white font-bold">Lo-Fi</span><span class="text-[9px] text-app-textMuted">Wow/Flutter</span></div>
+                                <div class="flex justify-between items-center bg-white/5 p-1.5 rounded"><span class="text-[10px] text-white font-bold">Cinematic</span><span class="text-[9px] text-app-textMuted">Long Release</span></div>
+                            </div>
+                        </div>
+                        <!-- Envelope Shapes -->
+                        <div class="glass-card p-5 overflow-y-auto hover:border-app-accent/40 transition-colors">
+                            <h3 class="text-xs font-bold text-app-accent mb-3 flex items-center gap-2">Envelope Shapes</h3>
+                            <table class="w-full text-[10px] text-left">
+                                <tr class="text-app-textMuted border-b border-white/10"><th>Preset</th><th>A-D-S-R Profile</th></tr>
+                                <tr class="text-app-textMuted"><td class="font-bold text-white">Pluck</td><td>Short A, Short D, Low S</td></tr>
+                                <tr class="text-app-textMuted"><td class="font-bold text-white">Pad</td><td>Long A, Long R</td></tr>
+                                <tr class="text-app-textMuted"><td class="font-bold text-white">Bass</td><td>Fast A, High S, Mono</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Bottom Row: 2 Wide -->
+                    <div class="grid grid-cols-2 gap-4 h-[320px] mt-4">
+                        <!-- Limiter Dynamics -->
+                        <div class="glass-card p-6 overflow-y-auto hover:border-app-accent/40 transition-colors">
+                            <h3 class="text-sm font-bold text-white mb-4">Limiter Dynamics Recipes</h3>
+                            <div class="space-y-2">
+                                <div class="flex justify-between bg-white/5 p-2 rounded cursor-pointer hover:bg-white/10 transition-colors"><span class="text-xs text-white font-bold">Warmth</span><span class="text-[9px] text-app-accent border border-app-accent/30 px-2 rounded">Soft Knee Saturation</span></div>
+                                <div class="flex justify-between bg-white/5 p-2 rounded cursor-pointer hover:bg-white/10 transition-colors"><span class="text-xs text-white font-bold">Glue</span><span class="text-[9px] text-app-accent border border-app-accent/30 px-2 rounded">Transparent Compression</span></div>
+                                <div class="flex justify-between bg-white/5 p-2 rounded cursor-pointer hover:bg-white/10 transition-colors"><span class="text-xs text-white font-bold">Hard Drive</span><span class="text-[9px] text-app-accent border border-app-accent/30 px-2 rounded">Aggressive Limiting</span></div>
+                            </div>
+                        </div>
+                        <!-- Filter Curves -->
+                        <div class="glass-card p-6 flex flex-col hover:border-app-accent/40 transition-colors">
+                            <h3 class="text-sm font-bold text-white mb-4">Master Filter Curves</h3>
+                            <div class="space-y-2 flex-1 overflow-y-auto">
+                                <div class="bg-white/5 p-2 rounded"><strong class="text-xs text-white block">Acid Squelch</strong> <span class="text-[10px] text-app-textMuted">High Resonance + Envelope Mod</span></div>
+                                <div class="bg-white/5 p-2 rounded"><strong class="text-xs text-white block">Anti-Fizz</strong> <span class="text-[10px] text-app-textMuted">Low Pass @ 12kHz (Clean Top End)</span></div>
+                                <div class="bg-white/5 p-2 rounded"><strong class="text-xs text-white block">Sub Isolator</strong> <span class="text-[10px] text-app-textMuted">Steep Low Pass @ 150Hz</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WORKFLOW TAB -->
+                <div id="section-workflow" class="flex flex-col gap-4 hidden-content">
+                    <!-- Top Row: 3 Small -->
+                    <div class="grid grid-cols-3 gap-4 h-[280px]">
+                        <div class="glass-card p-5 overflow-y-auto hover:border-indigo-500/40 transition-colors">
+                            <h3 class="text-xs font-bold text-indigo-400 mb-3">Mixing 808s</h3>
+                            <ul class="text-[11px] text-app-textMuted space-y-2">
+                                <li class="bg-white/5 p-2 rounded"><strong>Mono Mode:</strong> Always on.</li>
+                                <li class="bg-white/5 p-2 rounded"><strong>Envelope:</strong> Box shape (High Sustain).</li>
+                                <li class="bg-white/5 p-2 rounded"><strong>Filter:</strong> Open, use distortion macro.</li>
+                            </ul>
+                        </div>
+                        <div class="glass-card p-5 overflow-y-auto hover:border-indigo-500/40 transition-colors">
+                            <h3 class="text-xs font-bold text-indigo-400 mb-3">Cinematic Strings</h3>
+                            <ul class="text-[11px] text-app-textMuted space-y-2">
+                                <li class="bg-white/5 p-2 rounded"><strong>Attack:</strong> Slow/Swell.</li>
+                                <li class="bg-white/5 p-2 rounded"><strong>Reverb:</strong> Hall/Large.</li>
+                                <li class="bg-white/5 p-2 rounded"><strong>Layering:</strong> Octaves (+12st).</li>
+                            </ul>
+                        </div>
+                        <div class="glass-card p-5 overflow-y-auto hover:border-indigo-500/40 transition-colors">
+                            <h3 class="text-xs font-bold text-indigo-400 mb-3">CPU Optimization</h3>
+                            <ul class="text-[10px] text-app-textMuted space-y-1">
+                                <li><strong>Polyphony:</strong> Reduce max voices.</li>
+                                <li><strong>Reverb:</strong> Disable if unused.</li>
+                                <li><strong>Unison:</strong> High CPU cost, use carefully.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Bottom Row: 2 Wide -->
+                    <div class="grid grid-cols-2 gap-4 h-[320px] mt-4">
+                        <div class="glass-card p-6 overflow-y-auto hover:border-indigo-500/40 transition-colors">
+                            <h3 class="text-sm font-bold text-white mb-4">Preset Surfing Workflow</h3>
+                            <ol class="list-decimal list-inside text-[11px] text-app-textMuted space-y-2">
+                                <li><strong>Lock</strong> Master Filter & Arp/Limiter.</li>
+                                <li>Select <strong>Tag</strong> (e.g., "Bass").</li>
+                                <li>Use <strong>Arrow Keys</strong> to browse rapidly.</li>
+                                <li><strong>Star/Favorite</strong> sounds immediately.</li>
+                                <li>Don't tweak yet—find the vibe first.</li>
+                            </ol>
+                        </div>
+                        <div class="glass-card p-6 overflow-y-auto hover:border-indigo-500/40 transition-colors">
+                            <h3 class="text-sm font-bold text-white mb-4">Extracting MIDI from Loops</h3>
+                            <div class="bg-white/5 p-3 rounded border border-white/5">
+                                <p class="text-[11px] text-app-textMuted mb-2">Did you know? Some loop presets have built-in scores.</p>
+                                <strong class="text-indigo-400 text-xs block mb-1">How to Extract:</strong>
+                                <ul class="list-disc list-inside text-[10px] text-app-textMuted">
+                                    <li>Right-click Piano Roll.</li>
+                                    <li>Select "Dump Score to Piano Roll".</li>
+                                    <li>Choose time alignment.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REFERENCE TAB -->
+                <div id="section-reference" class="flex flex-col gap-4 hidden-content">
+                    <!-- Top Row: 3 Small -->
+                    <div class="grid grid-cols-3 gap-4 h-[280px]">
+                        <div class="glass-card p-5 overflow-y-auto hover:border-green-500/40 transition-colors">
+                            <h3 class="text-xs font-bold text-green-400 mb-3">Shortcuts Index</h3>
+                            <div class="flex flex-col gap-2 text-[10px]">
+                                <div class="flex justify-between"><span class="text-white">Ctrl + Click</span><span class="text-app-textMuted">Reset Value</span></div>
+                                <div class="flex justify-between"><span class="text-white">Right Click</span><span class="text-app-textMuted">Context Menu</span></div>
+                                <div class="flex justify-between"><span class="text-white">Spacebar</span><span class="text-app-textMuted">Preview Sound</span></div>
+                            </div>
+                        </div>
+                        <div class="glass-card p-5 overflow-y-auto hover:border-green-500/40 transition-colors">
+                            <h3 class="text-xs font-bold text-green-400 mb-3">Synthesis Engine</h3>
+                            <ul class="text-[10px] text-app-textMuted space-y-1">
+                                <li><strong>Type:</strong> Subtractive + Wavetable Hybrid.</li>
+                                <li><strong>Precision:</strong> 32-bit Float Internal.</li>
+                                <li><strong>Oversampling:</strong> 2x on Render.</li>
+                                <li><strong>Latency:</strong> 0ms (Instant).</li>
+                            </ul>
+                        </div>
+                        <div class="glass-card p-5 overflow-y-auto hover:border-green-500/40 transition-colors">
+                            <h3 class="text-xs font-bold text-green-400 mb-3">External Links</h3>
+                            <ul class="text-[10px] text-app-textMuted space-y-2 underline">
+                                <li class="cursor-pointer hover:text-white">Official Image-Line Manual</li>
+                                <li class="cursor-pointer hover:text-white">FL Studio User Forum</li>
+                                <li class="cursor-pointer hover:text-white">Download More Packs</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Bottom Row: 2 Wide -->
+                    <div class="grid grid-cols-2 gap-4 h-[320px] mt-4">
+                        <div class="glass-card p-6 overflow-y-auto hover:border-green-500/40 transition-colors">
+                            <h3 class="text-sm font-bold text-white mb-4">Troubleshooting Decision Tree</h3>
+                            <div class="space-y-2 flex-1 overflow-y-auto">
+                                <div class="bg-white/5 p-2 rounded text-[10px]"><strong class="text-red-400">Problem:</strong> Sound Cuts Out? <br> <span class="text-app-textMuted">→ Check Max Polyphony or Demo Mode.</span></div>
+                                <div class="bg-white/5 p-2 rounded text-[10px]"><strong class="text-red-400">Problem:</strong> Note Hangs? <br> <span class="text-app-textMuted">→ Check Sustain Pedal or Press Stop.</span></div>
+                                <div class="bg-white/5 p-2 rounded text-[10px]"><strong class="text-red-400">Problem:</strong> Too Quiet? <br> <span class="text-app-textMuted">→ Check Master Vol or Filter Cutoff.</span></div>
+                            </div>
+                        </div>
+                        <div class="glass-card p-6 overflow-y-auto hover:border-green-500/40 transition-colors">
+                            <h3 class="text-sm font-bold text-white mb-4">Tag Index</h3>
+                            <p class="text-[11px] text-app-textMuted mb-2">Use these tags to find resources:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-white/5 rounded text-[10px] text-green-300">#sound-design</span>
+                                <span class="px-2 py-1 bg-white/5 rounded text-[10px] text-green-300">#mixing</span>
+                                <span class="px-2 py-1 bg-white/5 rounded text-[10px] text-green-300">#808</span>
+                                <span class="px-2 py-1 bg-white/5 rounded text-[10px] text-green-300">#cinematic</span>
+                                <span class="px-2 py-1 bg-white/5 rounded text-[10px] text-green-300">#trap</span>
+                                <span class="px-2 py-1 bg-white/5 rounded text-[10px] text-green-300">#optimization</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+                        <div class="glass-card p-5 overflow-y-auto hover:border-app-accent/40 transition-colors">
+                            <h3 class="text-xs font-bold text-app-accent mb-3">Fast Fixes</h3>
+                            <ul class="text-[10px] text-app-textMuted space-y-1">
+                                <li><strong>Too Bright:</strong> Low Pass + Res down.</li>
+                                <li><strong>Too Muddy:</strong> High Pass + Unison down.</li>
+                                <li><strong>Too Dry:</strong> Unlock Reverb + Wet up.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Bottom Row: 2 Wide -->
+                    <div class="grid grid-cols-2 gap-4 h-[320px] mt-4">
+                        <div class="glass-card p-6 overflow-y-auto hover:border-app-accent/40 transition-colors">
+                            <h3 class="text-sm font-bold text-white mb-4">Primary Workflow</h3>
+                            <ol class="list-decimal list-inside text-[11px] text-app-textMuted space-y-2">
+                                <li>Lock Master Filter & Arp.</li>
+                                <li>Browse packs using arrow keys.</li>
+                                <li>A/B against reference track.</li>
+                                <li>Commit to audio.</li>
+                                <li>Save as favorite.</li>
+                            </ol>
+                        </div>
+                        <div class="glass-card p-6 overflow-y-auto hover:border-app-accent/40 transition-colors">
+                            <h3 class="text-sm font-bold text-white mb-4">Secondary Workflows</h3>
+                            <div class="space-y-2">
+                                <div class="bg-white/5 p-2 rounded text-[11px] text-app-textMuted hover:bg-white/10 transition-colors"><strong>Automation Build:</strong> Link Macros 1-4 to Controller.</div>
+                                <div class="bg-white/5 p-2 rounded text-[11px] text-app-textMuted hover:bg-white/10 transition-colors"><strong>Layering Stack:</strong> Clone instance, pitch +12st.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REFERENCE TAB -->
+                <div id="section-reference" class="flex flex-col gap-4 hidden-content">
+                    <!-- Top Row: 3 Small -->
+                    <div class="grid grid-cols-3 gap-4 h-[280px]">
+                        <div class="glass-card p-5 overflow-y-auto hover:border-app-accent/40 transition-colors">
+                            <h3 class="text-xs font-bold text-green-400 mb-3">Navigation Index</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-[10px] bg-white/5 px-2 py-1 rounded text-app-textMuted cursor-pointer hover:bg-white/10 hover:text-white transition-colors">Shortcuts</span>
+                                <span class="text-[10px] bg-white/5 px-2 py-1 rounded text-app-textMuted cursor-pointer hover:bg-white/10 hover:text-white transition-colors">Packs</span>
+                                <span class="text-[10px] bg-white/5 px-2 py-1 rounded text-app-textMuted cursor-pointer hover:bg-white/10 hover:text-white transition-colors">Settings</span>
+                            </div>
+                        </div>
+                        <div class="glass-card p-5 overflow-y-auto hover:border-app-accent/40 transition-colors">
+                            <h3 class="text-xs font-bold text-green-400 mb-3">Maintenance Notes</h3>
+                            <ul class="text-[10px] text-app-textMuted space-y-1">
+                                <li>v2.1: New Arp modes.</li>
+                                <li>v2.0: Reduced CPU usage.</li>
+                            </ul>
+                        </div>
+                        <div class="glass-card p-5 overflow-y-auto hover:border-app-accent/40 transition-colors">
+                            <h3 class="text-xs font-bold text-green-400 mb-3">Quick Reference</h3>
+                            <ul class="text-[10px] text-app-textMuted space-y-1 underline">
+                                <li class="cursor-pointer hover:text-white">Official Image-Line Manual</li>
+                                <li class="cursor-pointer hover:text-white">User Forum FAQ</li>
+                                <li class="cursor-pointer hover:text-white">Download Packs</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Bottom Row: 2 Wide -->
+                    <div class="grid grid-cols-2 gap-4 h-[320px] mt-4">
+                        <div class="glass-card p-6 overflow-y-auto hover:border-app-accent/40 transition-colors">
+                            <h3 class="text-sm font-bold text-white mb-4">Deep Technical Doc</h3>
+                            <p class="text-[11px] text-app-textMuted">Engine: Subtractive + Wavetable hybrid. Internal precision: 32-bit float. Oversampling: 2x on render. Latency: 0ms.</p>
+                        </div>
+                        <div class="glass-card p-6 overflow-y-auto hover:border-app-accent/40 transition-colors">
+                            <h3 class="text-sm font-bold text-white mb-4">Appendix / Extended Index</h3>
+                            <input type="text" placeholder="Filter..." class="w-full bg-white/5 border border-white/10 rounded px-2 py-1 text-xs text-app-textMain mb-2 focus:outline-none focus:border-app-accent">
+                            <ul class="text-[10px] text-app-textMuted space-y-1">
+                                <li class="cursor-pointer hover:text-white">A... Arpeggiator</li>
+                                <li class="cursor-pointer hover:text-white">B... Browser</li>
+                                <li class="cursor-pointer hover:text-white">C... Compressor</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+
+
+        </div> <!-- End Content Container -->
+    </div> <!-- End Main Body Flex -->
+    </div> <!-- End Main Container -->
+
+</body>
+</html>

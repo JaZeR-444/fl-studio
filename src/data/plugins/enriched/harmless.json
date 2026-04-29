@@ -1,0 +1,1781 @@
+{
+  "id": "harmless",
+  "name": "Harmless",
+  "category": "Synthesizer",
+  "tier": "Premium",
+  "type": "Synthesizer",
+  "description": "Harmless - Synthesizer",
+  "tags": [
+    "synth",
+    "sound-design"
+  ],
+  "capabilities": [
+    "synthesis",
+    "midi",
+    "polyphonic"
+  ],
+  "icon": "/plugins/harmless-icon.svg",
+  "color": "#8B5CF6",
+  "version": "1.0",
+  "data_dir": "plugins\\harmless",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "all-parameters": {
+      "metadata": {
+        "plugin": "Harmless",
+        "version": "1.x",
+        "lastUpdated": "2026-02-03",
+        "schema": "parameter-v1"
+      },
+      "parameters": [
+        {
+          "id": "harmonicMask",
+          "name": "Harmonic Mask",
+          "category": "oscillator",
+          "type": "custom",
+          "range": {
+            "min": 0,
+            "max": 512,
+            "bars": 512
+          },
+          "default": "sawtooth",
+          "description": "Visual editor for 512 harmonic amplitudes. Draw custom oscillator shapes by adjusting individual harmonic levels.",
+          "hipHopRelevance": "Core sound design - determines fundamental timbre",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "subOscillator",
+          "name": "Sub Oscillator",
+          "category": "oscillator",
+          "type": "continuous",
+          "range": {
+            "min": -12,
+            "max": 0,
+            "unit": "semitones"
+          },
+          "default": -12,
+          "description": "Adds octave(s) below fundamental for bass reinforcement",
+          "hipHopRelevance": "Essential for 808-style sub bass",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "subLevel",
+          "name": "Sub Level",
+          "category": "oscillator",
+          "type": "continuous",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "default": 0,
+          "description": "Mix level of sub oscillator",
+          "hipHopRelevance": "Controls sub bass weight",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "noise",
+          "name": "Noise",
+          "category": "oscillator",
+          "type": "continuous",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "default": 0,
+          "description": "White noise added to oscillator",
+          "hipHopRelevance": "Percussive attacks, texture, atmosphere",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "color",
+          "name": "Color",
+          "category": "oscillator",
+          "type": "bipolar",
+          "range": {
+            "min": -100,
+            "max": 100,
+            "unit": "percent"
+          },
+          "default": 0,
+          "description": "Pre-filter brightness/darkness adjustment",
+          "hipHopRelevance": "Quick tone shaping without filter",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "filterCutoff",
+          "name": "Filter Cutoff",
+          "category": "filter",
+          "type": "continuous",
+          "range": {
+            "min": 20,
+            "max": 20000,
+            "unit": "Hz"
+          },
+          "default": 20000,
+          "description": "Frequency above which harmonics are attenuated",
+          "hipHopRelevance": "Primary tone control - can go extreme without artifacts",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "filterResonance",
+          "name": "Filter Resonance",
+          "category": "filter",
+          "type": "continuous",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "default": 0,
+          "description": "Boost at cutoff frequency",
+          "hipHopRelevance": "Character and emphasis - safe at high values in additive engine",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "filterSlope",
+          "name": "Filter Slope",
+          "category": "filter",
+          "type": "discrete",
+          "range": {
+            "options": [
+              "12dB",
+              "24dB",
+              "36dB",
+              "48dB"
+            ],
+            "unit": "dB/octave"
+          },
+          "default": "24dB",
+          "description": "Steepness of filter cutoff curve",
+          "hipHopRelevance": "24dB default, 48dB for extreme effects",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "filterDrive",
+          "name": "Filter Drive",
+          "category": "filter",
+          "type": "continuous",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "default": 0,
+          "description": "Saturation/distortion at filter stage",
+          "hipHopRelevance": "Adds analog-style warmth and grit",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "pluckAmount",
+          "name": "Pluck Amount",
+          "category": "filter",
+          "type": "continuous",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "default": 0,
+          "description": "String decay simulation - mathematical high-frequency energy loss",
+          "hipHopRelevance": "Essential for realistic pluck sounds, hip-hop bells",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "ampAttack",
+          "name": "Amp Attack",
+          "category": "envelope",
+          "type": "continuous",
+          "range": {
+            "min": 0,
+            "max": 10,
+            "unit": "seconds"
+          },
+          "default": 0.001,
+          "description": "Time to reach full amplitude",
+          "hipHopRelevance": "0ms for plucks, 200ms+ for pads",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "ampDecay",
+          "name": "Amp Decay",
+          "category": "envelope",
+          "type": "continuous",
+          "range": {
+            "min": 0,
+            "max": 10,
+            "unit": "seconds"
+          },
+          "default": 0,
+          "description": "Time to fall from attack peak to sustain level",
+          "hipHopRelevance": "Body and character of the sound",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "ampSustain",
+          "name": "Amp Sustain",
+          "category": "envelope",
+          "type": "continuous",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "default": 100,
+          "description": "Level held while key is pressed",
+          "hipHopRelevance": "0% for plucks, 80%+ for sustained sounds",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "ampRelease",
+          "name": "Amp Release",
+          "category": "envelope",
+          "type": "continuous",
+          "range": {
+            "min": 0,
+            "max": 10,
+            "unit": "seconds"
+          },
+          "default": 0.1,
+          "description": "Time to fade to silence after key release",
+          "hipHopRelevance": "Long for atmospheric tails, short for tight mixes",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "filterEnvAttack",
+          "name": "Filter Env Attack",
+          "category": "envelope",
+          "type": "continuous",
+          "range": {
+            "min": 0,
+            "max": 10,
+            "unit": "seconds"
+          },
+          "default": 0.001,
+          "description": "Filter envelope attack time",
+          "hipHopRelevance": "Controls filter sweep attack",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "filterEnvAmount",
+          "name": "Filter Env Amount",
+          "category": "envelope",
+          "type": "bipolar",
+          "range": {
+            "min": -100,
+            "max": 100,
+            "unit": "percent"
+          },
+          "default": 0,
+          "description": "How much filter envelope affects cutoff",
+          "hipHopRelevance": "Positive for sweep up, negative for inverted behavior",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "phaserRate",
+          "name": "Phaser Rate",
+          "category": "fx",
+          "type": "continuous",
+          "range": {
+            "min": 0,
+            "max": 50,
+            "unit": "Hz"
+          },
+          "default": 0,
+          "description": "Speed of phaser modulation",
+          "hipHopRelevance": "Low for texture, 20+ Hz for pitch effects",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "phaserDepth",
+          "name": "Phaser Depth",
+          "category": "fx",
+          "type": "continuous",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "default": 50,
+          "description": "How far harmonics shift in frequency",
+          "hipHopRelevance": "High for alien effects, low for width",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "phaserFeedback",
+          "name": "Phaser Feedback",
+          "category": "fx",
+          "type": "continuous",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "default": 0,
+          "description": "Output fed back to input for resonance",
+          "hipHopRelevance": "60-80% for classic phaser peaks",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "unisonVoices",
+          "name": "Unison Voices",
+          "category": "unison",
+          "type": "discrete",
+          "range": {
+            "min": 1,
+            "max": 9,
+            "unit": "voices"
+          },
+          "default": 1,
+          "description": "Number of stacked oscillators",
+          "hipHopRelevance": "3-4 for width, 7-9 for supersaw effect",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "unisonDetune",
+          "name": "Unison Detune",
+          "category": "unison",
+          "type": "continuous",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "default": 20,
+          "description": "Spread between unison voices",
+          "hipHopRelevance": "20-40% for tight, 60%+ for wide",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "unisonStereo",
+          "name": "Unison Stereo",
+          "category": "unison",
+          "type": "continuous",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "default": 50,
+          "description": "Width of stereo spread for unison voices",
+          "hipHopRelevance": "100% for maximum width",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "unisonBlend",
+          "name": "Unison Blend",
+          "category": "unison",
+          "type": "continuous",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "default": 100,
+          "description": "Mix of unison voices with dry signal",
+          "hipHopRelevance": "Reduce to prevent volume buildup",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "maximusMix",
+          "name": "Maximus Mix",
+          "category": "fx",
+          "type": "continuous",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "default": 0,
+          "description": "Amount of multiband compression",
+          "hipHopRelevance": "Add punch and glue to sounds",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "reverbMix",
+          "name": "Reverb Mix",
+          "category": "fx",
+          "type": "continuous",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "default": 0,
+          "description": "Wet/dry balance of reverb effect",
+          "hipHopRelevance": "Atmosphere and space",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "delayMix",
+          "name": "Delay Mix",
+          "category": "fx",
+          "type": "continuous",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "default": 0,
+          "description": "Wet/dry balance of delay effect",
+          "hipHopRelevance": "Rhythmic echoes and bounce",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "chorusMix",
+          "name": "Chorus Mix",
+          "category": "fx",
+          "type": "continuous",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "default": 0,
+          "description": "Wet/dry balance of chorus effect",
+          "hipHopRelevance": "Analog-style width",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "crushAmount",
+          "name": "Crush Amount",
+          "category": "fx",
+          "type": "continuous",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "default": 0,
+          "description": "Bit depth and sample rate reduction",
+          "hipHopRelevance": "Lo-fi texture and grit",
+          "src": "IL-MAN"
+        },
+        {
+          "id": "distortionAmount",
+          "name": "Distortion Amount",
+          "category": "fx",
+          "type": "continuous",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "percent"
+          },
+          "default": 0,
+          "description": "Waveshaping distortion amount",
+          "hipHopRelevance": "Saturation and edge",
+          "src": "IL-MAN"
+        }
+      ]
+    },
+    "parameter-groups": {
+      "metadata": {
+        "plugin": "Harmless",
+        "context": "hip-hop-production",
+        "lastUpdated": "2026-02-03"
+      },
+      "groups": [
+        {
+          "id": "oscillator-core",
+          "name": "Oscillator Core",
+          "priority": "critical",
+          "parameters": [
+            "harmonicMask",
+            "subOscillator",
+            "subLevel",
+            "noise",
+            "color"
+          ],
+          "description": "Foundation of all sound - determines timbre before filtering",
+          "hipHopTip": "Start with sawtooth mask for leads, sine+fundamental for sub bass"
+        },
+        {
+          "id": "filter-character",
+          "name": "Filter Character",
+          "priority": "critical",
+          "parameters": [
+            "filterCutoff",
+            "filterResonance",
+            "filterSlope",
+            "filterDrive",
+            "pluckAmount"
+          ],
+          "description": "Shaping and sculpting the sound - unique in additive engine",
+          "hipHopTip": "Use high resonance without fear - no phase artifacts in Harmless"
+        },
+        {
+          "id": "envelope-shaping",
+          "name": "Envelope Shaping",
+          "priority": "high",
+          "parameters": [
+            "ampAttack",
+            "ampDecay",
+            "ampSustain",
+            "ampRelease",
+            "filterEnvAttack",
+            "filterEnvAmount"
+          ],
+          "description": "Temporal control - attack, body, sustain, and release behavior",
+          "hipHopTip": "Plucks: 0ms attack, 0% sustain. Pads: 200ms+ attack, 80% sustain"
+        },
+        {
+          "id": "movement-fx",
+          "name": "Movement & FX",
+          "priority": "medium",
+          "parameters": [
+            "phaserRate",
+            "phaserDepth",
+            "phaserFeedback"
+          ],
+          "description": "Modulation effects - unique frequency-based phaser",
+          "hipHopTip": "20+ Hz phaser rate creates alien pitch effects on high notes"
+        },
+        {
+          "id": "width-power",
+          "name": "Width & Power",
+          "priority": "medium",
+          "parameters": [
+            "unisonVoices",
+            "unisonDetune",
+            "unisonStereo",
+            "unisonBlend"
+          ],
+          "description": "Stereo width and thickness through voice stacking",
+          "hipHopTip": "3-4 voices for tight bass, 7+ for supersaw leads"
+        },
+        {
+          "id": "polish-chain",
+          "name": "Polish Chain",
+          "priority": "low",
+          "parameters": [
+            "maximusMix",
+            "reverbMix",
+            "delayMix",
+            "chorusMix",
+            "crushAmount",
+            "distortionAmount"
+          ],
+          "description": "Final processing - compression, space, texture",
+          "hipHopTip": "Maximus adds punch, Crush adds lo-fi character"
+        }
+      ]
+    }
+  },
+  "presets": {
+    "custom-hip-hop-collection": {
+      "metadata": {
+        "plugin": "Harmless",
+        "presetType": "custom",
+        "collectionName": "hip-hop-essentials",
+        "lastUpdated": "2026-02-03"
+      },
+      "presets": [
+        {
+          "name": "Metro 808 Bass",
+          "category": "bass",
+          "description": "Hard-hitting sub with slight edge",
+          "mask": "Fundamental-focused with H2-H4 at 30%",
+          "parameters": {
+            "subOscillator": -12,
+            "subLevel": 50,
+            "filterCutoff": 200,
+            "filterSlope": "12dB",
+            "ampAttack": 0.005,
+            "ampSustain": 100,
+            "ampRelease": 0.2
+          },
+          "unison": {
+            "voices": 1,
+            "note": "Keep unison off for tight bass"
+          },
+          "effects": {
+            "maximusMix": 40,
+            "distortionAmount": 15
+          },
+          "usage": "Foundation bass under 808 kicks"
+        },
+        {
+          "name": "Trap Screech",
+          "category": "lead",
+          "description": "Bright screaming lead for drops",
+          "mask": "Sawtooth with H8-H16 boosted to 100%",
+          "parameters": {
+            "filterCutoff": 4000,
+            "filterResonance": 40,
+            "filterSlope": "24dB",
+            "ampAttack": 0.002,
+            "ampDecay": 0.3,
+            "ampSustain": 60,
+            "ampRelease": 0.2
+          },
+          "unison": {
+            "voices": 4,
+            "detune": 30,
+            "stereo": 80,
+            "blend": 80
+          },
+          "effects": {
+            "reverbMix": 25,
+            "maximusMix": 30
+          },
+          "usage": "High-energy trap melodies, 808 Mafia style"
+        },
+        {
+          "name": "Drake Bell Pluck",
+          "category": "pluck",
+          "description": "Hollow, melancholic pluck",
+          "mask": "Sparse - H1 at 100%, H2 at 30%, H3-H6 at 10-15%, rest minimal",
+          "parameters": {
+            "filterCutoff": 8000,
+            "filterResonance": 20,
+            "pluckAmount": 60,
+            "ampAttack": 0.001,
+            "ampDecay": 0.4,
+            "ampSustain": 0,
+            "ampRelease": 0.5
+          },
+          "unison": {
+            "voices": 2,
+            "detune": 15,
+            "stereo": 40
+          },
+          "effects": {
+            "reverbMix": 35,
+            "delayMix": 20
+          },
+          "usage": "Emotional counter-melodies, high register"
+        },
+        {
+          "name": "RNB Warm Pad",
+          "category": "pad",
+          "description": "Smooth chord bed for R&B",
+          "mask": "Rounded square - odd harmonics with gentle slope",
+          "parameters": {
+            "filterCutoff": 3000,
+            "filterSlope": "12dB",
+            "filterResonance": 25,
+            "ampAttack": 0.5,
+            "ampSustain": 85,
+            "ampRelease": 1.5
+          },
+          "unison": {
+            "voices": 6,
+            "detune": 25,
+            "stereo": 100,
+            "blend": 70
+          },
+          "phaser": {
+            "rate": 0.3,
+            "depth": 80,
+            "feedback": 30
+          },
+          "effects": {
+            "reverbMix": 45,
+            "chorusMix": 30
+          },
+          "usage": "Backing chords, atmospheric bed"
+        },
+        {
+          "name": "Future Alien",
+          "category": "lead",
+          "description": "Weird pitch-shifting sci-fi sound",
+          "mask": "Inharmonic clusters at H1, H3, H6, H11, H18",
+          "parameters": {
+            "filterCutoff": 6000,
+            "filterSlope": "24dB",
+            "ampAttack": 0.01,
+            "ampSustain": 80,
+            "ampRelease": 0.4
+          },
+          "phaser": {
+            "rate": 30,
+            "depth": 75,
+            "feedback": 50,
+            "note": "High rate creates pitch artifacts"
+          },
+          "unison": {
+            "voices": 3,
+            "detune": 40,
+            "stereo": 70
+          },
+          "effects": {
+            "reverbMix": 50,
+            "delayMix": 35
+          },
+          "usage": "Experimental sections, Travis Scott vibes"
+        },
+        {
+          "name": "Chiptune Square",
+          "category": "lead",
+          "description": "Pure retro game sound",
+          "mask": "Perfect square - odd harmonics only, steep decay 1/n",
+          "parameters": {
+            "filterCutoff": 8000,
+            "filterSlope": "48dB",
+            "ampAttack": 0.001,
+            "ampDecay": 0.1,
+            "ampSustain": 70,
+            "ampRelease": 0.1
+          },
+          "unison": {
+            "voices": 1,
+            "note": "Keep pure single voice"
+          },
+          "effects": {
+            "crushAmount": 40
+          },
+          "usage": "Retro vibes, 8-bit aesthetics"
+        },
+        {
+          "name": "Vocal Formant",
+          "category": "lead",
+          "description": "Voice-like lead synth",
+          "mask": "Formant regions: H4-H7 boosted to 100%, H9-H13 at 90%, rest 20-40%",
+          "parameters": {
+            "filterCutoff": 5000,
+            "filterResonance": 45,
+            "filterSlope": "24dB",
+            "filterDrive": 25,
+            "ampAttack": 0.05,
+            "ampSustain": 90,
+            "ampRelease": 0.3
+          },
+          "unison": {
+            "voices": 2,
+            "detune": 20,
+            "stereo": 50
+          },
+          "effects": {
+            "chorusMix": 40,
+            "reverbMix": 30
+          },
+          "usage": "Vocal synth lines, formant leads"
+        },
+        {
+          "name": "Atmospheric Texture",
+          "category": "fx",
+          "description": "Evolving background layer",
+          "mask": "Random sparse harmonics with peaks at H1-H4, then scattered",
+          "parameters": {
+            "noise": 30,
+            "filterCutoff": 2000,
+            "filterSlope": "12dB",
+            "ampAttack": 1,
+            "ampSustain": 70,
+            "ampRelease": 3
+          },
+          "phaser": {
+            "rate": 0.2,
+            "depth": 90,
+            "feedback": 40
+          },
+          "effects": {
+            "reverbMix": 80,
+            "reverbSize": "large",
+            "crushAmount": 20
+          },
+          "usage": "Background ambience, transitions"
+        }
+      ]
+    },
+    "factory-presets-index": {
+      "metadata": {
+        "plugin": "Harmless",
+        "presetType": "factory",
+        "lastUpdated": "2026-02-03"
+      },
+      "categories": [
+        {
+          "name": "Bass",
+          "presets": [
+            {
+              "name": "Sub Bass",
+              "description": "Pure low-end foundation",
+              "character": "Deep, focused, no harmonics",
+              "hipHopUse": "Under 808s, pure sub frequencies"
+            },
+            {
+              "name": "Reese Bass",
+              "description": "Wide detuned bass",
+              "character": "Massive, moving, aggressive",
+              "hipHopUse": "Drum and bass influences, energetic drops"
+            },
+            {
+              "name": "Pluck Bass",
+              "description": "Short decay bass",
+              "character": "Tight, rhythmic, punchy",
+              "hipHopUse": "UK garage, rhythmic patterns"
+            },
+            {
+              "name": "FM Bass",
+              "description": "Frequency modulated character",
+              "character": "Gritty, textured, modern",
+              "hipHopUse": "Contemporary trap bass"
+            }
+          ]
+        },
+        {
+          "name": "Leads",
+          "presets": [
+            {
+              "name": "Screech Lead",
+              "description": "High-energy scream",
+              "character": "Bright, sharp, aggressive",
+              "hipHopUse": "Trap drops, high-energy sections"
+            },
+            {
+              "name": "Saw Lead",
+              "description": "Classic sawtooth",
+              "character": "Full spectrum, versatile",
+              "hipHopUse": "All-purpose lead, melodies"
+            },
+            {
+              "name": "Bell Lead",
+              "description": "Bell-like pluck",
+              "character": "Bright, plucky, hollow",
+              "hipHopUse": "Counter-melodies, high hooks"
+            },
+            {
+              "name": "Alien Lead",
+              "description": "Weird and otherworldly",
+              "character": "Strange, modulated, sci-fi",
+              "hipHopUse": "Future beats, experimental sections"
+            }
+          ]
+        },
+        {
+          "name": "Pads",
+          "presets": [
+            {
+              "name": "Warm Pad",
+              "description": "Soft sustained chords",
+              "character": "Mellow, evolving, warm",
+              "hipHopUse": "Chord beds, atmosphere"
+            },
+            {
+              "name": "Ambient Pad",
+              "description": "Spacious and airy",
+              "character": "Wide, dreamy, ethereal",
+              "hipHopUse": "Transitions, background layers"
+            },
+            {
+              "name": "Vocal Pad",
+              "description": "Voice-like texture",
+              "character": "Formant, breathy, human",
+              "hipHopUse": "Vocal synth replacement"
+            },
+            {
+              "name": "Dark Pad",
+              "description": "Moody and cinematic",
+              "character": "Ominous, deep, mysterious",
+              "hipHopUse": "Dark hip-hop, emotional tracks"
+            }
+          ]
+        },
+        {
+          "name": "Plucked",
+          "presets": [
+            {
+              "name": "Acoustic Pluck",
+              "description": "Guitar-like decay",
+              "character": "Natural, organic, string",
+              "hipHopUse": "Realistic plucked textures"
+            },
+            {
+              "name": "Harp Pluck",
+              "description": "Bright string pluck",
+              "character": "Shimmering, ethereal, angelic",
+              "hipHopUse": "Arpeggios, glissandos"
+            },
+            {
+              "name": "Synth Pluck",
+              "description": "Electronic pluck",
+              "character": "Sharp, modern, punchy",
+              "hipHopUse": "Pop hooks, lead lines"
+            },
+            {
+              "name": "Kalimba",
+              "description": "African thumb piano",
+              "character": "Metallic, resonant, woody",
+              "hipHopUse": "Ethnic textures, unique hooks"
+            }
+          ]
+        },
+        {
+          "name": "FX",
+          "presets": [
+            {
+              "name": "Riser",
+              "description": "Build-up effect",
+              "character": "Increasing intensity, sweep",
+              "hipHopUse": "Transitions, build-ups"
+            },
+            {
+              "name": "Downlifter",
+              "description": "Fall-down effect",
+              "character": "Decreasing, impact",
+              "hipHopUse": "Drops, section changes"
+            },
+            {
+              "name": "Impact",
+              "description": "Hit effect",
+              "character": "Sharp, percussive, transient",
+              "hipHopUse": "Accents, emphasis"
+            },
+            {
+              "name": "Texture",
+              "description": "Atmospheric noise",
+              "character": "Evolving, random, space",
+              "hipHopUse": "Background ambience"
+            }
+          ]
+        },
+        {
+          "name": "Keys",
+          "presets": [
+            {
+              "name": "Electric Piano",
+              "description": "EP-style tone",
+              "character": "Bell-like, sustained, warm",
+              "hipHopUse": "R&B chords, melodies"
+            },
+            {
+              "name": "Clavinet",
+              "description": "Funky keys",
+              "character": "Bright, plucky, percussive",
+              "hipHopUse": "Funk influences, stabs"
+            },
+            {
+              "name": "Organ",
+              "description": "Drawbar organ",
+              "character": "Hollow, sustained, retro",
+              "hipHopUse": "Old school, gospel vibes"
+            },
+            {
+              "name": "Music Box",
+              "description": "Toy piano sound",
+              "character": "Tiny, bell-like, delicate",
+              "hipHopUse": "Quirky hooks, nostalgia"
+            }
+          ]
+        }
+      ]
+    },
+    "starter-templates": {
+      "metadata": {
+        "plugin": "Harmless",
+        "presetType": "starter",
+        "lastUpdated": "2026-02-03"
+      },
+      "templates": [
+        {
+          "name": "Clean Slate",
+          "description": "Default initialization for building from scratch",
+          "mask": "Sine wave (H1 only)",
+          "settings": {
+            "oscillator": {
+              "subOscillator": -12,
+              "subLevel": 0,
+              "noise": 0,
+              "color": 0
+            },
+            "filter": {
+              "cutoff": 20000,
+              "resonance": 0,
+              "slope": "24dB",
+              "drive": 0,
+              "pluck": 0
+            },
+            "envelope": {
+              "ampAttack": 0.001,
+              "ampDecay": 0,
+              "ampSustain": 100,
+              "ampRelease": 0.1,
+              "filterEnvAmount": 0
+            },
+            "fx": {
+              "phaserRate": 0,
+              "phaserDepth": 50,
+              "phaserFeedback": 0
+            },
+            "unison": {
+              "voices": 1,
+              "detune": 20,
+              "stereo": 50,
+              "blend": 100
+            },
+            "effects": {
+              "maximus": 0,
+              "reverb": 0,
+              "delay": 0,
+              "chorus": 0,
+              "crush": 0,
+              "distortion": 0
+            }
+          }
+        },
+        {
+          "name": "Lead Foundation",
+          "description": "Starting point for any lead sound",
+          "mask": "Sawtooth (all harmonics 1/n)",
+          "settings": {
+            "oscillator": {
+              "subOscillator": -12,
+              "subLevel": 0,
+              "noise": 0,
+              "color": 10
+            },
+            "filter": {
+              "cutoff": 8000,
+              "resonance": 25,
+              "slope": "24dB",
+              "drive": 10,
+              "pluck": 0
+            },
+            "envelope": {
+              "ampAttack": 0.002,
+              "ampDecay": 0.2,
+              "ampSustain": 80,
+              "ampRelease": 0.3,
+              "filterEnvAmount": 20
+            },
+            "fx": {
+              "phaserRate": 0,
+              "phaserDepth": 50,
+              "phaserFeedback": 0
+            },
+            "unison": {
+              "voices": 3,
+              "detune": 25,
+              "stereo": 70,
+              "blend": 80
+            },
+            "effects": {
+              "maximus": 20,
+              "reverb": 15,
+              "delay": 0,
+              "chorus": 10,
+              "crush": 0,
+              "distortion": 0
+            }
+          }
+        },
+        {
+          "name": "Bass Foundation",
+          "description": "Starting point for bass sounds",
+          "mask": "Triangle-ish (few harmonics, quick decay)",
+          "settings": {
+            "oscillator": {
+              "subOscillator": -12,
+              "subLevel": 40,
+              "noise": 0,
+              "color": -20
+            },
+            "filter": {
+              "cutoff": 400,
+              "resonance": 15,
+              "slope": "24dB",
+              "drive": 15,
+              "pluck": 0
+            },
+            "envelope": {
+              "ampAttack": 0.005,
+              "ampDecay": 0.1,
+              "ampSustain": 95,
+              "ampRelease": 0.2,
+              "filterEnvAmount": -30
+            },
+            "fx": {
+              "phaserRate": 0,
+              "phaserDepth": 50,
+              "phaserFeedback": 0
+            },
+            "unison": {
+              "voices": 1,
+              "detune": 20,
+              "stereo": 0,
+              "blend": 100
+            },
+            "effects": {
+              "maximus": 30,
+              "reverb": 0,
+              "delay": 0,
+              "chorus": 0,
+              "crush": 0,
+              "distortion": 10
+            }
+          }
+        },
+        {
+          "name": "Pluck Foundation",
+          "description": "Starting point for plucked sounds",
+          "mask": "Moderate harmonics (1-16)",
+          "settings": {
+            "oscillator": {
+              "subOscillator": -12,
+              "subLevel": 20,
+              "noise": 5,
+              "color": 0
+            },
+            "filter": {
+              "cutoff": 6000,
+              "resonance": 30,
+              "slope": "24dB",
+              "drive": 0,
+              "pluck": 50
+            },
+            "envelope": {
+              "ampAttack": 0.001,
+              "ampDecay": 0.4,
+              "ampSustain": 0,
+              "ampRelease": 0.6,
+              "filterEnvAmount": 40
+            },
+            "fx": {
+              "phaserRate": 0,
+              "phaserDepth": 50,
+              "phaserFeedback": 0
+            },
+            "unison": {
+              "voices": 2,
+              "detune": 20,
+              "stereo": 50,
+              "blend": 70
+            },
+            "effects": {
+              "maximus": 25,
+              "reverb": 30,
+              "delay": 15,
+              "chorus": 0,
+              "crush": 0,
+              "distortion": 0
+            }
+          }
+        },
+        {
+          "name": "Pad Foundation",
+          "description": "Starting point for pad sounds",
+          "mask": "Gentle saw or rounded square",
+          "settings": {
+            "oscillator": {
+              "subOscillator": -12,
+              "subLevel": 30,
+              "noise": 10,
+              "color": 0
+            },
+            "filter": {
+              "cutoff": 3000,
+              "resonance": 20,
+              "slope": "12dB",
+              "drive": 5,
+              "pluck": 0
+            },
+            "envelope": {
+              "ampAttack": 0.8,
+              "ampDecay": 0.5,
+              "ampSustain": 85,
+              "ampRelease": 2,
+              "filterEnvAmount": 15
+            },
+            "fx": {
+              "phaserRate": 0.4,
+              "phaserDepth": 70,
+              "phaserFeedback": 25
+            },
+            "unison": {
+              "voices": 5,
+              "detune": 30,
+              "stereo": 90,
+              "blend": 75
+            },
+            "effects": {
+              "maximus": 15,
+              "reverb": 40,
+              "delay": 20,
+              "chorus": 35,
+              "crush": 0,
+              "distortion": 0
+            }
+          }
+        }
+      ]
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Harmless\n\n## Purpose & Identity\nHarmless is a revolutionary synthesizer that performs **subtractive synthesis inside an additive engine**. Its primary identity is a \"High-Efficiency Additive Synth.\" While it looks like a standard synth with a filter and phaser, it actually generates sound by calculating thousands of individual harmonics. This allows for slopes and effects that are physically impossible in analog synths. [SRC: IL-MAN]\n\n## 60-Second Mental Model\nImagine you are building a wall. \n- A standard synth takes a giant block of stone and carves it down (**Subtractive**).\n- Harmless stacks thousands of tiny pebbles to create the *shape* of a carved stone (**Additive**). \nBecause it builds the sound from pebbles, it can easily remove specific \"pebbles\" (harmonics) using the **Harmonic Mask**, creating textures that sound incredibly clean and precise.\n\n## Hip-Hop / R&B Context\n- **The Perfect Trap Pluck:** Using the specialized **Pluck** section to get a sharp, organic decay that sounds like a real string (Upbeat/Melodic).\n- **Vocal-Like Leads:** Using the **Formant** filter type to make a synth \"sing\" or \"talk\" without a vocoder (Psychedelic/Vibey).\n- **Sub-Bass with \"Click\":** Building a deep sine sub that has a surgical harmonic \"mask\" at the top for translation on small speakers (Moody).\n\n## When To Use\n- When you want **CPU-efficient additive synthesis**.\n- When you need **mathematically perfect filters** (e.g., a brickwall cut that doesn't click).\n- When you want to design **unique, bell-like, or organic** pluck sounds.\n\n## When NOT To Use\n- **Analog \"Dirt\":** Harmless is very clean. If you want unstable oscillators and messy analog noise, use **3x Osc** or **MiniSynth**.\n- **Complex FM:** Use **Sytrus** if you need frequency modulation between operators. [SRC: REPUTABLE]",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Harmless\n\n## UI Tour\n1.  **Timbre Section:** Choose your base oscillator and use the **Harmonic Mask** (the grid) to \"draw\" your sound.\n2.  **Filter Section:** Includes standard Cutoff and Res, plus the unique **Pluck** control.\n3.  **Unison:** Control how many voices are stacked (1 to 8) and their stereo spread. [SRC: IL-MAN]\n4.  **Phaser:** An additive phaser with unique modes like \"Frequency\" and \"Classic.\"\n5.  **Effects:** Built-in Reverb, Delay, Chorus, and a **Maximus-powered** Compressor.\n\n## Signal Flow (The Additive Secret)\n1.  **Note Input:** Piano Roll triggers a note.\n2.  **Harmonic Generation:** Thousands of harmonics are created.\n3.  **Additive Processing:** The \"Filter,\" \"Phaser,\" and \"Pluck\" settings are mathematically applied to the volume and phase of each harmonic.\n    *   *Note: There is no actual audio filter moving; the harmonics just turn down.* [SRC: REPUTABLE]\n4.  **Unison:** The voices are duplicated and detuned.\n5.  **FX Rack:** The final additive result passes through the built-in effects.\n6.  **Output:** Final audio.\n\n## The Pluck Section\nThe **Pluck** knob is Harmless's secret weapon. It doesn't just cut frequencies; it simulates the **mathematical decay** of a physical string. \n*   **Damp:** Controls how fast the high-end harmonics disappear relative to the low-end.\n*   **Decay:** The overall length of the pluck. [SRC: IL-MAN]\n\n## Things Beginners Misunderstand\n*   **\"Additive vs Subtractive\":** Don't be scared by the word \"Additive.\" If you treat Harmless like a normal synth, it works exactly how you'd expect. The additive engine just makes it sound cleaner.\n*   **Harmonic Mask:** The grid isn't a sequencer. It's a \"Volume Mixer\" for the harmonics. Moving a bar down makes that specific part of the oscillator quieter. [SRC: REPUTABLE]\n*   **Phase:** The Phaser in Harmless can change the pitch of the sound if moved rapidly. This is normal for additive phase shifting.\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Harmless\n\nHarmless translates vibes through **Harmonic Masking** and **Spectral Phase**.\n\n## 1. Upbeat (Kinetic, Sharp, Pop)\n- **Concept:** \"The Perfect Organic Pluck.\"\n- **Levers:**\n  - **Pluck Section:** Set high \"Damp\" and \"Decay.\"\n  - **Filter Slope:** Set to \"Brick\" (Steepest).\n  - **Unison:** 3-5 voices for a pop-ready shine.\n- **Listen For:** A sharp, physical entry that decays precisely like a guitar or harp string.\n\n## 2. Spacey (Ethereal, Shimmering, Expansive)\n- **Concept:** \"The Harmonic Shimmer.\"\n- **Levers:**\n  - **Phaser Section:** Set mode to \"Classic\" or \"Frequency.\"\n  - **Width:** Maximize.\n  - **Release:** Long (2 seconds+).\n- **Listen For:** High frequencies that seem to sparkle and rotate in a vast 3D space.\n\n## 3. Psychedelic (Warped, Vocal, Robotic)\n- **Concept:** \"The Formant Talker.\"\n- **Levers:**\n  - **Filter Type:** Select \"Formant\" or \"Vowel.\"\n  - **Modulation:** Link Filter Cutoff to an LFO.\n  - **Phaser:** Set to \"Offset\" mode.\n- **Listen For:** The synth sounding like it's saying \"Aaa,\" \"Eee,\" or \"Ooo\" as it sweeps.\n\n## 4. Melodic (Clear, Lush, Polished)\n- **Concept:** \"The Glossy Lead.\"\n- **Levers:**\n  - **Harmonic Mask:** Draw a curve that emphasizes the 1st, 2nd, and 4th partials.\n  - **Compressor:** Set to \"Limit\" (uses the Maximus engine).\n- **Listen For:** A perfectly leveled, professional sound that sits right at the front of the mix.\n\n## 5. Moody (Heavy, Dark, Isolated)\n- **Concept:** \"The Submerged Harmonic.\"\n- **Levers:**\n  - **Filter:** 24dB Low Pass @ 400Hz.\n  - **Harmonic Mask:** Delete all high-frequency bars in the grid.\n- **Listen For:** A dark, pure tone that feels \"trapped\" and heavy, perfect for nocturnal R&B. [SRC: REPUTABLE]",
+      "additive-vs-subtractive-architecture": "# Additive vs Subtractive Architecture\n\n## The Paradigm Shift\n\nTraditional subtractive synthesizers start with a rich waveform (sawtooth, square) and filter away unwanted harmonics. Harmless **inverts this concept** - it builds only the harmonics you want, then shapes them with subtractive-style filters.\n\n### Why Additive?\n\n- **No phase cancellation**: Since harmonics are generated mathematically, not summed from multiple oscillators, there's no phase interference\n- **Perfect brickwall filters**: Filters don't introduce phase issues or resonance artifacts because the harmonics are already separated\n- **CPU efficiency**: Only calculates the frequencies you actually hear\n- **Unique timbres**: Can create sounds impossible with traditional subtractive synthesis\n\n### The Subtractive Interface\n\nDespite the additive engine, Harmless presents a familiar subtractive workflow:\n- Oscillator shapes (saw, square, triangle, custom)\n- Filter envelope (ADSR)\n- Filter cutoff and resonance\n- Effects chain\n\n### Sound Quality Difference\n\n| Characteristic | Subtractive | Harmless Additive |\n|------------------|-------------|-------------------|\n| Filter resonance | Phase artifacts | Mathematically clean |\n| High resonance + cutoff | Can sound harsh | Can be extreme without artifacts |\n| Sawtooth waveform | Analog \"warmth\" | Mathematically perfect |\n| CPU usage | Fixed per voice | Scales with harmonic count |\n\n[SRC: IL-MAN - Harmless Overview]\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Harmless\r\n\r\n## What It Is\r\nHarmless is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "harmonic-mask-system": "# Harmonic Mask System\n\n## What is the Harmonic Mask?\n\nThe Harmonic Mask is Harmless's **visual oscillator editor**. Instead of selecting preset waveforms, you draw the amplitude of each individual harmonic - creating custom oscillator shapes from scratch.\n\n## Interface\n\nThe mask displays 512 vertical bars representing harmonics (multiples of the fundamental frequency). Click and drag to:\n- **Raise bars**: Add that harmonic\n- **Lower bars**: Remove/reduce that harmonic\n- **Shape tools**: Curve, ramp, square, randomize\n\n## Understanding Harmonics\n\n- **Harmonic 1**: Fundamental (base pitch)\n- **Harmonic 2**: Octave above fundamental\n- **Harmonic 3**: Perfect fifth + octave\n- **Harmonic 4**: Two octaves above\n- **Odd harmonics** (1,3,5,7...): Add \"hollow\", \"woodwind\" character\n- **Even harmonics** (2,4,6,8...): Add \"warmth\", \"brightness\"\n\n## Common Shapes\n\n### Sawtooth Approximation\nAll harmonics decreasing in amplitude: 1.0, 0.5, 0.33, 0.25, 0.2...\n\n### Square Wave Approximation\nOdd harmonics only: 1.0, 0, 0.33, 0, 0.2, 0, 0.14...\n\n### Hollow/Clarinet\nOdd harmonics with faster decay: 1.0, 0, 0.2, 0, 0.1, 0...\n\n### Bright/Buzzy\nFirst 8-10 harmonics at full amplitude, then sharp drop\n\n### Resonant/Formant\nSpecific harmonic bands boosted (useful for vocal synthesis)\n\n## Creative Uses\n\n- **Filter sweeps without filters**: Draw a moving mask envelope\n- **Vowel synthesis**: Create formant regions (harmonics 3-8 boosted)\n- **Grit textures**: Sparse random harmonics for industrial sounds\n- **Bell harmonics**: Inharmonic relationships for metallic tones\n\n## Pro Tip\n\nCombine Harmonic Mask with the Filter's resonance for \"impossible\" subtractive sounds - the filter can boost harmonics that the mask didn't include, creating unique resonant sweeps.\n\n[SRC: IL-MAN - Harmless Oscillator Section]\n",
+      "pluck-filter-physics": "# Pluck Filter Physics\n\n## Mathematical String Modeling\n\nThe Pluck filter in Harmless **mathematically simulates string vibration decay**. Unlike traditional low-pass filters, it models how real strings lose energy across the frequency spectrum.\n\n### How It Works\n\nReal string instruments exhibit these behaviors:\n1. **Initial strike**: All frequencies present\n2. **High frequency decay**: Treble dissipates faster than bass (energy proportional to frequency)\n3. **Exponential decay**: Energy loss follows physical laws\n\nThe Pluck filter implements this physics:\n```\nDecay Rate = f^2 × Damping Factor\n```\nWhere higher frequencies (f) decay faster.\n\n## Parameters\n\n### Pluck Amount (0-100%)\nControls the overall decay speed:\n- **0%**: No pluck effect (standard filter)\n- **25%**: Subtle string-like character\n- **50%**: Acoustic guitar simulation\n- **75%**: Harp/plucked synth\n- **100%**: Aggressive decay, kalimba-like\n\n### Pluck Color/Tone\nDetermines the starting brightness:\n- Lower values: Start darker, mellow decay\n- Higher values: Start bright, sharp initial attack\n\n## Use Cases\n\n### Acoustic Guitar Plucks\n- Pluck: 40-60%\n- Combine with short amp envelope (fast attack, medium decay)\n- Use triangle-ish mask with moderate harmonics\n\n### Harp/Glissando\n- Pluck: 70-85%\n- Long release in amp envelope\n- Rich harmonic mask (many harmonics)\n\n### Synth Plucks\n- Pluck: 30-50%\n- Combine with filter envelope for \"wow\" effect\n- Sawtooth mask approximation\n\n### Kalimba/Music Box\n- Pluck: 60-80%\n- Sparse harmonics in mask\n- High notes work best (decay more audible)\n\n## Why It Sounds Better\n\nTraditional filters just cut frequencies. The Pluck filter **actively removes energy** based on frequency, creating:\n- More natural decay curves\n- Better note-to-note consistency\n- Physical realism without samples\n\n## Pro Tip\n\nLayer two Harmless instances: one with high Pluck setting for attack brightness, one with low Pluck for sustain body. Blend for ultimate control.\n\n[SRC: IL-MAN - Harmless Filter Section]\n",
+      "signal-flow": "# Signal Flow: Harmless\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n",
+      "unique-phaser-system": "# Unique Phaser System\n\n## Frequency-Based Phasing\n\nHarmless's phaser is **fundamentally different** from traditional phasers. Instead of modulating all-pass filters, it modulates the **frequency positions of individual harmonics**.\n\n### The Science\n\nTraditional phaser: Shifts phase of entire signal through all-pass filters\nHarmless phaser: **Shifts each harmonic's frequency** by small amounts\n\nThis creates:\n- **Pitch shifting effects** at high rates\n- **Additive chorusing** at moderate rates\n- **Harmonic dance** as harmonics move independently\n\n## Parameters\n\n### Rate (Hz)\nControls modulation speed:\n- **0.1-0.5 Hz**: Slow evolving textures\n- **1-3 Hz**: Classic phaser sweep\n- **5-10 Hz**: Vibrato territory\n- **15+ Hz**: Ring modulation, pitch effects\n\n### Depth (0-100%)\nHow far harmonics shift:\n- **Low (10-30%)**: Subtle widening\n- **Medium (40-60%)**: Classic phaser effect\n- **High (70-100%)**: Extreme pitch modulation\n\n### Feedback (0-100%)\nHow much output feeds back into input:\n- **Low**: Gentle effect\n- **Medium (40-70%)**: Resonant peaks\n- **High**: Notchy, ringing character\n\n### Center Frequency\nSets which harmonics are most affected:\n- **Low**: Bass-heavy phasing\n- **Mid**: Full spectrum effect\n- **High**: Treble shimmer\n\n## The Pitch-Shifting Trick\n\nAt high rates (20+ Hz) with moderate depth:\n- Harmonics shift so fast they create **sidebands**\n- This sounds like **frequency shifting** or \"alien\" pitch bending\n- Unlike vibrato (pitch up/down), this creates **inharmonic intervals**\n\n### Creating \"Alien Leads\"\n1. Set Phaser Rate to 30-50 Hz\n2. Depth to 60-80%\n3. Play high notes with sawtooth mask\n4. Result: Sci-fi pitch artifacts\n\n## Combining with Unison\n\nWhen Phaser + Unison are active together:\n- Each unison voice has independent phaser position\n- Creates massive stereo width\n- Harmonics move in stereo field\n\n## CPU Note\n\nThe phaser is CPU-intensive because it recalculates all 512 harmonics every modulation cycle. Disable for CPU-constrained projects.\n\n## Pro Tip\n\nUse phaser at slow rates (0.2 Hz) with high depth on pads to create evolving \"breathing\" textures - harmonics slowly shift in and out of phase relationships.\n\n[SRC: IL-MAN - Harmless FX Section]\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: Harmless (5 Minutes)\n\n1.  **Insert:** Load **Harmless** from the Channel Rack.\n2.  **Harmonic Mask:** Look at the small vertical bars in the **TIMBRE** section. Drag your mouse across them to \"mask\" certain harmonics.\n3.  **The Pluck:** Find the **PLUCK** slider in the filter section. Turn it up to create a physical string-decay sound.\n4.  **Filter:** Adjust the **FREQ** and **RES** (Resonance). Notice how even with high resonance, the sound stays clean.\n5.  **Phaser:** Turn on the **PHASER** section. Try the \"Frequency\" mode for a unique pitch-shifting effect.\n6.  **Unison:** Increase the **ORDER** knob (top right) to add massive width.\n7.  **Tip:** Use the **LFO** section to modulate the filter cutoff for rhythmic movement. [SRC: IL-MAN]\n",
+      "filter-slope-resonance-guide": "# Filter Slope & Resonance Guide\n\n## Understanding Slope\n\nFilter slope determines **how aggressively frequencies above cutoff are removed**:\n\n| Slope | dB/Octave | Character | Best For |\n|-------|-----------|-----------|----------|\n| **12dB** | Gentle | Warm, analog-like | Subtle filtering, vintage vibe |\n| **24dB** | Standard | Balanced | Most applications, default choice |\n| **36dB** | Steep | Sharp, clinical | Modern sounds, EDM |\n| **48dB** | Brickwall | Aggressive | Special effects, extreme isolation |\n\n## Why Harmless Slope is Special\n\nUnlike analog filters, Harmless filters can use **extreme slopes without artifacts**:\n- **No phase distortion** because harmonics are already separated\n- **No resonance buildup** at steep slopes\n- **Perfect mathematical cutoff** at any slope setting\n\n### When to Use Each Slope\n\n#### 12dB - Vintage/Gentle\n- Bass sounds where warmth matters\n- Pad filtering for subtle movement\n- Vintage hip-hop aesthetics\n- Blending multiple layers\n\n#### 24dB - Standard Work\n- Default for most sounds\n- Good balance of cutoff precision and natural sound\n- Leads and plucks\n- When unsure, start here\n\n#### 36dB - Modern/Sharp\n- EDM plucks with tight cutoff\n- Removing unwanted high harmonics completely\n- Creating \"telephone\" vocal effects\n- Distinct character sounds\n\n#### 48dB - Extreme/Effect\n- Creating dramatic filter sweeps\n- Isolating specific frequency ranges\n- Sound design experiments\n- Brickwall protection\n\n## Resonance (Emphasis)\n\nResonance boosts frequencies **at the cutoff point**.\n\n### Safe Zones\nBecause of additive engine, resonance won't distort:\n- **0-50%**: Safe for any sound\n- **50-80%**: Audible peak, still clean\n- **80-100%**: Extreme boost, can create ringing\n\n### Resonance Use Cases\n\n| Style | Resonance | Notes |\n|-------|-----------|-------|\n| **Subtle warmth** | 15-25% | Touch of character |\n| **Vocal peak** | 30-45% | Emphasizes formant region |\n| **Scream filter** | 60-75% | Classic resonant sweep |\n| **Whistle effect** | 80-95% | Can sound like ringing |\n\n## The Pluck + Slope Interaction\n\nWhen using **Pluck filter**, slope affects the **shape of decay**:\n\n### 12dB + Pluck\n- Natural string decay\n- Warm, acoustic character\n- Use for: Acoustic guitar simulation\n\n### 24dB + Pluck\n- Balanced pluck character\n- Good for synth plucks\n- Versatile default\n\n### 36-48dB + Pluck\n- Sharp attack, fast decay\n- Electronic/plastic character\n- Use for: Unique synth textures\n\n## Hip-Hop Recipe Combinations\n\n### \"Low End Theory\"\n- Cutoff: 200Hz\n- Slope: 12dB\n- Resonance: 10%\n- Result: Warm sub-bass, no mud\n\n### \"Trap Highs\"\n- Cutoff: 8kHz\n- Slope: 36dB\n- Resonance: 40%\n- Result: Present but controlled highs\n\n### \"Telephone Vocal\"\n- Cutoff: 4kHz\n- Slope: 48dB\n- Resonance: 60%\n- Result: Classic filtered vocal\n\n### \"Underwater FX\"\n- Cutoff: 400Hz\n- Slope: 48dB\n- Resonance: 80%\n- Result: Heavy underwater character\n\n## Envelope Amount\n\nThe filter envelope's \"Amount\" determines how much the envelope affects cutoff:\n\n| Amount | Effect |\n|--------|--------|\n| **-100%** | Inverted (env up = cutoff down) |\n| **0%** | No envelope effect |\n| **+50%** | Moderate sweep up |\n| **+100%** | Full sweep up |\n\n### Common Hip-Hop Settings\n\n**Pluck with attack emphasis:**\n- Amount: +70%\n- Attack: 0ms\n- Decay: 200ms\n- Result: Sharp attack \"poke\"\n\n**Pad with slow sweep:**\n- Amount: +40%\n- Attack: 800ms\n- Result: Gradual brightness increase\n\n**Inverted bass:**\n- Amount: -60%\n- Attack: 10ms\n- Result: Attack click, then smooth sustain\n\n[SRC: IL-MAN - Harmless Filter Section]\n",
+      "harmonic-mask-recipe-book": "# Harmonic Mask Recipe Book\n\n## Classic Waveform Approximations\n\n### Perfect Sawtooth\nAmplitude formula: 1/n where n = harmonic number\n- H1: 100%\n- H2: 50%\n- H3: 33%\n- H4: 25%\n- H5: 20%\n- Continue to H32 for full character\n\n**Use for**: Full-spectrum leads, Reese bass\n\n### Perfect Square\nOdd harmonics only: 1/n where n = odd number\n- H1: 100%\n- H2: 0%\n- H3: 33%\n- H4: 0%\n- H5: 20%\n- H6: 0%\n- H7: 14%\n\n**Use for**: Hollow leads, chiptune sounds\n\n### Triangle Wave\nOdd harmonics with squared denominator: 1/n²\n- H1: 100%\n- H3: 11%\n- H5: 4%\n- H7: 2%\n- Very mellow, few harmonics needed\n\n**Use for**: Soft bass, mellow pads\n\n### Pulse Wave (Variable Width)\nCombine square + phase offset harmonics\n- Draw: High-low alternating pattern\n- Width controlled by how many highs before lows\n\n**Use for**: Nasal character, vocal sounds\n\n---\n\n## Hip-Hop Specific Recipes\n\n### 808 Mafia Screech\nBoost harmonics 8-16, taper rest:\n```\nH1-H7: 20% (foundation)\nH8-H12: 100% (scream)\nH13-H20: 80% → 20% (taper)\nH21+: 0%\n```\n\n### Drake-style Pluck\nSparse, hollow character:\n```\nH1: 100% (fundamental)\nH2: 30% (warmth)\nH3: 15% (fifth)\nH4-H6: 10% each\nH7+: 5% or 0%\n```\n\n### Metro Boomin Bass\nPure sub with touch of edge:\n```\nH1: 100%\nH2: 40% (adds grit)\nH3-H4: 20% each\nH5+: 0% (keep it focused)\n```\n\n### Travis Scott Atmosphere\nFiltered, evolving texture:\n```\nH1-H4: Full\nH5-H20: Random 20-60%\nH21-128: Sparse random peaks\nUse with slow filter sweep automation\n```\n\n### Future Alien\nInharmonic clusters:\n```\nH1: 100%\nH3: 80%\nH6: 70%\nH11: 60%\nH18: 50%\nH27: 40%\nLeave gaps between clusters\n```\n\n---\n\n## Formant/Vocal Recipes\n\n### \"Ahh\" Vowel\nFormant regions: harmonics 4-6 and 9-11 boosted\n- H1-H3: Moderate (30-50%)\n- H4-H6: 100% (first formant)\n- H7-H8: 40%\n- H9-H11: 90% (second formant)\n- H12+: Gradual decline\n\n### \"Eee\" Vowel\nHigher formants:\n- H1-H4: 40%\n- H5-H7: 100%\n- H8-H10: 50%\n- H11-H14: 90%\n- H15+: Decline\n\n### Whisper/Ghost\n- Fundamental (H1): 30%\n- H2-H32: All moderate (20-40%)\n- H33+: Random sparse peaks\n- Add 20% noise\n\n---\n\n## Experimental Textures\n\n### Metallic/Bell\nInharmonic relationships:\n- H1: 100%\n- H2.4 (non-integer): Draw at position ~H2.5\n- H3.7: Position ~H4\n- H5.2: Position ~H5\n- Results in metallic ring\n\n### Dissonant/Dark\n- H1: 100%\n- H2: 80%\n- H3: 60%\n- H4: 100% (octave clash)\n- H5: 50%\n- H6: 90% (dissonance)\n\n### Pure Sine\n- H1: 100%\n- H2-H512: 0%\nUse for: Sub-bass, testing, layering foundation\n\n---\n\n## Editing Tips\n\n1. **Right-click mask** for shape tools\n2. **Draw curves** by dragging horizontally across multiple bars\n3. **Copy/paste** sections using Alt+drag\n4. **A/B test** by using the mask preset slots\n5. **Randomize** for happy accidents, then tame\n\n[SRC: IL-MAN - Harmless Oscillator Editor]\n",
+      "hip-hop-preset-starter-pack": "# Hip-Hop Preset Starter Pack\n\n## Category: Hard Trap Leads\n\n### Screech Lead\n**Use for**: 808 Mafia style, high-energy drops\n- **Mask**: Sawtooth shape, harmonics 1-16 at full, then taper\n- **Filter**: Cutoff 4kHz, Res 40%, Slope 24dB\n- **Pluck**: 0%\n- **Unison**: 4 voices, Detune 30%, Stereo 80%\n- **Effects**: Maximus for punch, slight reverb\n- **Envelope**: Attack 2ms, Decay 300ms, Sustain 60%, Release 200ms\n\n### Bell Pluck\n**Use for**: Counter-melodies, high-register hooks\n- **Mask**: Sparse harmonics (1,2,4,8,16 only)\n- **Filter**: Cutoff 8kHz, Res 20%\n- **Pluck**: 70%\n- **Unison**: 2 voices, minimal detune\n- **Envelope**: Attack 1ms, Decay 400ms, Sustain 0%, Release 500ms\n\n### Alien Synth\n**Use for**: Future type beats, sci-fi vibes\n- **Mask**: Inharmonic pattern (custom draw)\n- **Phaser**: Rate 25Hz, Depth 80%\n- **Filter**: Cutoff sweeps with LFO\n- **Unison**: 5 voices\n- **Effects**: Heavy reverb, long delay\n\n---\n\n## Category: 808 Support Bass\n\n### Sub Bass\n**Use for**: Foundation under 808s\n- **Mask**: Fundamental only (harmonic 1 at 100%, all others 0%)\n- **Sub Osc**: -12, 50% level\n- **Filter**: Cutoff 200Hz, no resonance\n- **Pluck**: 0%\n- **Envelope**: Attack 5ms, full sustain\n- **No effects**: Keep it clean\n\n### Reese Bass\n**Use for**: DnB influences, aggressive low-end\n- **Mask**: Sawtooth with high harmonics\n- **Filter**: Cutoff modulated by envelope, Res 60%\n- **Unison**: 3 voices, Detune 50%\n- **Effects**: Slight distortion, compression\n\n### Pluck Bass\n**Use for**: Rhythmic bass patterns, garage vibes\n- **Mask**: Triangle-ish, moderate harmonics\n- **Pluck**: 40%\n- **Filter**: Cutoff 800Hz, tracks velocity\n- **Envelope**: Short attack, medium decay\n\n---\n\n## Category: R&B Textures\n\n### Warm Pad\n**Use for**: Chords, atmosphere, backing\n- **Mask**: Rounded square (odd harmonics, gentle slope)\n- **Filter**: Cutoff 3kHz, gentle slope\n- **Unison**: 6 voices, wide stereo\n- **Phaser**: Slow rate (0.5Hz), high depth\n- **Envelope**: Slow attack (500ms), long release\n\n### Vocal Synth\n**Use for**: Vocal-like leads, formant sounds\n- **Mask**: Formant regions boosted (harmonics 4-7, 10-13)\n- **Filter**: Cutoff follows notes, Res 45%\n- **Pluck**: 10-20%\n- **Effects**: Chorus for width, reverb for space\n\n### Atmospheric Texture\n**Use for**: Background layers, transitions\n- **Mask**: Random sparse harmonics\n- **Filter**: Slowly opening (automation)\n- **Noise**: 30% added\n- **Phaser**: Medium rate, high depth\n- **Reverb**: 100% wet, large size\n\n---\n\n## Category: Chiptune/Retro\n\n### 8-Bit Square\n**Use for**: Retro game vibes, nostalgia\n- **Mask**: Perfect square (odd harmonics only, steep decay)\n- **Filter**: Cutoff 8kHz, brickwall slope\n- **Crush**: 8-bit, reduce sample rate\n- **Envelope**: Instant attack, sharp decay\n\n### Chiptune Arp\n**Use for**: Fast arpeggios, gaming energy\n- **Mask**: Mix of square and saw elements\n- **Pluck**: 30%\n- **Unison**: OFF (keep it pure)\n- **Effects**: Delay with dotted 8th timing\n\n---\n\n## Quick Navigation\n\n- Need **plucks**? → Check Pluck filter and Bell presets\n- Need **bass**? → Focus on mask fundamentals and Sub osc\n- Need **width**? → Unison + Phaser together\n- Need **character**? → Custom harmonic masks\n\n[SRC: IL-MAN - Harmless Factory Presets]\n",
+      "parameter-cheat-sheet": "# Parameter Cheat Sheet\n\n## Oscillator (Timbre) Section\n\n| Parameter | Range | Function | Hip-Hop Use |\n|-----------|-------|----------|-------------|\n| Harmonic Mask | 512 bars | Draw custom waveform | Essential for all sounds |\n| Shape Presets | 8 types | Quick starting points | Saw for leads, Triangle for bass |\n| Sub Osc | -12 to 0 | Octave below fundamental | Fat bass foundation |\n| Noise | 0-100% | White noise addition | Percussive attacks, texture |\n| Color | -100 to +100 | Bright/dark balance | +20 for bright leads, -40 for dark bass |\n\n## Filter Section\n\n| Parameter | Range | Function | Pro Tip |\n|-----------|-------|----------|---------|\n| Cutoff | 20Hz-20kHz | Remove high frequencies | Can go extreme (1Hz to Nyquist) |\n| Resonance | 0-100% | Boost at cutoff point | Won't distort due to additive engine |\n| Slope | 12-48dB/oct | Steepness of cutoff | 48dB = sharp digital sound |\n| Drive | 0-100% | Saturation at cutoff | Add warmth/grit |\n| Pluck | 0-100% | String decay simulation | 50% = instant guitar character |\n\n## Envelope Section\n\n| Parameter | Amp Env | Filter Env | Best For |\n|-----------|---------|------------|----------|\n| Attack | 0-10s | 0-10s | Plucks want 0ms attack |\n| Decay | 0-10s | 0-10s | Body of the sound |\n| Sustain | 0-100% | -100 to +100% | Plucks = 0% |\n| Release | 0-10s | 0-10s | Let notes ring or cut tight |\n| Amount | N/A | -100 to +100% | How much filter env affects cutoff |\n\n## Phaser Section\n\n| Parameter | Quick Settings |\n|-----------|----------------|\n| Slow Pad | Rate 0.3, Depth 80% |\n| Classic | Rate 1.5, Depth 50%, Feedback 60% |\n| Vibrato | Rate 8, Depth 30% |\n| Alien FX | Rate 35, Depth 70%, High notes |\n| Stereo Wide | Rate 2, Depth 100%, +Unison |\n\n## Unison Section\n\n| Parameter | Range | Function |\n|-----------|-------|----------|\n| Voices | 1-9 | Stacked detuned oscillators |\n| Detune | 0-100% | Spacing between voices |\n| Stereo | 0-100% | Width of stereo spread |\n| Blend | 0-100% | Mix with dry signal |\n\n## Effects Section\n\n| Effect | Key Parameters | Hip-Hop Application |\n|--------|----------------|---------------------|\n| **Maximus** | Compression threshold | Glue and punch |\n| **Reverb** | Size, Damp, Mix | Atmospheric depth |\n| **Delay** | Time, Feedback, Ping-Pong | Rhythmic echoes |\n| **Chorus** | Rate, Depth, Voices | Analog-style width |\n| **Crush** | Bit depth, Sample rate | Lo-fi texture |\n| **Distortion** | Drive, Tone | Saturation and edge |\n\n## Performance Shortcuts\n\n- **Right-click mask**: Clear, randomize, shape tools\n- **Shift+drag**: Fine mask adjustments\n- **Alt+click filter cutoff**: Reset to max\n- **Double-click value**: Type exact number\n\n[SRC: IL-MAN - Harmless Parameter Reference]\n",
+      "quick-start-checklist": "# Quick Start Checklist: Harmless\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Harmless to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Harmless\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n",
+      "troubleshooting-quick-fixes": "# Troubleshooting Quick Fixes\n\n## \"My sound is too thin/weak\"\n\n**Solutions:**\n1. **Check Harmonic Mask**: Ensure you have enough harmonics (try sawtooth preset)\n2. **Add Sub Oscillator**: Enable sub at -12, 30-50% level\n3. **Increase Unison**: 3-4 voices with 20-40% detune\n4. **Adjust Color**: Push towards +30 to +50 for brightness\n5. **Filter Check**: Make sure cutoff isn't too low (below 1kHz)\n\n## \"My pluck doesn't sound like a pluck\"\n\n**Solutions:**\n1. **Pluck Amount**: Must be 30%+ to hear effect\n2. **Envelope Sustain**: Set to 0% for true pluck decay\n3. **Harmonic Content**: Need sufficient harmonics to decay (try saw mask)\n4. **Note Duration**: Play staccato (short notes) for pluck character\n5. **Filter Cutoff**: Higher cutoffs (5kHz+) show pluck better\n\n## \"Filter sounds weird/distorted\"\n\n**Solutions:**\n1. **This is normal!**: Harmless filters can sound different from analog\n2. **Reduce Resonance**: Try under 50% if too ringing\n3. **Adjust Slope**: 24dB is most \"normal\" sounding\n4. **Check Drive**: Reduce drive if added unwanted distortion\n5. **Try Different Mask**: Some harmonic combinations react strangely\n\n## \"Phaser sounds like vibrato/pitch shift\"\n\n**Solutions:**\n1. **This is FEATURE**: Harmless phaser modulates harmonic frequencies\n2. **Reduce Rate**: Under 10Hz for traditional phaser sound\n3. **Reduce Depth**: Under 40% for subtle effect\n4. **Lower Center**: Move center frequency down for gentler effect\n5. **Combine with Filter**: Filter resonance + phaser = traditional sound\n\n## \"CPU usage is too high\"\n\n**Solutions:**\n1. **Disable Unison**: Single voice mode\n2. **Reduce Phaser**: Turn off or reduce depth to 0%\n3. **Simplify Mask**: Fewer harmonics = less CPU\n4. **Freeze Track**: In FL Studio, freeze the channel\n5. **Increase Buffer**: In audio settings, raise buffer size\n\n## \"Sound is clipping/distorting\"\n\n**Solutions:**\n1. **Reduce Master Volume**: Turn down Harmless output\n2. **Check Unison**: Multiple voices = louder, reduce blend\n3. **Maximus Threshold**: If using Maximus, raise threshold\n4. **Filter Resonance**: Very high resonance can peak\n5. **Sub Osc Level**: Reduce if too loud with main osc\n\n## \"Unison sounds muddy\"\n\n**Solutions:**\n1. **Reduce Detune**: Try 15-25% instead of 50%+\n2. **Reduce Voices**: 3 voices instead of 7-9\n3. **Narrow Stereo**: 30-40% width instead of 100%\n4. **Add Filter**: Cut highs slightly to clean up\n5. **Check Phase**: This shouldn't happen in additive, check other plugins\n\n## \"Can't get that 'analog warmth'\"\n\n**Solutions:**\n1. **Use Drive**: 20-40% drive adds saturation\n2. **Gentle Slope**: 12dB filter slope is warmer\n3. **Low Resonance**: 15-30% for subtle character\n4. **Effects Chain**: Add chorus or slight distortion\n5. **Accept difference**: Harmless is cleaner by design - that's its character\n\n## \"Envelopes sound clicky/poppy\"\n\n**Solutions:**\n1. **Increase Attack**: Even 2-5ms helps\n2. **Check Sustain**: Ensure sustain level makes sense with decay\n3. **Release Time**: Very short release can click\n4. **Filter Envelope**: If synced to filter, check filter cutoff range\n5. **Velocity**: Check if velocity is causing extreme variations\n\n## \"My custom mask disappeared\"\n\n**Solutions:**\n1. **Check Preset Slot**: You may have switched slots\n2. **Save Preset**: Always save custom masks to a slot\n3. **Undo**: Ctrl+Z may recover\n4. **Copy to A/B**: Use A/B compare to backup before experimenting\n\n## \"Effects not working/hear no difference\"\n\n**Solutions:**\n1. **Check Mix/Amount**: Most effects have mix controls at 0% by default\n2. **Effect Order**: Effects are in series, check signal flow\n3. **Bypass Test**: Toggle effect on/off to compare\n4. **Reset**: Right-click parameter to reset to default\n5. **Maximus**: Check that threshold isn't set too high (no reduction)\n\n[SRC: IL-MAN - Harmless Troubleshooting]\n"
+    },
+    "README.md": {
+      "README": "# Learning - Harmless\r\n\r\nThis section contains learning information for the harmless plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: The Perfect Organic Pluck (Harmless)\n\n## Routing Context\n- **Target:** Melodic Trap Lead or Pop-Rap Pluck.\n- **Position:** Insert FX (Before Reverb).\n\n## Step-by-Step Setup\n1.  Initialize **Harmless**.\n2.  Set the **Oscillator** to \"Saw.\"\n3.  **Filter Section:**\n    - Set Type to `Low Pass`.\n    - Set Slope to `Brick`.\n    - Turn **FREQ** to `10 o'clock`.\n4.  **The Secret Lever:** Find the **PLUCK** slider. Turn it up to `70%`.\n5.  **Damping:** Adjust the **DAMP** knob (next to pluck) to control how fast the high harmonics disappear.\n6.  **Unison:** Set Order to `3` and Detune to `10%`.\n\n## Result\n- A sharp, \"Plucky\" sound that feels physically real. Unlike a standard filter envelope, Harmless calculates the decay of every harmonic individually, leading to a much more \"Organic\" and professional tone.\n\n## Vibe Check\n- **Upbeat/Melodic:** Perfect for catchy, rhythmic melodies that need to be the center of attention.\n\n## Variation\n- **Vocal Pluck:** Switch the Filter Type to `Formant` to add a \"Talking\" quality to the pluck. [SRC: REPUTABLE]\n",
+      "00_The_Perfect_Organic_Pluck": "# Goal: The Perfect Organic Pluck (Harmless)\n\n## Routing Context\n*   **Target:** Trap Melodies, Arpeggios.\n*   **Mixer:** Needs a light delay and reverb.\n\n## Step-by-Step Setup\n1.  Initialize **Harmless**.\n2.  **Timbre:** Select \"Saw\" or \"Square.\"\n3.  **Unison:** Set to 2 voices (for a little bit of thickness).\n4.  **Pluck Section (Critical):**\n    *   Turn the **Pluck** knob to 75%.\n    *   Adjust the **Damp** slider to 40%. (This makes the high frequencies die out faster).\n    *   Set **Decay** to 400ms.\n5.  **Filter:** Set to **Low Pass**. Adjust **Cutoff** until you find the sweet spot between \"thump\" and \"ping.\"\n\n## What to Listen For\n*   The pluck should sound \"rubbery\" or \"woody.\" It should feel like a physical string being plucked, not just a volume gate.\n\n## Variations\n1.  **Metallic:** Increase the **Resonance** on the filter and use a **Saw** timbre.\n2.  **Electric:** Add a touch of the built-in **Chorus** and **Compression**.\n\n## Pitfalls\n*   **Too Dull:** If the pluck is too dark, decrease the **Damp** slider or open the Filter Cutoff slightly. [SRC: IL-MAN]\n",
+      "12_Vibe_Psychedelic": "# Vibe: Psychedelic Alien Leads (Harmless)\n\n## The Concept\nUsing the unique Additive Phaser to create shifting, \"vocal-like\" textures that sound like they belong in a space-themed trap beat.\n\n## Setup\n*   **Target:** A slow-moving melody or sustained lead note.\n\n## Recipe\n1.  **Timbre:** Select a complex waveform or use a random **Harmonic Mask**.\n2.  **Phaser Section:**\n    *   Set mode to **Frequency**.\n    *   Set **Width** to 80%.\n    *   Set **Speed** to 0. (We will automate this manually).\n3.  **Automation:** Right-click **Phaser Offset** -> **Create Automation Clip**.\n4.  **LFO:** Link a slow LFO to the **Vibrato Depth**.\n\n## What to Listen For\n*   As you move the Phaser Offset, the pitch and tone will seem to \"morph\" and \"swirl.\" It creates a liquid sound that standard phasers can't replicate.\n\n## Variation\n*   **Talkbox:** Set the Phaser to \"Classic\" mode and move the Offset in the range where it sounds like \"Ooh\" and \"Aah\" vowels.\n\n## Pitfalls\n*   **Pitch Jumps:** In Frequency mode, moving the offset too fast can cause the pitch to \"warble\" uncontrollably. Keep your automation curves smooth. [SRC: REPUTABLE]\n",
+      "add-grit-and-texture": "# Adding Grit and Texture\n\n## Target Sound\nLo-fi character, saturation, and edge - adding analog warmth or digital crunch to clean additive tones.\n\n## Why Harmless Needs Grit\nBy design, Harmless is **mathematically clean**. The additive engine produces perfect waveforms without analog imperfections. To make sounds feel \"real\" or \"vintage,\" we need to add grit back in.\n\n## Prerequisites\n- Understanding of distortion/saturation types\n- Knowledge of filter drive\n- Awareness of bit reduction effects\n\n## Step-by-Step Process\n\n### Method 1: Filter Drive (Warm Analog)\n**Location**: Filter section → Drive parameter\n\n**How it works**:\n- Adds saturation at the filter stage\n- Harmonics hit the drive before filtering\n- Creates \"analog\" warmth\n\n**Settings**:\n- **Subtle warmth**: 10-20%\n- **Noticeable saturation**: 25-40%\n- **Aggressive distortion**: 50-70%\n\n**Best for**: Bass, leads, pads needing warmth\n\n**Pro tip**: Combine with gentle filter slope (12dB) for vintage vibe\n\n---\n\n### Method 2: Distortion Effect (Aggressive Edge)\n**Location**: Effects chain → Distortion\n\n**How it works**:\n- Waveshaping distortion on output\n- Adds high-frequency content\n- Creates aggressive character\n\n**Settings**:\n- **Light grit**: 15-25%\n- **Heavy distortion**: 40-60%\n- **Tone control**: Adjust for brightness/darkness\n\n**Best for**: Leads, bass needing aggression, industrial textures\n\n**Pro tip**: Use after reverb for \"shoegaze\" effect\n\n---\n\n### Method 3: Crush Effect (Digital Lo-Fi)\n**Location**: Effects chain → Crush\n\n**How it works**:\n- Bit depth reduction\n- Sample rate reduction\n- Recreates 8-bit/12-bit character\n\n**Settings**:\n- **Vintage digital**: 30-40%\n- **Heavy lo-fi**: 50-70%\n- **Extreme**: 80%+ (very crunchy)\n\n**Best for**: Chiptune vibes, retro aesthetics, texture layers\n\n**Pro tip**: Use on atmospheric pads for \"found footage\" feel\n\n---\n\n### Method 4: Noise Addition (Organic Texture)\n**Location**: Oscillator section → Noise parameter\n\n**How it works**:\n- White noise added to oscillator\n- Pre-filter (gets shaped by filter)\n- Creates breath/texture\n\n**Settings**:\n- **Subtle air**: 5-10%\n- **Percussive attack**: 15-25%\n- **Textural layer**: 30-50%\n\n**Best for**: Plucks, pads, vocals needing breath\n\n**Pro tip**: Combine with pluck filter for realistic string noise\n\n---\n\n### Method 5: Resonance Abuse (Additive Advantage)\n**Location**: Filter section → Resonance\n\n**Why it works in Harmless**:\n- Additive engine prevents phase issues\n- Can use extreme resonance safely\n- Creates whistling, ringing textures\n\n**Settings**:\n- **Subtle peak**: 20-30%\n- **Classic resonance**: 40-60%\n- **Extreme whistling**: 80-95%\n\n**Best for**: Leads, special effects, vocal-like sounds\n\n**Pro tip**: Sweep cutoff with high resonance for \"talking\" filter\n\n---\n\n## Style-Specific Grit Recipes\n\n### Vintage 90s Hip-Hop\n- Filter Drive: 25%\n- Slope: 12dB\n- Crush: 20%\n- Result: MPC-era sampling vibe\n\n### Modern Trap Edge\n- Distortion: 30%\n- Filter Drive: 20%\n- Noise: 10%\n- Result: Contemporary aggression\n\n### Lo-Fi Chill\n- Crush: 40%\n- Noise: 20%\n- Filter Drive: 15%\n- Reverb: 50%+ (with crush)\n- Result: YouTube study beats aesthetic\n\n### Industrial/Dark\n- Distortion: 50%\n- Filter Drive: 35%\n- Resonance: 70%\n- Cutoff: Low, sweeping\n- Result: Aggressive, mechanical\n\n### Vintage Synth\n- Filter Drive: 20%\n- Resonance: 40%\n- Chorus: 30%\n- Slope: 12dB\n- Result: 80s analog emulation\n\n## Layering Grit Techniques\n\n### Pre-Filter Grit\nApply drive before filtering:\n- Creates harmonics then sculpts them\n- More controlled result\n- Use Filter Drive parameter\n\n### Post-Filter Grit\nApply distortion after filtering:\n- Adds highs back after low-pass\n- Brighter, more aggressive\n- Use Distortion effect\n\n### Combined Approach\n1. **Filter Drive**: 15% (warmth)\n2. **Filter**: Shapes the sound\n3. **Distortion**: 20% (edge)\n4. **Result**: Warm but cutting\n\n## Grit on Different Sounds\n\n### Bass\n- Filter Drive: 20-30%\n- Optional Distortion: 15%\n- Purpose: Warmth and presence\n\n### Leads\n- Filter Drive: 15-25%\n- Or Distortion: 20-40%\n- Purpose: Cut through mix\n\n### Pads\n- Filter Drive: 10-20%\n- Noise: 10-15%\n- Purpose: Analog character\n\n### Plucks\n- Filter Drive: 5-15%\n- Noise: 10-20%\n- Purpose: Realistic attack\n\n### FX/Textures\n- Crush: 40-70%\n- Distortion: 30-50%\n- Purpose: Extreme character\n\n## Troubleshooting\n\n### \"Too distorted\"\n- Reduce drive/distortion amount\n- Increase filter cutoff (removes harsh highs)\n- Lower resonance\n\n### \"Not gritty enough\"\n- Layer multiple methods (drive + distortion)\n- Increase amount gradually\n- Try different distortion types if available\n\n### \"Sounds harsh/digital\"\n- Use filter drive instead of distortion\n- Lower slope to 12dB\n- Add subtle chorus\n\n### \"Losing low end\"\n- Don't overdrive bass frequencies\n- Use distortion sparingly on sub\n- Parallel processing: blend clean + distorted\n\n## Pro Tips\n\n1. **Less is more**: Subtle grit often sounds better than extreme\n\n2. **Context matters**: Solo vs in mix - adjust accordingly\n\n3. **Automation**: Automate drive up for emphasis moments\n\n4. **EQ after grit**: May need to tame new frequencies created\n\n5. **Parallel grit**: Blend clean and distorted versions for control\n\n6. **Resonance + Drive**: High resonance + drive = classic acid sound\n\n[SRC: IL-MAN - Harmless Filter, Effects Sections]\n",
+      "build-atmospheric-pads": "# Building Atmospheric Pads\n\n## Target Sound\nLush, evolving pads that fill space without cluttering the mix - perfect for chord beds and ambient layers.\n\n## Prerequisites\n- Understanding of slow envelope settings\n- Knowledge of unison width\n- Familiarity with effects chains\n\n## Step-by-Step Process\n\n### Step 1: Create a Gentle Mask\n**Warm/Rounded options**:\n- Triangle wave approximation (1/n² decay)\n- Rounded square (odd harmonics, gentle slope)\n- Gentle sawtooth (reduced high harmonics)\n\n**Guideline**: Keep H1-H4 strong, H5+ taper quickly for warmth\n\n### Step 2: Slow Amp Envelope (ESSENTIAL)\n```\nAttack: 800ms - 2 seconds ← Long fade in\nDecay: 500ms - 1 second\nSustain: 80-90%\nRelease: 2-4 seconds ← Long tail\n```\n\nThis creates the \"bloom\" characteristic of pads.\n\n### Step 3: Filter for Softness\n- **Cutoff**: 2-4kHz (prevents harshness)\n- **Resonance**: 15-25% (subtle, not ringing)\n- **Slope**: 12dB (gentlest, warmest)\n- **Drive**: 5-15% (light saturation)\n\n### Step 4: Wide Unison\n- **Voices**: 6-9 (maximum width)\n- **Detune**: 25-35% (lush but controlled)\n- **Stereo**: 90-100% (full spread)\n- **Blend**: 70-80% (reduce volume buildup)\n\nThis is where Harmless shines - wide unison is CPU-efficient.\n\n### Step 5: Movement and Evolution\n**Slow Phaser**:\n- Rate: 0.1-0.5 Hz (very slow)\n- Depth: 70-90% (dramatic shift)\n- Feedback: 25-40% (resonant peaks)\n\n**Filter Envelope** (optional):\n- Amount: +15 to +30%\n- Attack: 1-2 seconds\n- Creates gradual brightness increase\n\n### Step 6: Effects Chain\n**Reverb** (heavy):\n- Mix: 40-60%\n- Size: Large\n- Damping: Medium (prevents muddiness)\n\n**Chorus**:\n- Mix: 30-50%\n- Rate: Slow\n- Adds analog-style movement\n\n**Delay** (optional):\n- Mix: 20-30%\n- Time: Dotted 8th or quarter note\n- Feedback: 20%\n\n### Step 7: Space and Placement\n1. Pan slightly left or right (not dead center)\n2. Keep low frequencies minimal (pad is mid/high)\n3. Use EQ to remove 200-400Hz mud if needed\n\n## Style Variations\n\n### R&B Smooth Pad\n- Triangle mask\n- 12dB slope\n- Heavy chorus (50%)\n- Slow attack (1.5s)\n- Play: 7th and 9th chords\n\n### Cinematic Dark Pad\n- Reduced high harmonics in mask\n- Cutoff: 2kHz\n- Slope: 24dB\n- Sub oscillator: -12, 40% (adds depth)\n- Reverb: 50%+\n\n### Ambient Texture Pad\n- Random sparse harmonics in mask\n- Noise: 15-20%\n- Phaser: Rate 0.2, Depth 100%\n- Reverb: 70%+\n- Very long release (5s+)\n\n### Vintage Synth Pad\n- Square-ish mask\n- 12dB slope\n- Resonance: 30% (creates vintage peak)\n- Chorus: 40%\n- Slight crush effect (10%)\n\n## Mixing Considerations\n\n### Frequency Space\nPads should occupy:\n- Midrange (500Hz-3kHz): Body and warmth\n- Highs (3kHz+): Air and shimmer\n- Avoid: Sub frequencies (let bass handle those)\n\n### Stereo Width\n- Full stereo is expected for pads\n- But keep some mono information (blend control)\n- Too wide can disappear on mono systems\n\n### Dynamic Range\n- Pads don't need heavy compression\n- Let them breathe\n- Maximus at 15-25% is enough\n\n## Pro Tips\n\n1. **Chord voicing matters**: Wide voicings (spread octaves) work best with wide pads\n\n2. **Velocity layers**: Map velocity to filter cutoff for expressive swells\n\n3. **Automation**: Automate filter cutoff slowly for evolving textures\n\n4. **Layer with samples**: Add real instrument samples for organic character\n\n5. **Multiple instances**: Use 2-3 Harmless pads with different masks for thickness\n\n[SRC: IL-MAN - Harmless Envelopes, Effects Section]\n",
+      "craft-hard-trap-leads": "# Crafting Hard Trap Leads\n\n## Target Sound\nAggressive, bright, cutting leads for trap/drill production with maximum presence and attitude.\n\n## Prerequisites\n- Understanding of additive synthesis basics\n- Familiarity with harmonic masks\n- Knowledge of filter envelopes\n\n## Step-by-Step Process\n\n### Step 1: Create the Harmonic Foundation\n1. Open Harmonic Mask editor\n2. Select \"Sawtooth\" preset or draw 1/n decay (H1=100%, H2=50%, H3=33%, etc.)\n3. **Boost high harmonics**: Increase H8-H16 to 90-100% for \"screech\" character\n4. Keep H1-H7 at standard sawtooth levels\n\n### Step 2: Configure Oscillator\n- **Sub Oscillator**: -12 semitones, 25% level (adds weight)\n- **Noise**: 5-10% (adds edge and grit)\n- **Color**: +20 to +40 (brightness upfront)\n\n### Step 3: Shape with Filter\n- **Cutoff**: Start at 5-8kHz\n- **Resonance**: 35-50% (additive engine handles this safely)\n- **Slope**: 24dB (balanced) or 36dB (sharper)\n- **Drive**: 20-30% (saturation for warmth)\n- **Pluck**: 10-20% (adds attack character)\n\n### Step 4: Envelope for Punch\n**Amp Envelope**:\n- Attack: 2-5ms (immediate but not clicky)\n- Decay: 150-300ms\n- Sustain: 70-85%\n- Release: 200-400ms\n\n**Filter Envelope**:\n- Attack: 0-2ms\n- Decay: 100-200ms\n- Amount: +40 to +70%\n- This creates the \"attack poke\" that cuts through mix\n\n### Step 5: Add Width with Unison\n- **Voices**: 4-5\n- **Detune**: 30-40%\n- **Stereo**: 80-100%\n- **Blend**: 75% (prevents volume buildup)\n\n### Step 6: Modulation for Interest\n- **Phaser Rate**: 0.3-0.8Hz (slow movement)\n- **Phaser Depth**: 60-80%\n- **Feedback**: 30-40%\n\n### Step 7: Polish Chain\n- **Maximus**: 30% mix (adds punch)\n- **Reverb**: 20-30% mix, medium size\n- **Optional Distortion**: 10-15% for extra edge\n\n### Step 8: Fine-Tuning\n1. Play lead melody in context with 808\n2. Adjust cutoff until it sits right (usually 3-6kHz in mix)\n3. If too harsh, reduce H12+ in mask or filter cutoff\n4. If too thin, boost sub level or add H2-H4\n\n## Common Variations\n\n### 808 Mafia Style\n- Boost H12-H20 specifically\n- Cutoff around 4kHz\n- Heavy reverb (40%+)\n\n### Drill Lead\n- Sparser mask (fewer high harmonics)\n- Pluck at 30%\n- Shorter decay, snappier\n\n### Future Type\n- Add alien phaser (rate 20-30Hz)\n- Inharmonic mask clusters\n- Heavy delay (dotted 8th)\n\n## Key Insight\nThe \"screech\" comes from boosted high harmonics (8-16) combined with moderate filter cutoff. Don't just open the filter wide - shape the mask for character.\n\n[SRC: IL-MAN - Harmless Synthesizer Documentation]\n",
+      "create-alien-phaser-leads": "# Creating Alien Phaser Leads\n\n## Target Sound\nOtherworldly, sci-fi leads with unique pitch artifacts and evolving textures - perfect for Future, Travis Scott, and experimental hip-hop.\n\n## The Secret\nHarmless's phaser doesn't just shift phase - it **modulates the frequency of each harmonic**. At high rates, this creates pitch-shifting effects and inharmonic artifacts.\n\n## Prerequisites\n- Understanding of phaser parameters\n- Willingness to experiment with extreme settings\n- High note range for best effect\n\n## Step-by-Step Process\n\n### Step 1: Create an Inharmonic Mask\nInstead of standard waveforms, draw **clusters of harmonics**:\n- H1: 100% (anchor)\n- H3: 80%\n- H6: 70%\n- H11: 60%\n- H18: 50%\n- H27: 40%\n\nLeave gaps between clusters. This creates \"non-integer\" relationships.\n\n**Why?** The phaser shifts each cluster independently, creating interference patterns.\n\n### Step 2: Configure the Alien Phaser\n**Critical Settings**:\n- **Rate**: 20-50 Hz ← High frequency modulation\n- **Depth**: 70-90% ← Maximum shift\n- **Feedback**: 50-70% ← Creates resonance peaks\n- **Center**: Mid-high range (affects which harmonics)\n\n### Step 3: Filter for Control\n- **Cutoff**: 5-8kHz (let the artifacts through)\n- **Resonance**: 40-60% (emphasize weirdness)\n- **Slope**: 24dB or 36dB\n- **Drive**: 20-40% (distortion adds edge)\n\n### Step 4: Envelope\n**Amp**:\n- Attack: 5-15ms (slight build-up)\n- Sustain: 80%\n- Release: 400-600ms\n\n**Filter Envelope**:\n- Amount: +20 to +40%\n- Attack: 50-100ms\n- Adds \"opening up\" effect\n\n### Step 5: Stereo Width\n- **Unison**: 3-5 voices\n- **Detune**: 40-60% (wide)\n- **Stereo**: 70-90%\n- **Blend**: 70%\n\nEach unison voice has independent phaser position - massive stereo chaos!\n\n### Step 6: Effects for Space\n- **Reverb**: 40-50% (large space for artifacts to bloom)\n- **Delay**: 30-40% (ping-pong for stereo interest)\n- **Maximus**: 25% (control the chaos slightly)\n\n### Step 7: Play High Notes\n**Important**: This effect works best in higher registers:\n- C4 and above for clear artifacts\n- Higher = more obvious pitch shifting\n- Try glissandos (slides between notes)\n\n## Sound Design Recipes\n\n### \"Beam Me Up\"\n- Mask: Sawtooth with H10-H20 boosted\n- Phaser: Rate 35Hz, Depth 80%, Feedback 60%\n- Play: C5-F5 range with pitch bends\n- Result: Classic sci-fi teleport sound\n\n### \"Liquid Metal\"\n- Mask: Sparse clusters (H1, H5, H12, H20)\n- Phaser: Rate 25Hz, Depth 90%, Feedback 70%\n- Filter: Cutoff sweeps with LFO\n- Result: Shimmering, metallic character\n\n### \"Vocoder Ghost\"\n- Mask: Formant-style (H3-H8, H10-H14 boosted)\n- Phaser: Rate 15Hz, Depth 75%, Feedback 50%\n- Add: 20% noise\n- Result: Talking, ghostly quality\n\n### \"Dimension Door\"\n- Mask: Full sawtooth\n- Phaser: Rate 40Hz, Depth 100%, Feedback 80%\n- Unison: 7 voices, wide\n- Result: Extreme, almost ring-modulation effect\n\n## When to Use\n\n### Perfect For:\n- Future type beat intros\n- Build-up risers\n- Experimental sections\n- Breakdowns\n- Sound effects within tracks\n\n### Use Sparingly:\n- Full melodies (can be overwhelming)\n- Under vocals (competes for attention)\n- Whole tracks (ear fatigue)\n\n## Troubleshooting\n\n### \"Just sounds like vibrato\"\n- Increase rate to 30+ Hz\n- Increase depth to 80%+\n- Check you're playing high enough notes\n- Increase feedback for notches\n\n### \"Too chaotic/messy\"\n- Reduce unison voices\n- Simplify harmonic mask\n- Lower feedback to 40%\n- Reduce depth to 60%\n\n### \"No stereo width\"\n- Ensure unison is active (3+ voices)\n- Check stereo setting is 70%+\n- Verify you're not in mono output\n\n## Advanced Techniques\n\n### Automation Ideas:\n1. **Rate sweep**: Start at 10Hz, ramp to 40Hz over 4 bars\n2. **Depth modulation**: LFO on depth creates pulsing alien effect\n3. **Filter tracking**: Phaser + moving cutoff = evolving textures\n\n### Layering:\n- Layer normal lead + alien lead\n- Pan them differently\n- Creates \"split personality\" effect\n\n### Note Expression:\n- Aftertouch → Phaser rate\n- Velocity → Filter cutoff\n- Pitch bend → Phaser depth\n\n## Pro Tips\n\n1. **Start with high rate**: 30Hz is the threshold for pitch artifacts\n\n2. **Feedback is key**: Below 40% sounds like normal phaser, above 60% gets wild\n\n3. **Try on vocals**: Route external audio through Harmless FX (if applicable)\n\n4. **Bounce to audio**: These sounds are CPU-intensive - render to audio for arrangement\n\n5. **Combine with reverb**: The artifacts create amazing reflections\n\n[SRC: IL-MAN - Harmless FX Section, Phaser Documentation]\n",
+      "create-vibe-bouncy": "# Creating Vibe: Bouncy\n\n## Target Vibe\nPlayful, energetic, rhythmic - the \"fun\" side of hip-hop with groove and movement.\n\n## Sonic Characteristics\n- **Rhythmic emphasis**: Syncopation, bounce\n- **Mid-range focus**: Present but not harsh\n- **Short decays**: Staccato, punchy\n- **Movement**: Phaser, tremolo, rhythmic effects\n\n## Prerequisites\n- Understanding of syncopated rhythms\n- Knowledge of pluck sounds\n- Comfort with major/bright minor scales\n\n## Step-by-Step Process\n\n### Step 1: Rhythmic Masks\n**Staccato-friendly shapes**:\n- Sawtooth (full harmonics for presence)\n- Square (hollow, bouncy character)\n- Custom: Emphasize H2-H6 for \"springy\" quality\n\n**Why**: Enough harmonics for definition, not so many they get muddy\n\n### Step 2: Pluck Everything\n**Apply pluck filter liberally**:\n- Pluck: 30-60%\n- Amp sustain: 0-30% (short)\n- Result: Everything has a \"boing\" quality\n\n**Alternative**: Short filter envelope for \"wah\" effect\n\n### Step 3: Envelope for Bounce\n**Amp Envelope**:\n```\nAttack: 0-5ms (immediate)\nDecay: 100-300ms (bouncy)\nSustain: 0-40% (varies by sound)\nRelease: 200-500ms\n```\n\n**The bounce comes from**: Fast attack + noticeable decay\n\n### Step 4: Filter for Definition\n- **Cutoff**: 3-6kHz (present but controlled)\n- **Resonance**: 25-40% (emphasis)\n- **Slope**: 24dB (clean cutoff)\n- **Drive**: 10-20% (subtle warmth)\n\n### Step 5: Rhythmic Effects\n**Phaser for movement**:\n- Rate: 2-8Hz (musical tempo)\n- Depth: 50-70%\n- Creates \"wobble\" synced to rhythm\n\n**Delay for bounce**:\n- Time: Dotted 8th or quarter note\n- Feedback: 20-30%\n- Mix: 25-35%\n- Creates \"call and response\"\n\n### Step 6: Tight Unison\n- Voices: 2-4\n- Detune: 20-30%\n- Stereo: 50-70%\n- Not too wide (keep it focused)\n\n## Style-Specific Bouncy Sounds\n\n### Bouncy Lead\n- Mask: Sawtooth, H4-H8 slightly boosted\n- Pluck: 40%\n- Cutoff: 5kHz\n- Filter env: +50% (wah effect)\n- Play: Staccato, syncopated\n\n### Plucky Keys\n- Mask: Square-ish\n- Pluck: 50%\n- Cutoff: 6kHz\n- Reverb: 20%\n- Delay: Dotted 8th\n\n### Bouncy Bass\n- Mask: Sawtooth, reduced H8+\n- Pluck: 35%\n- Cutoff: 400Hz\n- Filter env: -40% (inverted - thump)\n- Unison: 2 voices max\n\n### Kalimba/Thumb Piano\n- Mask: H1, H4, H8, H16\n- Pluck: 70%\n- Cutoff: 8kHz\n- Play: High register, rhythmic\n\n## Rhythmic Techniques\n\n### Syncopation\n- Play off the beat\n- Anticipate the downbeat\n- Leave space on beats\n- Creates \"push/pull\" feel\n\n### Call and Response\n- Short phrase\n- Delay echo (the response)\n- Creates conversation\n\n### Staccato vs Legato\n- Mostly staccato (short)\n- Occasional held note for contrast\n- Keep it moving\n\n### Swing/Groove\n- Don't quantize 100%\n- Humanize timing slightly\n- 16th note swing feel\n\n## Musical Elements\n\n### Scales\n- Major (happy, bright)\n- Dorian minor (funky, jazzy)\n- Pentatonic (simple, catchy)\n- Mixolydian (bluesy, rock)\n\n### Chords\n- Major triads (happy)\n- 7th chords (funky)\n- Sus2/Sus4 (open, airy)\n\n### Rhythms\n- Bouncy 16th patterns\n- Off-beat accents\n- Triplets (swing feel)\n\n## Arrangement Tips\n\n### Space for Groove\n- Leave room for drums to breathe\n- Don't overfill frequency spectrum\n- Use silence as rhythm\n\n### Layering\n- Bouncy lead (high register)\n- Plucky bass (low, rhythmic)\n- Keys/chords (mid, stabs)\n\n### Contrast\n- Quiet verses\n- Bouncy choruses\n- Build and release\n\n## Bouncy + Hip-Hop\n\n### Pop Trap\n- Bouncy leads over trap drums\n- Major key, energetic\n- Radio-friendly\n\n### Jersey Club\n- Fast, bouncy rhythms\n- Chopped vocal samples\n- Staccato synths\n\n### Afrobeat Fusion\n- Complex rhythms\n- Kalimba-like plucks\n- Bouncy bass\n\n### Old School Bounce\n- Simple patterns\n- Square waves\n- Call-and-response\n\n## Pro Tips\n\n1. **Tempo matters**: 130-150 BPM for maximum bounce\n\n2. **Space is rhythm**: Notes aren't the rhythm - the space between them is\n\n3. **Swing quantization**: Use 50-60% swing for human feel\n\n4. **Short is bouncy**: Short releases = bouncy. Long releases = atmospheric\n\n5. **Reverb carefully**: Too much kills bounce - keep it dry-ish\n\n6. **Major key bounce**: Dark vibes can bounce too, but major is easier\n\n## Checklist\n\n- [ ] Short attack (immediate)\n- [ ] Pluck filter active\n- [ ] Noticeable decay/envelope\n- [ ] Mid-range focus (3-6kHz)\n- [ ] Rhythmic delay\n- [ ] Syncopated patterns\n- [ ] Staccato playing style\n- [ ] Major or bright minor key\n\n[SRC: IL-MAN - Harmless Complete Documentation]\n",
+      "create-vibe-confident": "# Creating Vibe: Confident\n\n## Target Vibe\nBold, assertive, powerful - commanding presence for anthems, braggadocious tracks, and main character energy.\n\n## Sonic Characteristics\n- **Full spectrum**: Bright, present, in-your-face\n- **Wide stereo**: Maximum width and power\n- **Punchy attacks**: Immediate presence\n- **Sustained energy**: Continuous power\n\n## Prerequisites\n- Understanding of full-range synthesis\n- Knowledge of unison width\n- Comfort with major keys and power chords\n\n## Step-by-Step Process\n\n### Step 1: Rich Harmonic Mask\n**Maximum presence**:\n- Sawtooth: Full harmonic series (1/n decay)\n- Or boost H6-H16 for extra bite\n- All harmonics present = full spectrum\n\n**Alternative**: Square + even harmonics added (hybrid warmth)\n\n### Step 2: High Cutoff, Smart Resonance\n**Let it breathe**:\n- Cutoff: 8-12kHz (mostly open)\n- Resonance: 30-50% (emphasis without harshness)\n- Slope: 24dB (clean but not clinical)\n- Drive: 15-25% (warmth and body)\n\n### Step 3: Immediate Envelopes\n**Amp Envelope**:\n```\nAttack: 0-3ms (instant)\nDecay: 150-300ms\nSustain: 85-95% (sustained power)\nRelease: 300-600ms\n```\n\n**Filter Envelope**:\n- Amount: +30 to +60%\n- Attack: 0-5ms\n- Creates \"attack poke\"\n\n### Step 4: Maximum Unison\n**Wide and powerful**:\n- Voices: 6-9 (full stack)\n- Detune: 35-50% (wide)\n- Stereo: 90-100% (full width)\n- Blend: 70-80% (volume management)\n\nThis creates \"wall of sound\" presence.\n\n### Step 5: Bold Effects\n**Reverb**:\n- Mix: 20-30% (space without washing out)\n- Size: Medium-large\n- Result: Anthemic depth\n\n**Maximus**:\n- Mix: 30-40%\n- Essential for punch and cohesion\n\n**Optional Chorus**:\n- Mix: 20-30%\n- Adds analog-style width\n\n### Step 6: Confident Filter Behavior\n- Filter rarely moves (sustained brightness)\n- If automation, slow and deliberate\n- Resonance adds \"singing\" quality\n\n## Style-Specific Confident Sounds\n\n### Anthem Lead\n- Mask: Sawtooth, H8-H12 boosted\n- Unison: 7 voices, wide\n- Cutoff: 10kHz\n- Maximus: 35%\n- Play: Bold, sustained notes in upper register\n\n### Power Pad\n- Mask: Full sawtooth\n- Unison: 9 voices\n- Cutoff: 6kHz\n- Attack: 400ms (grand entrance)\n- Reverb: 35%\n- Play: Power chords, major progressions\n\n### Stab Synth\n- Mask: Bright saw\n- Cutoff: 8kHz\n- Amp: Fast attack, medium decay\n- Filter env: +70%\n- Unison: 5 voices\n- Play: Short, powerful accents\n\n### Epic Bass\n- Mask: Full sawtooth\n- Cutoff: 800Hz\n- Drive: 30%\n- Unison: 3 voices, mono stereo\n- Maximus: 40%\n- Result: Bold, powerful low end\n\n## Musical Elements\n\n### Scales\n- Major (bold, triumphant)\n- Mixolydian (rock, confident minor)\n- Major pentatonic (anthemic, simple)\n\n### Chords\n- Major triads (power)\n- Power chords (5ths only - strong)\n- Major 7ths (sophisticated confidence)\n- Add9 (open, airy power)\n\n### Register\n- Middle to high for leads (presence)\n- Low-mid for bass (power)\n- Full chords in midrange\n\n## Arrangement Tips\n\n### Bold Entrance\n- Start loud or build quickly\n- No tentative beginnings\n- Immediate impact\n\n### Wide Stereo\n- Pan elements across field\n- Unison creates natural width\n- Avoid everything in center\n\n### Sustained Energy\n- Long notes for confidence\n- Tied chords for power\n- Avoid over-busyness\n\n### Contrast\n- Bold chorus\n- Slightly pulled back verse\n- Return to bold = impact\n\n## Confident + Hip-Hop\n\n### Anthem Trap\n- Wide leads\n- Powerful 808s\n- Major key confidence\n- \"Winning\" energy\n\n### Stadium Rap\n- Big synths\n- Reverb on everything\n- Chorus chants\n- Epic scope\n\n### Boss Music\n- Bold stabs\n- Confident bass\n- Minimal but powerful\n- \"I'm in charge\" energy\n\n### Victory Lap\n- Major key\n- Sustained pads\n- Celebratory leads\n- Triumphant atmosphere\n\n## Pro Tips\n\n1. **Major key power**: Minor can be confident, but major is easier\n\n2. **Sustained > staccato**: Hold notes longer for confidence\n\n3. **Full spectrum**: Don't filter too much - let it shine\n\n4. **Stereo width**: Wide = confident and modern\n\n5. **Less is more**: Bold doesn't mean busy - simple powerful sounds\n\n6. **Reference anthems**: Study stadium/arena music for confidence\n\n## Checklist\n\n- [ ] Full sawtooth or rich mask\n- [ ] High cutoff (8kHz+)\n- [ ] High sustain (85%+)\n- [ ] Wide unison (6+ voices)\n- [ ] Immediate attack (0-5ms)\n- [ ] Full stereo width\n- [ ] Major key or confident minor\n- [ ] Maximus for punch\n- [ ] Bold, sustained playing style\n\n[SRC: IL-MAN - Harmless Complete Documentation]\n",
+      "create-vibe-dark": "# Creating Vibe: Dark\n\n## Target Vibe\nOminous, heavy, mysterious - cinematic darkness for trap, drill, and emotional hip-hop.\n\n## Sonic Characteristics\n- **Low end emphasis**: Sub-focused, reduced highs\n- **Slow movements**: Evolving, not punchy\n- **Space**: Reverb-heavy, cavernous\n- **Texture**: Distortion, grit, imperfection\n\n## Prerequisites\n- Understanding of low-pass filtering\n- Knowledge of slow modulation\n- Comfort with dark scales (minor, diminished)\n\n## Step-by-Step Process\n\n### Step 1: Dark Harmonic Mask\n**Reduce brightness**:\n- Fundamental (H1): 100%\n- H2-H4: 40-50% (reduced)\n- H5+: 0-20% (minimal highs)\n\n**Or use**:\n- Triangle wave (natural 1/n² decay = duller)\n- Sparse odd harmonics only\n\n**Why**: Less high harmonics = darker, heavier tone\n\n### Step 2: Low Filter Cutoff\n**Restrict to low-mids**:\n- Cutoff: 800-2000Hz\n- Slope: 24dB or 36dB (removes highs aggressively)\n- Resonance: 20-40% (emphasis in the mid-range)\n\n**Result**: Dark, enclosed sound\n\n### Step 3: Slow Envelopes\n**Pads/Atmospheres**:\n```\nAttack: 1-3 seconds (very slow)\nDecay: 1-2 seconds\nSustain: 85-95%\nRelease: 3-5 seconds\n```\n\n**Bass/Drums**:\n- Keep attack short but body heavy\n- Sustained, not punchy\n\n### Step 4: Distortion and Grit\n**Add darkness through texture**:\n- Filter Drive: 30-50%\n- Or Distortion: 25-40%\n- Creates harmonics in the midrange\n- Adds \"angry\" character\n\n### Step 5: Heavy Space\n**Reverb**:\n- Mix: 50-70%\n- Size: Large\n- Damping: Low (long decay)\n- Result: Cavernous, endless space\n\n**Delay**:\n- Long delays (dotted half notes)\n- High feedback\n- Creates echos\n\n### Step 6: Unison for Depth\n- Voices: 5-7\n- Detune: 30-40%\n- Stereo: 80-100%\n- Creates \"ensemble of shadows\" effect\n\n## Style-Specific Dark Sounds\n\n### Dark Pad\n- Mask: Triangle, minimal highs\n- Cutoff: 1500Hz\n- Reverb: 60%\n- Phaser: Rate 0.1, Depth 90%\n- Play: Minor chords, low register\n\n### Ominous Bass\n- Mask: Fundamental + H2 only\n- Cutoff: 300Hz\n- Drive: 40%\n- Pluck: 20%\n- Result: Heavy, distorted low end\n\n### Cinematic Texture\n- Mask: Random sparse\n- Noise: 30%\n- Crush: 40%\n- Filter: Slow automation downward\n- Reverb: 70%+\n\n### Evil Lead\n- Mask: Sawtooth but cutoff at 2kHz\n- Drive: 35%\n- Resonance: 50% (whistling darkness)\n- Unison: 6 voices\n- Play: Minor scales, high velocity\n\n## Musical Elements\n\n### Scales/Modes\n- Natural minor (dark, sad)\n- Harmonic minor (exotic, tense)\n- Phrygian (evil, Spanish)\n- Locrian (unstable, mysterious)\n\n### Chords\n- Minor triads ( foundation)\n- Minor 7ths (complex, jazzy dark)\n- Diminished (tension, horror)\n- Suspended (unresolved, uneasy)\n\n### Register\n- Low octaves (C2-C3) for weight\n- High notes with heavy filtering for ghostly quality\n\n## Arrangement Tips\n\n### Space and Silence\n- Use silence as an element\n- Long sustained notes\n- Let reverb fill gaps\n\n### Contrast\n- Start sparse, build gradually\n- Occasional bright moments make darkness deeper\n- Dynamic range: quiet to LOUD\n\n### Layering\n- Multiple dark pads (different octaves)\n- Bass foundation\n- Occasional \"stab\" sounds (short, filtered)\n\n## Dark + Hip-Hop\n\n### Drill Dark\n- 808s + dark pads\n- Sparse, space-filled\n- Occasional dissonant lead\n\n### Emotional Trap\n- Dark chords + melodic leads\n- Reverb-heavy\n- Autotune vocals in minor key\n\n### Cinematic Hip-Hop\n- Orchestra + dark synths\n- Heavy textures\n- Epic, trailer-like\n\n## Pro Tips\n\n1. **Not just \"low\"**: Darkness comes from lack of highs AND harmonic choice\n\n2. **Movement in darkness**: Slow filter sweeps create evolving shadows\n\n3. **Distortion is your friend**: Adds edge to otherwise dull sounds\n\n4. **Space creates weight**: Heavy reverb makes sounds feel \"heavy\"\n\n5. **Reference films**: Listen to horror/sci-fi soundtracks for inspiration\n\n6. **Dissonance works**: Minor 2nds, tritones add tension\n\n## Checklist\n\n- [ ] Cutoff below 3kHz\n- [ ] Reduced high harmonics in mask\n- [ ] Slow attack on pads\n- [ ] Distortion or drive added\n- [ ] Heavy reverb (50%+)\n- [ ] Minor key/dark scales\n- [ ] Low register emphasis\n\n[SRC: IL-MAN - Harmless Complete Documentation]\n",
+      "design-bass-that-hits": "# Designing Bass That Hits\n\n## Target Sound\nHard-hitting, focused bass that works with 808s - clean low end with character and punch.\n\n## The Philosophy\nHarmless bass should be **focused, not wide**. Unlike leads, bass needs:\n- Mono compatibility (plays back correctly on all systems)\n- Clean sub frequencies (no mud)\n- Immediate attack (no slow fade)\n- Sustained body (consistent low end)\n\n## Prerequisites\n- Understanding of low-frequency mixing\n- Knowledge of sub oscillators\n- Awareness of mono/stereo considerations\n\n## Step-by-Step Process\n\n### Step 1: Fundamental-Focused Mask\n**Sub Bass Foundation**:\n- H1 (fundamental): 100%\n- H2: 30-40% (adds presence)\n- H3-H4: 20% each\n- H5+: 0-10% (minimal)\n\nThis creates a pure, focused tone without excessive harmonics that cause muddiness.\n\n### Step 2: Engage Sub Oscillator\n**Critical for weight**:\n- **Octave**: -12 semitones\n- **Level**: 40-60%\n\nThis adds the \"sub\" feel without cluttering the midrange.\n\n### Step 3: Filter for Focus\n- **Cutoff**: 200-500Hz (depending on role)\n- **Resonance**: 10-25% (subtle, avoid whistling)\n- **Slope**: 12dB or 24dB (gentler than leads)\n- **Drive**: 15-30% (warmth and saturation)\n- **Pluck**: 0-15% (optional character)\n\n**Note**: For pure sub under 808s, keep cutoff at 200Hz.\n\n### Step 4: NO UNISON (Critical)\n**Set Unison Voices to 1**\n\nWhy? Multiple voices create phase issues in the sub range when played back in mono (club systems, phone speakers).\n\n**If you must have width**:\n- Keep it minimal (2 voices max)\n- Set stereo to 0% (mono)\n- Detune under 20%\n\n### Step 5: Envelope for Punch\n**Amp Envelope**:\n```\nAttack: 3-8ms (immediate, no click)\nDecay: 100-200ms\nSustain: 95-100% (consistent)\nRelease: 200-400ms\n```\n\n**Filter Envelope** (optional for character):\n- Amount: -20 to -50% (inverted - darker attack)\n- Creates \"thump\" on attack\n\n### Step 6: Polish\n- **Maximus**: 30-40% (essential for punch)\n- **Distortion**: 10-20% (optional grit)\n- **No reverb**: Keeps it dry and focused\n- **No chorus**: Maintains mono integrity\n\n## Bass Types and Recipes\n\n### Pure Sub (Under 808s)\n- Mask: Sine (H1 only) or near-sine\n- Sub osc: -12, 50%\n- Cutoff: 150-200Hz\n- Slope: 12dB\n- Unison: OFF\n- Use: Foundation layer under kick/808\n\n### Reese Bass (DnB Style)\n- Mask: Sawtooth (full)\n- Cutoff: 400-600Hz\n- Resonance: 40%\n- Unison: 2 voices, mono, 30% detune\n- Filter envelope: +50%, creates \"talking\" effect\n- Use: Energetic bass patterns\n\n### Trap Bass (808 Companion)\n- Mask: Fundamental + H2-4 at moderate\n- Cutoff: 300-400Hz\n- Drive: 25%\n- Pluck: 10%\n- Maximus: 35%\n- Use: Works alongside 808 samples\n\n### Funky/Growl Bass\n- Mask: Sawtooth with boosted H3-H6\n- Cutoff: 600-800Hz\n- Resonance: 35%\n- Drive: 30%\n- Filter envelope: +60%\n- Use: Bass lines with character\n\n### Sub Pluck (Garage Style)\n- Mask: Moderate harmonics\n- Cutoff: 500Hz\n- Pluck: 40%\n- Amp sustain: 20% (not 0 - want some body)\n- Use: Rhythmic bass patterns\n\n## Mixing with 808s\n\n### Frequency Allocation\n- **808 sample**: Handle the sub (30-60Hz)\n- **Harmless bass**: Handle the upper bass (60-200Hz)\n- **Cutoff relationship**: Set Harmless cutoff just above 808's fundamental\n\n### Sidechain (Optional)\nIf 808 and bass conflict:\n- Route 808 to mixer\n- Add Peak Controller to 808 mixer track\n- Link to Harmless bass volume\n- Set to duck slightly on 808 hits\n\n### Phase Check\n1. Solo both 808 and bass\n2. Flip phase on one (use Fruity Phase Inverter)\n3. Listen for cancellation\n4. Keep the setting with more low end\n\n## Common Mistakes\n\n### \"Bass sounds thin\"\n- Add sub oscillator\n- Increase H2-H4 in mask\n- Reduce cutoff slightly\n\n### \"Bass and 808 fighting\"\n- EQ carve: Cut 808 fundamental from bass\n- Sidechain bass to 808\n- Use different octave ranges\n\n### \"No punch/attack\"\n- Increase filter envelope amount\n- Add drive/saturation\n- Check attack isn't too slow\n\n### \"Sounds muddy in mix\"\n- Lower cutoff (remove 200-400Hz)\n- Simplify mask (reduce harmonics)\n- High-pass other elements to make space\n\n## Advanced Techniques\n\n### Layered Bass\n1. **Instance 1**: Pure sub (H1 only, cutoff 200Hz)\n2. **Instance 2**: Character (rich mask, cutoff 800Hz, distortion)\n3. Blend: 60/40 or 70/30\n\n### Note-Dependent Filtering\nMap note pitch to filter cutoff:\n- Higher notes = slightly brighter\n- Lower notes = darker\n- Maintains consistency across range\n\n### Velocity to Tone\n- Hard velocity = more drive, brighter\n- Soft velocity = cleaner, darker\n- Creates dynamic expression\n\n## Pro Tips\n\n1. **Mono check**: Always check bass in mono before finalizing\n\n2. **Spectrum analyzer**: Watch the low end - should be focused, not spread\n\n3. **Solo vs mix**: Bass often needs different settings solo vs in context\n\n4. **808 tuning**: Match Harmless bass pitch to 808 root note exactly\n\n5. **Distortion placement**: Pre-filter for grit, post-filter for clean highs\n\n[SRC: IL-MAN - Harmless Oscillator, Filter Section]\n",
+      "make-chiptune-retro-sounds": "# Making Chiptune/Retro Sounds\n\n## Target Sound\nAuthentic 8-bit, 16-bit, and retro gaming aesthetics - perfect for nostalgia, unique hooks, and genre-blending.\n\n## The Appeal\nChiptune sounds cut through modern production with:\n- Immediate recognition (nostalgia factor)\n- Clean, defined character\n- Unique sonic identity\n- Contrast to modern sounds\n\n## Prerequisites\n- Understanding of vintage gaming sound chips\n- Knowledge of square waves and limited harmonics\n- Awareness of bit reduction\n\n## Step-by-Step Process\n\n### Step 1: Pure Square Wave Mask\n**The foundation of chiptune**:\n- Use square wave preset in mask\n- Or manually: Odd harmonics only (1,3,5,7...)\n- Amplitude: 1/n decay (100%, 33%, 20%, 14%...)\n- No even harmonics (H2, H4, H6 at 0%)\n\n**Why square?**\n- Most vintage chips (NES, Game Boy) used square waves\n- Limited to 2-4 voices\n- Defined character\n\n### Step 2: Minimal Unison (Single Voice)\n**Set Unison to 1 voice**\n\nAuthentic chiptune was:\n- Pure, single oscillators\n- No stereo width\n- Monophonic or limited polyphony\n\n**If you want slight width**:\n- 2 voices max\n- Minimal detune (10-15%)\n- Mono stereo (0%)\n\n### Step 3: Hard Filter Settings\n- **Cutoff**: High (6-10kHz) - preserve the \"buzzy\" harmonics\n- **Resonance**: 0-15% (keep it clean)\n- **Slope**: 48dB - sharp digital cutoff\n- **Drive**: 0% (no analog warmth wanted)\n\nThis recreates the \"digital\" character of vintage chips.\n\n### Step 4: Sharp Envelopes\n**Amp Envelope**:\n```\nAttack: 0-2ms (instant)\nDecay: 50-150ms\nSustain: 70-85%\nRelease: 100-200ms (tight)\n```\n\n**Filter Envelope**: Minimal or none (keep it pure)\n\n### Step 5: Bit Reduction (Crush)\n**Critical for authenticity**:\n- **Crush Amount**: 40-60%\n- This reduces bit depth and sample rate\n- Recreates DAC limitations of vintage hardware\n\n**What it does**:\n- Adds quantization noise\n- Reduces dynamic range\n- Creates \"stepped\" transitions\n\n### Step 6: Optional Effects\n**Delay** (authentic):\n- Simple delay, not fancy\n- 15-25% mix\n- Quarter or eighth note timing\n\n**No Reverb** (usually):\n- Vintage games had no reverb\n- Keep it dry for authenticity\n- Or add 10-15% for modern twist\n\n## Style Variations\n\n### NES (Nintendo) Style\n- Square wave mask\n- 1-2 voices only\n- Arpeggiated chords (rapid note switching)\n- Cutoff: 8kHz\n- Crush: 50%\n\n### Game Boy Style\n- Even simpler: triangle waves for bass\n- Square for leads\n- Very tight envelopes\n- Sometimes add pulse-width variation\n\n### 16-Bit Era (SNES/Genesis)\n- Slightly richer harmonics allowed\n- Multiple voices (3-4)\n- Can use gentle filter slopes\n- Subtle chorus OK\n\n### Modern Chiptune Fusion\n- Square wave base\n- Add unison width (modern twist)\n- Light reverb (spaciousness)\n- Crush: 30% (subtle)\n\n## Arpeggio Technique\n\nChiptune often uses arpeggios instead of full chords:\n\n1. **Set up**: Single oscillator, square wave\n2. **Program**: Rapid 16th or 32nd note patterns\n3. **Pattern**: Root-3rd-5th-8ve cycling\n4. **Effect**: Creates \"chord\" illusion with 1 voice\n\n**Why?**\n- Vintage chips had limited polyphony\n- Arpeggios create energy and movement\n- Instantly recognizable chiptune sound\n\n## Sound Design Recipes\n\n### \"1-Up\" Collectible Sound\n- Square wave\n- Cutoff: 10kHz (full brightness)\n- Envelope: Very short (50ms total)\n- Pitch envelope: +1 octave ramp\n- Crush: 60%\n\n### \"Coin\" Pickup\n- Square wave with noise burst (20%)\n- Envelope: Super tight (30ms)\n- High pitch (C6+)\n- No unison\n\n### \"Explosion\" Impact\n- Noise: 100%\n- Filter: Cutoff sweep down rapidly\n- Envelope: Short, punchy\n- Crush: 70%\n\n### \"Power-Up\" Chord\n- 3 instances of Harmless\n- Each: Square wave, different pitch (root, 3rd, 5th)\n- Slight detune between them (manual)\n- Arpeggiate or play together\n\n### \"Boss Battle\" Bass\n- Square wave with H2 at 30% (subtle)\n- Cutoff: 500Hz\n- Filter envelope: +60% (talking bass)\n- Distortion: 25%\n\n## Integrating with Hip-Hop\n\n### Trap + Chiptune\n- Use chiptune sounds for counter-melodies\n- Layer chiptune lead over 808s\n- Mix: 30% chiptune, 70% modern production\n\n### Lofi + Chiptune\n- Crush: 50-70% (heavy)\n- Add vinyl noise\n- Combine with lo-fi drums\n- Nostalgic aesthetic\n\n### Experimental/Future\n- Use chiptune as texture layer\n- Process with modern effects (heavy reverb)\n- Glitch elements\n- Contrast clean/dirty\n\n## Troubleshooting\n\n### \"Sounds too modern/clean\"\n- Increase crush amount\n- Reduce unison voices to 1\n- Use 48dB filter slope\n- Remove all effects except maybe delay\n\n### \"Too harsh\"\n- Reduce cutoff slightly (6-8kHz)\n- Lower crush to 40%\n- Use triangle wave instead of square for bass\n\n### \"Not authentic enough\"\n- Research specific chip limitations (e.g., NES = 2A03 chip)\n- Use arpeggios instead of chords\n- Add bit crush\n- Keep it simple (less is more)\n\n## Pro Tips\n\n1. **Limit polyphony**: Most chips had 2-4 voices - respect this for authenticity\n\n2. **Arpeggios are key**: The \"chiptune sound\" is often arpeggios, not chords\n\n3. **Pulse width variation**: Some chips allowed pulse width - experiment in mask\n\n4. **Noise channel**: Use noise oscillator for percussion-like elements\n\n5. **Reference games**: Listen to actual NES/Game Boy soundtracks for inspiration\n\n6. **Modern twist**: It's OK to break rules - use reverb, unison for contemporary chiptune fusion\n\n[SRC: IL-MAN - Harmless Oscillator, Effects Documentation]\n",
+      "make-perfect-plucks": "# Making Perfect Hip-Hop Plucks\n\n## Target Sound\nCrisp, defined plucked sounds for counter-melodies, high-register hooks, and melodic accents.\n\n## The Physics\nThe Pluck filter mathematically simulates string vibration decay - high frequencies lose energy faster than lows (decay rate ∝ frequency²).\n\n## Prerequisites\n- Understanding of Pluck filter parameters\n- Knowledge of amp envelope sustain settings\n\n## Step-by-Step Process\n\n### Step 1: Choose the Right Mask\n**For Acoustic-style plucks**:\n- Use moderate sawtooth (H1-H12 at 1/n decay)\n- Sufficient harmonics for audible decay\n\n**For Synth plucks**:\n- Square wave approximation (odd harmonics only)\n- Hollow, electronic character\n\n**For Bell/Music box**:\n- Sparse mask: H1, H2, H4, H8, H16 at varying amplitudes\n- Metallic, discrete harmonics\n\n### Step 2: Critical Pluck Settings\n**Pluck Amount** determines the decay speed:\n- **30-40%**: Subtle pluck character\n- **50-60%**: Clear string-like decay\n- **70-80%**: Aggressive, fast decay\n\n**Pluck Color/Tone**: Controls starting brightness\n- Lower = darker, mellower attack\n- Higher = brighter, sharper attack\n\n### Step 3: The Envelope is CRITICAL\n**For true pluck behavior**:\n```\nAttack: 0-2ms (immediate)\nDecay: 200-600ms (depending on tempo)\nSustain: 0% ← THIS IS KEY\nRelease: 400-800ms (let it ring)\n```\n\n**Why 0% sustain?**\nWith sustain > 0%, you hear sustained tone + pluck effect\nWith sustain = 0%, you hear pure decay to silence (real string behavior)\n\n### Step 4: Filter Configuration\n- **Cutoff**: 4-8kHz (preserve brightness for decay)\n- **Resonance**: 20-35% (subtle emphasis)\n- **Slope**: 24dB (natural) or 36dB (sharper)\n- **Drive**: 0-15% (optional warmth)\n\n### Step 5: Width and Space\n- **Unison**: 2-3 voices max (keep it tight)\n- **Detune**: 15-25% (gentle)\n- **Stereo**: 40-60% (not too wide)\n- **Reverb**: 30-40% (space without mud)\n- **Delay**: 15-25% (rhythmic bounce)\n\n### Step 6: Velocity Sensitivity\nMap velocity to:\n- **Filter cutoff**: Harder = brighter\n- **Amp envelope**: Harder = louder (standard)\n\nThis mimics how real strings respond to playing intensity.\n\n## Style-Specific Recipes\n\n### Drake-Style Melancholic Pluck\n- Mask: Sparse (H1=100%, H2=30%, H3-H6=10-15%)\n- Pluck: 60%\n- Cutoff: 7kHz\n- Envelope: 0ms attack, 400ms decay, 0% sustain\n- Reverb: 35% wet\n\n### Trap Bell Pluck\n- Mask: H1, H4, H8, H16 boosted\n- Pluck: 70%\n- Cutoff: 9kHz\n- Resonance: 40%\n- Effects: Reverb + delay (30% each)\n\n### Acoustic Guitar Simulation\n- Mask: Full sawtooth\n- Pluck: 45%\n- Slope: 12dB (warmth)\n- Drive: 20%\n- Unison: OFF (pure character)\n\n### Kalimba/Music Box\n- Mask: H1, H2.4 (approx), H4, H7\n- Pluck: 75%\n- Cutoff: 8kHz\n- Play: High register (C4-C6)\n\n## Troubleshooting\n\n### \"Doesn't sound like a pluck\"\n- Check sustain is at 0%\n- Verify pluck amount is 40%+\n- Ensure mask has sufficient harmonics\n\n### \"Decay too fast/slow\"\n- Adjust pluck amount (not decay time)\n- Higher pluck = faster decay\n- Lower cutoff also affects perceived decay\n\n### \"Too thin\"\n- Add sub oscillator at -12\n- Boost H2-H4 in mask\n- Increase filter cutoff\n\n## Pro Tips\n\n1. **Layer approach**: Use two Harmless instances - one with high pluck for attack, one with low pluck for sustain body\n\n2. **Note register matters**: Higher notes show pluck effect more obviously than bass notes\n\n3. **Staccato playing**: Play short notes to let the decay be the focus\n\n4. **Combine with filter envelope**: Pluck + filter sweep = unique textures\n\n[SRC: IL-MAN - Harmless Filter Section, Pluck Filter Documentation]\n"
+    },
+    "by-instrument": {
+      "bass-synthesizer-techniques": "# Bass Synthesizer Techniques\n\n## Overview\nDeep dive into creating professional hip-hop bass with Harmless - from pure sub to textured low-end.\n\n## The Bass Philosophy\n\n### Frequency Roles\n- **Sub (20-60Hz)**: Felt, not heard. 808 territory.\n- **Low Bass (60-120Hz)**: Foundation, weight, punch\n- **Mid Bass (120-250Hz)**: Character, definition, movement\n- **High Bass (250-500Hz)**: Presence, articulation\n\nHarmless excels at **60-500Hz** - the character range.\n\n## Sub Bass Design\n\n### Pure Sub Foundation\n**Purpose**: Under 808s, foundation layer\n\n**Settings**:\n- **Mask**: Fundamental (H1) at 100%, all others 0%\n  - Or: H1=100%, H2=20% (slight edge)\n- **Sub Osc**: -12 semitones, 50% level\n- **Noise**: 0%\n- **Filter**: Cutoff 150-200Hz, 12dB slope, 10% resonance\n- **Unison**: OFF (1 voice)\n- **Envelope**: 5ms attack, 95% sustain\n\n**Why it works**: No harmonics = no mud, pure sub focus\n\n### Warm Sub Bass\n**Purpose**: Sub with slight character\n\n**Settings**:\n- **Mask**: Fundamental + H2-H3 at 30-40%\n- **Sub Osc**: -12, 40%\n- **Color**: -10 to -20\n- **Filter**: Cutoff 300Hz, 24dB slope\n- **Drive**: 15-20%\n- **Envelope**: 8ms attack\n\n## Mid Bass Character\n\n### Reese Bass (Moving Bass)\n**Purpose**: Energetic, \"talking\" bass\n\n**Settings**:\n- **Mask**: Full sawtooth\n- **Filter**: Cutoff 400Hz, resonance 50%\n- **Envelope**: Filter amount +60%, creates \"wow\" effect\n- **Unison**: 2 voices, mono, 30% detune\n- **Drive**: 25%\n\n**Technique**: Play sustained notes, filter moves automatically\n\n### Pluck Bass (Rhythmic)\n**Purpose**: Garage, UK bass patterns\n\n**Settings**:\n- **Mask**: Moderate sawtooth (H1-H10)\n- **Pluck**: 40%\n- **Filter**: Cutoff 600Hz\n- **Envelope**: 0% sustain, 300ms decay\n- **Drive**: 20%\n\n**Technique**: Short rhythmic patterns, let pluck create groove\n\n### Funky/Growl Bass\n**Purpose**: Character, lead-like bass\n\n**Settings**:\n- **Mask**: Sawtooth with H3-H6 boosted\n- **Filter**: Cutoff 800Hz, resonance 45%\n- **Drive**: 30-40%\n- **Filter Env**: +50%, fast attack\n- **Distortion**: 20%\n\n## Texture and Movement\n\n### Distorted Bass\nAdd edge to any bass:\n\n**Settings**:\n- Base: Any bass preset\n- **Drive**: 30-50%\n- **Or Distortion**: 25-40%\n- **Filter**: Slightly higher cutoff to let distortion through\n\n**When to use**: When bass needs to cut through dense mix\n\n### FM-Style Metallic Bass\n**Settings**:\n- **Mask**: Inharmonic (H1, H3.5, H6 positions)\n- **Filter**: Cutoff 500Hz, 36dB slope\n- **Drive**: 25%\n- **Phaser**: Rate 2Hz, Depth 60%\n\n### Sidechain Ducking Bass\nNot a Harmless setting, but essential technique:\n\n**Setup**:\n1. Route 808 to mixer track\n2. Add Peak Controller to 808\n3. Link to Harmless bass volume\n4. Adjust for subtle ducking\n\n**Result**: Bass breathes with 808 hits\n\n## Register Techniques\n\n### Low Register (C1-C2)\n- Keep masks simple (fundamental focus)\n- Cutoff: 200-300Hz max\n- No unison\n- Purpose: Pure foundation\n\n### Mid Register (C2-C3)\n- Can add more harmonics\n- Cutoff: 300-500Hz\n- Subtle unison OK (2 voices, mono)\n- Purpose: Character and groove\n\n### High Register (C3-C4)\n- Full harmonic masks\n- Cutoff: 500-1000Hz\n- Can use unison (stays bass territory)\n- Purpose: Lead-like bass\n\n## Advanced Bass Layering\n\n### Layer 1: Sub Foundation\n- Pure sine or near-sine mask\n- Cutoff: 200Hz\n- Sub osc: Active\n- Unison: OFF\n\n### Layer 2: Character\n- Rich mask (sawtooth)\n- Cutoff: 800Hz\n- Drive: 30%\n- Filter envelope: Active\n- Distortion: 20%\n\n### Blend: 60% Layer 1, 40% Layer 2\n**Result**: Full, powerful bass with both weight and character\n\n## Bass in the Mix\n\n### EQ Relationships\n- **808**: 30-60Hz\n- **Harmless bass**: 60-250Hz\n- **Kick**: 60-100Hz (may conflict)\n- **Solution**: Cut 808 fundamental from bass, or sidechain\n\n### Compression\n- Harmless bass: Light compression or none\n- Maximus: 30-40% (built-in compression)\n- External: Only if bass is too dynamic\n\n### Stereo Placement\n- Bass: Mono or narrow\n- Sub: Always mono\n- Wide bass causes phase issues in clubs\n\n## Troubleshooting Bass\n\n### \"No punch\"\n- Check attack time (too slow?)\n- Add filter envelope\n- Increase drive/distortion\n- Check if 808 is masking it\n\n### \"Too muddy\"\n- Lower cutoff\n- Simplify mask (reduce harmonics)\n- High-pass other instruments at 200Hz+\n- Check sub osc isn't too loud\n\n### \"Can't hear it on phones\"\n- Add H2-H4 harmonics for phone speakers\n- Boost 200-400Hz range\n- Add subtle distortion (creates harmonics)\n\n### \"Phase issues with 808\"\n- Check mono compatibility\n- Flip phase on one\n- Adjust timing slightly\n- Sidechain 808 to bass\n\n## Pro Tips\n\n1. **Bass needs context**: Sounds different solo vs in mix - adjust accordingly\n\n2. **Note choice matters**: Some notes have more energy than others in the low range\n\n3. **Velocity dynamics**: Map velocity to filter for expressive bass\n\n4. **Automation**: Automate cutoff for bass drops and builds\n\n5. **Reference tracks**: A/B with professional tracks in same genre\n\n6. **Room matters**: Bass sounds different in different spaces\n\n[SRC: IL-MAN - Harmless Filter, Oscillator Sections]\n",
+      "keyboard-emulation-guide": "# Keyboard Emulation Guide\n\n## Overview\nEmulating electric pianos, organs, clavinets, and other keyboard instruments using Harmless's additive engine.\n\n## Electric Piano (EP)\n\n### Tine-Based (Rhodes Style)\n**Characteristics**: Bell-like attack, warm sustain, singing quality\n\n**Settings**:\n- **Mask**: H1, H2, H4, H8, H16 (octave relationships like tines)\n- Amplitude: Natural decay (not equal)\n- **Filter**: Cutoff 6kHz, 12dB slope\n- **Resonance**: 25%\n- **Pluck**: 25% (tine attack simulation)\n- **Drive**: 20%\n\n**Envelope**:\n- Attack: 5ms\n- Decay: 300ms\n- Sustain: 80%\n- Release: 800ms\n\n**Effects**:\n- Chorus: 30%\n- Tremolo: Optional (if available)\n- Reverb: 25%\n\n**Playing**: Chords, melodic lines, comping\n\n### Reed-Based (Wurlitzer Style)\n**Characteristics**: Brighter, more aggressive, barky\n\n**Settings**:\n- **Mask**: Richer harmonics than Rhodes\n- **Filter**: Cutoff 7kHz, resonance 35%\n- **Pluck**: 15%\n- **Drive**: 30%\n\n**Character**: More bite, less bell-like\n\n## Clavinet\n\n### Hohner Clavinet D6\n**Characteristics**: Percussive, funky, bright\n\n**Settings**:\n- **Mask**: Square-ish with H2 added\n- **Filter**: Cutoff 8kHz, 24dB slope\n- **Resonance**: 40%\n- **Pluck**: 30%\n- **Drive**: 25%\n\n**Envelope**:\n- Attack: 2ms (immediate)\n- Decay: 100ms\n- Sustain: 70%\n- Release: 200ms (tight)\n\n**Technique**:\n- Staccato playing\n- Funk patterns\n- Percussive muting\n\n## Organ\n\n### Hammond-Style Drawbar\n**Characteristics**: Sustained, hollow, harmonically rich\n\n**Settings**:\n- **Mask**: Custom drawbar simulation\n  - H1: 80% (16' drawbar)\n  - H2: 100% (8' drawbar)\n  - H3: 60% (5-1/3')\n  - H4: 80% (4')\n  - H6: 40% (2-2/3')\n  - H8: 60% (2')\n- **Filter**: Cutoff 5kHz, gentle slope\n- **Resonance**: 20%\n\n**Envelope**:\n- Attack: 20ms (percussion if desired)\n- Sustain: 95%\n- Release: 1s\n\n**Effects**:\n- Rotary simulation (chorus + phaser)\n- Overdrive: 20-30%\n\n### Pipe Organ\n**Characteristics**: Massive, sustained, cathedral\n\n**Settings**:\n- **Mask**: Multiple harmonics with pipe relationships\n- **Filter**: Cutoff 4kHz\n- **Envelope**: Slow attack (1s), full sustain\n- **Unison**: 5+ voices (ensemble effect)\n\n**Effects**: Heavy reverb (cathedral simulation)\n\n## Music Box\n\n### Mechanical Music Box\n**Characteristics**: Delicate, precise, metallic\n\n**Settings**:\n- **Mask**: H1, H4, H8, H16 (comb-like)\n- **Pluck**: 80% (mechanical decay)\n- **Filter**: Cutoff 9kHz, resonance 30%\n- **Envelope**: Very tight\n  - Attack: 1ms\n  - Decay: 200ms\n  - Sustain: 0%\n  - Release: 300ms\n\n**Effects**:\n- Reverb: 30% (small room)\n- Crush: 40% (mechanical imperfection)\n\n### Toy Piano\n**Characteristics**: Simple, slightly detuned, charming\n\n**Settings**:\n- **Mask**: Simple square or triangle\n- **Pluck**: 60%\n- **Unison**: 2 voices, 15% detune (slightly out of tune)\n- **Filter**: Cutoff 8kHz\n\n## Celeste\n\n### Orchestral Celesta\n**Characteristics**: Bell-like, delicate, magical\n\n**Settings**:\n- **Mask**: Bell harmonics (H1, H2, H4, H8, H16)\n- **Pluck**: 50%\n- **Filter**: Cutoff 8kHz, resonance 25%\n- **Envelope**: Medium attack (30ms), full sustain\n\n**Character**: Shimmering, ethereal\n\n## Harpsichord\n\n### Baroque Harpsichord\n**Characteristics**: Plucked strings, bright, articulate\n\n**Settings**:\n- **Mask**: Rich harmonics (full sawtooth)\n- **Pluck**: 40%\n- **Filter**: Cutoff 7kHz, 12dB slope\n- **Envelope**: Tight\n  - Attack: 2ms\n  - Decay: 150ms\n  - Sustain: 60%\n  - Release: 200ms\n\n**Character**: No dynamics (harpsichord characteristic), articulate\n\n## Marimba/Vibraphone\n\n### Orchestral Mallets\n**Characteristics**: Wooden/metallic, resonant, sustained\n\n**Settings**:\n- **Mask**: H1, H2, H4 (fundamental + octaves)\n- **Pluck**: 55%\n- **Filter**: Cutoff 6kHz\n- **Resonance**: 35%\n- **Envelope**: Medium decay\n\n**Effects**:\n- Tremolo (optional)\n- Reverb: 35%\n\n## Keyboard in Hip-Hop\n\n### Neo-Soul Chords\n- Rhodes-style patch\n- 9th and 13th chords\n- Slow attack pad underneath\n\n### Lo-Fi Keys\n- EP with crush effect (40%)\n- Filter cutoff automated\n- Vinyl noise layer\n\n### Trap Stabs\n- Clavinet-style\n- Short, rhythmic\n- Heavy on the 2 and 4\n\n### Gospel Organ\n- Hammond emulation\n- Overdrive engaged\n- Full chords, sustained\n\n### Sparkle Hooks\n- Music box/celesta\n- High register (C5-C7)\n- Simple melodies\n\n## Playing Techniques\n\n### Comping (Accompaniment)\n- Rhythmic chords\n- Staccato or sustained depending on style\n- Fill spaces between vocal phrases\n\n### Soloing\n- Lead-like playing\n- Bends and slides (if supported)\n- Call and response with vocals\n\n### Ostinato\n- Repeated patterns\n- Builds tension\n- Common in hip-hop\n\n### Arpeggios\n- Broken chords\n- Can use Harmless arpeggiator if available\n- Creates movement\n\n## Troubleshooting\n\n### \"Doesn't sound like the real instrument\"\n- Study the actual instrument's physics\n- Adjust pluck amount (crucial for realism)\n- Check envelope shape\n- Add appropriate effects\n\n### \"Too synthetic\"\n- Add subtle detune\n- Include imperfections (noise, crush)\n- Use filter drive\n- Reduce perfection in mask\n\n### \"No dynamics like the real thing\"\n- Map velocity to filter\n- Real instruments get brighter with harder playing\n- Add velocity-sensitive drive\n\n## Pro Tips\n\n1. **Research the instrument**: Understand how it makes sound\n\n2. **Velocity is crucial**: Map it appropriately for each instrument type\n\n3. **Effects make it real**: Reverb size, chorus type, all matter\n\n4. **Register accuracy**: Play in the instrument's actual range\n\n5. **Articulation**: Staccato vs legato matters\n\n6. **Layer for realism**: Combine with real samples if needed\n\n[SRC: IL-MAN - Harmless Oscillator, Filter, Physical Modeling]\n",
+      "lead-synthesizer-mastery": "# Lead Synthesizer Mastery\n\n## Overview\nComprehensive guide to creating cutting, memorable lead sounds for hip-hop leads and hooks.\n\n## The Lead's Role\nLeads must:\n- **Cut through the mix** (frequency presence)\n- **Be memorable** (unique character)\n- **Carry emotion** (expression, dynamics)\n- **Fill space** (stereo width)\n\n## Frequency Strategy\n\n### Presence Zones\n- **2-5kHz**: Definition and articulation\n- **5-8kHz**: \"Air\" and presence\n- **8-12kHz**: Sparkle and shimmer\n\n### Avoid\n- **Too much 200-500Hz** (muddies mix)\n- **Too much sub** (wastes headroom)\n- **Harsh 3-4kHz** (fatiguing)\n\n## Brightness Techniques\n\n### Method 1: Harmonic Mask Shaping\n**Sawtooth with boost**:\n- Standard sawtooth: H1=100%, H2=50%, H3=33%, etc.\n- **Boost H8-H16** to 90-100%\n- Creates \"screech\" without harsh filter\n\n**Square hybrid**:\n- Start with square (odd harmonics)\n- Add H2 at 40% (even harmonic warmth)\n- Brighter than pure square\n\n### Method 2: Filter Strategy\n**Resonance emphasis**:\n- Resonance: 40-60% (additive engine handles this)\n- Cutoff: 3-6kHz\n- Creates peak at cutoff = vocal-like presence\n\n**High cutoff with slope**:\n- Cutoff: 8-10kHz\n- Slope: 36-48dB (removes ultra-highs but keeps presence)\n\n### Method 3: Color Control\n- Color: +30 to +50\n- Pre-filter brightness boost\n- Quick adjustment without mask editing\n\n## Character Types\n\n### Screech Lead (808 Mafia Style)\n**Settings**:\n- Mask: Sawtooth, H10-H18 boosted\n- Cutoff: 4-6kHz\n- Resonance: 45%\n- Unison: 4 voices, 80% stereo\n- Drive: 25%\n\n**Usage**: High-energy drops, aggressive sections\n\n### Smooth Lead (R&B Style)\n**Settings**:\n- Mask: Triangle or rounded saw\n- Cutoff: 5kHz\n- Resonance: 25%\n- Unison: 3 voices, 60% stereo\n- Phaser: Rate 0.5, Depth 60%\n\n**Usage**: Melodic sections, emotional content\n\n### Alien Lead (Experimental)\n**Settings**:\n- Mask: Inharmonic clusters\n- Phaser: Rate 25Hz, Depth 80%\n- Cutoff: 7kHz\n- Unison: 5 voices\n- Reverb: 40%\n\n**Usage**: Special moments, Travis Scott vibes\n\n### Square Lead (Chiptune/Retro)\n**Settings**:\n- Mask: Square wave (odd harmonics)\n- Cutoff: 8kHz\n- Resonance: 20%\n- Unison: 1-2 voices (pure)\n- Crush: 30%\n\n**Usage**: Nostalgia, unique hooks\n\n## Expression Techniques\n\n### Velocity Mapping\nMap velocity to:\n1. **Filter cutoff**: Harder = brighter\n2. **Drive**: Harder = more saturated\n3. **Attack time**: Harder = slightly faster\n\n**Result**: Dynamic, responsive leads\n\n### Aftertouch/Modulation\nIf controller supports:\n- Aftertouch → Vibrato depth\n- Mod wheel → Phaser rate\n- Breath → Filter cutoff\n\n### Pitch Bend\nStandard lead technique:\n- Bend into notes (start flat, land on pitch)\n- Expressive scoops\n- Subtle drift\n\n## Stereo Strategies\n\n### Wide Leads\n- Unison: 5-7 voices\n- Stereo: 80-100%\n- Detune: 30-45%\n- Result: Massive stereo presence\n\n### Focused Leads\n- Unison: 2-3 voices\n- Stereo: 50-70%\n- Detune: 20-30%\n- Result: Present but not overwhelming\n\n### Mono-Safe Leads\n- Unison: 3-4 voices\n- Stereo: 60%\n- Always check in mono\n- Result: Works on all systems\n\n## Filter Envelope Techniques\n\n### The \"Poke\" (Attack Emphasis)\n- Filter env amount: +50 to +70%\n- Attack: 0-5ms\n- Decay: 100-200ms\n- Result: Sharp initial attack that cuts through\n\n### The \"Growl\" (Inverted)\n- Filter env amount: -40 to -60%\n- Attack: 10-20ms\n- Result: Dark attack, then opens up (vocal quality)\n\n### The \"Swell\" (Slow Open)\n- Filter env amount: +30%\n- Attack: 300-800ms\n- Result: Gradual brightness increase (pad-like but lead)\n\n## Effects for Leads\n\n### Essential: Maximus\n- Mix: 25-35%\n- Adds punch and presence\n- Tames dynamics\n- Makes lead \"pop\"\n\n### Space: Reverb\n- Mix: 20-30%\n- Size: Medium\n- Damping: Medium-high\n- Creates depth without washing out\n\n### Width: Chorus\n- Mix: 15-25%\n- Analog-style widening\n- Use OR unison, not both heavily\n\n### Character: Delay\n- Mix: 20-30%\n- Time: Dotted 8th or quarter\n- Ping-pong for stereo interest\n\n## Writing for Leads\n\n### Register Choice\n- **High (C5+)**: Energy, tension, hooks\n- **Mid (C4-C5):** Main melodies, balance\n- **Low-mid (C3-C4):** Warmth, support\n\n### Articulation\n- **Staccato**: Punchy, rhythmic\n- **Legato**: Smooth, flowing\n- **Mix**: Most interesting leads use both\n\n### Phrasing\n- Call and response\n- Question and answer\n- Build and release\n\n## Troubleshooting\n\n### \"Drowned by 808s\"\n- Boost 2-5kHz range\n- Add filter envelope poke\n- Reduce 808 2-5kHz if needed\n\n### \"Too harsh\"\n- Reduce H12+ in mask\n- Lower cutoff\n- Reduce resonance\n- Add chorus (softens)\n\n### \"Not cutting through\"\n- Check mix level (should be prominent)\n- Add presence (3-5kHz)\n- Maximus mix up\n- Consider octave higher\n\n### \"Boring/static\"\n- Add modulation (phaser, LFO)\n- Use velocity mapping\n- Automate filter over time\n- Add rhythmic delay\n\n## Advanced Techniques\n\n### Layering Leads\n**Layer 1**: Bright screech (highs)\n**Layer 2**: Warm foundation (mids)\n**Blend**: 60/40 or 50/50\n**Result**: Full spectrum lead\n\n### Note Duplication\nPlay same melody in multiple octaves:\n- C4 + C5 + C6\n- Creates \"super lead\" effect\n- Use different patches per octave\n\n### Call and Response (Harmonized)\n- Lead plays melody\n- Second Harmless plays harmony (3rd/5th above)\n- Creates \"duet\" effect\n\n## Pro Tips\n\n1. **Less is more**: Simple leads often work better than complex\n\n2. **Reference constantly**: A/B with your favorite tracks\n\n3. **Mono check**: Always verify in mono before finalizing\n\n4. **Context matters**: Lead needs to work WITH drums and bass\n\n5. **Space between notes**: Don't play continuous - let it breathe\n\n6. **MIDI humanization**: 5-10% timing variation for natural feel\n\n[SRC: IL-MAN - Harmless Oscillator, Filter, FX Sections]\n",
+      "pad-and-texture-synthesis": "# Pad and Texture Synthesis\n\n## Overview\nCreating lush, evolving pads and atmospheric textures - the backdrop of emotional hip-hop production.\n\n## The Pad's Purpose\nPads provide:\n- **Harmonic context** (chords, key center)\n- **Atmosphere** (space, depth)\n- **Emotion** (mood, feeling)\n- **Glue** (binds elements together)\n\n## Core Pad Principles\n\n### 1. Slow is Essential\n**Attack time**: 500ms - 3 seconds\n**Why**: Pads shouldn't compete with drums/vocals\n\n**Release time**: 2-5 seconds\n**Why**: Smooth transitions, no gaps\n\n### 2. Wide is Expected\nPads should fill the stereo field:\n- Unison: 5-9 voices\n- Stereo: 90-100%\n- Detune: 25-35%\n\n### 3. Effects are Heavy\nPads can handle:\n- Reverb: 40-60%\n- Chorus: 30-50%\n- Delay: 20-30%\n- All together!\n\n## Pad Types and Recipes\n\n### Warm Analog Pad\n**Vibe**: Vintage synthesizer, cozy, familiar\n\n**Settings**:\n- **Mask**: Triangle or gentle saw (few harmonics)\n- **Filter**: Cutoff 3kHz, 12dB slope (warm)\n- **Resonance**: 15%\n- **Drive**: 10-15%\n- **Envelope**: Attack 1s, Sustain 90%, Release 3s\n\n**Unison**:\n- Voices: 6\n- Detune: 30%\n- Stereo: 100%\n\n**Effects**:\n- Reverb: 45%\n- Chorus: 35%\n- Phaser: Rate 0.3, Depth 70%\n\n### Cinematic Dark Pad\n**Vibe**: Ominous, massive, trailer-like\n\n**Settings**:\n- **Mask**: Reduced highs (H1-H4 strong, H5+ minimal)\n- **Filter**: Cutoff 2kHz, 24dB slope\n- **Resonance**: 30%\n- **Sub Osc**: -12, 40% (adds depth)\n- **Envelope**: Attack 2s, Sustain 95%, Release 4s\n\n**Unison**:\n- Voices: 8\n- Detune: 40%\n- Stereo: 100%\n\n**Effects**:\n- Reverb: 60%\n- Delay: 25% (long time)\n\n### Ambient Texture Pad\n**Vibe**: Ethereal, evolving, experimental\n\n**Settings**:\n- **Mask**: Random sparse harmonics\n- **Filter**: Cutoff 2.5kHz, automation moving\n- **Noise**: 15-20%\n- **Envelope**: Attack 3s, Sustain 80%, Release 5s\n\n**Phaser**:\n- Rate: 0.1Hz (very slow)\n- Depth: 90%\n- Feedback: 40%\n\n**Effects**:\n- Reverb: 70%\n- Crush: 25% (lo-fi texture)\n\n### Vintage String Pad\n**Vibe**: Orchestra, 80s synth, emotional\n\n**Settings**:\n- **Mask**: Sawtooth with boosted mids\n- **Filter**: Cutoff 4kHz, resonance 35%\n- **Envelope**: Attack 800ms, Sustain 90%, Release 2.5s\n\n**Unison**:\n- Voices: 7\n- Detune: 25%\n- Stereo: 90%\n\n**Effects**:\n- Chorus: 40%\n- Reverb: 40%\n- Slight phaser (1Hz)\n\n### Vocal Formant Pad\n**Vibe**: Human, breathy, voice-like\n\n**Settings**:\n- **Mask**: Formant regions (H4-H8, H10-H14 boosted)\n- **Filter**: Cutoff 5kHz, resonance 40%\n- **Drive**: 20%\n- **Envelope**: Attack 600ms, Sustain 85%, Release 2s\n\n**Unison**: 5 voices\n\n**Effects**:\n- Chorus: 30%\n- Reverb: 35%\n\n## Texture Types\n\n### Evolving Texture\n**Technique**: Automation\n- Automate filter cutoff slowly (8 bars to open)\n- Automate phaser depth\n- Mask morphing (if possible)\n\n**Result**: Constantly changing backdrop\n\n### Rhythmic Texture\n**Technique**: Tremolo effect\n- Map LFO to volume\n- Rate: Quarter or eighth note\n- Creates pulsing atmosphere\n\n### Glitch Texture\n**Technique**: Noise + processing\n- Noise: 50%+\n- Crush: 60%\n- Filter: Rapid automation\n- Result: Digital artifacts\n\n### Nature Texture\n**Technique**: Wind/water simulation\n- Noise: 30%\n- Filter: Slow sine wave LFO on cutoff\n- Reverb: 50%+\n- Result: Organic ambience\n\n## Chord Voicing for Pads\n\n### Wide Voicings\n- Spread octaves between hands\n- Leave out middle notes\n- Results in open, airy pads\n\n### Close Voicings\n- Notes within one octave\n- Dense, intimate\n- Good for tension\n\n### Jazz Voicings\n- 7ths, 9ths, 11ths\n- Complex, sophisticated\n- R&B/Soul appropriate\n\n### Suspended Chords\n- Sus2, Sus4\n- Unresolved, floating\n- Ambient/cinematic\n\n## Layering Pads\n\n### The 3-Layer Approach\n**Layer 1**: Low pad (C2-C3)\n- Sub osc enabled\n- Warm, foundational\n- 40% of blend\n\n**Layer 2**: Mid pad (C3-C4)\n- Chord body\n- Main presence\n- 40% of blend\n\n**Layer 3**: High pad (C4-C5)\n- Air, shimmer\n- Sparse harmonics\n- 20% of blend\n\n### Frequency Separation\n- EQ each layer to own range\n- No frequency fighting\n- Creates massive combined pad\n\n## Pad Automation\n\n### Filter Sweeps\n- Slow opening (build-up)\n- Slow closing (wind-down)\n- Creates movement without playing\n\n### Volume Swells\n- Crescendo into chorus\n- Decrescendo for verse\n- Manual or automated\n\n### Phaser Depth\n- More depth = more movement\n- Automate for evolving interest\n\n### Effects Mix\n- Reverb swells\n- Delay feedback changes\n- Chorus rate shifts\n\n## Pad in the Mix\n\n### Volume Level\n- Pads sit *behind* everything\n- 10-20dB below lead vocals\n- Audible but not attention-grabbing\n\n### Frequency Masking\n- High-pass pads at 200-300Hz\n- Let bass handle low end\n- Creates clarity\n\n### Stereo Placement\n- Full stereo width\n- Slight panning variations\n- Creates immersive field\n\n## Troubleshooting\n\n### \"Pad is too loud/obvious\"\n- Reduce volume\n- Increase attack time\n- High-pass more aggressively\n- Reduce reverb mix\n\n### \"Pad is too thin\"\n- Add sub oscillator\n- Use more unison voices\n- Boost low harmonics in mask\n- Layer with low pad\n\n### \"Pad fights with other elements\"\n- EQ carve: Create frequency pocket\n- High-pass other elements instead\n- Sidechain pad to kick (optional)\n- Reduce pad sustain\n\n### \"Pad sounds static/boring\"\n- Add phaser\n- Automate filter\n- Change chord inversions\n- Add rhythmic variation\n\n## Pro Tips\n\n1. **Less is more**: One great pad > three mediocre pads\n\n2. **Space is key**: Let the pad breathe - don't play too many notes\n\n3. **Chord inversions**: Change voicings for interest\n\n4. **Reference film scores**: Best pad inspiration\n\n5. **Save variations**: Create 3-4 versions of each pad (dry, wet, filtered, etc.)\n\n6. **Bounce to audio**: Complex pads with automation - render for CPU relief\n\n[SRC: IL-MAN - Harmless Envelopes, Unison, Effects Sections]\n",
+      "plucked-string-emulation": "# Plucked String Emulation\n\n## Overview\nMaster the art of physical modeling with Harmless's Pluck filter - from guitars to harps to unique plucked textures.\n\n## The Physics of Pluck\n\n### Real String Behavior\nWhen a string is plucked:\n1. **Initial strike**: All frequencies excited\n2. **High frequency decay**: Treble loses energy first (faster vibration = more friction)\n3. **Exponential curve**: Decay follows mathematical law: `Energy Loss ∝ frequency²`\n4. **Final sustain**: Only fundamental remains\n\n### Harmless Implementation\nThe Pluck filter simulates this physics:\n- **Pluck Amount**: Controls overall decay speed\n- **High frequencies**: Decay faster than lows\n- **Formula**: Decay rate = f² × damping factor\n\n## Guitar Emulation\n\n### Acoustic Guitar\n**Settings**:\n- **Mask**: Sawtooth (H1-H12), natural decay\n- **Pluck**: 45-55%\n- **Filter**: Cutoff 5-7kHz, 12dB slope, 20% resonance\n- **Drive**: 15-25% (wood warmth)\n\n**Envelope**:\n- Attack: 2ms\n- Decay: 400ms\n- Sustain: 0% ← Critical\n- Release: 600ms\n\n**Playing**: Strumming patterns, chord voicings\n\n### Electric Guitar (Clean)\n**Settings**:\n- **Mask**: Sawtooth with boosted H3-H6\n- **Pluck**: 35-45%\n- **Filter**: Cutoff 6kHz, 24dB slope\n- **Drive**: 20-30% (amp warmth)\n\n**Effects**:\n- Chorus: 25% (stereo width)\n- Reverb: 20% (room)\n\n### Electric Guitar (Muted)\n**Settings**:\n- **Mask**: Sparse (H1-H6 only)\n- **Pluck**: 60-70%\n- **Filter**: Cutoff 3kHz (dark)\n- **Envelope**: Very short release (150ms)\n\n**Technique**: Palm-mute style\n\n## Harp Emulation\n\n### Concert Harp\n**Settings**:\n- **Mask**: H1, H2, H4, H8, H16 (octave relationships)\n- **Pluck**: 65-75%\n- **Filter**: Cutoff 8kHz (bright)\n- **Resonance**: 30%\n\n**Envelope**:\n- Attack: 1ms\n- Decay: 600ms\n- Sustain: 0%\n- Release: 1s (let it ring)\n\n**Playing**: Glissandos, arpeggios, single notes\n\n### Celtic/Folk Harp\n**Settings**:\n- **Mask**: Slightly richer than concert\n- **Pluck**: 55-65%\n- **Filter**: Cutoff 7kHz\n- **Drive**: 10%\n\n**Character**: Warmer, more intimate\n\n## Ethnic Plucked Instruments\n\n### Kalimba (Thumb Piano)\n**Settings**:\n- **Mask**: H1, H2.4 (approx position), H4, H7\n- **Pluck**: 70-80%\n- **Filter**: Cutoff 8kHz\n- **Envelope**: Tight (short decay, short release)\n\n**Playing**: High register (C5-C7), rhythmic patterns\n\n### Koto (Japanese)\n**Settings**:\n- **Mask**: Pentatonic-friendly harmonics\n- **Pluck**: 50-60%\n- **Filter**: Cutoff 6kHz\n- **Envelope**: Medium-long\n\n**Character**: Buzzy, resonant\n\n### Sitar (Indian)\n**Settings**:\n- **Mask**: Rich, with sympathetic resonance simulation\n- **Pluck**: 40-50%\n- **Phaser**: Rate 1Hz, Depth 60% (simulates sympathetic strings)\n- **Filter**: Cutoff 5kHz, resonance 40%\n\n**Technique**: Pitch bends, drones\n\n## Modern Plucked Sounds\n\n### Synth Pluck\n**Settings**:\n- **Mask**: Square-ish (odd harmonics)\n- **Pluck**: 40-50%\n- **Filter**: Cutoff 6kHz, 24dB slope\n- **Drive**: 10%\n- **Unison**: 2-3 voices\n\n**Character**: Electronic, defined\n\n### Bell Pluck\n**Settings**:\n- **Mask**: H1, H4, H8, H16, H32\n- **Pluck**: 60-70%\n- **Filter**: Cutoff 9kHz\n- **Resonance**: 35%\n\n**Character**: Metallic, bell-like\n\n### Music Box\n**Settings**:\n- **Mask**: Sparse, bell-like\n- **Pluck**: 70-80%\n- **Filter**: Cutoff 10kHz\n- **Envelope**: Very tight\n- **Crush**: 40% (vintage)\n\n## Advanced Pluck Techniques\n\n### Layered Pluck\n**Instance 1**: High pluck (70%) - attack brightness\n**Instance 2**: Low pluck (30%) - sustain body\n**Blend**: 50/50\n**Result**: Control over both aspects\n\n### Velocity-Responsive Pluck\nMap velocity to:\n- **Filter cutoff**: Harder = brighter\n- **Pluck amount**: Harder = less pluck (louder sustain)\n- **Amp attack**: Standard\n\n**Result**: Dynamic, responsive instrument\n\n### Filter + Pluck Combination\n- **Pluck**: 40%\n- **Filter envelope**: +30%\n- Result: Natural decay + articulation sweep\n\n## Pluck in Hip-Hop\n\n### Drake-Style Melancholic\n- Hollow mask (sparse harmonics)\n- Pluck: 60%\n- Reverb: 35%\n- Play: High register, emotional\n\n### Trap Arpeggios\n- Rich mask\n- Pluck: 50%\n- Delay: Dotted 8th\n- Play: Fast patterns, C4-C6\n\n### Future Plucks\n- Inharmonic mask\n- Pluck: 45%\n- Phaser: Rate 2Hz\n- Play: Single notes with space\n\n### Garage/Uk Bass\n- Square-ish mask\n- Pluck: 40%\n- Play: Rhythmic bass patterns\n- Cutoff: 400-600Hz\n\n## Troubleshooting Plucks\n\n### \"Doesn't sound plucked\"\n- Check sustain is at 0%\n- Verify pluck is 40%+\n- Ensure mask has harmonics to decay\n\n### \"Decay too fast\"\n- Reduce pluck amount\n- Note: Higher notes naturally decay faster\n- Lower cutoff extends perceived decay\n\n### \"Too bright/harsh\"\n- Reduce cutoff\n- Reduce high harmonics in mask\n- Add gentle filter slope (12dB)\n\n### \"Not enough attack\"\n- Reduce pluck (counterintuitive but works)\n- Or add noise (5-10%)\n- Shorten attack time\n\n## Pro Tips\n\n1. **Register matters**: Pluck is more audible on higher notes\n\n2. **Staccato playing**: Let the pluck be the focus\n\n3. **Reverb is your friend**: Plucks love space\n\n4. **Combine techniques**: Pluck + filter env + velocity = ultimate control\n\n5. **Save presets**: Good plucks are gold - save them\n\n6. **Experiment with masks**: Different harmonics = different pluck characters\n\n[SRC: IL-MAN - Harmless Pluck Filter, Physical Modeling]\n",
+      "synthesizer-specific-guide": "# Synthesizer-Specific Guide\n\n## Overview\nThis guide provides workflows for different synthesis approaches with Harmless, focusing on how to achieve specific synthesizer archetypes.\n\n## Analog Subtractive Emulation\n\n### Goal\nRecreate vintage analog synth character (Minimoog, Prophet, Juno)\n\n### Approach\nWhile Harmless is additive, we can approximate subtractive behavior:\n\n**Mask**: Full sawtooth or square\n- Use classic waveform shapes\n- Don't get too creative with mask\n\n**Filter**: 24dB slope\n- This is the \"standard\" analog slope\n- 12dB for vintage warmth\n\n**Drive**: 20-30%\n- Analog warmth comes from saturation\n- Essential for character\n\n**Unison**: 2-3 voices\n- Vintage synths had limited voices\n- Mono or narrow stereo\n\n**Chorus**: 30-40%\n- Vintage synths used chorus for width\n- Especially \"Juno\" style\n\n### Key Differences\n- No filter \"scream\" at high resonance (additive prevents this)\n- Cleaner sound overall\n- Need to add drive for warmth\n\n## FM Synthesis Approximation\n\n### Goal\nRecreate FM-style harmonics and bell-like tones\n\n### Approach\nFM creates complex inharmonic relationships. Approximate in Harmless:\n\n**Mask**: Inharmonic clusters\n- H1, H3.5, H5.7, H8.2 positions (approximate)\n- Or use ratios: 1:2, 1:3.5, 1:5.7\n\n**Filter**: High cutoff\n- Let the complex harmonics through\n- Slope: 24dB\n\n**Pluck**: 20-40%\n- FM bells have natural decay\n- Adds to authenticity\n\n**Envelope**: Percussive\n- Fast attack, medium decay\n- Low sustain\n\n### Tips\n- Use math to calculate harmonic positions\n- Experiment with \"non-integer\" harmonics\n- Metallic textures result\n\n## Wavetable/Vector Synthesis\n\n### Goal\nEvolving, morphing textures\n\n### Approach\nWavetable morphs between waveforms. In Harmless:\n\n**Technique**: Automation\n- Automate harmonic mask over time\n- Draw different shapes at different song positions\n- Creates morphing effect\n\n**Filter**: Slow sweeps\n- Combine with mask morphing\n- 36dB slope for dramatic changes\n\n**Phaser**: 0.5-2Hz\n- Adds continuous movement\n- Compliments morphing\n\n**Implementation**:\n1. Create automation clip for mask\n2. Draw different mask shapes at intervals\n3. Play long notes to hear morph\n\n### Tips\n- Make gradual changes between masks\n- Or abrupt changes for glitch effect\n- Combine with filter for full effect\n\n## Physical Modeling (Pluck/Bow)\n\n### Goal\nRealistic string, wind, and percussion sounds\n\n### Approach\nHarmless's Pluck filter is physical modeling for strings:\n\n**Strings (Guitar, Harp)**:\n- Mask: Moderate sawtooth\n- Pluck: 40-60%\n- Amp sustain: 0%\n- Envelope: Medium decay\n\n**Wind (Flute, Clarinet)**:\n- Mask: Triangle or odd harmonics only\n- Pluck: 0%\n- Slow attack: 100-300ms\n- Filter: Gentle (12dB)\n\n**Percussion (Drums)**:\n- Mask: Noise + short tone\n- Pluck: 0%\n- Very short envelope\n- White noise for snare character\n\n### Extended Techniques\n- **Bow simulation**: Amp attack 200ms, slow filter sweep\n- **Mute**: High pluck, short release\n- **Harmonics**: Sparse mask (H1, H2, H4 only)\n\n## Additive-Only Textures\n\n### Goal\nSounds impossible in subtractive synthesis\n\n### Approach\nExploit Harmless's additive strengths:\n\n**Sparse Inharmonic**:\n- H1, H5, H12, H27 only\n- Gaps create unique timbres\n- Metallic, bell-like\n\n**Formant/Vocal**:\n- Boost H3-H7 (vowel formant region)\n- Create vocal-like resonances\n- Filter at 4-6kHz\n\n**Reverse Harmonics**:\n- Low harmonics quieter than highs\n- Unnatural, sci-fi\n- Cutoff opens from low\n\n**Stochastic/Random**:\n- Random harmonic levels\n- Ever-changing textures\n- Phaser adds movement\n\n### Why It Works\nSubtractive synths can't:\n- Control individual harmonics\n- Create gaps in spectrum\n- Do true inharmonic tones\n- Use extreme resonance safely\n\n## Hybrid Approaches\n\n### Analog + Additive\nStart with analog-style mask, then:\n- Add unusual harmonics for character\n- Use extreme filter settings\n- Combine drive with clean additive\n\n### FM + Subtractive\nFM-style mask through subtractive filter:\n- Complex mask\n- 48dB slope\n- Resonance emphasis\n\n### Physical + Electronic\nRealistic pluck with electronic elements:\n- High pluck setting\n- Distortion effect\n- Heavy reverb (not realistic, but cool)\n\n## Choosing Your Approach\n\n### Use Analog Emulation When:\n- You want familiar, warm sounds\n- Recreating classic patches\n- Safe, tested results\n\n### Use FM Approximation When:\n- Need bells, metals, complex tones\n- Digital character wanted\n- Mathematical precision\n\n### Use Wavetable When:\n- Evolving pads needed\n- Sound design experiments\n- Cinematic textures\n\n### Use Physical When:\n- Realistic instruments\n- Organic textures\n- Acoustic plucks/bows\n\n### Use Additive-Only When:\n- Unique sounds needed\n- Exploring Harmless's power\n- Creating \"impossible\" tones\n\n## Pro Tips\n\n1. **Combine approaches**: Analog foundation + additive flourishes\n\n2. **Reference presets**: Study factory presets for each style\n\n3. **Start simple**: Master one approach before combining\n\n4. **Documentation**: Save your hybrid discoveries as presets\n\n5. **CPU considerations**: Complex masks cost more than simple ones\n\n[SRC: IL-MAN - Harmless Architecture Documentation]\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Harmless\r\n\r\nThis section contains workflow information for the harmless plugin.\r\n"
+    }
+  },
+  "rules": {
+    "do-not-rules": {
+      "metadata": {
+        "plugin": "Harmless",
+        "ruleSet": "do-not-rules",
+        "lastUpdated": "2026-02-03"
+      },
+      "rules": [
+        {
+          "id": "additive-misconceptions",
+          "name": "Additive Engine Misconceptions",
+          "priority": "high",
+          "donts": [
+            {
+              "mistake": "Worrying about filter resonance distortion",
+              "explanation": "Additive engine prevents phase issues - high resonance is safe",
+              "reality": "Can use 80%+ resonance without artifacts"
+            },
+            {
+              "mistake": "Avoiding steep filter slopes",
+              "explanation": "48dB brickwall sounds clean in additive synthesis",
+              "reality": "Extreme slopes are a feature, not a problem"
+            },
+            {
+              "mistake": "Thinking it's CPU-heavy by default",
+              "explanation": "CPU scales with active harmonics, not voices",
+              "reality": "Sparse masks are very efficient"
+            },
+            {
+              "mistake": "Expecting analog warmth",
+              "explanation": "Harmless is mathematically clean by design",
+              "reality": "Use drive/distortion to add warmth"
+            }
+          ]
+        },
+        {
+          "id": "performance-pitfalls",
+          "name": "Performance Pitfalls",
+          "priority": "medium",
+          "donts": [
+            {
+              "mistake": "Using phaser on every track",
+              "explanation": "Phaser is CPU-intensive on all 512 harmonics",
+              "reality": "Use strategically, disable when not needed"
+            },
+            {
+              "mistake": "Rich harmonic masks for simple bass",
+              "explanation": "Full sawtooth with 512 harmonics wastes CPU for sub bass",
+              "reality": "Use fundamental-only or sparse masks for bass"
+            },
+            {
+              "mistake": "9 voices unison on everything",
+              "explanation": "Maximum unison not always needed",
+              "reality": "3-4 voices often sufficient, saves CPU"
+            },
+            {
+              "mistake": "High phaser rate without purpose",
+              "explanation": "20+ Hz rates create extreme effects",
+              "reality": "Mostly useful for special FX, not bread-and-butter sounds"
+            }
+          ]
+        },
+        {
+          "id": "sound-design-mistakes",
+          "name": "Sound Design Mistakes",
+          "priority": "medium",
+          "donts": [
+            {
+              "mistake": "Ignoring the harmonic mask",
+              "explanation": "Using only presets misses Harmless's power",
+              "reality": "Custom masks create unique sounds impossible elsewhere"
+            },
+            {
+              "mistake": "Pluck filter with no harmonics",
+              "explanation": "Pluck needs frequencies to decay - pure sine won't work",
+              "reality": "Use sawtooth or rich masks with pluck"
+            },
+            {
+              "mistake": "Unison on sub bass frequencies",
+              "explanation": "Creates phase issues in mono playback systems",
+              "reality": "Keep sub bass in single voice mode"
+            },
+            {
+              "mistake": "Forgetting pluck needs 0% sustain",
+              "explanation": "Sustained pluck sounds like filter effect, not decay",
+              "reality": "Set amp sustain to 0 for true string decay"
+            },
+            {
+              "mistake": "Using phaser like traditional phaser",
+              "explanation": "Expecting phase shift but getting frequency shift",
+              "reality": "Understand it's harmonic frequency modulation"
+            }
+          ]
+        },
+        {
+          "id": "mixing-mistakes",
+          "name": "Mixing Mistakes",
+          "priority": "medium",
+          "donts": [
+            {
+              "mistake": "Applying heavy unison to bass",
+              "explanation": "Creates mono compatibility issues",
+              "reality": "Bass should be mostly mono below 200Hz"
+            },
+            {
+              "mistake": "Maximus at 100% on everything",
+              "explanation": "Over-compression kills dynamics",
+              "reality": "25-40% is the sweet spot"
+            },
+            {
+              "mistake": "Brickwall filter without purpose",
+              "explanation": "48dB slope sounds very digital/clinical",
+              "reality": "Use for effect, not as default"
+            },
+            {
+              "mistake": "High resonance on bass",
+              "explanation": "Can create whistling artifacts in low frequencies",
+              "reality": "Keep bass resonance under 30%"
+            }
+          ]
+        },
+        {
+          "id": "workflow-inefficiencies",
+          "name": "Workflow Inefficiencies",
+          "priority": "low",
+          "donts": [
+            {
+              "mistake": "Not saving custom masks",
+              "explanation": "Losing good masks when switching presets",
+              "reality": "Save to mask preset slots before experimenting"
+            },
+            {
+              "mistake": "Random mask drawing without purpose",
+              "explanation": "Random harmonics rarely sound musical",
+              "reality": "Use mask recipes or purposeful shapes"
+            },
+            {
+              "mistake": "Ignoring sub oscillator",
+              "explanation": "Missing out on easy low-end extension",
+              "reality": "Sub osc is powerful for bass design"
+            },
+            {
+              "mistake": "Never using color control",
+              "explanation": "Pre-filter brightness is quick tone control",
+              "reality": "Use color before adjusting filter"
+            }
+          ]
+        }
+      ]
+    },
+    "hip-hop-production-rules": {
+      "metadata": {
+        "plugin": "Harmless",
+        "ruleSet": "hip-hop-production",
+        "lastUpdated": "2026-02-03"
+      },
+      "rules": [
+        {
+          "id": "bass-production",
+          "name": "Bass Production Rules",
+          "priority": "critical",
+          "category": "bass",
+          "rules": [
+            {
+              "rule": "Unison OFF for sub bass",
+              "explanation": "Multiple voices create phase issues in low frequencies in mono systems",
+              "action": "Set unison voices to 1 for pure sub bass"
+            },
+            {
+              "rule": "Fundamental + Sub osc",
+              "explanation": "Combine main oscillator with -12 sub for 808-style weight",
+              "settings": {
+                "mask": "Sine or fundamental-focused",
+                "subOscillator": -12,
+                "subLevel": 40
+              }
+            },
+            {
+              "rule": "12dB slope for warmth",
+              "explanation": "Gentler filter slope preserves more harmonic content",
+              "guideline": "Use 12dB or 24dB for bass, avoid 48dB"
+            },
+            {
+              "rule": "Short attack, full sustain",
+              "explanation": "Bass needs immediate presence but sustained body",
+              "envelope": {
+                "attack": "5ms",
+                "sustain": "95%+",
+                "release": "200ms"
+              }
+            },
+            {
+              "rule": "Maximus for punch",
+              "explanation": "Multiband compression adds snap and controls dynamics",
+              "mix": "30-40% Maximus mix"
+            }
+          ]
+        },
+        {
+          "id": "lead-production",
+          "name": "Lead Production Rules",
+          "priority": "high",
+          "category": "lead",
+          "rules": [
+            {
+              "rule": "Sawtooth for brightness",
+              "explanation": "All harmonics present = full spectrum presence",
+              "mask": "Sawtooth shape (1/n decay)"
+            },
+            {
+              "rule": "Unison for width",
+              "explanation": "3-7 voices with detune creates stereo presence",
+              "settings": {
+                "voices": "3-7",
+                "detune": "25-40%",
+                "stereo": "70-100%"
+              }
+            },
+            {
+              "rule": "Pluck for character",
+              "explanation": "Even leads benefit from slight pluck (10-20%) for attack definition",
+              "guideline": "Add 15% pluck to sustained leads"
+            },
+            {
+              "rule": "Phaser for movement",
+              "explanation": "Slow phaser adds evolving character without obvious effect",
+              "settings": {
+                "rate": "0.2-0.8 Hz",
+                "depth": "60-80%"
+              }
+            },
+            {
+              "rule": "Filter envelope for interest",
+              "explanation": "Modulating cutoff adds life to sustained notes",
+              "amount": "+30 to +60%"
+            }
+          ]
+        },
+        {
+          "id": "pluck-production",
+          "name": "Pluck Production Rules",
+          "priority": "high",
+          "category": "pluck",
+          "rules": [
+            {
+              "rule": "Pluck filter 40-70%",
+              "explanation": "Sweet spot for realistic string decay",
+              "guideline": "Lower for synth plucks, higher for realistic strings"
+            },
+            {
+              "rule": "0% sustain for true decay",
+              "explanation": "Pluck effect needs to decay to silence",
+              "envelope": {
+                "sustain": "0%",
+                "decay": "200-600ms"
+              }
+            },
+            {
+              "rule": "Sparse masks for clarity",
+              "explanation": "Too many harmonics = muddy decay",
+              "guideline": "Limit to H1-H16 for clean plucks"
+            },
+            {
+              "rule": "Reverb for space",
+              "explanation": "Plucks benefit from room ambience",
+              "mix": "25-40% reverb"
+            },
+            {
+              "rule": "Velocity to filter",
+              "explanation": "Harder hits = brighter plucks",
+              "setup": "Map velocity to filter cutoff"
+            }
+          ]
+        },
+        {
+          "id": "pad-production",
+          "name": "Pad Production Rules",
+          "priority": "medium",
+          "category": "pad",
+          "rules": [
+            {
+              "rule": "Slow attack essential",
+              "explanation": "Pads need to fade in smoothly",
+              "envelope": {
+                "attack": "500ms-2s",
+                "release": "1-3s"
+              }
+            },
+            {
+              "rule": "Wide unison for atmosphere",
+              "explanation": "5+ voices creates lush stereo field",
+              "settings": {
+                "voices": "5-9",
+                "stereo": "90-100%"
+              }
+            },
+            {
+              "rule": "Gentle filter slope",
+              "explanation": "12dB slope preserves warmth",
+              "recommendation": "12dB or 24dB only"
+            },
+            {
+              "rule": "Phaser for evolution",
+              "explanation": "Slow phaser creates breathing texture",
+              "settings": {
+                "rate": "0.1-0.5 Hz",
+                "depth": "70-90%"
+              }
+            },
+            {
+              "rule": "Heavy effects acceptable",
+              "explanation": "Pads can handle 40%+ reverb and chorus",
+              "effects": {
+                "reverb": "40-60%",
+                "chorus": "30-50%"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mixing-rules",
+          "name": "Mixing Integration Rules",
+          "priority": "high",
+          "category": "mixing",
+          "rules": [
+            {
+              "rule": "Harmless + 808 compatibility",
+              "explanation": "Additive engine plays well with 808 samples",
+              "tip": "No phase issues when layering with samples"
+            },
+            {
+              "rule": "Brickwall filter for clarity",
+              "explanation": "Use extreme slopes to isolate frequency ranges",
+              "useCase": "Remove mud with 48dB slope at 300Hz"
+            },
+            {
+              "rule": "Maximus as glue",
+              "explanation": "Built-in Maximus adds cohesion to sounds",
+              "guideline": "25-40% mix on most sounds"
+            },
+            {
+              "rule": "Alien phaser sparingly",
+              "explanation": "High-rate phaser effects are intense",
+              "tip": "Use for special moments, not entire arrangement"
+            },
+            {
+              "rule": "Mono bass, stereo leads",
+              "explanation": "Follow hip-hop conventions for width",
+              "guideline": "Bass <200Hz mono, leads wide stereo"
+            }
+          ]
+        }
+      ]
+    },
+    "synthesis-rules": {
+      "metadata": {
+        "plugin": "Harmless",
+        "ruleSet": "synthesis-rules",
+        "lastUpdated": "2026-02-03"
+      },
+      "rules": [
+        {
+          "id": "additive-engine-behavior",
+          "name": "Additive Engine Behavior",
+          "priority": "critical",
+          "description": "Fundamental properties of Harmless's additive synthesis engine",
+          "rules": [
+            {
+              "rule": "No phase cancellation",
+              "explanation": "Since harmonics are generated mathematically rather than summed from oscillators, there is no phase interference between frequencies",
+              "implication": "Can use extreme filter settings without artifacts"
+            },
+            {
+              "rule": "Mathematical filter perfection",
+              "explanation": "Filters don't introduce phase shift or resonance artifacts because harmonics are already separated",
+              "implication": "48dB brickwall slope sounds clean, unlike analog equivalents"
+            },
+            {
+              "rule": "CPU scales with harmonics",
+              "explanation": "More harmonics in mask = more CPU usage. Silent harmonics cost nothing",
+              "implication": "Sparse masks are more efficient than rich ones"
+            },
+            {
+              "rule": "Harmonic independence",
+              "explanation": "Each harmonic can be individually controlled in amplitude",
+              "implication": "Can create impossible waveforms that don't exist in nature"
+            }
+          ],
+          "src": "IL-MAN"
+        },
+        {
+          "id": "harmonic-mask-rules",
+          "name": "Harmonic Mask Rules",
+          "priority": "high",
+          "description": "Guidelines for drawing effective harmonic masks",
+          "rules": [
+            {
+              "rule": "Fundamental determines pitch",
+              "explanation": "Harmonic 1 (fundamental) must be present for pitched sound",
+              "guideline": "Keep H1 at 100% unless creating special effects"
+            },
+            {
+              "rule": "Odd = hollow, Even = warm",
+              "explanation": "Odd harmonics (1,3,5...) create hollow/woodwind character. Even harmonics (2,4,6...) add warmth",
+              "guideline": "For clarinet/square: emphasize odds. For warmth: add evens"
+            },
+            {
+              "rule": "Amplitude decay determines brightness",
+              "explanation": "Fast decay (1/n²) = dull. Slow decay (1/n) = bright. No decay = harsh",
+              "guideline": "Sawtooth uses 1/n, triangle uses 1/n²"
+            },
+            {
+              "rule": "Sparse for character",
+              "explanation": "Leaving gaps between harmonics creates unique textures",
+              "guideline": "Try drawing only H1, H4, H8, H16 for metallic character"
+            },
+            {
+              "rule": "Formant regions for vocals",
+              "explanation": "Boosting specific harmonic bands creates vowel-like resonances",
+              "guideline": "H4-H8 boost = 'ahh', H8-H14 = 'eee'"
+            }
+          ],
+          "src": "IL-MAN"
+        },
+        {
+          "id": "pluck-filter-rules",
+          "name": "Pluck Filter Rules",
+          "priority": "high",
+          "description": "How the Pluck filter simulates string physics",
+          "rules": [
+            {
+              "rule": "High frequencies decay faster",
+              "explanation": "Pluck filter removes high harmonics exponentially based on frequency",
+              "formula": "Decay Rate = frequency² × damping factor"
+            },
+            {
+              "rule": "Requires harmonic content",
+              "explanation": "Pluck needs harmonics to decay - pure sine shows no effect",
+              "guideline": "Use sawtooth or rich masks with pluck"
+            },
+            {
+              "rule": "Interact with amp envelope",
+              "explanation": "For true plucks, set amp sustain to 0% so pluck decay is audible",
+              "guideline": "Sustain > 0% = pluck on sustained tone. Sustain = 0% = true decay"
+            },
+            {
+              "rule": "Note pitch affects decay",
+              "explanation": "Higher notes decay faster than low notes with same pluck setting",
+              "guideline": "Adjust pluck per octave for consistent character"
+            }
+          ],
+          "src": "IL-MAN"
+        },
+        {
+          "id": "phaser-rules",
+          "name": "Phaser Rules",
+          "priority": "medium",
+          "description": "Understanding Harmless's unique phaser behavior",
+          "rules": [
+            {
+              "rule": "Frequency modulation, not phase",
+              "explanation": "Phaser shifts each harmonic's frequency, not phase like traditional phasers",
+              "effect": "Can create pitch artifacts and inharmonic intervals"
+            },
+            {
+              "rule": "High rates = pitch effects",
+              "explanation": "Above 20Hz, modulation creates sidebands that sound like pitch shifting",
+              "useCase": "Alien/sci-fi effects at 30-50Hz rate"
+            },
+            {
+              "rule": "CPU intensive",
+              "explanation": "Phaser recalculates all 512 harmonics every cycle",
+              "guideline": "Disable for CPU-critical situations"
+            },
+            {
+              "rule": "Combines with unison",
+              "explanation": "Each unison voice has independent phaser position",
+              "effect": "Massive stereo width when both active"
+            }
+          ],
+          "src": "IL-MAN"
+        },
+        {
+          "id": "unison-rules",
+          "name": "Unison Rules",
+          "priority": "medium",
+          "description": "Guidelines for using Sytrus-quality unison",
+          "rules": [
+            {
+              "rule": "Detune adds width",
+              "explanation": "Detune percentage controls spacing between stacked voices",
+              "guideline": "20-40% for tight, 60%+ for wide"
+            },
+            {
+              "rule": "Stereo spreads voices",
+              "explanation": "Stereo percentage pans unison voices across field",
+              "guideline": "0% = mono stack, 100% = full width"
+            },
+            {
+              "rule": "Blend prevents buildup",
+              "explanation": "Multiple voices = louder signal. Blend reduces output",
+              "guideline": "Reduce blend if clipping, typically 70-80%"
+            },
+            {
+              "rule": "CPU efficient",
+              "explanation": "Harmless unison is optimized and doesn't cost much CPU",
+              "guideline": "Feel free to use liberally"
+            }
+          ],
+          "src": "IL-MAN"
+        }
+      ]
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Harmless\r\n\r\nThis section contains reference information for the harmless plugin.\r\n"
+    }
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "pluginName": "Gross Beat",
+  "type": "Time & Volume Shaper / Buffer Effect",
+  "version": "FL Studio 21.x+",
+  "parameters": [
+    {
+      "category": "Global",
+      "id": "mix",
+      "name": "Mix",
+      "range": { "min": 0, "max": 100, "unit": "%", "default": 50 },
+      "description": "Dry/Wet blend of the effect. 0% = dry only, 100% = wet only.",
+      "quickTips": [
+        "Use 50% for subtle effects",
+        "Use 100% for full half-time",
+        "Lower values for background texture"
+      ]
+    },
+    {
+      "category": "Global",
+      "id": "pos",
+      "name": "Pos (Position)",
+      "range": { "min": 0, "max": 100, "unit": "%", "default": 0 },
+      "description": "Buffer read position offset. Creates delay-style effects by reading from earlier buffer content.",
+      "quickTips": [
+        "0% = real-time playback",
+        "50% = 1 bar delay effect",
+        "Higher values = more pronounced delay"
+      ]
+    },
+    {
+      "category": "Global",
+      "id": "attack",
+      "name": "Attack",
+      "range": { "min": 0, "max": 1000, "unit": "ms", "default": 20 },
+      "description": "Envelope attack time. Controls how quickly the effect reaches full intensity.",
+      "recommendedSettings": {
+        "tightGate": "5-10ms",
+        "smooth": "15-30ms",
+        "gradual": "50-100ms"
+      },
+      "warning": "Values below 10ms may cause clicks on sharp transitions"
+    },
+    {
+      "category": "Global",
+      "id": "release",
+      "name": "Release",
+      "range": { "min": 0, "max": 1000, "unit": "ms", "default": 30 },
+      "description": "Envelope release time. Controls how quickly the effect returns to baseline.",
+      "recommendedSettings": {
+        "snappy": "10-20ms",
+        "natural": "30-50ms",
+        "ambient": "100-300ms"
+      }
+    },
+    {
+      "category": "Envelope",
+      "id": "timeEnvelope",
+      "name": "Time Envelope",
+      "type": "graphical",
+      "description": "Visual editor for time manipulation. Diagonal line = normal speed.",
+      "visualGuide": {
+        "diagonal45": "100% speed (normal)",
+        "shallowDown": "50% speed (half-time)",
+        "steepDown": "Tape-stop effect",
+        "horizontal": "Freeze/stutter",
+        "shallowUp": "150% speed",
+        "steepUp": "200% speed (double-time)"
+      }
+    },
+    {
+      "category": "Envelope",
+      "id": "volumeEnvelope",
+      "name": "Volume Envelope",
+      "type": "graphical",
+      "description": "Visual editor for amplitude manipulation. Top = full volume.",
+      "visualGuide": {
+        "top": "100% volume",
+        "middle": "50% volume (-6dB)",
+        "bottom": "0% volume (silence)",
+        "squareWave": "Gating effect",
+        "curve": "Fade in/out"
+      }
+    },
+    {
+      "category": "Slots",
+      "id": "timeSlots",
+      "name": "Time Slots",
+      "count": 36,
+      "range": { "start": 1, "end": 36 },
+      "midiRange": { "start": "C1", "end": "B3" },
+      "description": "36 preset patterns for time manipulation",
+      "slotCategories": {
+        "speed": "Slots 1-6 (Normal, Half-time, Double-time, etc.)",
+        "stutter": "Slots 7-18 (Various rhythmic stutter patterns)",
+        "tape": "Slots 19-30 (Tape-stop, spinback, scratch effects)",
+        "special": "Slots 31-36 (Utility and custom slots)"
+      }
+    },
+    {
+      "category": "Slots",
+      "id": "volumeSlots",
+      "name": "Volume Slots",
+      "count": 36,
+      "range": { "start": 1, "end": 36 },
+      "midiRange": { "start": "C4", "end": "B6" },
+      "description": "36 preset patterns for volume/gate manipulation",
+      "slotCategories": {
+        "gates": "Slots 1-12 (Basic rhythmic gates: 1/4, 1/8, 1/16)",
+        "patterns": "Slots 13-24 (Complex patterns and sidechain curves)",
+        "effects": "Slots 25-30 (Stutter gates, fades)",
+        "utility": "Slots 31-36 (Utility and custom slots)"
+      }
+    },
+    {
+      "category": "Buffer",
+      "id": "bufferSize",
+      "name": "Buffer Size",
+      "value": "2 bars",
+      "description": "Rolling audio buffer that continuously records incoming audio",
+      "technical": {
+        "durationAt120BPM": "4 seconds",
+        "durationAt140BPM": "3.43 seconds",
+        "sampleRate": "Matches project settings",
+        "channels": "Stereo or Mono"
+      }
+    },
+    {
+      "category": "Buffer",
+      "id": "tempoSync",
+      "name": "Tempo Sync",
+      "type": "boolean",
+      "default": true,
+      "description": "Synchronizes envelope timing to project tempo"
+    }
+  ],
+  "technicalSpecs": {
+    "latency": "< 5ms (MIDI triggered)",
+    "cpuUsage": "Low to Moderate",
+    "sampleRate": "Up to 192 kHz",
+    "bitDepth": "32-bit float internal processing",
+    "bufferDuration": "2 bars (tempo-dependent)"
+  },
+  "source": "[SRC: IL-MAN] Image-Line FL Studio Online Manual"
+}

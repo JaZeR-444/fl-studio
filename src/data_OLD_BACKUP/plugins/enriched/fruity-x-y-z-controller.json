@@ -1,0 +1,2106 @@
+{
+  "id": "fruity-x-y-z-controller",
+  "name": "Fruity X-Y-Z Controller",
+  "presets": {
+    "archetypes": {
+      "presetArchetypes": [
+        {
+          "id": "spatial-3d-audio",
+          "name": "3D Spatial Audio Positioning",
+          "category": "spatial",
+          "description": "Complete 3D audio placement with pan, filter, and depth control",
+          "difficulty": "beginner",
+          "mode": "absolute",
+          "mappings": [
+            {
+              "output": "x",
+              "target": "Pan",
+              "targetRange": {
+                "min": -100,
+                "max": 100
+              },
+              "description": "Left/right stereo positioning"
+            },
+            {
+              "output": "y",
+              "target": "Filter Cutoff",
+              "targetRange": {
+                "min": 200,
+                "max": 20000
+              },
+              "description": "Near/far depth illusion (darker = farther)"
+            },
+            {
+              "output": "z",
+              "target": "Reverb Send",
+              "targetRange": {
+                "min": 0,
+                "max": 100
+              },
+              "description": "Distance perception (more reverb = farther away)"
+            }
+          ],
+          "useCase": "Position sounds in 3D space for immersive mixes",
+          "gesture": "Move X for left/right, Y for near/far (filter), scroll Z for depth"
+        },
+        {
+          "id": "synth-timbre-complete",
+          "name": "Total Synth Performance",
+          "category": "synthesis",
+          "description": "Complete timbre control with pitch, filter, and resonance",
+          "difficulty": "intermediate",
+          "mode": "relative",
+          "mappings": [
+            {
+              "output": "x",
+              "target": "Oscillator Pitch",
+              "targetRange": {
+                "min": -12,
+                "max": 12
+              },
+              "description": "Pitch bend ±12 semitones"
+            },
+            {
+              "output": "y",
+              "target": "Filter Cutoff",
+              "targetRange": {
+                "min": 100,
+                "max": 20000
+              },
+              "description": "Brightness control"
+            },
+            {
+              "output": "z",
+              "target": "Filter Resonance",
+              "targetRange": {
+                "min": 0,
+                "max": 80
+              },
+              "description": "Emphasis at cutoff frequency"
+            },
+            {
+              "output": "speed",
+              "target": "LFO Depth",
+              "targetRange": {
+                "min": 0,
+                "max": 100
+              },
+              "description": "Movement adds modulation"
+            }
+          ],
+          "useCase": "Expressive lead synth control with all performance dimensions",
+          "gesture": "Continuous movements for smooth filter sweeps with dynamic LFO"
+        },
+        {
+          "id": "effect-chain-morph",
+          "name": "Effect Chain Morphing",
+          "category": "effects",
+          "description": "Morph between three different effects using all axes",
+          "difficulty": "intermediate",
+          "mode": "absolute",
+          "mappings": [
+            {
+              "output": "x",
+              "target": "Chorus Wet/Dry",
+              "targetRange": {
+                "min": 0,
+                "max": 100
+              },
+              "description": "Left side = chorus"
+            },
+            {
+              "output": "y",
+              "target": "Phaser Depth",
+              "targetRange": {
+                "min": 0,
+                "max": 100
+              },
+              "description": "Vertical = phaser amount"
+            },
+            {
+              "output": "z",
+              "target": "Delay Feedback",
+              "targetRange": {
+                "min": 0,
+                "max": 80
+              },
+              "description": "Depth = delay intensity"
+            }
+          ],
+          "useCase": "Blend multiple effects in real-time for dynamic texture",
+          "gesture": "Navigate through effect combinations in 3D space"
+        },
+        {
+          "id": "drum-dynamic-processing",
+          "name": "Drum Dynamic Control",
+          "category": "dynamics",
+          "description": "Dynamic drum processing with spatial and transient control",
+          "difficulty": "advanced",
+          "mode": "relative",
+          "mappings": [
+            {
+              "output": "x",
+              "target": "Pan",
+              "targetRange": {
+                "min": -50,
+                "max": 50
+              },
+              "description": "Drum positioning"
+            },
+            {
+              "output": "y",
+              "target": "Compression Threshold",
+              "targetRange": {
+                "min": -20,
+                "max": 0
+              },
+              "description": "Dynamic control"
+            },
+            {
+              "output": "z",
+              "target": "Transient Shaper",
+              "targetRange": {
+                "min": 0,
+                "max": 100
+              },
+              "description": "Punch control"
+            },
+            {
+              "output": "speed",
+              "target": "Saturation Drive",
+              "targetRange": {
+                "min": 0,
+                "max": 50
+              },
+              "description": "Movement adds grit"
+            },
+            {
+              "output": "acceleration",
+              "target": "Accent Boost",
+              "targetRange": {
+                "min": 0,
+                "max": 6
+              },
+              "description": "Accents get louder"
+            }
+          ],
+          "useCase": "Live drum performance with responsive dynamics",
+          "gesture": "Rhythmic movements create dynamic, punchy drum patterns"
+        },
+        {
+          "id": "vibe-warmth",
+          "name": "Vibe: Warmth",
+          "category": "vibes",
+          "description": "Analog warmth with detune, saturation, and gentle filtering",
+          "difficulty": "beginner",
+          "mode": "absolute",
+          "mappings": [
+            {
+              "output": "x",
+              "target": "Oscillator Detune",
+              "targetRange": {
+                "min": 0,
+                "max": 30
+              },
+              "description": "Subtle pitch widening"
+            },
+            {
+              "output": "y",
+              "target": "Low-pass Cutoff",
+              "targetRange": {
+                "min": 200,
+                "max": 5000
+              },
+              "description": "Warm/dark tones (keep below 40%)"
+            },
+            {
+              "output": "z",
+              "target": "Tape Saturation",
+              "targetRange": {
+                "min": 0,
+                "max": 40
+              },
+              "description": "Gentle analog saturation"
+            }
+          ],
+          "useCase": "Vintage, analog character for any source",
+          "gesture": "Stay in lower-left quadrant for warmth, gentle movements"
+        },
+        {
+          "id": "vibe-clarity",
+          "name": "Vibe: Clarity",
+          "category": "vibes",
+          "description": "Presence and definition boost",
+          "difficulty": "beginner",
+          "mode": "absolute",
+          "mappings": [
+            {
+              "output": "x",
+              "target": "Presence EQ (3kHz)",
+              "targetRange": {
+                "min": 0,
+                "max": 6
+              },
+              "description": "Midrange clarity boost"
+            },
+            {
+              "output": "y",
+              "target": "High-shelf (10kHz)",
+              "targetRange": {
+                "min": 0,
+                "max": 4
+              },
+              "description": "Brightness/air"
+            },
+            {
+              "output": "z",
+              "target": "Exciter",
+              "targetRange": {
+                "min": 0,
+                "max": 40
+              },
+              "description": "Harmonic enhancement"
+            }
+          ],
+          "useCase": "Make elements cut through the mix with presence",
+          "gesture": "Upper-right quadrant for clarity and presence"
+        },
+        {
+          "id": "vibe-depth",
+          "name": "Vibe: Depth",
+          "category": "vibes",
+          "description": "Spacious, immersive sound with reverb and width",
+          "difficulty": "beginner",
+          "mode": "absolute",
+          "mappings": [
+            {
+              "output": "x",
+              "target": "Stereo Width",
+              "targetRange": {
+                "min": 0,
+                "max": 150
+              },
+              "description": "Stereo expansion"
+            },
+            {
+              "output": "y",
+              "target": "Reverb Send",
+              "targetRange": {
+                "min": 0,
+                "max": 70
+              },
+              "description": "Spatial depth"
+            },
+            {
+              "output": "z",
+              "target": "Delay Feedback",
+              "targetRange": {
+                "min": 10,
+                "max": 60
+              },
+              "description": "Ambience and echoes"
+            }
+          ],
+          "useCase": "Create immersive, 3D soundscapes",
+          "gesture": "Expand with X, add space with Y, depth with Z"
+        },
+        {
+          "id": "vibe-punch",
+          "name": "Vibe: Punch",
+          "category": "vibes",
+          "description": "Dynamic, aggressive character with transient and compression",
+          "difficulty": "intermediate",
+          "mode": "relative",
+          "mappings": [
+            {
+              "output": "x",
+              "target": "Transient Shaper",
+              "targetRange": {
+                "min": 0,
+                "max": 70
+              },
+              "description": "Attack enhancement"
+            },
+            {
+              "output": "y",
+              "target": "Compression Ratio",
+              "targetRange": {
+                "min": 1,
+                "max": 8
+              },
+              "description": "Dynamic control"
+            },
+            {
+              "output": "z",
+              "target": "Saturation",
+              "targetRange": {
+                "min": 0,
+                "max": 40
+              },
+              "description": "Edge and grit"
+            },
+            {
+              "output": "speed",
+              "target": "Accent Detection",
+              "targetRange": {
+                "min": 0,
+                "max": 100
+              },
+              "description": "Movement = more punch"
+            }
+          ],
+          "useCase": "Add aggression and impact to drums, bass, or leads",
+          "gesture": "Quick, decisive movements for maximum impact"
+        },
+        {
+          "id": "vibe-air",
+          "name": "Vibe: Air",
+          "category": "vibes",
+          "description": "Bright, shimmering high-end enhancement",
+          "difficulty": "beginner",
+          "mode": "absolute",
+          "mappings": [
+            {
+              "output": "x",
+              "target": "High-pass Filter",
+              "targetRange": {
+                "min": 20,
+                "max": 200
+              },
+              "description": "Remove rumble (keep low)"
+            },
+            {
+              "output": "y",
+              "target": "Air EQ (15kHz)",
+              "targetRange": {
+                "min": 0,
+                "max": 6
+              },
+              "description": "High-frequency sheen"
+            },
+            {
+              "output": "z",
+              "target": "Sparkle/Dimension",
+              "targetRange": {
+                "min": 0,
+                "max": 50
+              },
+              "description": "Enhancement and lift"
+            }
+          ],
+          "useCase": "Add polish and brightness to vocals, synths, or mixes",
+          "gesture": "Upper positions for brightness and air"
+        }
+      ]
+    },
+    "macros": {
+      "macroTemplates": [
+        {
+          "id": "hip-hop-lead-performance",
+          "name": "Hip-Hop Lead Performance Rig",
+          "description": "Complete performance setup for expressive hip-hop leads with all five vibe dimensions",
+          "category": "performance",
+          "difficulty": "advanced",
+          "controllers": [
+            {
+              "instance": 1,
+              "name": "Timbre Controller",
+              "mode": "relative",
+              "mappings": [
+                {
+                  "output": "x",
+                  "target": "Pitch Bend",
+                  "range": "±12 semitones"
+                },
+                {
+                  "output": "y",
+                  "target": "Filter Cutoff",
+                  "range": "Full"
+                },
+                {
+                  "output": "z",
+                  "target": "Resonance",
+                  "range": "0-80%"
+                },
+                {
+                  "output": "speed",
+                  "target": "Distortion Drive",
+                  "range": "0-50%"
+                }
+              ]
+            },
+            {
+              "instance": 2,
+              "name": "Vibe Controller",
+              "mode": "absolute",
+              "mappings": [
+                {
+                  "output": "x",
+                  "target": "Stereo Width",
+                  "range": "50-150%"
+                },
+                {
+                  "output": "y",
+                  "target": "Reverb Send",
+                  "range": "0-60%"
+                },
+                {
+                  "output": "z",
+                  "target": "Delay Send",
+                  "range": "0-40%"
+                }
+              ]
+            }
+          ],
+          "performanceNotes": [
+            "Use Controller 1 for continuous timbre morphing",
+            "Use Controller 2 for spatial positioning during phrase breaks",
+            "Cross hands between controllers for complex passages",
+            "Map Speed on both controllers to accent detection"
+          ],
+          "vibeBlend": [
+            {
+              "vibe": "PUNCH",
+              "weight": 40,
+              "controller": 1,
+              "outputs": [
+                "speed",
+                "z"
+              ]
+            },
+            {
+              "vibe": "CLARITY",
+              "weight": 30,
+              "controller": 2,
+              "outputs": [
+                "y"
+              ]
+            },
+            {
+              "vibe": "AIR",
+              "weight": 30,
+              "controller": 2,
+              "outputs": [
+                "z"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tablet-performance-rig",
+          "name": "Touchscreen Performance Setup",
+          "description": "Optimized for tablet/touchscreen with gesture-based control",
+          "category": "performance",
+          "difficulty": "intermediate",
+          "device": "tablet",
+          "controllers": [
+            {
+              "instance": 1,
+              "name": "Main Controller",
+              "mode": "absolute",
+              "gestureMapping": {
+                "singleFinger": "X + Y control",
+                "pinch": "Z control",
+                "flick": "Speed spike → Accent"
+              },
+              "mappings": [
+                {
+                  "output": "x",
+                  "target": "Pan"
+                },
+                {
+                  "output": "y",
+                  "target": "Filter Cutoff"
+                },
+                {
+                  "output": "z",
+                  "target": "Effect Depth"
+                },
+                {
+                  "output": "speed",
+                  "target": "Expression"
+                }
+              ]
+            }
+          ],
+          "gestureLibrary": [
+            {
+              "name": "The Sweep",
+              "gesture": "Smooth diagonal",
+              "result": "Filter sweep + pan"
+            },
+            {
+              "name": "The Pulse",
+              "gesture": "Quick tap-hold-release",
+              "result": "One-shot effect"
+            },
+            {
+              "name": "The Pinch",
+              "gesture": "Two-finger pinch",
+              "result": "Z-axis modulation"
+            },
+            {
+              "name": "The Flick",
+              "gesture": "Fast swipe + stop",
+              "result": "Accent trigger"
+            }
+          ],
+          "setupNotes": [
+            "Enable 'Show touches' in OS settings",
+            "Use screen protector for smooth gliding",
+            "Position tablet at comfortable angle",
+            "Practice gestures for muscle memory"
+          ]
+        },
+        {
+          "id": "three-parameter-morph",
+          "name": "3-Parameter Morphing Matrix",
+          "description": "Advanced macro for morphing between three distinct sound states",
+          "category": "morphing",
+          "difficulty": "advanced",
+          "concept": "Each axis blends between two values of a single parameter, creating 8 possible states (corners of cube)",
+          "controllers": [
+            {
+              "instance": 1,
+              "name": "Morph Controller",
+              "mode": "absolute",
+              "mappings": [
+                {
+                  "output": "x",
+                  "target": "Oscillator Shape",
+                  "morph": {
+                    "0%": "Saw wave",
+                    "100%": "Square wave"
+                  }
+                },
+                {
+                  "output": "y",
+                  "target": "Filter Type",
+                  "morph": {
+                    "0%": "Low-pass",
+                    "100%": "High-pass"
+                  }
+                },
+                {
+                  "output": "z",
+                  "target": "Envelope",
+                  "morph": {
+                    "0%": "Fast/Pluck",
+                    "100%": "Slow/Pad"
+                  }
+                }
+              ]
+            }
+          ],
+          "morphStates": [
+            {
+              "position": "0,0,0",
+              "name": "Saw + Low + Fast",
+              "description": "Aggressive pluck"
+            },
+            {
+              "position": "100,0,0",
+              "name": "Square + Low + Fast",
+              "description": "Hollow pluck"
+            },
+            {
+              "position": "0,100,0",
+              "name": "Saw + High + Fast",
+              "description": "Bright sting"
+            },
+            {
+              "position": "100,100,0",
+              "name": "Square + High + Fast",
+              "description": "Nasal blip"
+            },
+            {
+              "position": "0,0,100",
+              "name": "Saw + Low + Slow",
+              "description": "Warm pad"
+            },
+            {
+              "position": "100,0,100",
+              "name": "Square + Low + Slow",
+              "description": "Hollow pad"
+            },
+            {
+              "position": "0,100,100",
+              "name": "Saw + High + Slow",
+              "description": "Bright pad"
+            },
+            {
+              "position": "100,100,100",
+              "name": "Square + High + Slow",
+              "description": "Glassy pad"
+            }
+          ],
+          "performanceTechnique": "Navigate through cube corners to morph between radically different sounds"
+        },
+        {
+          "id": "spatial-positioning-rig",
+          "name": "3D Spatial Positioning System",
+          "description": "Complete spatial audio rig for immersive 3D positioning",
+          "category": "spatial",
+          "difficulty": "intermediate",
+          "controllers": [
+            {
+              "instance": 1,
+              "name": "Spatial Controller",
+              "mode": "absolute",
+              "mappings": [
+                {
+                  "output": "x",
+                  "target": "Pan",
+                  "description": "Left-right position"
+                },
+                {
+                  "output": "y",
+                  "target": "Low-pass Filter",
+                  "description": "Near-far depth (darker = farther)"
+                },
+                {
+                  "output": "z",
+                  "target": "Reverb Send",
+                  "description": "Distance in space"
+                },
+                {
+                  "output": "speed",
+                  "target": "Doppler/Velocity",
+                  "description": "Motion blur effect"
+                }
+              ]
+            }
+          ],
+          "spatialConcepts": [
+            {
+              "position": "Bottom-left",
+              "perception": "Far left, distant, dark",
+              "use": "Background elements"
+            },
+            {
+              "position": "Top-right",
+              "perception": "Far right, close, bright",
+              "use": "Lead elements, focus"
+            },
+            {
+              "position": "Center",
+              "perception": "Center position, mid-distance",
+              "use": "Supporting elements"
+            }
+          ],
+          "techniqueNotes": [
+            "Use Y-axis filter to simulate distance (farther = less high frequencies)",
+            "Z-axis reverb creates realistic depth perception",
+            "Speed output adds Doppler-like motion effects",
+            "Combine multiple instances for group positioning"
+          ]
+        },
+        {
+          "id": "multi-touch-ensemble",
+          "name": "Multi-Touch Ensemble Control",
+          "description": "Control multiple instruments simultaneously using multiple X-Y-Z instances",
+          "category": "performance",
+          "difficulty": "expert",
+          "setup": {
+            "instances": 4,
+            "arrangement": "2x2 grid on touchscreen or separate controllers"
+          },
+          "controllers": [
+            {
+              "instance": 1,
+              "name": "Lead Synth",
+              "role": "Melody/harmony",
+              "mappings": {
+                "x": "Pitch bend",
+                "y": "Filter cutoff",
+                "z": "Reverb send"
+              }
+            },
+            {
+              "instance": 2,
+              "name": "Bass",
+              "role": "Foundation",
+              "mappings": {
+                "x": "Pan",
+                "y": "Drive/distortion",
+                "z": "Compression"
+              }
+            },
+            {
+              "instance": 3,
+              "name": "Pads",
+              "role": "Atmosphere",
+              "mappings": {
+                "x": "Stereo width",
+                "y": "Filter sweep",
+                "z": "Effect depth"
+              }
+            },
+            {
+              "instance": 4,
+              "name": "Drums",
+              "role": "Rhythm",
+              "mappings": {
+                "x": "Pan",
+                "y": "Transient shaping",
+                "z": "Saturation",
+                "speed": "Accent boost"
+              }
+            }
+          ],
+          "performanceTechniques": [
+            "Cross-hand control: Left hand on instances 1+2, right hand on 3+4",
+            "Focus technique: Concentrate on one instance, others on auto",
+            "Build technique: Gradually engage all four instances",
+            "Tutti technique: Use all four simultaneously for climax"
+          ],
+          "complexityLevel": "Requires extensive practice for coordination"
+        }
+      ]
+    },
+    "schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "$id": "fruity-xyz-presets",
+      "title": "X-Y-Z Controller Preset Schema",
+      "description": "Schema for 3D controller preset definitions",
+      "type": "object",
+      "properties": {
+        "presets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "category": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "mappings": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "output": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    },
+                    "range": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "definitions": {
+      "outputs": [
+        {
+          "id": "x",
+          "name": "X Position",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "default": 50
+          },
+          "controlType": "position",
+          "inputMethod": [
+            "mouse",
+            "touch",
+            "trackpad",
+            "midi"
+          ],
+          "typicalTargets": [
+            "Pan",
+            "Oscillator mix",
+            "Stereo width",
+            "Pitch bend",
+            "Effect dry/wet"
+          ],
+          "uiCopy": {
+            "label": "X Axis",
+            "oneLiner": "Horizontal position control (0% = left, 100% = right)",
+            "tooltip": "Controls the horizontal axis. Typically mapped to pan, mix, or any left-right parameter.",
+            "do": "Use for spatial positioning, stereo control, or morphing between two states",
+            "dont": "Map to parameters requiring binary on/off control"
+          }
+        },
+        {
+          "id": "y",
+          "name": "Y Position",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "default": 50
+          },
+          "controlType": "position",
+          "inputMethod": [
+            "mouse",
+            "touch",
+            "trackpad",
+            "midi"
+          ],
+          "typicalTargets": [
+            "Filter cutoff",
+            "Volume",
+            "Pitch",
+            "Brightness",
+            "Intensity"
+          ],
+          "uiCopy": {
+            "label": "Y Axis",
+            "oneLiner": "Vertical position control (0% = bottom, 100% = top)",
+            "tooltip": "Controls the vertical axis. Typically mapped to filters, volume, or up-down parameters.",
+            "do": "Perfect for filter sweeps, brightness control, and intensity",
+            "dont": "Use for fine-grained frequency selection—too broad for precision"
+          }
+        },
+        {
+          "id": "z",
+          "name": "Z Position",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "default": 0
+          },
+          "controlType": "position",
+          "inputMethod": [
+            "mouse",
+            "touch",
+            "trackpad"
+          ],
+          "controlGesture": {
+            "mouse": "Scroll wheel",
+            "touch": "Pinch/spread gesture",
+            "trackpad": "Two-finger scroll"
+          },
+          "typicalTargets": [
+            "Reverb send",
+            "Effect depth",
+            "Distance",
+            "Dimension",
+            "Wet/det amount"
+          ],
+          "uiCopy": {
+            "label": "Z Axis",
+            "oneLiner": "Depth control via scroll or pinch gesture (0% = back, 100% = front)",
+            "tooltip": "Controls depth/dimension. Use mouse wheel, touch pinch, or trackpad scroll.",
+            "do": "Map to reverb, delay, or any depth/distance parameter",
+            "dont": "Forget to use scroll/pinch—Z won't respond to simple cursor movement"
+          }
+        },
+        {
+          "id": "speed",
+          "name": "Speed",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "default": 0
+          },
+          "controlType": "movement",
+          "inputMethod": [
+            "mouse",
+            "touch",
+            "trackpad",
+            "midi"
+          ],
+          "typicalTargets": [
+            "LFO depth",
+            "Distortion amount",
+            "Filter resonance",
+            "Accent boost",
+            "Modulation intensity"
+          ],
+          "uiCopy": {
+            "label": "Speed",
+            "oneLiner": "How fast you're moving (0% = stopped, 100% = maximum velocity)",
+            "tooltip": "Outputs velocity of your movement. Faster = higher values.",
+            "do": "Use for dynamic expression—moving creates more effect",
+            "dont": "Expect values when not moving—speed is 0% at rest"
+          }
+        },
+        {
+          "id": "acceleration",
+          "name": "Acceleration",
+          "range": {
+            "min": -100,
+            "max": 100,
+            "default": 0
+          },
+          "controlType": "movement",
+          "inputMethod": [
+            "mouse",
+            "touch",
+            "trackpad",
+            "midi"
+          ],
+          "typicalTargets": [
+            "Note trigger",
+            "Envelope attack",
+            "Accent detection",
+            "Dynamic expression",
+            "Transient boost"
+          ],
+          "uiCopy": {
+            "label": "Acceleration",
+            "oneLiner": "Change in speed (-100% = slowing, +100% = speeding up)",
+            "tooltip": "Detects gesture acceleration/deceleration. Spikes at start/stop.",
+            "do": "Perfect for accent detection and capturing performance intention",
+            "dont": "Use for continuous modulation—this is event-based"
+          }
+        }
+      ],
+      "modes": [
+        {
+          "id": "absolute",
+          "name": "Absolute Mode",
+          "description": "Position directly maps to output values",
+          "behavior": "Cursor position = output value. Bottom-left = 0%, top-right = 100%.",
+          "bestFor": [
+            "Visual feedback",
+            "Spatial mixing",
+            "Predictable control",
+            "Touchscreen use"
+          ]
+        },
+        {
+          "id": "relative",
+          "name": "Relative Mode",
+          "description": "Movement changes values incrementally",
+          "behavior": "Moving changes value; releasing holds position. No snapping.",
+          "bestFor": [
+            "Continuous sweeps",
+            "DJ-style control",
+            "Cumulative modulation",
+            "Fine adjustments"
+          ]
+        }
+      ]
+    },
+    "schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "$id": "fruity-xyz-controller-parameters",
+      "title": "Fruity X-Y-Z Controller Parameter Schema",
+      "description": "Schema for defining X-Y-Z Controller output parameters and their mapping capabilities",
+      "type": "object",
+      "properties": {
+        "outputs": {
+          "type": "array",
+          "description": "Available controller outputs",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "enum": [
+                  "x",
+                  "y",
+                  "z",
+                  "speed",
+                  "acceleration"
+                ],
+                "description": "Unique output identifier"
+              },
+              "name": {
+                "type": "string",
+                "description": "Human-readable output name"
+              },
+              "range": {
+                "type": "object",
+                "properties": {
+                  "min": {
+                    "type": "number",
+                    "description": "Minimum output value"
+                  },
+                  "max": {
+                    "type": "number",
+                    "description": "Maximum output value"
+                  },
+                  "default": {
+                    "type": "number",
+                    "description": "Default/rest value"
+                  }
+                },
+                "required": [
+                  "min",
+                  "max"
+                ]
+              },
+              "controlType": {
+                "type": "string",
+                "enum": [
+                  "position",
+                  "movement",
+                  "gesture"
+                ],
+                "description": "Category of control"
+              },
+              "inputMethod": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "mouse",
+                    "touch",
+                    "trackpad",
+                    "midi"
+                  ]
+                },
+                "description": "Supported input devices"
+              },
+              "typicalTargets": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Common parameter types to link this output to"
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "range",
+              "controlType"
+            ]
+          }
+        },
+        "modes": {
+          "type": "array",
+          "description": "Available controller modes",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "enum": [
+                  "absolute",
+                  "relative"
+                ]
+              },
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "behavior": {
+                "type": "string",
+                "description": "How position maps to values"
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "behavior"
+            ]
+          }
+        }
+      },
+      "required": [
+        "outputs",
+        "modes"
+      ]
+    }
+  },
+  "rules": {
+    "gesture-rules": {
+      "gestureRules": [
+        {
+          "gesture": "smooth-sweep",
+          "name": "Smooth Sweep",
+          "description": "Continuous, deliberate movement from one position to another",
+          "pattern": "Linear or curved path with steady velocity",
+          "outputs": {
+            "x": "Ramps smoothly from start to end value",
+            "y": "Ramps smoothly from start to end value",
+            "speed": "Moderate, consistent values",
+            "acceleration": "Near zero (constant velocity)"
+          },
+          "musicalResult": "Legato, flowing parameter changes",
+          "bestFor": [
+            "Filter sweeps",
+            "Fade ins/outs",
+            "Spatial traversal",
+            "Timbre morphing"
+          ],
+          "difficulty": "beginner",
+          "practiceExercise": "Practice straight line sweeps on Y-axis for filter control"
+        },
+        {
+          "gesture": "quick-flick",
+          "name": "Quick Flick",
+          "description": "Fast movement followed by immediate stop",
+          "pattern": "High velocity spike, then zero",
+          "outputs": {
+            "x": "Brief value jump",
+            "y": "Brief value jump",
+            "speed": "High spike (70-100%)",
+            "acceleration": "High positive then negative spike"
+          },
+          "musicalResult": "Accent, transient boost, one-shot effect",
+          "bestFor": [
+            "Note accents",
+            "Transient emphasis",
+            "Stab effects",
+            "Dynamic variation"
+          ],
+          "difficulty": "intermediate",
+          "practiceExercise": "Practice creating consistent speed spikes for rhythmic accents"
+        },
+        {
+          "gesture": "circular-orbit",
+          "name": "Circular Orbit",
+          "description": "Continuous circular movement around a center point",
+          "pattern": "Periodic X and Y oscillation with 90° phase offset",
+          "outputs": {
+            "x": "Sine wave oscillation",
+            "y": "Sine wave oscillation (quadrature)",
+            "speed": "Constant moderate value",
+            "acceleration": "Periodic oscillation (centripetal)"
+          },
+          "musicalResult": "LFO-like modulation, rhythmic variation",
+          "bestFor": [
+            "Auto-pan effects",
+            "Filter modulation",
+            "Tremolo",
+            "Rhythmic variation"
+          ],
+          "difficulty": "intermediate",
+          "practiceExercise": "Trace circles at different speeds for consistent modulation"
+        },
+        {
+          "gesture": "spiral",
+          "name": "Spiral Motion",
+          "description": "Circular path with increasing or decreasing radius",
+          "pattern": "Combines rotation with radial expansion/contraction",
+          "outputs": {
+            "x": "Oscillating with changing amplitude",
+            "y": "Oscillating with changing amplitude",
+            "speed": "Varies with radius",
+            "acceleration": "Complex profile (radial + angular)"
+          },
+          "musicalResult": "Evolving modulation depth, building intensity",
+          "bestFor": [
+            "Building intensity",
+            "Evolution effects",
+            "Complex filter sweeps",
+            "Dynamic stereo effects"
+          ],
+          "difficulty": "advanced",
+          "practiceExercise": "Start with tight circles, gradually spiral outward"
+        },
+        {
+          "gesture": "figure-eight",
+          "name": "Figure-8 (Lemniscate)",
+          "description": "Horizontal figure-8 pattern creating complex modulation",
+          "pattern": "X oscillates at 2x frequency of Y with phase relationship",
+          "outputs": {
+            "x": "Double-frequency oscillation",
+            "y": "Single-frequency oscillation",
+            "speed": "Varies continuously",
+            "acceleration": "Complex harmonic content"
+          },
+          "musicalResult": "Complex rhythmic modulation, stereo effects",
+          "bestFor": [
+            "Stereo panning with filter",
+            "Complex LFO shapes",
+            "Experimental effects",
+            "Psychedelic sounds"
+          ],
+          "difficulty": "advanced",
+          "practiceExercise": "Draw horizontal figure-8 patterns smoothly"
+        },
+        {
+          "gesture": "bounce",
+          "name": "Bounce/Oscillation",
+          "description": "Quick vertical oscillations",
+          "pattern": "Rapid Y movement with minimal X variation",
+          "outputs": {
+            "x": "Nearly constant",
+            "y": "Square-wave-like oscillation",
+            "speed": "High frequency spikes",
+            "acceleration": "Sharp positive/negative alternation"
+          },
+          "musicalResult": "Tremolo, stuttering, rhythmic chopping",
+          "bestFor": [
+            "Tremolo effects",
+            "Gate effects",
+            "Stutter edits",
+            "Rhythmic variation"
+          ],
+          "difficulty": "intermediate",
+          "practiceExercise": "Rapid up-down movements while keeping X steady"
+        },
+        {
+          "gesture": "corner-snap",
+          "name": "Corner Snap",
+          "description": "Sudden movement to corner positions",
+          "pattern": "Direct path to extreme positions (0% or 100%)",
+          "outputs": {
+            "x": "Binary-like values (0 or 100%)",
+            "y": "Binary-like values (0 or 100%)",
+            "speed": "High during movement, zero at corners",
+            "acceleration": "Spike at start and end"
+          },
+          "musicalResult": "Extreme parameter states, dramatic changes",
+          "bestFor": [
+            "On/off effects",
+            "Extreme filter states",
+            "Dramatic transitions",
+            "Binary morphing"
+          ],
+          "difficulty": "beginner",
+          "practiceExercise": "Practice hitting exact corners quickly and accurately"
+        },
+        {
+          "gesture": "3d-throw",
+          "name": "3D Throw",
+          "description": "Diagonal movement with simultaneous Z control",
+          "pattern": "X/Y movement while scrolling/pinching for Z",
+          "outputs": {
+            "x": "Diagonal trajectory",
+            "y": "Diagonal trajectory",
+            "z": "Changes simultaneously",
+            "speed": "Varies with movement rate"
+          },
+          "musicalResult": "Complete 3D parameter space traversal",
+          "bestFor": [
+            "Spatial audio",
+            "Effect throws",
+            "3D synthesis",
+            "Immersive transitions"
+          ],
+          "difficulty": "advanced",
+          "practiceExercise": "Coordinate X/Y drag with scroll wheel for Z"
+        },
+        {
+          "gesture": "tap-hold",
+          "name": "Tap and Hold",
+          "description": "Quick engagement followed by sustained position",
+          "pattern": "Rapid movement to position, then static hold",
+          "outputs": {
+            "x": "Step to target value",
+            "y": "Step to target value",
+            "speed": "Spike then zero",
+            "acceleration": "Spike at start, negative at hold"
+          },
+          "musicalResult": "One-shot effect, sustained modulation state",
+          "bestFor": [
+            "Stab effects",
+            "Sustained filter positions",
+            "Temporary effect engagement",
+            "Momentary parameters"
+          ],
+          "difficulty": "beginner",
+          "practiceExercise": "Tap to specific positions, hold, then release"
+        }
+      ],
+      "gestureCombinations": [
+        {
+          "name": "Build and Release",
+          "combination": [
+            "smooth-sweep",
+            "quick-flick"
+          ],
+          "pattern": "Long sweep up (build), quick flick down (release)",
+          "musicalUse": "Classic filter sweep for EDM builds"
+        },
+        {
+          "name": "Orbital Accent",
+          "combination": [
+            "circular-orbit",
+            "quick-flick"
+          ],
+          "pattern": "Continuous orbit with periodic flicks",
+          "musicalUse": "Rhythmic modulation with dynamic accents"
+        },
+        {
+          "name": "3D Spatial Throw",
+          "combination": [
+            "3d-throw",
+            "smooth-sweep"
+          ],
+          "pattern": "Throw to position, then sweep in 3D space",
+          "musicalUse": "Immersive spatial audio navigation"
+        },
+        {
+          "name": "Stutter Build",
+          "combination": [
+            "bounce",
+            "smooth-sweep"
+          ],
+          "pattern": "Rapid bouncing accelerating into smooth sweep",
+          "musicalUse": "Tension building before breakdown"
+        }
+      ],
+      "practiceProgression": [
+        {
+          "level": "Beginner",
+          "gestures": [
+            "smooth-sweep",
+            "corner-snap",
+            "tap-hold"
+          ],
+          "focus": "Accuracy and control"
+        },
+        {
+          "level": "Intermediate",
+          "gestures": [
+            "quick-flick",
+            "circular-orbit",
+            "bounce"
+          ],
+          "focus": "Speed and rhythm"
+        },
+        {
+          "level": "Advanced",
+          "gestures": [
+            "spiral",
+            "figure-eight",
+            "3d-throw"
+          ],
+          "focus": "Complex coordination and 3D control"
+        }
+      ]
+    },
+    "scenario-rules": {
+      "scenarioRules": [
+        {
+          "id": "scenario-hip-hop-lead",
+          "scenario": "Hip-Hop Lead Performance",
+          "description": "Creating expressive, modulated lead lines in hip-hop production",
+          "genre": "hip-hop",
+          "priority": 1,
+          "recommendedSetup": {
+            "mode": "relative",
+            "vibeBlend": [
+              "PUNCH",
+              "CLARITY"
+            ],
+            "mappings": [
+              {
+                "output": "x",
+                "target": "Pitch Bend ±12st"
+              },
+              {
+                "output": "y",
+                "target": "Filter Cutoff"
+              },
+              {
+                "output": "z",
+                "target": "Distortion/Resonance"
+              },
+              {
+                "output": "speed",
+                "target": "Accent boost"
+              }
+            ]
+          },
+          "performanceTips": [
+            "Use relative mode for continuous filter sweeps during phrases",
+            "Map Speed to accent detection for dynamic note emphasis",
+            "Keep Z moderate for clarity—don't over-saturate",
+            "Quick flicks on X for pitch bend effects"
+          ],
+          "commonPatterns": [
+            "Phrase start: Bottom-center, sweep Y up during note",
+            "Accent notes: Quick Y movement triggers Speed boost",
+            "Bends: X left/right during sustained notes",
+            "Release: Return to center for neutral state"
+          ]
+        },
+        {
+          "id": "scenario-ambient-soundscape",
+          "scenario": "Ambient Soundscape Design",
+          "description": "Creating evolving, immersive ambient textures",
+          "genre": "ambient",
+          "priority": 1,
+          "recommendedSetup": {
+            "mode": "absolute",
+            "vibeBlend": [
+              "DEPTH",
+              "WARMTH"
+            ],
+            "mappings": [
+              {
+                "output": "x",
+                "target": "Stereo Width 0-200%"
+              },
+              {
+                "output": "y",
+                "target": "Reverb Time/Density"
+              },
+              {
+                "output": "z",
+                "target": "Delay Feedback"
+              },
+              {
+                "output": "speed",
+                "target": "LFO Rate/Depth"
+              }
+            ]
+          },
+          "performanceTips": [
+            "Use absolute mode for precise spatial positioning",
+            "Slow, deliberate movements create evolving textures",
+            "X-axis width modulation creates breathing effect",
+            "Combine all three axes for complete space morphing"
+          ],
+          "commonPatterns": [
+            "Evolving pad: Slow circular motion on X/Y with Z modulation",
+            "Space entry: Start narrow/dry, expand to wide/wet",
+            "Breathing effect: Gentle X oscillation with fixed Y/Z",
+            "Crescendo: Gradual Y increase with Speed→LFO depth"
+          ]
+        },
+        {
+          "id": "scenario-edm-buildup",
+          "scenario": "EDM Buildup and Drop",
+          "description": "Creating tension and release in electronic dance music",
+          "genre": "edm",
+          "priority": 1,
+          "recommendedSetup": {
+            "mode": "relative",
+            "vibeBlend": [
+              "PUNCH",
+              "AIR"
+            ],
+            "mappings": [
+              {
+                "output": "x",
+                "target": "Filter Cutoff (sweep)"
+              },
+              {
+                "output": "y",
+                "target": "LFO/Modulation Depth"
+              },
+              {
+                "output": "z",
+                "target": "Reverb/Delay send"
+              },
+              {
+                "output": "speed",
+                "target": "Distortion/Resonance"
+              }
+            ]
+          },
+          "performanceTips": [
+            "Use relative mode for long, continuous filter sweeps",
+            "Start buildup with slow movement, accelerate to drop",
+            "Speed mapping adds intensity as you move faster",
+            "Z increases reverb before drop for spatial depth"
+          ],
+          "commonPatterns": [
+            "Buildup: Slow Y rise from 10% to 90% over 8-16 bars",
+            "Drop preparation: Fast X/Y movement triggers Speed peak",
+            "Impact moment: Maximum Speed + Z spike",
+            "Post-drop: Return to moderate position for groove"
+          ]
+        },
+        {
+          "id": "scenario-live-drums",
+          "scenario": "Live Drum Performance",
+          "description": "Adding dynamic expression to programmed or live drums",
+          "genre": "all",
+          "priority": 2,
+          "recommendedSetup": {
+            "mode": "relative",
+            "vibeBlend": [
+              "PUNCH"
+            ],
+            "mappings": [
+              {
+                "output": "x",
+                "target": "Pan positioning"
+              },
+              {
+                "output": "y",
+                "target": "Transient Shaper"
+              },
+              {
+                "output": "z",
+                "target": "Saturation/Drive"
+              },
+              {
+                "output": "speed",
+                "target": "Compression ratio"
+              },
+              {
+                "output": "acceleration",
+                "target": "Accent boost"
+              }
+            ]
+          },
+          "performanceTips": [
+            "Rhythmic movements create dynamic drum patterns",
+            "Accent detection on Acceleration for ghost notes",
+            "X positioning per drum element for width",
+            "Speed creates pumping compression effect"
+          ],
+          "commonPatterns": [
+            "Kick focus: Vertical motion on Y for punch control",
+            "Hi-hat width: Horizontal X oscillation for stereo movement",
+            "Snare accent: Quick flick creates Acceleration spike",
+            "Build intensity: Progressive Speed increase → compression"
+          ]
+        },
+        {
+          "id": "scenario-vocal-processing",
+          "scenario": "Vocal Performance Effects",
+          "description": "Adding expressive effects to vocal tracks",
+          "genre": "all",
+          "priority": 2,
+          "recommendedSetup": {
+            "mode": "absolute",
+            "vibeBlend": [
+              "CLARITY",
+              "AIR"
+            ],
+            "mappings": [
+              {
+                "output": "x",
+                "target": "Formant shift/Pitch"
+              },
+              {
+                "output": "y",
+                "target": "Vocoder/Filter"
+              },
+              {
+                "output": "z",
+                "target": "Effect Wet/Dry"
+              },
+              {
+                "output": "speed",
+                "target": "Modulation rate"
+              }
+            ]
+          },
+          "performanceTips": [
+            "Use absolute mode for predictable vocal effect timing",
+            "X-axis for formant shifting (robotic effects)",
+            "Y-axis for filter-based effects (telephone, radio)",
+            "Z for throwing vocals into reverb/delay"
+          ],
+          "commonPatterns": [
+            "Robot voice: Static X position for fixed formant",
+            "Morphing: Smooth X transition during phrase",
+            "Telephone effect: Fixed low Y position",
+            "Throw: Quick Z spike at phrase end"
+          ]
+        },
+        {
+          "id": "scenario-synth-bass",
+          "scenario": "Synth Bass Performance",
+          "description": "Controlling bass synths with expressive modulation",
+          "genre": "all",
+          "priority": 2,
+          "recommendedSetup": {
+            "mode": "relative",
+            "vibeBlend": [
+              "WARMTH",
+              "PUNCH"
+            ],
+            "mappings": [
+              {
+                "output": "x",
+                "target": "Wavetable position/Osc mix"
+              },
+              {
+                "output": "y",
+                "target": "Filter Cutoff"
+              },
+              {
+                "output": "z",
+                "target": "Drive/Distortion"
+              },
+              {
+                "output": "speed",
+                "target": "Envelope amount"
+              }
+            ]
+          },
+          "performanceTips": [
+            "Keep low-pass cutoff controlled to maintain bass presence",
+            "X-axis for morphing between oscillator types",
+            "Subtle Z for saturation, heavy for distortion",
+            "Speed adds expression to filter envelope"
+          ],
+          "commonPatterns": [
+            "Sub bass: Low Y position, minimal movement",
+            "Growl bass: Rapid X oscillation + moderate Z",
+            "Wobble: Rhythmic Y movement synced to tempo",
+            "Drop bass: Maximum Y + Z at impact"
+          ]
+        },
+        {
+          "id": "scenario-touchscreen-live",
+          "scenario": "Touchscreen Live Performance",
+          "description": "Performing on tablets or touch-enabled devices",
+          "genre": "all",
+          "priority": 1,
+          "recommendedSetup": {
+            "mode": "absolute",
+            "vibeBlend": [
+              "DEPTH",
+              "CLARITY"
+            ],
+            "mappings": [
+              {
+                "output": "x",
+                "target": "Primary parameter"
+              },
+              {
+                "output": "y",
+                "target": "Secondary parameter"
+              },
+              {
+                "output": "z",
+                "target": "Tertiary parameter (via pinch)"
+              },
+              {
+                "output": "speed",
+                "target": "Expression"
+              }
+            ]
+          },
+          "performanceTips": [
+            "Use absolute mode for direct visual correlation",
+            "Practice pinch gesture for Z control",
+            "Enable 'Show touches' for visual feedback",
+            "Design for one-handed or two-handed gestures"
+          ],
+          "gestureLibrary": [
+            "Single-finger sweep: Standard X/Y control",
+            "Two-finger pinch: Z-axis depth control",
+            "Quick flick: Speed spike for accents",
+            "Two-hand independent: Control multiple instances"
+          ]
+        },
+        {
+          "id": "scenario-3d-morphing",
+          "scenario": "3D Sound Morphing",
+          "description": "Radically transforming sounds through three-parameter morphing",
+          "genre": "all",
+          "priority": 3,
+          "recommendedSetup": {
+            "mode": "absolute",
+            "vibeBlend": [
+              "WARMTH",
+              "CLARITY",
+              "DEPTH"
+            ],
+            "mappings": [
+              {
+                "output": "x",
+                "target": "Parameter A (State 1 ↔ State 2)"
+              },
+              {
+                "output": "y",
+                "target": "Parameter B (State 1 ↔ State 2)"
+              },
+              {
+                "output": "z",
+                "target": "Parameter C (State 1 ↔ State 2)"
+              }
+            ]
+          },
+          "performanceTips": [
+            "Map each axis to fundamentally different parameters",
+            "Corner positions create 8 distinct sound states",
+            "Diagonal movements blend between multiple parameters",
+            "Center position is transitional/mixed state"
+          ],
+          "morphingConcepts": [
+            "Each corner = unique combination of all three parameters",
+            "Edges = two parameters changing, one fixed",
+            "Faces = one parameter changing, two fixed",
+            "Interior = all parameters in transition"
+          ]
+        }
+      ]
+    },
+    "schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "$id": "fruity-xyz-rules",
+      "title": "X-Y-Z Controller Decision Rules Schema",
+      "description": "Schema for mapping production scenarios to controller configurations",
+      "type": "object",
+      "properties": {
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "scenario": {
+                "type": "string"
+              },
+              "recommendedConfig": {
+                "type": "object"
+              },
+              "priority": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    },
+    "vibe-rules": {
+      "vibeRules": [
+        {
+          "vibe": "WARMTH",
+          "description": "Analog character, vintage thickness, cozy texture",
+          "mappingStrategy": {
+            "x": {
+              "target": "Oscillator detune or pitch widening",
+              "range": "0-30% (subtle)",
+              "position": "Lower half (30-50%)",
+              "technique": "Hold steady for gentle thickness"
+            },
+            "y": {
+              "target": "Low-pass filter cutoff",
+              "range": "200Hz - 5kHz (keep below 40%)",
+              "position": "Lower half (10-40%)",
+              "technique": "Low positions = warm/dark tone"
+            },
+            "z": {
+              "target": "Tape/analog saturation",
+              "range": "0-40% (gentle)",
+              "position": "Lower half (20-40%)",
+              "technique": "Subtle drive for analog character"
+            },
+            "speed": {
+              "target": "Vibrato or subtle LFO",
+              "range": "0-20%",
+              "technique": "Movement adds gentle variation"
+            }
+          },
+          "quadrantFocus": "Lower-left (X<50%, Y<50%)",
+          "gestureStyle": "Slow, sustained holds with minimal movement",
+          "combinations": [
+            {
+              "with": "DEPTH",
+              "result": "Warm, spacious ambience"
+            },
+            {
+              "with": "PUNCH",
+              "result": "Thick, driven low-end"
+            },
+            {
+              "with": "CLARITY",
+              "result": "Defined warmth (moderate on both)"
+            }
+          ]
+        },
+        {
+          "vibe": "CLARITY",
+          "description": "Presence, definition, forwardness, intelligibility",
+          "mappingStrategy": {
+            "x": {
+              "target": "Presence EQ boost (2-5kHz)",
+              "range": "0-6dB boost",
+              "position": "Upper half (50-80%)",
+              "technique": "Right side = more presence"
+            },
+            "y": {
+              "target": "High-shelf or exciter",
+              "range": "0-4dB boost",
+              "position": "Upper half (50-80%)",
+              "technique": "Up = brighter, more defined"
+            },
+            "z": {
+              "target": "Harmonic exciter/enhancer",
+              "range": "0-40%",
+              "position": "Moderate (30-60%)",
+              "technique": "Subtle enhancement, don't overdo"
+            },
+            "speed": {
+              "target": "Transient emphasis",
+              "range": "0-50%",
+              "technique": "Movement = sharper transients"
+            }
+          },
+          "quadrantFocus": "Upper-right (X>50%, Y>50%)",
+          "gestureStyle": "Quick, precise movements for definition",
+          "combinations": [
+            {
+              "with": "AIR",
+              "result": "Ultra-clear, shiny top-end"
+            },
+            {
+              "with": "PUNCH",
+              "result": "Aggressive, cutting presence"
+            },
+            {
+              "with": "DEPTH",
+              "result": "Clear but spacious"
+            }
+          ]
+        },
+        {
+          "vibe": "DEPTH",
+          "description": "Spaciousness, 3D space, immersion, distance",
+          "mappingStrategy": {
+            "x": {
+              "target": "Stereo width",
+              "range": "50-150%",
+              "position": "Full range",
+              "technique": "Wide for space, narrow for focus"
+            },
+            "y": {
+              "target": "Reverb send/time",
+              "range": "0-70% (avoid 100% wash)",
+              "position": "Upper half (40-70%)",
+              "technique": "Up = more reverb depth"
+            },
+            "z": {
+              "target": "Delay feedback or diffusion",
+              "range": "20-60%",
+              "position": "Moderate (30-60%)",
+              "technique": "Depth via echo density"
+            },
+            "speed": {
+              "target": "Reverb pre-delay or modulation",
+              "range": "0-50%",
+              "technique": "Movement adds space variation"
+            }
+          },
+          "quadrantFocus": "Full range with emphasis on upper positions",
+          "gestureStyle": "Expansive, wide gestures for space creation",
+          "combinations": [
+            {
+              "with": "WARMTH",
+              "result": "Cozy, enveloping space"
+            },
+            {
+              "with": "AIR",
+              "result": "Open, airy dimension"
+            },
+            {
+              "with": "CLARITY",
+              "result": "Defined spatial placement"
+            }
+          ]
+        },
+        {
+          "vibe": "PUNCH",
+          "description": "Impact, aggression, tightness, dynamic energy",
+          "mappingStrategy": {
+            "x": {
+              "target": "Transient shaper amount",
+              "range": "0-70%",
+              "position": "Moderate-high (40-70%)",
+              "technique": "Right = harder attack"
+            },
+            "y": {
+              "target": "Compression threshold/ratio",
+              "range": "Light to heavy",
+              "position": "Moderate (40-60%)",
+              "technique": "Up = more compression"
+            },
+            "z": {
+              "target": "Saturation on transients",
+              "range": "0-50%",
+              "position": "Moderate (30-50%)",
+              "technique": "Edge and grit on peaks"
+            },
+            "speed": {
+              "target": "Accent boost or drive",
+              "range": "0-100%",
+              "technique": "Fast movement = maximum impact"
+            },
+            "acceleration": {
+              "target": "Transient boost",
+              "range": "Spike detection",
+              "technique": "Gesture start = accent"
+            }
+          },
+          "quadrantFocus": "Upper-right with aggressive Speed usage",
+          "gestureStyle": "Quick, sharp, accented movements",
+          "combinations": [
+            {
+              "with": "CLARITY",
+              "result": "Cutting, aggressive attack"
+            },
+            {
+              "with": "WARMTH",
+              "result": "Thick, saturated punch"
+            },
+            {
+              "with": "DEPTH",
+              "result": "Impact in 3D space"
+            }
+          ]
+        },
+        {
+          "vibe": "AIR",
+          "description": "Brightness, shimmer, high-end lift, polish",
+          "mappingStrategy": {
+            "x": {
+              "target": "High-pass filter",
+              "range": "20-200Hz (remove rumble)",
+              "position": "Low (10-20%)",
+              "technique": "Just enough to clean lows"
+            },
+            "y": {
+              "target": "Air EQ band (12-20kHz)",
+              "range": "0-6dB boost",
+              "position": "Upper half (60-90%)",
+              "technique": "High = shimmer and lift"
+            },
+            "z": {
+              "target": "Sparkle/dimension enhancer",
+              "range": "0-50%",
+              "position": "Upper half (40-70%)",
+              "technique": "Enhanced high-frequency content"
+            },
+            "speed": {
+              "target": "High-frequency shimmer LFO",
+              "range": "0-30%",
+              "technique": "Movement adds subtle high-end variation"
+            }
+          },
+          "quadrantFocus": "Upper area (Y>60%) with low X",
+          "gestureStyle": "Light, upward movements for brightness",
+          "combinations": [
+            {
+              "with": "CLARITY",
+              "result": "Ultra-defined top-end"
+            },
+            {
+              "with": "DEPTH",
+              "result": "Spacious, open air"
+            },
+            {
+              "with": "PUNCH",
+              "result": "Bright, aggressive attack"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    },
+    {
+      "title": "3D Vector Control Concepts",
+      "filename": "3d-vector-control-concepts.md"
+    },
+    {
+      "title": "Absolute Vs Relative Mode",
+      "filename": "absolute-vs-relative-mode.md"
+    },
+    {
+      "title": "Multi Touch Gesture Control",
+      "filename": "multi-touch-gesture-control.md"
+    },
+    {
+      "title": "Speed And Acceleration",
+      "filename": "speed-and-acceleration.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "00 3D Spatial Positioning",
+      "category": "by-goal",
+      "filename": "00_3D_Spatial_Positioning.md"
+    },
+    {
+      "title": "01 Total Synth Performance",
+      "category": "by-goal",
+      "filename": "01_Total_Synth_Performance.md"
+    },
+    {
+      "title": "3D Spatial Positioning",
+      "category": "by-goal",
+      "filename": "3d-spatial-positioning.md"
+    },
+    {
+      "title": "Multi Touch Performance",
+      "category": "by-goal",
+      "filename": "multi-touch-performance.md"
+    },
+    {
+      "title": "Three Parameter Morphing",
+      "category": "by-goal",
+      "filename": "three-parameter-morphing.md"
+    },
+    {
+      "title": "Total Synth Performance",
+      "category": "by-goal",
+      "filename": "total-synth-performance.md"
+    },
+    {
+      "title": "Vibe Air",
+      "category": "by-goal",
+      "filename": "vibe-air.md"
+    },
+    {
+      "title": "Vibe Clarity",
+      "category": "by-goal",
+      "filename": "vibe-clarity.md"
+    },
+    {
+      "title": "Vibe Depth",
+      "category": "by-goal",
+      "filename": "vibe-depth.md"
+    },
+    {
+      "title": "Vibe Punch",
+      "category": "by-goal",
+      "filename": "vibe-punch.md"
+    },
+    {
+      "title": "Vibe Warmth",
+      "category": "by-goal",
+      "filename": "vibe-warmth.md"
+    },
+    {
+      "title": "Bass Synthesis",
+      "category": "by-instrument",
+      "filename": "bass-synthesis.md"
+    },
+    {
+      "title": "Drum Processing",
+      "category": "by-instrument",
+      "filename": "drum-processing.md"
+    },
+    {
+      "title": "Hip Hop Lead Synth",
+      "category": "by-instrument",
+      "filename": "hip-hop-lead-synth.md"
+    },
+    {
+      "title": "Pad Atmosphere Design",
+      "category": "by-instrument",
+      "filename": "pad-atmosphere-design.md"
+    }
+  ]
+}

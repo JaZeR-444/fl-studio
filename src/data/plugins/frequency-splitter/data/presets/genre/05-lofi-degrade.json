@@ -1,0 +1,34 @@
+{
+  "metadata": {
+    "plugin": "Frequency Splitter",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "presetName": "Lo-Fi Degradation",
+    "category": "genre",
+    "genre": "lo-fi",
+    "mood": "nostalgic"
+  },
+  "settings": {
+    "crossover1": 500,
+    "crossover2": 3000,
+    "slope": "12dB/oct",
+    "mode": "minimum-phase",
+    "band1": { "gain": -1, "processing": "bitcrusher 8-bit" },
+    "band2": { "gain": 0, "processing": "saturation 5%" },
+    "band3": { "gain": -2, "processing": "high-pass 6kHz" }
+  },
+  "chain": {
+    "pre": ["Tape wobble on band1"],
+    "post": ["Vinyl crackle on band2"]
+  },
+  "workflow": "Three-way lo-fi split. Lows get bitcrushed, mids saturated, highs rolled off for authentic degradation.",
+  "genreTags": ["lo-fi", "nostalgic", "vintage", "degrade"],
+  "a/bTesting": {
+    "testA": "12dB/oct for smooth degradation",
+    "testB": "48dB/oct for obvious bands"
+  },
+  "troubleshooting": {
+    "tooNoisy": "Reduce band1 bitcrusher to 12-bit"
+  }
+}

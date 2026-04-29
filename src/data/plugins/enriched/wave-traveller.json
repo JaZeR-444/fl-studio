@@ -1,0 +1,380 @@
+{
+  "id": "wave-traveller",
+  "name": "Wave Traveller",
+  "category": "Utility",
+  "tier": "Free",
+  "type": "Utility",
+  "description": "Wave Traveller - Utility",
+  "tags": [
+    "specialized"
+  ],
+  "capabilities": [
+    "utility",
+    "routing"
+  ],
+  "icon": "/plugins/wave-traveller-icon.svg",
+  "color": "#64748B",
+  "version": "1.0",
+  "data_dir": "plugins\\wave-traveller",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "wave-traveller-params": {
+      "$schema": "./schema.json",
+      "plugin": {
+        "name": "Wave Traveller",
+        "version": "1.x",
+        "category": "Effect",
+        "type": "Vinyl Scratch Simulator & Sample Manipulator",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Wave%20Traveller.htm"
+      },
+      "parameters": {
+        "playback": [
+          {
+            "id": "position",
+            "name": "Position",
+            "type": "slider",
+            "range": "0-100%",
+            "description": "Playback position in sample",
+            "automatable": true,
+            "performanceUse": "Automate for scratch effects"
+          },
+          {
+            "id": "speed",
+            "name": "Speed",
+            "type": "slider",
+            "range": "-200% to +200%",
+            "default": "100%",
+            "description": "Playback speed and direction",
+            "note": "Negative values = reverse playback"
+          },
+          {
+            "id": "crossfade",
+            "name": "Crossfade",
+            "type": "slider",
+            "range": "0-100ms",
+            "unit": "ms",
+            "default": "20ms",
+            "description": "Smooths position jumps",
+            "sweetSpot": "10-30ms for scratching"
+          }
+        ],
+        "vinylSimulation": [
+          {
+            "id": "vinylNoise",
+            "name": "Vinyl Noise",
+            "type": "slider",
+            "range": "0-100%",
+            "default": "0%",
+            "description": "Adds crackle and pop",
+            "sweetSpot": "20-40% for vintage vibe"
+          },
+          {
+            "id": "wowFlutter",
+            "name": "Wow & Flutter",
+            "type": "slider",
+            "range": "0-100%",
+            "description": "Pitch instability simulation"
+          },
+          {
+            "id": "motorLag",
+            "name": "Motor Lag",
+            "type": "slider",
+            "range": "0-100%",
+            "description": "Spin-up/spin-down inertia",
+            "sweetSpot": "70-80% for realistic vinyl stop"
+          }
+        ],
+        "sample": [
+          {
+            "id": "sampleStart",
+            "name": "Sample Start",
+            "description": "Beginning trim point"
+          },
+          {
+            "id": "sampleEnd",
+            "name": "Sample End",
+            "description": "Ending trim point"
+          },
+          {
+            "id": "loopMode",
+            "name": "Loop Mode",
+            "options": [
+              "Off",
+              "Forward",
+              "Ping-Pong"
+            ],
+            "description": "Playback looping behavior"
+          }
+        ]
+      },
+      "scratchTechniques": {
+        "babyScratch": "Basic back-and-forth movement",
+        "chirpScratch": "Fast forward jumps",
+        "crabScratch": "Rapid staccato movements",
+        "transformScratch": "Rhythmic on/off cuts"
+      },
+      "historicalReference": {
+        "originated": "1970s hip-hop DJing",
+        "pioneers": [
+          "Grand Wizzard Theodore",
+          "DJ Qbert",
+          "Mix Master Mike"
+        ]
+      },
+      "cpuUsage": "Low to Moderate",
+      "latency": "Minimal",
+      "realtimeSafe": true
+    }
+  },
+  "presets": {
+    "genre-presets": {
+      "presetArchetypes": {
+        "lofiKeys": {
+          "description": "Warm, degraded piano for hip-hop",
+          "settings": {
+            "category": "Piano",
+            "position": 50,
+            "mutate": 0,
+            "resample": 30,
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 75,
+              "resonance": 20
+            },
+            "lfo": {
+              "to": "position",
+              "rate": 0.1,
+              "depth": 10
+            }
+          },
+          "useCases": [
+            "hip-hop keys",
+            "sample source",
+            "lofi texture"
+          ],
+          "tags": [
+            "lofi",
+            "hip-hop/rap",
+            "moody"
+          ]
+        },
+        "darkTexture": {
+          "description": "Evolving atmospheric background",
+          "settings": {
+            "category": "Texture",
+            "position": 40,
+            "mutate": 20,
+            "resample": 50,
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 60,
+              "resonance": 30
+            },
+            "lfo": {
+              "to": "position",
+              "rate": 0.05,
+              "depth": 20
+            }
+          },
+          "useCases": [
+            "moody intros",
+            "background",
+            "builds"
+          ],
+          "tags": [
+            "moody",
+            "atmospheric",
+            "psychedelic"
+          ]
+        },
+        "aggressiveBass": {
+          "description": "Hard, cutting bass for drops",
+          "settings": {
+            "category": "Aggressive",
+            "position": 70,
+            "mutate": 30,
+            "resample": 20,
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 45,
+              "resonance": 45
+            },
+            "lfo": {
+              "to": "position",
+              "rate": 0.2,
+              "depth": 30
+            }
+          },
+          "useCases": [
+            "drops",
+            "builds",
+            "bass focus"
+          ],
+          "tags": [
+            "electric",
+            "intense",
+            "deep bass edm"
+          ]
+        },
+        "etherealPad": {
+          "description": "Lush, evolving pad for breakdowns",
+          "settings": {
+            "category": "Pad",
+            "position": 50,
+            "mutate": 10,
+            "resample": 40,
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 65,
+              "resonance": 25
+            },
+            "lfo": {
+              "to": "position",
+              "rate": 0.08,
+              "depth": 15
+            }
+          },
+          "useCases": [
+            "breakdowns",
+            "intros",
+            "emotional moments"
+          ],
+          "tags": [
+            "moody",
+            "upbeat",
+            "atmospheric"
+          ]
+        },
+        "vinylStutter": {
+          "description": "Rhythmic glitch/stutter effect",
+          "settings": {
+            "category": "Glitch",
+            "position": 50,
+            "mutate": 0,
+            "resample": 0,
+            "filter": {
+              "type": "bandpass",
+              "cutoff": 80,
+              "resonance": 40
+            },
+            "lfo": {
+              "to": "position",
+              "rate": "1/8",
+              "depth": 50
+            }
+          },
+          "useCases": [
+            "rhythmic texture",
+            "glitch elements",
+            "vinyl stops"
+          ],
+          "tags": [
+            "lofi",
+            "funky",
+            "electric"
+          ]
+        }
+      },
+      "genreSettings": {
+        "hipHop": {
+          "keys": {
+            "position": 50,
+            "resample": 30,
+            "filter": 75
+          },
+          "texture": {
+            "position": 40,
+            "resample": 45,
+            "filter": 65
+          },
+          "sampleSource": {
+            "position": 60,
+            "resample": 20,
+            "filter": 80
+          }
+        },
+        "lofi": {
+          "degraded": {
+            "position": 55,
+            "resample": 50,
+            "filter": 70
+          },
+          "vintage": {
+            "position": 45,
+            "resample": 40,
+            "filter": 65
+          },
+          "warm": {
+            "position": 50,
+            "resample": 35,
+            "filter": 72
+          }
+        },
+        "deepBassEDM": {
+          "wobble": {
+            "position": 65,
+            "resample": 25,
+            "filter": 45
+          },
+          "growl": {
+            "position": 75,
+            "resample": 35,
+            "filter": 40
+          },
+          "texture": {
+            "position": 55,
+            "resample": 50,
+            "filter": 55
+          }
+        }
+      }
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "concepts-and-best-uses": "# Concepts & Best Uses: Wave Traveller\r\n\r\n## What It Is\r\nWave Traveller is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Wave Traveller\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n",
+      "what-is-wave-traveller": "Tags: lofi | hip-hop/rap | psychedelic\n\n## What Is Wave Traveller?\n\nWave Traveller is FL Studio's wavetable synthesizer featuring a massive preset library, extensive modulation options, and creative sampling capabilities. It excels at creating evolving textures, aggressive basses, and atmospheric soundscapes.\n\n### Core Architecture\n\n**Tone targets:**\n- **Lofi:** Bit-crushed, filtered, vintage warmth\n- **Atmospheric:** Evolving pads, complex textures\n- **Aggressive:** Hard basses, metallic textures, evolving leads\n\n**Signal Flow:**\n```\nWavetable Selection → Oscillator Processing → Filter → Modulation → Output\n    ↓                    ↓                   ↓           ↓\nResampling          Wave shaping        8 filter      Envelopes\nInterpolation       Spectral FX        types         LFOs\n```\n\n### What Makes Wave Traveller Unique\n\n1. **Massive Preset Library:** 500+ built-in wavetables\n2. **Spectral Processing:** Advanced wave manipulation\n3. **Resampling:** Internal signal feedback for evolution\n4. **Complex Modulation:** 3 envelopes + 3 LFOs + modulation matrix\n\n### Key Parameters\n\n| Parameter | Function | Typical Range |\n|-----------|----------|---------------|\n| Wavetable | Source waveform | 100s of options |\n| Position | Scan through wavetable | Creates movement |\n| Mutate | Spectral transformation | Radical changes |\n| Resample | Feedback for evolution | 0-100% |\n| Filter | Tone shaping | 8 types, 24dB/oct |\n\n### Classic Wave Traveller Sounds\n\n**Lofi Piano:**\n1. Piano wavetable\n2. Low-pass filter at 70%\n3. Resample: 30% (slow evolution)\n4. Reverb send\n5. Bit reduction in Fruity LoTope\n\n**Aggressive Bass:**\n1. Aggressive wavetable\n2. Position: 70%\n3. High-pass filter on input\n4. Low-pass filter on output\n5. Heavy modulation on position\n\n**Ethereal Pad:**\n1. Complex wavetable\n2. Slow LFO on position\n3. Reverb and delay sends\n4. High-resonance filter sweeps\n\n### Typical Mistakes\n\n| Mistake | Result | Fix |\n|---------|--------|-----|\n| Too much resampling | Uncontrolled evolution | Keep under 50% |\n| Wrong wavetable for genre | Mismatch | Browse presets for reference |\n| No modulation plan | Static sound | Program envelopes/LFOs |\n| Filter too open | Harsh sound | Cut back to 60-70% |\n| Ignoring position control | Missed character | Sweep position for variety |\n\n### First Adjustments by Goal\n\n**For lofi hip-hop:**\n1. Start with \"Piano\" or \"Keys\" category\n2. Add low-pass filter\n3. Set resample to 20-40%\n4. Add subtle LFO to position\n\n**For atmospheric:**\n1. Choose \"Texture\" or \"Atmosphere\" wavetable\n2. Slow LFO to position\n3. High resonance filter sweeps\n4. Effects sends (reverb, delay)\n\n**For aggressive bass:**\n1. Select \"Aggressive\" or \"Bass\" category\n2. Set position to 60-80%\n3. Heavy modulation to position\n4. Parallel compression\n"
+    },
+    "granular-synthesis-fundamentals.md": {
+      "granular-synthesis-fundamentals": "# Granular Synthesis Fundamentals\n\n## Understanding Granular Synthesis\n\n### What is Granular Synthesis?\nGranular synthesis is a sound synthesis method that operates on the microsound time scale. It works by breaking down audio into tiny pieces called \"grains\" (typically 1-50 milliseconds each) and then reorganizing these grains to create new sounds.\n\n### The Basic Concept\n```\nOriginal Audio ──► Grain Extraction ──► Grain Manipulation ──► Grain Reassembly ──► New Sound\n```\n\n**Key Principle**: By controlling grain size, density, position, and pitch, we can completely transform the character of the original audio while maintaining some of its essential qualities.\n\n## Core Granular Parameters Explained\n\n### Grain Size: The Building Block Unit\n**Technical Definition**: Duration of each individual grain\n- **Micro Grains** (1-10ms): Produce noise-like, textural sounds\n- **Short Grains** (10-30ms): Create rhythmic, percussive effects\n- **Medium Grains** (30-100ms): Musical, recognizable source material\n- **Long Grains** (100ms+): Smooth, continuous textures\n\n**Psychoacoustic Effect**: Grains shorter than ~20ms are perceived as texture rather than pitched content, while longer grains maintain more of the original pitch and timbre.\n\n### Grain Density: The Cloud Formation\n**Technical Definition**: Number of grains generated per second\n- **Sparse Density** (1-10Hz): Isolated grains, pointillistic texture\n- **Medium Density** (10-50Hz): Overlapping grains, continuous sound\n- **High Density** (50-100Hz): Dense cloud, noise-like quality\n\n**Cloud Formation**: Higher density creates overlapping grains that blend together, forming continuous soundscapes. Lower density creates rhythmic, separated events.\n\n### Grain Window: The Audio Envelope\n**Window Function**: Shapes the attack and decay of each grain to avoid clicks\n- **Hanning Window**: Smooth fade-in and fade-out\n- **Hamming Window**: Slightly different envelope shape\n- **Cosine Window**: Smooth, rounded envelope\n\n**Purpose**: Prevents clicks and pops when grains start and stop, creates smooth transitions between grains.\n\n## Wave Scanning vs Traditional Sampling\n\n### Traditional Sampling\n```\nPlay Sample from Start → End\nSpeed: Fixed or pitch-controlled\nDirection: Forward only (usually)\nManipulation: Limited to pitch/time\n```\n\n### Wave Scanning (Wave Traveller's Approach)\n```\nAccess Any Point → Any Time → Any Direction → Any Speed\nPosition: Random or controlled\nDirection: Forward, reverse, random\nManipulation: Complete freedom\n```\n\n**Advantages of Wave Scanning**:\n- Non-linear audio access\n- Real-time position jumping\n- Bidirectional playback\n- Independent pitch and time control\n\n## The Granular Continuum\n\n### From Texture to Recognition\nAs you move from micro to macro grain sizes, you traverse a continuum:\n\n```\nNoise (1-5ms) → Texture (5-20ms) → Rhythm (20-50ms) → Melody (50-200ms) → Sample (200ms+)\n```\n\n**Creative Implication**: You can move continuously between recognizable audio and abstract texture by adjusting grain size and density.\n\n### The Quantum Physics Analogy\nJust as quantum physics looks at matter at the smallest scales, granular synthesis looks at audio at the microsound level. Both reveal new properties and behaviors not visible at macro scales.\n\n## Advanced Granular Concepts\n\n### Grain Overlap and Density\n**Overlap Calculation**: When Grain Size × Grain Density > 1, grains overlap\n- **No Overlap**: Each grain finishes before next starts\n- **Light Overlap**: Grains touch or slightly overlap\n- **Heavy Overlap**: Multiple grains playing simultaneously\n\n**Sound Implication**:\n- No overlap = rhythmic, separated\n- Light overlap = smooth, continuous\n- Heavy overlap = dense, complex textures\n\n### Stochastic vs Deterministic Processing\n\n#### Deterministic Granular\n- Predictable grain placement\n- Regular timing\n- Controlled patterns\n- Musical precision\n\n#### Stochastic Granular\n- Random grain selection\n- Probabilistic timing\n- Chaotic textures\n- Organic development\n\n**Wave Traveller Approach**: Hybrid system allowing both deterministic (LFO control) and stochastic (random modulation) processing.\n\n### Pitch Shifting in Granular Context\n\n#### Granular Pitch Shift Method\n1. Extract grain at position P\n2. Shift grain pitch by semitones S\n3. Resample grain to original duration\n4. Output at correct timing\n\n**Advantages over Traditional Pitch Shifting**:\n- No time stretching artifacts\n- Maintains grain character\n- Real-time processing\n- Extreme pitch shifts possible\n\n#### Formant Preservation\n**Traditional Pitch Shift**: Changes formants (vocal character)\n**Granular Pitch Shift**: Can preserve formants by maintaining grain structure\n\n## Spatial Granular Synthesis\n\n### Multi-Channel Granular Processing\nEach grain can have its own spatial position:\n- **Stereo Field**: Left/right positioning per grain\n- **3D Space**: Height, depth, width positioning\n- **Movement**: Grain trajectories through space\n- **Diffusion**: Spatial spread of grain cloud\n\n**Wave Traveller Implementation**:\n- Spread parameter controls overall width\n- Individual grain positioning options\n- Spatial modulation capabilities\n- Integration with FL Studio's spatial effects\n\n### Granular Diffusion\n**Concept**: Spread grains across stereo/3D field\n- **Point Source**: All grains from center\n- **Wide Diffusion**: Grains spread across field\n- **Dynamic Diffusion**: Movement patterns over time\n\n## Real-Time Processing Challenges\n\n### CPU Considerations\n**Per-Grain Processing**: Each grain requires individual processing\n- Window calculation\n- Pitch shifting algorithm\n- Spatial positioning\n- Envelope generation\n- Output mixing\n\n**Optimization Strategies**:\n- Limit maximum grain density\n- Use efficient window functions\n- Pre-calculate where possible\n- Render complex patches\n\n### Latency Management\n**Buffer Trade-off**: Lower latency = higher CPU usage\n- **64 samples**: ~1.5ms latency (high CPU)\n- **256 samples**: ~6ms latency (balanced)\n- **1024 samples**: ~23ms latency (low CPU)\n\n**Real-Time Performance**: Choose buffer size based on complexity needs vs. latency requirements.\n\n## Granular Synthesis Applications\n\n### Audio Transformation\n**Source Material Types**:\n- **Speech**: Creates alien voices, textures\n- **Music**: Abstracts melodies, creates textures\n- **Nature Sounds**: Organic, evolving textures\n- **Drum Loops**: Rhythmic complexity, new patterns\n\n**Transformation Continuum**:\n```\nOriginal → Subtle Variation → Abstract Texture → Completely New Sound\n```\n\n### Musical Applications\n- **Textural Pads**: Evolving background textures\n- **Lead Sounds**: Granular manipulation of melodic sources\n- **Rhythmic Elements**: Granular processing of percussive material\n- **Sound Effects**: Cinematic, experimental sounds\n- **Live Performance**: Real-time sound manipulation\n\n### Sound Design Applications\n- **Film Scores**: Evolving atmospheres, transitions\n- **Game Audio**: Dynamic, responsive soundscapes\n- **Ambient Music**: Generative, changing textures\n- **Experimental Music**: Pushing sonic boundaries\n\n## Wave Traveller's Unique Approach\n\n### Integration with Traditional Workflow\n- **Audio Import**: Direct file loading\n- **MIDI Integration**: Note triggering\n- **DAW Integration**: Automation, syncing\n- **Effect Integration**: Works with other FL Studio plugins\n\n### Creative Workflow Features\n- **Visual Feedback**: Waveform display, grain visualization\n- **Real-Time Control**: Immediate parameter response\n- **Preset System**: Save and recall complex textures\n- **Performance Mode**: Live-friendly controls\n\n### Technical Innovations\n- **High-Quality Algorithms**: Advanced grain processing\n- **Efficient CPU Usage**: Optimized for real-time use\n- **Flexible Routing**: Multiple send/output options\n- **Extensive Modulation**: Complex parameter relationships\n\n## Learning Path for Granular Mastery\n\n### Beginner Stage\n1. Understand grain size and density basics\n2. Experiment with different source materials\n3. Learn basic parameter relationships\n4. Create simple textures and rhythms\n\n### Intermediate Stage\n1. Master spatial processing techniques\n2. Develop complex modulation strategies\n3. Create multi-layered granular patches\n4. Integrate with other effects and instruments\n\n### Advanced Stage\n1. Design custom granular instruments\n2. Create live performance setups\n3. Develop unique granular processing chains\n4. Push boundaries of granular synthesis\n\n## Common Misconceptions\n\n### \"Granular synthesis is just stuttering effects\"\n**Reality**: Granular synthesis ranges from subtle texture to complete transformation, much more than simple stutter effects.\n\n### \"It's only for experimental music\"\n**Reality**: Granular techniques are used in mainstream music production, film scoring, and commercial applications.\n\n### \"It requires a PhD in physics\"\n**Reality**: Modern granular tools like Wave Traveller make complex concepts accessible through intuitive interfaces.\n\n### \"It always sounds chaotic and random\"\n**Reality**: Granular synthesis can be highly controlled and musical when used with proper understanding.\n\nUnderstanding these fundamentals provides the foundation for creative and effective use of Wave Traveller's granular synthesis capabilities."
+    },
+    "parameter-reference.md": {
+      "parameter-reference": "# Wave Traveller Parameter Reference\n\n## Core Audio Processing Parameters\n\n### Wave Position (0-100%)\n**Purpose**: Selects current position within the loaded audio file\n- **Range**: 0% (start) to 100% (end)\n- **Resolution**: 0.1% precision\n- **Control Types**: Manual, LFO, envelope follower, automation\n\n**Technical Behavior**:\n- Controls read position for grain generation\n- Higher resolution than sample-level editing\n- Smooth interpolation between positions\n- Can create continuous motion or jumps\n\n**Creative Applications**:\n- Slow sweeps for evolving textures\n- Rapid movement for chaotic effects\n- Rhythmic positioning for pattern creation\n- Static positioning for sustained textures\n\n### Grain Size (1-500ms)\n**Purpose**: Determines duration of individual audio grains\n- **Range**: 1 millisecond to 500 milliseconds\n- **Default**: 50 milliseconds\n- **Effect**: Controls texture from颗粒状 (1ms) to smooth (500ms)\n\n**Size Categories**:\n```\nMicro Grains (1-20ms): Noisy, textural, granular\nShort Grains (20-50ms): Rhythmic, percussive, defined\nMedium Grains (50-150ms): Textural, smooth, musical\nLong Grains (150-500ms): Evolving, ambient, continuous\n```\n\n**Technical Implications**:\n- Smaller grains = more CPU usage\n- Larger grains = more pitch recognition\n- Size affects perceived tempo and rhythm\n- Interacts with Grain Density for texture\n\n### Grain Density (1-100Hz)\n**Purpose**: Controls number of grains generated per second\n- **Range**: 1 Hz to 100 Hz (grains per second)\n- **Default**: 20 Hz\n- **Effect**: From sparse (1Hz) to dense (100Hz) grain clouds\n\n**Density Categories**:\n```\nSparse (1-10Hz): Pointillistic, isolated grains\nLight (10-30Hz): Textural, ambient clouds\nMedium (30-60Hz): Rhythmic, patterned\nDense (60-100Hz): Noise-like, continuous texture\n```\n\n**CPU Considerations**:\n- Higher density = significantly more CPU usage\n- Exponential CPU increase with density\n- 50Hz+ may strain older computers\n- Render to audio for complex patches\n\n### Pitch Shift (-24 to +24 semitones)\n**Purpose**: Transposes individual grains while maintaining playback speed\n- **Range**: -24 semitones (2 octaves down) to +24 semitones (2 octaves up)\n- **Resolution**: 1 semitone steps\n- **Quality**: High-quality granular pitch shifting\n\n**Pitch Applications**:\n```\nHarmonic: 0, ±5, ±7, ±12 semitones\nDissonant: ±1, ±2, ±3, ±6 semitones\nExtreme: ±18 to ±24 semitones\nMicrotonal: Fine-tuning via modulation\n```\n\n**Technical Behavior**:\n- Individual grain transposition\n- Formant preservation options\n- No time stretching artifacts\n- Real-time pitch modulation\n\n## Spatial Processing Parameters\n\n### Spread (0-100%)\n**Purpose**: Controls stereo width and spatial positioning of grains\n- **Range**: 0% (mono) to 100% (maximum width)\n- **Default**: 50%\n- **Effect**: Spatial distribution of grain cloud\n\n**Spread Characteristics**:\n```\n0-25%: Focused mono, centered image\n25-50%: Narrow stereo, focused placement\n50-75%: Wide stereo, spacious image\n75-100%: Extreme width, immersive field\n```\n\n**Advanced Spatial Control**:\n- Grain-to-grain spatial variation\n- Stereo imaging based on grain position\n- Movement patterns via modulation\n- 3D positioning with additional processing\n\n### Pan Position (-100 to +100)\n**Purpose**: Overall stereo positioning of processed signal\n- **Range**: -100 (hard left) to +100 (hard right)\n- **Default**: 0 (center)\n- **Control**: Manual, LFO, automation\n\n**Pan Modulation**:\n- Auto-panning effects\n- Spatial movement patterns\n- Dynamic positioning based on input\n- Rhythmic spatial effects\n\n## Advanced Processing Parameters\n\n### Feedback (0-95%)\n**Purpose**: Feeds processed signal back into input for recursive processing\n- **Range**: 0% (no feedback) to 95% (maximum recursion)\n- **Default**: 0%\n- **Effect**: Creates complexity and evolving textures\n\n**Feedback Characteristics**:\n```\n0-20%: Subtle thickening, gentle evolution\n20-50%: Pronounced texture development\n50-80%: Complex, evolving soundscapes\n80-95%: Chaotic, unstable, experimental\n```\n\n**Creative Feedback Uses**:\n- Infinite sustain effects\n- Texture generation from simple sources\n- Complex rhythmic patterns\n- Experimental sound design\n\n### Time Stretch (0.1x to 4.0x)\n**Purpose**: Changes playback speed without affecting pitch\n- **Range**: 0.1x (10% speed) to 4.0x (400% speed)\n- **Default**: 1.0x (normal speed)\n- **Algorithm**: Advanced granular time stretching\n\n**Stretch Applications**:\n```\nSlow (0.1x-0.5x): Ambient, evolving textures\nNormal (0.8x-1.2x): Subtle variations\nFast (1.5x-2.5x): Energetic, rhythmic\nExtreme (2.5x-4.0x): High-speed, glitchy\n```\n\n## Modulation Parameters\n\n### LFO Section\n**Wave Position LFO**:\n- Rate: 0.01Hz to 100Hz\n- Depth: 0% to 100%\n- Waveform: Sine, Triangle, Square, Saw, Random\n\n**Grain Size LFO**:\n- Rate: 0.1Hz to 50Hz\n- Depth: ±50% variation\n- Sync to tempo option\n\n**Pitch LFO**:\n- Rate: 0.5Hz to 20Hz\n- Depth: ±12 semitones\n- MIDI sync available\n\n### Envelope Follower\n**Input Source**:\n- Internal audio input\n- Sidechain input\n- External MIDI controller\n- Automation envelope\n\n**Response Parameters**:\n- Attack: 0ms to 2000ms\n- Release: 10ms to 5000ms\n- Sensitivity: 0% to 100%\n- Smooth: 0% to 100%\n\n## Audio Input/Output Parameters\n\n### Input Section\n**Audio Source Selection**:\n- Internal audio input\n- Loaded audio file\n- Sidechain input\n- MIDI-triggered samples\n\n**Input Gain**:\n- Range: -20dB to +20dB\n- Default: 0dB\n- LED metering for level monitoring\n\n### Output Section\n**Master Volume**:\n- Range: -∞ to +12dB\n- Default: 0dB\n- Soft limiting at +6dB\n\n**Output Routing**:\n- Main output\n- Send outputs (A, B, C)\n- Individual grain outputs (advanced)\n- MIDI output (grain position data)\n\n## Filter Section\n\n### Grain Filter\n**Filter Type**:\n- Low Pass (24dB/octave)\n- High Pass (24dB/octave)\n- Band Pass (12dB/octave)\n- Notch (12dB/octave)\n\n**Filter Parameters**:\n- Cutoff: 20Hz to 20kHz\n- Resonance: 0% to 95%\n- Key follow: 0% to 100%\n- Envelope amount: -100% to +100%\n\n### Filter Envelope\n**ADSR Parameters**:\n- Attack: 0ms to 10s\n- Decay: 0ms to 10s\n- Sustain: 0% to 100%\n- Release: 10ms to 20s\n\n## Global Parameters\n\n### Sample Rate\n**Options**: 22.05kHz, 44.1kHz, 48kHz, 88.2kHz, 96kHz\n**Effect**: Higher rates = better quality, more CPU usage\n**Recommendation**: 44.1kHz for most applications\n\n### Buffer Size\n**Options**: 64, 128, 256, 512, 1024 samples\n**Effect**: Smaller buffers = less latency, more CPU strain\n**Recommendation**: 256-512 samples for balance\n\n### Quality Mode\n**Options**: Economy, Standard, High Quality\n**Effect**: Trade-off between CPU usage and audio quality\n**Recommendation**: Standard for most uses, High Quality for final rendering\n\n## Preset and Recall Parameters\n\n### Preset Management\n**Save/Load**: Full parameter state saving\n**Categories**: User-defined preset organization\n**Search**: Text-based preset finding\n**Import/Export**: Cross-platform preset sharing\n\n### Recall Options\n**MIDI Learn**: Assign any parameter to MIDI controller\n**Automation**: Full DAW automation support\n**Randomize**: Parameter randomization with constraints\n**Compare**: A/B comparison of different settings\n\n## Technical Specifications\n\n### Performance Metrics\n- **Latency**: Variable (based on buffer size)\n- **CPU Usage**: 5-40% depending on settings\n- **Memory**: 100-500MB based on audio file size\n- **Polyphony**: Unlimited grains (CPU-limited)\n\n### Audio Quality\n- **Sample Rate**: Up to 192kHz support\n- **Bit Depth**: 16, 24, 32-bit floating point\n- **Dynamic Range**: 144dB theoretical\n- **THD+N**: <0.01% typical\n\nThis parameter reference provides comprehensive understanding of Wave Traveller's extensive control set for mastering granular synthesis and wave sequencing techniques."
+    },
+    "Quick-Reference": {
+      "parameter-cheat-sheet": "# Wave Traveller - Parameter Cheat Sheet\n\n**Plugin Type:** Vinyl Scratch Simulator & Sample Manipulator\n**Category:** Creative Effect / DJ Tool\n**Official Manual:** [Wave Traveller](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Wave%20Traveller.htm)\n\n---\n\n## Main Controls\n\n| Parameter | Range | Function | Quick Tip |\n|-----------|-------|----------|-----------|\n| **Position** | 0-100% | Playback position in sample | Automate for scratch effects |\n| **Speed** | -200% to +200% | Playback speed/direction | 100% = normal, negative = reverse |\n| **Crossfade** | 0-100ms | Smooths position jumps | Higher = smoother, lower = more aggressive |\n| **Loop Mode** | Off/Forward/Ping-Pong | Playback looping behavior | Ping-pong for back-and-forth scratching |\n\n---\n\n## Scratch Modes\n\n| Mode | Description | Use Case |\n|------|-------------|----------|\n| **Manual** | User controls position directly | Automation or MIDI control |\n| **Auto Scratch** | Built-in scratch patterns | Quick scratch effects |\n| **Follow Speed** | Scratching follows speed changes | Realistic turntable behavior |\n\n---\n\n## Sample Loading\n\n| Control | Function | Tip |\n|---------|----------|-----|\n| **Load Sample** | Import audio file | WAV, MP3, OGG supported |\n| **Sample Start** | Beginning trim point | Skip intro silence |\n| **Sample End** | Ending trim point | Cut off tail |\n| **Sample Root** | Reference pitch | Match to project key |\n\n---\n\n## Vinyl Simulation\n\n| Parameter | Range | Function | Authenticity |\n|-----------|-------|----------|--------------|\n| **Vinyl Noise** | 0-100% | Adds crackle and pop | 20-40% for subtle vintage vibe |\n| **Wow & Flutter** | 0-100% | Pitch instability | Simulates worn turntable |\n| **Motor Lag** | 0-100% | Spin-up/spin-down time | Realistic start/stop behavior |\n\n---\n\n## Quick Start Techniques\n\n| Technique | Settings | Automation |\n|-----------|----------|------------|\n| **Baby Scratch** | Manual mode, moderate crossfade | Position: back-and-forth |\n| **Chirp Scratch** | Fast crossfade, follow speed | Position: quick forward jumps |\n| **Crab Scratch** | Very fast crossfade | Position: rapid staccato movements |\n| **Transform Scratch** | Loop mode, position automation | Speed: rhythmic on/off |\n| **Vinyl Stop** | Motor lag 60%+ | Speed: 100% to 0% |\n\n---\n\n## Scratch Pattern Guide\n\n### Baby Scratch (Beginner)\n- **Movement:** Slow back-and-forth\n- **Position Range:** 40-60%\n- **Speed:** Constant 100%\n- **Crossfade:** 30ms\n\n### Scribble Scratch\n- **Movement:** Fast random position jumps\n- **Position Range:** Full range (0-100%)\n- **Speed:** Varies\n- **Crossfade:** 5-10ms (tight)\n\n### Transformer\n- **Movement:** On/off rhythmic cuts\n- **Position:** Fixed or slowly moving\n- **Speed:** 0% (cut) / 100% (play)\n- **Crossfade:** Very low (0-5ms)\n\n---\n\n## BPM Sync & Timing\n\n| Feature | Function | Use Case |\n|---------|----------|----------|\n| **Sync to Host** | Lock playback to project tempo | Time-stretched loops |\n| **Manual BPM** | Set sample's original BPM | Accurate time-stretching |\n| **Stretch Mode** | Time-stretch algorithm | High quality for melodic, low for drums |\n\n---\n\n## DJ Techniques Simulation\n\n### Vinyl Stop Effect\n1. **Speed:** 100%\n2. **Automate:** Speed to 0% over 1-2 bars\n3. **Motor Lag:** 70-80%\n4. **Result:** Realistic turntable slowdown\n\n### Backspin\n1. **Speed:** Start at 100%\n2. **Automate:** Speed to -100% quickly\n3. **Motor Lag:** Low (20%)\n4. **Result:** Rewind effect\n\n### Chop/Stutter\n1. **Position:** Automate to repeat small section\n2. **Loop Mode:** Forward\n3. **Crossfade:** 5-15ms\n4. **Result:** Rhythmic sample chopping\n\n---\n\n## Sample Source Ideas\n\n### Drum Loops\n- **Use:** Create scratch patterns with drums\n- **Tip:** Use snare or cymbal hits for punchy scratches\n\n### Vocal Samples\n- **Use:** Classic DJ scratch vocals (\"Fresh!\", \"Ah yeah!\")\n- **Tip:** Short, punchy words work best\n\n### Sound Effects\n- **Use:** Scratch siren, horn, or laser sounds\n- **Tip:** Harmonic content scratches better than noise\n\n### Music Loops\n- **Use:** Full instrumental loops for mixing\n- **Tip:** Match BPM to project for seamless integration\n\n---\n\n## Automation Strategies\n\n### MIDI Control\n- **Position:** Map to mod wheel or pitch bend\n- **Speed:** Map to fader or knob\n- **Crossfade:** Map to expression controller\n- **Result:** Real-time scratch performance\n\n### Pattern Automation\n- **Draw Curves:** Create scratch patterns in automation clips\n- **LFO:** Use LFO tool for rhythmic scratching\n- **Step Sequences:** Stutter and chop effects\n\n---\n\n## Mixing Integration\n\n### EQ Suggestions\n- **High-Pass:** 80-100Hz to remove low-end rumble from scratching\n- **Boost:** 2-5kHz for scratch clarity and cut-through\n- **Cut:** 200-400Hz if muddy\n\n### Compression\n- **Ratio:** 3:1 to 6:1\n- **Attack:** Fast (catch transients)\n- **Release:** Medium\n- **Why:** Scratching has extreme dynamics\n\n### Effects After Wave Traveller\n- **Reverb:** For space (use sparingly)\n- **Delay:** Echo scratch patterns\n- **Distortion:** Add aggression to scratches\n\n---\n\n## Genre Applications\n\n| Genre | Typical Use |\n|-------|-------------|\n| **Hip-Hop** | Classic DJ scratching, vocal chops |\n| **Turntablism** | Complex scratch routines |\n| **EDM** | Build-up vinyl stops, drops |\n| **Glitch Hop** | Chopped and screwed vocals |\n| **Experimental** | Abstract sample manipulation |\n\n---\n\n## Famous Scratch Sounds\n\n### Classic Scratch Samples\n- **\"Ah\" / \"Fresh\"** - Vocal scratches (Fab 5 Freddy)\n- **\"Ahhhhhh\"** - Long scream/siren scratch\n- **Cymbal Crash** - Percussive scratch element\n- **Horn Stab** - Melodic scratch sound\n\n### Reference Artists\n- **DJ Qbert** - Turntablist pioneer\n- **Mix Master Mike** - Beastie Boys DJ\n- **DJ Shadow** - Sampling and scratching innovator\n- **Cut Chemist** - Creative sample manipulation\n\n---\n\n## Performance Tips\n\n### Live Scratching\n1. **Map Position to Controller:** Fader or XY pad\n2. **Practice Patterns:** Start with baby scratch\n3. **Use Headphones:** Monitor cue point\n4. **Record Takes:** Capture best performance\n\n### Programmed Scratching\n1. **Draw Automation:** Precise control\n2. **Use Step Sequencer:** Rhythmic scratches\n3. **Layer Scratches:** Multiple Wave Traveller instances\n4. **Quantize:** Snap to grid for tight timing\n\n---\n\n## CPU & Performance\n\n- **CPU Usage:** Low to moderate\n- **Latency:** Minimal (suitable for live use)\n- **Sample Loading:** RAM-based (entire sample loaded)\n- **Realtime Safe:** Yes\n\n---\n\n## Common Mistakes to Avoid\n\n1. **Too Much Crossfade:** Makes scratches mushy (use 10-30ms max)\n2. **No Sample Trimming:** Unwanted silence affects scratch timing\n3. **Improper BPM Sync:** Time-stretched samples sound wrong\n4. **Excessive Vinyl Noise:** Over 50% sounds unrealistic\n5. **Static Position:** Automate position for actual scratching effect\n\n---\n\n## Creative Uses Beyond Scratching\n\n### Sample Browsing\n- Scrub through long samples to find interesting sections\n- Use as creative preview tool\n\n### Vocal Chopping\n- Chop vocals into rhythmic patterns\n- Create stutter effects\n\n### Textural Sound Design\n- Slow, subtle position changes on ambient sounds\n- Granular-like effects at low crossfade times\n\n### Build-Ups\n- Automate speed from 0% to 100% for tension\n- Combine with filter sweeps\n\n---\n\n## Workflow Integration\n\n### As Insert Effect\n- Load on individual sample track\n- Direct scratch manipulation\n- Automate for specific sections\n\n### As Creative Tool\n- Offline processing: Render scratched audio\n- Build scratch sample library\n- Export unique textures\n\n---\n\n## Related Plugins\n\n- **Fruity Scratcher** - Alternative scratcher plugin\n- **Gross Beat** - Time manipulation and scratching\n- **Effector** - Multi-effect with scratch-like capabilities\n- **Transporter** - Loop manipulation (different approach)\n\n---\n\n**Last Updated:** February 3, 2026\n**Status:** Complete reference material\n",
+      "quick-start-checklist": "# Quick Start Checklist: Wave Traveller\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Wave Traveller to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Wave Traveller\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "quick-start-guide.md": {
+      "quick-start-guide": "# Wave Traveller Quick Start Guide\n\n## Getting Started in 60 Seconds\n\n### Your First Wave Traveller Experience\n1. **Load Plugin**: Insert Wave Traveller on any audio track or mixer channel\n2. **Load Audio**: Click the waveform display and choose an audio file\n3. **Start Simple**: Set Grain Size to 50ms, Grain Density to 20Hz\n4. **Move Wave Position**: Drag the position slider to explore the audio\n5. **Add Movement**: Slowly modulate Wave Position with LFO for texture\n\n## Basic Controls Overview\n\n### The Essential Four Parameters\n1. **Wave Position** (0-100%): Where you are in the audio file\n2. **Grain Size** (1-500ms): Length of each audio grain\n3. **Grain Density** (1-100Hz): How many grains per second\n4. **Pitch Shift** (-24 to +24 semitones): Transposition of grains\n\n### Quick Sound Categories\n\n#### Smooth Textures\n```\nGrain Size: 100-200ms\nGrain Density: 10-30Hz\nWave Position: Slow movement\nPitch Shift: 0 semitones\n```\n\n#### Rhythmic Patterns\n```\nGrain Size: 10-50ms\nGrain Density: 30-80Hz\nWave Position: Synced to tempo\nPitch Shift: Rhythmic changes\n```\n\n#### Chaos & Noise\n```\nGrain Size: 1-20ms\nGrain Density: 50-100Hz\nWave Position: Random movement\nPitch Shift: Extreme modulation\n```\n\n## First Sound Experiments\n\n### Experiment 1: Texture Creation\n1. Load any audio file (speech, music, or field recording)\n2. Set Grain Size to 150ms\n3. Set Grain Density to 25Hz\n4. Slowly move Wave Position from start to end\n5. Result: Evolving, textural soundscape\n\n### Experiment 2: Rhythmic Granulation\n1. Load drum loop or percussive audio\n2. Set Grain Size to 30ms\n3. Set Grain Density to 50Hz\n4. Sync Wave Position to project tempo\n5. Result: Complex rhythmic patterns\n\n### Experiment 3: Pitch Manipulation\n1. Load melodic audio (vocals, instruments)\n2. Set moderate grain settings (50ms, 30Hz)\n3. Automate Pitch Shift from -12 to +12\n4. Keep Wave Position steady\n5. Result: Harmonized, alien-like textures\n\n## Audio File Selection Guide\n\n### Best Sources for Wave Traveller\n- **Vocal recordings**: Speech, singing, vocal chops\n- **Instrumental audio**: Piano, strings, guitars\n- **Field recordings**: Nature sounds, urban environments\n- **Drum loops**: Rhythmic source material\n- **Synth sounds**: Rich harmonic content\n- **Noise types**: White noise, colored noise\n\n### File Requirements\n- **Format**: WAV, AIFF, MP3, FLAC supported\n- **Length**: 1 second to 5 minutes works best\n- **Quality**: Higher quality = better results\n- **Mono vs Stereo**: Both work, stereo offers spatial possibilities\n\n## Common Pitfalls to Avoid\n\n### Beginner Mistakes\n❌ Using too small grain sizes (under 5ms) - creates noise\n❌ Extremely high grain density (over 80Hz) - CPU intensive\n❌ No movement in Wave Position - static, boring sounds\n❌ Ignoring Pitch Shift - missing creative potential\n❌ Using poor quality source audio\n\n### Quick Problem Solutions\n**Sound too grainy?** → Increase Grain Size to 100ms+\n**No texture development?** → Add Wave Position movement\n**CPU overloading?** → Reduce Grain Density\n**Sound boring?** → Add Pitch Shift modulation\n**Lost in source audio?** → Increase grain processing\n\n## Performance Tips\n\n### CPU Management\n- Start with Grain Density under 30Hz\n- Use shorter audio files for experimentation\n- Render complex patches to audio\n- Monitor CPU meter during creation\n\n### Creative Workflow\n- Save interesting settings as presets\n- Record audio output for later use\n- Experiment with parameter automation\n- Combine with other effects for more complexity\n\n## Basic Preset Starting Points\n\n### \"Vocal Texture\" Preset\n```\nWave Position: Manual sweep\nGrain Size: 120ms\nGrain Density: 25Hz\nPitch Shift: 0 semitones\nSpread: 50%\nFeedback: 20%\n```\n\n### \"Rhythmic Granulator\" Preset\n```\nWave Position: Tempo-synced LFO\nGrain Size: 25ms\nGrain Density: 60Hz\nPitch Shift: Random modulation\nSpread: 80%\nFeedback: 40%\n```\n\n### \"Ambient Evolution\" Preset\n```\nWave Position: Very slow LFO\nGrain Size: 200ms\nGrain Density: 15Hz\nPitch Shift: Gentle drift\nSpread: 100%\nFeedback: 60%\n```\n\n## Integration Tips\n\n### In Your Mix\n- Use on sends for texture layering\n- Process individual tracks for character\n- Apply to full mix for experimental effects\n- Combine with reverb for spatial enhancement\n\n### With Other Plugins\n- **Reverb after**: Creates huge, evolving spaces\n- **Delay before**: Inputs complex rhythms to delays\n- **EQ before**: Shapes source before granulation\n- **Compression after**: Controls dynamic texture\n\n## Next Steps\n\nOnce comfortable with basics, explore:\n- Advanced modulation routing\n- Multiple instance layering\n- Live performance techniques\n- Complex preset creation\n- Integration with FL Studio's Piano Roll\n\nWave Traveller rewards experimentation - spend time exploring each parameter and listening to how they interact. Your first hour should be about discovery, not perfection."
+    },
+    "README.md": {
+      "README": "# Learning - Wave Traveller\r\n\r\nThis section contains learning information for the wave-traveller plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-context": {
+      "granular-texture-creation": "# Workflow: Granular Texture Creation\n\n## Understanding Texture Creation\n\n### What Makes a Good Granular Texture?\n- **Evolution**: Sound develops and changes over time\n- **Balance**: Not too chaotic, not too static\n- **Musicality**: Serves the artistic purpose\n- **Interest**: Captures listener attention\n- **Integration**: Fits within the mix context\n\n### Texture Categories\n1. **Ambient Textures**: Slow, evolving, atmospheric\n2. **Rhythmic Textures**: Patterned, repetitive, groove-oriented\n3. **Chaotic Textures**: Random, complex, experimental\n4. **Musical Textures**: Harmonic, melodic, structured\n\n## Step-by-Step Texture Creation Workflow\n\n### Phase 1: Source Selection and Preparation\n\n#### Choosing the Right Audio Source\n```\nBest Sources for Different Textures:\n\nAmbient Textures:\n- Nature recordings (rain, wind, water)\n- Field recordings (urban, environmental)\n- Long musical recordings (pads, strings)\n- Vocal recordings (speech, singing)\n\nRhythmic Textures:\n- Drum loops and breaks\n- Percussive recordings\n- Staccato instrumental phrases\n- Mechanical sounds\n\nMusical Textures:\n- Melodic recordings (piano, guitar)\n- Vocal performances\n- Orchestral recordings\n- Synth pads and leads\n\nExperimental Textures:\n- Any audio can work\n- Digital noise\n- Unusual sources\n- Multiple sources layered\n```\n\n#### Audio Preparation\n1. **Quality Check**: Ensure clean, high-quality source\n2. **Length Optimization**: 5 seconds to 2 minutes ideal\n3. **Format**: WAV or AIFF for best quality\n4. **Normalization**: Consistent level for predictable results\n5. **Loop Points**: Mark useful sections for cycling\n\n### Phase 2: Basic Parameter Setup\n\n#### Foundation Settings Template\n```\nStarting Point for Most Textures:\nWave Position: 50% (center of audio)\nGrain Size: 80ms (musical range)\nGrain Density: 20Hz (light cloud)\nPitch Shift: 0 semitones (no transposition)\nSpread: 50% (moderate stereo)\nFeedback: 20% (gentle evolution)\nTime Stretch: 1.0x (normal speed)\n```\n\n#### Adjusting for Texture Type\n\n#### Ambient Texture Setup\n```\nAmbient Foundation:\nGrain Size: 150-300ms (long, smooth grains)\nGrain Density: 5-15Hz (sparse cloud)\nFeedback: 30-60% (significant evolution)\nTime Stretch: 0.3-0.8x (slower development)\nSpread: 70-100% (wide stereo)\nLFO: Very slow (0.1-0.5Hz) wave position\n```\n\n#### Rhythmic Texture Setup\n```\nRhythmic Foundation:\nGrain Size: 10-50ms (short, defined grains)\nGrain Density: 30-80Hz (dense, rhythmic)\nFeedback: 5-25% (moderate complexity)\nTime Stretch: 0.8-2.0x (tempo variation)\nSpread: 40-60% (focused stereo)\nLFO: Tempo-synced wave position\n```\n\n#### Experimental Texture Setup\n```\nExperimental Foundation:\nGrain Size: 1-100ms (wide variation)\nGrain Density: 40-100Hz (very dense)\nFeedback: 50-95% (maximum evolution)\nTime Stretch: Random variation\nSpread: 0-100% (dynamic spatial)\nMultiple LFOs on different parameters\n```\n\n### Phase 3: Movement and Evolution\n\n#### Creating Natural Movement\n\n#### Wave Position Modulation\n1. **Slow LFO** (0.1-2Hz): Continuous evolution\n2. **Random Walk**: Organic, unpredictable movement\n3. **Linear Sweep**: Predictable development\n4. **Patterned Movement**: Repeating sequences\n\n#### LFO Settings for Different Effects\n```\nGentle Evolution:\n- Rate: 0.2-0.5Hz\n- Waveform: Sine or Triangle\n- Depth: 30-50%\n- Sync: Free running\n\nRhythmic Movement:\n- Rate: 1/8 to 1/4 notes\n- Waveform: Square or Saw\n- Depth: 50-80%\n- Sync: Tempo synced\n\nChaotic Movement:\n- Rate: Random or fast\n- Waveform: Random or Sample & Hold\n- Depth: 70-100%\n- Sync: Free running\n```\n\n#### Multi-Parameter Modulation\n1. **Parallel Modulation**: Same LFO on multiple parameters\n2. **Inverse Modulation**: Opposite movements on different parameters\n3. **Phase Offset**: Different phase relationships\n4. **Frequency Division**: Different LFO rates for complexity\n\n### Phase 4: Advanced Textural Techniques\n\n#### Layered Texture Creation\n```\nLayer 1 (Base):\nGrain Size: 200ms, Density: 10Hz, Pitch: 0 semitones\nFunction: Foundation, body, warmth\n\nLayer 2 (Detail):\nGrain Size: 50ms, Density: 30Hz, Pitch: +5 semitones\nFunction: Mid-range detail, interest\n\nLayer 3 (Sparkle):\nGrain Size: 15ms, Density: 60Hz, Pitch: +12 semitones\nFunction: High-frequency detail, air\n```\n\n#### Feedback-Based Evolution\n1. **Light Feedback** (10-25%): Gentle thickening\n2. **Medium Feedback** (25-50%): Noticeable development\n3. **Heavy Feedback** (50-80%): Complex evolution\n4. **Maximum Feedback** (80-95%): Chaotic transformation\n\n#### Temporal Development\n```\nStructure for Evolving Texture:\n0-30 seconds: Introduction, subtle changes\n30-60 seconds: Development, increased complexity\n60-90 seconds: Peak activity, maximum interest\n90-120 seconds: Transition, transformation\n120+ seconds: Resolution, new state\n```\n\n### Phase 5: Integration and Refinement\n\n#### Frequency Shaping\n1. **High-Pass Filter**: Remove unwanted low frequencies\n2. **Low-Pass Filter**: Smooth harsh harmonics\n3. **Band-Pass Filter**: Focus on frequency range\n4. **Notch Filter**: Remove problematic frequencies\n\n#### Spatial Processing\n1. **Stereo Width**: Adjust spread parameter\n2. **Pan Movement**: Add spatial animation\n3. **Reverb**: Add space and depth\n4. **Delay**: Create rhythmic complexity\n\n#### Dynamic Processing\n1. **Compression**: Control dynamics\n2. **Limiting**: Prevent digital clipping\n3. **Gating**: Add rhythmic interest\n4. **Sidechain**: Create ducking effects\n\n## Genre-Specific Texture Creation\n\n### Ambient Music Textures\n```\nCharacteristics:\n- Slow evolution\n- Wide stereo field\n- Smooth frequency content\n- Long duration development\n\nTypical Settings:\nGrain Size: 200-400ms\nGrain Density: 5-15Hz\nFeedback: 40-70%\nTime Stretch: 0.2-0.6x\nLFO: Very slow wave position\n```\n\n### Electronic Music Textures\n```\nCharacteristics:\n- Rhythmic elements\n- Punchy attacks\n- Clear frequency content\n- Controlled complexity\n\nTypical Settings:\nGrain Size: 20-80ms\nGrain Density: 20-60Hz\nFeedback: 15-35%\nTime Stretch: 0.8-1.5x\nLFO: Tempo-synced patterns\n```\n\n### Cinematic Textures\n```\nCharacteristics:\n- Emotional impact\n- Dynamic range\n- Supporting visuals\n- Scene-specific development\n\nTypical Settings:\nGrain Size: 50-200ms\nGrain Density: 10-40Hz\nFeedback: 25-60%\nTime Stretch: Variable by scene\nLFO: Programmed movements\n```\n\n### Experimental Textures\n```\nCharacteristics:\n- Unpredictable evolution\n- Extreme parameter ranges\n- Novel sound qualities\n- Challenge conventions\n\nTypical Settings:\nGrain Size: 1-500ms (variable)\nGrain Density: 30-100Hz\nFeedback: 60-95%\nTime Stretch: Random/complex\nMultiple LFOs, random modulation\n```\n\n## Professional Tips and Techniques\n\n### Saving and Preset Management\n1. **Document Settings**: Note successful parameter combinations\n2. **Create Preset Categories**: Organize by texture type\n3. **Version Control**: Keep track of evolution\n4. **Backup Presets**: Save valuable custom textures\n\n### Performance Optimization\n1. **CPU Management**: Monitor CPU usage with complex textures\n2. **Rendering**: Render complex textures for playback\n3. **Buffer Settings**: Adjust for real-time vs. offline processing\n4. **Freeze Tracks**: Commit complex textures to audio\n\n### Creative Development\n1. **Experimentation**: Try unusual source materials\n2. **Happy Accidents**: Document unexpected good results\n3. **Constraint-Based**: Work within limitations\n4. **Collaboration**: Share and exchange textures\n\n## Troubleshooting Texture Issues\n\n### Problem: Texture Sounds Static\n**Solutions**:\n- Add wave position LFO movement\n- Increase feedback amount\n- Add multiple modulation sources\n- Try different grain sizes\n\n### Problem: Texture Too Harsh\n**Solutions**:\n- Increase grain size\n- Decrease grain density\n- Add filtering\n- Reduce extreme pitch shifts\n\n### Problem: Texture Too Chaotic\n**Solutions**:\n- Decrease feedback\n- Use larger grain sizes\n- Reduce modulation depth\n- Simplify parameter relationships\n\n### Problem: Texture Doesn't Evolve\n**Solutions**:\n- Add slow wave position movement\n- Increase feedback gradually\n- Use time stretching\n- Add automation over time\n\n## Advanced Texture Concepts\n\n### Generative Textures\n- Self-evolving without external input\n- Complex parameter relationships\n- Long-term development\n- Infinite variation possibilities\n\n### Reactive Textures\n- Respond to input audio\n- Follow musical dynamics\n- Interactive performance\n- Real-time adaptation\n\n### Multi-Layer Textures\n- Combine multiple instances\n- Different settings per layer\n- Cross-fade between layers\n- Complex frequency distribution\n\nThis workflow provides systematic approach to creating professional granular textures with Wave Traveller, from basic concepts to advanced techniques."
+    },
+    "by-goal": {
+      "vinyl-scratches-lofi-hiphop": "# Vinyl Scratches & Lo-Fi Textures for Hip-Hop\n\n**Genre:** Lo-Fi Hip-Hop, Boom Bap, Underground Rap\n**Vibe:** Nostalgic, dusty, authentic\n**Difficulty:** Intermediate\n**Time:** 15 minutes\n\n---\n\n## What Wave Traveller Brings to Hip-Hop\n\nWave Traveller creates **authentic vinyl scratch effects** and **lo-fi sample manipulation** through:\n- **Spline-based scratching** (draw your scratch patterns)\n- **Vinyl stop/start effects** (turntable simulation)\n- **Reverse scratches** and stutters\n- **Degraded, vintage sample textures**\n\n---\n\n## Quick Setup: Classic Scratch Pattern\n\n### Step 1: Load Your Sample\n\n**Best Sources for Scratching:**\n- **Drum breaks** (classic hip-hop)\n- **Vocal one-shots** (\"Fresh!\" \"Yeah!\" etc.)\n- **Horn stabs** (jazz samples)\n- **\"Ahh\" sounds** (classic scratch sound)\n- **Pre-made scratch samples**\n\n**Recommendations:**\n- **Short samples** (0.5-2 seconds work best)\n- **Punchy transients** (clear attack)\n- **Mono samples** (vintage vibe)\n\n### Step 2: Essential Wave Traveller Settings\n\n```\nSample Start: 0%\nSample End: 100% (use full sample)\nSpeed: 100% (normal playback)\nAttack: 5ms (quick response)\nRelease: 10ms (fast decay)\n```\n\n### Step 3: Draw Your Scratch Pattern\n\n**The Spline Editor:**\n- **Horizontal axis:** Time (left to right)\n- **Vertical axis:** Position in sample (top to bottom)\n- **Draw pattern:** Your scratch movement\n\n**Basic Scratch Patterns:**\n\n**1. Baby Scratch (simple forward-backward):**\n```\n^\n│    ╱╲    ╱╲\n│   ╱  ╲  ╱  ╲\n│  ╱    ╲╱    ╲\n└─────────────────→\n  Start      End\n```\n\n**2. Forward Scratch (aggressive push):**\n```\n^\n│              ┌──\n│            ╱\n│          ╱\n│  ───────\n└─────────────────→\n```\n\n**3. Reverse Scratch (pull back):**\n```\n^\n│  ──┐\n│    │╲\n│    │ ╲\n│    │  └─────\n└─────────────────→\n```\n\n---\n\n## Genre-Specific Techniques\n\n### 1. Lo-Fi Boom Bap (J Dilla, MF DOOM)\n\n**Sample Choice:** Drum break or jazz sample\n\n**Settings:**\n```\nSpeed: 95% (slightly slower, tape feel)\nAttack: 8ms\nRelease: 15ms\nVolume Envelope: Gentle fade in/out\n```\n\n**Spline Pattern:**\n- **Slow, lazy scratches** (not aggressive)\n- **Subtle movement** (30-50% of sample range)\n- **Irregular timing** (human feel)\n\n**Post-Processing:**\n- **Bitcrusher:** 12-bit\n- **Fruity Squeeze:** Warm saturation\n- **Low-pass filter:** 8kHz cutoff\n- **Vinyl noise layer**\n\n**Vibe:** Dusty, warm, authentic\n\n**Reference:**\n- J Dilla - \"Donuts\" (album)\n- MF DOOM - \"Meat Grinder\"\n- Madlib - \"Shades of Blue\"\n\n---\n\n### 2. Turntablism / DJ Scratching (DJ Shadow, Cut Chemist)\n\n**Sample Choice:** \"Ahh\" sound or vocal one-shot\n\n**Settings:**\n```\nSpeed: 100%\nAttack: 2ms (instant)\nRelease: 5ms (fast)\n```\n\n**Advanced Scratch Patterns:**\n\n**Crab Scratch:**\n```\nMultiple rapid back-and-forth movements\n^\n│ ╱╲╱╲╱╲╱╲╱╲\n└──────────────→\n```\n\n**Transformer Scratch:**\n```\nStaccato cuts (on-off-on-off)\n^\n│ ┌─┐ ┌─┐ ┌─┐\n│ │ │ │ │ │ │\n└─┴─┴─┴─┴─┴─┴──→\n```\n\n**Vibe:** Technical, rhythmic, impressive\n\n**Reference:**\n- DJ Shadow - \"Midnight in a Perfect World\"\n- Cut Chemist - \"The Garden\"\n- DJ Qbert - \"Wave Twisters\"\n\n---\n\n### 3. Vinyl Stop Effect (Outro/Transition)\n\n**Use Case:** End of song or section transition\n\n**Settings:**\n```\nSpeed: Start at 100%, automate to 0%\nAttack: 10ms\nRelease: 200ms (long tail)\n```\n\n**Spline Pattern:**\n- **Simple forward movement**\n- **Gradually slow down** (matches speed automation)\n\n**Automation:**\n1. **Speed:** 100% → 0% over 2-4 seconds\n2. **Pitch:** Drops naturally with speed\n3. **Volume:** Fade out at the end\n\n**Vibe:** Turntable power-off, nostalgic\n\n**Reference:**\n- Common outro effect in 90s hip-hop\n- Used in countless Dilla productions\n\n---\n\n### 4. Psychedelic Reverse Textures\n\n**Sample Choice:** Melodic sample (vocal, synth, guitar)\n\n**Settings:**\n```\nSpeed: 80% (slower, dreamier)\nAttack: 15ms\nRelease: 100ms\n```\n\n**Spline Pattern:**\n- **Full reverse motion** (bottom to top)\n- **Slow, smooth curves** (no sharp angles)\n- **Multiple cycles** (continuous movement)\n\n**Post-Processing:**\n- **Vintage Phaser** (slow LFO)\n- **Long reverb** (4+ seconds)\n- **Vintage Chorus** (wide stereo)\n\n**Vibe:** Trippy, atmospheric, experimental\n\n**Reference:**\n- ASAP Rocky - \"L$D\"\n- Mac Miller - \"2009\"\n\n---\n\n## Step-by-Step: Creating a Scratch Hook\n\n### Step 1: Find the Perfect Sample\n\n**Look for:**\n- **Short vocal phrases** (\"Yeah!\" \"Fresh!\" \"Check it out!\")\n- **Classic breaks:** Amen Break, Apache, Funky Drummer\n- **Jazz stabs:** Horns, piano hits\n\n### Step 2: Load into Wave Traveller\n\n1. Drag sample into Wave Traveller\n2. **Set loop points** (if needed)\n3. **Normalize** the sample (full volume)\n\n### Step 3: Program Your Scratch Pattern\n\n**For 16th-Note Rhythmic Scratching:**\n\n**Beat 1:** Forward scratch\n**Beat 1.5:** Reverse scratch\n**Beat 2:** Rest\n**Beat 2.5:** Forward scratch\n**Beat 3:** Baby scratch (forward-back-forward)\n**Beat 4:** Rest\n\n**Draw this pattern with splines:**\n- Each scratch = one spline path\n- **Timing** matters (match to BPM)\n\n### Step 4: Map to MIDI Keyboard\n\n**Wave Traveller Keyboard Mapping:**\n- **C3:** Trigger main scratch pattern\n- **D3:** Trigger variation 1\n- **E3:** Trigger variation 2\n- **F3:** Trigger reverse pattern\n\n**Performance:**\n- Play patterns **live** in time with beat\n- Record MIDI performance\n- **Quantize** if needed (but keep some human feel)\n\n### Step 5: Layer with Beat\n\n**Mix Integration:**\n1. **Scratch:** Center, -9dB\n2. **Drums:** Slightly ducked when scratch plays\n3. **EQ scratch:** High-pass at 200Hz (make room for kick/bass)\n\n---\n\n## Advanced Techniques\n\n### Technique 1: Pitch-Shifted Scratches\n\n**Setup:**\n- Load **same sample** on multiple notes\n- **Pitch shift** each instance (C, D, E, F, G)\n- Create **melodic scratch patterns**\n\n**Result:** Harmonic scratching (not just rhythmic)\n\n---\n\n### Technique 2: Sidechain to Scratch\n\n**Setup:**\n- Send scratch output to sidechain input of kick compressor\n- **Duck the scratch** when kick hits\n- Creates space, prevents clashing\n\n---\n\n### Technique 3: Scratch Automation\n\n**Automate:**\n- **Speed** (slow down over time)\n- **Sample Start** (move through sample)\n- **Volume envelope** (shape dynamics)\n\n**Result:** Evolving, dynamic scratches\n\n---\n\n### Technique 4: Reverse + Forward Combo\n\n**Pattern:**\n1. **Bar 1-2:** Forward scratches\n2. **Bar 3:** Reverse the entire pattern\n3. **Bar 4:** Forward again\n\n**Creates:** Palindrome effect, trippy vibe\n\n---\n\n## Mixing Vinyl Scratches\n\n### Frequency Management\n- **High-pass:** 150-200Hz (avoid mud)\n- **Boost:** +2dB at 2-4kHz (presence)\n- **Subtle high-shelf:** +1dB at 8kHz (air)\n\n### Stereo Width\n- **Scratches:** Mono (center)\n- **Can add subtle stereo width** with delay/chorus\n- **Never wide stereo on low-mids**\n\n### Compression\n- **Ratio:** 3:1\n- **Fast attack** (5ms)\n- **Medium release** (80ms)\n- **Makes scratches punchy and consistent**\n\n---\n\n## Common Mistakes\n\n1. **Overly complex splines:** Keep it simple, scratching is about rhythm\n2. **Too long samples:** Short samples (0.5-2s) work best\n3. **Ignoring timing:** Scratches must be **on beat**\n4. **No low-end cut:** Scratches fight with bass\n5. **Too loud:** Scratches should complement, not dominate\n\n---\n\n## Preset Cheat Sheet\n\n| Vibe | Speed | Attack | Release | Sample Type | Processing |\n|------|-------|--------|---------|-------------|------------|\n| **Lo-Fi Boom Bap** | 95% | 8ms | 15ms | Jazz/Soul | Bitcrush, Vinyl |\n| **Turntablism** | 100% | 2ms | 5ms | \"Ahh\" Sample | Clean, Punchy |\n| **Vinyl Stop** | 100%→0% | 10ms | 200ms | Any | Automation |\n| **Psychedelic** | 80% | 15ms | 100ms | Melodic | Phaser, Reverb |\n| **Aggressive Trap** | 105% | 1ms | 3ms | Vocal Stab | Distortion |\n\n---\n\n## Creative Uses\n\n### Use 1: Intro/Outro\n- **Vinyl start effect:** Speed 0% → 100% (pitch up)\n- **Vinyl stop effect:** Speed 100% → 0% (pitch down)\n- Classic hip-hop transition\n\n### Use 2: Fill/Transition\n- **Quick scratch** between sections\n- **2-4 bar pattern** before chorus\n- Builds energy, signals change\n\n### Use 3: Rhythmic Element\n- **Continuous scratching** throughout track\n- Acts as **percussive element**\n- Common in turntablism-heavy hip-hop\n\n---\n\n## Reference Artists\n\n**Lo-Fi/Boom Bap:**\n- J Dilla\n- MF DOOM\n- Madlib\n- Nujabes\n\n**Turntablism:**\n- DJ Shadow\n- Cut Chemist\n- DJ Qbert\n- Mix Master Mike\n\n**Modern Hip-Hop:**\n- Kendrick Lamar - \"HUMBLE.\" (DJ scratches in intro)\n- Tyler, The Creator - \"EARFQUAKE\"\n- Mac Miller - Various productions\n\n---\n\n## Production Tips\n\n### For Authentic Vinyl Feel\n- **Layer vinyl crackle** underneath\n- **Bit-reduce** to 12-14 bit\n- **Low-pass filter** at 8-10kHz\n- **Warm saturation** (tape emulation)\n\n### For Modern Clarity\n- Keep **high-fidelity**\n- **Clean EQ** (surgical cuts)\n- **Subtle compression**\n- **Focus on rhythm** over texture\n\n### For Psychedelic Vibe\n- **Reverse sections**\n- **Pitch shift** (±3-7 semitones)\n- **Heavy effects** (phaser, reverb, delay)\n- **Automate wildly**\n\n---\n\n## Next Steps\n\n1. **Practice drawing splines:** Get comfortable with the editor\n2. **Study DJ techniques:** Understand real scratching\n3. **Build sample library:** Collect good scratch samples\n4. **Experiment with automation:** Make it dynamic\n5. **Combine with other effects:** Layer with distortion, chorus, etc.\n\n---\n\n**Related Workflows:**\n- [Fruity Scratcher for Quick Scratches](../../Fruity%20Scratcher/03-Workflows/by-goal/basic-scratch-patterns.md)\n- [Lo-Fi Hip-Hop Production Guide](./lofi-production-complete.md)\n- [Vinyl Stop Effect Automation](./vinyl-stop-automation.md)\n\n---\n\n**Last Updated:** February 3, 2026\n**Genre:** Lo-Fi Hip-Hop, Boom Bap, Turntablism\n**Vibe:** 💿 Straight Outta The Vinyl Era\n",
+      "vinyl-stop-effect": "# Vinyl Stop Effect with Wave Traveller\n\n**Difficulty:** Beginner\n**Time Required:** 5 minutes\n**Goal:** Create realistic turntable vinyl stop effect\n**Genre:** Hip-Hop, EDM, Turntablism\n\n---\n\n## Prerequisites\n\n- Wave Traveller plugin\n- Audio sample loaded (drum loop or full track section)\n- Understanding of automation\n\n---\n\n## Workflow Steps\n\n### Step 1: Load Sample\n\n1. **Load Wave Traveller** on track\n2. **Import Sample** - Drag audio file or use Load button\n3. **Set Sample Start/End** to desired section\n\n---\n\n### Step 2: Configure Vinyl Simulation\n\n4. **Motor Lag:** **70-80%**\n   - *Why:* Realistic turntable inertia\n\n5. **Vinyl Noise (Optional):** **30-40%**\n   - *Why:* Adds authenticity\n\n6. **Wow & Flutter:** **20%**\n   - *Why:* Natural pitch wobble during slowdown\n\n---\n\n### Step 3: Speed Automation\n\n7. **Speed:** Start at **100%**\n8. **Create Automation Clip** for Speed parameter\n9. **Draw Curve:** 100% to 0% over 1-2 bars\n   - *Curve Shape:* Exponential decay (realistic slowdown)\n\n10. **Placement:** Trigger stop 2-4 bars before drop/change\n\n---\n\n### Step 4: Fine-Tuning\n\n11. **Adjust Motor Lag** if stop is too fast/slow\n12. **Crossfade:** Keep at **20-30ms**\n\n---\n\n## Variations\n\n### Quick Stop (0.5 bars)\n- Motor lag: 40-50%\n- Abrupt, dramatic\n\n### Slow Stop (4 bars)\n- Motor lag: 85-95%\n- Gradual, smooth\n\n### Reverse Spin-Up\n- Speed: 0% to 100%\n- At drop/build\n\n---\n\n**Last Updated:** February 3, 2026\n**Status:** Complete workflow\n"
+    },
+    "by-instrument": {
+      "wave-traveller-instrument-workflows": "Tags: lofi | hip-hop/rap | moody\n\n## Wave Traveller Instrument Workflows\n\n### Lofi Hip-Hop Piano\n\n**Sound Goal:** Warm, degraded, nostalgic keys\n\n**Settings:**\n- Category: Piano\n- Wavetable: Standard piano\n- Position: 50\n- Mutate: 0\n- Resample: 35%\n- Filter: Low-pass, Cutoff 72%, Resonance 18%\n- Envelope: Position modulation, slow attack, long release\n- Effects: Fruity Reeverb (small room), Fruity Limiter (soft clip)\n\n**Creation Steps:**\n1. Start with piano wavetable\n2. Add low-pass filter for warmth\n3. Set resample for slow degradation\n4. Add subtle LFO to position (0.05Hz)\n5. Soft clip output for analog warmth\n\n**A/B Test:**\n1. Compare with and without resample\n2. Resample should add character, not chaos\n3. If too degraded → Reduce resample to 25%\n\n### Hip-Hop Bass 808\n\n**Sound Goal:** Punchy, modern 808 bass\n\n**Settings:**\n- Category: Bass\n- Wavetable: Aggressive 808\n- Position: 60\n- Mutate: 15\n- Resample: 15%\n- Filter: Low-pass, Cutoff 38%, Resonance 35%\n- Envelope: Amp envelope with punch (fast attack, short decay)\n- Processing: Fruity Limiter for soft clip\n\n**Why This Works:**\n- Moderate position lets wavetable character shine\n- Low resample keeps bass focused\n- Punchy envelope hits like classic 808\n\n### Atmospheric Texture\n\n**Sound Goal:** Evolving, moody background\n\n**Settings:**\n- Category: Texture\n- Wavetable: Complex texture\n- Position: 45\n- Mutate: 25\n- Resample: 50%\n- Filter: Low-pass, Cutoff 58%, Resonance 30%\n- LFO: To position, 0.08Hz, depth 25\n- Effects: Long reverb tail, subtle delay\n\n**Creation Tips:**\n1. Higher resample creates continuous evolution\n2. Modulate position slowly for movement\n3. Effects add depth without clutter\n\n### Vinyl Scratch Loop\n\n**Sound Goal:** Rhythmic, lofi groove element\n\n**Settings:**\n- Category: Glitch\n- Wavetable: Scratch/texture\n- Position: 50\n- Mutate: 0\n- Resample: 0\n- Filter: Band-pass, Cutoff 75%, Resonance 45%\n- LFO: To position, synced to 1/8 note, depth 50\n\n**Synced Rhythms:**\n\n| Feel | Sync Setting | Effect |\n|------|--------------|--------|\n| Choppy | 1/4 note | Sparse rhythm |\n| Standard | 1/8 note | Even groove |\n| Bouncy | 1/8 triplet | Swung feel |\n| Intense | 1/16 note | Busy texture |\n\n### Dark Drone\n\n**Sound Goal:** Ominous, low rumble\n\n**Settings:**\n- Category: Texture\n- Wavetable: Dark drone\n- Position: 30\n- Mutate: 40\n- Resample: 60%\n- Filter: Low-pass, Cutoff 25%, Resonance 50%\n- Envelope: Slow attack (3s), infinite sustain\n- LFO: To filter cutoff, very slow (0.02Hz)\n\n**Use Cases:**\n- Horror/ominous sections\n- Tension builds\n- Transition effects\n- Not for mix clarity—foreground element\n\n### Quick Reference Table\n\n| Sound | Category | Position | Resample | Filter | Use Case |\n|-------|----------|----------|----------|--------|----------|\n| Piano | Piano | 50 | 35% | 72% LP | Hip-hop keys |\n| 808 Bass | Bass | 60 | 15% | 38% LP | Trap drops |\n| Texture | Texture | 45 | 50% | 58% LP | Atmosphere |\n| Scratch | Glitch | 50 | 0% | 75% BP | Rhythmic |\n| Drone | Texture | 30 | 60% | 25% LP | Dark mood |\n| Pad | Pad | 50 | 40% | 65% LP | Breakdowns |\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Wave Traveller\r\n\r\nThis section contains workflow information for the wave-traveller plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Wave Traveller\r\n\r\nThis section contains reference information for the wave-traveller plugin.\r\n"
+    }
+  }
+}

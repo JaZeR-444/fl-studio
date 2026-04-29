@@ -1,0 +1,184 @@
+{
+  "pluginName": "Harmor",
+  "specsVersion": "1.0",
+  "source": "[SRC: IL-MAN]",
+  "synthesisEngine": {
+    "type": "Additive",
+    "partialsPerVoice": 516,
+    "maxPartials": 516,
+    "frequencyRange": {
+      "min": 20,
+      "max": 20000,
+      "unit": "Hz"
+    },
+    "engines": {
+      "count": 2,
+      "names": ["A", "B"],
+      "architecture": "Dual independent additive engines"
+    }
+  },
+  "resynthesisCapabilities": {
+    "audioImport": {
+      "supportedFormats": ["WAV", "AIFF", "MP3", "FLAC", "OGG"],
+      "dragAndDrop": true,
+      "maxChannels": 2,
+      "analysisMethod": "FFT-based spectral analysis"
+    },
+    "imageSynthesis": {
+      "supportedFormats": ["PNG", "BMP"],
+      "colorMode": "Grayscale or RGB (RGB encodes phase)",
+      "pixelInterpretation": {
+        "xAxis": "Time (left to right)",
+        "yAxis": "Frequency (bottom to top, 20Hz-20kHz)",
+        "brightness": "Amplitude (white = loud, black = silent)"
+      }
+    },
+    "timeStretching": {
+      "method": "Additive recalculation",
+      "artifacts": "None (pitch-independent)",
+      "speedRange": {
+        "min": -200,
+        "max": 200,
+        "unit": "%"
+      }
+    },
+    "formantShifting": {
+      "range": {
+        "min": -12,
+        "max": 12,
+        "unit": "semitones"
+      },
+      "pitchIndependent": true
+    }
+  },
+  "uniqueProcessors": {
+    "prism": {
+      "type": "Harmonic warping",
+      "function": "Multiplies partial frequencies to create inharmonic content",
+      "range": "0-100%",
+      "depthModes": ["Low", "Full", "Band"]
+    },
+    "blur": {
+      "type": "Partial smearing",
+      "function": "Spreads partial energy to adjacent frequencies",
+      "range": "0-100%",
+      "effect": "Increases density and thickness"
+    },
+    "pluck": {
+      "type": "Decay shaping",
+      "function": "Different decay times per frequency band",
+      "range": "0-100%",
+      "shapeOptions": ["Exponential", "Linear"],
+      "tiltOptions": ["Bass", "Balanced", "Treble"]
+    },
+    "strum": {
+      "type": "Partial detuning",
+      "function": "Micro-detunes each partial",
+      "range": "0-100%",
+      "effect": "Natural chorus/thickness"
+    }
+  },
+  "filterSection": {
+    "type": "Custom drawn",
+    "description": "User-drawn frequency response curve",
+    "range": {
+      "amplitude": {
+        "min": -24,
+        "max": 12,
+        "unit": "dB"
+      },
+      "frequency": {
+        "min": 20,
+        "max": 20000,
+        "unit": "Hz"
+      }
+    },
+    "points": "Unlimited",
+    "modulation": "Envelope and LFO assignable"
+  },
+  "modulation": {
+    "envelopes": {
+      "count": 2,
+      "names": ["EG1", "EG2"],
+      "stages": ["Attack", "Decay", "Sustain", "Release"],
+      "amountRange": {
+        "min": -100,
+        "max": 100,
+        "unit": "%"
+      }
+    },
+    "lfos": {
+      "count": 2,
+      "names": ["LFO1", "LFO2"],
+      "shapes": ["Sine", "Triangle", "Saw", "Square", "Random"],
+      "sync": true,
+      "amountRange": {
+        "min": -100,
+        "max": 100,
+        "unit": "%"
+      },
+      "retrig": true
+    }
+  },
+  "unison": {
+    "maxVoices": 9,
+    "detuneRange": {
+      "min": 0,
+      "max": 100,
+      "unit": "%"
+    },
+    "stereoRange": {
+      "min": 0,
+      "max": 100,
+      "unit": "%"
+    }
+  },
+  "polyphony": {
+    "maxVoices": 64,
+    "default": 16,
+    "voiceStealing": ["Oldest", "Newest"]
+  },
+  "effects": {
+    "chorus": {
+      "controls": ["Depth", "Rate", "Mix"],
+      "modulation": true
+    },
+    "delay": {
+      "controls": ["Time", "Feedback", "Mix", "Sync"],
+      "sync": true
+    },
+    "reverb": {
+      "controls": ["Size", "Damping", "Mix"],
+      "algorithm": "Standard reverb"
+    }
+  },
+  "performance": {
+    "cpuUsage": {
+      "singleEngine": "Medium",
+      "dualEngine": "High",
+      "resynthesis": "High at analysis time",
+      "optimizationTips": [
+        "Reduce unison voices",
+        "Use single engine when possible",
+        "Freeze/render complex patches"
+      ]
+    },
+    "memory": {
+      "resynthesisData": "Compact partial data",
+      "presets": "Include partial data, no external samples needed"
+    }
+  },
+  "integration": {
+    "midi": {
+      "pitchBend": true,
+      "modWheel": "Assignable",
+      "aftertouch": false,
+      "sustain": true,
+      "expression": true
+    },
+    "automation": {
+      "allParameters": true,
+      "hostSync": true
+    }
+  }
+}

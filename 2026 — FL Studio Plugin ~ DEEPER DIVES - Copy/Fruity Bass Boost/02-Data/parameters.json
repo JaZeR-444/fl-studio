@@ -1,0 +1,156 @@
+{
+  "pluginName": "Fruity Bass Boost",
+  "version": "1.0",
+  "lastUpdated": "2025-01-04",
+  "parameters": {
+    "boost": {
+      "type": "percentage",
+      "range": {
+        "min": 0,
+        "max": 100,
+        "default": 30
+      },
+      "unit": "%",
+      "description": "Amount of bass enhancement applied to the signal",
+      "technicalDetails": "Controls the gain of harmonic enhancement algorithm from 0dB to +24dB",
+      "sweetSpots": {
+        "subtle": [15, 25],
+        "moderate": [25, 45],
+        "strong": [45, 60],
+        "extreme": [60, 100]
+      }
+    },
+    "freq": {
+      "type": "frequency",
+      "range": {
+        "min": 20,
+        "max": 200,
+        "default": 80
+      },
+      "unit": "Hz",
+      "description": "Center frequency for bass enhancement",
+      "technicalDetails": "Determines the frequency where enhancement curve is centered, affects harmonic generation",
+      "sweetSpots": {
+        "subBass": [20, 40],
+        "bassFundamentals": [40, 80],
+        "bassPunch": [80, 120],
+        "upperBass": [120, 200]
+      }
+    },
+    "mix": {
+      "type": "percentage",
+      "range": {
+        "min": 0,
+        "max": 100,
+        "default": 75
+      },
+      "unit": "%",
+      "description": "Blend between dry and processed signals",
+      "technicalDetails": "Parallel mixing maintaining original signal character",
+      "sweetSpots": {
+        "subtle": [30, 50],
+        "balanced": [50, 75],
+        "processed": [75, 90],
+        "full": [90, 100]
+      }
+    },
+    "out": {
+      "type": "gain",
+      "range": {
+        "min": -12,
+        "max": 12,
+        "default": 0
+      },
+      "unit": "dB",
+      "description": "Output level adjustment for gain compensation",
+      "technicalDetails": "Output gain stage for level matching after processing",
+      "sweetSpots": {
+        "attenuation": [-6, -2],
+        "unity": [-1, 1],
+        "boost": [2, 6]
+      }
+    }
+  },
+  "parameterRelationships": {
+    "boostFreqInteraction": {
+      "description": "Lower frequencies require more boost for same perceived impact",
+      "formula": "optimalBoost = baseBoost * (80/freq)^0.5"
+    },
+    "boostMixBalance": {
+      "description": "Higher boost values work best with higher mix ratios",
+      "guidelines": {
+        "lowBoost": {
+          "boost": [0, 30],
+          "recommendedMix": [60, 80]
+        },
+        "mediumBoost": {
+          "boost": [30, 60],
+          "recommendedMix": [75, 90]
+        },
+        "highBoost": {
+          "boost": [60, 100],
+          "recommendedMix": [80, 100]
+        }
+      }
+    }
+  },
+  "presets": {
+    "categories": {
+      "subtle": ["gentle-warmth", "mix-clarity", "mastering-polish"],
+      "moderate": ["bass-enhancement", "track-weight", "genre-bass"],
+      "strong": ["impact-boost", "club-system", "sub-bass"],
+      "creative": ["harmonic-bass", "frequency-morph", "dynamic-enhance"]
+    },
+    "defaultPreset": "bass-enhancement"
+  },
+  "technicalSpecs": {
+    "latency": 0,
+    "cpuUsage": 0.2,
+    "sampleRates": [44100, 48000, 88200, 96000, 176400, 192000],
+    "bitDepths": [16, 24, 32],
+    "processing": "phase-coherent harmonic generation"
+  },
+  "midiMapping": {
+    "recommendedCC": {
+      "boost": 21,
+      "freq": 22,
+      "mix": 23,
+      "out": 24
+    },
+    "learnMode": "right-click parameter > Link to controller"
+  },
+  "genreApplications": {
+    "edm": {
+      "typicalSettings": {
+        "boost": [35, 50],
+        "freq": [50, 80],
+        "mix": [75, 100]
+      },
+      "useCase": "synth bass enhancement for club systems"
+    },
+    "hiphop": {
+      "typicalSettings": {
+        "boost": [30, 45],
+        "freq": [40, 70],
+        "mix": [80, 100]
+      },
+      "useCase": "808 and sub-bass weight"
+    },
+    "rock": {
+      "typicalSettings": {
+        "boost": [20, 35],
+        "freq": [80, 120],
+        "mix": [70, 90]
+      },
+      "useCase": "bass guitar definition and presence"
+    },
+    "pop": {
+      "typicalSettings": {
+        "boost": [15, 30],
+        "freq": [70, 100],
+        "mix": [60, 80]
+      },
+      "useCase": "mix bus warmth and balance"
+    }
+  }
+}

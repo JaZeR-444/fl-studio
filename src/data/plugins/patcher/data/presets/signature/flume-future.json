@@ -1,0 +1,58 @@
+{
+  "name": "Flume Future Style",
+  "producer": "Flume",
+  "description": "Widescreen future bass processing with mid-side EQ and parallel compression",
+  "reference": "Never Be Like You, Say It",
+  "parameters": {
+    "chain": [
+      {
+        "slot": 1,
+        "type": "EQ",
+        "plugin": "Fruity Parametric EQ 2",
+        "settings": {
+          "midHigh": "+3dB at 3kHz",
+          "sideHigh": "+4dB at 6kHz"
+        }
+      },
+      {
+        "slot": 2,
+        "type": "Compressor",
+        "plugin": "Fruity Compressor",
+        "settings": {
+          "ratio": "8:1",
+          "attack": "2ms",
+          "release": "50ms",
+          "threshold": "-30dB"
+        }
+      },
+      {
+        "slot": 3,
+        "type": "Limiter",
+        "plugin": "Fruity Limiter",
+        "settings": {
+          "ceiling": "-3dB",
+          "mode": "Brickwall"
+        }
+      }
+    ],
+    "characteristics": [
+      "Wide stereo image",
+      "Aggressive transients",
+      "Crystal clear highs"
+    ]
+  },
+  "workflow": {
+    "useCase": "Future bass, experimental electronic",
+    "steps": [
+      "Boost side frequencies for width",
+      "Apply aggressive transient compression",
+      "Brick-wall limit for loudness",
+      "Check mono compatibility"
+    ],
+    "tips": [
+      "Use mid-side EQ for precise stereo imaging",
+      "Keep attack fast for punchy transients",
+      "Test width with mono button frequently"
+    ]
+  }
+}

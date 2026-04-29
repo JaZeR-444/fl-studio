@@ -1,0 +1,37 @@
+{
+  "metadata": {
+    "plugin": "Frequency Splitter",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "presetName": "EDM Bass Rush",
+    "category": "genre",
+    "genre": "EDM",
+    "mood": "electric"
+  },
+  "settings": {
+    "crossover1": 80,
+    "crossover2": 200,
+    "crossover3": 800,
+    "slope": "24dB/oct",
+    "mode": "linear-phase",
+    "band1": { "gain": 3, "processing": "sub oscillator layer" },
+    "band2": { "gain": 2, "processing": "distortion, drive 15%" },
+    "band3": { "gain": 0, "processing": "bitcrusher, 16-bit" },
+    "band4": { "gain": -1, "processing": "high-pass 2kHz" }
+  },
+  "chain": {
+    "pre": ["Band 2 distortion"],
+    "post": ["Limiter on band 1"]
+  },
+  "workflow": "Four-way split for bass Rush. Sub, grind, crunch, and air bands processed independently for maximum impact.",
+  "genreTags": ["EDM", "bass", "rush", "electric"],
+  "a/bTesting": {
+    "testA": "Linear phase for clean bass",
+    "testB": "Minimum phase for impact"
+  },
+  "troubleshooting": {
+    "clipping": "Reduce gains, increase limiter threshold",
+    "weakSub": "Increase band1 gain by 3dB"
+  }
+}

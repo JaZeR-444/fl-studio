@@ -1,0 +1,77 @@
+{
+  "pluginName": "3x Osc",
+  "category": "Synthesizer (Subtractive)",
+  "parameters": [
+    {
+      "section": "Oscillator 1",
+      "id": "osc1_shape",
+      "name": "Shape",
+      "options": [
+        "Sine",
+        "Triangle",
+        "Square",
+        "Saw",
+        "Rounded Saw",
+        "Noise",
+        "Custom"
+      ],
+      "description": "Fundamental waveform type."
+    },
+    {
+      "section": "Oscillator 1",
+      "id": "osc1_invert",
+      "name": "Invert Phase",
+      "type": "Switch",
+      "description": "Flips polarity 180 degrees."
+    },
+    {
+      "section": "Oscillator 2",
+      "id": "osc2_mix",
+      "name": "Mix Level",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "description": "Ratio of Osc 2 volume mixed into Osc 1."
+    },
+    {
+      "section": "Oscillator 2",
+      "id": "osc2_coarse",
+      "name": "Coarse Pitch",
+      "range": { "min": -24, "max": 24, "unit": "semitones" },
+      "description": "Pitch offset relative to root note."
+    },
+    {
+      "section": "Oscillator 2",
+      "id": "osc2_fine",
+      "name": "Fine Pitch",
+      "range": { "min": -100, "max": 100, "unit": "cents" },
+      "description": "Detuning for phasing/thickening."
+    },
+    {
+      "section": "Oscillator 3",
+      "id": "osc3_mix",
+      "name": "Mix Level",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "description": "Ratio of Osc 3 volume mixed into the sum of 1+2."
+    },
+    {
+      "section": "Oscillator 3",
+      "id": "am_osc3",
+      "name": "AM OSC 3",
+      "type": "Switch",
+      "description": "Uses Osc 3 to amplitude modulate Osc 1+2."
+    },
+    {
+      "section": "Global",
+      "id": "phase_rand",
+      "name": "Phase Randomness",
+      "type": "Knob",
+      "description": "Adds jitter to the start phase of all oscillators for analog feel."
+    },
+    {
+      "section": "Global",
+      "id": "hq_mode",
+      "name": "HQ (Anti-Aliasing)",
+      "type": "Switch",
+      "description": "Enables band-limiting filters."
+    }
+  ]
+}

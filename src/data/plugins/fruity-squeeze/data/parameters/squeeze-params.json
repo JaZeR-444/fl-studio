@@ -1,0 +1,385 @@
+{
+  "plugin_name": "Fruity Squeeze",
+  "plugin_type": "Effect",
+  "category": "Distortion / Lo-Fi / Bit-Crusher",
+  "version": "Latest",
+  "manufacturer": "Image-Line",
+  
+  "parameters": [
+    {
+      "name": "Squarize",
+      "type": "knob",
+      "range": "0-100%",
+      "default": "0%",
+      "description": "Bit depth reduction amount - creates digital grit and stepped artifacts",
+      "use_cases": [
+        "8-bit sound creation",
+        "Digital degradation",
+        "Retro game sounds",
+        "Lo-fi character",
+        "Aliasing generation"
+      ],
+      "ranges": {
+        "subtle": "0-20%",
+        "moderate": "20-50%",
+        "aggressive": "50-80%",
+        "extreme": "80-100%"
+      },
+      "tips": [
+        "Start low and increase gradually",
+        "Higher values create more aliasing",
+        "Use Post-LP filtering to tame harshness",
+        "Automate for evolving degradation"
+      ]
+    },
+    {
+      "name": "Preserve",
+      "type": "knob",
+      "range": "0-100%",
+      "default": "50%",
+      "description": "Amount of original samples to keep - maintains clarity and transients",
+      "use_cases": [
+        "Transient preservation",
+        "Maintaining punch",
+        "Clarity retention",
+        "Balanced processing",
+        "Dynamic control"
+      ],
+      "ranges": {
+        "low": "0-30% - Aggressive processing",
+        "medium": "30-70% - Balanced character",
+        "high": "70-100% - Subtle enhancement"
+      },
+      "tips": [
+        "Keep high (50-70%) for drums",
+        "Use high values to maintain punch",
+        "Balance with Impact for intensity",
+        "Higher values = more original content"
+      ]
+    },
+    {
+      "name": "Impact",
+      "type": "knob",
+      "range": "0-100%",
+      "default": "50%",
+      "description": "Amount of processed/distorted samples to add - adds crushed character",
+      "use_cases": [
+        "Adding distortion",
+        "Character enhancement",
+        "Aggressive processing",
+        "Lo-fi effects",
+        "Texture creation"
+      ],
+      "ranges": {
+        "subtle": "0-30%",
+        "moderate": "30-70%",
+        "aggressive": "70-100%"
+      },
+      "tips": [
+        "Balance with Preserve",
+        "Higher values = more processed content",
+        "Use Relation to fine-tune interaction",
+        "Start moderate and adjust"
+      ]
+    },
+    {
+      "name": "Relation",
+      "type": "knob",
+      "range": "Variable ratio control",
+      "default": "Centered",
+      "description": "Ratio between Preserve and Impact - fine-tunes processing character",
+      "use_cases": [
+        "Processing balance",
+        "Character fine-tuning",
+        "Dynamic control",
+        "Texture shaping",
+        "Ratio optimization"
+      ],
+      "positions": {
+        "left": "Favor Preserve - More original content",
+        "center": "Balanced - Equal weighting",
+        "right": "Favor Impact - More processed content"
+      },
+      "tips": [
+        "Adjust after setting Preserve/Impact",
+        "Small changes = big character shifts",
+        "Automate for evolving textures",
+        "Center is a good starting point"
+      ]
+    },
+    {
+      "name": "Filter Frequency",
+      "type": "knob",
+      "range": "20 Hz - 20 kHz",
+      "default": "~10 kHz",
+      "description": "Filter cutoff frequency for tone shaping",
+      "use_cases": [
+        "Taming harshness",
+        "Tone shaping",
+        "Artifact control",
+        "Frequency selection",
+        "Character control"
+      ],
+      "modes": {
+        "low_pass": "Cuts highs - tames harshness",
+        "high_pass": "Cuts lows - cleans muddiness"
+      },
+      "tips": [
+        "Use Post-LP to tame aliasing",
+        "Set to 8-12 kHz for most applications",
+        "Lower for darker tones",
+        "Higher for brighter character"
+      ]
+    },
+    {
+      "name": "Filter Resonance",
+      "type": "knob",
+      "range": "0-100%",
+      "default": "0%",
+      "description": "Emphasis at filter cutoff frequency - creates resonant peak",
+      "use_cases": [
+        "Character addition",
+        "Frequency emphasis",
+        "Vintage simulation",
+        "Creative effects",
+        "Tone coloring"
+      ],
+      "ranges": {
+        "subtle": "0-20% - Gentle emphasis",
+        "moderate": "20-40% - Noticeable peak",
+        "extreme": "40-100% - Self-oscillation possible"
+      },
+      "tips": [
+        "Keep below 30% to avoid whistling",
+        "Higher values can cause self-oscillation",
+        "Use for vintage radio effects",
+        "Combine with automation for sweeps"
+      ]
+    },
+    {
+      "name": "Filter Position",
+      "type": "switch",
+      "options": ["Pre", "Post"],
+      "default": "Post",
+      "description": "Filter placement relative to distortion",
+      "modes": {
+        "pre": {
+          "description": "Filters BEFORE distortion",
+          "use_for": "Tone shaping input signal",
+          "effect": "Distortion reacts to filtered signal"
+        },
+        "post": {
+          "description": "Filters AFTER distortion",
+          "use_for": "Taming harsh artifacts",
+          "effect": "Cleans up processed signal"
+        }
+      },
+      "tips": [
+        "Use Post for most applications",
+        "Use Pre for creative tone shaping",
+        "Post-LP is best for taming harshness",
+        "Pre changes distortion character"
+      ]
+    },
+    {
+      "name": "Mix",
+      "type": "knob",
+      "range": "0-100%",
+      "default": "100%",
+      "description": "Dry/wet balance - parallel processing control",
+      "use_cases": [
+        "Parallel processing",
+        "Dynamics preservation",
+        "Subtle enhancement",
+        "Transparency control",
+        "Character blending"
+      ],
+      "ranges": {
+        "parallel": "20-50% - Maintains dynamics",
+        "blended": "50-80% - Balanced mix",
+        "full": "100% - Complete replacement"
+      },
+      "tips": [
+        "Use 30-50% for parallel drum processing",
+        "100% for full effect replacement",
+        "Lower values preserve dynamics",
+        "Essential for maintaining punch"
+      ]
+    },
+    {
+      "name": "Gain",
+      "type": "knob",
+      "range": "Variable gain control",
+      "default": "0 dB",
+      "description": "Output level compensation",
+      "use_cases": [
+        "Level matching",
+        "Headroom management",
+        "Volume compensation",
+        "Gain staging",
+        "Output control"
+      ],
+      "tips": [
+        "Bit reduction often reduces perceived loudness",
+        "Use to match processed/unprocessed levels",
+        "Check levels with bypass comparison",
+        "Adjust for consistent output"
+      ]
+    }
+  ],
+  
+  "parameter_interactions": [
+    {
+      "parameters": ["Squarize", "Filter Position"],
+      "relationship": "High Squarize creates aliasing; use Post-LP filtering to tame",
+      "recommendation": "Squarize > 30% → Filter Position: Post-LP"
+    },
+    {
+      "parameters": ["Preserve", "Impact", "Relation"],
+      "relationship": "These three work together as a sample selection system",
+      "recommendation": "Set Preserve/Impact first, then fine-tune with Relation"
+    },
+    {
+      "parameters": ["Mix", "Gain"],
+      "relationship": "Lower Mix often requires higher Gain to match levels",
+      "recommendation": "Adjust Gain after setting Mix for consistent output"
+    },
+    {
+      "parameters": ["Resonance", "Frequency"],
+      "relationship": "High Resonance creates peaks; set Frequency carefully",
+      "recommendation": "Keep Resonance < 30% for most applications"
+    },
+    {
+      "parameters": ["Impact", "Filter Pre"],
+      "relationship": "Pre-filtering changes what Impact processes",
+      "recommendation": "Use Pre filtering for creative tone shaping before distortion"
+    }
+  ],
+  
+  "common_presets": [
+    {
+      "name": "Crunchy Drum Bus",
+      "parameters": {
+        "Squarize": "15%",
+        "Preserve": "60%",
+        "Impact": "40%",
+        "Relation": "Centered",
+        "Filter_Frequency": "10 kHz",
+        "Filter_Resonance": "10%",
+        "Filter_Position": "Post-LP",
+        "Mix": "35%"
+      },
+      "use_case": "Parallel drum processing with maintained dynamics"
+    },
+    {
+      "name": "8-Bit Destruction",
+      "parameters": {
+        "Squarize": "90%",
+        "Preserve": "20%",
+        "Impact": "80%",
+        "Relation": "Favor Impact",
+        "Filter_Frequency": "8 kHz",
+        "Filter_Resonance": "5%",
+        "Filter_Position": "Post-LP",
+        "Mix": "100%"
+      },
+      "use_case": "Extreme digital degradation for retro game sounds"
+    },
+    {
+      "name": "Vintage Radio",
+      "parameters": {
+        "Squarize": "45%",
+        "Preserve": "30%",
+        "Impact": "70%",
+        "Relation": "Favor Impact",
+        "Filter_Frequency": "2.5 kHz",
+        "Filter_Resonance": "40%",
+        "Filter_Position": "Pre-BP",
+        "Mix": "80%"
+      },
+      "use_case": "Vintage radio simulation with band-pass filtering"
+    },
+    {
+      "name": "Subtle Lo-Fi",
+      "parameters": {
+        "Squarize": "8%",
+        "Preserve": "80%",
+        "Impact": "20%",
+        "Relation": "Favor Preserve",
+        "Filter_Frequency": "15 kHz",
+        "Filter_Resonance": "0%",
+        "Filter_Position": "Post-LP",
+        "Mix": "25%"
+      },
+      "use_case": "Gentle lo-fi character without losing clarity"
+    },
+    {
+      "name": "Industrial Bass",
+      "parameters": {
+        "Squarize": "35%",
+        "Preserve": "40%",
+        "Impact": "60%",
+        "Relation": "Centered",
+        "Filter_Frequency": "80 Hz",
+        "Filter_Resonance": "15%",
+        "Filter_Position": "Post-HP",
+        "Mix": "60%"
+      },
+      "use_case": "Adding grit to bass while protecting low end"
+    }
+  ],
+  
+  "workflow_recommendations": {
+    "drums": {
+      "Squarize": "10-25%",
+      "Preserve": "50-70%",
+      "Mix": "30-50%",
+      "notes": "Use parallel processing to maintain punch"
+    },
+    "synths": {
+      "Squarize": "15-40%",
+      "Preserve": "40-60%",
+      "Mix": "60-100%",
+      "notes": "Higher Squarize for retro character"
+    },
+    "vocals": {
+      "Squarize": "5-15%",
+      "Preserve": "70-85%",
+      "Mix": "20-40%",
+      "notes": "Subtle parallel processing for lo-fi character"
+    },
+    "bass": {
+      "Squarize": "10-30%",
+      "Preserve": "50-65%",
+      "Filter_Position": "Post-HP",
+      "notes": "Protect lows with high-pass filtering"
+    }
+  },
+  
+  "troubleshooting": [
+    {
+      "problem": "Sound is too harsh/bright",
+      "solution": "Lower Squarize, set Filter to Post-LP, reduce high frequencies"
+    },
+    {
+      "problem": "Losing punch/transients",
+      "solution": "Increase Preserve, lower Mix for parallel processing"
+    },
+    {
+      "problem": "Whistling/ringing artifacts",
+      "solution": "Lower Filter Resonance below 20%"
+    },
+    {
+      "problem": "Sound getting too quiet",
+      "solution": "Increase Gain, check Mix slider isn't too low"
+    },
+    {
+      "problem": "Too muddy/unclear",
+      "solution": "Use Filter in Post-HP mode, reduce low-frequency Squarize"
+    },
+    {
+      "problem": "Not enough character",
+      "solution": "Increase Squarize and Impact, balance with Preserve"
+    }
+  ]
+}

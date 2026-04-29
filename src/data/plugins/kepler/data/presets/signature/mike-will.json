@@ -1,0 +1,65 @@
+{
+  "metadata": {
+    "plugin": "Kepler",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "presetName": "Future Bass",
+    "category": "signature",
+    "inspiredBy": "Mike Will Made-It style"
+  },
+  "settings": {
+    "oscillator1": {
+      "waveform": "saw",
+      "octave": "0",
+      "detune": 0,
+      "mix": 90
+    },
+    "oscillator2": {
+      "waveform": "saw",
+      "octave": "0",
+      "detune": 7,
+      "mix": 90
+    },
+    "oscillator3": {
+      "waveform": "saw",
+      "octave": "+1",
+      "detune": 14,
+      "mix": 60
+    },
+    "filter": {
+      "type": "lowpass",
+      "cutoff": 3500,
+      "resonance": 45,
+      "drive": 15,
+      "envAmt": 75,
+      "envVel": 35
+    },
+    "envelope": {
+      "attack": 10,
+      "decay": 180,
+      "sustain": 55,
+      "release": 250
+    },
+    "lfo": {
+      "waveform": "saw-down",
+      "rate": 0.25,
+      "amt": 50,
+      "dest": "filterCutoff"
+    }
+  },
+  "chain": {
+    "pre": ["Soft clipper - 2dB input"],
+    "post": ["Fruily Reverb 2 - Large Hall, Decay 3.5s, Mix 25%", "Fruily Limiter - Ceiling -0.5dB"]
+  },
+  "characteristics": ["wide", "bright", "uplifting", "melodic"],
+  "genreTags": ["hip-hop/rap", "R&B", "future bass"],
+  "a/bTesting": {
+    "testA": "Filter sweep down on attack",
+    "testB": "Static filter for sustained chords"
+  },
+  "troubleshooting": {
+    "muddyArrangement": "High-pass synth at 300Hz except on bass notes",
+    "maskingVocals": "Notch EQ at 2-3kHz on synth"
+  }
+}

@@ -1,0 +1,619 @@
+{
+  "pluginName": "Harmor",
+  "description": "Complete parameter specification for Harmor additive synthesizer and resynthesis engine",
+  "version": "1.0",
+  "source": "[SRC: IL-MAN]",
+  "engineArchitecture": {
+    "partialsPerVoice": 516,
+    "dualEngines": true,
+    "engineNames": ["A", "B"],
+    "resynthesisModes": ["IMG", "ADV"],
+    "imageSynthesis": true
+  },
+  "parameters": [
+    {
+      "section": "Global",
+      "parameters": [
+        {
+          "id": "polyphony",
+          "name": "Polyphony",
+          "range": { "min": 1, "max": 64, "unit": "voices" },
+          "default": 16,
+          "description": "Maximum simultaneous voices"
+        },
+        {
+          "id": "slide",
+          "name": "Slide",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 0,
+          "description": "Portamento time between notes"
+        },
+        {
+          "id": "mix_ab",
+          "name": "Mix (A/B)",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 50,
+          "description": "Balance between engine A and B"
+        },
+        {
+          "id": "output_volume",
+          "name": "Output Volume",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 80,
+          "description": "Master output level"
+        }
+      ]
+    },
+    {
+      "section": "Timbre",
+      "subSection": "Sub Timbre",
+      "parameters": [
+        {
+          "id": "sub_level",
+          "name": "Sub Level",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 100,
+          "description": "Overall sub timbre amplitude (partials 1-32)"
+        },
+        {
+          "id": "sub_shape",
+          "name": "Sub Shape",
+          "type": "select",
+          "options": ["Sine", "Triangle", "Saw", "Square", "Custom"],
+          "default": "Sine",
+          "description": "Harmonic distribution curve"
+        },
+        {
+          "id": "sub_slope",
+          "name": "Sub Slope",
+          "range": { "min": -100, "max": 100, "unit": "%" },
+          "default": 0,
+          "description": "Harmonic rolloff steepness"
+        },
+        {
+          "id": "sub_width",
+          "name": "Sub Width",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 0,
+          "description": "Stereo spread of sub frequencies"
+        }
+      ]
+    },
+    {
+      "section": "Timbre",
+      "subSection": "Main Timbre",
+      "parameters": [
+        {
+          "id": "main_level",
+          "name": "Main Level",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 80,
+          "description": "Overall main timbre amplitude (partials 33-516)"
+        },
+        {
+          "id": "main_shape",
+          "name": "Main Shape",
+          "type": "select",
+          "options": ["Saw", "Square", "Triangle", "Sine", "Custom"],
+          "default": "Saw",
+          "description": "Harmonic distribution curve"
+        },
+        {
+          "id": "main_slope",
+          "name": "Main Slope",
+          "range": { "min": -100, "max": 100, "unit": "%" },
+          "default": 0,
+          "description": "Harmonic rolloff steepness"
+        },
+        {
+          "id": "main_width",
+          "name": "Main Width",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 0,
+          "description": "Stereo spread of main harmonics"
+        }
+      ]
+    },
+    {
+      "section": "Filter",
+      "parameters": [
+        {
+          "id": "filter_curve",
+          "name": "Filter Curve",
+          "type": "custom_drawn",
+          "range": { "min": -24, "max": 12, "unit": "dB" },
+          "description": "User-drawn frequency response curve"
+        },
+        {
+          "id": "filter_eg_amount",
+          "name": "Filter EG Amount",
+          "range": { "min": -100, "max": 100, "unit": "%" },
+          "default": 0,
+          "description": "Envelope modulation depth"
+        }
+      ]
+    },
+    {
+      "section": "Processors",
+      "parameters": [
+        {
+          "id": "prism_amount",
+          "name": "Prism Amount",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 0,
+          "description": "Harmonic warping intensity"
+        },
+        {
+          "id": "prism_depth",
+          "name": "Prism Depth",
+          "type": "select",
+          "options": ["Low", "Full", "Band"],
+          "default": "Full",
+          "description": "Frequency range affected"
+        },
+        {
+          "id": "blur_amount",
+          "name": "Blur Amount",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 0,
+          "description": "Partial smearing/density"
+        },
+        {
+          "id": "pluck_amount",
+          "name": "Pluck Amount",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 0,
+          "description": "Frequency-dependent decay shaping"
+        },
+        {
+          "id": "pluck_shape",
+          "name": "Pluck Shape",
+          "type": "select",
+          "options": ["Exponential", "Linear"],
+          "default": "Exponential",
+          "description": "Decay curve type"
+        },
+        {
+          "id": "pluck_tilt",
+          "name": "Pluck Tilt",
+          "type": "select",
+          "options": ["Bass", "Balanced", "Treble"],
+          "default": "Balanced",
+          "description": "Low vs high frequency decay balance"
+        },
+        {
+          "id": "strum_amount",
+          "name": "Strum Amount",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 0,
+          "description": "Partial micro-detuning"
+        }
+      ]
+    },
+    {
+      "section": "Envelope 1",
+      "parameters": [
+        {
+          "id": "eg1_attack",
+          "name": "EG1 Attack",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 0,
+          "description": "Time to reach peak"
+        },
+        {
+          "id": "eg1_decay",
+          "name": "EG1 Decay",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 30,
+          "description": "Time to reach sustain"
+        },
+        {
+          "id": "eg1_sustain",
+          "name": "EG1 Sustain",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 80,
+          "description": "Hold level"
+        },
+        {
+          "id": "eg1_release",
+          "name": "EG1 Release",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 20,
+          "description": "Release time"
+        },
+        {
+          "id": "eg1_amount",
+          "name": "EG1 Amount",
+          "range": { "min": -100, "max": 100, "unit": "%" },
+          "default": 0,
+          "description": "Modulation depth"
+        },
+        {
+          "id": "eg1_destination",
+          "name": "EG1 Destination",
+          "type": "select",
+          "options": ["None", "Timbre", "Filter", "Prism", "Volume", "Pitch", "Pan"],
+          "default": "None",
+          "description": "Target parameter"
+        }
+      ]
+    },
+    {
+      "section": "Envelope 2",
+      "parameters": [
+        {
+          "id": "eg2_attack",
+          "name": "EG2 Attack",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 0,
+          "description": "Time to reach peak"
+        },
+        {
+          "id": "eg2_decay",
+          "name": "EG2 Decay",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 30,
+          "description": "Time to reach sustain"
+        },
+        {
+          "id": "eg2_sustain",
+          "name": "EG2 Sustain",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 0,
+          "description": "Hold level"
+        },
+        {
+          "id": "eg2_release",
+          "name": "EG2 Release",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 20,
+          "description": "Release time"
+        },
+        {
+          "id": "eg2_amount",
+          "name": "EG2 Amount",
+          "range": { "min": -100, "max": 100, "unit": "%" },
+          "default": 0,
+          "description": "Modulation depth"
+        },
+        {
+          "id": "eg2_destination",
+          "name": "EG2 Destination",
+          "type": "select",
+          "options": ["None", "Timbre", "Filter", "Prism", "Volume", "Pitch", "Pan"],
+          "default": "None",
+          "description": "Target parameter"
+        }
+      ]
+    },
+    {
+      "section": "LFO",
+      "parameters": [
+        {
+          "id": "lfo1_rate",
+          "name": "LFO1 Rate",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 30,
+          "description": "LFO speed"
+        },
+        {
+          "id": "lfo1_sync",
+          "name": "LFO1 Sync",
+          "type": "switch",
+          "default": "Off",
+          "description": "Tempo synchronization"
+        },
+        {
+          "id": "lfo1_shape",
+          "name": "LFO1 Shape",
+          "type": "select",
+          "options": ["Sine", "Triangle", "Saw", "Square", "Random"],
+          "default": "Sine",
+          "description": "LFO waveform"
+        },
+        {
+          "id": "lfo1_amount",
+          "name": "LFO1 Amount",
+          "range": { "min": -100, "max": 100, "unit": "%" },
+          "default": 0,
+          "description": "Modulation depth"
+        },
+        {
+          "id": "lfo1_destination",
+          "name": "LFO1 Destination",
+          "type": "select",
+          "options": ["None", "Timbre", "Filter", "Prism", "Volume", "Pitch", "Pan"],
+          "default": "None",
+          "description": "Target parameter"
+        },
+        {
+          "id": "lfo1_phase",
+          "name": "LFO1 Phase",
+          "range": { "min": 0, "max": 360, "unit": "degrees" },
+          "default": 0,
+          "description": "Start phase"
+        },
+        {
+          "id": "lfo1_retrig",
+          "name": "LFO1 Retrig",
+          "type": "switch",
+          "default": "Off",
+          "description": "Restart on note"
+        }
+      ]
+    },
+    {
+      "section": "LFO2",
+      "parameters": [
+        {
+          "id": "lfo2_rate",
+          "name": "LFO2 Rate",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 30,
+          "description": "LFO speed"
+        },
+        {
+          "id": "lfo2_sync",
+          "name": "LFO2 Sync",
+          "type": "switch",
+          "default": "Off",
+          "description": "Tempo synchronization"
+        },
+        {
+          "id": "lfo2_shape",
+          "name": "LFO2 Shape",
+          "type": "select",
+          "options": ["Sine", "Triangle", "Saw", "Square", "Random"],
+          "default": "Sine",
+          "description": "LFO waveform"
+        },
+        {
+          "id": "lfo2_amount",
+          "name": "LFO2 Amount",
+          "range": { "min": -100, "max": 100, "unit": "%" },
+          "default": 0,
+          "description": "Modulation depth"
+        },
+        {
+          "id": "lfo2_destination",
+          "name": "LFO2 Destination",
+          "type": "select",
+          "options": ["None", "Timbre", "Filter", "Prism", "Volume", "Pitch", "Pan"],
+          "default": "None",
+          "description": "Target parameter"
+        },
+        {
+          "id": "lfo2_phase",
+          "name": "LFO2 Phase",
+          "range": { "min": 0, "max": 360, "unit": "degrees" },
+          "default": 0,
+          "description": "Start phase"
+        },
+        {
+          "id": "lfo2_retrig",
+          "name": "LFO2 Retrig",
+          "type": "switch",
+          "default": "Off",
+          "description": "Restart on note"
+        }
+      ]
+    },
+    {
+      "section": "Unison",
+      "parameters": [
+        {
+          "id": "unison_voices",
+          "name": "Unison Voices",
+          "range": { "min": 1, "max": 9, "unit": "voices" },
+          "default": 1,
+          "description": "Voices per note"
+        },
+        {
+          "id": "unison_detune",
+          "name": "Unison Detune",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 0,
+          "description": "Pitch spread amount"
+        },
+        {
+          "id": "unison_stereo",
+          "name": "Unison Stereo",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 0,
+          "description": "Pan spread"
+        },
+        {
+          "id": "unison_blend",
+          "name": "Unison Blend",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 50,
+          "description": "Wet/dry mix"
+        }
+      ]
+    },
+    {
+      "section": "Resynthesis",
+      "subSection": "Playback",
+      "parameters": [
+        {
+          "id": "resyn_time",
+          "name": "Time",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 0,
+          "description": "Position in sample"
+        },
+        {
+          "id": "resyn_speed",
+          "name": "Speed",
+          "range": { "min": -200, "max": 200, "unit": "%" },
+          "default": 100,
+          "description": "Playback rate (independent of pitch)"
+        },
+        {
+          "id": "resyn_formant",
+          "name": "Formant",
+          "range": { "min": -12, "max": 12, "unit": "semitones" },
+          "default": 0,
+          "description": "Formant shift without pitch change"
+        }
+      ]
+    },
+    {
+      "section": "Resynthesis",
+      "subSection": "Quality",
+      "parameters": [
+        {
+          "id": "resyn_precision",
+          "name": "Precision",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 50,
+          "description": "Analysis accuracy"
+        },
+        {
+          "id": "resyn_blending",
+          "name": "Blending",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 50,
+          "description": "Frame smoothing"
+        },
+        {
+          "id": "resyn_window",
+          "name": "Window",
+          "type": "select",
+          "options": ["Small", "Medium", "Large"],
+          "default": "Medium",
+          "description": "FFT window size"
+        }
+      ]
+    },
+    {
+      "section": "Resynthesis",
+      "subSection": "Phase",
+      "parameters": [
+        {
+          "id": "resyn_randomize",
+          "name": "Randomize",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 0,
+          "description": "Phase randomization"
+        },
+        {
+          "id": "resyn_shift",
+          "name": "Shift",
+          "range": { "min": 0, "max": 360, "unit": "degrees" },
+          "default": 0,
+          "description": "Phase offset"
+        },
+        {
+          "id": "resyn_keep",
+          "name": "Keep",
+          "type": "switch",
+          "default": "On",
+          "description": "Preserve original phase"
+        }
+      ]
+    },
+    {
+      "section": "Global Effects",
+      "parameters": [
+        {
+          "id": "chorus_depth",
+          "name": "Chorus Depth",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 0,
+          "description": "Chorus modulation depth"
+        },
+        {
+          "id": "chorus_rate",
+          "name": "Chorus Rate",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 30,
+          "description": "Chorus LFO speed"
+        },
+        {
+          "id": "chorus_mix",
+          "name": "Chorus Mix",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 0,
+          "description": "Chorus wet amount"
+        },
+        {
+          "id": "delay_time",
+          "name": "Delay Time",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 30,
+          "description": "Echo delay time"
+        },
+        {
+          "id": "delay_sync",
+          "name": "Delay Sync",
+          "type": "switch",
+          "default": "Off",
+          "description": "Tempo synchronization"
+        },
+        {
+          "id": "delay_feedback",
+          "name": "Delay Feedback",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 30,
+          "description": "Echo repeats"
+        },
+        {
+          "id": "delay_mix",
+          "name": "Delay Mix",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 0,
+          "description": "Delay wet amount"
+        },
+        {
+          "id": "reverb_size",
+          "name": "Reverb Size",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 50,
+          "description": "Reverb room size"
+        },
+        {
+          "id": "reverb_damping",
+          "name": "Reverb Damping",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 50,
+          "description": "High frequency decay"
+        },
+        {
+          "id": "reverb_mix",
+          "name": "Reverb Mix",
+          "range": { "min": 0, "max": 100, "unit": "%" },
+          "default": 0,
+          "description": "Reverb wet amount"
+        }
+      ]
+    },
+    {
+      "section": "MISC",
+      "parameters": [
+        {
+          "id": "pitch_bend_range",
+          "name": "Pitch Bend Range",
+          "range": { "min": 1, "max": 48, "unit": "semitones" },
+          "default": 12,
+          "description": "Pitch wheel range"
+        },
+        {
+          "id": "legato",
+          "name": "Legato",
+          "type": "switch",
+          "default": "Off",
+          "description": "Retrigger behavior"
+        },
+        {
+          "id": "voice_cut",
+          "name": "Voice Cut",
+          "type": "select",
+          "options": ["Oldest", "Newest"],
+          "default": "Oldest",
+          "description": "Polyphony overflow behavior"
+        }
+      ]
+    }
+  ]
+}

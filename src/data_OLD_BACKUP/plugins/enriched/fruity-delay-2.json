@@ -1,0 +1,235 @@
+{
+  "id": "fruity-delay-2",
+  "name": "Fruity Delay 2",
+  "presets": {
+    "delay2-archetypes": {
+      "archetypes": [
+        {
+          "name": "Tight Vocal Slap",
+          "settings": {
+            "time": "1:00",
+            "feedback": "15%",
+            "cutoff": "3000Hz"
+          },
+          "useCase": "Adding 'thickness' to lead vocals."
+        },
+        {
+          "name": "Wide Stereo Offset",
+          "settings": {
+            "time": "0.1ms",
+            "offset": "15ms",
+            "feedback": "0%"
+          },
+          "useCase": "Widening mono guitars or synths."
+        }
+      ]
+    }
+  },
+  "parameters": {
+    "delay2-specs": {
+      "plugin": {
+        "name": "Fruity Delay 2",
+        "category": "Delay",
+        "type": "Digital Delay",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Delay%202.htm"
+      },
+      "parameters": {
+        "time": [
+          {
+            "id": "time",
+            "name": "Delay Time",
+            "range": "Bars/Beats"
+          },
+          {
+            "id": "offset",
+            "name": "Stereo Offset"
+          }
+        ],
+        "feedback": [
+          {
+            "id": "feedback",
+            "name": "Feedback Level"
+          },
+          {
+            "id": "cutoff",
+            "name": "Filter Cutoff"
+          },
+          {
+            "id": "resonance",
+            "name": "Filter Resonance"
+          }
+        ],
+        "mix": [
+          "Volume (Wet)"
+        ]
+      }
+    },
+    "parameters": {
+      "pluginName": "Fruity Delay 2",
+      "category": "Delay / Echo",
+      "parameters": [
+        {
+          "section": "Input",
+          "id": "input_vol",
+          "name": "Input Vol",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Gain of the signal entering the delay line."
+        },
+        {
+          "section": "Input",
+          "id": "input_pan",
+          "name": "Input Pan",
+          "range": {
+            "min": -100,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Panning of the signal prior to delay."
+        },
+        {
+          "section": "Feedback",
+          "id": "feedback_mode",
+          "name": "Feedback Mode",
+          "options": [
+            "Normal",
+            "Inverted",
+            "Ping Pong"
+          ],
+          "description": "Routing logic for stereo feedback."
+        },
+        {
+          "section": "Feedback",
+          "id": "feedback_vol",
+          "name": "Feedback Level",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Amount of output fed back to input."
+        },
+        {
+          "section": "Feedback",
+          "id": "cutoff",
+          "name": "Cutoff",
+          "range": {
+            "min": 10,
+            "max": 20000,
+            "unit": "Hz"
+          },
+          "description": "Low Pass filter frequency inside the loop."
+        },
+        {
+          "section": "Time",
+          "id": "time",
+          "name": "Delay Time",
+          "range": {
+            "min": 0,
+            "max": 16,
+            "unit": "Steps"
+          },
+          "description": "Tempo-synced delay time (1.00 = 1/16th note)."
+        },
+        {
+          "section": "Time",
+          "id": "ofs",
+          "name": "Stereo Offset",
+          "range": {
+            "min": -100,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Time offset between L/R channels."
+        }
+      ]
+    }
+  },
+  "rules": {
+    "delay2-usage-rules": {
+      "rules": [
+        {
+          "scenario": "Delay is clashing with the 'air' of the vocal",
+          "action": "Lower the Cutoff filter to 4kHz to push the delay back in the mix."
+        },
+        {
+          "scenario": "Repeats are too 'busy' for a fast track",
+          "action": "Lower the Feedback to <20% and use a shorter Time (2:00)."
+        }
+      ]
+    }
+  },
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    },
+    {
+      "title": "Echo Stereo Psychology",
+      "filename": "echo-stereo-psychology.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "Common Usage",
+      "category": "general",
+      "filename": "common-usage.md"
+    },
+    {
+      "title": "00 Goal Quick Result",
+      "category": "by-goal",
+      "filename": "00_Goal_Quick_Result.md"
+    },
+    {
+      "title": "01 Goal Space And Motion",
+      "category": "by-goal",
+      "filename": "01_Goal_Space_And_Motion.md"
+    },
+    {
+      "title": "Dub Filtered Delay",
+      "category": "by-goal",
+      "filename": "dub-filtered-delay.md"
+    },
+    {
+      "title": "Lofi Vinyl Warble Generation",
+      "category": "by-goal",
+      "filename": "lofi-vinyl-warble-generation.md"
+    },
+    {
+      "title": "Dub Synth Riser Masterclass",
+      "category": "by-instrument",
+      "filename": "dub-synth-riser-masterclass.md"
+    },
+    {
+      "title": "Moody Vocal Slapback",
+      "category": "by-instrument",
+      "filename": "moody-vocal-slapback.md"
+    },
+    {
+      "title": "Psychedelic Guitar Widening",
+      "category": "by-instrument",
+      "filename": "psychedelic-guitar-widening.md"
+    },
+    {
+      "title": "Vocals",
+      "category": "by-instrument",
+      "filename": "vocals.md"
+    },
+    {
+      "title": "Widening Mono Guitars",
+      "category": "by-instrument",
+      "filename": "widening-mono-guitars.md"
+    }
+  ]
+}

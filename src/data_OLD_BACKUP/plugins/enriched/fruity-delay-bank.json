@@ -1,0 +1,320 @@
+{
+  "id": "fruity-delay-bank",
+  "name": "Fruity Delay Bank",
+  "presets": {
+    "delay-bank-archetypes": {
+      "archetypes": [
+        {
+          "name": "Rhythmic Ghost Snares",
+          "banks": [
+            1,
+            2,
+            3
+          ],
+          "settings": {
+            "bank1": {
+              "time": "2:00",
+              "pan": "L"
+            },
+            "bank2": {
+              "time": "4:00",
+              "pan": "R"
+            },
+            "bank3": {
+              "time": "6:00",
+              "pan": "C"
+            }
+          },
+          "useCase": "Turning a single snare hit into a rolling ghost note sequence."
+        },
+        {
+          "name": "Granular Shimmer Pad",
+          "banks": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "settings": {
+            "grain": "80%",
+            "feedback": "85%",
+            "filter": "High-Pass"
+          },
+          "useCase": "Ethereal backgrounds for cinematic music."
+        }
+      ]
+    },
+    "rhythmic-pulse-archetypes": {
+      "rhythmicPulseArchetypes": [
+        {
+          "name": "The Bounce",
+          "banks": [
+            1,
+            2
+          ],
+          "settings": {
+            "bank1": {
+              "time": "1/4",
+              "pan": "L"
+            },
+            "bank2": {
+              "time": "1/8",
+              "pan": "R",
+              "vol": "50%"
+            }
+          },
+          "useCase": "Standard rhythmic movement for R&B keys."
+        },
+        {
+          "name": "Drunken Pulse",
+          "banks": [
+            1,
+            2,
+            3
+          ],
+          "settings": {
+            "bank1": {
+              "time": "4:00"
+            },
+            "bank2": {
+              "time": "4:05",
+              "pan": "L"
+            },
+            "bank3": {
+              "time": "3:55",
+              "pan": "R"
+            }
+          },
+          "useCase": "Psychedelic, slightly off-kilter rhythmic cloud."
+        }
+      ]
+    }
+  },
+  "parameters": {
+    "delay-bank-specs": {
+      "plugin": {
+        "name": "Fruity Delay Bank",
+        "category": "Delay",
+        "type": "Multi-Tap Delay Processor",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Delay%20Bank.htm"
+      },
+      "architecture": {
+        "banks": 8,
+        "routing": "Parallel (Default) or Serial (via Next routing)"
+      },
+      "parametersPerBank": {
+        "time": [
+          "Standard Time",
+          "Offset"
+        ],
+        "filter": [
+          "Type (LP/HP/BP/BS)",
+          "Cutoff",
+          "Resonance"
+        ],
+        "envelope": [
+          "Attack",
+          "Decay",
+          "Sustain",
+          "Release"
+        ],
+        "modulation": [
+          "LFO Rate",
+          "LFO Amount"
+        ],
+        "granular": [
+          "Grain Size"
+        ]
+      },
+      "features": [
+        "8 independent delay lines",
+        "Internal ADSR envelopes per bank",
+        "Granular time-stretching",
+        "Comprehensive filtering per tap"
+      ]
+    },
+    "parameters": {
+      "pluginName": "Fruity Delay Bank",
+      "category": "Delay / Multi-FX",
+      "parameters": [
+        {
+          "section": "Bank Control",
+          "id": "bank_select",
+          "name": "Bank Tab",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          "description": "Selects the active delay line for editing."
+        },
+        {
+          "section": "Input Filter",
+          "id": "in_filt_type",
+          "name": "Type",
+          "options": [
+            "OFF",
+            "LP",
+            "BP",
+            "NOT",
+            "HP",
+            "LS",
+            "PK",
+            "HS"
+          ],
+          "description": "Filter shape applied to input."
+        },
+        {
+          "section": "Input Filter",
+          "id": "in_filt_slope",
+          "name": "Slope",
+          "options": [
+            "1 (12dB)",
+            "2 (24dB)",
+            "3 (36dB)"
+          ],
+          "description": "Filter steepness."
+        },
+        {
+          "section": "Feedback",
+          "id": "time",
+          "name": "Time",
+          "range": {
+            "min": 0,
+            "max": 16,
+            "unit": "Steps"
+          },
+          "description": "Delay time."
+        },
+        {
+          "section": "Feedback",
+          "id": "fb_mode",
+          "name": "Mode",
+          "options": [
+            "OFF",
+            "INV",
+            "NORM",
+            "P.PONG"
+          ],
+          "description": "Stereo behavior of feedback."
+        },
+        {
+          "section": "Grain",
+          "id": "grain_div",
+          "name": "Division",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Grain slice size."
+        },
+        {
+          "section": "Grain",
+          "id": "grain_shape",
+          "name": "Shape",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Grain envelope smoothing."
+        }
+      ]
+    }
+  },
+  "rules": {
+    "buffer-math": {
+      "bufferLogic": {
+        "calculation": "BufferSize = SampleRate * DelayTime",
+        "example": "At 44.1kHz, a 500ms delay uses a buffer of 22,050 samples.",
+        "limitation": "If your project RAM is low, running 8 banks of long delays (4 seconds each) can hit memory limits on older systems."
+      }
+    },
+    "delay-bank-rules": {
+      "rules": [
+        {
+          "scenario": "CPU usage is too high",
+          "action": "Disable unused banks (LED off); reduce the number of serial 'Next' routings."
+        },
+        {
+          "scenario": "Rhythms sound 'cluttered'",
+          "action": "Use the built-in ADSR Envelopes to shorten the 'Sustain' of each tap."
+        }
+      ]
+    }
+  },
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    },
+    {
+      "title": "Multi Tap Architectures",
+      "filename": "multi-tap-architectures.md"
+    },
+    {
+      "title": "Spectral Layering In Time",
+      "filename": "spectral-layering-in-time.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "Common Usage",
+      "category": "general",
+      "filename": "common-usage.md"
+    },
+    {
+      "title": "00 Goal Quick Result",
+      "category": "by-goal",
+      "filename": "00_Goal_Quick_Result.md"
+    },
+    {
+      "title": "03 Goal Creative Effect",
+      "category": "by-goal",
+      "filename": "03_Goal_Creative_Effect.md"
+    },
+    {
+      "title": "Complex Rhythmic Textures",
+      "category": "by-goal",
+      "filename": "complex-rhythmic-textures.md"
+    },
+    {
+      "title": "Moody Rnb Filter Clouds",
+      "category": "by-goal",
+      "filename": "moody-rnb-filter-clouds.md"
+    },
+    {
+      "title": "Psychedelic Reverse Echoes",
+      "category": "by-goal",
+      "filename": "psychedelic-reverse-echoes.md"
+    },
+    {
+      "title": "Rhythmic Serial Taps",
+      "category": "by-goal",
+      "filename": "rhythmic-serial-taps.md"
+    },
+    {
+      "title": "Atmospheric Synth Leads",
+      "category": "by-instrument",
+      "filename": "atmospheric-synth-leads.md"
+    }
+  ]
+}

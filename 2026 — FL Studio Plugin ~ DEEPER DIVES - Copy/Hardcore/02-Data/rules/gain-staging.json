@@ -1,0 +1,132 @@
+{
+  "plugin": "Hardcore",
+  "category": "Gain Staging Rules",
+  "dataSource": "IL-MAN",
+  "description": "Essential gain staging guidelines for Hardcore to prevent clipping and maintain headroom",
+  "rules": [
+    {
+      "ruleId": "GAIN-001",
+      "title": "Maintain Unity Gain Principle",
+      "severity": "high",
+      "description": "When toggling effects on/off, perceived loudness should remain consistent",
+      "details": "If an effect makes the track louder when enabled, reduce its output level or the mix control. This ensures you're making tonal decisions, not just liking something because it's louder.",
+      "check": "A/B test with effect on/off at same perceived volume",
+      "violation": "Effect sounds better simply because it's louder",
+      "solution": "Adjust Level/Makeup/Mix controls to match dry signal volume"
+    },
+    {
+      "ruleId": "GAIN-002",
+      "title": "Input Gain Sets the Foundation",
+      "severity": "high",
+      "description": "Input gain determines how hard the first stompbox is driven",
+      "details": "Higher input gain = more saturation in distortion pedals. Start at 0dB and adjust based on your source level and desired saturation amount.",
+      "check": "Input meter shows healthy level without constant red",
+      "recommendedRange": "-12 to +6 dB depending on source",
+      "violation": "Constant clipping at input stage",
+      "solution": "Reduce input gain or source track volume"
+    },
+    {
+      "ruleId": "GAIN-003",
+      "title": "Cumulative Gain Across Chain",
+      "severity": "high",
+      "description": "Each stompbox adds or reduces gain. Monitor cumulative effect.",
+      "details": "Distortion adds gain, compression adds makeup gain, EQ boosts add gain. Stack multiple gain-increasing effects and you'll run out of headroom.",
+      "check": "Master output meter stays below 0dBFS",
+      "formula": "Input + Stompbox gains + Master EQ boosts < 0dBFS",
+      "violation": "Master output clipping despite individual effects not clipping",
+      "solution": "Reduce individual effect output levels or enable master limiter"
+    },
+    {
+      "ruleId": "GAIN-004",
+      "title": "Distortion Level Compensation",
+      "severity": "medium",
+      "description": "Distortion increases perceived loudness due to added harmonics",
+      "details": "Even if peak levels don't increase, distortion adds high-frequency content that sounds louder. Compensate by reducing Distortion Level control.",
+      "check": "Loudness meter (LUFS) comparison with/without distortion",
+      "typicalReduction": "5-15% Level reduction for unity loudness",
+      "violation": "Distortion sounds 'better' but is actually just louder",
+      "solution": "Reduce Distortion Level by 10-20% or use mix control"
+    },
+    {
+      "ruleId": "GAIN-005",
+      "title": "Compressor Makeup Gain Math",
+      "severity": "medium",
+      "description": "Set makeup gain to compensate for gain reduction",
+      "details": "If compressor is reducing gain by 6dB on average, set makeup gain to approximately +6dB. Over-compensation causes clipping; under-compensation makes track too quiet.",
+      "formula": "Makeup Gain ≈ Average Gain Reduction",
+      "check": "Output level matches input level (bypass test)",
+      "violation": "Compressed signal significantly louder or quieter than dry",
+      "solution": "Adjust Makeup Gain to match GR meter average"
+    },
+    {
+      "ruleId": "GAIN-006",
+      "title": "EQ Boost Gain Compensation",
+      "severity": "medium",
+      "description": "Boosting frequencies adds gain at those frequencies",
+      "details": "+6dB boost at 3kHz increases the overall level if that frequency was present. Compensate with output gain reduction if multiple boosts applied.",
+      "check": "Master output after EQ stays at healthy level",
+      "rule": "Sum of all EQ boosts should not exceed +12dB without compensation",
+      "violation": "Multiple +6dB boosts causing master clipping",
+      "solution": "Cut instead of boost, or reduce master output gain"
+    },
+    {
+      "ruleId": "GAIN-007",
+      "title": "Cabinet Mix for Parallel Feel",
+      "severity": "low",
+      "description": "Use Cabinet Mix control for subtle speaker emulation",
+      "details": "At 100% you get full cabinet character. At 50% you blend cabinet with direct signal. At 0% cabinet is bypassed entirely.",
+      "useCases": {
+        "100%": "Full amp simulation, realistic guitar tones",
+        "50-75%": "Subtle speaker character on non-guitar sources",
+        "0%": "Only stompbox effects, no cabinet filtering"
+      },
+      "check": "Cabinet character matches desired tone without overwhelming"
+    },
+    {
+      "ruleId": "GAIN-008",
+      "title": "Output Gain Final Adjustment",
+      "severity": "high",
+      "description": "Master output gain is your final safety net",
+      "details": "After all processing, adjust output gain so the signal leaves Hardcore at appropriate level. This should be the LAST control you touch.",
+      "target": "Match input level or match next plugin's expected input",
+      "check": "Output meter shows healthy level (around -12 to -6 dBFS)",
+      "violation": "Output consistently clipping or too low",
+      "solution": "Adjust Output Gain to healthy level, revisit earlier stages if needed"
+    },
+    {
+      "ruleId": "GAIN-009",
+      "title": "Avoid Digital Clipping",
+      "severity": "critical",
+      "description": "Never allow signal to exceed 0dBFS inside Hardcore or at output",
+      "details": "Hardcore is not a true analog circuit. Digital clipping is harsh and undesirable. Even 'analog-modeled' distortion has limits.",
+      "redLine": "-6 dBFS on meters (leave headroom)",
+      "check": "No red clipping indicators on any stage",
+      "violation": "Frequent red lights on meters",
+      "solution": "Reduce gains at earlier stages, especially input and distortion drive"
+    },
+    {
+      "ruleId": "GAIN-010",
+      "title": "Parallel Processing Gain Matching",
+      "severity": "medium",
+      "description": "When using Hardcore on send track, ensure unity gain",
+      "details": "Set Hardcore internal mix to 100% wet. Control the blend using the send track fader and/or send level knob on source track.",
+      "setup": {
+        "hardcoreMix": "100% wet",
+        "hardcoreLevel": "Unity (80-100%)",
+        "sendLevel": "Control blend here",
+        "sendTrackFader": "Control total processed volume"
+      },
+      "check": "Processed signal at same level as dry when send at 100%",
+      "violation": "Can't achieve unity blend (too loud or too quiet)",
+      "solution": "Adjust Hardcore output level to match source track level"
+    }
+  ],
+  "gainStaginWorkflow": {
+    "step1": "Set Input Gain to healthy level (0dB or source-dependent)",
+    "step2": "Add stompboxes one by one, adjusting their individual levels",
+    "step3": "Watch cumulative gain - reduce levels if stacking gain-heavy effects",
+    "step4": "Set Master EQ (minimal boosting, surgical cutting preferred)",
+    "step5": "Select appropriate Cabinet model and mix amount",
+    "step6": "Adjust Output Gain for final level matching"
+  }
+}

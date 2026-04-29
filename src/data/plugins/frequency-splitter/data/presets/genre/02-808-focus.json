@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "plugin": "Frequency Splitter",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "presetName": "808 Focus Split",
+    "category": "genre",
+    "genre": "hip-hop/rap",
+    "mood": "punchy"
+  },
+  "settings": {
+    "crossover1": 150,
+    "crossover2": 800,
+    "slope": "12dB/oct",
+    "mode": "minimum-phase",
+    "band1": { "gain": 2, "processing": "sub-only, high-pass 25Hz" },
+    "band2": { "gain": -1, "processing": "mid-focus, 200-800Hz" },
+    "band3": { "gain": 0, "processing": "high-pass 3kHz" }
+  },
+  "chain": {
+    "pre": ["Band 1: Sub frequency processing"],
+    "post": ["Fruily Limiter - Band 2 focused"]
+  },
+  "workflow": "Three-way split for 808 processing. Band 1: pure sub, Band 2: mid punch, Band 3: high cutoff.",
+  "genreTags": ["hip-hop/rap", "808", "bass", "punchy"],
+  "a/bTesting": {
+    "testA": "12dB/oct for musical overlap",
+    "testB": "48dB/oct for sharp separation"
+  },
+  "troubleshooting": {
+    "hollowSound": "Increase band2 gain by 2dB",
+    "muddy": "Increase band1 crossover to 180Hz"
+  }
+}

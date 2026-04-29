@@ -1,0 +1,683 @@
+{
+  "id": "tuner",
+  "name": "Tuner",
+  "category": "Analysis",
+  "tier": "Free",
+  "type": "Analysis",
+  "description": "Tuner - Analysis",
+  "tags": [],
+  "capabilities": [
+    "analysis",
+    "visualization",
+    "utility"
+  ],
+  "icon": "/plugins/tuner-icon.svg",
+  "color": "#6366F1",
+  "version": "1.0",
+  "data_dir": "plugins\\tuner",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "tuner-params": {
+      "$schema": "./schema.json",
+      "plugin": {
+        "name": "Tuner",
+        "version": "1.x",
+        "category": "Utility",
+        "type": "Pitch Detection & Analysis",
+        "description": "Visual tuning reference for monophonic audio",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Tuner.htm"
+      },
+      "displayElements": {
+        "visual": [
+          {
+            "id": "noteName",
+            "name": "Note Name Display",
+            "type": "text",
+            "range": "C, C#, D, D#, E, F, F#, G, G#, A, A#, B",
+            "description": "Large display showing detected musical note"
+          },
+          {
+            "id": "octaveNumber",
+            "name": "Octave Number",
+            "type": "numeric",
+            "range": "0-8",
+            "description": "Octave range indicator (C0 to C8)"
+          },
+          {
+            "id": "centDeviation",
+            "name": "Cent Deviation",
+            "type": "numeric",
+            "range": "-50 to +50 cents",
+            "description": "Offset from exact pitch (negative = flat, positive = sharp)"
+          },
+          {
+            "id": "frequency",
+            "name": "Frequency Display",
+            "type": "numeric",
+            "unit": "Hz",
+            "description": "Exact frequency in Hertz"
+          },
+          {
+            "id": "visualMeter",
+            "name": "Visual Meter",
+            "type": "graphical",
+            "description": "Horizontal bar showing pitch deviation (center = in tune)"
+          }
+        ],
+        "colorCoding": [
+          {
+            "color": "Red (Left)",
+            "range": "< -10 cents",
+            "meaning": "Too flat"
+          },
+          {
+            "color": "Yellow (Left)",
+            "range": "-10 to -3 cents",
+            "meaning": "Slightly flat"
+          },
+          {
+            "color": "Green (Center)",
+            "range": "-3 to +3 cents",
+            "meaning": "In tune"
+          },
+          {
+            "color": "Yellow (Right)",
+            "range": "+3 to +10 cents",
+            "meaning": "Slightly sharp"
+          },
+          {
+            "color": "Red (Right)",
+            "range": "> +10 cents",
+            "meaning": "Too sharp"
+          }
+        ]
+      },
+      "parameters": {
+        "reference": [
+          {
+            "id": "referencePitch",
+            "name": "Reference Pitch (A4)",
+            "type": "slider",
+            "range": "420-460 Hz",
+            "unit": "Hz",
+            "default": "440 Hz",
+            "description": "Concert pitch standard for tuning reference",
+            "presets": {
+              "baroque": 415,
+              "classical": 430,
+              "modern": 440,
+              "bright": 442,
+              "sharp": 445
+            }
+          },
+          {
+            "id": "calibration",
+            "name": "Calibration",
+            "type": "slider",
+            "range": "-50 to +50 cents",
+            "unit": "cents",
+            "default": "0 cents",
+            "description": "Fine-tune reference pitch offset"
+          }
+        ],
+        "detection": [
+          {
+            "id": "sensitivity",
+            "name": "Sensitivity",
+            "type": "selector",
+            "options": [
+              "Low",
+              "Medium",
+              "High"
+            ],
+            "default": "Medium",
+            "description": "Detection threshold for input signal",
+            "note": "High for quiet signals, Low for loud/distorted"
+          },
+          {
+            "id": "attackTime",
+            "name": "Attack Time",
+            "type": "selector",
+            "options": [
+              "Fast",
+              "Medium",
+              "Slow"
+            ],
+            "default": "Fast",
+            "description": "How quickly tuner responds to new pitch",
+            "useCase": "Fast for plucked instruments, Slow for sustained"
+          },
+          {
+            "id": "releaseTime",
+            "name": "Release Time",
+            "type": "selector",
+            "options": [
+              "Fast",
+              "Medium",
+              "Slow"
+            ],
+            "default": "Medium",
+            "description": "How long reading stays displayed after signal stops"
+          }
+        ],
+        "displayMode": [
+          {
+            "id": "mode",
+            "name": "Display Mode",
+            "type": "selector",
+            "options": [
+              "Auto",
+              "Chromatic",
+              "Custom Scale"
+            ],
+            "default": "Chromatic",
+            "description": "Which notes tuner will detect and display"
+          }
+        ]
+      },
+      "tuningReferences": {
+        "guitar": {
+          "standard": [
+            "E2 (82.41 Hz)",
+            "A2 (110.00 Hz)",
+            "D3 (146.83 Hz)",
+            "G3 (196.00 Hz)",
+            "B3 (246.94 Hz)",
+            "E4 (329.63 Hz)"
+          ],
+          "dropD": [
+            "D2 (73.42 Hz)",
+            "A2 (110.00 Hz)",
+            "D3 (146.83 Hz)",
+            "G3 (196.00 Hz)",
+            "B3 (246.94 Hz)",
+            "E4 (329.63 Hz)"
+          ],
+          "halfStepDown": [
+            "Eb2 (77.78 Hz)",
+            "Ab2 (103.83 Hz)",
+            "Db3 (138.59 Hz)",
+            "Gb3 (185.00 Hz)",
+            "Bb3 (233.08 Hz)",
+            "Eb4 (311.13 Hz)"
+          ]
+        },
+        "bass": {
+          "standard4String": [
+            "E1 (41.20 Hz)",
+            "A1 (55.00 Hz)",
+            "D2 (73.42 Hz)",
+            "G2 (98.00 Hz)"
+          ],
+          "standard5String": [
+            "B0 (30.87 Hz)",
+            "E1 (41.20 Hz)",
+            "A1 (55.00 Hz)",
+            "D2 (73.42 Hz)",
+            "G2 (98.00 Hz)"
+          ]
+        },
+        "orchestral": {
+          "violin": [
+            "G3 (196.00 Hz)",
+            "D4 (293.66 Hz)",
+            "A4 (440.00 Hz)",
+            "E5 (659.25 Hz)"
+          ],
+          "viola": [
+            "C3 (130.81 Hz)",
+            "G3 (196.00 Hz)",
+            "D4 (293.66 Hz)",
+            "A4 (440.00 Hz)"
+          ],
+          "cello": [
+            "C2 (65.41 Hz)",
+            "G2 (98.00 Hz)",
+            "D3 (146.83 Hz)",
+            "A3 (220.00 Hz)"
+          ]
+        }
+      },
+      "accuracy": {
+        "resolution": "0.1 cent",
+        "tolerance": "±1 cent",
+        "professionalStandard": "±3 cents (acceptable in tune)",
+        "orchestralStandard": "±1 cent (precision work)"
+      },
+      "detectionLimitations": {
+        "inputType": "Monophonic only (single note at a time)",
+        "frequencyRange": "C0 (~16 Hz) to C8 (~4186 Hz)",
+        "requiresStrongFundamental": true,
+        "affectedByEffects": [
+          "Reverb",
+          "Delay",
+          "Heavy distortion"
+        ],
+        "bestWith": "Clean, direct instrument signal"
+      },
+      "cpuUsage": "Negligible",
+      "latency": "Minimal (analysis delay only)",
+      "realtimeSafe": true
+    }
+  },
+  "presets": {
+    "tuning-presets": {
+      "guitarTunings": {
+        "standard": {
+          "notes": [
+            "E2",
+            "A2",
+            "D3",
+            "G3",
+            "B3",
+            "E4"
+          ],
+          "frequencies": [
+            82.41,
+            110,
+            146.83,
+            196,
+            246.94,
+            329.63
+          ],
+          "description": "Most common guitar tuning"
+        },
+        "dropD": {
+          "notes": [
+            "D2",
+            "A2",
+            "D3",
+            "G3",
+            "B3",
+            "E4"
+          ],
+          "frequencies": [
+            73.42,
+            110,
+            146.83,
+            196,
+            246.94,
+            329.63
+          ],
+          "description": "Lowered 6th string for heavy music"
+        },
+        "openG": {
+          "notes": [
+            "D2",
+            "G2",
+            "D3",
+            "G3",
+            "B3",
+            "D4"
+          ],
+          "frequencies": [
+            73.42,
+            98,
+            146.83,
+            196,
+            246.94,
+            293.66
+          ],
+          "description": "Popular for blues and slide guitar"
+        },
+        "openD": {
+          "notes": [
+            "D2",
+            "A2",
+            "D3",
+            "F#3",
+            "A3",
+            "D4"
+          ],
+          "frequencies": [
+            73.42,
+            110,
+            146.83,
+            185,
+            220,
+            293.66
+          ],
+          "description": "Rich, full chord voicings"
+        },
+        "dadgad": {
+          "notes": [
+            "D2",
+            "A2",
+            "D3",
+            "G3",
+            "A3",
+            "D4"
+          ],
+          "frequencies": [
+            73.42,
+            110,
+            146.83,
+            196,
+            220,
+            293.66
+          ],
+          "description": "Celtic and folk music favorite"
+        }
+      },
+      "bassTunings": {
+        "standard4": {
+          "notes": [
+            "E1",
+            "A1",
+            "D2",
+            "G2"
+          ],
+          "frequencies": [
+            41.2,
+            55,
+            73.42,
+            98
+          ],
+          "description": "Standard 4-string bass tuning"
+        },
+        "standard5": {
+          "notes": [
+            "B0",
+            "E1",
+            "A1",
+            "D2",
+            "G2"
+          ],
+          "frequencies": [
+            30.87,
+            41.2,
+            55,
+            73.42,
+            98
+          ],
+          "description": "Standard 5-string bass tuning"
+        },
+        "dropC": {
+          "notes": [
+            "C1",
+            "G1",
+            "C2",
+            "F2"
+          ],
+          "frequencies": [
+            32.7,
+            49,
+            65.41,
+            87.31
+          ],
+          "description": "Lowered tuning for heavy music"
+        }
+      },
+      "alternativeTunings": {
+        "openE": {
+          "notes": [
+            "E2",
+            "B2",
+            "E3",
+            "G#3",
+            "B3",
+            "E4"
+          ],
+          "frequencies": [
+            82.41,
+            123.47,
+            164.81,
+            207.65,
+            246.94,
+            329.63
+          ],
+          "description": "Slide guitar blues tuning"
+        },
+        "allFourths": {
+          "notes": [
+            "E2",
+            "A2",
+            "D3",
+            "G3",
+            "C4",
+            "F4"
+          ],
+          "frequencies": [
+            82.41,
+            110,
+            146.83,
+            196,
+            261.63,
+            349.23
+          ],
+          "description": "Jazz and classical tuning"
+        },
+        "newStandard": {
+          "notes": [
+            "C2",
+            "G2",
+            "D3",
+            "A3",
+            "E4",
+            "G4"
+          ],
+          "frequencies": [
+            65.41,
+            98,
+            146.83,
+            220,
+            329.63,
+            392
+          ],
+          "description": "Robert Fripp's tuning"
+        }
+      },
+      "orchestralTunings": {
+        "violin": {
+          "strings": [
+            "G3",
+            "D4",
+            "A4",
+            "E5"
+          ],
+          "frequencies": [
+            196,
+            293.66,
+            440,
+            659.25
+          ],
+          "description": "Standard violin tuning"
+        },
+        "viola": {
+          "strings": [
+            "C3",
+            "G3",
+            "D4",
+            "A4"
+          ],
+          "frequencies": [
+            130.81,
+            196,
+            293.66,
+            440
+          ],
+          "description": "Standard viola tuning"
+        },
+        "cello": {
+          "strings": [
+            "C2",
+            "G2",
+            "D3",
+            "A3"
+          ],
+          "frequencies": [
+            65.41,
+            98,
+            146.83,
+            220
+          ],
+          "description": "Standard cello tuning"
+        },
+        "doubleBass": {
+          "strings": [
+            "E1",
+            "A1",
+            "D2",
+            "G2"
+          ],
+          "frequencies": [
+            41.2,
+            55,
+            73.42,
+            98
+          ],
+          "description": "Standard double bass tuning"
+        }
+      },
+      "worldTunings": {
+        "sitar": {
+          "mainStrings": [
+            "C#3",
+            "C#4",
+            "C#5",
+            "C#6",
+            "C#7"
+          ],
+          "frequencies": [
+            138.59,
+            277.18,
+            554.37,
+            1108.73,
+            2217.46
+          ],
+          "description": "Indian sitar main strings"
+        },
+        "oud": {
+          "courses": [
+            "C2",
+            "F2",
+            "A2",
+            "D3",
+            "G3",
+            "C4"
+          ],
+          "frequencies": [
+            65.41,
+            87.31,
+            110,
+            146.83,
+            196,
+            261.63
+          ],
+          "description": "Middle Eastern oud tuning"
+        },
+        "koto": {
+          "strings": [
+            "D3",
+            "G3",
+            "A3",
+            "B3",
+            "D4",
+            "E4",
+            "G4",
+            "A4",
+            "B4",
+            "D5",
+            "E5",
+            "G5",
+            "A5"
+          ],
+          "frequencies": [
+            146.83,
+            196,
+            220,
+            246.94,
+            293.66,
+            329.63,
+            392,
+            440,
+            493.88,
+            587.33,
+            659.25,
+            783.99,
+            880
+          ],
+          "description": "Japanese koto standard tuning"
+        }
+      },
+      "referencePitches": {
+        "a440": {
+          "note": "A4",
+          "frequency": 440,
+          "standard": "Concert pitch, most common"
+        },
+        "a442": {
+          "note": "A4",
+          "frequency": 442,
+          "standard": "Some European orchestras"
+        },
+        "a432": {
+          "note": "A4",
+          "frequency": 432,
+          "standard": "Historical/alternative tuning"
+        },
+        "a438": {
+          "note": "A4",
+          "frequency": 438,
+          "standard": "Some baroque ensembles"
+        }
+      },
+      "temperaments": {
+        "equal": {
+          "name": "Equal Temperament",
+          "description": "Modern standard tuning, all semitones equal"
+        },
+        "just": {
+          "name": "Just Intonation",
+          "description": "Pure intervals, harmonic relationships"
+        },
+        "pythagorean": {
+          "name": "Pythagorean Tuning",
+          "description": "Based on perfect fifths, historical"
+        },
+        "meantone": {
+          "name": "Meantone Temperament",
+          "description": "Compromise between just and equal"
+        }
+      }
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "concepts-and-best-uses": "# Concepts & Best Uses: Tuner\r\n\r\n## What It Is\r\nTuner is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Tuner\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "parameter-cheat-sheet": "# Tuner - Parameter Cheat Sheet\n\n**Plugin Type:** Visual Pitch Detection Utility\n**Category:** Analysis Tool / Tuning Reference\n**Official Manual:** [Tuner](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Tuner.htm)\n\n---\n\n## Main Display\n\n| Element | Function | Quick Tip |\n|---------|----------|-----------|\n| **Note Name** | Displays detected pitch (C, D, E, etc.) | Large display for easy reading |\n| **Octave Number** | Shows octave range (C0-C8) | Reference for MIDI note mapping |\n| **Cent Deviation** | Shows pitch offset from exact note | Negative = flat, positive = sharp |\n| **Frequency (Hz)** | Exact frequency in Hertz | Use for precise frequency analysis |\n| **Visual Meter** | Graphical pitch deviation indicator | Center = perfectly in tune |\n\n---\n\n## Tuning Reference\n\n| Parameter | Range | Function | When to Use |\n|-----------|-------|----------|-------------|\n| **Reference Pitch (A4)** | 420-460 Hz | Sets concert pitch standard | Default 440Hz for standard tuning |\n| **Calibration** | -50 to +50 cents | Fine-tune reference pitch | Match to detuned instruments or alternate tunings |\n\n---\n\n## Display Modes\n\n| Mode | Description | Use Case |\n|------|-------------|----------|\n| **Auto** | Automatically detects any pitch | General purpose tuning |\n| **Chromatic** | All 12 notes of chromatic scale | Standard instrument tuning |\n| **Custom Scale** | User-defined note set | Specific scales or modal tuning |\n\n---\n\n## Detection Settings\n\n| Parameter | Range | Function | Practical Tip |\n|-----------|-------|----------|---------------|\n| **Sensitivity** | Low/Medium/High | Detection threshold | High for quiet signals, low for loud/distorted |\n| **Attack Time** | Fast/Medium/Slow | How quickly tuner responds | Fast for plucked instruments, slow for sustained |\n| **Release Time** | Fast/Medium/Slow | How long reading stays displayed | Slower for analyzing vibrato |\n\n---\n\n## Visual Indicators\n\n| Color/Position | Meaning | Action Required |\n|----------------|---------|-----------------|\n| **Red (Left)** | Too flat (more than -10 cents) | Tune up |\n| **Yellow (Left)** | Slightly flat (-3 to -10 cents) | Tune up slightly |\n| **Green (Center)** | In tune (-3 to +3 cents) | Perfect |\n| **Yellow (Right)** | Slightly sharp (+3 to +10 cents) | Tune down slightly |\n| **Red (Right)** | Too sharp (more than +10 cents) | Tune down |\n\n---\n\n## Common Reference Pitches\n\n| Standard | A4 Frequency | Use Case |\n|----------|--------------|----------|\n| **Modern Standard** | 440 Hz | Universal modern tuning |\n| **Baroque** | 415 Hz | Period instrument ensembles |\n| **Classical** | 430 Hz | Some orchestras |\n| **High Pitch** | 442-445 Hz | Bright sound preference |\n\n---\n\n## Instrument-Specific Tips\n\n### Guitar Tuning\n- **Standard:** E2, A2, D3, G3, B3, E4\n- **Tip:** Tune from low E to high E\n- **Attack:** Fast\n- **Sensitivity:** Medium\n\n### Bass Guitar\n- **Standard 4-String:** E1, A1, D2, G2\n- **Tip:** Use neck pickup for clearest signal\n- **Attack:** Medium\n- **Sensitivity:** High (lower frequencies need more sensitivity)\n\n### Vocals\n- **Range:** Varies by voice type\n- **Tip:** Sustain a vowel sound (\"ah\")\n- **Attack:** Slow\n- **Release:** Slow (to track vibrato)\n- **Note:** Useful for pitch accuracy training\n\n### Synthesizers\n- **Use Case:** Verify oscillator tuning\n- **Tip:** Use sine or triangle wave for clearest reading\n- **Note:** Check tuning across multiple octaves\n\n### Acoustic Instruments\n- **Piano:** Check against reference for each note\n- **Violin/Viola:** Tune open strings (G, D, A, E)\n- **Cello:** C2, G2, D3, A3\n- **Note:** Harmonic overtones can confuse tuner - play fundamentals clearly\n\n---\n\n## Workflow Integration\n\n### Recording Preparation\n1. Load Tuner on input channel\n2. Play/sing into microphone\n3. Adjust instrument until meter shows green\n4. Bypass or remove Tuner\n5. Begin recording\n\n### Sample Analysis\n1. Load Tuner on sample channel\n2. Play sample\n3. Note detected pitch and frequency\n4. Use for pitch-shifting or key matching\n5. Document root note for future reference\n\n### Mix Analysis\n1. Solo instrument track\n2. Insert Tuner on channel\n3. Identify fundamental frequency\n4. Use for EQ decisions or frequency clash resolution\n5. Remove Tuner after analysis\n\n---\n\n## Accuracy Tips\n\n### For Best Detection\n1. **Monophonic Input:** Tune one note at a time\n2. **Clean Signal:** Minimize background noise and reverb\n3. **Strong Fundamental:** Avoid overly bright or filtered sources\n4. **Sustained Notes:** Hold notes steady for accurate reading\n5. **Proper Gain Staging:** Not too quiet, not clipping\n\n### When Tuner Struggles\n- **Issue:** Jumpy readings\n  - **Solution:** Increase attack time, reduce sensitivity\n- **Issue:** Wrong octave detected\n  - **Solution:** Adjust sensitivity, play louder/clearer\n- **Issue:** No reading\n  - **Solution:** Increase sensitivity, check input signal level\n- **Issue:** Unstable with effects\n  - **Solution:** Place Tuner before reverb/delay/modulation\n\n---\n\n## Alternative Tuning References\n\n| Tuning System | A4 Frequency | Characteristics |\n|---------------|--------------|-----------------|\n| **Scientific Pitch** | 432 Hz | \"Natural\" tuning (controversial) |\n| **Philosophical Pitch** | 512 Hz (C5) | Based on powers of 2 |\n| **Verdi Tuning** | 432 Hz | Historical Italian standard |\n| **Modern Sharp** | 444 Hz | Bright, cutting tone |\n\n---\n\n## MIDI Integration\n\n### Pitch to MIDI\n- Use detected pitch to verify MIDI note accuracy\n- Check if MIDI controller is sending correct note values\n- Verify VST instrument tuning against reference\n\n### Pitch Bend Analysis\n- Monitor pitch bend range on synths\n- Verify pitch wheel calibration\n- Check after-touch pitch modulation accuracy\n\n---\n\n## Cent Deviation Guide\n\n| Cents Offset | Perception | Musical Impact |\n|--------------|------------|----------------|\n| **0-3 cents** | Negligible | Perfectly acceptable |\n| **3-6 cents** | Slight | Noticeable in isolation |\n| **6-10 cents** | Noticeable | Out of tune in mix |\n| **10-20 cents** | Obvious | Clearly out of tune |\n| **20+ cents** | Very obvious | Nearly quarter-tone off |\n\n**Note:** 100 cents = 1 semitone\n\n---\n\n## Frequency to Note Reference\n\n| Note | Frequency (A440) | Note | Frequency (A440) |\n|------|------------------|------|------------------|\n| **C0** | 16.35 Hz | **C4** | 261.63 Hz |\n| **C1** | 32.70 Hz | **A4** | 440.00 Hz |\n| **C2** | 65.41 Hz | **C5** | 523.25 Hz |\n| **C3** | 130.81 Hz | **C6** | 1046.50 Hz |\n\n---\n\n## Polyphonic vs Monophonic\n\n### Monophonic Sources (Tuner Works Well)\n- Single vocal line\n- Solo guitar notes\n- Bass guitar\n- Individual synth oscillator\n- Single trumpet/saxophone note\n\n### Polyphonic Sources (Tuner May Struggle)\n- Chords on guitar/piano\n- Full mix/master bus\n- Layered vocals\n- Orchestral sections\n- Multiple synth voices\n\n**Tip:** For polyphonic sources, solo individual notes or use spectrum analyzer instead\n\n---\n\n## CPU & Performance\n\n- **CPU Usage:** Negligible\n- **Latency:** Minimal analysis delay\n- **Realtime:** Yes - suitable for live tuning\n- **Offline:** Also useful for sample analysis\n\n---\n\n## Related Tools\n\n### FL Studio Native\n- **Wave Candy** - Spectrum analyzer with pitch display\n- **Edison** - Spectral analysis for pitch identification\n- **Parametric EQ 2** - Frequency analysis\n\n### External Alternatives\n- **Guitar Tuna (Mobile)** - Smartphone tuning app\n- **PolyTune (Plugin)** - Polyphonic guitar tuner\n- **Peterson StroboSoft** - High-precision tuner software\n\n---\n\n## Live Performance Use\n\n### On-Stage Tuning\n1. Insert Tuner on input channel\n2. Mute output during tuning\n3. Visual feedback for silent tuning\n4. Bypass Tuner for performance\n5. Quick reference between songs\n\n### Soundcheck Setup\n- Verify all instruments are in tune with each other\n- Check reference pitch matches band standard\n- Tune before recording individual tracks\n- Document any intentional detuning for creative effect\n\n---\n\n## Creative Uses\n\n### Sound Design\n- Identify pitch of found sounds\n- Match samples to project key\n- Verify pitch-shifted sample accuracy\n- Document synthesizer oscillator frequencies\n\n### Microtonal Music\n- Set custom reference pitches\n- Verify microtonal intervals\n- Check equal-temperament deviations\n- Document alternate tuning systems\n\n### Harmonic Analysis\n- Identify overtones in complex sounds\n- Verify sub-bass fundamental frequency\n- Check harmonic series accuracy\n- Analyze bell/metallic timbres\n\n---\n\n**Last Updated:** February 3, 2026\n**Status:** Complete reference material\n",
+      "quick-start-checklist": "# Quick Start Checklist: Tuner\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Tuner to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "quickstart-guide": "# Tuner Quick Start Guide\n\n## What is Tuner?\nTuner is a high-precision instrument tuning plugin that provides accurate pitch detection and visual feedback for guitar, bass, and other instruments directly within FL Studio.\n\n## 5-Minute Setup\n1. Load Tuner on the channel you want to tune\n2. Enable input monitoring\n3. Play a single note and observe the display\n4. Adjust tuning pegs until the indicator turns green\n5. Verify all strings are in tune\n\n## Essential Controls\n- **Note Display**: Shows the closest musical note\n- **Cents Display**: Shows deviation from perfect pitch (±50 cents)\n- **Frequency Display**: Shows exact frequency in Hz\n- **Reference Pitch**: Standard A4 = 440Hz (adjustable)\n- **Detection Window**: Sensitivity adjustment\n\n## Quick Tuning Process\n1. **Guitar Standard**: E-A-D-G-B-E\n2. **Bass Standard**: E-A-D-G\n3. **Drop D**: D-A-D-G-B-E\n4. **Open G**: D-G-D-G-B-D\n\n## Pro Tips\n- Pluck strings gently for consistent readings\n- Mute other strings to avoid interference\n- Use the frequency display for precise adjustments\n- Calibrate reference pitch to match other instruments",
+      "top-controls": "# Top Controls: Tuner\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Tuner\r\n\r\nThis section contains learning information for the tuner plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-context": {
+      "integration-guide": "# Tuner Integration Guide\n\n## DAW Integration\n\n### FL Studio Native Integration\n**Optimal Setup**:\n- **Plugin Loading**: Add to mixer insert or instrument channel\n- **Input Routing**: Configure audio input settings\n- **Monitoring**: Enable input monitoring for real-time tuning\n- **MIDI Integration**: MIDI learn for remote control\n\n**Workflow Integration**:\n```\nAudio Interface → FL Studio Input → Tuner Plugin → Mixer → Master Output\n```\n\n**Advanced Features**:\n- **Automation**: Record tuning reference changes\n- **Preset Management**: Save instrument-specific settings\n- **Multi-Instance**: Use multiple tuners for different instruments\n- **Plugin Chaining**: Place before other effects for clean signal\n\n### Cross-DAW Compatibility\n**Plugin Formats**:\n- **VST2**: Universal compatibility (Windows/Linux)\n- **VST3**: Modern standard with better performance\n- **AU**: macOS native format\n- **AAX**: Pro Tools compatibility\n\n**Migration Considerations**:\n- **Settings Transfer**: Export/import settings between DAWs\n- **Template Creation**: DAW-specific templates\n- **Shortcut Mapping**: Adapt to different DAW workflows\n- **Performance Optimization**: DAW-specific optimization\n\n## Hardware Integration\n\n### Audio Interface Setup\n**Connection Types**:\n- **Instrument Input**: Direct instrument connection\n- **Microphone Input**: For acoustic instruments\n- **Line Input**: For pre-amplified signals\n- **DI Box**: Passive/active direct boxes\n\n**Optimal Settings**:\n- **Gain Staging**: Proper input levels (-18dBFS to -12dBFS)\n- **Sample Rate**: 44.1kHz or higher for accuracy\n- **Buffer Size**: Balance latency and stability\n- **Clock Source**: Internal clock unless synchronized\n\n### Microphone Integration\n**Microphone Types**:\n- **Dynamic Microphones**: Good for stage use (Shure SM57)\n- **Condenser Microphones**: Studio accuracy (Neumann, AKG)\n- **Clip-on Microphones**: Direct instrument attachment\n- **Contact Microphones**: Vibration detection\n\n**Placement Strategies**:\n- **Acoustic Guitar**: Soundhole or bridge position\n- **Violin Family**: Near bridge or F-holes\n- **Wind Instruments**: Bell position\n- **Piano**: Near strings or soundboard\n\n### External Controllers\n**Hardware Controllers**:\n- **MIDI Foot Controllers**: Hands-free operation\n- **Expression Pedals**: Parameter control\n- **Control Surfaces**: Dedicated control interfaces\n- **Mobile Devices**: Smartphone/tablet control\n\n**Mapping Strategies**:\n- **Reference Pitch**: MIDI CC for A4 adjustment\n- **Mute Functions**: Footswitch for silent tuning\n- **Preset Selection**: Program change messages\n- **Display Brightness**: Visual control options\n\n## Signal Chain Integration\n\n### Pre-Effects Placement\n**Before Effects Chain**:\n- **Clean Signal**: Direct instrument input\n- **Maximum Accuracy**: No signal processing artifacts\n- **Studio Applications**: Recording setup optimization\n- **Technical Analysis**: Pure signal measurement\n\n**Advantages**:\n- Highest accuracy possible\n- No frequency response alterations\n- Best for critical tuning applications\n- Consistent reference across sessions\n\n### Post-Effects Placement\n**After Effects Chain**:\n- **Performance Context**: Tuning in context of effects\n- **Live Performance**: Quick checks during performance\n- **Artistic Tuning**: Tuning to processed sound\n- **Character Matching**: Tuning to desired tone\n\n**Considerations**:\n- Effects may interfere with detection\n- Processing may alter pitch perception\n- Used for creative applications\n- Context-dependent accuracy\n\n### Parallel Processing\n**Dual Path Setup**:\n- **Clean Path**: Direct tuner connection\n- **Effects Path**: Normal signal chain\n- **Monitoring**: Switch between paths as needed\n- **Recording**: Clean path for accuracy, effects path for production\n\n## Performance Integration\n\n### Live Performance Setup\n**Stage Monitoring**:\n- **Monitor Mix**: Dedicated tuner in monitor mix\n- **Visual Monitoring**: On-stage tuner display\n- **In-Ear Monitoring**: Tuner in IEM mix\n- **Stage Position**: Accessible tuner placement\n\n**Signal Flow**:\n```\nInstrument → DI Box → Splitter → Tuner → Audio Interface → PA System\n                → Effects Pedals → Audio Interface → PA System\n```\n\n**Contingency Planning**:\n- **Backup Tuner**: Secondary device for reliability\n- **Power Supply**: Multiple power options\n- **Connection Cables**: Redundant cable setup\n- **Emergency Procedures**: Quick troubleshooting guide\n\n### Studio Recording Workflow\n**Recording Chain Optimization**:\n- **Pre-Recording**: Accurate tuning before takes\n- **Between Takes**: Quick tuning checks\n- **Multi-Instrument**: Individual instrument tuning\n- **Environmental Control**: Stable recording environment\n\n**Integration Techniques**:\n- **Template Projects**: Pre-configured tuner setup\n- **Automation Recording**: Document tuning decisions\n- **Reference Tracks**: Tuning reference recordings\n- **Quality Control**: Consistency verification\n\n## Software Integration\n\n### Plugin Chain Management\n**Insert Effects**:\n- **First Insert**: Clean signal path for accuracy\n- **Last Insert**: Contextual tuning check\n- **Multiple Inserts**: Different purposes at different positions\n- **Bypass Routing**: Toggle clean vs. processed tuning\n\n**Send/Return Setup**:\n- **Auxiliary Send**: Dedicated tuner send\n- **Return Integration**: Processed signal return\n- **Mix Control**: Wet/dry balance\n- **Monitoring Options**: Multiple monitoring paths\n\n### Automation Integration\n**Parameter Automation**:\n- **Reference Pitch**: Automated temperament changes\n- **Display Settings**: Context-dependent display modes\n- **Mute Functions**: Automated bypass for different sections\n- **Preset Changes**: Section-specific tuning presets\n\n**Recording Automation**:\n- **Tuning Documentation**: Record tuning decisions\n- **Performance Analysis**: Analyze tuning consistency\n- **Quality Assurance**: Verify tuning accuracy\n- **Post-Production**: Reference for pitch correction\n\n## Network and Remote Integration\n\n### Remote Control\n**Wireless Control**:\n- **WiFi Integration**: Network-based control\n- **Bluetooth**: Short-range wireless control\n- **Mobile Apps**: Smartphone control interfaces\n- **Web Interface**: Browser-based control\n\n**Remote Monitoring**:\n- **Network Displays**: Remote tuner displays\n- **Multi-location**: Multiple monitoring positions\n- **Collaborative Tuning**: Multiple participants\n- **Teaching Applications**: Educational settings\n\n### API Integration\n**Programming Interfaces**:\n- **SDK Availability**: Custom development options\n- **Scripting Support**: Automation scripting\n- **Third-party Integration**: External software integration\n- **Data Export**: Tuning data logging\n\n**Custom Applications**:\n- **Research Tools**: Academic applications\n- **Production Tools**: Custom workflow solutions\n- **Educational Software**: Learning applications\n- **Performance Tools**: Live performance enhancements\n\n## Troubleshooting Integration Issues\n\n### Common Problems\n**Audio Interface Issues**:\n- Check driver compatibility\n- Verify sample rate matching\n- Confirm buffer settings\n- Test with different interfaces\n\n**Plugin Loading Problems**:\n- Verify plugin installation\n- Check DAW plugin paths\n- Confirm plugin format compatibility\n- Rescan plugin database\n\n**Performance Issues**:\n- Monitor CPU usage\n- Optimize buffer sizes\n- Disable unnecessary plugins\n- Update graphics drivers\n\n### Optimization Strategies\n**System Optimization**:\n- **Buffer Management**: Balance latency and performance\n- **Resource Allocation**: Dedicated audio processing\n- **Background Processes**: Minimize interference\n- **Power Management**: Optimize power settings\n\n**Workflow Optimization**:\n- **Template Creation**: Pre-configured setups\n- **Shortcut Mapping**: Efficient workflow shortcuts\n- **Preset Organization**: Systematic preset management\n- **Documentation**: Detailed setup procedures\n\n## Future Integration Possibilities\n\n### Emerging Technologies\n**AI Integration**:\n- **Machine Learning**: Improved pitch detection\n- **Pattern Recognition**: Advanced analysis capabilities\n- **Adaptive Algorithms**: Context-aware tuning\n- **Predictive Tuning**: Anticipatory adjustments\n\n**Cloud Integration**:\n- **Cloud Processing**: Remote computation capabilities\n- **Collaborative Tools**: Shared tuning sessions\n- **Data Sync**: Cross-device synchronization\n- **Backup Services**: Automatic settings backup\n\n### Advanced Applications\n**Virtual Reality**:\n- **VR Interfaces**: Immersive tuning environments\n- **3D Visualization**: Spatial pitch representation\n- **Gesture Control**: Natural interface methods\n- **Collaborative Spaces**: Shared virtual environments\n\n**IoT Integration**:\n- **Smart Instruments**: Built-in tuning capabilities\n- **Environmental Sensors**: Automatic environment adjustment\n- **Networked Systems**: Multi-instrument coordination\n- **Automated Systems**: Self-tuning instrument systems",
+      "live-performance": "# Live Performance Tuning Guide\n\n## On-Stage Tuning Setup\n\n### Essential Equipment\n**Must-Have Items**:\n- **Primary Tuner**: High-quality, visible in low light\n- **Backup Tuner**: Secondary device for reliability\n- **Power Supply**: Batteries and power adapters\n- **Microphone**: For acoustic instruments\n- **Audio Interface**: Reliable connection for electronic instruments\n\n**Recommended Gear**:\n- **Clip-on Tuners**: Vibration-based, less affected by stage noise\n- **Pedal Tuners**: Foot-operated, hands-free operation\n- **Rack Tuners**: Professional-grade with multiple outputs\n- **Phone Apps**: Backup with reliable apps\n\n### Stage Positioning\n**Acoustic Considerations**:\n- **Quiet Location**: Position away from main speakers\n- **Stable Surface**: Avoid vibration from stage\n- **Lighting**: Ensure visibility of tuner display\n- **Accessibility**: Easy access between songs\n\n**Signal Routing**:\n- **Tuner Out**: Dedicated tuner output when available\n- **Mute Switch**: Silent tuning during performance\n- **Bypass Options**: Clean signal when not tuning\n- **Multiple Instruments**: Switching system for multiple guitars/basses\n\n## Performance Tuning Techniques\n\n### Silent Tuning Methods\n**Mute Tuning**:\n- **Volume Pedal**: Cut output for silent tuning\n- **Tuner Mute**: Use tuner's mute function\n- **Footswitch**: Dedicated mute switch\n- **Pickup Selector**: Use silent pickup position\n\n**Quick Checks**:\n- **Harmonic Tuning**: Use harmonics for quick reference\n- **Unison Notes**: Check against other instruments\n- **Reference Pitch**: Use keyboard or fixed pitch source\n- **Memory Tuning**: Tune by feel and experience\n\n### On-the-Fly Adjustments\n**Discreet Tuning**:\n- **Between Songs**: Quick checks during applause\n- **During Long Notes**: Subtle adjustments while playing\n- **Feedback Moments**: Use feedback periods for tuning\n- **Break Sections**: Utilize song breaks for corrections\n\n**Emergency Techniques**:\n- **Relative Tuning**: Tune strings relative to each other\n- **Chord Shape Tuning**: Check with familiar chord shapes\n- **Octave Matching**: Tune octaves by ear\n- **Beat Elimination**: Fine-tune by eliminating beats\n\n## Environmental Challenges\n\n### Stage Conditions\n**Temperature Effects**:\n- **Stage Lighting**: Heat from lights affects instrument tuning\n- **Body Heat**: Player body heat changes instrument temperature\n- **Outdoor Venues**: Weather conditions impact tuning stability\n- **HVAC Systems**: Air conditioning/heating causes fluctuations\n\n**Humidity Factors**:\n- **Crowd Moisture**: Audience increases room humidity\n- **Weather Conditions**: Outdoor humidity variations\n- **Climate Control**: HVAC system humidity levels\n- **Instrument Response**: Wood instruments especially sensitive\n\n### Acoustic Challenges\n**Stage Noise**:\n- **Monitor Wedges**: Loud monitoring interferes with tuning\n- **PA System**: Main speaker volume affects detection\n- **Crowd Noise**: Audience noise levels impact accuracy\n- **Other Instruments**: Adjacent instruments create interference\n\n**Vibration Issues**:\n- **Subwoofers**: Low-frequency vibration affects strings\n- **Drum Kit**: Rhythmic vibration interference\n- **Stage Construction**: Resonance from stage materials\n- **Audience Movement**: Floor vibration from crowd\n\n## Instrument-Specific Strategies\n\n### Guitar Performance Tuning\n**Electric Guitar**:\n- **Locking Tuners**: Better tuning stability\n- **Tremolo Systems**: Special tuning considerations\n- **Noise Gates**: Reduce noise for better detection\n- **Effects Chain**: Tuner placement in signal chain\n\n**Acoustic Guitar**:\n- **Pickup Systems**: Built-in vs. external pickups\n- **Microphone Placement**: Optimal position for tuning\n- **Feedback Control**: Managing feedback while tuning\n- **String Selection**: Appropriate strings for live use\n\n**Classical Guitar**:\n- **Nylon Strings**: Slower response time\n- **Temperature Sensitivity**: Greater environmental impact\n- **Intonation**: Natural fretboard considerations\n- **Playing Position**: Seated vs. standing effects\n\n### Bass Performance Tuning\n**Low Frequency Detection**:\n- **Octave Detection**: Use octave doubling for tuning\n- **Bridge Pickup**: Use bridge pickup for clearer signal\n- **Compression**: Apply compression for consistent levels\n- **Higher Position**: Play higher on neck for detection\n\n**Extended Range**:\n- **5-String Bass**: Additional string considerations\n- **6-String Bass**: Extended range challenges\n- **Fretless Bass**: Intonation and tuning accuracy\n- **Active Electronics**: Battery considerations\n\n### Wind Instrument Tuning\n**Temperature Adaptation**:\n- **Instrument Warm-up**: Allow proper warm-up time\n- **Embouchure Adjustment**: Fine-tuning with embouchure\n- **Tuning Slides**: Primary tuning mechanism\n- **Environmental Adaptation**: Quick adaptation to conditions\n\n## Multi-Instrument Setups\n\n### Guitar Switching Systems\n**Setup Requirements**:\n- **Multiple Outputs**: Separate outputs for each guitar\n- **Quick Change**: Fast switching between instruments\n- **Individual Tuning**: Tuning each instrument separately\n- **Memory Function**: Remember settings for each guitar\n\n**Performance Strategies**:\n- **Pre-Show Tuning**: Tune all instruments before performance\n- **Between Songs**: Quick checks during instrument changes\n- **Backup Instruments**: Keep backup instruments tuned\n- **Reference Tuning**: Consistent reference across instruments\n\n### Band Coordination\n**Section Tuning**:\n- **Orchestral Sections**: Tuning by instrument families\n- **Rock Bands**: Individual instrument tuning\n- **Jazz Ensembles**: Collective tuning approaches\n- **Choirs**: Vocal pitch reference and warm-up\n\n**Reference Standards**:\n- **Fixed Pitch**: Keyboard or organ reference\n- **Tuning Forks**: A=440Hz reference\n- **Pitch Pipes**: Wind instrument reference\n- **Electronic References**: Digital pitch sources\n\n## Technology Integration\n\n### Digital Tuning Solutions\n**Pedal Integration**:\n- **True Bypass**: Clean signal when not tuning\n- **Buffered Bypass**: Signal conditioning options\n- **Multiple Outputs**: Split signals for tuning and amplification\n- **MIDI Integration**: Digital communication capabilities\n\n**Software Solutions**:\n- **Mobile Apps**: Smartphone tuning applications\n- **Laptop Software**: Computer-based tuning systems\n- **DAW Integration**: Tuner plugins for digital setups\n- **Wireless Systems**: Bluetooth/Wi-Fi tuning solutions\n\n### Advanced Features\n**Polyphonic Tuning**:\n- **All-String Detection**: Tune all strings simultaneously\n- **Chord Recognition**: Identify chord structures\n- **Fast Tuning**: Reduced tuning time\n- **Visual Feedback**: Enhanced display options\n\n**Temperament Options**:\n- **Historical Tunings**: Baroque, classical temperaments\n- **World Music**: Non-Western tuning systems\n- **Custom Temperaments**: User-defined tuning systems\n- **Microtonal Support**: Advanced tuning capabilities\n\n## Troubleshooting Live Issues\n\n### Immediate Problems\n**Sudden Tuning Loss**:\n1. Check string condition\n2. Verify tuner function\n3. Check environmental changes\n4. Examine hardware issues\n5. Switch to backup instrument/tuner\n\n**Detection Failures**:\n1. Check audio connections\n2. Verify power/battery\n3. Adjust input levels\n4. Change microphone position\n5. Use alternative tuning method\n\n### Performance Recovery\n**Quick Solutions**:\n- **Relative Tuning**: Tune to other instruments\n- **Memory Tuning**: Use experience and feel\n- **Audience Assistance**: Use audience member with tuner\n- **Professional Help**: Seek technical assistance\n\n**Prevention Strategies**:\n- **Regular Maintenance**: Keep instruments in top condition\n- **Backup Equipment**: Multiple tuners and instruments\n- **Environmental Control**: Manage stage conditions\n- **Professional Setup**: Proper instrument setup\n\n## Professional Best Practices\n\n### Preparation Protocols\n**Pre-Show Routine**:\n- **Instrument Check**: Verify instrument condition\n- **Tuner Verification**: Test all tuning devices\n- **Environment Assessment**: Check stage conditions\n- **Warm-up Routine**: Proper instrument warm-up\n\n**Documentation**:\n- **Tuning Notes**: Record specific tuning requirements\n- **Equipment Lists**: Maintain inventory of tuning gear\n- **Contact Information**: Technical support contacts\n- **Emergency Procedures**: Document troubleshooting steps\n\n### Performance Excellence\n**Consistency**:\n- **Standard Methods**: Use consistent tuning approach\n- **Quality Control**: Maintain high tuning standards\n- **Continuous Improvement**: Refine techniques over time\n- **Professional Development**: Stay current with technology\n\n**Adaptability**:\n- **Flexibility**: Adapt to changing conditions\n- **Problem-Solving**: Quick resolution of issues\n- **Alternative Methods**: Multiple tuning approaches\n- **Backup Planning**: Comprehensive backup strategies",
+      "studio-recording": "# Studio Recording Tuning Guide\n\n## Pre-Recording Preparation\n\n### Instrument Setup\n**Guitar/Bass Preparation**:\n- **String Quality**: Use fresh strings for best tuning stability\n- **String Stretching**: Properly stretch new strings\n- **Action Adjustment**: Set comfortable action for consistent pressure\n- **Intonation Check**: Verify and adjust intonation if needed\n- **Hardware Inspection**: Check tuning pegs, bridge, nut condition\n\n**Acoustic Instrument Care**:\n- **Climate Acclimation**: Allow instruments to adjust to studio environment\n- **Humidity Control**: Maintain 40-50% relative humidity\n- **Temperature Stability**: Keep consistent temperature (68-72°F)\n- **Instrument Warm-up**: Play instrument for 15-30 minutes before recording\n\n### Studio Environment\n**Acoustic Considerations**:\n- **Isolation**: Minimize external noise interference\n- **Temperature Control**: Stable temperature prevents instrument drift\n- **Humidity Management**: Prevents wood expansion/contraction\n- **Vibration Isolation**: Decouple from floor vibrations\n\n**Technical Setup**:\n- **Audio Interface**: Use high-quality interface with clean preamps\n- **Microphone Placement**: Optimize for accurate pitch detection\n- **Monitoring**: Provide clear monitoring for musician\n- **Headphones**: Use closed-back headphones to prevent bleed\n\n## Recording Session Workflow\n\n### Initial Tuning Protocol\n**Step-by-Step Process**:\n1. **Warm-up Period**: 15-30 minutes playing time\n2. **Initial Tuning**: Use high-quality reference tuner\n3. **Harmonic Verification**: Check with natural harmonics\n4. **Chord Testing**: Verify tuning with common chords\n5. **Documentation**: Record tuning method and reference pitch\n\n**Reference Tuning Standards**:\n- **A440**: Industry standard for most productions\n- **A442**: Some European orchestral recordings\n- **Custom Reference**: Tune to specific song key requirements\n\n### Between-Take Maintenance\n**Monitoring Routine**:\n- **Quick Check**: Verify tuning between every take\n- **String Analysis**: Check each string individually\n- **Chord Verification**: Test with song's chord progressions\n- **Pitch Drift**: Monitor for gradual tuning changes\n\n**Environmental Monitoring**:\n- **Temperature Tracking**: Note any temperature changes\n- **Humidity Levels**: Monitor RH variations\n- **Instrument Condition**: Check for sudden changes\n- **Player Fatigue**: Watch for technique degradation\n\n### Multi-Instrument Sessions\n**Orchestral Tuning**:\n- **Section Tuning**: Tune instruments in sections\n- **Reference Pitches**: Use consistent reference across instruments\n- **Blend Testing**: Check tuning with ensemble playing\n- **Adjustment Time**: Allow time for collective tuning\n\n**Band Recording**:\n- **Individual Tuning**: Tune each instrument separately\n- **Collective Verification**: Check tuning when playing together\n- **Reference Tracks**: Use reference tracks for pitch reference\n- **Compromise Tuning**: Adjust for optimal blend\n\n## Genre-Specific Tuning Strategies\n\n### Rock and Metal\n**Considerations**:\n- **Heavy Strings**: Use appropriate gauge for low tunings\n- **Extended Range**: Account for 7/8-string instruments\n- **High Gain**: Tuning stability under high gain conditions\n- **Aggressive Playing**: Account for string bending impact\n\n**Common Tunings**:\n- **Drop D/Drop C**: Heavy music requirements\n- **Extended Range**: 7/8-string standard tunings\n- **Baritone Guitars**: Lower pitch instruments\n- **Alternative Scales**: Custom tuning requirements\n\n### Jazz and Classical\n**Precision Requirements**:\n- **Just Intonation**: Consider for acoustic ensembles\n- **Temperament Choice**: Select appropriate temperament\n- **Dynamic Range**: Account for volume variations\n- **Acoustic Instruments**: Natural pitch variations\n\n**Ensemble Considerations**:\n- **Chamber Music**: Close pitch relationships\n- **Large Ensembles**: Section tuning coordination\n- **Solo Instruments**: Individual precision requirements\n- **Mixed Ensembles**: Different instrument families\n\n### Electronic Music\n**Virtual Instruments**:\n- **Sample Libraries**: Verify pitch accuracy\n- **Synthesizers**: Check tuning calibration\n- **MIDI Controllers**: Ensure accurate transmission\n- **Digital Audio**: Verify sample rate consistency\n\n**Hybrid Setups**:\n- **Live + Electronic**: Acoustic to digital integration\n- **Pitch Correction**: Planning for post-production\n- **Sampling**: Accurate source material recording\n- **Processing Effects**: Impact on perceived pitch\n\n## Troubleshooting Recording Issues\n\n### Common Recording Problems\n**Tuning Instability**:\n1. Check string condition and age\n2. Verify instrument setup (action, intonation)\n3. Monitor environmental changes\n4. Examine playing technique\n5. Test with different tuner/technique\n\n**Detection Issues**:\n1. Check audio interface and connections\n2. Verify microphone placement\n3. Adjust input levels appropriately\n4. Check for interference sources\n5. Try alternative input methods\n\n**Environmental Factors**:\n1. Monitor temperature fluctuations\n2. Control humidity levels\n3. Isolate from external vibrations\n4. Manage electrical interference\n5. Address acoustic anomalies\n\n### Advanced Recording Techniques\n\n### Pitch Correction Planning\n**Pre-Production**:\n- **Style Assessment**: Determine if pitch correction fits genre\n- **Performance Quality**: Aim for natural performance first\n- **Correction Scope**: Plan extent of correction needed\n- **Reference Standards**: Establish pitch targets\n\n**Technical Considerations**:\n- **Software Choice**: Select appropriate correction tools\n- **Correction Amount**: Determine subtle vs. heavy correction\n- **Natural Sound**: Maintain human performance characteristics\n- **Quality Control**: Verify correction doesn't introduce artifacts\n\n### Multiple Takes Management\n**Take Organization**:\n- **Tuning Documentation**: Note tuning for each take\n- **Performance Quality**: Evaluate tuning consistency\n- **Compilation Planning**: Prepare for take combination\n- **Backup Options**: Record alternate tuning versions\n\n**Quality Assurance**:\n- **Pitch Analysis**: Use software to check pitch accuracy\n- **Consistency Check**: Verify tuning across takes\n- **Problem Detection**: Identify and address tuning issues early\n- **Solution Implementation**: Apply appropriate corrections\n\n## Professional Best Practices\n\n### Documentation Standards\n**Session Records**:\n- **Tuning Methods**: Document specific tuning approach used\n- **Reference Pitches**: Note exact reference frequencies\n- **Environmental Conditions**: Record temperature/humidity\n- **Instrument Details**: Document instrument setup and condition\n\n**Communication Protocols**:\n- **Musician Briefing**: Explain tuning requirements clearly\n- **Engineer Coordination**: Ensure consistent approach\n- **Producer Requirements**: Meet creative vision needs\n- **Post-Production Planning**: Plan for mixing/mastering needs\n\n### Quality Control\n**Verification Processes**:\n- **Multiple Checks**: Verify tuning from different approaches\n- **Cross-Reference**: Use multiple tuning methods\n- **Expert Review**: Have experienced musician verify\n- **Technical Analysis**: Use pitch analysis software\n\n**Continuous Improvement**:\n- **Performance Review**: Evaluate tuning effectiveness\n- **Technique Refinement**: Improve methods over time\n- **Equipment Updates**: Maintain and upgrade equipment\n- **Knowledge Development**: Stay current with best practices\n\n## Emergency Procedures\n\n### Equipment Failures\n**Backup Planning**:\n- **Multiple Tuners**: Primary and backup devices\n- **Battery Power**: Portable power options\n- **Alternative Methods**: Non-electronic backup methods\n- **Technical Support**: Access to technical assistance\n\n### Performance Recovery\n**Problem Resolution**:\n- **Quick Diagnosis**: Rapid identification of issues\n- **Alternative Approaches**: Backup tuning methods\n- **Minimal Disruption**: Keep session flowing\n- **Quality Assurance**: Maintain recording quality despite issues\n\n### Time Management\n**Efficiency Considerations**:\n- **Preparation**: Minimize setup time through preparation\n- **Streamlined Process**: Efficient workflow development\n- **Decision Making**: Quick but informed decisions\n- **Flexibility**: Adapt to unexpected situations",
+      "troubleshooting-workflows": "# Tuner Troubleshooting Guide\n\n## Detection Issues\n\n### No Note Detected\n**Causes**:\n- Input volume too low\n- Audio interface not working\n- Input monitoring disabled\n- Wrong input source selected\n\n**Solutions**:\n1. Increase input gain\n2. Check audio interface connections\n3. Enable input monitoring in FL Studio\n4. Verify correct input channel\n\n### Inaccurate Readings\n**Causes**:\n- Background noise interference\n- Multiple notes playing\n- Low quality instrument\n- Old strings\n\n**Solutions**:\n1. Reduce background noise\n2. Play single notes only\n3. Check instrument condition\n4. Replace old strings\n5. Use noise gate if needed\n\n### Display Jumps Between Notes\n**Causes**:\n- Vibrato while checking pitch\n- Instrument instability\n- Room acoustics\n- Poor playing technique\n\n**Solutions**:\n1. Hold notes steady\n2. Check instrument tuning stability\n3. Improve room acoustics\n4. Practice steady playing technique\n\n## Technical Issues\n\n### Plugin Not Loading\n**Solutions**:\n1. Reinstall plugin\n2. Check plugin compatibility\n3. Verify installation path\n4. Restart FL Studio\n5. Update audio drivers\n\n### Audio Interface Problems\n**Symptoms**: No input signal detected\n**Solutions**:\n1. Check cable connections\n2. Verify audio interface power\n3. Test with other software\n4. Update interface drivers\n5. Try different input channel\n\n### High Latency\n**Problem**: Delay between playing and display update\n**Solutions**:\n1. Reduce audio buffer size\n2. Use ASIO drivers\n3. Close other applications\n4. Optimize system performance\n\n## Performance Issues\n\n### CPU Usage\n**High CPU Usage Solutions**:\n1. Increase buffer size\n2. Reduce other plugins\n3. Close unused applications\n4. Update graphics drivers\n5. Disable visual effects\n\n### Memory Issues\n**Solutions**:\n1. Close other projects\n2. Increase system RAM\n3. Restart FL Studio\n4. Clear plugin cache\n\n## Environmental Factors\n\n### Room Acoustics\n**Problems**:\n- Standing waves affecting readings\n- Reflections causing interference\n- Ambient noise levels\n\n**Solutions**:\n1. Use close-miking\n2. Improve room treatment\n3. Use noise gates\n4. Record in quieter space\n\n### Electrical Interference\n**Sources**: 60Hz hum, RF interference\n**Solutions**:\n1. Use balanced cables\n2. Check grounding\n3. Move away from interference sources\n4. Use power conditioning\n\n## Instrument-Specific Issues\n\n### Guitar Problems\n**Common Issues**:\n- Intonation problems\n- Fret buzz affecting pitch\n- Tuning instability\n\n**Solutions**:\n1. Check and adjust intonation\n2. Adjust action height\n3. Check tuning pegs\n4. Replace strings\n5. Check neck relief\n\n### Bass Issues\n**Specific Problems**:\n- Low frequencies harder to detect\n- String thickness affects pitch\n- Longer scale length sensitivity\n\n**Solutions**:\n1. Use octave effect for detection\n2. Play closer to bridge\n3. Use heavier picks\n4. Check string quality\n\n### Acoustic Instruments\n**Challenges**:\n- Volume variations\n- Complex harmonics\n- Room interaction\n\n**Solutions**:\n1. Use high-quality microphone\n2. Position microphone correctly\n3. Use compression for consistent levels\n4. Filter out unwanted frequencies\n\n## Advanced Troubleshooting\n\n### Calibration Issues\n**Reference Pitch Problems**:\n1. Reset to A440Hz\n2. Verify with external tuner\n3. Check for drift over time\n4. Document custom calibrations\n\n### Display Problems\n**GUI Issues**:\n1. Update graphics drivers\n2. Check DPI settings\n3. Try different scaling\n4. Restart in safe mode\n\n### Integration Issues\n**DAW-Specific Problems**:\n1. Check plugin format compatibility\n2. Verify routing settings\n3. Test with different projects\n4. Contact plugin support\n\n## Performance Tips\n\n### Best Practices\n**For Accurate Tuning**:\n- Tune in quiet environment\n- Use consistent playing technique\n- Check pitch with multiple notes\n- Verify with harmonics\n- Allow instrument to warm up\n\n**For Studio Work**:\n- Tune before each take\n- Check between takes\n- Document tuning methods\n- Keep reference tuner handy\n- Maintain consistent environment"
+    },
+    "by-goal": {
+      "advanced-tuning-techniques": "# Advanced Tuning Techniques\n\n## Precision Tuning Methods\n\n### Harmonic Tuning\n**Technique**: Use natural harmonics for enhanced accuracy\n- **12th Fret Harmonics**: Compare fretted notes to harmonics\n- **5th/7th Fret Harmonics**: Verify octave relationships\n- **Natural Harmonics**: Open string harmonics at various positions\n\n**Method**:\n1. Tune 6th string to reference\n2. Check 12th fret harmonic against fretted 12th fret\n3. Use 5th fret harmonics to tune adjacent strings\n4. Verify with chord shapes\n\n### Equalization Tuning\n**Advanced**: Equalize beats between intervals\n- **Beats Theory**: Listen to interference patterns\n- **Slow Beating**: Near-unison intervals\n- **Fast Beating**: Wider intervals\n- **Beat Elimination**: Perfect unison target\n\n**Process**:\n1. Tune open strings approximately\n2. Play intervals and listen for beats\n3. Adjust until beats slow to near-zero\n4. Verify with multiple interval combinations\n\n## Alternative Temperament Tuning\n\n### Just Intonation\n**Concept**: Pure harmonic relationships\n- **Major Third**: 5/4 frequency ratio\n- **Perfect Fifth**: 3/2 frequency ratio\n- **Major Triad**: 4:5:6 frequency ratios\n\n**Applications**:\n- Acoustic instruments\n- Vocal harmony\n- Early music performance\n- Microtonal exploration\n\n### Pythagorean Tuning\n**Method**: Based on perfect fifths\n- **Circle of Fifths**: Pure 3:2 ratios\n- **Pythagorean Comma**: Small tuning discrepancy\n- **Historical Context**: Medieval and Renaissance music\n\n### Mean Tone Temperament\n**Compromise**: Between just and equal temperament\n- **Modified Fifths**: Slightly narrowed\n- **Better Thirds**: Improved major thirds\n- **Historical Use**: Baroque period instruments\n\n## Instrument-Specific Advanced Techniques\n\n### Guitar Advanced Tuning\n\n#### Intonation Adjustment\n**Setup Requirements**:\n- Accurate tuner with cent display\n- Screwdriver for bridge adjustments\n- Stable temperature/humidity\n- Fresh strings\n\n**Process**:\n1. Tune open strings accurately\n2. Check 12th fret pitch against harmonic\n3. Adjust bridge saddles to eliminate discrepancy\n4. Verify across all strings\n5. Re-tune open strings and repeat if needed\n\n#### Fretboard Mapping\n**Analysis**: Check tuning across fretboard\n- **Octave Tests**: Open strings vs. 12th fret\n- **Chord Tests**: Common chord shapes\n- **Scale Tests**: Melodic passages\n- **Harmonic Tests**: Harmonic clarity\n\n#### Temperature Compensation\n**Factors**:\n- **Temperature Effects**: Wood expansion/contraction\n- **Humidity Effects**: Wood moisture content\n- **String Age**: Metal fatigue\n- **Playing Style**: Bending and vibrato impact\n\n### Bass Precision Tuning\n\n#### Low Frequency Detection\n**Challenges**:\n- Fundamental detection difficulty\n- Harmonic interference\n- Room mode interaction\n- Instrument resonance\n\n**Solutions**:\n- Use octave detection modes\n- Apply high-pass filtering\n- Play closer to bridge\n- Use compression for consistent levels\n\n#### Extended Range Tuning\n**5-String Considerations**:\n- **B String Tension**: Proper gauge selection\n- **Neck Relief**: Adjust for additional tension\n- **Pickup Height**: Balance output across strings\n- **Bridge Setup**: Intonation for all strings\n\n**6-String Adaptations**:\n- **High C String**: Proper gauge and tension\n- **Scale Length**: Considerations for high strings\n- **Fingerboard Radius**: Consistent playability\n- **Nut Width**: Comfortable string spacing\n\n### Acoustic Instrument Tuning\n\n#### Violin Family Tuning\n**Fine Tuning**:\n- **Peg Tuning**: Coarse adjustment\n- **Fine Tuner**: Precise adjustment\n- **String Stretching**: New string settling\n- **Climate Impact**: Temperature/humidity effects\n\n#### Wind Instrument Tuning\n**Adjustment Methods**:\n- **Tuning Slide**: Primary tuning mechanism\n- **Lip Embouchure**: Fine pitch control\n- **Temperature Effects**: Instrument temperature\n- **Mouthpiece Position**: Impact on pitch\n\n## Studio Recording Techniques\n\n### Pre-Recording Tuning Protocol\n**Preparation Steps**:\n1. **Instrument Warm-up**: Allow instrument to stabilize\n2. **Room Acclimation**: Let instrument adjust to room conditions\n3. **Multiple Checks**: Verify tuning from different angles\n4. **Reference Comparison**: Check against known good pitch\n5. **Documentation**: Note tuning methods and conditions\n\n### Between-Take Tuning\n**Monitoring Strategy**:\n- **Check Each Take**: Verify tuning between performances\n- **String Condition**: Monitor for tuning drift\n- **Environmental Changes**: Track temperature/humidity\n- **Playing Fatigue**: Adjust for player tiredness\n\n### Post-Recording Analysis\n**Evaluation Methods**:\n- **Pitch Analysis**: Use software pitch detection\n- **Chord Analysis**: Check harmonic relationships\n- **Consistency Check**: Compare multiple takes\n- **Correction Planning**: Determine need for pitch correction\n\n## Live Performance Tuning\n\n### On-Stage Considerations\n**Environmental Factors**:\n- **Temperature Changes**: Stage lighting effects\n- **Humidity Variations**: Crowds affecting air moisture\n- **Vibration Impact**: Stage rumble affecting strings\n- **Audio Feedback**: Monitor levels affecting perception\n\n### Quick Tuning Methods\n**Efficient Techniques**:\n- **Reference Notes**: Use keyboard or fixed pitch instrument\n- **Harmonic Tuning**: Quick interval checking\n- **Octave Comparison**: Fast accuracy verification\n- **Chord Shape Test**: Immediate feedback\n\n### Backup Systems\n**Contingency Planning**:\n- **Multiple Tuners**: Primary and backup devices\n- **Battery Power**: Portable power for tuners\n- **Visual Reference**: Chart or app for emergency tuning\n- **Pitch Pipe**: Analog backup method\n\n## Troubleshooting Advanced Issues\n\n### Persistent Tuning Problems\n**Diagnostic Steps**:\n1. Check instrument condition (frets, strings, setup)\n2. Verify tuner accuracy and calibration\n3. Test in different environments\n4. Try alternate tuning methods\n5. Consult professional luthier/technician\n\n### Electronic Instrument Issues\n**Digital Instrument Concerns**:\n- **Sample Rate**: Verify correct sample rate\n- **Clock Source**: Check word clock synchronization\n- **Calibration**: Verify electronic tuning calibration\n- **Temperature**: Allow electronics to warm up\n\n### Environmental Interference\n**Acoustic Problems**:\n- **Standing Waves**: Move to different position\n- **External Noise**: Identify and eliminate sources\n- **Electrical Interference**: Check grounding and cables\n- **Room Modes**: Use room treatment or EQ",
+      "guitar-recording-preparation": "# Guitar Recording Preparation with Tuner\n\n**Difficulty:** Beginner\n**Time Required:** 5-10 minutes\n**Goal:** Achieve perfect guitar tuning before recording session\n**Genre:** All (Universal)\n\n---\n\n## Prerequisites\n\n- Guitar with working tuning machines\n- Audio interface with instrument input\n- Tuner plugin loaded on input channel\n- Quiet recording environment\n\n---\n\n## Workflow Steps\n\n### Step 1: Signal Setup\n\n1. **Connect Guitar:**\n   - Plug guitar into DI/instrument input\n   - Bypass any pedals or effects\n   - *Why:* Clean signal gives most accurate reading\n\n2. **Load Tuner:**\n   - Insert Tuner on input mixer channel\n   - Place BEFORE any effects\n   - *Why:* Reverb/delay confuses pitch detection\n\n3. **Set Input Gain:**\n   - Play guitar at normal volume\n   - Adjust interface gain until signal is clear but not clipping\n   - *Why:* Proper level ensures accurate detection\n\n---\n\n### Step 2: Tuner Configuration\n\n4. **Reference Pitch:** Verify **A4 = 440 Hz**\n   - *Standard:* Use 440 Hz for universal compatibility\n   - *Alternative:* Adjust if matching to specific instrument\n\n5. **Detection Settings:**\n   - **Sensitivity:** Medium\n   - **Attack:** Fast\n   - **Release:** Medium\n   - *Why:* Optimal for plucked guitar strings\n\n6. **Display Mode:** **Chromatic**\n   - *Why:* Allows tuning to standard EADGBE\n\n---\n\n### Step 3: Tuning Procedure (Standard EADGBE)\n\n7. **Low E String (6th String):**\n   - Pluck string firmly\n   - Watch visual meter\n   - Tune until meter shows green (center)\n   - Target: **E2 (82.41 Hz)**\n\n8. **A String (5th String):**\n   - Pluck and tune to center\n   - Target: **A2 (110.00 Hz)**\n\n9. **D String (4th String):**\n   - Tune to center\n   - Target: **D3 (146.83 Hz)**\n\n10. **G String (3rd String):**\n    - Tune to center\n    - Target: **G3 (196.00 Hz)**\n    - *Note:* This string often goes out of tune fastest\n\n11. **B String (2nd String):**\n    - Tune to center\n    - Target: **B3 (246.94 Hz)**\n\n12. **High E String (1st String):**\n    - Final string\n    - Target: **E4 (329.63 Hz)**\n\n---\n\n### Step 4: Verification Pass\n\n13. **Re-Check All Strings:**\n    - Go through all 6 strings again\n    - *Why:* Adjusting one string affects tension on others\n    - Fine-tune any strings that drifted\n\n14. **Octave Verification:**\n    - Play low E and high E together\n    - Listen for beating/phasing\n    - Both should be perfectly in tune (2 octaves apart)\n\n15. **Play Test Chord:**\n    - Strum open E major chord (022100)\n    - Listen for any sour notes\n    - Fine-adjust if needed\n\n---\n\n### Step 5: Intonation Check (Advanced)\n\n16. **12th Fret Harmonic vs Fretted:**\n    - Play 12th fret harmonic on each string\n    - Compare to 12th fret fretted note\n    - Should be identical pitch\n    - *If Not:* Adjust bridge saddle position (guitar setup required)\n\n17. **Document Intonation Issues:**\n    - Note which strings need setup work\n    - Schedule professional setup if multiple strings are off\n\n---\n\n### Step 6: Alternative Tunings\n\n**Drop D Tuning:**\n- Low E string down to D2 (73.42 Hz)\n- All other strings standard\n\n**Half-Step Down (Eb Standard):**\n- All strings down 1 semitone\n- Eb2, Ab2, Db3, Gb3, Bb3, Eb4\n\n**Open G Tuning:**\n- D2, G2, D3, G3, B3, D4\n\n**DADGAD:**\n- D2, A2, D3, G3, A3, D4\n\n---\n\n### Step 7: Recording Readiness\n\n18. **Bypass Tuner:**\n    - Turn off or remove Tuner plugin\n    - *Why:* No longer needed, saves CPU\n\n19. **Add Recording Effects:**\n    - Now safe to add amp sims, reverb, etc.\n    - Record-enable track\n\n20. **Final Sound Check:**\n    - Play through part to be recorded\n    - Verify tone and tuning stability\n    - Make any last adjustments\n\n---\n\n## Common Tuning Issues\n\n### String Won't Stabilize\n- **Cause:** Worn strings or poor string winding\n- **Solution:** Replace strings, ensure proper winding at tuning peg\n\n### Reading Jumps Between Notes\n- **Cause:** Playing too softly or string has weak fundamental\n- **Solution:** Pluck harder, mute other strings\n\n### Tuner Shows Wrong Octave\n- **Cause:** Harmonic overtone louder than fundamental\n- **Solution:** Pluck near bridge for stronger fundamental\n\n### String Goes Flat Immediately After Tuning\n- **Cause:** New strings stretching, or tuning peg slipping\n- **Solution:** Stretch new strings, tighten tuning peg screw\n\n---\n\n## Tips for Different Guitar Types\n\n### Electric Guitar\n- Use bridge pickup for clearest signal\n- Roll off tone knob to reduce harmonics\n- Ensure good cable connection\n\n### Acoustic Guitar\n- Mic placement matters less than DI signal\n- Use DI/pickup output if available\n- Acoustics may take longer to stabilize\n\n### Classical/Nylon String\n- Takes much longer to settle after tuning\n- May need multiple tuning passes\n- Lower tension = more drift\n\n### 7-String Guitar\n- Add low B string: **B1 (61.74 Hz)**\n- Tune low B first, then proceed as normal\n\n### 12-String Guitar\n- Tune octave pairs together\n- Fine-tune octave strings slightly sharp for shimmer\n- Takes significantly longer\n\n---\n\n## Environmental Factors\n\n### Temperature\n- Guitars go sharp in heat, flat in cold\n- Let guitar acclimate to room temperature\n- Re-tune after 15-30 minutes in new environment\n\n### Humidity\n- High humidity = swollen wood, different tension\n- Low humidity = shrinkage, tuning instability\n- Store guitars at 40-50% relative humidity\n\n### String Age\n- Old strings lose brightness and tuning stability\n- Change strings before important recordings\n- New strings need stretching and multiple tuning passes\n\n---\n\n## Recording Session Protocol\n\n1. **Tune at start of session**\n2. **Re-tune every 30 minutes**\n3. **Re-tune after any break**\n4. **Re-tune after any string bending or aggressive playing**\n5. **Final tuning check before each take**\n\n---\n\n## Advanced Techniques\n\n### Compensation for String Gauge\n- Heavier gauge = more tension = stays in tune longer\n- Lighter gauge = more expressive but less stable\n- Document preferred gauge for consistent results\n\n### Temperature Compensation\n- Some tuners have temperature compensation\n- Tuner plugin doesn't compensate - be aware of room temp\n\n### Stretch Tuning\n- Intentionally tune bass strings slightly flat, treble slightly sharp\n- Compensates for psychoacoustic perception\n- Advanced technique, not for beginners\n\n---\n\n## Troubleshooting\n\n### Tuner Shows No Reading\n- Check input signal level\n- Increase Tuner sensitivity\n- Verify audio interface is selected in FL Studio\n- Check guitar cable connection\n\n### Reading Is Unstable\n- Mute adjacent strings\n- Pluck string cleanly without finger noise\n- Check for rattling hardware on guitar\n- Increase attack time on Tuner\n\n### Tuning Drifts While Playing\n- Strings need breaking in (new strings)\n- Tuning peg mechanisms worn (needs repair)\n- Nut or bridge needs lubrication\n- Temperature/humidity change during session\n\n---\n\n## Next Steps\n\nAfter mastering basic tuning:\n\n1. **Learn Intonation Setup** - Adjust bridge saddles\n2. **Explore Alternative Tunings** - Expand creative palette\n3. **Study String Theory** - Understand why tuning works\n4. **Practice Ear Training** - Tune by ear as backup skill\n\n---\n\n**Related Workflows:**\n- [Bass Guitar Tuning](./bass-guitar-tuning.md)\n- [Vocal Pitch Training](./vocal-pitch-training.md)\n- [Sample Pitch Analysis](./sample-pitch-analysis.md)\n\n---\n\n**Last Updated:** February 3, 2026\n**Status:** Complete workflow\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Tuner\r\n\r\nThis section contains workflow information for the tuner plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Tuner\r\n\r\nThis section contains reference information for the tuner plugin.\r\n"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "Parallel Drum Buss",
+  "genre": "hip-hop/rap",
+  "mood": "electric",
+  "description": "Parallel compression chain for punchy drums",
+  "parameters": {
+    "chain": [
+      {
+        "slot": 1,
+        "type": "Compressor",
+        "plugin": "Fruity Compressor",
+        "settings": "Heavy compression"
+      },
+      {
+        "slot": 2,
+        "type": "EQ",
+        "plugin": "Fruity Parametric EQ 2",
+        "settings": "High-pass, add punch"
+      }
+    ],
+    "routing": "Parallel",
+    "parallelPaths": 1,
+    "mixControl": true
+  },
+  "workflow": {
+    "useCase": "Punchy drum processing",
+    "steps": [
+      "Set up parallel chain",
+      "Heavy compression on parallel",
+      "Blend with dry signal",
+      "Add EQ for character"
+    ],
+    "troubleshooting": [
+      { "issue": "Too compressed", "fix": "Reduce compression ratio" },
+      { "issue": "No punch", "fix": "Increase parallel blend" }
+    ]
+  },
+  "abTest": {
+    "listenFor": "Punchy, powerful drums",
+    "duration": "8-bar drum pattern"
+  }
+}

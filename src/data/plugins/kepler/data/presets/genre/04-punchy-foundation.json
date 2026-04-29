@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "plugin": "Kepler",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "presetName": "Punchy Foundation",
+    "category": "genre",
+    "genre": "R&B",
+    "mood": "funky"
+  },
+  "settings": {
+    "oscillator1": {
+      "waveform": "saw",
+      "octave": "-1",
+      "detune": 0,
+      "mix": 80
+    },
+    "oscillator2": {
+      "waveform": "square",
+      "octave": "-2",
+      "detune": 2,
+      "mix": 40
+    },
+    "filter": {
+      "type": "lowpass",
+      "cutoff": 800,
+      "resonance": 35,
+      "drive": 12,
+      "envAmt": 70,
+      "envVel": 60
+    },
+    "envelope": {
+      "attack": 3,
+      "decay": 120,
+      "sustain": 65,
+      "release": 150
+    },
+    "lfo": {
+      "waveform": "sine",
+      "rate": 0.8,
+      "amt": 25,
+      "dest": "filterCutoff"
+    }
+  },
+  "chain": {
+    "pre": ["High-pass filter at 40Hz"],
+    "post": ["Fruily Compressor - Attack 15ms, Release 90ms, Ratio 2.5:1"]
+  },
+  "genreTags": ["R&B", "funky", "groove", "smooth"],
+  "a/bTesting": {
+    "testA": "Filter env amount at 70 for punch",
+    "testB": "Filter env amount at 40 for smoother attack"
+  },
+  "troubleshooting": {
+    "muddyLowEnd": "Cut below 60Hz on bass channel",
+    "maskingVocals": "EQ dip at 300-500Hz by 2dB"
+  }
+}

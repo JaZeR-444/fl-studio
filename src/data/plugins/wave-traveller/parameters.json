@@ -1,0 +1,334 @@
+{
+  "pluginName": "Wave Traveller",
+  "version": "1.0",
+  "lastUpdated": "2025-01-04",
+  "category": "Granular Synthesis & Wave Sequencing",
+  "parameters": {
+    "wavePosition": {
+      "type": "percentage",
+      "range": {
+        "min": 0,
+        "max": 100,
+        "default": 50
+      },
+      "unit": "%",
+      "description": "Current position within the loaded audio file",
+      "technicalDetails": "Controls read position for grain generation with 0.1% resolution",
+      "modulationTargets": ["lfo", "envelope_follower", "automation", "midi_control"],
+      "sweetSpots": {
+        "slow_evolution": [0, 100, "0.1-2Hz LFO"],
+        "rhythmic": [0, 100, "tempo_synced"],
+        "random": [0, 100, "random_modulation"],
+        "static": ["fixed_value", "for_sustained_textures"]
+      }
+    },
+    "grainSize": {
+      "type": "time",
+      "range": {
+        "min": 1,
+        "max": 500,
+        "default": 50
+      },
+      "unit": "ms",
+      "description": "Duration of individual audio grains",
+      "technicalDetails": "Controls grain length affecting texture from颗粒状 to smooth",
+      "cpuImpact": "exponential_invers",
+      "sweetSpots": {
+        "texture": [1, 20, "granular_noises"],
+        "rhythmic": [20, 50, "percussive_effects"],
+        "musical": [50, 150, "recognizable_source"],
+        "ambient": [150, 500, "evolving_textures"]
+      }
+    },
+    "grainDensity": {
+      "type": "frequency",
+      "range": {
+        "min": 1,
+        "max": 100,
+        "default": 20
+      },
+      "unit": "Hz",
+      "description": "Number of grains generated per second",
+      "technicalDetails": "Controls grain cloud density, higher values increase CPU usage exponentially",
+      "cpuImpact": "exponential_direct",
+      "sweetSpots": {
+        "sparse": [1, 10, "isolated_grains"],
+        "textural": [10, 30, "ambient_clouds"],
+        "rhythmic": [30, 60, "pattern_generation"],
+        "dense": [60, 100, "noise_like"]
+      }
+    },
+    "pitchShift": {
+      "type": "semitones",
+      "range": {
+        "min": -24,
+        "max": 24,
+        "default": 0
+      },
+      "unit": "semitones",
+      "description": "Transposition of individual grains",
+      "technicalDetails": "High-quality granular pitch shifting without time stretching artifacts",
+      "modulationTargets": ["lfo", "automation", "midi_pitch_bend"],
+      "sweetSpots": {
+        "unison": 0,
+        "harmonic": [5, 7, 12, -5, -7, -12],
+        "dissonant": [1, 2, 3, 6, -1, -2, -3],
+        "extreme": [18, 24, -18, -24]
+      }
+    },
+    "spread": {
+      "type": "percentage",
+      "range": {
+        "min": 0,
+        "max": 100,
+        "default": 50
+      },
+      "unit": "%",
+      "description": "Stereo width and spatial positioning of grains",
+      "technicalDetails": "Controls spatial distribution of grain cloud across stereo field",
+      "sweetSpots": {
+        "focused": [0, 25, "mono_center"],
+        "narrow": [25, 50, "subtle_stereo"],
+        "wide": [50, 75, "expansive_stereo"],
+        "extreme": [75, 100, "maximum_width"]
+      }
+    },
+    "panPosition": {
+      "type": "percentage",
+      "range": {
+        "min": -100,
+        "max": 100,
+        "default": 0
+      },
+      "unit": "%",
+      "description": "Overall stereo positioning",
+      "technicalDetails": "Global pan control for processed signal",
+      "modulationTargets": ["lfo", "automation", "midi_control"]
+    },
+    "feedback": {
+      "type": "percentage",
+      "range": {
+        "min": 0,
+        "max": 95,
+        "default": 0
+      },
+      "unit": "%",
+      "description": "Recursive processing feedback amount",
+      "technicalDetails": "Feeds processed signal back into input, 95% maximum to avoid infinite loops",
+      "sweetSpots": {
+        "subtle": [0, 20, "gentle_evolution"],
+        "moderate": [20, 50, "texture_development"],
+        "complex": [50, 80, "evolving_soundscapes"],
+        "chaotic": [80, 95, "experimental"]
+      }
+    },
+    "timeStretch": {
+      "type": "multiplier",
+      "range": {
+        "min": 0.1,
+        "max": 4.0,
+        "default": 1.0
+      },
+      "unit": "x",
+      "description": "Playback speed without affecting pitch",
+      "technicalDetails": "Granular time stretching algorithm preserving pitch characteristics",
+      "sweetSpots": {
+        "ambient": [0.1, 0.5, "slow_evolution"],
+        "normal": [0.8, 1.2, "subtle_variations"],
+        "energetic": [1.5, 2.5, "fast_rhythmic"],
+        "extreme": [2.5, 4.0, "glitch_effects"]
+      }
+    }
+  },
+  "lfoParameters": {
+    "wavePositionLFO": {
+      "rate": {
+        "type": "frequency",
+        "range": [0.01, 100],
+        "unit": "Hz",
+        "default": 1.0
+      },
+      "depth": {
+        "type": "percentage",
+        "range": [0, 100],
+        "unit": "%",
+        "default": 50
+      },
+      "waveform": {
+        "type": "selection",
+        "options": ["sine", "triangle", "square", "saw", "random"],
+        "default": "sine"
+      },
+      "sync": {
+        "type": "boolean",
+        "default": false,
+        "options": ["free_running", "tempo_synced"]
+      }
+    },
+    "grainSizeLFO": {
+      "rate": {
+        "type": "frequency",
+        "range": [0.1, 50],
+        "unit": "Hz",
+        "default": 0.5
+      },
+      "depth": {
+        "type": "percentage",
+        "range": [0, 50],
+        "unit": "%",
+        "default": 25
+      }
+    },
+    "pitchLFO": {
+      "rate": {
+        "type": "frequency",
+        "range": [0.5, 20],
+        "unit": "Hz",
+        "default": 2.0
+      },
+      "depth": {
+        "type": "semitones",
+        "range": [0, 12],
+        "unit": "semitones",
+        "default": 3
+      }
+    }
+  },
+  "filterParameters": {
+    "filterType": {
+      "type": "selection",
+      "options": ["low_pass", "high_pass", "band_pass", "notch"],
+      "default": "low_pass"
+    },
+    "cutoff": {
+      "type": "frequency",
+      "range": [20, 20000],
+      "unit": "Hz",
+      "default": 2000
+    },
+    "resonance": {
+      "type": "percentage",
+      "range": [0, 95],
+      "unit": "%",
+      "default": 0
+    }
+  },
+  "envelopeParameters": {
+    "attack": {
+      "type": "time",
+      "range": [0, 10000],
+      "unit": "ms",
+      "default": 10
+    },
+    "decay": {
+      "type": "time",
+      "range": [0, 10000],
+      "unit": "ms",
+      "default": 500
+    },
+    "sustain": {
+      "type": "percentage",
+      "range": [0, 100],
+      "unit": "%",
+      "default": 50
+    },
+    "release": {
+      "type": "time",
+      "range": [10, 20000],
+      "unit": "ms",
+      "default": 1000
+    }
+  },
+  "audioParameters": {
+    "inputGain": {
+      "type": "gain",
+      "range": [-20, 20],
+      "unit": "dB",
+      "default": 0
+    },
+    "outputGain": {
+      "type": "gain",
+      "range": [-96, 12],
+      "unit": "dB",
+      "default": 0
+    },
+    "sampleRate": {
+      "type": "selection",
+      "options": [22050, 44100, 48000, 88200, 96000, 192000],
+      "default": 44100
+    }
+  },
+  "modulationMatrix": {
+    "sources": [
+      "lfo1", "lfo2", "lfo3", "envelope_follower", "midi_velocity", 
+      "mod_wheel", "pitch_bend", "aftertouch", "automation", "random"
+    ],
+    "destinations": [
+      "wave_position", "grain_size", "grain_density", "pitch_shift", 
+      "spread", "feedback", "time_stretch", "filter_cutoff"
+    ],
+    "maxSlots": 16
+  },
+  "performanceMetrics": {
+    "latency": {
+      "64_samples": 1.5,
+      "128_samples": 3.0,
+      "256_samples": 6.0,
+      "512_samples": 12.0,
+      "1024_samples": 23.0
+    },
+    "cpuUsage": {
+      "conservative": 5,
+      "moderate": 15,
+      "complex": 30,
+      "extreme": 40
+    },
+    "memoryUsage": {
+      "base": 100,
+      "perMB_of_audio": 2.5
+    }
+  },
+  "supportedFormats": {
+    "audio": ["wav", "aiff", "mp3", "flac", "ogg"],
+    "project": ["flp", "all"],
+    "preset": ["json", "fxb", "fxp"]
+  },
+  "genreApplications": {
+    "ambient": {
+      "typicalSettings": {
+        "grainSize": [100, 300],
+        "grainDensity": [5, 25],
+        "feedback": [30, 60],
+        "timeStretch": [0.2, 0.8]
+      },
+      "useCase": "Evolving textures and soundscapes"
+    },
+    "electronic": {
+      "typicalSettings": {
+        "grainSize": [10, 80],
+        "grainDensity": [20, 60],
+        "pitchShift": [-12, 12],
+        "timeStretch": [0.8, 2.0]
+      },
+      "useCase": "Rhythmic granulation and complex textures"
+    },
+    "cinematic": {
+      "typicalSettings": {
+        "grainSize": [50, 200],
+        "grainDensity": [10, 40],
+        "feedback": [20, 50],
+        "spread": [60, 100]
+      },
+      "useCase": "Sound design and evolving atmospheres"
+    },
+    "experimental": {
+      "typicalSettings": {
+        "grainSize": [1, 100],
+        "grainDensity": [40, 100],
+        "pitchShift": [-24, 24],
+        "feedback": [50, 95]
+      },
+      "useCase": "Pushing boundaries and exploring new sounds"
+    }
+  }
+}

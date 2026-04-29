@@ -1,0 +1,262 @@
+{
+  "id": "fruity-phaser",
+  "name": "Fruity Phaser",
+  "category": "Modulation",
+  "tier": "Free",
+  "type": "Modulation",
+  "description": "Fruity Phaser - Modulation",
+  "tags": [
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "modulation",
+    "fx",
+    "audio"
+  ],
+  "icon": "/plugins/fruity-phaser-icon.svg",
+  "color": "#A855F7",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-phaser",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "pluginName": "Fruity Phaser",
+    "parameters": [
+      {
+        "id": "stages",
+        "name": "Stages",
+        "type": "selector",
+        "options": [
+          "2",
+          "4",
+          "6",
+          "8",
+          "etc"
+        ],
+        "defaultValue": "4",
+        "description": "Number of all-pass filter stages."
+      },
+      {
+        "id": "min_depth",
+        "name": "Min Depth",
+        "type": "knob",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "defaultValue": 0,
+        "description": "Lowest point of the LFO sweep."
+      },
+      {
+        "id": "max_depth",
+        "name": "Max Depth",
+        "type": "knob",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "defaultValue": 100,
+        "description": "Highest point of the LFO sweep."
+      },
+      {
+        "id": "speed",
+        "name": "Speed",
+        "type": "knob",
+        "range": {
+          "min": 0,
+          "max": 5,
+          "unit": "Hz"
+        },
+        "defaultValue": 0.2,
+        "description": "Rate of the LFO modulation."
+      }
+    ]
+  },
+  "presets": {
+    "hip-hop-presets": {
+      "presets": [
+        {
+          "name": "Trap Hi-Hat Shimmer",
+          "category": "texture",
+          "subgenre": "trap",
+          "parameters": {
+            "frequency": 3000,
+            "depth": 35,
+            "lfoRate": 0.125,
+            "stages": 6,
+            "feedback": 20,
+            "stereo": 50,
+            "wet": 28
+          },
+          "description": "Subtle rhythmic movement on hi-hats",
+          "instrument": "hi-hats"
+        },
+        {
+          "name": "Melodic Pad Sweep",
+          "category": "movement",
+          "subgenre": "melodic",
+          "parameters": {
+            "frequency": 800,
+            "depth": 55,
+            "lfoRate": 0.33,
+            "stages": 10,
+            "feedback": 30,
+            "stereo": 70,
+            "wet": 42
+          },
+          "description": "Lush, evolving pad texture",
+          "instrument": "synth-pads"
+        },
+        {
+          "name": "Boom Bap Classic",
+          "category": "vintage",
+          "subgenre": "boom-bap",
+          "parameters": {
+            "frequency": 600,
+            "depth": 50,
+            "lfoRate": 0.5,
+            "stages": 8,
+            "feedback": 40,
+            "stereo": 30,
+            "wet": 30
+          },
+          "description": "Classic phaser sweep for samples",
+          "instrument": "samples"
+        },
+        {
+          "name": "Lo-Fi Wobble",
+          "category": "vibe",
+          "subgenre": "lo-fi",
+          "parameters": {
+            "frequency": 400,
+            "depth": 60,
+            "lfoRate": 0.125,
+            "stages": 4,
+            "feedback": 35,
+            "stereo": 40,
+            "wet": 25
+          },
+          "description": "Slow, vintage phaser character",
+          "instrument": "keys"
+        },
+        {
+          "name": "Vocal Space",
+          "category": "creative",
+          "subgenre": "experimental",
+          "parameters": {
+            "frequency": 1000,
+            "depth": 45,
+            "lfoRate": 0.5,
+            "stages": 6,
+            "feedback": 25,
+            "stereo": 60,
+            "wet": 20
+          },
+          "description": "Spacey vocal modulation",
+          "instrument": "vocals"
+        },
+        {
+          "name": "Bass Pulse",
+          "category": "movement",
+          "subgenre": "electronic",
+          "parameters": {
+            "frequency": 300,
+            "depth": 50,
+            "lfoRate": 0.25,
+            "stages": 6,
+            "feedback": 30,
+            "stereo": 20,
+            "wet": 18
+          },
+          "description": "Pulsing bass movement (check mono!)",
+          "instrument": "bass"
+        },
+        {
+          "name": "Transition Sweep",
+          "category": "fx",
+          "subgenre": "all",
+          "parameters": {
+            "frequency": 1200,
+            "depth": 70,
+            "lfoRate": 0.25,
+            "stages": 8,
+            "feedback": 50,
+            "stereo": 80,
+            "wet": 65
+          },
+          "description": "Dramatic sweep for transitions",
+          "instrument": "fx",
+          "automation": "Increase wet over 4-8 bars"
+        },
+        {
+          "name": "Percussion Texture",
+          "category": "texture",
+          "subgenre": "all",
+          "parameters": {
+            "frequency": 1500,
+            "depth": 40,
+            "lfoRate": 0.25,
+            "stages": 6,
+            "feedback": 28,
+            "stereo": 45,
+            "wet": 32
+          },
+          "description": "Movement on percussion loops",
+          "instrument": "percussion"
+        }
+      ]
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity Phaser\n\n## Purpose & Identity\nFruity Phaser is a classic **modulation effect** that creates a \"wooshy,\" sweeping sound. Unlike a Flanger (which uses micro-delays), a Phaser uses a series of **All-Pass Filters** to shift the phase of specific frequencies. This creates \"notches\" in the spectrum that move back and forth, producing an organic, liquid texture that is a staple of psychedelic and soulful music. [SRC: IL-MAN]\n\n## 60-Second Mental Model\nImagine a comb moving back and forth through your audio spectrum. The \"Teeth\" of the comb are the **Notches** where certain frequencies are cancelled out. As the comb moves (**Sweep**), you hear the characteristic swirling sound. Because it doesn't use delays, it sounds smoother and less metallic than a flanger.\n\n## Hip-Hop / R&B Context\n- **The Soulful Rhodes:** Adding a slow, 4-stage phaser to a Rhodes piano to get that classic 70s R&B/Neo-Soul movement (Vibey).\n- **Spacey Synth Leads:** Using a wide stereo phaser to make a lead synth feel like it's rotating around the listener's head (Spacey).\n- **Warped Hi-Hats:** Using a high-feedback phaser on trap hi-hats to give them a metallic, \"alien\" character (Psychedelic).\n\n## When To Use\n- When you want **organic, liquid movement** in a sound.\n- When you want to **widen a mono instrument** without using a Haas delay.\n- When you need a **vintage \"Retro\" character** for keys or guitars.\n\n## When NOT To Use\n- **Sub-Bass:** Phasing the low-end will cause inconsistent bass levels and phase cancellation in clubs.\n- **Aggressive Metallic Textures:** Use **Fruity Flanger** if you want that \"Jet Engine\" or \"Robot\" sound. [SRC: REPUTABLE]",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Fruity Phaser\n\n## UI Tour\n1.  **SWEEP Knob:** Controls the LFO speed (Rate). How fast the notches move. [SRC: IL-MAN]\n2.  **MIN/MAX DEPTH Knobs:** Define the frequency boundaries of the sweep (The \"Bottom\" and \"Top\" of the woosh).\n3.  **FEEDBACK Knob:** Sends the processed signal back into the input. Higher settings create sharp, resonant \"whistling\" peaks.\n4.  **NOTCHES Slider:** Sets the number of filter stages. \n    - **Low (4-8):** Warm, vintage sound.\n    - **High (12-24):** Intense, metallic, robotic sound.\n5.  **PHASE Knob:** Sets the stereo offset of the LFO. \n    - **0%:** L and R move together (Mono-ish).\n    - **100%:** L and R move in opposite directions (Swirling Stereo).\n\n## Functional Flow\n1.  **Input:** Audio enters.\n2.  **All-Pass Chain:** The signal passes through the number of stages set by the \"Notches\" parameter.\n3.  **LFO Modulation:** The internal LFO moves the center frequency of these filters between the Min and Max depths.\n4.  **Feedback Loop:** A portion of the output is mixed back into the input (if Feedback > 0).\n5.  **Summing:** The phased signal is mixed with the original dry signal to create the audible \"notches.\"\n6.  **Output:** Final audio.\n\n## Things Beginners Misunderstand\n- **Notches vs EQ:** Increasing \"Notches\" doesn't make the sound brighter; it makes the frequency response more complex and \"jagged.\"\n- **Feedback Whistle:** If your phaser is \"screaming,\" your Feedback is likely above 70%. [SRC: REPUTABLE]\n- **Dry/Wet:** Like a chorus, a phaser **needs** the dry signal to work. If you set it to 100% wet, you might only hear a subtle pitch-vibrato rather than the \"woosh.\" [SRC: IL-MAN]\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques And Best Practices: Fruity Phaser\n\n## 1. The \"Small Stone\" Vintage Vibe\nTo get that classic 70s R&B guitar or Rhodes sound:\n- **Technique:** Use **4 or 6 Notches**. Set **Sweep** to a slow speed (approx 0.5 Hz).\n- **Amount:** Set Feedback to **30%**.\n- **Result:** A warm, organic \"breath\" that adds soul to digital samples.\n\n## 2. The \"Jet-Stream\" Build-up\n- **Technique:** Automate the **FEEDBACK** and **SWEEP** knobs during a riser.\n- **Execution:** Start with 0% Feedback and slow speed. As the drop approaches, ramp Feedback to 80% and Sweep to a fast flutter.\n- **Result:** The sound transforms into a resonant \"whistle\" that builds massive energy.\n\n## 3. Harmonic \"Talk-Box\"\n- **Technique:** Use **Notches** set to 12 or more. Set **Feedback** to 60%.\n- **Execution:** Set **Sweep** to 0. Right-click the **MIN DEPTH** knob and link it to an automation clip or your Mod Wheel.\n- **Effect:** Manually sweeping the depth allows you to find \"vowel\" sounds (Ooh, Aah) within the synth. [SRC: REPUTABLE]\n\n## 4. Wide \"Binaural\" Swirling\n- **Technique:** Turn the **PHASE** knob to **100%**.\n- **Result:** The left ear will sweep \"up\" while the right ear sweeps \"down.\"\n- **Why:** This is the secret to making background vocals feel wide and expensive without taking up space in the center.\n\n## Common Pitfalls + Fixes\n- **Pitfall:** \"The phaser is too quiet/loud.\"\n  - **Fix:** Phasers naturally cause volume fluctuations as frequencies cancel out. Use **Fruity Limiter** after the phaser to level out the \"peaks.\"\n- **Pitfall:** \"The mix sounds muddy.\"\n  - **Fix:** Reduce the **NOTCHES**. High notch counts create many dips in the frequency spectrum, which can make a sound lose its \"core\" body. [SRC: REPUTABLE]\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity Phaser\n\nPhaser translates vibes through **Spectral Swirling** and **Phase Rotation**.\n\n## 1. Vibey (Smooth, Soulful, Vintage)\n- **Concept:** \"The Neo-Soul Drift.\"\n- **Levers:**\n  - **Notches:** 4.\n  - **LFO Speed:** Very slow (0.2Hz - 0.5Hz).\n  - **Feedback:** Low (20%).\n- **Listen For:** A gentle, warm movement that makes the sound feel \"alive\" and expensive.\n- **Don't Do This:** Avoid high notch counts; stay simple for soulful vibes.\n\n## 2. Spacey (Galactic, Rotating, Immersive)\n- **Concept:** \"The Orbital Swirl.\"\n- **Levers:**\n  - **Stereo Phase:** 180 degrees (Maximum).\n  - **Sweep Range:** Wide.\n  - **Mix:** 50%.\n- **Listen For:** The sound circling your head. One ear sweeps up while the other sweeps down, creating a 3D sense of space.\n\n## 3. Psychedelic (Warped, Intense, Whistling)\n- **Concept:** \"The Resonant Scream.\"\n- **Levers:**\n  - **Feedback:** High (80%+).\n  - **Notches:** 12 (Maximum).\n  - **LFO Speed:** Moderate.\n- **Listen For:** A sharp, whistling resonance that highlights different overtones as it sweeps. It sounds \"trippy\" and unstable.\n\n## 4. Upbeat (Kinetic, Rhythmic, Energetic)\n- **Concept:** \"The Rhythmic Filter.\"\n- **Levers:**\n  - **LFO Speed:** Fast (match the beat, e.g., 2Hz or 4Hz).\n  - **Notches:** 8.\n- **Listen For:** A \"chugging\" spectral movement that adds a rhythmic pulse to static synth chords.\n\n## 5. Moody (Damp, Claustrophobic, Tense)\n- **Concept:** \"The Static Notch.\"\n- **Levers:**\n  - **LFO Speed:** Zero (Static).\n  - **Freq Range:** Park the notches in the low-mids (around 400Hz).\n- **Listen For:** A \"hollow,\" boxy character that doesn't move, making the sound feel stuck and lonely. [SRC: REPUTABLE]",
+      "complete-guide": "# Fruity Phaser – Complete Production Guide\r\n\r\n## Overview\r\nClassic phaser effect that creates sweeping, swooshing movement by using phase cancellation and modulation.\r\n\r\n## Core Parameters\r\n\r\n### Shape Controls\r\n- **Frequency**: Center frequency of phaser sweep\r\n- **Depth**: How wide the sweep range is\r\n- **Stereo**: Phase offset between L/R channels\r\n- **Stages**: Number of phase shift stages (more = deeper effect)\r\n\r\n### Modulation\r\n- **LFO Rate**: Speed of automatic sweep\r\n- **LFO Depth**: Amount of LFO modulation\r\n- **Feedback**: Resonance/intensity of effect\r\n\r\n### Mix\r\n- **Dry/Wet**: Balance between original and effected signal\r\n\r\n## Hip-Hop Applications\r\n\r\n### Synth Movement (Melodic Hip-Hop)\r\n**Settings**:\r\n- Frequency: 400-800Hz\r\n- Depth: 40-60%\r\n- LFO Rate: 1/4 - 1/2 note\r\n- Stages: 6-8\r\n- Wet: 30-50%\r\n\r\n**Result**: Lush, moving pad textures\r\n\r\n### Hi-Hat Texture (Trap)\r\n**Settings**:\r\n- Frequency: 2-4kHz\r\n- Depth: 30%\r\n- LFO Rate: 1/8 note\r\n- Stages: 4\r\n- Wet: 20-40%\r\n\r\n**Result**: Rhythmic hi-hat movement\r\n\r\n### Vocal Effect (Experimental)\r\n**Settings**:\r\n- Frequency: 600-1.2kHz\r\n- Depth: 50%\r\n- LFO Rate: 1/2 note\r\n- Feedback: 40%\r\n- Wet: 25%\r\n\r\n**Result**: Spacey, modulated vocal texture\r\n\r\n### Bass Wobble (Electronic Hip-Hop)\r\n**Settings**:\r\n- Frequency: 200-400Hz\r\n- Depth: 60%\r\n- LFO Rate: 1/4 note\r\n- Stages: 6\r\n- Feedback: 30%\r\n\r\n**Result**: Pulsing bass movement\r\n\r\n## Genre-Specific Presets\r\n\r\n### Trap/Modern\r\n```json\r\n{\r\n  \"name\": \"Trap Sweep\",\r\n  \"frequency\": 1000,\r\n  \"depth\": 45,\r\n  \"lfoRate\": 0.25,\r\n  \"stages\": 6,\r\n  \"feedback\": 25,\r\n  \"wet\": 35,\r\n  \"use\": \"Hi-hats, percussion, synth textures\"\r\n}\r\n```\r\n\r\n### Boom Bap\r\n```json\r\n{\r\n  \"name\": \"Classic Sweep\",\r\n  \"frequency\": 600,\r\n  \"depth\": 50,\r\n  \"lfoRate\": 0.5,\r\n  \"stages\": 8,\r\n  \"feedback\": 40,\r\n  \"wet\": 30,\r\n  \"use\": \"Sample movement, drum transition\"\r\n}\r\n```\r\n\r\n### Lo-Fi\r\n```json\r\n{\r\n  \"name\": \"Vintage Phase\",\r\n  \"frequency\": 400,\r\n  \"depth\": 60,\r\n  \"lfoRate\": 0.125,\r\n  \"stages\": 4,\r\n  \"feedback\": 35,\r\n  \"wet\": 25,\r\n  \"use\": \"Pads, keys, overall vibe\"\r\n}\r\n```\r\n\r\n### Melodic\r\n```json\r\n{\r\n  \"name\": \"Dreamy Motion\",\r\n  \"frequency\": 800,\r\n  \"depth\": 55,\r\n  \"lfoRate\": 0.33,\r\n  \"stages\": 10,\r\n  \"feedback\": 30,\r\n  \"wet\": 40,\r\n  \"use\": \"Synth pads, atmospheric elements\"\r\n}\r\n```\r\n\r\n## Creative Workflows\r\n\r\n### Build-Up Sweep\r\n1. Start with wet at 0%\r\n2. Automate wet to 80% over 8 bars\r\n3. Increase feedback simultaneously\r\n4. Creates rising tension\r\n5. **Use**: Pre-chorus build, transitions\r\n\r\n### Rhythmic Gating\r\n1. Set fast LFO rate (1/8 or 1/16)\r\n2. High depth (70%)\r\n3. Moderate feedback\r\n4. **Result**: Choppy, rhythmic texture\r\n5. **Use**: Hi-hats, shakers, textures\r\n\r\n### Stereo Widening\r\n1. Set stereo to 100%\r\n2. Moderate LFO rate\r\n3. Low wet mix (20%)\r\n4. **Result**: Subtle stereo movement\r\n5. **Use**: Pads, synths, backing vocals\r\n\r\n### Automated Filter Alternative\r\n1. Link frequency to automation\r\n2. Low LFO depth\r\n3. Manual sweep control\r\n4. **Use**: Filter sweep without filter\r\n\r\n## Mixing Tips\r\n\r\n### Do's\r\n- ✓ Use subtle wet amounts (20-40%)\r\n- ✓ Sync LFO to tempo\r\n- ✓ Automate for builds/transitions\r\n- ✓ Layer with other effects\r\n\r\n### Don'ts\r\n- ✗ Over-use on every element\r\n- ✗ Too much feedback (harsh)\r\n- ✗ Phase bass frequencies (mono issues)\r\n- ✗ Forget to A/B test\r\n\r\n## By Instrument\r\n\r\n### Synths/Pads\r\n- Frequency: 500-1000Hz\r\n- Depth: 50-60%\r\n- Wet: 30-50%\r\n- Creates lush movement\r\n\r\n### Hi-Hats\r\n- Frequency: 2-5kHz\r\n- Depth: 30-40%\r\n- Wet: 20-35%\r\n- Adds texture without overpowering\r\n\r\n### Vocals\r\n- Frequency: 600-1.2kHz\r\n- Depth: 40%\r\n- Wet: 15-25%\r\n- Subtle effect, not obvious\r\n\r\n### Bass (Careful!)\r\n- Frequency: 300-500Hz\r\n- Depth: 30%\r\n- Wet: 15-20%\r\n- Check mono compatibility\r\n\r\n### Percussion\r\n- Frequency: 800-2kHz\r\n- Depth: 40-50%\r\n- Wet: 25-40%\r\n- Adds movement to loops\r\n\r\n## Advanced Techniques\r\n\r\n### Parallel Phasing\r\n1. Send to aux track\r\n2. Phaser on aux\r\n3. Blend to taste\r\n4. Maintains punch while adding movement\r\n\r\n### Sidechain Modulation\r\n1. Link phaser wet to Peak Controller\r\n2. Rhythmic phaser amount\r\n3. Pumping phase effect\r\n\r\n### Multi-Band Phasing\r\n1. Split signal with Patcher\r\n2. Phaser on mids only\r\n3. Keep bass/highs clean\r\n\r\n## Troubleshooting\r\n\r\n**Too harsh**: Lower feedback, reduce stages\r\n\r\n**Not noticeable**: Increase depth and wet mix\r\n\r\n**Sounds thin in mono**: Reduce stereo amount, check bass frequencies\r\n\r\n**Too fast/slow**: Adjust LFO rate to tempo sync\r\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Phaser\r\n\r\n## What It Is\r\nFruity Phaser is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Fruity Phaser\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: Fruity Phaser (5 Minutes)\n\n1.  **Insert:** Load **Fruity Phaser** onto a synth or electric piano.\n2.  **Stages:** Turn the **NOTCHES** knob to `4` for a smooth sound, or `12` for a crazy sound.\n3.  **Intensity:** Increase the **FEEDBACK** knob to hear the \"whistle\" of the sweep.\n4.  **Width:** Turn the **PHASE** knob to the right to make the sweep move in stereo.\n5.  **Speed:** Adjust the **SWEEP** knob to set how fast the \"woosh\" happens.\n6.  **Range:** Use the **MIN/MAX DEPTH** sliders to choose which frequencies get phased (usually keep them wide).\n7.  **Tip:** Set **SWEEP** to zero if you want a static \"Hollow\" EQ effect. [SRC: IL-MAN]",
+      "01_Common_Mistakes": "# Common Mistakes: Fruity Phaser\n\n- **High Notch Mud:** Using 24 notches on a sound that is already dark. This creates a \"filtered\" sound that lacks presence. **Fix:** Use 4-8 notches for most melodic duties.\n- **Feedback Overload:** Turning Feedback to 100% and leaving it there. This creates a painful sine-whistle that can damage speakers. **Fix:** Only use high feedback for temporary transitions or build-ups.\n- **Mix Level Confusion:** Expecting the sound to be louder with the phaser on. Phasing by definition uses cancellation. **Fix:** Turn up the mixer slot volume if the signal feels \"thinner\" than the dry version.\n- **Mono Bass Phasing:** Putting a phaser on your sub-bass. This will cause the bass to \"pulse\" in and out of phase, ruining the low-end drive. **Fix:** Always High-Pass the signal before phasing.\n- **Static Depth:** Never moving the Min/Max depth knobs. The default range might not be the \"sweet spot\" for your instrument. **Fix:** Tweak the Min/Max while the LFO is moving to find the most musical sweep range. [SRC: REPUTABLE]\n",
+      "02_Best_Settings_Starting_Points": "# Best Settings Starting Points: Fruity Phaser\n\n| Goal | Notches | Feedback | Sweep | Phase | Use Case |\n| :--- | :--- | :--- | :--- | :--- | :--- |\n| **70s Soul** | 4-6 | 35% | 0.2 Hz | 20% | Smooth Rhodes / Guitar. |\n| **Robotic Pad** | 16 | 60% | 1.5 Hz | 50% | Modern EDM/Trap textures. |\n| **Hi-Hat Shine** | 4 | 10% | 4.0 Hz | 100% | Fast, fluttering hats. |\n| **The \"Vortex\"** | 24 | 85% | 0.1 Hz | 100% | Slow, intense space warping. |\n| **Talkbox Lead** | 12 | 70% | Static | 0% | Automated \"Min Depth\" sweeps. |\n\n*Note: For the \"Talkbox\" effect, set Sweep to 0 and automate the Depth knobs manually.* [SRC: IL-MAN]\n",
+      "03_Vibe_Starting_Points_Moody": "# Vibe Starting Points: Moody (Fruity Phaser)\n\n- **The Goal:** A submerged, \"haunted\" atmosphere that feels like shifting fog.\n- **Recipe:**\n  1. Load Phaser on a **Sustained Pad**.\n  2. Set Notches to **4**.\n  3. Set Feedback to **15%** (Subtle).\n  4. Set Sweep to **0.05 Hz** (Exceedingly slow).\n  5. Set **Max Depth** to 50% (prevents the sweep from getting too bright).\n- **Result:** A slow, liquid transformation of the pad's harmonics. It sounds like the sound is \"breathing\" underwater.\n- **Mix Tip:** Place a dark Reverb *after* the phaser to diffuse the notches and make them feel more atmospheric. [SRC: REPUTABLE]\n",
+      "04_Vibe_Starting_Points_Upbeat_Psychedelic_Jazzy_Vibey": "# Vibe Starting Points: Upbeat, Psychedelic, Jazzy, Vibey\n\n## Upbeat (The \"Electric Shimmer\")\n- **Setup:** Phaser on Hi-Hats.\n- **Move:** Fast Sweep (5 Hz), 4 Notches, Phase 100%.\n- **Effect:** The hi-hats gain a metallic, fluttering width that adds \"kinetic\" energy to the groove.\n\n## Psychedelic (The \"Frequency Warp\")\n- **Setup:** High-resonance lead synth.\n- **Move:** 24 Notches, 80% Feedback, slow Sweep.\n- **Effect:** Intense, screaming frequency peaks that move in a trippy, circular motion.\n\n## Jazzy (The \"Suitcase Modulation\")\n- **Setup:** Clean Electric Piano.\n- **Move:** 6 Notches, 40% Feedback, 0.8 Hz Sweep.\n- **Context:** Perfect for that vintage \"Herbie Hancock\" or modern neo-soul vibe.\n\n## Vibey (The \"Expensive Halo\")\n- **Setup:** Background Vocal Bus.\n- **Move:** 8 Notches, 20% Feedback, 0.3 Hz Sweep, Phase 100%.\n- **Context:** Adds a wide, shimmering \"glow\" to the backup vocals that doesn't distract from the lead. [SRC: REPUTABLE]\n",
+      "cheat-sheet": "# Fruity Phaser: Cheat Sheet\n\nCreates a rippling, sweeping effect by passing the signal through a series of \"All-Pass\" filters.\n\n## Parameters\n\n| Parameter | Function | Context / Tip |\n| :--- | :--- | :--- |\n| **Sweep Freq** | The center frequency range where the phasing occurs. | **Tip:** Determines the \"pitch\" of the phaser sound. |\n| **Min / Max Depth** | Sets the range of the LFO sweep. | **Tip:** A large gap between Min and Max creates a very wide, dramatic sweep. A small gap is subtle. |\n| **Freq. Range** | \"Large\" vs \"Small\". | **Tip:** Large covers more octaves, creating a more drastic effect. |\n| **Stereo** | Offsets the phase of the LFO between L/R channels. | **Tip:** **Crucial for width.** Increase to make the sound swirl around the head. |\n| **Stages** | Number of filters used (2, 4, 8...). | **Tip:** More stages = more \"ripples\" or notches in the spectrum. 4 is classic 70s rock. 8 is dense and sci-fi. |\n| **Feedback** | Resonance. | **Tip:** Like Flanger, high feedback makes the effect scream. |\n\n## Quick Reference\n*   **Best For:** Electric Piano (Rhodes), Funky Guitars, Synth Pads.\n*   **Key Distinction:** Unlike Flanger (Time based), Phaser is *Filter* based. It sounds smoother and more \"watery\".\n",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Phaser\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Phaser to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Phaser\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Phaser\r\n\r\nThis section contains learning information for the fruity-phaser plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: The \"Spacey Orbital\" Lead (Fruity Phaser)\n\n## Routing Context\n- **Target:** A sustained Synth Lead or Pad.\n- **Position:** Insert FX (After Reverb).\n\n## Step-by-Step Setup\n1.  On your lead track, load **Fruity Phaser**.\n2.  Set **NOTCHES** to `8`.\n3.  Set **FEEDBACK** to `40%`.\n4.  Set **SWEEP** (Speed) to a very slow rate (approx. `0.2Hz`).\n5.  **The Secret:** Turn the **PHASE** knob to `100%`.\n6.  **The Result:** The phaser sweep will now move in a circle. While the Left ear is sweeping up, the Right ear is sweeping down. \n\n## Vibe Check\n- **Spacey/Psychedelic:** Makes the synth feel like it's drifting through a 3D vacuum. Essential for \"Cloud Rap\" and \"Ethereal R&B.\"\n\n## Variation\n- **Fast Shiver:** Turn the **SWEEP** up to `10Hz` for a vibrato-like shimmering effect. [SRC: REPUTABLE]",
+      "01_Goal_Creative_Effect": "# Goal: Stereo Swirl Setup (Binaural Phaser)\n\n## Routing Context\n- **Target:** Background Vocals or Ambient Pads.\n- **Position:** Place **Fruity Phaser** as the last effect before Reverb.\n\n## Step-by-Step Setup\n1.  Load **Fruity Phaser**.\n2.  Set **NOTCHES** to 8 (for a thick, complex sweep).\n3.  Set **SWEEP** to **0.3 Hz** (Slow and drifting).\n4.  Set **FEEDBACK** to **40%**.\n5.  **The Secret Sauce:** Turn the **PHASE** knob to **100%**.\n6.  **Tweak:** Adjust the **MIN/MAX DEPTH** knobs to focus the swirl in the high-mids (approx 1kHz to 8kHz).\n\n## What To Listen For\n- The audio should feel like it is \"orbiting\" your head. The left side will be sweeping UP while the right side sweeps DOWN.\n- This creates an expensive, immersive feeling common in R&B and high-end pop-rap.\n\n## Automation Idea\n- Link the **PHASE** knob to a Peak Controller on the Snare track. The stereo field \"collapses\" to mono every time the snare hits, then widens back out instantly. [SRC: REPUTABLE]\n",
+      "transition-builds": "# Build-Up Sweep with Fruity Phaser\r\n\r\n## Goal\r\nCreate tension and excitement leading into a hook, drop, or new section using automated phaser sweep.\r\n\r\n## When to Use\r\n- **Pre-Chorus**: Build tension before hook\r\n- **Pre-Drop**: Rise into beat drop\r\n- **Transitions**: Section changes\r\n- **Breakdowns**: Return from breakdown to full beat\r\n\r\n## Basic Setup\r\n\r\n### 1. Choose Target Element\r\nBest candidates:\r\n- Synth pads\r\n- Vocal samples\r\n- White noise\r\n- Sustained chords\r\n- Riser effects\r\n\r\n### 2. Insert Fruity Phaser\r\nAdd to target track or create dedicated riser track\r\n\r\n### 3. Starting Settings\r\n```\r\nFrequency: 1000-1500Hz\r\nDepth: 60-80%\r\nLFO Rate: 0.25 (1/4 note)\r\nStages: 8-10\r\nFeedback: Start 20%\r\nWet: Start 0%\r\n```\r\n\r\n## Automation Workflow\r\n\r\n### Step 1: Set Timeline\r\n- Determine build length (usually 4, 8, or 16 bars)\r\n- Create automation clip for Wet parameter\r\n- Create automation clip for Feedback parameter\r\n\r\n### Step 2: Wet Automation\r\n```\r\nBar 1-2: 0% → 15%\r\nBar 3-4: 15% → 35%\r\nBar 5-6: 35% → 60%\r\nBar 7-8: 60% → 80%\r\n```\r\n*Exponential curve for more dramatic rise*\r\n\r\n### Step 3: Feedback Automation\r\n```\r\nBar 1-4: 20% → 30%\r\nBar 5-8: 30% → 55%\r\n```\r\n*Increases intensity and resonance*\r\n\r\n### Step 4: Optional Frequency Sweep\r\n```\r\nBar 1: 800Hz\r\nBar 8: 2500Hz\r\n```\r\n*Rising pitch adds extra excitement*\r\n\r\n## Genre-Specific Recipes\r\n\r\n### Trap Build\r\n```\r\nDuration: 8 bars\r\nWet: 0% → 70%\r\nFeedback: 25% → 50%\r\nFrequency: 1200Hz → 3000Hz\r\nStages: 8\r\nResult: Modern, aggressive rise\r\n```\r\n\r\n### Melodic Build\r\n```\r\nDuration: 16 bars (slow)\r\nWet: 0% → 60%\r\nFeedback: 20% → 45%\r\nFrequency: 800Hz → 1800Hz\r\nStages: 10\r\nResult: Emotional, gradual tension\r\n```\r\n\r\n### Boom Bap Transition\r\n```\r\nDuration: 4 bars (quick)\r\nWet: 10% → 50%\r\nFeedback: 30% → 40%\r\nFrequency: Static 1000Hz\r\nStages: 6\r\nResult: Classic sweep effect\r\n```\r\n\r\n### Electronic Drop Build\r\n```\r\nDuration: 8 bars\r\nWet: 0% → 85%\r\nFeedback: 30% → 65%\r\nFrequency: 1500Hz → 4000Hz\r\nStages: 12\r\nResult: Intense, festival-style rise\r\n```\r\n\r\n## Advanced Techniques\r\n\r\n### Layered Build\r\n1. Multiple elements with phaser\r\n2. Stagger automation start times\r\n3. Different frequency sweeps\r\n4. Creates complex, evolving build\r\n\r\n**Example**:\r\n- Pad: Bars 1-8, low freq sweep\r\n- Synth: Bars 5-8, mid freq sweep\r\n- Noise: Bars 7-8, high freq sweep\r\n\r\n### Rhythmic Intensification\r\n1. Start with slow LFO rate (1/2 note)\r\n2. Automate to faster rate (1/8 note)\r\n3. Adds rhythmic urgency\r\n4. Combine with wet automation\r\n\r\n### Filter + Phaser Combo\r\n1. Add High-Pass Filter before phaser\r\n2. Automate filter cutoff upward\r\n3. Phaser adds movement\r\n4. Double the rising effect\r\n\r\n### Stereo Width Build\r\n1. Start stereo at 30%\r\n2. Automate to 100% during build\r\n3. Phaser expands outward\r\n4. Dramatic stereo effect\r\n\r\n## Mixing Considerations\r\n\r\n### Don't Overpower\r\n- Build should enhance, not dominate\r\n- Keep main elements audible\r\n- Phaser is supporting role\r\n\r\n### Frequency Space\r\n- If building low-frequency element, sweep low freqs\r\n- If building high element, sweep high freqs\r\n- Match sweep to source material\r\n\r\n### End Point Matters\r\n- What happens after build peaks?\r\n- Option 1: Bypass phaser at drop\r\n- Option 2: Reset to low wet amount\r\n- Option 3: Keep at medium for ongoing movement\r\n\r\n### Combine with Other Builds\r\n- Volume automation (crescendo)\r\n- Filter sweeps\r\n- Reverb increase\r\n- Percussion rolls\r\n- Creates multi-dimensional rise\r\n\r\n## Common Build Templates\r\n\r\n### 8-Bar Standard Build\r\n```\r\nBars 1-2: Subtle introduction (wet 0-10%)\r\nBars 3-4: Noticeable (wet 10-25%)\r\nBars 5-6: Intensifying (wet 25-50%)\r\nBars 7-8: Peak tension (wet 50-80%)\r\n```\r\n\r\n### 4-Bar Quick Build\r\n```\r\nBars 1-2: Immediate rise (wet 0-40%)\r\nBars 3-4: Peak fast (wet 40-75%)\r\n```\r\n\r\n### 16-Bar Epic Build\r\n```\r\nBars 1-4: Subtle (wet 0-15%)\r\nBars 5-8: Building (wet 15-35%)\r\nBars 9-12: Intensifying (wet 35-60%)\r\nBars 13-16: Climax (wet 60-85%)\r\n```\r\n\r\n## Pro Tips\r\n\r\n✓ **Exponential curves**: More dramatic than linear\r\n✓ **Test in context**: Always check with full beat\r\n✓ **Don't peak too early**: Save max intensity for end\r\n✓ **Match to energy**: Mellow tracks need subtle builds\r\n✓ **Reset after drop**: Don't leave phaser at 80% forever\r\n\r\n## Troubleshooting\r\n\r\n**Build feels flat**: Increase feedback automation range\r\n\r\n**Too harsh**: Lower feedback max value\r\n\r\n**Doesn't match vibe**: Adjust frequency sweep range\r\n\r\n**Not exciting enough**: Layer multiple elements\r\n\r\n**Overwhelming**: Reduce wet max value or shorten build duration\r\n"
+    },
+    "by-instrument": {
+      "drums": "# Workflow: Hi-Hat Flutter (Phaser)\n\n## The Concept\nGiving static trap hi-hats a shimmering, metallic \"shine\" that keeps the high-end interesting.\n\n## Step-by-Step\n1.  Load **Fruity Phaser** on your Hi-Hat track.\n2.  Set **NOTCHES** to **4**.\n3.  Set **PHASE** to **100%**.\n4.  Set **SWEEP** to **4.5 Hz** (Fast).\n5.  Set **FEEDBACK** to **10%** (Very low).\n6.  **Tweak:** Set **MAX DEPTH** to 100% and **MIN DEPTH** to 80%. This keeps the phaser working ONLY in the extreme high frequencies.\n\n## Vibe Check\n- **Upbeat:** This adds \"kinetic energy\" to the hats without making them too loud in the mix.\n\n## Automation Ideas\n- Automate the **Mix Level** of the phaser so it only turns on during the \"rolls\" or high-speed sections of the drum pattern. [SRC: REPUTABLE]\n",
+      "synth-pad-phasing": "# Synth Pad Phasing Workflow\r\n\r\n## Goal\r\nAdd lush, evolving movement to synth pads for melodic hip-hop, R&B, and atmospheric tracks.\r\n\r\n## Setup\r\n\r\n### 1. Choose Your Pad\r\n- Sustained synth pad\r\n- Chord layer\r\n- Ambient texture\r\n- String section\r\n\r\n### 2. Insert Fruity Phaser\r\nAdd to pad mixer track (post-fader)\r\n\r\n### 3. Base Settings\r\n```\r\nFrequency: 800Hz\r\nDepth: 55%\r\nLFO Rate: 1/3 note (0.33)\r\nStages: 8-10\r\nFeedback: 30%\r\nStereo: 70%\r\nWet: 35-45%\r\n```\r\n\r\n## Step-by-Step\r\n\r\n### Step 1: Set Center Frequency\r\n- Start at 800Hz\r\n- Adjust based on pad frequency range\r\n- Lower pads (400-600Hz)\r\n- Higher pads (1000-1500Hz)\r\n\r\n### Step 2: Dial in Depth\r\n- Start at 50%\r\n- Increase for more dramatic sweep\r\n- Decrease for subtlety\r\n- Listen in context of full mix\r\n\r\n### Step 3: Tempo-Sync LFO\r\n- Set to 1/4, 1/3, or 1/2 note\r\n- Match to song feel\r\n- Slower = dreamier\r\n- Faster = more active\r\n\r\n### Step 4: Adjust Stages\r\n- More stages = deeper, more pronounced\r\n- 6-8 stages: balanced\r\n- 10-12 stages: very deep effect\r\n- 4 stages: subtle, vintage\r\n\r\n### Step 5: Fine-Tune Mix\r\n- Start wet at 35%\r\n- Increase for effect-heavy sound\r\n- Decrease to taste subtle movement\r\n- A/B test frequently\r\n\r\n## Genre Variations\r\n\r\n### Melodic Hip-Hop\r\n```\r\nFrequency: 900Hz\r\nDepth: 50%\r\nRate: 1/3 note\r\nStages: 8\r\nWet: 40%\r\nResult: Emotional, moving pads\r\n```\r\n\r\n### R&B/Soul\r\n```\r\nFrequency: 700Hz\r\nDepth: 45%\r\nRate: 1/2 note\r\nStages: 10\r\nWet: 35%\r\nResult: Lush, warm texture\r\n```\r\n\r\n### Trap (Atmospheric)\r\n```\r\nFrequency: 1200Hz\r\nDepth: 40%\r\nRate: 1/4 note\r\nStages: 6\r\nWet: 30%\r\nResult: Modern, spacey vibe\r\n```\r\n\r\n### Lo-Fi Chill\r\n```\r\nFrequency: 500Hz\r\nDepth: 60%\r\nRate: 1/4 note (slow)\r\nStages: 4\r\nWet: 28%\r\nResult: Vintage, wobbly character\r\n```\r\n\r\n## Advanced Techniques\r\n\r\n### Automated Builds\r\n1. Start with wet at 20%\r\n2. Automate to 60% over 8 bars\r\n3. Increase feedback simultaneously\r\n4. Creates rising tension for pre-chorus\r\n\r\n### Parallel Processing\r\n1. Send pad to aux track\r\n2. Phaser on aux (wet 100%)\r\n3. Blend aux with dry\r\n4. Maintains clarity with movement\r\n\r\n### Multi-Phase Layers\r\n1. Duplicate pad to two tracks\r\n2. Different phaser settings each\r\n3. Pan slightly left/right\r\n4. Creates complex stereo movement\r\n\r\n### Sidechain Modulation\r\n1. Link phaser wet to Peak Controller\r\n2. Controller triggered by kick\r\n3. Rhythmic phaser intensity\r\n4. Pumping phase effect\r\n\r\n## Mixing Tips\r\n\r\n### Frequency Balance\r\n- If phaser makes sound thin: lower frequency\r\n- If too dark: raise frequency\r\n- If harsh: reduce feedback\r\n\r\n### Stereo Considerations\r\n- High stereo (70-100%): wide, spacious\r\n- Low stereo (20-40%): centered, focused\r\n- Check mono compatibility\r\n\r\n### Layering with Effects\r\n- **Before**: EQ cut problem frequencies\r\n- **After**: Reverb for space, delay for depth\r\n- **Parallel**: Compression for consistency\r\n\r\n## Common Mistakes\r\n\r\n❌ **Too much wet**: Overwhelming, loses clarity\r\n→ Keep under 50% for most applications\r\n\r\n❌ **Wrong frequency range**: Phasing wrong part of spectrum\r\n→ Match to pad's frequency content\r\n\r\n❌ **Unsync'd LFO**: Random movement, not musical\r\n→ Always sync to tempo\r\n\r\n❌ **Too many stages**: Overly processed sound\r\n→ Start with 6-8, adjust from there\r\n\r\n## Troubleshooting\r\n\r\n**Sounds too harsh**: Lower feedback, reduce stages\r\n\r\n**Not noticeable enough**: Increase depth and wet\r\n\r\n**Loses low-end**: Lower center frequency\r\n\r\n**Too stereo (mono issues)**: Reduce stereo amount\r\n\r\n**Doesn't match vibe**: Adjust LFO rate tempo sync\r\n"
+    },
+    "common-usage.md": {
+      "common-usage": "# Common Workflows: Fruity Phaser\r\n\r\n## 1. \"Tame Impala\" Psychedelic Drums\r\n**Goal:** Make drums feel like they are \"melting\" or swimming.\r\n\r\n1.  Put Fruity Phaser on your Drum Bus.\r\n2.  Set **Speed** very slow.\r\n3.  Set **Feedback** to around 60-70% (High resonance).\r\n4.  Set **Stages** to high (10 or 12).\r\n    *   *Result:* The entire drum kit will slowly morph through a liquid texture, perfect for psychedelic rock sections.\r\n\r\n## 2. Funky Rhodes/Keys\r\n**Goal:** Classic 70s keyboard movement.\r\n\r\n1.  Insert on Electric Piano.\r\n2.  Set **Speed** faster (roughly 1-2 Hz).\r\n3.  Set **Stereo** spread to roughly 25%.\r\n4.  Set **Min Depth** and **Max Depth** relatively close to each other (e.g., 40% and 60%).\r\n    *   *Why?* We don't want a massive sweep, just a subtle, nervous vibration around the mid-range.\r\n    *   *Result:* Adds life and stereo width to static chords.\r\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Phaser\r\n\r\nThis section contains workflow information for the fruity-phaser plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Phaser\r\n\r\nThis section contains reference information for the fruity-phaser plugin.\r\n"
+    }
+  }
+}

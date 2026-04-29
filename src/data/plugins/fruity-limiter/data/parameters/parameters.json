@@ -1,0 +1,85 @@
+{
+  "pluginName": "Fruity Limiter",
+  "tabs": ["LIMIT", "COMP", "NOISE GATE"],
+  "parameters": [
+    {
+      "section": "Global",
+      "id": "output_gain",
+      "name": "Output Gain",
+      "range": { "min": -60, "max": 20, "unit": "dB" },
+      "description": "Final output volume after all processing (Limit, Saturation)."
+    },
+    {
+      "section": "Compressor",
+      "id": "comp_gain",
+      "name": "Gain (Makeup)",
+      "range": { "min": -60, "max": 20, "unit": "dB" },
+      "description": "Makeup gain applied AFTER compression but BEFORE limiting."
+    },
+    {
+      "section": "Compressor",
+      "id": "comp_thresh",
+      "name": "Threshold",
+      "range": { "min": -60, "max": 0, "unit": "dB" },
+      "description": "Trigger level for compression."
+    },
+    {
+      "section": "Compressor",
+      "id": "comp_ratio",
+      "name": "Ratio",
+      "range": { "min": 1, "max": 20, "unit": ":1" },
+      "defaultValue": 1,
+      "description": "Ratio of input to output level above threshold."
+    },
+    {
+      "section": "Compressor",
+      "id": "comp_knee",
+      "name": "Knee",
+      "range": { "min": 0, "max": 100, "unit": "%" },
+      "description": "Softness of the transition into compression."
+    },
+    {
+      "section": "Compressor",
+      "id": "comp_attack",
+      "name": "Attack",
+      "range": { "min": 0, "max": 1000, "unit": "ms" },
+      "description": "Time taken to reach full compression ratio."
+    },
+    {
+      "section": "Compressor",
+      "id": "comp_release",
+      "name": "Release",
+      "range": { "min": 0, "max": 2000, "unit": "ms" },
+      "description": "Time taken to return to zero gain reduction."
+    },
+    {
+      "section": "Compressor",
+      "id": "comp_sustain",
+      "name": "Sustain",
+      "range": { "min": 0, "max": 1000, "unit": "ms" },
+      "description": "RMS averaging window length. Prevents fluttering on bass."
+    },
+    {
+      "section": "Limiter",
+      "id": "limit_ceil",
+      "name": "Ceiling",
+      "range": { "min": -12, "max": 12, "unit": "dB" },
+      "defaultValue": 0,
+      "description": "Absolute maximum output level."
+    },
+    {
+      "section": "Limiter",
+      "id": "limit_sat",
+      "name": "Saturation",
+      "range": { "min": -10, "max": 0, "unit": "dB" },
+      "description": "Threshold where soft-clipping begins before hitting the ceiling."
+    },
+    {
+      "section": "Limiter",
+      "id": "limit_attack",
+      "name": "Attack (Lookahead)",
+      "range": { "min": 0, "max": 1000, "unit": "ms" },
+      "description": "Adds system latency to allow lookahead detection."
+    }
+  ]
+}

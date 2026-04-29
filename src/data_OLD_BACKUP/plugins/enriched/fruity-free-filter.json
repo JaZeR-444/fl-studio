@@ -1,0 +1,204 @@
+{
+  "id": "fruity-free-filter",
+  "name": "Fruity Free Filter",
+  "presets": {
+    "band-pass-lofi": {
+      "presetName": "Band Pass LoFi",
+      "plugin": "Fruity Free Filter",
+      "description": "Isolates the mids for a telephonic sound.",
+      "settings": {
+        "type": "Band Pass",
+        "freq": 1500.0,
+        "q": 0.5,
+        "gain": 0.8
+      },
+      "usage": "Creative effect for intros, bridges, or background elements."
+    },
+    "high-pass-clean": {
+      "presetName": "High Pass Clean",
+      "plugin": "Fruity Free Filter",
+      "description": "Removes low-end rumble with zero resonance.",
+      "settings": {
+        "type": "High Pass",
+        "freq": 150.0,
+        "q": 0.0,
+        "gain": 1.0
+      },
+      "usage": "Essential for cleaning up vocals, guitars, and hats."
+    },
+    "low-pass-warm": {
+      "presetName": "Low Pass Warm",
+      "plugin": "Fruity Free Filter",
+      "description": "Rolls off harsh highs for a vintage feel.",
+      "settings": {
+        "type": "Low Pass",
+        "freq": 8000.0,
+        "q": 0.2,
+        "gain": 1.0
+      },
+      "usage": "Use on digital synths or bright samples to make them sound more analog."
+    },
+    "notch-resonance": {
+      "presetName": "Notch Resonance",
+      "plugin": "Fruity Free Filter",
+      "description": "A sharp resonance peak at the cutoff frequency.",
+      "settings": {
+        "type": "Low Pass",
+        "freq": 2000.0,
+        "q": 0.8,
+        "gain": 1.0
+      },
+      "usage": "Use for dramatic filter sweeps in EDM or sound design."
+    }
+  },
+  "parameters": {
+    "free-filter-params": {
+      "plugin_name": "Fruity Free Filter",
+      "category": "Filter",
+      "parameters": [
+        {
+          "name": "Freq",
+          "type": "knob",
+          "description": "Sets the cutoff or center frequency of the filter.",
+          "vibe_impact": "Brightness, focus, energy",
+          "mix_impact_tags": [
+            "motion",
+            "brightness",
+            "transient"
+          ]
+        },
+        {
+          "name": "Q",
+          "type": "knob",
+          "description": "Adjusts the resonance or bandwidth of the filter.",
+          "vibe_impact": "Character, whistle, acid squelch",
+          "mix_impact_tags": [
+            "loudness",
+            "ringing"
+          ]
+        },
+        {
+          "name": "Gain",
+          "type": "knob",
+          "description": "Boosts or cuts the target band (Only works in Shelf/Peaking modes).",
+          "vibe_impact": "Weight, air, presence",
+          "mix_impact_tags": [
+            "loudness",
+            "transient"
+          ]
+        },
+        {
+          "name": "Type",
+          "type": "selector",
+          "description": "Selects the filter algorithm (LP, HP, BP, etc.).",
+          "vibe_impact": "Fundamental sonic identity"
+        }
+      ]
+    },
+    "parameters": {
+      "pluginName": "Fruity Free Filter",
+      "category": "Filter / EQ",
+      "parameters": [
+        {
+          "section": "Filter",
+          "id": "type",
+          "name": "Type",
+          "options": [
+            "Low Pass",
+            "Band Pass",
+            "High Pass",
+            "Notch",
+            "Low Shelf",
+            "Peaking",
+            "High Shelf"
+          ],
+          "description": "Filter topology."
+        },
+        {
+          "section": "Filter",
+          "id": "freq",
+          "name": "Frequency",
+          "range": {
+            "min": 10,
+            "max": 20000,
+            "unit": "Hz"
+          },
+          "description": "Cutoff or Center frequency."
+        },
+        {
+          "section": "Filter",
+          "id": "q",
+          "name": "Q",
+          "range": {
+            "min": 0.1,
+            "max": 10,
+            "unit": "Factor"
+          },
+          "description": "Resonance or Bandwidth."
+        },
+        {
+          "section": "Filter",
+          "id": "gain",
+          "name": "Gain",
+          "range": {
+            "min": -18,
+            "max": 18,
+            "unit": "dB"
+          },
+          "description": "Boost/Cut (Shelf/Peak only)."
+        }
+      ]
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "Common Usage",
+      "category": "general",
+      "filename": "common-usage.md"
+    },
+    {
+      "title": "00 Goal Quick Result",
+      "category": "by-goal",
+      "filename": "00_Goal_Quick_Result.md"
+    },
+    {
+      "title": "01 Goal Shaping And Control",
+      "category": "by-goal",
+      "filename": "01_Goal_Shaping_And_Control.md"
+    },
+    {
+      "title": "12 Vibe Psychedelic",
+      "category": "by-goal",
+      "filename": "12_Vibe_Psychedelic.md"
+    },
+    {
+      "title": "Drums",
+      "category": "by-instrument",
+      "filename": "drums.md"
+    },
+    {
+      "title": "Synth Leads",
+      "category": "by-instrument",
+      "filename": "synth-leads.md"
+    }
+  ]
+}

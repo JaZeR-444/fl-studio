@@ -1,0 +1,21 @@
+{
+  "basic_math": {
+    "Inverter": "1 - a",
+    "Scaling": "a * b",
+    "Offset": "a + b"
+  },
+  "lfo_shapes": {
+    "Standard Sine": "Sin(SongTime * Pi)",
+    "Absolute Bounce": "Abs(Sin(SongTime * Pi))",
+    "Quantized Ramp": "Floor(a * 8) / 8"
+  },
+  "logic": {
+    "Binary Gate": "IfG(a, 0.5, 1, 0)",
+    "Crossfader": "a * b + (1 - a) * c",
+    "Range Limiter": "Max(b, Min(c, a))"
+  },
+  "psychedelic": {
+    "Chaos": "Rand() * a",
+    "Frequency Modulation": "Sin(SongTime * Pi * (1 + b * Sin(SongTime * c)))"
+  }
+}

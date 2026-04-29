@@ -1,0 +1,159 @@
+{
+  "metadata": {
+    "plugin": "Harmless",
+    "ruleSet": "synthesis-rules",
+    "lastUpdated": "2026-02-03"
+  },
+  "rules": [
+    {
+      "id": "additive-engine-behavior",
+      "name": "Additive Engine Behavior",
+      "priority": "critical",
+      "description": "Fundamental properties of Harmless's additive synthesis engine",
+      "rules": [
+        {
+          "rule": "No phase cancellation",
+          "explanation": "Since harmonics are generated mathematically rather than summed from oscillators, there is no phase interference between frequencies",
+          "implication": "Can use extreme filter settings without artifacts"
+        },
+        {
+          "rule": "Mathematical filter perfection",
+          "explanation": "Filters don't introduce phase shift or resonance artifacts because harmonics are already separated",
+          "implication": "48dB brickwall slope sounds clean, unlike analog equivalents"
+        },
+        {
+          "rule": "CPU scales with harmonics",
+          "explanation": "More harmonics in mask = more CPU usage. Silent harmonics cost nothing",
+          "implication": "Sparse masks are more efficient than rich ones"
+        },
+        {
+          "rule": "Harmonic independence",
+          "explanation": "Each harmonic can be individually controlled in amplitude",
+          "implication": "Can create impossible waveforms that don't exist in nature"
+        }
+      ],
+      "src": "IL-MAN"
+    },
+    {
+      "id": "harmonic-mask-rules",
+      "name": "Harmonic Mask Rules",
+      "priority": "high",
+      "description": "Guidelines for drawing effective harmonic masks",
+      "rules": [
+        {
+          "rule": "Fundamental determines pitch",
+          "explanation": "Harmonic 1 (fundamental) must be present for pitched sound",
+          "guideline": "Keep H1 at 100% unless creating special effects"
+        },
+        {
+          "rule": "Odd = hollow, Even = warm",
+          "explanation": "Odd harmonics (1,3,5...) create hollow/woodwind character. Even harmonics (2,4,6...) add warmth",
+          "guideline": "For clarinet/square: emphasize odds. For warmth: add evens"
+        },
+        {
+          "rule": "Amplitude decay determines brightness",
+          "explanation": "Fast decay (1/n²) = dull. Slow decay (1/n) = bright. No decay = harsh",
+          "guideline": "Sawtooth uses 1/n, triangle uses 1/n²"
+        },
+        {
+          "rule": "Sparse for character",
+          "explanation": "Leaving gaps between harmonics creates unique textures",
+          "guideline": "Try drawing only H1, H4, H8, H16 for metallic character"
+        },
+        {
+          "rule": "Formant regions for vocals",
+          "explanation": "Boosting specific harmonic bands creates vowel-like resonances",
+          "guideline": "H4-H8 boost = 'ahh', H8-H14 = 'eee'"
+        }
+      ],
+      "src": "IL-MAN"
+    },
+    {
+      "id": "pluck-filter-rules",
+      "name": "Pluck Filter Rules",
+      "priority": "high",
+      "description": "How the Pluck filter simulates string physics",
+      "rules": [
+        {
+          "rule": "High frequencies decay faster",
+          "explanation": "Pluck filter removes high harmonics exponentially based on frequency",
+          "formula": "Decay Rate = frequency² × damping factor"
+        },
+        {
+          "rule": "Requires harmonic content",
+          "explanation": "Pluck needs harmonics to decay - pure sine shows no effect",
+          "guideline": "Use sawtooth or rich masks with pluck"
+        },
+        {
+          "rule": "Interact with amp envelope",
+          "explanation": "For true plucks, set amp sustain to 0% so pluck decay is audible",
+          "guideline": "Sustain > 0% = pluck on sustained tone. Sustain = 0% = true decay"
+        },
+        {
+          "rule": "Note pitch affects decay",
+          "explanation": "Higher notes decay faster than low notes with same pluck setting",
+          "guideline": "Adjust pluck per octave for consistent character"
+        }
+      ],
+      "src": "IL-MAN"
+    },
+    {
+      "id": "phaser-rules",
+      "name": "Phaser Rules",
+      "priority": "medium",
+      "description": "Understanding Harmless's unique phaser behavior",
+      "rules": [
+        {
+          "rule": "Frequency modulation, not phase",
+          "explanation": "Phaser shifts each harmonic's frequency, not phase like traditional phasers",
+          "effect": "Can create pitch artifacts and inharmonic intervals"
+        },
+        {
+          "rule": "High rates = pitch effects",
+          "explanation": "Above 20Hz, modulation creates sidebands that sound like pitch shifting",
+          "useCase": "Alien/sci-fi effects at 30-50Hz rate"
+        },
+        {
+          "rule": "CPU intensive",
+          "explanation": "Phaser recalculates all 512 harmonics every cycle",
+          "guideline": "Disable for CPU-critical situations"
+        },
+        {
+          "rule": "Combines with unison",
+          "explanation": "Each unison voice has independent phaser position",
+          "effect": "Massive stereo width when both active"
+        }
+      ],
+      "src": "IL-MAN"
+    },
+    {
+      "id": "unison-rules",
+      "name": "Unison Rules",
+      "priority": "medium",
+      "description": "Guidelines for using Sytrus-quality unison",
+      "rules": [
+        {
+          "rule": "Detune adds width",
+          "explanation": "Detune percentage controls spacing between stacked voices",
+          "guideline": "20-40% for tight, 60%+ for wide"
+        },
+        {
+          "rule": "Stereo spreads voices",
+          "explanation": "Stereo percentage pans unison voices across field",
+          "guideline": "0% = mono stack, 100% = full width"
+        },
+        {
+          "rule": "Blend prevents buildup",
+          "explanation": "Multiple voices = louder signal. Blend reduces output",
+          "guideline": "Reduce blend if clipping, typically 70-80%"
+        },
+        {
+          "rule": "CPU efficient",
+          "explanation": "Harmless unison is optimized and doesn't cost much CPU",
+          "guideline": "Feel free to use liberally"
+        }
+      ],
+      "src": "IL-MAN"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "name": "Master Bus Chain",
+  "genre": "universal",
+  "mood": "upbeat",
+  "description": "Complete master bus processing chain",
+  "parameters": {
+    "chain": [
+      {
+        "slot": 1,
+        "type": "EQ",
+        "plugin": "Fruity Parametric EQ 2",
+        "settings": "Mastering EQ"
+      },
+      {
+        "slot": 2,
+        "type": "Compressor",
+        "plugin": "Fruity Compressor",
+        "settings": "Gentle glue"
+      },
+      {
+        "slot": 3,
+        "type": "Limiter",
+        "plugin": "Fruity Limiter",
+        "settings": "Final limiting"
+      }
+    ],
+    "routing": "Series",
+    "parallelPaths": 0
+  },
+  "workflow": {
+    "useCase": "Final mix processing",
+    "steps": [
+      "Apply gentle EQ",
+      "Add glue compression",
+      "Apply final limiting"
+    ],
+    "troubleshooting": [
+      { "issue": "Too compressed", "fix": "Reduce compression ratio" },
+      { "issue": "Clipping", "fix": "Check limiter ceiling" }
+    ]
+  },
+  "abTest": {
+    "listenFor": "Polished, loud master",
+    "duration": "Full song"
+  }
+}

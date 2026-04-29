@@ -1,0 +1,60 @@
+{
+  "$schema": "./schema.json",
+  "plugin": {
+    "name": "Wasp",
+    "version": "1.x",
+    "category": "Instrument",
+    "type": "3-Oscillator Subtractive Synthesizer",
+    "status": "DISCONTINUED - Replaced by Wasp XT",
+    "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Wasp.htm"
+  },
+  "discontinuationNotice": {
+    "discontinued": true,
+    "replacedBy": "Wasp XT",
+    "legacySupport": "Still loads in FL Studio for old projects",
+    "recommendation": "Use Wasp XT for all new projects"
+  },
+  "parameters": {
+    "oscillators": [
+      {
+        "id": "osc1Waveform",
+        "name": "OSC 1 Waveform",
+        "options": ["Sine", "Saw", "Square", "Noise"]
+      },
+      {
+        "id": "osc2Waveform",
+        "name": "OSC 2 Waveform",
+        "options": ["Sine", "Saw", "Square", "Noise"]
+      },
+      {
+        "id": "osc3Waveform",
+        "name": "OSC 3 Waveform",
+        "options": ["Sine", "Saw", "Square", "Noise"]
+      }
+    ],
+    "filter": [
+      {
+        "id": "filterType",
+        "name": "Filter Type",
+        "options": ["LP", "HP", "BP", "BR"]
+      },
+      {
+        "id": "cutoff",
+        "name": "Cutoff",
+        "range": "20Hz-20kHz"
+      },
+      {
+        "id": "resonance",
+        "name": "Resonance",
+        "range": "0-100%"
+      }
+    ]
+  },
+  "migrationPath": {
+    "targetPlugin": "Wasp XT",
+    "process": "Manual recreation of patches",
+    "note": "Wasp XT includes all Wasp features plus enhancements"
+  },
+  "cpuUsage": "Low",
+  "legacyOnly": true
+}

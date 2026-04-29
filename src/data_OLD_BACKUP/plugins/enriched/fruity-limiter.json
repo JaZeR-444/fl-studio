@@ -1,0 +1,290 @@
+{
+  "id": "fruity-limiter",
+  "name": "Fruity Limiter",
+  "presets": {
+    "brickwall-master": {
+      "presetName": "Brickwall Master",
+      "plugin": "Fruity Limiter",
+      "description": "Standard safety limiting for the master bus.",
+      "settings": {
+        "ceiling": -0.1,
+        "gain": 2.0,
+        "attack": 0.0,
+        "release": 200.0,
+        "sustain": 0.0,
+        "lookahead": 2.0
+      },
+      "usage": "Place at the very end of your master chain to prevent clipping."
+    },
+    "sidechain-pumping": {
+      "presetName": "Sidechain Pumping",
+      "plugin": "Fruity Limiter",
+      "description": "Classic EDM ducking setup.",
+      "settings": {
+        "compThreshold": -30.0,
+        "compRatio": 8.0,
+        "compAttack": 0.0,
+        "compRelease": 100.0,
+        "sidechain": 1
+      },
+      "usage": "Route Kick to this track (Sidechain only), then select the Kick input in the Limiter's sidechain selector."
+    },
+    "vocal-leveler": {
+      "presetName": "Vocal Leveler",
+      "plugin": "Fruity Limiter",
+      "description": "Uses the COMP section, not the LIMIT section.",
+      "settings": {
+        "compThreshold": -20.0,
+        "compRatio": 4.0,
+        "compKnee": 0.5,
+        "limitCeiling": 0.0
+      },
+      "usage": "Smooths out vocal dynamics before it hits the limiter ceiling."
+    }
+  },
+  "parameters": {
+    "limiter-params": {
+      "plugin_name": "Fruity Limiter",
+      "category": "Dynamics",
+      "parameters": [
+        {
+          "name": "CEIL",
+          "type": "knob",
+          "tab": "LIMIT",
+          "description": "Sets the maximum output level.",
+          "vibe_impact": "Weight, protection",
+          "mix_impact_tags": [
+            "loudness",
+            "transient"
+          ]
+        },
+        {
+          "name": "GAIN",
+          "type": "knob",
+          "tab": "GLOBAL",
+          "description": "Increases input volume into the limit/comp logic.",
+          "vibe_impact": "Loudness, aggression",
+          "mix_impact_tags": [
+            "loudness"
+          ]
+        },
+        {
+          "name": "ATT",
+          "type": "knob",
+          "tab": "LIMIT",
+          "description": "Lookahead time. Prevents peaks from escaping.",
+          "vibe_impact": "Transparency, digital vs smooth",
+          "mix_impact_tags": [
+            "artifact",
+            "transient"
+          ]
+        },
+        {
+          "name": "THRES",
+          "type": "knob",
+          "tab": "COMP",
+          "description": "Sets the level where compression begins.",
+          "vibe_impact": "Focus, nearness"
+        },
+        {
+          "name": "RATIO",
+          "type": "knob",
+          "tab": "COMP",
+          "description": "Sets the amount of volume reduction.",
+          "vibe_impact": "Glue, energy"
+        },
+        {
+          "name": "SIDECHAIN",
+          "type": "selector",
+          "tab": "COMP",
+          "description": "Selects the key input for ducking effects.",
+          "vibe_impact": "Rhythm, pump, motion"
+        }
+      ]
+    },
+    "parameters": {
+      "pluginName": "Fruity Limiter",
+      "tabs": [
+        "LIMIT",
+        "COMP",
+        "NOISE GATE"
+      ],
+      "parameters": [
+        {
+          "section": "Global",
+          "id": "output_gain",
+          "name": "Output Gain",
+          "range": {
+            "min": -60,
+            "max": 20,
+            "unit": "dB"
+          },
+          "description": "Final output volume after all processing (Limit, Saturation)."
+        },
+        {
+          "section": "Compressor",
+          "id": "comp_gain",
+          "name": "Gain (Makeup)",
+          "range": {
+            "min": -60,
+            "max": 20,
+            "unit": "dB"
+          },
+          "description": "Makeup gain applied AFTER compression but BEFORE limiting."
+        },
+        {
+          "section": "Compressor",
+          "id": "comp_thresh",
+          "name": "Threshold",
+          "range": {
+            "min": -60,
+            "max": 0,
+            "unit": "dB"
+          },
+          "description": "Trigger level for compression."
+        },
+        {
+          "section": "Compressor",
+          "id": "comp_ratio",
+          "name": "Ratio",
+          "range": {
+            "min": 1,
+            "max": 20,
+            "unit": ":1"
+          },
+          "defaultValue": 1,
+          "description": "Ratio of input to output level above threshold."
+        },
+        {
+          "section": "Compressor",
+          "id": "comp_knee",
+          "name": "Knee",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Softness of the transition into compression."
+        },
+        {
+          "section": "Compressor",
+          "id": "comp_attack",
+          "name": "Attack",
+          "range": {
+            "min": 0,
+            "max": 1000,
+            "unit": "ms"
+          },
+          "description": "Time taken to reach full compression ratio."
+        },
+        {
+          "section": "Compressor",
+          "id": "comp_release",
+          "name": "Release",
+          "range": {
+            "min": 0,
+            "max": 2000,
+            "unit": "ms"
+          },
+          "description": "Time taken to return to zero gain reduction."
+        },
+        {
+          "section": "Compressor",
+          "id": "comp_sustain",
+          "name": "Sustain",
+          "range": {
+            "min": 0,
+            "max": 1000,
+            "unit": "ms"
+          },
+          "description": "RMS averaging window length. Prevents fluttering on bass."
+        },
+        {
+          "section": "Limiter",
+          "id": "limit_ceil",
+          "name": "Ceiling",
+          "range": {
+            "min": -12,
+            "max": 12,
+            "unit": "dB"
+          },
+          "defaultValue": 0,
+          "description": "Absolute maximum output level."
+        },
+        {
+          "section": "Limiter",
+          "id": "limit_sat",
+          "name": "Saturation",
+          "range": {
+            "min": -10,
+            "max": 0,
+            "unit": "dB"
+          },
+          "description": "Threshold where soft-clipping begins before hitting the ceiling."
+        },
+        {
+          "section": "Limiter",
+          "id": "limit_attack",
+          "name": "Attack (Lookahead)",
+          "range": {
+            "min": 0,
+            "max": 1000,
+            "unit": "ms"
+          },
+          "description": "Adds system latency to allow lookahead detection."
+        }
+      ]
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "Common Usage",
+      "category": "general",
+      "filename": "common-usage.md"
+    },
+    {
+      "title": "00 Goal Quick Result",
+      "category": "by-goal",
+      "filename": "00_Goal_Quick_Result.md"
+    },
+    {
+      "title": "01 Transparent Vocal Control",
+      "category": "by-goal",
+      "filename": "01_Transparent_Vocal_Control.md"
+    },
+    {
+      "title": "02 Drum Bus Punch",
+      "category": "by-goal",
+      "filename": "02_Drum_Bus_Punch.md"
+    },
+    {
+      "title": "Bass Sidechain",
+      "category": "by-instrument",
+      "filename": "bass-sidechain.md"
+    },
+    {
+      "title": "Master Bus",
+      "category": "by-instrument",
+      "filename": "master-bus.md"
+    }
+  ]
+}

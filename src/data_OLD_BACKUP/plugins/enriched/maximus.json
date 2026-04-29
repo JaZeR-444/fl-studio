@@ -1,0 +1,908 @@
+{
+  "id": "maximus",
+  "name": "Maximus",
+  "presets": {
+    "01-standard-maximizer": {
+      "name": "Standard Maximizer",
+      "genre": "universal",
+      "mood": "upbeat",
+      "description": "Clean, transparent limiting for general-purpose loudness",
+      "parameters": {
+        "inputGain": 0,
+        "threshold": -3.0,
+        "ratio": 4.0,
+        "attack": 0.5,
+        "release": 100,
+        "outputGain": 0,
+        "ceiling": -0.3,
+        "link": true,
+        "channelMode": "LR",
+        "s/C": false,
+        "limiterMode": "Hard"
+      },
+      "workflow": {
+        "useCase": "General mix or master bus",
+        "steps": [
+          "Set ceiling to -0.3 for headroom",
+          "Start with threshold at -6dB",
+          "Lower threshold gradually until gain reduction is 2-4dB",
+          "Adjust attack for transients (0.3-1.0ms)",
+          "Set release to auto or 100ms for music",
+          "Add output gain to compensate"
+        ],
+        "troubleshooting": [
+          {
+            "issue": "Pumping",
+            "fix": "Increase release time or reduce ratio"
+          },
+          {
+            "issue": "Distortion",
+            "fix": "Increase threshold or reduce ratio"
+          },
+          {
+            "issue": "Dull sound",
+            "fix": "Decrease attack time"
+          }
+        ]
+      },
+      "abTest": {
+        "listenFor": "Transparent loudness increase without artifacts",
+        "duration": "Full song"
+      }
+    },
+    "02-aggressive-punch": {
+      "name": "Aggressive Punch",
+      "genre": "hip-hop/rap",
+      "mood": "electric",
+      "description": "Heavy limiting for maximum impact with preserved punch",
+      "parameters": {
+        "inputGain": 2,
+        "threshold": -8.0,
+        "ratio": 8.0,
+        "attack": 0.1,
+        "release": 50,
+        "outputGain": 2,
+        "ceiling": -0.3,
+        "link": true,
+        "channelMode": "LR",
+        "s/C": true,
+        "limiterMode": "Hard"
+      },
+      "workflow": {
+        "useCase": "Hip-hop beats and aggressive tracks",
+        "steps": [
+          "Set ceiling to -0.3",
+          "Increase input gain by 2-3dB",
+          "Lower threshold to -6 to -8dB",
+          "Use fast attack (0.1-0.3ms) for punch",
+          "Quick release (40-60ms) for tightness",
+          "Enable s/C for punch preservation"
+        ],
+        "troubleshooting": [
+          {
+            "issue": "Lost punch",
+            "fix": "Enable s/C or increase attack time"
+          },
+          {
+            "issue": "Clipping",
+            "fix": "Lower threshold or reduce input gain"
+          },
+          {
+            "issue": "Cramping",
+            "fix": "Increase release time"
+          }
+        ]
+      },
+      "abTest": {
+        "listenFor": "Loud, aggressive sound with maintained kick punch",
+        "duration": "First 30 seconds with prominent drums"
+      }
+    },
+    "03-master-bus-warmth": {
+      "name": "Master Bus Warmth",
+      "genre": "R&B",
+      "mood": "moody",
+      "description": "Smooth limiting with analog warmth characteristics",
+      "parameters": {
+        "inputGain": 1,
+        "threshold": -4.0,
+        "ratio": 3.0,
+        "attack": 1.0,
+        "release": 150,
+        "outputGain": 1,
+        "ceiling": -0.5,
+        "link": true,
+        "channelMode": "LR",
+        "s/C": false,
+        "limiterMode": "Smooth"
+      },
+      "workflow": {
+        "useCase": "R&B ballads and smooth mixes",
+        "steps": [
+          "Set ceiling to -0.5 for extra headroom",
+          "Moderate threshold (-4dB) for gentle limiting",
+          "Slow attack (0.8-1.2ms) for transients through",
+          "Long release (120-180ms) for natural recovery",
+          "Use smooth limiter mode for warmth"
+        ],
+        "troubleshooting": [
+          {
+            "issue": "Not loud enough",
+            "fix": "Increase input gain, not ratio"
+          },
+          {
+            "issue": "Harsh high end",
+            "fix": "Use smooth mode, increase ceiling"
+          },
+          {
+            "issue": "Uneven levels",
+            "fix": "Check linking settings"
+          }
+        ]
+      },
+      "abTest": {
+        "listenFor": "Warm, natural sound with smooth dynamics control",
+        "duration": "Full song, focus on vocals"
+      }
+    },
+    "04-edm-loudness": {
+      "name": "EDM Loudness",
+      "genre": "EDM",
+      "mood": "electric",
+      "description": "Heavy limiting for club and festival maximum loudness",
+      "parameters": {
+        "inputGain": 3,
+        "threshold": -10.0,
+        "ratio": 12.0,
+        "attack": 0.05,
+        "release": 30,
+        "outputGain": 4,
+        "ceiling": -0.1,
+        "link": true,
+        "channelMode": "LR",
+        "s/C": true,
+        "limiterMode": "Hard"
+      },
+      "workflow": {
+        "useCase": "EDM drops and festival tracks",
+        "steps": [
+          "Set ceiling to -0.1 for maximum loudness",
+          "High input gain (+3dB)",
+          "Low threshold (-8 to -10dB) for heavy limiting",
+          "Very fast attack (0.05ms) for total control",
+          "Quick release (25-40ms) for density",
+          "Enable s/C for transient preservation"
+        ],
+        "troubleshooting": [
+          {
+            "issue": "Over-compressed",
+            "fix": "Reduce ratio to 8, increase threshold"
+          },
+          {
+            "issue": "Lost energy",
+            "fix": "Enable s/C, reduce attack to 0.1ms"
+          },
+          {
+            "issue": "Digital distortion",
+            "fix": "Increase ceiling, reduce input gain"
+          }
+        ]
+      },
+      "abTest": {
+        "listenFor": "Maximum loudness with maintained energy on drops",
+        "duration": "Build-up and drop section"
+      }
+    },
+    "05-hard-trap": {
+      "name": "Hard Trap Limit",
+      "genre": "hip-hop/rap",
+      "mood": "electric",
+      "description": "Aggressive limiting for hard-hitting trap productions",
+      "parameters": {
+        "inputGain": 4,
+        "threshold": -6,
+        "ratio": 12,
+        "attack": 0.08,
+        "release": 35,
+        "ceiling": -0.2,
+        "outputGain": 2
+      },
+      "characteristics": [
+        "Maximum impact",
+        "Punch preservation",
+        "Aggressive loudness"
+      ],
+      "workflow": {
+        "useCase": "Hard trap and aggressive hip-hop",
+        "steps": [
+          "Input gain +4dB for drive",
+          "Threshold at -6dB",
+          "Ratio 12:1 for control",
+          "Attack at 0.08ms for punch",
+          "Release at 35ms tight",
+          "Ceiling at -0.2dB"
+        ],
+        "tips": [
+          "Preserves 808 punch",
+          "Maximum impact",
+          "Check for distortion"
+        ]
+      },
+      "abTest": {
+        "listenFor": "Punchy, aggressive limiting that preserves impact",
+        "duration": "Full beat with 808"
+      }
+    },
+    "05-rnb-glue": {
+      "name": "R&B Glue",
+      "genre": "R&B",
+      "mood": "melodic",
+      "description": "Mix glue compression for cohesive R&B arrangements",
+      "parameters": {
+        "inputGain": 0,
+        "threshold": -8.0,
+        "ratio": 2.0,
+        "attack": 3.0,
+        "release": 200,
+        "outputGain": 0,
+        "ceiling": -0.3,
+        "link": true,
+        "channelMode": "M/S",
+        "s/C": false,
+        "limiterMode": "Smooth"
+      },
+      "workflow": {
+        "useCase": "Mix bus for R&B arrangements",
+        "steps": [
+          "Set threshold for 3-6dB gain reduction",
+          "Low ratio (1.5-2.5) for glue effect",
+          "Medium attack (2-4ms) for transients through",
+          "Long release (150-250ms) for natural pumping",
+          "Use M/S mode for side channel control"
+        ],
+        "troubleshooting": [
+          {
+            "issue": "Too compressed",
+            "fix": "Raise threshold or reduce ratio"
+          },
+          {
+            "issue": "Pumping on kick",
+            "fix": "Increase attack time"
+          },
+          {
+            "issue": "Loss of dynamics",
+            "fix": "Lower ratio, increase threshold"
+          }
+        ]
+      },
+      "abTest": {
+        "listenFor": "Cohesive mix with elements glued together",
+        "duration": "Full arrangement with multiple elements"
+      }
+    },
+    "06-drum-buss-smash": {
+      "name": "Drum Buss Smash",
+      "genre": "hip-hop/rap",
+      "mood": "funky",
+      "description": "Aggressive drum buss limiting for maximum impact",
+      "parameters": {
+        "inputGain": 4,
+        "threshold": -12.0,
+        "ratio": 20.0,
+        "attack": 0.02,
+        "release": 20,
+        "outputGain": 3,
+        "ceiling": -0.1,
+        "link": true,
+        "channelMode": "LR",
+        "s/C": true,
+        "limiterMode": "Hard"
+      },
+      "workflow": {
+        "useCase": "Drum buss for hard-hitting beats",
+        "steps": [
+          "Apply directly to drum buss track",
+          "High input gain for heavy limiting",
+          "Very low threshold (-10 to -14dB)",
+          "Instant attack (0.02-0.05ms)",
+          "Short release (15-25ms) for density",
+          "Heavy s/C to protect transients"
+        ],
+        "troubleshooting": [
+          {
+            "issue": "Dull kicks",
+            "fix": "Enable s/C, decrease attack"
+          },
+          {
+            "issue": "Crackling",
+            "fix": "Reduce input gain, check ceiling"
+          },
+          {
+            "issue": "Uncontrolled tails",
+            "fix": "Decrease release time"
+          }
+        ]
+      },
+      "abTest": {
+        "listenFor": "Punchy, loud drums with controlled peaks",
+        "duration": "First 8 bars of beat"
+      }
+    },
+    "06-smooth-rnb": {
+      "name": "Smooth R&B",
+      "genre": "R&B",
+      "mood": "moody",
+      "description": "Gentle, transparent limiting for smooth R&B productions",
+      "parameters": {
+        "inputGain": 1,
+        "threshold": -4,
+        "ratio": 3,
+        "attack": 0.5,
+        "release": 150,
+        "ceiling": -0.3,
+        "outputGain": 0
+      },
+      "characteristics": [
+        "Transparent limiting",
+        "Preserves dynamics",
+        "Smooth character"
+      ],
+      "workflow": {
+        "useCase": "Smooth R&B and soul",
+        "steps": [
+          "Input gain +1dB gently",
+          "Threshold at -4dB",
+          "Ratio 3:1 for transparency",
+          "Attack at 0.5ms for transients",
+          "Release at 150ms natural",
+          "Ceiling at -0.3dB"
+        ],
+        "tips": [
+          "Preserves vocal dynamics",
+          "Smooth and transparent",
+          "Great for ballads"
+        ]
+      },
+      "abTest": {
+        "listenFor": "Smooth, transparent limiting that preserves dynamics",
+        "duration": "Full R&B verse"
+      }
+    },
+    "calvin-harris-edm": {
+      "name": "Calvin Harris EDM",
+      "producer": "Calvin Harris",
+      "description": "Clean, powerful limiting for festival EDM",
+      "reference": "Summer, This Is What You Came For",
+      "parameters": {
+        "inputGain": 5,
+        "threshold": -4,
+        "ratio": 8,
+        "attack": 0.05,
+        "release": 30,
+        "ceiling": -0.1,
+        "outputGain": 3
+      },
+      "characteristics": [
+        "Clean character",
+        "Festival-ready loudness",
+        "Punch preservation"
+      ],
+      "workflow": {
+        "useCase": "Big room EDM and festival tracks",
+        "signatureElements": [
+          "Clean, precise limiting",
+          "Maximum energy",
+          "Club and festival ready"
+        ],
+        "steps": [
+          "Heavy input gain for energy",
+          "Fast attack for control",
+          "Quick release for punch",
+          "High ceiling for loudness",
+          "Perfect for drops"
+        ],
+        "tips": [
+          "Clean, powerful sound",
+          "Festival-ready",
+          "Great for drops"
+        ]
+      }
+    },
+    "calvin-harris": {
+      "name": "Calvin Harris EDM",
+      "producer": "Calvin Harris",
+      "description": "Clean, powerful limiting for big room EDM productions",
+      "reference": "Summer, This Is What You Came For",
+      "parameters": {
+        "inputGain": 3,
+        "threshold": -6.0,
+        "ratio": 8.0,
+        "attack": 0.1,
+        "release": 35,
+        "outputGain": 3,
+        "ceiling": -0.1,
+        "link": true,
+        "channelMode": "LR",
+        "s/C": true,
+        "limiterMode": "Hard"
+      },
+      "workflow": {
+        "useCase": "EDM drops and festival tracks",
+        "characteristics": [
+          "Maximum loudness for clubs",
+          "Clean transients",
+          "Punchy low-end"
+        ],
+        "steps": [
+          "Set ceiling to -0.1dB",
+          "Input gain +3dB",
+          "Threshold at -6dB",
+          "Fast attack 0.1ms",
+          "Quick release 35ms",
+          "Strong s/C protection"
+        ],
+        "tips": [
+          "Use on master after EQ and compression",
+          "Check on club system for bass response",
+          "Layer with multiband compression for control"
+        ]
+      }
+    },
+    "metro-boomin-loud": {
+      "name": "Metro Boomin Loud",
+      "producer": "Metro Boomin",
+      "description": "Signature dark, aggressive limiting for modern trap",
+      "reference": "Harder, Creepin', Savage",
+      "parameters": {
+        "inputGain": 4.5,
+        "threshold": -5,
+        "ratio": 10,
+        "attack": 0.1,
+        "release": 40,
+        "ceiling": -0.2,
+        "outputGain": 2.5
+      },
+      "characteristics": [
+        "Dark character",
+        "Maximum loudness",
+        "Phone-friendly translation"
+      ],
+      "workflow": {
+        "useCase": "Modern trap productions",
+        "signatureElements": [
+          "Aggressive loudness",
+          "Dark feel",
+          "Works on all systems"
+        ],
+        "steps": [
+          "Heavy input gain for power",
+          "Fast attack for control",
+          "Quick release for punch",
+          "High ceiling for loudness",
+          "Check on phone speakers"
+        ],
+        "tips": [
+          "Signature dark sound",
+          "Maximum impact",
+          "Industry standard trap"
+        ]
+      }
+    },
+    "serge-dansereau": {
+      "name": "Serge Dansereau Mastering",
+      "producer": "Serge Dansereau",
+      "description": "Transparent mastering-style limiting for competitive loudness",
+      "reference": "Industry standard mastering approach",
+      "parameters": {
+        "inputGain": 1,
+        "threshold": -3.0,
+        "ratio": 4.0,
+        "attack": 0.5,
+        "release": 100,
+        "outputGain": 1,
+        "ceiling": -0.3,
+        "link": true,
+        "channelMode": "M/S",
+        "s/C": false,
+        "limiterMode": "Hard"
+      },
+      "workflow": {
+        "useCase": "Final stage mastering",
+        "characteristics": [
+          "Transparent peak control",
+          "Maximum loudness without artifacts",
+          "M/S processing capability"
+        ],
+        "steps": [
+          "Ceiling at -0.3dB",
+          "Input gain +1dB",
+          "Threshold for 2-4dB GR",
+          "Attack 0.5ms balanced",
+          "Release 100ms auto-compatible",
+          "M/S mode for frequency-specific control"
+        ],
+        "tips": [
+          "Use as final limiter in chain",
+          "Check mono compatibility",
+          "Reference against commercial tracks",
+          "A/B frequently to avoid ear fatigue"
+        ]
+      }
+    },
+    "terry-lewis": {
+      "name": "Terry Lewis R&B",
+      "producer": "Terry Lewis",
+      "description": "Smooth, warm limiting for classic and contemporary R&B",
+      "reference": "Every Little Thing I Do",
+      "parameters": {
+        "inputGain": 0,
+        "threshold": -3.0,
+        "ratio": 2.5,
+        "attack": 2.0,
+        "release": 180,
+        "outputGain": 0,
+        "ceiling": -0.5,
+        "link": true,
+        "channelMode": "LR",
+        "s/C": false,
+        "limiterMode": "Smooth"
+      },
+      "workflow": {
+        "useCase": "R&B ballads and midtempo",
+        "characteristics": [
+          "Natural dynamics preservation",
+          "Warm, analog character",
+          "Smooth peak control"
+        ],
+        "steps": [
+          "High ceiling -0.5dB for headroom",
+          "Gentle threshold -3dB",
+          "Low ratio 2.5:1",
+          "Slow attack 2ms for transients",
+          "Long release 180ms",
+          "Smooth limiter mode"
+        ],
+        "tips": [
+          "Use before final limiting on master",
+          "Complement with analog emulation plugins",
+          "Focus on perceived loudness over meters"
+        ]
+      }
+    },
+    "timbaland-rhythm": {
+      "name": "Timbaland Rhythm",
+      "producer": "Timbaland",
+      "description": "Unique, rhythmic limiting for unconventional grooves",
+      "reference": "Dirt Off Your Shoulder, Give It to Me",
+      "parameters": {
+        "inputGain": 2,
+        "threshold": -5,
+        "ratio": 6,
+        "attack": 0.3,
+        "release": 80,
+        "ceiling": -0.3,
+        "outputGain": 1
+      },
+      "characteristics": [
+        "Rhythmic feel",
+        "Unique dynamics",
+        "Groove preservation"
+      ],
+      "workflow": {
+        "useCase": "Unconventional hip-hop grooves",
+        "signatureElements": [
+          "Rhythmic limiting",
+          "Unique dynamics",
+          "Preserves signature feel"
+        ],
+        "steps": [
+          "Moderate input gain",
+          "Slower attack for groove",
+          "Release synced to rhythm",
+          "Transparent character",
+          "Perfect for signature beats"
+        ],
+        "tips": [
+          "Preserves Timbaland feel",
+          "Great for odd patterns",
+          "Unique rhythmic character"
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "maximus-params": {
+      "plugin_name": "Maximus",
+      "category": "Dynamics / Mastering",
+      "bands": [
+        "Low",
+        "Mid",
+        "High",
+        "Master"
+      ],
+      "features": [
+        "Spline envelopes",
+        "Multiband saturation",
+        "Adaptive release"
+      ],
+      "parameters": [
+        {
+          "name": "Band Selector",
+          "type": "selector",
+          "values": [
+            "Low",
+            "Mid",
+            "High",
+            "Master"
+          ],
+          "vibe_impact": "Frequency-specific focus"
+        },
+        {
+          "name": "Compression Envelope",
+          "type": "spline-graph",
+          "description": "User-drawn compression/expansion curve.",
+          "mix_impact": "Dynamic range control, loudness"
+        },
+        {
+          "name": "Pre Gain",
+          "type": "knob",
+          "description": "Input boost into the selected band.",
+          "mix_impact": "Compression depth, saturation drive"
+        },
+        {
+          "name": "Post Gain",
+          "type": "knob",
+          "description": "Output level of the selected band.",
+          "mix_impact": "Makeup gain, final ceiling"
+        },
+        {
+          "name": "Low / High Freq",
+          "type": "knob",
+          "description": "Crossover frequency split points.",
+          "mix_impact": "Phase coherence, frequency isolation"
+        },
+        {
+          "name": "Release 1 / 2",
+          "type": "knobs",
+          "description": "Adaptive recovery time.",
+          "mix_impact": "Transparency, pumping vs smooth"
+        },
+        {
+          "name": "Saturation Mode",
+          "type": "selector",
+          "values": [
+            "OFF",
+            "Soft",
+            "Hard"
+          ],
+          "vibe_impact": "Warmth, grit, analog character"
+        }
+      ]
+    },
+    "parameters": {
+      "pluginName": "Maximus",
+      "tabs": [
+        "LOW",
+        "MID",
+        "HIGH",
+        "MASTER"
+      ],
+      "parameters": [
+        {
+          "section": "General",
+          "id": "master_gain",
+          "name": "Master Gain",
+          "range": {
+            "min": -Infinity,
+            "max": 18,
+            "unit": "dB"
+          },
+          "description": "Final output volume."
+        },
+        {
+          "section": "Band Controls",
+          "id": "pre_gain",
+          "name": "Pre Gain",
+          "range": {
+            "min": -Infinity,
+            "max": 18,
+            "unit": "dB"
+          },
+          "description": "Input drive into the compression envelope."
+        },
+        {
+          "section": "Band Controls",
+          "id": "post_gain",
+          "name": "Post Gain",
+          "range": {
+            "min": -Infinity,
+            "max": 18,
+            "unit": "dB"
+          },
+          "description": "Makeup gain after compression."
+        },
+        {
+          "section": "Envelope",
+          "id": "attack",
+          "name": "Attack (Lookahead)",
+          "range": {
+            "min": 0,
+            "max": 1000,
+            "unit": "ms"
+          },
+          "description": "Lookahead buffer time. Determines how early the limiter reacts."
+        },
+        {
+          "section": "Envelope",
+          "id": "release_1",
+          "name": "Release 1",
+          "range": {
+            "min": 0,
+            "max": 1000,
+            "unit": "ms"
+          },
+          "description": "Accelerating release curve time."
+        },
+        {
+          "section": "Envelope",
+          "id": "release_2",
+          "name": "Release 2",
+          "range": {
+            "min": 0,
+            "max": 1000,
+            "unit": "ms"
+          },
+          "description": "Decelerating release curve time."
+        },
+        {
+          "section": "Envelope",
+          "id": "curve",
+          "name": "Curve Slope",
+          "range": {
+            "min": 1,
+            "max": 8,
+            "unit": "int"
+          },
+          "description": "Blend/Slope of the attack and release curves."
+        },
+        {
+          "section": "Saturation",
+          "id": "sat_thresh",
+          "name": "Saturation Threshold/Type",
+          "range": {
+            "min": -100,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Left = Type A (Hard). Right = Type B (Soft). Center = Off."
+        },
+        {
+          "section": "Saturation",
+          "id": "sat_ceil",
+          "name": "Saturation Ceiling",
+          "range": {
+            "min": -18,
+            "max": 0,
+            "unit": "dB"
+          },
+          "description": "Threshold where saturation begins. Lower = More distortion."
+        },
+        {
+          "section": "Stereo",
+          "id": "separation",
+          "name": "Stereo Separation",
+          "range": {
+            "min": -100,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Right = Mono. Left = Wide Stereo. Works per band."
+        },
+        {
+          "section": "Crossover",
+          "id": "low_freq",
+          "name": "Low Frequency Cutoff",
+          "range": {
+            "min": 10,
+            "max": 20000,
+            "unit": "Hz"
+          },
+          "description": "Split point between Low and Mid bands."
+        },
+        {
+          "section": "Crossover",
+          "id": "high_freq",
+          "name": "High Frequency Cutoff",
+          "range": {
+            "min": 10,
+            "max": 20000,
+            "unit": "Hz"
+          },
+          "description": "Split point between Mid and High bands."
+        }
+      ]
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "01 Limiting Deep Dive",
+      "filename": "01-limiting-deep-dive.md"
+    },
+    {
+      "title": "02 Lufs Loudness",
+      "filename": "02-lufs-loudness.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "Common Usage",
+      "category": "general",
+      "filename": "common-usage.md"
+    },
+    {
+      "title": "02 Mastering Preparation",
+      "category": "by-goal",
+      "filename": "02-mastering-preparation.md"
+    },
+    {
+      "title": "03 Pump Effect",
+      "category": "by-goal",
+      "filename": "03-pump-effect.md"
+    },
+    {
+      "title": "By Goal Workflows",
+      "category": "by-goal",
+      "filename": "by-goal-workflows.md"
+    },
+    {
+      "title": "Index",
+      "category": "by-goal",
+      "filename": "INDEX.md"
+    },
+    {
+      "title": "Loudness Maximization",
+      "category": "by-goal",
+      "filename": "loudness-maximization.md"
+    },
+    {
+      "title": "Parallel Compression Bus",
+      "category": "by-goal",
+      "filename": "parallel-compression-bus.md"
+    },
+    {
+      "title": "Stereo Widening Via High Band",
+      "category": "by-goal",
+      "filename": "stereo-widening-via-high-band.md"
+    },
+    {
+      "title": "01 Master Bus Workflow",
+      "category": "by-instrument",
+      "filename": "01-master-bus-workflow.md"
+    },
+    {
+      "title": "02 Drum Buss Workflow",
+      "category": "by-instrument",
+      "filename": "02-drum-buss-workflow.md"
+    },
+    {
+      "title": "03 Buss Processing Workflow",
+      "category": "by-instrument",
+      "filename": "03-buss-processing-workflow.md"
+    },
+    {
+      "title": "04 Mastering Workflow",
+      "category": "by-instrument",
+      "filename": "04-mastering-workflow.md"
+    },
+    {
+      "title": "Index",
+      "category": "by-instrument",
+      "filename": "INDEX.md"
+    }
+  ]
+}

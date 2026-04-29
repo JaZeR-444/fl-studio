@@ -1,0 +1,2128 @@
+{
+  "id": "fruity-waveshaper",
+  "name": "Fruity WaveShaper",
+  "presets": {
+    "curve-shapes": {
+      "curveLibrary": {
+        "name": "Fruity WaveShaper Curve Shapes",
+        "version": "1.0",
+        "curveTypes": [
+          {
+            "id": "linear",
+            "name": "Linear (Unity)",
+            "description": "No distortion, bypass reference",
+            "points": [
+              {
+                "x": -1.0,
+                "y": -1.0
+              },
+              {
+                "x": 0.0,
+                "y": 0.0
+              },
+              {
+                "x": 1.0,
+                "y": 1.0
+              }
+            ],
+            "characteristics": {
+              "harmonics": "none",
+              "symmetry": "symmetric",
+              "suggestedMode": "Unipolar",
+              "useCase": "Reference, subtle saturation starting point"
+            }
+          },
+          {
+            "id": "soft-clip",
+            "name": "Soft Clip (S-Curve)",
+            "description": "Gentle saturation with even harmonics",
+            "points": [
+              {
+                "x": -1.0,
+                "y": -0.85
+              },
+              {
+                "x": -0.5,
+                "y": -0.4
+              },
+              {
+                "x": 0.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.5,
+                "y": 0.4
+              },
+              {
+                "x": 1.0,
+                "y": 0.85
+              }
+            ],
+            "characteristics": {
+              "harmonics": "even-order (warm)",
+              "symmetry": "symmetric",
+              "suggestedMode": "Unipolar",
+              "useCase": "808 warmth, vocal saturation, mix glue"
+            }
+          },
+          {
+            "id": "hard-clip",
+            "name": "Hard Clip (Limiter)",
+            "description": "Aggressive limiting with odd harmonics",
+            "points": [
+              {
+                "x": -1.0,
+                "y": -0.8
+              },
+              {
+                "x": -0.8,
+                "y": -0.8
+              },
+              {
+                "x": 0.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.8,
+                "y": 0.8
+              },
+              {
+                "x": 1.0,
+                "y": 0.8
+              }
+            ],
+            "characteristics": {
+              "harmonics": "odd-order (aggressive)",
+              "symmetry": "symmetric",
+              "suggestedMode": "Unipolar or Bipolar",
+              "useCase": "Drum punch, hard limiting, EDM leads"
+            }
+          },
+          {
+            "id": "soft-limiter",
+            "name": "Soft Limiter",
+            "description": "Controlled peak reduction with smooth transition",
+            "points": [
+              {
+                "x": -1.0,
+                "y": -0.9
+              },
+              {
+                "x": -0.7,
+                "y": -0.7
+              },
+              {
+                "x": -0.4,
+                "y": -0.4
+              },
+              {
+                "x": 0.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.4,
+                "y": 0.4
+              },
+              {
+                "x": 0.7,
+                "y": 0.7
+              },
+              {
+                "x": 1.0,
+                "y": 0.9
+              }
+            ],
+            "characteristics": {
+              "harmonics": "mixed (controlled)",
+              "symmetry": "symmetric",
+              "suggestedMode": "Unipolar",
+              "useCase": "Transparent limiting, loudness control"
+            }
+          },
+          {
+            "id": "foldback",
+            "name": "Foldback (Wavefolding)",
+            "description": "Complex folding for metallic textures",
+            "points": [
+              {
+                "x": -1.0,
+                "y": 0.5
+              },
+              {
+                "x": -0.75,
+                "y": 0.0
+              },
+              {
+                "x": -0.5,
+                "y": 0.5
+              },
+              {
+                "x": -0.25,
+                "y": 0.0
+              },
+              {
+                "x": 0.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.25,
+                "y": 0.0
+              },
+              {
+                "x": 0.5,
+                "y": 0.5
+              },
+              {
+                "x": 0.75,
+                "y": 0.0
+              },
+              {
+                "x": 1.0,
+                "y": 0.5
+              }
+            ],
+            "characteristics": {
+              "harmonics": "complex (all orders)",
+              "symmetry": "symmetric",
+              "suggestedMode": "Bipolar",
+              "useCase": "Experimental, modular-style distortion"
+            }
+          },
+          {
+            "id": "asymmetric-soft",
+            "name": "Asymmetric Soft",
+            "description": "Different positive/negative shaping for tube-like character",
+            "bipolar": {
+              "positive": [
+                {
+                  "x": 0.0,
+                  "y": 0.0
+                },
+                {
+                  "x": 0.5,
+                  "y": 0.4
+                },
+                {
+                  "x": 1.0,
+                  "y": 0.75
+                }
+              ],
+              "negative": [
+                {
+                  "x": -1.0,
+                  "y": -0.85
+                },
+                {
+                  "x": -0.5,
+                  "y": -0.45
+                },
+                {
+                  "x": 0.0,
+                  "y": 0.0
+                }
+              ]
+            },
+            "characteristics": {
+              "harmonics": "mixed (odd+even)",
+              "symmetry": "asymmetric",
+              "suggestedMode": "Bipolar",
+              "useCase": "Character distortion, amp simulation"
+            }
+          },
+          {
+            "id": "asymmetric-hard",
+            "name": "Asymmetric Hard",
+            "description": "Aggressive asymmetric clipping for edge",
+            "bipolar": {
+              "positive": [
+                {
+                  "x": 0.0,
+                  "y": 0.0
+                },
+                {
+                  "x": 0.4,
+                  "y": 0.5
+                },
+                {
+                  "x": 0.7,
+                  "y": 0.75
+                },
+                {
+                  "x": 1.0,
+                  "y": 0.8
+                }
+              ],
+              "negative": [
+                {
+                  "x": -1.0,
+                  "y": -0.6
+                },
+                {
+                  "x": -0.5,
+                  "y": -0.4
+                },
+                {
+                  "x": 0.0,
+                  "y": 0.0
+                }
+              ]
+            },
+            "characteristics": {
+              "harmonics": "complex (aggressive)",
+              "symmetry": "asymmetric",
+              "suggestedMode": "Bipolar",
+              "useCase": "Drum crunch, vocal attitude, experimental"
+            }
+          },
+          {
+            "id": "staircase-8",
+            "name": "Bitcrush 8-Step",
+            "description": "8-step quantization for lo-fi sound",
+            "type": "staircase",
+            "steps": 8,
+            "characteristics": {
+              "harmonics": "aliased, digital artifacts",
+              "symmetry": "symmetric",
+              "suggestedMode": "Unipolar",
+              "useCase": "Lo-fi, retro, creative destruction"
+            }
+          },
+          {
+            "id": "staircase-16",
+            "name": "Bitcrush 16-Step",
+            "description": "16-step quantization for subtle degradation",
+            "type": "staircase",
+            "steps": 16,
+            "characteristics": {
+              "harmonics": "aliased, less severe",
+              "symmetry": "symmetric",
+              "suggestedMode": "Unipolar",
+              "useCase": "Subtle lo-fi, vintage character"
+            }
+          },
+          {
+            "id": "s-curve-aggressive",
+            "name": "Aggressive S-Curve",
+            "description": "Heavy saturation with pronounced S-shape",
+            "points": [
+              {
+                "x": -1.0,
+                "y": -0.7
+              },
+              {
+                "x": -0.6,
+                "y": -0.5
+              },
+              {
+                "x": -0.3,
+                "y": -0.2
+              },
+              {
+                "x": 0.0,
+                "y": 0.0
+              },
+              {
+                "x": 0.3,
+                "y": 0.2
+              },
+              {
+                "x": 0.6,
+                "y": 0.5
+              },
+              {
+                "x": 1.0,
+                "y": 0.7
+              }
+            ],
+            "characteristics": {
+              "harmonics": "even-order (strong)",
+              "symmetry": "symmetric",
+              "suggestedMode": "Unipolar",
+              "useCase": "Heavy saturation, 808s, bass"
+            }
+          }
+        ],
+        "drawingGuidelines": {
+          "smoothCurves": {
+            "points": "3-5 for basic shapes",
+            "spacing": "Even horizontal distribution",
+            "corners": "Avoid sharp angles for musical results",
+            "center": "Always pass through (0,0)"
+          },
+          "steppedCurves": {
+            "points": "8-16 for bitcrushing",
+            "alignment": "Horizontal segments with vertical jumps",
+            "oversampling": "Required: 4x minimum"
+          },
+          "asymmetricCurves": {
+            "mode": "Bipolar required",
+            "balance": "Keep some relationship between halves",
+            "experimentation": "Try different positive/negative ratios"
+          }
+        }
+      }
+    },
+    "preset-archetypes": {
+      "presetLibrary": {
+        "name": "Fruity WaveShaper Preset Archetypes",
+        "version": "1.0",
+        "categories": [
+          {
+            "name": "808 Bass",
+            "presets": [
+              {
+                "id": "808-warmth",
+                "name": "808 Warm Saturation",
+                "description": "Gentle saturation for 808 presence on small speakers",
+                "curve": {
+                  "type": "s-curve",
+                  "points": [
+                    {
+                      "x": -1.0,
+                      "y": -0.9
+                    },
+                    {
+                      "x": -0.5,
+                      "y": -0.45
+                    },
+                    {
+                      "x": 0.0,
+                      "y": 0.0
+                    },
+                    {
+                      "x": 0.5,
+                      "y": 0.45
+                    },
+                    {
+                      "x": 1.0,
+                      "y": 0.9
+                    }
+                  ]
+                },
+                "parameters": {
+                  "pre": 10,
+                  "mix": 60,
+                  "post": -8,
+                  "mode": "Unipolar",
+                  "oversample": "4x",
+                  "center": true
+                },
+                "tags": [
+                  "808",
+                  "sub-bass",
+                  "warmth",
+                  "hip-hop",
+                  "trap"
+                ],
+                "vibeTarget": [
+                  "Moody",
+                  "Vibey"
+                ]
+              },
+              {
+                "id": "808-aggressive",
+                "name": "808 Aggressive",
+                "description": "Harder saturation for distorted 808 character",
+                "curve": {
+                  "type": "hard-clip",
+                  "points": [
+                    {
+                      "x": -1.0,
+                      "y": -0.85
+                    },
+                    {
+                      "x": -0.7,
+                      "y": -0.7
+                    },
+                    {
+                      "x": 0.0,
+                      "y": 0.0
+                    },
+                    {
+                      "x": 0.7,
+                      "y": 0.7
+                    },
+                    {
+                      "x": 1.0,
+                      "y": 0.85
+                    }
+                  ]
+                },
+                "parameters": {
+                  "pre": 14,
+                  "mix": 70,
+                  "post": -12,
+                  "mode": "Unipolar",
+                  "oversample": "4x",
+                  "center": true
+                },
+                "tags": [
+                  "808",
+                  "aggressive",
+                  "distorted",
+                  "trap",
+                  "experimental"
+                ],
+                "vibeTarget": [
+                  "Psychedelic",
+                  "Upbeat"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Drums",
+            "presets": [
+              {
+                "id": "drum-punch",
+                "name": "Drum Punch Enhancer",
+                "description": "Transient bite for kicks and snares",
+                "curve": {
+                  "type": "hard-clip",
+                  "points": [
+                    {
+                      "x": -1.0,
+                      "y": -0.9
+                    },
+                    {
+                      "x": -0.5,
+                      "y": -0.5
+                    },
+                    {
+                      "x": 0.0,
+                      "y": 0.0
+                    },
+                    {
+                      "x": 0.6,
+                      "y": 0.7
+                    },
+                    {
+                      "x": 0.8,
+                      "y": 0.8
+                    },
+                    {
+                      "x": 1.0,
+                      "y": 0.8
+                    }
+                  ]
+                },
+                "parameters": {
+                  "pre": 16,
+                  "mix": 65,
+                  "post": -14,
+                  "mode": "Bipolar",
+                  "oversample": "4x",
+                  "center": true
+                },
+                "tags": [
+                  "drums",
+                  "transient",
+                  "punch",
+                  "edm",
+                  "hip-hop"
+                ],
+                "vibeTarget": [
+                  "Upbeat",
+                  "Vibey"
+                ]
+              },
+              {
+                "id": "drum-saturation",
+                "name": "Drum Saturation",
+                "description": "Warm drum bus saturation",
+                "curve": {
+                  "type": "s-curve",
+                  "points": [
+                    {
+                      "x": -1.0,
+                      "y": -0.85
+                    },
+                    {
+                      "x": -0.3,
+                      "y": -0.25
+                    },
+                    {
+                      "x": 0.0,
+                      "y": 0.0
+                    },
+                    {
+                      "x": 0.3,
+                      "y": 0.25
+                    },
+                    {
+                      "x": 1.0,
+                      "y": 0.85
+                    }
+                  ]
+                },
+                "parameters": {
+                  "pre": 8,
+                  "mix": 50,
+                  "post": -6,
+                  "mode": "Unipolar",
+                  "oversample": "2x",
+                  "center": true
+                },
+                "tags": [
+                  "drums",
+                  "warm",
+                  "glue",
+                  "mix-bus"
+                ],
+                "vibeTarget": [
+                  "Jazzy",
+                  "Moody"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Vocals",
+            "presets": [
+              {
+                "id": "vocal-warmth",
+                "name": "Vocal Warmth",
+                "description": "Subtle saturation for vocal presence",
+                "curve": {
+                  "type": "s-curve",
+                  "points": [
+                    {
+                      "x": -1.0,
+                      "y": -0.92
+                    },
+                    {
+                      "x": -0.4,
+                      "y": -0.35
+                    },
+                    {
+                      "x": 0.0,
+                      "y": 0.0
+                    },
+                    {
+                      "x": 0.4,
+                      "y": 0.35
+                    },
+                    {
+                      "x": 1.0,
+                      "y": 0.92
+                    }
+                  ]
+                },
+                "parameters": {
+                  "pre": 6,
+                  "mix": 30,
+                  "post": -4,
+                  "mode": "Unipolar",
+                  "oversample": "4x",
+                  "center": true
+                },
+                "tags": [
+                  "vocals",
+                  "warmth",
+                  "presence",
+                  "rnb",
+                  "soul"
+                ],
+                "vibeTarget": [
+                  "Moody",
+                  "Jazzy",
+                  "Vibey"
+                ]
+              },
+              {
+                "id": "vocal-grit",
+                "name": "Vocal Grit",
+                "description": "Aggressive vocal character for attitude",
+                "curve": {
+                  "type": "hard-clip",
+                  "points": [
+                    {
+                      "x": -1.0,
+                      "y": -0.85
+                    },
+                    {
+                      "x": -0.6,
+                      "y": -0.6
+                    },
+                    {
+                      "x": 0.0,
+                      "y": 0.0
+                    },
+                    {
+                      "x": 0.6,
+                      "y": 0.75
+                    },
+                    {
+                      "x": 0.9,
+                      "y": 0.85
+                    },
+                    {
+                      "x": 1.0,
+                      "y": 0.85
+                    }
+                  ]
+                },
+                "parameters": {
+                  "pre": 12,
+                  "mix": 40,
+                  "post": -10,
+                  "mode": "Bipolar",
+                  "oversample": "4x",
+                  "center": true
+                },
+                "tags": [
+                  "vocals",
+                  "grit",
+                  "attitude",
+                  "hip-hop",
+                  "rap"
+                ],
+                "vibeTarget": [
+                  "Upbeat",
+                  "Psychedelic"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Mix Bus",
+            "presets": [
+              {
+                "id": "mix-glue",
+                "name": "Mix Bus Glue",
+                "description": "Subtle saturation for mix cohesion",
+                "curve": {
+                  "type": "s-curve",
+                  "points": [
+                    {
+                      "x": -1.0,
+                      "y": -0.95
+                    },
+                    {
+                      "x": -0.5,
+                      "y": -0.45
+                    },
+                    {
+                      "x": 0.0,
+                      "y": 0.0
+                    },
+                    {
+                      "x": 0.5,
+                      "y": 0.45
+                    },
+                    {
+                      "x": 1.0,
+                      "y": 0.95
+                    }
+                  ]
+                },
+                "parameters": {
+                  "pre": 4,
+                  "mix": 20,
+                  "post": -2,
+                  "mode": "Unipolar",
+                  "oversample": "4x",
+                  "center": true
+                },
+                "tags": [
+                  "mix-bus",
+                  "glue",
+                  "subtle",
+                  "mastering"
+                ],
+                "vibeTarget": [
+                  "Vibey",
+                  "Jazzy",
+                  "Moody"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Creative",
+            "presets": [
+              {
+                "id": "bitcrush",
+                "name": "Bitcrusher",
+                "description": "Digital degradation staircase",
+                "curve": {
+                  "type": "staircase",
+                  "steps": 8,
+                  "points": "auto-generated"
+                },
+                "parameters": {
+                  "pre": 18,
+                  "mix": 80,
+                  "post": -15,
+                  "mode": "Unipolar",
+                  "oversample": "8x",
+                  "center": true
+                },
+                "tags": [
+                  "creative",
+                  "lo-fi",
+                  "destruction",
+                  "experimental"
+                ],
+                "vibeTarget": [
+                  "Psychedelic"
+                ]
+              },
+              {
+                "id": "limiter",
+                "name": "Soft Limiter",
+                "description": "Transparent peak control",
+                "curve": {
+                  "type": "limiter",
+                  "threshold": 0.8,
+                  "points": [
+                    {
+                      "x": -1.0,
+                      "y": -1.0
+                    },
+                    {
+                      "x": -0.8,
+                      "y": -0.8
+                    },
+                    {
+                      "x": 0.0,
+                      "y": 0.0
+                    },
+                    {
+                      "x": 0.8,
+                      "y": 0.8
+                    },
+                    {
+                      "x": 1.0,
+                      "y": 0.8
+                    }
+                  ]
+                },
+                "parameters": {
+                  "pre": 6,
+                  "mix": 100,
+                  "post": 0,
+                  "mode": "Unipolar",
+                  "oversample": "4x",
+                  "center": true
+                },
+                "tags": [
+                  "limiter",
+                  "peak-control",
+                  "utility"
+                ],
+                "vibeTarget": [
+                  "Upbeat"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "vibe-presets": {
+      "vibePresets": {
+        "name": "Fruity WaveShaper Vibe-Targeted Presets",
+        "version": "1.0",
+        "description": "Curated presets organized by vibe targets for quick selection",
+        "vibes": [
+          {
+            "id": "moody",
+            "name": "Moody",
+            "description": "Warm, atmospheric, introspective saturation",
+            "characteristics": [
+              "Warm",
+              "Smooth",
+              "Even harmonics",
+              "Subtle"
+            ],
+            "presets": [
+              {
+                "name": "Moody 808",
+                "curve": "soft-clip",
+                "parameters": {
+                  "pre": 8,
+                  "mix": 50,
+                  "post": -6,
+                  "mode": "Unipolar",
+                  "oversample": "2x"
+                },
+                "application": "Subtle 808 warmth for emotional tracks"
+              },
+              {
+                "name": "Moody Vocals",
+                "curve": "soft-clip",
+                "parameters": {
+                  "pre": 4,
+                  "mix": 25,
+                  "post": -3,
+                  "mode": "Unipolar",
+                  "oversample": "4x"
+                },
+                "application": "Gentle vocal presence without edge"
+              },
+              {
+                "name": "Moody Mix Bus",
+                "curve": "soft-clip",
+                "parameters": {
+                  "pre": 3,
+                  "mix": 20,
+                  "post": -2,
+                  "mode": "Unipolar",
+                  "oversample": "4x"
+                },
+                "application": "Subtle glue for emotional cohesion"
+              }
+            ]
+          },
+          {
+            "id": "upbeat",
+            "name": "Upbeat",
+            "description": "Energetic, punchy, driving distortion",
+            "characteristics": [
+              "Aggressive",
+              "Punchy",
+              "Mixed harmonics",
+              "Forward"
+            ],
+            "presets": [
+              {
+                "name": "Upbeat Drums",
+                "curve": "hard-clip",
+                "parameters": {
+                  "pre": 14,
+                  "mix": 70,
+                  "post": -12,
+                  "mode": "Bipolar",
+                  "oversample": "4x"
+                },
+                "application": "Maximum impact for dance/EDM drums"
+              },
+              {
+                "name": "Upbeat 808",
+                "curve": "s-curve-aggressive",
+                "parameters": {
+                  "pre": 12,
+                  "mix": 65,
+                  "post": -10,
+                  "mode": "Unipolar",
+                  "oversample": "4x"
+                },
+                "application": "Hard-hitting 808s for club tracks"
+              },
+              {
+                "name": "Upbeat Vocals",
+                "curve": "asymmetric-hard",
+                "parameters": {
+                  "pre": 10,
+                  "mix": 45,
+                  "post": -8,
+                  "mode": "Bipolar",
+                  "oversample": "4x"
+                },
+                "application": "Attitude and presence for hype vocals"
+              }
+            ]
+          },
+          {
+            "id": "psychedelic",
+            "name": "Psychedelic",
+            "description": "Experimental, complex, mind-bending textures",
+            "characteristics": [
+              "Complex",
+              "Weird",
+              "All harmonics",
+              "Creative"
+            ],
+            "presets": [
+              {
+                "name": "Psychedelic Drums",
+                "curve": "foldback",
+                "parameters": {
+                  "pre": 16,
+                  "mix": 60,
+                  "post": -14,
+                  "mode": "Bipolar",
+                  "oversample": "8x"
+                },
+                "application": "Modular-style drum destruction"
+              },
+              {
+                "name": "Psychedelic Bass",
+                "curve": "asymmetric-soft",
+                "parameters": {
+                  "pre": 12,
+                  "mix": 70,
+                  "post": -10,
+                  "mode": "Bipolar",
+                  "oversample": "8x"
+                },
+                "application": "Warped bass textures for experimental"
+              },
+              {
+                "name": "Psychedelic Effects",
+                "curve": "staircase-8",
+                "parameters": {
+                  "pre": 20,
+                  "mix": 80,
+                  "post": -18,
+                  "mode": "Unipolar",
+                  "oversample": "16x"
+                },
+                "application": "Digital artifacts and lo-fi destruction"
+              }
+            ]
+          },
+          {
+            "id": "jazzy",
+            "name": "Jazzy",
+            "description": "Smooth, sophisticated, vintage warmth",
+            "characteristics": [
+              "Warm",
+              "Smooth",
+              "Even harmonics",
+              "Musical"
+            ],
+            "presets": [
+              {
+                "name": "Jazzy Mix Bus",
+                "curve": "soft-clip",
+                "parameters": {
+                  "pre": 2,
+                  "mix": 15,
+                  "post": -1,
+                  "mode": "Unipolar",
+                  "oversample": "2x"
+                },
+                "application": "Ultra-subtle glue for jazz/R&B"
+              },
+              {
+                "name": "Jazzy Drums",
+                "curve": "soft-clip",
+                "parameters": {
+                  "pre": 6,
+                  "mix": 40,
+                  "post": -5,
+                  "mode": "Unipolar",
+                  "oversample": "2x"
+                },
+                "application": "Warm drum character without aggression"
+              },
+              {
+                "name": "Jazzy Keys",
+                "curve": "soft-limiter",
+                "parameters": {
+                  "pre": 5,
+                  "mix": 30,
+                  "post": -4,
+                  "mode": "Unipolar",
+                  "oversample": "4x"
+                },
+                "application": "Controlled piano/rhodes warmth"
+              }
+            ]
+          },
+          {
+            "id": "vibey",
+            "name": "Vibey",
+            "description": "Cool, relaxed, smooth character",
+            "characteristics": [
+              "Warm",
+              "Relaxed",
+              "Even harmonics",
+              "Chill"
+            ],
+            "presets": [
+              {
+                "name": "Vibey 808",
+                "curve": "soft-clip",
+                "parameters": {
+                  "pre": 6,
+                  "mix": 55,
+                  "post": -5,
+                  "mode": "Unipolar",
+                  "oversample": "2x"
+                },
+                "application": "Relaxed sub-bass for chill tracks"
+              },
+              {
+                "name": "Vibey Vocals",
+                "curve": "soft-clip",
+                "parameters": {
+                  "pre": 5,
+                  "mix": 35,
+                  "post": -4,
+                  "mode": "Unipolar",
+                  "oversample": "4x"
+                },
+                "application": "Smooth vocal presence for laid-back vibes"
+              },
+              {
+                "name": "Vibey Atmosphere",
+                "curve": "soft-clip",
+                "parameters": {
+                  "pre": 3,
+                  "mix": 45,
+                  "post": -2,
+                  "mode": "Unipolar",
+                  "oversample": "4x"
+                },
+                "application": "Subtle saturation for ambient layers"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "waveshaper-params": {
+      "pluginName": "Fruity WaveShaper",
+      "version": "FL Studio 20.8+",
+      "category": "Distortion / Waveshaper",
+      "parameters": [
+        {
+          "id": "pre",
+          "name": "Pre",
+          "section": "Gain",
+          "range": {
+            "min": -24,
+            "max": 24,
+            "default": 0,
+            "unit": "dB"
+          },
+          "description": "Input gain driving the transfer curve",
+          "automation": true,
+          "vibeTags": [
+            "drive",
+            "input",
+            "saturation-amount"
+          ],
+          "mixImpact": "Controls how much signal hits the non-linear curve portion",
+          "safetyNotes": "Higher values increase distortion; compensate with Post gain"
+        },
+        {
+          "id": "mix",
+          "name": "Mix",
+          "section": "Blend",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "default": 100,
+            "unit": "%"
+          },
+          "description": "Dry/wet balance for parallel processing",
+          "automation": true,
+          "vibeTags": [
+            "blend",
+            "parallel",
+            "transparency"
+          ],
+          "mixImpact": "Higher values = more processed signal; lower = more original",
+          "safetyNotes": "Use 20-50% for subtle enhancement, 100% for effect"
+        },
+        {
+          "id": "post",
+          "name": "Post",
+          "section": "Gain",
+          "range": {
+            "min": -24,
+            "max": 24,
+            "default": 0,
+            "unit": "dB"
+          },
+          "description": "Output gain compensation after processing",
+          "automation": true,
+          "vibeTags": [
+            "output",
+            "compensation",
+            "gain-staging"
+          ],
+          "mixImpact": "Critical for matching processed and unprocessed levels",
+          "safetyNotes": "Adjust to prevent channel or master bus clipping"
+        },
+        {
+          "id": "center",
+          "name": "Center",
+          "section": "Processing",
+          "type": "toggle",
+          "default": true,
+          "description": "DC offset removal",
+          "automation": false,
+          "vibeTags": [
+            "dc-offset",
+            "low-end-protection"
+          ],
+          "mixImpact": "Prevents cumulative DC buildup on buses",
+          "safetyNotes": "Leave enabled except for experimental purposes"
+        },
+        {
+          "id": "mode",
+          "name": "Mode",
+          "section": "Processing",
+          "type": "selector",
+          "options": [
+            "Unipolar",
+            "Bipolar"
+          ],
+          "default": "Unipolar",
+          "description": "Symmetric vs asymmetric curve application",
+          "automation": true,
+          "vibeTags": [
+            "symmetry",
+            "harmonics",
+            "character"
+          ],
+          "mixImpact": "Unipolar=even harmonics(warm), Bipolar=mixed harmonics(aggressive)",
+          "safetyNotes": "Unipolar safer for mixing; Bipolar more aggressive"
+        },
+        {
+          "id": "oversample",
+          "name": "Oversample",
+          "section": "Quality",
+          "type": "selector",
+          "options": [
+            "Off",
+            "2x",
+            "4x",
+            "8x",
+            "16x"
+          ],
+          "default": "Off",
+          "description": "Internal processing rate multiplier for aliasing reduction",
+          "automation": false,
+          "vibeTags": [
+            "quality",
+            "anti-aliasing",
+            "fidelity"
+          ],
+          "mixImpact": "Higher values reduce high-frequency artifacts",
+          "safetyNotes": "Use 4x+ for hard clipping or high-frequency sources"
+        },
+        {
+          "id": "hq",
+          "name": "HQ",
+          "section": "Quality",
+          "type": "toggle",
+          "default": false,
+          "description": "High-quality processing for ultra-low level signals",
+          "automation": false,
+          "vibeTags": [
+            "fidelity",
+            "low-level"
+          ],
+          "mixImpact": "Preserves very quiet signal details",
+          "safetyNotes": "Slight CPU increase; use for critical applications"
+        }
+      ],
+      "transferCurve": {
+        "type": "spline-graph",
+        "editable": true,
+        "xRange": [
+          -1.0,
+          1.0
+        ],
+        "yRange": [
+          -1.0,
+          1.0
+        ],
+        "defaultShape": "linear",
+        "pointLimit": "unlimited",
+        "interpolation": "spline",
+        "description": "Custom transfer function mapping input to output amplitude"
+      },
+      "automationSupport": {
+        "allParameters": true,
+        "curvePoints": true,
+        "recommendedAutomationTargets": [
+          "pre",
+          "mix",
+          "post",
+          "mode"
+        ]
+      },
+      "latency": {
+        "standard": "0 samples",
+        "withOversampling": "Minimal PDC (plugin delay compensation)"
+      },
+      "source": "[SRC: IL-MAN]"
+    }
+  },
+  "rules": {
+    "safety-rules": {
+      "safetyRules": {
+        "name": "Fruity WaveShaper Safety Rules",
+        "version": "1.0",
+        "description": "Critical safety rules for preventing distortion disasters",
+        "source": "[SRC: IL-MAN]",
+        "categories": [
+          {
+            "name": "Gain Staging",
+            "priority": "CRITICAL",
+            "rules": [
+              {
+                "id": "gs-1",
+                "rule": "Always compensate Post gain for Pre gain increases",
+                "explanation": "Input drive increases output level; compensation prevents clipping",
+                "formula": "Post ≈ -(Pre × 0.6 to 0.8)",
+                "example": "If Pre = +12dB, set Post to -8 to -10dB",
+                "consequence": "Channel or master bus clipping"
+              },
+              {
+                "id": "gs-2",
+                "rule": "Monitor channel meter after WaveShaper",
+                "explanation": "Visual feedback confirms gain staging is correct",
+                "action": "Watch for red indicators on channel and master meters",
+                "consequence": "Unintentional clipping distortion"
+              },
+              {
+                "id": "gs-3",
+                "rule": "Leave Center enabled at all times",
+                "explanation": "DC offset removal prevents cumulative low-frequency buildup",
+                "exception": "Only disable for specific experimental sound design",
+                "consequence": "Headroom loss, speaker damage, muddy low-end"
+              },
+              {
+                "id": "gs-4",
+                "rule": "Match processed/unprocessed levels for A/B comparison",
+                "explanation": "Fair comparison requires equal loudness",
+                "method": "Adjust Post gain until perceived loudness matches bypassed",
+                "consequence": "Preference for louder option (not necessarily better)"
+              }
+            ]
+          },
+          {
+            "name": "Aliasing Prevention",
+            "priority": "HIGH",
+            "rules": [
+              {
+                "id": "ap-1",
+                "rule": "Use minimum 4x oversampling for hard clipping",
+                "explanation": "Hard clipping generates high frequencies that alias without oversampling",
+                "threshold": "Apply when Pre > +10dB or curve has sharp corners",
+                "consequence": "Digital artifacts, 'metallic' sound, harshness"
+              },
+              {
+                "id": "ap-2",
+                "rule": "Use 8x-16x oversampling for bitcrushing effects",
+                "explanation": "Stepped curves create extreme aliasing",
+                "threshold": "Any stepped/staircase curve shape",
+                "consequence": "Severe digital artifacts, unmusical distortion"
+              },
+              {
+                "id": "ap-3",
+                "rule": "Use 4x oversampling for high-frequency sources",
+                "explanation": "Sources > 5kHz are more prone to audible aliasing",
+                "sources": [
+                  "Hi-hats",
+                  "Cymbals",
+                  "High leads",
+                  "Vocal sibilance"
+                ],
+                "consequence": "Harsh high-end, listener fatigue"
+              },
+              {
+                "id": "ap-4",
+                "rule": "Balance oversampling with CPU usage",
+                "explanation": "Higher oversampling = higher CPU load",
+                "guideline": "Use 2x-4x for most instances, 8x-16x only for critical tracks",
+                "consequence": "Session lag, audio dropouts, crashes"
+              }
+            ]
+          },
+          {
+            "name": "Mode Selection",
+            "priority": "MEDIUM",
+            "rules": [
+              {
+                "id": "ms-1",
+                "rule": "Use Unipolar for low-end sources (808s, bass, kicks)",
+                "explanation": "Even harmonics preserve low-end warmth and punch",
+                "rationale": "Odd harmonics can cause phase issues and mud in lows",
+                "consequence": "Weak or muddy low-end, loss of sub impact"
+              },
+              {
+                "id": "ms-2",
+                "rule": "Use conservative Mix settings with Bipolar mode",
+                "explanation": "Bipolar generates more aggressive harmonics",
+                "guideline": "Keep Mix at 30-50% for Bipolar unless full distortion effect desired",
+                "consequence": "Harshness, listener fatigue, difficult to mix"
+              },
+              {
+                "id": "ms-3",
+                "rule": "Start with Unipolar for mix bus applications",
+                "explanation": "Even harmonics are safer for full mix processing",
+                "rationale": "Bipolar on mix bus can create cumulative harshness",
+                "consequence": "Harsh, fatiguing mix, unprofessional sound"
+              },
+              {
+                "id": "ms-4",
+                "rule": "Match mode to distortion intensity",
+                "explanation": "Aggressive distortion in Bipolar = very aggressive sound",
+                "guideline": "Subtle saturation = Unipolar; Heavy crunch = Bipolar",
+                "consequence": "Unintentional harshness or weak character"
+              }
+            ]
+          },
+          {
+            "name": "Curve Design",
+            "priority": "MEDIUM",
+            "rules": [
+              {
+                "id": "cd-1",
+                "rule": "Ensure curve passes through (0,0)",
+                "explanation": "Unity gain at zero prevents signal cancellation",
+                "check": "Verify graph shows diagonal through center point",
+                "consequence": "Signal attenuation or cancellation at low levels"
+              },
+              {
+                "id": "cd-2",
+                "rule": "Avoid completely flat sections at extremes",
+                "explanation": "Flat line = no signal; kills negative or positive half",
+                "check": "Maintain minimum -0.8 to -1.0 and +0.8 to +1.0 range",
+                "consequence": "Missing half of waveform, severe distortion"
+              },
+              {
+                "id": "cd-3",
+                "rule": "Round sharp corners for musical results",
+                "explanation": "Sharp corners generate high-frequency harshness",
+                "technique": "Use spline smoothing, add intermediate points",
+                "consequence": "Unpleasant high-end, digital artifacts"
+              },
+              {
+                "id": "cd-4",
+                "rule": "Test extreme curves with sine waves",
+                "explanation": "Pure tones reveal curve behavior clearly",
+                "method": "Apply WaveShaper to 1kHz sine, analyze output spectrum",
+                "consequence": "Unexpected harmonic content, aliasing"
+              }
+            ]
+          },
+          {
+            "name": "Hip-Hop/R&B Specific",
+            "priority": "HIGH",
+            "rules": [
+              {
+                "id": "hh-1",
+                "rule": "Never hard-clip 808s at high mix percentages",
+                "explanation": "Hard clipping removes low-end punch and creates mud",
+                "alternative": "Use soft S-curve with 50-70% Mix",
+                "consequence": "Weak 808s, lost sub impact, muddy mix"
+              },
+              {
+                "id": "hh-2",
+                "rule": "De-ess vocals BEFORE WaveShaper",
+                "explanation": "Distortion amplifies sibilance",
+                "chain": "EQ → De-esser → WaveShaper → Compression",
+                "consequence": "Harsh sibilance, unintelligible vocals"
+              },
+              {
+                "id": "hh-3",
+                "rule": "Keep vocal Mix at 35% or below",
+                "explanation": "Vocals need intelligibility; heavy distortion conflicts",
+                "exception": "Creative ad-libs or intentional effect",
+                "consequence": "Lyrics unintelligible, amateur sound"
+              },
+              {
+                "id": "hh-4",
+                "rule": "Use parallel processing instead of mix bus distortion",
+                "explanation": "Cumulative distortion across many tracks = harsh mix",
+                "technique": "Create dedicated distortion bus, blend to taste",
+                "consequence": "Fatiguing, over-compressed sound"
+              },
+              {
+                "id": "hh-5",
+                "rule": "Mono low frequencies before distortion",
+                "explanation": "Stereo distortion of low frequencies = phase issues",
+                "method": "Use stereo separation plugin or mono compatibility check",
+                "consequence": "Phase cancellation, weak bass on mono systems"
+              }
+            ]
+          }
+        ],
+        "emergencyProcedures": {
+          "clipping": "Immediately reduce Post gain by 6-12dB",
+          "silence": "Check curve passes through (0,0); redraw if needed",
+          "harshness": "Enable 4x+ oversampling, switch to Unipolar, reduce Mix",
+          "cpuOverload": "Reduce oversampling to 2x, freeze/render tracks",
+          "lostLowEnd": "Enable Center, reduce Pre gain, use Unipolar"
+        }
+      }
+    },
+    "symptom-solutions": {
+      "symptomSolutions": {
+        "name": "Fruity WaveShaper Symptom-Solution Mapping",
+        "version": "1.0",
+        "description": "Decision tree for solving common distortion problems",
+        "source": "[SRC: IL-MAN]",
+        "symptoms": [
+          {
+            "id": "weak-low-end",
+            "symptom": "808s or bass sound weak after WaveShaper",
+            "priority": 1,
+            "causes": [
+              "Hard clipping removing low-end punch",
+              "DC offset issues",
+              "Bipolar mode on low frequencies",
+              "Low Mix percentage"
+            ],
+            "solutions": [
+              {
+                "action": "Switch to Unipolar mode",
+                "reason": "Even harmonics preserve low-end warmth",
+                "priority": 1
+              },
+              {
+                "action": "Use soft S-curve instead of hard clip",
+                "reason": "Gentle saturation maintains fundamental",
+                "priority": 1
+              },
+              {
+                "action": "Increase Mix to 50-70%",
+                "reason": "Blend more original signal",
+                "priority": 2
+              },
+              {
+                "action": "Verify Center is enabled",
+                "reason": "DC offset can attenuate lows",
+                "priority": 2
+              }
+            ],
+            "prevention": "Always use Unipolar for 808s unless intentional effect"
+          },
+          {
+            "id": "harsh-sound",
+            "symptom": "Sound is harsh, grating, or fatiguing",
+            "priority": 1,
+            "causes": [
+              "Aliasing from insufficient oversampling",
+              "Bipolar mode generating odd harmonics",
+              "Sharp corners in curve",
+              "Too high Pre gain"
+            ],
+            "solutions": [
+              {
+                "action": "Enable 4x-8x oversampling",
+                "reason": "Reduces aliasing artifacts",
+                "priority": 1
+              },
+              {
+                "action": "Switch to Unipolar mode",
+                "reason": "Even harmonics are more musical",
+                "priority": 1
+              },
+              {
+                "action": "Round curve corners",
+                "reason": "Sharp corners generate high frequencies",
+                "priority": 2
+              },
+              {
+                "action": "Reduce Pre gain by 3-6dB",
+                "reason": "Less drive = less harmonic generation",
+                "priority": 2
+              }
+            ],
+            "prevention": "Use minimum 4x oversampling for any noticeable distortion"
+          },
+          {
+            "id": "digital-artifacts",
+            "symptom": "Metallic, shimmering, or 'digital' artifacts",
+            "priority": 1,
+            "causes": [
+              "Aliasing from no oversampling",
+              "Bitcrushing without oversampling",
+              "High-frequency sources with hard clipping"
+            ],
+            "solutions": [
+              {
+                "action": "Enable 8x-16x oversampling",
+                "reason": "High-frequency sources need more oversampling",
+                "priority": 1
+              },
+              {
+                "action": "Use softer curve",
+                "reason": "Less aggressive curves generate fewer artifacts",
+                "priority": 2
+              },
+              {
+                "action": "Switch to Unipolar mode",
+                "reason": "Even harmonics less prone to aliasing",
+                "priority": 2
+              }
+            ],
+            "prevention": "Test with sine waves to identify aliasing before mixing"
+          },
+          {
+            "id": "no-effect",
+            "symptom": "Can't hear any distortion effect",
+            "priority": 2,
+            "causes": [
+              "Mix set to 0%",
+              "Pre gain too low",
+              "Curve is linear",
+              "Plugin bypassed"
+            ],
+            "solutions": [
+              {
+                "action": "Verify Mix is above 0%",
+                "reason": "0% Mix = no processed signal",
+                "priority": 1
+              },
+              {
+                "action": "Increase Pre gain to +10dB or higher",
+                "reason": "Low drive = minimal curve interaction",
+                "priority": 1
+              },
+              {
+                "action": "Check curve deviates from diagonal",
+                "reason": "Linear curve = no distortion",
+                "priority": 1
+              },
+              {
+                "action": "Confirm plugin is not bypassed",
+                "reason": "Bypassed plugins pass audio unchanged",
+                "priority": 1
+              }
+            ],
+            "prevention": "Start with moderate Pre gain (+8dB) and adjust to taste"
+          },
+          {
+            "id": "signal-loss",
+            "symptom": "Audio disappears or becomes very quiet",
+            "priority": 1,
+            "causes": [
+              "Curve has flat section at bottom",
+              "Not passing through (0,0)",
+              "Negative half completely clipped"
+            ],
+            "solutions": [
+              {
+                "action": "Reset curve to linear",
+                "reason": "Restores proper signal flow",
+                "priority": 1
+              },
+              {
+                "action": "Ensure curve passes through (0,0)",
+                "reason": "Center point must maintain unity gain",
+                "priority": 1
+              },
+              {
+                "action": "Verify output range covers -0.8 to +0.8 minimum",
+                "reason": "Extreme clipping kills half the signal",
+                "priority": 1
+              }
+            ],
+            "prevention": "Always verify curve passes through center before finalizing"
+          },
+          {
+            "id": "vocals-sibilant",
+            "symptom": "Vocals become too sibilant after WaveShaper",
+            "priority": 2,
+            "causes": [
+              "Distortion amplifies existing sibilance",
+              "Bipolar mode emphasizing transients",
+              "High Pre gain on vocal track"
+            ],
+            "solutions": [
+              {
+                "action": "Add de-esser BEFORE WaveShaper",
+                "reason": "Remove sibilance before distortion amplifies it",
+                "priority": 1
+              },
+              {
+                "action": "Reduce Mix to 20-30%",
+                "reason": "Less processed signal = less sibilance",
+                "priority": 2
+              },
+              {
+                "action": "Switch to Unipolar mode",
+                "reason": "Even harmonics less aggressive on transients",
+                "priority": 2
+              },
+              {
+                "action": "Reduce Pre gain",
+                "reason": "Less drive = less harmonic generation",
+                "priority": 3
+              }
+            ],
+            "prevention": "Always de-ess vocals before applying distortion"
+          },
+          {
+            "id": "drums-mushy",
+            "symptom": "Drums lose punch and sound mushy",
+            "priority": 2,
+            "causes": [
+              "Soft curve rounding off transients",
+              "Too high Mix percentage",
+              "Unipolar mode on transients"
+            ],
+            "solutions": [
+              {
+                "action": "Switch to Bipolar mode",
+                "reason": "Asymmetric distortion preserves transient bite",
+                "priority": 1
+              },
+              {
+                "action": "Use hard clip curve",
+                "reason": "Sharp threshold maintains transient edge",
+                "priority": 1
+              },
+              {
+                "action": "Reduce Mix slightly",
+                "reason": "Blend more dry transient",
+                "priority": 2
+              }
+            ],
+            "prevention": "Use Bipolar mode for drum transients and punch"
+          },
+          {
+            "id": "cpu-overload",
+            "symptom": "FL Studio lagging or audio dropouts",
+            "priority": 3,
+            "causes": [
+              "Too many instances with high oversampling",
+              "16x oversampling on all tracks",
+              "Complex curves with many points"
+            ],
+            "solutions": [
+              {
+                "action": "Reduce oversampling to 2x-4x on non-critical tracks",
+                "reason": "Lower quality setting reduces CPU",
+                "priority": 1
+              },
+              {
+                "action": "Freeze or render distorted tracks",
+                "reason": "Baked-in distortion frees CPU",
+                "priority": 1
+              },
+              {
+                "action": "Consolidate multiple instances into buses",
+                "reason": "Group processing reduces instance count",
+                "priority": 2
+              }
+            ],
+            "prevention": "Use 4x as default; reserve 8x-16x for critical tracks only"
+          }
+        ],
+        "decisionTree": {
+          "firstQuestion": "What is the primary problem?",
+          "branches": {
+            "soundQuality": {
+              "question": "What does it sound like?",
+              "options": {
+                "harsh": "harsh-sound",
+                "digital": "digital-artifacts",
+                "weak": "weak-low-end",
+                "mushy": "drums-mushy",
+                "sibilant": "vocals-sibilant"
+              }
+            },
+            "technical": {
+              "question": "What is happening?",
+              "options": {
+                "noSound": "signal-loss",
+                "noEffect": "no-effect",
+                "lag": "cpu-overload"
+              }
+            }
+          }
+        }
+      }
+    },
+    "workflow-rules": {
+      "workflowRules": {
+        "name": "Fruity WaveShaper Workflow Decision Rules",
+        "version": "1.0",
+        "description": "Rules for selecting appropriate WaveShaper settings by context",
+        "source": "[SRC: IL-MAN]",
+        "contexts": [
+          {
+            "name": "808s and Sub Bass",
+            "rules": {
+              "mode": {
+                "value": "Unipolar",
+                "reason": "Even harmonics preserve low-end warmth and punch",
+                "exception": "Aggressive distorted 808s may use Bipolar with caution"
+              },
+              "curve": {
+                "value": "soft-s-curve",
+                "reason": "Gentle saturation maintains fundamental frequency",
+                "avoid": "hard-clipping (removes punch)"
+              },
+              "preGain": {
+                "min": 6,
+                "max": 14,
+                "sweetSpot": "8-12dB",
+                "reason": "Enough drive for harmonics, not enough to lose sub"
+              },
+              "mix": {
+                "min": 40,
+                "max": 70,
+                "sweetSpot": "50-60%",
+                "reason": "Blend original punch with saturated presence"
+              },
+              "oversample": {
+                "minimum": "2x",
+                "recommended": "4x",
+                "reason": "Low-frequency sources less prone to aliasing"
+              },
+              "chainPosition": {
+                "after": "Initial EQ (high-pass cleanup)",
+                "before": "Compression and limiting",
+                "reason": "Saturation before compression preserves character"
+              }
+            }
+          },
+          {
+            "name": "Drums (Kicks, Snares, Hats)",
+            "rules": {
+              "mode": {
+                "value": "Bipolar",
+                "reason": "Asymmetric distortion preserves transient bite",
+                "exception": "Subtle drum bus may use Unipolar"
+              },
+              "curve": {
+                "value": "hard-clip",
+                "reason": "Sharp threshold enhances transients",
+                "options": [
+                  "hard-clip",
+                  "asymmetric-hard"
+                ]
+              },
+              "preGain": {
+                "min": 10,
+                "max": 18,
+                "sweetSpot": "12-16dB",
+                "reason": "High drive for aggressive transient control"
+              },
+              "mix": {
+                "min": 50,
+                "max": 80,
+                "sweetSpot": "60-70%",
+                "reason": "Aggressive distortion for impact"
+              },
+              "oversample": {
+                "minimum": "4x",
+                "recommended": "4x-8x",
+                "reason": "Hats and cymbals have high-frequency content"
+              },
+              "hiHatSpecific": {
+                "mode": "Unipolar preferred",
+                "preGain": "4-8dB",
+                "oversample": "8x minimum",
+                "reason": "High frequencies need more anti-aliasing"
+              }
+            }
+          },
+          {
+            "name": "Vocals",
+            "rules": {
+              "mode": {
+                "primary": "Unipolar",
+                "alternative": "Bipolar (for attitude/grit)",
+                "reason": "Even harmonics are more forgiving on vocals"
+              },
+              "curve": {
+                "value": "soft-s-curve",
+                "reason": "Gentle saturation maintains intelligibility",
+                "avoid": "hard-clipping (causes sibilance issues)"
+              },
+              "preGain": {
+                "min": 3,
+                "max": 10,
+                "sweetSpot": "5-8dB",
+                "reason": "Conservative drive preserves vocal clarity"
+              },
+              "mix": {
+                "min": 15,
+                "max": 40,
+                "sweetSpot": "25-35%",
+                "reason": "Transparency - keep lyrics intelligible"
+              },
+              "oversample": {
+                "minimum": "4x",
+                "recommended": "4x",
+                "reason": "Vocals have sibilance in high frequencies"
+              },
+              "chainRequirements": {
+                "before": "De-esser",
+                "reason": "Distortion amplifies sibilance - de-ess first"
+              },
+              "adLibs": {
+                "mix": "60-80%",
+                "curve": "asymmetric",
+                "reason": "Background vocals can be more aggressive"
+              }
+            }
+          },
+          {
+            "name": "Mix Bus",
+            "rules": {
+              "mode": {
+                "value": "Unipolar",
+                "critical": true,
+                "reason": "Even harmonics safer for full mix; Bipolar creates cumulative harshness"
+              },
+              "curve": {
+                "value": "soft-s-curve",
+                "reason": "Very gentle saturation for glue effect",
+                "avoid": [
+                  "hard-clip",
+                  "bipolar",
+                  "aggressive"
+                ]
+              },
+              "preGain": {
+                "min": 1,
+                "max": 6,
+                "sweetSpot": "2-4dB",
+                "reason": "Extremely conservative for mix cohesion"
+              },
+              "mix": {
+                "min": 10,
+                "max": 25,
+                "sweetSpot": "15-20%",
+                "reason": "Subtle effect - full mix context"
+              },
+              "oversample": {
+                "minimum": "4x",
+                "recommended": "4x",
+                "reason": "Full mix has all frequencies"
+              },
+              "alternativeApproach": {
+                "method": "Parallel bus instead of insert",
+                "reason": "More control, less cumulative distortion",
+                "recommended": true
+              },
+              "warning": "Mix bus distortion is powerful - easy to overdo"
+            }
+          },
+          {
+            "name": "Creative Sound Design",
+            "rules": {
+              "mode": {
+                "value": "Bipolar",
+                "reason": "Maximum flexibility and complexity",
+                "option": "Either - experiment freely"
+              },
+              "curve": {
+                "options": [
+                  "foldback",
+                  "staircase",
+                  "asymmetric",
+                  "custom"
+                ],
+                "reason": "No rules - create unique textures"
+              },
+              "preGain": {
+                "range": "0 to +24dB",
+                "reason": "Extreme drive for creative destruction"
+              },
+              "mix": {
+                "range": "0 to 100%",
+                "reason": "Context-dependent - full creative freedom"
+              },
+              "oversample": {
+                "minimum": "8x",
+                "recommended": "16x for extreme cases",
+                "reason": "Creative distortion often needs maximum quality"
+              },
+              "guideline": "No safety rules - experiment freely"
+            }
+          }
+        ],
+        "vibeMapping": {
+          "Moody": {
+            "mode": "Unipolar",
+            "curve": "soft-s-curve",
+            "preGainRange": "4-10dB",
+            "mixRange": "30-60%",
+            "characteristics": [
+              "Warm",
+              "Even harmonics",
+              "Introspective"
+            ]
+          },
+          "Upbeat": {
+            "mode": "Bipolar",
+            "curve": "hard-clip or asymmetric",
+            "preGainRange": "10-16dB",
+            "mixRange": "60-80%",
+            "characteristics": [
+              "Aggressive",
+              "Punchy",
+              "Energetic"
+            ]
+          },
+          "Psychedelic": {
+            "mode": "Bipolar",
+            "curve": "foldback or custom",
+            "preGainRange": "12-20dB",
+            "mixRange": "40-70%",
+            "characteristics": [
+              "Complex",
+              "Weird",
+              "Experimental"
+            ]
+          },
+          "Jazzy": {
+            "mode": "Unipolar",
+            "curve": "soft-s-curve or soft-limiter",
+            "preGainRange": "2-8dB",
+            "mixRange": "20-45%",
+            "characteristics": [
+              "Smooth",
+              "Musical",
+              "Sophisticated"
+            ]
+          },
+          "Vibey": {
+            "mode": "Unipolar",
+            "curve": "soft-s-curve",
+            "preGainRange": "4-8dB",
+            "mixRange": "35-60%",
+            "characteristics": [
+              "Relaxed",
+              "Warm",
+              "Cool"
+            ]
+          }
+        },
+        "safetyChecklist": {
+          "beforeApplying": [
+            "Input level is healthy (-12dB to -6dB)",
+            "Center is enabled",
+            "Oversampling appropriate for distortion level"
+          ],
+          "afterApplying": [
+            "Output level matches input (use Post gain)",
+            "No clipping on channel or master meter",
+            "Effect is audible and appropriate"
+          ],
+          "beforeFinalizing": [
+            "Aliasing checked with high-frequency sources",
+            "Low-end preserved on bass/808s",
+            "Vocals remain intelligible"
+          ]
+        }
+      }
+    }
+  },
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    },
+    {
+      "title": "Curve Design Philosophy",
+      "filename": "curve-design-philosophy.md"
+    },
+    {
+      "title": "Oversampling And Aliasing",
+      "filename": "oversampling-and-aliasing.md"
+    },
+    {
+      "title": "Transfer Function Fundamentals",
+      "filename": "transfer-function-fundamentals.md"
+    },
+    {
+      "title": "Unipolar Vs Bipolar",
+      "filename": "unipolar-vs-bipolar.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "00 808 Saturation Guide",
+      "category": "by-goal",
+      "filename": "00_808_Saturation_Guide.md"
+    },
+    {
+      "title": "00 Goal Quick Result",
+      "category": "by-goal",
+      "filename": "00_Goal_Quick_Result.md"
+    },
+    {
+      "title": "11 Vibe Upbeat",
+      "category": "by-goal",
+      "filename": "11_Vibe_Upbeat.md"
+    },
+    {
+      "title": "12 Vibe Psychedelic",
+      "category": "by-goal",
+      "filename": "12_Vibe_Psychedelic.md"
+    },
+    {
+      "title": "808 Saturation",
+      "category": "by-goal",
+      "filename": "808-saturation.md"
+    },
+    {
+      "title": "Drum Punch",
+      "category": "by-goal",
+      "filename": "drum-punch.md"
+    },
+    {
+      "title": "Mix Bus Glue",
+      "category": "by-goal",
+      "filename": "mix-bus-glue.md"
+    },
+    {
+      "title": "Vibe Jazzy",
+      "category": "by-goal",
+      "filename": "vibe-jazzy.md"
+    },
+    {
+      "title": "Vibe Moody",
+      "category": "by-goal",
+      "filename": "vibe-moody.md"
+    },
+    {
+      "title": "Vibe Psychedelic",
+      "category": "by-goal",
+      "filename": "vibe-psychedelic.md"
+    },
+    {
+      "title": "Vibe Upbeat",
+      "category": "by-goal",
+      "filename": "vibe-upbeat.md"
+    },
+    {
+      "title": "Vibe Vibey",
+      "category": "by-goal",
+      "filename": "vibe-vibey.md"
+    },
+    {
+      "title": "Vocal Saturation",
+      "category": "by-goal",
+      "filename": "vocal-saturation.md"
+    },
+    {
+      "title": "808S",
+      "category": "by-instrument",
+      "filename": "808s.md"
+    },
+    {
+      "title": "Kick Drums",
+      "category": "by-instrument",
+      "filename": "kick-drums.md"
+    },
+    {
+      "title": "Lead Vocals",
+      "category": "by-instrument",
+      "filename": "lead-vocals.md"
+    },
+    {
+      "title": "Snare Drums",
+      "category": "by-instrument",
+      "filename": "snare-drums.md"
+    }
+  ]
+}

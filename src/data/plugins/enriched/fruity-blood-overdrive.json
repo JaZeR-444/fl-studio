@@ -1,0 +1,159 @@
+{
+  "id": "fruity-blood-overdrive",
+  "name": "Fruity Blood Overdrive",
+  "category": "Distortion",
+  "tier": "Free",
+  "type": "Distortion",
+  "description": "Fruity Blood Overdrive - Distortion",
+  "tags": [
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "distortion",
+    "saturation",
+    "fx",
+    "audio"
+  ],
+  "icon": "/plugins/fruity-blood-overdrive-icon.svg",
+  "color": "#DC2626",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-blood-overdrive",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "blood-overdrive-specs": {
+      "plugin": {
+        "name": "Fruity Blood Overdrive",
+        "category": "Distortion",
+        "type": "Analog Overdrive Modeling",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Blood%20Overdrive.htm"
+      },
+      "parameters": {
+        "driveChain": [
+          {
+            "id": "preBand",
+            "name": "Pre Band",
+            "type": "Low-Pass Filter (Pre)",
+            "description": "Filters input signal before it hits the gain stage."
+          },
+          {
+            "id": "preAmp",
+            "name": "Pre Amp",
+            "range": "1x to 100x",
+            "description": "Multiplier for input volume to trigger clipping."
+          }
+        ],
+        "toneShaping": [
+          {
+            "id": "color",
+            "name": "Color",
+            "description": "Adjusts the harmonic balance of the distorted signal."
+          },
+          {
+            "id": "postFilter",
+            "name": "Post Filter",
+            "type": "Low-Pass Filter (Post)",
+            "description": "Smooths out high-frequency artifacts after clipping."
+          }
+        ],
+        "output": [
+          {
+            "id": "postGain",
+            "name": "Post Gain",
+            "description": "Final output level adjustment."
+          }
+        ]
+      },
+      "clippingType": "Asymmetrical Soft-Clipping"
+    }
+  },
+  "presets": {
+    "gentle-warmth": {
+      "presetName": "Gentle Warmth",
+      "plugin": "Fruity Blood Overdrive",
+      "description": "Adds subtle harmonic saturation without obvious distortion.",
+      "settings": {
+        "preamp": 0.2,
+        "dist": 0.1,
+        "color": 0.5,
+        "postGain": 0.8,
+        "postFilter": 0.5
+      },
+      "usage": "Use on a master bus or vocal group to glue the mix together."
+    },
+    "industrial-destruction": {
+      "presetName": "Industrial Destruction",
+      "plugin": "Fruity Blood Overdrive",
+      "description": "Extreme clipping that squares off the waveform.",
+      "settings": {
+        "preamp": 1,
+        "dist": 1,
+        "color": 0.2,
+        "postGain": 0.3,
+        "postFilter": 0.1
+      },
+      "usage": "Creative sound design, heavy industrial kick drums, or aggressive synth leads."
+    },
+    "lo-fi-crunch": {
+      "presetName": "Lo-Fi Crunch",
+      "plugin": "Fruity Blood Overdrive",
+      "description": "A gritty, mid-focused distortion for a vintage feel.",
+      "settings": {
+        "preamp": 0.6,
+        "dist": 0.4,
+        "color": 0.8,
+        "postGain": 0.5,
+        "postFilter": 0.3
+      },
+      "usage": "Best for electric pianos, drums, or sampled loops."
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity Blood Overdrive\n\n## Purpose & Identity\nFruity Blood Overdrive is a classic analog-modeled distortion unit. Its primary identity is a **screaming overdrive pedal** in software form. Unlike simple digital clippers, it includes a resonant pre-filter (the \"Color\" knob) that allows you to choose exactly which part of the frequency spectrum \"breaks\" first. [SRC: IL-MAN]\n\n## 60-Second Mental Model\nImagine an old guitar amplifier. You plug a synth into it and turn the gain up until it starts to \"cry\" or \"scream.\" \n- **PreAmp** is how hard you push the input.\n- **Color** is the tone of the amplifier's circuit.\n- **x100** is the \"Chaos\" switch that pushes the gain to industrial levels.\n\n## Hip-Hop / R&B Context\nDistortion provides the \"Edge\" in urban music.\n- **The \"Talking\" Bass:** Automate the Color knob on an 808 or synth bass to create a vocal-like \"Wow\" effect.\n- **Aggressive Snares:** Drive a weak snare through Blood Overdrive to give it that metallic \"crack\" found in punk-rap or heavy trap.\n- **Melodic Hair:** Use subtle settings on an R&B piano to add \"vintage grit,\" making it sound like it was sampled from a distorted cassette.\n\n## When To Use\n- When a sound is **too clean and boring** and needs character.\n- When you need a **resonant \"talking\" filter** effect.\n- When you want **industrial-strength** audio destruction (using x100).\n\n## When NOT To Use\n- **Sub-Bass Purity:** Never use high settings on your main sub-oscillator unless you want it to sound like a square wave.\n- **Transparent Mastering:** This plugin is far too colorful for a master bus; use it only on individual tracks or parallel buses.\n",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Fruity Blood Overdrive\n\n## UI Tour\nFruity Blood Overdrive has a distinct \"industrial\" layout:\n\n1.  **PreAmp (Input Gain):** The main drive control.\n2.  **x100 Switch:** A multiplier that increases gain by 100 times. [SRC: IL-MAN]\n3.  **PreBand (Filter Width):** Adjusts the bandwidth of the resonance filter.\n4.  **Color (Filter Freq):** Sets the frequency of the resonant peak *before* it hits the distortion engine.\n5.  **PostFilter (Cleanup):** A low-pass filter to remove the harsh \"digital fizz\" from the output.\n6.  **PostGain (Output Volume):** **CRITICAL** for gain staging.\n\n## Functional Flow\n1.  **Input:** Audio enters.\n2.  **Resonant Pre-Filter:** The signal is filtered based on **Color** and **PreBand**. This \"prepares\" the tone.\n3.  **Amplification:** The signal is boosted by **PreAmp** (and multiplied by **x100** if active).\n4.  **Saturation Engine:** The waveform is soft-clipped or folded based on the analog modeling algorithm. [SRC: UNVERIFIED - common legacy analysis]\n5.  **Post-Filter:** High-frequency artifacts are removed.\n6.  **Output:** Level is adjusted by **PostGain**.\n\n## Things Beginners Misunderstand\n- **The \"PostGain\" Necessity:** Enabling x100 will immediately clip your master. You **must** turn PostGain down before clicking x100.\n- **Color Logic:** It’s not just an EQ. The Color knob decides which frequencies get distorted the *most*.\n- **Stereo Image:** Blood Overdrive is mono-compatible but processes the L and R channels identically. It won't widen your sound, but it won't ruin it either. [SRC: REPUTABLE]\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques And Best Practices: Fruity Blood Overdrive\n\n## 1. The \"Vocal\" 808\n- **Technique:** Place Blood Overdrive on an 808 with a medium decay.\n- **Execution:** Set PreAmp to 50%. Right-click the **Color** knob -> **Create Automation Clip**.\n- **Result:** Sweep the Color knob between 200Hz and 1kHz. The 808 will sound like it’s saying \"Yoy\" or \"Wow,\" a staple of modern \"Phonk\" and experimental trap.\n\n## 2. Analog \"Console\" Warmth\n- **Technique:** Keep x100 **OFF**. Set PreAmp very low (5-10%).\n- **Execution:** Turn the **PostFilter** knob down slightly to remove digital \"air.\"\n- **Result:** Adds a subtle harmonic saturation that mimics running audio through a real-world analog mixer.\n\n## 3. The \"Jet Stream\" Snare\n- **Technique:** Use a noise-based snare. Set **x100 ON**.\n- **Execution:** Set **PreBand** to be narrow. Move **Color** to approx. 3kHz.\n- **Result:** The snare explodes into a resonant, screaming burst of energy. Great for transition \"impacts.\" [SRC: REPUTABLE]\n\n## 4. Parallel \"Character\" Bus\n- **Technique:** Create a Send track with Blood Overdrive at 100% wet.\n- **Execution:** Distort the signal heavily. Use an EQ *after* the distortion to cut everything except the high-mids (1kHz - 5kHz).\n- **Benefit:** Blend this send back into your main vocal. It adds \"presence\" and \"aggression\" without destroying the original vocal's clarity.\n\n## Common Pitfalls + Fixes\n- **Pitfall:** \"The high-end is too painful.\"\n  - **Fix:** Turn the **PostFilter** knob to the left. This acts as a dedicated high-cut for the distortion fizz.\n- **Pitfall:** \"Low end is lost.\"\n  - **Fix:** Lower the **Color** knob. If Color is too high, the distortion engine ignores the sub-bass and focuses on the highs, making the bass feel \"thin.\" [SRC: REPUTABLE]\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity Blood Overdrive\n\nBlood Overdrive translates vibes through **harmonic aggression** and **resonant color**.\n\n## 1. Moody (Dark, Saturated, Distressed)\n- **Concept:** A \"damaged\" analog recording.\n- **Levers:**\n  - **Color:** Low (around 200Hz).\n  - **PreAmp:** Medium (30%).\n  - **PostFilter:** High (Muffled).\n- **Listen For:** A warm, \"thick\" saturation that feels like a tape machine in a dark room.\n- **Don't Do This:** Avoid x100; stay in the \"warm\" zone.\n\n## 2. Upbeat (Screaming, Energetic, Electric)\n- **Concept:** High-voltage energy.\n- **Levers:**\n  - **PreAmp:** High (70%).\n  - **Color:** Mid-High (2kHz).\n  - **PostFilter:** Wide open.\n- **Listen For:** A \"piercing\" lead or snare that demands attention.\n- **Don't Do This:** Don't muffle the output; let the high harmonics cut through.\n\n## 3. Psychedelic (Morphing, Liquid, Vocal)\n- **Concept:** Textures that change shape.\n- **Levers:**\n  - **Automation:** Link **Color** to an LFO.\n  - **PreBand:** Narrow (to emphasize the \"whistle\").\n- **Listen For:** The \"Phaser-like\" movement of the resonant peak.\n- **Don't Do This:** Don't keep the settings static; psychedelic vibes need constant motion.\n\n## 4. Jazzy (Warm, Harmonic, Vintage)\n- **Concept:** Soft Tube saturation.\n- **Levers:**\n  - **PreAmp:** Very Low (5%).\n  - **Mix:** 100% (but subtle effect).\n  - **Color:** Neutral (12 o'clock).\n- **Listen For:** A slight \"rounding\" of the transients that makes Rhodes and horns feel less digital.\n- **Don't Do This:** Never enable x100; it will destroy the soulful dynamics.\n\n## 5. Vibey (Airy, Lo-Fi, Gritty)\n- **Concept:** The \"Radio\" or \"Megaphone\" effect.\n- **Levers:**\n  - **Color:** High (4kHz+).\n  - **PreBand:** Maximum (Wide).\n  - **PostFilter:** Narrow (Low-Pass @ 5kHz).\n- **Listen For:** A \"crunchy\" high-end that feels like a small speaker being pushed too hard. [SRC: REPUTABLE]\n- **Don't Do This:** Don't let the low-end pass through; keep it \"boxy\" and mid-focused.\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Blood Overdrive\r\n\r\n## What It Is\r\nFruity Blood Overdrive is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Fruity Blood Overdrive\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: Fruity Blood Overdrive (5 Minutes)\n\n1.  **Insert:** Load **Fruity Blood Overdrive** onto a bass or lead synth.\n2.  **Color:** Turn the **Color** knob to about 10 o'clock. This targets the \"weight\" of the sound.\n3.  **Drive:** Slowly increase **PreAmp** until you hear the distortion.\n4.  **Chaos:** (Optional) Flip the **x100** switch for extreme destruction. \n    - **Warning:** Turn down **PostGain** before you do this!\n5.  **Clean:** Move the **PostFilter** knob to the left to remove any harsh digital \"fizz.\"\n6.  **Tip:** Automate the **Color** knob to make your 808s \"talk.\" [SRC: IL-MAN]\n",
+      "01_Common_Mistakes": "# Common Mistakes: Fruity Blood Overdrive\n\n- **Ignoring PostGain:** Turning up the PreAmp or x100 without compensating at the output. This results in instant digital clipping at the Master fader. **Fix:** Balance every PreAmp move with a PostGain move.\n- **Over-Coloring:** Setting the **PreBand** too narrow and the **Color** too high. This creates a \"whistle\" that can be ear-piercing. **Fix:** Use wider PreBand settings for a more natural distortion.\n- **Static Usage:** Leaving the plugin on one setting for the whole track. Blood Overdrive is designed for **Movement**. **Fix:** Use automation clips for the PreAmp during build-ups.\n- **Muddy Lows:** Thinking that adding distortion to a kick will make it \"cleaner.\" Distortion adds harmonics that can clutter the sub-bass. **Fix:** Use a High-Pass filter *before* the overdrive if the low-end gets blurry.\n- **Mixing 100% Wet:** Putting Blood Overdrive directly on a vocal at high settings. You lose all intelligibility. **Fix:** Use it on a **Parallel Send** or at very low PreAmp levels. [SRC: REPUTABLE]\n",
+      "02_Best_Settings_Starting_Points": "# Best Settings Starting Points: Blood Overdrive\n\n| Target Vibe | PreAmp | x100 | Color | PostFilter | Use Case |\n| :--- | :--- | :--- | :--- | :--- | :--- |\n| **Warm Hair** | 10% | OFF | 9 o'clock | 12 o'clock | Lo-fi Piano / Pad. |\n| **Acid Scream** | 80% | ON | 1 o'clock | 3 o'clock | Transistor Bass lead. |\n| **808 Growl** | 50% | OFF | 10 o'clock | 10 o'clock | Modern Trap Bass. |\n| **Sizzling Highs**| 20% | OFF | 4 o'clock | OFF | R&B Backing Vocals. |\n| **Industrial Kick**| 100%| ON | 7 o'clock | 9 o'clock | Hardstyle / Heavy Trap.|\n\n*Note: Always adjust PostGain until the bypass (On/Off) doesn't change the perceived volume.* [SRC: IL-MAN]\n",
+      "03_Vibe_Starting_Points_Moody": "# Vibe Starting Points: Moody (Fruity Blood Overdrive)\n\n- **The Goal:** A dark, saturated atmosphere that feels like a vintage horror movie soundtrack or a \"distressed\" R&B loop.\n- **Recipe:**\n  1. Load Blood Overdrive on a melodic pad.\n  2. Set **PreAmp** to 30%.\n  3. Set **Color** to a low frequency (approx. 200Hz).\n  4. Turn **PostFilter** to the left (approx. 1kHz) to muffle the top end.\n- **Vibe Lever:** The \"Damping.\" By focusing the distortion on the low-mids and then filtering the highs, you create a \"thick\" and \"claustrophobic\" sound that defines moody urban production.\n- **Mix Tip:** Place a **Fruity Reeverb 2** *before* the overdrive to distort the reverb tails for an even more haunting vibe. [SRC: REPUTABLE]\n",
+      "04_Vibe_Starting_Points_Upbeat_Psychedelic_Jazzy_Vibey": "# Vibe Starting Points: Upbeat, Psychedelic, Jazzy, Vibey\n\n## Upbeat (The \"Electric Pulse\")\n- **Setup:** High PreAmp + x100 OFF.\n- **Strategy:** Focus the Color at 1kHz. \n- **Effect:** Adds a mid-range \"snap\" to synths that drives the rhythm.\n\n## Psychedelic (The \"Talking Box\")\n- **Setup:** Automate the **Color** knob.\n- **Strategy:** Use a narrow **PreBand**.\n- **Effect:** The distortion shifts through the spectrum, creating vocal-like \"Wow\" and \"Eee\" textures.\n\n## Jazzy (The \"Tube Console\")\n- **Setup:** Very low PreAmp (5%).\n- **Strategy:** Keep Color neutral.\n- **Effect:** Subtly rounds off the digital sharp edges of instruments like Sax or Rhodes.\n\n## Vibey (The \"Mega-Wide Highs\")\n- **Setup:** High Color (5kHz) + Low Mix.\n- **Strategy:** Place after a Chorus effect.\n- **Context:** Creates a shimmering \"sizzle\" on wide pads that feels expensive and polished. [SRC: REPUTABLE]\n",
+      "overdrive-controls-guide": "# Fruity Blood Overdrive - Parameter Cheat Sheet\n\n**Plugin Type:** Analog-Modeled Distortion\n**Category:** Distortion / Saturation\n**Official Manual:** [Fruity Blood Overdrive](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Blood%20Overdrive.htm)\n\n---\n\n## 🎚️ Signal Flow Parameters\n\n| Parameter | Range | Function | Quick Tip |\n|-----------|-------|----------|-----------|\n| **Pre Band** | 0 - 100% | Low-pass filter BEFORE distortion | Controls which frequencies \"drive\" the crunch |\n| **Color** | 0 - 100% | Post-distortion tonal character | Lower = Darker/Muddy; Higher = Brighter/Fizzy |\n| **Pre Amp** | 1x - 100x | Input Gain / Drive amount | The primary distortion control |\n| **Post Gain** | 0 - 100% | Final output volume | Use to level-match after driving the Pre Amp |\n| **Post Filter** | 0 - 100% | Low-pass filter AFTER distortion | Removes harsh high-end \"fuzz\" |\n\n---\n\n## 🎛️ Why Use Blood Overdrive?\n\n| Problem | Blood Overdrive Solution |\n|---------|--------------------------|\n| **Clean Guitars** | Adds classic pedal-style grit and sustain. |\n| **Weak Snares** | Adds \"meat\" and harmonics to help them punch through a mix. |\n| **Sterile Vocals** | Creates an industrial or lo-fi \"radio\" effect. |\n| **Sub-Bass Translation**| Generates harmonics that make sub-bass audible on small speakers. |\n\n---\n\n## 🔧 Technical Engine Data\n\n- **Type:** Asymmetrical Soft-Clipping (Analog Emulation)\n- **Harmonics:** Produces a rich blend of even and odd harmonics.\n- **Latency:** 0 samples\n- **CPU:** Extremely Light\n\n---\n\n## 🎯 Quick Start Workflows\n\n### The \"Screaming Lead\"\n1. **Pre Amp:** 50%\n2. **Color:** 75%\n3. **Pre Band:** 40%\n4. **Post Filter:** 80% (Keep some sparkle)\n5. **Action:** Adds intense sustain and bite to synth leads.\n\n### The \"Warm Tube\" Saturation\n1. **Pre Amp:** 5-10% (Subtle)\n2. **Color:** 50%\n3. **Pre Band:** 100% (Let all frequencies drive)\n4. **Post Filter:** 50%\n5. **Action:** Mimics the gentle compression and warmth of an overdriven tube amp.\n\n---\n\n## ⚡ Pro Tips\n\n1. **Pre-Filter Magic:** If your distortion sounds \"flubby\" or messy, increase the **Pre Band**. This removes sub-bass from the distortion circuit, resulting in a tighter, more focused crunch.\n2. **Phase Correlation:** Extreme distortion can change the phase of your signal. If processing a multi-mic drum kit, check for phase cancellation.\n3. **Serial Distortion:** Try placing two Blood Overdrives in a row with low Pre Amp settings. This often sounds more \"expensive\" and smoother than one plugin with a high setting.\n\n---\n\n**Last Updated:** February 3, 2026\n**Status:** ⭐ HIGH PRIORITY - Elaborated Reference",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Blood Overdrive\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Blood Overdrive to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Blood Overdrive\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Blood Overdrive\r\n\r\nThis section contains learning information for the fruity-blood-overdrive plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: Classic Acid Scream (Fruity Blood Overdrive)\n\n## Routing Context\n- **Target:** Acid Bassline (TB-303 / Transistor Bass).\n- **Position:** Insert FX (Last in chain).\n\n## Step-by-Step Setup\n1.  On the bass track, load **Fruity Blood Overdrive**.\n2.  **Enable x100** immediately.\n3.  **Compensate:** Turn **PostGain** down to almost zero.\n4.  Set **PreBand** to approx. 70% (Narrow).\n5.  Set **Color** to approx. `1kHz` (12 o'clock).\n6.  Slowly increase **PreAmp** until the sound starts to \"whistle.\"\n7.  **Tweak:** Adjust **PostFilter** to cut the painful \"ice-pick\" frequencies at the top.\n\n## What To Listen For\n- The distortion should sound like it’s \"talking.\" As the synth’s internal filter moves, the overdrive will catch different harmonics, creating a screaming, liquid texture.\n\n## Vibe Check\n- **Psychedelic/Upbeat:** This is the foundational sound of acid house and industrial hip-hop.\n\n## Automation Idea\n- Link the **Color** knob to the synth’s own Filter Cutoff so they move together for maximum \"screaming\" impact. [SRC: REPUTABLE]\n",
+      "01_Goal_Shaping_And_Control": "# Goal: Warm Tape Saturation (Fruity Blood Overdrive)\n\n## Routing Context\n- **Target:** Clean R&B Keys or Lo-Fi Vocal.\n- **Position:** Parallel Send or 100% Wet on Insert.\n\n## Step-by-Step Setup\n1.  Initialize Blood Overdrive. Ensure **x100 is OFF**.\n2.  Set **PreAmp** to a low value (approx. 10%).\n3.  Set **PreBand** to maximum (Wide).\n4.  Set **Color** to a low frequency (approx. 150Hz).\n5.  Turn **PostFilter** to the left (approx. 2kHz) to muffle the signal.\n6.  **Tweak:** Set the **PostGain** high to compensate for the muffled volume.\n\n## Result\n- A \"thick\" and \"rounded\" sound that mimics old recording tape. The transients are softened, and the low-end feels \"glued\" together.\n\n## Vibe Check\n- **Moody/Jazzy:** Adds a sense of age and history to digital instruments.\n\n## Pitfalls + Fixes\n- **Pitfall:** \"It sounds too muddy.\"\n  - **Fix:** Move the **Color** knob back toward the center (12 o'clock). You are distorting the sub-bass too much. [SRC: REPUTABLE]\n",
+      "distorting-vocal-leads": "# Distorting Vocal Leads Workflow\n\n## Goal\nAdd a \"radio\" or \"industrial\" edge to a vocal performance.\n\n## Steps\n1. **Insert Blood Overdrive**: Place it after any compression or EQ.\n2. **Set Pre Band**: Move to around **50%**. This ensures the sub-frequencies of the vocal don't turn into a muddy mess.\n3. **Crank Pre Amp**: Increase until you hear the desired \"crunch\". For a subtle edge, stay below 20%. For an aggressive sound, go above 50%.\n4. **Tune the Color**: Adjust **Color** until the distortion matches the \"vibe\" of the track. Brighter is usually better for rock; darker for lo-fi hip hop.\n5. **Smooth the Highs**: Use **Post Filter** to cut out the \"fizz\" above 10kHz.\n6. **Balance**: Lower **Post Gain** to match the original level.\n\n## Pro Tip\nAutomate the **Pre Amp** knob during the build-up of a track to slowly increase the tension and grit of the vocal.\n",
+      "industrial-drum-distortion": "# The \"Industrial Drum\" Workflow\n\n## Goal\nTransform a standard, clean drum loop into a gritty, aggressive industrial breakbeat.\n\n## Steps\n1. **Insert Blood Overdrive**: Place it on your drum bus (or individual snare/kick track).\n2. **Set Pre Band**: Move to **30-50%**. This ensures the kick drum's low end doesn't distort into a muddy wall of sound, keeping the low-end punch clean while the mids/highs get gritty.\n3. **Drive the Pre Amp**: Crank it to **40-60%**. You want the snare to \"crack\" and the hats to \"fuzz\".\n4. **Tone Shaping (Color)**: \n   - If it sounds too much like a guitar pedal, lower the **Color**.\n   - If it's too dark, increase the **Color** to add high-frequency harmonics.\n5. **Post-Filter Cleanup**: Set **Post Filter** to **60%**. This removes the \"digital fizz\" above 12kHz that can be fatiguing.\n6. **Parallel Mix**: \n   - Since Blood Overdrive doesn't have a Mix knob, use the **Mix level** knob in the FL Studio Mixer slot to blend the distorted signal with the dry drums.\n   - 50% Wet / 50% Dry is a great sweet spot for \"New York style\" parallel distortion.\n\n## Result\nA drum loop that sounds massive, aggressive, and has much more \"attitude\" than the original sample.\n"
+    },
+    "by-instrument": {
+      "bass": "# Instrument: Bass\n\nFruity Blood Overdrive is a secret weapon for making bass audible on small speakers.\n\n## Harmonic Saturation (The 808 Hack)\n1. Load Blood Overdrive on your 808 or sub-bass track.\n2. Set **Preamp** to about 20%.\n3. Increase **Dist** until you start hearing a slight \"growl.\"\n4. Adjust **Color** to focus the grit in the mid-range (300Hz-800Hz).\n5. **Result**: The sub-bass now has harmonics that can be heard on phone speakers and laptops.\n\n## Aggressive Metal Bass\n1. Use a high **Preamp** setting (50%+).\n2. Set **Dist** to 60%.\n3. Use the **Post Filter** to roll off the harsh high-end fizz.\n4. **Result**: A gritty, distorted bass tone that holds its own against heavy guitars.\n\n## Clean-ish Character\n- Keep **Preamp** low and **Post Gain** high.\n- Use **Color** to add a tiny bit of \"bite\" to the attack of the bass.\n",
+      "drums": "# Instrument: Drums\n\nAdding character and punch to your percussion.\n\n## The Snare Crack\n- Boost the **Preamp** on a snare track.\n- Use a high **Color** setting to emphasize the 2kHz-4kHz range.\n- **Result**: The snare sounds more \"snappy\" and \"expensive.\"\n\n## Distorted Parallel Kick\n1. Create a send track for your kick drum.\n2. Load Blood Overdrive on the send.\n3. Turn **Preamp** and **Dist** to maximum.\n4. Turn **Post Filter** all the way down to keep only the \"thump.\"\n5. Blend the send back with the original kick.\n6. **Result**: A massive, distorted low-end foundation.\n\n## Lo-Fi Hi-Hats\n- Apply Blood Overdrive with a very high **Color** setting.\n- Roll off the **Post Filter** until the hats sound \"crushed\" and metallic.\n",
+      "vocals": "# Workflow: Sizzling Backdrop Saturation (Chorus + Drive)\n\n## The Concept\nUsing Blood Overdrive to add a high-frequency \"sheen\" to wide R&B backing vocals.\n\n## Step-by-Step\n1.  Route your backing vocals to a bus.\n2.  Add **Fruity Chorus** (wide setting).\n3.  Add **Fruity Blood Overdrive** *after* the chorus.\n4.  **Settings:**\n    - x100: **OFF**.\n    - PreAmp: 25%.\n    - Color: High (approx. 5kHz).\n    - PostFilter: **OFF** (Wide open).\n    - Mix: 20%.\n5.  **Result:** The distortion only catches the \"shimmer\" of the chorus and the vocal air, creating an expensive, sizzling backdrop.\n\n## Vibe Check\n- **Vibey/Glossy:** Common in high-end pop-leaning hip-hop production.\n\n## Pitfalls\n- **Phase Interference:** Always check this setup in Mono. If the \"sizzle\" disappears, reduce the Chorus depth. [SRC: REPUTABLE]\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Blood Overdrive\r\n\r\nThis section contains workflow information for the fruity-blood-overdrive plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Blood Overdrive\r\n\r\nThis section contains reference information for the fruity-blood-overdrive plugin.\r\n"
+    }
+  }
+}

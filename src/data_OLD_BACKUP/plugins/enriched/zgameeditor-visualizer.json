@@ -1,0 +1,427 @@
+{
+  "id": "zgameeditor-visualizer",
+  "name": "ZGameEditor Visualizer",
+  "presets": {
+    "genre-visual-settings": {
+      "visualArchetypes": {
+        "hipHopFlow": {
+          "description": "Smooth, controlled visual for rap vocals",
+          "settings": {
+            "shape": "waveform",
+            "color": [
+              "#1a1a2e",
+              "#16213e",
+              "#0f3460"
+            ],
+            "speed": 0.6,
+            "reaction": 0.5,
+            "sync": true,
+            "aspectRatio": "16:9"
+          },
+          "useCases": [
+            "rap vocals",
+            "lyric videos",
+            "moody vibes"
+          ],
+          "tags": [
+            "hip-hop/rap",
+            "moody",
+            "smooth"
+          ]
+        },
+        "trapEnergy": {
+          "description": "High-energy visual for trap drops",
+          "settings": {
+            "shape": "spectrum",
+            "color": [
+              "#ff006e",
+              "#8338ec",
+              "#3a86ff"
+            ],
+            "speed": 0.9,
+            "reaction": 0.8,
+            "sync": true,
+            "aspectRatio": "16:9"
+          },
+          "useCases": [
+            "trap drops",
+            "energy peaks",
+            "bass drops"
+          ],
+          "tags": [
+            "electric",
+            "intense",
+            "bass"
+          ]
+        },
+        "rnbSmooth": {
+          "description": "Warm, flowing visual for R&B",
+          "settings": {
+            "shape": "particle",
+            "color": [
+              "#ffbe0b",
+              "#fb5607",
+              "#ff006e"
+            ],
+            "speed": 0.5,
+            "reaction": 0.5,
+            "sync": true,
+            "aspectRatio": "16:9"
+          },
+          "useCases": [
+            "R&B vocals",
+            "smooth sections",
+            "romantic vibes"
+          ],
+          "tags": [
+            "R&B",
+            "smooth",
+            "warm"
+          ]
+        },
+        "lofiVibes": {
+          "description": "Retro, degraded aesthetic",
+          "settings": {
+            "shape": "oscilloscope",
+            "color": [
+              "#2b2d42",
+              "#8d99ae",
+              "#edf2f4"
+            ],
+            "speed": 0.4,
+            "reaction": 0.4,
+            "sync": true,
+            "aspectRatio": "4:3"
+          },
+          "useCases": [
+            "lofi hip-hop",
+            "sample-based",
+            "nostalgic"
+          ],
+          "tags": [
+            "lofi",
+            "retro",
+            "moody"
+          ]
+        },
+        "electricDance": {
+          "description": "High-energy EDM aesthetic",
+          "settings": {
+            "shape": "3d_shapes",
+            "color": [
+              "#00ff87",
+              "#60efff",
+              "#ff00ff"
+            ],
+            "speed": 1.0,
+            "reaction": 0.9,
+            "sync": true,
+            "aspectRatio": "16:9"
+          },
+          "useCases": [
+            "EDM drops",
+            "dance sections",
+            "energy peaks"
+          ],
+          "tags": [
+            "electric",
+            "upbeat",
+            "intense"
+          ]
+        },
+        "darkAtmosphere": {
+          "description": "Moody, dark atmospheric visual",
+          "settings": {
+            "shape": "particle",
+            "color": [
+              "#000000",
+              "#1a1a1a",
+              "#333333"
+            ],
+            "speed": 0.3,
+            "reaction": 0.6,
+            "sync": true,
+            "aspectRatio": "16:9"
+          },
+          "useCases": [
+            "moody intros",
+            "breakdowns",
+            "dark themes"
+          ],
+          "tags": [
+            "moody",
+            "dark",
+            "atmospheric"
+          ]
+        }
+      },
+      "genreSettings": {
+        "hipHop": {
+          "general": {
+            "shape": "waveform",
+            "speed": 0.5,
+            "reaction": 0.5
+          },
+          "moody": {
+            "shape": "particle",
+            "speed": 0.4,
+            "reaction": 0.5
+          },
+          "trap": {
+            "shape": "spectrum",
+            "speed": 0.8,
+            "reaction": 0.8
+          }
+        },
+        "rnb": {
+          "smooth": {
+            "shape": "particle",
+            "speed": 0.5,
+            "reaction": 0.5
+          },
+          "energetic": {
+            "shape": "spectrum",
+            "speed": 0.7,
+            "reaction": 0.7
+          }
+        },
+        "lofi": {
+          "retro": {
+            "shape": "oscilloscope",
+            "speed": 0.4,
+            "reaction": 0.4
+          },
+          "warm": {
+            "shape": "waveform",
+            "speed": 0.45,
+            "reaction": 0.45
+          }
+        },
+        "edm": {
+          "drops": {
+            "shape": "3d_shapes",
+            "speed": 1.0,
+            "reaction": 0.9
+          },
+          "builds": {
+            "shape": "spectrum",
+            "speed": 0.6,
+            "reaction": 0.7
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "zgameeditor-visualizer-params": {
+      "$schema": "./schema.json",
+      "plugin": {
+        "name": "ZGameEditor Visualizer",
+        "version": "1.x",
+        "category": "Effect",
+        "type": "Audio-Reactive Visualization Engine",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/ZGameEditor%20Visualizer.htm"
+      },
+      "parameters": {
+        "audioReactivity": [
+          {
+            "id": "bassReactivity",
+            "name": "Bass Reactivity",
+            "type": "slider",
+            "range": "0-200%",
+            "unit": "%",
+            "default": "100%",
+            "description": "Low frequency response (kick drum triggering)",
+            "sweetSpot": "80-120%"
+          },
+          {
+            "id": "midReactivity",
+            "name": "Mid Reactivity",
+            "type": "slider",
+            "range": "0-200%",
+            "unit": "%",
+            "default": "100%",
+            "description": "Mid frequency response (vocals, snare)",
+            "sweetSpot": "60-100%"
+          },
+          {
+            "id": "highReactivity",
+            "name": "High Reactivity",
+            "type": "slider",
+            "range": "0-200%",
+            "unit": "%",
+            "default": "100%",
+            "description": "High frequency response (hi-hats, cymbals)",
+            "sweetSpot": "50-80%"
+          },
+          {
+            "id": "peakSensitivity",
+            "name": "Peak Sensitivity",
+            "type": "slider",
+            "range": "0-100%",
+            "description": "Transient detection threshold"
+          },
+          {
+            "id": "smoothing",
+            "name": "Smoothing",
+            "type": "slider",
+            "range": "0-100%",
+            "description": "Audio analysis smoothing (lower = responsive, higher = smooth)"
+          }
+        ],
+        "visual": [
+          {
+            "id": "presetBrowser",
+            "name": "Preset Browser",
+            "description": "Access 100+ factory presets",
+            "categories": [
+              "Audio Spectrum",
+              "Particles",
+              "Tunnels",
+              "Fractals",
+              "Waves",
+              "Abstract",
+              "Retro"
+            ]
+          },
+          {
+            "id": "colorPalette",
+            "name": "Color Palette",
+            "description": "Set visual color scheme"
+          },
+          {
+            "id": "layerSystem",
+            "name": "Layer System",
+            "description": "Stack up to 8 effect layers",
+            "blendModes": [
+              "Add",
+              "Multiply",
+              "Screen",
+              "Overlay"
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "id": "position",
+            "name": "Camera Position",
+            "axes": [
+              "X",
+              "Y",
+              "Z"
+            ],
+            "description": "3D camera location",
+            "automatable": true
+          },
+          {
+            "id": "rotation",
+            "name": "Camera Rotation",
+            "description": "Camera angle",
+            "automatable": true
+          },
+          {
+            "id": "fieldOfView",
+            "name": "Field of View",
+            "range": "30-120 degrees",
+            "description": "Lens width (wide-angle vs telephoto)"
+          }
+        ],
+        "rendering": [
+          {
+            "id": "resolution",
+            "name": "Resolution",
+            "options": [
+              "1280x720",
+              "1920x1080",
+              "3840x2160"
+            ],
+            "recommended": "1920x1080"
+          },
+          {
+            "id": "frameRate",
+            "name": "Frame Rate",
+            "options": [
+              "24",
+              "30",
+              "60",
+              "120"
+            ],
+            "unit": "FPS",
+            "recommended": "60"
+          },
+          {
+            "id": "codec",
+            "name": "Codec",
+            "options": [
+              "H.264/MP4",
+              "AVI",
+              "Image Sequence"
+            ],
+            "recommended": "H.264/MP4"
+          },
+          {
+            "id": "bitrate",
+            "name": "Bitrate",
+            "range": "5-30 Mbps",
+            "recommended": "15-20 Mbps for 1080p60"
+          }
+        ]
+      },
+      "presetCategories": {
+        "audioSpectrum": "Frequency-based bars and circles",
+        "particles": "Particle systems synced to audio",
+        "tunnels": "3D tunnel effects",
+        "fractals": "Mathematical patterns (Mandelbrot, Julia sets)",
+        "waves": "Waveform/oscilloscope displays",
+        "abstract": "Artistic effects (kaleidoscopes, morphing)",
+        "retro": "80s/90s Winamp-inspired visuals"
+      },
+      "exportFormats": {
+        "youtube": {
+          "resolution": "1920x1080",
+          "fps": 60,
+          "codec": "H.264",
+          "bitrate": "15-20 Mbps"
+        },
+        "instagram": {
+          "square": "1080x1080",
+          "portrait": "1080x1350",
+          "stories": "1080x1920"
+        },
+        "tiktok": {
+          "resolution": "1080x1920",
+          "aspectRatio": "9:16"
+        }
+      },
+      "cpuUsage": "Moderate to Very High (depends on preset)",
+      "gpuAcceleration": "Limited",
+      "realtimeSafe": "Yes (on powerful systems)",
+      "programmable": true,
+      "openSource": "ZGameEditor core is open-source"
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "What Is Zgameeditor",
+      "filename": "what-is-zgameeditor.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "Music Video Youtube Hiphop",
+      "category": "by-goal",
+      "filename": "music-video-youtube-hiphop.md"
+    },
+    {
+      "title": "Youtube Video Creation",
+      "category": "by-goal",
+      "filename": "youtube-video-creation.md"
+    },
+    {
+      "title": "Instrument Visual Workflows",
+      "category": "by-instrument",
+      "filename": "instrument-visual-workflows.md"
+    }
+  ]
+}

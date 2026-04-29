@@ -1,0 +1,177 @@
+Tags: hip-hop/rap | R&B | electric
+
+## Emphasizer Advanced Presets
+
+### Dynamic Enhancement Presets
+
+```json
+{
+  "dynamicVocal": {
+    "description": "Enhancement that reacts to vocal dynamics",
+    "settings": {
+      "harmonic": { "amount": 30, "type": "even" },
+      "highShelf": { "frequency": 10000, "gain": 3 },
+      "lowShelf": { "frequency": 80, "gain": 2 },
+      "midSide": { "enabled": true, "amount": 12 }
+    },
+    "chain": {
+      "before": "Compression (2:1, -20dB)",
+      "after": "De-esser"
+    },
+    "useCases": ["Dynamic vocals", "Varied performance", "Professional polish"],
+    "tags": ["hip-hop/rap", "R&B", "professional"]
+  },
+  "adaptiveBass": {
+    "description": "Bass enhancement that responds to playing",
+    "settings": {
+      "harmonic": { "amount": 22, "type": "odd" },
+      "highShelf": { "frequency": 12000, "gain": 1 },
+      "lowShelf": { "frequency": 55, "gain": 3 },
+      "midSide": { "enabled": false, "amount": 0 }
+    },
+    "chain": {
+      "before": "EQ (high-pass 30Hz)",
+      "after": "Limiter (-1dB)"
+    },
+    "useCases": ["Dynamic bass playing", "Live feel", "Adaptable 808"],
+    "tags": ["hip-hop/rap", "deep bass edm", "adaptive"]
+  },
+  "breathingMaster": {
+    "description": "Master enhancement that breathes with the mix",
+    "settings": {
+      "harmonic": { "amount": 20, "type": "even" },
+      "highShelf": { "frequency": 10000, "gain": 2 },
+      "lowShelf": { "frequency": 70, "gain": 2 },
+      "midSide": { "enabled": true, "amount": 10 }
+    },
+    "chain": {
+      "before": "Gentle EQ",
+      "after": "Light Limiter"
+    },
+    "useCases": ["Master bus", "Final polish", "Breathing enhancement"],
+    "tags": ["mastering", "professional", "subtle"]
+  },
+  "presenceLead": {
+    "description": "Maximum presence for lead elements",
+    "settings": {
+      "harmonic": { "amount": 38, "type": "all" },
+      "highShelf": { "frequency": 8000, "gain": 4 },
+      "lowShelf": { "frequency": 100, "gain": 1.5 },
+      "midSide": { "enabled": true, "amount": 15 }
+    },
+    "chain": {
+      "before": "EQ",
+      "after": "De-esser"
+    },
+    "useCases": ["Lead vocals", "Solos", "Featured elements"],
+    "tags": ["hip-hop/rap", "present", "forward"]
+  },
+  "smoothGlue": {
+    "description": "Mix glue with smooth enhancement",
+    "settings": {
+      "harmonic": { "amount": 25, "type": "even" },
+      "highShelf": { "frequency": 11000, "gain": 2 },
+      "lowShelf": { "frequency": 90, "gain": 2 },
+      "midSide": { "enabled": true, "amount": 12 }
+    },
+    "chain": {
+      "before": "Bus compression",
+      "after": "Limiter"
+    },
+    "useCases": ["Bus glue", "Mix cohesion", "Smooth sound"],
+    "tags": ["R&B", "smooth", "glue"]
+  }
+}
+```
+
+### Creative Enhancement Presets
+
+```json
+{
+  "vintageWarmth": {
+    "description": "Old-school warmth and character",
+    "settings": {
+      "harmonic": { "amount": 35, "type": "even" },
+      "highShelf": { "frequency": 6000, "gain": 1 },
+      "lowShelf": { "frequency": 70, "gain": 3 },
+      "midSide": { "enabled": true, "amount": 8 }
+    },
+    "processing": "Add tape saturation after",
+    "useCases": ["Vintage feel", "Retro production", "Warm character"],
+    "tags": ["lofi", "vintage", "warm"]
+  },
+  "modernEdge": {
+    "description": "Contemporary, aggressive enhancement",
+    "settings": {
+      "harmonic": { "amount": 40, "type": "odd" },
+      "highShelf": { "frequency": 12000, "gain": 3 },
+      "lowShelf": { "frequency": 60, "gain": 2 },
+      "midSide": { "enabled": true, "amount": 18 }
+    },
+    "processing": "Follow with light distortion",
+    "useCases": ["Modern hip-hop", "Aggressive sound", "Cutting presence"],
+    "tags": ["hip-hop/rap", "electric", "aggressive"]
+  },
+  "radioReady": {
+    "description": "Broadcast-quality enhancement",
+    "settings": {
+      "harmonic": { "amount": 28, "type": "even" },
+      "highShelf": { "frequency": 10000, "gain": 2.5 },
+      "lowShelf": { "frequency": 75, "gain": 2 },
+      "midSide": { "enabled": true, "amount": 12 }
+    },
+    "processing": "Match radio loudness standards",
+    "useCases": ["Radio mixes", "Commercial release", "Professional polish"],
+    "tags": ["professional", "radio", "commercial"]
+  }
+}
+```
+
+### Parallel Processing Presets
+
+```json
+{
+  "parallelVocalBlend": {
+    "description": "Blend enhanced and dry for subtle effect",
+    "instance1": {
+      "name": "Wet",
+      "settings": {
+        "harmonic": 35,
+        "highShelf": "+3dB",
+        "lowShelf": "+2dB",
+        "wetDry": "100%"
+      }
+    },
+    "instance2": {
+      "name": "Dry",
+      "settings": {
+        "wetDry": "0%"
+      }
+    },
+    "blend": "30% wet / 70% dry",
+    "useCases": ["Subtle enhancement", "Vocal polish", "Professional result"],
+    "tags": ["hip-hop/rap", "R&B", "subtle"]
+  },
+  "parallelMasterBlend": {
+    "description": "Master enhancement with dry signal",
+    "instance1": {
+      "name": "Wet",
+      "settings": {
+        "harmonic": 25,
+        "highShelf": "+2dB",
+        "lowShelf": "+2dB",
+        "wetDry": "100%"
+      }
+    },
+    "instance2": {
+      "name": "Dry",
+      "settings": {
+        "wetDry": "0%"
+      }
+    },
+    "blend": "25% wet / 75% dry",
+    "useCases": ["Master enhancement", "Subtle polish", "Safe mastering"],
+    "tags": ["mastering", "professional", "safe"]
+  }
+}
+```

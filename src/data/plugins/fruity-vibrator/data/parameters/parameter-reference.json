@@ -1,0 +1,126 @@
+{
+  "pluginName": "Fruity Vibrator",
+  "category": "Modulation Effect",
+  "parameters": [
+    {
+      "name": "Frequency",
+      "type": "continuous",
+      "range": "0.01 Hz - 20 Hz",
+      "default": "5 Hz",
+      "description": "LFO modulation rate controlling vibrato speed",
+      "automatable": true,
+      "musicalContext": {
+        "slow": "0.1-2 Hz - Slow, expressive vibrato for vocals and leads",
+        "medium": "3-6 Hz - Natural vibrato range for most instruments",
+        "fast": "7-12 Hz - Intense vibrato for electronic textures",
+        "extreme": "13-20 Hz - Ring modulation-like effects"
+      }
+    },
+    {
+      "name": "Depth",
+      "type": "continuous",
+      "range": "0% - 100%",
+      "default": "50%",
+      "description": "Amount of pitch modulation applied",
+      "automatable": true,
+      "musicalContext": {
+        "subtle": "5-15% - Natural vibrato, imperceptible modulation",
+        "moderate": "20-40% - Clear vibrato effect, vintage synth style",
+        "heavy": "45-70% - Obvious pitch wobble, creative effects",
+        "extreme": "75-100% - Dramatic detuning, experimental sounds"
+      }
+    },
+    {
+      "name": "Shape",
+      "type": "discrete",
+      "options": ["Sine", "Triangle", "Square", "Sawtooth", "Random"],
+      "default": "Sine",
+      "description": "LFO waveform shape determining modulation character",
+      "automatable": true,
+      "characteristics": {
+        "sine": "Smooth, musical vibrato - most natural sounding",
+        "triangle": "Linear ramp, slightly sharper than sine",
+        "square": "Abrupt pitch switching, trill-like effect",
+        "sawtooth": "Rising pitch sweep, UFO-like modulation",
+        "random": "Unpredictable pitch variation, organic movement"
+      }
+    },
+    {
+      "name": "Stereo",
+      "type": "continuous",
+      "range": "-100% to +100%",
+      "default": "0%",
+      "description": "Phase offset between left and right channels",
+      "automatable": true,
+      "musicalContext": {
+        "centered": "0% - Mono vibrato, no stereo effect",
+        "subtle": "±10-30% - Slight stereo movement",
+        "wide": "±40-70% - Strong stereo animation",
+        "extreme": "±80-100% - Maximum stereo separation"
+      }
+    },
+    {
+      "name": "Mix",
+      "type": "continuous",
+      "range": "0% - 100%",
+      "default": "100%",
+      "description": "Dry/wet balance",
+      "automatable": true,
+      "musicalContext": {
+        "subtle": "10-30% - Slight shimmer, thickening effect",
+        "balanced": "40-60% - Blended vibrato with dry signal",
+        "full": "70-100% - Dominant vibrato effect"
+      }
+    },
+    {
+      "name": "Attack",
+      "type": "continuous",
+      "range": "0 ms - 5000 ms",
+      "default": "0 ms",
+      "description": "Time for vibrato to reach full depth after note onset",
+      "automatable": true,
+      "musicalContext": {
+        "immediate": "0-50 ms - Vibrato from note start",
+        "quick": "100-300 ms - Natural vocal-style delay",
+        "slow": "500-1500 ms - Gradual vibrato introduction",
+        "extended": "2000-5000 ms - Evolving pad textures"
+      }
+    },
+    {
+      "name": "Phase",
+      "type": "continuous",
+      "range": "0° - 360°",
+      "default": "0°",
+      "description": "Starting position in LFO cycle",
+      "automatable": true,
+      "musicalContext": {
+        "sync": "0° - Start at beginning of waveform",
+        "offset": "90° - Quarter cycle offset",
+        "inverted": "180° - Opposite phase",
+        "creative": "Custom - Vary for multiple instances"
+      }
+    }
+  ],
+  "parameterInteractions": [
+    {
+      "combination": ["Frequency: 5-6 Hz", "Depth: 20-30%", "Shape: Sine"],
+      "result": "Classic vocal vibrato",
+      "genre": "R&B, Soul, Pop"
+    },
+    {
+      "combination": ["Frequency: 0.2-0.5 Hz", "Depth: 40-60%", "Stereo: ±50%"],
+      "result": "Wide, slow pitch drift for pads",
+      "genre": "Ambient, Trap"
+    },
+    {
+      "combination": ["Frequency: 8-12 Hz", "Depth: 15-25%", "Shape: Triangle"],
+      "result": "Vintage synth vibrato",
+      "genre": "Lo-fi, Synthwave"
+    },
+    {
+      "combination": ["Frequency: 4 Hz", "Depth: 50%", "Shape: Square"],
+      "result": "Pitched trill effect",
+      "genre": "Experimental, Glitch"
+    }
+  ]
+}

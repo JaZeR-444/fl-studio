@@ -1,0 +1,151 @@
+{
+  "plugin": "Fruity Reeverb 2",
+  "type": "Reverb",
+  "description": "Simulates acoustic spaces to add realistic reverberation to instruments.",
+  "parameters": [
+    {
+      "name": "MID / SIDE",
+      "type": "Switch",
+      "role": "Input Processing",
+      "description": "Processes either the mid (summed mono) or side (stereo field) components of the input signal.",
+      "tips": ["Use Side mode to add width without muddying the center channel."]
+    },
+    {
+      "name": "H.CUT",
+      "label": "High Cut",
+      "type": "Knob",
+      "role": "Tone Shaping",
+      "description": "Removes high frequencies from the reverb input.",
+      "tips": ["Cut highs to push the reverb further back in the mix."]
+    },
+    {
+      "name": "L.CUT",
+      "label": "Low Cut",
+      "type": "Knob",
+      "role": "Tone Shaping",
+      "description": "Removes low frequencies from the reverb input.",
+      "tips": ["Essential for removing mud. Try cutting up to 300-500Hz on vocals."]
+    },
+    {
+      "name": "DELAY",
+      "label": "Predelay",
+      "type": "Knob",
+      "role": "Spatial Definition",
+      "description": "Controls the delay between the direct signal and the first reverb reflection.",
+      "tips": ["Increase to separate the dry vocal from the reverb tail.", "Tempo-synced delays can create rhythmic pumping effects."]
+    },
+    {
+      "name": "SIZE",
+      "label": "Room Size",
+      "type": "Knob",
+      "role": "Spatial Simulation",
+      "description": "Sets the size of the simulated virtual room.",
+      "tips": ["Small = bathroom/studio, Large = cathedral/hall.", "Automate for creative effects."]
+    },
+    {
+      "name": "DIFF",
+      "label": "Diffusion",
+      "type": "Knob",
+      "role": "Texture",
+      "description": "Controls the density of reflections.",
+      "tips": ["Low = distinct echoes (grainy), High = smooth wash (dense)."]
+    },
+    {
+      "name": "MOD",
+      "label": "Modulation Depth",
+      "type": "Knob",
+      "role": "Texture",
+      "description": "Modulates the reverb time to smooth out metallic ringing.",
+      "tips": ["Adds chorus-like movement to the tail.", "Use sparingly on realistic acoustic instruments."]
+    },
+    {
+      "name": "SPEED",
+      "label": "Modulation Speed",
+      "type": "Knob",
+      "role": "Texture",
+      "description": "Sets the speed of the sine-wave modulation.",
+      "tips": []
+    },
+    {
+      "name": "BASS",
+      "label": "Bass Multiplier",
+      "type": "Knob",
+      "role": "Decay Shaping",
+      "description": "Adjusts the decay time of bass frequencies relative to the main decay.",
+      "tips": ["Boost for boomy, dark rooms. Cut for tighter low end."]
+    },
+    {
+      "name": "CROSS",
+      "label": "Bass Crossover",
+      "type": "Knob",
+      "role": "Decay Shaping",
+      "description": "Determines the frequency point below which bass is boosted by the Bass knob.",
+      "tips": []
+    },
+    {
+      "name": "DEC",
+      "label": "Decay Time",
+      "type": "Knob",
+      "role": "Spatial Simulation",
+      "description": "Controls the reverb's decay time (RT60).",
+      "tips": ["Short (<1s) for ambience, Long (>2s) for lush tails."]
+    },
+    {
+      "name": "DAMP",
+      "label": "High Damping",
+      "type": "Knob",
+      "role": "Tone Shaping",
+      "description": "Adjusts the damping rate of high frequencies in the tail.",
+      "tips": ["High damping = warm, dark room (absorptive walls).", "Low damping = bright, splashing room (reflective walls)."]
+    },
+    {
+      "name": "DRY",
+      "label": "Dry Level",
+      "type": "Knob",
+      "role": "Mix",
+      "description": "Sets the level of the direct input signal.",
+      "tips": ["Set to 0 when using as a Send effect."]
+    },
+    {
+      "name": "ER",
+      "label": "Early Reflections",
+      "type": "Knob",
+      "role": "Mix",
+      "description": "Sets the level of the first reflections.",
+      "tips": ["ER defines the 'position' in the room. louder ER = closer to walls/listener."]
+    },
+    {
+      "name": "WET",
+      "label": "Wet Level",
+      "type": "Knob",
+      "role": "Mix",
+      "description": "Sets the level of the reverberant signal.",
+      "tips": []
+    },
+    {
+      "name": "SEP",
+      "label": "Stereo Separation",
+      "type": "Knob",
+      "role": "Output Processing",
+      "description": "Adjusts the stereo separation of the wet reverb signal.",
+      "tips": ["Turn left for mono reverb, right for extra wide."]
+    }
+  ],
+  "common_problems": [
+    {
+      "symptom": "Muddy Mix",
+      "solution": "Increase L.CUT (Low Cut) to remove bass from the reverb.",
+      "parameter": "L.CUT"
+    },
+    {
+      "symptom": "Washed Out Sound",
+      "solution": "Reduce DECAY time or WET level. Increase PREDELAY.",
+      "parameter": "DEC / DELAY"
+    },
+    {
+      "symptom": "Metallic Ringing",
+      "solution": "Increase MOD (Modulation) and DIFF (Diffusion).",
+      "parameter": "MOD / DIFF"
+    }
+  ]
+}

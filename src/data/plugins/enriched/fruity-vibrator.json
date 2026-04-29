@@ -1,0 +1,1194 @@
+{
+  "id": "fruity-vibrator",
+  "name": "Fruity Vibrator",
+  "category": "Modulation",
+  "tier": "Free",
+  "type": "Modulation",
+  "description": "Fruity Vibrator - Modulation",
+  "tags": [
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "modulation",
+    "fx",
+    "audio"
+  ],
+  "icon": "/plugins/fruity-vibrator-icon.svg",
+  "color": "#A855F7",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-vibrator",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "parameter-reference": {
+      "pluginName": "Fruity Vibrator",
+      "category": "Modulation Effect",
+      "parameters": [
+        {
+          "name": "Frequency",
+          "type": "continuous",
+          "range": "0.01 Hz - 20 Hz",
+          "default": "5 Hz",
+          "description": "LFO modulation rate controlling vibrato speed",
+          "automatable": true,
+          "musicalContext": {
+            "slow": "0.1-2 Hz - Slow, expressive vibrato for vocals and leads",
+            "medium": "3-6 Hz - Natural vibrato range for most instruments",
+            "fast": "7-12 Hz - Intense vibrato for electronic textures",
+            "extreme": "13-20 Hz - Ring modulation-like effects"
+          }
+        },
+        {
+          "name": "Depth",
+          "type": "continuous",
+          "range": "0% - 100%",
+          "default": "50%",
+          "description": "Amount of pitch modulation applied",
+          "automatable": true,
+          "musicalContext": {
+            "subtle": "5-15% - Natural vibrato, imperceptible modulation",
+            "moderate": "20-40% - Clear vibrato effect, vintage synth style",
+            "heavy": "45-70% - Obvious pitch wobble, creative effects",
+            "extreme": "75-100% - Dramatic detuning, experimental sounds"
+          }
+        },
+        {
+          "name": "Shape",
+          "type": "discrete",
+          "options": [
+            "Sine",
+            "Triangle",
+            "Square",
+            "Sawtooth",
+            "Random"
+          ],
+          "default": "Sine",
+          "description": "LFO waveform shape determining modulation character",
+          "automatable": true,
+          "characteristics": {
+            "sine": "Smooth, musical vibrato - most natural sounding",
+            "triangle": "Linear ramp, slightly sharper than sine",
+            "square": "Abrupt pitch switching, trill-like effect",
+            "sawtooth": "Rising pitch sweep, UFO-like modulation",
+            "random": "Unpredictable pitch variation, organic movement"
+          }
+        },
+        {
+          "name": "Stereo",
+          "type": "continuous",
+          "range": "-100% to +100%",
+          "default": "0%",
+          "description": "Phase offset between left and right channels",
+          "automatable": true,
+          "musicalContext": {
+            "centered": "0% - Mono vibrato, no stereo effect",
+            "subtle": "±10-30% - Slight stereo movement",
+            "wide": "±40-70% - Strong stereo animation",
+            "extreme": "±80-100% - Maximum stereo separation"
+          }
+        },
+        {
+          "name": "Mix",
+          "type": "continuous",
+          "range": "0% - 100%",
+          "default": "100%",
+          "description": "Dry/wet balance",
+          "automatable": true,
+          "musicalContext": {
+            "subtle": "10-30% - Slight shimmer, thickening effect",
+            "balanced": "40-60% - Blended vibrato with dry signal",
+            "full": "70-100% - Dominant vibrato effect"
+          }
+        },
+        {
+          "name": "Attack",
+          "type": "continuous",
+          "range": "0 ms - 5000 ms",
+          "default": "0 ms",
+          "description": "Time for vibrato to reach full depth after note onset",
+          "automatable": true,
+          "musicalContext": {
+            "immediate": "0-50 ms - Vibrato from note start",
+            "quick": "100-300 ms - Natural vocal-style delay",
+            "slow": "500-1500 ms - Gradual vibrato introduction",
+            "extended": "2000-5000 ms - Evolving pad textures"
+          }
+        },
+        {
+          "name": "Phase",
+          "type": "continuous",
+          "range": "0° - 360°",
+          "default": "0°",
+          "description": "Starting position in LFO cycle",
+          "automatable": true,
+          "musicalContext": {
+            "sync": "0° - Start at beginning of waveform",
+            "offset": "90° - Quarter cycle offset",
+            "inverted": "180° - Opposite phase",
+            "creative": "Custom - Vary for multiple instances"
+          }
+        }
+      ],
+      "parameterInteractions": [
+        {
+          "combination": [
+            "Frequency: 5-6 Hz",
+            "Depth: 20-30%",
+            "Shape: Sine"
+          ],
+          "result": "Classic vocal vibrato",
+          "genre": "R&B, Soul, Pop"
+        },
+        {
+          "combination": [
+            "Frequency: 0.2-0.5 Hz",
+            "Depth: 40-60%",
+            "Stereo: ±50%"
+          ],
+          "result": "Wide, slow pitch drift for pads",
+          "genre": "Ambient, Trap"
+        },
+        {
+          "combination": [
+            "Frequency: 8-12 Hz",
+            "Depth: 15-25%",
+            "Shape: Triangle"
+          ],
+          "result": "Vintage synth vibrato",
+          "genre": "Lo-fi, Synthwave"
+        },
+        {
+          "combination": [
+            "Frequency: 4 Hz",
+            "Depth: 50%",
+            "Shape: Square"
+          ],
+          "result": "Pitched trill effect",
+          "genre": "Experimental, Glitch"
+        }
+      ]
+    }
+  },
+  "presets": {
+    "creative-effects": {
+      "presetCategory": "Creative Effects",
+      "description": "Experimental and creative vibrato effects for unique textures and sound design",
+      "presets": [
+        {
+          "name": "Alien Voice Warp",
+          "genre": "Experimental, Glitch Hop",
+          "parameters": {
+            "frequency": "12 Hz",
+            "depth": "70%",
+            "shape": "Random",
+            "stereo": "80%",
+            "mix": "100%",
+            "attack": "0 ms",
+            "phase": "0°"
+          },
+          "useCase": "Extreme pitch warping for otherworldly vocal effects and ad-libs",
+          "applications": [
+            "Vocal FX",
+            "Transition Effects",
+            "Risers"
+          ]
+        },
+        {
+          "name": "Pitched Trill",
+          "genre": "Electronic Hip-Hop, Bass Music",
+          "parameters": {
+            "frequency": "6 Hz",
+            "depth": "55%",
+            "shape": "Square",
+            "stereo": "0%",
+            "mix": "100%",
+            "attack": "0 ms",
+            "phase": "0°"
+          },
+          "useCase": "Rapid pitch switching creates trill-like melodic effect on synths",
+          "applications": [
+            "Lead Effects",
+            "Fills",
+            "Build-ups"
+          ]
+        },
+        {
+          "name": "UFO Sweep",
+          "genre": "Experimental, Trap",
+          "parameters": {
+            "frequency": "2 Hz",
+            "depth": "80%",
+            "shape": "Sawtooth",
+            "stereo": "0%",
+            "mix": "100%",
+            "attack": "0 ms",
+            "phase": "0°"
+          },
+          "useCase": "Rising pitch sweep effect for sci-fi textures and transitions",
+          "applications": [
+            "SFX",
+            "Risers",
+            "Transitions"
+          ]
+        },
+        {
+          "name": "Chaotic Modulation",
+          "genre": "Industrial Hip-Hop, Noise Rap",
+          "parameters": {
+            "frequency": "15 Hz",
+            "depth": "90%",
+            "shape": "Random",
+            "stereo": "100%",
+            "mix": "100%",
+            "attack": "0 ms",
+            "phase": "0°"
+          },
+          "useCase": "Unpredictable pitch chaos for aggressive, distorted textures",
+          "applications": [
+            "Distortion",
+            "Glitch Effects",
+            "Industrial Sounds"
+          ],
+          "artists": "Death Grips, JPEGMAFIA"
+        },
+        {
+          "name": "Shimmer Chorus",
+          "genre": "Cloud Rap, Dream Pop Rap",
+          "parameters": {
+            "frequency": "0.8 Hz",
+            "depth": "25%",
+            "shape": "Sine",
+            "stereo": "70%",
+            "mix": "40%",
+            "attack": "0 ms",
+            "phase": "90°"
+          },
+          "useCase": "Subtle chorus-like effect from slow stereo vibrato",
+          "applications": [
+            "Vocal Doubling",
+            "Synth Widening",
+            "Atmosphere"
+          ]
+        },
+        {
+          "name": "Retro Lo-Fi Warble",
+          "genre": "Lo-fi Hip-Hop, Chillhop",
+          "parameters": {
+            "frequency": "0.4 Hz",
+            "depth": "40%",
+            "shape": "Random",
+            "stereo": "30%",
+            "mix": "80%",
+            "attack": "0 ms",
+            "phase": "0°"
+          },
+          "useCase": "Tape/vinyl-style pitch warble for vintage aesthetic",
+          "applications": [
+            "Sample Processing",
+            "Full Mix",
+            "Drums"
+          ],
+          "artists": "Nujabes, J Dilla, MF DOOM"
+        },
+        {
+          "name": "Sidechain Pump Vibrato",
+          "genre": "Electronic Trap, Future Bass",
+          "parameters": {
+            "frequency": "4 Hz (sync to tempo)",
+            "depth": "35%",
+            "shape": "Sawtooth",
+            "stereo": "0%",
+            "mix": "70%",
+            "attack": "0 ms",
+            "phase": "0°"
+          },
+          "useCase": "Rhythmic pitch ducking synced to beat for pumping effect",
+          "applications": [
+            "Bass",
+            "Pads",
+            "Synths"
+          ],
+          "note": "Sync frequency to project tempo (e.g., 1/4 note, 1/8 note)"
+        },
+        {
+          "name": "Detuned Stack",
+          "genre": "Ambient Hip-Hop, Psychedelic Rap",
+          "parameters": {
+            "frequency": "0.2 Hz",
+            "depth": "50%",
+            "shape": "Sine",
+            "stereo": "90%",
+            "mix": "100%",
+            "attack": "0 ms",
+            "phase": "0°"
+          },
+          "useCase": "Very slow stereo pitch drift creates thick, chorused texture",
+          "applications": [
+            "Pad Layering",
+            "Ambient Textures",
+            "Background Vocals"
+          ],
+          "note": "Use on duplicate layer with different phase offset"
+        }
+      ]
+    },
+    "hip-hop-mappings": {
+      "pluginName": "Fruity Vibrator",
+      "version": "1.0",
+      "presetCategory": "Hip-Hop MIDI Mappings",
+      "description": "Optimized MIDI-to-haptic mappings for various hip-hop and rap subgenres",
+      "presets": [
+        {
+          "name": "Trap Beat Standard",
+          "genre": "Trap",
+          "description": "Hard-hitting trap beat feedback with emphasis on 808 bass and snappy snares",
+          "mappings": [
+            {
+              "note": "C3",
+              "noteName": "Kick/808",
+              "intensity": 85,
+              "effect": "Constant",
+              "velocityRange": "100-127",
+              "purpose": "Deep 808 bass impact",
+              "tips": "Adjust intensity based on 808 tuning - lower notes = higher intensity"
+            },
+            {
+              "note": "D3",
+              "noteName": "Snare",
+              "intensity": 65,
+              "effect": "Sawtooth",
+              "velocityRange": "90-120",
+              "purpose": "Crisp snare punch",
+              "tips": "Use velocity automation for ghost snares (40-60 velocity)"
+            },
+            {
+              "note": "F#3",
+              "noteName": "Hi-Hat Closed",
+              "intensity": 15,
+              "effect": "Damper",
+              "velocityRange": "50-90",
+              "purpose": "Subtle rhythmic groove",
+              "tips": "Keep low to avoid fatigue during hi-hat rolls"
+            },
+            {
+              "note": "G#3",
+              "noteName": "Hi-Hat Open",
+              "intensity": 25,
+              "effect": "Spring",
+              "velocityRange": "60-100",
+              "purpose": "Open hat accent feedback",
+              "tips": "Slightly higher than closed for differentiation"
+            },
+            {
+              "note": "E3",
+              "noteName": "Rimshot/Clap",
+              "intensity": 50,
+              "effect": "Sawtooth",
+              "velocityRange": "80-110",
+              "purpose": "Secondary percussion accent",
+              "tips": "Use for layered snare or clap hits"
+            }
+          ],
+          "globalSettings": {
+            "masterIntensity": 75,
+            "velocitySensitivity": "High",
+            "polyphony": "Unlimited",
+            "notes": "Reduce master intensity for long sessions (60-70%) to avoid fatigue"
+          }
+        },
+        {
+          "name": "Boom Bap Classic",
+          "genre": "Boom Bap",
+          "description": "90s-style boom bap with punchy kicks and crisp snares",
+          "mappings": [
+            {
+              "note": "C3",
+              "noteName": "Kick",
+              "intensity": 70,
+              "effect": "Constant",
+              "velocityRange": "100-127",
+              "purpose": "Punchy kick drum impact",
+              "tips": "Lower intensity than trap - boom bap kicks are tighter"
+            },
+            {
+              "note": "D3",
+              "noteName": "Snare",
+              "intensity": 75,
+              "effect": "Sawtooth",
+              "velocityRange": "110-127",
+              "purpose": "Dominant snare crack",
+              "tips": "Highest intensity element - snare is king in boom bap"
+            },
+            {
+              "note": "F#3",
+              "noteName": "Hi-Hat Closed",
+              "intensity": 20,
+              "effect": "Damper",
+              "velocityRange": "60-90",
+              "purpose": "Steady hi-hat groove",
+              "tips": "Moderate intensity for 16th note patterns"
+            },
+            {
+              "note": "E3",
+              "noteName": "Rim/Stick",
+              "intensity": 40,
+              "effect": "Damper",
+              "velocityRange": "70-100",
+              "purpose": "Rim click or stick accent",
+              "tips": "Important for authentic boom bap flavor"
+            }
+          ],
+          "globalSettings": {
+            "masterIntensity": 70,
+            "velocitySensitivity": "Medium",
+            "polyphony": "Unlimited",
+            "notes": "Balanced intensity for classic boom bap feel"
+          }
+        },
+        {
+          "name": "Moody Lo-Fi",
+          "genre": "Lo-Fi Hip-Hop",
+          "description": "Subtle, relaxed haptic feedback for chill lo-fi beats",
+          "mappings": [
+            {
+              "note": "C3",
+              "noteName": "Kick",
+              "intensity": 45,
+              "effect": "Constant",
+              "velocityRange": "70-100",
+              "purpose": "Gentle kick thump",
+              "tips": "Keep low for laid-back vibe"
+            },
+            {
+              "note": "D3",
+              "noteName": "Snare",
+              "intensity": 40,
+              "effect": "Spring",
+              "velocityRange": "60-90",
+              "purpose": "Soft snare tap",
+              "tips": "Lower velocity for vintage tape feel"
+            },
+            {
+              "note": "F#3",
+              "noteName": "Hi-Hat",
+              "intensity": 10,
+              "effect": "Damper",
+              "velocityRange": "40-70",
+              "purpose": "Whisper-quiet hi-hats",
+              "tips": "Barely noticeable - just enough for groove feel"
+            },
+            {
+              "note": "A3",
+              "noteName": "Vinyl Crackle",
+              "intensity": 5,
+              "effect": "Spring",
+              "velocityRange": "30-50",
+              "purpose": "Textural element feedback",
+              "tips": "Extremely subtle for atmospheric depth"
+            }
+          ],
+          "globalSettings": {
+            "masterIntensity": 40,
+            "velocitySensitivity": "Low",
+            "polyphony": "Unlimited",
+            "notes": "Low intensity across the board for relaxing sessions"
+          }
+        },
+        {
+          "name": "Drill Intensity",
+          "genre": "Drill",
+          "description": "Aggressive drill beat feedback with sliding 808s and rapid hi-hats",
+          "mappings": [
+            {
+              "note": "C3",
+              "noteName": "808 Slide",
+              "intensity": 90,
+              "effect": "Constant",
+              "velocityRange": "110-127",
+              "purpose": "Heavy sliding 808 impact",
+              "tips": "Maximum intensity for menacing low-end"
+            },
+            {
+              "note": "D3",
+              "noteName": "Snare/Clap",
+              "intensity": 60,
+              "effect": "Sawtooth",
+              "velocityRange": "100-120",
+              "purpose": "Sharp snare crack",
+              "tips": "Moderate intensity - 808 is the star"
+            },
+            {
+              "note": "F#3",
+              "noteName": "Hi-Hat Roll",
+              "intensity": 12,
+              "effect": "Damper",
+              "velocityRange": "50-80",
+              "purpose": "Rapid hi-hat pattern",
+              "tips": "Very low to avoid fatigue during rolls"
+            },
+            {
+              "note": "G#3",
+              "noteName": "Hi-Hat Accent",
+              "intensity": 30,
+              "effect": "Spring",
+              "velocityRange": "80-110",
+              "purpose": "Accented hi-hat hits",
+              "tips": "Differentiate rolls from accents"
+            },
+            {
+              "note": "E3",
+              "noteName": "Percussion Hit",
+              "intensity": 55,
+              "effect": "Sawtooth",
+              "velocityRange": "90-115",
+              "purpose": "Additional percussion elements",
+              "tips": "For rim shots or auxiliary percussion"
+            }
+          ],
+          "globalSettings": {
+            "masterIntensity": 80,
+            "velocitySensitivity": "High",
+            "polyphony": "Unlimited",
+            "notes": "High intensity for aggressive drill sound - take breaks to avoid fatigue"
+          }
+        },
+        {
+          "name": "Melodic Rap",
+          "genre": "Melodic Hip-Hop",
+          "description": "Balanced feedback for melodic rap with prominent 808 melodies",
+          "mappings": [
+            {
+              "note": "C3",
+              "noteName": "808 Bass",
+              "intensity": 75,
+              "effect": "Constant",
+              "velocityRange": "90-120",
+              "purpose": "Melodic 808 bassline",
+              "tips": "Moderate intensity for musical bass melodies"
+            },
+            {
+              "note": "D3",
+              "noteName": "Snare",
+              "intensity": 55,
+              "effect": "Spring",
+              "velocityRange": "80-110",
+              "purpose": "Subtle snare accent",
+              "tips": "Lower intensity - don't overpower melody"
+            },
+            {
+              "note": "F#3",
+              "noteName": "Hi-Hat",
+              "intensity": 18,
+              "effect": "Damper",
+              "velocityRange": "50-80",
+              "purpose": "Gentle hi-hat groove",
+              "tips": "Supportive element, not dominant"
+            },
+            {
+              "note": "A3",
+              "noteName": "Synth Pad",
+              "intensity": 30,
+              "effect": "Spring",
+              "velocityRange": "60-90",
+              "purpose": "Atmospheric synth feedback",
+              "tips": "Optional: Feel the melodic elements"
+            }
+          ],
+          "globalSettings": {
+            "masterIntensity": 65,
+            "velocitySensitivity": "Medium",
+            "polyphony": "Unlimited",
+            "notes": "Balanced for melodic focus with rhythmic support"
+          }
+        },
+        {
+          "name": "Electronic Hip-Hop",
+          "genre": "Electronic/Experimental",
+          "description": "Futuristic electronic hip-hop with varied textures",
+          "mappings": [
+            {
+              "note": "C3",
+              "noteName": "Electronic Kick",
+              "intensity": 70,
+              "effect": "Sawtooth",
+              "velocityRange": "95-125",
+              "purpose": "Synthesized kick impact",
+              "tips": "Different effect for electronic character"
+            },
+            {
+              "note": "D3",
+              "noteName": "Snare/Clap",
+              "intensity": 60,
+              "effect": "Spring",
+              "velocityRange": "85-115",
+              "purpose": "Processed snare hit",
+              "tips": "Spring effect for synthesized feel"
+            },
+            {
+              "note": "F#3",
+              "noteName": "Hi-Hat",
+              "intensity": 20,
+              "effect": "Sawtooth",
+              "velocityRange": "55-85",
+              "purpose": "Digital hi-hat pattern",
+              "tips": "Rhythmic effect for electronic vibe"
+            },
+            {
+              "note": "A3",
+              "noteName": "FX Hit",
+              "intensity": 50,
+              "effect": "Spring",
+              "velocityRange": "70-110",
+              "purpose": "Sound design elements",
+              "tips": "For risers, impacts, and FX"
+            },
+            {
+              "note": "C4",
+              "noteName": "Bass Synth",
+              "intensity": 65,
+              "effect": "Constant",
+              "velocityRange": "80-110",
+              "purpose": "Synth bass feedback",
+              "tips": "Feel the sub frequencies"
+            }
+          ],
+          "globalSettings": {
+            "masterIntensity": 70,
+            "velocitySensitivity": "High",
+            "polyphony": "Unlimited",
+            "notes": "Varied effects for electronic texture variety"
+          }
+        },
+        {
+          "name": "Funky Grooves",
+          "genre": "Funk/G-Funk",
+          "description": "Funky, groove-oriented feedback with emphasis on rhythm",
+          "mappings": [
+            {
+              "note": "C3",
+              "noteName": "Kick",
+              "intensity": 65,
+              "effect": "Constant",
+              "velocityRange": "90-115",
+              "purpose": "Funky kick groove",
+              "tips": "Moderate for syncopated kick patterns"
+            },
+            {
+              "note": "D3",
+              "noteName": "Snare",
+              "intensity": 70,
+              "effect": "Sawtooth",
+              "velocityRange": "95-120",
+              "purpose": "Crisp backbeat snare",
+              "tips": "Strong on 2 and 4 for funk feel"
+            },
+            {
+              "note": "F#3",
+              "noteName": "Hi-Hat Closed",
+              "intensity": 22,
+              "effect": "Damper",
+              "velocityRange": "60-90",
+              "purpose": "Tight hi-hat groove",
+              "tips": "Feel the 16th note funk pattern"
+            },
+            {
+              "note": "G#3",
+              "noteName": "Hi-Hat Open",
+              "intensity": 35,
+              "effect": "Spring",
+              "velocityRange": "70-100",
+              "purpose": "Open hat accents",
+              "tips": "Emphasize syncopation"
+            },
+            {
+              "note": "E3",
+              "noteName": "Rim/Cowbell",
+              "intensity": 45,
+              "effect": "Sawtooth",
+              "velocityRange": "75-105",
+              "purpose": "Funky percussion accents",
+              "tips": "More cowbell = more funk"
+            }
+          ],
+          "globalSettings": {
+            "masterIntensity": 68,
+            "velocitySensitivity": "Medium-High",
+            "polyphony": "Unlimited",
+            "notes": "Emphasis on groove and syncopation"
+          }
+        },
+        {
+          "name": "Upbeat Party",
+          "genre": "Party/Club Hip-Hop",
+          "description": "High-energy club-ready beats with strong feedback",
+          "mappings": [
+            {
+              "note": "C3",
+              "noteName": "Club Kick",
+              "intensity": 80,
+              "effect": "Constant",
+              "velocityRange": "105-127",
+              "purpose": "Powerful club kick",
+              "tips": "High intensity for energetic vibe"
+            },
+            {
+              "note": "D3",
+              "noteName": "Snare/Clap",
+              "intensity": 70,
+              "effect": "Sawtooth",
+              "velocityRange": "100-125",
+              "purpose": "Loud snare/clap combo",
+              "tips": "Strong for crowd engagement"
+            },
+            {
+              "note": "F#3",
+              "noteName": "Hi-Hat",
+              "intensity": 25,
+              "effect": "Sawtooth",
+              "velocityRange": "65-95",
+              "purpose": "Driving hi-hat pattern",
+              "tips": "Rhythmic effect for energy"
+            },
+            {
+              "note": "A3",
+              "noteName": "FX/Transition",
+              "intensity": 60,
+              "effect": "Spring",
+              "velocityRange": "80-120",
+              "purpose": "Build-up and transition hits",
+              "tips": "Feel the energy changes"
+            }
+          ],
+          "globalSettings": {
+            "masterIntensity": 78,
+            "velocitySensitivity": "High",
+            "polyphony": "Unlimited",
+            "notes": "High energy for party atmosphere - monitor fatigue"
+          }
+        },
+        {
+          "name": "Minimalist Beat",
+          "genre": "Minimalist/Sparse",
+          "description": "Sparse, space-focused beats with selective haptic feedback",
+          "mappings": [
+            {
+              "note": "C3",
+              "noteName": "Kick",
+              "intensity": 60,
+              "effect": "Constant",
+              "velocityRange": "85-110",
+              "purpose": "Isolated kick hits",
+              "tips": "Moderate for sparse arrangements"
+            },
+            {
+              "note": "D3",
+              "noteName": "Snare",
+              "intensity": 55,
+              "effect": "Damper",
+              "velocityRange": "80-105",
+              "purpose": "Minimal snare accent",
+              "tips": "Feel the space between hits"
+            },
+            {
+              "note": "F#3",
+              "noteName": "Perc Element",
+              "intensity": 35,
+              "effect": "Spring",
+              "velocityRange": "60-90",
+              "purpose": "Sparse percussion",
+              "tips": "Each hit has weight and space"
+            }
+          ],
+          "globalSettings": {
+            "masterIntensity": 55,
+            "velocitySensitivity": "Medium",
+            "polyphony": "Limited (2-3)",
+            "notes": "Less is more - feel the space and silence"
+          }
+        },
+        {
+          "name": "Live Performance",
+          "genre": "Universal/Live",
+          "description": "Optimized for live performance with clear differentiation",
+          "mappings": [
+            {
+              "note": "C3",
+              "noteName": "Kick",
+              "intensity": 75,
+              "effect": "Constant",
+              "velocityRange": "100-127",
+              "purpose": "Clear kick timing cue",
+              "tips": "Strong enough to feel through performance"
+            },
+            {
+              "note": "D3",
+              "noteName": "Snare",
+              "intensity": 65,
+              "effect": "Sawtooth",
+              "velocityRange": "95-120",
+              "purpose": "Snare timing reference",
+              "tips": "Different effect from kick for clarity"
+            },
+            {
+              "note": "F#3",
+              "noteName": "Hi-Hat",
+              "intensity": 20,
+              "effect": "Damper",
+              "velocityRange": "60-90",
+              "purpose": "Groove reference",
+              "tips": "Low enough not to distract"
+            },
+            {
+              "note": "A3",
+              "noteName": "Cue Point",
+              "intensity": 85,
+              "effect": "Spring",
+              "velocityRange": "110-127",
+              "purpose": "Section/transition marker",
+              "tips": "Highest intensity for clear cues"
+            }
+          ],
+          "globalSettings": {
+            "masterIntensity": 70,
+            "velocitySensitivity": "High",
+            "polyphony": "Unlimited",
+            "notes": "Optimized for performer feedback, not production"
+          }
+        }
+      ],
+      "effectFileReference": {
+        "Constant": "Sustained vibration, best for bass and kick drums",
+        "Sawtooth": "Rhythmic pulsing pattern, ideal for snares and rhythmic elements",
+        "Spring": "Oscillating feedback, good for hi-hats and atmospheric elements",
+        "Damper": "Resistance-based, subtle effect for background elements"
+      },
+      "generalTips": [
+        "Start with lower master intensity (50-60%) and increase gradually",
+        "Use velocity automation for dynamic expression",
+        "Take breaks every 30-45 minutes to avoid haptic fatigue",
+        "Adjust based on controller type (Xbox 360 vs racing wheel)",
+        "Use wired connections for consistent latency",
+        "Map different effect types to create tactile variety",
+        "Lower intensity for long sessions or complex patterns",
+        "Use automation to vary intensity during builds and drops"
+      ],
+      "hardwareConsiderations": {
+        "xbox360Controller": {
+          "recommendedMasterIntensity": "60-80%",
+          "notes": "Dual motors provide good balance, can handle higher intensities"
+        },
+        "racingWheel": {
+          "recommendedMasterIntensity": "40-60%",
+          "notes": "Very powerful motors, reduce intensity to avoid discomfort"
+        },
+        "genericGamepad": {
+          "recommendedMasterIntensity": "70-90%",
+          "notes": "Often weaker motors, may need higher intensity settings"
+        }
+      },
+      "metadata": {
+        "author": "FL Studio Plugin Research Project",
+        "created": "2026-02-04",
+        "version": "1.0",
+        "lastUpdated": "2026-02-04",
+        "compatibleWith": "Fruity Vibrator (All Versions)"
+      }
+    },
+    "instrument-vibrato": {
+      "presetCategory": "Instrument Vibrato",
+      "description": "Vibrato settings for synths, guitars, bass, and melodic instruments in hip-hop production",
+      "presets": [
+        {
+          "name": "Warm Pad Drift",
+          "genre": "Ambient Hip-Hop, Lo-fi",
+          "parameters": {
+            "frequency": "0.3 Hz",
+            "depth": "45%",
+            "shape": "Sine",
+            "stereo": "60%",
+            "mix": "100%",
+            "attack": "0 ms",
+            "phase": "0°"
+          },
+          "useCase": "Slow, wide pitch drift for atmospheric pads and sustained textures",
+          "instruments": [
+            "Pads",
+            "Strings",
+            "Drones"
+          ]
+        },
+        {
+          "name": "Vintage Synth Lead",
+          "genre": "Boom Bap, Jazz Rap",
+          "parameters": {
+            "frequency": "6 Hz",
+            "depth": "22%",
+            "shape": "Triangle",
+            "stereo": "0%",
+            "mix": "100%",
+            "attack": "50 ms",
+            "phase": "0°"
+          },
+          "useCase": "Classic analog synth vibrato for lead melodies and hooks",
+          "instruments": [
+            "Synth Leads",
+            "Monosynths"
+          ],
+          "artists": "J Dilla, Pete Rock, Madlib"
+        },
+        {
+          "name": "Guitar String Vibrato",
+          "genre": "Rock Rap, Alternative Hip-Hop",
+          "parameters": {
+            "frequency": "5.5 Hz",
+            "depth": "18%",
+            "shape": "Sine",
+            "stereo": "0%",
+            "mix": "100%",
+            "attack": "100 ms",
+            "phase": "0°"
+          },
+          "useCase": "Natural vibrato for sampled or synthesized guitar leads",
+          "instruments": [
+            "Electric Guitar",
+            "Guitar Samples"
+          ],
+          "artists": "Kid Cudi, Machine Gun Kelly"
+        },
+        {
+          "name": "808 Sub Wobble",
+          "genre": "Trap, Modern Hip-Hop",
+          "parameters": {
+            "frequency": "1-2 Hz",
+            "depth": "30%",
+            "shape": "Sine",
+            "stereo": "0%",
+            "mix": "60%",
+            "attack": "0 ms",
+            "phase": "0°"
+          },
+          "useCase": "Subtle pitch modulation on 808 bass for movement without losing power",
+          "instruments": [
+            "808 Bass",
+            "Sub Bass"
+          ],
+          "note": "Use sparingly - can reduce sub impact"
+        },
+        {
+          "name": "Flute/Woodwind Expression",
+          "genre": "Jazz Rap, Soul Hip-Hop",
+          "parameters": {
+            "frequency": "5 Hz",
+            "depth": "28%",
+            "shape": "Sine",
+            "stereo": "0%",
+            "mix": "100%",
+            "attack": "200 ms",
+            "phase": "0°"
+          },
+          "useCase": "Natural vibrato for flute, sax, and woodwind samples/synths",
+          "instruments": [
+            "Flutes",
+            "Saxophone",
+            "Brass"
+          ],
+          "artists": "Common, Kendrick Lamar, Tyler the Creator"
+        },
+        {
+          "name": "Bell/Pluck Shimmer",
+          "genre": "Electronic Hip-Hop, Trap",
+          "parameters": {
+            "frequency": "8 Hz",
+            "depth": "12%",
+            "shape": "Sine",
+            "stereo": "30%",
+            "mix": "50%",
+            "attack": "0 ms",
+            "phase": "0°"
+          },
+          "useCase": "Light vibrato to add character to bells, plucks, and percussive melodics",
+          "instruments": [
+            "Bells",
+            "Plucks",
+            "Mallets",
+            "Kalimba"
+          ]
+        },
+        {
+          "name": "Detuned Piano",
+          "genre": "Lo-fi Hip-Hop, Jazzhop",
+          "parameters": {
+            "frequency": "0.5 Hz",
+            "depth": "35%",
+            "shape": "Random",
+            "stereo": "50%",
+            "mix": "70%",
+            "attack": "0 ms",
+            "phase": "0°"
+          },
+          "useCase": "Slow random pitch drift for vintage, worn piano sound",
+          "instruments": [
+            "Piano",
+            "Rhodes",
+            "Keys"
+          ],
+          "artists": "Nujabes, Jinsang, idealism"
+        },
+        {
+          "name": "Synth Brass Swell",
+          "genre": "Funk Rap, G-Funk",
+          "parameters": {
+            "frequency": "4.5 Hz",
+            "depth": "25%",
+            "shape": "Triangle",
+            "stereo": "0%",
+            "mix": "100%",
+            "attack": "400 ms",
+            "phase": "0°"
+          },
+          "useCase": "Expressive vibrato that builds on sustained brass synth notes",
+          "instruments": [
+            "Synth Brass",
+            "Horns"
+          ],
+          "artists": "Dr. Dre, Snoop Dogg, DJ Quik"
+        }
+      ]
+    },
+    "vocal-vibrato": {
+      "presetCategory": "Vocal Vibrato",
+      "description": "Natural and expressive vibrato settings for vocal processing across hip-hop subgenres",
+      "presets": [
+        {
+          "name": "Natural R&B Vibrato",
+          "genre": "R&B, Neo-Soul",
+          "parameters": {
+            "frequency": "5.5 Hz",
+            "depth": "25%",
+            "shape": "Sine",
+            "stereo": "0%",
+            "mix": "100%",
+            "attack": "200 ms",
+            "phase": "0°"
+          },
+          "useCase": "Smooth, natural vibrato for R&B vocals, adds expressiveness without sounding artificial",
+          "artists": "SZA, Summer Walker, Brent Faiyaz"
+        },
+        {
+          "name": "Subtle Pop Shimmer",
+          "genre": "Pop Rap, Melodic Trap",
+          "parameters": {
+            "frequency": "6 Hz",
+            "depth": "15%",
+            "shape": "Sine",
+            "stereo": "0%",
+            "mix": "60%",
+            "attack": "100 ms",
+            "phase": "0°"
+          },
+          "useCase": "Light vibrato to add polish and movement to melodic vocal hooks",
+          "artists": "Post Malone, Juice WRLD"
+        },
+        {
+          "name": "Emotional Ballad",
+          "genre": "Moody Hip-Hop, Emo Rap",
+          "parameters": {
+            "frequency": "4.5 Hz",
+            "depth": "35%",
+            "shape": "Sine",
+            "stereo": "0%",
+            "mix": "100%",
+            "attack": "300 ms",
+            "phase": "0°"
+          },
+          "useCase": "Expressive vibrato with delayed onset for emotional, vulnerable vocal delivery",
+          "artists": "Lil Peep, XXXTentacion, Trippie Redd"
+        },
+        {
+          "name": "Gospel Vocal Power",
+          "genre": "Gospel Hip-Hop, Soul Rap",
+          "parameters": {
+            "frequency": "6.5 Hz",
+            "depth": "40%",
+            "shape": "Sine",
+            "stereo": "0%",
+            "mix": "100%",
+            "attack": "150 ms",
+            "phase": "0°"
+          },
+          "useCase": "Strong, pronounced vibrato for powerful gospel-influenced vocal runs",
+          "artists": "Kanye West (choir vocals), Chance the Rapper"
+        },
+        {
+          "name": "Auto-Tuned Vibrato",
+          "genre": "Modern Trap, Melodic Rap",
+          "parameters": {
+            "frequency": "5 Hz",
+            "depth": "20%",
+            "shape": "Sine",
+            "stereo": "0%",
+            "mix": "80%",
+            "attack": "0 ms",
+            "phase": "0°"
+          },
+          "useCase": "Works with auto-tune for controlled vibrato on tuned vocals",
+          "artists": "Travis Scott, Lil Baby, Gunna"
+        },
+        {
+          "name": "Stereo Vocal Spread",
+          "genre": "Electronic Rap, Cloud Rap",
+          "parameters": {
+            "frequency": "4 Hz",
+            "depth": "30%",
+            "shape": "Sine",
+            "stereo": "45%",
+            "mix": "100%",
+            "attack": "250 ms",
+            "phase": "0°"
+          },
+          "useCase": "Wide stereo vibrato for spacious, ethereal vocal textures",
+          "artists": "Yung Lean, Bladee, Ecco2k"
+        }
+      ]
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Vibrator\r\n\r\n## What It Is\r\nFruity Vibrator is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Fruity Vibrator\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "hardware-compatibility-check": "# Fruity Vibrator - Hardware Compatibility Check\r\n\r\n## 🎯 Overview\r\nFruity Vibrator requires **DirectX DirectInput force feedback** compatible hardware. This guide helps identify compatible devices and troubleshoot connection issues.\r\n\r\n---\r\n\r\n## ✅ Confirmed Compatible Devices\r\n\r\n### Xbox Controllers\r\n- **Xbox 360 Controller (Wired):** ✅ Full compatibility\r\n  - Dual rumble motors (left heavy, right light)\r\n  - Best overall compatibility with Windows\r\n  - Widely available and affordable\r\n  - **Recommendation:** Best option for music production use\r\n\r\n- **Xbox 360 Controller (Wireless):** ⚠️ Partial compatibility\r\n  - Requires wireless adapter\r\n  - More latency than wired\r\n  - Battery-dependent\r\n\r\n- **Xbox One Controller:** ❌ No force feedback support\r\n  - Lacks DirectInput force feedback\r\n  - Rumble not accessible via DirectInput\r\n\r\n- **Xbox Series Controller:** ❌ No force feedback support\r\n  - Modern controller without legacy support\r\n\r\n### Logitech Gaming Devices\r\n- **Logitech Force 3D Pro Joystick:** ✅ Full compatibility\r\n  - Advanced force feedback capabilities\r\n  - Multiple effect types supported\r\n  - Professional-grade haptics\r\n\r\n- **Logitech G920/G29 Racing Wheel:** ✅ Full compatibility\r\n  - Strong force feedback motors\r\n  - Excellent for bass monitoring\r\n  - Expensive but powerful\r\n\r\n- **Logitech Rumble Pad 2:** ✅ Good compatibility\r\n  - Dual vibration motors\r\n  - Affordable option\r\n  - Discontinued but available used\r\n\r\n- **Logitech F710 Gamepad:** ⚠️ Limited compatibility\r\n  - Some DirectInput support\r\n  - Inconsistent force feedback implementation\r\n\r\n### Microsoft Devices\r\n- **Microsoft Sidewinder Force Feedback Joystick:** ✅ Full compatibility\r\n  - Legacy device with strong force feedback\r\n  - Excellent effect support\r\n  - Hard to find (discontinued)\r\n\r\n- **Microsoft Sidewinder Force Feedback Wheel:** ✅ Full compatibility\r\n  - Professional force feedback\r\n  - Multiple effect types\r\n  - Rare vintage device\r\n\r\n### Generic Devices\r\n- **DirectInput-compatible USB Gamepads:** ⚠️ Varies\r\n  - Must explicitly support DirectInput force feedback\r\n  - Test with \"Test\" button before purchase\r\n  - Quality varies significantly\r\n\r\n---\r\n\r\n## ❌ Incompatible Devices\r\n\r\n### Modern Gaming Controllers\r\n- PlayStation 4 DualShock: No DirectInput force feedback\r\n- PlayStation 5 DualSense: No DirectInput support\r\n- Nintendo Switch Pro Controller: No force feedback\r\n- Steam Controller: No DirectInput force feedback\r\n- Modern Logitech gamepads (F310, F510): XInput only, no force feedback\r\n\r\n### Why Modern Controllers Don't Work\r\n- **XInput vs DirectInput:** Modern controllers use XInput protocol\r\n- **No Force Feedback API:** XInput doesn't expose rumble to applications\r\n- **OS Limitations:** Windows 10/11 deprecated DirectInput force feedback\r\n- **Driver Changes:** Modern drivers lack force feedback support\r\n\r\n---\r\n\r\n## 🔍 How to Check Compatibility\r\n\r\n### Method 1: Device Manager\r\n1. Open Device Manager (Win + X → Device Manager)\r\n2. Expand \"Human Interface Devices\"\r\n3. Look for entries like:\r\n   - \"USB Game Controller with Force Feedback\"\r\n   - \"DirectInput Force Feedback Device\"\r\n   - Device name with \"Force Feedback\" or \"Vibration\"\r\n4. If not listed, device likely incompatible\r\n\r\n### Method 2: Windows Game Controllers\r\n1. Open Control Panel\r\n2. Navigate to \"Devices and Printers\"\r\n3. Right-click controller → \"Game controller settings\"\r\n4. Click \"Properties\"\r\n5. Look for \"Force Feedback\" or \"Effects\" tab\r\n6. If present, device supports force feedback\r\n\r\n### Method 3: FL Studio Test\r\n1. Load Fruity Vibrator\r\n2. Connect device\r\n3. Click \"Test\" button\r\n4. If vibration occurs: ✅ Compatible\r\n5. If no vibration: ❌ Incompatible or driver issue\r\n\r\n### Method 4: DirectX Diagnostic Tool\r\n1. Press Win + R\r\n2. Type `dxdiag` and press Enter\r\n3. Go to \"Input\" tab\r\n4. Check if device lists \"Force Feedback: Yes\"\r\n\r\n---\r\n\r\n## 🛠️ Driver Requirements\r\n\r\n### Windows 7/8\r\n- DirectInput force feedback fully supported\r\n- Native driver support for most devices\r\n- Best OS for Fruity Vibrator use\r\n\r\n### Windows 10\r\n- DirectInput support degraded\r\n- Legacy compatibility mode may help\r\n- Some devices still work natively\r\n\r\n### Windows 11\r\n- Further reduced DirectInput support\r\n- Compatibility mode essential\r\n- Many devices no longer supported\r\n- Consider virtual machine with Windows 7\r\n\r\n### Driver Installation\r\n1. **Official Drivers:** Download from manufacturer website\r\n2. **Legacy Drivers:** May need older driver versions\r\n3. **Compatibility Mode:** Right-click installer → Properties → Compatibility\r\n4. **DirectX Runtime:** Install DirectX End-User Runtime (June 2010)\r\n\r\n### DirectX End-User Runtime Installation\r\n1. Download from Microsoft: [DirectX End-User Runtime](https://www.microsoft.com/en-us/download/details.aspx?id=35)\r\n2. Run installer\r\n3. Restart computer\r\n4. Reconnect force feedback device\r\n\r\n---\r\n\r\n## ⚙️ Troubleshooting Guide\r\n\r\n### Device Not Recognized\r\n**Problem:** Device connects but not recognized by Fruity Vibrator\r\n\r\n**Solutions:**\r\n1. Reinstall device drivers\r\n2. Install DirectX End-User Runtime\r\n3. Try different USB port (prefer USB 2.0)\r\n4. Disable and re-enable device in Device Manager\r\n5. Run FL Studio as administrator\r\n\r\n### Test Button Does Nothing\r\n**Problem:** Device recognized but no vibration\r\n\r\n**Solutions:**\r\n1. Check Force parameter (must be > 0%)\r\n2. Verify effect file is loaded\r\n3. Test device in other applications (e.g., game)\r\n4. Update device firmware (if available)\r\n5. Check device batteries (wireless controllers)\r\n\r\n### Inconsistent Vibration\r\n**Problem:** Vibration works sometimes but not always\r\n\r\n**Solutions:**\r\n1. Use wired connection instead of wireless\r\n2. Reduce MIDI buffer size in FL Studio settings\r\n3. Close background applications\r\n4. Update USB controller drivers\r\n5. Try different USB port\r\n\r\n### Delayed Response\r\n**Problem:** Vibration lags behind MIDI triggers\r\n\r\n**Solutions:**\r\n1. Reduce audio buffer size\r\n2. Use wired connection\r\n3. Close background processes\r\n4. Optimize FL Studio performance settings\r\n5. Check device driver settings for latency options\r\n\r\n### Too Weak Vibration\r\n**Problem:** Vibration barely noticeable\r\n\r\n**Solutions:**\r\n1. Increase Force parameter to 80-100%\r\n2. Try different effect file (Constant often strongest)\r\n3. Check device battery level\r\n4. Verify device isn't in low-power mode\r\n5. Test with different MIDI velocities (127 max)\r\n\r\n---\r\n\r\n## 💡 Recommended Setup\r\n\r\n### Best Budget Option\r\n- **Device:** Xbox 360 Controller (Wired)\r\n- **OS:** Windows 7 or 10\r\n- **Connection:** USB 2.0 port\r\n- **Drivers:** Official Microsoft drivers\r\n- **Cost:** $15-30 (used)\r\n\r\n### Best Performance Option\r\n- **Device:** Logitech G920/G29 Racing Wheel\r\n- **OS:** Windows 7 or 10\r\n- **Connection:** USB 2.0/3.0\r\n- **Drivers:** Logitech Gaming Software\r\n- **Cost:** $200-300 (new)\r\n\r\n### Best Vintage Option\r\n- **Device:** Microsoft Sidewinder Force Feedback Joystick\r\n- **OS:** Windows 7 (native support)\r\n- **Connection:** USB 2.0\r\n- **Drivers:** Legacy Microsoft drivers\r\n- **Cost:** $50-100 (used, rare)\r\n\r\n---\r\n\r\n## 🎚️ Device-Specific Settings\r\n\r\n### Xbox 360 Controller\r\n- **Vibration Type:** Dual motor (high/low frequency)\r\n- **Recommended Force:** 60-80% (strong motors)\r\n- **Best For:** General beat production feedback\r\n- **Notes:** Left motor = low frequency (bass), Right motor = high frequency\r\n\r\n### Logitech Racing Wheels\r\n- **Vibration Type:** Single strong motor\r\n- **Recommended Force:** 40-60% (very powerful)\r\n- **Best For:** Sub bass monitoring, live performance\r\n- **Notes:** Can be uncomfortably strong at high settings\r\n\r\n### Force Feedback Joysticks\r\n- **Vibration Type:** Multiple effect types\r\n- **Recommended Force:** 50-70%\r\n- **Best For:** Experimental haptic music\r\n- **Notes:** Supports advanced .ffe effect files\r\n\r\n---\r\n\r\n## 📊 Compatibility Matrix\r\n\r\n| Device | Windows 7 | Windows 10 | Windows 11 | Availability | Price | Rating |\r\n|--------|-----------|------------|------------|--------------|-------|--------|\r\n| Xbox 360 Wired | ✅ | ✅ | ⚠️ | High | $ | ⭐⭐⭐⭐⭐ |\r\n| Xbox 360 Wireless | ✅ | ⚠️ | ❌ | Medium | $$ | ⭐⭐⭐ |\r\n| Logitech G920/G29 | ✅ | ✅ | ⚠️ | High | $$$ | ⭐⭐⭐⭐⭐ |\r\n| Logitech Force 3D Pro | ✅ | ⚠️ | ❌ | Low | $$ | ⭐⭐⭐⭐ |\r\n| MS Sidewinder FFB | ✅ | ⚠️ | ❌ | Very Low | $$ | ⭐⭐⭐⭐ |\r\n| Xbox One Controller | ❌ | ❌ | ❌ | High | $$ | ❌ |\r\n| PS4/PS5 Controller | ❌ | ❌ | ❌ | High | $$ | ❌ |\r\n\r\n**Legend:**\r\n- ✅ Full support\r\n- ⚠️ Limited/requires workarounds\r\n- ❌ Not supported\r\n- $ = Under $50, $$ = $50-150, $$$ = $150+\r\n\r\n---\r\n\r\n## 🔧 Advanced Configuration\r\n\r\n### Multiple Device Setup\r\n- Connect multiple controllers for spatial haptics\r\n- Map different drums to different devices\r\n- Left device = kick/bass, Right device = snare/hats\r\n- Requires multiple Fruity Vibrator instances\r\n\r\n### Virtual Machine Option\r\n- Run Windows 7 in VM for better compatibility\r\n- Pass USB controller through to VM\r\n- Run FL Studio in VM\r\n- More complex but better device support\r\n\r\n### Wine/Linux Compatibility\r\n- DirectInput force feedback not supported\r\n- Wine does not implement force feedback API\r\n- Native Linux: No viable option currently\r\n\r\n---\r\n\r\n## 📝 Purchase Recommendations\r\n\r\n### Where to Buy\r\n- **eBay:** Best for vintage devices (Sidewinder, Force 3D Pro)\r\n- **Amazon:** Good for Xbox 360 controllers (wired)\r\n- **Retail (GameStop, etc.):** Limited selection, overpriced\r\n- **Local Classifieds:** Good deals on used controllers\r\n\r\n### What to Check Before Buying\r\n1. Explicitly mentions \"Force Feedback\" or \"Vibration\"\r\n2. USB connection (not Bluetooth only)\r\n3. \"DirectInput compatible\" in specifications\r\n4. Seller confirms vibration works\r\n5. Return policy in case incompatible\r\n\r\n### Red Flags\r\n- \"XInput only\" in specs (won't work)\r\n- \"Bluetooth\" without wired option\r\n- Modern controllers (2015+)\r\n- No mention of vibration/force feedback\r\n- \"For PC gaming\" without DirectInput mention\r\n\r\n---\r\n\r\n## 🎯 Quick Compatibility Checklist\r\n\r\nBefore purchasing or testing a device:\r\n- [ ] Device has force feedback/vibration motors\r\n- [ ] DirectInput compatible (not just XInput)\r\n- [ ] USB connection available\r\n- [ ] Compatible drivers available for your OS\r\n- [ ] Device recognized in Windows Game Controllers\r\n- [ ] \"Force Feedback\" appears in dxdiag\r\n- [ ] Test button in Fruity Vibrator produces vibration\r\n- [ ] Vibration intensity adjustable via Force parameter\r\n- [ ] MIDI triggers produce vibration\r\n- [ ] Velocity sensitivity works\r\n\r\n---\r\n\r\n## 🔗 Additional Resources\r\n\r\n### Driver Downloads\r\n- [Microsoft Xbox 360 Accessories](https://www.microsoft.com/accessories/en-us/d/xbox-360-controller-for-windows)\r\n- [Logitech Gaming Software](https://support.logi.com/hc/en-us/articles/360025298053)\r\n- [DirectX End-User Runtime](https://www.microsoft.com/en-us/download/details.aspx?id=35)\r\n\r\n### Testing Tools\r\n- Windows Game Controllers (Control Panel)\r\n- DirectX Diagnostic Tool (dxdiag)\r\n- Joy.cpl (Game Controller test utility)\r\n\r\n### Community Resources\r\n- FL Studio Forums: Hardware compatibility discussions\r\n- Reddit r/FL_Studio: User experiences with various devices\r\n- Image-Line Support: Official compatibility information\r\n\r\n---\r\n\r\n**Last Updated:** 2026-02-04\r\n**Version:** 1.0\r\n**Status:** ✅ Complete\r\n",
+      "parameter-cheat-sheet": "# Fruity Vibrator - Parameter Cheat Sheet\r\n\r\n## 🎯 Overview\r\nFruity Vibrator is a **force feedback controller** that translates MIDI and automation into haptic vibrations for compatible hardware (gaming controllers, joysticks, rumble pads).\r\n\r\n**IMPORTANT:** Requires legacy DirectX DirectInput force feedback drivers.\r\n\r\n---\r\n\r\n## 🎛️ Core Parameters\r\n\r\n### Force / Intensity\r\n- **Range:** 0-100%\r\n- **Purpose:** Controls vibration strength\r\n- **Sweet Spots:**\r\n  - 10-30%: Subtle haptic feedback\r\n  - 40-60%: Noticeable vibration\r\n  - 70-100%: Strong haptic response\r\n- **Hip-Hop Applications:**\r\n  - Kick drum: 60-80% for impactful bass feel\r\n  - Snare: 40-60% for crisp punch\r\n  - Hi-hats: 10-20% for subtle groove feedback\r\n  - 808s: 70-90% for subsonic rumble\r\n\r\n### Effect Slot\r\n- **Purpose:** Selects `.ffe` (Force Feedback Effect) file\r\n- **Common Effect Types:**\r\n  - Constant: Sustained vibration\r\n  - Sawtooth: Rhythmic pulsing\r\n  - Spring: Oscillating feedback\r\n  - Damper: Resistance-based\r\n- **Applications:**\r\n  - Constant: Sub bass monitoring\r\n  - Sawtooth: Rhythmic hi-hat patterns\r\n  - Spring: Synth vibrato feedback\r\n\r\n### Test Button\r\n- **Purpose:** Manually trigger vibration\r\n- **Use:** Verify hardware connection\r\n- **Workflow:** Click before each session to confirm device\r\n\r\n---\r\n\r\n## 🎹 MIDI Mapping\r\n\r\n### Note Triggering\r\n- **Mechanism:** Each MIDI note triggers vibration\r\n- **Velocity Mapping:** Note velocity controls intensity\r\n  - 0-31: Light vibration (10-25%)\r\n  - 32-63: Moderate vibration (25-50%)\r\n  - 64-95: Strong vibration (50-75%)\r\n  - 96-127: Max vibration (75-100%)\r\n\r\n### Recommended MIDI Mappings\r\n```\r\nHip-Hop Beat Mapping:\r\n- C3 (Kick): 80% intensity, Constant effect\r\n- D3 (Snare): 60% intensity, Sawtooth effect\r\n- F#3 (Hi-Hat Closed): 20% intensity, Damper effect\r\n- G#3 (Hi-Hat Open): 30% intensity, Spring effect\r\n- A3 (808 Bass): 90% intensity, Constant effect\r\n```\r\n\r\n---\r\n\r\n## 🔧 Hardware Compatibility\r\n\r\n### Supported Devices (Legacy)\r\n- **Xbox 360 Controller:** Dual rumble motors\r\n- **Logitech Force Feedback Wheels:** Racing wheel haptics\r\n- **Logitech Force 3D Pro:** Joystick force feedback\r\n- **Microsoft Sidewinder:** Legacy force feedback joystick\r\n- **Generic Rumble Pads:** DirectInput-compatible\r\n\r\n### Modern Compatibility Issues\r\n- **Windows 10/11:** Limited DirectInput support\r\n- **Xbox One/Series Controllers:** No native force feedback support\r\n- **PlayStation Controllers:** Requires third-party drivers\r\n- **USB Connection:** More reliable than Bluetooth\r\n\r\n### Driver Requirements\r\n- DirectX DirectInput drivers (pre-Windows 8)\r\n- Device-specific force feedback drivers\r\n- Legacy compatibility mode may be required\r\n\r\n---\r\n\r\n## 🎚️ Quick Start Workflow\r\n\r\n### Initial Setup\r\n1. Connect force feedback device\r\n2. Install device drivers (legacy DirectInput)\r\n3. Load Fruity Vibrator as a generator\r\n4. Click \"Test\" button to verify connection\r\n5. If no vibration: Check device manager, driver compatibility\r\n\r\n### Basic MIDI Mapping\r\n1. Open Piano Roll\r\n2. Add kick notes on C3\r\n3. Set velocity to 100-127\r\n4. Adjust Force parameter to 70-80%\r\n5. Play back to feel kick vibration\r\n\r\n### Velocity-Sensitive Setup\r\n1. Map different drums to different notes\r\n2. Vary note velocities for dynamic haptics\r\n3. Adjust Force parameter for overall intensity\r\n4. Test with different effect files\r\n\r\n---\r\n\r\n## 🎼 Creative Applications\r\n\r\n### Beat Production Feedback\r\n- **Kick Drum Feel:** Strong constant vibration for bass impact\r\n- **Snare Precision:** Medium vibration for timing reference\r\n- **Hi-Hat Groove:** Light vibration for rhythmic feel\r\n\r\n### Mix Monitoring\r\n- **Sub Bass Detection:** Feel low-end content below monitoring range\r\n- **Kick/Bass Clarity:** Tactile feedback for kick-bass relationship\r\n- **Energy Levels:** Vibration intensity reflects track energy\r\n\r\n### Live Performance\r\n- **Audience Engagement:** Attach controller to speaker cabinet\r\n- **Performer Feedback:** Tactile cues during performance\r\n- **Creative Expression:** Haptic dimension to electronic sets\r\n\r\n### Experimental Music\r\n- **Multi-Sensory Compositions:** Audio + haptic experiences\r\n- **Spatial Haptics:** Different devices for spatial information\r\n- **Rhythmic Textures:** Complex haptic patterns\r\n\r\n---\r\n\r\n## ⚠️ Common Issues\r\n\r\n### No Vibration\r\n- **Check:** Device connection (USB firmly connected)\r\n- **Check:** Drivers installed (DirectInput support)\r\n- **Check:** Test button response\r\n- **Fix:** Reinstall device drivers, try legacy compatibility mode\r\n\r\n### Inconsistent Response\r\n- **Check:** Force parameter not at 0%\r\n- **Check:** MIDI notes are triggering\r\n- **Check:** Device battery (if wireless)\r\n- **Fix:** Use wired connection, verify MIDI routing\r\n\r\n### Too Strong / Uncomfortable\r\n- **Fix:** Reduce Force parameter (start at 20-30%)\r\n- **Fix:** Use lower velocity values\r\n- **Fix:** Switch to gentler effect file\r\n\r\n### Delayed Response\r\n- **Check:** MIDI latency settings\r\n- **Check:** Device driver settings\r\n- **Fix:** Reduce buffer size, use wired connection\r\n\r\n---\r\n\r\n## 💡 Pro Tips\r\n\r\n### Intensity Management\r\n- Start low (20-30%) and gradually increase\r\n- Use velocity for dynamic control\r\n- Map different intensities to different drums\r\n\r\n### Effect Selection\r\n- Constant: Best for sustained notes (808s, bass)\r\n- Sawtooth: Best for rhythmic patterns (hi-hats)\r\n- Spring: Best for melodic elements (synths)\r\n\r\n### Automation\r\n- Automate Force parameter for build-ups\r\n- Use automation clips for evolving haptic patterns\r\n- Sync haptic intensity with track energy\r\n\r\n### Hardware Optimization\r\n- Use wired connections for reliability\r\n- Keep drivers updated (if available)\r\n- Test before each session\r\n- Consider multiple devices for spatial haptics\r\n\r\n---\r\n\r\n## 📊 Parameter Summary Table\r\n\r\n| Parameter | Range | Purpose | Hip-Hop Sweet Spot |\r\n|-----------|-------|---------|-------------------|\r\n| Force | 0-100% | Vibration intensity | 60-80% (kick), 40-60% (snare) |\r\n| Effect | .ffe files | Vibration pattern | Constant (bass), Sawtooth (rhythmic) |\r\n| Test | Button | Manual trigger | Use for setup verification |\r\n| MIDI Note | C-2 to G8 | Trigger vibration | C3 (kick), D3 (snare), F#3 (hats) |\r\n| Velocity | 0-127 | Dynamic intensity | 100-127 (kick), 80-100 (snare) |\r\n\r\n---\r\n\r\n## 🔗 Related Resources\r\n\r\n### Internal Documentation\r\n- `hardware-compatibility-check.md` - Detailed device compatibility\r\n- `02-Data/presets/hip-hop-mappings.json` - MIDI mapping presets\r\n- `04-Reference/legacy-directx-input.md` - DirectInput technical reference\r\n\r\n### External Resources\r\n- [FL Studio Vibrator Manual](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Vibrator.htm)\r\n- DirectX DirectInput SDK documentation\r\n- Force feedback device driver support forums\r\n\r\n---\r\n\r\n**Last Updated:** 2026-02-04\r\n**Version:** 1.0\r\n**Status:** ✅ Complete\r\n",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Vibrator\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Vibrator to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Vibrator\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Vibrator\r\n\r\nThis section contains learning information for the fruity-vibrator plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "adding-expression": "# Fruity Vibrator - Adding Musical Expression\r\n\r\n## Overview\r\nTechniques for using Fruity Vibrator to add human-like expression, emotion, and musicality to electronic and sampled instruments in hip-hop production.\r\n\r\n---\r\n\r\n## Core Expression Techniques\r\n\r\n### Technique 1: Delayed Vibrato Onset\r\n**Goal**: Mimic natural performer expression where vibrato builds on sustained notes\r\n\r\n**Implementation**:\r\n1. Set **Attack** to 200-600ms\r\n2. Use on long notes (vocals, synth leads, strings)\r\n3. Vibrato appears gradually, not instantly\r\n\r\n**Musical Effect**:\r\n- More natural and human-sounding\r\n- Creates emotional build on held notes\r\n- Prevents robotic feel\r\n\r\n**Best For**: Ballads, emotional sections, expressive solos\r\n\r\n**Settings**:\r\n- Frequency: 4-6 Hz\r\n- Depth: 25-40%\r\n- Shape: Sine\r\n- Attack: 300-500ms\r\n\r\n---\r\n\r\n### Technique 2: Dynamic Depth Automation\r\n**Goal**: Vary vibrato intensity based on musical dynamics and emotion\r\n\r\n**Implementation**:\r\n1. Map **Depth** to automation clip\r\n2. Low depth (10-20%) on soft/intimate sections\r\n3. High depth (30-50%) on loud/climactic sections\r\n4. Automate throughout song for dynamic expression\r\n\r\n**Musical Effect**:\r\n- Follows natural performance dynamics\r\n- Adds contrast between sections\r\n- Increases emotional impact\r\n\r\n**Best For**: Lead vocals, expressive synth leads, string sections\r\n\r\n**Example Automation**:\r\n```\r\nVerse: 15% depth\r\nPre-Chorus: 25% depth\r\nChorus: 35% depth\r\nBridge (climax): 45% depth\r\nOutro: 20% depth (fade)\r\n```\r\n\r\n---\r\n\r\n### Technique 3: Frequency Variation for Expression\r\n**Goal**: Use different vibrato speeds to match emotional content\r\n\r\n**Slow Vibrato (0.5-3 Hz)**:\r\n- Evokes melancholy, sadness, introspection\r\n- Wide, expressive pitch bends\r\n- Best for: Moody hip-hop, ballads, ambient sections\r\n\r\n**Medium Vibrato (4-6 Hz)**:\r\n- Natural, balanced expression\r\n- Standard vocal/instrumental range\r\n- Best for: Most musical contexts\r\n\r\n**Fast Vibrato (7-12 Hz)**:\r\n- Energetic, intense, electronic\r\n- Creates urgency and tension\r\n- Best for: Trap, electronic hip-hop, aggressive sections\r\n\r\n---\r\n\r\n### Technique 4: Selective Application\r\n**Goal**: Apply vibrato only to specific notes/phrases for maximum impact\r\n\r\n**Implementation**:\r\n1. Bounce instrument to audio or use automation\r\n2. Enable vibrato only on:\r\n   - Long sustained notes\r\n   - End of phrases\r\n   - Climactic moments\r\n   - Melodic peaks\r\n3. Disable on short notes and rhythmic passages\r\n\r\n**Musical Effect**:\r\n- Preserves rhythmic clarity\r\n- Highlights important moments\r\n- More natural than constant vibrato\r\n\r\n**Example**: \r\n- Lead vocal verse: vibrato OFF during rap flow\r\n- Lead vocal chorus: vibrato ON for sung melody\r\n\r\n---\r\n\r\n## Genre-Specific Expression\r\n\r\n### R&B / Neo-Soul Expression\r\n**Goal**: Smooth, natural vocal-like expression\r\n\r\n**Settings**:\r\n- Frequency: 5-6 Hz\r\n- Depth: 25-35%\r\n- Shape: Sine\r\n- Attack: 200-400ms\r\n- Stereo: 0%\r\n\r\n**Application**:\r\n- All sustained melodic elements\r\n- Synth leads that mimic vocals\r\n- Background pads for warmth\r\n\r\n**Reference**: H.E.R., SZA, Daniel Caesar\r\n\r\n---\r\n\r\n### Trap / Modern Hip-Hop Expression\r\n**Goal**: Controlled, polished modulation that works with auto-tune\r\n\r\n**Settings**:\r\n- Frequency: 5-6 Hz\r\n- Depth: 15-25%\r\n- Shape: Sine\r\n- Attack: 0-100ms\r\n- Stereo: 0%\r\n\r\n**Application**:\r\n- Melodic vocals (post-auto-tune)\r\n- Synth leads and plucks\r\n- Background ambience\r\n\r\n**Reference**: Travis Scott, Roddy Ricch, Lil Baby\r\n\r\n---\r\n\r\n### Lo-Fi Hip-Hop Expression\r\n**Goal**: Organic, imperfect, vintage character\r\n\r\n**Settings**:\r\n- Frequency: 0.3-1 Hz (very slow)\r\n- Depth: 35-50%\r\n- Shape: Random\r\n- Attack: 0ms\r\n- Stereo: 30-60%\r\n\r\n**Application**:\r\n- All melodic instruments\r\n- Background pads and textures\r\n- Sampled instruments\r\n\r\n**Reference**: Nujabes, Jinsang, Tomppabeats\r\n\r\n---\r\n\r\n### Emo Rap / Moody Expression\r\n**Goal**: Vulnerable, emotional, deeply expressive\r\n\r\n**Settings**:\r\n- Frequency: 4-5 Hz (slower)\r\n- Depth: 30-45%\r\n- Shape: Sine\r\n- Attack: 400-800ms (long delay)\r\n- Stereo: 0%\r\n\r\n**Application**:\r\n- Lead vocals (heavy on emotion)\r\n- Guitar/string samples\r\n- Atmospheric synths\r\n\r\n**Reference**: Juice WRLD, Lil Peep, nothing,nowhere.\r\n\r\n---\r\n\r\n## Advanced Expression Techniques\r\n\r\n### Technique 5: Vibrato Swells\r\n**Goal**: Build intensity and emotion through increasing vibrato\r\n\r\n**Implementation**:\r\n1. Automate **Depth** from 0% → 50% over 4-8 bars\r\n2. Use on:\r\n   - Build-ups before chorus\r\n   - Climactic sustained notes\r\n   - Outros/fadeouts\r\n\r\n**Musical Effect**:\r\n- Gradual increase in emotional intensity\r\n- Creates forward momentum\r\n- Dramatic effect\r\n\r\n**Example Timeline**:\r\n```\r\nBar 1-2: 0% depth\r\nBar 3-4: 10% depth\r\nBar 5-6: 25% depth\r\nBar 7-8: 45% depth (release to chorus)\r\n```\r\n\r\n---\r\n\r\n### Technique 6: Contrasting Vibrato Character\r\n**Goal**: Use different vibrato settings on layered instruments for complexity\r\n\r\n**Implementation**:\r\n1. **Layer 1 (Main)**:\r\n   - Frequency: 5 Hz\r\n   - Depth: 30%\r\n   - Shape: Sine\r\n   - Phase: 0°\r\n\r\n2. **Layer 2 (Support)**:\r\n   - Frequency: 5.5 Hz (slightly different)\r\n   - Depth: 20%\r\n   - Shape: Triangle\r\n   - Phase: 90° (offset)\r\n\r\n3. **Layer 3 (Texture)**:\r\n   - Frequency: 0.8 Hz\r\n   - Depth: 40%\r\n   - Shape: Random\r\n   - Phase: 180°\r\n\r\n**Musical Effect**:\r\n- Rich, evolving texture\r\n- Organic, non-static sound\r\n- Professional depth\r\n\r\n---\r\n\r\n### Technique 7: Call-and-Response Vibrato\r\n**Goal**: Differentiate between musical phrases\r\n\r\n**Implementation**:\r\n1. **\"Call\" phrase**: More vibrato (35-45% depth)\r\n2. **\"Response\" phrase**: Less vibrato (15-25% depth)\r\n3. Alternate throughout section\r\n\r\n**Musical Effect**:\r\n- Creates question/answer musical dialogue\r\n- Adds interest and variation\r\n- Guides listener's ear\r\n\r\n**Example**:\r\n```\r\nVocal line 1: \"Where did you go?\" → 40% depth, 300ms attack\r\nVocal line 2: \"I've been waiting here\" → 20% depth, 100ms attack\r\n```\r\n\r\n---\r\n\r\n### Technique 8: Vibrato with Pitch Automation\r\n**Goal**: Combine vibrato with manual pitch bends for extreme expression\r\n\r\n**Implementation**:\r\n1. Apply Fruity Vibrator for consistent vibrato\r\n2. Add pitch automation/pitch wheel movements\r\n3. Vibrato adds texture while pitch automation adds melodic expression\r\n\r\n**Musical Effect**:\r\n- Hyper-expressive, almost vocal-like instrument performance\r\n- Works great on synth leads and guitar\r\n- Can sound very emotional\r\n\r\n**Settings**:\r\n- Vibrator: 5 Hz, 25% depth, Sine\r\n- Pitch automation: ±50-200 cents on key notes\r\n\r\n---\r\n\r\n## Expression by Instrument Type\r\n\r\n### Vocals\r\n**Expression Priority**: High (most human instrument)\r\n- Use delayed attack (200-500ms)\r\n- Automate depth for dynamics\r\n- Vary between verse (less) and chorus (more)\r\n\r\n### Synth Leads\r\n**Expression Priority**: High (needs human touch)\r\n- Medium-fast vibrato (5-7 Hz)\r\n- Depth automation on long notes\r\n- Selective application (not every note)\r\n\r\n### Pads/Strings\r\n**Expression Priority**: Medium (background support)\r\n- Slow vibrato (0.5-2 Hz) for drift\r\n- Constant depth, no automation needed\r\n- Wide stereo for space\r\n\r\n### Bass\r\n**Expression Priority**: Low (needs stability)\r\n- Minimal or no vibrato\r\n- If used: very shallow depth (<20%)\r\n- Only on melodic bass, not 808s\r\n\r\n### Plucks/Bells\r\n**Expression Priority**: Low (percussive nature)\r\n- Very light vibrato (10-15% depth)\r\n- Fast rate (7-10 Hz) for shimmer\r\n- Low mix (40-60%) to preserve transient\r\n\r\n---\r\n\r\n## Emotional Expression Guide\r\n\r\n### Joy / Upbeat Energy\r\n- **Frequency**: 6-8 Hz (faster, energetic)\r\n- **Depth**: 20-30% (moderate)\r\n- **Attack**: 0-100ms (immediate)\r\n- **Shape**: Sine or Triangle\r\n\r\n### Sadness / Melancholy\r\n- **Frequency**: 3-5 Hz (slower, more expressive)\r\n- **Depth**: 30-45% (pronounced)\r\n- **Attack**: 300-600ms (delayed, vulnerable)\r\n- **Shape**: Sine\r\n\r\n### Tension / Anxiety\r\n- **Frequency**: 8-12 Hz (fast, unstable)\r\n- **Depth**: 35-60% (obvious)\r\n- **Attack**: 0ms (immediate)\r\n- **Shape**: Random or Triangle\r\n\r\n### Calm / Peaceful\r\n- **Frequency**: 0.3-2 Hz (very slow drift)\r\n- **Depth**: 20-35% (gentle)\r\n- **Attack**: 0ms (constant)\r\n- **Shape**: Sine\r\n\r\n### Aggression / Intensity\r\n- **Frequency**: 10-15 Hz (very fast, distortion-like)\r\n- **Depth**: 50-80% (extreme)\r\n- **Attack**: 0ms (immediate attack)\r\n- **Shape**: Square or Random\r\n\r\n---\r\n\r\n## Common Expression Mistakes\r\n\r\n❌ **Too Much Too Soon**: Immediate heavy vibrato sounds unnatural\r\n✅ **Solution**: Use attack time to delay onset\r\n\r\n❌ **Constant Vibrato**: Every note has same vibrato intensity\r\n✅ **Solution**: Automate depth or selectively apply\r\n\r\n❌ **Wrong Frequency**: Vibrato too fast or slow for genre\r\n✅ **Solution**: Reference tracks and match vibrato speed\r\n\r\n❌ **Ignoring Genre Conventions**: R&B needs different vibrato than Trap\r\n✅ **Solution**: Study genre-specific reference tracks\r\n\r\n❌ **Over-Processing**: Vibrato on every element\r\n✅ **Solution**: Choose 1-2 key elements for vibrato focus\r\n\r\n---\r\n\r\n## Pro Tips for Musical Expression\r\n\r\n✅ **Listen to natural performers** - Study how singers and instrumentalists use vibrato\r\n✅ **Less is more** - Subtle vibrato often more effective than obvious\r\n✅ **Match the emotion** - Faster/intense for energy, slower for sadness\r\n✅ **Automate thoughtfully** - Vibrato should follow song dynamics\r\n✅ **Use attack time** - Delayed vibrato = more natural\r\n✅ **Reference professional tracks** - Match vibrato style to genre leaders\r\n✅ **A/B frequently** - Compare with and without to ensure improvement\r\n✅ **Consider the mix** - Vibrato should enhance, not dominate\r\n✅ **Experiment with shapes** - Triangle/Random can add unique character\r\n✅ **Context matters** - What works for verse may not work for chorus\r\n",
+      "beat-production-feedback": "# Beat Production Feedback Workflow\r\n\r\n## 🎯 Goal\r\nUse tactile haptic feedback to enhance beat programming precision, timing, and groove development for hip-hop production.\r\n\r\n---\r\n\r\n## 📋 Workflow Overview\r\n\r\n### Purpose\r\nTransform your controller into a tactile metronome that helps you:\r\n- Feel the rhythm physically while programming\r\n- Develop better timing and groove instincts\r\n- Monitor low-end content (kicks and 808s) below speaker range\r\n- Reduce ear fatigue during long production sessions\r\n- Create unique performance-ready setups\r\n\r\n### Best For\r\n- Beat makers working on rhythm precision\r\n- Producers in untreated rooms (limited bass monitoring)\r\n- Late-night sessions (quiet monitoring)\r\n- Live performance preparation\r\n- Developing timing and groove skills\r\n\r\n---\r\n\r\n## 🛠️ Setup Process\r\n\r\n### Step 1: Hardware Connection\r\n1. **Connect Force Feedback Device**\r\n   - Recommended: Xbox 360 Controller (Wired)\r\n   - Alternative: Logitech racing wheel, force feedback joystick\r\n   - Connect via USB (prefer USB 2.0 port)\r\n   - Verify recognition in Windows Game Controllers\r\n\r\n2. **Driver Verification**\r\n   - Open Device Manager\r\n   - Check for \"Force Feedback\" device listing\r\n   - Install DirectX End-User Runtime if needed\r\n   - Test device in Game Controller properties\r\n\r\n3. **FL Studio Setup**\r\n   - Load Fruity Vibrator as a generator\r\n   - Click \"Test\" button to verify vibration\r\n   - If no response: Check `hardware-compatibility-check.md`\r\n\r\n### Step 2: MIDI Mapping Configuration\r\n\r\n#### Basic Trap/Hip-Hop Mapping\r\n```\r\nC3  = Kick/808      (Force: 80%, Effect: Constant)\r\nD3  = Snare         (Force: 65%, Effect: Sawtooth)\r\nF#3 = Hi-Hat Closed (Force: 15%, Effect: Damper)\r\nG#3 = Hi-Hat Open   (Force: 25%, Effect: Spring)\r\nE3  = Clap/Rim      (Force: 50%, Effect: Sawtooth)\r\n```\r\n\r\n#### Piano Roll Setup\r\n1. Open Piano Roll for Fruity Vibrator\r\n2. Add notes matching your drum pattern\r\n3. Set velocities:\r\n   - Kick/808: 110-127 (strong impact)\r\n   - Snare: 90-110 (punchy)\r\n   - Hi-Hats: 50-80 (subtle)\r\n   - Accents: 100-120 (emphasis)\r\n\r\n### Step 3: Effect Selection\r\n1. **Constant:** Sustained vibration\r\n   - Best for: Kick drums, 808 bass, sub bass\r\n   - Provides solid, continuous feedback\r\n\r\n2. **Sawtooth:** Rhythmic pulsing\r\n   - Best for: Snares, claps, rhythmic percussion\r\n   - Creates distinct tactile pattern\r\n\r\n3. **Spring:** Oscillating feedback\r\n   - Best for: Hi-hats, melodic elements, atmospheric sounds\r\n   - Gentle, bouncing sensation\r\n\r\n4. **Damper:** Resistance-based\r\n   - Best for: Background elements, light percussion\r\n   - Subtle, controlled feedback\r\n\r\n---\r\n\r\n## 🎵 Production Workflow\r\n\r\n### Phase 1: Drum Programming\r\n\r\n#### Kick Drum Placement\r\n1. **Setup:**\r\n   - Map kick to C3\r\n   - Force: 75-85%\r\n   - Effect: Constant\r\n   - Velocity: 115-127\r\n\r\n2. **Programming:**\r\n   - Place kick hits in Piano Roll\r\n   - Feel each impact through controller\r\n   - Adjust timing until vibration feels \"locked in\"\r\n   - Use haptic feedback to judge kick spacing\r\n\r\n3. **Pro Tips:**\r\n   - **Subdivisions:** Feel the difference between 1/4 notes vs 1/8 notes\r\n   - **Syncopation:** Haptic feedback makes off-beat placements obvious\r\n   - **Ghost Kicks:** Lower velocity (80-100) for subtle kicks\r\n\r\n#### Snare Programming\r\n1. **Setup:**\r\n   - Map snare to D3\r\n   - Force: 60-70%\r\n   - Effect: Sawtooth\r\n   - Velocity: 95-115\r\n\r\n2. **Programming:**\r\n   - Place backbeat snares (beats 2 and 4)\r\n   - Add ghost snares with lower velocity (50-70)\r\n   - Feel the pattern interact with kick vibrations\r\n   - Use haptic differentiation to check snare placement\r\n\r\n3. **Pro Tips:**\r\n   - **Layering:** Stack multiple snare notes for richer vibration\r\n   - **Flams:** Place notes 5-10ms apart, feel the flutter\r\n   - **Rolls:** Use lower intensity (Force 40%) to avoid fatigue\r\n\r\n#### Hi-Hat Programming\r\n1. **Setup:**\r\n   - Closed: F#3 (Force: 12-18%, Damper)\r\n   - Open: G#3 (Force: 20-30%, Spring)\r\n   - Velocity: 50-80 (closed), 60-90 (open)\r\n\r\n2. **Programming:**\r\n   - Program 16th note closed hi-hat pattern\r\n   - Add open hi-hat accents\r\n   - Feel the groove develop through vibration\r\n   - Low intensity prevents haptic fatigue\r\n\r\n3. **Pro Tips:**\r\n   - **Rolls:** Keep Force very low (10-12%) for rapid rolls\r\n   - **Swing:** Feel the timing difference between straight and swung\r\n   - **Velocity Variation:** Create groove with velocity changes\r\n\r\n### Phase 2: 808 Bass Programming\r\n\r\n#### Melodic 808 Setup\r\n1. **Mapping:**\r\n   - Use C3 (or map entire octave for melodies)\r\n   - Force: 80-90%\r\n   - Effect: Constant\r\n   - Velocity: Based on note emphasis\r\n\r\n2. **Programming Workflow:**\r\n   - Place bass notes in Piano Roll\r\n   - Feel the low-end impact of each note\r\n   - Adjust note lengths based on vibration decay\r\n   - Use haptic feedback to judge 808 slides\r\n\r\n3. **Advanced Techniques:**\r\n   - **Slide Programming:** Feel the continuous vibration during slides\r\n   - **Note Length:** Vibration reveals decay characteristics\r\n   - **Sub Frequencies:** Feel notes below speaker range\r\n   - **Layering:** Judge kick/bass separation by vibration overlap\r\n\r\n#### Frequency Awareness\r\n- **Low Notes (C1-C2):** Maximum vibration intensity\r\n- **Mid Notes (C2-C3):** Moderate vibration\r\n- **High Notes (C3+):** Lighter vibration\r\n- Adjust Force parameter based on note range\r\n\r\n### Phase 3: Pattern Development\r\n\r\n#### Building Groove\r\n1. **Start Simple:**\r\n   - Kick and snare only\r\n   - Feel the basic rhythm\r\n   - Adjust timing until \"locked in\"\r\n\r\n2. **Add Layers:**\r\n   - Introduce hi-hats (low intensity)\r\n   - Feel pattern complexity increase\r\n   - Monitor haptic \"busyness\"\r\n\r\n3. **Complexity Check:**\r\n   - If vibration feels chaotic: Pattern too busy\r\n   - If vibration feels flat: Pattern too simple\r\n   - Use haptic feedback as arrangement guide\r\n\r\n#### Timing Refinement\r\n1. **Quantization Check:**\r\n   - Turn on metronome\r\n   - Feel if vibration aligns with clicks\r\n   - Adjust note timing based on haptic feel\r\n\r\n2. **Groove Development:**\r\n   - Experiment with off-grid placement\r\n   - Feel the difference between quantized and humanized\r\n   - Use vibration to judge \"pocket\"\r\n\r\n3. **Velocity Dynamics:**\r\n   - Vary velocities to create dynamic patterns\r\n   - Feel the difference between hard and soft hits\r\n   - Build dynamics through haptic intensity variation\r\n\r\n---\r\n\r\n## 🎚️ Intensity Management\r\n\r\n### Session-Based Intensity\r\n- **Long Sessions (2+ hours):** Master Force 50-60%\r\n- **Quick Programming (< 1 hour):** Master Force 70-80%\r\n- **Performance Practice:** Master Force 75-85%\r\n- **Late Night / Quiet:** Master Force 30-50%\r\n\r\n### Element-Based Intensity\r\n```\r\nHigh Intensity (70-90%):\r\n- Kick drums\r\n- 808 bass\r\n- Main snare\r\n- Impact FX\r\n\r\nMedium Intensity (40-70%):\r\n- Secondary snare/clap\r\n- Rimshots\r\n- Toms\r\n- Open hi-hats\r\n\r\nLow Intensity (10-40%):\r\n- Closed hi-hats\r\n- Shakers\r\n- Percussion layers\r\n- Background elements\r\n```\r\n\r\n### Fatigue Prevention\r\n- **Take Breaks:** 5-10 min every 30-45 min\r\n- **Hand Position:** Switch hands periodically\r\n- **Reduce Intensity:** If discomfort occurs, drop 20-30%\r\n- **Pattern Complexity:** Reduce for dense patterns\r\n\r\n---\r\n\r\n## 🎧 Genre-Specific Applications\r\n\r\n### Trap\r\n- **Focus:** Heavy 808 bass and snappy snares\r\n- **808 Intensity:** 85-90% (constant)\r\n- **Snare Intensity:** 60-70% (sawtooth)\r\n- **Hi-Hat Intensity:** 10-15% (rapid rolls)\r\n- **Key Tip:** Feel the 808 slides through sustained vibration\r\n\r\n### Boom Bap\r\n- **Focus:** Punchy kicks and dominant snares\r\n- **Kick Intensity:** 70-75% (constant)\r\n- **Snare Intensity:** 75-80% (sawtooth, highest element)\r\n- **Hi-Hat Intensity:** 18-25% (steady groove)\r\n- **Key Tip:** Snare should be most prominent haptic element\r\n\r\n### Drill\r\n- **Focus:** Menacing 808 slides and rapid hi-hats\r\n- **808 Intensity:** 90-95% (maximum constant)\r\n- **Snare Intensity:** 55-65% (808 dominates)\r\n- **Hi-Hat Intensity:** 10-12% (prevent fatigue during rolls)\r\n- **Key Tip:** 808 slides should create continuous strong vibration\r\n\r\n### Lo-Fi\r\n- **Focus:** Subtle, relaxed haptic feedback\r\n- **Kick Intensity:** 40-50% (gentle)\r\n- **Snare Intensity:** 35-45% (soft)\r\n- **Hi-Hat Intensity:** 8-12% (whisper-quiet)\r\n- **Key Tip:** Entire pattern should feel relaxed and comfortable\r\n\r\n---\r\n\r\n## 🔧 Advanced Techniques\r\n\r\n### Parallel Haptic Monitoring\r\n1. **Setup:**\r\n   - Route drum mixer track to Vibrator\r\n   - Use sidechain from kick to control Force parameter\r\n   - Automate intensity based on arrangement section\r\n\r\n2. **Applications:**\r\n   - Monitor overall rhythmic density\r\n   - Feel relationship between all drums simultaneously\r\n   - Detect timing issues across pattern\r\n\r\n### Velocity-Sensitive Expression\r\n1. **Setup:**\r\n   - Map MIDI velocity to vibration intensity\r\n   - Use velocity layers in drum samples\r\n   - Program dynamics through velocity automation\r\n\r\n2. **Workflow:**\r\n   - Program with varied velocities\r\n   - Feel dynamic contrast through vibration\r\n   - Adjust velocities based on haptic response\r\n   - Build expressive patterns\r\n\r\n### Section-Based Automation\r\n1. **Intro/Verse:** Lower intensity (50-60%)\r\n2. **Pre-Chorus:** Gradually increase (60-70%)\r\n3. **Chorus:** Maximum intensity (80-90%)\r\n4. **Bridge:** Reduce (40-60%)\r\n5. **Outro:** Fade down (30-40%)\r\n\r\n**Implementation:**\r\n- Create automation clip for master Force parameter\r\n- Draw automation following arrangement energy\r\n- Feel the track's dynamic arc through vibration\r\n\r\n### Multi-Device Spatial Haptics\r\n1. **Setup:**\r\n   - Two controllers (left and right)\r\n   - Separate Vibrator instances\r\n   - Map different elements to each device\r\n\r\n2. **Mapping Example:**\r\n   - Left Controller: Kick, 808 bass\r\n   - Right Controller: Snare, hi-hats, claps\r\n   - Creates spatial separation through haptics\r\n\r\n---\r\n\r\n## 💡 Pro Tips & Tricks\r\n\r\n### Programming Tips\r\n1. **Start Minimal:** Begin with kick only, add elements gradually\r\n2. **Feel the Grid:** Use haptic feedback to internalize timing\r\n3. **Groove Before Sound:** Program groove with haptics, sound design later\r\n4. **Velocity First:** Set velocities based on haptic feel\r\n\r\n### Mixing Applications\r\n1. **Low-End Check:** Feel if kick and bass overlap too much\r\n2. **Balance Check:** Relative vibration intensities mirror mix balance\r\n3. **Rhythmic Clarity:** Haptic confusion = timing issues\r\n4. **Energy Levels:** Vibration intensity reflects track energy\r\n\r\n### Performance Preparation\r\n1. **Muscle Memory:** Learn patterns through haptic repetition\r\n2. **Timing Reference:** Practice staying \"locked in\" with vibration\r\n3. **Section Transitions:** Feel structure changes haptically\r\n4. **Live Cues:** Map transition points to strong vibrations\r\n\r\n### Creative Applications\r\n1. **Rhythm Experimentation:** Try patterns that \"feel good\" haptically\r\n2. **Polyrhythms:** Feel multiple rhythms simultaneously\r\n3. **Groove Discovery:** Let haptic feedback guide pattern creation\r\n4. **Arrangement Tool:** Use vibration to judge section changes\r\n\r\n---\r\n\r\n## 🎯 Success Metrics\r\n\r\n### You've Mastered This Workflow When:\r\n- [ ] Can program basic beat pattern using only haptic feedback (eyes closed)\r\n- [ ] Instantly feel timing issues through vibration irregularity\r\n- [ ] Accurately judge kick/bass separation through haptic overlap\r\n- [ ] Develop grooves faster with haptic assistance than without\r\n- [ ] Use haptic feedback to make mix decisions\r\n- [ ] Create velocity dynamics guided by vibration intensity\r\n- [ ] Program for 30+ minutes without hand fatigue\r\n- [ ] Integrate haptic feedback into normal production workflow\r\n\r\n### Workflow Efficiency Indicators\r\n- Pattern programming time reduced by 20-30%\r\n- Fewer timing corrections needed after initial programming\r\n- Better groove feel in final patterns\r\n- Improved kick/bass relationship\r\n- More dynamic velocity programming\r\n- Faster arrangement decisions\r\n\r\n---\r\n\r\n## 🔗 Related Resources\r\n\r\n### Internal Documentation\r\n- `02-Data/presets/hip-hop-mappings.json` - MIDI mapping presets\r\n- `parameter-cheat-sheet.md` - Quick parameter reference\r\n- `hardware-compatibility-check.md` - Device setup guide\r\n\r\n### Workflow Extensions\r\n- `by-goal/live-performance-setup.md` - Performance applications\r\n- `by-goal/mix-monitoring.md` - Mixing with haptics\r\n- `by-instrument/808-bass-programming.md` - Detailed 808 workflow\r\n\r\n---\r\n\r\n**Workflow Status:** ✅ Complete\r\n**Difficulty:** Intermediate\r\n**Time Investment:** 30-60 minutes to master basic setup\r\n**Last Updated:** 2026-02-04\r\n",
+      "vintage-character": "# Fruity Vibrator - Vintage Character & Lo-Fi Effects\r\n\r\n## Overview\r\nUsing Fruity Vibrator to create vintage tape warble, vinyl wobble, analog drift, and classic hardware vibrato effects for lo-fi hip-hop, boom bap, and retro productions.\r\n\r\n---\r\n\r\n## Tape Warble Effects\r\n\r\n### Workflow 1: Classic Tape Wow & Flutter\r\n**Genre**: Lo-Fi Hip-Hop, Boom Bap, Chillhop\r\n\r\n**Goal**: Emulate pitch instability of worn cassette tapes\r\n\r\n**Settings**:\r\n- **Frequency**: 0.3-0.6 Hz (very slow)\r\n- **Depth**: 35-50%\r\n- **Shape**: Random\r\n- **Stereo**: 20-40%\r\n- **Attack**: 0ms\r\n- **Mix**: 75-90%\r\n\r\n**Application**:\r\n- Full mix bus (light warble on everything)\r\n- Individual samples (drums, loops)\r\n- Melodic instruments (keys, guitar)\r\n\r\n**Additional Processing**:\r\n- Add before: Saturation/tape emulation\r\n- Add after: Low-pass filter (8-12kHz), subtle noise layer\r\n\r\n**Result**: Authentic tape degradation character\r\n\r\n**Artists/Reference**: J Dilla, MF DOOM, Madlib, Knxwledge\r\n\r\n---\r\n\r\n### Workflow 2: High-Speed Tape Drift\r\n**Genre**: Vaporwave Hip-Hop, Slowed + Reverb\r\n\r\n**Goal**: Gradual pitch drift like slowing/speeding tape deck\r\n\r\n**Settings**:\r\n- **Frequency**: 0.1-0.2 Hz (extremely slow)\r\n- **Depth**: 60-80%\r\n- **Shape**: Sawtooth or Triangle\r\n- **Stereo**: 30-50%\r\n- **Attack**: 0ms\r\n- **Mix**: 100%\r\n\r\n**Automation**:\r\n- Automate **Depth** from 40% → 90% over 8-16 bars\r\n- Creates sensation of tape gradually losing speed\r\n\r\n**Use Cases**:\r\n- Intros/outros\r\n- Breakdown sections\r\n- Sampled vocal chops\r\n- Entire instrumental for \"slowed\" effect\r\n\r\n**Result**: Dramatic pitch drift effect\r\n\r\n---\r\n\r\n### Workflow 3: Subtle Tape Age\r\n**Genre**: All Boom Bap, Jazz Rap\r\n\r\n**Goal**: Barely noticeable pitch instability for authentic vintage feel\r\n\r\n**Settings**:\r\n- **Frequency**: 0.4 Hz\r\n- **Depth**: 15-25%\r\n- **Shape**: Random\r\n- **Stereo**: 10-20%\r\n- **Attack**: 0ms\r\n- **Mix**: 50-70%\r\n\r\n**Application**:\r\n- Sampled drums\r\n- Vinyl loops\r\n- Background instruments\r\n\r\n**Additional Processing**:\r\n- Combine with EQ cut above 14kHz\r\n- Light vinyl crackle layer\r\n- Slight bit crushing\r\n\r\n**Result**: Imperceptible warble that adds \"recorded-to-tape\" character\r\n\r\n---\r\n\r\n## Vinyl Wobble Effects\r\n\r\n### Workflow 4: Worn Vinyl Pitch Wobble\r\n**Genre**: Lo-Fi Hip-Hop, Sample-Based Production\r\n\r\n**Goal**: Simulate pitch fluctuations of old vinyl records\r\n\r\n**Settings**:\r\n- **Frequency**: 0.5-1 Hz\r\n- **Depth**: 30-45%\r\n- **Shape**: Random\r\n- **Stereo**: 40-60%\r\n- **Attack**: 0ms\r\n- **Mix**: 80-100%\r\n\r\n**Application**:\r\n- Sampled loops from vinyl\r\n- Piano/keys for \"dusty\" sound\r\n- Full instrumental mix\r\n\r\n**Additional Chain**:\r\n```\r\nSample → EQ (boost lows, cut highs) → Fruity Vibrator → Vinyl Noise → Subtle Distortion\r\n```\r\n\r\n**Result**: Authentic vinyl playback simulation\r\n\r\n**Artists/Reference**: Nujabes, Benny the Butcher, Griselda, Alchemist\r\n\r\n---\r\n\r\n### Workflow 5: Off-Center Vinyl Effect\r\n**Genre**: Experimental Hip-Hop, Lo-Fi\r\n\r\n**Goal**: Simulate vinyl record that's slightly off-center (periodic pitch wobble)\r\n\r\n**Settings**:\r\n- **Frequency**: 1.5-2 Hz (matches typical turntable speed variation)\r\n- **Depth**: 40-55%\r\n- **Shape**: Sine\r\n- **Stereo**: 30%\r\n- **Attack**: 0ms\r\n- **Mix**: 100%\r\n\r\n**Musical Effect**:\r\n- Regular, rhythmic pitch wobble\r\n- Can sync to tempo for musical effect\r\n- Very noticeable but characterful\r\n\r\n**Use Cases**:\r\n- Sampled loops\r\n- Intros/outros\r\n- Specific nostalgic moments\r\n\r\n---\r\n\r\n## Analog Hardware Emulation\r\n\r\n### Workflow 6: Vintage Analog Synth Vibrato\r\n**Genre**: Boom Bap, Jazz Rap, G-Funk\r\n\r\n**Goal**: Emulate classic hardware synth vibrato circuits\r\n\r\n**Settings**:\r\n- **Frequency**: 5-7 Hz\r\n- **Depth**: 20-30%\r\n- **Shape**: Triangle (analog characteristic)\r\n- **Stereo**: 0%\r\n- **Attack**: 50-100ms\r\n- **Mix**: 100%\r\n\r\n**Instruments**:\r\n- Moog-style bass and leads\r\n- ARP/Oberheim pads\r\n- Prophet-style poly synths\r\n\r\n**Additional Processing**:\r\n- Slight oscillator drift (detune)\r\n- Analog-style filter\r\n- Saturation/tube warmth\r\n\r\n**Result**: Classic hardware synth character\r\n\r\n**Reference Hardware**: Moog Minimoog, ARP Odyssey, Sequential Prophet-5\r\n\r\n---\r\n\r\n### Workflow 7: Retro Organ/Rhodes Vibrato\r\n**Genre**: Jazz Rap, Soul Hip-Hop, Neo-Soul\r\n\r\n**Goal**: Emulate electromechanical keyboard vibrato\r\n\r\n**Settings**:\r\n- **Frequency**: 6-7 Hz\r\n- **Depth**: 18-28%\r\n- **Shape**: Sine (smooth, musical)\r\n- **Stereo**: 0%\r\n- **Attack**: 0ms (immediate, like hardware switch)\r\n- **Mix**: 100%\r\n\r\n**Instruments**:\r\n- Rhodes electric piano\r\n- Wurlitzer\r\n- Hammond organ\r\n\r\n**Additional Processing**:\r\n- Tube/amp simulation\r\n- Vintage chorus\r\n- Spring reverb\r\n\r\n**Result**: Authentic 60s/70s keyboard vibrato\r\n\r\n**Artists/Reference**: Robert Glasper, Kaytranada, Anderson .Paak\r\n\r\n---\r\n\r\n### Workflow 8: Analog Chorus from Vibrator\r\n**Genre**: Lo-Fi, Dream Pop Hip-Hop, Cloud Rap\r\n\r\n**Goal**: Create chorus-like effect using slow vibrato\r\n\r\n**Settings**:\r\n- **Frequency**: 0.8-1.5 Hz\r\n- **Depth**: 25-35%\r\n- **Shape**: Sine\r\n- **Stereo**: 60-80%\r\n- **Attack**: 0ms\r\n- **Mix**: 100%\r\n\r\n**Technique**:\r\n1. Duplicate instrument track\r\n2. Original: No processing, center pan\r\n3. Duplicate: Fruity Vibrator with above settings\r\n4. Blend duplicate at -8dB to -12dB\r\n\r\n**Result**: Lush, analog-style chorus/vibrato\r\n\r\n---\r\n\r\n## Pitch Drift & Detuning\r\n\r\n### Workflow 9: Gradual Pitch Degradation\r\n**Genre**: Experimental Hip-Hop, Ambient\r\n\r\n**Goal**: Simulate gradual pitch degradation over time\r\n\r\n**Settings**:\r\n- **Frequency**: 0.05-0.1 Hz (very slow)\r\n- **Depth**: Start at 10%, automate to 70%\r\n- **Shape**: Random or Sawtooth\r\n- **Stereo**: 50%\r\n- **Attack**: 0ms\r\n- **Mix**: 100%\r\n\r\n**Automation**:\r\n- Automate **Depth** from 10% → 70% over 16-32 bars\r\n- Optionally automate **Frequency** from 0.05 Hz → 0.5 Hz\r\n\r\n**Musical Effect**:\r\n- Feels like equipment is failing\r\n- Creates tension and evolution\r\n- Perfect for intros/outros or experimental sections\r\n\r\n---\r\n\r\n### Workflow 10: Detuned Piano/Keys Character\r\n**Genre**: Lo-Fi Hip-Hop, Jazzhop\r\n\r\n**Goal**: Simulate old, out-of-tune piano\r\n\r\n**Settings**:\r\n- **Frequency**: 0.3-0.7 Hz\r\n- **Depth**: 40-60%\r\n- **Shape**: Random\r\n- **Stereo**: 50-70%\r\n- **Attack**: 0ms\r\n- **Mix**: 70-85%\r\n\r\n**Additional Processing**:\r\n1. Slight static detune on piano plugin (±5-10 cents per note)\r\n2. Fruity Vibrator with above settings\r\n3. EQ: Reduce 4-8kHz (removes brightness)\r\n4. Light reverb (room/hall)\r\n\r\n**Result**: Worn, character-filled piano sound\r\n\r\n**Artists/Reference**: Nujabes, Jinsang, idealism\r\n\r\n---\r\n\r\n## Full Mix Vintage Effects\r\n\r\n### Workflow 11: Lo-Fi Full Mix Warble\r\n**Genre**: Lo-Fi Hip-Hop, Chillhop\r\n\r\n**Goal**: Apply tape/vinyl character to entire mix\r\n\r\n**Settings**:\r\n- **Frequency**: 0.4-0.6 Hz\r\n- **Depth**: 20-30% (subtle on full mix)\r\n- **Shape**: Random\r\n- **Stereo**: 20-30%\r\n- **Attack**: 0ms\r\n- **Mix**: 60-80%\r\n\r\n**Signal Chain (Master Bus)**:\r\n```\r\nFull Mix → EQ (cut highs at 12kHz) → Saturation → Fruity Vibrator → Vinyl/Tape Noise → Limiter\r\n```\r\n\r\n**Critical Notes**:\r\n- Use lighter depth on full mix than individual elements\r\n- Monitor bass frequencies (vibrato can affect sub)\r\n- Check mono compatibility\r\n\r\n**Result**: Entire track has vintage tape/vinyl character\r\n\r\n---\r\n\r\n### Workflow 12: Slowed + Reverb Effect\r\n**Genre**: Slowed Hip-Hop, Vaporwave\r\n\r\n**Goal**: Create \"slowed and reverb\" aesthetic with pitch drift\r\n\r\n**Settings**:\r\n- **Frequency**: 0.1-0.3 Hz\r\n- **Depth**: 50-70%\r\n- **Shape**: Random or Sawtooth\r\n- **Stereo**: 40-60%\r\n- **Attack**: 0ms\r\n- **Mix**: 100%\r\n\r\n**Full Process**:\r\n1. Slow track tempo by 20-40% (pitch down)\r\n2. Apply Fruity Vibrator with above settings\r\n3. Add heavy reverb (2-5 second decay)\r\n4. EQ: Boost lows, cut highs\r\n\r\n**Result**: Dreamy, slowed aesthetic\r\n\r\n**Artists/Reference**: DJ Screw, Slowed + Reverb YouTube channels\r\n\r\n---\r\n\r\n## Era-Specific Vintage Tones\r\n\r\n### 60s/70s Soul/Funk Vibrato\r\n- **Frequency**: 6-7 Hz\r\n- **Depth**: 25-35%\r\n- **Shape**: Sine\r\n- **Instruments**: Rhodes, Wurlitzer, organ, guitar\r\n\r\n### 80s Synth Vibrato\r\n- **Frequency**: 5-6 Hz\r\n- **Depth**: 15-25%\r\n- **Shape**: Triangle\r\n- **Instruments**: DX7, Juno, Jupiter synths\r\n\r\n### 90s Boom Bap Warble\r\n- **Frequency**: 0.5-1 Hz\r\n- **Depth**: 30-40%\r\n- **Shape**: Random\r\n- **Instruments**: All sampled elements\r\n\r\n### 2000s Lo-Fi Tape\r\n- **Frequency**: 0.3-0.6 Hz\r\n- **Depth**: 35-50%\r\n- **Shape**: Random\r\n- **Instruments**: Full mix or key elements\r\n\r\n---\r\n\r\n## Additional Vintage Processing\r\n\r\n### Essential Effects Chain for Vintage Sound\r\n1. **Pre-Vibrator**:\r\n   - Saturation/Tape emulation\r\n   - EQ (roll off highs, boost low-mids)\r\n   - Bit crushing (subtle)\r\n\r\n2. **Fruity Vibrator** (as per workflows above)\r\n\r\n3. **Post-Vibrator**:\r\n   - Low-pass filter (8-14kHz depending on era)\r\n   - Vinyl/tape noise layer\r\n   - Vintage reverb (plate, spring, or chamber)\r\n   - Final limiter\r\n\r\n---\r\n\r\n## Troubleshooting Vintage Effects\r\n\r\n### Problem: Too Obvious/Distracting\r\n**Solution**: \r\n- Reduce depth by 10-15%\r\n- Increase mix to only 60-80% (blend with dry)\r\n- Use slower frequency (0.2-0.4 Hz)\r\n\r\n### Problem: Loses Low-End Power\r\n**Solution**:\r\n- Apply vibrato only to mid/high frequencies (use multiband approach)\r\n- Keep sub bass clean, warble only above 200 Hz\r\n- Reduce depth to <30% on full mix\r\n\r\n### Problem: Sounds Digital, Not Analog\r\n**Solution**:\r\n- Use Random shape instead of Sine\r\n- Add saturation/distortion before vibrato\r\n- Layer with actual vinyl/tape noise\r\n- Reduce mix to 70-85% for imperfection\r\n\r\n### Problem: Doesn't Match Reference Track\r\n**Solution**:\r\n- Analyze reference with spectrum analyzer during pitch wobbles\r\n- Match frequency and depth precisely\r\n- Consider they may use multiple vibrato instances layered\r\n- Check if additional processing (chorus, phaser) is involved\r\n\r\n---\r\n\r\n## Pro Tips for Vintage Character\r\n\r\n✅ **Layer noise** - Vinyl crackle, tape hiss, and pitch wobble together = authentic vintage\r\n✅ **Don't overdo it** - Subtlety is key; modern ears expect some clarity\r\n✅ **EQ is critical** - High-frequency roll-off sells vintage more than vibrato alone\r\n✅ **Combine with saturation** - Warmth + pitch instability = vintage magic\r\n✅ **Reference era-specific tracks** - Study actual recordings from target era\r\n✅ **Randomness = realism** - Random shape sounds more organic than Sine\r\n✅ **Less on low-end** - Preserve sub frequencies, warble mids/highs\r\n✅ **Check mono** - Vintage recordings were often mono; ensure compatibility\r\n✅ **Automate for evolution** - Static warble can get tiresome\r\n✅ **A/B with references** - Match intensity to professional lo-fi productions\r\n"
+    },
+    "by-instrument": {
+      "kick-and-808-monitoring": "# Kick and 808 Monitoring Workflow\r\n\r\n## 🎯 Goal\r\nUse haptic feedback to monitor, program, and mix kick drums and 808 bass with precision, especially for frequencies below your monitoring capability.\r\n\r\n---\r\n\r\n## 📋 Workflow Overview\r\n\r\n### Purpose\r\nFruity Vibrator provides tactile feedback for low-frequency content that may be:\r\n- Below your speaker/headphone range\r\n- Lost in untreated room acoustics\r\n- Difficult to monitor at low volumes (late night)\r\n- Critical for sub-bass heavy genres (trap, drill, hip-hop)\r\n\r\n### Best For\r\n- Producers without subwoofers or full-range monitors\r\n- Untreated room environments with bass issues\r\n- Late-night production (quiet monitoring)\r\n- 808-heavy genres (trap, drill, southern hip-hop)\r\n- Kick/bass relationship clarity\r\n\r\n---\r\n\r\n## 🛠️ Setup Process\r\n\r\n### Hardware Setup\r\n1. **Device Selection:**\r\n   - **Best:** Logitech G920/G29 Racing Wheel (powerful motors)\r\n   - **Good:** Xbox 360 Controller (Wired)\r\n   - **Budget:** Any DirectInput force feedback gamepad\r\n\r\n2. **Connection:**\r\n   - USB 2.0 or 3.0 port\r\n   - Wired connection (avoid Bluetooth latency)\r\n   - Verify in Windows Game Controllers\r\n\r\n3. **FL Studio Routing:**\r\n   - Insert Fruity Vibrator on kick drum track\r\n   - Insert separate instance on 808 bass track\r\n   - Or use single instance routed from kick/bass mixer bus\r\n\r\n### Vibrator Configuration\r\n\r\n#### Kick Drum Instance\r\n```\r\nForce: 75-80%\r\nEffect: Constant\r\nMIDI: C3 (or match your kick note)\r\nVelocity: 110-127\r\nPurpose: Feel kick impact timing and weight\r\n```\r\n\r\n#### 808 Bass Instance\r\n```\r\nForce: 80-90%\r\nEffect: Constant\r\nMIDI: Full chromatic mapping (C1-C4)\r\nVelocity: Based on note emphasis\r\nPurpose: Feel sub-bass frequencies and note changes\r\n```\r\n\r\n#### Combined Kick/808 Instance\r\n```\r\nForce: 70-80%\r\nEffect: Constant\r\nRoute: From kick/bass mixer bus\r\nPurpose: Feel combined low-end behavior\r\nTip: Reveals kick/bass overlap and conflicts\r\n```\r\n\r\n---\r\n\r\n## 🎵 Kick Drum Programming Workflow\r\n\r\n### Phase 1: Kick Placement\r\n\r\n#### Initial Programming\r\n1. **Load Kick Sample**\r\n   - Choose kick with strong low-end\r\n   - Route to mixer track with Vibrator\r\n\r\n2. **Basic Pattern**\r\n   - Program 4-on-floor or basic kick pattern\r\n   - Use MIDI note matching Vibrator setup (C3)\r\n   - Set velocity to 120-127\r\n\r\n3. **Haptic Monitoring**\r\n   - Play pattern, feel each kick impact\r\n   - Vibration should be consistent and strong\r\n   - Adjust Force parameter to comfortable level\r\n\r\n#### Timing Refinement\r\n1. **Quantization Check**\r\n   - Feel if kicks align with metronome\r\n   - Vibration irregularity = timing issues\r\n   - Adjust note positions until \"locked in\"\r\n\r\n2. **Groove Development**\r\n   - Experiment with off-grid placement\r\n   - Feel groove through vibration timing\r\n   - Use haptic feedback to judge \"pocket\"\r\n\r\n3. **Velocity Dynamics**\r\n   - Main kicks: 120-127 velocity\r\n   - Ghost kicks: 80-100 velocity\r\n   - Feel dynamic variation through vibration intensity\r\n\r\n### Phase 2: Kick Selection & Processing\r\n\r\n#### Sample Selection with Haptics\r\n1. **A/B Comparison**\r\n   - Load different kick samples\r\n   - Play same pattern through each\r\n   - Feel which has best low-end impact\r\n   - Vibration strength = sub-bass content\r\n\r\n2. **Tuning**\r\n   - Pitch kick sample up/down\r\n   - Feel how vibration changes with tuning\r\n   - Lower tuning = stronger vibration\r\n   - Find tuning that feels \"right\" haptically\r\n\r\n3. **Processing Feedback**\r\n   - Add EQ, compression, saturation\r\n   - Monitor vibration changes with each process\r\n   - Boost low-end → stronger vibration\r\n   - Over-compression → weaker vibration transient\r\n\r\n#### Mix Integration\r\n1. **Level Setting**\r\n   - Start with vibration at 75%\r\n   - If too weak: Increase kick level or Force parameter\r\n   - If too strong: Reduce kick level or Force parameter\r\n   - Aim for consistent, comfortable vibration\r\n\r\n2. **EQ Decisions**\r\n   - Boost sub (30-50Hz): Stronger vibration\r\n   - Boost low-end (60-80Hz): Punchier vibration\r\n   - Cut low-mids (200-400Hz): Cleaner vibration\r\n   - Use haptic feedback to guide EQ moves\r\n\r\n---\r\n\r\n## 🎵 808 Bass Programming Workflow\r\n\r\n### Phase 1: Melodic Programming\r\n\r\n#### Note Placement\r\n1. **Basic Bassline**\r\n   - Program 808 melody (root notes)\r\n   - Use Vibrator with full chromatic mapping\r\n   - Each note triggers vibration\r\n\r\n2. **Haptic Feedback**\r\n   - Lower notes = stronger vibration\r\n   - Higher notes = lighter vibration\r\n   - Feel melodic contour through vibration intensity\r\n\r\n3. **Note Length**\r\n   - Short notes: Brief vibration pulse\r\n   - Long notes: Sustained vibration\r\n   - Slides: Continuous vibration across pitch change\r\n   - Use haptic decay to set note lengths\r\n\r\n#### Slide Programming\r\n1. **808 Slide Setup**\r\n   - Enable portamento/glide on 808\r\n   - Overlap notes for slide effect\r\n   - Vibrator sustains during entire slide\r\n\r\n2. **Haptic Monitoring**\r\n   - Feel continuous vibration during slide\r\n   - Start note = initial impact\r\n   - Slide = sustained vibration\r\n   - End note = vibration settles to new pitch\r\n\r\n3. **Slide Timing**\r\n   - Fast slides: Quick vibration transition\r\n   - Slow slides: Gradual vibration shift\r\n   - Use haptic feedback to judge slide speed\r\n\r\n### Phase 2: 808 Processing\r\n\r\n#### Tuning & Decay\r\n1. **808 Tuning**\r\n   - Adjust 808 root tuning\r\n   - Feel how vibration changes with pitch\r\n   - Lower tuning = stronger sub vibration\r\n   - Match key of song by haptic feel\r\n\r\n2. **Decay Adjustment**\r\n   - Short decay: Quick vibration pulse\r\n   - Long decay: Sustained vibration\r\n   - Infinite decay: Continuous vibration\r\n   - Set decay based on haptic sustain\r\n\r\n#### Saturation & Distortion\r\n1. **Harmonic Enhancement**\r\n   - Add subtle saturation\r\n   - Monitor vibration character change\r\n   - Clean 808: Pure low vibration\r\n   - Distorted 808: More complex vibration texture\r\n\r\n2. **Overdrive Effects**\r\n   - Moderate overdrive: Stronger vibration\r\n   - Extreme overdrive: Compressed vibration\r\n   - Use haptics to prevent over-processing\r\n\r\n---\r\n\r\n## 🎚️ Kick/808 Relationship Monitoring\r\n\r\n### Phase 1: Conflict Detection\r\n\r\n#### Overlap Analysis\r\n1. **Solo Both Elements**\r\n   - Play kick and 808 together\r\n   - Route both to same Vibrator instance\r\n   - Feel how vibrations interact\r\n\r\n2. **Conflict Indicators**\r\n   - **Muddy Vibration:** Frequencies overlapping too much\r\n   - **Irregular Pulse:** Timing conflicts\r\n   - **Weak Vibration:** Phase cancellation\r\n   - **Chaotic Feel:** Poor arrangement\r\n\r\n3. **Clarity Check**\r\n   - Each element should have distinct vibration\r\n   - Kick: Sharp, transient vibration\r\n   - 808: Sustained, tonal vibration\r\n   - Together: Complementary, not competing\r\n\r\n#### Timing Coordination\r\n1. **Kick/808 Timing**\r\n   - Kick hits should align with 808 note attacks\r\n   - Or: Kick between 808 notes\r\n   - Feel timing relationship through vibration\r\n\r\n2. **Rhythmic Patterns**\r\n   - Synchronized: Both vibrate together (powerful)\r\n   - Offset: Alternating vibrations (groovier)\r\n   - Syncopated: Complex vibration pattern\r\n   - Choose based on haptic feel\r\n\r\n### Phase 2: Frequency Separation\r\n\r\n#### EQ for Clarity\r\n1. **808 Low-Pass**\r\n   - Filter out highs from 808\r\n   - Focus vibration on sub frequencies\r\n   - Cleaner low-end vibration\r\n\r\n2. **Kick EQ Carving**\r\n   - Boost kick fundamental (50-80Hz)\r\n   - Cut kick sub (below 40Hz) if 808 handles it\r\n   - Or: Boost kick sub, reduce 808 volume\r\n   - Use haptic feedback to judge balance\r\n\r\n3. **Sidechain Compression**\r\n   - Sidechain 808 to kick\r\n   - 808 ducks when kick hits\r\n   - Vibration: Kick punches through, 808 breathes\r\n   - Feel the pumping through haptics\r\n\r\n#### Mixing Decisions\r\n1. **Level Balance**\r\n   - Adjust kick/808 levels\r\n   - Monitor combined vibration strength\r\n   - Too much kick: Vibration too sharp\r\n   - Too much 808: Vibration too sustained\r\n   - Aim for balanced haptic response\r\n\r\n2. **Mono/Stereo Imaging**\r\n   - Keep kick and 808 mono (centered)\r\n   - Vibration should be consistent (no stereo flutter)\r\n   - If stereo: Vibration may feel uneven\r\n\r\n---\r\n\r\n## 🎧 Genre-Specific Applications\r\n\r\n### Trap\r\n**Focus:** Heavy 808 slides, punchy kicks\r\n\r\n**Setup:**\r\n- 808 Force: 90% (dominant element)\r\n- Kick Force: 70% (supportive)\r\n- Effect: Constant for both\r\n\r\n**Workflow:**\r\n1. Program 808 melody with slides\r\n2. Feel continuous vibration during slides\r\n3. Add kick for transient punch\r\n4. Feel how kick cuts through 808 sustain\r\n5. Adjust levels until haptic balance perfect\r\n\r\n**Key Tip:** 808 should dominate vibration, kick should add sharp accents\r\n\r\n### Drill\r\n**Focus:** Menacing 808 slides, aggressive low-end\r\n\r\n**Setup:**\r\n- 808 Force: 95% (maximum)\r\n- Kick Force: 65% (808 dominates)\r\n- Effect: Constant\r\n\r\n**Workflow:**\r\n1. Create aggressive 808 pattern with slides\r\n2. Maximum vibration for intimidating feel\r\n3. Kick adds punch but doesn't compete\r\n4. Feel the menacing low-end through vibration\r\n\r\n**Key Tip:** Vibration should feel almost uncomfortably strong (within comfort limits)\r\n\r\n### Boom Bap\r\n**Focus:** Punchy kicks, supportive bass\r\n\r\n**Setup:**\r\n- Kick Force: 75% (primary element)\r\n- 808 Force: 50% (supportive)\r\n- Effect: Constant\r\n\r\n**Workflow:**\r\n1. Kick is star - strong, punchy vibration\r\n2. 808 supports with lower intensity\r\n3. Feel classic boom bap punch through vibration\r\n\r\n**Key Tip:** Kick should be most prominent haptic element\r\n\r\n### Lo-Fi Hip-Hop\r\n**Focus:** Gentle, rolled-off low-end\r\n\r\n**Setup:**\r\n- Kick Force: 45% (subtle)\r\n- 808 Force: 40% (gentle)\r\n- Effect: Constant\r\n\r\n**Workflow:**\r\n1. Low intensity for relaxed vibe\r\n2. Vibration should be comfortable, not aggressive\r\n3. Feel the laid-back groove\r\n\r\n**Key Tip:** Entire haptic experience should feel relaxing\r\n\r\n---\r\n\r\n## 🔧 Advanced Techniques\r\n\r\n### Sub-Bass Note Detection\r\n**Purpose:** Identify 808 notes below monitoring range\r\n\r\n**Setup:**\r\n1. Program 808 bassline with very low notes (C1, D1)\r\n2. Force: 90%\r\n3. Play pattern\r\n\r\n**Monitoring:**\r\n- Lowest notes = strongest vibration\r\n- Each note change = vibration intensity shift\r\n- Feel which notes your speakers can't reproduce\r\n- Adjust arrangement if too much sub-only content\r\n\r\n### Phase Relationship Check\r\n**Purpose:** Detect kick/808 phase cancellation\r\n\r\n**Setup:**\r\n1. Route kick and 808 to same mixer track\r\n2. Add Vibrator to mixed track\r\n3. Force: 80%\r\n\r\n**Testing:**\r\n1. **In-Phase:** Strong, consistent vibration\r\n2. **Out-of-Phase:** Weak, thin vibration\r\n3. **Partial Cancellation:** Irregular vibration\r\n\r\n**Fix:**\r\n- Flip phase on kick or 808\r\n- Adjust timing slightly\r\n- Re-evaluate sample selection\r\n- Monitor vibration strength after each change\r\n\r\n### Velocity-Based Dynamics\r\n**Purpose:** Create expressive low-end through dynamics\r\n\r\n**Setup:**\r\n1. Program 808 with varied velocities\r\n2. Map velocity to vibration intensity\r\n3. Main notes: 120-127 velocity\r\n4. Ghost notes: 70-90 velocity\r\n\r\n**Workflow:**\r\n- Feel dynamic contrast through vibration\r\n- Adjust velocities based on haptic response\r\n- Create groovier, more human-feeling patterns\r\n\r\n### Multi-Instance Monitoring\r\n**Purpose:** Separate kick and 808 haptic feedback\r\n\r\n**Setup:**\r\n1. Two controllers (or sequential monitoring)\r\n2. Vibrator Instance 1: Kick only (left controller)\r\n3. Vibrator Instance 2: 808 only (right controller)\r\n\r\n**Benefits:**\r\n- Feel kick timing in left hand\r\n- Feel 808 melody/sustain in right hand\r\n- Identify conflicts through haptic separation\r\n- Spatial awareness of low-end elements\r\n\r\n---\r\n\r\n## 💡 Pro Tips\r\n\r\n### Programming Tips\r\n1. **Start with 808:** Program bassline first, feel the foundation\r\n2. **Add Kick:** Layer kick, feel how it punctuates 808\r\n3. **Adjust Timing:** Use haptics to lock in perfect timing\r\n4. **Dynamic Velocities:** Vary based on haptic feel\r\n\r\n### Mixing Tips\r\n1. **A/B Testing:** Compare before/after processing via vibration change\r\n2. **Reference Tracks:** Load reference, feel their kick/808 balance\r\n3. **Sidechain Amount:** Adjust until haptic pump feels right\r\n4. **Final Check:** Does vibration feel powerful but controlled?\r\n\r\n### Creative Tips\r\n1. **Rhythm Discovery:** Try patterns that feel good haptically\r\n2. **Slide Timing:** Let vibration guide slide speed\r\n3. **Note Length:** Set decay based on vibration sustain\r\n4. **Arrangement:** Use haptic intensity to judge energy levels\r\n\r\n### Troubleshooting\r\n1. **Weak Vibration:** Increase Force or boost sub frequencies\r\n2. **Too Strong:** Reduce Force or cut excessive sub boost\r\n3. **Irregular Vibration:** Check for timing or phase issues\r\n4. **No Vibration:** Verify MIDI routing and hardware connection\r\n\r\n---\r\n\r\n## 🎯 Success Metrics\r\n\r\n### You've Mastered This Workflow When:\r\n- [ ] Can identify 808 notes below your speaker range through haptics\r\n- [ ] Accurately detect kick/808 conflicts via vibration feel\r\n- [ ] Make EQ decisions guided by haptic feedback\r\n- [ ] Set kick/808 levels using vibration as reference\r\n- [ ] Program 808 slides with precise timing using haptics\r\n- [ ] Detect phase cancellation through weak vibration\r\n- [ ] Create dynamic low-end using velocity/haptic relationship\r\n- [ ] Mix low-end faster and more accurately with haptic assistance\r\n\r\n### Mixing Quality Indicators\r\n- Kick and 808 have distinct haptic character\r\n- Combined vibration feels powerful but controlled\r\n- No muddy or irregular vibration patterns\r\n- Haptic response matches reference track feel\r\n- Low-end translates well to different systems\r\n\r\n---\r\n\r\n## 🔗 Related Resources\r\n\r\n### Internal Documentation\r\n- `beat-production-feedback.md` - Full beat programming workflow\r\n- `parameter-cheat-sheet.md` - Quick setup reference\r\n- `02-Data/presets/hip-hop-mappings.json` - Genre-specific presets\r\n\r\n### Recommended Plugins\r\n- **Fruity Parametric EQ 2:** For precise kick/808 EQ\r\n- **Fruity Limiter:** Sidechain compression\r\n- **Wave Candy:** Visual frequency analysis\r\n- **Fruity Spectroman:** Compare haptic with visual spectrum\r\n\r\n---\r\n\r\n**Workflow Status:** ✅ Complete\r\n**Difficulty:** Intermediate-Advanced\r\n**Time Investment:** 45-90 minutes to master\r\n**Last Updated:** 2026-02-04\r\n",
+      "synths": "# Fruity Vibrator - Synth Workflows\r\n\r\n## Overview\r\nVibrato techniques for synth leads, pads, bass, and textural elements in hip-hop production. Covers everything from subtle expression to extreme sound design.\r\n\r\n---\r\n\r\n## Synth Leads\r\n\r\n### Workflow 1: Classic Analog Lead Vibrato\r\n**Genre**: Boom Bap, Jazz Rap, Lo-Fi Hip-Hop\r\n\r\n**Steps**:\r\n1. Insert Fruity Vibrator on synth lead track (after oscillators, before filter)\r\n2. Set **Frequency** to 5-7 Hz\r\n3. Set **Depth** to 20-30%\r\n4. Set **Shape** to Triangle (analog character)\r\n5. Set **Stereo** to 0% (mono lead)\r\n6. Set **Attack** to 50-100ms\r\n7. Set **Mix** to 100%\r\n\r\n**Synth Types**: Monosynths, vintage emulations, simple sine/saw leads\r\n\r\n**Result**: Classic analog synth vibrato reminiscent of vintage hardware\r\n\r\n**Artists/Reference**: J Dilla, Madlib, Pete Rock, 9th Wonder\r\n\r\n---\r\n\r\n### Workflow 2: Modern Melodic Lead\r\n**Genre**: Trap, Electronic Hip-Hop, Future Bass\r\n\r\n**Steps**:\r\n1. Insert Fruity Vibrator on lead synth\r\n2. Set **Frequency** to 6-8 Hz\r\n3. Set **Depth** to 25-35%\r\n4. Set **Shape** to Sine\r\n5. Set **Stereo** to 0%\r\n6. Set **Attack** to 0ms (immediate)\r\n7. Set **Mix** to 90-100%\r\n\r\n**Automation**:\r\n- Automate **Depth** from 0% → 40% on long notes\r\n- Creates expressive pitch swell\r\n\r\n**Synth Types**: Plucks, detuned saws, supersaw leads\r\n\r\n**Artists/Reference**: Metro Boomin, Southside, Wheezy\r\n\r\n---\r\n\r\n### Workflow 3: Expressive Solo Lead\r\n**Genre**: Soul Hip-Hop, Alternative Rap\r\n\r\n**Steps**:\r\n1. Insert Fruity Vibrator on lead track\r\n2. Set **Frequency** to 5.5 Hz\r\n3. Set **Depth** to 30-40%\r\n4. Set **Shape** to Sine\r\n5. Set **Stereo** to 0%\r\n6. Set **Attack** to 200-400ms (delayed onset)\r\n7. Set **Mix** to 100%\r\n\r\n**Performance Technique**:\r\n- Vibrato builds on sustained notes\r\n- Mimics guitar/woodwind expression\r\n- Use with pitch bend for maximum emotion\r\n\r\n**Result**: Vocal-like synth expression for melodic hooks\r\n\r\n**Artists/Reference**: Kanye West, Kid Cudi, Tyler the Creator\r\n\r\n---\r\n\r\n## Pads & Ambient Textures\r\n\r\n### Workflow 4: Wide Stereo Pad Drift\r\n**Genre**: Ambient Hip-Hop, Cloud Rap, Trap\r\n\r\n**Steps**:\r\n1. Insert Fruity Vibrator on pad/ambient track\r\n2. Set **Frequency** to 0.3-0.8 Hz (very slow)\r\n3. Set **Depth** to 40-60%\r\n4. Set **Shape** to Sine\r\n5. Set **Stereo** to 60-80%\r\n6. Set **Attack** to 0ms\r\n7. Set **Mix** to 100%\r\n\r\n**Enhancement**:\r\n- Duplicate pad and use opposite stereo values (+70% / -70%)\r\n- Phase offset by 90° on duplicate\r\n- Creates evolving, organic stereo movement\r\n\r\n**Result**: Lush, moving pad textures with natural drift\r\n\r\n**Artists/Reference**: Yung Lean, Clams Casino, Lil Uzi Vert\r\n\r\n---\r\n\r\n### Workflow 5: Detuned Pad Stack\r\n**Genre**: Lo-Fi Hip-Hop, Psychedelic Rap\r\n\r\n**Steps**:\r\n1. Create 3-4 pad layers (different synths or same synth detuned)\r\n2. Insert Fruity Vibrator on each layer with varying settings:\r\n   - **Layer 1**: 0.4 Hz, 45% depth, Phase 0°\r\n   - **Layer 2**: 0.5 Hz, 50% depth, Phase 90°\r\n   - **Layer 3**: 0.3 Hz, 40% depth, Phase 180°\r\n   - **Layer 4**: 0.6 Hz, 55% depth, Phase 270°\r\n3. All use **Sine** shape and **60-70% stereo**\r\n4. Set **Mix** to 100% on all\r\n\r\n**Result**: Thick, chorused pad with complex pitch movement\r\n\r\n**Artists/Reference**: Tame Impala, A$AP Rocky, Travis Scott\r\n\r\n---\r\n\r\n### Workflow 6: Evolving Drone/Atmosphere\r\n**Genre**: Experimental, Dark Trap, Horror Rap\r\n\r\n**Steps**:\r\n1. Insert Fruity Vibrator on drone/atmosphere\r\n2. Set **Frequency** to 0.1-0.3 Hz (extremely slow)\r\n3. Set **Depth** to 60-80%\r\n4. Set **Shape** to Random\r\n5. Set **Stereo** to 80-100%\r\n6. Set **Attack** to 0ms\r\n7. Set **Mix** to 100%\r\n\r\n**Automation**:\r\n- Automate **Frequency** from 0.1 Hz → 2 Hz over 8-16 bars\r\n- Creates tension and evolving movement\r\n\r\n**Result**: Unpredictable, organic atmosphere for dark/moody production\r\n\r\n**Artists/Reference**: Ghostemane, $uicideboy$, Night Lovell\r\n\r\n---\r\n\r\n## Bass Synths\r\n\r\n### Workflow 7: Sub Bass Wobble (Careful!)\r\n**Genre**: Trap, Dubstep-influenced Hip-Hop\r\n\r\n**Steps**:\r\n1. Insert Fruity Vibrator on sub bass (use with caution)\r\n2. Set **Frequency** to 1-2 Hz\r\n3. Set **Depth** to 15-25% (low to preserve power)\r\n4. Set **Shape** to Sine\r\n5. Set **Stereo** to 0% (mono bass)\r\n6. Set **Attack** to 0ms\r\n7. Set **Mix** to 40-60%\r\n\r\n**Critical Notes**:\r\n- Too much vibrato destroys sub impact\r\n- Works best on melodic bass, not 808s\r\n- Monitor low-end with spectrum analyzer\r\n- May cause pumping in limiter - reduce depth if so\r\n\r\n**Use Cases**: Reese bass, FM bass, melodic sub lines\r\n\r\n---\r\n\r\n### Workflow 8: Mid-Bass Movement\r\n**Genre**: Electronic Trap, Bass Music\r\n\r\n**Steps**:\r\n1. Insert Fruity Vibrator on mid-bass layer (200-500 Hz)\r\n2. Set **Frequency** to 3-5 Hz\r\n3. Set **Depth** to 30-40%\r\n4. Set **Shape** to Triangle or Sawtooth\r\n5. Set **Stereo** to 20-30%\r\n6. Set **Attack** to 0ms\r\n7. Set **Mix** to 70-100%\r\n\r\n**Layering Strategy**:\r\n- Keep sub bass clean (no vibrato)\r\n- Apply vibrato only to mid/high bass layer\r\n- Preserves low-end power while adding movement\r\n\r\n**Result**: Energetic bass with movement that doesn't sacrifice sub power\r\n\r\n---\r\n\r\n## Plucks & Bells\r\n\r\n### Workflow 9: Shimmering Bell/Pluck\r\n**Genre**: Trap, Electronic Hip-Hop\r\n\r\n**Steps**:\r\n1. Insert Fruity Vibrator on bell/pluck track\r\n2. Set **Frequency** to 7-10 Hz\r\n3. Set **Depth** to 10-18% (subtle)\r\n4. Set **Shape** to Sine\r\n5. Set **Stereo** to 20-40%\r\n6. Set **Attack** to 0ms\r\n7. Set **Mix** to 50-70%\r\n\r\n**Result**: Slight shimmer and movement without losing transient punch\r\n\r\n**Instruments**: Bells, music box, kalimba, marimba, xylophone\r\n\r\n---\r\n\r\n### Workflow 10: Retro Synth Pluck\r\n**Genre**: Lo-Fi, Vaporwave Hip-Hop\r\n\r\n**Steps**:\r\n1. Insert Fruity Vibrator on pluck synth\r\n2. Set **Frequency** to 6 Hz\r\n3. Set **Depth** to 25-30%\r\n4. Set **Shape** to Triangle\r\n5. Set **Stereo** to 0%\r\n6. Set **Attack** to 10-30ms\r\n7. Set **Mix** to 100%\r\n\r\n**Additional Processing**:\r\n- Add chorus after vibrator\r\n- Slight detuning of oscillators\r\n- Vintage-style reverb\r\n\r\n**Result**: 80s/90s pluck sound\r\n\r\n---\r\n\r\n## Creative Sound Design\r\n\r\n### Workflow 11: Rising Pitch Sweep (Riser)\r\n**Genre**: All Electronic Hip-Hop\r\n\r\n**Steps**:\r\n1. Create white noise or synth pad\r\n2. Insert Fruity Vibrator\r\n3. Set **Frequency** to 2-4 Hz\r\n4. Set **Depth** to 70-90%\r\n5. Set **Shape** to Sawtooth (rising sweep)\r\n6. Set **Stereo** to 0%\r\n7. Set **Attack** to 0ms\r\n8. Set **Mix** to 100%\r\n\r\n**Automation**:\r\n- Automate **Frequency** from 2 Hz → 8 Hz\r\n- Automate **Depth** from 50% → 100%\r\n- Combine with high-pass filter sweep\r\n\r\n**Result**: Dynamic build-up/riser effect\r\n\r\n---\r\n\r\n### Workflow 12: Pitch Trill Effect\r\n**Genre**: Experimental, Glitch Hop\r\n\r\n**Steps**:\r\n1. Insert Fruity Vibrator on synth\r\n2. Set **Frequency** to 6-8 Hz\r\n3. Set **Depth** to 50-70%\r\n4. Set **Shape** to Square\r\n5. Set **Stereo** to 0%\r\n6. Set **Attack** to 0ms\r\n7. Set **Mix** to 100%\r\n\r\n**Result**: Rapid pitch alternation creating trill/vibrato effect\r\n\r\n**Use Cases**: Fills, transitions, glitch elements\r\n\r\n---\r\n\r\n### Workflow 13: Chorus Effect from Vibrato\r\n**Genre**: Cloud Rap, Dream Pop Hip-Hop\r\n\r\n**Steps**:\r\n1. Duplicate synth track\r\n2. **Original**: No vibrato, panned center\r\n3. **Duplicate**: Insert Fruity Vibrator\r\n   - Frequency: 0.8-1.5 Hz\r\n   - Depth: 20-30%\r\n   - Shape: Sine\r\n   - Stereo: 60%\r\n   - Mix: 100%\r\n4. Blend duplicate at -6dB to -10dB\r\n\r\n**Result**: Chorus-like stereo width from slow vibrato modulation\r\n\r\n---\r\n\r\n### Workflow 14: Randomized Vintage Synth\r\n**Genre**: Lo-Fi Hip-Hop, Boom Bap\r\n\r\n**Steps**:\r\n1. Insert Fruity Vibrator on vintage-style synth\r\n2. Set **Frequency** to 0.4-0.6 Hz\r\n3. Set **Depth** to 35-45%\r\n4. Set **Shape** to Random\r\n5. Set **Stereo** to 30-50%\r\n6. Set **Attack** to 0ms\r\n7. Set **Mix** to 80-90%\r\n\r\n**Additional Processing**:\r\n- Tape saturation\r\n- Bit reduction\r\n- Vinyl crackle layer\r\n\r\n**Result**: Detuned, unstable vintage synth character\r\n\r\n**Artists/Reference**: Knxwledge, Mndsgn, Swarvy\r\n\r\n---\r\n\r\n## Genre-Specific Synth Chains\r\n\r\n### Boom Bap / Jazz Rap\r\n```\r\nSynth → Fruity Vibrator (6Hz, 25%, Triangle, 100ms attack) → Filter → Saturation → Reverb\r\n```\r\n- Moderate vibrato for vintage analog feel\r\n- Triangle wave for warmth\r\n\r\n### Modern Trap\r\n```\r\nSynth → Fruity Vibrator (7Hz, 30%, Sine, 0ms) → Distortion → Delay → Reverb\r\n```\r\n- Brighter, more immediate vibrato\r\n- Works with harsh synth timbres\r\n\r\n### Lo-Fi Hip-Hop\r\n```\r\nSynth → Fruity Vibrator (0.5Hz, 40%, Random, 0ms) → Chorus → Bit Crusher → Filter\r\n```\r\n- Slow random drift for tape effect\r\n- Part of vintage processing chain\r\n\r\n### Electronic/Future Bass\r\n```\r\nSynth → Fruity Vibrator (8Hz, 35%, Sine, 0ms) → Stereo Enhancer → Reverb\r\n```\r\n- Fast, expressive vibrato\r\n- Modern electronic character\r\n\r\n### Ambient/Atmospheric\r\n```\r\nSynth → Fruity Vibrator (0.3Hz, 60%, Sine, 70% stereo) → Reverb → Delay → Filter\r\n```\r\n- Very slow drift for organic evolution\r\n- Wide stereo for immersive space\r\n\r\n---\r\n\r\n## Troubleshooting\r\n\r\n### Problem: Vibrato Causes Tuning Issues\r\n**Solution**:\r\n- Reduce depth to <30%\r\n- Ensure frequency is appropriate (5-7 Hz for most musical contexts)\r\n- Check that base synth is in tune first\r\n\r\n### Problem: Bass Loses Power with Vibrato\r\n**Solution**:\r\n- Reduce depth to <20% or disable entirely\r\n- Use only on mid/high bass layer, not sub\r\n- Keep mix at 50% to blend with dry signal\r\n\r\n### Problem: Vibrato Too Slow/Fast for Genre\r\n**Solution**:\r\n- Boom Bap/Classic: 5-7 Hz\r\n- Trap/Modern: 5-8 Hz\r\n- Lo-Fi/Ambient: 0.2-2 Hz\r\n- Electronic: 6-10 Hz\r\n\r\n### Problem: Stereo Vibrato Causes Phase Issues\r\n**Solution**:\r\n- Check correlation meter (keep above 0)\r\n- Reduce stereo amount to 40-60%\r\n- Use mono compatibility check\r\n\r\n---\r\n\r\n## Pro Tips\r\n\r\n✅ **Vibrato placement** - Before filter for pitch modulation, after filter for tonal vibrato\r\n✅ **Layer strategically** - Different vibrato settings on each pad layer creates complexity\r\n✅ **Automate depth** - Static vibrato gets boring; automate for expression\r\n✅ **Match genre** - Lo-fi wants slow drift, electronic wants fast modulation\r\n✅ **Preserve transients** - Use lower mix % on plucks/bells to keep attack intact\r\n✅ **Mono bass** - Always keep stereo at 0% for sub and bass synths\r\n✅ **Reference tracks** - Match vibrato intensity to professional productions\r\n✅ **A/B testing** - Frequently bypass to ensure vibrato enhances, not distracts\r\n✅ **CPU management** - Bounce synths with vibrato to audio if not automating\r\n✅ **Experiment with shapes** - Triangle/Sawtooth can add unique character\r\n",
+      "vocals": "# Fruity Vibrator - Vocal Workflows\r\n\r\n## Overview\r\nComprehensive workflows for adding vibrato to vocals across hip-hop and R&B production. Focus on natural expression, genre-specific techniques, and creative processing.\r\n\r\n---\r\n\r\n## Lead Vocal Processing\r\n\r\n### Workflow 1: Natural R&B Vibrato\r\n**Genre**: R&B, Neo-Soul, Melodic Hip-Hop\r\n\r\n**Steps**:\r\n1. Insert Fruity Vibrator on lead vocal track (post-EQ, pre-compression)\r\n2. Set **Frequency** to 5-6 Hz\r\n3. Set **Depth** to 20-30%\r\n4. Set **Shape** to Sine\r\n5. Set **Attack** to 150-300ms\r\n6. Keep **Stereo** at 0% (mono)\r\n7. Set **Mix** to 90-100%\r\n\r\n**Adjustment Process**:\r\n- Listen for natural vibrato timing (attack should match singer's breath)\r\n- Increase depth until noticeable, then reduce by 5%\r\n- For more emotional sections, increase attack to 400-500ms\r\n\r\n**Result**: Smooth, natural vibrato that enhances vocal expressiveness without sounding processed\r\n\r\n**Artists/Reference**: SZA, H.E.R., Summer Walker, Brent Faiyaz\r\n\r\n---\r\n\r\n### Workflow 2: Auto-Tune Compatible Vibrato\r\n**Genre**: Modern Trap, Melodic Rap\r\n\r\n**Steps**:\r\n1. Apply auto-tune/pitch correction first\r\n2. Insert Fruity Vibrator after auto-tune\r\n3. Set **Frequency** to 5 Hz (matches typical auto-tune vibrato)\r\n4. Set **Depth** to 15-20% (less than natural to avoid conflict)\r\n5. Set **Shape** to Sine\r\n6. Set **Attack** to 0-50ms (immediate)\r\n7. Set **Mix** to 70-85%\r\n\r\n**Critical Notes**:\r\n- Lower depth prevents fighting with auto-tune's own vibrato\r\n- If auto-tune has vibrato enabled, reduce Fruity Vibrator depth to 10-15%\r\n- Fast attack works better with heavily tuned vocals\r\n\r\n**Result**: Enhanced tuned vocal with controlled vibrato movement\r\n\r\n**Artists/Reference**: Travis Scott, Lil Baby, Gunna, Roddy Ricch\r\n\r\n---\r\n\r\n### Workflow 3: Emotional Ballad Vibrato\r\n**Genre**: Emo Rap, Moody Hip-Hop, Sad Trap\r\n\r\n**Steps**:\r\n1. Insert Fruity Vibrator on vocal track\r\n2. Set **Frequency** to 4-4.5 Hz (slower = more emotional)\r\n3. Set **Depth** to 30-40% (pronounced)\r\n4. Set **Shape** to Sine\r\n5. Set **Attack** to 300-600ms (delayed onset)\r\n6. Keep **Stereo** at 0%\r\n7. Set **Mix** to 100%\r\n\r\n**Automation**:\r\n- Automate **Depth** higher (40-50%) on climactic lines\r\n- Automate **Attack** longer (800-1000ms) on sustained notes\r\n- Reduce vibrato to 0% on spoken/rap sections\r\n\r\n**Result**: Vulnerable, expressive vibrato that builds emotion on sustained notes\r\n\r\n**Artists/Reference**: Juice WRLD, Lil Peep, XXXTentacion, Trippie Redd\r\n\r\n---\r\n\r\n## Background Vocal Processing\r\n\r\n### Workflow 4: Stereo Background Vocals\r\n**Genre**: All Hip-Hop Subgenres\r\n\r\n**Steps**:\r\n1. Pan background vocals left/right (doubles)\r\n2. Insert Fruity Vibrator on each background vocal track\r\n3. Set **Frequency** to 4-5 Hz\r\n4. Set **Depth** to 20-25%\r\n5. Set **Shape** to Sine\r\n6. Left Channel: **Stereo** at +30%, **Phase** at 0°\r\n7. Right Channel: **Stereo** at -30%, **Phase** at 90°\r\n8. Set **Attack** to 100-200ms\r\n9. Set **Mix** to 60-80%\r\n\r\n**Result**: Wide, animated background vocals that support lead without competing\r\n\r\n---\r\n\r\n### Workflow 5: Choir/Harmony Stack\r\n**Genre**: Gospel Hip-Hop, Soul Rap\r\n\r\n**Steps**:\r\n1. Create 3-5 harmony vocal layers\r\n2. Insert Fruity Vibrator on harmony bus/group\r\n3. Set **Frequency** to 5.5-6.5 Hz\r\n4. Set **Depth** to 25-35%\r\n5. Set **Shape** to Sine\r\n6. Set **Stereo** to 40-50%\r\n7. Set **Attack** to 200ms\r\n8. Set **Mix** to 100%\r\n\r\n**Enhancement**:\r\n- Individual layers: vary phase (0°, 90°, 180°, 270°)\r\n- Creates complex, evolving vibrato across harmony stack\r\n\r\n**Artists/Reference**: Kanye West, Chance the Rapper, Kirk Franklin\r\n\r\n---\r\n\r\n## Creative Vocal Effects\r\n\r\n### Workflow 6: Alien/Robot Voice\r\n**Genre**: Experimental Hip-Hop, Glitch\r\n\r\n**Steps**:\r\n1. Insert Fruity Vibrator on vocal FX send\r\n2. Set **Frequency** to 12-15 Hz (very fast)\r\n3. Set **Depth** to 60-80%\r\n4. Set **Shape** to Random or Square\r\n5. Set **Stereo** to 70-90%\r\n6. Set **Attack** to 0ms\r\n7. Set **Mix** to 100%\r\n\r\n**Additional Processing**:\r\n- Add distortion or bit crushing after vibrator\r\n- Blend with dry signal via send/return (20-40% wet)\r\n\r\n**Use Cases**: Ad-libs, transition effects, backing textures\r\n\r\n**Artists/Reference**: Travis Scott, JPEGMAFIA, Death Grips\r\n\r\n---\r\n\r\n### Workflow 7: Vintage Lo-Fi Vocal\r\n**Genre**: Lo-Fi Hip-Hop, Boom Bap\r\n\r\n**Steps**:\r\n1. Insert Fruity Vibrator on vocal track\r\n2. Set **Frequency** to 0.4-0.8 Hz (very slow)\r\n3. Set **Depth** to 35-45%\r\n4. Set **Shape** to Random\r\n5. Set **Stereo** to 20-30%\r\n6. Set **Attack** to 0ms\r\n7. Set **Mix** to 70-85%\r\n\r\n**Additional Chain**:\r\n- Add subtle tape saturation before vibrator\r\n- Low-pass filter at 10-12kHz after vibrator\r\n- Vinyl crackle/noise layer underneath\r\n\r\n**Result**: Tape/vinyl warble effect for nostalgic aesthetic\r\n\r\n**Artists/Reference**: MF DOOM, Nujabes, J Dilla\r\n\r\n---\r\n\r\n### Workflow 8: Doubled Lead with Vibrato Offset\r\n**Genre**: Pop Rap, Alternative Hip-Hop\r\n\r\n**Steps**:\r\n1. Duplicate lead vocal to two tracks\r\n2. **Track 1 (Main)**:\r\n   - Frequency: 5.5 Hz\r\n   - Depth: 25%\r\n   - Shape: Sine\r\n   - Stereo: 0%\r\n   - Phase: 0°\r\n   - Mix: 100%\r\n\r\n3. **Track 2 (Double)**:\r\n   - Frequency: 5.5 Hz\r\n   - Depth: 25%\r\n   - Shape: Sine\r\n   - Stereo: 0%\r\n   - Phase: 180° (opposite)\r\n   - Mix: 100%\r\n   - Level: -6dB to -10dB\r\n\r\n**Result**: Thick, chorused lead vocal with natural movement\r\n\r\n**Artists/Reference**: Post Malone, Machine Gun Kelly\r\n\r\n---\r\n\r\n## Genre-Specific Vocal Chains\r\n\r\n### Boom Bap / Classic Hip-Hop\r\n```\r\nVocal → EQ (cut mud) → Fruity Vibrator (5Hz, 20%, Sine, 200ms attack) → Compressor → Reverb\r\n```\r\n- Minimal vibrato preserves authenticity\r\n- Focus on natural vocal delivery\r\n\r\n### Modern Trap\r\n```\r\nVocal → Auto-Tune → Fruity Vibrator (5Hz, 15%, Sine, 0ms attack) → De-Esser → Delay\r\n```\r\n- Vibrator complements auto-tune\r\n- Shallow depth avoids over-modulation\r\n\r\n### R&B / Neo-Soul\r\n```\r\nVocal → Fruity Vibrator (5.5Hz, 30%, Sine, 250ms attack) → EQ → Compressor → Chorus → Reverb\r\n```\r\n- Vibrato placed early for natural expression\r\n- Higher depth for soulful character\r\n\r\n### Lo-Fi Hip-Hop\r\n```\r\nVocal → EQ (roll off highs) → Fruity Vibrator (0.5Hz, 40%, Random, 0ms) → Saturation → Bit Crusher\r\n```\r\n- Slow random vibrato mimics tape warble\r\n- Part of vintage processing chain\r\n\r\n### Emo/Moody Rap\r\n```\r\nVocal → Fruity Vibrator (4Hz, 35%, Sine, 400ms attack) → Compression → Heavy Reverb/Delay\r\n```\r\n- Delayed attack adds emotional vulnerability\r\n- Works with ambient, spacious production\r\n\r\n---\r\n\r\n## Troubleshooting\r\n\r\n### Problem: Vibrato Sounds Robotic\r\n**Solution**: \r\n- Increase attack time to 200-400ms\r\n- Reduce depth by 10%\r\n- Ensure shape is set to Sine, not Square\r\n\r\n### Problem: Vibrato Too Obvious\r\n**Solution**:\r\n- Reduce depth to 15-20%\r\n- Decrease mix to 60-80%\r\n- Use longer attack time (300ms+)\r\n\r\n### Problem: Conflicts with Auto-Tune\r\n**Solution**:\r\n- Disable auto-tune's vibrato or reduce Fruity Vibrator depth to <20%\r\n- Place vibrator after auto-tune in chain\r\n- Use shallower modulation (10-15% depth)\r\n\r\n### Problem: Sounds Unnatural on Fast Lyrics\r\n**Solution**:\r\n- Automate vibrato off during fast rap sections\r\n- Only enable on sustained notes/hooks\r\n- Use sidechain to disable during consonants (advanced)\r\n\r\n### Problem: Phase Issues in Stereo\r\n**Solution**:\r\n- Keep stereo at 0% for mono vocal sources\r\n- Check correlation meter (should stay above 0)\r\n- Use mono compatibility check\r\n\r\n---\r\n\r\n## Advanced Techniques\r\n\r\n### Sidechain Vibrato Ducking\r\n1. Send vocal to sidechain detector\r\n2. Link detector to Fruity Vibrator depth via automation\r\n3. Vibrato reduces during loud/aggressive sections\r\n4. Increases during soft/emotional sections\r\n\r\n### Formant Preservation\r\n- Fruity Vibrator affects pitch, which can shift formants\r\n- For natural sound, use formant-preserving pitch shifter in parallel\r\n- Blend shifted signal to maintain vocal character\r\n\r\n### MIDI-Controlled Vibrato\r\n1. Link Fruity Vibrator depth to MIDI controller\r\n2. Perform vibrato amount in real-time during recording\r\n3. Capture automation for expressive control\r\n\r\n---\r\n\r\n## Pro Tips\r\n\r\n✅ **Always A/B test** - Bypass vibrator frequently to ensure it's enhancing, not masking\r\n✅ **Less on compressed vocals** - Heavy compression reduces dynamic range; subtler vibrato works better\r\n✅ **Pitch correction first** - Apply pitch correction before vibrato for cleanest results\r\n✅ **Match the performance** - Natural vibrato should complement singer's style\r\n✅ **Automate for dynamics** - More vibrato on long notes, less on rhythmic sections\r\n✅ **Check in mono** - Ensure vibrato doesn't cause phase issues\r\n✅ **Genre matters** - Trap wants less, R&B wants more\r\n✅ **Attack time is key** - Delayed vibrato onset sounds more human\r\n✅ **Blend with dry** - 80-90% mix often better than 100%\r\n✅ **Reference professional tracks** - Match vibrato intensity to similar artists\r\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Vibrator\r\n\r\nThis section contains workflow information for the fruity-vibrator plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Vibrator\r\n\r\nThis section contains reference information for the fruity-vibrator plugin.\r\n"
+    }
+  }
+}

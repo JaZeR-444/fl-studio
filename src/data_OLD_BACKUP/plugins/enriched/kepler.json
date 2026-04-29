@@ -1,0 +1,2903 @@
+{
+  "id": "kepler",
+  "name": "Kepler",
+  "presets": {
+    "genre-presets": {
+      "metadata": {
+        "plugin": "Kepler",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "genres": [
+          "hip-hop/rap",
+          "R&B",
+          "EDM",
+          "trap",
+          "lo-fi",
+          "drill"
+        ],
+        "description": "Comprehensive genre-aware presets for Kepler virtual analog synthesizer"
+      },
+      "presets": {
+        "hip-hop-bass": {
+          "name": "808 Thunder",
+          "genre": "hip-hop/rap",
+          "mood": "dark",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 0,
+              "mix": 80
+            },
+            "oscillator2": {
+              "waveform": "square",
+              "octave": "-2",
+              "detune": 7,
+              "mix": 60
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 180,
+              "resonance": 25,
+              "drive": 15,
+              "envAmt": 85,
+              "envVel": 40
+            },
+            "envelope": {
+              "attack": 5,
+              "decay": 180,
+              "sustain": 60,
+              "release": 120
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 0.5,
+              "amt": 20,
+              "dest": "filterCutoff"
+            }
+          },
+          "chain": {
+            "pre": [
+              "Fruity Parametric EQ 2 - High-cut 200Hz, +3dB at 80Hz"
+            ],
+            "post": [
+              "Fruity Limiter - Threshold -18dB, Ratio 4:1, Makeup +6dB"
+            ]
+          },
+          "genreTags": [
+            "hip-hop/rap",
+            "trap",
+            "drill",
+            "dark"
+          ],
+          "a/bTesting": {
+            "testA": "Filter resonance at 25, sub audible",
+            "testB": "Filter resonance at 45, more character"
+          },
+          "troubleshooting": {
+            "muddyMix": "High-pass filter at 30Hz on full mix",
+            "clipping": "Reduce oscillator mix levels by 15%"
+          }
+        },
+        "hip-hop-bass-2": {
+          "name": "Mid-Range Growler",
+          "genre": "hip-hop/rap",
+          "mood": "aggressive",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 0,
+              "mix": 100
+            },
+            "oscillator2": {
+              "waveform": "square",
+              "octave": "-1",
+              "detune": 5,
+              "mix": 70
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 650,
+              "resonance": 40,
+              "drive": 25,
+              "envAmt": 90,
+              "envVel": 50
+            },
+            "envelope": {
+              "attack": 2,
+              "decay": 150,
+              "sustain": 50,
+              "release": 100
+            },
+            "lfo": {
+              "waveform": "square",
+              "rate": 2,
+              "amt": 30,
+              "dest": "filterCutoff"
+            }
+          },
+          "chain": {
+            "pre": [
+              "Fruity Parametric EQ 2 - Bell +4dB at 400Hz"
+            ],
+            "post": [
+              "Fruity Compressor - Attack 10ms, Release 80ms, Ratio 3:1"
+            ]
+          },
+          "genreTags": [
+            "hip-hop/rap",
+            "aggressive",
+            "hard"
+          ],
+          "a/bTesting": {
+            "testA": "LFO rate at 2Hz for rhythmic pulsing",
+            "testB": "LFO off for static tone"
+          },
+          "troubleshooting": {
+            "harshness": "High-shelf cut above 4kHz by 3dB",
+            "weakImpact": "Increase filter drive to 35%"
+          }
+        },
+        "rb-lead": {
+          "name": "Silk Lead",
+          "genre": "R&B",
+          "mood": "moody",
+          "settings": {
+            "oscillator1": {
+              "waveform": "sine",
+              "octave": "0",
+              "detune": 0,
+              "mix": 100
+            },
+            "oscillator2": {
+              "waveform": "triangle",
+              "octave": "0",
+              "detune": 3,
+              "mix": 50
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 2200,
+              "resonance": 15,
+              "drive": 5,
+              "envAmt": 30,
+              "envVel": 20
+            },
+            "envelope": {
+              "attack": 50,
+              "decay": 400,
+              "sustain": 70,
+              "release": 300
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 0.25,
+              "amt": 15,
+              "dest": "pan"
+            }
+          },
+          "chain": {
+            "pre": [
+              "Soft clipper - 2dB input reduction"
+            ],
+            "post": [
+              "Reverb - Hall, Decay 2.5s, Pre-delay 30ms, Mix 20%"
+            ]
+          },
+          "genreTags": [
+            "R&B",
+            "moody",
+            "smooth",
+            "melodic"
+          ],
+          "a/bTesting": {
+            "testA": "Pan LFO on for movement",
+            "testB": "Pan LFO off for centered mono"
+          },
+          "troubleshooting": {
+            "harshHighs": "Reduce oscillator2 mix to 30%",
+            "tooDark": "Increase filter cutoff to 2800Hz"
+          }
+        },
+        "rb-bass": {
+          "name": "Punchy Foundation",
+          "genre": "R&B",
+          "mood": "funky",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 80
+            },
+            "oscillator2": {
+              "waveform": "square",
+              "octave": "-2",
+              "detune": 2,
+              "mix": 40
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 800,
+              "resonance": 35,
+              "drive": 12,
+              "envAmt": 70,
+              "envVel": 60
+            },
+            "envelope": {
+              "attack": 3,
+              "decay": 120,
+              "sustain": 65,
+              "release": 150
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 0.8,
+              "amt": 25,
+              "dest": "filterCutoff"
+            }
+          },
+          "chain": {
+            "pre": [
+              "High-pass filter at 40Hz"
+            ],
+            "post": [
+              "Fruity Compressor - Attack 15ms, Release 90ms, Ratio 2.5:1"
+            ]
+          },
+          "genreTags": [
+            "R&B",
+            "funky",
+            "groove",
+            "smooth"
+          ],
+          "a/bTesting": {
+            "testA": "Filter env amount at 70 for punch",
+            "testB": "Filter env amount at 40 for smoother attack"
+          },
+          "troubleshooting": {
+            "muddyLowEnd": "Cut below 60Hz on bass channel",
+            "maskingVocals": "EQ dip at 300-500Hz by 2dB"
+          }
+        },
+        "edm-lead": {
+          "name": "Supersaw Hero",
+          "genre": "EDM",
+          "mood": "electric",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 0,
+              "mix": 90
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 7,
+              "mix": 90
+            },
+            "oscillator3": {
+              "waveform": "saw",
+              "octave": "+1",
+              "detune": 14,
+              "mix": 70
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 4000,
+              "resonance": 50,
+              "drive": 20,
+              "envAmt": 80,
+              "envVel": 40
+            },
+            "envelope": {
+              "attack": 20,
+              "decay": 250,
+              "sustain": 60,
+              "release": 400
+            },
+            "lfo": {
+              "waveform": "saw-up",
+              "rate": 0.5,
+              "amt": 40,
+              "dest": "filterCutoff"
+            }
+          },
+          "chain": {
+            "pre": [
+              "Soft clipper - 3dB reduction"
+            ],
+            "post": [
+              "Fruity Limiter - Ceiling -0.3dB, Gain 6dB",
+              "Delay - Stereo, 300ms, Feedback 40%, Mix 25%"
+            ]
+          },
+          "genreTags": [
+            "EDM",
+            "big room",
+            "electric",
+            "anthem"
+          ],
+          "a/bTesting": {
+            "testA": "3 oscillators for massive sound",
+            "testB": "2 oscillators for tighter mix"
+          },
+          "troubleshooting": {
+            "muddyMix": "High-pass filter at 200Hz on lead channel",
+            "phaseIssues": "Invert phase on osc3 if summing issues"
+          }
+        },
+        "edm-bass": {
+          "name": "Resonance Bass",
+          "genre": "EDM",
+          "mood": "electric",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 0,
+              "mix": 100
+            },
+            "oscillator2": {
+              "waveform": "square",
+              "octave": "-1",
+              "detune": 3,
+              "mix": 60
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 250,
+              "resonance": 65,
+              "drive": 30,
+              "envAmt": 100,
+              "envVel": 80
+            },
+            "envelope": {
+              "attack": 5,
+              "decay": 200,
+              "sustain": 55,
+              "release": 150
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 0.3,
+              "amt": 35,
+              "dest": "filterCutoff"
+            }
+          },
+          "chain": {
+            "pre": [
+              "Teq4 - High-pass at 45Hz"
+            ],
+            "post": [
+              "Fruity Limiter - Attack 1ms, Release 50ms, Ratio 6:1"
+            ]
+          },
+          "genreTags": [
+            "EDM",
+            "deep bass",
+            "house",
+            "techno"
+          ],
+          "a/bTesting": {
+            "testA": "High resonance for resonance sweeps",
+            "testB": "Lower resonance for consistent bass"
+          },
+          "troubleshooting": {
+            "distortedSound": "Reduce filter drive to 20%",
+            "weakSub": "Add sub oscillator routed directly to output"
+          }
+        },
+        "trap-lead": {
+          "name": "Glitch Pluck",
+          "genre": "trap",
+          "mood": "dark",
+          "settings": {
+            "oscillator1": {
+              "waveform": "square",
+              "octave": "+1",
+              "detune": 0,
+              "mix": 100
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 8,
+              "mix": 70
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 3000,
+              "resonance": 45,
+              "drive": 10,
+              "envAmt": 95,
+              "envVel": 100
+            },
+            "envelope": {
+              "attack": 1,
+              "decay": 80,
+              "sustain": 0,
+              "release": 50
+            },
+            "lfo": {
+              "waveform": "sample-hold",
+              "rate": 4,
+              "amt": 50,
+              "dest": "pitch"
+            }
+          },
+          "chain": {
+            "pre": [
+              "Teq4 - High-pass at 500Hz"
+            ],
+            "post": [
+              "Fruity Reverb 2 - Plate, Decay 1.2s, Mix 18%",
+              "Bitcrusher - 8-bit, 50% wet"
+            ]
+          },
+          "genreTags": [
+            "trap",
+            "dark",
+            "glitch",
+            "aggressive"
+          ],
+          "a/bTesting": {
+            "testA": "Sample-hold LFO for random pitch glitches",
+            "testB": "Sine LFO for regular vibrato"
+          },
+          "troubleshooting": {
+            "tooChaotic": "Reduce LFO amount to 25%",
+            "tooThin": "Add osc3 with saw wave at +2 octave"
+          }
+        },
+        "lofi-pad": {
+          "name": "Dusty Texture",
+          "genre": "lo-fi",
+          "mood": "moody",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 15,
+              "mix": 75
+            },
+            "oscillator2": {
+              "waveform": "triangle",
+              "octave": "-2",
+              "detune": 22,
+              "mix": 60
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 1500,
+              "resonance": 20,
+              "drive": 8,
+              "envAmt": 25,
+              "envVel": 15
+            },
+            "envelope": {
+              "attack": 150,
+              "decay": 500,
+              "sustain": 75,
+              "release": 800
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 0.1,
+              "amt": 20,
+              "dest": "filterCutoff"
+            }
+          },
+          "chain": {
+            "pre": [
+              "Vintage Phaser - 4 stages, 0.3Hz rate, Mix 40%"
+            ],
+            "post": [
+              "Fruity Reverb 2 - Room, Decay 3s, Mix 25%",
+              "Tape Saturation - 3% drive"
+            ]
+          },
+          "genreTags": [
+            "lo-fi",
+            "moody",
+            "chill",
+            "nostalgic"
+          ],
+          "a/bTesting": {
+            "testA": "Detune oscillators heavily for warmth",
+            "testB": "Tighter detune for cleaner sound"
+          },
+          "troubleshooting": {
+            "tooNoisy": "Reduce LFO amount to 10%",
+            "tooDark": "Increase filter cutoff to 2000Hz"
+          }
+        },
+        "drill-bass": {
+          "name": "Reaper Sub",
+          "genre": "drill",
+          "mood": "dark",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 0,
+              "mix": 90
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 5,
+              "mix": 90
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 120,
+              "resonance": 30,
+              "drive": 20,
+              "envAmt": 60,
+              "envVel": 30
+            },
+            "envelope": {
+              "attack": 8,
+              "decay": 250,
+              "sustain": 70,
+              "release": 180
+            },
+            "lfo": {
+              "waveform": "square",
+              "rate": 0.4,
+              "amt": 15,
+              "dest": "pitch"
+            }
+          },
+          "chain": {
+            "pre": [
+              "Fruity Parametric EQ 2 - High-pass at 20Hz"
+            ],
+            "post": [
+              "Fruity Limiter - Threshold -12dB, Attack 0.5ms, Release 30ms"
+            ]
+          },
+          "genreTags": [
+            "drill",
+            "dark",
+            "heavy",
+            "aggressive"
+          ],
+          "a/bTesting": {
+            "testA": "Pitch LFO on for sub wobble",
+            "testB": "Pitch LFO off for steady sub"
+          },
+          "troubleshooting": {
+            "distortedByDesign": "Keep distortion intentional, check for unwanted clipping",
+            "weakLowEnd": "Increase filter drive to 30%"
+          }
+        },
+        "ambient-pad": {
+          "name": "Ethereal Wash",
+          "genre": "ambient",
+          "mood": "moody",
+          "settings": {
+            "oscillator1": {
+              "waveform": "sine",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 100
+            },
+            "oscillator2": {
+              "waveform": "triangle",
+              "octave": "-1",
+              "detune": 12,
+              "mix": 70
+            },
+            "oscillator3": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 25,
+              "mix": 40
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 2500,
+              "resonance": 25,
+              "drive": 5,
+              "envAmt": 20,
+              "envVel": 10
+            },
+            "envelope": {
+              "attack": 500,
+              "decay": 800,
+              "sustain": 85,
+              "release": 1500
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 0.15,
+              "amt": 30,
+              "dest": "pan"
+            }
+          },
+          "chain": {
+            "pre": [
+              "Vintage Chorus - Mix 50%, Rate 0.3Hz"
+            ],
+            "post": [
+              "Fruity Reverb 2 - Cathedral, Decay 6s, Mix 30%"
+            ]
+          },
+          "genreTags": [
+            "ambient",
+            "moody",
+            "cinematic",
+            "spacey"
+          ],
+          "a/bTesting": {
+            "testA": "3 oscillators for width and depth",
+            "testB": "2 oscillators for simpler arrangements"
+          },
+          "troubleshooting": {
+            "phasingIssues": "Reduce LFO pan amount to 15%",
+            "tooBright": "Filter cutoff to 1800Hz"
+          }
+        }
+      }
+    },
+    "signature-presets": {
+      "metadata": {
+        "plugin": "Kepler",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "description": "Artist and production style inspired presets for Kepler"
+      },
+      "presets": {
+        "metro-boomin": {
+          "name": "Boomin Bass",
+          "inspiredBy": "Metro Boomin style",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 0,
+              "mix": 85
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 3,
+              "mix": 75
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 160,
+              "resonance": 35,
+              "drive": 18,
+              "envAmt": 70,
+              "envVel": 45
+            },
+            "envelope": {
+              "attack": 5,
+              "decay": 200,
+              "sustain": 65,
+              "release": 130
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 0.25,
+              "amt": 10,
+              "dest": "filterCutoff"
+            }
+          },
+          "chain": {
+            "post": [
+              "Fruity Limiter - Threshold -16dB, Ratio 4:1, Attack 1ms, Release 40ms"
+            ]
+          },
+          "characteristics": [
+            "deep",
+            "punchy",
+            "modern",
+            "cleansounding"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "trap",
+            "modern"
+          ],
+          "a/bTesting": {
+            "testA": "Filter env amount at 70 for initial punch",
+            "testB": "Filter env amount at 50 for smoother attack"
+          },
+          "troubleshooting": {
+            "notDeepEnough": "High-pass full mix at 35Hz to create space",
+            "tooMuchSub": "Sidechain to kick at 0.3s release"
+          }
+        },
+        "zaytoven": {
+          "name": "MIDI Pluck",
+          "inspiredBy": "Zaytoven style",
+          "settings": {
+            "oscillator1": {
+              "waveform": "square",
+              "octave": "+1",
+              "detune": 0,
+              "mix": 100
+            },
+            "oscillator2": {
+              "waveform": "triangle",
+              "octave": "0",
+              "detune": 2,
+              "mix": 50
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 2800,
+              "resonance": 40,
+              "drive": 8,
+              "envAmt": 90,
+              "envVel": 100
+            },
+            "envelope": {
+              "attack": 2,
+              "decay": 60,
+              "sustain": 0,
+              "release": 40
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 0.5,
+              "amt": 5,
+              "dest": "pitch"
+            }
+          },
+          "chain": {
+            "post": [
+              "Fruity Reverb 2 - Small Room, Decay 0.8s, Mix 15%",
+              "Fruity Compressor - Fast attack, Ratio 3:1"
+            ]
+          },
+          "characteristics": [
+            "plucky",
+            "bright",
+            "melodic",
+            "groove"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "R&B",
+            "melodic"
+          ],
+          "a/bTesting": {
+            "testA": "Square wave for classic MIDI feel",
+            "testB": "Add saw for modern edge"
+          },
+          "troubleshooting": {
+            "tooClicky": "Increase envelope attack to 5ms",
+            "sustainingTooLong": "Reduce sustain to 0, increase release slightly"
+          }
+        },
+        "mike-will": {
+          "name": "Future Bass",
+          "inspiredBy": "Mike Will Made-It style",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 0,
+              "mix": 90
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 7,
+              "mix": 90
+            },
+            "oscillator3": {
+              "waveform": "saw",
+              "octave": "+1",
+              "detune": 14,
+              "mix": 60
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 3500,
+              "resonance": 45,
+              "drive": 15,
+              "envAmt": 75,
+              "envVel": 35
+            },
+            "envelope": {
+              "attack": 10,
+              "decay": 180,
+              "sustain": 55,
+              "release": 250
+            },
+            "lfo": {
+              "waveform": "saw-down",
+              "rate": 0.25,
+              "amt": 50,
+              "dest": "filterCutoff"
+            }
+          },
+          "chain": {
+            "pre": [
+              "Soft clipper - 2dB input"
+            ],
+            "post": [
+              "Fruity Reverb 2 - Large Hall, Decay 3.5s, Mix 25%",
+              "Fruity Limiter - Ceiling -0.5dB"
+            ]
+          },
+          "characteristics": [
+            "wide",
+            "bright",
+            "uplifting",
+            "melodic"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "R&B",
+            "future bass"
+          ],
+          "a/bTesting": {
+            "testA": "Filter sweep down on attack",
+            "testB": "Static filter for sustained chords"
+          },
+          "troubleshooting": {
+            "muddyArrangement": "High-pass synth at 300Hz except on bass notes",
+            "maskingVocals": "Notch EQ at 2-3kHz on synth"
+          }
+        },
+        "sounwave": {
+          "name": "West Coast Drfill",
+          "inspiredBy": "Sounwave style (TDE)",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 80
+            },
+            "oscillator2": {
+              "waveform": "square",
+              "octave": "-2",
+              "detune": 4,
+              "mix": 55
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 600,
+              "resonance": 30,
+              "drive": 12,
+              "envAmt": 65,
+              "envVel": 50
+            },
+            "envelope": {
+              "attack": 8,
+              "decay": 220,
+              "sustain": 60,
+              "release": 200
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 0.35,
+              "amt": 20,
+              "dest": "pan"
+            }
+          },
+          "chain": {
+            "post": [
+              "Fruity Parametric EQ 2 - High-shelf +2dB at 4kHz",
+              "Fruity Compressor - Soft knee, Ratio 2:1"
+            ]
+          },
+          "characteristics": [
+            "smooth",
+            "warm",
+            "moody",
+            "spacey"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "West Coast",
+            "moody"
+          ],
+          "a/bTesting": {
+            "testA": "Pan movement for width",
+            "testB": "Mono for punch"
+          },
+          "troubleshooting": {
+            "tooDark": "Increase filter cutoff by 100Hz increments",
+            "lacksCharacter": "Add subtle bitcrusher after Kepler"
+          }
+        },
+        "travis-scott": {
+          "name": "Auto-Tune Lead",
+          "inspiredBy": "Travis Scott atmospheric leads",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 0,
+              "mix": 85
+            },
+            "oscillator2": {
+              "waveform": "triangle",
+              "octave": "0",
+              "detune": 6,
+              "mix": 65
+            },
+            "filter": {
+              "type": "bandpass",
+              "cutoff": 2000,
+              "resonance": 35,
+              "drive": 10,
+              "envAmt": 40,
+              "envVel": 30
+            },
+            "envelope": {
+              "attack": 30,
+              "decay": 350,
+              "sustain": 70,
+              "release": 400
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 0.2,
+              "amt": 15,
+              "dest": "filterCutoff"
+            }
+          },
+          "chain": {
+            "pre": [
+              "Fruity Parametric EQ 2 - Band-pass filter"
+            ],
+            "post": [
+              "Fruity Reverb 2 - Large Room, Decay 2.5s, Mix 35%",
+              "Tape Delay - 400ms, Feedback 35%, Mix 20%"
+            ]
+          },
+          "characteristics": [
+            "spacey",
+            "atmospheric",
+            "wide",
+            "melodic"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "trap",
+            "atmospheric"
+          ],
+          "a/bTesting": {
+            "testA": "Bandpass filter for focused sound",
+            "testB": "Lowpass filter for warmer tone"
+          },
+          "troubleshooting": {
+            "tooMidFocused": "Widen bandpass Q to 25",
+            "lacksSpace": "Increase reverb mix to 45%"
+          }
+        },
+        "21-savage": {
+          "name": "Monolithic Sub",
+          "inspiredBy": "21 Savage deep bass aesthetic",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 0,
+              "mix": 100
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 2,
+              "mix": 80
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 100,
+              "resonance": 25,
+              "drive": 25,
+              "envAmt": 50,
+              "envVel": 25
+            },
+            "envelope": {
+              "attack": 10,
+              "decay": 300,
+              "sustain": 80,
+              "release": 250
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 0.15,
+              "amt": 8,
+              "dest": "pitch"
+            }
+          },
+          "chain": {
+            "pre": [
+              "High-pass at 25Hz on everything except bass"
+            ],
+            "post": [
+              "Fruity Limiter - Low threshold, slow attack, heavy compression"
+            ]
+          },
+          "characteristics": [
+            "deep",
+            "heavy",
+            "monolithic",
+            "dark"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "drill",
+            "dark trap"
+          ],
+          "a/bTesting": {
+            "testA": "Low filter cutoff for pure sub",
+            "testB": "Higher cutoff for more harmonic content"
+          },
+          "troubleshooting": {
+            "distortedOutput": "Reduce filter drive to 15%",
+            "notScaryEnough": "Add parallel distortion layer"
+          }
+        },
+        "the-weeknd": {
+          "name": "Night Drive Pad",
+          "inspiredBy": "The Weeknd 80s retro synths",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 85
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "-1",
+              "detune": 8,
+              "mix": 85
+            },
+            "oscillator3": {
+              "waveform": "square",
+              "octave": "0",
+              "detune": 16,
+              "mix": 50
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 2800,
+              "resonance": 35,
+              "drive": 10,
+              "envAmt": 35,
+              "envVel": 20
+            },
+            "envelope": {
+              "attack": 200,
+              "decay": 500,
+              "sustain": 80,
+              "release": 800
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 0.1,
+              "amt": 40,
+              "dest": "pan"
+            }
+          },
+          "chain": {
+            "pre": [
+              "Vintage Chorus - Mix 45%, Depth 60%"
+            ],
+            "post": [
+              "Fruity Reverb 2 - Tape, Decay 4s, Mix 20%",
+              "Fruity Parametric EQ 2 - High-shelf +3dB at 6kHz"
+            ]
+          },
+          "characteristics": [
+            "retro",
+            "warm",
+            "wide",
+            "nostalgic"
+          ],
+          "genreTags": [
+            "R&B",
+            "synthwave",
+            "retro",
+            "moody"
+          ],
+          "a/bTesting": {
+            "testA": "Heavy detune for chorus-like effect",
+            "testB": "Tighter detune for cleaner sound"
+          },
+          "troubleshooting": {
+            "phaseCancellation": "Mono the bass frequencies below 200Hz",
+            "tooBusy": "Reduce LFO pan rate"
+          }
+        },
+        "drake": {
+          "name": "OVO Lead",
+          "inspiredBy": "Drake melodic delivery style",
+          "settings": {
+            "oscillator1": {
+              "waveform": "triangle",
+              "octave": "0",
+              "detune": 0,
+              "mix": 100
+            },
+            "oscillator2": {
+              "waveform": "sine",
+              "octave": "0",
+              "detune": 4,
+              "mix": 60
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 3500,
+              "resonance": 20,
+              "drive": 5,
+              "envAmt": 25,
+              "envVel": 15
+            },
+            "envelope": {
+              "attack": 40,
+              "decay": 400,
+              "sustain": 75,
+              "release": 350
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 0.3,
+              "amt": 10,
+              "dest": "filterCutoff"
+            }
+          },
+          "chain": {
+            "post": [
+              "Fruity Reverb 2 - Studio, Decay 1.5s, Mix 18%",
+              "Fruity Compressor - Soft attack, Ratio 2.5:1"
+            ]
+          },
+          "characteristics": [
+            "smooth",
+            "melodic",
+            "clean",
+            "forward"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "R&B",
+            "melodic"
+          ],
+          "a/bTesting": {
+            "testA": "Triangle wave for soft attack",
+            "testB": "Add saw wave for presence"
+          },
+          "troubleshooting": {
+            "tooSoft": "Increase drive to 12%",
+            "maskingVocals": "Sidechain to lead vocals"
+          }
+        },
+        "metro-boomin-bass": {
+          "name": "If-You-Know-You-Know",
+          "inspiredBy": "Metro Boomin signature bass stab",
+          "settings": {
+            "oscillator1": {
+              "waveform": "saw",
+              "octave": "-2",
+              "detune": 0,
+              "mix": 100
+            },
+            "oscillator2": {
+              "waveform": "square",
+              "octave": "-1",
+              "detune": 0,
+              "mix": 70
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 250,
+              "resonance": 50,
+              "drive": 22,
+              "envAmt": 85,
+              "envVel": 70
+            },
+            "envelope": {
+              "attack": 3,
+              "decay": 120,
+              "sustain": 45,
+              "release": 80
+            },
+            "lfo": {
+              "waveform": "square",
+              "rate": 1,
+              "amt": 20,
+              "dest": "filterCutoff"
+            }
+          },
+          "chain": {
+            "post": [
+              "Fruity Limiter - Fast attack 0.5ms, Release 25ms, Ratio 6:1"
+            ]
+          },
+          "characteristics": [
+            "punchy",
+            "aggressive",
+            "immediate",
+            "标志性"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "trap",
+            "hard"
+          ],
+          "a/bTesting": {
+            "testA": "Square wave on osc2 for snappy attack",
+            "testB": "Remove osc2 for smoother bass"
+          },
+          "troubleshooting": {
+            "clippingOnHits": "Increase release on limiter to 35ms",
+            "notPunchyEnough": "Shorten envelope decay to 100ms"
+          }
+        },
+        "pierre-bourne": {
+          "name": "Trinidad Jame$",
+          "inspiredBy": "Pierre Bourne plucks",
+          "settings": {
+            "oscillator1": {
+              "waveform": "square",
+              "octave": "+1",
+              "detune": 0,
+              "mix": 100
+            },
+            "oscillator2": {
+              "waveform": "saw",
+              "octave": "0",
+              "detune": 5,
+              "mix": 80
+            },
+            "filter": {
+              "type": "lowpass",
+              "cutoff": 4000,
+              "resonance": 55,
+              "drive": 8,
+              "envAmt": 95,
+              "envVel": 100
+            },
+            "envelope": {
+              "attack": 1,
+              "decay": 50,
+              "sustain": 0,
+              "release": 30
+            },
+            "lfo": {
+              "waveform": "sine",
+              "rate": 3,
+              "amt": 8,
+              "dest": "pitch"
+            }
+          },
+          "chain": {
+            "post": [
+              "Fruity Reverb 2 - Small Room, Decay 0.5s, Mix 12%",
+              "Fruity Compressor - Fast attack 1ms, Ratio 4:1"
+            ]
+          },
+          "characteristics": [
+            "bouncy",
+            "plucky",
+            "fun",
+            "repetitive"
+          ],
+          "genreTags": [
+            "hip-hop/rap",
+            "trap",
+            "playful"
+          ],
+          "a/bTesting": {
+            "testA": "Very short decay for plucky sound",
+            "testB": "Longer decay for sustained plucks"
+          },
+          "troubleshooting": {
+            "tooClicky": "Increase attack to 2ms",
+            "losingDefinition": "Notch EQ at 800Hz by 2dB"
+          }
+        }
+      }
+    },
+    "01-808-thunder": {
+      "metadata": {
+        "plugin": "Kepler",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "808 Thunder",
+        "category": "genre",
+        "genre": "hip-hop/rap",
+        "mood": "dark"
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "-2",
+          "detune": 0,
+          "mix": 80
+        },
+        "oscillator2": {
+          "waveform": "square",
+          "octave": "-2",
+          "detune": 7,
+          "mix": 60
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 180,
+          "resonance": 25,
+          "drive": 15,
+          "envAmt": 85,
+          "envVel": 40
+        },
+        "envelope": {
+          "attack": 5,
+          "decay": 180,
+          "sustain": 60,
+          "release": 120
+        },
+        "lfo": {
+          "waveform": "sine",
+          "rate": 0.5,
+          "amt": 20,
+          "dest": "filterCutoff"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Fruity Parametric EQ 2 - High-cut 200Hz, +3dB at 80Hz"
+        ],
+        "post": [
+          "Fruity Limiter - Threshold -18dB, Ratio 4:1, Makeup +6dB"
+        ]
+      },
+      "genreTags": [
+        "hip-hop/rap",
+        "trap",
+        "drill",
+        "dark"
+      ],
+      "a/bTesting": {
+        "testA": "Filter resonance at 25, sub audible",
+        "testB": "Filter resonance at 45, more character"
+      },
+      "troubleshooting": {
+        "muddyMix": "High-pass filter at 30Hz on full mix",
+        "clipping": "Reduce oscillator mix levels by 15%"
+      }
+    },
+    "02-mid-range-growler": {
+      "metadata": {
+        "plugin": "Kepler",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Mid-Range Growler",
+        "category": "genre",
+        "genre": "hip-hop/rap",
+        "mood": "aggressive"
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "0",
+          "detune": 0,
+          "mix": 100
+        },
+        "oscillator2": {
+          "waveform": "square",
+          "octave": "-1",
+          "detune": 5,
+          "mix": 70
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 650,
+          "resonance": 40,
+          "drive": 25,
+          "envAmt": 90,
+          "envVel": 50
+        },
+        "envelope": {
+          "attack": 2,
+          "decay": 150,
+          "sustain": 50,
+          "release": 100
+        },
+        "lfo": {
+          "waveform": "square",
+          "rate": 2,
+          "amt": 30,
+          "dest": "filterCutoff"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Fruily Parametric EQ 2 - Bell +4dB at 400Hz"
+        ],
+        "post": [
+          "Fruily Compressor - Attack 10ms, Release 80ms, Ratio 3:1"
+        ]
+      },
+      "genreTags": [
+        "hip-hop/rap",
+        "aggressive",
+        "hard"
+      ],
+      "a/bTesting": {
+        "testA": "LFO rate at 2Hz for rhythmic pulsing",
+        "testB": "LFO off for static tone"
+      },
+      "troubleshooting": {
+        "harshness": "High-shelf cut above 4kHz by 3dB",
+        "weakImpact": "Increase filter drive to 35%"
+      }
+    },
+    "03-silk-lead": {
+      "metadata": {
+        "plugin": "Kepler",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Silk Lead",
+        "category": "genre",
+        "genre": "R&B",
+        "mood": "moody"
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "sine",
+          "octave": "0",
+          "detune": 0,
+          "mix": 100
+        },
+        "oscillator2": {
+          "waveform": "triangle",
+          "octave": "0",
+          "detune": 3,
+          "mix": 50
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 2200,
+          "resonance": 15,
+          "drive": 5,
+          "envAmt": 30,
+          "envVel": 20
+        },
+        "envelope": {
+          "attack": 50,
+          "decay": 400,
+          "sustain": 70,
+          "release": 300
+        },
+        "lfo": {
+          "waveform": "sine",
+          "rate": 0.25,
+          "amt": 15,
+          "dest": "pan"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Soft clipper - 2dB input reduction"
+        ],
+        "post": [
+          "Reverb - Hall, Decay 2.5s, Pre-delay 30ms, Mix 20%"
+        ]
+      },
+      "genreTags": [
+        "R&B",
+        "moody",
+        "smooth",
+        "melodic"
+      ],
+      "a/bTesting": {
+        "testA": "Pan LFO on for movement",
+        "testB": "Pan LFO off for centered mono"
+      },
+      "troubleshooting": {
+        "harshHighs": "Reduce oscillator2 mix to 30%",
+        "tooDark": "Increase filter cutoff to 2800Hz"
+      }
+    },
+    "04-punchy-foundation": {
+      "metadata": {
+        "plugin": "Kepler",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Punchy Foundation",
+        "category": "genre",
+        "genre": "R&B",
+        "mood": "funky"
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "-1",
+          "detune": 0,
+          "mix": 80
+        },
+        "oscillator2": {
+          "waveform": "square",
+          "octave": "-2",
+          "detune": 2,
+          "mix": 40
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 800,
+          "resonance": 35,
+          "drive": 12,
+          "envAmt": 70,
+          "envVel": 60
+        },
+        "envelope": {
+          "attack": 3,
+          "decay": 120,
+          "sustain": 65,
+          "release": 150
+        },
+        "lfo": {
+          "waveform": "sine",
+          "rate": 0.8,
+          "amt": 25,
+          "dest": "filterCutoff"
+        }
+      },
+      "chain": {
+        "pre": [
+          "High-pass filter at 40Hz"
+        ],
+        "post": [
+          "Fruily Compressor - Attack 15ms, Release 90ms, Ratio 2.5:1"
+        ]
+      },
+      "genreTags": [
+        "R&B",
+        "funky",
+        "groove",
+        "smooth"
+      ],
+      "a/bTesting": {
+        "testA": "Filter env amount at 70 for punch",
+        "testB": "Filter env amount at 40 for smoother attack"
+      },
+      "troubleshooting": {
+        "muddyLowEnd": "Cut below 60Hz on bass channel",
+        "maskingVocals": "EQ dip at 300-500Hz by 2dB"
+      }
+    },
+    "05-supersaw-hero": {
+      "metadata": {
+        "plugin": "Kepler",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Supersaw Hero",
+        "category": "genre",
+        "genre": "EDM",
+        "mood": "electric"
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "0",
+          "detune": 0,
+          "mix": 90
+        },
+        "oscillator2": {
+          "waveform": "saw",
+          "octave": "0",
+          "detune": 7,
+          "mix": 90
+        },
+        "oscillator3": {
+          "waveform": "saw",
+          "octave": "+1",
+          "detune": 14,
+          "mix": 70
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 4000,
+          "resonance": 50,
+          "drive": 20,
+          "envAmt": 80,
+          "envVel": 40
+        },
+        "envelope": {
+          "attack": 20,
+          "decay": 250,
+          "sustain": 60,
+          "release": 400
+        },
+        "lfo": {
+          "waveform": "saw-up",
+          "rate": 0.5,
+          "amt": 40,
+          "dest": "filterCutoff"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Soft clipper - 3dB reduction"
+        ],
+        "post": [
+          "Fruily Limiter - Ceiling -0.3dB, Gain 6dB",
+          "Delay - Stereo, 300ms, Feedback 40%, Mix 25%"
+        ]
+      },
+      "genreTags": [
+        "EDM",
+        "big room",
+        "electric",
+        "anthem"
+      ],
+      "a/bTesting": {
+        "testA": "3 oscillators for massive sound",
+        "testB": "2 oscillators for tighter mix"
+      },
+      "troubleshooting": {
+        "muddyMix": "High-pass filter at 200Hz on lead channel",
+        "phaseIssues": "Invert phase on osc3 if summing issues"
+      }
+    },
+    "06-resonance-bass": {
+      "metadata": {
+        "plugin": "Kepler",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Resonance Bass",
+        "category": "genre",
+        "genre": "EDM",
+        "mood": "electric"
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "-2",
+          "detune": 0,
+          "mix": 100
+        },
+        "oscillator2": {
+          "waveform": "square",
+          "octave": "-1",
+          "detune": 3,
+          "mix": 60
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 250,
+          "resonance": 65,
+          "drive": 30,
+          "envAmt": 100,
+          "envVel": 80
+        },
+        "envelope": {
+          "attack": 5,
+          "decay": 200,
+          "sustain": 55,
+          "release": 150
+        },
+        "lfo": {
+          "waveform": "sine",
+          "rate": 0.3,
+          "amt": 35,
+          "dest": "filterCutoff"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Teq4 - High-pass at 45Hz"
+        ],
+        "post": [
+          "Fruily Limiter - Attack 1ms, Release 50ms, Ratio 6:1"
+        ]
+      },
+      "genreTags": [
+        "EDM",
+        "deep bass",
+        "house",
+        "techno"
+      ],
+      "a/bTesting": {
+        "testA": "High resonance for resonance sweeps",
+        "testB": "Lower resonance for consistent bass"
+      },
+      "troubleshooting": {
+        "distortedSound": "Reduce filter drive to 20%",
+        "weakSub": "Add sub oscillator routed directly to output"
+      }
+    },
+    "07-glitch-pluck": {
+      "metadata": {
+        "plugin": "Kepler",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Glitch Pluck",
+        "category": "genre",
+        "genre": "trap",
+        "mood": "dark"
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "square",
+          "octave": "+1",
+          "detune": 0,
+          "mix": 100
+        },
+        "oscillator2": {
+          "waveform": "saw",
+          "octave": "0",
+          "detune": 8,
+          "mix": 70
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 3000,
+          "resonance": 45,
+          "drive": 10,
+          "envAmt": 95,
+          "envVel": 100
+        },
+        "envelope": {
+          "attack": 1,
+          "decay": 80,
+          "sustain": 0,
+          "release": 50
+        },
+        "lfo": {
+          "waveform": "sample-hold",
+          "rate": 4,
+          "amt": 50,
+          "dest": "pitch"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Teq4 - High-pass at 500Hz"
+        ],
+        "post": [
+          "Fruily Reverb 2 - Plate, Decay 1.2s, Mix 18%",
+          "Bitcrusher - 8-bit, 50% wet"
+        ]
+      },
+      "genreTags": [
+        "trap",
+        "dark",
+        "glitch",
+        "aggressive"
+      ],
+      "a/bTesting": {
+        "testA": "Sample-hold LFO for random pitch glitches",
+        "testB": "Sine LFO for regular vibrato"
+      },
+      "troubleshooting": {
+        "tooChaotic": "Reduce LFO amount to 25%",
+        "tooThin": "Add osc3 with saw wave at +2 octave"
+      }
+    },
+    "08-dusty-texture": {
+      "metadata": {
+        "plugin": "Kepler",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Dusty Texture",
+        "category": "genre",
+        "genre": "lo-fi",
+        "mood": "moody"
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "-1",
+          "detune": 15,
+          "mix": 75
+        },
+        "oscillator2": {
+          "waveform": "triangle",
+          "octave": "-2",
+          "detune": 22,
+          "mix": 60
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 1500,
+          "resonance": 20,
+          "drive": 8,
+          "envAmt": 25,
+          "envVel": 15
+        },
+        "envelope": {
+          "attack": 150,
+          "decay": 500,
+          "sustain": 75,
+          "release": 800
+        },
+        "lfo": {
+          "waveform": "sine",
+          "rate": 0.1,
+          "amt": 20,
+          "dest": "filterCutoff"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Vintage Phaser - 4 stages, 0.3Hz rate, Mix 40%"
+        ],
+        "post": [
+          "Fruily Reverb 2 - Room, Decay 3s, Mix 25%",
+          "Tape Saturation - 3% drive"
+        ]
+      },
+      "genreTags": [
+        "lo-fi",
+        "moody",
+        "chill",
+        "nostalgic"
+      ],
+      "a/bTesting": {
+        "testA": "Detune oscillators heavily for warmth",
+        "testB": "Tighter detune for cleaner sound"
+      },
+      "troubleshooting": {
+        "tooNoisy": "Reduce LFO amount to 10%",
+        "tooDark": "Increase filter cutoff to 2000Hz"
+      }
+    },
+    "09-reaper-sub": {
+      "metadata": {
+        "plugin": "Kepler",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Reaper Sub",
+        "category": "genre",
+        "genre": "drill",
+        "mood": "dark"
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "-2",
+          "detune": 0,
+          "mix": 90
+        },
+        "oscillator2": {
+          "waveform": "saw",
+          "octave": "-2",
+          "detune": 5,
+          "mix": 90
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 120,
+          "resonance": 30,
+          "drive": 20,
+          "envAmt": 60,
+          "envVel": 30
+        },
+        "envelope": {
+          "attack": 8,
+          "decay": 250,
+          "sustain": 70,
+          "release": 180
+        },
+        "lfo": {
+          "waveform": "square",
+          "rate": 0.4,
+          "amt": 15,
+          "dest": "pitch"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Fruily Parametric EQ 2 - High-pass at 20Hz"
+        ],
+        "post": [
+          "Fruily Limiter - Threshold -12dB, Attack 0.5ms, Release 30ms"
+        ]
+      },
+      "genreTags": [
+        "drill",
+        "dark",
+        "heavy",
+        "aggressive"
+      ],
+      "a/bTesting": {
+        "testA": "Pitch LFO on for sub wobble",
+        "testB": "Pitch LFO off for steady sub"
+      },
+      "troubleshooting": {
+        "distortedByDesign": "Keep distortion intentional, check for unwanted clipping",
+        "weakLowEnd": "Increase filter drive to 30%"
+      }
+    },
+    "10-ethereal-wash": {
+      "metadata": {
+        "plugin": "Kepler",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Ethereal Wash",
+        "category": "genre",
+        "genre": "ambient",
+        "mood": "moody"
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "sine",
+          "octave": "-1",
+          "detune": 0,
+          "mix": 100
+        },
+        "oscillator2": {
+          "waveform": "triangle",
+          "octave": "-1",
+          "detune": 12,
+          "mix": 70
+        },
+        "oscillator3": {
+          "waveform": "saw",
+          "octave": "0",
+          "detune": 25,
+          "mix": 40
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 2500,
+          "resonance": 25,
+          "drive": 5,
+          "envAmt": 20,
+          "envVel": 10
+        },
+        "envelope": {
+          "attack": 500,
+          "decay": 800,
+          "sustain": 85,
+          "release": 1500
+        },
+        "lfo": {
+          "waveform": "sine",
+          "rate": 0.15,
+          "amt": 30,
+          "dest": "pan"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Vintage Chorus - Mix 50%, Rate 0.3Hz"
+        ],
+        "post": [
+          "Fruily Reverb 2 - Cathedral, Decay 6s, Mix 30%"
+        ]
+      },
+      "genreTags": [
+        "ambient",
+        "moody",
+        "cinematic",
+        "spacey"
+      ],
+      "a/bTesting": {
+        "testA": "3 oscillators for width and depth",
+        "testB": "2 oscillators for simpler arrangements"
+      },
+      "troubleshooting": {
+        "phasingIssues": "Reduce LFO pan amount to 15%",
+        "tooBright": "Filter cutoff to 1800Hz"
+      }
+    },
+    "21-savage": {
+      "metadata": {
+        "plugin": "Kepler",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Monolithic Sub",
+        "category": "signature",
+        "inspiredBy": "21 Savage deep bass aesthetic"
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "-2",
+          "detune": 0,
+          "mix": 100
+        },
+        "oscillator2": {
+          "waveform": "saw",
+          "octave": "-2",
+          "detune": 2,
+          "mix": 80
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 100,
+          "resonance": 25,
+          "drive": 25,
+          "envAmt": 50,
+          "envVel": 25
+        },
+        "envelope": {
+          "attack": 10,
+          "decay": 300,
+          "sustain": 80,
+          "release": 250
+        },
+        "lfo": {
+          "waveform": "sine",
+          "rate": 0.15,
+          "amt": 8,
+          "dest": "pitch"
+        }
+      },
+      "chain": {
+        "pre": [
+          "High-pass at 25Hz on everything except bass"
+        ],
+        "post": [
+          "Fruily Limiter - Low threshold, slow attack, heavy compression"
+        ]
+      },
+      "characteristics": [
+        "deep",
+        "heavy",
+        "monolithic",
+        "dark"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "drill",
+        "dark trap"
+      ],
+      "a/bTesting": {
+        "testA": "Low filter cutoff for pure sub",
+        "testB": "Higher cutoff for more harmonic content"
+      },
+      "troubleshooting": {
+        "distortedOutput": "Reduce filter drive to 15%",
+        "notScaryEnough": "Add parallel distortion layer"
+      }
+    },
+    "drake": {
+      "metadata": {
+        "plugin": "Kepler",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "OVO Lead",
+        "category": "signature",
+        "inspiredBy": "Drake melodic delivery style"
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "triangle",
+          "octave": "0",
+          "detune": 0,
+          "mix": 100
+        },
+        "oscillator2": {
+          "waveform": "sine",
+          "octave": "0",
+          "detune": 4,
+          "mix": 60
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 3500,
+          "resonance": 20,
+          "drive": 5,
+          "envAmt": 25,
+          "envVel": 15
+        },
+        "envelope": {
+          "attack": 40,
+          "decay": 400,
+          "sustain": 75,
+          "release": 350
+        },
+        "lfo": {
+          "waveform": "sine",
+          "rate": 0.3,
+          "amt": 10,
+          "dest": "filterCutoff"
+        }
+      },
+      "chain": {
+        "post": [
+          "Fruily Reverb 2 - Studio, Decay 1.5s, Mix 18%",
+          "Fruily Compressor - Soft attack, Ratio 2.5:1"
+        ]
+      },
+      "characteristics": [
+        "smooth",
+        "melodic",
+        "clean",
+        "forward"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "R&B",
+        "melodic"
+      ],
+      "a/bTesting": {
+        "testA": "Triangle wave for soft attack",
+        "testB": "Add saw wave for presence"
+      },
+      "troubleshooting": {
+        "tooSoft": "Increase drive to 12%",
+        "maskingVocals": "Sidechain to lead vocals"
+      }
+    },
+    "metro-boomin-bass-stab": {
+      "metadata": {
+        "plugin": "Kepler",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "If-You-Know-You-Know",
+        "category": "signature",
+        "inspiredBy": "Metro Boomin signature bass stab"
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "-2",
+          "detune": 0,
+          "mix": 100
+        },
+        "oscillator2": {
+          "waveform": "square",
+          "octave": "-1",
+          "detune": 0,
+          "mix": 70
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 250,
+          "resonance": 50,
+          "drive": 22,
+          "envAmt": 85,
+          "envVel": 70
+        },
+        "envelope": {
+          "attack": 3,
+          "decay": 120,
+          "sustain": 45,
+          "release": 80
+        },
+        "lfo": {
+          "waveform": "square",
+          "rate": 1,
+          "amt": 20,
+          "dest": "filterCutoff"
+        }
+      },
+      "chain": {
+        "post": [
+          "Fruily Limiter - Fast attack 0.5ms, Release 25ms, Ratio 6:1"
+        ]
+      },
+      "characteristics": [
+        "punchy",
+        "aggressive",
+        "immediate",
+        "标志性"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "trap",
+        "hard"
+      ],
+      "a/bTesting": {
+        "testA": "Square wave on osc2 for snappy attack",
+        "testB": "Remove osc2 for smoother bass"
+      },
+      "troubleshooting": {
+        "clippingOnHits": "Increase release on limiter to 35ms",
+        "notPunchyEnough": "Shorten envelope decay to 100ms"
+      }
+    },
+    "metro-boomin-bass": {
+      "metadata": {
+        "plugin": "Kepler",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Boomin Bass",
+        "category": "signature",
+        "inspiredBy": "Metro Boomin style"
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "-2",
+          "detune": 0,
+          "mix": 85
+        },
+        "oscillator2": {
+          "waveform": "saw",
+          "octave": "-2",
+          "detune": 3,
+          "mix": 75
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 160,
+          "resonance": 35,
+          "drive": 18,
+          "envAmt": 70,
+          "envVel": 45
+        },
+        "envelope": {
+          "attack": 5,
+          "decay": 200,
+          "sustain": 65,
+          "release": 130
+        },
+        "lfo": {
+          "waveform": "sine",
+          "rate": 0.25,
+          "amt": 10,
+          "dest": "filterCutoff"
+        }
+      },
+      "chain": {
+        "post": [
+          "Fruily Limiter - Threshold -16dB, Ratio 4:1, Attack 1ms, Release 40ms"
+        ]
+      },
+      "characteristics": [
+        "deep",
+        "punchy",
+        "modern",
+        "cleansounding"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "trap",
+        "modern"
+      ],
+      "a/bTesting": {
+        "testA": "Filter env amount at 70 for initial punch",
+        "testB": "Filter env amount at 50 for smoother attack"
+      },
+      "troubleshooting": {
+        "notDeepEnough": "High-pass full mix at 35Hz to create space",
+        "tooMuchSub": "Sidechain to kick at 0.3s release"
+      }
+    },
+    "mike-will": {
+      "metadata": {
+        "plugin": "Kepler",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Future Bass",
+        "category": "signature",
+        "inspiredBy": "Mike Will Made-It style"
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "0",
+          "detune": 0,
+          "mix": 90
+        },
+        "oscillator2": {
+          "waveform": "saw",
+          "octave": "0",
+          "detune": 7,
+          "mix": 90
+        },
+        "oscillator3": {
+          "waveform": "saw",
+          "octave": "+1",
+          "detune": 14,
+          "mix": 60
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 3500,
+          "resonance": 45,
+          "drive": 15,
+          "envAmt": 75,
+          "envVel": 35
+        },
+        "envelope": {
+          "attack": 10,
+          "decay": 180,
+          "sustain": 55,
+          "release": 250
+        },
+        "lfo": {
+          "waveform": "saw-down",
+          "rate": 0.25,
+          "amt": 50,
+          "dest": "filterCutoff"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Soft clipper - 2dB input"
+        ],
+        "post": [
+          "Fruily Reverb 2 - Large Hall, Decay 3.5s, Mix 25%",
+          "Fruily Limiter - Ceiling -0.5dB"
+        ]
+      },
+      "characteristics": [
+        "wide",
+        "bright",
+        "uplifting",
+        "melodic"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "R&B",
+        "future bass"
+      ],
+      "a/bTesting": {
+        "testA": "Filter sweep down on attack",
+        "testB": "Static filter for sustained chords"
+      },
+      "troubleshooting": {
+        "muddyArrangement": "High-pass synth at 300Hz except on bass notes",
+        "maskingVocals": "Notch EQ at 2-3kHz on synth"
+      }
+    },
+    "pierre-bourne": {
+      "metadata": {
+        "plugin": "Kepler",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Trinidad Jame$",
+        "category": "signature",
+        "inspiredBy": "Pierre Bourne plucks"
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "square",
+          "octave": "+1",
+          "detune": 0,
+          "mix": 100
+        },
+        "oscillator2": {
+          "waveform": "saw",
+          "octave": "0",
+          "detune": 5,
+          "mix": 80
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 4000,
+          "resonance": 55,
+          "drive": 8,
+          "envAmt": 95,
+          "envVel": 100
+        },
+        "envelope": {
+          "attack": 1,
+          "decay": 50,
+          "sustain": 0,
+          "release": 30
+        },
+        "lfo": {
+          "waveform": "sine",
+          "rate": 3,
+          "amt": 8,
+          "dest": "pitch"
+        }
+      },
+      "chain": {
+        "post": [
+          "Fruily Reverb 2 - Small Room, Decay 0.5s, Mix 12%",
+          "Fruily Compressor - Fast attack 1ms, Ratio 4:1"
+        ]
+      },
+      "characteristics": [
+        "bouncy",
+        "plucky",
+        "fun",
+        "repetitive"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "trap",
+        "playful"
+      ],
+      "a/bTesting": {
+        "testA": "Very short decay for plucky sound",
+        "testB": "Longer decay for sustained plucks"
+      },
+      "troubleshooting": {
+        "tooClicky": "Increase attack to 2ms",
+        "losingDefinition": "Notch EQ at 800Hz by 2dB"
+      }
+    },
+    "sounwave": {
+      "metadata": {
+        "plugin": "Kepler",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "West Coast Drfill",
+        "category": "signature",
+        "inspiredBy": "Sounwave style (TDE)"
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "-1",
+          "detune": 0,
+          "mix": 80
+        },
+        "oscillator2": {
+          "waveform": "square",
+          "octave": "-2",
+          "detune": 4,
+          "mix": 55
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 600,
+          "resonance": 30,
+          "drive": 12,
+          "envAmt": 65,
+          "envVel": 50
+        },
+        "envelope": {
+          "attack": 8,
+          "decay": 220,
+          "sustain": 60,
+          "release": 200
+        },
+        "lfo": {
+          "waveform": "sine",
+          "rate": 0.35,
+          "amt": 20,
+          "dest": "pan"
+        }
+      },
+      "chain": {
+        "post": [
+          "Fruily Parametric EQ 2 - High-shelf +2dB at 4kHz",
+          "Fruily Compressor - Soft knee, Ratio 2:1"
+        ]
+      },
+      "characteristics": [
+        "smooth",
+        "warm",
+        "moody",
+        "spacey"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "West Coast",
+        "moody"
+      ],
+      "a/bTesting": {
+        "testA": "Pan movement for width",
+        "testB": "Mono for punch"
+      },
+      "troubleshooting": {
+        "tooDark": "Increase filter cutoff by 100Hz increments",
+        "lacksCharacter": "Add subtle bitcrusher after Kepler"
+      }
+    },
+    "the-weeknd": {
+      "metadata": {
+        "plugin": "Kepler",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Night Drive Pad",
+        "category": "signature",
+        "inspiredBy": "The Weeknd 80s retro synths"
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "-1",
+          "detune": 0,
+          "mix": 85
+        },
+        "oscillator2": {
+          "waveform": "saw",
+          "octave": "-1",
+          "detune": 8,
+          "mix": 85
+        },
+        "oscillator3": {
+          "waveform": "square",
+          "octave": "0",
+          "detune": 16,
+          "mix": 50
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 2800,
+          "resonance": 35,
+          "drive": 10,
+          "envAmt": 35,
+          "envVel": 20
+        },
+        "envelope": {
+          "attack": 200,
+          "decay": 500,
+          "sustain": 80,
+          "release": 800
+        },
+        "lfo": {
+          "waveform": "sine",
+          "rate": 0.1,
+          "amt": 40,
+          "dest": "pan"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Vintage Chorus - Mix 45%, Depth 60%"
+        ],
+        "post": [
+          "Fruily Reverb 2 - Tape, Decay 4s, Mix 20%",
+          "Fruily Parametric EQ 2 - High-shelf +3dB at 6kHz"
+        ]
+      },
+      "characteristics": [
+        "retro",
+        "warm",
+        "wide",
+        "nostalgic"
+      ],
+      "genreTags": [
+        "R&B",
+        "synthwave",
+        "retro",
+        "moody"
+      ],
+      "a/bTesting": {
+        "testA": "Heavy detune for chorus-like effect",
+        "testB": "Tighter detune for cleaner sound"
+      },
+      "troubleshooting": {
+        "phaseCancellation": "Mono the bass frequencies below 200Hz",
+        "tooBusy": "Reduce LFO pan rate"
+      }
+    },
+    "travis-scott": {
+      "metadata": {
+        "plugin": "Kepler",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Auto-Tune Lead",
+        "category": "signature",
+        "inspiredBy": "Travis Scott atmospheric leads"
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "saw",
+          "octave": "0",
+          "detune": 0,
+          "mix": 85
+        },
+        "oscillator2": {
+          "waveform": "triangle",
+          "octave": "0",
+          "detune": 6,
+          "mix": 65
+        },
+        "filter": {
+          "type": "bandpass",
+          "cutoff": 2000,
+          "resonance": 35,
+          "drive": 10,
+          "envAmt": 40,
+          "envVel": 30
+        },
+        "envelope": {
+          "attack": 30,
+          "decay": 350,
+          "sustain": 70,
+          "release": 400
+        },
+        "lfo": {
+          "waveform": "sine",
+          "rate": 0.2,
+          "amt": 15,
+          "dest": "filterCutoff"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Fruily Parametric EQ 2 - Band-pass filter"
+        ],
+        "post": [
+          "Fruily Reverb 2 - Large Room, Decay 2.5s, Mix 35%",
+          "Tape Delay - 400ms, Feedback 35%, Mix 20%"
+        ]
+      },
+      "characteristics": [
+        "spacey",
+        "atmospheric",
+        "wide",
+        "melodic"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "trap",
+        "atmospheric"
+      ],
+      "a/bTesting": {
+        "testA": "Bandpass filter for focused sound",
+        "testB": "Lowpass filter for warmer tone"
+      },
+      "troubleshooting": {
+        "tooMidFocused": "Widen bandpass Q to 25",
+        "lacksSpace": "Increase reverb mix to 45%"
+      }
+    },
+    "zaytoven": {
+      "metadata": {
+        "plugin": "Kepler",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "MIDI Pluck",
+        "category": "signature",
+        "inspiredBy": "Zaytoven style"
+      },
+      "settings": {
+        "oscillator1": {
+          "waveform": "square",
+          "octave": "+1",
+          "detune": 0,
+          "mix": 100
+        },
+        "oscillator2": {
+          "waveform": "triangle",
+          "octave": "0",
+          "detune": 2,
+          "mix": 50
+        },
+        "filter": {
+          "type": "lowpass",
+          "cutoff": 2800,
+          "resonance": 40,
+          "drive": 8,
+          "envAmt": 90,
+          "envVel": 100
+        },
+        "envelope": {
+          "attack": 2,
+          "decay": 60,
+          "sustain": 0,
+          "release": 40
+        },
+        "lfo": {
+          "waveform": "sine",
+          "rate": 0.5,
+          "amt": 5,
+          "dest": "pitch"
+        }
+      },
+      "chain": {
+        "post": [
+          "Fruily Reverb 2 - Small Room, Decay 0.8s, Mix 15%",
+          "Fruily Compressor - Fast attack, Ratio 3:1"
+        ]
+      },
+      "characteristics": [
+        "plucky",
+        "bright",
+        "melodic",
+        "groove"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "R&B",
+        "melodic"
+      ],
+      "a/bTesting": {
+        "testA": "Square wave for classic MIDI feel",
+        "testB": "Add saw for modern edge"
+      },
+      "troubleshooting": {
+        "tooClicky": "Increase envelope attack to 5ms",
+        "sustainingTooLong": "Reduce sustain to 0, increase release slightly"
+      }
+    }
+  },
+  "parameters": {
+    "kepler-params": {
+      "plugin_name": "Kepler",
+      "category": "Vintage Synth",
+      "sections": {
+        "DCO": {
+          "LFO": "Pitch modulation depth",
+          "PWM": "Pulse width modulation amount",
+          "PWM_Mode": "LFO or Envelope source",
+          "Range": "Octave setting (16', 8', 4')",
+          "Wave_Square": "Toggles Pulse/Square wave",
+          "Wave_Saw": "Toggles Sawtooth wave",
+          "Sub": "Sub-oscillator volume",
+          "Noise": "White noise volume"
+        },
+        "VCF": {
+          "HPF": "High Pass Filter frequency (Stepped)",
+          "Frequency": "Low Pass Cutoff frequency",
+          "Resonance": "Filter resonance/peak",
+          "Env_Depth": "Envelope modulation depth",
+          "LFO_Depth": "LFO modulation depth",
+          "Kybd": "Key tracking amount"
+        },
+        "VCA": {
+          "Mode": "Gate (On/Off) or Env (ADSR)",
+          "Level": "Overall VCA gain"
+        },
+        "ENV": {
+          "Attack": "Attack time",
+          "Decay": "Decay time",
+          "Sustain": "Sustain level",
+          "Release": "Release time"
+        },
+        "CHORUS": {
+          "Mode": "I, II, or I+II (Combined)",
+          "Status": "On/Off"
+        },
+        "ARP": {
+          "Mode": "Up, Down, Up/Down",
+          "Range": "Octave range (1-3)",
+          "Sync": "Tempo sync subdivisions"
+        }
+      }
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    },
+    {
+      "title": "Advanced Synthesis Techniques",
+      "filename": "advanced-synthesis-techniques.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "Arpeggiated Sequences",
+      "category": "by-goal",
+      "filename": "arpeggiated-sequences.md"
+    },
+    {
+      "title": "Classic Lush Pads",
+      "category": "by-goal",
+      "filename": "classic-lush-pads.md"
+    },
+    {
+      "title": "Snappy 80S Bass",
+      "category": "by-goal",
+      "filename": "snappy-80s-bass.md"
+    },
+    {
+      "title": "01 808 Sub Bass",
+      "category": "by-instrument",
+      "filename": "01-808-sub-bass.md"
+    },
+    {
+      "title": "01 Bass Workflows",
+      "category": "by-instrument",
+      "filename": "01-bass-workflows.md"
+    },
+    {
+      "title": "02 Lead Workflows",
+      "category": "by-instrument",
+      "filename": "02-lead-workflows.md"
+    },
+    {
+      "title": "02 Mid Range Bass",
+      "category": "by-instrument",
+      "filename": "02-mid-range-bass.md"
+    },
+    {
+      "title": "03 Drill Sub",
+      "category": "by-instrument",
+      "filename": "03-drill-sub.md"
+    },
+    {
+      "title": "03 Pad Fx Workflows",
+      "category": "by-instrument",
+      "filename": "03-pad-fx-workflows.md"
+    },
+    {
+      "title": "04 Rnb Lead",
+      "category": "by-instrument",
+      "filename": "04-rnb-lead.md"
+    },
+    {
+      "title": "05 Edm Supersaw",
+      "category": "by-instrument",
+      "filename": "05-edm-supersaw.md"
+    },
+    {
+      "title": "06 Trap Pluck",
+      "category": "by-instrument",
+      "filename": "06-trap-pluck.md"
+    },
+    {
+      "title": "07 Ambient Pad",
+      "category": "by-instrument",
+      "filename": "07-ambient-pad.md"
+    },
+    {
+      "title": "08 Lofi Dusty",
+      "category": "by-instrument",
+      "filename": "08-lofi-dusty.md"
+    },
+    {
+      "title": "09 Riser",
+      "category": "by-instrument",
+      "filename": "09-riser.md"
+    },
+    {
+      "title": "10 Downlifter",
+      "category": "by-instrument",
+      "filename": "10-downlifter.md"
+    },
+    {
+      "title": "11 Brass Stabs",
+      "category": "by-instrument",
+      "filename": "11-brass-stabs.md"
+    },
+    {
+      "title": "12 Metallic Texture",
+      "category": "by-instrument",
+      "filename": "12-metallic-texture.md"
+    },
+    {
+      "title": "13 Keys Electric",
+      "category": "by-instrument",
+      "filename": "13-keys-electric.md"
+    },
+    {
+      "title": "Index",
+      "category": "by-instrument",
+      "filename": "INDEX.md"
+    },
+    {
+      "title": "Instrument Workflows",
+      "category": "by-instrument",
+      "filename": "instrument-workflows.md"
+    }
+  ]
+}

@@ -1,0 +1,804 @@
+{
+  "id": "fruity-stereo-shaper",
+  "name": "Fruity Stereo Shaper",
+  "category": "Spatial",
+  "tier": "Free",
+  "type": "Spatial",
+  "description": "Fruity Stereo Shaper - Spatial",
+  "tags": [
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "stereo",
+    "spatial",
+    "mixing",
+    "audio"
+  ],
+  "icon": "/plugins/fruity-stereo-shaper-icon.svg",
+  "color": "#0EA5E9",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-stereo-shaper",
+  "has_presets": true,
+  "has_parameters": false,
+  "has_learning": true,
+  "has_workflows": true,
+  "presets": {
+    "by-frequency-range": {
+      "pluginName": "Fruity Stereo Shaper",
+      "category": "Frequency-Based Stereo Presets",
+      "description": "Stereo imaging organized by frequency range for targeted mix control",
+      "presets": [
+        {
+          "name": "Sub Bass Lock (0-100 Hz)",
+          "frequencyRange": "0-100 Hz",
+          "description": "Complete mono summing for sub frequencies",
+          "parameters": {
+            "lowFreqCutoff": "100 Hz",
+            "stereoSeparation": "0%",
+            "midSideMix": "Mid 100%",
+            "phase": "0°",
+            "outputGain": "0 dB"
+          },
+          "use": "Apply to any element with sub content (808s, kick, sub bass) to prevent phase cancellation",
+          "criticalFor": [
+            "808 Bass",
+            "Kick Drum",
+            "Sub Bass"
+          ]
+        },
+        {
+          "name": "Bass Foundation Mono (100-250 Hz)",
+          "frequencyRange": "100-250 Hz",
+          "description": "Mono low-end for tight bass foundation",
+          "parameters": {
+            "lowFreqCutoff": "250 Hz",
+            "stereoSeparation": "0%",
+            "midSideMix": "Mid 100%",
+            "phase": "0°",
+            "outputGain": "0 dB"
+          },
+          "use": "Keeps bass notes and kick fundamentals focused and punchy",
+          "criticalFor": [
+            "Bass Guitar",
+            "Kick Body",
+            "Tom Drums"
+          ]
+        },
+        {
+          "name": "Low-Mid Anchor (250-500 Hz)",
+          "frequencyRange": "250-500 Hz",
+          "description": "Centered low-mids with minimal stereo",
+          "parameters": {
+            "lowFreqCutoff": "500 Hz",
+            "stereoSeparation": "20%",
+            "midSideMix": "Mid 85%",
+            "phase": "0°",
+            "outputGain": "0 dB"
+          },
+          "use": "Maintains body and warmth while preventing mud in the mix",
+          "criticalFor": [
+            "Snare Body",
+            "Vocal Chest",
+            "Guitar Low-Mids"
+          ]
+        },
+        {
+          "name": "Mid Presence (500-1000 Hz)",
+          "frequencyRange": "500-1000 Hz",
+          "description": "Moderate stereo for presence range",
+          "parameters": {
+            "lowFreqCutoff": "1000 Hz",
+            "stereoSeparation": "60%",
+            "midSideMix": "Stereo 100%",
+            "phase": "0°",
+            "outputGain": "0 dB"
+          },
+          "use": "Adds dimension to midrange instruments without losing focus",
+          "criticalFor": [
+            "Vocals",
+            "Guitars",
+            "Keyboards"
+          ]
+        },
+        {
+          "name": "Upper Mid Spread (1-2 kHz)",
+          "frequencyRange": "1-2 kHz",
+          "description": "Enhanced stereo for clarity and presence",
+          "parameters": {
+            "lowFreqCutoff": "2000 Hz",
+            "stereoSeparation": "100%",
+            "midSideMix": "Stereo 100%",
+            "phase": "0°",
+            "outputGain": "-0.5 dB"
+          },
+          "use": "Opens up mix and adds clarity to melodic elements",
+          "criticalFor": [
+            "Synth Leads",
+            "Vocal Harmonies",
+            "Piano"
+          ]
+        },
+        {
+          "name": "Presence Boost (2-4 kHz)",
+          "frequencyRange": "2-4 kHz",
+          "description": "Wide stereo for vocal/instrument presence",
+          "parameters": {
+            "lowFreqCutoff": "4000 Hz",
+            "stereoSeparation": "130%",
+            "midSideMix": "Side 70%",
+            "phase": "0°",
+            "outputGain": "-1 dB"
+          },
+          "use": "Enhances clarity and separation in crowded mixes",
+          "criticalFor": [
+            "Lead Vocals",
+            "Snare Crack",
+            "Hi-Hats"
+          ]
+        },
+        {
+          "name": "Brilliance Range (4-8 kHz)",
+          "frequencyRange": "4-8 kHz",
+          "description": "Very wide stereo for air and shimmer",
+          "parameters": {
+            "lowFreqCutoff": "8000 Hz",
+            "stereoSeparation": "160%",
+            "midSideMix": "Side 80%",
+            "phase": "0°",
+            "outputGain": "-1.5 dB"
+          },
+          "use": "Creates spacious high-end without harshness",
+          "criticalFor": [
+            "Cymbals",
+            "Vocal Air",
+            "String Harmonics"
+          ]
+        },
+        {
+          "name": "Ultra High Shimmer (8-16 kHz)",
+          "frequencyRange": "8-16 kHz",
+          "description": "Maximum stereo for top-end sparkle",
+          "parameters": {
+            "lowFreqCutoff": "16000 Hz",
+            "stereoSeparation": "180%",
+            "midSideMix": "Side 90%",
+            "phase": "0°",
+            "outputGain": "-2 dB"
+          },
+          "use": "Adds dimension and air to high-frequency content",
+          "criticalFor": [
+            "Bells",
+            "Shakers",
+            "Reverb Tails"
+          ]
+        },
+        {
+          "name": "Full Spectrum Mono",
+          "frequencyRange": "Full Spectrum",
+          "description": "Complete mono summing across all frequencies",
+          "parameters": {
+            "lowFreqCutoff": "N/A",
+            "stereoSeparation": "0%",
+            "midSideMix": "Mid 100%",
+            "phase": "0°",
+            "outputGain": "0 dB"
+          },
+          "use": "For mono compatibility testing or vintage mono aesthetic",
+          "criticalFor": [
+            "Lo-Fi Production",
+            "Mono Compatibility Check"
+          ]
+        },
+        {
+          "name": "Progressive Width (Multiband)",
+          "frequencyRange": "Multi-Band",
+          "description": "Increasing stereo width by frequency (requires multiband setup)",
+          "parameters": {
+            "band1_0-200Hz": "0% stereo",
+            "band2_200-1kHz": "40% stereo",
+            "band3_1-4kHz": "100% stereo",
+            "band4_4kHz+": "160% stereo"
+          },
+          "use": "Ideal stereo distribution for full mixes or complex instruments",
+          "criticalFor": [
+            "Master Bus",
+            "Synth Pads",
+            "Full Drum Bus"
+          ]
+        }
+      ],
+      "frequencyGuidelines": {
+        "subBass": {
+          "range": "0-60 Hz",
+          "recommendation": "Always mono (0% stereo)",
+          "reason": "Maximum power and mono compatibility"
+        },
+        "bass": {
+          "range": "60-250 Hz",
+          "recommendation": "Mono to minimal stereo (0-20%)",
+          "reason": "Maintain punch and prevent phase issues"
+        },
+        "lowMids": {
+          "range": "250-500 Hz",
+          "recommendation": "Minimal to moderate stereo (20-60%)",
+          "reason": "Body and warmth without muddiness"
+        },
+        "mids": {
+          "range": "500-2000 Hz",
+          "recommendation": "Moderate stereo (60-100%)",
+          "reason": "Presence and dimension"
+        },
+        "upperMids": {
+          "range": "2-4 kHz",
+          "recommendation": "Wide stereo (100-140%)",
+          "reason": "Clarity and separation"
+        },
+        "presence": {
+          "range": "4-8 kHz",
+          "recommendation": "Very wide stereo (140-180%)",
+          "reason": "Air and space"
+        },
+        "brilliance": {
+          "range": "8+ kHz",
+          "recommendation": "Ultra-wide stereo (160-200%)",
+          "reason": "Shimmer and dimension"
+        }
+      }
+    },
+    "hip-hop-stereo-presets": {
+      "pluginName": "Fruity Stereo Shaper",
+      "category": "Hip-Hop Stereo Imaging Presets",
+      "presets": [
+        {
+          "name": "Drill 808 Mono Foundation",
+          "description": "Mono-izes sub frequencies for tight, focused drill bass",
+          "genre": "Drill",
+          "instrument": "808 Bass",
+          "parameters": {
+            "lowFreqCutoff": "120 Hz",
+            "stereoSeparation": "0% (Mono)",
+            "midSideMix": "Mid 100%",
+            "phase": "0°",
+            "outputGain": "0 dB"
+          },
+          "use": "Apply to 808s and sub bass to prevent phase issues and ensure maximum low-end punch"
+        },
+        {
+          "name": "Melodic Trap Keys Wide",
+          "description": "Widens melodic piano/keys while keeping low-mids centered",
+          "genre": "Melodic Trap",
+          "instrument": "Piano/Keys",
+          "parameters": {
+            "lowFreqCutoff": "250 Hz",
+            "stereoSeparation": "150%",
+            "midSideMix": "Side 70%",
+            "phase": "0°",
+            "outputGain": "-1 dB"
+          },
+          "use": "Creates wide, spacious melodic elements that sit perfectly in the mix without muddying the center"
+        },
+        {
+          "name": "Boom Bap Vinyl Drums Center",
+          "description": "Tightens drum image for classic boom bap punch",
+          "genre": "Boom Bap",
+          "instrument": "Drums",
+          "parameters": {
+            "lowFreqCutoff": "150 Hz",
+            "stereoSeparation": "50%",
+            "midSideMix": "Mid 80%",
+            "phase": "0°",
+            "outputGain": "0 dB"
+          },
+          "use": "Gives drums that focused, punchy center image characteristic of 90s hip-hop"
+        },
+        {
+          "name": "Ambient Guitar/Vocal Layer",
+          "description": "Ultra-wide atmospheric elements for moody trap",
+          "genre": "Ambient/Moody Trap",
+          "instrument": "Guitars/Vocals",
+          "parameters": {
+            "lowFreqCutoff": "400 Hz",
+            "stereoSeparation": "200%",
+            "midSideMix": "Side 90%",
+            "phase": "0°",
+            "outputGain": "-2 dB"
+          },
+          "use": "Creates ethereal, spacious background elements that fill the stereo field"
+        },
+        {
+          "name": "Memphis Phonk Cowbell Spread",
+          "description": "Wide cowbell/synth stabs for phonk energy",
+          "genre": "Memphis Phonk",
+          "instrument": "Cowbell/Stabs",
+          "parameters": {
+            "lowFreqCutoff": "500 Hz",
+            "stereoSeparation": "130%",
+            "midSideMix": "Stereo 100%",
+            "phase": "0°",
+            "outputGain": "0 dB"
+          },
+          "use": "Spreads high-frequency stabs and cowbells for aggressive phonk width"
+        },
+        {
+          "name": "Hyper-Pop Lead Expansion",
+          "description": "Extreme width for glitchy, hyper-pop synth leads",
+          "genre": "Hyper-Pop/Glitch Trap",
+          "instrument": "Synth Leads",
+          "parameters": {
+            "lowFreqCutoff": "300 Hz",
+            "stereoSeparation": "180%",
+            "midSideMix": "Side 85%",
+            "phase": "15°",
+            "outputGain": "-1.5 dB"
+          },
+          "use": "Creates maximalist, in-your-face stereo width for modern hyper-pop aesthetics"
+        },
+        {
+          "name": "Trap Flute/Lead Center Focus",
+          "description": "Keeps melodic leads focused and present",
+          "genre": "Trap",
+          "instrument": "Flute/Lead",
+          "parameters": {
+            "lowFreqCutoff": "200 Hz",
+            "stereoSeparation": "75%",
+            "midSideMix": "Mid 60%",
+            "phase": "0°",
+            "outputGain": "0 dB"
+          },
+          "use": "Maintains lead presence while adding subtle width"
+        },
+        {
+          "name": "Lo-Fi Vinyl Sample Mono",
+          "description": "Mono vintage sample sound for authentic lo-fi",
+          "genre": "Lo-Fi Hip-Hop",
+          "instrument": "Samples",
+          "parameters": {
+            "lowFreqCutoff": "100 Hz",
+            "stereoSeparation": "0%",
+            "midSideMix": "Mid 100%",
+            "phase": "0°",
+            "outputGain": "0 dB"
+          },
+          "use": "Emulates mono vinyl/cassette sources for authentic lo-fi character"
+        },
+        {
+          "name": "Synth Pad Cloud",
+          "description": "Massive stereo field for ambient pads",
+          "genre": "Cloud Rap/Ambient",
+          "instrument": "Pads/Strings",
+          "parameters": {
+            "lowFreqCutoff": "350 Hz",
+            "stereoSeparation": "170%",
+            "midSideMix": "Side 80%",
+            "phase": "0°",
+            "outputGain": "-2.5 dB"
+          },
+          "use": "Creates vast, atmospheric pad layers that envelop the listener"
+        },
+        {
+          "name": "Jersey Club Vocal Chops Wide",
+          "description": "Energetic vocal chop spread",
+          "genre": "Jersey Club",
+          "instrument": "Vocal Chops",
+          "parameters": {
+            "lowFreqCutoff": "450 Hz",
+            "stereoSeparation": "140%",
+            "midSideMix": "Stereo 100%",
+            "phase": "0°",
+            "outputGain": "-1 dB"
+          },
+          "use": "Spreads rapid vocal chops across the stereo field for club energy"
+        },
+        {
+          "name": "Reggaeton Perc Spread",
+          "description": "Wide high-frequency percussion",
+          "genre": "Reggaeton/Latin Trap",
+          "instrument": "Percussion",
+          "parameters": {
+            "lowFreqCutoff": "600 Hz",
+            "stereoSeparation": "120%",
+            "midSideMix": "Stereo 100%",
+            "phase": "0°",
+            "outputGain": "0 dB"
+          },
+          "use": "Spreads shakers, congas, and auxiliary percussion for rhythmic width"
+        },
+        {
+          "name": "Rage Lead Narrow",
+          "description": "Focused, aggressive lead for rage beats",
+          "genre": "Rage/Plugg",
+          "instrument": "Synth Lead",
+          "parameters": {
+            "lowFreqCutoff": "180 Hz",
+            "stereoSeparation": "60%",
+            "midSideMix": "Mid 70%",
+            "phase": "0°",
+            "outputGain": "+0.5 dB"
+          },
+          "use": "Keeps aggressive leads punchy and forward without spreading too wide"
+        }
+      ]
+    },
+    "hiphop-matrix-presets": {
+      "plugin_name": "Fruity Stereo Shaper",
+      "category": "Hip-Hop Matrix Presets",
+      "version": "1.0",
+      "presets": [
+        {
+          "name": "Moody Narrow Stereo",
+          "genre": "Moody/Dark Hip-Hop",
+          "description": "Tight, claustrophobic stereo field for introspective beats",
+          "use_cases": [
+            "sad trap",
+            "emo rap",
+            "dark beats"
+          ],
+          "settings": {
+            "l_to_l": 1,
+            "l_to_r": -0.2,
+            "r_to_l": -0.2,
+            "r_to_r": 1,
+            "delay_ms": 0,
+            "phase_invert_l": false,
+            "phase_invert_r": false
+          },
+          "tips": "Creates intimate, narrow stereo image. Perfect for vocals and atmospheric pads.",
+          "mono_safe": true
+        },
+        {
+          "name": "Club Wide Stereo",
+          "genre": "Upbeat/Club Hip-Hop",
+          "description": "Maximum width while maintaining mono compatibility",
+          "use_cases": [
+            "club bangers",
+            "party tracks",
+            "hype music"
+          ],
+          "settings": {
+            "l_to_l": 1,
+            "l_to_r": -0.3,
+            "r_to_l": -0.3,
+            "r_to_r": 1,
+            "delay_ms": 8,
+            "phase_invert_l": false,
+            "phase_invert_r": true
+          },
+          "tips": "Wide stereo with Haas effect. Check mono! Bass should bypass this.",
+          "mono_safe": false,
+          "warning": "Not mono-safe - use only on mid/high frequency elements"
+        },
+        {
+          "name": "Lo-Fi Mono Collapse",
+          "genre": "Lo-Fi/Chill Hip-Hop",
+          "description": "Vintage narrow stereo like old cassettes",
+          "use_cases": [
+            "lo-fi beats",
+            "vintage sound",
+            "nostalgic vibe"
+          ],
+          "settings": {
+            "l_to_l": 0.7,
+            "l_to_r": 0.3,
+            "r_to_l": 0.3,
+            "r_to_r": 0.7,
+            "delay_ms": 0,
+            "phase_invert_l": false,
+            "phase_invert_r": false
+          },
+          "tips": "Reduces stereo width for vintage vibe. Combine with saturation.",
+          "mono_safe": true
+        },
+        {
+          "name": "808 Bass Mono Lock",
+          "genre": "Trap/Electronic Hip-Hop",
+          "description": "Forces bass to mono while preserving stereo harmonics",
+          "use_cases": [
+            "808 bass",
+            "sub bass",
+            "kick drum"
+          ],
+          "settings": {
+            "l_to_l": 0.5,
+            "l_to_r": 0.5,
+            "r_to_l": 0.5,
+            "r_to_r": 0.5,
+            "delay_ms": 0,
+            "phase_invert_l": false,
+            "phase_invert_r": false
+          },
+          "tips": "Complete mono collapse. Use with multiband to only affect low frequencies.",
+          "mono_safe": true,
+          "workflow": "Use in Patcher with crossover - only process below 150Hz"
+        },
+        {
+          "name": "Trap Hi-Hat Spread",
+          "genre": "Trap/Electronic Hip-Hop",
+          "description": "Maximum width for hi-hat rolls and trap patterns",
+          "use_cases": [
+            "hi-hats",
+            "percussion",
+            "shakers"
+          ],
+          "settings": {
+            "l_to_l": 1,
+            "l_to_r": -0.4,
+            "r_to_l": -0.4,
+            "r_to_r": 1,
+            "delay_ms": 12,
+            "phase_invert_l": true,
+            "phase_invert_r": false
+          },
+          "tips": "Extreme width for trap hi-hats. Will have phase issues in mono.",
+          "mono_safe": false,
+          "warning": "Only use on hi-frequency percussion"
+        },
+        {
+          "name": "Vocal Center Extract",
+          "genre": "All Hip-Hop Genres",
+          "description": "Isolates center-panned vocal content",
+          "use_cases": [
+            "vocal isolation",
+            "acapella extraction",
+            "remix prep"
+          ],
+          "settings": {
+            "l_to_l": 0.707,
+            "l_to_r": 0.707,
+            "r_to_l": 0.707,
+            "r_to_r": -0.707,
+            "delay_ms": 0,
+            "phase_invert_l": false,
+            "phase_invert_r": false
+          },
+          "tips": "Converts LR to MS. Solo Mid to hear vocals. Use MS-to-LR preset to convert back.",
+          "mono_safe": true,
+          "workflow": "Part 1 of MS processing chain"
+        },
+        {
+          "name": "Karaoke Effect",
+          "genre": "Creative/Experimental",
+          "description": "Removes center-panned vocals (phase cancellation)",
+          "use_cases": [
+            "instrumental creation",
+            "karaoke",
+            "vocal removal"
+          ],
+          "settings": {
+            "l_to_l": 1,
+            "l_to_r": -1,
+            "r_to_l": -1,
+            "r_to_r": 1,
+            "delay_ms": 0,
+            "phase_invert_l": false,
+            "phase_invert_r": false
+          },
+          "tips": "Cancels center content. Only works on perfectly centered elements.",
+          "mono_safe": false,
+          "warning": "Completely destroys mono compatibility"
+        },
+        {
+          "name": "Melodic Pad Width",
+          "genre": "Melodic/R&B Hip-Hop",
+          "description": "Moderate width for lush pads and synths",
+          "use_cases": [
+            "pads",
+            "synth chords",
+            "ambient textures"
+          ],
+          "settings": {
+            "l_to_l": 1,
+            "l_to_r": -0.15,
+            "r_to_l": -0.15,
+            "r_to_r": 1,
+            "delay_ms": 5,
+            "phase_invert_l": false,
+            "phase_invert_r": false
+          },
+          "tips": "Subtle width enhancement. Safe for melodic elements.",
+          "mono_safe": true
+        },
+        {
+          "name": "Funky Guitar Spread",
+          "genre": "Funky/Groovy Hip-Hop",
+          "description": "Wide stereo for guitar loops and funk samples",
+          "use_cases": [
+            "guitar loops",
+            "funk samples",
+            "live instruments"
+          ],
+          "settings": {
+            "l_to_l": 1,
+            "l_to_r": -0.25,
+            "r_to_l": -0.25,
+            "r_to_r": 1,
+            "delay_ms": 10,
+            "phase_invert_l": false,
+            "phase_invert_r": true
+          },
+          "tips": "Adds spaciousness to funk loops. Check mono on bass-heavy samples.",
+          "mono_safe": false
+        },
+        {
+          "name": "Sample Vintage Width",
+          "genre": "Boom Bap/Golden Era",
+          "description": "Classic hip-hop narrow stereo image",
+          "use_cases": [
+            "boom bap",
+            "90s hip-hop",
+            "classic samples"
+          ],
+          "settings": {
+            "l_to_l": 0.85,
+            "l_to_r": 0.15,
+            "r_to_l": 0.15,
+            "r_to_r": 0.85,
+            "delay_ms": 0,
+            "phase_invert_l": false,
+            "phase_invert_r": false
+          },
+          "tips": "Authentic 90s stereo width. Perfect for boom bap production.",
+          "mono_safe": true
+        },
+        {
+          "name": "Build-Up Width Automation",
+          "genre": "Electronic/Trap Hip-Hop",
+          "description": "Starting point for automation (narrow → wide)",
+          "use_cases": [
+            "build-ups",
+            "drops",
+            "transitions"
+          ],
+          "settings": {
+            "l_to_l": 0.6,
+            "l_to_r": 0.4,
+            "r_to_l": 0.4,
+            "r_to_r": 0.6,
+            "delay_ms": 0,
+            "phase_invert_l": false,
+            "phase_invert_r": false
+          },
+          "tips": "Start here, automate to 'Club Wide Stereo' for drops.",
+          "mono_safe": true,
+          "workflow": "Automate matrix sliders during build-up sections"
+        },
+        {
+          "name": "Side-Only Processing Setup",
+          "genre": "Advanced/Technical",
+          "description": "Extracts only Side component for processing",
+          "use_cases": [
+            "reverb only on sides",
+            "width-only effects",
+            "MS processing"
+          ],
+          "settings": {
+            "l_to_l": 0.707,
+            "l_to_r": -0.707,
+            "r_to_l": 0.707,
+            "r_to_r": 0.707,
+            "delay_ms": 0,
+            "phase_invert_l": false,
+            "phase_invert_r": false
+          },
+          "tips": "Solo 'Side' after applying this. Process sides separately from mid.",
+          "mono_safe": true,
+          "workflow": "Use in Patcher with parallel Mid/Side chains"
+        }
+      ],
+      "workflows": [
+        {
+          "name": "MS Processing Chain",
+          "steps": [
+            "1. Load 'Vocal Center Extract' preset (LR to MS)",
+            "2. Now Left = Mid, Right = Side",
+            "3. Process each channel with separate effects",
+            "4. Load another Stereo Shaper after effects",
+            "5. Use 'MS to LR' preset to convert back"
+          ]
+        },
+        {
+          "name": "Width Automation",
+          "steps": [
+            "1. Load 'Build-Up Width Automation' preset",
+            "2. Create automation clip for matrix sliders",
+            "3. Automate from narrow (verse) to wide (chorus)",
+            "4. Always check mono compatibility after automation"
+          ]
+        },
+        {
+          "name": "Bass Mono Lock Workflow",
+          "steps": [
+            "1. Load 808 into Patcher",
+            "2. Add Fruity Stereo Shaper after 808",
+            "3. Use '808 Bass Mono Lock' preset",
+            "4. Verify mono with correlation meter",
+            "5. Add distortion/saturation after for harmonics"
+          ]
+        }
+      ],
+      "mono_compatibility_guide": {
+        "always_mono": [
+          "bass below 150Hz",
+          "kick drum",
+          "808s",
+          "sub bass"
+        ],
+        "mono_safe": [
+          "vocals",
+          "lead synths",
+          "snare",
+          "melodic elements"
+        ],
+        "can_be_wide": [
+          "hi-hats",
+          "reverb",
+          "pads",
+          "ambient textures"
+        ],
+        "check_carefully": [
+          "samples",
+          "loops",
+          "guitars",
+          "effects"
+        ]
+      },
+      "tips": [
+        "Always check mono compatibility with mixer mono button",
+        "Bass frequencies (below 150Hz) should always be mono",
+        "Use correlation meter in Fruity Limiter to check phase",
+        "Automate width for dynamic mixes (narrow verse, wide chorus)",
+        "Negative matrix values create width but risk mono cancellation",
+        "Delay knob adds Haas effect - use 5-30ms for stereo width",
+        "Phase inversion creates extreme width but destroys mono",
+        "Use Patcher for complex MS processing chains",
+        "Save your matrix settings as presets for recall",
+        "Trust your ears - if it sounds wrong in mono, fix it"
+      ]
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity Stereo Shaper\n\n## Purpose & Identity\nFruity Stereo Shaper is a professional-grade **stereo matrix mixer**. Its primary identity is a spatial surgical tool. It allows you to control how the Left and Right channels inter-mix, phase-invert, and time-align. It is the core engine for **Mid/Side processing** and high-precision stereo widening in FL Studio. [SRC: IL-MAN]\n\n## 60-Second Mental Model\nImagine you have two pipes (Left and Right). Stereo Shaper gives you a 4-valve matrix:\n- How much Left stays in the Left pipe.\n- How much Left leaks into the Right pipe.\n- How much Right leaks into the Left pipe.\n- How much Right stays in the Right pipe.\nBy mixing and inverting these valves, you can isolate the center of a mix or push everything to the extreme edges.\n\n## Hip-Hop / R&B Context\n- **Vocal Air Isolation:** Extracting only the \"Side\" information of a vocal stack to add shimmer without muddying the lead (Vibey).\n- **The Haas Trap Hat:** Delaying the right side of a hi-hat by 10ms to make it feel ultra-wide and \"Spacey.\"\n- **Bass Phase Fix:** Ensuring a wide 808 is actually mono-compatible by collapsing the low-end via Mid/Side matrixing (Upbeat).\n\n## When To Use\n- When you need to **process the center and edges** of a sound separately (Mid/Side).\n- When you want to **stereoize a mono sound** using the Haas effect (Delay).\n- When you need to **fix phase issues** in a bad sample or microphone recording.\n\n## When NOT To Use\n- **Simple Panning:** Use the Mixer Pan knob or **Fruity Balance** for basic L/R positioning.\n- **Auto-Panning:** Use **PanOMatic** if you want the sound to move back and forth automatically. [SRC: REPUTABLE]\n",
+      "01_Matrix_Mixer_Explained": "# Matrix Mixer Explained - Understanding Stereo Shaper's Core\r\n\r\n## What is a Matrix Mixer?\r\n\r\nA matrix mixer controls how Left and Right input channels are routed to Left and Right outputs using four sliders:\r\n\r\n```\r\nINPUT          MATRIX           OUTPUT\r\n  L  ──→  [L→L] [L→R]  ──→  L\r\n  R  ──→  [R→L] [R→R]  ──→  R\r\n```\r\n\r\n**Each slider controls:**\r\n- **L→L:** How much Left input goes to Left output\r\n- **L→R:** How much Left input goes to Right output  \r\n- **R→L:** How much Right input goes to Left output\r\n- **R→R:** How much Right input goes to Right output\r\n\r\n## Standard Stereo (Unity Matrix)\r\n\r\n```\r\nL→L: 1.0    L→R: 0.0\r\nR→L: 0.0    R→R: 1.0\r\n```\r\nThis passes stereo signal unchanged - left stays left, right stays right.\r\n\r\n## Mid/Side Conversion (LR to MS)\r\n\r\n```\r\nL→L: 0.707   L→R: 0.707   (Mid = L+R)\r\nR→L: 0.707   R→R: -0.707  (Side = L-R)\r\n```\r\n\r\n**Mid Signal:** Center content (vocals, bass, kick)\r\n**Side Signal:** Stereo width (panned elements, ambience)\r\n\r\n## Hip-Hop Applications\r\n\r\n### Moody/Dark Hip-Hop\r\n**Narrow Stereo for Intimacy:**\r\n- L→L: 1.0, L→R: -0.2\r\n- R→L: -0.2, R→R: 1.0\r\n- Creates tight, claustrophobic stereo field\r\n- Perfect for dark, introspective beats\r\n\r\n### Upbeat/Club Hip-Hop\r\n**Wide Stereo for Energy:**\r\n- Use MS mode to widen side content\r\n- Add slight delay (5-10ms) for Haas effect\r\n- Invert phase on one channel for maximum width\r\n- Check mono compatibility!\r\n\r\n### Lo-Fi Hip-Hop\r\n**Mono/Narrow for Vintage:**\r\n- L→L: 0.7, L→R: 0.3\r\n- R→L: 0.3, R→R: 0.7\r\n- Reduces stereo width for vintage vibe\r\n- Emulates old cassette playback\r\n\r\n### Electronic/Trap\r\n**Dynamic Width:**\r\n- Automate matrix for builds/drops\r\n- Narrow in verse, wide in chorus\r\n- MS processing for 808 bass (keep mono)\r\n- Wide hi-hats and snares\r\n\r\n## Common Matrix Recipes\r\n\r\n### Mono Collapse\r\n```\r\nL→L: 0.5    L→R: 0.5\r\nR→L: 0.5    R→R: 0.5\r\n```\r\nConverts stereo to mono - useful for bass checking.\r\n\r\n### Channel Swap\r\n```\r\nL→L: 0.0    L→R: 1.0\r\nR→L: 1.0    R→R: 0.0\r\n```\r\nSwaps left and right channels.\r\n\r\n### Phase Inversion (Karaoke Effect)\r\n```\r\nL→L: 1.0    L→R: -1.0\r\nR→L: -1.0   R→R: 1.0\r\n```\r\nCancels center-panned content - removes vocals from instrumentals.\r\n\r\n## Visual Matrix Guide\r\n\r\n```\r\n           TO LEFT OUT    TO RIGHT OUT\r\nFROM L IN:    [L→L]          [L→R]\r\nFROM R IN:    [R→L]          [R→R]\r\n```\r\n\r\n**Positive Values:** Same phase\r\n**Negative Values:** Inverted phase\r\n**Zero:** No signal routing\r\n\r\n## Pro Tips\r\n\r\n1. **Always check mono:** Fold down in Fruity Stereo Enhancer\r\n2. **Bass stays center:** Keep low-end in Mid component\r\n3. **Automate for impact:** Narrow verse, wide chorus\r\n4. **Phase = power:** Negative values create width but risk mono cancellation\r\n5. **Delay = depth:** 10-30ms creates Haas effect stereo width\r\n\r\n## When to Use Matrix Processing\r\n\r\n### Use It For:\r\n- Mid/Side processing (vocals separate from reverb)\r\n- Phase correction (fixing inverted channels)\r\n- Stereo width control (narrow/wide mixing)\r\n- Center extraction (isolating or removing center elements)\r\n\r\n### Avoid It For:\r\n- General stereo enhancement (use Stereo Enhancer instead)\r\n- Quick mono check (use mixer mono button)\r\n- EQ tasks (wrong tool)\r\n\r\n## Signal Math\r\n\r\n**Mid Signal:** `(L + R) / 2`\r\n**Side Signal:** `(L - R) / 2`\r\n\r\n**Reconstruction:**\r\n- Left Out = Mid + Side\r\n- Right Out = Mid - Side\r\n\r\nMatrix converts between LR and MS representations.\r\n",
+      "02_MidSide_Processing_Fundamentals": "# Mid/Side Processing Fundamentals - Stereo Control for Hip-Hop\r\n\r\n## What is Mid/Side (MS) Processing?\r\n\r\nMid/Side splits a stereo signal into two components:\r\n\r\n**MID:** Everything panned center (mono sum)\r\n**SIDE:** Everything panned left/right (stereo difference)\r\n\r\n```\r\nSTEREO IN → [MS SPLIT] → MID (vocals, bass, kick)\r\n                       → SIDE (panned instruments, reverb)\r\n```\r\n\r\nProcess each separately, then reconstruct back to stereo.\r\n\r\n## Why MS Matters in Hip-Hop\r\n\r\n### Moody/Dark Beats\r\n- **Wide reverb without washing vocals:** Apply reverb only to Side\r\n- **Tight center punch:** Compress only Mid (vocals/kick/808)\r\n- **Atmospheric width:** Brighten Side with EQ, keep Mid dark\r\n\r\n### Upbeat/Club Hip-Hop\r\n- **Powerful mono bass:** 808s stay in Mid, never in Side\r\n- **Wide energy:** Boost Side for club stereo systems\r\n- **Vocal clarity:** Keep vocals in Mid, effects in Side\r\n\r\n### Lo-Fi/Melodic Hip-Hop\r\n- **Vintage stereo:** Reduce Side for narrow, intimate feel\r\n- **Tape wobble:** Modulate Side differently than Mid\r\n- **Dusty samples:** Filter Side more than Mid for degraded width\r\n\r\n### Trap/Electronic Hip-Hop\r\n- **808 dominance:** All sub-bass in Mid only\r\n- **Hi-hat width:** Push hi-hats to Side\r\n- **Snare presence:** Keep snare in Mid, reverb in Side\r\n\r\n## MS Processing Chain Setup\r\n\r\n### Method 1: Two Stereo Shaper Instances in Patcher\r\n\r\n**Instance 1 - Extract Mid:**\r\n```\r\nMatrix Settings:\r\nL→L: 0.707   L→R: 0.707\r\nR→L: 0.707   R→R: -0.707\r\n```\r\nThen use \"Solo Mid\" mode to hear only center content.\r\n\r\n**Instance 2 - Extract Side:**\r\nUse same matrix but \"Solo Side\" mode to hear only stereo width.\r\n\r\nRoute each to separate effects chains, then sum back together.\r\n\r\n### Method 2: MS Conversion for External Processing\r\n\r\n**Step 1 - LR to MS:**\r\nLoad Stereo Shaper, use \"LR to MS\" preset.\r\n\r\n**Step 2 - Process:**\r\nNow Left channel = Mid, Right channel = Side\r\nApply effects as desired.\r\n\r\n**Step 3 - MS to LR:**\r\nAdd another Stereo Shaper after effects, use \"MS to LR\" preset.\r\n\r\n## Practical MS Applications\r\n\r\n### Reverb Without Muddying Vocals\r\n\r\n**Problem:** Reverb on full mix washes out vocals\r\n\r\n**Solution:**\r\n1. Convert to MS\r\n2. Apply reverb only to Side component\r\n3. Convert back to LR\r\n\r\n**Result:** Spacious mix, clear vocals\r\n\r\n### 808 Bass Management\r\n\r\n**Problem:** 808 loses power in mono club systems\r\n\r\n**Solution:**\r\n1. Convert to MS\r\n2. Apply low-cut filter to Side (remove bass from stereo)\r\n3. Keep Mid untouched (bass stays mono)\r\n4. Convert back to LR\r\n\r\n**Result:** Powerful mono bass, wide highs\r\n\r\n### Sample Stereo Control\r\n\r\n**Problem:** Sample too wide or too narrow\r\n\r\n**Solution:**\r\n1. Convert to MS\r\n2. Adjust Side level (boost for wider, reduce for narrower)\r\n3. Convert back to LR\r\n\r\n**Result:** Perfect stereo width control\r\n\r\n## Hip-Hop MS Recipes\r\n\r\n### Recipe 1: Moody Vocal Separation\r\n```\r\n1. Convert vocals to MS\r\n2. Mid: Compression + presence boost (3-5kHz)\r\n3. Side: Gentle reverb + high-cut (removes harsh edges)\r\n4. Convert back to LR\r\n→ Result: Clear, emotional vocal\r\n```\r\n\r\n### Recipe 2: Wide Hi-Hat Trap Pattern\r\n```\r\n1. Convert hi-hats to MS\r\n2. Mid: Reduce level -6dB\r\n3. Side: Boost +3dB, add short delay (15ms)\r\n4. Convert back to LR\r\n→ Result: Wide, spacious hi-hats\r\n```\r\n\r\n### Recipe 3: Club-Ready 808 Bass\r\n```\r\n1. Convert 808 to MS\r\n2. Mid: Leave clean\r\n3. Side: High-pass at 150Hz (remove all bass)\r\n4. Convert back to LR\r\n→ Result: Mono bass, stereo harmonics\r\n```\r\n\r\n### Recipe 4: Lo-Fi Sample Processing\r\n```\r\n1. Convert sample to MS\r\n2. Mid: Leave mostly clean\r\n3. Side: Reduce -4dB, add slight distortion\r\n4. Convert back to LR\r\n→ Result: Vintage narrow width\r\n```\r\n\r\n## Common MS Mistakes\r\n\r\n### Mistake 1: Bass in Side Channel\r\n**Problem:** Bass disappears in mono (clubs, phones)\r\n**Fix:** Always high-pass Side channel below 150Hz\r\n\r\n### Mistake 2: Over-Processing Side\r\n**Problem:** Sounds great in headphones, weak in mono\r\n**Fix:** Check mono frequently, keep Side subtle\r\n\r\n### Mistake 3: Phase Cancellation\r\n**Problem:** Elements vanish when folded to mono\r\n**Fix:** Use correlation meter, ensure Mid/Side balance\r\n\r\n### Mistake 4: Forgetting to Convert Back\r\n**Problem:** Signal stays in MS mode\r\n**Fix:** Always add MS-to-LR conversion after processing\r\n\r\n## MS Visualization\r\n\r\n```\r\nBEFORE MS:\r\nL ████████████ (vocals + reverb + hi-hat)\r\nR ████████████ (vocals + reverb + hi-hat)\r\n\r\nAFTER MS SPLIT:\r\nMID  ████████ (vocals only)\r\nSIDE ████     (reverb + hi-hat only)\r\n\r\nPROCESS SEPARATELY:\r\nMID  ████████ → [COMPRESS] → ████████\r\nSIDE ████     → [REVERB]   → ████████\r\n\r\nCONVERT BACK TO LR:\r\nL ████████████ (compressed vocal + enhanced reverb)\r\nR ████████████ (compressed vocal + enhanced reverb)\r\n```\r\n\r\n## Tools for MS Work\r\n\r\n**Essential Plugins:**\r\n- **Fruity Stereo Shaper:** MS conversion\r\n- **Patcher:** Parallel MS routing\r\n- **Wave Candy:** Visualize stereo field\r\n- **Fruity Limiter:** Check mono with phase meter\r\n\r\n**Analysis Tools:**\r\n- **Correlation Meter:** Shows mono compatibility\r\n- **Vectorscope:** Shows stereo width visually\r\n- **A/B Mono Button:** Quick mono check\r\n\r\n## MS Processing Workflow\r\n\r\n```\r\n1. ANALYZE\r\n   → Identify what needs separate processing\r\n   → Decide what goes Mid vs Side\r\n\r\n2. CONVERT\r\n   → Load Stereo Shaper\r\n   → Apply LR-to-MS preset\r\n\r\n3. PROCESS\r\n   → Left channel = Mid processing\r\n   → Right channel = Side processing\r\n\r\n4. CONVERT BACK\r\n   → Load another Stereo Shaper\r\n   → Apply MS-to-LR preset\r\n\r\n5. CHECK\r\n   → A/B with original\r\n   → Test in mono\r\n   → Verify phase coherence\r\n```\r\n\r\n## Genre-Specific MS Guidelines\r\n\r\n### Moody Hip-Hop\r\n- **Mid:** Heavy compression, dark EQ\r\n- **Side:** Subtle reverb, rolled-off highs\r\n- **Width:** Narrow to medium\r\n\r\n### Upbeat Hip-Hop\r\n- **Mid:** Punchy compression, presence boost\r\n- **Side:** Bright EQ, stereo delay\r\n- **Width:** Medium to wide\r\n\r\n### Lo-Fi Hip-Hop\r\n- **Mid:** Gentle saturation, warm EQ\r\n- **Side:** Reduced level, filtered\r\n- **Width:** Narrow\r\n\r\n### Trap/Electronic\r\n- **Mid:** Clean dynamics, powerful bass\r\n- **Side:** Bright, stereo effects\r\n- **Width:** Wide\r\n\r\n### Melodic Hip-Hop\r\n- **Mid:** Vocal clarity, lead presence\r\n- **Side:** Lush reverb, melodic elements\r\n- **Width:** Medium-wide\r\n\r\n## Pro MS Tips\r\n\r\n1. **Bass in Mid only:** Below 150Hz = mono always\r\n2. **Vocals in Mid:** Lead vocals stay centered\r\n3. **Effects in Side:** Reverb, delay, ambience\r\n4. **Check mono constantly:** Use mixer mono button\r\n5. **Subtle is better:** Over-processed Side = mono problems\r\n6. **Automate width:** Narrow verse, wide chorus\r\n7. **Use Patcher:** Essential for complex MS chains\r\n8. **Trust your ears:** Meters help, but listen in mono\r\n\r\n## MS Math Reference\r\n\r\n```\r\nMID = (L + R) / 2\r\nSIDE = (L - R) / 2\r\n\r\nRECONSTRUCTION:\r\nL = MID + SIDE\r\nR = MID - SIDE\r\n```\r\n\r\nWhen you boost Side by 6dB, you're increasing stereo width.\r\nWhen you reduce Side by 6dB, you're narrowing the stereo image.\r\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity Stereo Shaper\n\nStereo Shaper translates vibes through **Spatial Dimension** and **Phase Contrast**.\n\n## 1. Spacey (Vast, Hollow, Outside-the-Speakers)\n- **Concept:** \"The Extreme Edge.\"\n- **Levers:**\n  - **Preset:** \"Side\" (Solo Sides).\n  - **Delay:** 25ms - 35ms.\n- **Listen For:** The sound feeling like it's coming from \"behind\" or \"around\" you. It feels hollow in the center and vast at the edges.\n- **Don't Do This:** Don't use this on a Kick; keep the space for pads and FX.\n\n## 2. Psychedelic (Disorienting, Unnatural, Shifting)\n- **Concept:** \"Phase Inversion Width.\"\n- **Levers:**\n  - **Action:** Invert the phase of the Right channel (using the switch).\n  - **Matrix:** L->R at 1.0, R->L at 1.0.\n- **Listen For:** A \"pressure\" sensation in the ears where the sound feels unstable and wide in a non-natural way.\n\n## 3. Upbeat (Wide, Impactful, Modern)\n- **Concept:** \"The Haas Snap.\"\n- **Levers:**\n  - **Delay:** 5ms - 15ms.\n  - **Mix:** 100%.\n- **Listen For:** A mono percussion sound suddenly feeling 3D and wide without losing its \"snap.\" This adds energy to simple trap patterns.\n\n## 4. Jazzy (Natural, Balanced, Organic)\n- **Concept:** \"The Room Arrival.\"\n- **Levers:**\n  - **Delay:** Very subtle (2ms - 5ms).\n  - **Matrix:** Standard (LR to LR).\n- **Listen For:** A subtle \"opening\" of the sound that mimics how sound hits one ear slightly before the other in a real acoustic room.\n\n## 5. Vibey (Silk, Expensive, Polished)\n- **Concept:** \"Mid/Side Clarity.\"\n- **Levers:**\n  - **Preset:** \"Mid-Side Splitter\" (In Patcher).\n  - **Action:** Only process the \"Side\" channel with a high-shelf EQ.\n- **Listen For:** An expensive \"shimmer\" that lives only at the edges of the mix, leaving the core vocal dry and authoritative. [SRC: REPUTABLE]\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Stereo Shaper\r\n\r\n## What It Is\r\nFruity Stereo Shaper is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Fruity Stereo Shaper\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: Fruity Stereo Shaper (5 Minutes)\n\n1.  **Insert:** Load **Fruity Stereo Shaper** on a track that feels too \"centered.\"\n2.  **Width:** Turn the **DELAY** knob to about `10ms`. The sound will instantly feel wider (Haas Effect).\n3.  **M/S Split:** Click the preset arrow and choose **Mixing -> Mid-Side Splitter**.\n    - *Instance 1:* Outputs only the center (Mid).\n    - *Instance 2:* Outputs only the edges (Side).\n4.  **Invert:** Toggle the **PHASE** buttons (L or R) to see how it affects the \"depth\" of the stereo image.\n5.  **Clean:** If the sound feels \"thin,\" reduce the **DELAY** or the cross-mixing sliders.\n6.  **Tip:** Use **Wave Candy** (Vectorscope) to see if your width is causing the signal to \"fall\" into the negative phase zone. [SRC: IL-MAN]\n",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Stereo Shaper\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Stereo Shaper to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Stereo Shaper\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Stereo Shaper\r\n\r\nThis section contains learning information for the fruity-stereo-shaper plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: The Haas Wide Trap Hat (Stereo Shaper)\n\n## Routing Context\n- **Target:** Mono Trap Hi-Hats.\n- **Position:** Insert FX (After EQ).\n\n## Step-by-Step Setup\n1.  Load a mono, centered Hi-Hat pattern.\n2.  Add **Fruity Stereo Shaper**.\n3.  Set the **DELAY** knob to `12ms`.\n4.  **The Result:** The hat pattern will instantly feel ultra-wide, appearing to come from both ears at the same time.\n5.  **Refine:** Adjust the **L->R** and **R->L** sliders to `0.2` to add a bit of cross-channel \"glue.\"\n\n## Vibe Check\n- **Upbeat/Modern:** This clears the center for the Kick and Snare while making the high-end feel expansive and \"Industry.\"\n\n## Variation\n- **Glitch Width:** Automate the **Delay** knob between `5ms` and `25ms` during a hi-hat roll for a \"warping\" spatial effect. [SRC: REPUTABLE]\n",
+      "01_Moody_Vocal_Processing": "# Moody Vocal Processing - Intimate Stereo Control\r\n\r\n## Goal\r\nCreate emotionally intimate, centered vocals with subtle stereo width for moody/dark hip-hop, while keeping vocals present and clear in mono.\r\n\r\n## When to Use\r\n- Sad trap / emo rap vocals\r\n- Introspective storytelling verses\r\n- Dark melodic hooks\r\n- Lo-fi vocal performances\r\n- Late-night vibe tracks\r\n\r\n## The Problem\r\n**Wide vocals = washed out and distant**\r\n**Too narrow = lifeless and flat**\r\n\r\nNeed: Centered presence + subtle spatial depth\r\n\r\n## The Solution: Mid/Side Vocal Processing\r\n\r\n### Quick Version (5 Minutes)\r\n1. Load Fruity Stereo Shaper on vocal track\r\n2. Use \"LR to MS\" preset (or \"Vocal Center Extract\")\r\n3. Now Left channel = Mid (vocal), Right channel = Side (space)\r\n4. Add compression to Mid only\r\n5. Add subtle reverb to Side only\r\n6. Load another Stereo Shaper, use \"MS to LR\" preset\r\n7. Done - clear centered vocal with spatial depth\r\n\r\n### Detailed Version (Professional)\r\n\r\n## Step-by-Step Workflow\r\n\r\n### Setup (In Patcher)\r\n\r\n**1. Create MS Split**\r\n```\r\nVOCAL IN → STEREO SHAPER 1 (LR to MS)\r\n           ├── MID OUT (Left) → MID CHAIN\r\n           └── SIDE OUT (Right) → SIDE CHAIN\r\n```\r\n\r\n**Matrix Settings for LR-to-MS:**\r\n- L→L: 0.707\r\n- L→R: 0.707\r\n- R→L: 0.707\r\n- R→R: -0.707\r\n\r\n**2. Solo Mid Component First**\r\n- Use \"Solo Mid\" button in Stereo Shaper\r\n- This is your vocal core - should be clear and dry\r\n\r\n**3. Solo Side Component**\r\n- Use \"Solo Side\" button\r\n- This is ambient/reverb content - should be subtle\r\n\r\n### Mid Chain Processing (Vocal Core)\r\n\r\n**Add to Mid Channel:**\r\n\r\n**A. Compression**\r\n- Ratio: 3:1 to 4:1\r\n- Threshold: -12dB to -8dB\r\n- Attack: 10-30ms\r\n- Release: 100-200ms\r\n- Goal: Consistent, intimate vocal level\r\n\r\n**B. EQ (Parametric EQ 2)**\r\n- High-pass: 80-100Hz (remove rumble)\r\n- Presence boost: +2-4dB at 3-5kHz (clarity)\r\n- De-harsh: -2dB at 7-9kHz if needed (smoothness)\r\n- Air: +1-2dB shelf at 12kHz (modern sheen)\r\n\r\n**C. Saturation (Optional)**\r\n- Subtle tape saturation (5-10% mix)\r\n- Adds warmth and harmonic richness\r\n- Use Effector or Blood Overdrive gently\r\n\r\n### Side Chain Processing (Spatial Depth)\r\n\r\n**Add to Side Channel:**\r\n\r\n**A. Reverb (Fruity Reeverb 2)**\r\n- Size: Small to Medium (0.5-1.5s decay)\r\n- Damping: 50-70% (darker reverb)\r\n- Mix: 15-25% (subtle depth)\r\n- Pre-delay: 10-20ms (separation from dry vocal)\r\n- High-cut: 8kHz (remove harshness)\r\n\r\n**B. Stereo Delay (Optional)**\r\n- Time: 1/16 or 1/8 note\r\n- Feedback: 10-20% (1-2 repeats)\r\n- Mix: 5-10% (barely audible)\r\n- Ping-pong panning\r\n\r\n**C. EQ Side Channel**\r\n- High-pass: 300-500Hz (keep low-mids in mid)\r\n- Reduce harsh frequencies: -2dB at 3kHz\r\n- Brighten top: +2dB shelf at 10kHz\r\n\r\n### Reconstruction\r\n\r\n**3. Add Stereo Shaper 2 (MS to LR)**\r\n```\r\nMID + SIDE → STEREO SHAPER 2 (MS to LR) → STEREO OUT\r\n```\r\n\r\n**Matrix Settings for MS-to-LR:**\r\n- L→L: 1.0\r\n- L→R: 1.0\r\n- R→L: 1.0\r\n- R→R: -1.0\r\n\r\n### Balance Mid/Side Levels\r\n\r\n**Before reconstruction, adjust levels:**\r\n- Mid: 0dB (reference level)\r\n- Side: -3 to -6dB (subtle depth)\r\n\r\n**Result:** Clear centered vocal + ambient depth\r\n\r\n## Hip-Hop Genre Variations\r\n\r\n### Moody/Dark Hip-Hop (Sad Trap)\r\n**Mid:** Heavy compression (4:1), dark EQ (reduce 2-4kHz), slight saturation\r\n**Side:** Dark reverb (low-passed at 6kHz), minimal delay\r\n**Width:** Narrow - Side at -6dB\r\n\r\n**Example Artists:** Juice WRLD, XXXTentacion, Lil Peep\r\n\r\n### Upbeat/Club Hip-Hop (Energetic)\r\n**Mid:** Moderate compression (3:1), presence boost (5kHz), clean\r\n**Side:** Bright reverb, stereo delay\r\n**Width:** Medium - Side at -3dB\r\n\r\n**Example Artists:** Drake (energy tracks), Travis Scott\r\n\r\n### Lo-Fi/Chill Hip-Hop\r\n**Mid:** Gentle compression (2:1), warm EQ (roll off highs), tape saturation\r\n**Side:** Vintage reverb (Spring/Plate), wobbly chorus\r\n**Width:** Narrow - Side at -8dB\r\n\r\n**Example Artists:** Lo-fi beats, chill hop playlists\r\n\r\n### Melodic/R&B Hip-Hop\r\n**Mid:** Transparent compression, smooth EQ, vocal clarity\r\n**Side:** Lush reverb (Hall), subtle chorus, melodic delay\r\n**Width:** Medium-wide - Side at -2dB\r\n\r\n**Example Artists:** Frank Ocean, The Weeknd, Bryson Tiller\r\n\r\n### Trap/Electronic Hip-Hop\r\n**Mid:** Punchy compression (5:1), aggressive EQ (scooped mids), distortion\r\n**Side:** Massive reverb, ping-pong delay\r\n**Width:** Wide - Side at -1dB\r\n\r\n**Example Artists:** Future, Metro Boomin productions\r\n\r\n## Automation for Dynamics\r\n\r\n### Verse (Intimate)\r\n- Side level: -8dB\r\n- Reverb mix: 10%\r\n- Narrow stereo field\r\n\r\n### Pre-Chorus (Building)\r\n- Side level: -4dB\r\n- Reverb mix: 15%\r\n- Width opening up\r\n\r\n### Chorus (Impact)\r\n- Side level: -2dB\r\n- Reverb mix: 25%\r\n- Wide stereo field\r\n\r\n**Automate Side channel level for dynamic width control**\r\n\r\n## Common Mistakes\r\n\r\n### Mistake 1: Too Much Side Content\r\n**Problem:** Vocal disappears in mono\r\n**Fix:** Keep Side at least -3dB below Mid\r\n\r\n### Mistake 2: Harsh Side Reverb\r\n**Problem:** Reverb sounds brittle and distracting\r\n**Fix:** Low-pass Side at 6-8kHz, reduce 3kHz\r\n\r\n### Mistake 3: Reverb on Mid\r\n**Problem:** Vocal gets washed out\r\n**Fix:** Only add reverb to Side channel\r\n\r\n### Mistake 4: No Mono Check\r\n**Problem:** Sounds great in headphones, weak on phones\r\n**Fix:** Check mono frequently during processing\r\n\r\n### Mistake 5: Over-Processing\r\n**Problem:** Vocal sounds unnatural\r\n**Fix:** Keep it subtle - less is more for moody vocals\r\n\r\n## Mono Compatibility Check\r\n\r\n**After processing, check:**\r\n1. Press mono button on mixer\r\n2. Vocal should still be clear and present\r\n3. If vocal disappears, reduce Side level\r\n4. If vocal sounds thin, boost Mid slightly\r\n\r\n**Target:** 90% of vocal clarity maintained in mono\r\n\r\n## Pro Tips\r\n\r\n1. **Start with Mid only:** Get vocal sounding perfect before adding Side\r\n2. **Side = space, not volume:** Side should be felt, not heard directly\r\n3. **Reverb pre-delay:** 10-20ms separates reverb from dry vocal\r\n4. **High-pass Side aggressively:** Keep low-mids only in Mid (300-500Hz)\r\n5. **Use dark reverb:** Low-pass at 6-8kHz for moody vibe\r\n6. **Automate width:** Narrow verse, wider chorus\r\n7. **Check mono constantly:** Use mixer mono button\r\n8. **Less is more:** Subtle Side processing = professional sound\r\n9. **Match genre:** Moody = narrow, Upbeat = wider\r\n10. **Trust your ears:** If it sounds wrong, it is wrong\r\n\r\n## Quick Reference Settings\r\n\r\n### Moody Vocal Preset\r\n```\r\nMID CHAIN:\r\n- Compression: 4:1, -10dB threshold\r\n- EQ: HPF 90Hz, +3dB @ 4kHz, -2dB @ 8kHz\r\n- Saturation: 10% tape warmth\r\n\r\nSIDE CHAIN:\r\n- Reverb: 1.0s decay, 20% mix, damping 70%\r\n- EQ: HPF 400Hz, LPF 6kHz\r\n- Level: -6dB\r\n\r\nWIDTH: Narrow (intimate)\r\nMONO SAFE: Yes\r\n```\r\n\r\n## Signal Flow Diagram\r\n\r\n```\r\nVOCAL INPUT (Stereo)\r\n      ↓\r\nSTEREO SHAPER 1 (LR to MS)\r\n      ├── MID (Left) → COMPRESS → EQ → SATURATE ──┐\r\n      └── SIDE (Right) → REVERB → EQ → DELAY ──────┤\r\n                                                    ↓\r\n                              STEREO SHAPER 2 (MS to LR)\r\n                                                    ↓\r\n                              MOODY VOCAL OUTPUT (Stereo)\r\n```\r\n\r\n## Before/After Comparison\r\n\r\n**BEFORE (Raw Vocal):**\r\n- Dry and lifeless\r\n- No depth or space\r\n- Flat dynamics\r\n- Inconsistent level\r\n\r\n**AFTER (MS Processed):**\r\n- Clear and present (Mid)\r\n- Subtle spatial depth (Side)\r\n- Controlled dynamics\r\n- Intimate and emotional\r\n- Mono compatible\r\n\r\n## Saves Time By\r\n- Processing vocal and reverb separately\r\n- Maintaining mono compatibility automatically\r\n- Avoiding muddiness from center reverb\r\n- Creating professional vocal sound quickly\r\n\r\n## Works Great With\r\n- **Fruity Parametric EQ 2:** Surgical EQ on Mid/Side\r\n- **Fruity Compressor:** Vocal compression on Mid\r\n- **Fruity Reeverb 2:** Dark ambient reverb on Side\r\n- **Fruity Delay 3:** Rhythmic delays on Side\r\n- **Patcher:** Essential for MS routing\r\n- **Wave Candy:** Visualize stereo field\r\n",
+      "02_808_Mono_Lock_Workflow": "# 808 Mono Lock Workflow - Club-Ready Bass\r\n\r\n## Goal\r\nEnsure 808 bass hits hard in mono (clubs, phones, radios) while maintaining stereo width for harmonics and overtones.\r\n\r\n## The Problem\r\n\r\n**Wide bass = weak in mono**\r\n- Clubs play mono bass for power\r\n- Phones sum to mono\r\n- Car systems are often mono below 200Hz\r\n- Phase cancellation kills bass power\r\n\r\n**Solution:** Lock bass to mono, keep highs in stereo\r\n\r\n## Why This Matters\r\n\r\n### Moody/Dark Hip-Hop\r\n808s are the foundation - must hit hard on all systems\r\n\r\n### Upbeat/Club Hip-Hop\r\nDance floors use mono bass for maximum impact\r\n\r\n### Trap/Electronic Hip-Hop\r\n808s define the genre - mono bass is essential\r\n\r\n### All Hip-Hop Genres\r\nBass management = professional vs amateur sound\r\n\r\n## Quick Version (3 Minutes)\r\n\r\n1. Load 808 into mixer track\r\n2. Add Fruity Stereo Shaper\r\n3. Use \"808 Bass Mono Lock\" preset\r\n4. Matrix collapses to mono\r\n5. Done - bass now hits in mono\r\n\r\n**Settings:**\r\n- L→L: 0.5, L→R: 0.5\r\n- R→L: 0.5, R→R: 0.5\r\n- Result: Perfect mono sum\r\n\r\n## Advanced Version: Multiband Mono Lock\r\n\r\n### Why Multiband?\r\n- Lock only low frequencies to mono\r\n- Keep high-frequency distortion/harmonics in stereo\r\n- Best of both worlds\r\n\r\n### Setup (Using Patcher)\r\n\r\n```\r\n808 INPUT\r\n    ↓\r\nFREQUENCY SPLITTER\r\n    ├── LOW (<150Hz) → STEREO SHAPER (Mono Lock) ──┐\r\n    └── HIGH (>150Hz) → Keep Stereo ───────────────┤\r\n                                                    ↓\r\n                                            MIXER → OUTPUT\r\n```\r\n\r\n### Step-by-Step\r\n\r\n**1. Load 808 into Patcher**\r\n\r\n**2. Add Frequency Splitter**\r\n- Low cutoff: 150Hz\r\n- Slope: 24dB/oct (steep)\r\n- Route Low to Channel 1\r\n- Route High to Channel 2\r\n\r\n**3. Add Stereo Shaper to Low Band**\r\n- Use \"808 Bass Mono Lock\" preset\r\n- Matrix settings:\r\n  - L→L: 0.5, L→R: 0.5\r\n  - R→L: 0.5, R→R: 0.5\r\n\r\n**4. Keep High Band Stereo**\r\n- No processing needed\r\n- Maintains stereo harmonics\r\n\r\n**5. Sum Both Bands**\r\n- Mix Low (mono) + High (stereo)\r\n- Result: Mono bass, stereo highs\r\n\r\n### Visual Routing\r\n\r\n```\r\n         ┌───────────────────┐\r\n808  →   │ FREQUENCY SPLIT   │\r\n         └─────┬────────┬────┘\r\n               ↓        ↓\r\n            LOW(150)  HIGH(150+)\r\n               ↓        ↓\r\n          STEREO     UNTOUCHED\r\n          SHAPER     (stereo)\r\n          (mono)        ↓\r\n               ↓        ↓\r\n               └────┬───┘\r\n                    ↓\r\n                 OUTPUT\r\n        (mono bass + stereo highs)\r\n```\r\n\r\n## Genre-Specific Settings\r\n\r\n### Moody/Dark Hip-Hop (Heavy 808)\r\n**Low Band (Mono):**\r\n- Cutoff: 150Hz\r\n- Add subtle saturation after mono lock\r\n- Keep deep sub pure\r\n\r\n**High Band (Stereo):**\r\n- Slight distortion for grit\r\n- Narrow stereo (L→L=0.9, L→R=0.1)\r\n\r\n**Character:** Dark, heavy, mono-focused\r\n\r\n### Upbeat/Club Hip-Hop (Punchy 808)\r\n**Low Band (Mono):**\r\n- Cutoff: 120Hz\r\n- Clean and powerful\r\n- Add transient shaper for punch\r\n\r\n**High Band (Stereo):**\r\n- Bright EQ boost\r\n- Medium stereo width\r\n- Short reverb for space\r\n\r\n**Character:** Clean, punchy, club-ready\r\n\r\n### Trap/Electronic Hip-Hop (Distorted 808)\r\n**Low Band (Mono):**\r\n- Cutoff: 100Hz (lower for sub)\r\n- Pure mono, no effects\r\n\r\n**High Band (Stereo):**\r\n- Heavy distortion/saturation\r\n- Wide stereo imaging\r\n- Stereo delay for width\r\n\r\n**Character:** Massive sub, aggressive highs\r\n\r\n### Lo-Fi Hip-Hop (Warm 808)\r\n**Low Band (Mono):**\r\n- Cutoff: 180Hz\r\n- Tape saturation\r\n- Gentle compression\r\n\r\n**High Band (Stereo):**\r\n- Filtered (low-pass at 5kHz)\r\n- Narrow stereo\r\n- Vintage chorus\r\n\r\n**Character:** Warm, nostalgic, controlled\r\n\r\n### Melodic/R&B Hip-Hop (Musical 808)\r\n**Low Band (Mono):**\r\n- Cutoff: 150Hz\r\n- Clean dynamics\r\n- Transparent processing\r\n\r\n**High Band (Stereo):**\r\n- Harmonic enhancement\r\n- Moderate stereo width\r\n- Subtle reverb\r\n\r\n**Character:** Musical, melodic, polished\r\n\r\n## Simple Mono Lock (No Multiband)\r\n\r\n### When to Use\r\n- Quick mix\r\n- Simple 808 with no distortion\r\n- When you want all frequencies mono\r\n\r\n### Setup\r\n1. Load Stereo Shaper after 808\r\n2. Use \"808 Bass Mono Lock\" preset\r\n3. Done\r\n\r\n**Matrix:**\r\n```\r\nL→L: 0.5    L→R: 0.5\r\nR→L: 0.5    R→R: 0.5\r\n```\r\n\r\n**Result:** Entire 808 in mono\r\n\r\n### Pros\r\n- Simple\r\n- Fast\r\n- Guaranteed mono compatibility\r\n\r\n### Cons\r\n- Loses stereo harmonics\r\n- Less exciting on headphones\r\n- Can sound flat\r\n\r\n## Checking Your Work\r\n\r\n### Test 1: Mono Button\r\n- Hit mono button on mixer\r\n- Bass should maintain full power\r\n- No volume drop = success\r\n\r\n### Test 2: Phase Correlation\r\n- Load Fruity Limiter on master\r\n- Enable correlation meter\r\n- Should show tight phase (close to +1.0)\r\n\r\n### Test 3: Frequency Analyzer\r\n- Load Wave Candy\r\n- Check low frequencies (<150Hz)\r\n- Should be mono (no stereo separation)\r\n\r\n### Test 4: Multiple Systems\r\n- Check on headphones\r\n- Check on phone speaker\r\n- Check on car system (if possible)\r\n- Bass should hit hard everywhere\r\n\r\n## Common Mistakes\r\n\r\n### Mistake 1: Forgetting to Mono Lock\r\n**Problem:** Bass disappears in clubs\r\n**Fix:** Always mono lock below 150Hz\r\n\r\n### Mistake 2: Mono Locking Too High\r\n**Problem:** Sounds dull and lifeless\r\n**Fix:** Only mono lock below 150-200Hz\r\n\r\n### Mistake 3: Adding Stereo Effects to Bass\r\n**Problem:** Reverb/delay makes bass weak\r\n**Fix:** Only add effects above 150Hz\r\n\r\n### Mistake 4: Not Checking Mono\r\n**Problem:** Sounds great at home, weak on systems\r\n**Fix:** Always test with mono button\r\n\r\n### Mistake 5: Distortion Before Mono Lock\r\n**Problem:** Distortion creates stereo content that gets collapsed\r\n**Fix:** Mono lock first, then add distortion to high band\r\n\r\n## Pro Tips\r\n\r\n1. **150Hz rule:** Everything below = mono, always\r\n2. **Multiband is king:** Best bass management technique\r\n3. **Check clubs:** Most clubs play mono bass\r\n4. **Distortion placement:** After mono lock for maximum impact\r\n5. **Phase meter:** Use correlation meter religiously\r\n6. **Sub frequencies:** Below 60Hz should be pure mono\r\n7. **Kick + 808:** Both should be mono for punch\r\n8. **Sidechain:** Works better with mono bass\r\n9. **Compression:** Compress after mono lock\r\n10. **Trust the meter:** Phase correlation doesn't lie\r\n\r\n## Quick Reference\r\n\r\n### Mono Lock Only\r\n```\r\nPRESET: \"808 Bass Mono Lock\"\r\nCUTOFF: N/A (full spectrum)\r\nUSE FOR: Quick mixes, simple 808s\r\nPROS: Fast, guaranteed mono\r\nCONS: Loses stereo highs\r\n```\r\n\r\n### Multiband Mono Lock\r\n```\r\nCUTOFF: 150Hz\r\nLOW: Mono lock\r\nHIGH: Keep stereo\r\nUSE FOR: Professional mixes, distorted 808s\r\nPROS: Best of both worlds\r\nCONS: Requires Patcher setup\r\n```\r\n\r\n## Workflow Comparison\r\n\r\n### Basic Workflow\r\n```\r\n808 → STEREO SHAPER (Mono Lock) → OUTPUT\r\nTime: 30 seconds\r\nQuality: Good for mono, flat for stereo\r\n```\r\n\r\n### Advanced Workflow\r\n```\r\n808 → PATCHER → FREQ SPLIT (150Hz)\r\n              ├── LOW → STEREO SHAPER (Mono) → MIX\r\n              └── HIGH → STEREO → MIX\r\nTime: 3 minutes\r\nQuality: Professional, best results\r\n```\r\n\r\n## Signal Flow Examples\r\n\r\n### Trap 808 (Distorted)\r\n```\r\n808 INPUT\r\n    ↓\r\nPATCHER\r\n    ↓\r\nFREQ SPLIT (100Hz)\r\n├── LOW → MONO LOCK → CLEAN\r\n└── HIGH → DISTORTION → STEREO DELAY → WIDE\r\n    ↓\r\nSUM → POWERFUL MONO SUB + AGGRESSIVE STEREO HIGHS\r\n```\r\n\r\n### Clean 808 (Simple)\r\n```\r\n808 INPUT\r\n    ↓\r\nSTEREO SHAPER\r\n    ↓\r\nMONO LOCK (Full Spectrum)\r\n    ↓\r\nMONO 808 OUTPUT\r\n```\r\n\r\n### R&B 808 (Musical)\r\n```\r\n808 INPUT\r\n    ↓\r\nFREQ SPLIT (150Hz)\r\n├── LOW → MONO LOCK → SUBTLE SATURATION\r\n└── HIGH → HARMONIC EXCITER → MEDIUM WIDTH\r\n    ↓\r\nMUSICAL MONO BASS + POLISHED HARMONICS\r\n```\r\n\r\n## Automation Ideas\r\n\r\n### Dynamic Mono Lock\r\n**Verse:** Full mono lock (tight bass)\r\n**Chorus:** Multiband (wider harmonics)\r\n\r\n### Build-Up\r\n**Start:** Mono + filtered highs\r\n**Drop:** Mono bass + wide distorted highs\r\n\r\n**Automate:** Frequency split crossover point\r\n\r\n## Integration with Other Plugins\r\n\r\n**Works Great With:**\r\n- **Patcher:** Essential for multiband routing\r\n- **Fruity Parametric EQ 2:** Shape bass before mono lock\r\n- **Fruity Limiter:** Check phase correlation\r\n- **Effector:** Distortion on high band\r\n- **Fruity Compressor:** Dynamics control after mono lock\r\n- **Wave Candy:** Visual confirmation of mono bass\r\n\r\n**Avoid:**\r\n- Stereo reverb on full 808\r\n- Stereo delay on bass frequencies\r\n- Stereo chorus below 150Hz\r\n- Haas effect on bass\r\n\r\n## Before/After\r\n\r\n**BEFORE (Stereo 808):**\r\n- Sounds wide in headphones\r\n- Disappears in mono\r\n- Phase issues\r\n- Weak on club systems\r\n\r\n**AFTER (Mono Lock):**\r\n- Hits hard everywhere\r\n- Mono compatible\r\n- Clean phase\r\n- Club-ready power\r\n\r\n## Success Metrics\r\n\r\n✅ Bass maintains power in mono\r\n✅ No phase cancellation\r\n✅ Correlation meter shows tight phase\r\n✅ Sounds good on phones\r\n✅ Hits hard on all systems\r\n✅ Professional mixing standard\r\n\r\n## Final Checklist\r\n\r\n- [ ] 808 below 150Hz is mono\r\n- [ ] Checked with mono button\r\n- [ ] Phase correlation is good\r\n- [ ] Tested on multiple systems\r\n- [ ] No stereo effects on bass\r\n- [ ] Kick drum also mono\r\n- [ ] Ready for clubs/radio\r\n\r\n## Remember\r\n\r\n**Mono bass = professional mixes**\r\n**Wide bass = amateur hour**\r\n**Always check mono compatibility**\r\n**Trust the phase meter**\r\n",
+      "03_Wide_Trap_Hi-Hats": "# Wide Trap Hi-Hats - Maximum Stereo Spread\r\n\r\n## Goal\r\nCreate ultra-wide, spacious hi-hat patterns for trap beats while maintaining energy and preventing complete mono collapse.\r\n\r\n## When to Use\r\n- Trap hi-hat rolls\r\n- Fast triplet patterns\r\n- Open hi-hat loops\r\n- Percussion fills\r\n- Electronic/hybrid trap\r\n\r\n## The Trap Hi-Hat Challenge\r\n\r\n**Problem:** Mono hi-hats sound boring and flat\r\n**Solution:** Aggressive stereo widening with controlled risk\r\n\r\n**Warning:** Wide hi-hats will have reduced presence in mono - that's acceptable for this genre.\r\n\r\n## Quick Version (2 Minutes)\r\n\r\n1. Load hi-hat pattern on mixer track\r\n2. Add Fruity Stereo Shaper\r\n3. Use \"Trap Hi-Hat Spread\" preset\r\n4. Adjust delay to taste (8-15ms)\r\n5. Done - ultra-wide trap hats\r\n\r\n**Settings:**\r\n- L→L: 1.0, L→R: -0.4\r\n- R→L: -0.4, R→R: 1.0\r\n- Delay: 12ms\r\n- Phase Invert: Left channel\r\n\r\n## Advanced Techniques by Hip-Hop Genre\r\n\r\n### Trap/Electronic Hip-Hop (Maximum Width)\r\n\r\n**Matrix Settings:**\r\n```\r\nL→L: 1.0    L→R: -0.45\r\nR→L: -0.45  R→R: 1.0\r\nDelay: 15ms\r\nPhase Invert: Left\r\n```\r\n\r\n**Additional Processing:**\r\n- Bright EQ (+3dB at 8-12kHz)\r\n- Stereo delay (1/16 notes, 20% feedback)\r\n- Subtle reverb on Side only\r\n\r\n**Character:** Massive, club-filling width\r\n\r\n**Example Artists:** Metro Boomin, Southside, 808 Mafia\r\n\r\n### Upbeat/Club Hip-Hop (Controlled Width)\r\n\r\n**Matrix Settings:**\r\n```\r\nL→L: 1.0    L→R: -0.3\r\nR→L: -0.3   R→R: 1.0\r\nDelay: 10ms\r\nPhase Invert: None\r\n```\r\n\r\n**Additional Processing:**\r\n- Moderate EQ boost (8kHz)\r\n- Short ping-pong delay\r\n- Room reverb\r\n\r\n**Character:** Wide but controlled, maintains mono presence\r\n\r\n**Example Artists:** Travis Scott, Drake (energy tracks)\r\n\r\n### Moody/Dark Hip-Hop (Subtle Width)\r\n\r\n**Matrix Settings:**\r\n```\r\nL→L: 1.0    L→R: -0.15\r\nR→L: -0.15  R→R: 1.0\r\nDelay: 6ms\r\nPhase Invert: None\r\n```\r\n\r\n**Additional Processing:**\r\n- Dark EQ (reduce 10kHz+)\r\n- Filtered delay\r\n- Dark reverb\r\n\r\n**Character:** Atmospheric without being distracting\r\n\r\n**Example Artists:** Juice WRLD, XXXTentacion\r\n\r\n### Lo-Fi Hip-Hop (Minimal Width)\r\n\r\n**Matrix Settings:**\r\n```\r\nL→L: 0.85   L→R: 0.15\r\nR→L: 0.15   R→R: 0.85\r\nDelay: 0ms\r\nPhase Invert: None\r\n```\r\n\r\n**Additional Processing:**\r\n- Vintage EQ (roll-off highs)\r\n- Bit crushing\r\n- Vinyl noise layer\r\n\r\n**Character:** Narrow, vintage, lo-fi aesthetic\r\n\r\n**Example:** Chill hop, study beats\r\n\r\n### Melodic/R&B Hip-Hop (Musical Width)\r\n\r\n**Matrix Settings:**\r\n```\r\nL→L: 1.0    L→R: -0.2\r\nR→L: -0.2   R→R: 1.0\r\nDelay: 8ms\r\nPhase Invert: None\r\n```\r\n\r\n**Additional Processing:**\r\n- Smooth EQ curve\r\n- Melodic delay (1/8 or 1/4 notes)\r\n- Lush reverb\r\n\r\n**Character:** Spacious and musical, supports melodies\r\n\r\n**Example Artists:** The Weeknd, Bryson Tiller\r\n\r\n## The Haas Effect Explained\r\n\r\n### What is Haas Effect?\r\nDelaying one channel by 5-35ms creates perceived stereo width without changing pitch or tone.\r\n\r\n**Sweet Spots:**\r\n- 5-10ms: Subtle width\r\n- 10-20ms: Moderate width\r\n- 20-35ms: Maximum width\r\n- >35ms: Perceived as echo\r\n\r\n### Delay Settings by Genre\r\n\r\n**Trap:** 12-15ms (aggressive width)\r\n**Upbeat:** 8-10ms (controlled width)\r\n**Moody:** 5-8ms (subtle depth)\r\n**Lo-Fi:** 0-5ms (minimal/vintage)\r\n**Melodic:** 8-12ms (musical space)\r\n\r\n### Haas + Phase Inversion\r\n\r\n**Combining delay with phase inversion creates EXTREME width:**\r\n\r\n```\r\nDelay: 12ms\r\nPhase Invert: Left channel\r\nResult: Ultra-wide, club-ready\r\nWarning: Mono collapse issues\r\n```\r\n\r\n**Use carefully - hi-hats will reduce significantly in mono.**\r\n\r\n## Advanced Routing: Multiband Width\r\n\r\n### Why Multiband?\r\n- Wide highs (10kHz+)\r\n- Moderate mids (2-10kHz)\r\n- Preserve low-mids for body\r\n\r\n### Patcher Setup\r\n\r\n```\r\nHI-HAT INPUT\r\n    ↓\r\nFREQUENCY SPLIT\r\n    ├── LOW (<4kHz) → Narrow Width → -3dB\r\n    ├── MID (4-10kHz) → Medium Width → 0dB\r\n    └── HIGH (>10kHz) → Maximum Width → +2dB\r\n         ↓\r\n    SUM → OUTPUT\r\n```\r\n\r\n**Result:** Body + sparkle + massive width\r\n\r\n## Automation for Dynamic Width\r\n\r\n### Build-Up Section\r\n```\r\nStart (Bar 1): Narrow width (delay 0ms)\r\n  ↓\r\nBuild (Bar 2-3): Gradually increase delay\r\n  ↓\r\nDrop (Bar 4): Maximum width (delay 15ms)\r\n```\r\n\r\n**Automate:** Delay knob, matrix sliders\r\n\r\n### Call-and-Response\r\n```\r\nMain Pattern: Standard width\r\n  ↓\r\nFill/Roll: Maximum width\r\n  ↓\r\nReturn: Standard width\r\n```\r\n\r\n**Automate:** Switch presets or automate matrix\r\n\r\n## Layering Techniques\r\n\r\n### Dual Hi-Hat Layers\r\n\r\n**Layer 1 (Mono):**\r\n- No Stereo Shaper\r\n- Body and presence\r\n- -3dB level\r\n\r\n**Layer 2 (Wide):**\r\n- Trap Hi-Hat Spread preset\r\n- Airy and wide\r\n- -6dB level\r\n\r\n**Combined:** Body + width without mono collapse\r\n\r\n### Triple Layer (Professional)\r\n\r\n**Layer 1 (Center):**\r\n- Mono\r\n- Low-mid focused (2-6kHz)\r\n- Punchy transients\r\n- 0dB\r\n\r\n**Layer 2 (Mid-Width):**\r\n- Moderate width (delay 8ms)\r\n- Mid-high focused (6-12kHz)\r\n- Crisp attack\r\n- -3dB\r\n\r\n**Layer 3 (Ultra-Wide):**\r\n- Maximum width (delay 15ms + phase invert)\r\n- High-frequency air (12kHz+)\r\n- Sparkle layer\r\n- -6dB\r\n\r\n**Result:** Professional, multi-dimensional hi-hats\r\n\r\n## Stereo Imaging by Pattern Type\r\n\r\n### Closed Hi-Hats\r\n- Moderate width (L→R: -0.2)\r\n- Delay: 8ms\r\n- Keep punchy for rhythm\r\n\r\n### Open Hi-Hats\r\n- Maximum width (L→R: -0.4)\r\n- Delay: 12-15ms\r\n- Create wash and energy\r\n\r\n### Hi-Hat Rolls\r\n- Start narrow, widen during roll\r\n- Automate width increase\r\n- Peak width at roll climax\r\n\r\n### Hi-Hat Fills\r\n- Extreme width (L→R: -0.5)\r\n- Delay: 15ms + phase invert\r\n- Stand out from main pattern\r\n\r\n## Phase Inversion Strategies\r\n\r\n### Why Invert Phase?\r\n\r\n**Creates extreme width by:**\r\n- Spreading L/R further apart\r\n- Adding psychoacoustic width\r\n- Reducing phantom center\r\n\r\n**Trade-off:** Severe mono collapse\r\n\r\n### When to Use Phase Inversion\r\n\r\n**Safe:**\r\n- Hi-hats only (not snare/kick)\r\n- Club/festival mixes\r\n- Headphone/streaming focus\r\n\r\n**Risky:**\r\n- Radio play expected\r\n- Phone playback critical\r\n- Any mono-compatibility needed\r\n\r\n### Which Channel to Invert?\r\n\r\n**Left Channel Invert:** Standard approach\r\n**Right Channel Invert:** Same result (symmetrical)\r\n**Both Channels Invert:** No effect (cancels out)\r\n\r\n## Common Mistakes\r\n\r\n### Mistake 1: Using on All Drums\r\n**Problem:** Snare/kick lose power in mono\r\n**Fix:** Only widen hi-hats, keep rhythm mono\r\n\r\n### Mistake 2: Excessive Delay (>35ms)\r\n**Problem:** Sounds like echo, not width\r\n**Fix:** Keep delay 5-15ms for Haas effect\r\n\r\n### Mistake 3: Not Checking Mono\r\n**Problem:** Hi-hats disappear on some systems\r\n**Fix:** Accept reduced mono presence or use layering\r\n\r\n### Mistake 4: Wide + Reverb Overload\r\n**Problem:** Hi-hats become washy mess\r\n**Fix:** Choose width OR reverb, not both at maximum\r\n\r\n### Mistake 5: Same Width for All Hats\r\n**Problem:** No dynamics or interest\r\n**Fix:** Vary width - closed (narrow), open (wide)\r\n\r\n## Pro Tips\r\n\r\n1. **Layer for safety:** Mono layer + wide layer = best results\r\n2. **Automate width:** Narrow verse, wide chorus\r\n3. **High-pass wide layer:** Remove body, keep air\r\n4. **Delay sweet spot:** 10-12ms for most trap\r\n5. **Check on phone:** Quick mono compatibility check\r\n6. **Reverb on wide only:** Apply reverb to widened signal\r\n7. **EQ before width:** Shape tone before spreading\r\n8. **Compress after width:** Control dynamics of spread\r\n9. **Multiband for best results:** Different width per frequency\r\n10. **Trust the vibe:** Trap = wide, Lo-Fi = narrow\r\n\r\n## Quick Reference\r\n\r\n### Trap Width Settings\r\n```\r\nClosed Hi-Hat: -0.25, Delay 8ms\r\nOpen Hi-Hat: -0.4, Delay 12ms\r\nRolls: -0.5, Delay 15ms, Phase Invert\r\n```\r\n\r\n### Delay Guidelines\r\n```\r\nSubtle: 5-8ms\r\nModerate: 8-12ms\r\nAggressive: 12-15ms\r\nMaximum: 15-20ms\r\nToo Much: >20ms\r\n```\r\n\r\n### Mono Safety Ratings\r\n```\r\nNo Width: ✅✅✅ Perfect Mono\r\nSubtle (-0.15): ✅✅ Great Mono\r\nModerate (-0.3): ✅ Good Mono\r\nAggressive (-0.4): ⚠️ Reduced Mono\r\nMaximum (-0.5 + Invert): ❌ Poor Mono\r\n```\r\n\r\n## Signal Flow Examples\r\n\r\n### Simple Trap Width\r\n```\r\nHI-HAT → STEREO SHAPER (Trap Preset) → OUTPUT\r\nTime: 30 seconds\r\nMono: ⚠️ Reduced\r\nWidth: Maximum\r\n```\r\n\r\n### Professional Layered Approach\r\n```\r\nHI-HAT SOURCE\r\n    ├── LAYER 1 (Mono) → -3dB → MIX\r\n    └── LAYER 2 (Wide) → STEREO SHAPER → -6dB → MIX\r\nResult: Body + width + mono compatibility\r\n```\r\n\r\n### Advanced Multiband\r\n```\r\nHI-HAT → PATCHER → FREQ SPLIT\r\n    ├── LOW (2-4kHz) → Narrow → MIX\r\n    ├── MID (4-10kHz) → Medium → MIX\r\n    └── HIGH (10kHz+) → Maximum → MIX\r\nResult: Focused body + massive air\r\n```\r\n\r\n## Before/After Comparison\r\n\r\n**BEFORE (Mono Hi-Hats):**\r\n- Centered and focused\r\n- Punchy but flat\r\n- No stereo interest\r\n- Safe for mono\r\n\r\n**AFTER (Wide Trap Hi-Hats):**\r\n- Massive stereo spread\r\n- Club-filling presence\r\n- Exciting and energetic\r\n- Reduced mono (acceptable for genre)\r\n\r\n## Success Checklist\r\n\r\n- [ ] Hi-hats spread wide in stereo\r\n- [ ] Delay in sweet spot (8-15ms)\r\n- [ ] Snare/kick remain mono\r\n- [ ] Checked mono collapse (acceptable loss)\r\n- [ ] EQ'd before widening\r\n- [ ] Layered if mono compatibility needed\r\n- [ ] Automated for dynamics\r\n- [ ] Matches genre vibe\r\n\r\n**Remember: Trap = embrace the width, check the mono, trust the vibe.**\r\n",
+      "04_Lo-Fi_Stereo_Narrowing": "# Lo-Fi Stereo Narrowing - Vintage Width Control\r\n\r\n## Goal\r\nCreate authentic lo-fi/vintage stereo imaging by narrowing the stereo field to emulate old recording equipment, cassettes, and vinyl.\r\n\r\n## When to Use\r\n- Lo-fi hip-hop beats\r\n- Chill hop / study beats\r\n- Vintage sample processing\r\n- Nostalgic vocal effects\r\n- Bedroom producer aesthetic\r\n- Retro boom bap\r\n\r\n## The Lo-Fi Philosophy\r\n\r\n**Modern = wide and pristine**\r\n**Lo-Fi = narrow and warm**\r\n\r\nNarrowing the stereo field creates:\r\n- Intimate listening experience\r\n- Vintage recording vibe\r\n- \"Recorded in a bedroom\" aesthetic\r\n- Cassette/vinyl character\r\n- Focus on musicality over width\r\n\r\n## Quick Version (1 Minute)\r\n\r\n1. Load sample/instrument on mixer track\r\n2. Add Fruity Stereo Shaper\r\n3. Use \"Lo-Fi Mono Collapse\" preset\r\n4. Adjust to taste (70-85% width)\r\n5. Add tape saturation for complete vibe\r\n\r\n**Settings:**\r\n```\r\nL→L: 0.7    L→R: 0.3\r\nR→L: 0.3    R→R: 0.7\r\nDelay: 0ms\r\nPhase: Normal\r\n```\r\n\r\n**Result:** Vintage narrow stereo field\r\n\r\n## Understanding Stereo Width Percentage\r\n\r\n### Width Calculation\r\n**100% Stereo (Modern):**\r\n```\r\nL→L: 1.0    L→R: 0.0\r\nR→L: 0.0    R→R: 1.0\r\n```\r\n\r\n**70% Stereo (Vintage):**\r\n```\r\nL→L: 0.7    L→R: 0.3\r\nR→L: 0.3    R→R: 0.7\r\n```\r\n\r\n**50% Stereo (Mid-Point):**\r\n```\r\nL→L: 0.5    L→R: 0.5\r\nR→L: 0.5    R→R: 0.5\r\n```\r\n\r\n**Formula:** Width % = (L→L value) × 100\r\n\r\n## Lo-Fi Width Recipes by Element\r\n\r\n### Full Mix / Master Bus\r\n**Width: 75-80%**\r\n```\r\nL→L: 0.75-0.80\r\nL→R: 0.25-0.20\r\nR→L: 0.25-0.20\r\nR→R: 0.75-0.80\r\n```\r\n**Character:** Overall vintage vibe, cohesive narrow field\r\n**Use:** Final master bus processing\r\n\r\n### Vinyl Samples\r\n**Width: 70-75%**\r\n```\r\nL→L: 0.70-0.75\r\nL→R: 0.30-0.25\r\nR→L: 0.30-0.25\r\nR→R: 0.70-0.75\r\n```\r\n**Character:** Authentic vinyl stereo width\r\n**Use:** Sampled loops, jazz/soul samples\r\n\r\n### Cassette Emulation\r\n**Width: 65-70%**\r\n```\r\nL→L: 0.65-0.70\r\nL→R: 0.35-0.30\r\nR→L: 0.35-0.30\r\nR→R: 0.65-0.70\r\n```\r\n**Character:** Worn cassette tape, unstable width\r\n**Use:** Vocals, melodic loops, nostalgic elements\r\n**Bonus:** Add slight flutter/wow modulation\r\n\r\n### Bedroom Recording\r\n**Width: 60-70%**\r\n```\r\nL→L: 0.60-0.70\r\nL→R: 0.40-0.30\r\nR→L: 0.40-0.30\r\nR→R: 0.60-0.70\r\n```\r\n**Character:** Intimate, DIY recording aesthetic\r\n**Use:** Vocals, guitar, live instruments\r\n\r\n### AM Radio\r\n**Width: 50-60% (Near Mono)**\r\n```\r\nL→L: 0.50-0.60\r\nL→R: 0.50-0.40\r\nR→L: 0.50-0.40\r\nR→R: 0.50-0.60\r\n```\r\n**Character:** Extremely narrow, radio broadcast vibe\r\n**Use:** Special effects, dramatic narrowing\r\n\r\n## Complete Lo-Fi Processing Chain\r\n\r\n### Chain Order Matters\r\n\r\n```\r\nSAMPLE INPUT\r\n    ↓\r\n1. EQ (Vintage Character)\r\n   - High-pass: 60Hz\r\n   - Reduce mids: -2dB @ 400Hz (boxiness)\r\n   - Boost warmth: +2dB @ 200Hz\r\n   - Roll-off highs: -3dB shelf @ 8kHz\r\n    ↓\r\n2. STEREO SHAPER (Width Reduction)\r\n   - L→L: 0.7, L→R: 0.3\r\n   - Creates vintage narrow field\r\n    ↓\r\n3. Tape Saturation\r\n   - Effector (Tape mode) or Blood Overdrive\r\n   - Drive: 15-25%\r\n   - Adds warmth and harmonics\r\n    ↓\r\n4. Bit Crusher (Optional)\r\n   - 12-bit or 14-bit reduction\r\n   - Adds digital degradation\r\n    ↓\r\n5. Vinyl Noise (Optional)\r\n   - Layer subtle crackle/hiss\r\n   - Mix: 5-10%\r\n    ↓\r\nOUTPUT: Authentic Lo-Fi Character\r\n```\r\n\r\n## Genre-Specific Applications\r\n\r\n### Lo-Fi Hip-Hop / Chill Hop\r\n\r\n**Full Mix Settings:**\r\n- Width: 70-75%\r\n- EQ: Warm and rolled-off\r\n- Saturation: Moderate tape warmth\r\n- Extras: Vinyl crackle, rain ambience\r\n\r\n**Vocal Settings:**\r\n- Width: 65% (intimate)\r\n- Processing: Tape saturation + phone filter\r\n- Reverb: Small room, dark\r\n\r\n**Drums:**\r\n- Kick: Mono (punchy)\r\n- Snare: 60% width (vintage)\r\n- Hi-hats: 70% width (NOT wide like trap)\r\n\r\n**Result:** Cozy, nostalgic, study-friendly\r\n\r\n### Boom Bap / 90s Hip-Hop\r\n\r\n**Sample Settings:**\r\n- Width: 70-75% (authentic 90s stereo)\r\n- Processing: SP-1200 style saturation\r\n- Frequency: Slight lo-fi filtering\r\n\r\n**Drums:**\r\n- Kick: Mono\r\n- Snare: 65-70% width\r\n- Hi-hats: 75% width\r\n- All drums: Slight saturation\r\n\r\n**Result:** Classic hip-hop authenticity\r\n\r\n### Bedroom Pop / Indie\r\n\r\n**Vocals:**\r\n- Width: 60-65% (intimate bedroom recording)\r\n- Processing: Preamp emulation, tape saturation\r\n- Space: Small room reverb\r\n\r\n**Guitars:**\r\n- Width: 70% (vintage stereo mic technique)\r\n- Processing: Tube amp simulation\r\n\r\n**Result:** DIY indie aesthetic\r\n\r\n## Advanced Techniques\r\n\r\n### Dynamic Width Modulation\r\n\r\n**Simulate Cassette Wobble:**\r\n1. Automate matrix sliders slightly (±5%)\r\n2. Use slow LFO (0.1-0.5 Hz)\r\n3. Creates unstable vintage width\r\n\r\n**Example Automation:**\r\n```\r\nL→L: 0.70 → 0.68 → 0.72 → 0.70 (cyclical)\r\nR→R: 0.70 → 0.68 → 0.72 → 0.70 (cyclical)\r\n```\r\n\r\n**Result:** Realistic cassette playback instability\r\n\r\n### Multiband Lo-Fi Width\r\n\r\n**Different width per frequency range:**\r\n\r\n```\r\nSAMPLE → FREQ SPLIT\r\n    ├── LOW (<200Hz) → 50% width (tight bass)\r\n    ├── MID (200-5kHz) → 70% width (vintage body)\r\n    └── HIGH (>5kHz) → 60% width (rolled-off air)\r\n         ↓\r\n    SUM → Lo-Fi Character\r\n```\r\n\r\n**Result:** Authentic frequency-dependent narrowing\r\n\r\n### Stereo to Mono Fade\r\n\r\n**For dramatic effect:**\r\n1. Start: 75% width (stereo)\r\n2. Transition: Gradually reduce to 50% (mono)\r\n3. End: 50% width (near-mono)\r\n\r\n**Use for:** Emotional moments, breakdowns, emphasis\r\n\r\n## Common Lo-Fi Mistakes\r\n\r\n### Mistake 1: Too Narrow (Below 50%)\r\n**Problem:** Sounds unnaturally mono and lifeless\r\n**Fix:** Stay above 60% width for musical results\r\n\r\n### Mistake 2: Narrowing Everything\r\n**Problem:** Mix becomes muddy and undefined\r\n**Fix:** Only narrow specific elements, keep some width\r\n\r\n### Mistake 3: Forgetting EQ\r\n**Problem:** Narrow but still bright/modern\r\n**Fix:** Roll off highs (8kHz+) for vintage character\r\n\r\n### Mistake 4: No Saturation\r\n**Problem:** Narrow but sterile\r\n**Fix:** Add tape saturation for warmth\r\n\r\n### Mistake 5: Inconsistent Width\r\n**Problem:** Some elements wide, others narrow (jarring)\r\n**Fix:** Apply consistent width philosophy to whole mix\r\n\r\n## Pro Tips\r\n\r\n1. **70% is the sweet spot:** Most versatile lo-fi width\r\n2. **Narrow + warm:** Combine width reduction with saturation\r\n3. **EQ first:** Shape tone before narrowing\r\n4. **Bass to mono:** Even in lo-fi, bass should be mono\r\n5. **Master bus narrow:** Apply to full mix for cohesion\r\n6. **Automate for movement:** Slight width variation = realism\r\n7. **Check in stereo:** Still needs to sound good, just narrow\r\n8. **Layer noise subtly:** Vinyl/tape noise enhances vibe\r\n9. **Trust the aesthetic:** Narrow is the feature, not bug\r\n10. **Reference classics:** Listen to actual lo-fi/vintage records\r\n\r\n## Width Reference Guide\r\n\r\n```\r\n100% = Modern/Wide (not lo-fi)\r\n85%  = Slightly Vintage\r\n75%  = Classic Lo-Fi Sweet Spot ⭐\r\n70%  = Authentic Vintage\r\n65%  = Cassette/Bedroom\r\n60%  = Very Narrow\r\n50%  = Near-Mono (use sparingly)\r\n<50% = Too narrow (avoid)\r\n```\r\n\r\n## Visual Width Comparison\r\n\r\n### Modern Mix (100% Width)\r\n```\r\nL ████████████████████░░░░░░ (wide)\r\nR ░░░░░░████████████████████ (wide)\r\n```\r\n\r\n### Lo-Fi Mix (70% Width)\r\n```\r\nL ████████████░░░░░░░░░░ (narrower)\r\nR ░░░░░░░░░░████████████ (narrower)\r\n```\r\n\r\n### Near-Mono (50% Width)\r\n```\r\nL ██████████░░░░░░░░░░░░ (very narrow)\r\nR ░░░░░░░░░░░░██████████ (very narrow)\r\n```\r\n\r\n## Before/After Comparison\r\n\r\n**BEFORE (Modern/Wide):**\r\n- Crisp and clear\r\n- Wide stereo field\r\n- Pristine and clean\r\n- Studio quality\r\n\r\n**AFTER (Lo-Fi Narrow):**\r\n- Warm and intimate\r\n- Narrow vintage field\r\n- Character and vibe\r\n- Cassette/vinyl quality\r\n\r\n## Complete Lo-Fi Preset Chain\r\n\r\n### \"Ultimate Lo-Fi Vibe\"\r\n\r\n**Stereo Shaper Settings:**\r\n```\r\nWidth: 70%\r\nL→L: 0.7    L→R: 0.3\r\nR→L: 0.3    R→R: 0.7\r\n```\r\n\r\n**Chain:**\r\n```\r\n→ EQ (roll-off 8kHz+)\r\n→ STEREO SHAPER (70% width)\r\n→ Effector (Tape saturation)\r\n→ Bit crusher (12-bit)\r\n→ Vintage reverb (small room)\r\n→ Vinyl noise layer (5% mix)\r\n```\r\n\r\n**Result:** Complete lo-fi transformation\r\n\r\n## Integration with Other Effects\r\n\r\n**Works Great With:**\r\n- **Effector:** Tape/vinyl saturation modes\r\n- **RC-20 (if available):** Vintage degradation\r\n- **Parametric EQ 2:** Tone shaping\r\n- **Fruity Reeverb 2:** Small room ambience\r\n- **Wave Candy:** Visualize stereo field\r\n- **Gross Beat:** Time manipulation\r\n\r\n**Avoid:**\r\n- Stereo wideners (contradicts lo-fi aesthetic)\r\n- Bright/modern reverbs\r\n- Stereo delays (unless very subtle)\r\n- Over-compression (kills vibe)\r\n\r\n## Automation Ideas\r\n\r\n### Verse to Chorus Width\r\n```\r\nVerse: 65% width (intimate)\r\nPre-Chorus: 70% width (opening)\r\nChorus: 75% width (fuller)\r\n```\r\n\r\n### Breakdown to Drop\r\n```\r\nBreakdown: 60% width (narrow/focused)\r\nBuild-Up: Gradually to 75%\r\nDrop: 75% width (maximum lo-fi width)\r\n```\r\n\r\n## Success Checklist\r\n\r\n- [ ] Width between 60-75% for lo-fi vibe\r\n- [ ] EQ'd with rolled-off highs\r\n- [ ] Tape saturation applied\r\n- [ ] Consistent width across elements\r\n- [ ] Bass frequencies mono\r\n- [ ] Sounds intimate and warm\r\n- [ ] Authentic vintage character\r\n- [ ] Mono compatible (still sounds good)\r\n\r\n## Remember\r\n\r\n**Lo-Fi = Less Width, More Warmth**\r\n**Narrow stereo = intimate vibe**\r\n**70% width is the sweet spot**\r\n**Combine with saturation for best results**\r\n**Trust the aesthetic - embrace the narrowness**\r\n\r\n## Final Thought\r\n\r\nIn modern production, everyone chases width. In lo-fi, narrowness is the signature. Stereo Shaper lets you control exactly how narrow, creating that authentic vintage bedroom recording vibe that defines the genre.\r\n",
+      "05_Sample_Width_Control": "# Sample Width Control - Perfect Stereo for Loops\r\n\r\n## Goal\r\nAdjust stereo width of samples and loops to fit perfectly in your mix - widen narrow samples or tighten overly-wide ones.\r\n\r\n## When to Use\r\n- Vinyl samples (often narrow)\r\n- YouTube rips (varying width)\r\n- Purchased loops (unknown stereo imaging)\r\n- Sample packs (inconsistent width)\r\n- Stems processing\r\n- Remix preparation\r\n\r\n## The Sample Width Problem\r\n\r\n**Too Narrow:** Sounds mono and boring\r\n**Too Wide:** Doesn't gel with mix, phase issues\r\n**Inconsistent:** Different samples clash\r\n\r\n**Solution:** Surgical width control per sample\r\n\r\n## Analyzing Sample Width\r\n\r\n### Visual Check (Wave Candy)\r\n1. Load sample into FL\r\n2. Add Wave Candy on track\r\n3. Switch to Stereo mode\r\n4. Observe L/R separation\r\n\r\n**Narrow Sample:** L and R channels look similar\r\n**Wide Sample:** L and R channels very different\r\n**Mono Sample:** L and R channels identical\r\n\r\n### Listening Check\r\n1. Solo the sample\r\n2. Press mono button on mixer\r\n3. If sound doesn't change = mono/narrow\r\n4. If sound changes dramatically = wide\r\n\r\n### Phase Check (Fruity Limiter)\r\n1. Add Fruity Limiter to sample track\r\n2. Enable correlation meter\r\n3. +1.0 = Perfectly in-phase (mono)\r\n4. 0.0 = Maximum stereo width\r\n5. -1.0 = Phase-inverted (warning!)\r\n\r\n**Target:** +0.3 to +0.7 for most hip-hop samples\r\n\r\n## Width Adjustment Recipes\r\n\r\n### Widening Narrow Samples\r\n\r\n**Problem:** Vinyl sample sounds too centered\r\n\r\n**Solution 1: Subtle Haas Effect**\r\n```\r\nL→L: 1.0    L→R: 0.0\r\nR→L: 0.0    R→R: 1.0\r\nDelay: 8-12ms\r\nPhase: Normal\r\n```\r\n**Result:** Natural stereo width via Haas effect\r\n\r\n**Solution 2: Matrix Widening**\r\n```\r\nL→L: 1.0    L→R: -0.2\r\nR→L: -0.2   R→R: 1.0\r\nDelay: 0ms\r\nPhase: Normal\r\n```\r\n**Result:** Phase-based width enhancement\r\n\r\n**Solution 3: Maximum Width**\r\n```\r\nL→L: 1.0    L→R: -0.35\r\nR→L: -0.35  R→R: 1.0\r\nDelay: 10ms\r\nPhase Invert: Left\r\n```\r\n**Result:** Aggressive stereo spread\r\n**Warning:** Check mono compatibility!\r\n\r\n### Narrowing Wide Samples\r\n\r\n**Problem:** Sample too wide, doesn't sit in mix\r\n\r\n**Solution 1: Moderate Narrowing (Recommended)**\r\n```\r\nL→L: 0.75   L→R: 0.25\r\nR→L: 0.25   R→R: 0.75\r\nDelay: 0ms\r\n```\r\n**Result:** 75% stereo width (controlled)\r\n\r\n**Solution 2: Lo-Fi Narrowing**\r\n```\r\nL→L: 0.65   L→R: 0.35\r\nR→L: 0.35   R→R: 0.65\r\nDelay: 0ms\r\n```\r\n**Result:** Vintage narrow width\r\n\r\n**Solution 3: Collapse to Mono**\r\n```\r\nL→L: 0.5    L→R: 0.5\r\nR→L: 0.5    R→R: 0.5\r\nDelay: 0ms\r\n```\r\n**Result:** Perfect mono (use for bass/sub loops)\r\n\r\n### Fixing Poorly-Recorded Samples\r\n\r\n**Problem:** Sample has phase issues\r\n\r\n**Solution: Phase Correction**\r\n1. Identify inverted channel (check correlation)\r\n2. Invert problematic channel\r\n3. Verify correlation improves\r\n4. Adjust width as needed\r\n\r\n**Matrix if Right channel is inverted:**\r\n```\r\nL→L: 1.0    L→R: 0.0\r\nR→L: 0.0    R→R: -1.0 (invert right)\r\nDelay: 0ms\r\n```\r\n\r\n## Genre-Specific Sample Width\r\n\r\n### Moody/Dark Hip-Hop\r\n\r\n**Atmospheric Pads:**\r\n```\r\nWidth: 90-100% (wide for space)\r\nL→L: 1.0, L→R: -0.1\r\n```\r\n\r\n**Vocal Samples:**\r\n```\r\nWidth: 60-70% (intimate)\r\nL→L: 0.65, L→R: 0.35\r\n```\r\n\r\n**Bass Loops:**\r\n```\r\nWidth: 50% (mono)\r\nL→L: 0.5, L→R: 0.5\r\n```\r\n\r\n### Upbeat/Club Hip-Hop\r\n\r\n**Synth Loops:**\r\n```\r\nWidth: 100-110% (energetic)\r\nL→L: 1.0, L→R: -0.15, Delay: 8ms\r\n```\r\n\r\n**Drum Loops:**\r\n```\r\nWidth: 75-85% (controlled)\r\nL→L: 0.8, L→R: 0.2\r\n```\r\n\r\n**Hook Samples:**\r\n```\r\nWidth: 90% (prominent but safe)\r\nL→L: 0.9, L→R: 0.1\r\n```\r\n\r\n### Lo-Fi/Chill Hip-Hop\r\n\r\n**Jazz Samples:**\r\n```\r\nWidth: 70% (authentic vintage)\r\nL→L: 0.7, L→R: 0.3\r\n```\r\n\r\n**Vinyl Loops:**\r\n```\r\nWidth: 65-75% (cassette vibe)\r\nL→L: 0.7, L→R: 0.3\r\n```\r\n\r\n**All Elements:**\r\n```\r\nConsistent narrow width across mix\r\n```\r\n\r\n### Trap/Electronic Hip-Hop\r\n\r\n**Synth Chords:**\r\n```\r\nWidth: 110% (massive)\r\nL→L: 1.0, L→R: -0.25, Delay: 10ms\r\n```\r\n\r\n**Vocal Chops:**\r\n```\r\nWidth: 85% (present but controlled)\r\nL→L: 0.85, L→R: 0.15\r\n```\r\n\r\n**808 Samples:**\r\n```\r\nWidth: 50% (always mono)\r\nL→L: 0.5, L→R: 0.5\r\n```\r\n\r\n### Boom Bap / Golden Era\r\n\r\n**Jazz/Soul Samples:**\r\n```\r\nWidth: 75% (authentic 90s)\r\nL→L: 0.75, L→R: 0.25\r\n```\r\n\r\n**Drum Breaks:**\r\n```\r\nWidth: 70% (vintage stereo)\r\nL→L: 0.7, L→R: 0.3\r\n```\r\n\r\n**Scratches:**\r\n```\r\nWidth: 60-70% (centered)\r\nL→L: 0.65, L→R: 0.35\r\n```\r\n\r\n## Workflow: Processing Multiple Samples\r\n\r\n### Step 1: Organize by Desired Width\r\n- **Wide:** Atmospheric, pads, effects (90-110%)\r\n- **Medium:** Melodies, chords, leads (70-90%)\r\n- **Narrow:** Vocals, bass (50-70%)\r\n- **Mono:** Bass, kick, 808 (50%)\r\n\r\n### Step 2: Create Template Presets\r\nSave Stereo Shaper presets for each width category:\r\n- \"Sample Wide 100%\"\r\n- \"Sample Medium 80%\"\r\n- \"Sample Narrow 70%\"\r\n- \"Sample Mono 50%\"\r\n\r\n### Step 3: Apply Systematically\r\n1. Load sample\r\n2. Check current width (Wave Candy)\r\n3. Select appropriate preset\r\n4. Fine-tune if needed\r\n5. Verify mono compatibility\r\n\r\n### Step 4: Consistency Check\r\n- Similar elements = similar width\r\n- Keeps mix cohesive\r\n- Prevents width chaos\r\n\r\n## Advanced Techniques\r\n\r\n### Multiband Sample Width\r\n\r\n**Different width per frequency:**\r\n\r\n```\r\nSAMPLE → FREQ SPLIT\r\n    ├── LOW (<150Hz) → 50% (mono bass)\r\n    ├── MID (150-5kHz) → 75% (body)\r\n    └── HIGH (>5kHz) → 100% (air/width)\r\n         ↓\r\n    SUM → Focused Bass + Wide Highs\r\n```\r\n\r\n**Use for:** Samples with bass + melodic content\r\n\r\n### Dynamic Width Automation\r\n\r\n**Verse:** Narrow sample (75%)\r\n**Chorus:** Widen sample (95%)\r\n\r\n**Automate:** Matrix sliders for dynamic interest\r\n\r\n### Stereo Enhancement Chain\r\n\r\n```\r\nSAMPLE INPUT\r\n    ↓\r\n1. Stereo Shaper (Width Adjustment)\r\n    ↓\r\n2. EQ (Tone Shaping)\r\n    ↓\r\n3. Compression (Dynamics)\r\n    ↓\r\n4. Stereo Shaper (Final Width Polish)\r\n    ↓\r\nOUTPUT\r\n```\r\n\r\n**Two Stereo Shapers allow different width before/after processing**\r\n\r\n## Common Sample Issues & Fixes\r\n\r\n### Issue 1: Mono Sample from YouTube\r\n**Problem:** Sample has no stereo width\r\n**Fix:** Haas effect widening (10ms delay)\r\n\r\n### Issue 2: Overly-Wide Sample Pack Loop\r\n**Problem:** Too wide, doesn't fit mix\r\n**Fix:** Narrow to 75% width\r\n\r\n### Issue 3: Phase-Inverted Stereo Sample\r\n**Problem:** Sounds weak in mono\r\n**Fix:** Invert one channel, verify correlation\r\n\r\n### Issue 4: Inconsistent Sample Pack\r\n**Problem:** Each loop has different width\r\n**Fix:** Normalize all to 80% width for consistency\r\n\r\n### Issue 5: Bass-Heavy Sample Too Wide\r\n**Problem:** Bass loses power in mono\r\n**Fix:** Multiband - mono below 150Hz, width above\r\n\r\n## Pro Tips\r\n\r\n1. **Analyze first:** Check current width before adjusting\r\n2. **Consistency matters:** Similar samples = similar width\r\n3. **Bass always mono:** No exceptions below 150Hz\r\n4. **Check mono:** Every sample, every time\r\n5. **Save presets:** Standard widths for quick recall\r\n6. **Multiband for bass:** Different width per frequency\r\n7. **Automate for dynamics:** Width changes add interest\r\n8. **Reference originals:** Compare to source material\r\n9. **Less is more:** Subtle adjustments often best\r\n10. **Trust correlation meter:** Phase meter doesn't lie\r\n\r\n## Width Decision Flowchart\r\n\r\n```\r\nIs sample mono? \r\n├─ Yes → Widen with Haas (10ms delay)\r\n└─ No → Continue\r\n\r\nDoes sample have bass (<150Hz)?\r\n├─ Yes → Multiband: Mono low, adjust high\r\n└─ No → Continue\r\n\r\nIs sample too wide?\r\n├─ Yes → Narrow to 75-80%\r\n└─ No → Continue\r\n\r\nDoes sample fit mix?\r\n├─ Yes → Done\r\n└─ No → Adjust width to match other elements\r\n```\r\n\r\n## Quick Reference by Sample Type\r\n\r\n### Bass/Sub Loops\r\n```\r\nWidth: 50% (Mono)\r\nL→L: 0.5, L→R: 0.5\r\n```\r\n\r\n### Drum Loops\r\n```\r\nWidth: 70-80%\r\nL→L: 0.75, L→R: 0.25\r\n```\r\n\r\n### Melodic Loops\r\n```\r\nWidth: 80-90%\r\nL→L: 0.85, L→R: 0.15\r\n```\r\n\r\n### Vocal Chops\r\n```\r\nWidth: 65-75%\r\nL→L: 0.7, L→R: 0.3\r\n```\r\n\r\n### Atmospheric Pads\r\n```\r\nWidth: 95-110%\r\nL→L: 1.0, L→R: -0.15\r\n```\r\n\r\n### Synth Chords\r\n```\r\nWidth: 85-95%\r\nL→L: 0.9, L→R: 0.1\r\n```\r\n\r\n## Before/After Examples\r\n\r\n### BEFORE: Narrow Vinyl Sample\r\n- Width: 60% (too narrow)\r\n- Sounds mono and boring\r\n- Lacks space and depth\r\n\r\n### AFTER: Widened to 85%\r\n- Width: 85% (enhanced)\r\n- Stereo interest\r\n- Fits modern mix\r\n- Still mono-compatible\r\n\r\n---\r\n\r\n### BEFORE: Overly-Wide Synth Loop\r\n- Width: 120% (phase issues)\r\n- Weak in mono\r\n- Doesn't sit in mix\r\n\r\n### AFTER: Narrowed to 80%\r\n- Width: 80% (controlled)\r\n- Mono-safe\r\n- Gels with other elements\r\n- Professional sound\r\n\r\n## Integration Tips\r\n\r\n**Works Great With:**\r\n- **Wave Candy:** Visual stereo analysis\r\n- **Fruity Limiter:** Phase correlation checking\r\n- **Patcher:** Multiband width routing\r\n- **Parametric EQ 2:** Tone shaping\r\n- **Frequency Splitter:** Separate bass from mids/highs\r\n\r\n**Workflow:**\r\n1. Analyze (Wave Candy + Correlation)\r\n2. Adjust Width (Stereo Shaper)\r\n3. Check Mono (Mixer button)\r\n4. Fine-tune (A/B comparison)\r\n5. Move on (don't overthink)\r\n\r\n## Success Checklist\r\n\r\n- [ ] Analyzed original width\r\n- [ ] Adjusted to appropriate width for element type\r\n- [ ] Checked mono compatibility\r\n- [ ] Consistent with similar samples in mix\r\n- [ ] Bass frequencies mono (if present)\r\n- [ ] Phase correlation acceptable\r\n- [ ] Sounds good in stereo AND mono\r\n- [ ] Fits cohesively in full mix\r\n\r\n**Remember: Right width for the right element = professional mixes.**\r\n"
+    },
+    "by-instrument": {
+      "01_Drum_Overhead_Phase_Fix": "# Phase Correction for Drum Overheads - Fixing Recording Issues\r\n\r\n## Goal\r\nFix phase cancellation issues in recorded drum overhead microphones to restore stereo width, frequency balance, and mono compatibility.\r\n\r\n## When to Use\r\n- Recorded live drums (overhead mics)\r\n- Multi-mic drum recordings\r\n- Imported drum stems with phase issues\r\n- Sampled drum loops with weak mono playback\r\n- Room mic phase problems\r\n- Any multi-mic stereo recording\r\n\r\n## The Phase Problem\r\n\r\n### What is Phase Cancellation?\r\n\r\nWhen two microphones capture the same sound source:\r\n- **In-phase:** Signals reinforce (+6dB louder)\r\n- **Out-of-phase:** Signals cancel (weak/thin)\r\n\r\n**Common causes:**\r\n- Mic placement issues\r\n- One mic cable wired backwards\r\n- Incorrect mixing console polarity\r\n- Digital recording errors\r\n- Stem exports from different sessions\r\n\r\n### How to Identify Phase Issues\r\n\r\n**Symptom 1: Weak in Mono**\r\n- Sounds full in stereo\r\n- Disappears/thins when folded to mono\r\n- Classic phase cancellation\r\n\r\n**Symptom 2: Missing Frequencies**\r\n- Certain frequencies absent (usually mids)\r\n- Unnatural comb filtering\r\n- Hollow/thin sound\r\n\r\n**Symptom 3: Correlation Meter**\r\n- Load Fruity Limiter\r\n- Check correlation meter\r\n- Reading below +0.5 = potential issue\r\n- Reading near 0 or negative = severe issue\r\n\r\n**Symptom 4: Waveform Comparison**\r\n- Load into Edison or mixer\r\n- Compare L and R waveforms\r\n- If inverted (mirror image) = phase issue\r\n\r\n## Quick Fix (30 Seconds)\r\n\r\n1. Load drum overhead track\r\n2. Add Fruity Stereo Shaper\r\n3. Try inverting Left channel phase\r\n4. A/B test: Does it sound better?\r\n5. If yes, keep it. If no, try Right channel\r\n6. Done\r\n\r\n**Settings:**\r\n```\r\nLeft Phase Invert:\r\nPhase Left: ON\r\nAll matrix sliders: 1.0, 0.0, 0.0, 1.0\r\n```\r\n\r\n## Detailed Diagnosis & Correction\r\n\r\n### Step 1: Confirm the Problem\r\n\r\n**Test in Mono:**\r\n1. Solo overhead track\r\n2. Press mono button on mixer\r\n3. Listen for:\r\n   - Thin/weak sound\r\n   - Missing body\r\n   - Unnatural tone\r\n\r\nIf it sounds worse in mono = phase issue\r\n\r\n**Check Correlation:**\r\n1. Add Fruity Limiter\r\n2. Look at correlation meter\r\n3. Target: +0.5 to +1.0 (healthy)\r\n4. Problem: Below +0.3 (phase issues)\r\n\r\n### Step 2: Determine Which Channel\r\n\r\n**Method 1: Visual Inspection**\r\n1. Load both channels into Edison\r\n2. Compare waveforms\r\n3. If one is inverted = that's the culprit\r\n\r\n**Method 2: Trial & Error**\r\n1. Invert Left channel → Check mono\r\n2. If better = keep, if worse = undo\r\n3. Invert Right channel → Check mono\r\n4. If better = keep, if worse = undo\r\n\r\n**Method 3: Isolation**\r\n1. Solo Left channel only\r\n2. Solo Right channel only\r\n3. Compare tone/frequency balance\r\n4. Inverted channel often sounds \"different\"\r\n\r\n### Step 3: Apply Correction\r\n\r\n**Invert Left Channel:**\r\n```\r\nSTEREO SHAPER:\r\nPhase Invert Left: ON\r\nMatrix: Standard (1.0, 0.0, 0.0, 1.0)\r\n```\r\n\r\n**Invert Right Channel:**\r\n```\r\nSTEREO SHAPER:\r\nPhase Invert Right: ON\r\nMatrix: Standard (1.0, 0.0, 0.0, 1.0)\r\n```\r\n\r\n**Invert Both (Rare):**\r\n```\r\nPhase Invert Left: ON\r\nPhase Invert Right: ON\r\n```\r\n*Only if both channels are inverted relative to other tracks*\r\n\r\n### Step 4: Verify the Fix\r\n\r\n**Mono Test:**\r\n1. Press mono button\r\n2. Sound should be fuller\r\n3. Frequency balance restored\r\n\r\n**Correlation Check:**\r\n1. Correlation meter should improve\r\n2. Target: +0.6 to +0.9\r\n3. Above +0.5 = acceptable\r\n\r\n**A/B Comparison:**\r\n1. Toggle phase invert on/off\r\n2. Listen in both stereo and mono\r\n3. Corrected version should sound natural\r\n\r\n**Frequency Analysis:**\r\n1. Load Wave Candy or Parametric EQ 2 analyzer\r\n2. Check for comb filtering (notches in frequency)\r\n3. Corrected version = smoother frequency response\r\n\r\n## Advanced Phase Correction\r\n\r\n### Partial Phase Issues\r\n\r\n**Problem:** Only certain frequencies out of phase\r\n\r\n**Solution: Multiband Phase Correction**\r\n\r\n```\r\nOVERHEADS → PATCHER → FREQ SPLIT\r\n    ├── LOW (<400Hz) → Phase Invert → MIX\r\n    └── HIGH (>400Hz) → Normal Phase → MIX\r\n```\r\n\r\n**Use when:**\r\n- Kick/snare phase OK but cymbals wrong\r\n- Only mid-range has issues\r\n- Frequency-dependent phase problems\r\n\r\n### Time-Alignment Issues\r\n\r\n**Problem:** Mics not equidistant from sound source\r\n\r\n**Solution: Combine Delay + Phase**\r\n\r\n```\r\nSTEREO SHAPER:\r\nDelay: 1-5ms (align time)\r\nPhase: Invert as needed\r\nMatrix: Standard\r\n```\r\n\r\n**When to use:**\r\n- Room mics delayed from close mics\r\n- Overhead placement asymmetrical\r\n- Multi-mic timing issues\r\n\r\n### Stereo Width After Correction\r\n\r\n**After fixing phase, adjust width:**\r\n\r\n```\r\n1. Fix Phase First (invert as needed)\r\n2. Then Adjust Width:\r\n   - Too wide → Narrow (L→L: 0.8, L→R: 0.2)\r\n   - Too narrow → Widen (L→L: 1.0, L→R: -0.1)\r\n```\r\n\r\n## Genre-Specific Drum Phase Correction\r\n\r\n### Hip-Hop (Sampled Breaks)\r\n\r\n**Common Issue:** Vintage drum breaks have phase issues\r\n\r\n**Fix:**\r\n1. Check correlation\r\n2. Invert phase if needed\r\n3. Often narrow width to 70% for vintage vibe\r\n\r\n**Additional Processing:**\r\n- Tape saturation\r\n- Bit crushing\r\n- Lo-fi filtering\r\n\r\n### Live Recorded Hip-Hop Drums\r\n\r\n**Common Issue:** Overhead mic polarity reversed\r\n\r\n**Fix:**\r\n1. Identify inverted channel\r\n2. Invert with Stereo Shaper\r\n3. Balance with close mics\r\n4. Ensure mono compatibility\r\n\r\n### Electronic/Hybrid Drums\r\n\r\n**Common Issue:** Layered samples with phase issues\r\n\r\n**Fix:**\r\n1. Check each layer individually\r\n2. Phase-align layers\r\n3. Use correlation to verify\r\n4. Mono test each element\r\n\r\n### Boom Bap / Sample-Based\r\n\r\n**Common Issue:** Sampled drums from vinyl (phase varying)\r\n\r\n**Fix:**\r\n1. Analyze per-sample\r\n2. Correct as needed\r\n3. Might need to correct individual hits\r\n4. Embrace some vintage phase \"character\"\r\n\r\n## Common Phase Scenarios\r\n\r\n### Scenario 1: Left Overhead Inverted\r\n**Symptom:** Thin in mono, cymbals weak\r\n**Solution:** Phase Invert Left channel\r\n**Result:** Full sound restored\r\n\r\n### Scenario 2: Room Mic Out of Phase\r\n**Symptom:** Rooms reduce body when added\r\n**Solution:** Phase Invert room mic track\r\n**Result:** Rooms add depth without cancellation\r\n\r\n### Scenario 3: Sample Pack with Issues\r\n**Symptom:** Some loops weak in mono\r\n**Solution:** Check each loop, invert as needed\r\n**Result:** Consistent mono compatibility\r\n\r\n### Scenario 4: Kick Mic vs Overhead\r\n**Symptom:** Kick weak when overheads up\r\n**Solution:** Phase-align kick to overhead kick image\r\n**Result:** Coherent drum sound\r\n\r\n### Scenario 5: Stereo Recording Bus\r\n**Symptom:** Entire mix phase-cancelled\r\n**Solution:** Invert one channel of stereo bus\r\n**Result:** Full frequency spectrum restored\r\n\r\n## Pro Tips for Drum Phase\r\n\r\n1. **Always check mono:** Instant phase issue detection\r\n2. **Correlation meter is king:** Visual confirmation\r\n3. **Invert one channel first:** Start simple\r\n4. **Check kick/snare separately:** Isolate problem frequency\r\n5. **Time-align if needed:** Delay + phase combined\r\n6. **Reference close mics:** Overheads should match polarity\r\n7. **Trust your ears:** Meters help, but listen critically\r\n8. **Document correction:** Note which channel inverted\r\n9. **Check full mix:** Ensure fix works in context\r\n10. **Save preset:** Quick recall for similar issues\r\n\r\n## Phase Correction Workflow\r\n\r\n```\r\nDRUM OVERHEADS\r\n    ↓\r\nANALYSIS\r\n├── Mono test (weak = phase issue)\r\n├── Correlation meter (low = problem)\r\n└── Visual waveform (inverted = issue)\r\n    ↓\r\nCORRECTION\r\n├── Invert Left channel → Test\r\n├── If no better → Undo\r\n├── Invert Right channel → Test\r\n└── Keep best result\r\n    ↓\r\nVERIFICATION\r\n├── Mono test (should sound full)\r\n├── Correlation check (>+0.5)\r\n├── Frequency analysis (no comb filtering)\r\n└── A/B with original\r\n    ↓\r\nOPTIMIZATION\r\n├── Adjust stereo width if needed\r\n├── Balance with other drum mics\r\n├── EQ to taste\r\n└── Compression/dynamics\r\n    ↓\r\nDONE: Phase-Corrected Overheads\r\n```\r\n\r\n## Troubleshooting\r\n\r\n### Issue: Still Sounds Thin After Inversion\r\n**Possible Causes:**\r\n1. Both channels need inversion (rare)\r\n2. Time-alignment needed (add delay)\r\n3. Original recording truly weak\r\n4. Other mics causing issues\r\n\r\n**Try:**\r\n- Invert both channels\r\n- Add 1-3ms delay\r\n- Check other drum mic phases\r\n- EQ to compensate\r\n\r\n### Issue: Correlation Meter Still Low\r\n**Possible Causes:**\r\n1. Extreme width (not necessarily bad)\r\n2. Complex stereo information\r\n3. Multi-source phase issues\r\n\r\n**Try:**\r\n- Narrow stereo width slightly\r\n- Check if it's musical width vs cancellation\r\n- Verify with mono test\r\n\r\n### Issue: Sounds Worse After Correction\r\n**Possible Causes:**\r\n1. Inverted wrong channel\r\n2. Original was already correct\r\n3. Different issue (not phase)\r\n\r\n**Try:**\r\n- Undo and try other channel\r\n- Accept original as correct\r\n- Check for EQ/frequency issues instead\r\n\r\n## Integration with Full Drum Mix\r\n\r\n### Balance with Close Mics\r\n1. Fix overhead phase first\r\n2. Then phase-align close mics to overheads\r\n3. Ensure all drums coherent\r\n4. Check full kit in mono\r\n\r\n### Layering Samples\r\n1. Phase-correct each sample\r\n2. Layer with overhead\r\n3. Check combined phase\r\n4. Adjust if needed\r\n\r\n### Effects Integration\r\n1. Correct phase before effects\r\n2. Reverb/delay after correction\r\n3. Compression won't fix phase\r\n4. EQ won't fix phase\r\n\r\n## Quick Reference\r\n\r\n### Phase Invert Settings\r\n```\r\nInvert Left:\r\nPhase Left: ON\r\n\r\nInvert Right:\r\nPhase Right: ON\r\n\r\nInvert Both:\r\nPhase Left: ON\r\nPhase Right: ON\r\n```\r\n\r\n### Healthy Correlation Targets\r\n```\r\n+0.9 to +1.0 = Very Mono (tight phase)\r\n+0.5 to +0.9 = Good Stereo (healthy)\r\n+0.3 to +0.5 = Wide Stereo (monitor)\r\n0.0 to +0.3  = Very Wide (check for issues)\r\nBelow 0.0    = Phase Problems (fix immediately)\r\n```\r\n\r\n### Mono Test Results\r\n```\r\nSounds Fuller in Mono = Probably OK\r\nNo Change Mono/Stereo = Very Mono/Narrow\r\nSounds Thinner in Mono = Phase Issue\r\nLoses Frequencies in Mono = Severe Phase Issue\r\n```\r\n\r\n## Before/After Comparison\r\n\r\n**BEFORE (Phase Issues):**\r\n- Thin in mono\r\n- Missing mid frequencies\r\n- Weak cymbals\r\n- Correlation: +0.2\r\n- Comb filtering\r\n\r\n**AFTER (Phase Corrected):**\r\n- Full in mono\r\n- Balanced frequencies\r\n- Clear cymbals\r\n- Correlation: +0.7\r\n- Natural tone\r\n\r\n## Success Checklist\r\n\r\n- [ ] Identified phase issue (mono test)\r\n- [ ] Checked correlation meter\r\n- [ ] Inverted appropriate channel\r\n- [ ] Verified improvement in mono\r\n- [ ] Correlation meter improved\r\n- [ ] No comb filtering in frequency\r\n- [ ] Sounds natural in stereo\r\n- [ ] Documented which channel inverted\r\n- [ ] Saved corrected version\r\n- [ ] Ready for mixing\r\n\r\n**Remember: Phase-correct drums = professional mixes. Always check mono!**\r\n",
+      "02_Guitar_Sample_Width": "# Guitar/Sample Width - Stereo Enhancement for Melodic Elements\r\n\r\n## Goal\r\nApply perfect stereo width to guitar loops, melodic samples, and instrumental elements to create space without phase issues.\r\n\r\n## When to Use\r\n- Guitar loops (funk, R&B, soul)\r\n- Piano/Rhodes samples\r\n- String sections\r\n- Melodic synth loops\r\n- Horn sections\r\n- Vocal chops (melodic)\r\n\r\n## The Melodic Width Challenge\r\n\r\n**Too Narrow:** Sounds flat and boring\r\n**Too Wide:** Phase issues, doesn't sit in mix\r\n**Just Right:** Spacious yet focused\r\n\r\n## Quick Settings by Element\r\n\r\n### Funk Guitar Loops\r\n```\r\nPRESET: \"Funky Guitar Spread\"\r\nL→L: 1.0    L→R: -0.25\r\nR→L: -0.25  R→R: 1.0\r\nDelay: 10ms\r\nPhase Invert: Right channel\r\n```\r\n**Character:** Wide, groovy, spacious\r\n**Genre:** Funk hip-hop, G-funk, upbeat tracks\r\n**Mono Safe:** ⚠️ Check carefully\r\n\r\n### R&B Piano/Rhodes\r\n```\r\nL→L: 0.85   L→R: 0.15\r\nR→L: 0.15   R→R: 0.85\r\nDelay: 0ms\r\nPhase: Normal\r\n```\r\n**Character:** Controlled width, musical\r\n**Genre:** Melodic/R&B hip-hop\r\n**Mono Safe:** ✅ Yes\r\n\r\n### Soul Sample Strings\r\n```\r\nL→L: 0.9    L→R: 0.1\r\nR→L: 0.1    R→R: 0.9\r\nDelay: 5ms (subtle Haas)\r\nPhase: Normal\r\n```\r\n**Character:** Lush, vintage, controlled\r\n**Genre:** Sample-based hip-hop, boom bap\r\n**Mono Safe:** ✅ Yes\r\n\r\n### Melodic Vocal Chops\r\n```\r\nL→L: 0.8    L→R: 0.2\r\nR→L: 0.2    R→R: 0.8\r\nDelay: 0ms\r\nPhase: Normal\r\n```\r\n**Character:** Present yet spacious\r\n**Genre:** Melodic hip-hop, trap\r\n**Mono Safe:** ✅ Yes\r\n\r\n### Horn Section Samples\r\n```\r\nL→L: 0.9    L→R: 0.1\r\nR→L: 0.1    R→R: 0.9\r\nDelay: 6ms\r\nPhase: Normal\r\n```\r\n**Character:** Natural stereo field\r\n**Genre:** Jazz-influenced hip-hop, boom bap\r\n**Mono Safe:** ✅ Yes\r\n\r\n## Genre-Specific Width Approaches\r\n\r\n### Moody/Dark Hip-Hop\r\n\r\n**Melodic Elements Strategy:**\r\n- **Lead melody:** 70-75% width (intimate)\r\n- **Background chords:** 85-90% width (atmosphere)\r\n- **Vocal chops:** 65-70% width (centered emotion)\r\n\r\n**Settings:**\r\n```\r\nLead: L→L: 0.7, L→R: 0.3\r\nChords: L→L: 0.85, L→R: 0.15\r\nChops: L→L: 0.65, L→R: 0.35\r\n```\r\n\r\n### Upbeat/Club Hip-Hop\r\n\r\n**Melodic Elements Strategy:**\r\n- **Hook melody:** 90-95% width (impact)\r\n- **Energy chords:** 95-100% width (fill space)\r\n- **Rhythmic elements:** 85-90% width (groove)\r\n\r\n**Settings:**\r\n```\r\nHook: L→L: 0.9, L→R: 0.1, Delay: 8ms\r\nChords: L→L: 1.0, L→R: -0.1, Delay: 6ms\r\nRhythm: L→L: 0.85, L→R: 0.15\r\n```\r\n\r\n### Lo-Fi/Chill Hip-Hop\r\n\r\n**Melodic Elements Strategy:**\r\n- **All elements:** 65-75% width (vintage consistency)\r\n- **Jazz samples:** 70% (authentic vinyl width)\r\n- **Keys/synths:** 70% (cohesive narrow field)\r\n\r\n**Settings:**\r\n```\r\nUniversal: L→L: 0.7, L→R: 0.3\r\nVintage Vibe, Warm, Intimate\r\n```\r\n\r\n### Trap/Electronic Hip-Hop\r\n\r\n**Melodic Elements Strategy:**\r\n- **Lead synth:** 85-90% width (present)\r\n- **Pad chords:** 100-110% width (massive)\r\n- **Plucks:** 80-85% width (controlled energy)\r\n\r\n**Settings:**\r\n```\r\nLead: L→L: 0.9, L→R: 0.1\r\nPads: L→L: 1.0, L→R: -0.2, Delay: 10ms\r\nPlucks: L→L: 0.85, L→R: 0.15\r\n```\r\n\r\n### Melodic/R&B Hip-Hop\r\n\r\n**Melodic Elements Strategy:**\r\n- **Main chords:** 85-90% width (lush)\r\n- **Lead lines:** 80-85% width (focused)\r\n- **Background textures:** 95-100% width (space)\r\n\r\n**Settings:**\r\n```\r\nChords: L→L: 0.88, L→R: 0.12\r\nLead: L→L: 0.83, L→R: 0.17\r\nTexture: L→L: 0.95, L→R: 0.05, Delay: 5ms\r\n```\r\n\r\n### Boom Bap / Golden Era\r\n\r\n**Melodic Elements Strategy:**\r\n- **Jazz samples:** 70-75% width (authentic 90s)\r\n- **Piano loops:** 70% width (vintage stereo)\r\n- **Soul chops:** 75% width (classic sound)\r\n\r\n**Settings:**\r\n```\r\nUniversal 90s: L→L: 0.72, L→R: 0.28\r\nClassic Hip-Hop Width\r\n```\r\n\r\n## Advanced Guitar Processing\r\n\r\n### Funk Guitar Enhancement Chain\r\n\r\n```\r\nGUITAR SAMPLE\r\n    ↓\r\n1. EQ (Clean up low-end)\r\n   - High-pass: 120Hz\r\n   - Reduce boxiness: -2dB @ 300Hz\r\n   - Presence: +2dB @ 3kHz\r\n    ↓\r\n2. STEREO SHAPER (Width)\r\n   - \"Funky Guitar Spread\" preset\r\n   - L→L: 1.0, L→R: -0.25\r\n   - Delay: 10ms\r\n    ↓\r\n3. Compression (Control dynamics)\r\n   - Ratio: 3:1\r\n   - Attack: 20ms (preserve pick attack)\r\n   - Release: 100ms\r\n    ↓\r\n4. Reverb (Space - SUBTLE)\r\n   - Small plate\r\n   - Mix: 10%\r\n   - Pre-delay: 15ms\r\n    ↓\r\nOUTPUT: Funky, Wide, Controlled Guitar\r\n```\r\n\r\n### Multiband Guitar Width\r\n\r\n**For samples with bass + melody:**\r\n\r\n```\r\nGUITAR → FREQ SPLIT\r\n    ├── LOW (<250Hz) → 60% width (tight)\r\n    ├── MID (250-3kHz) → 85% width (body)\r\n    └── HIGH (>3kHz) → 100% width (air)\r\n         ↓\r\n    SUM → Focused Low + Wide High\r\n```\r\n\r\n## Piano/Keys Width Strategies\r\n\r\n### Classic Piano Sample\r\n```\r\nWidth: 85% (natural piano width)\r\nL→L: 0.85, L→R: 0.15\r\nProcessing: Minimal, let natural stereo shine\r\n```\r\n\r\n### Electric Piano (Rhodes/Wurlitzer)\r\n```\r\nWidth: 80% (vintage keyboard width)\r\nL→L: 0.8, L→R: 0.2\r\nProcessing: Tape saturation, subtle chorus\r\n```\r\n\r\n### Synth Keys/Chords\r\n```\r\nWidth: 90% (modern synth width)\r\nL→L: 0.9, L→R: 0.1\r\nProcessing: Bright EQ, reverb\r\n```\r\n\r\n## String Section Width\r\n\r\n### Lush String Pads\r\n```\r\nWidth: 95% (orchestral spread)\r\nL→L: 0.95, L→R: 0.05, Delay: 5ms\r\nCharacter: Wide, cinematic, atmospheric\r\n```\r\n\r\n### Tight String Stabs\r\n```\r\nWidth: 75% (punchy and focused)\r\nL→L: 0.75, L→R: 0.25\r\nCharacter: Impactful, rhythmic\r\n```\r\n\r\n## Automation for Dynamic Width\r\n\r\n### Verse to Chorus Expansion\r\n\r\n```\r\nVERSE:\r\n- Guitar: 75% width (laid back)\r\n- Keys: 70% width (subtle)\r\n\r\nPRE-CHORUS:\r\n- Guitar: 85% width (building)\r\n- Keys: 80% width (opening up)\r\n\r\nCHORUS:\r\n- Guitar: 95% width (full impact)\r\n- Keys: 90% width (lush)\r\n\r\nAutomate matrix sliders for smooth transition\r\n```\r\n\r\n### Call-and-Response Width\r\n\r\n```\r\nMAIN PHRASE: 80% width (standard)\r\nRESPONSE/FILL: 100% width (stands out)\r\n\r\nCreates dynamic interest through width variation\r\n```\r\n\r\n## Layering for Depth\r\n\r\n### Dual Guitar Layers\r\n\r\n**Layer 1 (Center Focus):**\r\n```\r\nWidth: 70% (body and focus)\r\nLevel: 0dB\r\nProcessing: Clean, punchy\r\n```\r\n\r\n**Layer 2 (Wide Air):**\r\n```\r\nWidth: 110% (width and space)\r\nLevel: -6dB\r\nProcessing: High-passed at 1kHz, reverb\r\nEQ: Bright, airy\r\n```\r\n\r\n**Combined:** Focused + spacious guitar tone\r\n\r\n## Common Mistakes\r\n\r\n### Mistake 1: Same Width for Everything\r\n**Problem:** No depth or dimension\r\n**Fix:** Vary width - leads wider, rhythm tighter\r\n\r\n### Mistake 2: Too Wide for Bass-Heavy Samples\r\n**Problem:** Low-end loses power\r\n**Fix:** Multiband - narrow lows, widen highs\r\n\r\n### Mistake 3: Phase Inversion on Melodic Elements\r\n**Problem:** Disappears in mono\r\n**Fix:** Avoid phase inversion, use delay/matrix only\r\n\r\n### Mistake 4: Ignoring Genre Context\r\n**Problem:** Wrong vibe for style\r\n**Fix:** Lo-fi = narrow, Trap = wide, adjust accordingly\r\n\r\n### Mistake 5: Over-Processing\r\n**Problem:** Unnatural, washy sound\r\n**Fix:** Subtle width adjustments, trust natural stereo\r\n\r\n## Pro Tips\r\n\r\n1. **Melodic = moderate width:** 80-90% sweet spot\r\n2. **Bass instruments multiband:** Narrow low, wide high\r\n3. **Layer for safety:** Focused + wide = dimension\r\n4. **Automate for dynamics:** Verse narrow, chorus wide\r\n5. **Genre dictates width:** Lo-fi narrow, trap wide\r\n6. **Check mono always:** Melodic elements critical in mono\r\n7. **Delay adds depth:** 5-10ms = natural width\r\n8. **Avoid phase invert:** Unless necessary, risky for melodies\r\n9. **EQ before width:** Shape tone first\r\n10. **Trust your ears:** Meters help, but listen critically\r\n\r\n## Quick Reference by Instrument\r\n\r\n```\r\nGUITAR:\r\nFunk: 90-100% (wide groove)\r\nR&B: 85-90% (controlled)\r\nAcoustic: 80-85% (natural)\r\n\r\nPIANO/KEYS:\r\nAcoustic Piano: 85% (realistic)\r\nElectric Piano: 80% (vintage)\r\nSynth Keys: 90% (modern)\r\n\r\nSTRINGS:\r\nPads: 95% (lush)\r\nStabs: 75% (punchy)\r\n\r\nHORNS:\r\nSection: 90% (natural)\r\nSolo: 75% (focused)\r\n\r\nVOCAL CHOPS:\r\nMelodic: 80% (present)\r\nRhythmic: 85% (groove)\r\n```\r\n\r\n## Before/After Examples\r\n\r\n### BEFORE: Narrow Guitar Loop\r\n- Width: 60% (too centered)\r\n- Lacks space and groove\r\n- Sounds flat\r\n\r\n### AFTER: Optimized Width\r\n- Width: 90% (funky spread)\r\n- Groovy and spacious\r\n- Fits mix perfectly\r\n\r\n---\r\n\r\n### BEFORE: Overly-Wide Piano\r\n- Width: 120% (phase issues)\r\n- Weak in mono\r\n- Unstable imaging\r\n\r\n### AFTER: Corrected Width\r\n- Width: 85% (natural)\r\n- Mono-compatible\r\n- Stable and musical\r\n\r\n## Success Checklist\r\n\r\n- [ ] Analyzed original width\r\n- [ ] Applied appropriate width for instrument type\r\n- [ ] Checked mono compatibility\r\n- [ ] Considered genre context\r\n- [ ] Multiband if bass-heavy\r\n- [ ] Automated for dynamics (if needed)\r\n- [ ] Layered for depth (optional)\r\n- [ ] EQ'd before widening\r\n- [ ] Sounds natural and musical\r\n- [ ] Fits cohesively in full mix\r\n\r\n**Remember: Melodic elements need careful width control - too wide risks phase, too narrow lacks space. Find the sweet spot for your genre and instrument.**\r\n",
+      "808-bass-stereo-workflow": "# 808 Bass Stereo Imaging Workflow\r\n\r\n## Overview\r\nEssential stereo shaping techniques for 808 bass across hip-hop subgenres, ensuring mono compatibility and maximum low-end impact.\r\n\r\n---\r\n\r\n## Core Principle\r\n**Rule: Keep sub frequencies (below 100-150 Hz) in MONO to prevent phase cancellation and ensure club/car system compatibility.**\r\n\r\n---\r\n\r\n## Workflow by Genre\r\n\r\n### 1. **Drill 808s**\r\n**Goal:** Maximum sub punch with aggressive mid presence\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **120 Hz**\r\n- Stereo Separation: **0% (Full Mono)**\r\n- Mid/Side Mix: **Mid 100%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Apply Fruity Stereo Shaper to 808 channel\r\n2. Set low frequency cutoff at 120 Hz\r\n3. Ensure complete mono below cutoff\r\n4. Check mix in mono to verify punch retention\r\n5. A/B test with club system simulation\r\n\r\n**Why:** Drill relies on explosive sub bass that hits hard in mono systems (clubs, cars). Any stereo information in the sub range will cause phase issues.\r\n\r\n---\r\n\r\n### 2. **Melodic Trap 808s**\r\n**Goal:** Mono sub foundation with subtle stereo harmonics\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **100 Hz**\r\n- Stereo Separation: **30%** (above cutoff)\r\n- Mid/Side Mix: **Mid 90%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Insert Fruity Stereo Shaper on 808 bus\r\n2. Mono everything below 100 Hz\r\n3. Allow 30% stereo width on upper harmonics (100-300 Hz)\r\n4. Maintain centered low-mid image\r\n5. Test on earbuds and phone speakers\r\n\r\n**Why:** Melodic trap benefits from slight harmonic width that adds richness without compromising low-end power.\r\n\r\n---\r\n\r\n### 3. **Phonk/Memphis 808s**\r\n**Goal:** Dirty, centered low-end with controlled distortion imaging\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **150 Hz**\r\n- Stereo Separation: **0%**\r\n- Mid/Side Mix: **Mid 100%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Apply heavy distortion/saturation to 808 FIRST\r\n2. Insert Fruity Stereo Shaper AFTER distortion\r\n3. Mono everything below 150 Hz\r\n4. Keep distorted harmonics centered\r\n5. Verify no stereo widening from distortion plugin\r\n\r\n**Why:** Phonk 808s are heavily distorted, creating additional harmonics. These must remain controlled to prevent phase issues.\r\n\r\n---\r\n\r\n### 4. **Boom Bap Sub Bass**\r\n**Goal:** Classic mono sub foundation for sampled drums\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **100 Hz**\r\n- Stereo Separation: **0%**\r\n- Mid/Side Mix: **Mid 100%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Apply to sub bass layer (separate from kick)\r\n2. Hard mono below 100 Hz\r\n3. Leave kick's low-end separate (handle individually)\r\n4. Ensure sub and kick don't fight for stereo space\r\n5. Reference against classic boom bap records\r\n\r\n**Why:** Traditional boom bap was mixed for vinyl and radio, both mono-friendly formats. Modern versions maintain this aesthetic.\r\n\r\n---\r\n\r\n### 5. **Cloud Rap/Ambient 808s**\r\n**Goal:** Soft mono foundation with atmospheric upper harmonics\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **90 Hz**\r\n- Stereo Separation: **50%** (above cutoff)\r\n- Mid/Side Mix: **Mid 80%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Apply to layered 808 + sub bass combo\r\n2. Strict mono below 90 Hz\r\n3. Allow moderate stereo on harmonics (90-400 Hz)\r\n4. Blend with wide pad elements\r\n5. Check that bass doesn't disappear when pads are wide\r\n\r\n**Why:** Cloud rap uses lush, wide production, but the low-end anchor must remain focused and present.\r\n\r\n---\r\n\r\n## Advanced Techniques\r\n\r\n### Multi-Band 808 Stereo Treatment\r\nFor complex 808 arrangements with multiple layers:\r\n\r\n1. **Sub Layer (0-80 Hz):** 100% mono\r\n2. **Low-Mid Layer (80-250 Hz):** 0-20% stereo\r\n3. **Harmonic Layer (250-500 Hz):** 30-60% stereo\r\n\r\n**Routing:**\r\n- Route 808 to three separate buses\r\n- Apply frequency-specific EQ to each\r\n- Use Fruity Stereo Shaper on each bus independently\r\n- Blend to taste\r\n\r\n---\r\n\r\n### Stereo 808 Pitch Slides\r\nWhen 808s slide in pitch:\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **120 Hz** (fixed)\r\n- Stereo Separation: **0%**\r\n- Mid/Side Mix: **Mid 100%**\r\n\r\n**Why:** Pitch slides create additional harmonic movement. Keeping everything mono prevents phasing during the slide.\r\n\r\n---\r\n\r\n### Side-Chain Interaction\r\nWhen side-chaining 808s to kick:\r\n\r\n1. Apply Fruity Stereo Shaper BEFORE side-chain compressor\r\n2. Ensure mono low-end before ducking\r\n3. Side-chain compression won't create stereo artifacts\r\n4. Maintain punch through ducking\r\n\r\n---\r\n\r\n## Common Mistakes\r\n\r\n❌ **Leaving 808s in stereo below 100 Hz**\r\n- Causes phase cancellation in mono\r\n- Weak club/car playback\r\n\r\n❌ **Over-widening upper harmonics (>80% stereo)**\r\n- Loses punch and presence\r\n- Bass becomes unfocused\r\n\r\n❌ **Applying stereo width BEFORE distortion**\r\n- Distortion can enhance stereo artifacts\r\n- Always shape AFTER coloration\r\n\r\n❌ **Not checking mono compatibility**\r\n- Many streaming services downmix to mono on mobile\r\n- Always A/B in mono during mixdown\r\n\r\n---\r\n\r\n## Genre-Specific Tips\r\n\r\n**Trap:** 0% stereo below 120 Hz, minimal (20%) above\r\n**Drill:** Complete mono up to 150 Hz for maximum aggression\r\n**Lo-Fi:** Full mono on bass for vintage vinyl aesthetic\r\n**Hyper-Pop:** 0% below 100 Hz, but can push 40-50% on harmonics for modern width\r\n**Boom Bap:** Full mono, period. No stereo on bass elements.\r\n\r\n---\r\n\r\n## Testing Checklist\r\n\r\n✓ Check mix in mono (does bass maintain punch?)\r\n✓ Test on phone speaker (does bass disappear?)\r\n✓ Simulate club system (does bass wobble or phase?)\r\n✓ Reference against professional tracks in genre\r\n✓ Verify with correlation meter (should show centered low-end)\r\n\r\n---\r\n\r\n## Related Plugins to Pair\r\n\r\n- **Fruity Parametric EQ 2:** Low-cut sides below 100 Hz\r\n- **Fruity Bass Boost:** Add thickness BEFORE stereo shaping\r\n- **Maximus:** Multiband processing with stereo control per band\r\n- **Fruity Love Philter:** Resonant low-end BEFORE mono summing\r\n",
+      "drums-percussion-stereo-workflow": "# Drums & Percussion Stereo Imaging Workflow\r\n\r\n## Overview\r\nStrategic stereo shaping for drum elements including kick, snare, hi-hats, percussion, and full drum buses across hip-hop subgenres.\r\n\r\n---\r\n\r\n## Core Drum Stereo Principles\r\n\r\n1. **Kick & Sub:** Always mono (0% stereo)\r\n2. **Snare:** Centered to slightly wide (0-40%)\r\n3. **Hi-Hats:** Moderate to wide (60-140%)\r\n4. **Percussion:** Wide (80-160%)\r\n5. **Overheads/Room:** Wide (120-180%)\r\n\r\n---\r\n\r\n## Kick Drum Workflows\r\n\r\n### 1. **Drill/Trap Kick (Mono Foundation)**\r\n**Goal:** Maximum punch and sub presence\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **N/A** (full spectrum mono)\r\n- Stereo Separation: **0%**\r\n- Mid/Side Mix: **Mid 100%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Apply to kick channel/bus\r\n2. Complete mono summing\r\n3. Ensure no stereo information exists\r\n4. Verify phase alignment with 808\r\n5. Check punch in club system simulation\r\n\r\n**Why:** Kick provides rhythmic foundation and must remain perfectly centered for maximum impact.\r\n\r\n---\r\n\r\n### 2. **Layered Kick (Frequency-Split Mono)**\r\n**Goal:** Mono foundation with possible stereo transient\r\n\r\n**Settings (Sub Layer):**\r\n- Stereo Separation: **0%** (0-100 Hz)\r\n- Mid/Side Mix: **Mid 100%**\r\n\r\n**Settings (Transient Layer):**\r\n- Stereo Separation: **20%** (3-8 kHz)\r\n- Mid/Side Mix: **Mid 90%**\r\n\r\n**Process:**\r\n1. Split kick into sub + transient layers\r\n2. Keep sub completely mono\r\n3. Allow minimal stereo on click/beater\r\n4. Blend layers for full sound\r\n5. Maintain mono low-end punch\r\n\r\n**Why:** Sub must be mono, but subtle transient width can add dimension without losing power.\r\n\r\n---\r\n\r\n## Snare Workflows\r\n\r\n### 1. **Boom Bap Snare (Centered Crack)**\r\n**Goal:** Classic, punchy snare snap\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **150 Hz**\r\n- Stereo Separation: **0-10%**\r\n- Mid/Side Mix: **Mid 95%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Apply to snare bus\r\n2. Keep body and crack centered\r\n3. Minimal stereo for vintage vibe\r\n4. Pair with centered kick\r\n5. Reference classic hip-hop records\r\n\r\n**Why:** Traditional boom bap snares were mono for punch and radio compatibility.\r\n\r\n---\r\n\r\n### 2. **Trap Snare/Clap (Moderate Width)**\r\n**Goal:** Present snare with spatial dimension\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **200 Hz**\r\n- Stereo Separation: **40%**\r\n- Mid/Side Mix: **Mid 80%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Layer snare + clap\r\n2. Keep body centered (below 200 Hz)\r\n3. Add moderate width to crack/snap\r\n4. Maintain strong center image\r\n5. Sit between kick (mono) and hats (wide)\r\n\r\n**Why:** Modern trap benefits from slight snare width while maintaining punch.\r\n\r\n---\r\n\r\n### 3. **Snare Reverb (Wide Ambience)**\r\n**Goal:** Separate snare body and reverb tail\r\n\r\n**Settings (Dry Snare):**\r\n- Stereo Separation: **10%**\r\n- Mid/Side Mix: **Mid 90%**\r\n\r\n**Settings (Reverb Send):**\r\n- Stereo Separation: **150%**\r\n- Mid/Side Mix: **Side 80%**\r\n\r\n**Process:**\r\n1. Keep dry snare centered\r\n2. Send to reverb on separate bus\r\n3. Apply wide stereo to reverb only\r\n4. High-pass reverb (300 Hz+)\r\n5. Blend reverb level to taste\r\n\r\n**Why:** Separating dry/wet allows punch (centered) with space (wide).\r\n\r\n---\r\n\r\n## Hi-Hat Workflows\r\n\r\n### 1. **Trap Hi-Hats (Wide Stereo)**\r\n**Goal:** Spacious, active hi-hat patterns\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **500 Hz**\r\n- Stereo Separation: **120%**\r\n- Mid/Side Mix: **Stereo 100%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Apply to hi-hat bus (closed + open)\r\n2. Wide stereo spread\r\n3. Aggressive high-pass (500 Hz+)\r\n4. Leave space for vocal center\r\n5. Create rhythmic stereo movement\r\n\r\n**Why:** Trap hi-hats are rapid and complex. Width prevents cluttering the center image.\r\n\r\n---\r\n\r\n### 2. **Drill Hi-Hats (Aggressive Width)**\r\n**Goal:** Intense, flanking hi-hat energy\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **600 Hz**\r\n- Stereo Separation: **140%**\r\n- Mid/Side Mix: **Side 75%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Apply to layered hi-hat patterns\r\n2. Extra-wide stereo placement\r\n3. Remove all low-end (600 Hz+)\r\n4. Layer multiple hat samples\r\n5. Create aggressive, chaotic energy\r\n\r\n**Why:** Drill's intensity benefits from extreme hi-hat width that adds controlled chaos.\r\n\r\n---\r\n\r\n### 3. **Boom Bap Hi-Hats (Moderate Width)**\r\n**Goal:** Classic, groove-oriented hats\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **400 Hz**\r\n- Stereo Separation: **60%**\r\n- Mid/Side Mix: **Stereo 100%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Apply to simple hat pattern\r\n2. Moderate width for groove\r\n3. Maintain organic feel\r\n4. Reference classic drum breaks\r\n5. Keep less aggressive than modern trap\r\n\r\n**Why:** Classic boom bap hats were sampled from drum breaks with natural stereo width.\r\n\r\n---\r\n\r\n### 4. **Hi-Hat Rolls (Stereo Panning)**\r\n**Goal:** Exciting roll movement across stereo field\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **500 Hz**\r\n- Stereo Separation: **100%**\r\n- Mid/Side Mix: **Stereo 100%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Isolate hi-hat roll section\r\n2. Apply stereo width\r\n3. Add panning automation (L→R or R→L)\r\n4. High-pass aggressively\r\n5. Create dynamic roll movement\r\n\r\n**Why:** Stereo movement on rolls adds excitement and energy during fills.\r\n\r\n---\r\n\r\n## Percussion Workflows\r\n\r\n### 1. **Latin Percussion (Wide Rhythm)**\r\n**Goal:** Spacious congas, bongos, shakers\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **300 Hz**\r\n- Stereo Separation: **130%**\r\n- Mid/Side Mix: **Stereo 100%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Apply to percussion bus\r\n2. Wide stereo for ensemble feel\r\n3. High-pass to remove low-end\r\n4. Create rhythmic pocket around drums\r\n5. Maintain groove without clutter\r\n\r\n**Why:** Latin percussion adds rhythmic texture best heard when spread across stereo field.\r\n\r\n---\r\n\r\n### 2. **Shakers/Tambourines (Ultra-Wide)**\r\n**Goal:** High-frequency rhythmic shimmer\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **600 Hz**\r\n- Stereo Separation: **160%**\r\n- Mid/Side Mix: **Side 85%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Apply to auxiliary percussion\r\n2. Ultra-wide placement\r\n3. Aggressive high-pass (600 Hz+)\r\n4. Sit in background of mix\r\n5. Add rhythmic energy without distraction\r\n\r\n**Why:** High-frequency shakers benefit from extreme width without low-end conflict.\r\n\r\n---\r\n\r\n### 3. **808 Cowbell (Phonk Width)**\r\n**Goal:** Iconic Memphis phonk cowbell spread\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **400 Hz**\r\n- Stereo Separation: **140%**\r\n- Mid/Side Mix: **Stereo 100%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Apply to cowbell pattern\r\n2. Wide stereo for phonk aesthetic\r\n3. High-pass to prevent low-end clash\r\n4. Layer with mono 808 bass\r\n5. Create signature phonk sound\r\n\r\n**Why:** Memphis phonk cowbells are rhythmic leads that need width for impact.\r\n\r\n---\r\n\r\n### 4. **Rim Shots/Snaps (Positioned Width)**\r\n**Goal:** Accent hits with spatial placement\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **350 Hz**\r\n- Stereo Separation: **100%**\r\n- Mid/Side Mix: **Stereo 100%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Apply to accent percussion\r\n2. Moderate width\r\n3. Pan automation for movement\r\n4. Use on fills and transitions\r\n5. Add rhythmic interest\r\n\r\n**Why:** Accent hits benefit from stereo placement that draws attention without overwhelming.\r\n\r\n---\r\n\r\n## Full Drum Bus Workflows\r\n\r\n### 1. **Drum Bus Stereo Enhancement**\r\n**Goal:** Cohesive drum mix with controlled width\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **100 Hz**\r\n- Stereo Separation: **80%**\r\n- Mid/Side Mix: **Stereo 100%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Apply to master drum bus (after individual processing)\r\n2. Keep low-end mono (kick, sub)\r\n3. Enhance stereo on mid-high frequencies\r\n4. Maintain punch and cohesion\r\n5. Glue drums together as unit\r\n\r\n**Why:** Bus processing creates cohesive drum sound while preserving individual element placement.\r\n\r\n---\r\n\r\n### 2. **Parallel Drum Compression (Stereo Width)**\r\n**Goal:** Add thickness without losing width\r\n\r\n**Settings (Parallel Bus):**\r\n- Stereo Separation: **120%**\r\n- Mid/Side Mix: **Side 70%**\r\n\r\n**Process:**\r\n1. Send drums to parallel compression bus\r\n2. Heavy compression on parallel\r\n3. Apply stereo widening to compressed signal\r\n4. Blend with dry drums (30-50%)\r\n5. Add power without squashing stereo image\r\n\r\n**Why:** Parallel processing allows aggressive compression without sacrificing stereo dimension.\r\n\r\n---\r\n\r\n## Advanced Techniques\r\n\r\n### Frequency-Dependent Stereo Width\r\nSplit drums into three frequency bands:\r\n\r\n**Low (0-200 Hz):** 0% stereo (mono kick/sub)\r\n**Mid (200-2 kHz):** 40-80% stereo (snare, toms)\r\n**High (2 kHz+):** 100-160% stereo (hats, cymbals)\r\n\r\n**Process:**\r\n1. Use multiband tool (Maximus)\r\n2. Apply independent stereo shaping per band\r\n3. Maintain low-end mono\r\n4. Progressive width increase with frequency\r\n5. Create dimensional drum mix\r\n\r\n---\r\n\r\n### Stereo Imaging for Drum Samples vs. Live Drums\r\n\r\n**Drum Samples (Programmed):**\r\n- More aggressive stereo processing acceptable\r\n- Can push width beyond natural limits\r\n- Create artificial but exciting space\r\n\r\n**Live/Organic Drums:**\r\n- More conservative stereo width\r\n- Maintain natural overhead/room mics\r\n- Preserve realistic drum kit placement\r\n\r\n---\r\n\r\n### Drum Roll Stereo Movement\r\nFor exciting fills and transitions:\r\n\r\n1. Isolate drum roll/fill\r\n2. Automate stereo width:\r\n   - Start: 60% stereo\r\n   - Build: Increase to 140%\r\n   - Peak: 180% stereo\r\n3. Add panning automation (optional)\r\n4. Return to normal width after fill\r\n5. Create build tension and excitement\r\n\r\n---\r\n\r\n## Genre-Specific Drum Stereo Strategies\r\n\r\n**Trap:**\r\n- Mono kick/808\r\n- Narrow snare (20-40%)\r\n- Wide hats (120-140%)\r\n\r\n**Drill:**\r\n- Mono kick\r\n- Focused snare (10-30%)\r\n- Ultra-wide hats (140-160%)\r\n\r\n**Boom Bap:**\r\n- Mono kick\r\n- Centered snare (0-20%)\r\n- Moderate hats (40-80%)\r\n\r\n**Lo-Fi:**\r\n- Full mono or minimal stereo throughout\r\n- Vintage, intimate aesthetic\r\n\r\n**Jersey Club:**\r\n- Mono kick\r\n- Moderate snare (30-50%)\r\n- Wide, rapid hats (100-130%)\r\n\r\n**Phonk:**\r\n- Mono kick/sub\r\n- Centered snare (0-20%)\r\n- Wide cowbells/percs (130-160%)\r\n\r\n---\r\n\r\n## Common Mistakes\r\n\r\n❌ **Stereo kick/sub** → Phase cancellation, weak playback\r\n❌ **Too wide snare** → Loses punch and power\r\n❌ **No high-pass on wide elements** → Muddy low-end\r\n❌ **Identical stereo width on all elements** → Flat, dimensionless\r\n❌ **Neglecting mono compatibility** → Mix collapses on mono systems\r\n\r\n---\r\n\r\n## Mono Compatibility Testing\r\n\r\nEssential for drum mixes:\r\n\r\n1. **Flip mix to mono** (check phase correlation)\r\n2. **Listen for:**\r\n   - Kick punch maintained?\r\n   - Snare presence retained?\r\n   - Hi-hats still audible?\r\n   - No strange phasing artifacts?\r\n3. **Adjust stereo width** if elements disappear in mono\r\n4. **Reference on phone speaker** (worst-case scenario)\r\n5. **Final check on club/car system simulation**\r\n\r\n---\r\n\r\n## Testing Checklist\r\n\r\n✓ Kick punches in mono and stereo?\r\n✓ Snare present without losing width?\r\n✓ Hi-hats create space without clutter?\r\n✓ Percussion adds texture without distraction?\r\n✓ Full drum mix cohesive and dimensional?\r\n✓ Mono compatibility maintained?\r\n✓ Low-end tight and focused?\r\n✓ High-end spacious and exciting?\r\n",
+      "melody-stereo-workflow": "# Melody Stereo Imaging Workflow\r\n\r\n## Overview\r\nStereo shaping strategies for melodic elements including keys, synths, guitars, flutes, strings, and orchestral elements in hip-hop production.\r\n\r\n---\r\n\r\n## Piano & Keys Workflows\r\n\r\n### 1. **Melodic Trap Piano (Wide & Emotional)**\r\n**Goal:** Spacious, emotive piano that fills the mix\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **250 Hz**\r\n- Stereo Separation: **140%**\r\n- Mid/Side Mix: **Side 75%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Apply to processed piano (post-EQ, compression)\r\n2. Keep bass notes centered (below 250 Hz)\r\n3. Widen mid and high frequencies\r\n4. Leave space for centered vocal/lead\r\n5. Add subtle reverb on SIDES only\r\n\r\n**Why:** Melodic trap thrives on lush, wide instrumentation that creates emotional space around the vocal.\r\n\r\n---\r\n\r\n### 2. **Boom Bap Dusty Keys (Vintage Mono/Narrow)**\r\n**Goal:** Classic, sample-like piano sound\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **150 Hz**\r\n- Stereo Separation: **30%**\r\n- Mid/Side Mix: **Mid 85%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Apply after vinyl/tape emulation\r\n2. Minimal stereo width for vintage vibe\r\n3. Keep low-end tight and focused\r\n4. Emulate sampled record sound\r\n5. Reference 90s Pete Rock productions\r\n\r\n**Why:** Classic boom bap sampled mono/narrow stereo sources. Modern recreations honor this aesthetic.\r\n\r\n---\r\n\r\n### 3. **Lo-Fi Rhodes/Wurlitzer (Warm Mono)**\r\n**Goal:** Intimate, close-mic'd electric piano\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **100 Hz**\r\n- Stereo Separation: **0-20%**\r\n- Mid/Side Mix: **Mid 95%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Keep natural stereo or sum to mono\r\n2. Add tape saturation/wobble\r\n3. Minimal width for intimacy\r\n4. Pair with mono drums\r\n5. Create \"bedroom\" production vibe\r\n\r\n**Why:** Lo-fi aesthetic embraces mono/narrow sources for nostalgic, intimate character.\r\n\r\n---\r\n\r\n## Synth Lead Workflows\r\n\r\n### 1. **Rage/Plugg Synth Lead (Focused Power)**\r\n**Goal:** Aggressive, in-your-face synth that cuts through\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **200 Hz**\r\n- Stereo Separation: **50%**\r\n- Mid/Side Mix: **Mid 75%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Apply to distorted/processed synth lead\r\n2. Maintain strong center presence\r\n3. Add controlled width on harmonics\r\n4. Keep punchy and aggressive\r\n5. Ensure lead dominates frequency space\r\n\r\n**Why:** Rage beats demand dominant, focused leads that compete with aggressive drums.\r\n\r\n---\r\n\r\n### 2. **Cloud Rap Ambient Lead (Floating Width)**\r\n**Goal:** Dreamy, atmospheric synth layers\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **300 Hz**\r\n- Stereo Separation: **160%**\r\n- Mid/Side Mix: **Side 80%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Layer multiple synth takes\r\n2. Apply wide stereo imaging\r\n3. Remove low-end conflict\r\n4. Add heavy reverb/delay on sides\r\n5. Create spacious, ethereal texture\r\n\r\n**Why:** Cloud rap uses lush soundscapes. Wide synths create immersive, dreamy environments.\r\n\r\n---\r\n\r\n### 3. **Drill Synth Stabs (Aggressive Width)**\r\n**Goal:** Sharp, impactful stabs that accent rhythm\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **400 Hz**\r\n- Stereo Separation: **120%**\r\n- Mid/Side Mix: **Stereo 100%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Apply to high-frequency stabs\r\n2. Wide stereo for impact\r\n3. High-pass aggressively (400 Hz+)\r\n4. Layer with centered 808\r\n5. Create rhythmic stereo movement\r\n\r\n**Why:** Drill stabs need to hit hard without conflicting with low-end. Width adds impact.\r\n\r\n---\r\n\r\n## Guitar Workflows\r\n\r\n### 1. **Ambient Guitar (Atmospheric Width)**\r\n**Goal:** Spacious, reverb-drenched guitar layers\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **350 Hz**\r\n- Stereo Separation: **180%**\r\n- Mid/Side Mix: **Side 85%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Record clean or lightly driven guitar\r\n2. Apply heavy reverb/delay\r\n3. Extreme stereo widening\r\n4. Remove low-end completely\r\n5. Sit guitar -10 to -15 dB in mix\r\n\r\n**Why:** Ambient guitars create textural depth without interfering with bass/vocals.\r\n\r\n---\r\n\r\n### 2. **R&B Guitar Plucks (Moderate Width)**\r\n**Goal:** Rhythmic, percussive guitar that grooves\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **250 Hz**\r\n- Stereo Separation: **100%**\r\n- Mid/Side Mix: **Stereo 100%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Record staccato guitar plucks\r\n2. Moderate stereo width\r\n3. Pan automation for movement\r\n4. Keep low-mids centered\r\n5. Blend with rhythm section\r\n\r\n**Why:** R&B trap benefits from rhythmic guitars that add groove without dominating.\r\n\r\n---\r\n\r\n## Flute & Wind Workflows\r\n\r\n### 1. **Trap Flute Lead (Centered Melody)**\r\n**Goal:** Present, melodic flute that carries hook\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **200 Hz**\r\n- Stereo Separation: **40%**\r\n- Mid/Side Mix: **Mid 80%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Apply to primary flute melody\r\n2. Keep mostly centered\r\n3. Subtle width on breathiness\r\n4. Maintain clarity and presence\r\n5. Ensure flute cuts through mix\r\n\r\n**Why:** Trap flutes are primary melodic elements and need strong center presence like vocals.\r\n\r\n---\r\n\r\n### 2. **Ethnic Flute Layers (Stereo Atmosphere)**\r\n**Goal:** Cultural/world music textures\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **300 Hz**\r\n- Stereo Separation: **130%**\r\n- Mid/Side Mix: **Side 70%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Layer multiple flute takes\r\n2. Wide stereo placement\r\n3. Add cultural reverb (temple, forest)\r\n4. Create atmospheric background\r\n5. Sit behind primary lead\r\n\r\n**Why:** Layered ethnic flutes create cultural texture and depth when widened.\r\n\r\n---\r\n\r\n## String & Orchestral Workflows\r\n\r\n### 1. **Orchestral Strings (Concert Hall Width)**\r\n**Goal:** Realistic string section placement\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **200 Hz**\r\n- Stereo Separation: **120%**\r\n- Mid/Side Mix: **Stereo 100%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Use orchestral string library\r\n2. Natural stereo width (simulates section)\r\n3. Keep cellos/basses more centered\r\n4. Violins wider in field\r\n5. Add concert hall reverb\r\n\r\n**Why:** Orchestral strings sound natural with realistic stereo placement matching concert positioning.\r\n\r\n---\r\n\r\n### 2. **Trap String Stabs (Impact Width)**\r\n**Goal:** Dramatic string hits for emphasis\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **300 Hz**\r\n- Stereo Separation: **150%**\r\n- Mid/Side Mix: **Side 75%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Apply to processed string stabs\r\n2. Wide stereo for drama\r\n3. Remove low-end conflict\r\n4. Layer with centered drums\r\n5. Use on key moments (drops, transitions)\r\n\r\n**Why:** Wide string stabs create cinematic impact without cluttering low-end.\r\n\r\n---\r\n\r\n### 3. **Lo-Fi String Sample (Mono Vintage)**\r\n**Goal:** Warm, sampled string sound\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **100 Hz**\r\n- Stereo Separation: **0-10%**\r\n- Mid/Side Mix: **Mid 100%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Sample from vinyl/old recording\r\n2. Sum to mono or minimal stereo\r\n3. Add tape warmth\r\n4. Keep vintage, lo-fi character\r\n5. Pair with dusty drums\r\n\r\n**Why:** Lo-fi embraces mono samples for authentic vintage warmth.\r\n\r\n---\r\n\r\n## Bell & Mallet Workflows\r\n\r\n### 1. **Glockenspiel/Bells (Stereo Sparkle)**\r\n**Goal:** Wide, shimmering high-frequency texture\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **500 Hz**\r\n- Stereo Separation: **160%**\r\n- Mid/Side Mix: **Side 80%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Apply to bell/mallet instruments\r\n2. Wide stereo on high frequencies\r\n3. Aggressive high-pass (500 Hz+)\r\n4. Add shimmer reverb\r\n5. Create top-end sparkle\r\n\r\n**Why:** Bells sit in high frequency range and benefit from width without low-end conflict.\r\n\r\n---\r\n\r\n### 2. **Marimba/Xylophone (Natural Width)**\r\n**Goal:** Organic mallet instrument stereo\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **250 Hz**\r\n- Stereo Separation: **100%**\r\n- Mid/Side Mix: **Stereo 100%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Record or use natural stereo sample\r\n2. Moderate width\r\n3. Keep low notes more centered\r\n4. High notes wider\r\n5. Maintain organic feel\r\n\r\n**Why:** Mallet instruments have natural stereo spread from left-to-right note placement.\r\n\r\n---\r\n\r\n## Advanced Multi-Layer Melody Techniques\r\n\r\n### Layered Melody Stereo Placement\r\nWhen layering multiple melodic elements:\r\n\r\n**Layer 1 (Main Melody):** 30-50% stereo, centered\r\n**Layer 2 (Harmony):** 80-120% stereo, wider\r\n**Layer 3 (Texture):** 150-180% stereo, ultra-wide\r\n**Layer 4 (Sub-melody):** 0-20% stereo, focused\r\n\r\n**Process:**\r\n1. Assign each layer to separate bus\r\n2. Apply unique stereo shaping to each\r\n3. Create depth through stereo placement\r\n4. Avoid frequency masking with EQ\r\n5. Balance levels for cohesion\r\n\r\n---\r\n\r\n### Stereo Automation for Builds\r\nAutomate stereo width during arrangement:\r\n\r\n- **Intro:** 50-80% (intimate)\r\n- **Verse:** 80-100% (present)\r\n- **Pre-Chorus:** 100-140% (building)\r\n- **Chorus:** 140-180% (wide, climax)\r\n- **Bridge:** 30-60% (pull back)\r\n- **Outro:** 180-200% (expansive fade)\r\n\r\n---\r\n\r\n## Genre-Specific Strategies\r\n\r\n**Trap:** Moderate width on melodies (80-120%), keep 808 mono\r\n**Drill:** Aggressive, narrow leads (40-60%), wide stabs/accents\r\n**Melodic Trap:** Wide, lush melodies (120-160%), emotional depth\r\n**Boom Bap:** Narrow/mono melodies (0-40%), vintage aesthetic\r\n**Cloud Rap:** Ultra-wide ambient layers (160-200%), dreamy soundscapes\r\n**Lo-Fi:** Mono/narrow (0-30%), intimate bedroom vibe\r\n**Hyper-Pop:** Extreme width (180-200%+), maximalist approach\r\n\r\n---\r\n\r\n## Common Mistakes\r\n\r\n❌ **Too wide on lead melody** → Loses focus and power\r\n❌ **No low-cut on wide elements** → Muddy, phasing issues\r\n❌ **All elements same stereo width** → Flat, dimensionless mix\r\n❌ **Widening bass-heavy instruments** → Phase cancellation\r\n❌ **Neglecting mono compatibility check** → Mix falls apart on mono systems\r\n\r\n---\r\n\r\n## Testing Checklist\r\n\r\n✓ Lead melody present and clear?\r\n✓ Layered elements have distinct stereo placement?\r\n✓ No low-end phase issues?\r\n✓ Mix maintains depth and dimension?\r\n✓ Stereo width enhances, not distracts?\r\n✓ Mono compatibility maintained?\r\n",
+      "vocal-stereo-workflow": "# Vocal Stereo Imaging Workflow\r\n\r\n## Overview\r\nStrategic stereo shaping for rap vocals, ad-libs, harmonies, and vocal chops across hip-hop subgenres.\r\n\r\n---\r\n\r\n## Core Vocal Stereo Rules\r\n\r\n1. **Lead Vocals:** Keep centered (0-30% stereo max)\r\n2. **Ad-Libs:** Moderate to wide stereo (40-100%)\r\n3. **Harmonies:** Wide stereo (60-150%)\r\n4. **Vocal Chops:** Variable (genre-dependent)\r\n5. **Background Vocals:** Wide to ultra-wide (80-200%)\r\n\r\n---\r\n\r\n## Lead Vocal Workflows\r\n\r\n### 1. **Trap/Drill Lead Vocal (Centered Power)**\r\n**Goal:** Punchy, in-your-face lead that dominates the center\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **200 Hz**\r\n- Stereo Separation: **10%**\r\n- Mid/Side Mix: **Mid 90%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Apply to primary lead vocal track\r\n2. Keep low-mids mono for chest resonance\r\n3. Allow minimal stereo on high-end air (10-12 kHz)\r\n4. Maintain strong center image\r\n5. Ensure vocal cuts through heavy 808 bass\r\n\r\n**Why:** Trap/drill vocals need aggressive presence. Too much stereo width weakens impact.\r\n\r\n---\r\n\r\n### 2. **Melodic/Singing Lead (Subtle Width)**\r\n**Goal:** Rich, present lead with emotional depth\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **150 Hz**\r\n- Stereo Separation: **30%**\r\n- Mid/Side Mix: **Mid 80%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Apply after autotune/melodyne\r\n2. Keep fundamentals centered\r\n3. Add subtle width to upper harmonics\r\n4. Maintain intelligibility\r\n5. Blend with wide instrumental\r\n\r\n**Why:** Sung vocals benefit from slight width that adds dimension without losing presence.\r\n\r\n---\r\n\r\n### 3. **Boom Bap/Old School Lead (Pure Mono)**\r\n**Goal:** Classic, punchy vocal like 90s hip-hop\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **100 Hz**\r\n- Stereo Separation: **0%**\r\n- Mid/Side Mix: **Mid 100%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Insert on lead vocal bus\r\n2. Complete mono summing\r\n3. Emulate vintage console mixing\r\n4. Pair with mono drum bounce\r\n5. Reference Pete Rock, DJ Premier mixes\r\n\r\n**Why:** Classic hip-hop was mixed for mono radio playback. Modern recreations maintain this aesthetic.\r\n\r\n---\r\n\r\n## Ad-Lib Workflows\r\n\r\n### 1. **Trap Ad-Libs (Wide Placement)**\r\n**Goal:** Place ad-libs in stereo field without cluttering center\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **300 Hz**\r\n- Stereo Separation: **120%**\r\n- Mid/Side Mix: **Side 70%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Duplicate ad-lib track\r\n2. Hard pan duplicates (L 80% / R 80%)\r\n3. Apply Stereo Shaper to stereo bus\r\n4. Remove low-end from sides\r\n5. Keep ad-libs in 'pocket' around lead\r\n\r\n**Why:** Wide ad-libs create call-and-response energy without fighting the centered lead.\r\n\r\n---\r\n\r\n### 2. **Drill Ad-Libs (Aggressive Sides)**\r\n**Goal:** Intense, flanking ad-libs for energy\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **400 Hz**\r\n- Stereo Separation: **150%**\r\n- Mid/Side Mix: **Side 80%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Triple ad-lib takes (L, C, R)\r\n2. Keep center at 0 dB, sides at -3 dB\r\n3. Apply aggressive high-pass on sides (400 Hz+)\r\n4. Add slight delay variation per side (5-15 ms)\r\n5. Wide stereo shaping on side channels only\r\n\r\n**Why:** Drill's intensity demands aggressive spatial treatment. Wide ad-libs add chaos and energy.\r\n\r\n---\r\n\r\n## Harmony & Doubling Workflows\r\n\r\n### 1. **Vocal Harmonies (Stereo Layers)**\r\n**Goal:** Lush harmonic support around lead\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **250 Hz**\r\n- Stereo Separation: **100%**\r\n- Mid/Side Mix: **Side 75%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Record 2-4 harmony takes\r\n2. Pan harmonies (L 60%, R 60%, L 90%, R 90%)\r\n3. Bus harmonies to group\r\n4. Apply stereo shaping to harmony bus\r\n5. Sit harmonies -6 to -10 dB below lead\r\n\r\n**Why:** Harmonies create depth and richness without competing with lead when properly widened.\r\n\r\n---\r\n\r\n### 2. **Vocal Doubles (Haas Effect)**\r\n**Goal:** Thicken lead with stereo doubles\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **200 Hz**\r\n- Stereo Separation: **80%**\r\n- Mid/Side Mix: **Side 60%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Record identical double takes\r\n2. Pan doubles (L 50%, R 50%)\r\n3. Add 15-30 ms delay to one side\r\n4. Apply stereo shaping to double bus\r\n5. Blend at -8 to -12 dB below lead\r\n\r\n**Why:** Haas effect creates natural width. Stereo Shaper ensures low-end stays centered.\r\n\r\n---\r\n\r\n## Vocal Chop Workflows\r\n\r\n### 1. **Jersey Club Vocal Chops (Rhythmic Width)**\r\n**Goal:** Bouncing, energetic vocal stabs\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **500 Hz**\r\n- Stereo Separation: **140%**\r\n- Mid/Side Mix: **Stereo 100%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Chop vocals to 1/16th or 1/8th notes\r\n2. Alternate panning on sequential chops (L-R-L-R)\r\n3. Apply stereo shaping to entire chop sequence\r\n4. Remove all low-end (high-pass 500 Hz+)\r\n5. Add slight pitch variation for movement\r\n\r\n**Why:** Jersey club thrives on rapid, spatial vocal movement. Wide chops create dance floor energy.\r\n\r\n---\r\n\r\n### 2. **Lo-Fi Vocal Chops (Vintage Mono)**\r\n**Goal:** Warm, centered vocal samples\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **100 Hz**\r\n- Stereo Separation: **0%**\r\n- Mid/Side Mix: **Mid 100%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Sample vintage soul/jazz vocals\r\n2. Sum to complete mono\r\n3. Add vinyl noise/crackle\r\n4. Keep centered for nostalgic vibe\r\n5. Pair with mono drum loops\r\n\r\n**Why:** Lo-fi aesthetic embraces mono recordings for authentic vintage character.\r\n\r\n---\r\n\r\n### 3. **Hyper-Pop Vocal Chops (Extreme Width)**\r\n**Goal:** Glitchy, maximalist vocal processing\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **300 Hz**\r\n- Stereo Separation: **200%**\r\n- Mid/Side Mix: **Side 90%**\r\n- Phase: **20°** (experimental)\r\n\r\n**Process:**\r\n1. Heavily process vocals (pitch shift, formant, glitch)\r\n2. Apply extreme stereo widening\r\n3. Automate stereo width for movement\r\n4. Layer multiple wide chop patterns\r\n5. Push stereo separation beyond natural limits\r\n\r\n**Why:** Hyper-pop embraces artificiality and maximalism. Extreme stereo creates signature intensity.\r\n\r\n---\r\n\r\n## Background Vocal Workflows\r\n\r\n### 1. **Ambient Vocal Pads (Ultra-Wide)**\r\n**Goal:** Ethereal, atmospheric vocal layers\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **350 Hz**\r\n- Stereo Separation: **180%**\r\n- Mid/Side Mix: **Side 85%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Record sustained \"ahhs\" or \"oohs\"\r\n2. Heavy reverb + delay\r\n3. Stretch/warp into pad texture\r\n4. Apply extreme stereo widening\r\n5. Sit -15 to -20 dB below lead\r\n\r\n**Why:** Background pads create immersive space without interfering with focused lead.\r\n\r\n---\r\n\r\n### 2. **Crowd/Group Vocals (Stereo Spread)**\r\n**Goal:** Large, crowd-like vocal presence\r\n\r\n**Settings:**\r\n- Low Freq Cutoff: **250 Hz**\r\n- Stereo Separation: **130%**\r\n- Mid/Side Mix: **Stereo 100%**\r\n- Phase: **0°**\r\n\r\n**Process:**\r\n1. Record 4-8 takes of same line\r\n2. Pan evenly across stereo field\r\n3. Slight timing variations (±10 ms)\r\n4. Apply stereo shaping to group bus\r\n5. Create sense of large space\r\n\r\n**Why:** Simulates multiple voices filling a room, adding scale to hooks/choruses.\r\n\r\n---\r\n\r\n## Advanced Techniques\r\n\r\n### Mid-Side Vocal Processing\r\n1. Duplicate vocal to two tracks\r\n2. First track: Extract MID channel (centered)\r\n3. Second track: Extract SIDE channel (stereo info)\r\n4. Process each independently:\r\n   - **MID:** Compression, de-essing, presence\r\n   - **SIDE:** Reverb, delay, air\r\n5. Blend to taste with Fruity Stereo Shaper on master bus\r\n\r\n---\r\n\r\n### Stereo Automation for Movement\r\n- Automate stereo separation during:\r\n  - **Verses:** 20-40% (focused)\r\n  - **Choruses:** 60-80% (wide)\r\n  - **Breakdowns:** 100-150% (expansive)\r\n  - **Drops:** 0-20% (punchy)\r\n\r\n---\r\n\r\n## Common Mistakes\r\n\r\n❌ **Too much stereo on lead vocal** → Loses power and presence\r\n❌ **Mono ad-libs** → Clutters center, fights lead\r\n❌ **No low-cut on wide vocals** → Phase issues, muddy mix\r\n❌ **Identical left/right doubles** → Causes phase cancellation\r\n❌ **Over-widening background vocals** → Disconnected from mix\r\n\r\n---\r\n\r\n## Genre-Specific Applications\r\n\r\n**Trap:** Centered lead + wide ad-libs\r\n**Drill:** Aggressive centered lead + flanking ad-libs\r\n**Melodic Trap:** Subtle lead width + lush harmonies\r\n**Boom Bap:** Full mono lead, minimal stereo effects\r\n**Cloud Rap:** Soft centered lead + ultra-wide pads\r\n**Hyper-Pop:** Extreme processing, maximal stereo width\r\n**Lo-Fi:** Mono vintage aesthetic throughout\r\n\r\n---\r\n\r\n## Testing Checklist\r\n\r\n✓ Lead vocal clear and present in mono?\r\n✓ Ad-libs audible but not distracting?\r\n✓ Harmonies support without competing?\r\n✓ Vocal chops rhythmically engaging?\r\n✓ Background elements fill space without clutter?\r\n✓ Mix translates to earbuds, car, and club systems?\r\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Stereo Shaper\r\n\r\nThis section contains workflow information for the fruity-stereo-shaper plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Stereo Shaper\r\n\r\nThis section contains reference information for the fruity-stereo-shaper plugin.\r\n"
+    }
+  }
+}

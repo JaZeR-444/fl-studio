@@ -1,0 +1,239 @@
+{
+  "pluginName": "Fruity Flanger",
+  "version": "1.0",
+  "lastUpdated": "2025-01-04",
+  "category": "Modulation Effects",
+  "parameters": {
+    "delayTime": {
+      "type": "time",
+      "range": {
+        "min": 0.1,
+        "max": 20,
+        "default": 5
+      },
+      "unit": "ms",
+      "description": "Base delay time before modulation begins",
+      "technicalDetails": "Analog-style delay line with precise time control",
+      "sweetSpots": {
+        "fast": [0.1, 2, "rhythmic_effects"],
+        "medium": [2, 8, "classic_flange"],
+        "slow": [8, 20, "sweeping_effects"]
+      }
+    },
+    "lfoRate": {
+      "type": "frequency",
+      "range": {
+        "min": 0.05,
+        "max": 20,
+        "default": 0.5
+      },
+      "unit": "Hz",
+      "description": "Speed of delay modulation (LFO rate)",
+      "technicalDetails": "Low-frequency oscillator with tempo sync capability",
+      "sweetSpots": {
+        "very_slow": [0.05, 0.3, "slow_sweep"],
+        "slow": [0.3, 1.0, "musical_sweep"],
+        "medium": [1.0, 4.0, "rhythmic_modulation"],
+        "fast": [4.0, 20, "fast_effects"]
+      }
+    },
+    "lfoDepth": {
+      "type": "percentage",
+      "range": {
+        "min": 0,
+        "max": 100,
+        "default": 50
+      },
+      "unit": "%",
+      "description": "Amount of delay time variation",
+      "technicalDetails": "Controls modulation intensity from subtle to extreme",
+      "sweetSpots": {
+        "subtle": [20, 40, "gentle_modulation"],
+        "moderate": [40, 60, "noticeable_effect"],
+        "strong": [60, 80, "prominent_flange"],
+        "extreme": [80, 100, "chaotic_modulation"]
+      }
+    },
+    "feedback": {
+      "type": "percentage",
+      "range": {
+        "min": 0,
+        "max": 95,
+        "default": 25
+      },
+      "unit": "%",
+      "description": "Signal regeneration for metallic character",
+      "technicalDetails": "Recursive delay with controlled feedback for comb filtering",
+      "sweetSpots": {
+        "clean": [0, 20, "minimal_coloration"],
+        "warm": [20, 40, "subtle_metallic"],
+        "metallic": [40, 60, "classic_flange"],
+        "intense": [60, 80, "heavy_character"],
+        "extreme": [80, 95, "creative_effects"]
+      }
+    },
+    "stereo": {
+      "type": "percentage",
+      "range": {
+        "min": 0,
+        "max": 100,
+        "default": 75
+      },
+      "unit": "%",
+      "description": "Stereo image width and character",
+      "technicalDetails": "True stereo processing with phase coherence",
+      "sweetSpots": {
+        "mono": [0, 30, "centered_mono"],
+        "narrow": [30, 60, "focused_stereo"],
+        "wide": [60, 85, "expansive_stereo"],
+        "extreme": [85, 100, "maximum_width"]
+      }
+    },
+    "mix": {
+      "type": "percentage",
+      "range": {
+        "min": 0,
+        "max": 100,
+        "default": 30
+      },
+      "unit": "%",
+      "description": "Balance between dry and flanged signal",
+      "technicalDetails": "Linear crossfade maintaining phase coherence",
+      "sweetSpots": {
+        "subtle": [10, 30, "gentle_enhancement"],
+        "balanced": [30, 50, "musical_integration"],
+        "prominent": [50, 70, "effect_focused"],
+        "dominant": [70, 90, "effect_dominant"],
+        "parallel": [20, 40, "blended_character"]
+      }
+    }
+  },
+  "presets": {
+    "classic": {
+      "vintage_flange": {
+        "name": "Vintage Flange",
+        "description": "Classic 70s flanging effect",
+        "settings": {
+          "delayTime": 8,
+          "lfoRate": 0.8,
+          "lfoDepth": 60,
+          "feedback": 35,
+          "stereo": 70,
+          "mix": 40
+        }
+      },
+      "tape_flange": {
+        "name": "Tape Flange",
+        "description": "Vintage tape-based flanging character",
+        "settings": {
+          "delayTime": 10,
+          "lfoRate": 0.5,
+          "lfoDepth": 50,
+          "feedback": 25,
+          "stereo": 65,
+          "mix": 45
+        }
+      }
+    },
+    "musical": {
+      "guitar_enhancement": {
+        "name": "Guitar Enhancement",
+        "description": "Subtle guitar flanging for mix",
+        "settings": {
+          "delayTime": 4,
+          "lfoRate": 0.6,
+          "lfoDepth": 35,
+          "feedback": 20,
+          "stereo": 80,
+          "mix": 25
+        }
+      },
+      "vocal_spread": {
+        "name": "Vocal Spread",
+        "description": "Subtle vocal enhancement and stereo spread",
+        "settings": {
+          "delayTime": 2.5,
+          "lfoRate": 0.4,
+          "lfoDepth": 25,
+          "feedback": 15,
+          "stereo": 75,
+          "mix": 20
+        }
+      }
+    },
+    "creative": {
+      "metallic_sweep": {
+        "name": "Metallic Sweep",
+        "description": "Intense metallic flanging for effects",
+        "settings": {
+          "delayTime": 12,
+          "lfoRate": 2.5,
+          "lfoDepth": 75,
+          "feedback": 60,
+          "stereo": 85,
+          "mix": 60
+        }
+      },
+      "underwater": {
+        "name": "Underwater",
+        "description": "Muffled underwater effect",
+        "settings": {
+          "delayTime": 6,
+          "lfoRate": 0.3,
+          "lfoDepth": 40,
+          "feedback": 30,
+          "stereo": 60,
+          "mix": 50
+        }
+      }
+    },
+    "genre": {
+      "rock": {
+        "name": "Rock Flange",
+        "description": "Classic rock guitar flanging",
+        "settings": {
+          "delayTime": 7,
+          "lfoRate": 1.0,
+          "lfoDepth": 55,
+          "feedback": 30,
+          "stereo": 75,
+          "mix": 45
+        }
+      },
+      "electronic": {
+        "name": "Electronic Flange",
+        "description": "Modern electronic music flanging",
+        "settings": {
+          "delayTime": 10,
+          "lfoRate": 2.0,
+          "lfoDepth": 70,
+          "feedback": 40,
+          "stereo": 85,
+          "mix": 55
+        }
+      },
+      "pop": {
+        "name": "Pop Enhancement",
+        "description": "Subtle pop production flanging",
+        "settings": {
+          "delayTime": 3,
+          "lfoRate": 0.4,
+          "lfoDepth": 30,
+          "feedback": 15,
+          "stereo": 65,
+          "mix": 25
+        }
+      }
+    }
+  },
+  "technicalSpecs": {
+    "flangingAlgorithm": "analog_style_comb_filter",
+    "delayRange": [0.1, 20],
+    "lfoWaveforms": ["sine", "triangle", "square", "saw"],
+    "tempoSync": true,
+    "stereoProcessing": "true_stereo_with_phase_coherence",
+    "latency": 0,
+    "cpuUsage": 0.3,
+    "sampleRates": [44100, 48000, 88200, 96000, 192000]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "metadata": {
+    "plugin": "Frequency Splitter",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "presetName": "Kick/Bass Separation",
+    "category": "genre",
+    "genre": "EDM",
+    "mood": "punchy"
+  },
+  "settings": {
+    "crossover1": 80,
+    "slope": "48dB/oct",
+    "mode": "minimum-phase",
+    "band1": { "gain": 0, "processing": "kick: 40-80Hz focus" },
+    "band2": { "gain": 0, "processing": "bass: 80-200Hz focus" }
+  },
+  "chain": {
+    "pre": ["Kick transient processing"],
+    "post": ["Sidechain kick to bass"]
+  },
+  "workflow": "Sharp 48dB/oct split for clean kick/bass separation. Apply sidechain compression between bands for clean crossover.",
+  "genreTags": ["EDM", "kick", "bass", "separation"],
+  "a/bTesting": {
+    "testA": "48dB/oct for maximum separation",
+    "testB": "24dB/oct for musical overlap"
+  },
+  "troubleshooting": {
+    "muddyKick": "Increase crossover to 100Hz",
+    "holesInSound": "Reduce crossover to 60Hz"
+  }
+}

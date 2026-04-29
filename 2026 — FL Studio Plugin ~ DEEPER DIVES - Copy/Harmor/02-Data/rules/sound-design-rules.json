@@ -1,0 +1,469 @@
+{
+  "pluginName": "Harmor",
+  "rulesType": "Sound Design Rules",
+  "version": "1.0",
+  "source": "[SRC: IL-MAN]",
+  "rules": [
+    {
+      "name": "Sub Bass Design",
+      "context": "808-style sub bass",
+      "rules": {
+        "timbre": {
+          "subLevel": {
+            "value": 90,
+            "min": 80,
+            "max": 100,
+            "reason": "Sub timbre provides fundamental frequency"
+          },
+          "mainLevel": {
+            "value": 40,
+            "min": 20,
+            "max": 60,
+            "reason": "Some harmonics for character, but not too many"
+          },
+          "subShape": {
+            "value": "Sine",
+            "options": ["Sine", "Triangle"],
+            "reason": "Pure fundamentals for clean sub"
+          }
+        },
+        "processors": {
+          "prism": {
+            "value": 0,
+            "max": 10,
+            "reason": "Keep harmonic - inharmonic ruins sub clarity"
+          },
+          "pluck": {
+            "value": 60,
+            "min": 40,
+            "max": 80,
+            "reason": "Fast decay for 808-style punch"
+          },
+          "blur": {
+            "value": 10,
+            "max": 20,
+            "reason": "Slight thickening without mud"
+          },
+          "strum": {
+            "value": 0,
+            "max": 10,
+            "reason": "Keep focused for mono compatibility"
+          }
+        },
+        "filter": {
+          "type": "lowPass",
+          "cutoff": {
+            "value": 120,
+            "unit": "Hz",
+            "range": "80-150Hz"
+          },
+          "reason": "Remove highs, focus on sub frequencies"
+        },
+        "envelope": {
+          "attack": 0,
+          "decay": {
+            "value": 40,
+            "range": "30-50"
+          },
+          "sustain": 0,
+          "release": {
+            "value": 25,
+            "range": "20-30"
+          }
+        },
+        "unison": {
+          "voices": 1,
+          "reason": "Sub must be mono"
+        }
+      }
+    },
+    {
+      "name": "Growl Bass Design",
+      "context": "Dubstep/trap growl bass",
+      "rules": {
+        "timbre": {
+          "subLevel": {
+            "value": 80,
+            "min": 60,
+            "max": 90
+          },
+          "mainLevel": {
+            "value": 90,
+            "min": 80,
+            "max": 100
+          },
+          "shapes": ["Saw", "Complex"]
+        },
+        "processors": {
+          "prism": {
+            "value": 70,
+            "min": 50,
+            "max": 85,
+            "depth": "Full",
+            "reason": "Prism creates inharmonic growl character"
+          },
+          "blur": {
+            "value": 20,
+            "range": "15-30",
+            "reason": "Slight density without losing definition"
+          },
+          "pluck": {
+            "value": 30,
+            "range": "20-40",
+            "reason": "Moderate decay control"
+          },
+          "strum": {
+            "value": 10,
+            "max": 20
+          }
+        },
+        "modulation": {
+          "lfoToPrism": {
+            "amount": {
+              "value": 40,
+              "min": 30,
+              "max": 60
+            },
+            "rate": "1/8 note",
+            "reason": "Classic wobble effect"
+          }
+        },
+        "filter": {
+          "type": "custom",
+          "resonance": "Present at 1-2kHz"
+        },
+        "unison": {
+          "voices": {
+            "value": 3,
+            "range": "2-4"
+          },
+          "stereo": {
+            "value": 40,
+            "max": 50
+          }
+        }
+      }
+    },
+    {
+      "name": "Vocal Resynthesis",
+      "context": "Resynthesized vocal manipulation",
+      "rules": {
+        "resynthesis": {
+          "mode": "ADV",
+          "precision": {
+            "value": 70,
+            "min": 60,
+            "max": 85,
+            "reason": "High precision captures vocal nuances"
+          },
+          "blending": {
+            "value": 50,
+            "range": "40-60",
+            "reason": "Balance between detail and smoothness"
+          },
+          "window": "Medium",
+          "phaseRandomize": {
+            "value": 15,
+            "max": 25,
+            "reason": "Slight randomization naturalizes synthetic sound"
+          }
+        },
+        "processors": {
+          "blur": {
+            "value": 30,
+            "range": "20-40",
+            "reason": "Doubling effect without full unison CPU cost"
+          },
+          "strum": {
+            "value": 25,
+            "range": "15-35",
+            "reason": "Natural thickening"
+          },
+          "pluck": {
+            "value": 30,
+            "range": "20-40",
+            "reason": "Natural decay shaping"
+          },
+          "prism": {
+            "value": 15,
+            "max": 30,
+            "reason": "Subtle character, not full robot"
+          }
+        },
+        "filter": {
+          "type": "custom",
+          "curve": "Gentle roll-off above 8kHz"
+        }
+      }
+    },
+    {
+      "name": "Pad Design",
+      "context": "Atmospheric sustaining pads",
+      "rules": {
+        "timbre": {
+          "subLevel": {
+            "value": 70,
+            "range": "60-80"
+          },
+          "mainLevel": {
+            "value": 70,
+            "range": "60-80"
+          },
+          "balance": "Equal for full spectrum"
+        },
+        "processors": {
+          "prism": {
+            "value": 25,
+            "range": "15-35",
+            "reason": "Subtle movement without chaos"
+          },
+          "blur": {
+            "value": 60,
+            "min": 50,
+            "max": 75,
+            "reason": "High blur creates density"
+          },
+          "pluck": {
+            "value": 0,
+            "max": 10,
+            "reason": "Pads need sustain, not decay"
+          },
+          "strum": {
+            "value": 40,
+            "range": "30-50",
+            "reason": "Ethereal detuning effect"
+          }
+        },
+        "envelope": {
+          "attack": {
+            "value": 40,
+            "min": 30,
+            "reason": "Slow attack for pad swells"
+          },
+          "decay": 0,
+          "sustain": 100,
+          "release": {
+            "value": 60,
+            "min": 50
+          }
+        },
+        "modulation": {
+          "lfos": {
+            "count": 2,
+            "lfo1": {
+              "destination": "Filter",
+              "rate": "Slow",
+              "amount": 30
+            },
+            "lfo2": {
+              "destination": "Prism",
+              "rate": "Very slow",
+              "amount": 20
+            }
+          }
+        },
+        "unison": {
+          "voices": {
+            "value": 6,
+            "range": "5-8"
+          },
+          "stereo": {
+            "value": 60,
+            "min": 50
+          },
+          "detune": {
+            "value": 35,
+            "range": "25-45"
+          }
+        },
+        "effects": {
+          "reverb": {
+            "value": 40,
+            "min": 30
+          },
+          "chorus": {
+            "value": 25,
+            "range": "20-30"
+          }
+        }
+      }
+    },
+    {
+      "name": "Lead Design",
+      "context": "Melodic leads",
+      "rules": {
+        "timbre": {
+          "mainLevel": {
+            "value": 90,
+            "min": 80,
+            "reason": "Presence and cut"
+          },
+          "subLevel": {
+            "value": 60,
+            "range": "50-70"
+          },
+          "mainShape": "Saw or bright",
+          "subShape": "Triangle or sine"
+        },
+        "processors": {
+          "prism": {
+            "value": 15,
+            "max": 30,
+            "reason": "Character without overpowering"
+          },
+          "blur": {
+            "value": 15,
+            "max": 25
+          },
+          "pluck": {
+            "value": 35,
+            "range": "25-50"
+          },
+          "strum": {
+            "value": 15,
+            "range": "10-25"
+          }
+        },
+        "envelope": {
+          "attack": {
+            "value": 5,
+            "range": "0-10",
+            "reason": "Fast but not instant (more natural)"
+          },
+          "decay": {
+            "value": 30,
+            "range": "20-40"
+          },
+          "sustain": {
+            "value": 80,
+            "min": 70
+          },
+          "release": {
+            "value": 25,
+            "range": "20-35"
+          }
+        },
+        "unison": {
+          "voices": {
+            "value": 4,
+            "range": "3-5"
+          },
+          "stereo": {
+            "value": 45,
+            "range": "30-60"
+          },
+          "detune": {
+            "value": 20,
+            "range": "15-30"
+          }
+        }
+      }
+    },
+    {
+      "name": "A/B Layering",
+      "context": "Using both engines together",
+      "rules": {
+        "strategy": "Frequency splitting or contrast",
+        "frequencySplit": {
+          "engineA": {
+            "role": "Sub",
+            "subLevel": 100,
+            "mainLevel": 0,
+            "filter": "Low-pass at 200Hz"
+          },
+          "engineB": {
+            "role": "Presence",
+            "subLevel": 0,
+            "mainLevel": 100,
+            "filter": "High-pass at 1kHz"
+          },
+          "mix": 50
+        },
+        "contrast": {
+          "engineA": {
+            "description": "Clean, simple timbre"
+          },
+          "engineB": {
+            "description": "Processed (Prism, effects)"
+          },
+          "mix": {
+            "default": 70,
+            "reason": "Mostly clean with some character"
+          }
+        },
+        "phaseConsiderations": {
+          "issue": "Phase cancellation when similar",
+          "solution": "Shift phase of one engine or different filters"
+        }
+      }
+    },
+    {
+      "name": "Image Synthesis",
+      "context": "Creating sounds from images",
+      "rules": {
+        "imagePreparation": {
+          "format": "PNG or BMP",
+          "dimensions": {
+            "powerOfTwo": true,
+            "recommended": "512x512 or 1024x256"
+          },
+          "color": {
+            "mode": "Grayscale or RGB",
+            "interpretation": "Brightness = amplitude"
+          }
+        },
+        "drawing": {
+          "horizontalLines": "Create sustained tones",
+          "verticalLines": "Create percussive attacks",
+          "gradients": "Create frequency sweeps",
+          "noise": "Create textured/ambient sounds"
+        },
+        "postProcessing": {
+          "blur": {
+            "value": 40,
+            "reason": "Smooth harsh digital artifacts"
+          },
+          "prism": {
+            "value": 20,
+            "reason": "Add character to static images"
+          },
+          "strum": {
+            "value": 25,
+            "reason": "Naturalize synthetic sources"
+          }
+        }
+      }
+    },
+    {
+      "name": "CPU Optimization",
+      "context": "Managing Harmor's CPU usage",
+      "rules": {
+        "unison": {
+          "rule": "Reduce voices",
+          "recommendation": "Use 3-4 instead of 9",
+          "impact": "Significant CPU savings"
+        },
+        "engines": {
+          "rule": "Use single engine when possible",
+          "mixSetting": "0% or 100% (not blended)",
+          "impact": "Half the CPU usage"
+        },
+        "effects": {
+          "rule": "Disable unused processors",
+          "processors": ["Prism", "Blur"],
+          "reason": "Even at 0%, some CPU used"
+        },
+        "rendering": {
+          "freeze": "Freeze channel for playback",
+          "bounce": "Render to audio for final mix",
+          "presets": "Resynthesis data compact, no samples needed"
+        },
+        "polyphony": {
+          "rule": "Reduce max voices",
+          "recommendation": "16 instead of 32-64",
+          "impact": "Less voice allocation overhead"
+        }
+      }
+    }
+  ]
+}

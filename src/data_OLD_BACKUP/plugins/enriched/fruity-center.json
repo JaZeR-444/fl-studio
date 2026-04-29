@@ -1,0 +1,121 @@
+{
+  "id": "fruity-center",
+  "name": "Fruity Center",
+  "presets": {
+    "center-boost-presence": {
+      "presetName": "Center Boost Presence",
+      "plugin": "Fruity Center",
+      "description": "Focuses the energy on the center channel while slightly dipping the sides.",
+      "settings": {
+        "center": 1.2,
+        "side": 0.8,
+        "lowCut": 100.0,
+        "highCut": 15000.0
+      },
+      "usage": "Use on a kick or lead vocal to make it sound more centered and authoritative."
+    },
+    "side-only-monitor": {
+      "presetName": "Side Only Monitor",
+      "plugin": "Fruity Center",
+      "description": "Isolates the side (stereo) information for analysis.",
+      "settings": {
+        "center": 0.0,
+        "side": 1.0,
+        "lowCut": 20.0,
+        "highCut": 20000.0
+      },
+      "usage": "Essential for checking if your reverb or delay is too wide or has phase issues."
+    },
+    "vocal-remover-basic": {
+      "presetName": "Vocal Remover Basic",
+      "plugin": "Fruity Center",
+      "description": "Cuts the center channel to remove centered vocals/instruments.",
+      "settings": {
+        "center": 0.0,
+        "side": 1.0,
+        "lowCut": 200.0,
+        "highCut": 20000.0
+      },
+      "usage": "Use to create karaoke tracks or to isolate side-panned elements from a stereo file."
+    }
+  },
+  "parameters": {
+    "center-params": {
+      "plugin": {
+        "name": "Fruity Center",
+        "category": "Utility",
+        "type": "Mid-Side Matrix",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Center.htm"
+      },
+      "parameters": {
+        "center": {
+          "id": "center",
+          "name": "Center (Mid)",
+          "range": "0-100%",
+          "description": "Adjusts the level of correlated (identical) L/R audio."
+        },
+        "side": {
+          "id": "side",
+          "name": "Side",
+          "range": "0-100%",
+          "description": "Adjusts the level of uncorrelated (difference) L/R audio."
+        }
+      },
+      "math": {
+        "midCalculation": "L + R",
+        "sideCalculation": "L - R"
+      }
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "00 Goal Quick Result",
+      "category": "by-goal",
+      "filename": "00_Goal_Quick_Result.md"
+    },
+    {
+      "title": "01 Goal Mix Validation",
+      "category": "by-goal",
+      "filename": "01_Goal_Mix_Validation.md"
+    },
+    {
+      "title": "Isolating Stereo Effects",
+      "category": "by-goal",
+      "filename": "isolating-stereo-effects.md"
+    },
+    {
+      "title": "Removing Vocals From Master",
+      "category": "by-goal",
+      "filename": "removing-vocals-from-master.md"
+    },
+    {
+      "title": "Master Bus",
+      "category": "by-instrument",
+      "filename": "master-bus.md"
+    },
+    {
+      "title": "Synth Layers",
+      "category": "by-instrument",
+      "filename": "synth-layers.md"
+    }
+  ]
+}

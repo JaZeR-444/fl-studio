@@ -1,0 +1,99 @@
+{
+  "$schema": "./schema.json",
+  "plugin": {
+    "name": "Wave Traveller",
+    "version": "1.x",
+    "category": "Effect",
+    "type": "Vinyl Scratch Simulator & Sample Manipulator",
+    "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Wave%20Traveller.htm"
+  },
+  "parameters": {
+    "playback": [
+      {
+        "id": "position",
+        "name": "Position",
+        "type": "slider",
+        "range": "0-100%",
+        "description": "Playback position in sample",
+        "automatable": true,
+        "performanceUse": "Automate for scratch effects"
+      },
+      {
+        "id": "speed",
+        "name": "Speed",
+        "type": "slider",
+        "range": "-200% to +200%",
+        "default": "100%",
+        "description": "Playback speed and direction",
+        "note": "Negative values = reverse playback"
+      },
+      {
+        "id": "crossfade",
+        "name": "Crossfade",
+        "type": "slider",
+        "range": "0-100ms",
+        "unit": "ms",
+        "default": "20ms",
+        "description": "Smooths position jumps",
+        "sweetSpot": "10-30ms for scratching"
+      }
+    ],
+    "vinylSimulation": [
+      {
+        "id": "vinylNoise",
+        "name": "Vinyl Noise",
+        "type": "slider",
+        "range": "0-100%",
+        "default": "0%",
+        "description": "Adds crackle and pop",
+        "sweetSpot": "20-40% for vintage vibe"
+      },
+      {
+        "id": "wowFlutter",
+        "name": "Wow & Flutter",
+        "type": "slider",
+        "range": "0-100%",
+        "description": "Pitch instability simulation"
+      },
+      {
+        "id": "motorLag",
+        "name": "Motor Lag",
+        "type": "slider",
+        "range": "0-100%",
+        "description": "Spin-up/spin-down inertia",
+        "sweetSpot": "70-80% for realistic vinyl stop"
+      }
+    ],
+    "sample": [
+      {
+        "id": "sampleStart",
+        "name": "Sample Start",
+        "description": "Beginning trim point"
+      },
+      {
+        "id": "sampleEnd",
+        "name": "Sample End",
+        "description": "Ending trim point"
+      },
+      {
+        "id": "loopMode",
+        "name": "Loop Mode",
+        "options": ["Off", "Forward", "Ping-Pong"],
+        "description": "Playback looping behavior"
+      }
+    ]
+  },
+  "scratchTechniques": {
+    "babyScratch": "Basic back-and-forth movement",
+    "chirpScratch": "Fast forward jumps",
+    "crabScratch": "Rapid staccato movements",
+    "transformScratch": "Rhythmic on/off cuts"
+  },
+  "historicalReference": {
+    "originated": "1970s hip-hop DJing",
+    "pioneers": ["Grand Wizzard Theodore", "DJ Qbert", "Mix Master Mike"]
+  },
+  "cpuUsage": "Low to Moderate",
+  "latency": "Minimal",
+  "realtimeSafe": true
+}

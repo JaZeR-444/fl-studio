@@ -1,0 +1,294 @@
+{
+  "id": "fruity-dx10",
+  "name": "Fruity DX10",
+  "presets": {
+    "dx10-archetypes": {
+      "archetypes": [
+        {
+          "name": "Solid FM Bass",
+          "settings": {
+            "coarse": 1.0,
+            "mod": "45%",
+            "decay": "40%",
+            "waveform": "Sine"
+          },
+          "useCase": "Foundational bass for deep house or pop."
+        },
+        {
+          "name": "Glassy E-Piano",
+          "settings": {
+            "coarse": 4.0,
+            "mod": "65%",
+            "decay": "25%",
+            "fine": "+10 cents"
+          },
+          "useCase": "Classic 80s DX7-style electric piano."
+        }
+      ]
+    },
+    "melodic-rap-leads": {
+      "melodicRapArchetypes": [
+        {
+          "name": "Hazy Flute-Lead",
+          "settings": {
+            "waveform": "Sine",
+            "coarse": 2.0,
+            "mod": "25%",
+            "decay": "60%",
+            "lfoAmt": "15%"
+          },
+          "useCase": "Melodic, airy leads for melodic Rap (Juice WRLD style)."
+        },
+        {
+          "name": "Dark Sub-Pluck",
+          "settings": {
+            "coarse": 0.5,
+            "mod": "10%",
+            "decay": "20%",
+            "release": "5%"
+          },
+          "useCase": "Short, heavy bass plucks for moody R&B."
+        }
+      ]
+    }
+  },
+  "parameters": {
+    "dx10-specs": {
+      "plugin": {
+        "name": "Fruity DX10",
+        "category": "Instrument",
+        "type": "FM Synthesizer",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20DX10.htm"
+      },
+      "parameters": {
+        "fmEngine": [
+          {
+            "id": "mod",
+            "name": "Modulation Level"
+          },
+          {
+            "id": "coarse",
+            "name": "Coarse Tuning"
+          },
+          {
+            "id": "fine",
+            "name": "Fine Tuning"
+          }
+        ],
+        "envelope": [
+          {
+            "id": "decay",
+            "name": "Decay"
+          },
+          {
+            "id": "release",
+            "name": "Release"
+          }
+        ],
+        "lfo": [
+          {
+            "id": "lfoRate",
+            "name": "Rate"
+          },
+          {
+            "id": "lfoAmt",
+            "name": "Amount"
+          }
+        ]
+      },
+      "architecture": {
+        "operators": 4,
+        "method": "Frequency Modulation"
+      }
+    },
+    "parameters": {
+      "pluginName": "Fruity DX10",
+      "category": "FM Synthesizer",
+      "parameters": [
+        {
+          "section": "Misc",
+          "id": "wave",
+          "name": "Wave Brightness",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Global waveform richness."
+        },
+        {
+          "section": "Misc",
+          "id": "vib_rate",
+          "name": "Vib Rate",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Vibrato speed."
+        },
+        {
+          "section": "Modulation",
+          "id": "coarse",
+          "name": "Ratio (Coarse)",
+          "range": {
+            "min": 1,
+            "max": 20,
+            "unit": "Ratio"
+          },
+          "description": "Pitch relationship of Modulator."
+        },
+        {
+          "section": "Modulation",
+          "id": "fine",
+          "name": "Detune (Fine)",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Modulator detuning."
+        },
+        {
+          "section": "Modulation",
+          "id": "vel_sens",
+          "name": "Velocity Sens",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Velocity to FM Amount mapping."
+        },
+        {
+          "section": "Modulation",
+          "id": "thru",
+          "name": "Mod Thru",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Direct Modulator output level."
+        }
+      ]
+    }
+  },
+  "rules": {
+    "dx10-troubleshooting": {
+      "troubleshooting": {
+        "problem": "Sound is 'Aliasing' (High-pitched artifacts)",
+        "fix": "Lower the volume of the Modulator or use a Low-Pass filter after the plugin."
+      }
+    },
+    "fm-patch-rules": {
+      "rules": [
+        {
+          "scenario": "Sound is too 'harsh' or 'metallic'",
+          "action": "Lower the Modulation (Mod) knob; ensure Coarse is an integer (1.0, 2.0)."
+        },
+        {
+          "scenario": "Sound is too 'thin'",
+          "action": "Increase Coarse to 0.5 to add a sub-octave modulator."
+        }
+      ]
+    }
+  },
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    },
+    {
+      "title": "Fm Theory Sidebands",
+      "filename": "fm-theory-sidebands.md"
+    },
+    {
+      "title": "Rnb Fm Melodics",
+      "filename": "rnb-fm-melodics.md"
+    },
+    {
+      "title": "The Math Of Fm Clarity",
+      "filename": "the-math-of-fm-clarity.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "Common Usage",
+      "category": "general",
+      "filename": "common-usage.md"
+    },
+    {
+      "title": "00 Goal Quick Result",
+      "category": "by-goal",
+      "filename": "00_Goal_Quick_Result.md"
+    },
+    {
+      "title": "Fm Bell Design",
+      "category": "by-goal",
+      "filename": "fm-bell-design.md"
+    },
+    {
+      "title": "G Funk Lead Masterclass",
+      "category": "by-goal",
+      "filename": "g-funk-lead-masterclass.md"
+    },
+    {
+      "title": "Inharmonic Metallic Percussion",
+      "category": "by-goal",
+      "filename": "inharmonic-metallic-percussion.md"
+    },
+    {
+      "title": "Liquid Rnb Lead Synthesis",
+      "category": "by-goal",
+      "filename": "liquid-rnb-lead-synthesis.md"
+    },
+    {
+      "title": "Upbeat Neo Soul Keys",
+      "category": "by-goal",
+      "filename": "upbeat-neo-soul-keys.md"
+    },
+    {
+      "title": "West Coast Fm Percussion",
+      "category": "by-goal",
+      "filename": "west-coast-fm-percussion.md"
+    },
+    {
+      "title": "80S Lately Bass",
+      "category": "by-instrument",
+      "filename": "80s-lately-bass.md"
+    },
+    {
+      "title": "Fm Sub Bass Masterclass",
+      "category": "by-instrument",
+      "filename": "fm-sub-bass-masterclass.md"
+    },
+    {
+      "title": "Keys",
+      "category": "by-instrument",
+      "filename": "keys.md"
+    },
+    {
+      "title": "Lofi Rhodes Emulator",
+      "category": "by-instrument",
+      "filename": "lofi-rhodes-emulator.md"
+    },
+    {
+      "title": "Psychedelic Fm Pads",
+      "category": "by-instrument",
+      "filename": "psychedelic-fm-pads.md"
+    }
+  ]
+}

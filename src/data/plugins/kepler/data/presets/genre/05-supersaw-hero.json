@@ -1,0 +1,65 @@
+{
+  "metadata": {
+    "plugin": "Kepler",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "presetName": "Supersaw Hero",
+    "category": "genre",
+    "genre": "EDM",
+    "mood": "electric"
+  },
+  "settings": {
+    "oscillator1": {
+      "waveform": "saw",
+      "octave": "0",
+      "detune": 0,
+      "mix": 90
+    },
+    "oscillator2": {
+      "waveform": "saw",
+      "octave": "0",
+      "detune": 7,
+      "mix": 90
+    },
+    "oscillator3": {
+      "waveform": "saw",
+      "octave": "+1",
+      "detune": 14,
+      "mix": 70
+    },
+    "filter": {
+      "type": "lowpass",
+      "cutoff": 4000,
+      "resonance": 50,
+      "drive": 20,
+      "envAmt": 80,
+      "envVel": 40
+    },
+    "envelope": {
+      "attack": 20,
+      "decay": 250,
+      "sustain": 60,
+      "release": 400
+    },
+    "lfo": {
+      "waveform": "saw-up",
+      "rate": 0.5,
+      "amt": 40,
+      "dest": "filterCutoff"
+    }
+  },
+  "chain": {
+    "pre": ["Soft clipper - 3dB reduction"],
+    "post": ["Fruily Limiter - Ceiling -0.3dB, Gain 6dB", "Delay - Stereo, 300ms, Feedback 40%, Mix 25%"]
+  },
+  "genreTags": ["EDM", "big room", "electric", "anthem"],
+  "a/bTesting": {
+    "testA": "3 oscillators for massive sound",
+    "testB": "2 oscillators for tighter mix"
+  },
+  "troubleshooting": {
+    "muddyMix": "High-pass filter at 200Hz on lead channel",
+    "phaseIssues": "Invert phase on osc3 if summing issues"
+  }
+}

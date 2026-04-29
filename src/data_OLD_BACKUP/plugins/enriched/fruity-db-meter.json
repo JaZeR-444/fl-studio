@@ -1,0 +1,129 @@
+{
+  "id": "fruity-db-meter",
+  "name": "Fruity dB Meter",
+  "presets": {
+    "meter-archetypes": {
+      "archetypes": [
+        {
+          "name": "Headroom Target",
+          "target": "-6.0 dB",
+          "useCase": "Pre-mastering peak level for maximum transparency."
+        },
+        {
+          "name": "Analog Gain Stage",
+          "target": "-18.0 dB",
+          "useCase": "Target peak for raw recordings before processing."
+        }
+      ]
+    }
+  },
+  "parameters": {
+    "meter-specs": {
+      "plugin": {
+        "name": "Fruity dB Meter",
+        "category": "Utility",
+        "type": "Peak Meter",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20dB%20Meter.htm"
+      },
+      "metrics": [
+        {
+          "id": "peak",
+          "name": "Peak Level",
+          "unit": "dBFS"
+        },
+        {
+          "id": "current",
+          "name": "Real-time Level",
+          "unit": "dBFS"
+        }
+      ],
+      "features": [
+        "Vector Resizable",
+        "Peak Reset",
+        "Zero Latency",
+        "Sample-Accurate Tracking"
+      ]
+    }
+  },
+  "rules": {
+    "metering-rules": {
+      "rules": [
+        {
+          "goal": "Prevent Master Clipping",
+          "action": "Ensure the Peak value never touches 0.0dB. Aim for -0.1dB maximum for streaming."
+        },
+        {
+          "goal": "Consistent Drum Levels",
+          "action": "Reset meter and check peak for each kick hit; ensure they are within ±0.2dB for a solid groove."
+        }
+      ]
+    }
+  },
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    },
+    {
+      "title": "Crest Factor Mastering",
+      "filename": "crest-factor-mastering.md"
+    },
+    {
+      "title": "Loudness Perception",
+      "filename": "loudness-perception.md"
+    },
+    {
+      "title": "Neurology Of Loudness Vs Voltage",
+      "filename": "neurology-of-loudness-vs-voltage.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "00 Goal Quick Result",
+      "category": "by-goal",
+      "filename": "00_Goal_Quick_Result.md"
+    },
+    {
+      "title": "01 Goal Mix Validation",
+      "category": "by-goal",
+      "filename": "01_Goal_Mix_Validation.md"
+    },
+    {
+      "title": "Crest Factor Mastering",
+      "category": "by-goal",
+      "filename": "crest-factor-mastering.md"
+    },
+    {
+      "title": "Loudness Normalization Streaming",
+      "category": "by-goal",
+      "filename": "loudness-normalization-streaming.md"
+    },
+    {
+      "title": "Professional Gain Staging",
+      "category": "by-goal",
+      "filename": "professional-gain-staging.md"
+    },
+    {
+      "title": "Professional Headroom Management",
+      "category": "by-goal",
+      "filename": "professional-headroom-management.md"
+    },
+    {
+      "title": "Drum Bus Metering",
+      "category": "by-instrument",
+      "filename": "drum-bus-metering.md"
+    }
+  ]
+}

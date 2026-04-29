@@ -1,0 +1,787 @@
+{
+  "id": "midi-out",
+  "name": "MIDI Out",
+  "presets": {
+    "02-hip-hop-drums": {
+      "name": "Hip-Hop Drum MIDI",
+      "genre": "hip-hop/rap",
+      "mood": "funky",
+      "description": "MIDI configuration optimized for drum machine output",
+      "parameters": {
+        "channel": 10,
+        "port": "MIDI",
+        "clockSource": "Internal",
+        "clockOut": true,
+        "noteLength": "Short",
+        "velocity": 110,
+        "pitchBendRange": 0,
+        "aftertouch": false,
+        "midiCC": true,
+        "thru": true,
+        "syncToHost": true,
+        "programChange": true,
+        "bankSelect": true
+      },
+      "workflow": {
+        "useCase": "Trigger drum machines like TR-808, MPC",
+        "steps": [
+          "Set channel to 10 (drums standard)",
+          "Enable clock output for sync",
+          "Set short note length for tight hits",
+          "Higher velocity for punchy drums",
+          "Enable program change for kit switching"
+        ],
+        "troubleshooting": [
+          {
+            "issue": "Late triggers",
+            "fix": "Reduce MIDI output delay"
+          },
+          {
+            "issue": "Wrong drum sounds",
+            "fix": "Check MIDI note mapping"
+          },
+          {
+            "issue": "No sync",
+            "fix": "Enable clock out, check tempo"
+          }
+        ]
+      },
+      "abTest": {
+        "listenFor": "Tight, synchronized drum triggering",
+        "duration": "Full beat pattern"
+      }
+    },
+    "03-edm-synth": {
+      "name": "EDM Synth MIDI",
+      "genre": "EDM",
+      "mood": "electric",
+      "description": "MIDI configuration for EDM synths with modulation support",
+      "parameters": {
+        "channel": 1,
+        "port": "MIDI",
+        "clockSource": "Internal",
+        "clockOut": true,
+        "noteLength": "Default",
+        "velocity": 100,
+        "pitchBendRange": 12,
+        "aftertouch": true,
+        "midiCC": true,
+        "thru": true,
+        "syncToHost": true,
+        "mpe": false,
+        "nrpn": true
+      },
+      "workflow": {
+        "useCase": "EDM hardware and software synths",
+        "steps": [
+          "Set channel 1 for main synth",
+          "Enable aftertouch for expression",
+          "Pitch bend range 12 semitones",
+          "Enable NRPN for parameter control",
+          "Clock sync for tempo effects"
+        ],
+        "troubleshooting": [
+          {
+            "issue": "No modulation",
+            "fix": "Check CC mapping in synth"
+          },
+          {
+            "issue": "Pitch drift",
+            "fix": "Verify MIDI clock sync"
+          },
+          {
+            "issue": "Stuck notes",
+            "fix": "Enable thru, check note off"
+          }
+        ]
+      },
+      "abTest": {
+        "listenFor": "Full modulation and expression control",
+        "duration": "Arpeggio with pitch bend"
+      }
+    },
+    "04-rnb-keys": {
+      "name": "R&B Keys MIDI",
+      "genre": "R&B",
+      "mood": "melodic",
+      "description": "MIDI configuration for expressive keyboard performances",
+      "parameters": {
+        "channel": 2,
+        "port": "MIDI",
+        "clockSource": "Internal",
+        "clockOut": false,
+        "noteLength": "Default",
+        "velocity": 90,
+        "pitchBendRange": 2,
+        "aftertouch": true,
+        "midiCC": true,
+        "thru": true,
+        "syncToHost": true,
+        "mpe": false,
+        "sustainPedal": true,
+        "modWheel": true
+      },
+      "workflow": {
+        "useCase": "R&B keyboard and piano sounds",
+        "steps": [
+          "Lower velocity (90) for smooth response",
+          "Enable sustain pedal CC 64",
+          "Mod wheel for vibrato/depth",
+          "Aftertouch for expression",
+          "Subtle pitch bend range (2)"
+        ],
+        "troubleshooting": [
+          {
+            "issue": "Sticky sustain",
+            "fix": "Check sustain pedal CC mapping"
+          },
+          {
+            "issue": "No modulation",
+            "fix": "Verify mod wheel CC 1"
+          },
+          {
+            "issue": "Velocity too hard",
+            "fix": "Reduce velocity to 80-90"
+          }
+        ]
+      },
+      "abTest": {
+        "listenFor": "Natural, expressive keyboard response",
+        "duration": "Chord progression with sustain"
+      }
+    },
+    "05-ambient-pad": {
+      "name": "Ambient Pad Control",
+      "genre": "universal",
+      "mood": "moody",
+      "description": "MIDI setup for controlling ambient pad hardware",
+      "parameters": {
+        "channel": 1,
+        "port": "MIDI",
+        "clockSource": "Internal",
+        "clockOut": false,
+        "noteLength": "Default",
+        "velocity": 85,
+        "aftertouch": true,
+        "modWheel": true,
+        "cc74": true,
+        "reverb": true,
+        "chorus": true
+      },
+      "characteristics": [
+        "Smooth modulation",
+        "Expression control",
+        "Atmospheric feel"
+      ],
+      "workflow": {
+        "useCase": "Ambient pad performances",
+        "steps": [
+          "Set channel 1 for pad",
+          "Enable aftertouch for expression",
+          "Mod wheel for filter sweeps",
+          "CC 74 for brightness",
+          "Use lower velocity for smooth"
+        ],
+        "tips": [
+          "Great for atmospheric music",
+          "Express through modulation",
+          "Perfect for evolving pads"
+        ]
+      },
+      "abTest": {
+        "listenFor": "Smooth pad control with expressive modulation",
+        "duration": "Full ambient passage"
+      }
+    },
+    "05-external-sequencer": {
+      "name": "External Sequencer MIDI",
+      "genre": "universal",
+      "mood": "upbeat",
+      "description": "MIDI configuration for vintage sequencer sync",
+      "parameters": {
+        "channel": 1,
+        "port": "MIDI",
+        "clockSource": "External",
+        "clockOut": true,
+        "noteLength": "Pattern",
+        "velocity": 100,
+        "pitchBendRange": 2,
+        "aftertouch": false,
+        "midiCC": true,
+        "thru": true,
+        "syncToHost": true,
+        "songPosition": true,
+        "transport": true
+      },
+      "workflow": {
+        "useCase": "Sync with vintage hardware sequencers",
+        "steps": [
+          "Set clock source to External",
+          "Enable song position for location",
+          "Transport control for start/stop",
+          "MIDI thru for pass-through",
+          "Pattern note length for step seq"
+        ],
+        "troubleshooting": [
+          {
+            "issue": "Sync loss",
+            "fix": "Check clock source on both devices"
+          },
+          {
+            "issue": "Wrong position",
+            "fix": "Enable song position"
+          },
+          {
+            "issue": "No transport",
+            "fix": "Enable transport MIDI"
+          }
+        ]
+      },
+      "abTest": {
+        "listenFor": "Precise synchronization with hardware",
+        "duration": "Full song with multiple sections"
+      }
+    },
+    "06-cinematic-control": {
+      "name": "Cinematic Control",
+      "genre": "universal",
+      "mood": "moody",
+      "description": "MIDI setup for controlling cinematic hardware",
+      "parameters": {
+        "channel": 1,
+        "port": "MIDI",
+        "clockSource": "Internal",
+        "clockOut": true,
+        "noteLength": "Long",
+        "velocity": 90,
+        "aftertouch": true,
+        "modWheel": true,
+        "cc11": true,
+        "reverb": true,
+        "expression": true
+      },
+      "characteristics": [
+        "Long sustains",
+        "Dynamic expression",
+        "Cinematic character"
+      ],
+      "workflow": {
+        "useCase": "Cinematic and orchestral hardware",
+        "steps": [
+          "Long note length for sustains",
+          "Velocity at 90 for dynamics",
+          "Aftertouch for expression",
+          "CC 11 for dynamics",
+          "Clock sync for tempo"
+        ],
+        "tips": [
+          "Perfect for film scores",
+          "Express through dynamics",
+          "Great for orchestral sounds"
+        ]
+      },
+      "abTest": {
+        "listenFor": "Cinematic control with expressive dynamics",
+        "duration": "Full cinematic passage"
+      }
+    },
+    "06-lofi-bitcrush": {
+      "name": "Lo-Fi Bitcrush MIDI",
+      "genre": "hip-hop/rap",
+      "mood": "dusty",
+      "description": "MIDI setup for degraded, vintage hardware sounds",
+      "parameters": {
+        "channel": 3,
+        "port": "MIDI",
+        "clockSource": "Internal",
+        "clockOut": false,
+        "noteLength": "Short",
+        "velocity": 80,
+        "pitchBendRange": 1,
+        "aftertouch": false,
+        "midiCC": true,
+        "thru": true,
+        "syncToHost": true,
+        "programChange": true,
+        "randomCC": false
+      },
+      "workflow": {
+        "useCase": "Lo-fi gear and degraded sounds",
+        "steps": [
+          "Lower velocity for worn sounds",
+          "Minimal pitch bend for stability",
+          "Program change for preset switching",
+          "Short note length for glitchy feel",
+          "No aftertouch for simple control"
+        ],
+        "troubleshooting": [
+          {
+            "issue": "Too clean",
+            "fix": "Process audio, not MIDI"
+          },
+          {
+            "issue": "Inconsistent feel",
+            "fix": "Lower velocity variance"
+          },
+          {
+            "issue": "Wrong character",
+            "fix": "Check instrument selection"
+          }
+        ]
+      },
+      "abTest": {
+        "listenFor": "Vintage character and feel",
+        "duration": "Lo-fi chord progression"
+      }
+    },
+    "dj-premier-sampling": {
+      "name": "DJ Premier MIDI",
+      "producer": "DJ Premier",
+      "description": "MIDI setup for sampling workflow with turntables and hardware",
+      "reference": "N.Y. State of Mind, Nas Is Like",
+      "parameters": {
+        "channel": 1,
+        "port": "MIDI",
+        "clockSource": "External",
+        "clockOut": false,
+        "noteLength": "Default",
+        "velocity": 100,
+        "pitchBendRange": 0,
+        "aftertouch": false,
+        "midiCC": true,
+        "thru": true,
+        "syncToHost": false,
+        "transport": true,
+        "songPosition": true
+      },
+      "workflow": {
+        "useCase": "Sampling and scratch-based production",
+        "characteristics": [
+          "External clock sync",
+          "Transport control",
+          "Simple, direct output"
+        ],
+        "steps": [
+          "Set clock to External for sync",
+          "Enable transport MIDI control",
+          "Song position for location",
+          "Thru for sample playback",
+          "Minimal MIDI data for accuracy"
+        ],
+        "tips": [
+          "Sync with turntable timecode",
+          "Use for sample triggering",
+          "Programmatic control of playback"
+        ]
+      }
+    },
+    "hans-zimmer-epic": {
+      "name": "Hans Zimmer Epic",
+      "producer": "Hans Zimmer",
+      "description": "MIDI setup for cinematic orchestral control",
+      "reference": "Inception, Dark Knight",
+      "parameters": {
+        "channel": 1,
+        "port": "MIDI",
+        "clockSource": "Internal",
+        "clockOut": true,
+        "noteLength": "Long",
+        "velocity": 90,
+        "aftertouch": true,
+        "modWheel": true,
+        "cc11": true,
+        "sustain": true
+      },
+      "characteristics": [
+        "Epic sweep control",
+        "Dynamic expression",
+        "Cinematic power"
+      ],
+      "workflow": {
+        "useCase": "Cinematic orchestral performances",
+        "signatureElements": [
+          "Mod wheel for sweeps",
+          "Aftertouch for expression",
+          "Long sustains for drama"
+        ],
+        "steps": [
+          "Mod wheel for dramatic sweeps",
+          "Aftertouch for intensity",
+          "Long note lengths for drama",
+          "CC 11 for dynamics",
+          "Clock sync for precision"
+        ],
+        "tips": [
+          "Perfect for film scores",
+          "Epic cinematic sweeps",
+          "Dynamic control"
+        ]
+      }
+    },
+    "jordan-rudess": {
+      "name": "Jordan Rudess",
+      "producer": "Jordan Rudess",
+      "description": "MIDI setup for expressive keyboard performances",
+      "reference": "Dream Theater compositions",
+      "parameters": {
+        "channel": 1,
+        "port": "MIDI",
+        "clockSource": "Internal",
+        "clockOut": false,
+        "noteLength": "Default",
+        "velocity": 100,
+        "aftertouch": true,
+        "modWheel": true,
+        "pitchBend": true,
+        "cc74": true,
+        "cc1": true
+      },
+      "characteristics": [
+        "Full expression",
+        "Complex modulation",
+        "Keyboard virtuosity"
+      ],
+      "workflow": {
+        "useCase": "Expressive keyboard performances",
+        "signatureElements": [
+          "Full CC control",
+          "Aftertouch expression",
+          "Pitch bend for drama"
+        ],
+        "steps": [
+          "Enable all CC messages",
+          "Aftertouch for pressure",
+          "Mod wheel for sweeps",
+          "Pitch bend for expression",
+          "CC 74 for filter"
+        ],
+        "tips": [
+          "Maximum expression",
+          "Great for virtuosos",
+          "Full keyboard control"
+        ]
+      }
+    },
+    "metro-boomin-midi": {
+      "name": "Metro Boomin MIDI",
+      "producer": "Metro Boomin",
+      "description": "MIDI setup for dark trap hardware control",
+      "reference": "Harder, Creepin', Savage",
+      "parameters": {
+        "channel": 10,
+        "port": "MIDI",
+        "clockSource": "Internal",
+        "clockOut": true,
+        "noteLength": "Short",
+        "velocity": 115,
+        "programChange": true,
+        "cc7": true
+      },
+      "characteristics": [
+        "Aggressive velocity",
+        "Drum-focused",
+        "Dark character"
+      ],
+      "workflow": {
+        "useCase": "Dark trap production with hardware",
+        "signatureElements": [
+          "High velocity for punch",
+          "Clock sync for precision",
+          "Program changes for kits"
+        ],
+        "steps": [
+          "Channel 10 for drums",
+          "High velocity for impact",
+          "Quick note length for punch",
+          "Program change for kit switching",
+          "Clock sync for tight timing"
+        ],
+        "tips": [
+          "Signature trap sound",
+          "Tight timing",
+          "Dark character"
+        ]
+      }
+    },
+    "metro-boomin-trap": {
+      "name": "Metro Boomin MIDI Setup",
+      "producer": "Metro Boomin",
+      "description": "MIDI configuration for dark trap production with hardware",
+      "reference": "Harder, Creepin', Savage",
+      "parameters": {
+        "channel": 10,
+        "port": "MIDI",
+        "clockSource": "Internal",
+        "clockOut": true,
+        "noteLength": "Medium",
+        "velocity": 115,
+        "pitchBendRange": 0,
+        "aftertouch": false,
+        "midiCC": true,
+        "thru": true,
+        "syncToHost": true,
+        "programChange": true,
+        "filterCC": false
+      },
+      "workflow": {
+        "useCase": "Dark trap with hardware drum machines",
+        "characteristics": [
+          "Hard-hitting drum triggers",
+          "Precise timing for 808s",
+          "Minimal MIDI data for stability"
+        ],
+        "steps": [
+          "Channel 10 for drum machine",
+          "Higher velocity (115) for punch",
+          "Clock out for sync",
+          "Medium note length for 808 sustain",
+          "Program change for kit switching"
+        ],
+        "tips": [
+          "Use with TR-808 or similar",
+          "Route 808 to bass channel",
+          "Layer with sampled drums"
+        ]
+      }
+    },
+    "timbaland-drums": {
+      "name": "Timbaland Drums MIDI",
+      "producer": "Timbaland",
+      "description": "MIDI configuration for unconventional drum programming",
+      "reference": "Dirt Off Your Shoulder, Give It to Me",
+      "parameters": {
+        "channel": 10,
+        "port": "MIDI",
+        "clockSource": "Internal",
+        "clockOut": true,
+        "noteLength": "Short",
+        "velocity": 100,
+        "pitchBendRange": 0,
+        "aftertouch": false,
+        "midiCC": true,
+        "thru": true,
+        "syncToHost": true,
+        "swing": true,
+        "humanize": true
+      },
+      "workflow": {
+        "useCase": "Unique, quantized drum patterns",
+        "characteristics": [
+          "Swing timing for groove",
+          "Humanized velocities",
+          "Short, staccato hits"
+        ],
+        "steps": [
+          "Channel 10 for drums",
+          "Short note length for tightness",
+          "Enable swing for groove",
+          "Humanize velocity for feel",
+          "Clock sync for production"
+        ],
+        "tips": [
+          "Program on-grid, add swing",
+          "Mix short and normal lengths",
+          "Layer unconventional sounds"
+        ]
+      }
+    },
+    "zaytoven-keys": {
+      "name": "Zaytoven Keys MIDI",
+      "producer": "Zaytoven",
+      "description": "MIDI setup for live keyboard performance in trap production",
+      "reference": "What They Want, Easy",
+      "parameters": {
+        "channel": 1,
+        "port": "MIDI",
+        "clockSource": "Internal",
+        "clockOut": false,
+        "noteLength": "Default",
+        "velocity": 95,
+        "pitchBendRange": 2,
+        "aftertouch": true,
+        "midiCC": true,
+        "thru": true,
+        "syncToHost": true,
+        "modWheel": true,
+        "sustainPedal": true,
+        "volumeCC": 7
+      },
+      "workflow": {
+        "useCase": "Live keyboard recording for trap",
+        "characteristics": [
+          "Natural keyboard feel",
+          "Mod wheel for filter sweeps",
+          "Sustain pedal expression"
+        ],
+        "steps": [
+          "Channel 1 for main keyboard",
+          "Moderate velocity (95)",
+          "Mod wheel for filter movement",
+          "Sustain for legato passages",
+          "Aftertouch for additional expression"
+        ],
+        "tips": [
+          "Record live for organic feel",
+          "Use with vintage keys or plugins",
+          "Layer multiple chord textures"
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "standard-cc-list": {
+      "reference_name": "Standard MIDI CC List",
+      "source": "MIDI Association Specification",
+      "common_assignments": [
+        {
+          "cc": 1,
+          "name": "Modulation Wheel",
+          "usage": "Expression, Vibrato"
+        },
+        {
+          "cc": 2,
+          "name": "Breath Controller",
+          "usage": "Wind instrument control"
+        },
+        {
+          "cc": 5,
+          "name": "Portamento Time",
+          "usage": "Slide speed"
+        },
+        {
+          "cc": 7,
+          "name": "Main Volume",
+          "usage": "Overall loudness"
+        },
+        {
+          "cc": 10,
+          "name": "Pan",
+          "usage": "Stereo position"
+        },
+        {
+          "cc": 11,
+          "name": "Expression",
+          "usage": "Dynamic swells"
+        },
+        {
+          "cc": 64,
+          "name": "Damper Pedal (Sustain)",
+          "usage": "Holding notes"
+        },
+        {
+          "cc": 65,
+          "name": "Portamento ON/OFF",
+          "usage": "Glide toggle"
+        },
+        {
+          "cc": 71,
+          "name": "Resonance",
+          "usage": "Filter Q / Timbre"
+        },
+        {
+          "cc": 72,
+          "name": "Release Time",
+          "usage": "Tail length"
+        },
+        {
+          "cc": 73,
+          "name": "Attack Time",
+          "usage": "Onset speed"
+        },
+        {
+          "cc": 74,
+          "name": "Brightness (Cutoff)",
+          "usage": "Filter frequency"
+        },
+        {
+          "cc": 91,
+          "name": "Reverb Send Level",
+          "usage": "Spatial depth"
+        },
+        {
+          "cc": 93,
+          "name": "Chorus Send Level",
+          "usage": "Thickness"
+        },
+        {
+          "cc": 120,
+          "name": "All Sound Off",
+          "usage": "Instant silence"
+        },
+        {
+          "cc": 123,
+          "name": "All Notes Off",
+          "usage": "Panic / Mute"
+        }
+      ]
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "01 Midi Fundamentals",
+      "filename": "01-midi-fundamentals.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "02 Multiple Devices",
+      "category": "by-goal",
+      "filename": "02-multiple-devices.md"
+    },
+    {
+      "title": "Automating Vst Parameters",
+      "category": "by-goal",
+      "filename": "automating-vst-parameters.md"
+    },
+    {
+      "title": "By Goal Workflows",
+      "category": "by-goal",
+      "filename": "by-goal-workflows.md"
+    },
+    {
+      "title": "Custom Midi Dashboard",
+      "category": "by-goal",
+      "filename": "custom-midi-dashboard.md"
+    },
+    {
+      "title": "External Synth Integration",
+      "category": "by-goal",
+      "filename": "external-synth-integration.md"
+    },
+    {
+      "title": "Index",
+      "category": "by-goal",
+      "filename": "INDEX.md"
+    },
+    {
+      "title": "01 Hardware Synth Workflow",
+      "category": "by-instrument",
+      "filename": "01-hardware-synth-workflow.md"
+    },
+    {
+      "title": "02 Drum Machine Workflow",
+      "category": "by-instrument",
+      "filename": "02-drum-machine-workflow.md"
+    },
+    {
+      "title": "03 External Sequencer Workflow",
+      "category": "by-instrument",
+      "filename": "03-external-sequencer-workflow.md"
+    },
+    {
+      "title": "04 Modulation Workflow",
+      "category": "by-instrument",
+      "filename": "04-modulation-workflow.md"
+    },
+    {
+      "title": "Index",
+      "category": "by-instrument",
+      "filename": "INDEX.md"
+    }
+  ]
+}

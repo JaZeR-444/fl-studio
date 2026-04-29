@@ -1,0 +1,40 @@
+{
+  "name": "External Sequencer MIDI",
+  "genre": "universal",
+  "mood": "upbeat",
+  "description": "MIDI configuration for vintage sequencer sync",
+  "parameters": {
+    "channel": 1,
+    "port": "MIDI",
+    "clockSource": "External",
+    "clockOut": true,
+    "noteLength": "Pattern",
+    "velocity": 100,
+    "pitchBendRange": 2,
+    "aftertouch": false,
+    "midiCC": true,
+    "thru": true,
+    "syncToHost": true,
+    "songPosition": true,
+    "transport": true
+  },
+  "workflow": {
+    "useCase": "Sync with vintage hardware sequencers",
+    "steps": [
+      "Set clock source to External",
+      "Enable song position for location",
+      "Transport control for start/stop",
+      "MIDI thru for pass-through",
+      "Pattern note length for step seq"
+    ],
+    "troubleshooting": [
+      { "issue": "Sync loss", "fix": "Check clock source on both devices" },
+      { "issue": "Wrong position", "fix": "Enable song position" },
+      { "issue": "No transport", "fix": "Enable transport MIDI" }
+    ]
+  },
+  "abTest": {
+    "listenFor": "Precise synchronization with hardware",
+    "duration": "Full song with multiple sections"
+  }
+}

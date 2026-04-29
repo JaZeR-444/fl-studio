@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "plugin": "Kepler",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "presetName": "Glitch Pluck",
+    "category": "genre",
+    "genre": "trap",
+    "mood": "dark"
+  },
+  "settings": {
+    "oscillator1": {
+      "waveform": "square",
+      "octave": "+1",
+      "detune": 0,
+      "mix": 100
+    },
+    "oscillator2": {
+      "waveform": "saw",
+      "octave": "0",
+      "detune": 8,
+      "mix": 70
+    },
+    "filter": {
+      "type": "lowpass",
+      "cutoff": 3000,
+      "resonance": 45,
+      "drive": 10,
+      "envAmt": 95,
+      "envVel": 100
+    },
+    "envelope": {
+      "attack": 1,
+      "decay": 80,
+      "sustain": 0,
+      "release": 50
+    },
+    "lfo": {
+      "waveform": "sample-hold",
+      "rate": 4,
+      "amt": 50,
+      "dest": "pitch"
+    }
+  },
+  "chain": {
+    "pre": ["Teq4 - High-pass at 500Hz"],
+    "post": ["Fruily Reverb 2 - Plate, Decay 1.2s, Mix 18%", "Bitcrusher - 8-bit, 50% wet"]
+  },
+  "genreTags": ["trap", "dark", "glitch", "aggressive"],
+  "a/bTesting": {
+    "testA": "Sample-hold LFO for random pitch glitches",
+    "testB": "Sine LFO for regular vibrato"
+  },
+  "troubleshooting": {
+    "tooChaotic": "Reduce LFO amount to 25%",
+    "tooThin": "Add osc3 with saw wave at +2 octave"
+  }
+}

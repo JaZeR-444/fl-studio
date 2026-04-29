@@ -1,0 +1,49 @@
+{
+  "saturationInteractionRules": {
+    "philosophy": "This rule-set defines how Fruity Fast Dist should be positioned and calibrated within a professional signal chain to maximize energy and clarity.",
+    "routingProtocols": [
+      {
+        "stage": "Pre-Compression (The Density Build)",
+        "logic": "Place Fast Dist BEFORE the compressor.",
+        "benefit": "Distortion rounds off the peaks, allowing the compressor to work more smoothly. This is the secret to 'Invisible' vocal leveling in R&B.",
+        "targetTHD": "5-10%"
+      },
+      {
+        "stage": "Post-EQ (The Tone Sculpt)",
+        "logic": "Place Fast Dist AFTER a boost EQ.",
+        "benefit": "The distortion will emphasize the frequencies you boosted. If you boost 3kHz for 'Presence,' Fast Dist will add harmonics to that presence, making it sound 'Expensive'.",
+        "targetTHD": "15%"
+      },
+      {
+        "stage": "Parallel Master Bus (The Glue)",
+        "logic": "Use Fast Dist in a Patcher parallel chain on the Master.",
+        "benefit": "Adds harmonic density to the entire mix without destroying the transients. This is how you achieve -8 LUFS club loudness.",
+        "targetMix": "5-8%"
+      }
+    ],
+    "frequencyRules": [
+      {
+        "range": "Low-End (20-150Hz)",
+        "rule": "Avoid Type B on clean sub-bass. It creates 3rd-order harmonics that clash with the 808 fundamental. Use Type A for warmth.",
+        "action": "High-Pass the distortion input at 100Hz if the low-end gets flabby."
+      },
+      {
+        "range": "High-End (8kHz+)",
+        "rule": "Aggressive distortion creates 'Fizz'.",
+        "action": "Set Fast Dist 'Post Filter' to <40% to preserve the vocal's 'Air' while adding mid-range grit."
+      }
+    ],
+    "genreSpecificLogic": [
+      {
+        "genre": "Moody R&B",
+        "rule": "Intimacy is priority.",
+        "action": "Type A, Mix 15%, Pre-Amp 10%. Adds second-order 'Tube' warmth that makes the singer sound like they are in the room."
+      },
+      {
+        "genre": "Upbeat Trap",
+        "rule": "Impact is priority.",
+        "action": "Type B, Mix 100%, Pre-Amp 40%, High Threshold. Shaves off transients to increase RMS density for heavy 808s."
+      }
+    ]
+  }
+}

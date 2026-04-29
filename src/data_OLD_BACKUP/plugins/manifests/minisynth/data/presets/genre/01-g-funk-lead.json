@@ -1,0 +1,51 @@
+{
+  "metadata": {
+    "plugin": "MiniSynth",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "presetName": "G-Funk Lead",
+    "category": "genre",
+    "genre": "hip-hop/rap",
+    "mood": "smooth"
+  },
+  "settings": {
+    "oscillator": {
+      "waveform": "sine",
+      "octave": "0",
+      "detune": 0,
+      "mix": 100
+    },
+    "filter": {
+      "type": "lowpass",
+      "cutoff": 2800,
+      "resonance": 15,
+      "drive": 5
+    },
+    "envelope": {
+      "attack": 50,
+      "decay": 300,
+      "sustain": 80,
+      "release": 400
+    },
+    "lfo": {
+      "waveform": "sine",
+      "rate": 0.2,
+      "amt": 10,
+      "dest": "filterCutoff"
+    }
+  },
+  "chain": {
+    "pre": ["Soft clipper - 1dB"],
+    "post": ["Fruily Reverb 2 - Plate, Decay 1.5s, Mix 15%", "Fruily Compressor - Soft knee"]
+  },
+  "genreTags": ["hip-hop/rap", "G-Funk", "smooth", "West Coast"],
+  "a/bTesting": {
+    "testA": "Sine wave for classic G-Funk",
+    "testB": "Add triangle for modern edge"
+  },
+  "troubleshooting": {
+    "tooDark": "Increase filter cutoff to 3200Hz",
+    "clicking": "Increase envelope attack to 30ms"
+  }
+}

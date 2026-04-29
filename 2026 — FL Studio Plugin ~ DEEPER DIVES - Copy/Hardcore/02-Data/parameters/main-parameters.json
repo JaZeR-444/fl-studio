@@ -1,0 +1,194 @@
+{
+  "pluginName": "Hardcore",
+  "pluginType": "Amp Simulator / Multi-FX Rack",
+  "version": "FL Studio Native",
+  "dataSource": "IL-MAN",
+  "mainSections": {
+    "inputStage": {
+      "name": "Input Stage",
+      "description": "Initial gain staging and routing",
+      "parameters": [
+        {
+          "name": "Input Gain",
+          "range": "-12 to +12 dB",
+          "default": 0,
+          "description": "Adjusts level hitting the first stompbox",
+          "tips": "Higher input = more saturation in distortion pedals"
+        },
+        {
+          "name": "Input Routing",
+          "range": "Left / Right / Stereo / Mid/Side",
+          "default": "Stereo",
+          "description": "How the input signal is processed",
+          "tips": "Use Mono for guitar sources, Stereo for drums/synths"
+        }
+      ]
+    },
+    "stompboxChain": {
+      "name": "Stompbox Chain",
+      "description": "11 configurable effect slots",
+      "parameters": [
+        {
+          "name": "Effect Position",
+          "range": "1-11",
+          "description": "Drag and drop to reorder effects",
+          "tips": "Order dramatically affects the final tone"
+        },
+        {
+          "name": "Effect Toggle",
+          "range": "On/Off",
+          "default": "Off",
+          "description": "Enable/disable individual stompboxes",
+          "tips": "Disable unused effects to save CPU"
+        }
+      ]
+    },
+    "masterSection": {
+      "name": "Master Section",
+      "description": "Final tone shaping before output",
+      "parameters": [
+        {
+          "name": "Master 8-Band EQ",
+          "type": "graphic",
+          "bands": [
+            {
+              "band": 1,
+              "frequency": "60 Hz",
+              "range": "-12 to +12 dB",
+              "default": 0,
+              "function": "Sub-bass control"
+            },
+            {
+              "band": 2,
+              "frequency": "170 Hz",
+              "range": "-12 to +12 dB",
+              "default": 0,
+              "function": "Bass punch and kick body"
+            },
+            {
+              "band": 3,
+              "frequency": "310 Hz",
+              "range": "-12 to +12 dB",
+              "default": 0,
+              "function": "Low-mids and warmth"
+            },
+            {
+              "band": 4,
+              "frequency": "600 Hz",
+              "range": "-12 to +12 dB",
+              "default": 0,
+              "function": "Midrange body"
+            },
+            {
+              "band": 5,
+              "frequency": "1 kHz",
+              "range": "-12 to +12 dB",
+              "default": 0,
+              "function": "Presence and vocal clarity"
+            },
+            {
+              "band": 6,
+              "frequency": "3 kHz",
+              "range": "-12 to +12 dB",
+              "default": 0,
+              "function": "Attack and upper-mid presence"
+            },
+            {
+              "band": 7,
+              "frequency": "6 kHz",
+              "range": "-12 to +12 dB",
+              "default": 0,
+              "function": "High-mid bite and sibilance control"
+            },
+            {
+              "band": 8,
+              "frequency": "12 kHz",
+              "range": "-12 to +12 dB",
+              "default": 0,
+              "function": "Air and brightness"
+            }
+          ],
+          "tips": "Use cuts for problem frequencies, boosts for enhancement"
+        },
+        {
+          "name": "Cabinet Model",
+          "range": "Cabinet 1-5",
+          "default": 1,
+          "options": [
+            {
+              "id": 1,
+              "name": "Bright/Modern",
+              "character": "Extended highs, tight lows, forward mids"
+            },
+            {
+              "id": 2,
+              "name": "Vintage/Classic",
+              "character": "Warm, rounded highs, pronounced body"
+            },
+            {
+              "id": 3,
+              "name": "British/Crunch",
+              "character": "Mid-forward, aggressive upper-mids"
+            },
+            {
+              "id": 4,
+              "name": "American/Smooth",
+              "character": "Balanced, scooped mids, extended range"
+            },
+            {
+              "id": 5,
+              "name": "Small/Practice",
+              "character": "Boxy, limited range, compressed"
+            }
+          ],
+          "tips": "Cabinet acts as final tone-shaping filter"
+        },
+        {
+          "name": "Cabinet Mix",
+          "range": "0-100%",
+          "default": 100,
+          "description": "Blend of cabinet simulation",
+          "tips": "Reduce for cleaner sound, 100% for full speaker emulation"
+        }
+      ]
+    },
+    "outputStage": {
+      "name": "Output Stage",
+      "description": "Final output control",
+      "parameters": [
+        {
+          "name": "Output Gain",
+          "range": "-12 to +12 dB",
+          "default": 0,
+          "description": "Final level adjustment before leaving plugin",
+          "tips": "Adjust to match input level for unity gain"
+        },
+        {
+          "name": "Mix",
+          "range": "0-100% (Dry/Wet)",
+          "default": 100,
+          "description": "Global dry/wet blend",
+          "tips": "Use parallel send routing for better control than this mix knob"
+        }
+      ]
+    }
+  },
+  "globalControls": {
+    "presetManagement": {
+      "load": "Click preset name in top bar",
+      "save": "Menu → Save preset as",
+      "browser": "Drag from FL Studio browser",
+      "randomize": "Menu → Randomize (experimental)"
+    },
+    "automation": {
+      "method": "Right-click parameter → Create automation clip",
+      "parametersAvailable": "All stompbox and master parameters",
+      "tips": "Automate wah position, distortion drive, or cabinet selection"
+    },
+    "midiControl": {
+      "method": "Right-click parameter → Link to controller",
+      "ccSupport": "Full MIDI CC mapping",
+      "tips": "Use expression pedal for wah control"
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "presetArchetypes": {
+    "lofiKeys": {
+      "description": "Warm, degraded piano for hip-hop",
+      "settings": {
+        "category": "Piano",
+        "position": 50,
+        "mutate": 0,
+        "resample": 30,
+        "filter": { "type": "lowpass", "cutoff": 75, "resonance": 20 },
+        "lfo": { "to": "position", "rate": 0.1, "depth": 10 }
+      },
+      "useCases": ["hip-hop keys", "sample source", "lofi texture"],
+      "tags": ["lofi", "hip-hop/rap", "moody"]
+    },
+    "darkTexture": {
+      "description": "Evolving atmospheric background",
+      "settings": {
+        "category": "Texture",
+        "position": 40,
+        "mutate": 20,
+        "resample": 50,
+        "filter": { "type": "lowpass", "cutoff": 60, "resonance": 30 },
+        "lfo": { "to": "position", "rate": 0.05, "depth": 20 }
+      },
+      "useCases": ["moody intros", "background", "builds"],
+      "tags": ["moody", "atmospheric", "psychedelic"]
+    },
+    "aggressiveBass": {
+      "description": "Hard, cutting bass for drops",
+      "settings": {
+        "category": "Aggressive",
+        "position": 70,
+        "mutate": 30,
+        "resample": 20,
+        "filter": { "type": "lowpass", "cutoff": 45, "resonance": 45 },
+        "lfo": { "to": "position", "rate": 0.2, "depth": 30 }
+      },
+      "useCases": ["drops", "builds", "bass focus"],
+      "tags": ["electric", "intense", "deep bass edm"]
+    },
+    "etherealPad": {
+      "description": "Lush, evolving pad for breakdowns",
+      "settings": {
+        "category": "Pad",
+        "position": 50,
+        "mutate": 10,
+        "resample": 40,
+        "filter": { "type": "lowpass", "cutoff": 65, "resonance": 25 },
+        "lfo": { "to": "position", "rate": 0.08, "depth": 15 }
+      },
+      "useCases": ["breakdowns", "intros", "emotional moments"],
+      "tags": ["moody", "upbeat", "atmospheric"]
+    },
+    "vinylStutter": {
+      "description": "Rhythmic glitch/stutter effect",
+      "settings": {
+        "category": "Glitch",
+        "position": 50,
+        "mutate": 0,
+        "resample": 0,
+        "filter": { "type": "bandpass", "cutoff": 80, "resonance": 40 },
+        "lfo": { "to": "position", "rate": "1/8", "depth": 50 }
+      },
+      "useCases": ["rhythmic texture", "glitch elements", "vinyl stops"],
+      "tags": ["lofi", "funky", "electric"]
+    }
+  },
+  "genreSettings": {
+    "hipHop": {
+      "keys": { "position": 50, "resample": 30, "filter": 75 },
+      "texture": { "position": 40, "resample": 45, "filter": 65 },
+      "sampleSource": { "position": 60, "resample": 20, "filter": 80 }
+    },
+    "lofi": {
+      "degraded": { "position": 55, "resample": 50, "filter": 70 },
+      "vintage": { "position": 45, "resample": 40, "filter": 65 },
+      "warm": { "position": 50, "resample": 35, "filter": 72 }
+    },
+    "deepBassEDM": {
+      "wobble": { "position": 65, "resample": 25, "filter": 45 },
+      "growl": { "position": 75, "resample": 35, "filter": 40 },
+      "texture": { "position": 55, "resample": 50, "filter": 55 }
+    }
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "plugin": "Hardcore",
+  "category": "Harshness Control Rules",
+  "dataSource": "IL-MAN",
+  "description": "Guidelines for preventing and controlling harsh, unpleasant frequencies when processing with Hardcore",
+  "rules": [
+    {
+      "ruleId": "HARSH-001",
+      "title": "Understand Harsh Frequency Ranges",
+      "severity": "high",
+      "description": "Harshness typically occurs in 2-5 kHz range",
+      "details": "The 2-5kHz region contains frequencies that can sound grating, fatiguing, or 'ice-picky' when exaggerated. Distortion and bright processing can push these over the edge.",
+      "frequencyCharacteristics": {
+        "2kHz": "Vocal presence, can become harsh if overdone",
+        "3kHz": "Attack and bite, easily becomes grating",
+        "4kHz": "Guitar 'quack', vocal intelligibility edge",
+        "5kHz": "Brightness, sibilance crossover point"
+      },
+      "check": "Listen for fatigue or discomfort during extended playback",
+      "solution": "Use Master EQ to gently reduce 2-5kHz if needed"
+    },
+    {
+      "ruleId": "HARSH-002",
+      "title": "Distortion Amount vs. Harshness",
+      "severity": "high",
+      "description": "Higher distortion drive increases harshness non-linearly",
+      "details": "Distortion adds harmonics. As you increase Drive, you create more high-frequency harmonics which can accumulate into harshness.",
+      "driveThresholds": {
+        "subtle": "0-30% - Warmth and gentle saturation",
+        "moderate": "30-60% - Noticeable grit, manageable harshness",
+        "aggressive": "60-85% - Heavy distortion, harshness control critical",
+        "extreme": "85-100% - Extreme saturation, likely harsh without mitigation"
+      },
+      "check": "High drive settings (70%+) with bright tone = harshness risk",
+      "solution": "Combine high drive with darker tone or EQ cuts in 3-5kHz"
+    },
+    {
+      "ruleId": "HARSH-003",
+      "title": "Multi-Effect Harshness Accumulation",
+      "severity": "high",
+      "description": "Harshness compounds when stacking multiple effects",
+      "details": "Each effect can add a small amount of edge. Chorus, flanger, phaser, and distortion all contribute. The cumulative effect can become harsh even if individual effects sound fine.",
+      "cumulativeCheck": "Bypass all effects, enable one by one, identify harshness source",
+      "commonCulprits": [
+        "Distortion + Cabinet 1 (both add high-mid emphasis)",
+        "Flanger with high feedback + Bright cabinet",
+        "Multiple modulation effects stacking"
+      ],
+      "solution": "Reduce number of active effects or use darker cabinet/EQ"
+    },
+    {
+      "ruleId": "HARSH-004",
+      "title": "Cabinet Selection for Harshness Control",
+      "severity": "medium",
+      "description": "Cabinets act as final tone filters - choose wisely",
+      "details": "The cabinet is your last line of defense against harshness. Darker cabinets naturally roll off the frequencies that become harsh.",
+      "cabinetHarshness": {
+        "cabinet1": "HIGH RISK - Extended 3-8kHz response",
+        "cabinet2": "LOW RISK - Rolled off above 6kHz, warm",
+        "cabinet3": "MEDIUM RISK - Mid-forward, controlled 5-6kHz",
+        "cabinet4": "LOW RISK - Balanced, smooth highs",
+        "cabinet5": "VARIABLE - Limited range cuts harshness but can sound boxy"
+      },
+      "check": "Does chosen cabinet smooth or exaggerate harshness?",
+      "solution": "Cabinet 2 or 4 for harshness-prone sources; Cabinet 1 only if source is naturally dark"
+    },
+    {
+      "ruleId": "HARSH-005",
+      "title": "Master EQ as Harshness Filter",
+      "severity": "medium",
+      "description": "Use Master 8-band EQ for surgical harshness reduction",
+      "details": "Bands 5 (1kHz), 6 (3kHz), and 7 (6kHz) control the harshness range. Gentle cuts here preserve clarity while removing grating edge.",
+      "eqStrategy": {
+        "band5": "Cut -1 to -2 dB if honk/boxiness present",
+        "band6": "Cut -2 to -4 dB for primary harshness control",
+        "band7": "Cut -1 to -3 dB for high-mid bite control"
+      },
+      "technique": "Start with -2dB cuts, A/B test, adjust by ear",
+      "check": "Harshness reduced but clarity maintained"
+    },
+    {
+      "ruleId": "HARSH-006",
+      "title": "Pre-Distortion Filtering",
+      "severity": "medium",
+      "description": "Remove harsh frequencies before distortion adds harmonics",
+      "details": "Distortion creates new harmonics from existing frequencies. If you distort a harsh source, you create MORE harshness. Filter first.",
+      "stompboxEQStrategy": {
+        "midFreq": "Set to 3kHz",
+        "midGain": "Cut -2 to -4 dB",
+        "highFreq": "Set to 8kHz",
+        "highGain": "Cut -3 to -6 dB"
+      },
+      "check": "Source sounds slightly dull before distortion, balanced after",
+      "solution": "Use Stompbox EQ before Distortion in the chain"
+    },
+    {
+      "ruleId": "HARSH-007",
+      "title": "Modulation Effects and Harshness",
+      "severity": "low",
+      "description": "Chorus, flanger, and phaser can add edge",
+      "details": "Modulation effects create movement but can also add metallic or glassy character that contributes to harshness perception.",
+      "settings": {
+        "chorus": "Keep Depth moderate (20-40%), Rate slow (0.2-0.5Hz)",
+        "flanger": "Negative feedback (-20 to -50%) for hollow rather than metallic",
+        "phaser": "Fewer stages (2-4) for less resonant peaks"
+      },
+      "check": "Modulation adds width without metallic harshness",
+      "solution": "Reduce depth/feedback or move modulation earlier in chain"
+    },
+    {
+      "ruleId": "HARSH-008",
+      "title": "The Lo-Fi Solution",
+      "severity": "low",
+      "description": "When harshness persists, embrace the lo-fi aesthetic",
+      "details": "Sometimes the source is naturally harsh. Rather than fighting it, use Hardcore to push into intentional lo-fi territory where harshness becomes character.",
+      "loFiChain": {
+        "eq": "Cut 8-12kHz aggressively",
+        "distortion": "Moderate drive (40-50%)",
+        "cabinet": "Cabinet 5 (Small) - Limited frequency range",
+        "delay": "Short slapback or none"
+      },
+      "result": "Intentionally degraded, warm, vintage character",
+      "useCase": "When modern clarity is unattainable or undesirable"
+    },
+    {
+      "ruleId": "HARSH-009",
+      "title": "Gain Staging Impact on Harshness",
+      "severity": "medium",
+      "description": "Improper gain staging can create digital harshness",
+      "details": "Digital clipping and near-clipping levels create unpleasant, harsh distortion. Even 'analog-modeled' plugins behave badly when overdriven digitally.",
+      "redZones": [
+        "Input gain pushing +12dB with hot source",
+        "Distortion Level at 100% with high drive",
+        "Multiple +6dB EQ boosts stacking",
+        "Output gain compensation pushing to 0dBFS"
+      ],
+      "check": "No red meters at any stage",
+      "solution": "Reduce gains at earlier stages, maintain -6 to -12dB headroom"
+    },
+    {
+      "ruleId": "HARSH-010",
+      "title": "Test at Multiple Volumes",
+      "severity": "medium",
+      "description": "Harshness perception changes with playback volume",
+      "details": "Fletcher-Munson curves mean we perceive high frequencies differently at different volumes. A setting that sounds balanced at conversation level may be harsh at performance level.",
+      "testingProtocol": [
+        "Test at low volume (conversation level)",
+        "Test at medium volume (typical monitoring)",
+        "Test at high volume (performance/club level)",
+        "Test on different playback systems (headphones, monitors, earbuds)"
+      ],
+      "check": "Harshness doesn't increase disproportionately at high volume",
+      "solution": "If harsh at high volume, reduce 3-5kHz regardless of low-volume impression"
+    },
+    {
+      "ruleId": "HARSH-011",
+      "title": "Reference Track Comparison",
+      "severity": "low",
+      "description": "Compare your Hardcore settings to professionally mixed references",
+      "details": "Professional mixes rarely sound harsh. If your Hardcore-processed material sounds edgier than reference tracks, you have a harshness problem.",
+      "comparisonPoints": [
+        "Snare drum attack - crisp but not painful",
+        "Vocal clarity - present but not grating",
+        "Guitar chords - bright but not 'ice-picky'",
+        "Overall mix - engaging but not fatiguing"
+      ],
+      "check": "Your processed material matches professional harshness level",
+      "solution": "Reduce Master EQ 3-5kHz range until harshness matches reference"
+    }
+  ],
+  "harshnessTroubleshooting": {
+    "harshDrums": "Reduce 3kHz (Band 6), Use Cabinet 2 or 4, Lower Distortion Tone",
+    "harshVocals": "Cut 2-5kHz pre-distortion, Use Cabinet 2, Reduce Drive",
+    "harshGuitars": "Check multiple distortion stacking, Reduce 3-4kHz, Darker cabinet",
+    "harshSynths": "Often source-related - high-pass or use Cabinet 5 for limitation"
+  },
+  "quickSafeSettings": {
+    "universalHarshnessReducer": {
+      "masterEQ": {
+        "band3": 0,
+        "band4": -1,
+        "band5": -2,
+        "band6": -3,
+        "band7": -2,
+        "band8": -1
+      },
+      "cabinet": 2,
+      "description": "Gentle presence reduction suitable for most sources"
+    }
+  }
+}

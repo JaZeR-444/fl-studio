@@ -1,0 +1,282 @@
+{
+  "metadata": {
+    "plugin": "Frequency Shifter",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "genres": ["hip-hop/rap", "R&B", "EDM", "trap", "lo-fi", "experimental"],
+    "description": "Genre-aware presets for Frequency Shifter effect"
+  },
+  "presets": {
+    "trap-riser": {
+      "name": "Trap Riser Shift",
+      "genre": "trap",
+      "mood": "dark",
+      "settings": {
+        "frequencyShift": 800,
+        "direction": "up",
+        "mix": 75,
+        "feedback": 0,
+        "stereoMode": "sum",
+        "drive": 5
+      },
+      "chain": {
+        "pre": ["High-pass filter at 200Hz"],
+        "post": ["Fruity Limiter - Gentle limiting"]
+      },
+      "workflow": "Automate frequency shift from 0 to 800Hz over 4-8 bars for riser builds. Use in pre-drop sections.",
+      "genreTags": ["trap", "dark", "build", "riser"],
+      "a/bTesting": {
+        "testA": "Upward shift for tension",
+        "testB": "Downward shift for release"
+      },
+      "troubleshooting": {
+        "tooHarsh": "Reduce mix to 50%, add high-pass at 400Hz",
+        "NotBuilding": "Increase shift range, automate over longer period"
+      }
+    },
+    "hip-hop-wobble": {
+      "name": "Wobble Bass Shift",
+      "genre": "hip-hop/rap",
+      "mood": "funky",
+      "settings": {
+        "frequencyShift": 120,
+        "direction": "down",
+        "mix": 65,
+        "feedback": 25,
+        "stereoMode": "sum",
+        "drive": 8
+      },
+      "chain": {
+        "pre": ["Filter at 800Hz lowpass"],
+        "post": ["Fruity Compressor - Fast attack 5ms"]
+      },
+      "workflow": "Apply to 808 bass and automate LFO to control frequency shift. Sync LFO to half-note or quarter-note for rhythmic wobble effect.",
+      "genreTags": ["hip-hop/rap", "funky", "groove", "wobble"],
+      "a/bTesting": {
+        "testA": "Low frequency shift with feedback for dubby feel",
+        "testB": "Clean shift without feedback"
+      },
+      "troubleshooting": {
+        "unstable": "Reduce feedback to 15%",
+        "tooSubtle": "Increase shift to 200Hz"
+      }
+    },
+    "rb-flange": {
+      "name": "Soul Flange",
+      "genre": "R&B",
+      "mood": "moody",
+      "settings": {
+        "frequencyShift": 50,
+        "direction": "down",
+        "mix": 35,
+        "feedback": 30,
+        "stereoMode": "sum",
+        "drive": 3
+      },
+      "chain": {
+        "pre": ["Soft high-pass at 100Hz"],
+        "post": ["Vintage Chorus - Subtle enhancement"]
+      },
+      "workflow": "Use on lead vocals or synths for subtle movement. Low frequency shift creates gentle flanging without harshness.",
+      "genreTags": ["R&B", "smooth", "flange", "subtle"],
+      "a/bTesting": {
+        "testA": "Lower shift amount for subtle effect",
+        "testB": "Higher shift for more obvious character"
+      },
+      "troubleshooting": {
+        "tooObvious": "Reduce mix to 20%, decrease shift to 30Hz",
+        "phasingIssues": "Reduce feedback to 20%"
+      }
+    },
+    "edm-metallic": {
+      "name": "EDM Metallic Shift",
+      "genre": "EDM",
+      "mood": "electric",
+      "settings": {
+        "frequencyShift": 400,
+        "direction": "up",
+        "mix": 80,
+        "feedback": 45,
+        "stereoMode": "sum",
+        "drive": 12
+      },
+      "chain": {
+        "pre": ["Band-pass filter 2k-6kHz"],
+        "post": ["Fruity Limiter - Ceiling -0.5dB"]
+      },
+      "workflow": "Apply to percussion or synths for metallic textures. High shift with feedback creates sci-fi metallic sounds.",
+      "genreTags": ["EDM", "metallic", "experimental", "textural"],
+      "a/bTesting": {
+        "testA": "High feedback for resonant metallic tone",
+        "testB": "Low feedback for cleaner shift"
+      },
+      "troubleshooting": {
+        "tooHarsh": "Band-pass pre-filter, reduce drive to 8%",
+        "NotMetallic": "Increase feedback to 55%, increase shift to 500Hz"
+      }
+    },
+    "lofi-wobble": {
+      "name": "VHS Warble",
+      "genre": "lo-fi",
+      "mood": "nostalgic",
+      "settings": {
+        "frequencyShift": 80,
+        "direction": "alternate",
+        "mix": 50,
+        "feedback": 15,
+        "stereoMode": "sum",
+        "drive": 4
+      },
+      "chain": {
+        "pre": ["High-pass at 80Hz"],
+        "post": ["Tape Saturation - 5% drive"]
+      },
+      "workflow": "Use on drums or full mix for lo-fi degradation effect. Slow LFO modulation creates warbling tape effect.",
+      "genreTags": ["lo-fi", "nostalgic", "vintage", "wobble"],
+      "a/bTesting": {
+        "testA": "Alternate direction for random warble",
+        "testB": "Single direction for consistent drift"
+      },
+      "troubleshooting": {
+        "tooSlow": "Increase LFO rate for faster wobble",
+        "tooFast": "Reduce LFO rate for gentle warble"
+      }
+    },
+    "drill-sub": {
+      "name": "Grim Sub Shift",
+      "genre": "drill",
+      "mood": "dark",
+      "settings": {
+        "frequencyShift": 200,
+        "direction": "down",
+        "mix": 70,
+        "feedback": 20,
+        "stereoMode": "sum",
+        "drive": 15
+      },
+      "chain": {
+        "pre": ["High-pass at 25Hz"],
+        "post": ["Fruity Limiter - Aggressive limiting"]
+      },
+      "workflow": "Apply to sub bass for dark, grimy texture. Subtle shift creates harmonic distortion without losing sub weight.",
+      "genreTags": ["drill", "dark", "heavy", "sub"],
+      "a/bTesting": {
+        "testA": "Downward shift for darker tones",
+        "testB": "Upward shift for more aggressive character"
+      },
+      "troubleshooting": {
+        "losingSub": "Increase pre high-pass to 40Hz, reduce shift to 150Hz",
+        "tooClean": "Increase drive to 20%"
+      }
+    },
+    "experimental-space": {
+      "name": "Cosmic Shift",
+      "genre": "experimental",
+      "mood": "spacey",
+      "settings": {
+        "frequencyShift": 1000,
+        "direction": "alternate",
+        "mix": 60,
+        "feedback": 50,
+        "stereoMode": "sum",
+        "drive": 10
+      },
+      "chain": {
+        "pre": ["Multi-band pre-processing"],
+        "post": ["Reverb - Large hall, 35% mix"]
+      },
+      "workflow": "Use on pads, FX, or processed vocals for otherworldly effects. Alternate direction creates random frequency jumps.",
+      "genreTags": ["experimental", "spacey", "cosmic", "FX"],
+      "a/bTesting": {
+        "testA": "High frequency shift for dramatic effect",
+        "testB": "Lower shift for more subtle enhancement"
+      },
+      "troubleshooting": {
+        "tooChaotic": "Reduce mix to 40%, decrease feedback to 30%",
+        "NotSpacey": "Increase shift to 1500Hz, add reverb"
+      }
+    },
+    "dub-wobble": {
+      "name": "Dub Shift Echo",
+      "genre": "dub",
+      "mood": "moody",
+      "settings": {
+        "frequencyShift": 80,
+        "direction": "down",
+        "mix": 55,
+        "feedback": 40,
+        "stereoMode": "sum",
+        "drive": 6
+      },
+      "chain": {
+        "pre": ["High-pass at 120Hz"],
+        "post": ["Delay - Dub style, 400ms, 50% feedback"]
+      },
+      "workflow": "Combine with delay for classic dub effects. The frequency shift interacts with echoes for unique texture.",
+      "genreTags": ["dub", "moody", "echo", "dubwise"],
+      "a/bTesting": {
+        "testA": "High feedback for regenerating echoes",
+        "testB": "Lower feedback for single repeats"
+      },
+      "troubleshooting": {
+        "ringingTooLong": "Reduce feedback to 30%",
+        "muddy": "Increase pre high-pass to 180Hz"
+      }
+    },
+    "synth-texture": {
+      "name": "Texture Enhancer",
+      "genre": "EDM",
+      "mood": "electric",
+      "settings": {
+        "frequencyShift": 150,
+        "direction": "down",
+        "mix": 40,
+        "feedback": 35,
+        "stereoMode": "sum",
+        "drive": 5
+      },
+      "chain": {
+        "pre": ["Low-pass filter at 5kHz"],
+        "post": ["Reverb - Subtle room, 15% mix"]
+      },
+      "workflow": "Use on synth leads to add harmonic complexity without obvious effect. Low mix keeps enhancement subtle.",
+      "genreTags": ["EDM", "textural", "synth", "enhancement"],
+      "a/bTesting": {
+        "testA": "Lower mix for subtle enhancement",
+        "testB": "Higher mix for more character"
+      },
+      "troubleshooting": {
+        "tooObvious": "Reduce mix to 25%",
+        "NotAdding": "Increase feedback to 45%"
+      }
+    },
+    "vocal-widener": {
+      "name": "Vocal Air",
+      "genre": "R&B",
+      "mood": "smooth",
+      "settings": {
+        "frequencyShift": 50,
+        "direction": "up",
+        "mix": 30,
+        "feedback": 0,
+        "stereoMode": "sum",
+        "drive": 2
+      },
+      "chain": {
+        "pre": ["De-essing if needed"],
+        "post": ["Reverb - Subtle, 12% mix"]
+      },
+      "workflow": "Apply to lead vocals to add subtle "air" and presence. Very low frequency shift prevents phasing while adding clarity.",
+      "genreTags": ["R&B", "vocal", "smooth", "air"],
+      "a/bTesting": {
+        "testA": "Upward shift for air",
+        "testB": "Downward shift for warmth"
+      },
+      "troubleshooting": {
+        "causingPhasing": "Reduce mix to 20%, decrease shift to 30Hz",
+        "tooSubtle": "Increase mix to 40%"
+      }
+    }
+  }
+}

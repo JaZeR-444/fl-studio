@@ -1,0 +1,142 @@
+{
+  "id": "fruity-big-clock",
+  "name": "Fruity Big Clock",
+  "category": "Utility",
+  "tier": "Free",
+  "type": "Utility",
+  "description": "Fruity Big Clock - Utility",
+  "tags": [
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "utility",
+    "routing"
+  ],
+  "icon": "/plugins/fruity-big-clock-icon.svg",
+  "color": "#64748B",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-big-clock",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "clock-params": {
+      "plugin": {
+        "name": "Fruity Big Clock",
+        "category": "Visual",
+        "type": "Time Utility",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Big%20Clock.htm"
+      },
+      "displayModes": [
+        {
+          "id": "bb",
+          "name": "Bars:Beats",
+          "format": "000:00:000"
+        },
+        {
+          "id": "time",
+          "name": "Minutes:Seconds",
+          "format": "00:00:000"
+        },
+        {
+          "id": "samples",
+          "name": "Samples",
+          "format": "Integer"
+        }
+      ],
+      "features": [
+        "Vector Resizing",
+        "Custom Colors",
+        "Always on Top",
+        "Zero Latency",
+        "Zero CPU Impact"
+      ]
+    }
+  },
+  "presets": {
+    "absolute-time-smpte": {
+      "presetName": "Absolute Time (SMPTE)",
+      "plugin": "Fruity Big Clock",
+      "description": "Displays hours, minutes, seconds, and frames.",
+      "settings": {
+        "mode": "Time",
+        "fontColor": "Yellow",
+        "backgroundColor": "DarkRed",
+        "opacity": 0.8,
+        "scale": 1.5
+      },
+      "usage": "Use when scoring to video or when you need to keep track of total project duration."
+    },
+    "bars-beats-large": {
+      "presetName": "Bars & Beats Large",
+      "plugin": "Fruity Big Clock",
+      "description": "Standard high-visibility bars and beats display.",
+      "settings": {
+        "mode": "Bars:Beats",
+        "fontColor": "Cyan",
+        "backgroundColor": "Black",
+        "opacity": 1,
+        "scale": 2
+      },
+      "usage": "Essential for tracking sessions where the performer needs to see the current bar number from a distance."
+    },
+    "minimalist-hud": {
+      "presetName": "Minimalist HUD",
+      "plugin": "Fruity Big Clock",
+      "description": "Transparent, low-distraction clock for the master bus.",
+      "settings": {
+        "mode": "Bars",
+        "fontColor": "White",
+        "backgroundColor": "Transparent",
+        "opacity": 0.3,
+        "scale": 0.8
+      },
+      "usage": "Keep this visible during the arrangement phase to stay aware of project structure."
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity Big Clock\n\n## Purpose & Identity\nFruity Big Clock is a visual utility plugin designed for **temporal awareness**. It provides a high-visibility, resizable display of the song's current position. While FL Studio has a clock in the main transport bar, Big Clock can be detached, resized, and colored to be visible from across a recording studio or on a secondary monitor. [SRC: IL-MAN]\n\n## 60-Second Mental Model\nThink of it as a \"Time Dashboard.\" It’s a dedicated window that tells you exactly where you are in the project—whether you prefer to think in musical terms (Bars and Beats) or chronological terms (Minutes and Seconds).\n\n## Hip-Hop / R&B Context\nIn modern production, pacing is everything.\n- **Vocal Booth Visibility:** Placing Big Clock on a second monitor in the vocal booth so the artist can see exactly when the \"Drop\" is coming without looking at the complex DAW interface.\n- **Radio Edit Precision:** Ensuring your song hits the 2:30 or 3:00 mark exactly by monitoring the real-time display during arrangement.\n- **The \"Vibe\" Timer:** Setting time-boxes for creative tasks (e.g., \"I will spend 10 minutes on this 808\") to keep the session energy high.\n\n## When To Use\n- When **recording vocals or instruments** away from the computer screen.\n- When **scoring to video** and needing a Minutes:Seconds reference.\n- When performing live and needing a large indicator of song progress.\n\n## When NOT To Use\n- **Small Screens:** If you are on a single-monitor laptop, the main transport clock is usually sufficient.\n- **Sound Design:** It has zero impact on audio; don't use it for any tonal or dynamic tasks.\n",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Fruity Big Clock\n\n## UI Tour\nFruity Big Clock is designed for maximum legibility:\n\n1.  **Main Display:** Large digits showing time.\n2.  **Mode Selector (Right-Click Menu):** \n    - **Bars:** Displays `Bars:Beats:Ticks`. [SRC: IL-MAN]\n    - **Time:** Displays `Minutes:Seconds:ms`.\n3.  **Color Selection:** Allows you to change the digit and background colors for high-contrast visibility.\n4.  **Resize Handle:** Grab the corner to scale the clock from a small box to a full-screen display.\n\n## Functional Flow\n1.  **Transport Sync:** The plugin \"listens\" to the FL Studio transport engine.\n2.  **Conversion:** It takes the sample-accurate position data and converts it into the selected format (Musical vs. Chronological).\n3.  **Visual Redraw:** The UI updates the display in real-time, synced to the project's PPQ (Pulses Per Quarter note) setting.\n4.  **No Audio Throughput:** Audio does not pass through this plugin; it is a purely visual observer.\n\n## Things Beginners Misunderstand\n- **\"Ticks\" Meaning:** In \"Bars\" mode, the third number represents **Ticks** (usually 96 or 480 per beat). It is not \"milliseconds.\" [SRC: REPUTABLE]\n- **Placement:** You can load it into ANY mixer slot. It doesn't matter where it is, as it monitors the global project time.\n- **CPU:** It uses a tiny amount of GPU/CPU for the display. If you have extreme lag, close the window, as redraws can be heavy on older machines.\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques And Best Practices: Fruity Big Clock\n\n## 1. The \"Booth Monitor\" Setup\n- **Technique:** Set Big Clock to **Bars** mode. Detach the window. Move it to a secondary monitor in the vocal booth.\n- **Execution:** Resize it to fill at least 25% of the screen. \n- **Benefit:** The artist can see exactly when to start their verse by watching the bar count, reducing the need for \"count-in\" clicks that can bleed into the mic.\n\n## 2. Arrangement Pacing (The Radio Rule)\n- **Technique:** Switch to **Time** mode during the arrangement phase.\n- **Execution:** Mark your \"Chorus Entry\" and check the time. \n- **Rule of Thumb:** Modern upbeat rap often needs the first hook to hit before the **0:30** mark. Big Clock makes this goal visual and undeniable. [SRC: REPUTABLE]\n\n## 3. Session Time-Boxing\n- **Technique:** Use the clock to discipline your creative flow.\n- **Execution:** \"I have until the clock hits 5:00 minutes to finish this melody.\"\n- **Why:** Prevents the \"Infinite Tweak\" trap that kills the \"Vibe.\"\n\n## 4. Video Sync Reference\n- **Technique:** If scoring a clip for social media or film.\n- **Execution:** Use **Minutes:Seconds** mode.\n- **Benefit:** Provides a constant reference that matches your video editor's timeline exactly.\n\n## Common Pitfalls + Fixes\n- **Pitfall:** \"The clock is too small.\"\n  - **Fix:** Make sure the window is **Detached** so you can stretch it across monitors without being constrained by the Mixer window.\n- **Pitfall:** \"The colors are hard to see.\"\n  - **Fix:** Use **High-Contrast** settings (e.g., Bright Green digits on a Black background) for better visibility in dark studio environments. [SRC: REPUTABLE]\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity Big Clock\n\nWhile visual, Big Clock maintains the **rhythm of the session**.\n\n## 1. Moody (Slow, Drifting, Long)\n- **Concept:** Monitoring the \"Stretch.\"\n- **Levers:**\n  - **Time Tracking:** Ensure your ambient intros don't exceed 15-20 seconds unless the \"mood\" justifies it.\n- **Listen For:** The moment the listener gets bored. The clock provides an objective measure of length.\n- **Don't Do This:** Don't rush; let the clock show you that 8 bars of silence can feel like an eternity if not managed.\n\n## 2. Upbeat (Fast, Snappy, Radio-Ready)\n- **Concept:** Rhythmic Urgency.\n- **Levers:**\n  - **Bar Counting:** Watch for the \"Energy Lifts\" every 8 or 16 bars.\n- **Listen For:** The \"Pop\" structure. Use the clock to ensure transitions hit with precision.\n- **Don't Do This:** Don't let sections stay the same for more than 15 seconds without a new sound.\n\n## 3. Psychedelic (Evolving, Fluid, Morphing)\n- **Concept:** Timing the \"Trip.\"\n- **Levers:**\n  - **Evolution Cycles:** Time your phaser or filter LFOs to complete a full cycle every 4 or 8 bars. \n- **Listen For:** Smooth, math-based movement.\n- **Don't Do This:** Don't guess the timing; use the clock to align your \"liquid\" movements to the project structure.\n\n## 4. Jazzy (Improvisational, Human, Live)\n- **Concept:** Marking the \"Solos.\"\n- **Levers:**\n  - **Section Tracking:** Use the clock to see when a \"Solo\" section is nearing its 16-bar limit.\n- **Listen For:** A natural-feeling return to the head/chorus.\n- **Don't Do This:** Avoid mechanical rigidity; use the clock as a guide, not a cage.\n\n## 5. Vibey (Smooth, Professional, Intentional)\n- **Concept:** The \"Professional Polish.\"\n- **Levers:**\n  - **Consistency:** Use the clock to ensure your \"Verse 1\" and \"Verse 2\" are balanced in length.\n- **Listen For:** A balanced arrangement that feels \"vibey\" from start to finish.\n- **Don't Do This:** Don't ignore the clock; vibey tracks rely on a steady, predictable subconscious flow. [SRC: REPUTABLE]\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Big Clock\r\n\r\n## What It Is\r\nFruity Big Clock is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Fruity Big Clock\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: Fruity Big Clock (5 Minutes)\n\n1.  **Insert:** Load **Fruity Big Clock** into any effect slot.\n2.  **Choose Mode:** Right-click the display. Select **Bars** for a musical view or **Time** for minutes/seconds.\n3.  **Resize:** Click and drag the bottom-right corner to make it as big as you need.\n4.  **Position:** Move the window to your preferred screen or monitor.\n5.  **Test:** Press Play. The clock will follow the project transport instantly. [SRC: IL-MAN]\n",
+      "01_Common_Mistakes": "# Common Mistakes: Fruity Big Clock\n\n- **Struggling with Scale:** Trying to resize the window without **Detaching** it first. **Fix:** Right-click the plugin header and select \"Detached.\"\n- **Misreading Ticks:** Thinking the third set of digits in Bars mode is a percentage of the beat. **Fix:** It represents Ticks (PPQ). If your project is 96 PPQ, it will count up to 95 before resetting.\n- **Latency Confusion:** Thinking the clock is \"behind.\" **Fix:** The clock displays the *render* position. If you have extreme audio latency, the display might feel slightly disconnected from your ears, but it matches the timeline exactly.\n- **Overcrowding Screen:** Keeping the clock on top of your main playlist. **Fix:** Use it on a second monitor or tuck it in a corner where it doesn't block your knobs. [SRC: REPUTABLE]\n",
+      "02_Best_Settings_Starting_Points": "# Best Settings Starting Points: Fruity Big Clock\n\n| Workflow | Mode | Color Scheme | Scaling |\n| :--- | :--- | :--- | :--- |\n| **Vocal Tracking** | Bars:Beats | Green on Black | 25% of Screen |\n| **Film Scoring** | Min:Sec:ms | White on Black | 10% of Screen |\n| **Live Set** | Bars | Bright Yellow | Full Width (Bottom)|\n| **Mixing Pacing** | Time | Grey on Black | Small (Slot size) |\n| **Radio Editing** | Time | Red on Black | Large |\n\n*Note: High-contrast colors (Neon Green/Yellow) are best for low-light studio environments.* [SRC: IL-MAN]\n",
+      "03_Vibe_Starting_Points_Moody": "# Vibe Starting Points: Moody (Fruity Big Clock)\n\n- **The Goal:** Maintaining a \"Dark Room\" aesthetic while tracking long cinematic takes.\n- **Recipe:**\n  1. Set Mode to **Time** (Minutes:Seconds).\n  2. Change digits to a **Dim Grey** or **Dark Blue**.\n  3. Set background to **Pitch Black**.\n  4. Resize to a medium landscape box.\n- **Vibe Lever:** The low-brightness display prevents \"Screen Fatigue\" during long, moody night sessions. It allows you to stay focused on the feeling of the sound rather than the clinical nature of the DAW. [SRC: REPUTABLE]\n",
+      "04_Vibe_Starting_Points_Upbeat_Psychedelic_Jazzy_Vibey": "# Vibe Starting Points: Upbeat, Psychedelic, Jazzy, Vibey\n\n## Upbeat (The \"Hype Counter\")\n- **Settings:** Bars:Beats mode. Bright Orange digits.\n- **Strategy:** Watch the Beats count (`1, 2, 3, 4`) to time your manual \"fills\" or drum rolls perfectly.\n\n## Psychedelic (The \"Dream Timer\")\n- **Settings:** Time mode. High-contrast Green.\n- **Strategy:** Use the milliseconds counter to time the \"Swirl\" of a phaser or the \"Tail\" of a long psychedelic delay.\n\n## Jazzy (The \"Arrangement Anchor\")\n- **Settings:** Bars mode. \n- **Strategy:** Use the clock to mark the start of an 8-bar improvisational solo, ensuring you \"land\" back on the chorus on time.\n\n## Vibey (The \"Polish Monitor\")\n- **Settings:** Time mode. Small, minimalist scale.\n- **Strategy:** Ensure your \"Vibey\" R&B tracks aren't too short—aim for the professional 3:30 sweet spot. [SRC: REPUTABLE]\n",
+      "clock-display-modes": "# Fruity Big Clock - Parameter Cheat Sheet\n\n**Plugin Type:** Visual Utility / Time Management\n**Category:** Visual\n**Official Manual:** [Fruity Big Clock](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Big%20Clock.htm)\n\n---\n\n## 🎚️ Display Modes\n\n| Mode | Format | Use Case |\n|------|--------|----------|\n| **BB** | Bars : Beats : Ticks | Keeping track of the musical structure during recording |\n| **Time** | Min : Sec : ms | Scoring for video, checking song length for radio/streaming |\n| **Samples** | Absolute Sample Count | Surgical editing, calculating latency, precise alignment |\n\n---\n\n## 🎛️ Interaction & Customization\n\n| Action | Result | Quick Tip |\n|--------|--------|-----------|\n| **Left Click** | Cycle through display modes | Switch between BB and Time quickly |\n| **Drag Edge** | Resize the window | Make it massive for vocalists recording far from the monitor |\n| **Right Click Wrapper** | 'Stay on Top' option | Keep it visible even when other windows are focused |\n\n---\n\n## 🔧 Technical Details\n\n- **Sync Source:** FL Studio Audio Engine\n- **Latency Awareness:** PDC Compensated (shows audible time)\n- **Engine Impact:** Zero (No audio processing)\n- **Scalability:** Fully vector-based (No blurriness at large sizes)\n\n---\n\n## 🎯 Quick Start Workflows\n\n### The \"Vocalist Remote\" Setup\n1. **Goal:** Your vocalist is in a booth and needs to know when their part is coming up.\n2. **Action:** Open Big Clock, set to **BB** mode.\n3. **Action:** Stretch it to cover 25% of the screen.\n4. **Benefit:** They can clearly see the bar count from the booth without needing a dedicated monitor.\n\n### The \"Podcast/Video\" Timer\n1. **Goal:** You need to ensure your intro music hits exactly at the 15-second mark.\n2. **Action:** Set Big Clock to **Time** mode.\n3. **Action:** Place it near the top of the FL Studio window.\n4. **Benefit:** Instant, sample-accurate time feedback for every cue.\n\n---\n\n## ⚡ Pro Tips\n\n1. **Color Coding:** You can change the font color to match your project's theme by clicking the text.\n2. **Samples Mode Math:** In Samples mode, if you see a value of 44,100, you know exactly one second has passed (at 44.1kHz sample rate).\n3. **Always on Top:** This is the most used setting. Enable it so you can see the clock while editing in the Piano Roll or tweaking a synth.\n\n---\n\n**Last Updated:** February 3, 2026\n**Status:** ⭐ HIGH PRIORITY - Elaborated Reference",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Big Clock\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Big Clock to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Big Clock\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Big Clock\r\n\r\nThis section contains learning information for the fruity-big-clock plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: Syncing to Video Hits (Fruity Big Clock)\n\n## Routing Context\n- **Target:** Video Content / Film Scoring.\n- **Workflow:** **Minutes:Seconds** Mode.\n\n## Step-by-Step Setup\n1.  Load **Fruity Big Clock** and **Fruity Video Player**.\n2.  Set Big Clock to **Time** mode.\n3.  Identify the \"Hit Point\" in your video (e.g., a door slam at 0:15).\n4.  In the FL Studio Playlist, place a **Marker** exactly at the 0:15 timestamp on the Big Clock.\n5.  Align your kick drum or sound effect to that Marker.\n\n## Result\n- Perfect synchronization between your musical arrangement and the visual timeline. The Big Clock acts as the master reference that matches your video editor’s clock (Premiere/Final Cut).\n\n## Vibe Check\n- **Moody:** Ensuring that a \"scary\" cinematic sound hit happens exactly on the visual cue, increasing the emotional impact.\n\n## Pitfalls + Fixes\n- **Pitfall:** \"The clock doesn't match the frame rate.\"\n  - **Fix:** FL Studio calculates time based on project samples. Ensure your project and video frame rates are consistent (e.g., 24fps) to avoid \"drift\" over long projects. [SRC: IL-MAN]\n",
+      "01_Goal_Mix_Validation": "# Goal: Session Discipline (Goal_Mix_Validation)\n\n## The Concept\nUsing the clock to prevent \"Infinite Tweak Syndrome\" and maintain creative momentum.\n\n## Step-by-Step\n1.  Set Big Clock to **Time** mode.\n2.  Resize it to be visible in your peripheral vision.\n3.  **Start a Timer:** \"I have exactly 5 minutes to find the right 808.\"\n4.  **Watch the Clock:** Use the movement of the seconds to maintain a sense of urgency.\n5.  **Section Check:** At the 15-minute mark, you must have the full 8-bar loop finished.\n\n## Result\n- A significantly faster production workflow. By using the Big Clock as a \"Session Judge,\" you make decisions faster and preserve the initial \"Vibe.\"\n\n## Vibe Check\n- **Upbeat:** Keeping the session energy high results in more aggressive and energetic tracks. [SRC: REPUTABLE]\n",
+      "scoring-to-picture-sync": "# Scoring to Picture (Time-Sync) Workflow\n\n## Goal\nPrecisely align audio events to specific time-stamped visual cues in a film or video project.\n\n## Steps\n1. **Sync Video**: Import your video into the **Fruity Video Player**.\n2. **Insert Big Clock**: Place it on the Master track.\n3. **Set Mode**: Toggle to **Time** mode (`00:00:00`).\n4. **Align Start**: Ensure your project start matches the video start (check Offset in project settings).\n5. **Identify Cues**:\n   - Play the video and watch the Big Clock.\n   - When a visual event happens (e.g. an explosion), note the exact time (e.g. `01:14:500`).\n6. **Place Marker**: Press `Alt + T` in the Playlist and name the marker with the time.\n7. **Compose**: Now you can arrange your MIDI or samples to land exactly on that marker, knowing it aligns perfectly with the timecode.\n\n## Pro Tip\nSet the Big Clock to **Samples** mode if you need to calculate the exact distance between two cues for perfectly timed delay repeats or rhythmic sync.\n",
+      "tracking-session-time": "# Tracking Session Time Workflow\n\n## Goal\nMonitor the exact duration of a project or recording session without squinting at the small transport clock.\n\n## Steps\n1. **Insert Big Clock**: Place it on the **Selected** or **Master** mixer track.\n2. **Switch to Time Mode**: Click the display until it shows `00:00:00`.\n3. **Resize**: Make it large enough to see from across the room (useful if recording away from the desk).\n4. **Set 'Always on Top'**: Right-click the plugin wrapper and select **Stay on top**.\n5. **Record/Play**: The clock will precisely follow the FL Studio playhead.\n\n## Pro Tip\nWhen scoring for video, use **Minutes:Seconds:Centiseconds** mode to ensure your audio cues hit the exact time markers required by the film.\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Big Clock\r\n\r\nThis section contains workflow information for the fruity-big-clock plugin.\r\n"
+    },
+    "workflow-by-role.md": {
+      "workflow-by-role": "# Workflow by Role: Tracking vs. Mixing\n\nFruity Big Clock serves different purposes depending on the current phase of production.\n\n## Role: The Performer's Guide (Tracking)\n1. Place Big Clock on the Master track or a dedicated Monitor track.\n2. Set it to **Bars:Beats**.\n3. Scale it to **Maximum** size.\n4. If you have a second monitor, move the floating window there.\n5. **Goal**: Allows the drummer or vocalist to glance at the screen and immediately know which section of the song they are in.\n\n## Role: The Video Editor (Scoring)\n1. Set Big Clock to **Time** mode.\n2. Ensure the frame rate in FL Studio's project settings matches your video file.\n3. Place the clock near your video player window.\n4. **Goal**: Precise synchronization with visual cues and hit-points.\n\n## Role: The Live Performer\n1. Place Big Clock on the Master bus.\n2. Set it to **Time (Elapsed)**.\n3. **Goal**: Keep track of the total set length to ensure you don't go over your allotted time on stage.\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Big Clock\r\n\r\nThis section contains reference information for the fruity-big-clock plugin.\r\n"
+    }
+  }
+}

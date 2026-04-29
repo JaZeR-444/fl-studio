@@ -1,0 +1,34 @@
+{
+  "metadata": {
+    "plugin": "Frequency Splitter",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "presetName": "Paperboy Texture Split",
+    "category": "signature",
+    "inspiredBy": "Wheezy ATL bass texture"
+  },
+  "settings": {
+    "crossover1": 200,
+    "crossover2": 1500,
+    "slope": "24dB/oct",
+    "mode": "minimum-phase",
+    "band1": { "gain": 1, "processing": "punch" },
+    "band2": { "gain": 2, "processing": "texture/grind" },
+    "band3": { "gain": 0, "processing": "high-pass 4kHz" }
+  },
+  "chain": {
+    "pre": ["Distortion on band2"],
+    "post": ["Compression on band1"]
+  },
+  "workflow": "Three-way ATL bass split. Band 2 gets texture processing for characteristic Wheezy grind.",
+  "characteristics": ["textured", "ATL", "grindy", "bright"],
+  "genreTags": ["hip-hop/rap", "trap", "ATL"],
+  "a/bTesting": {
+    "testA": "Minimum phase for impact",
+    "testB": "Linear phase for clarity"
+  },
+  "troubleshooting": {
+    "tooGrindy": "Reduce band2 gain by 2dB"
+  }
+}

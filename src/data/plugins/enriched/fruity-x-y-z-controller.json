@@ -1,0 +1,2075 @@
+{
+  "id": "fruity-x-y-z-controller",
+  "name": "Fruity X-Y-Z Controller",
+  "category": "Controller",
+  "tier": "Free",
+  "type": "Controller",
+  "description": "Fruity X-Y-Z Controller - Controller",
+  "tags": [
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "automation",
+    "modulation",
+    "control"
+  ],
+  "icon": "/plugins/fruity-x-y-z-controller-icon.svg",
+  "color": "#78716C",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-x-y-z-controller",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "definitions": {
+      "outputs": [
+        {
+          "id": "x",
+          "name": "X Position",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "default": 50
+          },
+          "controlType": "position",
+          "inputMethod": [
+            "mouse",
+            "touch",
+            "trackpad",
+            "midi"
+          ],
+          "typicalTargets": [
+            "Pan",
+            "Oscillator mix",
+            "Stereo width",
+            "Pitch bend",
+            "Effect dry/wet"
+          ],
+          "uiCopy": {
+            "label": "X Axis",
+            "oneLiner": "Horizontal position control (0% = left, 100% = right)",
+            "tooltip": "Controls the horizontal axis. Typically mapped to pan, mix, or any left-right parameter.",
+            "do": "Use for spatial positioning, stereo control, or morphing between two states",
+            "dont": "Map to parameters requiring binary on/off control"
+          }
+        },
+        {
+          "id": "y",
+          "name": "Y Position",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "default": 50
+          },
+          "controlType": "position",
+          "inputMethod": [
+            "mouse",
+            "touch",
+            "trackpad",
+            "midi"
+          ],
+          "typicalTargets": [
+            "Filter cutoff",
+            "Volume",
+            "Pitch",
+            "Brightness",
+            "Intensity"
+          ],
+          "uiCopy": {
+            "label": "Y Axis",
+            "oneLiner": "Vertical position control (0% = bottom, 100% = top)",
+            "tooltip": "Controls the vertical axis. Typically mapped to filters, volume, or up-down parameters.",
+            "do": "Perfect for filter sweeps, brightness control, and intensity",
+            "dont": "Use for fine-grained frequency selection—too broad for precision"
+          }
+        },
+        {
+          "id": "z",
+          "name": "Z Position",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "default": 0
+          },
+          "controlType": "position",
+          "inputMethod": [
+            "mouse",
+            "touch",
+            "trackpad"
+          ],
+          "controlGesture": {
+            "mouse": "Scroll wheel",
+            "touch": "Pinch/spread gesture",
+            "trackpad": "Two-finger scroll"
+          },
+          "typicalTargets": [
+            "Reverb send",
+            "Effect depth",
+            "Distance",
+            "Dimension",
+            "Wet/det amount"
+          ],
+          "uiCopy": {
+            "label": "Z Axis",
+            "oneLiner": "Depth control via scroll or pinch gesture (0% = back, 100% = front)",
+            "tooltip": "Controls depth/dimension. Use mouse wheel, touch pinch, or trackpad scroll.",
+            "do": "Map to reverb, delay, or any depth/distance parameter",
+            "dont": "Forget to use scroll/pinch—Z won't respond to simple cursor movement"
+          }
+        },
+        {
+          "id": "speed",
+          "name": "Speed",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "default": 0
+          },
+          "controlType": "movement",
+          "inputMethod": [
+            "mouse",
+            "touch",
+            "trackpad",
+            "midi"
+          ],
+          "typicalTargets": [
+            "LFO depth",
+            "Distortion amount",
+            "Filter resonance",
+            "Accent boost",
+            "Modulation intensity"
+          ],
+          "uiCopy": {
+            "label": "Speed",
+            "oneLiner": "How fast you're moving (0% = stopped, 100% = maximum velocity)",
+            "tooltip": "Outputs velocity of your movement. Faster = higher values.",
+            "do": "Use for dynamic expression—moving creates more effect",
+            "dont": "Expect values when not moving—speed is 0% at rest"
+          }
+        },
+        {
+          "id": "acceleration",
+          "name": "Acceleration",
+          "range": {
+            "min": -100,
+            "max": 100,
+            "default": 0
+          },
+          "controlType": "movement",
+          "inputMethod": [
+            "mouse",
+            "touch",
+            "trackpad",
+            "midi"
+          ],
+          "typicalTargets": [
+            "Note trigger",
+            "Envelope attack",
+            "Accent detection",
+            "Dynamic expression",
+            "Transient boost"
+          ],
+          "uiCopy": {
+            "label": "Acceleration",
+            "oneLiner": "Change in speed (-100% = slowing, +100% = speeding up)",
+            "tooltip": "Detects gesture acceleration/deceleration. Spikes at start/stop.",
+            "do": "Perfect for accent detection and capturing performance intention",
+            "dont": "Use for continuous modulation—this is event-based"
+          }
+        }
+      ],
+      "modes": [
+        {
+          "id": "absolute",
+          "name": "Absolute Mode",
+          "description": "Position directly maps to output values",
+          "behavior": "Cursor position = output value. Bottom-left = 0%, top-right = 100%.",
+          "bestFor": [
+            "Visual feedback",
+            "Spatial mixing",
+            "Predictable control",
+            "Touchscreen use"
+          ]
+        },
+        {
+          "id": "relative",
+          "name": "Relative Mode",
+          "description": "Movement changes values incrementally",
+          "behavior": "Moving changes value; releasing holds position. No snapping.",
+          "bestFor": [
+            "Continuous sweeps",
+            "DJ-style control",
+            "Cumulative modulation",
+            "Fine adjustments"
+          ]
+        }
+      ]
+    },
+    "schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "$id": "fruity-xyz-controller-parameters",
+      "title": "Fruity X-Y-Z Controller Parameter Schema",
+      "description": "Schema for defining X-Y-Z Controller output parameters and their mapping capabilities",
+      "type": "object",
+      "properties": {
+        "outputs": {
+          "type": "array",
+          "description": "Available controller outputs",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "enum": [
+                  "x",
+                  "y",
+                  "z",
+                  "speed",
+                  "acceleration"
+                ],
+                "description": "Unique output identifier"
+              },
+              "name": {
+                "type": "string",
+                "description": "Human-readable output name"
+              },
+              "range": {
+                "type": "object",
+                "properties": {
+                  "min": {
+                    "type": "number",
+                    "description": "Minimum output value"
+                  },
+                  "max": {
+                    "type": "number",
+                    "description": "Maximum output value"
+                  },
+                  "default": {
+                    "type": "number",
+                    "description": "Default/rest value"
+                  }
+                },
+                "required": [
+                  "min",
+                  "max"
+                ]
+              },
+              "controlType": {
+                "type": "string",
+                "enum": [
+                  "position",
+                  "movement",
+                  "gesture"
+                ],
+                "description": "Category of control"
+              },
+              "inputMethod": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "mouse",
+                    "touch",
+                    "trackpad",
+                    "midi"
+                  ]
+                },
+                "description": "Supported input devices"
+              },
+              "typicalTargets": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Common parameter types to link this output to"
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "range",
+              "controlType"
+            ]
+          }
+        },
+        "modes": {
+          "type": "array",
+          "description": "Available controller modes",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "enum": [
+                  "absolute",
+                  "relative"
+                ]
+              },
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "behavior": {
+                "type": "string",
+                "description": "How position maps to values"
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "behavior"
+            ]
+          }
+        }
+      },
+      "required": [
+        "outputs",
+        "modes"
+      ]
+    }
+  },
+  "presets": {
+    "archetypes": {
+      "presetArchetypes": [
+        {
+          "id": "spatial-3d-audio",
+          "name": "3D Spatial Audio Positioning",
+          "category": "spatial",
+          "description": "Complete 3D audio placement with pan, filter, and depth control",
+          "difficulty": "beginner",
+          "mode": "absolute",
+          "mappings": [
+            {
+              "output": "x",
+              "target": "Pan",
+              "targetRange": {
+                "min": -100,
+                "max": 100
+              },
+              "description": "Left/right stereo positioning"
+            },
+            {
+              "output": "y",
+              "target": "Filter Cutoff",
+              "targetRange": {
+                "min": 200,
+                "max": 20000
+              },
+              "description": "Near/far depth illusion (darker = farther)"
+            },
+            {
+              "output": "z",
+              "target": "Reverb Send",
+              "targetRange": {
+                "min": 0,
+                "max": 100
+              },
+              "description": "Distance perception (more reverb = farther away)"
+            }
+          ],
+          "useCase": "Position sounds in 3D space for immersive mixes",
+          "gesture": "Move X for left/right, Y for near/far (filter), scroll Z for depth"
+        },
+        {
+          "id": "synth-timbre-complete",
+          "name": "Total Synth Performance",
+          "category": "synthesis",
+          "description": "Complete timbre control with pitch, filter, and resonance",
+          "difficulty": "intermediate",
+          "mode": "relative",
+          "mappings": [
+            {
+              "output": "x",
+              "target": "Oscillator Pitch",
+              "targetRange": {
+                "min": -12,
+                "max": 12
+              },
+              "description": "Pitch bend ±12 semitones"
+            },
+            {
+              "output": "y",
+              "target": "Filter Cutoff",
+              "targetRange": {
+                "min": 100,
+                "max": 20000
+              },
+              "description": "Brightness control"
+            },
+            {
+              "output": "z",
+              "target": "Filter Resonance",
+              "targetRange": {
+                "min": 0,
+                "max": 80
+              },
+              "description": "Emphasis at cutoff frequency"
+            },
+            {
+              "output": "speed",
+              "target": "LFO Depth",
+              "targetRange": {
+                "min": 0,
+                "max": 100
+              },
+              "description": "Movement adds modulation"
+            }
+          ],
+          "useCase": "Expressive lead synth control with all performance dimensions",
+          "gesture": "Continuous movements for smooth filter sweeps with dynamic LFO"
+        },
+        {
+          "id": "effect-chain-morph",
+          "name": "Effect Chain Morphing",
+          "category": "effects",
+          "description": "Morph between three different effects using all axes",
+          "difficulty": "intermediate",
+          "mode": "absolute",
+          "mappings": [
+            {
+              "output": "x",
+              "target": "Chorus Wet/Dry",
+              "targetRange": {
+                "min": 0,
+                "max": 100
+              },
+              "description": "Left side = chorus"
+            },
+            {
+              "output": "y",
+              "target": "Phaser Depth",
+              "targetRange": {
+                "min": 0,
+                "max": 100
+              },
+              "description": "Vertical = phaser amount"
+            },
+            {
+              "output": "z",
+              "target": "Delay Feedback",
+              "targetRange": {
+                "min": 0,
+                "max": 80
+              },
+              "description": "Depth = delay intensity"
+            }
+          ],
+          "useCase": "Blend multiple effects in real-time for dynamic texture",
+          "gesture": "Navigate through effect combinations in 3D space"
+        },
+        {
+          "id": "drum-dynamic-processing",
+          "name": "Drum Dynamic Control",
+          "category": "dynamics",
+          "description": "Dynamic drum processing with spatial and transient control",
+          "difficulty": "advanced",
+          "mode": "relative",
+          "mappings": [
+            {
+              "output": "x",
+              "target": "Pan",
+              "targetRange": {
+                "min": -50,
+                "max": 50
+              },
+              "description": "Drum positioning"
+            },
+            {
+              "output": "y",
+              "target": "Compression Threshold",
+              "targetRange": {
+                "min": -20,
+                "max": 0
+              },
+              "description": "Dynamic control"
+            },
+            {
+              "output": "z",
+              "target": "Transient Shaper",
+              "targetRange": {
+                "min": 0,
+                "max": 100
+              },
+              "description": "Punch control"
+            },
+            {
+              "output": "speed",
+              "target": "Saturation Drive",
+              "targetRange": {
+                "min": 0,
+                "max": 50
+              },
+              "description": "Movement adds grit"
+            },
+            {
+              "output": "acceleration",
+              "target": "Accent Boost",
+              "targetRange": {
+                "min": 0,
+                "max": 6
+              },
+              "description": "Accents get louder"
+            }
+          ],
+          "useCase": "Live drum performance with responsive dynamics",
+          "gesture": "Rhythmic movements create dynamic, punchy drum patterns"
+        },
+        {
+          "id": "vibe-warmth",
+          "name": "Vibe: Warmth",
+          "category": "vibes",
+          "description": "Analog warmth with detune, saturation, and gentle filtering",
+          "difficulty": "beginner",
+          "mode": "absolute",
+          "mappings": [
+            {
+              "output": "x",
+              "target": "Oscillator Detune",
+              "targetRange": {
+                "min": 0,
+                "max": 30
+              },
+              "description": "Subtle pitch widening"
+            },
+            {
+              "output": "y",
+              "target": "Low-pass Cutoff",
+              "targetRange": {
+                "min": 200,
+                "max": 5000
+              },
+              "description": "Warm/dark tones (keep below 40%)"
+            },
+            {
+              "output": "z",
+              "target": "Tape Saturation",
+              "targetRange": {
+                "min": 0,
+                "max": 40
+              },
+              "description": "Gentle analog saturation"
+            }
+          ],
+          "useCase": "Vintage, analog character for any source",
+          "gesture": "Stay in lower-left quadrant for warmth, gentle movements"
+        },
+        {
+          "id": "vibe-clarity",
+          "name": "Vibe: Clarity",
+          "category": "vibes",
+          "description": "Presence and definition boost",
+          "difficulty": "beginner",
+          "mode": "absolute",
+          "mappings": [
+            {
+              "output": "x",
+              "target": "Presence EQ (3kHz)",
+              "targetRange": {
+                "min": 0,
+                "max": 6
+              },
+              "description": "Midrange clarity boost"
+            },
+            {
+              "output": "y",
+              "target": "High-shelf (10kHz)",
+              "targetRange": {
+                "min": 0,
+                "max": 4
+              },
+              "description": "Brightness/air"
+            },
+            {
+              "output": "z",
+              "target": "Exciter",
+              "targetRange": {
+                "min": 0,
+                "max": 40
+              },
+              "description": "Harmonic enhancement"
+            }
+          ],
+          "useCase": "Make elements cut through the mix with presence",
+          "gesture": "Upper-right quadrant for clarity and presence"
+        },
+        {
+          "id": "vibe-depth",
+          "name": "Vibe: Depth",
+          "category": "vibes",
+          "description": "Spacious, immersive sound with reverb and width",
+          "difficulty": "beginner",
+          "mode": "absolute",
+          "mappings": [
+            {
+              "output": "x",
+              "target": "Stereo Width",
+              "targetRange": {
+                "min": 0,
+                "max": 150
+              },
+              "description": "Stereo expansion"
+            },
+            {
+              "output": "y",
+              "target": "Reverb Send",
+              "targetRange": {
+                "min": 0,
+                "max": 70
+              },
+              "description": "Spatial depth"
+            },
+            {
+              "output": "z",
+              "target": "Delay Feedback",
+              "targetRange": {
+                "min": 10,
+                "max": 60
+              },
+              "description": "Ambience and echoes"
+            }
+          ],
+          "useCase": "Create immersive, 3D soundscapes",
+          "gesture": "Expand with X, add space with Y, depth with Z"
+        },
+        {
+          "id": "vibe-punch",
+          "name": "Vibe: Punch",
+          "category": "vibes",
+          "description": "Dynamic, aggressive character with transient and compression",
+          "difficulty": "intermediate",
+          "mode": "relative",
+          "mappings": [
+            {
+              "output": "x",
+              "target": "Transient Shaper",
+              "targetRange": {
+                "min": 0,
+                "max": 70
+              },
+              "description": "Attack enhancement"
+            },
+            {
+              "output": "y",
+              "target": "Compression Ratio",
+              "targetRange": {
+                "min": 1,
+                "max": 8
+              },
+              "description": "Dynamic control"
+            },
+            {
+              "output": "z",
+              "target": "Saturation",
+              "targetRange": {
+                "min": 0,
+                "max": 40
+              },
+              "description": "Edge and grit"
+            },
+            {
+              "output": "speed",
+              "target": "Accent Detection",
+              "targetRange": {
+                "min": 0,
+                "max": 100
+              },
+              "description": "Movement = more punch"
+            }
+          ],
+          "useCase": "Add aggression and impact to drums, bass, or leads",
+          "gesture": "Quick, decisive movements for maximum impact"
+        },
+        {
+          "id": "vibe-air",
+          "name": "Vibe: Air",
+          "category": "vibes",
+          "description": "Bright, shimmering high-end enhancement",
+          "difficulty": "beginner",
+          "mode": "absolute",
+          "mappings": [
+            {
+              "output": "x",
+              "target": "High-pass Filter",
+              "targetRange": {
+                "min": 20,
+                "max": 200
+              },
+              "description": "Remove rumble (keep low)"
+            },
+            {
+              "output": "y",
+              "target": "Air EQ (15kHz)",
+              "targetRange": {
+                "min": 0,
+                "max": 6
+              },
+              "description": "High-frequency sheen"
+            },
+            {
+              "output": "z",
+              "target": "Sparkle/Dimension",
+              "targetRange": {
+                "min": 0,
+                "max": 50
+              },
+              "description": "Enhancement and lift"
+            }
+          ],
+          "useCase": "Add polish and brightness to vocals, synths, or mixes",
+          "gesture": "Upper positions for brightness and air"
+        }
+      ]
+    },
+    "macros": {
+      "macroTemplates": [
+        {
+          "id": "hip-hop-lead-performance",
+          "name": "Hip-Hop Lead Performance Rig",
+          "description": "Complete performance setup for expressive hip-hop leads with all five vibe dimensions",
+          "category": "performance",
+          "difficulty": "advanced",
+          "controllers": [
+            {
+              "instance": 1,
+              "name": "Timbre Controller",
+              "mode": "relative",
+              "mappings": [
+                {
+                  "output": "x",
+                  "target": "Pitch Bend",
+                  "range": "±12 semitones"
+                },
+                {
+                  "output": "y",
+                  "target": "Filter Cutoff",
+                  "range": "Full"
+                },
+                {
+                  "output": "z",
+                  "target": "Resonance",
+                  "range": "0-80%"
+                },
+                {
+                  "output": "speed",
+                  "target": "Distortion Drive",
+                  "range": "0-50%"
+                }
+              ]
+            },
+            {
+              "instance": 2,
+              "name": "Vibe Controller",
+              "mode": "absolute",
+              "mappings": [
+                {
+                  "output": "x",
+                  "target": "Stereo Width",
+                  "range": "50-150%"
+                },
+                {
+                  "output": "y",
+                  "target": "Reverb Send",
+                  "range": "0-60%"
+                },
+                {
+                  "output": "z",
+                  "target": "Delay Send",
+                  "range": "0-40%"
+                }
+              ]
+            }
+          ],
+          "performanceNotes": [
+            "Use Controller 1 for continuous timbre morphing",
+            "Use Controller 2 for spatial positioning during phrase breaks",
+            "Cross hands between controllers for complex passages",
+            "Map Speed on both controllers to accent detection"
+          ],
+          "vibeBlend": [
+            {
+              "vibe": "PUNCH",
+              "weight": 40,
+              "controller": 1,
+              "outputs": [
+                "speed",
+                "z"
+              ]
+            },
+            {
+              "vibe": "CLARITY",
+              "weight": 30,
+              "controller": 2,
+              "outputs": [
+                "y"
+              ]
+            },
+            {
+              "vibe": "AIR",
+              "weight": 30,
+              "controller": 2,
+              "outputs": [
+                "z"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tablet-performance-rig",
+          "name": "Touchscreen Performance Setup",
+          "description": "Optimized for tablet/touchscreen with gesture-based control",
+          "category": "performance",
+          "difficulty": "intermediate",
+          "device": "tablet",
+          "controllers": [
+            {
+              "instance": 1,
+              "name": "Main Controller",
+              "mode": "absolute",
+              "gestureMapping": {
+                "singleFinger": "X + Y control",
+                "pinch": "Z control",
+                "flick": "Speed spike → Accent"
+              },
+              "mappings": [
+                {
+                  "output": "x",
+                  "target": "Pan"
+                },
+                {
+                  "output": "y",
+                  "target": "Filter Cutoff"
+                },
+                {
+                  "output": "z",
+                  "target": "Effect Depth"
+                },
+                {
+                  "output": "speed",
+                  "target": "Expression"
+                }
+              ]
+            }
+          ],
+          "gestureLibrary": [
+            {
+              "name": "The Sweep",
+              "gesture": "Smooth diagonal",
+              "result": "Filter sweep + pan"
+            },
+            {
+              "name": "The Pulse",
+              "gesture": "Quick tap-hold-release",
+              "result": "One-shot effect"
+            },
+            {
+              "name": "The Pinch",
+              "gesture": "Two-finger pinch",
+              "result": "Z-axis modulation"
+            },
+            {
+              "name": "The Flick",
+              "gesture": "Fast swipe + stop",
+              "result": "Accent trigger"
+            }
+          ],
+          "setupNotes": [
+            "Enable 'Show touches' in OS settings",
+            "Use screen protector for smooth gliding",
+            "Position tablet at comfortable angle",
+            "Practice gestures for muscle memory"
+          ]
+        },
+        {
+          "id": "three-parameter-morph",
+          "name": "3-Parameter Morphing Matrix",
+          "description": "Advanced macro for morphing between three distinct sound states",
+          "category": "morphing",
+          "difficulty": "advanced",
+          "concept": "Each axis blends between two values of a single parameter, creating 8 possible states (corners of cube)",
+          "controllers": [
+            {
+              "instance": 1,
+              "name": "Morph Controller",
+              "mode": "absolute",
+              "mappings": [
+                {
+                  "output": "x",
+                  "target": "Oscillator Shape",
+                  "morph": {
+                    "0%": "Saw wave",
+                    "100%": "Square wave"
+                  }
+                },
+                {
+                  "output": "y",
+                  "target": "Filter Type",
+                  "morph": {
+                    "0%": "Low-pass",
+                    "100%": "High-pass"
+                  }
+                },
+                {
+                  "output": "z",
+                  "target": "Envelope",
+                  "morph": {
+                    "0%": "Fast/Pluck",
+                    "100%": "Slow/Pad"
+                  }
+                }
+              ]
+            }
+          ],
+          "morphStates": [
+            {
+              "position": "0,0,0",
+              "name": "Saw + Low + Fast",
+              "description": "Aggressive pluck"
+            },
+            {
+              "position": "100,0,0",
+              "name": "Square + Low + Fast",
+              "description": "Hollow pluck"
+            },
+            {
+              "position": "0,100,0",
+              "name": "Saw + High + Fast",
+              "description": "Bright sting"
+            },
+            {
+              "position": "100,100,0",
+              "name": "Square + High + Fast",
+              "description": "Nasal blip"
+            },
+            {
+              "position": "0,0,100",
+              "name": "Saw + Low + Slow",
+              "description": "Warm pad"
+            },
+            {
+              "position": "100,0,100",
+              "name": "Square + Low + Slow",
+              "description": "Hollow pad"
+            },
+            {
+              "position": "0,100,100",
+              "name": "Saw + High + Slow",
+              "description": "Bright pad"
+            },
+            {
+              "position": "100,100,100",
+              "name": "Square + High + Slow",
+              "description": "Glassy pad"
+            }
+          ],
+          "performanceTechnique": "Navigate through cube corners to morph between radically different sounds"
+        },
+        {
+          "id": "spatial-positioning-rig",
+          "name": "3D Spatial Positioning System",
+          "description": "Complete spatial audio rig for immersive 3D positioning",
+          "category": "spatial",
+          "difficulty": "intermediate",
+          "controllers": [
+            {
+              "instance": 1,
+              "name": "Spatial Controller",
+              "mode": "absolute",
+              "mappings": [
+                {
+                  "output": "x",
+                  "target": "Pan",
+                  "description": "Left-right position"
+                },
+                {
+                  "output": "y",
+                  "target": "Low-pass Filter",
+                  "description": "Near-far depth (darker = farther)"
+                },
+                {
+                  "output": "z",
+                  "target": "Reverb Send",
+                  "description": "Distance in space"
+                },
+                {
+                  "output": "speed",
+                  "target": "Doppler/Velocity",
+                  "description": "Motion blur effect"
+                }
+              ]
+            }
+          ],
+          "spatialConcepts": [
+            {
+              "position": "Bottom-left",
+              "perception": "Far left, distant, dark",
+              "use": "Background elements"
+            },
+            {
+              "position": "Top-right",
+              "perception": "Far right, close, bright",
+              "use": "Lead elements, focus"
+            },
+            {
+              "position": "Center",
+              "perception": "Center position, mid-distance",
+              "use": "Supporting elements"
+            }
+          ],
+          "techniqueNotes": [
+            "Use Y-axis filter to simulate distance (farther = less high frequencies)",
+            "Z-axis reverb creates realistic depth perception",
+            "Speed output adds Doppler-like motion effects",
+            "Combine multiple instances for group positioning"
+          ]
+        },
+        {
+          "id": "multi-touch-ensemble",
+          "name": "Multi-Touch Ensemble Control",
+          "description": "Control multiple instruments simultaneously using multiple X-Y-Z instances",
+          "category": "performance",
+          "difficulty": "expert",
+          "setup": {
+            "instances": 4,
+            "arrangement": "2x2 grid on touchscreen or separate controllers"
+          },
+          "controllers": [
+            {
+              "instance": 1,
+              "name": "Lead Synth",
+              "role": "Melody/harmony",
+              "mappings": {
+                "x": "Pitch bend",
+                "y": "Filter cutoff",
+                "z": "Reverb send"
+              }
+            },
+            {
+              "instance": 2,
+              "name": "Bass",
+              "role": "Foundation",
+              "mappings": {
+                "x": "Pan",
+                "y": "Drive/distortion",
+                "z": "Compression"
+              }
+            },
+            {
+              "instance": 3,
+              "name": "Pads",
+              "role": "Atmosphere",
+              "mappings": {
+                "x": "Stereo width",
+                "y": "Filter sweep",
+                "z": "Effect depth"
+              }
+            },
+            {
+              "instance": 4,
+              "name": "Drums",
+              "role": "Rhythm",
+              "mappings": {
+                "x": "Pan",
+                "y": "Transient shaping",
+                "z": "Saturation",
+                "speed": "Accent boost"
+              }
+            }
+          ],
+          "performanceTechniques": [
+            "Cross-hand control: Left hand on instances 1+2, right hand on 3+4",
+            "Focus technique: Concentrate on one instance, others on auto",
+            "Build technique: Gradually engage all four instances",
+            "Tutti technique: Use all four simultaneously for climax"
+          ],
+          "complexityLevel": "Requires extensive practice for coordination"
+        }
+      ]
+    },
+    "schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "$id": "fruity-xyz-presets",
+      "title": "X-Y-Z Controller Preset Schema",
+      "description": "Schema for 3D controller preset definitions",
+      "type": "object",
+      "properties": {
+        "presets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "category": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "mappings": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "output": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    },
+                    "range": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity X-Y-Z Controller\n\n## The 60-Second Mental Model\nFruity X-Y-Z Controller is a **3D Performance Surface**. While the X-Y controller handles 2D (Left/Right, Up/Down), the X-Y-Z adds a **third dimension (Z)**—usually controlled by the mouse wheel or a \"pinch\" gesture on a touchscreen. It also outputs signals based on how **fast** you move (Speed) and how much you **speed up** (Acceleration). [SRC: IL-MAN]\n\n## Purpose & Identity\n*   **Identity:** A multidimensional internal controller.\n*   **Where it fits:** It's a \"Super Macro.\" Use it to control an entire atmosphere or a complex synth lead with a single 3D gesture.\n\n## Hip-Hop / R&B Context\n*   **The \"Space-Time\" Controller:** Link X to Filter, Y to Reverb, and Z to Delay Feedback. As you move the target and scroll the wheel, you are physically \"placing\" the sound in a 3D room.\n*   **Dynamic Ad-libs:** Use the **Speed** output to control a distortion plugin. When you move the target fast, the vocal gets grittier; when you move slow, it stays clean.\n*   **Advanced 808s:** Use X for Pitch, Y for Drive, and Z for a Low-Pass Filter.\n\n## When To Use\n*   When you have a **touchscreen** or a high-quality mouse wheel.\n*   When controlling **three or more** parameters at once.\n*   When you want your automation to respond to your **physical energy** (Speed/Acceleration).\n\n## When NOT To Use\n*   **Standard Mixing:** If you just need a simple EQ curve, this is overkill.\n*   **If you lack 3D inputs:** If your mouse doesn't have a wheel or you don't have a touchscreen, the Z-axis is difficult to use effectively.\n",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Fruity X-Y-Z Controller\n\n## UI Tour\n1.  **3D Pad:** The grid area where you move the target.\n2.  **Output Knobs (X, Y, Z):** Displays the current values of the three axes.\n3.  **Speed/Acceleration Meters:** Visual feedback of how fast the target is moving.\n4.  **Absolute vs. Relative Mode:**\n    *   **Absolute:** The target stays where you click.\n    *   **Relative:** The target moves based on the *difference* in your mouse movement (best for Joysticks). [SRC: IL-MAN]\n\n## Signal Flow\n1.  **Input:** Mouse movement (X/Y) + Wheel (Z).\n2.  **Analysis:** The plugin calculates position, speed (velocity), and acceleration (rate of speed change).\n3.  **Output Generation:** Five independent signals are broadcast to FL Studio:\n    *   **X, Y, Z** (Position-based)\n    *   **Speed** (Movement-based)\n    *   **Acceleration** (Momentum-based)\n4.  **Remote Control:** These signals are picked up by any knob linked via \"Internal Controller.\"\n\n## The \"Speed\" & \"Acceleration\" Secrets\n*   **Speed:** Imagine a \"Washing Machine\" effect. If you stir the target fast, the effect turns up. If you stop, it turns down.\n*   **Acceleration:** This is like a \"Snatch\" or \"Flick.\" If you suddenly jerk the mouse, the signal spikes. Perfect for \"accent\" triggers (e.g., triggering a reverb splash).\n\n## Things Beginners Misunderstand\n*   **The Z-Axis:** By default, it's mapped to the Mouse Wheel. If you don't have a wheel, you can't move the Z-value manually in the pad.\n*   **Smoothing:** X-Y-Z also has internal smoothing. If your hardware is \"jittery,\" use the Speed/Accel smoothing settings to clean it up. [SRC: REPUTABLE]\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity X-Y-Z Controller\n\n## Moody (Dark, Deep, Immersive)\n*   **X:** Low-Pass Filter (Cutoff).\n*   **Y:** Reverb Mix.\n*   **Z:** Stereo Width (expanding the room).\n*   **Speed:** Link to \"LFO Rate\" to make the darkness pulse as you move.\n\n## Upbeat (Punchy, Aggressive, Rhythmic)\n*   **X:** Distortion Drive.\n*   **Y:** High-Pass Filter (Thinning it out for transitions).\n*   **Z:** Bitcrush Amount.\n*   **Acceleration:** Link to a \"Patcher\" gate to create stutters on sudden movements.\n\n## Psychedelic (Melted, Swirling, Spacey)\n*   **X:** Phaser Mix.\n*   **Y:** Delay Feedback.\n*   **Z:** Chorus Depth.\n*   **Speed:** Link to \"Phaser Rate\" to create a swirling vortex that speeds up with your hand.\n\n## Jazzy (Nuanced, Organic, Dynamic)\n*   **X:** Expression/Volume.\n*   **Y:** Filter Resonance (for \"wah-wah\" effects).\n*   **Z:** Formant Shift.\n*   **Speed:** Link to \"Vibrato Depth\" (faster movement = more vibrato).\n\n## Vibey (Smooth, Glossy, R&B)\n*   **X:** Stereo Pan.\n*   **Y:** Stereo Shaper (Width).\n*   **Z:** Reverb Decay Time.\n*   **Result:** You can \"place\" the vocal in a wide, shimmering 3D space by moving and scrolling. [SRC: REPUTABLE]\n",
+      "3d-vector-control-concepts": "# 3D Vector Control Concepts\n\n## Overview\n\nThe Fruity X-Y-Z Controller transforms 2D mouse/touch movement into three independent automation signals, creating a powerful 3D performance control surface. Think of it as a joystick that outputs continuous control data in three dimensions simultaneously.\n\n## The Three Axes\n\n### X-Axis (Horizontal)\n- **Range**: 0% (left) to 100% (right)\n- **Default mapping**: Pan position, stereo balance\n- **Performance use**: Left/right spatial positioning\n- **Creative use**: Morphing between two states or parameters\n\n### Y-Axis (Vertical)  \n- **Range**: 0% (bottom) to 100% (top)\n- **Default mapping**: Filter cutoff frequency\n- **Performance use**: Intensity, brightness, or depth control\n- **Creative use**: Continuous parameter sweeps\n\n### Z-Axis (Depth)\n- **Range**: 0% (back) to 100% (front)\n- **Control method**: Mouse wheel scroll OR touch pinch/zest gesture\n- **Default mapping**: Reverb send amount or effect depth\n- **Performance use**: \"Bringing sounds forward\" or pushing them back\n- **Creative use**: Morphing between dry/wet states\n\n## How It Works\n\n1. **Position Detection**: Controller tracks cursor position within its pad area\n2. **Real-time Output**: Three continuous CC/automation signals (0-100% range)\n3. **Multi-touch Support**: On touchscreens, pinch/zest gesture controls Z-axis\n4. **Speed & Acceleration**: Optional outputs track how fast you move, not just position\n\n## Performance Philosophy\n\nThe X-Y-Z Controller is designed for **expressive, gestural control** rather than precise automation. Unlike drawing precise curves in the playlist, this controller rewards fluid, organic movements that capture human intention and emotion.\n\n[SRC: IL-MAN]\n",
+      "absolute-vs-relative-mode": "# Absolute vs Relative Mode\n\n## Two Control Philosophies\n\nThe X-Y-Z Controller offers two fundamentally different ways of mapping input to output: **Absolute** and **Relative** mode. Understanding the difference is critical for choosing the right mode for your workflow.\n\n## Absolute Mode\n\n### How It Works\n- Direct 1:1 mapping between pad position and output value\n- Bottom-left = 0% on all axes; Top-right = 100% on all axes\n- Cursor position directly determines parameter values\n\n### Best For\n- **Visual performers** who want predictable control\n- **Spatial mixing** (X=pan, Y=filter, Z=depth)\n- **One-shot parameter sweeps** where you want exact correlation\n- **Live visual feedback** during performance\n\n### Behavior Example\n```\nPad Position → Output Values\nBottom-left corner  → X=0%, Y=0%, Z=0%\nCenter position     → X=50%, Y=50%, Z=50%\nTop-right corner    → X=100%, Y=100%, Z=100%\n```\n\n## Relative Mode\n\n### How It Works\n- Cursor movement **changes** values rather than setting them absolutely\n- Starting from any position, moving right increases X, moving left decreases X\n- Values persist when you release; pick up where you left off\n\n### Best For\n- **Continuous modulation** without snapping to positions\n- **Cumulative gestures** that build up over time\n- **Precise fine-tuning** after getting close to target\n- **DJ-style performance** where you \"ride\" parameters\n\n### Behavior Example\n```\nMovement → Value Change\nMove right 10px    → X increases by ~5%\nMove up 20px       → Y increases by ~10%\nRelease mouse      → Values hold at current position\nReturn to pad      → Continue from where you left off\n```\n\n## Mode Selection Guide\n\n| Scenario | Recommended Mode | Why |\n|----------|-----------------|-----|\n| 3D spatial audio mixing | Absolute | Direct visual correlation |\n| Filter sweeps during buildups | Relative | Smooth, continuous control |\n| Pan automation on vocals | Absolute | Precise left/right positioning |\n| Complex morphing patches | Relative | Build up modulation depth |\n| Touchscreen performance | Absolute | Natural direct manipulation |\n| Tabletop DJ controller feel | Relative | Traditional incremental control |\n\n## Switching Modes\n\nToggle between modes in the controller interface:\n- Look for the **Absolute/Relative** switch in the plugin header\n- Mode change takes effect immediately without interrupting current values\n- Each instance can have independent mode settings\n\n[SRC: IL-MAN]\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity X Y Z Controller\r\n\r\n## What It Is\r\nFruity X Y Z Controller is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "multi-touch-gesture-control": "# Multi-Touch and Gesture Control\n\n## Touch-Optimized Performance\n\nThe X-Y-Z Controller is specifically designed for modern touch interfaces, enabling expressive control on tablets, touchscreens, and hybrid devices.\n\n## Standard Touch Gestures\n\n### Single Finger (X and Y)\n- **Drag**: Controls X (horizontal) and Y (vertical) simultaneously\n- **Tap and hold**: Locks position for sustained values\n- **Release**: Values hold (Absolute mode) or continue modulation (Relative mode)\n\n### Two-Finger Pinch (Z-Axis)\n- **Pinch inward**: Decreases Z value (0-50% range)\n- **Spread outward**: Increases Z value (50-100% range)\n- **Single-finger scroll**: Alternative Z control on some devices\n\n### Zest Gesture (Advanced)\n- **Quick flick**: Brief Z modulation for \"stabs\" or accents\n- **Circular motion**: Complex parameter interplay combining all three axes\n\n## Multi-Touch Scenarios\n\n### Scenario 1: Tablet Performance\n**Setup**: iPad or Windows tablet running FL Studio Mobile/Remote\n**Gestures**: \n- One hand for X/Y positioning\n- Pinch gesture on same hand for Z control\n- Result: True one-handed 3D performance\n\n### Scenario 2: Hybrid Studio Control\n**Setup**: Touchscreen monitor + traditional mouse\n**Workflow**:\n- Touch for expressive performance passages\n- Mouse for precise positioning during mixing\n- Seamless mode switching between approaches\n\n### Scenario 3: Live Stage Performance\n**Setup**: Touchscreen laptop or tablet stand\n**Technique**:\n- Pre-mapped macro controls\n- Visual feedback on screen showing parameter states\n- Multiple X-Y-Z Controller instances for different instrument groups\n\n## Speed & Acceleration Outputs\n\nBeyond position, the controller tracks **how you move**:\n\n### Speed Output\n- Measures velocity of cursor movement\n- Fast swipes = higher speed values\n- Use for: Triggering envelope followers, accent detection\n\n### Acceleration Output  \n- Measures change in speed (getting faster/slower)\n- Beginning/end of gestures = acceleration spikes\n- Use for: Dynamic expression, \"effort\" detection\n\n### Practical Applications\n\n**Dynamic Filter Opening**\n```\nSpeed → Filter Cutoff\nSlow drag  = Gentle filter opening\nFast swipe = Dramatic filter sweep\n```\n\n**Accent Detection**\n```\nAcceleration → Distortion Amount\nSudden start = Brief distortion spike\nSmooth motion = Clean sustained tone\n```\n\n## Touch Calibration Tips\n\n1. **Surface Area**: Larger pads = finer control; smaller pads = faster response\n2. **Sensitivity**: Adjust OS-level touch sensitivity if available\n3. **Palm Rejection**: Disable for intentional two-handed control\n4. **Latency**: Lower buffer sizes reduce touch-to-sound delay\n\n## Common Multi-Touch Workflows\n\n### Workflow: One-Handed Synth Performance\n1. Load X-Y-Z Controller before synth\n2. Map X = Cutoff, Y = Resonance, Z = Distortion\n3. Perform with single hand controlling all timbre aspects\n4. Record automation for later refinement\n\n### Workflow: Spatial Audio Positioning\n1. Map X = Pan, Y = Reverb Send, Z = Delay Time\n2. Use touch to \"throw\" sounds around the stereo field\n3. Pinch to control depth/distance perception\n4. Creates immersive 3D mix movement\n\n[SRC: IL-MAN]\n",
+      "signal-flow": "# Signal Flow: Fruity X Y Z Controller\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n",
+      "speed-and-acceleration": "# Understanding Speed and Acceleration\n\n## Beyond Position: Movement Dynamics\n\nThe Fruity X-Y-Z Controller offers two additional outputs that track **how** you move, not just **where** you are. These dynamic outputs—Speed and Acceleration—unlock expressive possibilities beyond static positioning.\n\n## Speed Output Explained\n\n### What It Measures\n- **Instantaneous velocity**: How fast the cursor is moving\n- Scale: 0% (stopped) to 100% (maximum detected speed)\n- Updated in real-time as you drag or swipe\n\n### Output Characteristics\n- Smooth, continuous values during motion\n- Drops to 0% when cursor stops\n- Peaks during rapid swipes or gestures\n- Responsive to both direction and magnitude of movement\n\n### Creative Applications\n\n**1. Velocity-Sensitive Filter**\n```\nSpeed → Filter Cutoff modulation\nSlow exploration = Gentle tone variations  \nFast swipe = Dramatic filter sweep\nStationary = Base cutoff frequency\n```\n\n**2. Dynamic Distortion Drive**\n```\nSpeed → Distortion Amount\nMoving = More drive and grit\nStopped = Clean tone returns\n```\n\n**3. Rhythmic Gate/Trigger**\n```\nSpeed threshold → Trigger events\nFast movements = Accent notes or hits\nBuilds rhythmic interest through motion\n```\n\n## Acceleration Output Explained\n\n### What It Measures\n- **Change in velocity**: Getting faster or slower\n- Scale: -100% (rapid deceleration) to +100% (rapid acceleration)\n- Center (0%) = constant speed or stopped\n\n### Output Characteristics\n- Spikes at beginning of movements (positive acceleration)\n- Spikes at end of movements (negative acceleration)\n- Near-zero during constant-speed drags\n- Captures \"effort\" and \"intention\" in gestures\n\n### Creative Applications\n\n**1. Accent and Expression**\n```\nPositive Acceleration → Volume/Expression boost\nStart moving = Note attack emphasized\nCaptures performance intention naturally\n```\n\n**2. Note Triggering**\n```\nAcceleration threshold → Trigger new notes\nQuick gesture starts = New note/arpeggio step\nTurns movement into rhythmic sequencer\n```\n\n**3. Envelope Following**\n```\nAcceleration shape → Envelope characteristics\nFast attack in gesture = Fast envelope attack\nNatural correlation between motion and sound\n```\n\n## Speed vs Acceleration: When to Use Each\n\n### Choose Speed When:\n- You want continuous modulation based on movement intensity\n- Creating filter sweeps that respond to gesture velocity\n- Building \"humanized\" parameter variation\n- Making expressiveness proportional to physical effort\n\n### Choose Acceleration When:\n- You want event triggers at gesture boundaries\n- Creating accent detection for dynamic performances\n- Building interactive instruments that respond to \"intention\"\n- Designing gesture-based sequencers or arpeggiators\n\n## Combined Usage: The \"Gesture Profile\"\n\nUsing both outputs together captures the complete character of a movement:\n\n```\nPerformance Gesture Analysis:\n├─ Position (X/Y/Z): Where you are\n├─ Speed: How fast you're moving  \n└─ Acceleration: How your movement is changing\n\nTogether, they describe the complete gesture curve:\n- Start: Position change + rising speed + positive acceleration\n- Sustain: Position change + constant speed + zero acceleration  \n- Stop: Position hold + dropping speed + negative acceleration\n```\n\n## Practical Setup Guide\n\n### Setup 1: Expressive Lead Synth\n```\nController Mappings:\n├─ X → Oscillator Pitch (±12 semitones)\n├─ Y → Filter Cutoff\n├─ Z → LFO Rate\n├─ Speed → Filter Resonance boost\n└─ Acceleration → Note accent (volume boost)\n\nResult: Every aspect of the sound responds to how you move\n```\n\n### Setup 2: Dynamic Drum Processing\n```\nController Mappings:\n├─ X → Pan position\n├─ Speed → Compression threshold (faster = more compression)\n└─ Acceleration → Transient shaper attack\n\nResult: Drums respond dynamically to your performance energy\n```\n\n### Setup 3: 3D Soundscape Navigation\n```\nController Mappings:\n├─ X → Pan (left/right position)\n├─ Y → Volume (front/back depth illusion)\n├─ Z → Reverb send (distance perception)\n├─ Speed → Filter brightness (movement = clarity)\n└─ Acceleration → Delay throws (accents = echoes)\n\nResult: Navigate through a spatial audio environment with complete gesture control\n```\n\n## Recording and Editing\n\n### Live Performance Capture\n- All five outputs (X, Y, Z, Speed, Acceleration) can be recorded simultaneously\n- Use FL Studio's \"Record automation\" feature during playback\n- Each output appears as separate automation clips\n\n### Post-Performance Refinement\n- Edit recorded automation in the Playlist\n- Smooth speed/acceleration curves for cleaner modulation\n- Quantize gestures to grid for rhythmic precision\n- Layer multiple takes for complex arrangements\n\n## Pro Tips\n\n1. **Start Simple**: Master position control first, then add speed/acceleration\n2. **Visual Feedback**: Enable \"Show automation values\" to see real-time output\n3. **Gesture Memory**: Practice repeatable gestures for consistent results\n4. **MIDI Mapping**: Route outputs to external hardware for hybrid setups\n5. **Modulation Matrix**: Use X-Y-Z Controller with Patcher for complex routing\n\n[SRC: IL-MAN]\n"
+    },
+    "Quick-Reference": {
+      "cheat-sheet": "# X-Y-Z Controller Quick Reference\n\n## Core Controls\n\n| Control | Output Range | Default Use |\n|---------|-------------|-------------|\n| **X Position** | 0-100% | Pan / Stereo balance |\n| **Y Position** | 0-100% | Filter cutoff / Brightness |\n| **Z Position** | 0-100% | Effect depth / Reverb send |\n| **Speed** | 0-100% | Velocity-based modulation |\n| **Acceleration** | -100% to +100% | Accent / Expression triggers |\n\n## Mode Selection\n\n| Mode | Behavior | Best For |\n|------|----------|----------|\n| **Absolute** | Position = Value directly | Visual mixing, spatial control |\n| **Relative** | Movement changes value | Continuous modulation, DJ-style |\n\n## Common Mapping Formulas\n\n### 3D Spatial Audio\n```\nX → Pan (Left 0% / Right 100%)\nY → Low-pass Filter Cutoff (Dark 0% / Bright 100%)\nZ → Reverb Send (Dry 0% / Wet 100%)\n```\n\n### Total Synth Performance\n```\nX → Pitch Bend (±12 semitones)\nY → Filter Cutoff\nZ → Filter Resonance\nSpeed → LFO Depth\nAcceleration → Distortion Drive\n```\n\n### Effect Chain Morphing\n```\nX → Effect 1 Dry/Wet\nY → Effect 2 Dry/Wet  \nZ → Effect 3 Dry/Wet\nResult: Morph between three effects\n```\n\n## Z-Axis Control Methods\n\n| Input Device | Z Control Method |\n|--------------|-----------------|\n| Mouse | Scroll wheel while hovering |\n| Touchscreen | Pinch/spread gesture |\n| Tablet | Two-finger pinch |\n| Trackpad | Two-finger scroll |\n\n## Multi-Touch Gestures\n\n| Gesture | Controls | Use Case |\n|---------|----------|----------|\n| Single finger drag | X + Y | Basic positioning |\n| Two-finger pinch | Z | Depth control |\n| Quick flick | Speed spike | Accents |\n| Circular motion | All 3 + Speed | Complex modulation |\n\n## Linking Targets\n\nLink to any automatable parameter via:\n1. Right-click target parameter → \"Link to controller\"\n2. Select X-Y-Z Controller from list\n3. Choose output (X, Y, Z, Speed, or Acceleration)\n4. Set mapping range and curve if needed\n\n## Performance Tips\n\n- **Smooth movements** = gradual parameter changes\n- **Quick swipes** = dramatic sweeps with speed/acceleration modulation\n- **Corner positions** = extreme parameter states (0% or 100%)\n- **Center position** = neutral state (50% on all axes)\n- **Z requires active scrolling** while X/Y being controlled\n\n[SRC: IL-MAN]\n",
+      "gesture-guide": "# Touch and Gesture Quick Reference\n\n## Device-Specific Control Methods\n\n### Desktop Mouse\n| Action | Result |\n|--------|--------|\n| Move cursor | Controls X and Y |\n| Scroll wheel | Controls Z |\n| Click and drag | Engages controller |\n| Release | Holds last position (Absolute) / continues delta (Relative) |\n\n### Touchscreen (Tablet/Phone)\n| Gesture | Result |\n|---------|--------|\n| Single finger drag | X + Y control |\n| Two-finger pinch/spread | Z control |\n| Quick tap | Momentary engagement |\n| Hold and move | Sustained control |\n| Flick | Speed spike for accents |\n\n### Trackpad (Laptop)\n| Gesture | Result |\n|---------|--------|\n| Single finger move | X + Y control |\n| Two-finger scroll | Z control |\n| Force touch | Optional pressure mapping |\n\n### MIDI Controller (External)\n| Input | Mapping |\n|-------|---------|\n| Joystick X | X position |\n| Joystick Y | Y position |\n| Ribbon/Slider | Z position |\n| Aftertouch | Speed or Acceleration |\n\n## Gesture Library\n\n### Basic Gestures\n\n#### 1. The Sweep\n**Motion**: Smooth arc from one edge to opposite edge\n**Use**: Filter sweeps, fade ins/outs, spatial traversal\n**Produces**: Continuous ramp in X or Y\n\n#### 2. The Pulse  \n**Motion**: Quick tap and release\n**Use**: One-shot effects, stabs, accents\n**Produces**: Brief spike in Speed/Acceleration\n\n#### 3. The Orbit\n**Motion**: Circular movement around center\n**Use**: LFO-like modulation, rhythmic variation\n**Produces**: Sine-like modulation on both X and Y\n\n#### 4. The Flick\n**Motion**: Fast swipe with immediate stop\n**Use**: Quick transitions, jumps, accents\n**Produces**: High speed values, acceleration spike\n\n### Advanced Gestures\n\n#### 5. The 3D Throw\n**Motion**: Diagonal movement + simultaneous Z scroll/pinch\n**Use**: \"Throwing\" sounds through 3D space\n**Produces**: All three axes change simultaneously\n\n#### 6. The Spiral\n**Motion**: Circular motion that spirals inward/outward\n**Use**: Complex filter modulation, evolving textures\n**Produces**: Periodic X/Y with changing amplitude\n\n#### 7. The Bounce\n**Motion**: Quick vertical oscillations\n**Use**: Tremolo effects, rhythmic stuttering\n**Produces**: Square-wave-like Y modulation\n\n#### 8. The Figure-8\n**Motion**: Horizontal figure-8 pattern\n**Use**: Stereo panning with filter modulation\n**Produces**: Lissajous curve on X/Y outputs\n\n## Gesture-to-Sound Translation\n\n| Gesture Type | Musical Result | Best For |\n|--------------|---------------|----------|\n| **Smooth/Slow** | Legato, flowing passages | Ambient, pads, strings |\n| **Fast/Jagged** | Staccato, aggressive | Drums, percussion, leads |\n| **Circular** | Cyclical, repetitive | Arpeggios, rhythmic patterns |\n| **Erratic** | Random, experimental | Sound design, effects |\n| **Precise** | Controlled, intentional | Mixing, automation |\n\n## Multi-Touch Combinations\n\n### Two-Handed Performance\n**Technique**: \n- Left hand: X/Y control for one instrument group\n- Right hand: X/Y control for another group\n- Both hands: Pinch gestures for Z on respective groups\n\n### Sequential Gestures\n**Technique**:\n1. Start with slow, deliberate movement (establish baseline)\n2. Accelerate into fast gesture (build intensity)\n3. Release with quick stop (create accent)\n\n### Counterpoint Gestures\n**Technique**:\n- Right hand moves up while left hand moves down\n- Creates complementary parameter changes\n- Useful for stereo width, crossfading\n\n## Practice Drills\n\n### Drill 1: Precision Positioning\n1. Set Absolute mode\n2. Practice hitting exact corners (0%,0%), (100%,100%), etc.\n3. Try hitting center (50%,50%) consistently\n4. Gradually increase speed while maintaining accuracy\n\n### Drill 2: Smooth Sweeps\n1. Set Relative mode\n2. Practice continuous filter sweeps (Y-axis)\n3. Focus on steady speed, no jerky movements\n4. Record and analyze automation curves\n\n### Drill 3: Z Coordination\n1. Map X=Pan, Y=Filter, Z=Reverb\n2. Practice moving X/Y while simultaneously scrolling Z\n3. Goal: Independent control of all three axes\n4. Master the \"3D throw\" gesture\n\n### Drill 4: Dynamic Expression\n1. Map Speed to Filter Resonance\n2. Map Acceleration to Distortion\n3. Practice phrases with varying intensity\n4. Listen to how gesture dynamics affect sound\n\n## Troubleshooting Common Issues\n\n| Issue | Cause | Solution |\n|-------|-------|----------|\n| Z not responding | Wrong input method | Use scroll wheel or pinch gesture |\n| Jumpy control | High sensitivity | Reduce mouse/touch sensitivity |\n| Laggy response | High buffer size | Lower audio buffer settings |\n| Values snapping | Wrong mode | Switch to Relative for smooth control |\n| Unintended modulation | Palm contact | Enable palm rejection or lift hand |\n\n[SRC: IL-MAN]\n",
+      "mapping-guide": "# Output-to-Parameter Mapping Guide\n\n## Standard Mapping Scenarios\n\n### 1. Spatial Positioning (3D Audio)\n\n| Axis | Target Parameter | Value Range | Result |\n|------|-----------------|-------------|--------|\n| X | Pan | 0% = Hard Left, 100% = Hard Right | Stereo positioning |\n| Y | Filter Cutoff | 0% = Closed, 100% = Open | Near/far depth illusion |\n| Z | Reverb Send | 0% = Dry, 100% = Wet | Distance perception |\n\n### 2. Timbre Control (Synthesis)\n\n| Axis | Target Parameter | Value Range | Result |\n|------|-----------------|-------------|--------|\n| X | Oscillator Mix | 0% = Saw, 100% = Square | Waveform morph |\n| Y | Filter Cutoff | 0% = Dark, 100% = Bright | Tone brightness |\n| Z | Resonance | 0% = Flat, 100% = Peaky | Emphasis control |\n\n### 3. Effect Chain Morphing\n\n| Axis | Target Parameter | Value Range | Result |\n|------|-----------------|-------------|--------|\n| X | Chorus Wet/Dry | 0% = Dry, 100% = Wet | Modulation amount |\n| Y | Phaser Rate | 0% = Slow, 100% = Fast | Sweep speed |\n| Z | Delay Feedback | 0% = Short, 100% = Long | Echo density |\n\n### 4. Drum Processing Dynamics\n\n| Output | Target Parameter | Trigger Point | Result |\n|--------|-----------------|---------------|--------|\n| Speed | Compression Ratio | >70% | Harder compression on fast hits |\n| Acceleration | Transient Boost | Any spike | Enhanced attack on accents |\n| X | Pan | Continuous | Positioning |\n\n## Vibe-to-Parameter Translation\n\n| Vibe Goal | X Mapping | Y Mapping | Z Mapping |\n|-----------|-----------|-----------|-----------|\n| **WARMTH** | Oscillator detune | Filter cutoff (low) | Drive amount |\n| **CLARITY** | High shelf boost | Exciter mix | Presence EQ |\n| **DEPTH** | Stereo width | Reverb time | Delay feedback |\n| **PUNCH** | Transient shaper | Compression threshold | Saturation |\n| **AIR** | High-pass filter | Sheen/brightness | Air EQ boost |\n\n## Speed & Acceleration Applications\n\n### Speed → Common Targets\n- **Filter envelope amount**: Faster = more pronounced envelope\n- **Distortion drive**: Moving = more grit\n- **LFO rate**: Speed controls modulation speed\n- **Volume**: Velocity-sensitive dynamics\n\n### Acceleration → Common Targets\n- **Note trigger**: Start moving = new note\n- **Accent boost**: Sudden start = volume spike\n- **Envelope attack**: Gesture attack = sound attack\n- **Effect send**: Accent = throw to reverb/delay\n\n## Multi-Parameter Macros\n\n### Macro 1: Complete Timbre Sculpting\n```\nX → Pitch (±7 semitones)\nY → Cutoff (full range)\nZ → Resonance (0-80%)\nSpeed → LFO depth (0-100%)\nAcceleration → Distortion (0-50%)\n```\n\n### Macro 2: Spatial Movement\n```\nX → Pan (full stereo)\nY → Volume (fade in/out)\nZ → Reverb send (enter space)\nSpeed → Filter opening (arrival effect)\n```\n\n### Macro 3: Effect Morph\n```\nX → Phaser depth\nY → Chorus rate\nZ → Delay time\nSpeed → All effect levels\n```\n\n## Quick Mapping Reference Table\n\n| If You Want... | Map X To... | Map Y To... | Map Z To... |\n|----------------|-------------|-------------|-------------|\n| **Panning instrument** | Pan | Volume | Reverb |\n| **Filter sweeps** | Resonance | Cutoff | Drive |\n| **Synth morphing** | Osc A/B mix | Cutoff | Envelope depth |\n| **Effect throws** | Delay send | Reverb send | Chorus send |\n| **Dynamic drums** | Pan | Speed→Comp | Accel→Transient |\n| **3D synthesis** | Pitch | Timbre | Space |\n\n[SRC: IL-MAN]\n",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity X Y Z Controller\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity X Y Z Controller to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity X Y Z Controller\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n",
+      "troubleshooting-faq": "# Troubleshooting and FAQ\n\n## Common Issues\n\n### Controller Not Responding\n\n**Symptom**: Moving mouse/touch has no effect on linked parameters\n\n**Solutions**:\n1. Verify controller is armed (check \"On/Off\" button in plugin header)\n2. Confirm target parameter is properly linked\n3. Check if controller is bypassed in the mixer\n4. Ensure plugin is not frozen or disabled\n\n### Z-Axis Won't Control\n\n**Symptom**: X and Y work but Z doesn't respond\n\n**Solutions**:\n- **Mouse**: Use scroll wheel while hovering over controller pad\n- **Touchscreen**: Use two-finger pinch gesture\n- **Trackpad**: Two-finger scroll gesture\n- Check Z output is linked to a target parameter\n- Verify Absolute/Relative mode selection\n\n### Jerky or Stuttering Movement\n\n**Symptom**: Automation is not smooth, shows stepped values\n\n**Solutions**:\n1. Reduce audio buffer size (Options → Audio Settings)\n2. Disable \"HQ for all plugins\" if CPU overloaded\n3. Use Relative mode for smoother transitions\n4. Increase automation smoothing in settings\n5. Check for conflicting automation clips\n\n### Values Snap to Extremes\n\n**Symptom**: Parameters jump to 0% or 100% unexpectedly\n\n**Solutions**:\n1. Check you're in Absolute mode (position = value)\n2. Verify mapping range limits in link settings\n3. Disable \"Smart disable\" if plugin sleeping\n4. Check for competing automation envelopes\n\n### Can't Control Multiple Parameters\n\n**Symptom**: Only one parameter responds despite multiple links\n\n**Solutions**:\n1. Each X-Y-Z Controller output (X, Y, Z, Speed, Accel) can link to ONE parameter\n2. Use multiple X-Y-Z Controller instances for complex setups\n3. Route through Patcher for advanced multi-target routing\n4. Check no two links are targeting the same parameter\n\n## Frequently Asked Questions\n\n**Q: Can I use X-Y-Z Controller on the Master channel?**\nA: Yes, but effects are applied to the entire mix. Better suited for individual instrument/mixer track control.\n\n**Q: How do I record automation from the controller?**\nA: Enable \"Record automation\" in the Transport panel, then perform while playing. All outputs record as separate automation clips.\n\n**Q: Can I use this with external MIDI controllers?**\nA: Yes, map your controller's joystick or ribbon to the X-Y-Z Controller parameters, then link those to targets.\n\n**Q: What's the difference between Speed and Acceleration?**\nA: Speed = how fast you're moving (0-100%). Acceleration = how your speed is changing (-100% to +100%).\n\n**Q: Can I use this on a touchscreen?**\nA: Yes, fully optimized for touch with multi-finger gesture support including pinch for Z-axis.\n\n**Q: How many instances can I use?**\nA: Unlimited. Each instance provides X, Y, Z, Speed, and Acceleration outputs independently.\n\n**Q: Can I invert the output (0% = 100%)?**\nA: Yes, use the \"Mapping formula\" option when linking to reverse the range.\n\n**Q: Does this work with third-party VSTs?**\nA: Yes, any automatable parameter in any plugin can be linked.\n\n**Q: Can I use this for live performance?**\nA: Absolutely designed for live use. Enable \"Performance mode\" in FL for best results.\n\n**Q: Why do my gestures feel laggy?**\nA: Check audio buffer size (lower = less latency), disable visual effects, and ensure sufficient CPU headroom.\n\n## Performance Optimization\n\n### For Live Performance\n1. Set buffer size ≤256 samples\n2. Disable unnecessary visualizations\n3. Use Relative mode for predictable control\n4. Pre-link all parameters before performance\n5. Save as template for instant recall\n\n### For Studio Production\n1. Higher buffer sizes acceptable (≤1024)\n2. Record multiple takes and comp best sections\n3. Edit automation curves after recording\n4. Use Absolute mode for precise positioning\n5. Layer multiple controllers for complex arrangements\n\n### For Touch Devices\n1. Enable \"Show touches\" in OS settings for visual feedback\n2. Use screen protector optimized for touch\n3. Disable auto-sleep during performance\n4. Calibrate touch sensitivity in device settings\n5. Practice gestures to build muscle memory\n\n## Advanced Tips\n\n**Creating Macro Controls**:\n1. Insert Patcher on mixer track\n2. Add X-Y-Z Controller + target plugins inside Patcher\n3. Route controller outputs to multiple parameters via modulation matrix\n4. Save as preset for reusable macro\n\n**Gesture Quantization**:\n1. Record freehand performance\n2. Select automation clip in Playlist\n3. Use \"Quantize\" to snap to grid\n4. Humanize with randomization if too rigid\n\n**MIDI Learn Workflow**:\n1. Right-click X-Y-Z Controller parameter\n2. Select \"Link to controller\"\n3. Move external controller to assign\n4. Save as preset for hardware integration\n\n[SRC: IL-MAN]\n",
+      "vibe-mapping-guide": "# Vibe Mapping Quick Reference\n\n## The Five Vibe Targets with 3D Control\n\n### 1. WARMTH (Analog, Vintage, Thick)\n\n**3D Mapping Strategy**:\n```\nX-Axis: Oscillator detune amount (0% = in-tune, 100% = wide detune)\nY-Axis: Low-pass filter cutoff (0% = dark/warm, 100% = bright)\nZ-Axis: Saturation/drive amount (0% = clean, 100% = saturated)\n\nGesture: Start bottom-left (warm/dark), move slowly right and up\n```\n\n**Recommended Settings**:\n- Use low cutoff frequencies (Y < 40%)\n- Add subtle saturation (Z 20-40%)\n- Gentle pitch widening (X 10-30%)\n\n---\n\n### 2. CLARITY (Present, Defined, Forward)\n\n**3D Mapping Strategy**:\n```\nX-Axis: Presence EQ boost (0% = flat, 100% = +6dB @ 3-5kHz)\nY-Axis: High-shelf brightness (0% = natural, 100% = airy/shiny)\nZ-Axis: Exciter/harmonic enhancement (0% = dry, 100% = enhanced)\n\nGesture: Quick movements in upper-right quadrant, Z for enhancement\n```\n\n**Recommended Settings**:\n- Target 2-5kHz range (presence zone)\n- Moderate brightness boost (Y 40-60%)\n- Subtle exciter use (Z 20-40%)\n\n---\n\n### 3. DEPTH (Spacious, Immersive, 3D)\n\n**3D Mapping Strategy**:\n```\nX-Axis: Stereo width (0% = mono, 100% = ultra-wide)\nY-Axis: Reverb send level (0% = dry, 100% = wet)\nZ-Axis: Delay feedback/time (0% = slapback, 100% = long ambient)\n\nGesture: Create space with Y, widen with X, add depth with Z\n```\n\n**Recommended Settings**:\n- Start narrow (X < 30%), expand as needed\n- Reverb as main depth tool (Y 30-70%)\n- Delay for slapback/ambience (Z 20-50%)\n\n---\n\n### 4. PUNCH (Dynamic, Aggressive, Tight)\n\n**3D Mapping Strategy**:\n```\nX-Axis: Transient shaper amount (0% = natural, 100% = max punch)\nY-Axis: Compression threshold (0% = no compression, 100% = heavy)\nZ-Axis: Saturation on transients (0% = clean, 100% = driven)\n\nGesture: Quick, decisive movements. Speed output → accent boost\n```\n\n**Recommended Settings**:\n- Moderate transient shaping (X 40-60%)\n- Light-medium compression (Y 30-50%)\n- Saturation only on peaks (Z 20-40%)\n- Map Speed to accent detection for dynamic punch\n\n---\n\n### 5. AIR (Bright, Shimmer, Lift)\n\n**3D Mapping Strategy**:\n```\nX-Axis: High-pass filter (0% = full range, 100% = remove lows)\nY-Axis: Air EQ (12-20kHz shelf) (0% = flat, 100% = +6dB)\nZ-Axis: Sparkle/dimension enhancer (0% = natural, 100% = enhanced)\n\nGesture: Position in upper area for brightness, Z for shimmer\n```\n\n**Recommended Settings**:\n- Remove rumble (X 10-20% high-pass)\n- Add air band (Y 30-50%)\n- Enhancement for polish (Z 20-40%)\n\n## Vibe Combination Matrix\n\n| Combination | X | Y | Z | Speed |\n|-------------|---|---|---|-------|\n| **Warm + Deep** | Width | Cutoff (low) | Reverb | - |\n| **Clear + Punch** | Presence | Compression | Drive | Accents |\n| **Deep + Air** | Width | Reverb | Air EQ | LFO Depth |\n| **Punch + Clear** | Transient | Cutoff (high) | Exciter | Velocity |\n| **Warm + Punch** | Detune | Saturation | Drive | Accents |\n\n## Quick Vibe Presets\n\n### Hip-Hop Lead (Punch + Clear)\n```\nX: Transient boost (0-60%)\nY: Filter cutoff (30-80%)\nZ: Distortion drive (0-40%)\nSpeed: Accent volume boost\nMode: Relative for smooth sweeps\n```\n\n### Ambient Pad (Warm + Deep)\n```\nX: Stereo width (20-80%)\nY: Low-pass filter (10-50%)\nZ: Reverb send (40-90%)\nSpeed: LFO rate modulation\nMode: Absolute for spatial control\n```\n\n### EDM Build (Air + Punch)\n```\nX: High-shelf (30-70%)\nY: Filter cutoff sweep (10-100%)\nZ: Saturation (0-50%)\nSpeed: Filter resonance boost\nMode: Relative for continuous sweeps\n```\n\n## Gesture Recommendations by Vibe\n\n| Vibe | Recommended Gestures | Movement Style |\n|------|---------------------|----------------|\n| **WARMTH** | Slow, sustained holds | Legato, smooth |\n| **CLARITY** | Quick, precise movements | Staccato, defined |\n| **DEPTH** | Expansive, wide gestures | Open, flowing |\n| **PUNCH** | Sharp, accented movements | Dynamic, rhythmic |\n| **AIR** | Light, upward movements | Ascending, bright |\n\n[SRC: IL-MAN]\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity X Y Z Controller\r\n\r\nThis section contains learning information for the fruity-x-y-z-controller plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_3D_Spatial_Positioning": "# Goal: 3D Spatial Positioning (Fruity X-Y-Z)\n\n## Routing Context\n*   **Target:** A Melodic Lead or Pad.\n*   **Mixer Track:** Needs Reverb and Pan control.\n\n## Step-by-Step Setup\n1.  Load **Fruity X-Y-Z Controller**.\n2.  **X → Pan:** Right-click Pan knob -> Link to controller -> Internal -> **X-Y-Z (X)**.\n3.  **Y → Filter:** Link Y to a High-Shelf or Low-Pass EQ.\n4.  **Z → Depth:** Link Z to your Reverb Mix knob.\n5.  **Speed → Air:** Link Speed to an EQ boost at 12kHz.\n\n## Result\n*   **Horizontal (X):** Moves the sound Left/Right.\n*   **Vertical (Y):** Changes the brightness (height).\n*   **Wheel/Z:** Moves the sound into the distance (Reverb).\n*   **Motion (Speed):** The sound gets \"airier\" as it moves faster.\n\n## Vibe Check\n*   **Moody:** Use slow Z-axis scrolls to pull the sound into a deep, dark cavern.\n*   **Vibey:** Use the Z-axis to \"widen\" the background vocals during a chorus.\n\n## Pitfalls\n*   **Over-reverb:** If Z is at 100%, the sound might disappear. Use the Mapping Formula `Input*0.6` in the linking window.\n",
+      "01_Total_Synth_Performance": "# Workflow: Total Synth Performance (5-Signal Macro)\n\n## The Concept\nControl every aspect of a synth lead using one 3D movement + your movement speed.\n\n## Setup\n*   **Target:** Sytrus or Harmor Lead.\n*   **Controller:** Fruity X-Y-Z Controller.\n\n## Mapping Recipe\n1.  **X (Left/Right):** Filter Cutoff.\n2.  **Y (Up/Down):** Pitch Bend (Mapping Formula: `Input*0.2` for subtle vibrato-style bends).\n3.  **Z (Wheel):** Distortion Drive.\n4.  **Speed:** LFO Rate (The faster you move, the faster it wobbles).\n5.  **Acceleration:** Delay Mix (A sudden \"flick\" causes a delay echo).\n\n## Performance Guide\n1.  Hold a note in the Piano Roll.\n2.  Use your mouse to \"perform\" the lead.\n    *   Move left-to-right for \"Filter growls.\"\n    *   Scroll the wheel for \"Saturation.\"\n    *   Shake the mouse to \"Increase LFO speed.\"\n    *   Flick the mouse at the end of a phrase for a \"Delay splash.\"\n\n## Vibe mapping\n*   **Upbeat:** Fast, jerky movements (Acceleration) for high-energy electronic hip-hop.\n*   **Jazzy:** Slow, deliberate X/Y movements with the mouse for expressive, trumpet-like swells. [SRC: REPUTABLE]\n",
+      "3d-spatial-positioning": "# Workflow: 3D Spatial Audio Positioning\n\n## Goal\nPosition sounds in three-dimensional space using the X-Y-Z Controller for immersive stereo mixes.\n\n## Concept\nCreates depth perception through:\n- **X (Horizontal)**: Left/right pan position\n- **Y (Vertical)**: Low-pass filter cutoff (near/far illusion)\n- **Z (Depth)**: Reverb send amount (distance perception)\n\n## Setup\n\n### Controller Configuration\n```\nMode: Absolute (for predictable positioning)\n\nMappings:\n├── X → Pan (-100 to +100)\n├── Y → Filter Cutoff (200Hz - 20kHz)\n└── Z → Reverb Send (0-100%)\n```\n\n### Plugin Chain\n```\n[Instrument] → [X-Y-Z Controller] → [Filter] → [Reverb Send]\n```\n\n## The 3D Space Model\n\n| Position | X | Y | Z | Perception |\n|----------|---|---|---|------------|\n| Far Left/Distant | 0% | 20% | 70% | Background, left |\n| Center/Close | 50% | 80% | 20% | Focus, present |\n| Far Right/Distant | 100% | 20% | 70% | Background, right |\n| Center/Far | 50% | 20% | 80% | Distant, ambient |\n\n## Performance Techniques\n\n### Technique 1: The Pass-By\n1. Start far left, distant (X=0%, Y=20%, Z=70%)\n2. Move X toward center while increasing Y\n3. Continue to far right while decreasing Y back to 20%\n4. Result: Sound \"passes by\" the listener\n\n### Technique 2: Approach and Withdraw\n1. Start center, distant (Y=20%, Z=80%)\n2. Move Y up (brighter) while decreasing Z (less reverb)\n3. At peak closeness (Y=90%, Z=10%), reverse motion\n4. Result: Sound approaches then moves away\n\n### Technique 3: Spatial Throw\n1. Use 3D Throw gesture (diagonal + Z scroll)\n2. Throw from one corner to another\n3. Simultaneous X/Y/Z changes create realistic spatial motion\n\n## Quick Position Presets\n\n```\nBackground Left:    X=10%, Y=30%, Z=60%\nBackground Right:   X=90%, Y=30%, Z=60%\nCenter Focus:       X=50%, Y=80%, Z=20%\nDistant Ambient:    X=50%, Y=20%, Z=80%\nPass-by Start:      X=0%,  Y=20%, Z=60%\nPass-by End:        X=100%, Y=20%, Z=60%\n```\n\n## Tips\n\n- Lower Y values = less high frequencies = sounds farther away\n- Higher Z values = more reverb = greater perceived distance\n- X creates stereo placement while Y and Z create depth\n- Use smooth movements for realistic spatial effects\n\n[SRC: IL-MAN]\n",
+      "multi-touch-performance": "# Workflow: Multi-Touch Performance (Tablet/Screen)\n\n## Goal\nOptimize X-Y-Z Controller for touchscreen and tablet devices using multi-touch gestures.\n\n## Concept\nTouch interfaces provide unique capabilities:\n- Direct manipulation with immediate visual feedback\n- Multi-finger gestures for simultaneous control\n- Pinch/spread for Z-axis depth control\n- Natural \"flick\" gestures for accents\n\n## Setup\n\n### Device Configuration\n```\nSettings → Touch:\n├── Enable 'Show touches' (visual feedback)\n├── Disable auto-sleep during performance\n├── Enable palm rejection (optional)\n└── Set touch sensitivity to preference\n```\n\n### Controller Configuration\n```\nMode: Absolute (natural direct manipulation)\n\nMappings:\n├── Single finger → X + Y\n├── Two-finger pinch → Z\n└── Flick gesture → Speed spike\n```\n\n## Gesture Library\n\n### Single-Finger Gestures\n\n#### The Point\n- **Motion**: Move finger to position and hold\n- **Controls**: X and Y at finger position\n- **Use**: Precise parameter setting, sustained values\n\n#### The Drag\n- **Motion**: Smooth finger movement\n- **Controls**: Continuous X and Y modulation\n- **Use**: Filter sweeps, fades, spatial positioning\n\n#### The Flick\n- **Motion**: Quick swipe with immediate lift\n- **Controls**: Brief X/Y + Speed spike\n- **Use**: Accents, one-shot effects, stabs\n\n### Two-Finger Gestures\n\n#### The Pinch (Z Control)\n- **Motion**: Two fingers spread apart or pinch together\n- **Controls**: Z-axis value\n- **Use**: Reverb depth, effect intensity, spatial distance\n\n#### The Dual Drag\n- **Motion**: Two fingers moving independently\n- **Controls**: Each finger controls separate X-Y-Z instance\n- **Use**: Controlling multiple instruments simultaneously\n\n#### The Orbit\n- **Motion**: Two fingers tracing circles\n- **Controls**: Complex LFO-like modulation\n- **Use**: Rhythmic effects, auto-pan\n\n### Advanced Gestures\n\n#### The 3D Throw\n- **Motion**: Single finger diagonal drag + pinch with other hand\n- **Controls**: All three axes simultaneously\n- **Use**: Complete 3D spatial movement\n\n#### The Pulse\n- **Motion**: Repeated tap-hold-release\n- **Controls**: Rhythmic value triggers\n- **Use**: Stutter effects, rhythmic patterns\n\n## Performance Workflows\n\n### One-Handed Performance\n**Best for**: Solo performers, mobile setups\n```\nSetup: Single X-Y-Z Controller instance\nControl: One hand performs all gestures\nTechnique: \n  - Index finger for X/Y\n  - Thumb for Z pinch\n  - Quick flicks for accents\n```\n\n### Two-Handed Ensemble\n**Best for**: Complex arrangements, studio control\n```\nSetup: Two X-Y-Z Controller instances side-by-side\nControl: \n  - Left hand: Instance 1 (e.g., bass)\n  - Right hand: Instance 2 (e.g., lead)\nTechnique: Independent control of two instrument groups\n```\n\n### Four-Finger Control\n**Best for**: Expert performers, complete mix control\n```\nSetup: Four X-Y-Z Controller instances in 2x2 grid\nControl: Each finger controls one instance\nTechnique: Complete mix manipulation (drums, bass, harmony, lead)\n```\n\n## Touch-Specific Tips\n\n### Screen Surface\n- Use matte screen protector for better finger glide\n- Keep screen clean for consistent tracking\n- Position device at comfortable angle (45° ideal)\n\n### Gesture Accuracy\n- Practice hitting specific positions consistently\n- Use visual feedback (Show Touches) to calibrate\n- Build muscle memory through repetition\n\n### Performance Mode\n- Create dedicated performance templates\n- Pre-map all parameters before performance\n- Use large controller instances for easier targeting\n\n## Tablet vs Phone Considerations\n\n### Tablet (iPad, Surface)\n- **Advantages**: Large surface, multiple instances visible, two-hand capable\n- **Best for**: Studio control, complex performances\n- **Gesture space**: Full range of single and multi-hand gestures\n\n### Phone\n- **Advantages**: Ultra-portable, one-hand operation\n- **Best for**: Simple control, mobile sketching\n- **Gesture space**: Primarily single-finger, limited multi-touch\n\n## Practice Exercises\n\n### Exercise 1: Position Accuracy\n1. Display 9 grid points (3x3)\n2. Practice hitting each point quickly\n3. Goal: Consistent accuracy within 10% of target\n\n### Exercise 2: Smooth Sweeps\n1. Draw a straight line on screen\n2. Trace it smoothly with finger\n3. Goal: Record and analyze—curve should be linear\n\n### Exercise 3: Z Coordination\n1. Map X=Pan, Y=Filter, Z=Reverb\n2. Practice moving X/Y while pinching Z\n3. Goal: Independent control of all three axes\n\n### Exercise 4: Multi-Instance Control\n1. Set up two controller instances\n2. Left hand on instance 1, right on instance 2\n3. Practice independent control\n4. Goal: Coordinate both hands without interference\n\n[SRC: IL-MAN]\n",
+      "three-parameter-morphing": "# Workflow: Three-Parameter Morphing\n\n## Goal\nMorph between radically different sounds using three independent parameter axes.\n\n## Concept\nThe X-Y-Z Controller creates a \"morphing cube\" where each corner represents a unique combination of three parameters. Navigate through 3D space to transform sounds completely.\n\n## The Morphing Cube\n\n```\n                    Z (Depth)\n                    100%\n                       |\n                       |     8 Corners = 8 Sounds\n        Y (Vertical)   |     Each axis = Parameter blend\n           100%        |\n              |        |\n              |________|______ X (Horizontal)\n             /        /      100%\n            /  0%   /\n           /_______/\n          0%\n```\n\n## Setup\n\n### Controller Configuration\n```\nMode: Absolute (for specific state targeting)\n\nMapping Strategy:\n├── X → Parameter 1 (State A ↔ State B)\n├── Y → Parameter 2 (State A ↔ State B)\n└── Z → Parameter 3 (State A ↔ State B)\n\nEach axis: 0% = State A, 100% = State B\n```\n\n### Example: Oscillator Morph\n```\nX: Waveform (0%=Saw, 100%=Square)\nY: Filter Type (0%=Low-pass, 100%=High-pass)\nZ: Envelope (0%=Fast/Pluck, 100%=Slow/Pad)\n```\n\n## The Eight Sound States\n\n| Position | X | Y | Z | Result Sound |\n|----------|---|---|---|--------------|\n| 0,0,0 | Saw | Low | Fast | Aggressive pluck |\n| 100,0,0 | Square | Low | Fast | Hollow pluck |\n| 0,100,0 | Saw | High | Fast | Bright sting |\n| 100,100,0 | Square | High | Fast | Nasal blip |\n| 0,0,100 | Saw | Low | Slow | Warm pad |\n| 100,0,100 | Square | Low | Slow | Hollow pad |\n| 0,100,100 | Saw | High | Slow | Bright pad |\n| 100,100,100 | Square | High | Slow | Glassy pad |\n\n## Morphing Techniques\n\n### Technique 1: Corner-to-Corner\n1. Start at one corner (specific sound)\n2. Move directly to another corner (different sound)\n3. Path determines intermediate blends\n4. Diagonal = simultaneous parameter change\n\n### Technique 2: Edge Walking\n1. Move along cube edges (two parameters changing)\n2. Keep one parameter fixed\n3. Explore related sound families\n\n### Technique 3: Face Navigation\n1. Move on cube faces (one parameter changing)\n2. Smooth morph along single dimension\n3. Most predictable, gradual changes\n\n### Technique 4: Interior Traversal\n1. Move through cube interior\n2. All three parameters in transition\n3. Most complex, evolving sounds\n\n### Technique 5: The Spiral Morph\n1. Circular motion in X/Y\n2. Simultaneous Z movement (in or out)\n3. Creates evolving, complex transitions\n\n## Advanced Morphing Setups\n\n### Setup 1: Effect Chain Morph\n```\nX: Chorus amount (0-100%)\nY: Phaser depth (0-100%)\nZ: Delay feedback (0-100%)\n\nResult: Blend between chorus/phaser/delay dominance\nCorners: Dry, Chorus, Phaser, Delay, or combinations\n```\n\n### Setup 2: Timbre Evolution\n```\nX: Oscillator mix (Osc A ↔ Osc B)\nY: Filter resonance (0-100%)\nZ: Unison/voices (1 ↔ 8 voices)\n\nResult: Morph from simple to complex, thin to thick\n```\n\n### Setup 3: Space-Time Morph\n```\nX: Reverb size (Small ↔ Large)\nY: Delay time (Short ↔ Long)\nZ: Pre-delay (0ms ↔ 100ms)\n\nResult: Navigate through spatial characteristics\n```\n\n## Performance Strategies\n\n### Strategy 1: Preset Navigation\n1. Map favorite sounds to specific corners\n2. Jump between them for arrangement sections\n3. Use edges/faces for transitions\n\n### Strategy 2: Evolutionary Performance\n1. Start in one corner\n2. Gradually spiral toward another\n3. Sound evolves continuously over time\n\n### Strategy 3: Rhythmic Morphing\n1. Use quantized movements (sync to tempo)\n2. Jump between states rhythmically\n3. Creates dynamic, shifting textures\n\n## Recording Morphs\n\n### Option 1: Live Performance\n- Record gestures as automation\n- Captures human nuance and expression\n- Edit after recording for precision\n\n### Option 2: Programmed Paths\n- Draw automation curves\n- Precise, repeatable paths\n- Good for consistent transitions\n\n### Option 3: Hybrid Approach\n- Sketch with live performance\n- Quantize and refine\n- Human feel + precision\n\n## Tips for Effective Morphing\n\n1. **Choose Parameters Wisely**: Pick three that create audible, meaningful changes\n2. **Contrast Corner States**: Make opposite corners dramatically different\n3. **Test All Paths**: Some routes may have \"dead zones\"—test thoroughly\n4. **Use Smooth Curves**: Avoid stepped automation for fluid morphs\n5. **Practice Navigation**: Learn direct paths to desired states\n6. **Combine with Modulation**: Add LFOs to morphing for extra complexity\n\n[SRC: IL-MAN]\n",
+      "total-synth-performance": "# Workflow: Total Synth Performance Setup\n\n## Goal\nControl all major timbral aspects of a synthesizer simultaneously for maximum expressive performance.\n\n## Concept\nUsing all 5 outputs of the X-Y-Z Controller to create a complete performance instrument:\n- **X**: Pitch control (±12 semitones)\n- **Y**: Filter cutoff (brightness)\n- **Z**: Filter resonance (emphasis)\n- **Speed**: LFO depth (modulation intensity)\n- **Acceleration**: Distortion drive (accentuation)\n\n## Setup\n\n### Controller Configuration\n```\nMode: Relative (for continuous control without snapping)\n\nMappings:\n├── X → Pitch Bend (±12 semitones)\n├── Y → Filter Cutoff (100Hz - 20kHz)\n├── Z → Resonance (0-80%)\n├── Speed → LFO Depth (0-100%)\n└── Acceleration → Distortion (0-50%)\n```\n\n### Recommended Synth\nAny subtractive synthesizer with:\n- Pitch bend range ±12st\n- Low-pass filter with resonance\n- LFO with depth control\n- Drive/distortion parameter\n\n## Performance Techniques\n\n### Technique 1: The Filter Sweep Solo\n1. Hold sustained note\n2. Move Y up slowly for opening filter\n3. Increase movement speed for Speed→LFO\n4. Result: Classic filter sweep with dynamic modulation\n\n### Technique 2: Pitch + Timbre Bending\n1. Play phrase\n2. Use X for pitch bends (portamento-style)\n3. Coordinate Y with pitch for timbral consistency\n4. High pitch + open filter = bright\n5. Low pitch + closed filter = dark\n\n### Technique 3: Expressive Accents\n1. Map Acceleration to distortion\n2. Play staccato phrases\n3. Quick gesture starts trigger accent peaks\n4. Result: Dynamic distortion following playing intensity\n\n### Technique 4: LFO Intensity Control\n1. Set synth LFO to modulate filter\n2. Speed output controls LFO depth\n3. Still = no LFO, moving = increasing LFO\n4. Result: Humanized modulation intensity\n\n## Gesture Library for Synth Performance\n\n| Gesture | Controls | Musical Result |\n|---------|----------|----------------|\n| Vertical Sweep | Y + Speed | Filter sweep with dynamic LFO |\n| Horizontal Slide | X | Pitch bend |\n| Diagonal | X + Y | Pitch + timbre change |\n| Circular | X + Y + Speed | Modulated filter with pitch variation |\n| Quick Flick | Accel | Accent/distortion spike |\n\n## Quick Performance Presets\n\n### Sub Bass Performance\n```\nX: Pitch ±7 semitones (subtle)\nY: Cutoff 50-500Hz (keep low)\nZ: Resonance 0-30% (gentle)\nSpeed: LFO 0-20% (slow)\nMode: Relative\n```\n\n### Lead Synth Performance\n```\nX: Pitch ±12 semitones (full range)\nY: Cutoff full range (bright)\nZ: Resonance 0-60% (moderate)\nSpeed: LFO 0-80% (expressive)\nAccel: Distortion accents\nMode: Relative\n```\n\n### FX/Stabs Performance\n```\nX: Fixed or minimal\nY: Quick sweeps\nZ: Moderate resonance\nSpeed: Maximum for heavy modulation\nAccel: Trigger effects\nMode: Absolute for predictable stabs\n```\n\n## Pro Tips\n\n- Use Relative mode for continuous sweeps without position snapping\n- Coordinate pitch (X) with filter (Y) for natural timbral shifts\n- Speed adds expression—use it for dynamic LFO control\n- Acceleration captures playing intention for automatic accents\n- Practice gestures to build muscle memory for consistent results\n\n[SRC: IL-MAN]\n",
+      "vibe-air": "# Workflow: Vibe - Creating Air\n\n## Goal\nAdd brightness, shimmer, high-end lift, and polish for modern, detailed sound.\n\n## Vibe Definition\nAir = High-frequency presence + Shimmer + Sparkle + Top-end polish\n\n## 3D Mapping Strategy\n\n```\nX-Axis: High-Pass Filter (20-200Hz)\n├── 20% = Full range, some rumble removal\n└── 100% = Removes low-mids, very bright\n\nY-Axis: Air EQ Band (12-20kHz, 0-6dB boost)\n├── 0% = Natural highs\n└── 100% = Maximum sheen and shimmer\n\nZ-Axis: Sparkle/Dimension Enhancer (0-50%)\n├── 0% = Dry, unenhanced\n└── 50% = Enhanced dimension and sparkle\n```\n\n## Target Zone\n**Sweet Spot**: Upper area with controlled low-end\n- X: 10-20% (clean lows)\n- Y: 60-90% (brightness)\n- Z: 30-50% (enhancement)\n\n## Setup\n\n### Controller Configuration\n```\nMode: Absolute (for precise high-frequency control)\n\nMappings:\n├── X → High-Pass Filter (20-200Hz)\n├── Y → Air EQ @ 15kHz (0-6dB)\n├── Z → Sparkle/Enhancer (0-50%)\n└── Speed → High-frequency shimmer LFO (0-30%)\n```\n\n### Processing Chain\n```\n[Source] → [High-Pass] → [X-Y-Z Controller] → [Air EQ] → [Enhancer] → [Output]\n```\n\n## Performance Techniques\n\n### Technique 1: The Shine Boost\n1. Position: X=15%, Y=75%, Z=35%\n2. For vocals or elements needing top-end lift\n3. Static or gentle movement\n4. Result: Polished, modern, airy sound\n\n### Technique 2: Air Sweep\n1. Start: X=10%, Y=40%, Z=20% (natural)\n2. Move to: X=20%, Y=90%, Z=45% (air)\n3. Use for buildups or brightening sections\n4. Result: Progressive brightness increase\n\n### Technique 3: Selective Brightness\n1. Map Speed to high-frequency modulation\n2. Move = shimmering top-end\n3. Still = stable brightness\n4. Result: Dynamic, living air\n\n### Technique 4: The Polished Mix\n1. Apply to master bus or groups\n2. X: 15% (clean lows)\n3. Y: 50-70% (moderate air)\n4. Z: 20-30% (subtle enhancement)\n5. Result: Professional polish without harshness\n\n## Combining with Other Vibes\n\n### Air + Clarity (Ultra-Defined)\n- X: High-pass (air)\n- Y: Presence + air bands (clarity)\n- Z: Enhancement (both)\n- Result: Maximum detail and definition\n\n### Air + Depth (Open Cosmos)\n- X: Clean lows (air)\n- Y: Long reverb (depth)\n- Z: High-frequency delay (air)\n- Result: Vast, atmospheric, open\n\n### Air + Punch (Bright Aggression)\n- X: High-pass (air)\n- Y: Bright saturation (punch)\n- Z: Sparkle on transients (both)\n- Result: Cutting, bright attack\n\n### Air + Warmth (Polished Warmth)\n- X: Moderate high-pass (balance)\n- Y: Moderate air (brightness)\n- Z: Gentle enhancement (warmth)\n- Result: Warm but not dark, clear but not harsh\n\n## Common Air Targets\n\n| Source | X | Y | Z | Notes |\n|--------|---|---|---|-------|\n| **Vocals** | 10-20% | 60-80% | 30-40% | Top-end shimmer |\n| **Master Bus** | 15-25% | 40-60% | 20-30% | Polished mix |\n| **Synths** | 10-20% | 70-90% | 30-50% | Electronic shine |\n| **Acoustic Guitars** | 15-25% | 50-70% | 25-35% | String brilliance |\n| **Cymbals/Hi-hats** | 20-30% | 60-80% | 30-40% | Maximum shimmer |\n\n## Air Cheat Sheet\n\n```\nToo dark/muddy?         → Increase Y (air EQ)\nRumble in lows?         → Increase X (high-pass)\nLacking polish?         → Increase Z (enhancer)\nToo harsh?              → Decrease Y, check X\nNot shiny enough?       → Increase Z, moderate Y\nModern sound needed?    → Increase all moderately\n```\n\n## Frequency Spectrum Reference\n\n| Frequency Range | Effect | Air Contribution |\n|----------------|--------|------------------|\n| 12-16kHz | Sheen | Primary air band |\n| 16-20kHz | Sparkle | Ultra-high detail |\n| 8-12kHz | Brilliance | Presence + air |\n| 5-8kHz | Presence | Clarity foundation |\n\n## Creating Different Air Types\n\n### Subtle Air (Natural Polish)\n```\nX: 15% (clean lows)\nY: 50% (moderate air)\nZ: 25% (subtle enhancement)\nResult: Professional, natural brightness\n```\n\n### Moderate Air (Modern Sheen)\n```\nX: 20% (clear lows)\nY: 70% (strong air)\nZ: 35% (moderate enhancement)\nResult: Contemporary, polished sound\n```\n\n### Maximum Air (Extreme Shimmer)\n```\nX: 25% (tight lows)\nY: 90% (maximum air)\nZ: 50% (full enhancement)\nResult: Bright, shimmering, ultra-detailed\n```\n\n## Avoiding Over-Air\n\n**Warning Signs:**\n- Harshness or sibilance\n- Listener fatigue\n- Thin quality (too much high-pass)\n- Artifacts and noise amplification\n\n**Solutions:**\n- Keep X moderate (don't over-filter)\n- De-ess vocals before adding air\n- Use dynamic EQ for air band\n- Check on multiple playback systems\n- Reference against commercial mixes\n\n## Air by Application\n\n### Vocals Air\n```\nFocus: Y (air EQ for shimmer)\nX: Moderate (remove rumble only)\nZ: Subtle (20-30%)\nDe-essing recommended before air\n```\n\n### Master Bus Air\n```\nFocus: Balanced X/Y/Z\nGentle settings all around\nGoal: Polish without obvious processing\n```\n\n### Synth Air\n```\nFocus: Y (maximum air)\nX: Light (keep bass)\nZ: Moderate-high\nGoal: Electronic shimmer\n```\n\n### Percussion Air\n```\nFocus: X (tighten lows)\nY: Moderate (cymbal sheen)\nZ: Moderate (sparkle)\nGoal: Clean, bright, defined\n```\n\n[SRC: IL-MAN]\n",
+      "vibe-clarity": "# Workflow: Vibe - Creating Clarity\n\n## Goal\nAdd presence, definition, and forwardness to make elements cut through the mix.\n\n## Vibe Definition\nClarity = Presence boost + High-mid emphasis + Intelligibility + Forward placement\n\n## 3D Mapping Strategy\n\n```\nX-Axis: Presence EQ (2-5kHz, 0-6dB boost)\n├── 0% = Flat, natural\n└── 100% = Maximum presence, forward\n\nY-Axis: High-shelf Brightness (8-12kHz, 0-4dB boost)\n├── Lower = Natural, warm\n└── Higher = Shiny, crisp\n\nZ-Axis: Exciter/Enhancer (0-40%)\n├── 0% = Dry, unenhanced\n└── 40% = Harmonic excitement, definition\n```\n\n## Target Zone\n**Sweet Spot**: Upper-right quadrant\n- X: 50-80% (strong presence)\n- Y: 50-80% (brightness)\n- Z: 20-40% (subtle enhancement)\n\n## Setup\n\n### Controller Configuration\n```\nMode: Absolute (for precise clarity settings)\n\nMappings:\n├── X → Presence EQ @ 3-5kHz (0-6dB)\n├── Y → High-shelf @ 10kHz (0-4dB)\n├── Z → Exciter/Harmonic Enhancer (0-40%)\n└── Speed → Transient Emphasis (0-50%)\n```\n\n### Processing Chain\n```\n[Source] → [X-Y-Z Controller] → [EQ] → [Exciter] → [Transient Shaper] → [Output]\n```\n\n## Performance Techniques\n\n### Technique 1: The Presence Push\n1. Position: X=70%, Y=60%, Z=30%\n2. For vocals or leads that need to sit forward\n3. Quick movements add dynamic clarity\n4. Result: Cuts through dense mixes\n\n### Technique 2: Clarity Sweep\n1. Start: X=30%, Y=40%, Z=20% (natural)\n2. Gradually move to: X=80%, Y=70%, Z=35% (clarity)\n3. Use for buildup sections or hooks\n4. Result: Increasing intelligibility\n\n### Technique 3: Selective Enhancement\n1. Map Speed to transient boost\n2. Move quickly = more presence\n3. Still = natural tone\n4. Result: Dynamic clarity following playing intensity\n\n### Technique 4: The Focus Point\n1. Position: X=90%, Y=50%, Z=25%\n2. Maximum presence without excessive brightness\n3. For critical elements (lead vocal, solo)\n4. Result: Absolute front-of-mix placement\n\n## Combining with Other Vibes\n\n### Clarity + Warmth (Defined Body)\n- X: High (clarity)\n- Y: Moderate (balance)\n- Z: Moderate (both)\n- Result: Clear but not thin, present but not harsh\n\n### Clarity + Depth (Clear Space)\n- X: Presence (clarity)\n- Y: Reverb time (depth)\n- Z: Early reflections (both)\n- Result: Clear elements in spacious environment\n\n### Clarity + Punch (Cutting Attack)\n- X: Maximum presence\n- Y: Transient boost\n- Z: Saturation on peaks\n- Result: Aggressive, in-your-face attack\n\n### Clarity + Air (Ultra-Detailed)\n- X: Presence (2-5kHz)\n- Y: Air band (15kHz+)\n- Z: Enhancement\n- Result: Extreme detail and shimmer\n\n## Common Clarity Targets\n\n| Source | X Range | Y Range | Z Range | Notes |\n|--------|---------|---------|---------|-------|\n| **Lead Vocals** | 60-80% | 50-70% | 20-35% | Primary focus |\n| **Acoustic Guitar** | 50-70% | 60-80% | 25-40% | String clarity |\n| **Snare Drum** | 70-90% | 40-60% | 20-30% | Crack and snap |\n| **Synth Leads** | 60-80% | 60-90% | 30-45% | Cut through mix |\n| **Dialog/Voice** | 50-70% | 30-50% | 15-25% | Intelligibility |\n\n## Clarity Cheat Sheet\n\n```\nBuried in mix?          → Increase X (presence)\nDull or dark?           → Increase Y (brightness)\nLacking definition?     → Increase Z (enhancement)\nToo harsh?              → Decrease X, moderate Y\nNot cutting through?    → Increase Speed→transients\nBoxy sounding?          → Position in upper area\n```\n\n## Avoiding Over-Clarity\n\n**Warning Signs:**\n- Harshness or stridency\n- Listener fatigue\n- Thin or brittle quality\n- Conflicts with other midrange elements\n\n**Solutions:**\n- Don't max X on every element\n- Keep Z subtle (under 40%)\n- Use subtractive EQ on competing elements\n- Dynamic EQ for clarity only when needed\n- High-pass before clarity processing\n\n## Frequency Reference\n\n| Frequency | Effect | Use Case |\n|-----------|--------|----------|\n| 2-3kHz | Forwardness | General presence |\n| 3-5kHz | Attack/Edge | Drums, guitars |\n| 5-8kHz | Sibilance area | Careful with vocals |\n| 8-12kHz | Brilliance | Air, sheen |\n| 12-20kHz | Air/Sparkle | Ultra-high detail |\n\n[SRC: IL-MAN]\n",
+      "vibe-depth": "# Workflow: Vibe - Creating Depth\n\n## Goal\nCreate spacious, immersive, three-dimensional sound with spatial width and distance.\n\n## Vibe Definition\nDepth = Stereo width + Reverb space + Delay ambience + Distance perception\n\n## 3D Mapping Strategy\n\n```\nX-Axis: Stereo Width (0-150%)\n├── 0% = Mono, focused\n└── 100%+ = Wide, immersive\n\nY-Axis: Reverb Send (0-70%)\n├── 0% = Dry, close\n└── 70% = Wet, distant (avoid 100% wash)\n\nZ-Axis: Delay Feedback (20-60%)\n├── Low = Slapback, near\n└── High = Dense ambience, far\n```\n\n## Target Zone\n**Sweet Spot**: Upper area with moderate spread\n- X: 50-100% (spacious but controlled)\n- Y: 40-70% (space without wash)\n- Z: 30-60% (ambience and depth)\n\n## Setup\n\n### Controller Configuration\n```\nMode: Absolute (for spatial positioning)\n\nMappings:\n├── X → Stereo Width (0-150%)\n├── Y → Reverb Send (0-70%)\n├── Z → Delay Feedback (20-60%)\n└── Speed → Reverb Pre-delay or Modulation (0-40%)\n```\n\n### Processing Chain\n```\n[Source] → [X-Y-Z Controller] → [Width] → [Reverb Send] → [Delay Send] → [Output]\n```\n\n## Performance Techniques\n\n### Technique 1: Space Entry\n1. Start: X=20%, Y=10%, Z=20% (close/dry)\n2. Move to: X=80%, Y=60%, Z=50% (spacious/wet)\n3. Result: Element moves from foreground to background\n4. Use for creating depth in arrangements\n\n### Technique 2: Breathing Width\n1. Position: X oscillates 60-100%\n2. Y and Z steady\n3. Slow oscillation (4-8 bars)\n4. Result: Space expands and contracts organically\n\n### Technique 3: The Distance Throw\n1. Quick Y increase (40% → 70%)\n2. Simultaneous Z increase\n3. X can widen or narrow\n4. Result: Sound \"thrown\" into distance\n5. Great for transitions and fills\n\n### Technique 4: 3D Navigation\n1. X: Left/right positioning\n2. Y: Near/far depth (reverb)\n3. Z: Elevation/ambience (delay)\n4. Move through 3D space fluidly\n5. Result: Immersive spatial experience\n\n## Combining with Other Vibes\n\n### Depth + Warmth (Cozy Intimacy)\n- X: Moderate width (warmth)\n- Y: Moderate-high reverb (depth)\n- Z: Medium delay (both)\n- Result: Enveloping, intimate space\n\n### Depth + Clarity (Clear Space)\n- X: Wide (depth)\n- Y: Presence EQ (clarity)\n- Z: Pre-delay (both)\n- Result: Spacious but defined elements\n\n### Depth + Punch (Impact in Space)\n- X: Wide (depth)\n- Y: Early reflections (punch)\n- Z: Controlled ambience (balance)\n- Result: Powerful sounds in large space\n\n### Depth + Air (Open Cosmos)\n- X: Maximum width (depth)\n- Y: Long reverb (depth)\n- Z: High-frequency delay (air)\n- Result: Vast, open, atmospheric\n\n## Common Depth Targets\n\n| Source | X Range | Y Range | Z Range | Notes |\n|--------|---------|---------|---------|-------|\n| **Pads** | 80-150% | 50-70% | 40-60% | Maximum space |\n| **Vocals** | 30-80% | 30-60% | 20-40% | Intimate to spacious |\n| **Guitars** | 60-100% | 30-50% | 30-50% | Room ambience |\n| **Synths** | 50-120% | 40-60% | 30-50% | Electronic space |\n| **Drums** | 40-80% | 20-40% | 20-30% | Controlled room |\n\n## Depth Cheat Sheet\n\n```\nToo narrow/focused?     → Increase X (width)\nToo dry/close?          → Increase Y (reverb)\nLacking ambience?       → Increase Z (delay)\nToo washed out?         → Decrease Y, keep X moderate\nNot immersive enough?   → Increase all three moderately\nLosing focus?           → Decrease X, keep Y/Z\n```\n\n## Creating Distance Illusion\n\n### Near (Close to Listener)\n```\nX: 20-40% (focused)\nY: 10-30% (dry)\nZ: 10-20% (minimal)\nResult: Intimate, present\n```\n\n### Mid (Room Distance)\n```\nX: 50-80% (natural width)\nY: 40-60% (room reverb)\nZ: 30-50% (subtle delay)\nResult: Placed in space\n```\n\n### Far (Distant/Ambient)\n```\nX: 80-120% (wide)\nY: 60-70% (wet, careful not to wash)\nZ: 50-60% (dense ambience)\nResult: Background, atmospheric\n```\n\n## Avoiding Over-Depth\n\n**Warning Signs:**\n- Mix sounds washed out\n- Loss of impact and definition\n- Everything competing for space\n- Phase issues (check in mono)\n\n**Solutions:**\n- Limit Y to 70% maximum (prevent wash)\n- Use pre-delay to maintain clarity\n- Check mono compatibility\n- Prioritize: Lead = closer, Support = deeper\n- Don't put everything in \"far\" position\n\n## Spatial Positioning Reference\n\n| Position | X | Y | Z | Use Case |\n|----------|---|---|---|----------|\n| **Front/Center** | 50% | 10-20% | 10% | Lead elements |\n| **Left/Near** | 20% | 20% | 20% | Side element |\n| **Right/Far** | 80% | 60% | 50% | Background |\n| **Wide/Ambient** | 120% | 50% | 50% | Atmosphere |\n| **Intimate** | 30% | 15% | 15% | Close vocal |\n\n[SRC: IL-MAN]\n",
+      "vibe-punch": "# Workflow: Vibe - Creating Punch\n\n## Goal\nAdd impact, aggression, dynamic energy, and tight attack to drums, bass, and aggressive elements.\n\n## Vibe Definition\nPunch = Transient emphasis + Compression + Saturation + Dynamic aggression\n\n## 3D Mapping Strategy\n\n```\nX-Axis: Transient Shaper (0-70%)\n├── 0% = Natural transients\n└── 70% = Maximum attack emphasis\n\nY-Axis: Compression (threshold/ratio)\n├── Lower = Light compression\n└── Higher = Heavy compression/squash\n\nZ-Axis: Saturation on Transients (0-50%)\n├── 0% = Clean peaks\n└── 50% = Driven, aggressive peaks\n```\n\n**Bonus Outputs:**\n- **Speed** → Accent boost or drive amount\n- **Acceleration** → Transient boost (captures gesture attack)\n\n## Target Zone\n**Sweet Spot**: Upper-right with dynamic outputs\n- X: 40-70% (strong transients)\n- Y: 40-60% (controlled dynamics)\n- Z: 30-50% (edge and grit)\n- Speed: Map for dynamic intensity\n\n## Setup\n\n### Controller Configuration\n```\nMode: Relative (for rhythmic dynamic control)\n\nMappings:\n├── X → Transient Shaper (0-70%)\n├── Y → Compression Ratio (2:1 to 8:1)\n├── Z → Saturation/Drive (0-50%)\n├── Speed → Accent Volume Boost (0-6dB)\n└── Acceleration → Transient Boost (spike detection)\n```\n\n### Processing Chain\n```\n[Source] → [X-Y-Z Controller] → [Transient Shaper] → [Compressor] → [Saturator] → [Output]\n```\n\n## Performance Techniques\n\n### Technique 1: The Ghost Note Accent\n1. Map Acceleration to transient boost\n2. Quick gesture starts trigger accent spikes\n3. Use for emphasizing ghost notes or fills\n4. Result: Dynamic, responsive drum performance\n\n### Technique 2: Rhythmic Pumping\n1. Map Speed to compression amount\n2. Rhythmic movements create pumping effect\n3. Move with the groove for musical compression\n4. Result: Living, breathing dynamics\n\n### Technique 3: The Impact Moment\n1. Position: X=70%, Y=60%, Z=40%\n2. Quick flick for Speed spike\n3. Simultaneous maximum punch\n4. Use for downbeats, drops, impacts\n5. Result: Maximum aggression and impact\n\n### Technique 4: Controlled Aggression\n1. Start: X=30%, Y=40%, Z=20% (moderate)\n2. Build to: X=70%, Y=60%, Z=50% (intense)\n3. Use Speed for dynamic variation\n4. Result: Progressive intensity increase\n\n## Combining with Other Vibes\n\n### Punch + Clarity (Cutting Attack)\n- X: Transient shaper (punch)\n- Y: Presence EQ (clarity)\n- Z: Saturation (both)\n- Result: In-your-face, defined impact\n\n### Punch + Warmth (Thick Power)\n- X: Transient (punch)\n- Y: Low cutoff (warmth)\n- Z: Drive (punch)\n- Result: Heavy, saturated low-end aggression\n\n### Punch + Depth (Impact in Space)\n- X: Transient (punch)\n- Y: Early reflections (depth)\n- Z: Saturation (punch)\n- Result: Powerful sounds placed in environment\n\n### Punch + Air (Bright Aggression)\n- X: Maximum transient\n- Y: Light compression\n- Z: Drive with high-frequency emphasis\n- Result: Bright, aggressive, cutting\n\n## Common Punch Targets\n\n| Source | X | Y | Z | Speed | Notes |\n|--------|---|---|---|-------|-------|\n| **Kick Drum** | 50-70% | Moderate | 40-50% | Yes | Maximum impact |\n| **Snare** | 40-60% | Light-Mod | 30-40% | Yes | Crack and body |\n| **Bass** | 30-50% | Moderate | 30-50% | Optional | Tight low-end |\n| **Drum Bus** | 40-60% | 4:1-6:1 | 30-40% | Yes | Unified punch |\n| **Synth Leads** | 20-40% | Light | 20-30% | Yes | Aggressive leads |\n\n## Punch Cheat Sheet\n\n```\nLacking impact?         → Increase X (transients)\nToo dynamic?            → Increase Y (compression)\nNot aggressive enough?  → Increase Z (saturation)\nNeed dynamic accents?   → Map Speed to volume\nWant playing reactivity? → Map Acceleration\nToo harsh?              → Decrease Z, moderate X\n```\n\n## Dynamic Control Strategies\n\n### Strategy 1: Velocity Layering\n1. Map Speed to multiple parameters\n2. Soft playing = gentle settings\n3. Hard playing = maximum punch\n4. Result: Responsive to performance intensity\n\n### Strategy 2: Accent Detection\n1. Map Acceleration to transient boost\n2. Sudden gesture starts = accent spikes\n3. Captures human intention automatically\n4. Result: Natural dynamic emphasis\n\n### Strategy 3: Rhythmic Pumping\n1. Move controller rhythmically with tempo\n2. Speed creates compression pumping\n3. Syncopated movements create groove\n4. Result: Musical, rhythmic dynamics\n\n## Avoiding Over-Punch\n\n**Warning Signs:**\n- Excessive transient spikes (harsh)\n- Over-compressed, lifeless sound\n- Distortion artifacts\n- Fatigue from constant aggression\n\n**Solutions:**\n- Don't max all parameters simultaneously\n- Use moderate settings for most elements\n- Save maximum punch for key moments\n- Check in context—solo can deceive\n- Use parallel processing for heavy saturation\n\n## Punch by Element\n\n### Kick Drum Punch\n```\nFocus: X (transient shaper)\nY: Light compression (preserve dynamics)\nZ: Moderate drive (30-40%)\nGoal: Tight, impactful, defined\n```\n\n### Snare Punch\n```\nFocus: X (transient for crack)\nY: Moderate compression (glue)\nZ: Light saturation (20-30%)\nGoal: Crack and body balance\n```\n\n### Bass Punch\n```\nFocus: Y (compression for consistency)\nX: Light transient (if needed)\nZ: Drive for harmonics (30-40%)\nGoal: Tight, consistent, present\n```\n\n### Drum Bus Punch\n```\nFocus: Balanced X/Y/Z\nAll moderate settings\nGoal: Unified kit with impact\n```\n\n[SRC: IL-MAN]\n",
+      "vibe-warmth": "# Workflow: Vibe - Creating Warmth\n\n## Goal\nAdd analog warmth, vintage thickness, and cozy texture using the X-Y-Z Controller.\n\n## Vibe Definition\nWarmth = Analog character + Low-frequency emphasis + Gentle saturation + Subtle width\n\n## 3D Mapping Strategy\n\n```\nX-Axis: Detune/Pitch Widening (0-30%)\n├── 0% = In-tune, focused\n└── 30% = Wide, chorused, thick\n\nY-Axis: Low-Pass Cutoff (200Hz - 5kHz)\n├── Lower = Darker, warmer\n└── Upper = Brighter, clearer\n\nZ-Axis: Saturation/Drive (0-40%)\n├── 0% = Clean, digital\n└── 40% = Gently saturated, analog\n```\n\n## Target Zone\n**Sweet Spot**: Lower-left quadrant\n- X: 10-30% (subtle widening)\n- Y: 10-40% (warm/dark)\n- Z: 20-40% (gentle saturation)\n\n## Setup\n\n### Controller Configuration\n```\nMode: Absolute (for specific warmth settings)\n\nMappings:\n├── X → Oscillator Detune (0-30 cents) OR Stereo Width (100-130%)\n├── Y → Low-Pass Cutoff (200Hz - 5kHz)\n├── Z → Tape/Tube Saturation (0-40%)\n└── Speed → Subtle Vibrato (0-20% depth)\n```\n\n### Processing Chain\n```\n[Source] → [X-Y-Z Controller] → [Low-Pass Filter] → [Saturation] → [Output]\n```\n\n## Performance Techniques\n\n### Technique 1: The Warm Pad\n1. Position: X=20%, Y=30%, Z=30%\n2. Slow, minimal movement\n3. Optional: Add gentle Speed→vibrato\n4. Result: Evolving, warm pad texture\n\n### Technique 2: Vintage Lead\n1. Position: X=15%, Y=50%, Z=25%\n2. Moderate X movement for live feel\n3. Keep Y below 60% to maintain warmth\n4. Result: Classic analog lead sound\n\n### Technique 3: Subtle Thickening\n1. Position: X=25%, Y=35%, Z=20%\n2. Static or very slow drift\n3. Apply to background elements\n4. Result: Adds depth without prominence\n\n### Technique 4: Analog Drums\n1. Position: X=10%, Y=40%, Z=35%\n2. Map Speed to transient softening\n3. Quick movements = gentle saturation\n4. Result: Vintage drum machine character\n\n## Combining with Other Vibes\n\n### Warmth + Clarity (Balanced)\n- X: Moderate (warmth)\n- Y: Moderate-high (clarity) \n- Z: Moderate (both)\n- Result: Clear but not cold, warm but not muddy\n\n### Warmth + Depth (Cozy Space)\n- X: Width + detune (warmth)\n- Y: Low cutoff + reverb (depth)\n- Z: Saturation + space (both)\n- Result: Intimate, enveloping sound\n\n### Warmth + Punch (Thick Power)\n- X: Subtle (focus)\n- Y: Moderate-low (warmth)\n- Z: Saturation + drive (punch)\n- Result: Heavy, powerful low-end\n\n## Common Warmth Targets\n\n| Source | X Mapping | Y Range | Z Amount |\n|--------|-----------|---------|----------|\n| **Synth Pads** | Detune 10-20% | 300Hz-2kHz | 20-30% |\n| **Bass** | Width 110-120% | 80Hz-800Hz | 25-35% |\n| **Drums** | Minimal/none | 100Hz-5kHz | 30-40% |\n| **Vocals** | Subtle width | 200Hz-8kHz | 15-25% |\n| **Master Bus** | Stereo width | Full range | 10-20% |\n\n## Warmth Cheat Sheet\n\n```\nToo Cold/Digital?       → Increase Z (saturation)\nToo Thin?               → Increase X (width/detune)\nToo Bright/Harsh?       → Decrease Y (lower cutoff)\nLacking Character?      → Add Speed→vibrato (subtle)\nToo Much Mud?           → Decrease Y (cut lows more)\n```\n\n## Avoiding Over-Warmth\n\n**Warning Signs:**\n- Sound becomes muddy or undefined\n- Loss of clarity in mix\n- Excessive \"fuzz\" without definition\n- Competing with other warm elements\n\n**Solutions:**\n- Keep Y cutoff above 200Hz minimum\n- Limit Z to 40% maximum\n- Use subtractive EQ after warming\n- Apply selectively, not to everything\n\n[SRC: IL-MAN]\n"
+    },
+    "by-instrument": {
+      "bass-synthesis": "# Workflow: Bass Synthesis and Control\n\n## Goal\nCreate tight, expressive, and dynamic bass sounds that sit perfectly in hip-hop and electronic mixes.\n\n## The Perfect Bass Character\n- Solid low-end foundation\n- Controlled but expressive filtering\n- Appropriate saturation for genre\n- Tight dynamics for mix clarity\n\n## Controller Setup\n\n### Configuration A: Sub Bass Performance\n```\nMode: Relative (for smooth filter control)\n\nMappings:\n├── X → Fine pitch (±2 semitones, subtle)\n├── Y → Low-pass cutoff (50-1000Hz)\n├── Z → Drive/Saturation (0-40%)\n└── Speed → LFO depth (subtle movement)\n```\n\n### Configuration B: Bass Growl/Wobble\n```\nMode: Relative\n\nMappings:\n├── X → Wavetable position/Osc mix\n├── Y → Filter cutoff (wide range)\n├── Z → Resonance (0-70%)\n└── Speed → Modulation amount\n```\n\n### Configuration C: Bass Bus Processing\n```\nMode: Absolute\n\nMappings:\n├── X → Stereo width (0-20%, keep mono compatible)\n├── Y → Compression threshold\n├── Z → Harmonic exciter\n└── Speed → Dynamic EQ\n```\n\n## Performance Techniques\n\n### Technique 1: Filter Talk\n1. Map Y to low-pass filter\n2. \"Talk\" through filter while holding notes\n3. Creates vocal-like expression\n4. Result: Living, breathing bass\n\n### Technique 2: Dynamic Saturation\n1. Z controls drive amount\n2. Higher notes = more drive\n3. Lower notes = cleaner\n4. Result: Tonal consistency\n\n### Technique 3: Width Control\n1. X subtly widens upper harmonics\n2. Keep fundamental mono (below 100Hz)\n3. Adds space without losing power\n4. Result: Wide but solid bass\n\n### Technique 4: Groove Compression\n1. Map Speed to compression ratio\n2. Move with the beat\n3. Creates pumping groove\n4. Result: Tight, rhythmic bass\n\n## Bass Types and Settings\n\n### Sub Bass (20-60Hz focus)\n```\nX: Minimal (keep centered)\nY: 50-200Hz cutoff (very low)\nZ: 20-30% (gentle warmth)\nMode: Relative\nGoal: Foundation, felt not heard\n```\n\n### Mid Bass (60-150Hz focus)\n```\nX: Subtle width on harmonics\nY: 80-500Hz cutoff\nZ: 30-40% (character)\nMode: Relative\nGoal: Audible body, mix presence\n```\n\n### Growl Bass (150-500Hz focus)\n```\nX: Wavetable position\nY: 200-2000Hz cutoff\nZ: 40-60% (aggression)\nSpeed: Modulation\nMode: Relative\nGoal: Aggressive, textured\n```\n\n### Reese Bass (wide range)\n```\nX: Oscillator detune\nY: Full range sweeps\nZ: Moderate saturation\nSpeed: LFO or FM amount\nMode: Relative\nGoal: Moving, evolving texture\n```\n\n## Quick Bass Presets\n\n### Preset 1: Hip-Hop Sub\n```\nX: Centered\nY: 60-400Hz\nZ: 25%\nMode: Relative\nCharacter: Deep, controlled, warm\n```\n\n### Preset 2: Trap 808\n```\nX: Pitch glide ±7st\nY: 40-800Hz\nZ: 40%\nMode: Relative\nCharacter: Sliding, distorted, powerful\n```\n\n### Preset 3: Dubstep Growl\n```\nX: Wavetable morph\nY: 100-3000Hz\nZ: 50%\nSpeed: LFO rate\nMode: Relative\nCharacter: Aggressive, modulated\n```\n\n### Preset 4: Bass Guitar Emulation\n```\nX: Pitch ±2st (bends)\nY: 80-5000Hz\nZ: 30%\nMode: Absolute\nCharacter: Natural, organic\n```\n\n## Genre-Specific Bass\n\n### Hip-Hop Bass\n- Clean sub foundation (Y < 200Hz)\n- Controlled saturation (Z 20-35%)\n- Minimal width (X centered)\n- Tight, present\n\n### Trap Bass\n- Wide filter range (Y full sweep)\n- Heavy saturation (Z 40-50%)\n- Pitch slides (X ±7-12st)\n- Aggressive, modern\n\n### Dubstep Bass\n- Modulated filtering\n- High resonance (Z for character)\n- LFO or speed mapping\n- Complex, evolving\n\n### House/Techno Bass\n- Groove-focused\n- Compression pumping\n- Subtle filtering\n- Consistent, driving\n\n### Lo-Fi Bass\n- Tape saturation (Z 30-40%)\n- Warm filtering (Y 100-800Hz)\n- Detuned width (X subtle)\n- Fuzzy, cozy\n\n## Mix Integration\n\n### Frequency Management\n```\nFundamental: Keep Y above fundamental freq\nHarmonics: Allow through filtering\nSaturation: Z adds harmonics for audibility\nWidth: Keep <150Hz mono (X=50%)\n```\n\n### Dynamics Control\n```\nCompression: Y threshold or Speed mapping\nSaturation: Z acts as soft compressor\nPumping: Speed creates groove\nConsistency: Controlled dynamics sit better\n```\n\n### Sidechain Relationship\n```\nBass ducking: Use X-Y-Z on sidechain threshold\nOr: Speed mapped to gain reduction\nResult: Bass breathes with kick\n```\n\n## Recording Strategies\n\n### Strategy 1: Live Bass Performance\n- Enable record automation\n- Play bass line with controller\n- Human timing and expression\n- Edit timing afterward\n\n### Strategy 2: Step-Recorded Automation\n- Program bass notes first\n- Record controller separately\n- Precise note + expressive control\n- Best for complex lines\n\n### Strategy 3: Real-Time Tweaking\n- Play and adjust simultaneously\n- Capture performance magic\n- Multiple takes for options\n- Comp best moments\n\n## Common Issues and Solutions\n\n| Issue | Cause | Solution |\n|-------|-------|----------|\n| Too muddy | Y too high | Lower cutoff |\n| Too thin | Y too low | Raise cutoff |\n| Lacking power | X too wide | Center fundamental |\n| Too aggressive | Z too high | Reduce saturation |\n| Not cutting through | Filter too closed | Open Y gradually |\n| Phase issues | Wide X on low freq | Keep <150Hz centered |\n\n[SRC: IL-MAN]\n",
+      "drum-processing": "# Workflow: Drum Programming and Processing\n\n## Goal\nAdd dynamic expression, spatial positioning, and punch to programmed drums.\n\n## Controller Applications\n- Spatial panning and positioning\n- Dynamic transient control\n- Saturation and drive\n- Room/reverb sends\n\n## Controller Setup\n\n### Configuration A: Drum Kit Performance\n```\nMode: Absolute (for specific drum placement)\n\nMappings:\n├── X → Pan (by drum element)\n├── Y → Transient Shaper (0-60%)\n├── Z → Saturation/Drive (0-40%)\n└── Speed → Accent boost (0-5dB)\n```\n\n### Configuration B: Drum Bus Dynamics\n```\nMode: Relative (for continuous groove)\n\nMappings:\n├── X → Pan (drum bus width)\n├── Y → Compression ratio (2:1 - 8:1)\n├── Z → Room send (0-60%)\n└── Acceleration → Transient boost\n```\n\n## Per-Element Strategies\n\n### Kick Drum\n**Focus**: Punch and consistency\n```\nX: Center or slightly off-center (40-60%)\nY: Transient shaper 50-70% (maximum attack)\nZ: Drive 30-50% (adds harmonics)\nSpeed: Optional for dynamic pumping\n```\n\n### Snare Drum\n**Focus**: Crack and body balance\n```\nX: Pan 30-70% (stereo width)\nY: Transient 40-60% (preserves body)\nZ: Saturation 20-35% (adds edge)\nSpeed: Accent on backbeats\n```\n\n### Hi-Hats\n**Focus**: Width and shimmer\n```\nX: Wide panning 10-90% or alternating\nY: Light transient (if needed)\nZ: Moderate saturation for character\nSpeed: Rhythmic variation\n```\n\n### Cymbals/Overheads\n**Focus**: Space and air\n```\nX: Full stereo width\nY: Room send depth\nZ: Air enhancement\nSpeed: For dynamic room response\n```\n\n## Performance Techniques\n\n### Technique 1: Dynamic Ghost Notes\n1. Map Acceleration to transient boost\n2. Quick gesture starts = accent spikes\n3. Use on snare for ghost note emphasis\n4. Result: Humanized, dynamic ghost notes\n\n### Technique 2: Rhythmic Pumping\n1. Map Speed to compression\n2. Move controller rhythmically with beat\n3. Creates musical pumping effect\n4. Result: Living, breathing dynamics\n\n### Technique 3: Spatial Kit Movement\n1. X controls pan per element\n2. Create kit width and dimension\n3. Move X for dynamic positioning\n4. Result: 3D drum kit placement\n\n### Technique 4: Room Throws\n1. Map Z to reverb send\n2. Quick Z spikes for fills\n3. Creates room \"throws\"\n4. Result: Dynamic spatial effects\n\n## Drum Bus Workflows\n\n### Workflow 1: Glue and Punch\n```\nX: Stereo width control\nY: Compression threshold\nZ: Parallel saturation\nGoal: Unified kit with impact\n```\n\n### Workflow 2: Dynamic Room\n```\nX: Width\nY: Room send\nZ: Pre-delay\nGoal: Responsive room ambience\n```\n\n### Workflow 3: Breakdown Build\n```\nX: Narrowing to widening\nY: Increasing saturation\nZ: Room growing\nGoal: Build intensity to drop\n```\n\n## Quick Drum Presets\n\n### Preset 1: Tight Hip-Hop Kit\n```\nKick: X=50%, Y=70%, Z=40%\nSnare: X=40% or 60%, Y=50%, Z=30%\nHats: X=alternating, Y=30%, Z=20%\nMode: Absolute per element\n```\n\n### Preset 2: Wide Electronic Kit\n```\nAll: X=wide spread\nBus: Y=moderate compression\nRoom: Z=controlled send\nMode: Absolute\n```\n\n### Preset 3: Live Kit Feel\n```\nX: Slight variations (not perfect center)\nY: Speed-mapped for humanization\nZ: Moderate on all\nMode: Relative\n```\n\n## Genre-Specific Tips\n\n### Trap Drums\n- Heavy saturation (Z 40-50%)\n- Wide panning on hats\n- Tight, aggressive transients\n- Room throws on fills\n\n### Boom Bap Drums\n- Subtle saturation (Z 20-30%)\n- Centered kick, wider snare\n- Moderate compression\n- Natural room sound\n\n### Lo-Fi Drums\n- Tape saturation (Z 30-40%)\n- Mono or narrow width\n- Soft transients\n- Heavy room/reverb\n\n### EDM Drums\n- Maximum punch (Y 60-80%)\n- Wide stereo (X 20-80%)\n- Sidechain-style pumping\n- Dynamic room fills\n\n## Recording Strategies\n\n### Strategy 1: Element-by-Element\n- Record controller for each drum\n- Kick, snare, hats separately\n- Full control per element\n- Time-intensive but precise\n\n### Strategy 2: Kit Performance\n- Record all drums together\n- Perform as if playing kit\n- Captures holistic groove\n- Natural interaction\n\n### Strategy 3: Hybrid Programming\n- Program static drum parts\n- Record controller overdubs\n- Best of both worlds\n- Efficient and expressive\n\n## Troubleshooting\n\n| Issue | Cause | Solution |\n|-------|-------|----------|\n| Too aggressive | High Y and Z | Reduce saturation |\n| No stereo width | Centered X | Widen pan positions |\n| Washed out | High Z room | Decrease room send |\n| Lacking punch | Low Y | Increase transient |\n| Too mechanical | Static values | Add Speed modulation |\n\n[SRC: IL-MAN]\n",
+      "hip-hop-lead-synth": "# Workflow: Lead Synthesis (Hip-Hop)\n\n## Goal\nCreate expressive, modulated hip-hop lead sounds with the X-Y-Z Controller.\n\n## The Hip-Hop Lead Character\n- Pitch bends and slides (portamento style)\n- Filter modulation for expression\n- Distortion and saturation for edge\n- Dynamic, responsive to playing\n\n## Controller Setup\n\n### Configuration\n```\nMode: Relative (for smooth, continuous control)\n\nMappings:\n├── X → Pitch Bend (±12 semitones)\n├── Y → Filter Cutoff (100Hz - 20kHz)\n├── Z → Distortion/Drive (0-50%)\n└── Speed → Resonance boost (0-60%)\n\nOptional:\n└── Acceleration → Accent volume boost\n```\n\n## Performance Techniques\n\n### Technique 1: The Slide\n1. Play a note\n2. Use X to pitch bend into the note\n3. Coordinate with Y for timbral shift\n4. Result: Classic hip-hop slide effect\n\n### Technique 2: Filter Talk\n1. Map Y to low-pass filter\n2. \"Talk\" by moving Y while holding notes\n3. Use Speed for dynamic resonance\n4. Result: Expressive \"vocal\" filter modulation\n\n### Technique 3: Grit Control\n1. Z controls distortion amount\n2. Higher positions = more saturation\n3. Use for building intensity\n4. Result: Dynamic edge and aggression\n\n### Technique 4: Phrase Dynamics\n1. Start phrase with moderate settings\n2. Build intensity through phrase\n3. Maximum at phrase peak\n4. Release back to neutral\n5. Result: Natural, musical dynamics\n\n## Common Hip-Hop Lead Patterns\n\n### The Glide Lead\n```\nPitch: X bend ±7 semitones\nFilter: Y moderate, sweeping\nDrive: Z 20-40%\nMode: Relative\nUse: Melodic hooks, smooth lines\n```\n\n### The Stab Lead\n```\nPitch: X minimal\nFilter: Y quick sweeps\nDrive: Z 30-50%\nSpeed: Mapped to accents\nMode: Absolute\nUse: Short, aggressive hits\n```\n\n### The Talk Box\n```\nPitch: X ±12 semitones (wide)\nFilter: Y primary control\nResonance: Speed modulated\nDrive: Z moderate\nMode: Relative\nUse: Vocal-like expression\n```\n\n## Genre-Specific Tips\n\n### Trap Leads\n- Heavy use of X for pitch slides\n- Dark filter settings (Y < 50%)\n- High distortion (Z 40-50%)\n- Fast, aggressive movements\n\n### Boom Bap Leads\n- Moderate pitch bends\n- Warm filter (Y 30-60%)\n- Subtle saturation (Z 20-30%)\n- Smooth, flowing gestures\n\n### Lo-Fi Leads\n- X for subtle detuning\n- Y for low-pass warmth\n- Z for tape saturation\n- Slow, gentle movements\n\n## Quick Presets\n\n### Preset 1: The Mumble Lead\n```\nX: Pitch ±7st\nY: Cutoff 200Hz-8kHz\nZ: Distortion 30%\nMode: Relative\nStyle: Slow, slurred bends\n```\n\n### Preset 2: The Scream Lead\n```\nX: Pitch ±12st\nY: Cutoff full range\nZ: Distortion 50%\nSpeed: Resonance\nMode: Relative\nStyle: Aggressive, wide sweeps\n```\n\n### Preset 3: The Whisper Lead\n```\nX: Minimal pitch\nY: Filter focused 500Hz-5kHz\nZ: Saturation 20%\nMode: Absolute\nStyle: Subtle, intimate\n```\n\n## Recording Strategies\n\n### Strategy 1: Live Performance\n- Enable automation record\n- Perform phrases in real-time\n- Capture human feel and timing\n- Edit afterward for precision\n\n### Strategy 2: Phrase Building\n- Record controller for each phrase\n- Layer multiple takes\n- Comp best sections\n- Result: Perfected but natural\n\n### Strategy 3: Hybrid Approach\n- Program melodic foundation\n- Record controller overdubs\n- Combine precision + expression\n- Result: Controlled yet dynamic\n\n## Common Mappings Reference\n\n| Element | Primary Control | Secondary | Accent |\n|---------|----------------|-----------|--------|\n| **Pitch** | X | - | - |\n| **Brightness** | Y | Speed | - |\n| **Edge** | Z | - | Accel |\n| **Resonance** | Speed | Y | - |\n| **Dynamics** | - | Speed | Accel |\n\n[SRC: IL-MAN]\n",
+      "pad-atmosphere-design": "# Workflow: Pad and Atmosphere Design\n\n## Goal\nCreate evolving, immersive pads and atmospheric textures using 3D morphing control.\n\n## Controller Applications\n- Continuous timbre evolution\n- Spatial positioning and movement\n- Filter and brightness modulation\n- Effect depth and ambience\n\n## Controller Setup\n\n### Configuration A: Timbre Morphing Pad\n```\nMode: Absolute (for specific state targeting)\n\nMappings:\n├── X → Oscillator mix or wavetable position\n├── Y → Filter cutoff (evolution)\n├── Z → Effect depth (reverb/delay)\n└── Speed → LFO or modulation depth\n```\n\n### Configuration B: Spatial Atmosphere\n```\nMode: Absolute\n\nMappings:\n├── X → Stereo width (0-200%)\n├── Y → Reverb time/size\n├── Z → Delay feedback/diffusion\n└── Speed → Modulation rate\n```\n\n### Configuration C: 3D Soundscape Navigation\n```\nMode: Absolute\n\nMappings:\n├── X → Pan + stereo movement\n├── Y → Filter (near/far illusion)\n├── Z → Spatial effect send\n└── Speed → Granular or texture parameter\n```\n\n## Pad Types and Techniques\n\n### Technique 1: The Evolving Drone\n1. Map X to oscillator morph or mix\n2. Move slowly through positions\n3. Y for brightness evolution\n4. Result: Constantly shifting texture\n\n### Technique 2: Breathing Space\n1. X oscillates slowly (width modulation)\n2. Y steady or slowly rising\n3. Z for depth breathing\n4. Result: Organic, living space\n\n### Technique 3: Spatial Swirl\n1. X creates circular panning\n2. Y modulates filter\n3. Z increases as pad evolves\n4. Result: Immersive 3D movement\n\n### Technique 4: Texture Granular\n1. Map Speed to granular parameter\n2. Movement creates texture variation\n3. Still = stable texture\n4. Result: Dynamic, granular evolution\n\n## Pad Recipes\n\n### Recipe 1: Warm Analog Pad\n```\nX: Oscillator detune 10-30%\nY: Low-pass 200-2000Hz\nZ: Reverb 40-70%\nSpeed: Slow vibrato 0-10%\nMode: Absolute\nCharacter: Vintage, cozy, enveloping\n```\n\n### Recipe 2: Bright Digital Pad\n```\nX: Bright waveform mix\nY: High-pass + filter sweep\nZ: Long delay 50-70%\nSpeed: Fast LFO 20-40%\nMode: Absolute\nCharacter: Shimmering, modern, airy\n```\n\n### Recipe 3: Dark Cinematic Pad\n```\nX: Sub oscillator blend\nY: Low cutoff 100-800Hz\nZ: Big reverb 60-80%\nSpeed: Subtle movement\nMode: Absolute\nCharacter: Mysterious, deep, filmic\n```\n\n### Recipe 4: Rhythmic Arpeggio Pad\n```\nX: Arp pattern morph\nY: Filter following notes\nZ: Delay for rhythm\nSpeed: Accent on beats\nMode: Relative\nCharacter: Moving, rhythmic, energetic\n```\n\n### Recipe 5: Granular Texture\n```\nX: Sample position\nY: Density/texture\nZ: Reverb freeze\nSpeed: Grain manipulation\nMode: Absolute\nCharacter: Abstract, glitchy, experimental\n```\n\n## 3D Positioning for Pads\n\n### Background Atmosphere\n```\nX: Wide 100-150%\nY: Low filter (distant)\nZ: High reverb 70%\nResult: Distant, ambient bed\n```\n\n### Midground Support\n```\nX: Moderate 60-100%\nY: Mid filter\nZ: Moderate reverb 50%\nResult: Present but supportive\n```\n\n### Foreground Texture\n```\nX: Narrow 30-60%\nY: Open filter\nZ: Light reverb 30%\nResult: Intimate, detailed\n```\n\n## Evolution Patterns\n\n### Pattern 1: Slow Build\n```\nDuration: 8-16 bars\nX: Steady or slow morph\nY: Gradual filter opening\nZ: Increasing reverb\nResult: Building intensity\n```\n\n### Pattern 2: Wave Cycle\n```\nDuration: 4-8 bars\nX: Sine wave oscillation\nY: Following X\nZ: Steady or following\nResult: Breathing, organic\n```\n\n### Pattern 3: Random Walk\n```\nDuration: Continuous\nX: Drifting randomly\nY: Related to X\nZ: Occasional spikes\nResult: Unpredictable, evolving\n```\n\n### Pattern 4: Geometric\n```\nDuration: 2-4 bars\nX: Corner-to-corner jumps\nY: Following X\nZ: Pattern-based\nResult: Structured evolution\n```\n\n## Effect Integration\n\n### Reverb as 3D Space\n```\nZ: Reverb send\nY: Filter pre-reverb\nX: Pre-reverb panning\nResult: Pad exists in defined space\n```\n\n### Delay as Texture\n```\nZ: Delay feedback\nY: Delay time/filter\nSpeed: Delay modulation\nResult: Rhythmic or ambient texture\n```\n\n### Modulation Effects\n```\nX: Chorus rate\nY: Phaser depth\nZ: Flanger feedback\nResult: Rich, moving texture\n```\n\n## Recording Long Evolutions\n\n### Strategy 1: Single Long Pass\n- Enable record\n- Perform 16-32 bar evolution\n- Single take = natural flow\n- Edit start/end points\n\n### Strategy 2: Layered Sections\n- Record 4-bar sections separately\n- Layer for complex evolution\n- Crossfade between takes\n- Result: Multi-dimensional pad\n\n### Strategy 3: Loop and Modulate\n- Create base pad loop\n- Record controller over multiple passes\n- Each pass adds modulation\n- Result: Dense, complex texture\n\n## Atmospheric Sound Design\n\n### Wind/Noise Textures\n```\nX: Pan drift\nY: Filter modulation\nZ: Noise/reverb\nSpeed: Gust intensity\nResult: Natural wind sounds\n```\n\n### Water/Fluid Textures\n```\nX: Slow panning\nY: Filter \"wave\" motion\nZ: Reverb depth\nSpeed: Ripple intensity\nResult: Liquid, flowing\n```\n\n### Industrial/Dark Textures\n```\nX: Erratic movement\nY: Harsh filtering\nZ: Distortion/reverb\nSpeed: Impact accents\nResult: Mechanical, ominous\n```\n\n## Tips for Effective Pads\n\n1. **Slow Movements**: Pads reward gradual, smooth changes\n2. **Wide Ranges**: Use full X range for stereo interest\n3. **Filter is Key**: Y-axis filter creates most variation\n4. **Space Matters**: Z creates depth—use generously\n5. **Modulation Adds Life**: Speed mapping prevents stasis\n6. **Layer Multiple Pads**: Different controller settings per layer\n7. **Record Long Takes**: Captures evolution naturally\n8. **Edit After**: Fine-tune recorded automation\n\n## Common Pad Parameters\n\n| Parameter | Typical Range | Mapping |\n|-----------|---------------|---------|\n| Oscillator Mix | 0-100% | X |\n| Filter Cutoff | 100-10000Hz | Y |\n| Resonance | 0-60% | Z or Speed |\n| LFO Rate | 0.1-10Hz | Speed |\n| LFO Depth | 0-100% | Z |\n| Reverb Send | 30-80% | Z |\n| Stereo Width | 50-150% | X |\n| Attack Time | 100-1000ms | Fixed |\n\n[SRC: IL-MAN]\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity X Y Z Controller\r\n\r\nThis section contains workflow information for the fruity-x-y-z-controller plugin.\r\n"
+    }
+  },
+  "rules": {
+    "gesture-rules": {
+      "gestureRules": [
+        {
+          "gesture": "smooth-sweep",
+          "name": "Smooth Sweep",
+          "description": "Continuous, deliberate movement from one position to another",
+          "pattern": "Linear or curved path with steady velocity",
+          "outputs": {
+            "x": "Ramps smoothly from start to end value",
+            "y": "Ramps smoothly from start to end value",
+            "speed": "Moderate, consistent values",
+            "acceleration": "Near zero (constant velocity)"
+          },
+          "musicalResult": "Legato, flowing parameter changes",
+          "bestFor": [
+            "Filter sweeps",
+            "Fade ins/outs",
+            "Spatial traversal",
+            "Timbre morphing"
+          ],
+          "difficulty": "beginner",
+          "practiceExercise": "Practice straight line sweeps on Y-axis for filter control"
+        },
+        {
+          "gesture": "quick-flick",
+          "name": "Quick Flick",
+          "description": "Fast movement followed by immediate stop",
+          "pattern": "High velocity spike, then zero",
+          "outputs": {
+            "x": "Brief value jump",
+            "y": "Brief value jump",
+            "speed": "High spike (70-100%)",
+            "acceleration": "High positive then negative spike"
+          },
+          "musicalResult": "Accent, transient boost, one-shot effect",
+          "bestFor": [
+            "Note accents",
+            "Transient emphasis",
+            "Stab effects",
+            "Dynamic variation"
+          ],
+          "difficulty": "intermediate",
+          "practiceExercise": "Practice creating consistent speed spikes for rhythmic accents"
+        },
+        {
+          "gesture": "circular-orbit",
+          "name": "Circular Orbit",
+          "description": "Continuous circular movement around a center point",
+          "pattern": "Periodic X and Y oscillation with 90° phase offset",
+          "outputs": {
+            "x": "Sine wave oscillation",
+            "y": "Sine wave oscillation (quadrature)",
+            "speed": "Constant moderate value",
+            "acceleration": "Periodic oscillation (centripetal)"
+          },
+          "musicalResult": "LFO-like modulation, rhythmic variation",
+          "bestFor": [
+            "Auto-pan effects",
+            "Filter modulation",
+            "Tremolo",
+            "Rhythmic variation"
+          ],
+          "difficulty": "intermediate",
+          "practiceExercise": "Trace circles at different speeds for consistent modulation"
+        },
+        {
+          "gesture": "spiral",
+          "name": "Spiral Motion",
+          "description": "Circular path with increasing or decreasing radius",
+          "pattern": "Combines rotation with radial expansion/contraction",
+          "outputs": {
+            "x": "Oscillating with changing amplitude",
+            "y": "Oscillating with changing amplitude",
+            "speed": "Varies with radius",
+            "acceleration": "Complex profile (radial + angular)"
+          },
+          "musicalResult": "Evolving modulation depth, building intensity",
+          "bestFor": [
+            "Building intensity",
+            "Evolution effects",
+            "Complex filter sweeps",
+            "Dynamic stereo effects"
+          ],
+          "difficulty": "advanced",
+          "practiceExercise": "Start with tight circles, gradually spiral outward"
+        },
+        {
+          "gesture": "figure-eight",
+          "name": "Figure-8 (Lemniscate)",
+          "description": "Horizontal figure-8 pattern creating complex modulation",
+          "pattern": "X oscillates at 2x frequency of Y with phase relationship",
+          "outputs": {
+            "x": "Double-frequency oscillation",
+            "y": "Single-frequency oscillation",
+            "speed": "Varies continuously",
+            "acceleration": "Complex harmonic content"
+          },
+          "musicalResult": "Complex rhythmic modulation, stereo effects",
+          "bestFor": [
+            "Stereo panning with filter",
+            "Complex LFO shapes",
+            "Experimental effects",
+            "Psychedelic sounds"
+          ],
+          "difficulty": "advanced",
+          "practiceExercise": "Draw horizontal figure-8 patterns smoothly"
+        },
+        {
+          "gesture": "bounce",
+          "name": "Bounce/Oscillation",
+          "description": "Quick vertical oscillations",
+          "pattern": "Rapid Y movement with minimal X variation",
+          "outputs": {
+            "x": "Nearly constant",
+            "y": "Square-wave-like oscillation",
+            "speed": "High frequency spikes",
+            "acceleration": "Sharp positive/negative alternation"
+          },
+          "musicalResult": "Tremolo, stuttering, rhythmic chopping",
+          "bestFor": [
+            "Tremolo effects",
+            "Gate effects",
+            "Stutter edits",
+            "Rhythmic variation"
+          ],
+          "difficulty": "intermediate",
+          "practiceExercise": "Rapid up-down movements while keeping X steady"
+        },
+        {
+          "gesture": "corner-snap",
+          "name": "Corner Snap",
+          "description": "Sudden movement to corner positions",
+          "pattern": "Direct path to extreme positions (0% or 100%)",
+          "outputs": {
+            "x": "Binary-like values (0 or 100%)",
+            "y": "Binary-like values (0 or 100%)",
+            "speed": "High during movement, zero at corners",
+            "acceleration": "Spike at start and end"
+          },
+          "musicalResult": "Extreme parameter states, dramatic changes",
+          "bestFor": [
+            "On/off effects",
+            "Extreme filter states",
+            "Dramatic transitions",
+            "Binary morphing"
+          ],
+          "difficulty": "beginner",
+          "practiceExercise": "Practice hitting exact corners quickly and accurately"
+        },
+        {
+          "gesture": "3d-throw",
+          "name": "3D Throw",
+          "description": "Diagonal movement with simultaneous Z control",
+          "pattern": "X/Y movement while scrolling/pinching for Z",
+          "outputs": {
+            "x": "Diagonal trajectory",
+            "y": "Diagonal trajectory",
+            "z": "Changes simultaneously",
+            "speed": "Varies with movement rate"
+          },
+          "musicalResult": "Complete 3D parameter space traversal",
+          "bestFor": [
+            "Spatial audio",
+            "Effect throws",
+            "3D synthesis",
+            "Immersive transitions"
+          ],
+          "difficulty": "advanced",
+          "practiceExercise": "Coordinate X/Y drag with scroll wheel for Z"
+        },
+        {
+          "gesture": "tap-hold",
+          "name": "Tap and Hold",
+          "description": "Quick engagement followed by sustained position",
+          "pattern": "Rapid movement to position, then static hold",
+          "outputs": {
+            "x": "Step to target value",
+            "y": "Step to target value",
+            "speed": "Spike then zero",
+            "acceleration": "Spike at start, negative at hold"
+          },
+          "musicalResult": "One-shot effect, sustained modulation state",
+          "bestFor": [
+            "Stab effects",
+            "Sustained filter positions",
+            "Temporary effect engagement",
+            "Momentary parameters"
+          ],
+          "difficulty": "beginner",
+          "practiceExercise": "Tap to specific positions, hold, then release"
+        }
+      ],
+      "gestureCombinations": [
+        {
+          "name": "Build and Release",
+          "combination": [
+            "smooth-sweep",
+            "quick-flick"
+          ],
+          "pattern": "Long sweep up (build), quick flick down (release)",
+          "musicalUse": "Classic filter sweep for EDM builds"
+        },
+        {
+          "name": "Orbital Accent",
+          "combination": [
+            "circular-orbit",
+            "quick-flick"
+          ],
+          "pattern": "Continuous orbit with periodic flicks",
+          "musicalUse": "Rhythmic modulation with dynamic accents"
+        },
+        {
+          "name": "3D Spatial Throw",
+          "combination": [
+            "3d-throw",
+            "smooth-sweep"
+          ],
+          "pattern": "Throw to position, then sweep in 3D space",
+          "musicalUse": "Immersive spatial audio navigation"
+        },
+        {
+          "name": "Stutter Build",
+          "combination": [
+            "bounce",
+            "smooth-sweep"
+          ],
+          "pattern": "Rapid bouncing accelerating into smooth sweep",
+          "musicalUse": "Tension building before breakdown"
+        }
+      ],
+      "practiceProgression": [
+        {
+          "level": "Beginner",
+          "gestures": [
+            "smooth-sweep",
+            "corner-snap",
+            "tap-hold"
+          ],
+          "focus": "Accuracy and control"
+        },
+        {
+          "level": "Intermediate",
+          "gestures": [
+            "quick-flick",
+            "circular-orbit",
+            "bounce"
+          ],
+          "focus": "Speed and rhythm"
+        },
+        {
+          "level": "Advanced",
+          "gestures": [
+            "spiral",
+            "figure-eight",
+            "3d-throw"
+          ],
+          "focus": "Complex coordination and 3D control"
+        }
+      ]
+    },
+    "scenario-rules": {
+      "scenarioRules": [
+        {
+          "id": "scenario-hip-hop-lead",
+          "scenario": "Hip-Hop Lead Performance",
+          "description": "Creating expressive, modulated lead lines in hip-hop production",
+          "genre": "hip-hop",
+          "priority": 1,
+          "recommendedSetup": {
+            "mode": "relative",
+            "vibeBlend": [
+              "PUNCH",
+              "CLARITY"
+            ],
+            "mappings": [
+              {
+                "output": "x",
+                "target": "Pitch Bend ±12st"
+              },
+              {
+                "output": "y",
+                "target": "Filter Cutoff"
+              },
+              {
+                "output": "z",
+                "target": "Distortion/Resonance"
+              },
+              {
+                "output": "speed",
+                "target": "Accent boost"
+              }
+            ]
+          },
+          "performanceTips": [
+            "Use relative mode for continuous filter sweeps during phrases",
+            "Map Speed to accent detection for dynamic note emphasis",
+            "Keep Z moderate for clarity—don't over-saturate",
+            "Quick flicks on X for pitch bend effects"
+          ],
+          "commonPatterns": [
+            "Phrase start: Bottom-center, sweep Y up during note",
+            "Accent notes: Quick Y movement triggers Speed boost",
+            "Bends: X left/right during sustained notes",
+            "Release: Return to center for neutral state"
+          ]
+        },
+        {
+          "id": "scenario-ambient-soundscape",
+          "scenario": "Ambient Soundscape Design",
+          "description": "Creating evolving, immersive ambient textures",
+          "genre": "ambient",
+          "priority": 1,
+          "recommendedSetup": {
+            "mode": "absolute",
+            "vibeBlend": [
+              "DEPTH",
+              "WARMTH"
+            ],
+            "mappings": [
+              {
+                "output": "x",
+                "target": "Stereo Width 0-200%"
+              },
+              {
+                "output": "y",
+                "target": "Reverb Time/Density"
+              },
+              {
+                "output": "z",
+                "target": "Delay Feedback"
+              },
+              {
+                "output": "speed",
+                "target": "LFO Rate/Depth"
+              }
+            ]
+          },
+          "performanceTips": [
+            "Use absolute mode for precise spatial positioning",
+            "Slow, deliberate movements create evolving textures",
+            "X-axis width modulation creates breathing effect",
+            "Combine all three axes for complete space morphing"
+          ],
+          "commonPatterns": [
+            "Evolving pad: Slow circular motion on X/Y with Z modulation",
+            "Space entry: Start narrow/dry, expand to wide/wet",
+            "Breathing effect: Gentle X oscillation with fixed Y/Z",
+            "Crescendo: Gradual Y increase with Speed→LFO depth"
+          ]
+        },
+        {
+          "id": "scenario-edm-buildup",
+          "scenario": "EDM Buildup and Drop",
+          "description": "Creating tension and release in electronic dance music",
+          "genre": "edm",
+          "priority": 1,
+          "recommendedSetup": {
+            "mode": "relative",
+            "vibeBlend": [
+              "PUNCH",
+              "AIR"
+            ],
+            "mappings": [
+              {
+                "output": "x",
+                "target": "Filter Cutoff (sweep)"
+              },
+              {
+                "output": "y",
+                "target": "LFO/Modulation Depth"
+              },
+              {
+                "output": "z",
+                "target": "Reverb/Delay send"
+              },
+              {
+                "output": "speed",
+                "target": "Distortion/Resonance"
+              }
+            ]
+          },
+          "performanceTips": [
+            "Use relative mode for long, continuous filter sweeps",
+            "Start buildup with slow movement, accelerate to drop",
+            "Speed mapping adds intensity as you move faster",
+            "Z increases reverb before drop for spatial depth"
+          ],
+          "commonPatterns": [
+            "Buildup: Slow Y rise from 10% to 90% over 8-16 bars",
+            "Drop preparation: Fast X/Y movement triggers Speed peak",
+            "Impact moment: Maximum Speed + Z spike",
+            "Post-drop: Return to moderate position for groove"
+          ]
+        },
+        {
+          "id": "scenario-live-drums",
+          "scenario": "Live Drum Performance",
+          "description": "Adding dynamic expression to programmed or live drums",
+          "genre": "all",
+          "priority": 2,
+          "recommendedSetup": {
+            "mode": "relative",
+            "vibeBlend": [
+              "PUNCH"
+            ],
+            "mappings": [
+              {
+                "output": "x",
+                "target": "Pan positioning"
+              },
+              {
+                "output": "y",
+                "target": "Transient Shaper"
+              },
+              {
+                "output": "z",
+                "target": "Saturation/Drive"
+              },
+              {
+                "output": "speed",
+                "target": "Compression ratio"
+              },
+              {
+                "output": "acceleration",
+                "target": "Accent boost"
+              }
+            ]
+          },
+          "performanceTips": [
+            "Rhythmic movements create dynamic drum patterns",
+            "Accent detection on Acceleration for ghost notes",
+            "X positioning per drum element for width",
+            "Speed creates pumping compression effect"
+          ],
+          "commonPatterns": [
+            "Kick focus: Vertical motion on Y for punch control",
+            "Hi-hat width: Horizontal X oscillation for stereo movement",
+            "Snare accent: Quick flick creates Acceleration spike",
+            "Build intensity: Progressive Speed increase → compression"
+          ]
+        },
+        {
+          "id": "scenario-vocal-processing",
+          "scenario": "Vocal Performance Effects",
+          "description": "Adding expressive effects to vocal tracks",
+          "genre": "all",
+          "priority": 2,
+          "recommendedSetup": {
+            "mode": "absolute",
+            "vibeBlend": [
+              "CLARITY",
+              "AIR"
+            ],
+            "mappings": [
+              {
+                "output": "x",
+                "target": "Formant shift/Pitch"
+              },
+              {
+                "output": "y",
+                "target": "Vocoder/Filter"
+              },
+              {
+                "output": "z",
+                "target": "Effect Wet/Dry"
+              },
+              {
+                "output": "speed",
+                "target": "Modulation rate"
+              }
+            ]
+          },
+          "performanceTips": [
+            "Use absolute mode for predictable vocal effect timing",
+            "X-axis for formant shifting (robotic effects)",
+            "Y-axis for filter-based effects (telephone, radio)",
+            "Z for throwing vocals into reverb/delay"
+          ],
+          "commonPatterns": [
+            "Robot voice: Static X position for fixed formant",
+            "Morphing: Smooth X transition during phrase",
+            "Telephone effect: Fixed low Y position",
+            "Throw: Quick Z spike at phrase end"
+          ]
+        },
+        {
+          "id": "scenario-synth-bass",
+          "scenario": "Synth Bass Performance",
+          "description": "Controlling bass synths with expressive modulation",
+          "genre": "all",
+          "priority": 2,
+          "recommendedSetup": {
+            "mode": "relative",
+            "vibeBlend": [
+              "WARMTH",
+              "PUNCH"
+            ],
+            "mappings": [
+              {
+                "output": "x",
+                "target": "Wavetable position/Osc mix"
+              },
+              {
+                "output": "y",
+                "target": "Filter Cutoff"
+              },
+              {
+                "output": "z",
+                "target": "Drive/Distortion"
+              },
+              {
+                "output": "speed",
+                "target": "Envelope amount"
+              }
+            ]
+          },
+          "performanceTips": [
+            "Keep low-pass cutoff controlled to maintain bass presence",
+            "X-axis for morphing between oscillator types",
+            "Subtle Z for saturation, heavy for distortion",
+            "Speed adds expression to filter envelope"
+          ],
+          "commonPatterns": [
+            "Sub bass: Low Y position, minimal movement",
+            "Growl bass: Rapid X oscillation + moderate Z",
+            "Wobble: Rhythmic Y movement synced to tempo",
+            "Drop bass: Maximum Y + Z at impact"
+          ]
+        },
+        {
+          "id": "scenario-touchscreen-live",
+          "scenario": "Touchscreen Live Performance",
+          "description": "Performing on tablets or touch-enabled devices",
+          "genre": "all",
+          "priority": 1,
+          "recommendedSetup": {
+            "mode": "absolute",
+            "vibeBlend": [
+              "DEPTH",
+              "CLARITY"
+            ],
+            "mappings": [
+              {
+                "output": "x",
+                "target": "Primary parameter"
+              },
+              {
+                "output": "y",
+                "target": "Secondary parameter"
+              },
+              {
+                "output": "z",
+                "target": "Tertiary parameter (via pinch)"
+              },
+              {
+                "output": "speed",
+                "target": "Expression"
+              }
+            ]
+          },
+          "performanceTips": [
+            "Use absolute mode for direct visual correlation",
+            "Practice pinch gesture for Z control",
+            "Enable 'Show touches' for visual feedback",
+            "Design for one-handed or two-handed gestures"
+          ],
+          "gestureLibrary": [
+            "Single-finger sweep: Standard X/Y control",
+            "Two-finger pinch: Z-axis depth control",
+            "Quick flick: Speed spike for accents",
+            "Two-hand independent: Control multiple instances"
+          ]
+        },
+        {
+          "id": "scenario-3d-morphing",
+          "scenario": "3D Sound Morphing",
+          "description": "Radically transforming sounds through three-parameter morphing",
+          "genre": "all",
+          "priority": 3,
+          "recommendedSetup": {
+            "mode": "absolute",
+            "vibeBlend": [
+              "WARMTH",
+              "CLARITY",
+              "DEPTH"
+            ],
+            "mappings": [
+              {
+                "output": "x",
+                "target": "Parameter A (State 1 ↔ State 2)"
+              },
+              {
+                "output": "y",
+                "target": "Parameter B (State 1 ↔ State 2)"
+              },
+              {
+                "output": "z",
+                "target": "Parameter C (State 1 ↔ State 2)"
+              }
+            ]
+          },
+          "performanceTips": [
+            "Map each axis to fundamentally different parameters",
+            "Corner positions create 8 distinct sound states",
+            "Diagonal movements blend between multiple parameters",
+            "Center position is transitional/mixed state"
+          ],
+          "morphingConcepts": [
+            "Each corner = unique combination of all three parameters",
+            "Edges = two parameters changing, one fixed",
+            "Faces = one parameter changing, two fixed",
+            "Interior = all parameters in transition"
+          ]
+        }
+      ]
+    },
+    "schema": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "$id": "fruity-xyz-rules",
+      "title": "X-Y-Z Controller Decision Rules Schema",
+      "description": "Schema for mapping production scenarios to controller configurations",
+      "type": "object",
+      "properties": {
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "scenario": {
+                "type": "string"
+              },
+              "recommendedConfig": {
+                "type": "object"
+              },
+              "priority": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    },
+    "vibe-rules": {
+      "vibeRules": [
+        {
+          "vibe": "WARMTH",
+          "description": "Analog character, vintage thickness, cozy texture",
+          "mappingStrategy": {
+            "x": {
+              "target": "Oscillator detune or pitch widening",
+              "range": "0-30% (subtle)",
+              "position": "Lower half (30-50%)",
+              "technique": "Hold steady for gentle thickness"
+            },
+            "y": {
+              "target": "Low-pass filter cutoff",
+              "range": "200Hz - 5kHz (keep below 40%)",
+              "position": "Lower half (10-40%)",
+              "technique": "Low positions = warm/dark tone"
+            },
+            "z": {
+              "target": "Tape/analog saturation",
+              "range": "0-40% (gentle)",
+              "position": "Lower half (20-40%)",
+              "technique": "Subtle drive for analog character"
+            },
+            "speed": {
+              "target": "Vibrato or subtle LFO",
+              "range": "0-20%",
+              "technique": "Movement adds gentle variation"
+            }
+          },
+          "quadrantFocus": "Lower-left (X<50%, Y<50%)",
+          "gestureStyle": "Slow, sustained holds with minimal movement",
+          "combinations": [
+            {
+              "with": "DEPTH",
+              "result": "Warm, spacious ambience"
+            },
+            {
+              "with": "PUNCH",
+              "result": "Thick, driven low-end"
+            },
+            {
+              "with": "CLARITY",
+              "result": "Defined warmth (moderate on both)"
+            }
+          ]
+        },
+        {
+          "vibe": "CLARITY",
+          "description": "Presence, definition, forwardness, intelligibility",
+          "mappingStrategy": {
+            "x": {
+              "target": "Presence EQ boost (2-5kHz)",
+              "range": "0-6dB boost",
+              "position": "Upper half (50-80%)",
+              "technique": "Right side = more presence"
+            },
+            "y": {
+              "target": "High-shelf or exciter",
+              "range": "0-4dB boost",
+              "position": "Upper half (50-80%)",
+              "technique": "Up = brighter, more defined"
+            },
+            "z": {
+              "target": "Harmonic exciter/enhancer",
+              "range": "0-40%",
+              "position": "Moderate (30-60%)",
+              "technique": "Subtle enhancement, don't overdo"
+            },
+            "speed": {
+              "target": "Transient emphasis",
+              "range": "0-50%",
+              "technique": "Movement = sharper transients"
+            }
+          },
+          "quadrantFocus": "Upper-right (X>50%, Y>50%)",
+          "gestureStyle": "Quick, precise movements for definition",
+          "combinations": [
+            {
+              "with": "AIR",
+              "result": "Ultra-clear, shiny top-end"
+            },
+            {
+              "with": "PUNCH",
+              "result": "Aggressive, cutting presence"
+            },
+            {
+              "with": "DEPTH",
+              "result": "Clear but spacious"
+            }
+          ]
+        },
+        {
+          "vibe": "DEPTH",
+          "description": "Spaciousness, 3D space, immersion, distance",
+          "mappingStrategy": {
+            "x": {
+              "target": "Stereo width",
+              "range": "50-150%",
+              "position": "Full range",
+              "technique": "Wide for space, narrow for focus"
+            },
+            "y": {
+              "target": "Reverb send/time",
+              "range": "0-70% (avoid 100% wash)",
+              "position": "Upper half (40-70%)",
+              "technique": "Up = more reverb depth"
+            },
+            "z": {
+              "target": "Delay feedback or diffusion",
+              "range": "20-60%",
+              "position": "Moderate (30-60%)",
+              "technique": "Depth via echo density"
+            },
+            "speed": {
+              "target": "Reverb pre-delay or modulation",
+              "range": "0-50%",
+              "technique": "Movement adds space variation"
+            }
+          },
+          "quadrantFocus": "Full range with emphasis on upper positions",
+          "gestureStyle": "Expansive, wide gestures for space creation",
+          "combinations": [
+            {
+              "with": "WARMTH",
+              "result": "Cozy, enveloping space"
+            },
+            {
+              "with": "AIR",
+              "result": "Open, airy dimension"
+            },
+            {
+              "with": "CLARITY",
+              "result": "Defined spatial placement"
+            }
+          ]
+        },
+        {
+          "vibe": "PUNCH",
+          "description": "Impact, aggression, tightness, dynamic energy",
+          "mappingStrategy": {
+            "x": {
+              "target": "Transient shaper amount",
+              "range": "0-70%",
+              "position": "Moderate-high (40-70%)",
+              "technique": "Right = harder attack"
+            },
+            "y": {
+              "target": "Compression threshold/ratio",
+              "range": "Light to heavy",
+              "position": "Moderate (40-60%)",
+              "technique": "Up = more compression"
+            },
+            "z": {
+              "target": "Saturation on transients",
+              "range": "0-50%",
+              "position": "Moderate (30-50%)",
+              "technique": "Edge and grit on peaks"
+            },
+            "speed": {
+              "target": "Accent boost or drive",
+              "range": "0-100%",
+              "technique": "Fast movement = maximum impact"
+            },
+            "acceleration": {
+              "target": "Transient boost",
+              "range": "Spike detection",
+              "technique": "Gesture start = accent"
+            }
+          },
+          "quadrantFocus": "Upper-right with aggressive Speed usage",
+          "gestureStyle": "Quick, sharp, accented movements",
+          "combinations": [
+            {
+              "with": "CLARITY",
+              "result": "Cutting, aggressive attack"
+            },
+            {
+              "with": "WARMTH",
+              "result": "Thick, saturated punch"
+            },
+            {
+              "with": "DEPTH",
+              "result": "Impact in 3D space"
+            }
+          ]
+        },
+        {
+          "vibe": "AIR",
+          "description": "Brightness, shimmer, high-end lift, polish",
+          "mappingStrategy": {
+            "x": {
+              "target": "High-pass filter",
+              "range": "20-200Hz (remove rumble)",
+              "position": "Low (10-20%)",
+              "technique": "Just enough to clean lows"
+            },
+            "y": {
+              "target": "Air EQ band (12-20kHz)",
+              "range": "0-6dB boost",
+              "position": "Upper half (60-90%)",
+              "technique": "High = shimmer and lift"
+            },
+            "z": {
+              "target": "Sparkle/dimension enhancer",
+              "range": "0-50%",
+              "position": "Upper half (40-70%)",
+              "technique": "Enhanced high-frequency content"
+            },
+            "speed": {
+              "target": "High-frequency shimmer LFO",
+              "range": "0-30%",
+              "technique": "Movement adds subtle high-end variation"
+            }
+          },
+          "quadrantFocus": "Upper area (Y>60%) with low X",
+          "gestureStyle": "Light, upward movements for brightness",
+          "combinations": [
+            {
+              "with": "CLARITY",
+              "result": "Ultra-defined top-end"
+            },
+            {
+              "with": "DEPTH",
+              "result": "Spacious, open air"
+            },
+            {
+              "with": "PUNCH",
+              "result": "Bright, aggressive attack"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity X Y Z Controller\r\n\r\nThis section contains reference information for the fruity-x-y-z-controller plugin.\r\n"
+    }
+  }
+}

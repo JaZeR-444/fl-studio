@@ -1,0 +1,160 @@
+{
+  "outputs": [
+    {
+      "id": "x",
+      "name": "X Position",
+      "range": {
+        "min": 0,
+        "max": 100,
+        "default": 50
+      },
+      "controlType": "position",
+      "inputMethod": ["mouse", "touch", "trackpad", "midi"],
+      "typicalTargets": [
+        "Pan",
+        "Oscillator mix",
+        "Stereo width",
+        "Pitch bend",
+        "Effect dry/wet"
+      ],
+      "uiCopy": {
+        "label": "X Axis",
+        "oneLiner": "Horizontal position control (0% = left, 100% = right)",
+        "tooltip": "Controls the horizontal axis. Typically mapped to pan, mix, or any left-right parameter.",
+        "do": "Use for spatial positioning, stereo control, or morphing between two states",
+        "dont": "Map to parameters requiring binary on/off control"
+      }
+    },
+    {
+      "id": "y",
+      "name": "Y Position", 
+      "range": {
+        "min": 0,
+        "max": 100,
+        "default": 50
+      },
+      "controlType": "position",
+      "inputMethod": ["mouse", "touch", "trackpad", "midi"],
+      "typicalTargets": [
+        "Filter cutoff",
+        "Volume",
+        "Pitch",
+        "Brightness",
+        "Intensity"
+      ],
+      "uiCopy": {
+        "label": "Y Axis",
+        "oneLiner": "Vertical position control (0% = bottom, 100% = top)",
+        "tooltip": "Controls the vertical axis. Typically mapped to filters, volume, or up-down parameters.",
+        "do": "Perfect for filter sweeps, brightness control, and intensity",
+        "dont": "Use for fine-grained frequency selection—too broad for precision"
+      }
+    },
+    {
+      "id": "z",
+      "name": "Z Position",
+      "range": {
+        "min": 0,
+        "max": 100,
+        "default": 0
+      },
+      "controlType": "position",
+      "inputMethod": ["mouse", "touch", "trackpad"],
+      "controlGesture": {
+        "mouse": "Scroll wheel",
+        "touch": "Pinch/spread gesture",
+        "trackpad": "Two-finger scroll"
+      },
+      "typicalTargets": [
+        "Reverb send",
+        "Effect depth",
+        "Distance",
+        "Dimension",
+        "Wet/det amount"
+      ],
+      "uiCopy": {
+        "label": "Z Axis",
+        "oneLiner": "Depth control via scroll or pinch gesture (0% = back, 100% = front)",
+        "tooltip": "Controls depth/dimension. Use mouse wheel, touch pinch, or trackpad scroll.",
+        "do": "Map to reverb, delay, or any depth/distance parameter",
+        "dont": "Forget to use scroll/pinch—Z won't respond to simple cursor movement"
+      }
+    },
+    {
+      "id": "speed",
+      "name": "Speed",
+      "range": {
+        "min": 0,
+        "max": 100,
+        "default": 0
+      },
+      "controlType": "movement",
+      "inputMethod": ["mouse", "touch", "trackpad", "midi"],
+      "typicalTargets": [
+        "LFO depth",
+        "Distortion amount",
+        "Filter resonance",
+        "Accent boost",
+        "Modulation intensity"
+      ],
+      "uiCopy": {
+        "label": "Speed",
+        "oneLiner": "How fast you're moving (0% = stopped, 100% = maximum velocity)",
+        "tooltip": "Outputs velocity of your movement. Faster = higher values.",
+        "do": "Use for dynamic expression—moving creates more effect",
+        "dont": "Expect values when not moving—speed is 0% at rest"
+      }
+    },
+    {
+      "id": "acceleration",
+      "name": "Acceleration",
+      "range": {
+        "min": -100,
+        "max": 100,
+        "default": 0
+      },
+      "controlType": "movement",
+      "inputMethod": ["mouse", "touch", "trackpad", "midi"],
+      "typicalTargets": [
+        "Note trigger",
+        "Envelope attack",
+        "Accent detection",
+        "Dynamic expression",
+        "Transient boost"
+      ],
+      "uiCopy": {
+        "label": "Acceleration",
+        "oneLiner": "Change in speed (-100% = slowing, +100% = speeding up)",
+        "tooltip": "Detects gesture acceleration/deceleration. Spikes at start/stop.",
+        "do": "Perfect for accent detection and capturing performance intention",
+        "dont": "Use for continuous modulation—this is event-based"
+      }
+    }
+  ],
+  "modes": [
+    {
+      "id": "absolute",
+      "name": "Absolute Mode",
+      "description": "Position directly maps to output values",
+      "behavior": "Cursor position = output value. Bottom-left = 0%, top-right = 100%.",
+      "bestFor": [
+        "Visual feedback",
+        "Spatial mixing",
+        "Predictable control",
+        "Touchscreen use"
+      ]
+    },
+    {
+      "id": "relative",
+      "name": "Relative Mode",
+      "description": "Movement changes values incrementally",
+      "behavior": "Moving changes value; releasing holds position. No snapping.",
+      "bestFor": [
+        "Continuous sweeps",
+        "DJ-style control",
+        "Cumulative modulation",
+        "Fine adjustments"
+      ]
+    }
+  ]
+}

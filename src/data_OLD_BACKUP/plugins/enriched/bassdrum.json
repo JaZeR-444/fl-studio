@@ -1,0 +1,239 @@
+{
+  "id": "bassdrum",
+  "name": "BassDrum",
+  "presets": {},
+  "parameters": {
+    "bassdrum-params": {
+      "plugin_name": "BassDrum",
+      "category": "Instrument / Drum",
+      "engine": "Hybrid Sine-Sweep & Sample-Layer core",
+      "parameters": [
+        {
+          "name": "Start Freq",
+          "type": "knob",
+          "unit": "Hz",
+          "description": "Initial frequency of the pitch sweep.",
+          "vibe_impact": "Punch, knock, presence"
+        },
+        {
+          "name": "End Freq",
+          "type": "knob",
+          "unit": "Hz",
+          "description": "Final frequency of the pitch sweep (The Root).",
+          "vibe_impact": "Key matching, depth, weight"
+        },
+        {
+          "name": "Pitch Decay",
+          "type": "knob",
+          "description": "Speed of the pitch drop.",
+          "vibe_impact": "Rhythm, timing, energy"
+        },
+        {
+          "name": "Sample Type",
+          "type": "selector",
+          "description": "Selects the internal attack transient.",
+          "vibe_impact": "Texture, identity"
+        },
+        {
+          "name": "Drive Type",
+          "type": "selector",
+          "values": [
+            "Soft",
+            "Hard",
+            "Clip",
+            "Tube"
+          ],
+          "vibe_impact": "Aggression, grit, warmth"
+        }
+      ],
+      "mix_impact_tags": [
+        "sub-bass",
+        "transient",
+        "loudness"
+      ]
+    },
+    "bassdrum-specs": {
+      "plugin_name": "BassDrum",
+      "engine_type": "Hybrid Kick Synth",
+      "oscillators": 2,
+      "sample_slots": 1,
+      "features": [
+        "Frequency Slide",
+        "Internal Sample Rate Manipulation",
+        "Phase Alignment Control"
+      ]
+    },
+    "parameters": {
+      "pluginName": "BassDrum",
+      "category": "Drum Synthesizer",
+      "parameters": [
+        {
+          "section": "Main Oscillator",
+          "id": "main_base",
+          "name": "Base Frequency",
+          "range": {
+            "min": 20,
+            "max": 1000,
+            "unit": "Hz"
+          },
+          "description": "End frequency of the slide (Fundamental)."
+        },
+        {
+          "section": "Main Oscillator",
+          "id": "main_peak",
+          "name": "Peak Frequency",
+          "range": {
+            "min": 20,
+            "max": 1000,
+            "unit": "Hz"
+          },
+          "description": "Start frequency of the slide."
+        },
+        {
+          "section": "Main Oscillator",
+          "id": "main_slide",
+          "name": "Slide Time",
+          "range": {
+            "min": 0,
+            "max": 2000,
+            "unit": "ms"
+          },
+          "description": "Duration of the pitch drop."
+        },
+        {
+          "section": "Slave Oscillator",
+          "id": "slave_phase",
+          "name": "Phase Offset",
+          "range": {
+            "min": 0,
+            "max": 360,
+            "unit": "degrees"
+          },
+          "description": "Delay of Slave relative to Main."
+        },
+        {
+          "section": "Sample Layer",
+          "id": "sample_delay",
+          "name": "Layer Timing",
+          "range": {
+            "min": -100,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Negative = Pre-delay. Positive = Post-delay."
+        },
+        {
+          "section": "Global",
+          "id": "sampling_ratio",
+          "name": "Sampling Ratio",
+          "range": {
+            "min": 0,
+            "max": 100,
+            "unit": "%"
+          },
+          "description": "Resampling quality. Low = Aliasing/Grit."
+        },
+        {
+          "section": "Global",
+          "id": "duration",
+          "name": "Note Duration",
+          "range": {
+            "min": 0,
+            "max": 5000,
+            "unit": "ms"
+          },
+          "description": "Master gate time. Ignores MIDI Note Off."
+        }
+      ]
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Kick Design Guide",
+      "filename": "03_Vibe_Kick_Design_Guide.md"
+    },
+    {
+      "title": "Kick Theory",
+      "filename": "kick_theory.md"
+    },
+    {
+      "title": "Psychoacoustics",
+      "filename": "psychoacoustics.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "00 Practical Use Cases",
+      "category": "general",
+      "filename": "00_Practical_Use_Cases.md"
+    },
+    {
+      "title": "01 Workflow Recipes",
+      "category": "general",
+      "filename": "01_Workflow_Recipes.md"
+    },
+    {
+      "title": "Common Usage",
+      "category": "general",
+      "filename": "common-usage.md"
+    },
+    {
+      "title": "Gabber Kick Distortion Chain",
+      "category": "by-context",
+      "filename": "gabber-kick-distortion-chain.md"
+    },
+    {
+      "title": "Trap Drums Layering",
+      "category": "by-context",
+      "filename": "trap-drums-layering.md"
+    },
+    {
+      "title": "808 Style Sound Design",
+      "category": "by-goal",
+      "filename": "808_style_sound_design.md"
+    },
+    {
+      "title": "Hip Hop Kick Creation",
+      "category": "by-goal",
+      "filename": "hip-hop-kick-creation.md"
+    },
+    {
+      "title": "Perfect Layered Kick",
+      "category": "by-goal",
+      "filename": "perfect-layered-kick.md"
+    },
+    {
+      "title": "Synthetic 808 Design",
+      "category": "by-goal",
+      "filename": "synthetic-808-design.md"
+    },
+    {
+      "title": "Hybrid Snares",
+      "category": "by-instrument",
+      "filename": "hybrid_snares.md"
+    },
+    {
+      "title": "Non Kick Percussion",
+      "category": "by-instrument",
+      "filename": "non_kick_percussion.md"
+    },
+    {
+      "title": "Trap Drum Layering",
+      "category": "by-instrument",
+      "filename": "trap_drum_layering.md"
+    }
+  ]
+}

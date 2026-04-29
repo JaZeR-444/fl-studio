@@ -1,0 +1,386 @@
+{
+  "metadata": {
+    "plugin": "Frequency Splitter",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "description": "Artist and production style inspired presets for Frequency Splitter"
+  },
+  "presets": {
+    "metro-boomin-separation": {
+      "name": "Boomin Separation",
+      "inspiredBy": "Metro Boomin mix clarity",
+      "settings": {
+        "crossover1": 150,
+        "crossover2": 4000,
+        "slope": "24dB/oct",
+        "mode": "linear-phase",
+        "band1": {
+          "gain": 1,
+          "processing": "sub enhancement"
+        },
+        "band2": {
+          "gain": 0,
+          "processing": "vocal clarity"
+        },
+        "band3": {
+          "gain": -1,
+          "processing": "air boost"
+        }
+      },
+      "chain": {
+        "pre": ["Sub-focused processing"],
+        "post": ["Vocal chain on band2"]
+      },
+      "workflow": "Professional three-way split for modern hip-hop clarity. Sub band gets enhancement, vocal band gets clarity, highs tamed.",
+      "characteristics": ["clear", "modern", "professional", "punchy"],
+      "genreTags": ["hip-hop/rap", "trap", "modern"],
+      "a/bTesting": {
+        "testA": "Linear phase for transparency",
+        "testB": "Minimum phase for punch"
+      },
+      "troubleshooting": {
+        "muddy: Increase band1 crossover to 180Hz",
+        "vocalThin: Increase band2 gain by 2dB"
+      }
+    },
+    "mike-will-future-bass": {
+      "name": "Future Bass Split",
+      "inspiredBy": "Mike Will Made-It future bass",
+      "settings": {
+        "crossover1": 100,
+        "crossover2": 200,
+        "crossover3": 3000,
+        "slope": "24dB/oct",
+        "mode": "linear-phase",
+        "band1": {
+          "gain": 2,
+          "processing": "sub swell"
+        },
+        "band2": {
+          "gain": 3,
+          "processing": "supersaw layering"
+        },
+        "band3": {
+          "gain": 1,
+          "processing": "pluck emphasis"
+        },
+        "band4": {
+          "gain": 0,
+          "processing": "sibilance control"
+        }
+      },
+      "chain": {
+        "pre": ["Band-specific processing"],
+        "post": ["Master bus processing"]
+      },
+      "workflow": "Four-way future bass split. Each layer processed independently for maximum presence and width.",
+      "characteristics": ["wide", "bright", "futuristic", "layered"],
+      "genreTags": ["EDM", "future bass", "electric"],
+      "a/bTesting": {
+        "testA": "Linear phase for wide stereo",
+        "testB": "Minimum phase for mono compatibility"
+      },
+      "troubleshooting": {
+        "phasey: Use linear phase consistently",
+        "muddyBass: Increase band1 crossover to 120Hz"
+      }
+    },
+    "travis-scott-atmosphere": {
+      "name": "Astro Sphere Split",
+      "inspiredBy": "Travis Scott atmospheric density",
+      "settings": {
+        "crossover1": 200,
+        "crossover2": 2000,
+        "slope": "12dB/oct",
+        "mode": "linear-phase",
+        "band1": {
+          "gain": 0,
+          "processing": "sub weight"
+        },
+        "band2": {
+          "gain": 1,
+          "processing": "reverb wash"
+        },
+        "band3": {
+          "gain": 2,
+          "processing": "high texture"
+        }
+      },
+      "chain": {
+        "pre": ["Band2 reverb processing"],
+        "post": ["Band3 shimmer enhancement"]
+      },
+      "workflow": "Three-way split for atmospheric density. Band 2 handles atmospheric reverb, Band 3 adds high-frequency texture.",
+      "characteristics": ["spacey", "atmospheric", "dense", "textured"],
+      "genreTags": ["hip-hop/rap", "trap", "atmospheric"],
+      "a/bTesting": {
+        "testA": "12dB/oct for smooth blending",
+        "testB": "24dB/oct for distinct bands"
+      },
+      "troubleshooting": {
+        "tooHarsh: Reduce band3 gain by 2dB",
+        "washy: Reduce band2 reverb time"
+      }
+    },
+    "zaytoven-keys": {
+      "name": "ATL Keys Split",
+      "inspiredBy": "Zaytoven piano warmth",
+      "settings": {
+        "crossover1": 300,
+        "crossover2": 4000,
+        "slope": "24dB/oct",
+        "mode": "minimum-phase",
+        "band1": {
+          "gain": 1,
+          "processing": "warm low-end"
+        },
+        "band2": {
+          "gain": 0,
+          "processing": "vocal frequency focus"
+        },
+        "band3": {
+          "gain": -1,
+          "processing": "smooth high-end"
+        }
+      },
+      "chain": {
+        "pre": ["Warm processing on band1"],
+        "post": ["Tape saturation on all bands"]
+      },
+      "workflow": "Three-way piano/keys split with warmth focus. Band 1 adds warmth, Band 3 removes harshness for smooth tones.",
+      "characteristics": ["warm", "smooth", "classic", "piano"],
+      "genreTags": ["hip-hop/rap", "R&B", "piano"],
+      "a/bTesting": {
+        "testA": "Minimum phase for warmth",
+        "testB": "Linear phase for transparency"
+      },
+      "troubleshooting": {
+        "harshHighs: Increase band3 attenuation",
+        "muddy: Increase band1 crossover to 350Hz"
+      }
+    },
+    "drake-vocal-focus": {
+      "name": "OVO Vocal Focus",
+      "inspiredBy": "Drone vocal prominence",
+      "settings": {
+        "crossover1": 250,
+        "crossover2": 5000,
+        "slope": "24dB/oct",
+        "mode": "linear-phase",
+        "band1": {
+          "gain": -2,
+          "processing": "sub reduction"
+        },
+        "band2": {
+          "gain": 2,
+          "processing": "presence boost 2-5kHz"
+        },
+        "band3": {
+          "gain": 1,
+          "processing": "air boost 8kHz+"
+        }
+      },
+      "chain": {
+        "pre": ["Vocal chain on band2"],
+        "post": ["De-esser on band3"]
+      },
+      "workflow": "Vocal-focused split for maximum clarity. Sub reduction makes space, presence boost cuts through mix.",
+      "characteristics": ["clear", "prominent", "polished", "vocal"],
+      "genreTags": ["hip-hop/rap", "R&B", "vocal"],
+      "a/bTesting": {
+        "testA": "Linear phase for vocal truth",
+        "testB": "Minimum phase for punch"
+      },
+      "troubleshooting": {
+        "vocalMasking: Increase band1 reduction",
+        "sibilance: Adjust de-esser on band3"
+      }
+    },
+    "21-savage-sub": {
+      "name": "Monolith Sub Split",
+      "inspiredBy": "21 Savage deep sub aesthetic",
+      "settings": {
+        "crossover1": 100,
+        "slope": "24dB/oct",
+        "mode": "minimum-phase",
+        "band1": {
+          "gain": 3,
+          "processing": "extreme low enhancement"
+        },
+        "band2": {
+          "gain": 0,
+          "processing": "high-pass 150Hz"
+        }
+      },
+      "chain": {
+        "pre": ["Saturation on band1"],
+        "post": ["Heavy limiting on band1"]
+      },
+      "workflow": "Two-way split focused on sub dominance. Heavy processing on sub band for monolithic low-end presence.",
+      "characteristics": ["deep", "heavy", "monolithic", "dark"],
+      "genreTags": ["hip-hop/rap", "drill", "dark trap"],
+      "a/bTesting": {
+        "testA": "Minimum phase for impact",
+        "testB": "Linear phase for extension"
+      },
+      "troubleshooting": {
+        "clipping: Reduce band1 gain to 2dB",
+        "notDeep: Increase crossover to 80Hz"
+      }
+    },
+    "wheezy-bass-texture": {
+      "name": "Paperboy Texture Split",
+      "inspiredBy": "Wheezy ATL bass texture",
+      "settings": {
+        "crossover1": 200,
+        "crossover2": 1500,
+        "slope": "24dB/oct",
+        "mode": "minimum-phase",
+        "band1": {
+          "gain": 1,
+          "processing": "punch"
+        },
+        "band2": {
+          "gain": 2,
+          "processing": "texture/grind"
+        },
+        "band3": {
+          "gain": 0,
+          "processing": "high-pass 4kHz"
+        }
+      },
+      "chain": {
+        "pre": ["Distortion on band2"],
+        "post": ["Compression on band1"]
+      },
+      "workflow": "Three-way ATL bass split. Band 2 gets texture processing for characteristic Wheezy grind.",
+      "characteristics": ["textured", "ATL", "grindy", "bright"],
+      "genreTags": ["hip-hop/rap", "trap", "ATL"],
+      "a/bTesting": {
+        "testA": "Minimum phase for impact",
+        "testB": "Linear phase for clarity"
+      },
+      "troubleshooting": {
+        "tooGrindy: Reduce band2 gain by 2dB",
+        "muddy: Increase band1 crossover to 250Hz"
+      }
+    },
+    "the-weeknd-retro": {
+      "name": "Night Drive Split",
+      "inspiredBy": "The Weeknd 80s retro",
+      "settings": {
+        "crossover1": 400,
+        "crossover2": 3000,
+        "slope": "12dB/oct",
+        "mode": "linear-phase",
+        "band1": {
+          "gain": 0,
+          "processing": "warm low-end"
+        },
+        "band2": {
+          "gain": -1,
+          "processing": "vintage mid"
+        },
+        "band3": {
+          "gain": 0,
+          "processing": "80s air"
+        }
+      },
+      "chain": {
+        "pre": ["Tape saturation on band1"],
+        "post": ["Vintage EQ on band3"]
+      },
+      "workflow": "Three-way 80s retro split. Band 1 warmth, Band 2 vintage mids, Band 3 controlled air for authentic retro sound.",
+      "characteristics": ["retro", "warm", "80s", "nostalgic"],
+      "genreTags": ["R&B", "synthwave", "retro"],
+      "a/bTesting": {
+        "testA": "Linear phase for authentic reproduction",
+        "testB": "12dB/oct for smooth blending"
+      },
+      "troubleshooting": {
+        "tooModern: Increase tape saturation",
+        "notRetro: Add chorus on band2"
+      }
+    },
+    "just-blaze-soul": {
+      "name": "Soul Clarity Split",
+      "inspiredBy": "Just Blaze soulful clarity",
+      "settings": {
+        "crossover1": 200,
+        "crossover2": 2500,
+        "slope": "24dB/oct",
+        "mode": "linear-phase",
+        "band1": {
+          "gain": 1,
+          "processing": "warm foundation"
+        },
+        "band2": {
+          "gain": 0,
+          "processing": "vocal/natural clarity"
+        },
+        "band3": {
+          "gain": -1,
+          "processing": "smooth highs"
+        }
+      },
+      "chain": {
+        "pre": ["Vintage compression on band1"],
+        "post": ["Natural reverb on band2"]
+      },
+      "workflow": "Three-way soulful split. Warm foundation, natural vocal clarity, smooth highs for timeless soul sound.",
+      "characteristics": ["warm", "clear", "soulful", "timeless"],
+      "genreTags": ["hip-hop/rap", "R&B", "soulful"],
+      "a/bTesting": {
+        "testA": "Linear phase for vocal truth",
+        "testB": "Minimum phase for warmth"
+      },
+      "troubleshooting": {
+        "harshVocals: Reduce band3 gain by 2dB",
+        "muddy: Increase band1 crossover to 250Hz"
+      }
+    },
+    "timbaland-experimental": {
+      "name": "Beat Break Split",
+      "inspiredBy": "Timbaland experimental",
+      "settings": {
+        "crossover1": 300,
+        "crossover2": 1500,
+        "crossover3": 4000,
+        "slope": "24dB/oct",
+        "mode": "minimum-phase",
+        "band1": {
+          "gain": -2,
+          "processing": "unconventional low"
+        },
+        "band2": {
+          "gain": 3,
+          "processing": "rhythmic mid"
+        },
+        "band3": {
+          "gain": 1,
+          "processing": "textured high"
+        },
+        "band4": {
+          "gain": 2,
+          "processing": "air/shimmer"
+        }
+      },
+      "chain": {
+        "pre": ["Unique processing per band"],
+        "post": ["Creative effects on band4"]
+      },
+      "workflow": "Four-way experimental split. Each band gets unique processing for unconventional Timbaland-style soundscapes.",
+      "characteristics": ["experimental", "unconventional", "forward", "textured"],
+      "genreTags": ["hip-hop/rap", "experimental", "innovative"],
+      "a/bTesting": {
+        "testA": "Minimum phase for impact",
+        "testB": "Linear phase for transparency"
+      },
+      "troubleshooting": {
+        "tooWeird: Reduce gains by half",
+        "notExperimental: Increase processing diversity"
+      }
+    }
+  }
+}

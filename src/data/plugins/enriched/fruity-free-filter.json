@@ -1,0 +1,172 @@
+{
+  "id": "fruity-free-filter",
+  "name": "Fruity Free Filter",
+  "category": "Filter",
+  "tier": "Free",
+  "type": "Filter",
+  "description": "Fruity Free Filter - Filter",
+  "tags": [
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "filtering",
+    "tone-shaping",
+    "audio"
+  ],
+  "icon": "/plugins/fruity-free-filter-icon.svg",
+  "color": "#F97316",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-free-filter",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "pluginName": "Fruity Free Filter",
+    "category": "Filter / EQ",
+    "parameters": [
+      {
+        "section": "Filter",
+        "id": "type",
+        "name": "Type",
+        "options": [
+          "Low Pass",
+          "Band Pass",
+          "High Pass",
+          "Notch",
+          "Low Shelf",
+          "Peaking",
+          "High Shelf"
+        ],
+        "description": "Filter topology."
+      },
+      {
+        "section": "Filter",
+        "id": "freq",
+        "name": "Frequency",
+        "range": {
+          "min": 10,
+          "max": 20000,
+          "unit": "Hz"
+        },
+        "description": "Cutoff or Center frequency."
+      },
+      {
+        "section": "Filter",
+        "id": "q",
+        "name": "Q",
+        "range": {
+          "min": 0.1,
+          "max": 10,
+          "unit": "Factor"
+        },
+        "description": "Resonance or Bandwidth."
+      },
+      {
+        "section": "Filter",
+        "id": "gain",
+        "name": "Gain",
+        "range": {
+          "min": -18,
+          "max": 18,
+          "unit": "dB"
+        },
+        "description": "Boost/Cut (Shelf/Peak only)."
+      }
+    ]
+  },
+  "presets": {
+    "band-pass-lofi": {
+      "presetName": "Band Pass LoFi",
+      "plugin": "Fruity Free Filter",
+      "description": "Isolates the mids for a telephonic sound.",
+      "settings": {
+        "type": "Band Pass",
+        "freq": 1500,
+        "q": 0.5,
+        "gain": 0.8
+      },
+      "usage": "Creative effect for intros, bridges, or background elements."
+    },
+    "high-pass-clean": {
+      "presetName": "High Pass Clean",
+      "plugin": "Fruity Free Filter",
+      "description": "Removes low-end rumble with zero resonance.",
+      "settings": {
+        "type": "High Pass",
+        "freq": 150,
+        "q": 0,
+        "gain": 1
+      },
+      "usage": "Essential for cleaning up vocals, guitars, and hats."
+    },
+    "low-pass-warm": {
+      "presetName": "Low Pass Warm",
+      "plugin": "Fruity Free Filter",
+      "description": "Rolls off harsh highs for a vintage feel.",
+      "settings": {
+        "type": "Low Pass",
+        "freq": 8000,
+        "q": 0.2,
+        "gain": 1
+      },
+      "usage": "Use on digital synths or bright samples to make them sound more analog."
+    },
+    "notch-resonance": {
+      "presetName": "Notch Resonance",
+      "plugin": "Fruity Free Filter",
+      "description": "A sharp resonance peak at the cutoff frequency.",
+      "settings": {
+        "type": "Low Pass",
+        "freq": 2000,
+        "q": 0.8,
+        "gain": 1
+      },
+      "usage": "Use for dramatic filter sweeps in EDM or sound design."
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity Free Filter\n\n## Purpose & Identity\nFruity Free Filter is a lightweight, versatile **multimode filter**. Its primary identity is a creative tone-shaper designed for smooth automation. Unlike surgical EQs, Free Filter uses a 12dB/octave State Variable Filter (SVF) architecture, which provides a more \"musical\" and \"analog\" character, especially when using high resonance. [SRC: IL-MAN]\n\n## 60-Second Mental Model\nThink of it as a \"Creative Sculptor.\" It has 7 different \"shapes\" (Low Pass, High Pass, Band Pass, etc.). You pick a shape and then move the **Freq** knob to decide where the sculpture starts. If you want it to have sharp edges, you turn up the **Q** (Resonance).\n\n## Hip-Hop / R&B Context\n- **The \"Underwater\" Verse:** Automating a Low Pass filter to muffle the beat when the rapper is being introspective (Moody).\n- **Telephone Ad-libs:** Using the Band Pass mode to isolate the mid-range of a vocal for that gritty \"radio\" feel (Vibey).\n- **Floating Outros:** Gradually increasing a High Pass filter so the song feels like it’s drifting up into the clouds (Spacey).\n\n## When To Use\n- When you need a **smooth filter sweep** that doesn't click or pop during automation.\n- When you want a **Wah-Wah** or **Phaser** style effect (using BP or Notch).\n- When you need to quickly **clean low-end rumble** without opening a heavy EQ.\n\n## When NOT To Use\n- **Surgical Precision:** Use **Fruity Parametric EQ 2** if you need to cut a specific 5Hz frequency or need a 48dB/oct steep slope.\n- **CPU Intensive Modulation:** If you need 8 filters at once with complex cross-modulation, use **Fruity Love Philter**. [SRC: REPUTABLE]",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Fruity Free Filter\n\n## UI Tour\nThe interface is categorized into three primary control areas. [SRC: IL-MAN]\n\n### 1. Filter Engine (The \"Core\")\n- **Type**: Selector for the 7 available shapes (LP, BP, HP, Notch, Low Shelf, Peaking, High Shelf).\n- **Freq**: Sets the cutoff (LP/HP) or center frequency (BP/Peak).\n- **Q**: Adjusts the resonance. High values create a sharp \"whistle\" at the Freq point.\n\n### 2. Output & Mix (The \"Power\")\n- **Gain**: **ONLY ACTIVE** in Shelf and Peaking modes. It sets the boost or cut amount.\n- **L/R Phase**: (If available in Patcher/Wrapper context) offsets the filter between channels.\n\n### 3. Monitoring\n- **Output Meter**: Shows the final signal level. Filtering high resonance can cause significant volume spikes.\n\n## Signal Flow\n1. **Input**: Audio enters the filter circuit.\n2. **Topology Selection**: The signal is routed through the specific 12dB/octave SVF path (e.g., Low Pass).\n3. **Resonance Injection**: A portion of the signal is fed back based on the **Q** setting, creating a peak.\n4. **Gain Stage**: (Shelf/Peaking only) The target band is amplified or attenuated.\n5. **Output**: Summed signal leaves the plugin.\n\n## Things Beginners Misunderstand\n- **\"The Gain knob is broken\"**: In Low Pass, High Pass, Band Pass, and Notch modes, the **Gain** knob does absolutely nothing. This is by design.\n- **\"It's not cutting enough\"**: This is a 12dB/octave filter. It is \"gentle.\" If you need to completely erase a frequency, you may need two instances in series or a 24dB+ filter like Fruity Love Philter.\n- **Phase Shift**: Every filter move causes a phase shift. If you automate the Freq knob on a drum bus, you might notice your kick drum changing \"feel\" even if the cutoff is high.\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques And Best Practices: Fruity Free Filter\n\n## 1. The \"Sub-Protect\" Sweep\nBefore you automate a filter sweep on a full mix or melodic bus:\n- **Technique**: Place a High-Pass Filter *before* the Free Filter at 300Hz.\n- **Why**: This protects your sub-bass from the phase shifting and resonance of the sweep, keeping your low end rock-solid while the mids/highs move.\n\n## 2. Manual Notch Phaser\nCreate a phaser effect using the Notch mode.\n- **Technique**: Select **Notch**. Set **Q** to 70%. Automate **Freq** back and forth with a slow LFO.\n- **Listen For**: A smooth, subtle \"hollow\" sweep.\n\n## 3. The \"Telephone\" Vocal\nThe industry standard for lo-fi vocals.\n- **Technique**: Select **Band Pass**. Set **Freq** to roughly 2000Hz. Set **Q** to 40%.\n- **Mix Move**: Add a bit of Distortion after the filter to complete the \"radio\" effect.\n\n## 4. Acid Squelch\nTurning a boring bass into a screaming lead.\n- **Technique**: Select **Low Pass**. Set **Q** to 90% (near self-oscillation). Automate **Freq** rapidly.\n- **Listen For**: The characteristic \"ow-ow\" vowel sound of classic acid synths.\n\n## 5. Parallel Air\nUsing the High Shelf mode for \"shimmer.\"\n- **Technique**: Select **High Shelf**. Set **Freq** to 8kHz. Boost **Gain** by 6dB.\n- **Mix Move**: Set the plugin's mix level to 30%. This adds a gentle, non-linear brightness to the air.\n\n## Common Pitfalls + Fixes\n| Pitfall | The Fix |\n| :--- | :--- |\n| **Resonant Clipping** | High Q settings can add +12dB or more. Lower the **Gain** (if active) or the Mixer fader. |\n| **Low End \"Flapping\"** | If sweeping a High Pass filter, the Q might create a bass boost right before the cut. Lower the **Q**. |\n| **Mechanical Sound** | Don't use perfectly linear LFOs. Use Fruity Formula Controller to add a bit of randomness to the sweep. |\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity Free Filter\n\nFree Filter translates vibes through **Frequency Masking** and **Resonant Focus**.\n\n## 1. Moody (Dark, Introspective, Submerged)\n- **Concept:** \"The 40 / Drake Sound.\"\n- **Levers:**\n  - **Type:** Low Pass.\n  - **Freq:** 500Hz - 1kHz.\n  - **Q:** Zero (Flat).\n- **Listen For:** A muffled, warm texture where the drums feel far away.\n- **Don't Do This:** Don't use resonance; you want the roll-off to be invisible and smooth.\n\n## 2. Upbeat (Kinetic, Squelchy, High-Energy)\n- **Concept:** \"The Acid Rise.\"\n- **Levers:**\n  - **Type:** Low Pass or Band Pass.\n  - **Q:** High (70%+).\n  - **Automation:** Sweep Freq from 200Hz to 10kHz over 4 bars.\n- **Listen For:** A \"whistling\" peak that builds massive energy as it rises.\n\n## 3. Psychedelic (Shifting, Swirling, Liquid)\n- **Concept:** \"The Notch Sweep.\"\n- **Levers:**\n  - **Type:** Notch.\n  - **Q:** Medium.\n  - **Automation:** Link Freq to a slow Sine LFO.\n- **Listen For:** A \"hollow\" movement that sounds like a DIY phaser, making the listener feel \"swirled.\"\n\n## 4. Spacey (Galactic, Floating, Weightless)\n- **Concept:** \"The Gravity Loss.\"\n- **Levers:**\n  - **Type:** High Pass.\n  - **Freq:** Automate from 20Hz up to 800Hz.\n- **Listen For:** The bass disappearing as the sound \"floats\" higher into the reverb tail.\n\n## 5. Vibey (Vintage, Lo-Fi, Character)\n- **Concept:** \"The Telephone / AM Radio.\"\n- **Levers:**\n  - **Type:** Band Pass.\n  - **Freq:** 1.5kHz.\n  - **Q:** Medium-Low.\n- **Listen For:** A boxy, thin character that creates a nostalgic \"Lo-Fi\" atmosphere. [SRC: REPUTABLE]",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Free Filter\r\n\r\n## What It Is\r\nFruity Free Filter is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Fruity Free Filter\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: Fruity Free Filter (5 Minutes)\n\n1.  **Insert:** Load **Fruity Free Filter** onto your track.\n2.  **Select Type:** Use the dropdown to pick **Low Pass** (to make it dark) or **High Pass** (to make it thin).\n3.  **Sweep:** Move the **FREQ** knob. This is the \"Cutoff\" point.\n4.  **Resonate:** Turn up the **Q** knob if you want a \"whistle\" or \"squelch\" at the cutoff point.\n5.  **EQ Mode:** Switch to **Peaking**. Now use the **GAIN** knob to boost or cut that specific frequency.\n6.  **Tip:** Right-click the **FREQ** knob -> **Create Automation Clip** for rhythmic sweeps. [SRC: IL-MAN]",
+      "cheat-sheet": "# Fruity Free Filter: The Biquad Workhorse\r\n\r\n> **Scope:** Standard EQ, Shelving, and Automation.\r\n> **Source:** Image-Line Official Manual (v21.2) + Direct Analysis.\r\n> **Complexity:** Low (Standard).\r\n\r\n## 🧠 The \"Free\" Concept\r\nWhy use Free Filter instead of Fruity Filter?\r\n*   **Topology:** It uses **Biquad** algorithms (likely) vs Variable State.\r\n*   **Types:** It offers **Shelving** and **Peaking** shapes, which Fruity Filter does not.\r\n*   **Automation:** It is designed specifically to be lightweight and automatable without zipper noise.\r\n\r\n**Signal Flow:**\r\n`Input` -> **[TYPE SELECTOR]** -> **[FREQ/Q/GAIN]** -> **[OUTPUT]**\r\n\r\n---\r\n\r\n## 🎛️ Section 1: The Gain Knob\r\n\r\nThis knob confuses people because it does nothing on 50% of the settings.\r\n*   **Active Zones:**\r\n    *   **Peaking EQ:** Boosts/Cuts the bell curve.\r\n    *   **Low Shelf:** Boosts/Cuts the low end.\r\n    *   **High Shelf:** Boosts/Cuts the high end.\r\n*   **Inactive Zones:**\r\n    *   **Low Pass / High Pass:** Gain has no effect. The volume is determined by resonance and input.\r\n\r\n---\r\n\r\n## 🔁 Section 2: Q Factor\r\n\r\n*   **Resonance:** In LP/HP modes, Q creates a resonant peak at the cutoff (Acid sound).\r\n*   **Bandwidth:** In Peaking/Notch modes, Q controls the width of the cut/boost.\r\n    *   *High Q:* Surgical cut.\r\n    *   *Low Q:* Musical, broad boost.\r\n\r\n---\r\n\r\n## ⚡ Technical Specs: Filter vs EQ\r\n\r\n*   **Filter:** Low Pass, High Pass, Band Pass, Notch. (Removes frequencies).\r\n*   **EQ:** Low Shelf, High Shelf, Peaking. (Balances frequencies).\r\n*   **Note:** Free Filter combines both paradigms in one knob switch. This makes it useful for \"one-knob\" FX chains where you might want to automate from a Low Pass into a High Level EQ boost.\r\n\r\n---\r\n\r\n## 🧪 \"Secret Sauce\" Workflows\r\n\r\n### 1. The \"Wah\" Pedal\r\n1.  **Type:** Band Pass (Or Peaking).\r\n2.  **Q:** High.\r\n3.  **Freq:** Link to Manual Controller (Foot Pedal).\r\n4.  **Action:** Rocking the freq back and forth creates the vowel \"Wah-Wah\" sound.\r\n\r\n### 2. Manual De-Essing\r\n1.  **Type:** Peaking.\r\n2.  **Freq:** 7kHz.\r\n3.  **Q:** Sharp.\r\n4.  **Gain:** Negative.\r\n5.  **Result:** Static reduction of sibilance.\r\n\r\n### 3. The \"Telephone\"\r\n1.  **Type:** Band Pass.\r\n2.  **Freq:** 1kHz.\r\n3.  **Q:** Low (Wide).\r\n4.  **Result:** Removes lows and highs, leaving only the mid-range voice band.\r\n",
+      "filter-types-visualized": "# Filter Types Visualized: The 7 Modes\n\n| Mode | Visual Action | Common Result | Vibe Target |\n| :--- | :--- | :--- | :--- |\n| **Low Pass (LP)** | Cuts Highs | Muffled / Dark | Moody |\n| **Band Pass (BP)** | Keeps Middle | Boxy / Radio | Vibey |\n| **High Pass (HP)** | Cuts Lows | Thin / Airy | Spacey |\n| **Notch** | Cuts a \"Hole\" | Phaser-like | Psychedelic |\n| **Low Shelf** | Tilts Lows | Bass Boost/Cut | Upbeat (Punch) |\n| **Peaking** | Bell Curve | Focus / Ringing | Experimental |\n| **High Shelf** | Tilts Highs | Brighten / Dim | Vibey (Gloss) |\n\n*Note: The Gain knob ONLY works in Shelf and Peaking modes. In LP/HP/BP/Notch, it is ignored.* [SRC: IL-MAN]",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Free Filter\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Free Filter to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Free Filter\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Free Filter\r\n\r\nThis section contains learning information for the fruity-free-filter plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: The \"Underwater\" Transition (Free Filter)\n\n## Routing Context\n- **Target:** Full Beat (except Kick/Vocal) or Melody Bus.\n- **Position:** Insert FX (Before Reverb).\n\n## Step-by-Step Setup\n1.  On the melody track, load **Fruity Free Filter**.\n2.  Set **Type** to `Low Pass`.\n3.  Set **Q** to `0%` (Flat).\n4.  Set **FREQ** to `20kHz` (Open).\n5.  **The Play:** During the Verse, automate the **FREQ** knob down to `800Hz`.\n6.  **The Result:** The music \"submerges,\" making it feel intimate and dark. Perfect for when the rapper starts a storytelling verse.\n\n## Vibe Check\n- **Moody/Nocturnal:** This is the signature sound of modern Toronto-style R&B and Melodic Trap.\n\n## Variation\n- **Vocal Focus:** Automate the filter to open up (800Hz -> 20kHz) right as the Hook hits to create a \"reveal\" effect. [SRC: REPUTABLE]\n",
+      "01_Goal_Shaping_And_Control": "# Goal: Psychedelic Notch Swirl (Free Filter)\n\n## Step-by-Step Setup\n1.  Load a wide Stereo Pad or Lead.\n2.  Add **Fruity Free Filter**.\n3.  Set **Type** to `Notch`.\n4.  Set **Q** to `50%` (Medium).\n5.  **The LFO:** Right-click **FREQ** -> **Link to controller** -> **Fruity Peak Controller (LFO)**.\n6.  **Settings:** Set LFO speed to `1/2 bar` and Amount to `30%`.\n\n## Result\n- The filter \"eats\" a hole in the frequency spectrum that moves back and forth. It creates a subtle, swirling motion that sounds like a phaser but feels more \"hollow\" and trippy.\n\n## Vibe Check\n- **Psychedelic/Spacey:** Adds a sense of liquid movement to static sounds without the volume changes of a tremolo.\n\n## Pitfalls\n- **Thinning out:** If the Q is too wide, you will lose too much volume. Keep Q around 40-60%. [SRC: REPUTABLE]\n",
+      "12_Vibe_Psychedelic": "# Vibe Workflow: Psychedelic (Notch-Reverse Chop)\n\n*Goal: Create a disorienting, hollowed-out texture that shifts and warps.*\n\n## 🎛️ Routing Context\n- **Routing**: Wide Synth Pad -> Fruity Free Filter.\n- **Mix Status**: 100% Wet.\n\n## 🚶 Step-by-Step Setup\n1. **Initialize**: Set Mode to **Notch**.\n2. **Resonance**: Set **Q** to 80% (creating a deep, resonant \"hole\").\n3. **The Sweep**: Link the **Freq** knob to a very fast Random LFO (via Peak Controller or Formula Controller).\n4. **Recording**: Arm the mixer track and record 8 bars of the synth.\n5. **The Flip**: Double-click the recorded audio clip and select **Reverse**.\n6. **The Re-Chop**: Slice the reversed clip at every 1/2 beat and rearrange the slices randomly.\n7. **Mono Check**: Switch the Master track to Mono. Ensure the \"Notch holes\" haven't made the sound too thin to be heard.\n\n## 🔄 Variations\n- **The \"High-Frequency Ghost\"**: Set Mode to **High Pass** and automate the Freq between 2kHz and 15kHz before reversing.\n- **The \"Phased Stab\"**: Use the **Peaking** mode with high negative Gain (-12dB) instead of Notch.\n\n## ⚠️ Pitfalls & Fixes\n- **Problem**: The re-chopped audio has \"clicks\" at the start of every slice.\n- **Fix**: Increase the \"Crossfade\" or \"De-clicking\" setting in the Sampler window for the audio clip.\n"
+    },
+    "by-instrument": {
+      "drums": "# Instrument: Drums\n\nUsing Free Filter to clean and shape percussion.\n\n## The \"Hollow\" Kick\n- Use a **High Pass** at 50Hz to remove sub-rumble.\n- Use a **Low Pass** at 3kHz with high **Q** (Resonance).\n- **Result**: A muffled, \"underwater\" kick that works well for Deep House or Lo-Fi.\n\n## Cleaning Hi-Hats\n- Use a **High Pass** at 2kHz.\n- **Goal**: Ensures no low-frequency noise from your recordings or samples interferes with the rest of the mix.\n\n## Snare \"Thump\" Focus\n- Use a **Band Pass** centered at 200Hz.\n- **Result**: Isolates the \"body\" of the snare for sound design purposes.\n",
+      "synth-leads": "# Instrument: Synth Leads\n\nClassic filter movement for melodic instruments.\n\n## The Acid Sweep\n1. Load Free Filter on a Saw-wave lead.\n2. Set type to **Low Pass**.\n3. Set **Q** to 70% or higher.\n4. Automate the **Freq** knob to create squelchy, \"acidic\" filter sweeps.\n\n## The Subtle Brightener\n- Use a **High Pass** with a very low **Freq** (20Hz) but a small amount of **Q**.\n- **Result**: The resonance peak at the cutoff frequency adds a tiny bit of \"bump\" to the low end.\n\n## The Lo-Fi Pad\n- Use a **Low Pass** at 2kHz.\n- Automate the **Freq** with a random LFO (Fruity Peak Controller) to create an unstable, vintage character.\n"
+    },
+    "common-usage.md": {
+      "common-usage": "# Common Workflows: Fruity Free Filter\r\n\r\n## 1. Automation Clip Smoothing\r\n\r\n1.  **Context:** Some plugins \"click\" when parameters change too fast.\r\n2.  **Solution:** Fruity Free Filter is optimized for smooth interpolation.\r\n3.  **Action:** Use it for Volume Rides (Gain knob in Shelf mode) or Filter Sweeps instead of complex VSTs if you hear zipper noise.\r\n\r\n## 2. Kick Drum Tuning\r\n\r\n1.  **Type:** Peaking EQ.\r\n2.  **Freq:** Fundamental of Kick (e.g., 50Hz).\r\n3.  **Q:** Sharp.\r\n4.  **Gain:** +6dB.\r\n5.  **Result:** Resonating the fundamental makes the kick \"boom\" longer and louder.\r\n\r\n## 3. The \"Bass Kill\"\r\n\r\n1.  **Type:** High Pass.\r\n2.  **Freq:** 150Hz.\r\n3.  **Automation:** Toggle the **Mix Level** of the plugin in the FX Slot (not internal gain).\r\n4.  **Why:** Turning the FX slot Mix knob from 0% to 100% instantly engages the High Pass, killing the bass for a breakdown.\r\n\r\n## 4. Mastering Low Cut\r\n\r\n1.  **Type:** High Pass.\r\n2.  **Freq:** 30Hz.\r\n3.  **Q:** Lowest possible.\r\n4.  **Result:** Removes DC offset and inaudible rumble from the mix, giving the limiter more headroom.\r\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Free Filter\r\n\r\nThis section contains workflow information for the fruity-free-filter plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Free Filter\r\n\r\nThis section contains reference information for the fruity-free-filter plugin.\r\n"
+    }
+  }
+}

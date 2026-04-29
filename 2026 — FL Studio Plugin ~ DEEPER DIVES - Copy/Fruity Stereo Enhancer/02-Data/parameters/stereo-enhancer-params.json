@@ -1,0 +1,163 @@
+{
+  "plugin_name": "Fruity Stereo Enhancer",
+  "category": "Stereo Utility",
+  "type": "Width Control",
+  "version": "Latest",
+  "parameters": [
+    {
+      "name": "Stereo Separation",
+      "type": "knob",
+      "range": "Wide to Mono",
+      "default": "Center",
+      "description": "Adjusts the Mid/Side balance to control stereo width",
+      "use_cases": [
+        "Widening stereo pads and synths",
+        "Collapsing stereo field to mono",
+        "Fixing overly wide mixes",
+        "Creating space in arrangement",
+        "Mono compatibility checking"
+      ],
+      "hip_hop_applications": {
+        "moody": "30-40% left for atmospheric pads and dark synths",
+        "upbeat": "50-60% left for hi-hats and percussion elements",
+        "melodic": "25-35% left for keys, strings, and harmonic elements",
+        "electronic": "45-55% left for synth pads and atmospheric layers",
+        "trap": "60-70% left for hi-hat rolls and percussion"
+      },
+      "frequency_response": "Affects entire frequency spectrum",
+      "mono_compatibility": "Does not affect pure mono signals",
+      "notes": "Left increases width, right narrows to mono"
+    },
+    {
+      "name": "Phase Offset",
+      "type": "knob",
+      "range": "0ms to 500ms",
+      "default": "0ms",
+      "description": "Delays one channel relative to the other to create psychoacoustic width",
+      "use_cases": [
+        "Creating Haas effect (20-40ms)",
+        "Widening mono sources",
+        "Adding character to mono recordings",
+        "Creating pseudo-stereo from mono",
+        "Experimental delay effects"
+      ],
+      "hip_hop_applications": {
+        "moody": "15-25ms for atmospheric vocal layers and background elements",
+        "upbeat": "20-35ms for vocal doubles and ad-libs",
+        "melodic": "20-40ms for vocal harmonies and stacked vocals",
+        "electronic": "15-30ms for vocal chops and synth leads",
+        "trap": "20-30ms for vocal ad-libs and background vocals"
+      },
+      "sweet_spots": {
+        "subtle_width": "1-20ms",
+        "haas_effect": "20-40ms",
+        "noticeable_delay": "40-100ms",
+        "echo_like": "100ms+"
+      },
+      "mono_compatibility": "Creates phase cancellation in mono - always check",
+      "notes": "Creates pan shift toward undelayed side - compensate with Pan control"
+    },
+    {
+      "name": "Invert Phase",
+      "type": "switch",
+      "range": "On/Off",
+      "default": "Off",
+      "description": "Flips the polarity of one channel",
+      "use_cases": [
+        "Creative phase effects",
+        "Creating hollow stereo sound",
+        "Experimental sound design",
+        "Phase relationship testing"
+      ],
+      "hip_hop_applications": {
+        "moody": "Rarely used - creates thin, hollow effects",
+        "upbeat": "Not recommended for main elements",
+        "melodic": "Creative effects on background layers only",
+        "electronic": "Experimental effects on synth layers",
+        "trap": "Not commonly used in trap production"
+      },
+      "mono_compatibility": "Severe cancellation in mono - use with extreme caution",
+      "notes": "Always check mono compatibility when enabled"
+    },
+    {
+      "name": "Pan",
+      "type": "knob",
+      "range": "Hard Left to Hard Right",
+      "default": "Center",
+      "description": "Adjusts final stereo positioning after processing",
+      "use_cases": [
+        "Compensating for phase offset pan shift",
+        "Re-centering after processing",
+        "Final positioning in stereo field",
+        "Balancing stereo image"
+      ],
+      "hip_hop_applications": {
+        "moody": "Center for main elements, compensate offset shifts",
+        "upbeat": "Use to re-center after Haas effect",
+        "melodic": "Fine-tune positioning after width processing",
+        "electronic": "Compensate for phase offset pan bias",
+        "trap": "Re-center vocal elements after offset"
+      },
+      "notes": "Essential for compensating phase offset pan shift"
+    },
+    {
+      "name": "Volume",
+      "type": "knob",
+      "range": "Negative to Positive dB",
+      "default": "0dB",
+      "description": "Adjusts output level after processing",
+      "use_cases": [
+        "Matching processed and unprocessed levels",
+        "Compensating for perceived loudness changes",
+        "A/B comparison at matched levels",
+        "Final output level adjustment"
+      ],
+      "hip_hop_applications": {
+        "moody": "Match levels for subtle processing",
+        "upbeat": "Compensate for any width-related level changes",
+        "melodic": "Ensure consistent levels across arrangement",
+        "electronic": "Match processed and dry signals",
+        "trap": "Maintain consistent vocal levels"
+      },
+      "notes": "Use for level-matched A/B comparisons"
+    }
+  ],
+  "processing_chain": [
+    "Input Stage",
+    "Mid/Side Conversion",
+    "Separation Processing",
+    "Phase Offset Application",
+    "Polarity Processing (if enabled)",
+    "Mid/Side to Stereo Conversion",
+    "Pan Application",
+    "Volume Application",
+    "Output Stage"
+  ],
+  "cpu_usage": "Very Low",
+  "latency": "Zero samples",
+  "audio_quality": {
+    "bit_depth": "32-bit floating point",
+    "sample_rate": "Project sample rate",
+    "processing": "High-quality Mid/Side conversion"
+  },
+  "common_mistakes": [
+    "Widening low-frequency elements (kick, bass)",
+    "Using Phase Offset without mono checking",
+    "Inverting phase without understanding consequences",
+    "Extreme separation on all tracks",
+    "Not compensating pan after phase offset",
+    "Using separation on mono sources (no effect)",
+    "Ignoring mono compatibility",
+    "Over-widening lead vocals"
+  ],
+  "best_practices": [
+    "Always check mono compatibility",
+    "Use 20-40ms for natural Haas effect",
+    "Apply separation to existing stereo sources",
+    "Use phase offset on mono sources for width",
+    "Compensate pan shift with Pan control",
+    "Keep low frequencies narrow (mono or minimal width)",
+    "Save presets for common scenarios",
+    "Use automation for dynamic width changes"
+  ]
+}

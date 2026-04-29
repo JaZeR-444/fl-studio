@@ -1,0 +1,1066 @@
+{
+  "id": "vocodex",
+  "name": "Vocodex",
+  "category": "Creative",
+  "tier": "Premium",
+  "type": "Creative",
+  "description": "Vocodex - Creative",
+  "tags": [
+    "creative",
+    "experimental"
+  ],
+  "capabilities": [
+    "creative",
+    "experimental",
+    "fx",
+    "audio"
+  ],
+  "icon": "/plugins/vocodex-icon.svg",
+  "color": "#EC4899",
+  "version": "1.0",
+  "data_dir": "plugins\\vocodex",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "vocodex-params": {
+      "$schema": "./schema.json",
+      "plugin": {
+        "name": "Vocodex",
+        "version": "1.x",
+        "category": "Effect",
+        "type": "Advanced Vocoder with Built-in Carrier Synth",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Vocodex.htm"
+      },
+      "parameters": {
+        "vocoder": [
+          {
+            "id": "bands",
+            "name": "Bands",
+            "type": "slider",
+            "range": "4-100",
+            "default": "32",
+            "description": "Number of frequency analysis bands",
+            "sweetSpot": "24-40 for vocal clarity, 64-100 for detail"
+          },
+          {
+            "id": "minFreq",
+            "name": "Min Frequency",
+            "type": "slider",
+            "range": "20Hz-20kHz",
+            "unit": "Hz",
+            "default": "100 Hz",
+            "description": "Lowest frequency analyzed"
+          },
+          {
+            "id": "maxFreq",
+            "name": "Max Frequency",
+            "type": "slider",
+            "range": "20Hz-20kHz",
+            "unit": "Hz",
+            "default": "8000 Hz",
+            "description": "Highest frequency analyzed"
+          },
+          {
+            "id": "bandwidth",
+            "name": "Band Width",
+            "type": "slider",
+            "range": "0.1-4 octaves",
+            "unit": "octaves",
+            "default": "1 octave",
+            "description": "Width of each filter band"
+          }
+        ],
+        "carrier": [
+          {
+            "id": "waveform",
+            "name": "Waveform",
+            "type": "selector",
+            "options": [
+              "Saw",
+              "Square",
+              "Noise",
+              "Sine"
+            ],
+            "default": "Saw",
+            "description": "Carrier oscillator waveform",
+            "note": "Saw recommended for rich harmonic content"
+          },
+          {
+            "id": "pitch",
+            "name": "Pitch",
+            "type": "slider",
+            "range": "-24 to +24 semitones",
+            "unit": "semitones",
+            "default": "0",
+            "description": "Carrier pitch offset"
+          },
+          {
+            "id": "unison",
+            "name": "Unison",
+            "type": "slider",
+            "range": "1-9 voices",
+            "default": "1",
+            "description": "Number of detuned voices"
+          },
+          {
+            "id": "detune",
+            "name": "Detune",
+            "type": "slider",
+            "range": "0-100%",
+            "unit": "%",
+            "default": "0%",
+            "description": "Amount of voice detuning"
+          }
+        ],
+        "modulator": [
+          {
+            "id": "attack",
+            "name": "Attack",
+            "type": "slider",
+            "description": "Envelope follower attack time"
+          },
+          {
+            "id": "release",
+            "name": "Release",
+            "type": "slider",
+            "description": "Envelope follower release time"
+          },
+          {
+            "id": "noiseGate",
+            "name": "Noise Gate",
+            "type": "slider",
+            "description": "Removes low-level modulator signal"
+          }
+        ],
+        "mix": [
+          {
+            "id": "modMix",
+            "name": "Mod Mix",
+            "type": "slider",
+            "range": "0-100%",
+            "unit": "%",
+            "default": "100%",
+            "description": "Modulator input level"
+          },
+          {
+            "id": "carMix",
+            "name": "Car Mix",
+            "type": "slider",
+            "range": "0-100%",
+            "unit": "%",
+            "default": "100%",
+            "description": "Carrier input level"
+          }
+        ]
+      },
+      "routingModes": {
+        "internal": "Use built-in carrier synthesizer",
+        "sidechain": "Route external audio as carrier"
+      },
+      "historicalReference": {
+        "invented": "1930s by Homer Dudley (Bell Labs)",
+        "musicPioneers": [
+          "Kraftwerk",
+          "Daft Punk",
+          "Zapp & Roger"
+        ],
+        "originalPurpose": "Voice encryption and bandwidth reduction"
+      },
+      "cpuUsage": "Moderate to High (depends on band count)",
+      "latency": "Minimal",
+      "realtimeSafe": true
+    }
+  },
+  "presets": {
+    "comprehensive-vocoder-presets": {
+      "classicVocoderPresets": {
+        "robotVoice": {
+          "bands": 16,
+          "attack": 0.001,
+          "release": 0.05,
+          "bandOverlap": 50,
+          "carrier": "sawtooth",
+          "freeze": false,
+          "dryWet": 85,
+          "description": "Classic robot voice effect"
+        },
+        "talkingInstrument": {
+          "bands": 8,
+          "attack": 0.01,
+          "release": 0.15,
+          "bandOverlap": 30,
+          "carrier": "square",
+          "freeze": false,
+          "dryWet": 70,
+          "description": "Musical talking instrument"
+        },
+        "electronicVocal": {
+          "bands": 24,
+          "attack": 0.005,
+          "release": 0.1,
+          "bandOverlap": 40,
+          "carrier": "pulse",
+          "freeze": false,
+          "dryWet": 75,
+          "description": "Electronic vocal enhancement"
+        }
+      },
+      "vocalProcessingPresets": {
+        "harmonyEnhancer": {
+          "bands": 32,
+          "attack": 0.002,
+          "release": 0.08,
+          "bandOverlap": 25,
+          "carrier": "triangle",
+          "freeze": false,
+          "dryWet": 40,
+          "description": "Subtle vocal harmonization"
+        },
+        "vocalDoubling": {
+          "bands": 12,
+          "attack": 0.003,
+          "release": 0.12,
+          "bandOverlap": 60,
+          "carrier": "sine",
+          "freeze": false,
+          "dryWet": 35,
+          "description": "Natural vocal doubling"
+        },
+        "vocalTexturing": {
+          "bands": 20,
+          "attack": 0.008,
+          "release": 0.2,
+          "bandOverlap": 45,
+          "carrier": "sawtooth",
+          "freeze": false,
+          "dryWet": 60,
+          "description": "Vocal texture and character"
+        }
+      },
+      "instrumentPresets": {
+        "synthVocoder": {
+          "bands": 16,
+          "attack": 0.001,
+          "release": 0.05,
+          "bandOverlap": 55,
+          "carrier": "sawtooth",
+          "freeze": false,
+          "dryWet": 90,
+          "description": "Synthesizer vocoder lead"
+        },
+        "stringEnsemble": {
+          "bands": 8,
+          "attack": 0.01,
+          "release": 0.15,
+          "bandOverlap": 35,
+          "carrier": "triangle",
+          "freeze": false,
+          "dryWet": 80,
+          "description": "String ensemble vocoder"
+        },
+        "brassSection": {
+          "bands": 12,
+          "attack": 0.002,
+          "release": 0.08,
+          "bandOverlap": 65,
+          "carrier": "square",
+          "freeze": false,
+          "dryWet": 85,
+          "description": "Brass section vocoder"
+        }
+      },
+      "creativePresets": {
+        "alienCommunication": {
+          "bands": 24,
+          "attack": 0.005,
+          "release": 0.1,
+          "bandOverlap": 70,
+          "carrier": "noise",
+          "freeze": false,
+          "dryWet": 100,
+          "description": "Science fiction alien voice"
+        },
+        "telephoneVoice": {
+          "bands": 4,
+          "attack": 0.01,
+          "release": 0.2,
+          "bandOverlap": 20,
+          "carrier": "sine",
+          "freeze": false,
+          "dryWet": 95,
+          "description": "Vintage telephone quality"
+        },
+        "radioVoice": {
+          "bands": 6,
+          "attack": 0.008,
+          "release": 0.15,
+          "bandOverlap": 25,
+          "carrier": "bandlimited_saw",
+          "freeze": false,
+          "dryWet": 90,
+          "description": "AM radio announcer voice"
+        }
+      },
+      "performancePresets": {
+        "livePerformance": {
+          "bands": 12,
+          "attack": 0.002,
+          "release": 0.08,
+          "bandOverlap": 40,
+          "carrier": "sawtooth",
+          "freeze": false,
+          "dryWet": 80,
+          "description": "Optimized for live performance"
+        },
+        "studioRecording": {
+          "bands": 20,
+          "attack": 0.001,
+          "release": 0.06,
+          "bandOverlap": 30,
+          "carrier": "pulse",
+          "freeze": false,
+          "dryWet": 75,
+          "description": "High-quality studio recording"
+        },
+        "lowLatency": {
+          "bands": 8,
+          "attack": 0.003,
+          "release": 0.12,
+          "bandOverlap": 25,
+          "carrier": "square",
+          "freeze": false,
+          "dryWet": 85,
+          "description": "Minimal latency for real-time use"
+        }
+      },
+      "carrierSoundPresets": {
+        "classicSynth": {
+          "oscillator": "sawtooth",
+          "subOsc": "square",
+          "filterCutoff": 5000,
+          "filterResonance": 20,
+          "detune": 5,
+          "description": "Classic analog synthesizer"
+        },
+        "digitalSynth": {
+          "oscillator": "pulse",
+          "subOsc": "sine",
+          "filterCutoff": 8000,
+          "filterResonance": 10,
+          "detune": 2,
+          "description": "Clean digital synthesizer"
+        },
+        "analogStrings": {
+          "oscillator": "triangle",
+          "subOsc": "sawtooth",
+          "filterCutoff": 3000,
+          "filterResonance": 40,
+          "detune": 8,
+          "description": "String ensemble synthesizer"
+        },
+        "bassSynth": {
+          "oscillator": "sawtooth",
+          "subOsc": "sine",
+          "filterCutoff": 1500,
+          "filterResonance": 30,
+          "detune": 3,
+          "description": "Bass synthesizer"
+        }
+      },
+      "specialEffectsPresets": {
+        "autoTune": {
+          "bands": 32,
+          "attack": 0.001,
+          "release": 0.03,
+          "bandOverlap": 20,
+          "carrier": "sine",
+          "freeze": false,
+          "dryWet": 30,
+          "description": "Subtle pitch correction effect"
+        },
+        "megaphone": {
+          "bands": 4,
+          "attack": 0.01,
+          "release": 0.25,
+          "bandOverlap": 15,
+          "carrier": "distorted_square",
+          "freeze": false,
+          "dryWet": 100,
+          "description": "Megaphone amplification"
+        },
+        "robotSquad": {
+          "bands": 16,
+          "attack": 0.001,
+          "release": 0.04,
+          "bandOverlap": 60,
+          "carrier": "multiple_waveforms",
+          "freeze": false,
+          "dryWet": 95,
+          "description": "Multiple robot voices"
+        }
+      },
+      "genreSpecific": {
+        "electroPop": {
+          "bands": 20,
+          "attack": 0.002,
+          "release": 0.08,
+          "bandOverlap": 35,
+          "carrier": "sawtooth",
+          "freeze": false,
+          "dryWet": 70,
+          "genre": "Electropop/Synthpop",
+          "description": "1980s electronic pop vocal"
+        },
+        "hipHop": {
+          "bands": 12,
+          "attack": 0.003,
+          "release": 0.1,
+          "bandOverlap": 45,
+          "carrier": "square",
+          "freeze": false,
+          "dryWet": 80,
+          "genre": "Hip-Hop/Trap",
+          "description": "Hip-hop vocal effect"
+        },
+        "electronicMusic": {
+          "bands": 24,
+          "attack": 0.001,
+          "release": 0.06,
+          "bandOverlap": 40,
+          "carrier": "pulse",
+          "freeze": false,
+          "dryWet": 85,
+          "genre": "Electronic/EDM",
+          "description": "Modern electronic music vocal"
+        },
+        "soundtrack": {
+          "bands": 16,
+          "attack": 0.002,
+          "release": 0.07,
+          "bandOverlap": 30,
+          "carrier": "sawtooth",
+          "freeze": false,
+          "dryWet": 75,
+          "genre": "Film/Game Soundtrack",
+          "description": "Cinematic vocoder effect"
+        }
+      },
+      "modulationPresets": {
+        "freezeFrame": {
+          "bands": 16,
+          "attack": 0.001,
+          "release": 100,
+          "bandOverlap": 50,
+          "carrier": "sawtooth",
+          "freeze": true,
+          "dryWet": 90,
+          "description": "Held vocoder frame effect"
+        },
+        "morphing": {
+          "bands": 20,
+          "attack": 0.002,
+          "release": 0.1,
+          "bandOverlap": 40,
+          "carrier": "morphing_saw",
+          "freeze": false,
+          "dryWet": 85,
+          "description": "Morphing carrier sound"
+        },
+        "rhythmic": {
+          "bands": 8,
+          "attack": 0.01,
+          "release": 0.05,
+          "bandOverlap": 35,
+          "carrier": "rhythmic_pulse",
+          "freeze": false,
+          "dryWet": 90,
+          "description": "Rhythmic carrier pattern"
+        }
+      }
+    },
+    "hiphop-vocal-presets": {
+      "presetLibrary": {
+        "name": "Hip-Hop/R&B Vocal Presets",
+        "category": "Genre-Specific Vocal Processing",
+        "genre": "Hip-Hop, Trap, R&B, Lo-Fi",
+        "description": "Complete vocal presets for melodic, moody, upbeat, and psychedelic hip-hop/R&B production"
+      },
+      "presets": [
+        {
+          "id": "melodic_trap_hook",
+          "name": "Melodic Trap Hook",
+          "description": "Travis Scott / Future style melodic autotune vocals",
+          "genre": [
+            "Trap",
+            "Melodic Hip-Hop"
+          ],
+          "vibe": "Moody, Melodic, Atmospheric",
+          "parameters": {
+            "bands": 32,
+            "carrier": "Sawtooth",
+            "bandwidth": 90,
+            "attack": 5,
+            "release": 15,
+            "wetMix": 85,
+            "depth": 75
+          },
+          "additionalEffects": [
+            "Pitcher (Autotune): 100% correction, C minor scale",
+            "Reverb: Medium hall, 2.5s decay",
+            "Delay: 1/8 dotted, 25% feedback"
+          ],
+          "mixingTips": [
+            "Layer with dry vocal at 20% for clarity",
+            "High-pass at 150Hz to avoid muddiness",
+            "Boost +2dB at 3-5kHz for presence"
+          ],
+          "playingTechnique": "Works best on sustained melodic phrases",
+          "referenceArtists": [
+            "Travis Scott",
+            "Future",
+            "Lil Uzi Vert"
+          ],
+          "difficulty": "Intermediate"
+        },
+        {
+          "id": "robot_voice",
+          "name": "Robot Voice",
+          "description": "Daft Punk / Kanye style robotic vocals",
+          "genre": [
+            "Hip-Hop",
+            "Pop-Rap"
+          ],
+          "vibe": "Robotic, Futuristic, Clean",
+          "parameters": {
+            "bands": 40,
+            "carrier": "Triangle",
+            "bandwidth": 100,
+            "attack": 2,
+            "release": 8,
+            "wetMix": 100,
+            "depth": 85
+          },
+          "additionalEffects": [
+            "No autotune needed",
+            "Slight chorus for width",
+            "Short reverb (0.8s)"
+          ],
+          "mixingTips": [
+            "Center mono for clarity",
+            "Boost +3dB at 2kHz for intelligibility",
+            "Use on ad-libs and hooks, not full verses"
+          ],
+          "playingTechnique": "Speak/sing clearly, enunciate",
+          "referenceArtists": [
+            "Daft Punk",
+            "Kanye West - Stronger",
+            "Black Eyed Peas"
+          ],
+          "difficulty": "Beginner"
+        },
+        {
+          "id": "psychedelic_rnb",
+          "name": "Psychedelic R&B",
+          "description": "The Weeknd / Frank Ocean dreamy vocals",
+          "genre": [
+            "R&B",
+            "Psychedelic"
+          ],
+          "vibe": "Dreamy, Ethereal, Spacey",
+          "parameters": {
+            "bands": 40,
+            "carrier": "Sawtooth",
+            "bandwidth": 85,
+            "attack": 8,
+            "release": 25,
+            "wetMix": 70,
+            "depth": 65,
+            "shiftPitch": "+12 semitones (1 octave)"
+          },
+          "additionalEffects": [
+            "Vintage Phaser: Slow LFO, 50% wet",
+            "Long reverb: 5s decay, dark character",
+            "Delay: Ping-pong, 30% feedback"
+          ],
+          "mixingTips": [
+            "Layer with original vocal underneath",
+            "Automate wet mix for variation (50-90%)",
+            "Pan slightly off-center for width"
+          ],
+          "playingTechnique": "Use on backgrounds and harmonies",
+          "referenceArtists": [
+            "The Weeknd",
+            "Frank Ocean",
+            "Miguel"
+          ],
+          "difficulty": "Advanced"
+        },
+        {
+          "id": "glitch_adlib",
+          "name": "Glitch Ad-Lib",
+          "description": "Stuttering, glitchy vocal effects",
+          "genre": [
+            "Trap",
+            "Experimental"
+          ],
+          "vibe": "Glitchy, Edgy, Modern",
+          "parameters": {
+            "bands": 24,
+            "carrier": "Square",
+            "bandwidth": 95,
+            "attack": 1,
+            "release": 5,
+            "wetMix": 90,
+            "depth": 80
+          },
+          "additionalEffects": [
+            "Transporter: Glitch mode, 30% probability",
+            "Gross Beat: Half-speed preset",
+            "Short delay: 1/16, 15% feedback"
+          ],
+          "mixingTips": [
+            "Use sparingly for impact",
+            "Pan wide left/right for stereo effect",
+            "Sidechain to lead vocal"
+          ],
+          "playingTechnique": "Short one-shot phrases (\"Yeah!\", \"Aye!\")",
+          "referenceArtists": [
+            "Playboi Carti",
+            "Young Thug",
+            "Trippie Redd"
+          ],
+          "difficulty": "Intermediate"
+        },
+        {
+          "id": "smooth_rnb_lead",
+          "name": "Smooth R&B Lead",
+          "description": "Classic smooth R&B vocal tone",
+          "genre": [
+            "R&B",
+            "Neo-Soul"
+          ],
+          "vibe": "Smooth, Warm, Polished",
+          "parameters": {
+            "bands": 28,
+            "carrier": "Sine",
+            "bandwidth": 80,
+            "attack": 10,
+            "release": 20,
+            "wetMix": 50,
+            "depth": 55
+          },
+          "additionalEffects": [
+            "De-Esser: -4dB at 6-8kHz",
+            "Compression: 3:1 ratio, medium attack",
+            "Plate reverb: 2.2s decay, warm"
+          ],
+          "mixingTips": [
+            "Blend with dry vocal (50/50)",
+            "Boost +2dB at 200Hz for warmth",
+            "Subtle saturation for analog vibe"
+          ],
+          "playingTechnique": "Sustained, melodic lines",
+          "referenceArtists": [
+            "Usher",
+            "Chris Brown",
+            "Bryson Tiller"
+          ],
+          "difficulty": "Beginner"
+        },
+        {
+          "id": "lofi_vocal_texture",
+          "name": "Lo-Fi Vocal Texture",
+          "description": "Nostalgic, vintage vocal processing",
+          "genre": [
+            "Lo-Fi Hip-Hop",
+            "Boom Bap"
+          ],
+          "vibe": "Nostalgic, Dusty, Warm",
+          "parameters": {
+            "bands": 20,
+            "carrier": "Sawtooth",
+            "bandwidth": 75,
+            "attack": 12,
+            "release": 30,
+            "wetMix": 60,
+            "depth": 50
+          },
+          "additionalEffects": [
+            "Bitcrusher: 12-bit, no sample rate reduction",
+            "Vintage Chorus: Slow, 40% wet",
+            "Vinyl noise layer underneath"
+          ],
+          "mixingTips": [
+            "Low-pass filter at 8kHz",
+            "Boost +3dB at 1kHz for presence",
+            "Add slight tape saturation"
+          ],
+          "playingTechnique": "Relaxed, laid-back delivery",
+          "referenceArtists": [
+            "Mac Miller",
+            "Tyler, The Creator",
+            "Earl Sweatshirt"
+          ],
+          "difficulty": "Intermediate"
+        },
+        {
+          "id": "choir_effect",
+          "name": "Choir Effect",
+          "description": "Vocal choir/ensemble sound",
+          "genre": [
+            "Gospel Rap",
+            "R&B"
+          ],
+          "vibe": "Uplifting, Powerful, Wide",
+          "parameters": {
+            "bands": 36,
+            "carrier": "Sine + Triangle blend",
+            "bandwidth": 88,
+            "attack": 15,
+            "release": 35,
+            "wetMix": 75,
+            "depth": 70,
+            "shiftPitch": "+7 semitones (5th interval)"
+          },
+          "additionalEffects": [
+            "Multiple instances at different pitches (+0, +7, +12 semitones)",
+            "Wide stereo spread",
+            "Cathedral reverb: 4s decay"
+          ],
+          "mixingTips": [
+            "Use as background layer, not lead",
+            "High-pass at 200Hz per instance",
+            "Pan instances across stereo field"
+          ],
+          "playingTechnique": "Layered harmonies",
+          "referenceArtists": [
+            "Kanye West",
+            "Chance the Rapper",
+            "Kirk Franklin"
+          ],
+          "difficulty": "Advanced"
+        },
+        {
+          "id": "ambient_vocal_pad",
+          "name": "Ambient Vocal Pad",
+          "description": "Atmospheric vocal texture for backgrounds",
+          "genre": [
+            "Ambient",
+            "Psychedelic",
+            "R&B"
+          ],
+          "vibe": "Atmospheric, Ethereal, Textural",
+          "parameters": {
+            "bands": 32,
+            "carrier": "Sine",
+            "bandwidth": 70,
+            "attack": 25,
+            "release": 50,
+            "wetMix": 80,
+            "depth": 60,
+            "shiftPitch": "+24 semitones (2 octaves)"
+          },
+          "additionalEffects": [
+            "Reverb 2: Infinite decay mode",
+            "Vintage Phaser: Very slow LFO",
+            "High-pass filter: 500Hz"
+          ],
+          "mixingTips": [
+            "Very low in mix (-15dB to -12dB)",
+            "Wide stereo spread",
+            "Automate wet mix for movement"
+          ],
+          "playingTechnique": "Long sustained notes or hums",
+          "referenceArtists": [
+            "Bon Iver",
+            "James Blake",
+            "FKA Twigs"
+          ],
+          "difficulty": "Advanced"
+        },
+        {
+          "id": "aggressive_trap_vocal",
+          "name": "Aggressive Trap Vocal",
+          "description": "Hard-hitting trap vocal processing",
+          "genre": [
+            "Trap",
+            "Drill"
+          ],
+          "vibe": "Aggressive, Punchy, In-Your-Face",
+          "parameters": {
+            "bands": 30,
+            "carrier": "Square",
+            "bandwidth": 95,
+            "attack": 3,
+            "release": 10,
+            "wetMix": 65,
+            "depth": 75
+          },
+          "additionalEffects": [
+            "Distortion: 25% drive, hard clip",
+            "Compression: 6:1 ratio, fast attack",
+            "Short reverb: 0.6s decay"
+          ],
+          "mixingTips": [
+            "Boost +4dB at 4kHz for bite",
+            "High-pass at 100Hz",
+            "Parallel compression for thickness"
+          ],
+          "playingTechnique": "Aggressive delivery, close to mic",
+          "referenceArtists": [
+            "Pop Smoke",
+            "Chief Keef",
+            "21 Savage"
+          ],
+          "difficulty": "Intermediate"
+        },
+        {
+          "id": "telephone_effect",
+          "name": "Telephone Effect",
+          "description": "Lo-fi telephone/radio vocal effect",
+          "genre": [
+            "Hip-Hop",
+            "Experimental"
+          ],
+          "vibe": "Lo-Fi, Distorted, Vintage",
+          "parameters": {
+            "bands": 16,
+            "carrier": "Square",
+            "bandwidth": 60,
+            "attack": 5,
+            "release": 15,
+            "wetMix": 95,
+            "depth": 85
+          },
+          "additionalEffects": [
+            "Band-pass filter: 300Hz-3kHz",
+            "Bitcrusher: 8-bit",
+            "Distortion: 40% drive"
+          ],
+          "mixingTips": [
+            "Use for interludes or transitions",
+            "Mono only",
+            "Cut all bass below 300Hz"
+          ],
+          "playingTechnique": "Spoken word or rap",
+          "referenceArtists": [
+            "Kendrick Lamar - Swimming Pools",
+            "Tyler, The Creator"
+          ],
+          "difficulty": "Beginner"
+        },
+        {
+          "id": "autotune_rnb_lead",
+          "name": "Autotune R&B Lead",
+          "description": "Modern R&B autotune vocal",
+          "genre": [
+            "R&B",
+            "Pop"
+          ],
+          "vibe": "Polished, Melodic, Modern",
+          "parameters": {
+            "bands": 34,
+            "carrier": "Sawtooth",
+            "bandwidth": 92,
+            "attack": 6,
+            "release": 18,
+            "wetMix": 75,
+            "depth": 70
+          },
+          "additionalEffects": [
+            "Pitcher: 80% correction, scale-locked",
+            "De-Esser: -3dB at 7kHz",
+            "Reverb: Medium room, 1.8s decay",
+            "Delay: 1/4 note, 20% feedback"
+          ],
+          "mixingTips": [
+            "Compression before vocoder (4:1)",
+            "Boost +2dB at 10kHz for air",
+            "Layer with subtle dry vocal"
+          ],
+          "playingTechnique": "Melodic runs and sustained notes",
+          "referenceArtists": [
+            "PARTYNEXTDOOR",
+            "6lack",
+            "Summer Walker"
+          ],
+          "difficulty": "Intermediate"
+        },
+        {
+          "id": "whisper_effect",
+          "name": "Whisper Effect",
+          "description": "Intimate whisper vocal processing",
+          "genre": [
+            "R&B",
+            "Ambient"
+          ],
+          "vibe": "Intimate, Breathy, Close",
+          "parameters": {
+            "bands": 38,
+            "carrier": "Noise (filtered)",
+            "bandwidth": 65,
+            "attack": 20,
+            "release": 40,
+            "wetMix": 85,
+            "depth": 55
+          },
+          "additionalEffects": [
+            "High-pass filter: 2kHz",
+            "Subtle reverb: 1.2s decay",
+            "Soft compression: 2:1 ratio"
+          ],
+          "mixingTips": [
+            "Very low level in mix (-18dB to -15dB)",
+            "Use as texture layer",
+            "Pan slightly off-center"
+          ],
+          "playingTechnique": "Close mic, whispered delivery",
+          "referenceArtists": [
+            "Billie Eilish",
+            "SZA",
+            "H.E.R."
+          ],
+          "difficulty": "Advanced"
+        }
+      ],
+      "usageNotes": {
+        "generalTips": [
+          "Always record clean, dry vocals first",
+          "Use presets as starting points, tweak to taste",
+          "Layer different presets for unique textures",
+          "Automate wet/dry mix for dynamic variation",
+          "Consider the vocal's role (lead vs background)"
+        ],
+        "vocalistTips": [
+          "Melodic presets work best with in-tune singing",
+          "Robot/glitch effects hide pitch imperfections",
+          "Record multiple takes for layering options",
+          "Experiment with different delivery styles"
+        ],
+        "mixingPriority": [
+          "1. Clean recording (good mic technique)",
+          "2. Tuning (Pitcher/Newtone if needed)",
+          "3. Vocodex preset",
+          "4. EQ (remove mud, add presence)",
+          "5. Compression (consistency)",
+          "6. Additional effects (reverb, delay)",
+          "7. Final level balancing"
+        ]
+      },
+      "genreGuide": {
+        "trap": {
+          "primaryPresets": [
+            "melodic_trap_hook",
+            "glitch_adlib",
+            "aggressive_trap_vocal"
+          ],
+          "characteristics": "Heavy autotune, melodic, layered ad-libs",
+          "commonPitchShifts": [
+            "+0",
+            "+12 semitones"
+          ],
+          "referenceArtists": [
+            "Travis Scott",
+            "Future",
+            "Lil Baby"
+          ]
+        },
+        "rnb": {
+          "primaryPresets": [
+            "smooth_rnb_lead",
+            "autotune_rnb_lead",
+            "psychedelic_rnb"
+          ],
+          "characteristics": "Polished, melodic, warm, subtle effects",
+          "commonPitchShifts": [
+            "+0",
+            "+7 semitones (harmonies)"
+          ],
+          "referenceArtists": [
+            "The Weeknd",
+            "Bryson Tiller",
+            "PARTYNEXTDOOR"
+          ]
+        },
+        "lofi": {
+          "primaryPresets": [
+            "lofi_vocal_texture",
+            "telephone_effect",
+            "whisper_effect"
+          ],
+          "characteristics": "Degraded, nostalgic, warm, understated",
+          "commonPitchShifts": [
+            "+0"
+          ],
+          "referenceArtists": [
+            "Mac Miller",
+            "Tyler, The Creator",
+            "Earl Sweatshirt"
+          ]
+        },
+        "psychedelic": {
+          "primaryPresets": [
+            "psychedelic_rnb",
+            "ambient_vocal_pad",
+            "choir_effect"
+          ],
+          "characteristics": "Spacey, layered, pitched up/down, effects-heavy",
+          "commonPitchShifts": [
+            "+12",
+            "+24",
+            "-12 semitones"
+          ],
+          "referenceArtists": [
+            "Kid Cudi",
+            "ASAP Rocky",
+            "Frank Ocean"
+          ]
+        }
+      }
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Vocodex\n\n## Purpose & Identity\nVocodex is one of the most powerful and flexible software **vocoders** available. Its primary identity is a \"Speech Synthesizer\" that imposes the characteristics of a human voice (the Modulator) onto a musical instrument (the Carrier). It is designed for maximum clarity, solving the \"muddiness\" of older vocoders with up to 100 frequency bands. [SRC: IL-MAN]\n\n## 60-Second Mental Model\nImagine a choir of robots. Each robot is responsible for one tiny frequency range. \n- When you speak (Modulator), the robots \"Open their mouths\" only at the frequencies you are making.\n- The robots are singing whatever chords you play on your synth (Carrier).\nThe result is your synth \"speaking\" your words.\n\n## Hip-Hop / R&B Context\n- **Robotic R&B Hooks:** Creating that clean, \"Zapp & Roger\" talkbox vibe for catchy pop-rap choruses (Upbeat).\n- **Ethereal Harmonies:** Turning a single vocal line into a massive, shimmering chordal texture for an ambient bridge (Spacey).\n- **Rhythmic Melodies:** Convolving a drum loop with a pad to make the pad \"play\" the rhythm of the drums (Psychedelic).\n\n## When To Use\n- When you want **Classic Robot Vocals** (Daft Punk style).\n- When you need a **Harmonizer** that sounds more synthetic than a pitch-shifter.\n- When you want to create **sound design textures** by crossing two unrelated sounds.\n\n## When NOT To Use\n- **Natural Correction:** Use **Pitcher** or **Newtone** if you want the vocal to sound human but in-tune.\n- **CPU Constraints:** 100-band vocoding with unison is heavy. Use the original **Fruity Vocoder** for simple, low-CPU tasks. [SRC: REPUTABLE]\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Vocodex\n\nVocodex translates vibes through **Intelligibility** and **Carrier Texture**.\n\n## 1. Upbeat (Kinetic, Funky, Talkbox-style)\n- **Concept:** \"The G-Funk Robot.\"\n- **Levers:**\n  - **Bands:** Low (16 - 24) for a \"grittier\" vintage feel.\n  - **Carrier:** Sawtooth wave (Internal Sytrus or external).\n  - **Soundgoodizer (SG):** High (clockwise).\n- **Listen For:** A sharp, buzzy character that \"cuts\" through the beat like a classic talkbox.\n\n## 2. Spacey (Infinite, Ethereal, Celestial)\n- **Concept:** \"The Galactic Choir.\"\n- **Levers:**\n  - **Bands:** High (100).\n  - **Carrier:** Lush Pad with Reverb.\n  - **Modulator Noise:** Turned up (to add \"air\").\n- **Listen For:** A smooth, whispering texture where the words feel like they are made of clouds.\n\n## 3. Psychedelic (Morphing, Liquid, Recursive)\n- **Concept:** \"Cross-Synthesis Chaos.\"\n- **Levers:**\n  - **Modulator:** A complex drum loop or city noise.\n  - **Band Unison:** High (to thicken the harmonic mess).\n  - **Envelope Follower:** Slow release.\n- **Listen For:** Strange rhythmic movements where the \"music\" is dictated by non-musical sounds.\n\n## 4. Melodic (Polished, Harmonized, Pop)\n- **Concept:** \"The Crystal Clear Robot.\"\n- **Levers:**\n  - **Bands:** 50+.\n  - **Bandwidth:** 1.0 (Standard).\n  - **Draft/Render Switch:** Set to Render for maximum quality.\n- **Listen For:** Every word being 100% understandable, sounding like a high-end pop production.\n\n## 5. Moody (Dark, Muffled, Submerged)\n- **Concept:** \"The Ghost in the Machine.\"\n- **Levers:**\n  - **Carrier:** Dark, low-pass filtered sub-synth.\n  - **Band Mapping:** Shift the formant downward (using the slider).\n- **Listen For:** A deep, \"masculine\" or \"heavy\" robotic voice that feels threatening and dark. [SRC: REPUTABLE]\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Vocodex\r\n\r\n## What It Is\r\nVocodex is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Vocodex\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: Vocodex (5 Minutes)\n\n1.  **Route:** Go to the Mixer. \n    - Track 1: Vocal (Modulator).\n    - Track 2: Synth (Carrier).\n    - Track 3: **Vocodex**.\n2.  **Sidechain:** Select Track 1 -> Right-click the arrow on Track 3 -> **Sidechain to this track**. Do the same for Track 2.\n3.  **Inputs:** In Vocodex:\n    - Set **MOD** selector to `1` (The vocal).\n    - Set **CAR** selector to `2` (The synth).\n4.  **Listen:** Play the synth chords and speak into the mic. You should hear the synth speaking.\n5.  **Clean:** Turn the **SG (Soundgoodizer)** knob to the right to make it louder and clearer.\n6.  **Tip:** Use the **Bands** slider at the top to increase the quality from 16 to 100. [SRC: IL-MAN]\n",
+      "parameter-cheat-sheet": "# Vocodex - Parameter Cheat Sheet\n\n**Plugin Type:** Advanced Vocoder with Built-in Carrier Synthesizer\n**Category:** Voice Synthesis / Creative Effect\n**Official Manual:** [Vocodex](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Vocodex.htm)\n\n---\n\n## Core Concept\n\n**Vocoder = Modulator (voice/rhythm) + Carrier (synth/harmonic content)**\n\n- **Modulator:** Shapes the sound (usually voice or drums)\n- **Carrier:** Provides harmonic content (usually synth or noise)\n- **Result:** Modulator's rhythm/envelope applied to carrier's timbre\n\n---\n\n## Main Parameters\n\n| Parameter | Range | Function | Quick Tip |\n|-----------|-------|----------|-----------|\n| **Bands** | 4-100 | Number of frequency analysis bands | 20-32 for vocal, 64-100 for detailed |\n| **Min/Max Freq** | 20Hz-20kHz | Frequency range of vocoder | 100Hz-8kHz for speech clarity |\n| **Band Width** | 0.1-4 octaves | Width of each filter band | Narrower = more defined, wider = smoother |\n| **Mod Mix** | 0-100% | Modulator input level | 100% for standard vocoding |\n| **Car Mix** | 0-100% | Carrier input level | 100% for standard vocoding |\n\n---\n\n## Carrier Synthesizer\n\n| Control | Function | Sweet Spot |\n|---------|----------|------------|\n| **Waveform** | Saw/Square/Noise/Sine | Saw for rich vocoded voice |\n| **Pitch** | -24 to +24 semitones | 0 for natural pitch |\n| **Detune** | 0-100% | Multiple voices detuned | 20-40% for thickness |\n| **Unison** | 1-9 voices | Voice layering | 3-5 voices for lush sound |\n| **Filter Cutoff** | 20Hz-20kHz | Carrier tone shaping | 3-8kHz for brightness |\n| **Filter Resonance** | 0-100% | Filter emphasis | 20-40% for character |\n\n---\n\n## Modulator Settings\n\n| Parameter | Function | When to Adjust |\n|-----------|----------|----------------|\n| **Attack** | Envelope follower attack | Faster for percussive, slower for smooth |\n| **Release** | Envelope follower release | Faster for staccato, slower for sustain |\n| **Noise Gate** | Removes low-level modulator signal | Prevent background noise triggering vocoder |\n\n---\n\n## Quick Start Presets\n\n| Use Case | Settings |\n|----------|----------|\n| **Classic Robot Voice** | Bands: 32, Carrier: Saw wave, Bandwidth: 1 octave |\n| **Warm Vocoded Vocals** | Bands: 24, Carrier: Saw+Square mix, Add reverb |\n| **Rhythmic Vocoding** | Modulator: Drums, Carrier: Pad synth, Bands: 20 |\n| **Daft Punk Style** | Bands: 32, Saw carrier, Heavy sidechain compression |\n| **Whispered Effect** | Carrier: Noise, Bands: 64, Low bandwidth |\n\n---\n\n## Band Count Guide\n\n| Bands | Character | Use Case |\n|-------|-----------|----------|\n| **4-8** | Extreme lo-fi | Special effects, retro computer voice |\n| **12-20** | Vintage vocoder | Classic 80s vocoder sounds |\n| **24-40** | Modern clarity | Intelligible vocoded vocals |\n| **50-100** | High definition | Detailed, natural-sounding vocoding |\n\n**Trade-off:** More bands = more CPU, better clarity\n\n---\n\n## Carrier Source Options\n\n### Internal Synthesizer\n- **Pros:** Tight integration, built-in sounds\n- **Cons:** Limited compared to external synths\n- **Best For:** Quick vocoder sounds, simplicity\n\n### External Audio (Sidechain)\n- **Setup:** Route synth to Vocodex sidechain input\n- **Pros:** Use any synth, more sonic variety\n- **Best For:** Complex carrier timbres, layered sounds\n\n### Noise Carrier\n- **Character:** Whispered, breathy vocoding\n- **Use Case:** Atmospheric effects, robot whispers\n- **Tip:** Works great with speech modulator\n\n---\n\n## Vocoder vs Talkbox vs Autotune\n\n| Effect | Technology | Sound Character |\n|--------|------------|-----------------|\n| **Vocoder** | Frequency band analysis + synthesis | Robotic, synthetic, rhythmic |\n| **Talkbox** | Physical tube routing sound to mouth | Organic, guitar-like, expressive |\n| **Autotune** | Pitch correction | Corrected/stylized pitch (T-Pain effect) |\n\n**Vocodex = Pure vocoder (not talkbox or pitch correction)**\n\n---\n\n## Routing Strategies\n\n### Standard Vocal Vocoding\n1. **Input:** Vocal on mixer track\n2. **Vocodex:** Insert on vocal track\n3. **Carrier:** Use internal synth or external sidechain\n4. **Result:** Vocoded vocal output\n\n### Rhythmic Vocoding\n1. **Modulator:** Drum loop\n2. **Carrier:** Synth pad or chord\n3. **Result:** Drums \"speaking\" through synth\n\n### Creative Sound Design\n- **Modulator:** Any audio (speech, drums, ambience)\n- **Carrier:** Drone, evolving texture\n- **Result:** Modulator rhythm applied to carrier\n\n---\n\n## Genre Applications\n\n| Genre | Typical Use |\n|-------|-------------|\n| **Daft Punk/French House** | Classic robot voice, vocoded vocals |\n| **EDM** | Build-up vocals, drop effects |\n| **Hip-Hop** | Robotic ad-libs, hook effects |\n| **Electro-Pop** | Retro vocoder leads |\n| **Experimental** | Rhythmic textures, abstract vocoding |\n\n---\n\n## Famous Vocoder Tracks\n\n1. **Daft Punk - \"Around the World\"** (1997)\n2. **Zapp & Roger - \"More Bounce to the Ounce\"** (1980)\n3. **Kraftwerk - \"The Robots\"** (1978)\n4. **Imogen Heap - \"Hide and Seek\"** (harmonizer, similar effect)\n5. **Beastie Boys - \"Intergalactic\"** (1998)\n\n---\n\n## Intelligibility Tips\n\n### Making Vocals Clear\n1. **More Bands:** 32-50 for better articulation\n2. **Frequency Range:** 200Hz-6kHz for speech fundamentals\n3. **Bandwidth:** Narrower (0.5-1 octave) for clarity\n4. **Carrier:** Bright synth (lots of harmonics)\n5. **EQ After:** Boost 2-4kHz for presence\n\n### Deliberately Unintelligible\n- **Fewer Bands:** 8-16 for lo-fi\n- **Wide Bandwidth:** 2-3 octaves\n- **Extreme Frequency Range:** Very wide or very narrow\n- **Noise Carrier:** For whispered effect\n\n---\n\n## Advanced Features\n\n### Modulator Spectrum Display\n- **Real-time:** Shows modulator frequency content\n- **Use:** Visualize what's being analyzed\n- **Tip:** Helps diagnose modulator issues\n\n### Carrier Spectrum Display\n- **Real-time:** Shows carrier harmonic content\n- **Use:** Verify carrier has enough harmonics\n- **Tip:** Dull carrier = dull vocoded output\n\n### Band Editor\n- **Custom Bands:** Manually adjust each frequency band\n- **Level:** Boost/cut specific bands\n- **Use Case:** Emphasize certain frequencies (e.g., boost midrange for clarity)\n\n---\n\n## Common Mistakes to Avoid\n\n1. **Weak Carrier:** Sine wave or dull synth = poor vocoding\n2. **Too Few Bands:** Under 16 bands = hard to understand\n3. **Wrong Frequency Range:** Missing speech frequencies (200Hz-4kHz)\n4. **No Harmonics in Carrier:** Carrier must be harmonically rich\n5. **Improper Sidechain:** External carrier not routed correctly\n\n---\n\n## Mixing Integration\n\n### EQ After Vocoding\n- **High-Pass:** 150-200Hz to remove mud\n- **Boost:** 2-4kHz for vocal presence\n- **Cut:** 400-600Hz if muddy\n\n### Compression\n- **Ratio:** 3:1 to 6:1\n- **Why:** Vocoded vocals can have inconsistent dynamics\n- **Sidechain:** Duck vocoded vocals under kick\n\n### Reverb & Delay\n- **Reverb:** Medium to short, 15-30% mix\n- **Delay:** Rhythmic delays (1/8, 1/16) for interest\n- **Tip:** Don't drown vocoded signal in reverb (loses intelligibility)\n\n---\n\n## CPU & Performance\n\n- **CPU Usage:** Moderate to high (depends on band count)\n- **Optimization:** Fewer bands = less CPU\n- **Latency:** Minimal\n- **Realtime:** Yes, suitable for live performance with careful CPU management\n\n---\n\n## Preset Categories\n\n- **Classic Vocoders** - Vintage vocoder emulations\n- **Modern Vocoders** - Clean, high-band vocoders\n- **Special FX** - Creative non-vocal vocoding\n- **Rhythmic** - Drum/rhythm modulator presets\n- **Synth Carriers** - Pre-configured carrier synthesizer patches\n\n---\n\n## Automation Ideas\n\n1. **Band Count:** Automate from low (8) to high (64) for effect\n2. **Frequency Range:** Shift min/max for sweeping effect\n3. **Carrier Pitch:** Pitch carrier up/down for variation\n4. **Mod/Car Mix:** Crossfade between straight and vocoded signal\n\n---\n\n## Related Plugins\n\n- **Fruity Vocoder** - Simpler, older FL vocoder\n- **Pitcher** - Pitch correction (different effect)\n- **Harmor** - Advanced resynthesis (can create vocoder-like effects)\n- **External:** TAL-Vocoder, MeldaProduction MVocoder\n\n---\n\n**Last Updated:** February 3, 2026\n**Status:** Complete reference material\n",
+      "quick-start-checklist": "# Quick Start Checklist: Vocodex\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Vocodex to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "quickstart-guide": "# Vocodex Quick Start Guide\n\n## What is Vocodex?\nVocodex is FL Studio's advanced vocoder plugin that analyzes modulator (typically vocals) and carrier (synthesizer) signals to create classic robot voice, talking instrument, and electronic vocal effects.\n\n## 5-Minute Setup\n1. Load Vocodex as an insert effect\n2. Route your vocal/voice to the modulator input\n3. Route a synthesizer to the carrier input\n4. Start with the \"Classic Robot\" preset\n5. Adjust input levels and speak into microphone\n\n## Essential Controls\n- **Modulator Input**: Voice/analysis signal input\n- **Carrier Input**: Synthesizer/sound source input\n- **Bands**: Number of frequency bands (4-32)\n- **Attack/Release**: How quickly it responds\n- **Freeze**: Holds current analysis\n- **Dry/Wet**: Balance between original and effected signal\n\n## Quick Settings\n- **Robot Voice**: 16 bands, fast attack, short release\n- **Talking Instrument**: 8 bands, medium attack, balanced release\n- **Harmony Enhancement**: 24 bands, gentle settings, subtle effect\n- **Electronic Vocal**: 32 bands, moderate settings, musical effect\n\n## Pro Tips\n- Speak clearly and at consistent volume for best results\n- Use carrier sounds with rich harmonics (sawtooth, square waves)\n- Adjust band count for different character (more bands = smoother)\n- Experiment with different carrier synth sounds\n- Use sidechain compression on modulator for consistent levels",
+      "top-controls": "# Top Controls: Vocodex\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Vocodex\r\n\r\nThis section contains learning information for the vocodex plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-context": {
+      "integration-guide": "# Vocodex Integration Guide\n\n## DAW Integration Strategies\n\n### FL Studio Native Integration\n**Optimal Signal Flow**:\n```\nVocal Track → Vocodex (Modulator Input) → Mixer → Master\nSynth Track → Vocodex (Carrier Input) → Mixer → Master\n```\n\n**Best Practices**:\n- Use separate tracks for modulator and carrier\n- Route both signals properly to Vocodex inputs\n- Create submixes for multiple carrier sounds\n- Utilize playlist automation for dynamic control\n\n### Multi-Track Routing\n\n#### Track Setup Configuration\n**Modulator Track Setup**:\n- Audio input from microphone or vocal recording\n- Pre-processing: EQ, compression, de-essing\n- Send to Vocodex modulator input\n- Monitor wet/dry balance for vocal clarity\n\n**Carrier Track Setup**:\n- Synthesizer instrument for carrier generation\n- Multiple carrier sounds for different textures\n- Route to Vocodex carrier input\n- Separate processing for carrier character\n\n**Master Vocoder Track**:\n- Receives processed vocoder output\n- Additional post-processing (EQ, reverb, delay)\n- Output to master mix bus\n- Level control and automation\n\n### Cross-DAW Compatibility\n\n#### Plugin Format Support\n**Available Formats**:\n- **VST2**: Universal Windows compatibility\n- **VST3**: Enhanced performance and modern features\n- **AU**: macOS native format with Logic integration\n- **AAX**: Pro Tools professional integration\n\n**Migration Considerations**:\n- **Settings Transfer**: Cross-platform preset compatibility\n- **Routing Translation**: Different DAW routing patterns\n- **Workflow Adaptation**: Interface differences between DAWs\n- **Performance Optimization**: DAW-specific optimization tips\n\n## Signal Chain Integration\n\n### Complete Vocoder Chain\n\n#### Standard Configuration\n```\nMicrophone → Preamp → EQ → Compressor → De-esser → Vocodex → EQ → Reverb → Limiter\nSynth → Filter → Envelope → Vocodex → Stereo Imager → Master\n```\n\n#### Pre-Vocoder Processing\n**Modulator Signal Chain**:\n- **Microphone Selection**: Appropriate mic for vocals\n- **Preamp**: Clean gain staging and coloration\n- **EQ**: Frequency response shaping\n- **Dynamics Control**: Compression for consistent levels\n- **Noise Reduction**: Clean signal before analysis\n\n**Carrier Signal Chain**:\n- **Synth Selection**: Rich harmonic content\n- **Filter Processing**: Shape carrier frequency content\n- **Envelopes**: Dynamic carrier shaping\n- **Effects**: Chorus, delay for movement\n- **Processing**: Saturation, distortion options\n\n#### Post-Vocoder Processing\n**Immediate Post-Processing**:\n- **Equalization**: Fine-tune vocoder frequency response\n- **Dynamics Control**: Final level management\n- **Noise Gating**: Remove unwanted background noise\n- **Stereo Enhancement**: Width and imaging\n\n**Spatial and Ambient Processing**:\n- **Reverb Integration**: Space and atmosphere\n- **Delay Effects**: Rhythmic complexity\n- **Stereo Imaging**: Precise positioning\n- **Ambiance Creation**: Environmental simulation\n\n## Hardware Integration\n\n### Audio Interface Setup\n\n#### Input Requirements\n**Microphone Input**:\n- **Quality Microphone**: Condenser or dynamic appropriate\n- **Preamp Connection**: Clean gain and power\n- **Phantom Power**: +48V for condenser mics\n- **Level Control**: Optimal input gain staging\n\n**Synthesizer Connection**:\n- **MIDI Interface**: Keyboard or controller input\n- **Audio Input**: External hardware synths\n- **Multiple Inputs**: Several carrier sources\n- **Digital Connection**: High-quality audio interface\n\n#### Output Configuration\n**Monitoring Setup**:\n- **Studio Monitors**: Accurate monitoring environment\n- **Headphone Monitoring**: Detailed listening\n- **Zero Latency**: Direct monitoring when possible\n- **Multiple Outputs**: Main and monitor outputs\n\n### MIDI Controller Integration\n\n#### Essential Parameter Mapping\n**Primary Vocoder Controls**:\n```json\n{\n  \"midiMapping\": {\n    \"modWheel\": \"BandCount\",\n    \"pitchBend\": \"CarrierPitch\",\n    \"aftertouch\": \"BandOverlap\",\n    \"control1\": \"AttackTime\",\n    \"control2\": \"ReleaseTime\",\n    \"control3\": \"DryWetMix\",\n    \"sustain\": \"VocoderBypass\",\n    \"programChange\": \"PresetSelection\"\n  }\n}\n```\n\n#### Advanced Control Setup\n**Expression Pedals**:\n- **Expression 1**: Continuous band count control\n- **Expression 2**: Dry/wet mix adjustment\n- **Footswitch 1**: Vocoder enable/bypass\n- **Footswitch 2**: Preset next/previous\n- **Footswitch 3**: Freeze function\n- **Footswitch 4**: Carrier sound selection\n\n#### Modular Integration\n**CV/Gate Connections**:\n- **Band Count CV**: Control parameter via CV\n- **Filter CV**: Carrier filter control\n- **Gate Triggers**: Rhythmic gating\n- **Modulation Inputs**: External modulation sources\n- **Clock Input**: Synchronization with modular systems\n\n## Software Integration\n\n### Third-Party Plugin Compatibility\n\n#### Complementary Effects\n**Modulation Effects**:\n- **Additional Vocoders**: Different character options\n- **Formant Processors**: Vocal formant enhancement\n- **Pitch Correction**: Fine-tune vocoder output\n- **Harmony Processors**: Add vocal harmonies\n\n**Dynamic Processing**:\n- **Multiband Compression**: Frequency-specific dynamics\n- **Limiting**: Output protection and glue\n- **Gates**: Rhythmic gating and noise removal\n- **Expanders**: Add punch and presence\n\n#### Creative Processing\n**Spatial Effects**:\n- **3D Audio**: Binaural spatial processing\n- **Surround Processing**: Multi-channel expansion\n- **Stereo Imagers**: Width and enhancement\n- **Ambience**: Space and atmosphere creation\n\n### Max for Live Integration\n**Custom Interfaces**:\n- **Dedicated Vocoder Controller**: Visual parameter control\n- **Preset Manager**: Advanced preset organization\n- **MIDI Learn**: Enhanced parameter mapping\n- **Performance Recorder**: Capture parameter automation\n\n**Advanced Features**:\n- **Randomization**: Generate unexpected settings\n- **Pattern Generation**: Automated parameter changes\n- **Data Visualization**: Real-time parameter display\n- **Remote Control**: Network-based parameter control\n\n## Workflow Optimization\n\n### Template Creation\n**Project Templates**:\n- **Vocoder Template**: Pre-configured vocoder setup\n- **Multi-Track Template**: Modulator and carrier tracks\n- **Performance Template**: Live performance configuration\n- **Studio Template**: Recording-optimized settings\n\n**Template Elements**:\n- **Pre-Configured Tracks**: Labeled and ready\n- **MIDI Routing**: Automatic modulator/carrier routing\n- **Effect Chains**: Basic processing setup\n- **Automation Templates**: Common automation patterns\n\n### Preset Management System\n\n#### Organization Strategy\n**By Carrier Type**:\n- **Sawtooth**: Rich, bright presets\n- **Square**: Aggressive, percussive presets\n- **Triangle**: Soft, musical presets\n- **Pulse**: Dynamic range presets\n- **Noise**: Textural and sibilant presets\n\n#### By Application Type**:\n- **Robot Voices**: Classic robot and droid sounds\n- **Musical Instruments**: Talking instruments\n- **Vocal Enhancement**: Harmony and texture\n- **Sound Design**: Creative and experimental presets\n\n#### Backup and Sharing\n**Cloud Storage**: Automatic preset backup\n- **Version Control**: Track preset evolution\n- **Export Formats**: Multiple format options\n- **Community Sharing**: Share and download presets\n\n## Advanced Integration Concepts\n\n### Multi-Instance Coordination\n\n#### Parallel Vocoder Processing\n**Instance Roles**:\n- **Instance 1**: Low-frequency focused (bass range)\n- **Instance 2**: Mid-frequency focused (vocal range)\n- **Instance 3**: High-frequency focused (air/sibilance)\n- **Instance 4**: Effects layer (freeze, texture)\n\n#### Parameter Linking\n**Global Control**:\n- **Band Count**: Shared across all instances\n- **Attack/Release**: Coordinated timing control\n- **Freeze**: Synchronized freeze function\n- **Carrier Selection**: Coordinated carrier changes\n\n#### Creative Routing\n**Feedback Loops**:\n- **Output to Input**: Vocoder modulates itself\n- **External Feedback**: Hardware in loop\n- **Controlled Feedback**: Amount and tone control\n- **Safety Limits**: Prevent runaway conditions\n\n### External Control Integration\n\n#### OSC and Network Control\n**Network Capabilities**:\n- **Wi-Fi Control**: Tablet/smartphone control\n- **Web Interface**: Browser-based parameter control\n- **Remote Monitoring**: Real-time parameter display\n- **Collaborative Control**: Multiple operators\n\n#### API Integration\n**Programming Access**:\n- **Parameter Control**: Direct parameter adjustment\n- **Automation Control**: Programmed parameter changes\n- **Data Analysis**: Signal and parameter analysis\n- **Custom Algorithms**: User-defined processing\n\n## Performance Optimization\n\n### CPU Management\n\n#### Efficient Usage\n**Band Count Optimization**:\n- **Quality vs Performance**: Balance band count\n- **Adaptive Band Count**: Dynamic based on load\n- **Instance Limiting**: Maximum concurrent instances\n- **Freeze Rendering**: Convert to audio when done\n\n#### Resource Allocation\n**Memory Optimization**:\n- **Preset Caching**: Efficient loading and switching\n- **Cache Management**: Clear unnecessary data\n- **Sample Buffer**: Optimize processing buffers\n- **Multi-Core**: Distribute processing load\n\n### Audio Quality Maintenance\n\n#### Signal Integrity\n**Gain Staging**:\n- **Input Levels**: Optimal modulator/carrier balance\n- **Headroom Management**: Avoid clipping and distortion\n- **Noise Floor Control**: Minimize added noise\n- **Dithering**: Proper bit depth conversion\n\n**Monitoring Setup**:\n- **Studio Monitors**: Calibrated monitoring environment\n- **Metering**: Visual level and frequency analysis\n- **Phase Correlation**: Check stereo coherence\n- **A/B Testing**: Compare with/without processing\n\n## Troubleshooting Integration Issues\n\n### Common Problems\n\n#### Plugin Loading Issues\n**Symptoms**: Plugin doesn't appear or load\n**Solutions**:\n1. Check installation path and permissions\n2. Verify plugin format compatibility with DAW\n3. Rescan plugin database in DAW\n4. Reinstall plugin if necessary\n5. Check for conflicting plugins\n\n#### Routing Problems\n**Signal Flow Issues**:\n- No modulator signal reaching vocoder\n- No carrier signal reaching vocoder\n- Incorrect input/output routing\n- Phase cancellation between inputs\n- Audio interface configuration problems\n\n**Solutions**:\n1. Verify microphone connections and settings\n2. Check synthesizer audio output routing\n3. Confirm DAW routing to vocoder inputs\n4. Test with known good signal sources\n5. Check audio interface configuration\n\n#### Automation and Control Issues\n\n**MIDI Controller Problems**:\n- Controller not responding to vocoder\n- Parameter mapping incorrect or not working\n- MIDI channel conflicts\n- Controller firmware outdated\n- Connection or cable issues\n\n**Solutions**:\n1. Check MIDI connections and drivers\n2. Verify MIDI channel assignments\n3. Test with different controller if available\n4. Update controller firmware\n5. Re-learn parameter mappings\n\n### Performance Issues\n\n**CPU Overload**:\n- Too many vocoder instances\n- Maximum band count usage\n- Complex carrier sounds\n- Low buffer size\n- Background applications\n\n**Audio Glitches**:\n- High CPU usage causing dropouts\n- Buffer size too low for system\n- Audio driver issues\n- Hardware limitations\n\n**Solutions**:\n1. Reduce band count to 12-16\n2. Limit concurrent instances\n3. Use simpler carrier sounds\n4. Increase audio buffer size\n5. Update audio drivers\n\n## Best Practices\n\n### Professional Workflow\n**Planning**:\n- Document vocoder settings for each project\n- Create preset libraries for common uses\n- Plan signal routing before recording\n- Test settings before critical sessions\n\n**Execution**:\n- Use consistent gain staging\n- A/B test vocoder settings\n- Monitor levels and artifacts\n- Save successful settings immediately\n\n### Creative Integration\n**Sound Design**:\n- Experiment with carrier sound design\n- Combine multiple vocoder instances\n- Record and analyze results\n- Develop unique vocoder techniques\n\n**Performance**:\n- Map essential parameters to controllers\n- Create performance preset banks\n- Practice real-time parameter changes\n- Have backup equipment ready\n\n### Maintenance\n**Regular Updates**:\n- Keep vocoder plugin updated\n- Update DAW software\n- Maintain audio interface drivers\n- Update MIDI controller firmware\n\n**System Care**:\n- Regular system maintenance\n- Backup important presets\n- Monitor system performance\n- Clean up temporary files",
+      "live-performance": "# Vocodex Live Performance Guide\n\n## Performance Setup Configuration\n\n### Essential Equipment Requirements\n**Core Equipment**:\n- Laptop with adequate CPU (8GB+ RAM recommended)\n- Professional audio interface with multiple inputs\n- High-quality microphone for modulator\n- MIDI keyboard or controller for carrier synthesis\n- Backup power supply and essential cables\n\n**Enhanced Setup**:\n- Foot pedals for hands-free control\n- Tablet or second computer for preset management\n- Backup audio interface and microphones\n- Power conditioning for stable performance\n- In-ear monitoring system\n\n### Stage Signal Routing Setup\n\n#### Audio Interface Configuration\n**Multi-Input Setup**:\n```\nMicrophone → Audio Interface Input 1 → Vocodex Modulator\nSynthesizer → Audio Interface Input 2 → Vocodex Carrier\nAudio Interface Output → PA System/Interface for Recording\n```\n\n**Hardware Mixer Alternative**:\n```\nMicrophones → Hardware Mixer → Audio Interface → Vocodex\nSynths → Hardware Mixer → Audio Interface → Vocodex\nMain Mixer Output → PA System\n```\n\n### Controller Mapping for Live Use\n\n#### Essential Parameters to Map\n**Primary Controls**:\n- **Band Count**: Adjust intelligibility vs smoothness\n- **Attack/Release**: Control responsiveness\n- **Dry/Wet Mix**: Balance natural vs effected\n- **Bypass**: Toggle vocoder effect on/off\n- **Carrier Selection**: Switch between carrier sounds\n\n**Secondary Controls**:\n- **Band Overlap**: Adjust smoothness and definition\n- **Freeze**: Hold current analysis\n- **Preset Selection**: Quick sound switching\n- **Output Level**: Final volume control\n\n#### Controller Types and Mappings\n\n**Foot Controller Setup**:\n```\nFootswitch 1: Vocoder Bypass/Enable\nFootswitch 2: Preset Next\nFootswitch 3: Preset Previous\nFootswitch 4: Freeze Function\nExpression Pedal: Band Count or Dry/Wet Mix\n```\n\n**MIDI Keyboard Setup**:\n```\nMod Wheel: Carrier Pitch Bend\nPitch Bend: Carrier Fine Tuning\nAftertouch: Band Overlap or Attack\nSustain: Vocoder Enable/Bypass\nProgram Change: Preset Selection\nControl Change 1-8: Parameter Assignments\n```\n\n**Knob/Fader Controller Setup**:\n```\nKnob 1: Band Count (4-32)\nKnob 2: Attack Time\nKnob 3: Release Time\nKnob 4: Band Overlap\nFader 1: Dry/Wet Mix\nFader 2: Carrier Volume\nFader 3: Output Level\nFader 4: Carrier Filter Cutoff\n```\n\n## Live Performance Techniques\n\n### Real-Time Sound Manipulation\n\n#### Dynamic Parameter Control\n**Band Count Control**:\n- **Low Bands (4-8)**: Clear articulation, rhythmic effects\n- **Medium Bands (12-16)**: Natural speech, general use\n- **High Bands (20-24)**: Smooth, musical applications\n- **Maximum Bands (32)**: Lush, ambient effects\n\n**Performance Applications**:\n- **Verse**: Medium bands for intelligibility\n- **Chorus**: High bands for full sound\n- **Bridge**: Transition bands for build-ups\n- **Solo**: Maximum bands for dramatic effect\n\n#### Attack/Release Control\n**Response Character**:\n- **Fast Attack/Release**: Articulate, rhythmic\n- **Medium Settings**: Balanced, natural speech\n- **Slow Settings**: Smooth, flowing, ambient\n- **Auto-Mode**: Settings adapt to input dynamics\n\n**Musical Timing**:\n- **Synched Performance**: Match to song tempo\n- **Expressive Control**: Follow vocal dynamics\n- **Gesture Control**: Physical movement-based changes\n- **Pattern Recording**: Save and repeat successful manipulations\n\n### Multi-Carrier Performance\n\n#### Carrier Sound Selection\n**Performance Setup**:\n- **Rich Synth**: Sawtooth or square waves\n- **Warm Carrier**: Triangle or pulse waves\n- **Textural Carrier**: Noise or field recordings\n- **Custom Carrier**: Pre-designed special sounds\n\n**Live Switching**:\n- **Footswitch Selection**: Quick carrier changes\n- **MIDI Program Change**: Pre-programmed carrier sounds\n- **Knob Control**: Real-time parameter adjustment\n- **Layered Carriers**: Multiple carriers mixed\n- **Morphing**: Smooth transitions between carriers\n\n#### Advanced Carrier Techniques\n**Carrier Modulation**:\n- **LFO on Carrier**: Movement and interest\n- **Filter Sweeps**: Dynamic carrier tone changes\n- **Distortion Effects**: Added character and aggression\n- **Ring Modulation**: Metallic, percussive effects\n\n### Set Structure Management\n\n#### Song Section Vocoder Settings\n**Performance Mapping**:\n```json\n{\n  \"songStructure\": {\n    \"intro\": {\n      \"bands\": 12,\n      \"attack\": 0.002,\n      \"release\": 0.08,\n      \"bandOverlap\": 40,\n      \"carrier\": \"warm_saw\",\n      \"dryWet\": 70,\n      \"description\": \"Subtle support for song opening\"\n    },\n    \"verse\": {\n      \"bands\": 16,\n      \"attack\": 0.001,\n      \"release\": 0.06,\n      \"bandOverlap\": 35,\n      \"carrier\": \"rich_square\",\n      \"dryWet\": 80,\n      \"description\": \"Natural speech for verses\"\n    },\n    \"preChorus\": {\n      \"bands\": 20,\n      \"attack\": 0.001,\n      \"release\": 0.05,\n      \"bandOverlap\": 50,\n      \"carrier\": \"bright_saw\",\n      \"dryWet\": 90,\n      \"description\": \"Building tension before chorus\"\n    },\n    \"chorus\": {\n      \"bands\": 24,\n      \"attack\": 0.001,\n      \"release\": 0.04,\n      \"bandOverlap\": 60,\n      \"carrier\": \"complex_waveform\",\n      \"dryWet\": 100,\n      \"description\": \"Maximum effect for main section\"\n    },\n    \"bridge\": {\n      \"bands\": 16,\n      \"attack\": 0.002,\n      \"release\": 0.1,\n      \"bandOverlap\": 45,\n      \"carrier\": \"morphing_pulse\",\n      \"dryWet\": 75,\n      \"description\": \"Different character for bridge\"\n    },\n    \"solo\": {\n      \"bands\": 32,\n      \"attack\": 0.001,\n      \"release\": 0.03,\n      \"bandOverlap\": 70,\n      \"carrier\": \"extreme_carrier\",\n      \"dryWet\": 100,\n      \"description\": \"Maximum intensity for solo section\"\n    },\n    \"outro\": {\n      \"bands\": 8,\n      \"attack\": 0.003,\n      \"release\": 0.15,\n      \"bandOverlap\": 30,\n      \"carrier\": \"fading_triangle\",\n      \"dryWet\": 60,\n      \"description\": \"Fade out with reduced vocoding\"\n    }\n  }\n}\n```\n\n#### Genre-Specific Configurations\n**Electronic Music Sets**:\n- **EDM Vocoding**: High band counts, fast response\n- **Techno Rhythmic**: Pattern-based band changes\n- **Ambient Textures**: High bands, slow transitions\n- **Experimental**: Extreme settings and carrier sounds\n\n**Rock/Pop Sets**:\n- **Musical Vocoding**: Medium bands, natural settings\n- **Vocal Enhancement**: Low band overlap, dry/wet balance\n- **Classic Sounds**: Traditional vocoder character\n- **Modern Production**: Clean, polished settings\n\n### Improvisation and Expression\n\n#### Real-Time Sound Design\n**Creative Techniques**:\n- **Band Morphing**: Dynamic band count changes\n- **Carrier Morphing**: Smooth carrier transitions\n- **Effect Intensity**: Live dry/wet manipulation\n- **Parameter Automation**: Recorded and looped changes\n\n**Expressive Playing**:\n- **Dynamic Response**: Settings adapt to input levels\n- **Gesture Control**: Physical movement-based effects\n- **Microphonic Variations**: Close mic techniques\n- **Audience Interaction**: Respond to crowd energy\n\n#### Multi-Musician Performances\n\n#### Ensemble Configuration\n**Multiple Vocoders**:\n- **Lead Vocoder**: Main soloist with full control\n- **Backing Vocoders**: Support vocoders with simpler settings\n- **Harmony Vocoder**: Additional harmony vocoder\n- **Effects Vocoder**: Specialized texture vocoder\n\n**Coordination Strategies**:\n- **MIDI Clock Sync**: All vocoders synced together\n- **Parameter Linking**: Shared control across units\n- **Stereo Distribution**: Different positions for each vocoder\n- **Mixer Integration**: Centralized level control\n\n## Advanced Live Applications\n\n### Multi-Instance Performance\n\n#### Parallel Processing Setup\n**Instance Distribution**:\n- **Instance 1**: Low-frequency focused (bass range)\n- **Instance 2**: Mid-frequency focused (vocal range)\n- **Instance 3**: High-frequency focused (air/sibilance)\n- **Instance 4**: Effects layer (freeze, texture)\n\n**Synchronization**:\n- **Master Control**: Global parameter changes\n- **Preset Coordination**: Synchronized preset changes\n- **MIDI Sync**: Common clock and control\n- **Automated Changes**: Programmed intensity variations\n\n#### Creative Layering\n**Textural Layers**:\n- **Background Layer**: Ambient, slow movement\n- **Rhythmic Layer**: Pattern-based effects\n- **Melody Layer**: Lead vocoder with melody\n- **Effect Layer**: Specialized texture generation\n\n**Processing Chains**:\n- **Parallel Processing**: Multiple instances in parallel\n- **Series Processing**: Vocoder into other effects\n- **Hybrid Chains**: Combination of approaches\n- **Send/Return**: Effects bus processing\n\n### Performance Enhancements\n\n#### Freeze and Capture\n**Freeze Techniques**:\n- **Manual Freeze**: Hold current analysis\n- **Automated Freeze**: Trigger-based freezing\n- **Layered Freeze**: Multiple frozen layers\n- **Capture Recording**: Save successful textures\n\n**Texture Creation**:\n- **Loop Recording**: Capture and repeat performance\n- **Sample Capture**: Record interesting results\n- **Preset Creation**: Save discovered sounds\n- **Performance Playback**: Recreate live moments\n\n## Troubleshooting Live Issues\n\n### Technical Problems\n\n#### Audio Interface Issues\n**No Input Signal**:\n1. Check all audio connections\n2. Verify audio interface is selected in FL Studio\n3. Test microphone and synthesizer individually\n4. Check for muted channels\n5. Restart audio interface if needed\n\n**High Latency**:\n1. Decrease buffer size to 64-128 samples\n2. Enable direct monitoring if available\n3. Use dedicated ASIO/Core Audio drivers\n4. Close other applications\n5. Check audio interface settings\n\n#### Vocoder Issues\n**Poor Vocal Response**:\n1. Check microphone position and type\n2. Adjust modulator gain for optimal level\n3. Test different band counts and settings\n4. Check carrier signal quality\n5. Adjust attack/release times\n\n**Carrier Signal Problems**:\n1. Verify synthesizer audio connection\n2. Check synthesizer volume settings\n3. Test different carrier sounds\n4. Adjust carrier gain level\n5. Check MIDI controller connection\n\n### Performance Problems\n\n**CPU Overload**:\n1. Reduce band count from maximum to 16-24\n2. Increase buffer size to 256-512 samples\n3. Close background applications\n4. Use simpler carrier sounds\n5. Render tracks when possible\n\n**Audio Glitches**:\n1. Check audio cable connections\n2. Increase buffer size\n3. Update audio interface drivers\n4. Reduce CPU load\n5. Test with simplified settings\n\n### Creative Problems\n\n**Vocoder Sounds Wrong**:\n- **Too Robotic**: Reduce band overlap, adjust attack/release\n- **Too Musical**: Increase band overlap, use richer carriers\n- **Muddy**: Increase carrier clarity, adjust EQ\n- **Inconsistent**: Check input levels, practice technique\n\n**Set Management**:\n- **Preset Not Ready**: Have backup simple presets\n- **Wrong Genre**: Have genre-specific preset banks\n- **Technical Difficulties**: Simplify setup\n- **Performance Anxiety**: Practice transitions extensively\n\n## Preparation and Practice\n\n### Pre-Performance Setup\n**Equipment Check**:\n- [ ] Audio interface connected with multiple inputs\n- [ ] Microphone tested and positioned\n- [ ] Synthesizer connected and working\n- [ ] MIDI controllers mapped and tested\n- [ ] All cables checked and secure\n- [ ] Power conditioning system connected\n\n**Technical Preparation**:\n- [ ] System optimized for performance\n- [ ] All software updated and tested\n- [ ] Background processes disabled\n- [ ] Memory available for plugins\n- [ ] All drivers current and stable\n\n### Practice Techniques\n\n#### Skill Development\n**Parameter Control Practice**:\n- Practice smooth band count changes\n- Master carrier switching techniques\n- Develop muscle memory for controls\n- Practice with monitor or headphones\n\n**Performance Rehearsal**:\n- Practice entire set with all changes\n- Test transitions between songs and sections\n- Practice with backup equipment\n- Test emergency procedures\n\n#### Set Design Practice\n**Structural Planning**:\n- Map vocoder intensity to song dynamics\n- Plan preset changes for smooth transitions\n- Design control flow for intuitive operation\n- Prepare backup plans for equipment failures\n\n## Professional Best Practices\n\n### Set Management\n\n#### Energy Planning\n- **Dynamic Arc**: Plan vocoder intensity throughout performance\n- **Audience Engagement**: Adjust for crowd response\n- **Song Flow**: Smooth transitions between songs\n- **Peak Moments**: Maximum effect for impact points\n\n#### Repertoire Organization\n- **Preset Banks**: Organized by song or set section\n- **Carrier Libraries**: Different sounds for different uses\n- **Quick Access**: Frequently used presets easily reachable\n- **Backup Plans**: Alternative settings for each song\n\n### Technical Excellence\n\n#### Reliability Measures\n- **Equipment Redundancy**: Critical systems doubled\n- **Backup Configuration**: Quick switch to simple setup\n- **Testing Protocol**: Thorough pre-show verification\n- **Emergency Procedures**: Clear action plans for failures\n\n#### Performance Optimization\n- **Buffer Management**: Balance latency and stability\n- **CPU Monitoring**: Watch system performance\n- **Audio Quality**: Maintain consistent monitoring\n- **Adaptability**: Adjust to venue acoustics\n\n### Post-Performance\n\n#### Review and Documentation\n- **Performance Notes**: Record what worked and didn't\n- **Settings Archive**: Save successful configurations\n- **Equipment Notes**: Document any issues or needs\n- **Improvement Planning**: Plan adjustments for next performance\n\n#### Maintenance Routine\n- **Equipment Check**: Inspect all gear after performance\n- **Software Updates**: Update plugins and drivers\n- **Backup Verification**: Verify all settings are backed up\n- **Skill Development**: Plan practice based on performance experience\n\n## Safety and Reliability\n\n### Equipment Protection\n**Connection Security**:\n- Tape down all connections\n- Use strain relief on cables\n- Protect connectors from damage\n- Secure equipment placement\n- Use cable management systems\n\n**Power Management**:\n- Use surge protectors\n- Have battery backup options\n- Check power source quality\n- Plan for power failures\n- Use conditioned power when possible\n\n### Environmental Considerations\n**Acoustic Environment**:\n- Position microphones to minimize feedback\n- Use directional microphones for isolation\n- Monitor venue acoustics\n- Position speakers and monitors appropriately\n- Use acoustic treatment when available\n\n**Weather Considerations**:\n- Protect equipment from moisture\n- Consider temperature effects on electronics\n- Plan for outdoor performances\n- Use wind protection for microphones\n- Have weather-appropriate equipment\n\n### Emergency Procedures\n\n#### Technical Failures\n**Audio Interface Failure**:\n- Switch to backup interface\n- Use direct monitoring if available\n- Simplify vocoder setup\n- Have backup cables and adapters\n- Maintain performance with reduced complexity\n\n**Computer Failure**:\n- Switch to backup computer\n- Use minimal software setup\n- Have backup system with essentials\n- Use cloud-based presets if available\n- Maintain performance quality\n\n**Equipment Damage**:\n- Continue performance with limited setup\n- Inform venue technician if available\n- Use rental equipment if accessible\n- Document damage for insurance\n- Plan for equipment replacement\n\n### Performance Recovery\n**Sound Quality Issues**:\n- Switch to backup preset immediately\n- Simplify effect configuration\n- Reduce processing complexity\n- Increase input gain if needed\n- Maintain performance despite limitations\n\n**Coordination Recovery**:\n- Communicate clearly with other musicians\n- Use visual cues and hand signals\n- Follow pre-planned emergency procedures\n- Maintain professional demeanor\n- Minimize disruption to performance",
+      "troubleshooting-workflows": "# Vocodex Troubleshooting Guide\n\n## Signal Input Issues\n\n### No Modulator Signal\n**Causes**:\n- No microphone connected\n- Wrong input routing in mixer\n- Modulator gain too low\n- Input muted in interface\n- Wrong audio interface selected\n\n**Solutions**:\n1. Check microphone connection to audio interface\n2. Verify mixer routing to Vocodex modulator\n3. Increase modulator gain to appropriate level\n4. Ensure input is unmuted and not on mute\n5. Select correct audio interface in FL Studio\n\n### No Carrier Signal\n**Causes**:\n- Synthesizer not routed to carrier input\n- Synth volume too low\n- Synth muted or not playing\n- Wrong routing in project\n- Plugin bypassed\n\n**Solutions**:\n1. Route synthesizer output to Vocodex carrier input\n2. Increase synth volume or gain\n3. Ensure synthesizer is playing notes\n4. Check mixer routing for carrier track\n5. Verify plugin is not bypassed\n\n### Poor Vocoder Response\n**Causes**:\n- Modulator level too low\n- Carrier level too high\n- Wrong band count for source\n- Inappropriate attack/release settings\n- Noisy or poor modulator signal\n\n**Solutions**:\n1. Increase modulator gain to proper vocal level\n2. Reduce carrier level to balance with modulator\n3. Try different band counts (more for smooth, less for articulate)\n4. Adjust attack/release settings\n5. Use clean, clear vocal input\n\n## Sound Quality Issues\n\n### Muffled or Unclear Output\n**Causes**:\n- Too few frequency bands\n- Carrier over-modulating modulator\n- Excessive release time\n- Poor modulator signal quality\n- Band overlap settings too high\n\n**Solutions**:\n1. Increase band count to 16-24 for better clarity\n2. Reduce carrier gain to match modulator\n3. Decrease release time for clearer response\n4. Use quality microphone for modulator\n5. Adjust band overlap settings for better separation\n\n### Harsh or Digital Sound\n**Causes**:\n- Too many frequency bands\n- Very fast attack settings\n- Carrier signal too bright\n- Excessive noise in modulator\n- High band overlap causing artifacts\n\n**Solutions**:\n1. Reduce band count to 12-16\n2. Increase attack time slightly\n3. Use warmer carrier sounds\n4. Improve modulator signal quality\n5. Decrease band overlap settings\n\n### Robot Voice Too Extreme\n**Causes**:\n- Very high band count\n- Fast attack and fast release\n- Extreme carrier sounds\n- No freeze or release modulation\n- High noise floor\n\n**Solutions**:\n1. Reduce band count to 8-12\n2. Use moderate attack/release times\n3. Choose warmer carrier sounds\n4. Add subtle noise reduction\n5. Use musical carrier sounds\n\n## Performance Issues\n\n### High CPU Usage\n**Causes**:\n- Maximum band count (32)\n- High sample rates\n- Multiple vocoder instances\n- Complex carrier sounds\n- Low buffer size\n\n**Solutions**:\n1. Reduce band count to 16-24\n2. Use 44.1kHz or 48kHz sample rate\n3. Limit to 1-2 instances\n4. Use simpler carrier sounds\n5. Increase audio buffer size\n\n### Audio Glitches and Dropouts\n**Causes**:\n- Low buffer size\n- CPU overload\n- Audio driver issues\n- Too many effects\n- System resource limitations\n\n**Solutions**:\n1. Increase buffer size to 256-512 samples\n2. Reduce CPU load (fewer bands, instances)\n3. Update audio interface drivers\n4. Disable other unnecessary plugins\n5. Close background applications\n\n### Latency Issues\n**Causes**:\n- High buffer size\n- Multiple effects in chain\n- Audio interface settings\n- System processing delays\n- Network audio issues\n\n**Solutions**:\n1. Decrease buffer size for lower latency\n2. Optimize effects chain order\n3. Use direct monitoring if possible\n4. Check audio interface settings\n5. Use local monitoring features\n\n## Integration Problems\n\n### MIDI Controller Not Working\n**Causes**:\n- MIDI not enabled\n- Wrong MIDI channel\n- Controller not connected\n- Parameter mapping incorrect\n- Driver issues\n\n**Solutions**:\n1. Enable MIDI control in plugin\n2. Check MIDI channel assignments\n3. Verify MIDI controller connections\n4. Re-learn parameter mappings\n5. Update MIDI controller drivers\n\n### Automation Not Recording\n**Causes**:\n- Parameters not automatable\n- Automation lane not set up\n- Plugin version incompatibility\n- DAW automation settings wrong\n- Track not record-enabled\n\n**Solutions**:\n1. Check which parameters can be automated\n2. Set up automation lanes in DAW\n3. Verify plugin version compatibility\n4. Check DAW automation settings\n5. Enable record on the track\n\n### Preset Loading Issues\n**Causes**:\n- File corruption\n- Version incompatibility\n- File permissions\n- Wrong preset format\n- Plugin installation issues\n\n**Solutions**:\n1. Re-create corrupted presets\n2. Verify plugin version compatibility\n3. Check file permissions\n4. Use correct preset format\n5. Reinstall plugin if necessary\n\n## Creative Problems\n\n### Can't Get Natural Sounding Vocoder\n**Solutions**:\n- Use lower band counts (8-12)\n- Choose musical carrier sounds\n- Use moderate attack/release times\n- Add subtle reverb after vocoder\n- Experiment with different mic techniques\n\n### Vocoder Sounds Too Synth-Like\n**Causes**:\n- Carrier sound too dominant\n- Modulator signal too processed\n- High band overlap\n- Fast release times\n- Noisy modulator signal\n\n**Solutions**:\n1. Reduce carrier gain\n2. Use cleaner modulator signal\n3. Decrease band overlap\n4. Use longer release times\n5. Use higher quality microphone\n\n### Vocoder Cutting In and Out\n**Causes**:\n- High noise floor\n- Inconsistent input levels\n- Audio interface issues\n- Gate or compressor issues\n- System resource problems\n\n**Solutions**:\n1. Use noise reduction on inputs\n2. Maintain consistent vocal levels\n3. Check audio interface settings\n4. Adjust gate/compressor settings\n5. Optimize system performance\n\n## Advanced Troubleshooting\n\n### Complex Signal Chain Issues\n**Effects Chain Conflicts**:\n- Multiple effects fighting for frequency space\n- Improper gain staging\n- Phase cancellation\n- Headroom issues\n- Routing confusion\n\n**Diagnostic Steps**:\n1. Test vocoder in isolation\n2. Add effects one at a time\n3. Check gain structure with metering\n4. Analyze frequency spectrum\n5. Monitor stereo field\n\n### Hardware and System Issues\n\n**Audio Interface Problems**:\n- Input/output configuration errors\n- Driver incompatibility\n- Hardware failure\n- Cable issues\n- Power supply problems\n\n**System Performance**:\n- Background process interference\n- Insufficient system resources\n- Operating system conflicts\n- Malware/virus issues\n- Hardware limitations\n\n### Environmental Factors\n\n**Room Acoustics**:\n- Excessive room noise\n- Poor microphone placement\n- Acoustic interference\n- Vibration issues\n- Temperature/humidity problems\n\n**Electrical Issues**:\n- Ground loops\n- Power noise\n- EMI/RF interference\n- Insufficient power\n- Bad cable connections\n\n## Recovery Procedures\n\n### Emergency Settings\n**When Sound Fails**:\n1. Switch to preset with lowest band count\n2. Increase attack and release times\n3. Use simple carrier sound (sine wave)\n4. Bypass carrier and use modulator only\n5. Have backup audio interface ready\n\n### Quick Reset\n**Default Reset**:\n1. Reset all parameters to default\n2. Start with simple 8-band setup\n3. Use known working carrier sound\n4. Verify input connections\n5. Gradually adjust settings back\n\n### Backup Planning\n**Equipment Backup**:\n- Backup microphone and audio interface\n- Have alternative controllers ready\n- Keep spare cables\n- Different audio interface option\n- Alternative power supply options\n\n**Data Backup**:\n- Save working presets immediately\n- Export current project settings\n- Document successful configurations\n- Keep offline copies of presets\n\n## Prevention Strategies\n\n### Regular Maintenance\n**Daily Checks**:\n- Verify all connections\n- Test basic functionality\n- Check input levels\n- Monitor CPU usage\n- Test with simple sounds\n\n**Weekly Maintenance**:\n- Clean audio connectors\n- Update drivers and software\n- Organize and backup presets\n- Test different configurations\n- Check for system issues\n\n### Quality Assurance\n**Testing Protocol**:\n- Test with different vocalists\n- Try various carrier sounds\n- Check at different volume levels\n- Test in different environments\n- Record and analyze results\n\n**Documentation**:\n- Keep troubleshooting log\n- Document successful settings\n- Note equipment configurations\n- Record environmental conditions\n\n### Professional Best Practices\n**Signal Flow**:\n- Maintain proper gain staging\n- Avoid clipping at any stage\n- Use appropriate input levels\n- Monitor for digital overs\n- Keep adequate headroom\n\n**Vocal Technique**:\n- Work with vocalists on technique\n- Use pop filters and proper mic placement\n- Maintain consistent distance from microphone\n- Use appropriate microphone type\n- Practice proper vocal delivery\n\n### Technical Excellence\n- Stay updated on software/drivers\n- Use quality cables and connectors\n- Maintain clean workspace\n- Optimize system performance\n- Plan for equipment failures"
+    },
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: The \"Zapp & Roger\" Talkbox (Vocodex)\n\n## Routing Context\n- **Target:** Funky Hip-Hop Hook.\n- **Modulator:** Dry Vocal.\n- **Carrier:** Bright Sawtooth Synth (e.g., from Sytrus).\n\n## Step-by-Step Setup\n1.  Set **Bands** to `20`. (Low band counts sound more \"Analog\").\n2.  Set **Bandwidth** to `0.8` (Sharper notches).\n3.  Set **CAR** to your synth track.\n4.  Set **MOD** to your vocal track.\n5.  Turn **SG** to `50%`.\n6.  **The Secret:** Boost the **Mid-Range** bands in the EQ display at the bottom.\n7.  **The Play:** Speak with exaggerated mouth movements.\n\n## Result\n- A classic, buzzy, aggressive robotic voice. It sounds like a 1980s talkbox, perfect for \"Upbeat\" West Coast hip-hop or modern funk-rap.\n\n## Vibe Check\n- **Upbeat/Funky:** Adds a high-energy, nostalgic character to the hook.\n\n## Pitfalls + Fixes\n- **Pitfall:** \"It sounds too thin.\"\n  - **Fix:** Add a **Fruity Chorus** *after* Vocodex to widen the robot voice. [SRC: REPUTABLE]\n",
+      "advanced-vocoder-techniques": "# Advanced Vocodex Techniques\n\n## Vocoding Fundamentals\n\n### Understanding the Vocoder Principle\n**Signal Flow Architecture**:\n```\nModulator (Voice) → Band Pass Filters → Envelope Followers → Modulators\n                ↘\nCarrier (Synth) → Band Pass Filters → VCA → Output\n```\n\n**Core Concepts**:\n- **Modulator**: Analyzed signal (typically vocals)\n- **Carrier**: Synthesized signal (typically synthesizer)\n- **Band Filters**: Split into frequency bands\n- **Envelope Following**: Track modulator energy per band\n- **Modulation**: Carrier amplitude controlled by modulator envelope\n\n### Band Configuration Strategies\n**Band Count Selection**:\n- **4-8 Bands**: Clear articulation, choppy sound\n- **12-16 Bands**: Natural speech, good clarity\n- **20-24 Bands**: Smooth, musical sound\n- **32+ Bands**: Maximum smoothness, classic vocoder\n\n**Frequency Distribution**:\n- **Linear Distribution**: Even frequency spacing\n- **Logarithmic**: More bands in high frequencies\n- **Mel Scale**: Psychoacoustic frequency mapping\n- **Custom**: User-defined frequency ranges\n\n**Band Overlap Considerations**:\n- **Low Overlap (20-30%)**: Clear articulation\n- **Medium Overlap (40-60%)**: Balanced clarity\n- **High Overlap (70-90%)**: Smooth, continuous sound\n\n## Advanced Carrier Signal Design\n\n### Synthesizer Carrier Programming\n**Oscillator Selection**:\n```json\n{\n  \"oscillatorTypes\": {\n    \"sawtooth\": \"Rich harmonics, bright character\",\n    \"square\": \"Odd harmonics, aggressive tone\",\n    \"pulse\": \"Dynamic range, percussive attack\",\n    \"triangle\": \"Soft tone, gentle character\",\n    \"sine\": \"Pure tone, subtle effect\",\n    \"noise\": \"Textural carrier, sibilant effect\"\n  }\n}\n```\n\n**Multi-Oscillator Techniques**:\n- **Detuned Unison**: Rich carrier with width\n- **Oscillator Sync**: Hard sync for harmonic content\n- **Ring Modulation**: Metallic, carrier character\n- **Frequency Modulation**: Complex harmonic generation\n- **Sub-Oscillator**: Added low-frequency content\n\n### Carrier Sound Design\n\n#### Carrier Pre-Processing\n**Filter Configuration**:\n- **Low-Pass Filter**: Shape carrier frequency content\n- **High-Pass Filter**: Add brightness and articulation\n- **Band-Pass Filter**: Focus on specific frequency ranges\n- **Notch Filter**: Remove problematic frequencies\n\n**Dynamic Processing**:\n- **Envelope Generator**: Control carrier dynamics\n- **LFO Modulation**: Add movement to carrier\n- **Distortion**: Add character and saturation\n- **Compression**: Maintain consistent carrier levels\n\n#### Harmonic Enhancement\n**Harmonic Generation**:\n- **Overtone Addition**: Add harmonic series\n- **Formant Synthesis**: Create vocal formants\n- **Parallel Processing**: Multiple carrier layers\n- **Stereo Enhancement**: Width and imaging\n\n## Modulator Optimization\n\n### Vocal Signal Preparation\n**Microphone Techniques**:\n- **Proximity**: Consistent distance from microphone\n- **Projection**: Clear, strong vocal delivery\n- **Enunciation**: Precise articulation for better analysis\n- **Consistency**: Maintain steady volume and tone\n\n**Signal Chain Processing**:\n- **Pre-Compression**: Control vocal dynamics\n- **Equalization**: Shape vocal frequency response\n- **De-Essing**: Reduce harsh sibilance\n- **Noise Gating**: Remove background noise\n\n### Advanced Modulator Techniques\n\n#### Multi-Channel Processing\n**Stereo Modulator**:\n- **Left/Right Channels**: Separate modulator signals\n- **Mid/Side Processing**: Frequency-specific modulation\n- **Channel Switching**: Alternate between modulators\n- **Spatial Enhancement**: Wider stereo field\n\n**Multi-Modulator Blending**:\n- **Multiple Vocalists**: Different modulation per voice\n- **Layered Vocals**: Separate frequency ranges\n- **Automated Blending**: Crossfade modulator sources\n- **Dynamic Selection**: Context-aware modulator choice\n\n### Signal Analysis Enhancement\n\n#### Formant Enhancement\n**Formant Extraction**:\n- **Frequency Analysis**: Identify vocal formant frequencies\n- **Real-Time Tracking**: Dynamic formant following\n- **Formant Shaping**: Emphasize or modify formants\n- **Formant Morphing**: Smooth formant transitions\n\n**Spectral Processing**:\n- **Spectral Analysis**: Detailed frequency breakdown\n- **Pitch Detection**: Track fundamental frequency\n- **Noise Reduction**: Clean signal before analysis\n- **Adaptive Filtering**: Dynamic frequency response\n\n## Creative Applications\n\n### Musical Vocoder Techniques\n\n#### Melodic Vocoding\n**Pitch Tracking**:\n- **Pitch-to-CV**: Convert pitch to control voltage\n- **Scale Quantization**: Restrict to musical scales\n- **Arpeggiation**: Create melodic patterns\n- **Harmony Generation**: Add harmonic content\n\n**Rhythmic Applications**:\n- **Gate Triggering**: Rhythmic gating based on input\n- **Sidechain Processing**: External rhythm source\n- **Pattern Sequencing**: Pre-programmed patterns\n- **Clock Division**: Divide clock for subdivisions\n\n#### Ensemble Techniques\n**Multiple Vocoders**:\n- **Parallel Processing**: Different settings per instance\n- **Band Splitting**: Frequency-specific vocoding\n- **Spatial Distribution**: Different positions in stereo field\n- **Dynamic Blending**: Crossfade between instances\n\n### Experimental Sound Design\n\n#### Extreme Settings\n**Maximum Band Count**:\n- **High Resolution**: 32+ bands for smoothness\n- **High Overlap**: 80-90% band overlap\n- **Fine Control**: Precise parameter adjustments\n- **Signal Smoothing**: Additional filtering and averaging\n\n**Unconventional Carriers**:\n- **Noise Sources**: White, pink, filtered noise\n- **Field Recordings**: Real-world audio carriers\n- **Granular Carriers**: Grain-based carrier synthesis\n- **Physical Modeling**: Simulated acoustic carriers\n\n#### Advanced Modulation\n**Complex Modulation**:\n- **Multi-Band Modulation**: Different modulation per band\n- **Cross-Modulation**: Inter-band interaction\n- **Modulation Matrix**: Complex routing schemes\n- **Adaptive Modulation**: Responding to input characteristics\n\n## Performance Optimization\n\n### Real-Time Control\n\n#### MIDI Integration\n**Essential Parameters**:\n```json\n{\n  \"midiMapping\": {\n    \"CC1\": \"BandCount\",\n    \"CC2\": \"AttackTime\",\n    \"CC3\": \"ReleaseTime\", \n    \"CC4\": \"BandOverlap\",\n    \"CC5\": \"Freeze\",\n    \"CC6\": \"DryWetMix\",\n    \"CC7\": \"CarrierWaveform\",\n    \"CC8\": \"CarrierFilterCutoff\"\n  }\n}\n```\n\n**Advanced Control**:\n- **Expression Pedals**: Continuous parameter control\n- **Footswitches**: Quick preset selection\n- **Touch Sensitivity**: Dynamic response control\n- **Aftertouch**: Pressure-sensitive modulation\n\n#### Automation Strategies\n**Parameter Automation**:\n- **Band Morphing**: Dynamic band count changes\n- **Carrier Morphing**: Carrier sound evolution\n- **Effect Intensity**: Gradual strength changes\n- **Stereo Movement**: Spatial automation\n\n**Performance Recording**:\n- **Parameter Capture**: Record manual adjustments\n- **Performance Playback**: Recreate live performances\n- **Macro Recording**: Complex preset recording\n- **Gesture Recognition**: Learn controller patterns\n\n### Multi-Instance Workflow\n\n#### Parallel Processing\n**Instance Roles**:\n- **Instance 1**: Low-frequency vocoder (bass-focused)\n- **Instance 2**: Mid-frequency vocoder (vocal range)\n- **Instance 3**: High-frequency vocoder (air and sibilance)\n- **Instance 4**: Effects layer (freeze, texture)\n\n**Synchronization**:\n- **Parameter Linking**: Shared control across instances\n- **MIDI Sync**: Common MIDI clock and control\n- **Host Automation**: Coordinated automation lanes\n- **Preset Coordination**: Synchronized preset changes\n\n## Post-Processing Techniques\n\n### Output Processing\n**Stereo Enhancement**:\n- **Width Control**: Adjust stereo image width\n- **Imaging**: Precise stereo positioning\n- **Haas Effect**: Delay-based stereo enhancement\n- **Mid/Side Processing**: Frequency-specific stereo control\n\n**Dynamic Processing**:\n- **Sidechain Compression**: Level management\n- **Multiband Compression**: Frequency-specific dynamics\n- **Limiting**: Output protection\n- **Saturation**: Harmonic enhancement\n\n**Spatial Effects**:\n- **Reverb Integration**: Space and atmosphere\n- **Delay Effects**: Rhythmic complexity\n- **Modulation Effects**: Additional movement\n- **Ambiance Creation**: Environmental simulation\n\n### Recording and Mixing Integration\n\n#### Mix Optimization\n**Gain Staging**:\n- **Input Level Control**: Consistent input levels\n- **Carrier Gain**: Balance with modulator\n- **Output Level**: Proper headroom\n- **Monitor Level**: Comfortable listening level\n\n**EQ Considerations**:\n- **Pre-EQ**: Shape input signals\n- **Post-EQ**: Fine-tune vocoder output\n- **Frequency Carving**: Create space in mix\n- **Harmonic Balance**: Adjust frequency distribution\n\n#### Recording Strategies\n**Layer Recording**:\n- **Multi-Take Recording**: Multiple passes for comping\n- **Comping**: Select best parts from multiple takes\n- **Layer Stacking**: Multiple vocoder layers\n- **Time Alignment**: Synchronize timing\n\n**Mix Integration**:\n- **Bus Effects**: Shared processing for coherence\n- **Send Effects**: Parallel processing routing\n- **Group Processing**: Linked parameter control\n- **Automation**: Dynamic mix evolution\n\n## Advanced Concepts\n\n### Psychoacoustic Applications\n\n#### Frequency Masking\n**Masking Awareness**:\n- **Frequency Space Management**: Plan frequency allocation\n- **Dynamic Range Control**: Avoid frequency conflicts\n- **Temporal Masking**: Time-based masking considerations\n- **Masking Avoidance**: EQ and arrangement techniques\n\n**Perceptual Enhancement**:\n- **Loudness Optimization**: Maintain consistent perceived volume\n- **Stereo Enhancement**: Perceived width and depth\n- **Clarity Enhancement**: Improve intelligibility and definition\n- **Naturalness**: Human-like characteristics\n\n#### Musical Perception\n**Musicality Enhancement**:\n- **Pitch Correction**: Subtle pitch adjustment\n- **Timing Control**: Rhythmic precision\n- **Dynamic Shaping**: Musical dynamic response\n- **Harmonic Enhancement**: Musical harmonic relationships\n\n### Machine Learning Integration\n\n#### Adaptive Systems\n**Learning Algorithms**:\n- **Parameter Optimization**: AI parameter adjustment\n- **Pattern Recognition**: Learn from user input\n- **Genre Adaptation**: Style-based parameter changes\n- **Performance Optimization**: System efficiency\n\n**Intelligent Processing**:\n- **Noise Detection**: Identify and remove unwanted noise\n- **Signal Classification**: Categorize input types\n- **Context Awareness**: Understand musical context\n- **Adaptive Filtering**: Dynamic frequency response\n\n## Technical Deep Dive\n\n### Mathematical Foundations\n\n#### Filter Theory\n**All-Pass Filter Design**:\n- **Butterworth**: Flat passband, predictable response\n- **Chebyshev**: Ripple in passband, steep rolloff\n- **Elliptic**: Balanced passband and stopband\n- **Bessel**: Maximal flat group delay\n\n**Frequency Response**:\n- **Transfer Function**: H(z) = output/input relationship\n- **Phase Response**: φ(ω) phase vs frequency\n- **Group Delay**: τ_g(ω) frequency-dependent delay\n- **Impulse Response**: h(t) time domain response\n\n#### Modulation Mathematics\n**Amplitude Modulation**:\n- **Standard AM**: y(t) = (1 + m·x(t))·cos(ωct)\n- **Ring Modulation**: y(t) = x(t)·cos(ωmt + φ)\n- **DSB**: Double-sideband modulation\n- **SSB**: Single-sideband modulation\n\n### Signal Processing Algorithms\n\n#### Implementation Details\n**FFT-Based Processing**:\n- **Window Functions**: Hann, Hamming, Blackman windows\n- **Zero Padding**: Reduced spectral leakage\n- **Overlap-Add**: Continuous processing\n- **Inverse FFT**: Signal reconstruction\n\n**Time-Domain Processing**:\n- **IIR Filters**: Efficient recursive implementation\n- **FIR Filters**: Linear phase, precise response\n- **Multi-Rate**: Variable sample rate processing\n- **Adaptive Filtering**: Dynamic coefficient adjustment",
+      "melodic-vocal-effects-hiphop": "# Melodic Vocal Effects for Hip-Hop & R&B with Vocodex\n\n**Genre:** Hip-Hop, R&B, Trap, Alternative\n**Vibe:** Melodic, atmospheric, modern vocal textures\n**Difficulty:** Intermediate\n**Time:** 15-20 minutes\n\n---\n\n## What Vocodex Does for Hip-Hop Vocals\n\nVocodex transforms vocals into **melodic, synthesized textures** perfect for:\n- **Chorus hooks** (Travis Scott, The Weeknd style)\n- **Atmospheric ad-libs** (moody, psychedelic vibes)\n- **Robotic vocal runs** (Kanye, Daft Punk influence)\n- **Layered harmonies** with unique character\n\n---\n\n## Quick Setup: Modern Hip-Hop Vocal Effect\n\n### Step 1: Route Your Vocals\n\n**Input Setup:**\n1. Load **Vocodex** on a mixer track\n2. **Modulator (Vocals):**\n   - Route your vocal track to Vocodex sidechain input\n   - OR record directly into Vocodex\n3. **Carrier (Synth):**\n   - Use the **built-in carrier synthesizer**\n   - Play chords/melodies via MIDI\n\n**What This Means:**\n- Your **vocals** = the modulator (provides articulation/rhythm)\n- The **synth** = the carrier (provides pitch/tone)\n- **Result:** Vocals \"sing\" the synth notes\n\n### Step 2: Essential Settings\n\n```\nBands: 30-40 (smooth, musical quality)\nModulator Input: External (your vocals)\nCarrier: Internal Synthesizer\nBandwidth: 80-100% (clear articulation)\nHold: 5-15ms (fast response)\nRelease: 50-100ms (natural decay)\n```\n\n---\n\n## Genre-Specific Presets\n\n### 1. Melodic Trap Hook (Travis Scott / Gunna)\n\n**Vocodex Settings:**\n```\nBands: 32\nCarrier Waveform: Sawtooth\nCarrier Octave: 0 (normal pitch)\nBandwidth: 90%\nHold: 10ms\nRelease: 80ms\nDepth: 100%\n```\n\n**MIDI Pattern:**\n- Play **sustained chords** (Cmaj7, Dm7, etc.)\n- 1/2 to full bar note lengths\n- Simple, hypnotic progressions\n\n**Post-Processing:**\n- **Delay:** 1/8 dotted, 30% mix\n- **Reverb:** Medium hall, 25% mix\n- **Autotune** on original vocal (tight tuning)\n\n**Vibe:** Melodic, atmospheric, modern\n\n**Reference:**\n- Travis Scott - \"SICKO MODE\"\n- Gunna - \"Drip Too Hard\"\n\n---\n\n### 2. Psychedelic R&B Texture (The Weeknd / Frank Ocean)\n\n**Vocodex Settings:**\n```\nBands: 40 (smoother)\nCarrier: Sawtooth + Sine blend\nOctave Spread: +1 octave (ethereal)\nBandwidth: 85%\nHold: 8ms\nRelease: 120ms (longer tail)\nUnison: 3 voices, 15% detune\n```\n\n**MIDI Pattern:**\n- **Complex chords:** Add 9ths, 11ths, 13ths\n- **Slow movement:** Change chords every 2-4 bars\n- **Arpeggios:** Broken chord patterns\n\n**Post-Processing:**\n- **Vintage Chorus:** 30% mix\n- **Vintage Phaser:** Very slow LFO\n- **Long reverb:** 40% mix, 3-4 second decay\n\n**Vibe:** Dreamy, spacey, emotional\n\n**Reference:**\n- The Weeknd - \"House of Balloons / Glass Table Girls\"\n- Frank Ocean - \"Nights\"\n- SZA - \"The Weekend\"\n\n---\n\n### 3. Robotic Ad-Libs (Daft Punk / Kanye Influence)\n\n**Vocodex Settings:**\n```\nBands: 20-24 (more robotic, less natural)\nCarrier: Square wave\nOctave: -1 or 0\nBandwidth: 70% (less smooth)\nHold: 2ms (instant attack)\nRelease: 30ms (short, punchy)\n```\n\n**Vocal Performance:**\n- **Short phrases:** \"Yeah,\" \"Uh,\" \"Let's go\"\n- **Rhythmic timing:** On-beat, staccato\n- **Energy:** Emphasize consonants\n\n**MIDI Pattern:**\n- **Single notes** or **power chords** (root + 5th)\n- Match the key of your song\n- Rhythmic, not sustained\n\n**Post-Processing:**\n- **Distortion:** Light drive for grit\n- **High-pass filter:** 200Hz (thin it out)\n- **Delay:** 1/16, 20% feedback\n\n**Vibe:** Robotic, energetic, futuristic\n\n**Reference:**\n- Kanye West - \"Stronger\"\n- Daft Punk - \"Harder, Better, Faster, Stronger\"\n- Kid Cudi - \"Day 'n' Nite\"\n\n---\n\n### 4. Moody Ambient Vocal Pad\n\n**Vocodex Settings:**\n```\nBands: 50-60 (maximum smoothness)\nCarrier: Sine wave (pure tone)\nOctave: +1 (higher, airier)\nBandwidth: 100%\nHold: 20ms\nRelease: 200ms (very long)\nDepth: 80% (blend with dry signal)\n```\n\n**Vocal Performance:**\n- **Humming or \"ooh/ahh\" sounds**\n- Long, sustained notes\n- Minimal articulation\n\n**MIDI Pattern:**\n- **Lush chord voicings:** 4-5 note chords\n- Very slow changes (4-8 bars per chord)\n- Layer multiple instances with different octaves\n\n**Post-Processing:**\n- **Reverb:** Huge (5+ second decay), 60% mix\n- **Stereo width:** Wide with Fruity Stereo Enhancer\n- **Low-pass filter automation:** Slowly open/close\n\n**Vibe:** Atmospheric, cinematic, emotional\n\n**Reference:**\n- Bon Iver - \"Holocene\"\n- James Blake - \"Retrograde\"\n- Sampha - \"(No One Knows Me) Like the Piano\"\n\n---\n\n## Advanced Techniques\n\n### Technique 1: Stacked Harmonies\n\n**Setup:**\n1. Duplicate Vocodex on 3 tracks\n2. **Track 1:** Octave 0 (root)\n3. **Track 2:** Octave +1 (high)\n4. **Track 3:** Octave -1 (low)\n5. Send all three different MIDI patterns (3rd, 5th, octave apart)\n\n**Result:** Thick, choir-like vocal texture\n\n---\n\n### Technique 2: Vocodex + Autotune Combo\n\n**Signal Chain:**\n```\nVocals → Autotune (tight) → Vocodex → Effects\n```\n\n**Why:**\n- Autotune cleans up pitch before vocoding\n- Results in cleaner, more melodic output\n- Modern R&B/trap sound\n\n---\n\n### Technique 3: Sidechain to Beat\n\n**Setup:**\n1. Sidechain Vocodex output to kick drum\n2. Fast attack (5ms), medium release (100ms)\n3. Ratio: 4:1, Threshold: -10dB\n\n**Result:** Pumping vocal effect that breathes with the beat\n\n---\n\n### Technique 4: Formant Shifting (Gender Bending)\n\n**In Carrier Settings:**\n- **Formant Shift:** -200 cents (more masculine)\n- **Formant Shift:** +200 cents (more feminine/childlike)\n\n**Use Case:**\n- Create vocal layers with different characters\n- Add tension/release to sections\n\n---\n\n## Workflow: Creating a Melodic Hook\n\n### Step-by-Step Process\n\n**1. Record Your Vocal Performance**\n- **Melody:** Simple, repetitive hook\n- **Delivery:** Clear articulation, emotional performance\n- **Example:** \"I've been feeling like this for too long...\"\n\n**2. Design Your Chord Progression**\n```\nBar 1: Cmaj7 (C-E-G-B)\nBar 2: Am7 (A-C-E-G)\nBar 3: Fmaj7 (F-A-C-E)\nBar 4: G7 (G-B-D-F)\n```\n\n**3. Configure Vocodex**\n- 35-40 bands\n- Sawtooth carrier\n- 90% bandwidth\n- 80ms release\n\n**4. Play MIDI Through Vocodex**\n- Hold each chord for one bar\n- Match the timing of your vocal\n\n**5. Layer with Dry Vocal**\n- **Dry vocal:** 40% volume (clarity)\n- **Vocodex:** 60% volume (texture)\n- **Blend:** Creates hybrid natural/synthetic sound\n\n**6. Add Effects**\n- **Delay:** 1/8 dotted (adds space)\n- **Reverb:** Medium (not too wet)\n- **Compression:** Gentle (3:1 ratio)\n\n---\n\n## Mixing Vocodex Vocals\n\n### Frequency Management\n\n**EQ Settings:**\n- **High-pass:** 120Hz (remove low-end rumble)\n- **Boost:** +2dB at 3-5kHz (presence/clarity)\n- **Cut:** -2dB at 200-300Hz if muddy\n- **Boost:** +1dB at 10kHz (air/brightness)\n\n### Saturation for Warmth\n- **Fruity Fast Dist** or **Distructor**\n- Very light drive (15-25%)\n- Adds harmonics, makes it sit in the mix\n\n### Stereo Width\n- **Mono below 200Hz**\n- **Stereo width** on highs (subtle)\n- Use **Fruity Stereo Shaper**\n\n---\n\n## Common Mistakes\n\n1. **Too many bands:** 60+ sounds muddy\n2. **Too few bands:** Under 20 sounds too robotic (unless intentional)\n3. **No dry signal:** 100% wet can sound disconnected\n4. **Wrong carrier waveform:** Sine = soft, Square = harsh, Saw = balanced\n5. **Ignoring MIDI timing:** Must match vocal rhythm\n\n---\n\n## Preset Cheat Sheet\n\n| Vibe | Bands | Carrier | Bandwidth | Release | Octave |\n|------|-------|---------|-----------|---------|--------|\n| **Melodic Trap** | 32 | Sawtooth | 90% | 80ms | 0 |\n| **Psychedelic R&B** | 40 | Saw+Sine | 85% | 120ms | +1 |\n| **Robotic Ad-Libs** | 22 | Square | 70% | 30ms | 0/-1 |\n| **Ambient Pad** | 55 | Sine | 100% | 200ms | +1 |\n| **Dark/Moody** | 28 | Sawtooth | 75% | 100ms | -1 |\n\n---\n\n## Production Tips\n\n### For Moody Tracks\n- **Lower octave carrier** (-1)\n- **Slower release** (120-150ms)\n- **Minor key MIDI**\n- **Heavy reverb** (dark, distant vibe)\n\n### For Upbeat Tracks\n- **Higher octave carrier** (+1)\n- **Faster release** (50-70ms)\n- **Major key MIDI**\n- **Brighter EQ** (boost highs)\n\n### For Psychedelic Tracks\n- **Multiple Vocodex instances** with different settings\n- **Automate carrier waveform** (morph from sine to saw)\n- **Add phaser/chorus** post-Vocodex\n- **Reverse sections** and mix with forward\n\n---\n\n## Reference Tracks to Study\n\n**Melodic Hooks:**\n- Travis Scott - \"STARGAZING\"\n- The Weeknd - \"Blinding Lights\"\n- Gunna & Lil Baby - \"Drip Too Hard\"\n\n**Psychedelic Vibes:**\n- Frank Ocean - \"Pink + White\"\n- Kid Cudi - \"Pursuit of Happiness\"\n- Tame Impala - \"The Less I Know The Better\" (not hip-hop but influential)\n\n**Robotic/Futuristic:**\n- Kanye West - \"Stronger\"\n- Daft Punk - \"Get Lucky\"\n- Childish Gambino - \"Redbone\" (subtle vocoding)\n\n---\n\n## Next Steps\n\n1. **Experiment with carrier waveforms:** Each has a unique character\n2. **Learn chord theory:** Better chords = better vocodex results\n3. **Record clean vocals:** Garbage in, garbage out\n4. **Layer multiple instances:** Create complex textures\n5. **Study your references:** A/B with professional tracks\n\n---\n\n**Related Workflows:**\n- [Autotune + Vocodex Combo](./autotune-vocodex-chain.md)\n- [Vocodex for Background Vocals](./vocodex-harmonies.md)\n- [Psychedelic Vocal Pad Creation](./ambient-vocal-textures.md)\n\n---\n\n**Last Updated:** February 3, 2026\n**Genre:** Hip-Hop, R&B, Trap, Alternative\n**Vibe:** 🎤 Next-Level Vocals\n",
+      "robot-voice-creation": "# Robot Voice Creation with Vocodex\n\n**Difficulty:** Beginner\n**Time Required:** 15 minutes\n**Goal:** Create classic robotic vocoded voice effect\n**Genre:** EDM, Electro, French House\n\n---\n\n## Prerequisites\n\n- Vocodex plugin\n- Vocal recording (dry, clear speech or singing)\n- Understanding of basic routing\n- Reference: Daft Punk robot voice\n\n---\n\n## Workflow Steps\n\n### Step 1: Setup Vocodex\n\n1. **Load Vocodex** on vocal mixer track\n2. **Bands:** Set to **32**\n   - *Why:* Good balance of clarity and robot character\n\n3. **Frequency Range:**\n   - **Min Freq:** 200 Hz\n   - **Max Freq:** 6000 Hz\n   - *Why:* Covers speech intelligibility range\n\n---\n\n### Step 2: Carrier Synth Configuration\n\n4. **Waveform:** **Sawtooth**\n   - *Why:* Rich harmonics for full vocoded sound\n\n5. **Pitch:** **0 semitones** (middle C)\n   - *Why:* Natural vocal range\n\n6. **Unison:** **3-5 voices**\n   - *Why:* Thicker, more lush robot voice\n\n7. **Detune:** **25-35%**\n   - *Why:* Spreads voices for width\n\n---\n\n### Step 3: Fine-Tuning\n\n8. **Bandwidth:** **0.8-1.2 octaves**\n   - *Why:* Balanced clarity\n\n9. **Mod Mix:** **100%**\n10. **Car Mix:** **100%**\n\n11. **Attack/Release:** Medium (both)\n    - *Why:* Natural envelope tracking\n\n---\n\n### Step 4: Post-Processing\n\n12. **EQ:**\n    - Boost 2-4kHz for presence\n    - Cut below 150Hz\n\n13. **Compression:**\n    - Ratio: 4:1\n    - Medium attack/release\n\n14. **Reverb (optional):**\n    - Small room, 15% mix\n\n---\n\n## Variations\n\n### Daft Punk Style\n- Add heavy sidechain compression to kick\n- Layer multiple vocoded vocals\n- Add subtle chorus after vocoder\n\n### Retro Computer Voice\n- Reduce bands to 16\n- Use square wave carrier\n- Add bit crusher after\n\n---\n\n**Last Updated:** February 3, 2026\n**Status:** Complete workflow\n"
+    },
+    "by-instrument": {
+      "vocodex-instrument-workflows": "Tags: hip-hop/rap | R&B | melodic\n\n## Vocodex Instrument Workflows\n\n### Lead Vocal Vocoding\n\n**Starting Chain:**\n1. **Input:** Clean lead vocal (no heavy processing before vocoder)\n2. **Sidechain:** Synth carrier (usually saw or square wave)\n3. **Bands:** 16-24 bands for clear articulation\n4. **Attack:** 10ms (preserves transients)\n5. **Release:** 100ms (smooth decay)\n\n**A/B Test Method:**\n1. Set bands to maximum, carrier at moderate level\n2. Speak/sing a phrase\n3. Reduce bands to 8, then back to max\n4. Listen: \"Can you still understand every word at minimum bands?\"\n\n**Quick Fix Path:**\n- If vocals unintelligible → Increase bands (up to 24)\n- If too robotic → Lower attack time (5-8ms)\n- If pumping → Adjust release time (shorter for punchy, longer for smooth)\n- If harsh → High-pass carrier at 200Hz\n\n### Background Vocal Stacking\n\n**Settings:**\n- Bands: 16\n- Attack: 15ms\n- Release: 150ms\n- Shift: +2 semitones (adds brightness)\n- Wet/Dry: 40/60 (more vocal, less robot)\n\n**When to Use:**\n- Intro vocals (\"oohs\" and \"aahs\")\n- Background \"vocals\" created from spoken word\n- Creating \"chorus\" effect from single vocal take\n- Hypnotic/atmospheric vocal textures\n\n**Troubleshooting:**\n- If too synthesized → Increase Dry, reduce Shift\n- If too muddy → High-pass carrier above 150Hz\n- If words unclear → Reduce band count slightly (12 bands may help)\n\n### 808 Talkbox Effect\n\n**Settings:**\n- Carrier: Sine wave (cleanest)\n- Bands: 8-12 (more bands = more intelligible)\n- Attack: 5ms (fast attack for \"talk\")\n- Release: 50ms (short for punch)\n- Wet/Dry: 70/30 (strong effect)\n\n**Why This Works:**\n- Sine carrier sounds most like human mouth cavity\n- Fewer bands create \"mumbled\" talkbox quality\n- Fast attack catches the \"T\" and \"K\" sounds\n- Short release doesn't muddy between words\n\n**Best For:**\n- 808 ad-libs (\"yeah!\", \"uh!\")\n- Traded vocals\n- Hypnotic hook phrases\n- Creative vocal effects\n\n### Synth-Vocal Hybrid\n\n**Settings:**\n- Carrier: Saw wave + low-pass filter\n- Bands: 16\n- Attack: 8ms\n- Release: 80ms\n- Mix: 50/50\n\n**Creation Steps:**\n1. Create synth pad with saw wave\n2. Low-pass filter at 800Hz\n3. Route through Vocodex with vocal input\n4. Blend to taste\n\n**Exit Criteria:**\n- Should sound neither fully synth nor fully vocal\n- Creates a new timbre entirely\n- Works best as a textural element, not primary melody\n\n### Quick Reference Table\n\n| Goal | Bands | Carrier | Attack | Release | Wet | Use Case |\n|------|-------|---------|--------|---------|-----|----------|\n| Clear vocal | 24 | Saw | 10ms | 100ms | 50% | Main effect |\n| Talkbox 808 | 10 | Sine | 5ms | 50ms | 70% | Ad-libs |\n| Background texture | 16 | Saw+LP | 15ms | 150ms | 40% | Atmosphere |\n| Robot voice | 32 | Square | 2ms | 200ms | 60% | Effect |\n| Whisper effect | 8 | Noise | 20ms | 300ms | 35% | Creepy/vintage |\n| Hybrid synth | 16 | Saw+LP | 8ms | 80ms | 50% | New timbre |\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Vocodex\r\n\r\nThis section contains workflow information for the vocodex plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Vocodex\r\n\r\nThis section contains reference information for the vocodex plugin.\r\n"
+    }
+  }
+}

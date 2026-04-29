@@ -1,0 +1,161 @@
+{
+  "plugin": "Hardcore",
+  "category": "Sibilance Safety Rules",
+  "dataSource": "IL-MAN",
+  "description": "Guidelines for controlling sibilance (harsh 's', 'sh', 't' sounds) when using Hardcore on vocals and bright sources",
+  "rules": [
+    {
+      "ruleId": "SIB-001",
+      "title": "Identify Sibilance Frequency Range",
+      "severity": "high",
+      "description": "Sibilance typically occurs between 5-10 kHz",
+      "details": "The 's', 'sh', 'ch', and 't' sounds contain strong energy in the 5-10kHz range. Hardcore's distortion and bright cabinets can exaggerate these frequencies.",
+      "frequencyRanges": {
+        "femaleVocals": "6-9 kHz",
+        "maleVocals": "5-8 kHz",
+        "drumCymbals": "8-12 kHz",
+        "hihats": "10-15 kHz"
+      },
+      "check": "Solo vocals and listen for harsh 's' sounds",
+      "solution": "Target 6-8kHz range on Master EQ Band 7 (6kHz) and Band 8 (12kHz)"
+    },
+    {
+      "ruleId": "SIB-002",
+      "title": "Use Caution with Bright Cabinets on Vocals",
+      "severity": "high",
+      "description": "Cabinet 1 (Bright/Modern) extends highs to 8kHz+",
+      "details": "Cabinet 1 has strong 3-5kHz presence and extended treble. Combined with distortion, this can make vocals painfully sibilant.",
+      "warning": "Cabinet 1 + High Distortion + Vocals = Sibilance risk",
+      "saferAlternatives": [
+        "Cabinet 2 (Vintage) - Natural high-end rolloff",
+        "Cabinet 3 (British) - Controlled 5-6kHz range",
+        "Cabinet 4 (American) - Balanced, extended but smooth"
+      ],
+      "check": "A/B test cabinet selection on vocal phrases with 's' sounds",
+      "solution": "Switch to darker cabinet or reduce high-end before cabinet"
+    },
+    {
+      "ruleId": "SIB-003",
+      "title": "Pre-Distortion EQ is Critical",
+      "severity": "high",
+      "description": "Distortion adds harmonics, exaggerating existing high frequencies",
+      "details": "If you distort a signal with existing sibilance, you create MORE sibilance through added harmonics. Use Stompbox EQ before Distortion to tame highs.",
+      "preDistortionStrategy": {
+        "highFreq": "Set to 8-10 kHz",
+        "highGain": "Cut -3 to -6 dB before distortion",
+        "reason": "Removes harshness before harmonic generation"
+      },
+      "check": "Distortion on/off comparison - does it exaggerate 's' sounds?",
+      "solution": "Enable Stompbox EQ before Distortion, cut 8-10kHz range"
+    },
+    {
+      "ruleId": "SIB-004",
+      "title": "Master EQ De-Essing",
+      "severity": "medium",
+      "description": "Use Master 8-band EQ for broad de-essing",
+      "details": "Band 7 (6kHz) and Band 8 (12kHz) control the sibilance range. Gentle cuts here can tame harshness without making vocals dull.",
+      "settings": {
+        "band7": "Cut -2 to -4 dB at 6 kHz",
+        "band8": "Cut -1 to -3 dB at 12 kHz",
+        "alternative": "Cut Band 6 (3kHz) by -2dB if sibilance is lower frequency"
+      },
+      "check": "Vocal 's' sounds are controlled but not lisping",
+      "caution": "Don't over-cut - vocals need presence and air"
+    },
+    {
+      "ruleId": "SIB-005",
+      "title": "Distortion Tone Control Strategy",
+      "severity": "medium",
+      "description": "Distortion Tone control affects sibilance generation",
+      "details": "Positive Tone values (+10 to +50) emphasize high frequencies, potentially creating sibilance even in clean sources.",
+      "saferSettings": {
+        "vocalProcessing": "Tone 0 to -10 (neutral to slightly dark)",
+        "drumProcessing": "Tone 0 to +10 (moderate brightness)",
+        "riskySetting": "Tone +30 to +50 on vocals"
+      },
+      "check": "Tone setting doesn't exaggerate 's' sounds",
+      "solution": "Reduce Tone setting or combine with high-frequency cuts"
+    },
+    {
+      "ruleId": "SIB-006",
+      "title": "Test with Sibilance-Rich Material",
+      "severity": "high",
+      "description": "Always test Hardcore settings with phrases containing 's', 'sh', 't'",
+      "details": "A setting that sounds great on 'oo' and 'ah' vowels may be painfully harsh on 'sassy sailors shoot ships'. Test comprehensively.",
+      "testPhrases": [
+        "She sells seashells by the seashore",
+        "Sassy sailors shoot ships",
+        "The sixth sheik's sixth sheep's sick",
+        "Tess tickles test tubes"
+      ],
+      "check": "All sibilant sounds are controlled, no single sound jumps out",
+      "solution": "Adjust settings until all phonemes sound balanced"
+    },
+    {
+      "ruleId": "SIB-007",
+      "title": "Post-Hardcore De-Esser Strategy",
+      "severity": "low",
+      "description": "Consider dedicated de-esser after Hardcore on vocal chain",
+      "details": "If Hardcore is essential for vocal character but creates sibilance, add a dedicated de-esser plugin after Hardcore in the chain.",
+      "chainPosition": "Source → Hardcore → De-Esser → Rest of chain",
+      "settings": {
+        "frequency": "6-8 kHz",
+        "reduction": "3-6 dB gentle reduction",
+        "threshold": "Just below peak sibilant levels"
+      },
+      "check": "De-esser catches what Hardcore exaggerates"
+    },
+    {
+      "ruleId": "SIB-008",
+      "title": "Drum Cymbal and Hi-Hat Control",
+      "severity": "medium",
+      "description": "High-frequency drum elements also need sibilance management",
+      "details": "Cymbals and hi-hats contain sibilant-like energy in 8-15kHz range. Hardcore can make them harsh and splashy.",
+      "settings": {
+        "masterEQ": {
+          "band7": "Cut -2 to -3 dB at 6kHz (reduces harshness)",
+          "band8": "Cut -3 to -5 dB at 12kHz (tames splash)"
+        },
+        "cabinet": "Cabinet 2 (Vintage) or Cabinet 4 (American)"
+      },
+      "check": "Cymbals sound present but not painfully bright",
+      "solution": "Reduce treble in Master EQ or choose darker cabinet"
+    },
+    {
+      "ruleId": "SIB-009",
+      "title": "Mix Level Compensation",
+      "severity": "medium",
+      "description": "Sibilance issues often worsen at higher mix levels",
+      "details": "An effect that sounds balanced at 20% mix may expose sibilance at 50% mix. Always check at your intended blend level.",
+      "check": "Test at actual mix level you'll use in production",
+      "solution": "Adjust Hardcore settings at intended mix percentage"
+    },
+    {
+      "ruleId": "SIB-010",
+      "title": "Automation for Problem Sections",
+      "severity": "low",
+      "description": "Automate Hardcore settings for sibilant passages",
+      "details": "If only certain words are sibilant, automate the Master EQ or Tone controls to reduce highs during those moments.",
+      "automationTargets": [
+        "Master EQ Band 7 (increase cut during sibilance)",
+        "Distortion Tone (reduce to darker setting)",
+        "Cabinet Mix (reduce to blend in less cabinet high-end)"
+      ],
+      "check": "Sibilant sections are controlled without affecting rest of vocal",
+      "solution": "Create automation clips for sibilant words/phrases"
+    }
+  ],
+  "quickReference": {
+    "vocalSafeChain": [
+      "Stompbox EQ: Cut 8kHz -4dB (before distortion)",
+      "Distortion: Drive 30-40%, Tone 0 or negative",
+      "Master EQ: Cut 6kHz -2dB, Cut 12kHz -2dB",
+      "Cabinet: 2 (Vintage) or 4 (American)"
+    ],
+    "drumSafeChain": [
+      "Master EQ: Cut 6kHz -2dB, Cut 12kHz -3dB",
+      "Cabinet: 2 (Vintage) or 4 (American)",
+      "Consider: Less distortion on cymbal-heavy sections"
+    ]
+  }
+}

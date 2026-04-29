@@ -1,0 +1,53 @@
+{
+  "name": "Vocal Chain",
+  "genre": "universal",
+  "mood": "smooth",
+  "description": "Complete vocal processing chain with de-essing and compression",
+  "parameters": {
+    "chain": [
+      {
+        "slot": 1,
+        "type": "EQ",
+        "plugin": "Fruity Parametric EQ 2",
+        "settings": "Corrective EQ"
+      },
+      {
+        "slot": 2,
+        "type": "De-Esser",
+        "plugin": "Fruity Parametric EQ 2",
+        "settings": "Sibilance control"
+      },
+      {
+        "slot": 3,
+        "type": "Compressor",
+        "plugin": "Fruity Compressor",
+        "settings": "Gentle compression"
+      },
+      {
+        "slot": 4,
+        "type": "Reverb",
+        "plugin": "Fruity Reverb",
+        "settings": "Subtle reverb"
+      }
+    ],
+    "routing": "Series",
+    "parallelPaths": 0
+  },
+  "workflow": {
+    "useCase": "Complete vocal processing",
+    "steps": [
+      "Apply corrective EQ",
+      "Control sibilance",
+      "Add compression",
+      "Add subtle reverb"
+    ],
+    "troubleshooting": [
+      { "issue": "Sibilant", "fix": "Increase de-essing" },
+      { "issue": "Unstable", "fix": "Reduce compression" }
+    ]
+  },
+  "abTest": {
+    "listenFor": "Clear, present vocals",
+    "duration": "Full vocal phrase"
+  }
+}

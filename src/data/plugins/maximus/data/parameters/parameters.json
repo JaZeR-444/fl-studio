@@ -1,0 +1,90 @@
+{
+  "pluginName": "Maximus",
+  "tabs": ["LOW", "MID", "HIGH", "MASTER"],
+  "parameters": [
+    {
+      "section": "General",
+      "id": "master_gain",
+      "name": "Master Gain",
+      "range": { "min": -Infinity, "max": 18, "unit": "dB" },
+      "description": "Final output volume."
+    },
+    {
+      "section": "Band Controls",
+      "id": "pre_gain",
+      "name": "Pre Gain",
+      "range": { "min": -Infinity, "max": 18, "unit": "dB" },
+      "description": "Input drive into the compression envelope."
+    },
+    {
+      "section": "Band Controls",
+      "id": "post_gain",
+      "name": "Post Gain",
+      "range": { "min": -Infinity, "max": 18, "unit": "dB" },
+      "description": "Makeup gain after compression."
+    },
+    {
+      "section": "Envelope",
+      "id": "attack",
+      "name": "Attack (Lookahead)",
+      "range": { "min": 0, "max": 1000, "unit": "ms" },
+      "description": "Lookahead buffer time. Determines how early the limiter reacts."
+    },
+    {
+      "section": "Envelope",
+      "id": "release_1",
+      "name": "Release 1",
+      "range": { "min": 0, "max": 1000, "unit": "ms" },
+      "description": "Accelerating release curve time."
+    },
+    {
+      "section": "Envelope",
+      "id": "release_2",
+      "name": "Release 2",
+      "range": { "min": 0, "max": 1000, "unit": "ms" },
+      "description": "Decelerating release curve time."
+    },
+    {
+      "section": "Envelope",
+      "id": "curve",
+      "name": "Curve Slope",
+      "range": { "min": 1, "max": 8, "unit": "int" },
+      "description": "Blend/Slope of the attack and release curves."
+    },
+    {
+      "section": "Saturation",
+      "id": "sat_thresh",
+      "name": "Saturation Threshold/Type",
+      "range": { "min": -100, "max": 100, "unit": "%" },
+      "description": "Left = Type A (Hard). Right = Type B (Soft). Center = Off."
+    },
+    {
+      "section": "Saturation",
+      "id": "sat_ceil",
+      "name": "Saturation Ceiling",
+      "range": { "min": -18, "max": 0, "unit": "dB" },
+      "description": "Threshold where saturation begins. Lower = More distortion."
+    },
+    {
+      "section": "Stereo",
+      "id": "separation",
+      "name": "Stereo Separation",
+      "range": { "min": -100, "max": 100, "unit": "%" },
+      "description": "Right = Mono. Left = Wide Stereo. Works per band."
+    },
+    {
+      "section": "Crossover",
+      "id": "low_freq",
+      "name": "Low Frequency Cutoff",
+      "range": { "min": 10, "max": 20000, "unit": "Hz" },
+      "description": "Split point between Low and Mid bands."
+    },
+    {
+      "section": "Crossover",
+      "id": "high_freq",
+      "name": "High Frequency Cutoff",
+      "range": { "min": 10, "max": 20000, "unit": "Hz" },
+      "description": "Split point between Mid and High bands."
+    }
+  ]
+}

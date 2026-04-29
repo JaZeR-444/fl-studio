@@ -1,0 +1,882 @@
+{
+  "plugin_name": "Control Surface",
+  "category": "Utility",
+  "manufacturer": "Image-Line",
+  "plugin_type": "MIDI Controller Integration",
+  "version": "1.0.0",
+  "parameters": [
+    {
+      "name": "Device_Selection",
+      "type": "selector",
+      "options": [
+        {
+          "value": "generic",
+          "label": "Generic MIDI Device",
+          "description": "Standard MIDI controller support",
+          "use_cases": ["basic_controller", "midi_device", "generic_mapping"],
+          "hip_hop_applications": ["basic_drum_controller", "generic_pad_controller", "simple_mapping"]
+        },
+        {
+          "value": "akai",
+          "label": "Akai Controllers",
+          "description": "Optimized for Akai devices (MPC, MPK, etc.)",
+          "use_cases": ["akai_devices", "mpc_style", "professional_controllers"],
+          "hip_hop_applications": ["mpc_programming", "akai_pad_controllers", "professional_mapping"]
+        },
+        {
+          "value": "novation",
+          "label": "Novation Controllers",
+          "description": "Optimized for Novation devices (Launchpad, etc.)",
+          "use_cases": ["novation_devices", "launchpad", "grid_controllers"],
+          "hip_hop_applications": ["launchpad_programming", "grid_mapping", "pattern_controllers"]
+        },
+        {
+          "value": "native_instruments",
+          "label": "Native Instruments",
+          "description": "Optimized for NI devices (Maschine, etc.)",
+          "use_cases": ["native_instruments", "maschine", "professional_controllers"],
+          "hip_hop_applications": ["maschine_style", "ni_controllers", "professional_mapping"]
+        },
+        {
+          "value": "custom",
+          "label": "Custom Configuration",
+          "description": "User-defined controller setup",
+          "use_cases": ["custom_controllers", "unique_devices", "specialized_mapping"],
+          "hip_hop_applications": ["custom_drum_pads", "specialized_controllers", "unique_setups"]
+        }
+      ],
+      "description": "Controller type selection for optimized integration",
+      "use_cases": ["controller_setup", "device_mapping", "hardware_integration"],
+      "hip_hop_applications": ["controller_optimization", "device_specific_mapping", "professional_integration"]
+    },
+    {
+      "name": "Input_Port",
+      "type": "selector",
+      "options": [],
+      "description": "MIDI input port assignment",
+      "use_cases": ["midi_routing", "input_assignment", "port_configuration"],
+      "hip_hop_applications": ["controller_input", "midi_port_management", "input_routing"]
+    },
+    {
+      "name": "Output_Port",
+      "type": "selector",
+      "options": [],
+      "description": "MIDI output port assignment",
+      "use_cases": ["midi_feedback", "led_control", "controller_output"],
+      "hip_hop_applications": ["controller_feedback", "led_status", "display_updates"]
+    },
+    {
+      "name": "Protocol",
+      "type": "selector",
+      "options": [
+        {
+          "value": "standard",
+          "label": "Standard MIDI",
+          "description": "Basic MIDI protocol support",
+          "use_cases": ["basic_midi", "standard_protocol", "universal_support"],
+          "hip_hop_applications": ["basic_controller", "universal_support", "simple_mapping"]
+        },
+        {
+          "value": "sysex",
+          "label": "SysEx Enhanced",
+          "description": "Extended protocol with SysEx support",
+          "use_cases": ["extended_protocol", "sysex_support", "advanced_features"],
+          "hip_hop_applications": ["advanced_controllers", "feature_support", "enhanced_mapping"]
+        },
+        {
+          "value": "manufacturer_specific",
+          "label": "Manufacturer Specific",
+          "description": "Device-specific protocol extensions",
+          "use_cases": ["device_specific", "manufacturer_extensions", "proprietary_features"],
+          "hip_hop_applications": ["professional_controllers", "device_features", "enhanced_capabilities"]
+        }
+      ],
+      "description": "MIDI protocol selection for controller communication",
+      "use_cases": ["protocol_selection", "communication_method", "device_support"],
+      "hip_hop_applications": ["controller_communication", "protocol_optimization", "device_integration"]
+    },
+    {
+      "name": "Template_Selection",
+      "type": "selector",
+      "options": [
+        {
+          "value": "default",
+          "label": "Default Template",
+          "description": "Basic parameter mapping template",
+          "use_cases": ["basic_mapping", "default_setup", "starting_point"],
+          "hip_hop_applications": ["basic_setup", "starting_template", "simple_mapping"]
+        },
+        {
+          "value": "drum_pad",
+          "label": "Drum Pad Template",
+          "description": "Optimized for pad-based controllers",
+          "use_cases": ["pad_controllers", "drum_programming", "performance_pads"],
+          "hip_hop_applications": ["drum_controllers", "pad_programming", "hip_hop_beats"]
+        },
+        {
+          "value": "keyboard",
+          "label": "Keyboard Template",
+          "description": "Optimized for keyboard controllers",
+          "use_cases": ["keyboard_controllers", "melodic_work", "performance_keys"],
+          "hip_hop_applications": ["melodic_sampling", "keyboard_control", "vocal_processing"]
+        },
+        {
+          "value": "mixer",
+          "label": "Mixer Template",
+          "description": "Optimized for mixer control",
+          "use_cases": ["mixer_control", "fader_control", "channel_strip"],
+          "hip_hop_applications": ["mixing_control", "fader_mapping", "channel_control"]
+        },
+        {
+          "value": "transport",
+          "label": "Transport Template",
+          "description": "Optimized for transport control",
+          "use_cases": ["transport_control", "playback_control", "navigation"],
+          "hip_hop_applications": ["transport_control", "playback_navigation", "session_control"]
+        }
+      ],
+      "description": "Pre-configured controller template selection",
+      "use_cases": ["template_loading", "preset_selection", "quick_setup"],
+      "hip_hop_applications": ["controller_templates", "quick_setup", "genre_specific_mapping"]
+    },
+    {
+      "name": "Parameter_Assignment",
+      "type": "multi_parameter",
+      "controls": [
+        {
+          "name": "Parameter_Path",
+          "type": "text",
+          "description": "Path to parameter being controlled",
+          "use_cases": ["parameter_mapping", "control_assignment", "path_specification"],
+          "hip_hop_applications": ["parameter_control", "control_assignment", "mapping_specification"]
+        },
+        {
+          "name": "Controller_Element",
+          "type": "selector",
+          "options": ["knob", "fader", "button", "pad", "encoder"],
+          "description": "Controller element to assign",
+          "use_cases": ["element_assignment", "control_binding", "interface_mapping"],
+          "hip_hop_applications": ["pad_mapping", "fader_assignment", "control_binding"]
+        },
+        {
+          "name": "MIDI_Message",
+          "type": "selector",
+          "options": ["CC", "Note", "Program", "Aftertouch"],
+          "description": "MIDI message type for assignment",
+          "use_cases": ["midi_mapping", "message_type", "communication_protocol"],
+          "hip_hop_applications": ["midi_assignment", "message_mapping", "controller_communication"]
+        },
+        {
+          "name": "MIDI_Channel",
+          "type": "range",
+          "min": 1,
+          "max": 16,
+          "default": 1,
+          "unit": "channel",
+          "description": "MIDI channel for communication",
+          "use_cases": ["channel_assignment", "multi_device", "channel_routing"],
+          "hip_hop_applications": ["multi_controller", "channel_management", "device_separation"]
+        },
+        {
+          "name": "MIDI_Number",
+          "type": "range",
+          "min": 0,
+          "max": 127,
+          "default": 1,
+          "unit": "number",
+          "description": "MIDI number for specific element",
+          "use_cases": ["element_number", "control_identifier", "parameter_address"],
+          "hip_hop_applications": ["pad_number", "knob_number", "control_address"]
+        }
+      ],
+      "description": "Comprehensive parameter assignment system",
+      "use_cases": ["parameter_mapping", "control_assignment", "mapping_system"],
+      "hip_hop_applications": ["parameter_control", "control_assignment", "mapping_workflow"]
+    },
+    {
+      "name": "Range_Settings",
+      "type": "multi_parameter",
+      "controls": [
+        {
+          "name": "Min_Value",
+          "type": "range",
+          "min": 0,
+          "max": 127,
+          "default": 0,
+          "unit": "value",
+          "description": "Minimum value for controller range",
+          "use_cases": ["range_minimum", "control_range", "parameter_bounds"],
+          "hip_hop_applications": ["control_range", "parameter_bounds", "range_optimization"]
+        },
+        {
+          "name": "Max_Value",
+          "type": "range",
+          "min": 0,
+          "max": 127,
+          "default": 127,
+          "unit": "value",
+          "description": "Maximum value for controller range",
+          "use_cases": ["range_maximum", "control_range", "parameter_bounds"],
+          "hip_hop_applications": ["control_range", "parameter_bounds", "range_optimization"]
+        },
+        {
+          "name": "Invert_Control",
+          "type": "toggle",
+          "default": false,
+          "description": "Reverse control direction",
+          "use_cases": ["direction_inversion", "reverse_control", "parameter_inversion"],
+          "hip_hop_applications": ["control_reversal", "parameter_inversion", "direction_optimization"]
+        },
+        {
+          "name": "Curve_Type",
+          "type": "selector",
+          "options": [
+            {
+              "value": "linear",
+              "label": "Linear",
+              "description": "Direct proportional response",
+              "use_cases": ["linear_response", "direct_mapping", "proportional_control"],
+              "hip_hop_applications": ["direct_control", "linear_mapping", "proportional_response"]
+            },
+            {
+              "value": "logarithmic",
+              "label": "Logarithmic",
+              "description": "Emphasizes low-end response",
+              "use_cases": ["logarithmic_response", "low_end_emphasis", "volume_control"],
+              "hip_hop_applications": ["volume_control", "logarithmic_mapping", "low_end_emphasis"]
+            },
+            {
+              "value": "exponential",
+              "label": "Exponential",
+              "description": "Emphasizes high-end response",
+              "use_cases": ["exponential_response", "high_end_emphasis", "filter_control"],
+              "hip_hop_applications": ["filter_control", "exponential_mapping", "high_end_emphasis"]
+            }
+          ],
+          "description": "Response curve for parameter control",
+          "use_cases": ["response_curve", "control_character", "parameter_response"],
+          "hip_hop_applications": ["response_optimization", "control_character", "parameter_response"]
+        }
+      ],
+      "description": "Parameter range and scaling controls",
+      "use_cases": ["range_control", "scaling", "parameter_mapping"],
+      "hip_hop_applications": ["parameter_scaling", "range_optimization", "control_character"]
+    },
+    {
+      "name": "Velocity_Response",
+      "type": "multi_parameter",
+      "controls": [
+        {
+          "name": "Curve_Selection",
+          "type": "selector",
+          "options": [
+            {
+              "value": "linear",
+              "label": "Linear",
+              "description": "Direct velocity to output mapping",
+              "use_cases": ["linear_response", "direct_mapping", "velocity_proportionality"],
+              "hip_hop_applications": ["direct_velocity", "linear_mapping", "proportional_response"]
+            },
+            {
+              "value": "exponential",
+              "label": "Exponential",
+              "description": "Emphasizes soft hits, compresses loud hits",
+              "use_cases": ["dynamic_expression", "soft_hit_emphasis", "compression_simulation"],
+              "hip_hop_applications": ["dynamic_drum_expression", "soft_hit_enhancement", "natural_feel"]
+            },
+            {
+              "value": "logarithmic",
+              "label": "Logarithmic",
+              "description": "Emphasizes loud hits, compresses soft hits",
+              "use_cases": ["loud_hit_emphasis", "compression_simulation", "hard_hit_enhancement"],
+              "hip_hop_applications": ["hard_hit_enhancement", "aggressive_drum_sound", "loud_hit_emphasis"]
+            },
+            {
+              "value": "custom",
+              "label": "Custom",
+              "description": "User-defined velocity curve",
+              "use_cases": ["personal_preference", "specific_response", "custom_mapping"],
+              "hip_hop_applications": ["custom_velocity_mapping", "personal_feel", "specific_response"]
+            }
+          ],
+          "description": "Maps input velocity to output response",
+          "use_cases": ["velocity_mapping", "response_curve", "dynamic_control"],
+          "hip_hop_applications": ["velocity_mapping", "dynamic_expression", "personal_response"]
+        },
+        {
+          "name": "Sensitivity",
+          "type": "range",
+          "min": 1,
+          "max": 127,
+          "default": 64,
+          "unit": "velocity",
+          "description": "Controller sensitivity to touch",
+          "use_cases": ["sensitivity_control", "touch_response", "pad_sensitivity"],
+          "hip_hop_applications": ["pad_sensitivity", "touch_response", "performance_sensitivity"]
+        },
+        {
+          "name": "Response_Time",
+          "type": "selector",
+          "options": [
+            {
+              "value": "fast",
+              "label": "Fast",
+              "description": "Immediate response, good for precise timing",
+              "use_cases": ["precise_timing", "immediate_response", "accurate_triggering"],
+              "hip_hop_applications": ["precise_beat_programming", "accurate_triggering", "tight_timing"]
+            },
+            {
+              "value": "medium",
+              "label": "Medium",
+              "description": "Balanced response, good for general use",
+              "use_cases": ["balanced_response", "general_use", "moderate_response"],
+              "hip_hop_applications": ["balanced_programming", "general_drumming", "moderate_response"]
+            },
+            {
+              "value": "slow",
+              "label": "Slow",
+              "description": "Smoothed response, good for expressive playing",
+              "use_cases": ["expressive_playing", "smoothed_response", "artistic_expression"],
+              "hip_hop_applications": ["expressive_drumming", "smoothed_response", "artistic_expression"]
+            }
+          ],
+          "description": "Controller response speed adjustment",
+          "use_cases": ["response_speed", "trigger_timing", "pad_response"],
+          "hip_hop_applications": ["pad_response_timing", "trigger_accuracy", "response_character"]
+        }
+      ],
+      "description": "Velocity mapping and response controls",
+      "use_cases": ["velocity_mapping", "response_control", "expression"],
+      "hip_hop_applications": ["velocity_response", "expression_control", "dynamic_programming"]
+    },
+    {
+      "name": "Transport_Control",
+      "type": "multi_parameter",
+      "controls": [
+        {
+          "name": "Play_Assignment",
+          "type": "selector",
+          "options": ["disabled", "enabled", "toggle"],
+          "description": "Play button assignment",
+          "use_cases": ["transport_control", "play_button", "playback_control"],
+          "hip_hop_applications": ["transport_control", "play_button", "playback_control"]
+        },
+        {
+          "name": "Stop_Assignment",
+          "type": "selector",
+          "options": ["disabled", "enabled", "toggle"],
+          "description": "Stop button assignment",
+          "use_cases": ["transport_control", "stop_button", "playback_stop"],
+          "hip_hop_applications": ["transport_control", "stop_button", "playback_stop"]
+        },
+        {
+          "name": "Record_Assignment",
+          "type": "selector",
+          "options": ["disabled", "enabled", "toggle"],
+          "description": "Record button assignment",
+          "use_cases": ["recording_control", "record_button", "capture_function"],
+          "hip_hop_applications": ["recording_control", "record_button", "capture_function"]
+        },
+        {
+          "name": "Loop_Assignment",
+          "type": "selector",
+          "options": ["disabled", "enabled", "toggle"],
+          "description": "Loop button assignment",
+          "use_cases": ["loop_control", "loop_button", "repeat_function"],
+          "hip_hop_applications": ["loop_control", "loop_button", "repeat_function"]
+        },
+        {
+          "name": "Tap_Tempo_Assignment",
+          "type": "selector",
+          "options": ["disabled", "enabled", "toggle"],
+          "description": "Tap tempo assignment",
+          "use_cases": ["tempo_control", "tap_tempo", "tempo_setting"],
+          "hip_hop_applications": ["tempo_control", "tap_tempo", "tempo_setting"]
+        }
+      ],
+      "description": "Transport control assignment system",
+      "use_cases": ["transport_control", "playback_control", "navigation"],
+      "hip_hop_applications": ["transport_control", "playback_navigation", "session_control"]
+    },
+    {
+      "name": "Mixer_Control",
+      "type": "multi_parameter",
+      "controls": [
+        {
+          "name": "Volume_Faders",
+          "type": "selector",
+          "options": ["disabled", "enabled", "range_based"],
+          "description": "Volume fader assignment",
+          "use_cases": ["volume_control", "fader_control", "level_adjustment"],
+          "hip_hop_applications": ["mixer_faders", "volume_control", "level_adjustment"]
+        },
+        {
+          "name": "Pan_Knobs",
+          "type": "selector",
+          "options": ["disabled", "enabled", "range_based"],
+          "description": "Pan control assignment",
+          "use_cases": ["pan_control", "stereo_position", "pan_adjustment"],
+          "hip_hop_applications": ["pan_control", "stereo_position", "pan_adjustment"]
+        },
+        {
+          "name": "Mute_Solo_Buttons",
+          "type": "selector",
+          "options": ["disabled", "enabled", "range_based"],
+          "description": "Mute/solo button assignment",
+          "use_cases": ["mute_control", "solo_control", "track_muting"],
+          "hip_hop_applications": ["mute_control", "solo_control", "track_muting"]
+        },
+        {
+          "name": "Send_Levels",
+          "type": "selector",
+          "options": ["disabled", "enabled", "range_based"],
+          "description": "Send level assignment",
+          "use_cases": ["send_control", "aux_send", "effect_send"],
+          "hip_hop_applications": ["send_control", "aux_send", "effect_send"]
+        },
+        {
+          "name": "EQ_Parameters",
+          "type": "selector",
+          "options": ["disabled", "enabled", "range_based"],
+          "description": "EQ parameter assignment",
+          "use_cases": ["eq_control", "frequency_adjustment", "tone_shaping"],
+          "hip_hop_applications": ["eq_control", "frequency_adjustment", "tone_shaping"]
+        }
+      ],
+      "description": "Mixer control assignment system",
+      "use_cases": ["mixer_control", "channel_strip", "level_control"],
+      "hip_hop_applications": ["mixer_control", "channel_control", "level_adjustment"]
+    },
+    {
+      "name": "Plugin_Control",
+      "type": "multi_parameter",
+      "controls": [
+        {
+          "name": "Plugin_Selection",
+          "type": "text",
+          "description": "Target plugin for control",
+          "use_cases": ["plugin_control", "target_selection", "plugin_assignment"],
+          "hip_hop_applications": ["plugin_control", "target_selection", "plugin_assignment"]
+        },
+        {
+          "name": "Parameter_Bank",
+          "type": "range",
+          "min": 1,
+          "max": 8,
+          "default": 1,
+          "unit": "bank",
+          "description": "Parameter bank selection",
+          "use_cases": ["parameter_bank", "bank_switching", "control_sets"],
+          "hip_hop_applications": ["parameter_bank", "bank_switching", "control_sets"]
+        },
+        {
+          "name": "Bank_Switching",
+          "type": "selector",
+          "options": ["manual", "automatic", "controller_based"],
+          "description": "Method for switching parameter banks",
+          "use_cases": ["bank_switching", "parameter_sets", "control_groups"],
+          "hip_hop_applications": ["bank_switching", "parameter_sets", "control_groups"]
+        },
+        {
+          "name": "Range_Scaling",
+          "type": "range",
+          "min": 10,
+          "max": 200,
+          "default": 100,
+          "unit": "percentage",
+          "description": "Parameter range scaling",
+          "use_cases": ["parameter_scaling", "control_range", "sensitivity_adjustment"],
+          "hip_hop_applications": ["parameter_scaling", "control_range", "sensitivity_adjustment"]
+        }
+      ],
+      "description": "Plugin parameter control system",
+      "use_cases": ["plugin_control", "parameter_mapping", "effect_control"],
+      "hip_hop_applications": ["plugin_control", "parameter_mapping", "effect_control"]
+    },
+    {
+      "name": "Performance_Features",
+      "type": "multi_parameter",
+      "controls": [
+        {
+          "name": "Round_Robin",
+          "type": "selector",
+          "options": [
+            {
+              "value": "off",
+              "label": "Off",
+              "description": "No round-robin cycling",
+              "use_cases": ["single_sample", "no_cycling", "static_sound"],
+              "hip_hop_applications": ["single_drum_sound", "static_sample", "no_alternation"]
+            },
+            {
+              "value": "2_way",
+              "label": "2-Way",
+              "description": "Alternates between 2 samples",
+              "use_cases": ["sample_alternation", "2_sample_cycle", "basic_round_robin"],
+              "hip_hop_applications": ["drum_alternation", "2_sample_cycling", "basic_realism"]
+            },
+            {
+              "value": "3_way",
+              "label": "3-Way",
+              "description": "Cycles through 3 samples",
+              "use_cases": ["sample_cycling", "3_sample_cycle", "moderate_round_robin"],
+              "hip_hop_applications": ["moderate_realism", "3_sample_cycling", "natural_feel"]
+            },
+            {
+              "value": "4_way",
+              "label": "4-Way",
+              "description": "Cycles through 4 samples",
+              "use_cases": ["advanced_cycling", "4_sample_cycle", "advanced_round_robin"],
+              "hip_hop_applications": ["advanced_realism", "4_sample_cycling", "natural_drum_feel"]
+            }
+          ],
+          "description": "Alternating samples for realism",
+          "use_cases": ["realism", "sample_alternation", "cycling"],
+          "hip_hop_applications": ["realistic_drumming", "sample_alternation", "natural_feel"]
+        },
+        {
+          "name": "Velocity_Layers",
+          "type": "range",
+          "min": 1,
+          "max": 8,
+          "default": 1,
+          "unit": "layers",
+          "description": "Number of velocity layers per pad",
+          "use_cases": ["dynamic_expression", "velocity_mapping", "layered_samples"],
+          "hip_hop_applications": ["drum_expression", "velocity_mapping", "layered_drum_sounds"]
+        },
+        {
+          "name": "Crossfades",
+          "type": "range",
+          "min": 0,
+          "max": 20,
+          "default": 5,
+          "unit": "ms",
+          "description": "Smooth transitions between samples",
+          "use_cases": ["click_reduction", "smooth_transitions", "artifact_elimination"],
+          "hip_hop_applications": ["click_reduction", "smooth_drum_transitions", "artifact_elimination"]
+        },
+        {
+          "name": "Quantize",
+          "type": "selector",
+          "options": ["off", "1/4", "1/8", "1/16", "1/32"],
+          "description": "Quantization for stepped control",
+          "use_cases": ["stepped_control", "quantized_mapping", "discrete_values"],
+          "hip_hop_applications": ["switch_control", "discrete_values", "stepped_parameters"]
+        }
+      ],
+      "description": "Performance enhancement features",
+      "use_cases": ["performance", "expression", "realism"],
+      "hip_hop_applications": ["performance_enhancement", "expression", "realism"]
+    },
+    {
+      "name": "Polyphony_Settings",
+      "type": "range",
+      "min": 1,
+      "max": 64,
+      "default": 16,
+      "unit": "voices",
+      "description": "Maximum simultaneous voices",
+      "use_cases": ["voice_count", "polyphony_limit", "simultaneous_notes"],
+      "hip_hop_applications": ["complex_arrangements", "realistic_instruments", "voice_management"]
+    },
+    {
+      "name": "Voice_Priority",
+      "type": "selector",
+      "options": [
+        {
+          "value": "lowest",
+          "label": "Lowest",
+          "description": "Cut lowest notes when exceeding polyphony",
+          "use_cases": ["note_stealing", "priority_logic", "voice_management"],
+          "hip_hop_applications": ["drum_programming", "bass_line_priority", "note_management"]
+        },
+        {
+          "value": "highest",
+          "label": "Highest",
+          "description": "Cut highest notes when exceeding polyphony",
+          "use_cases": ["note_stealing", "priority_logic", "voice_management"],
+          "hip_hop_applications": ["melody_priority", "lead_voice_priority", "note_management"]
+        },
+        {
+          "value": "last",
+          "label": "Last",
+          "description": "Cut most recently played notes when exceeding polyphony",
+          "use_cases": ["note_stealing", "priority_logic", "voice_management"],
+          "hip_hop_applications": ["drum_programming", "recent_note_cutting", "note_management"]
+        },
+        {
+          "value": "first",
+          "label": "First",
+          "description": "Cut first played notes when exceeding polyphony",
+          "use_cases": ["note_stealing", "priority_logic", "voice_management"],
+          "hip_hop_applications": ["sustained_priority", "early_note_cutting", "note_management"]
+        }
+      ],
+      "description": "Note stealing behavior when polyphony is exceeded",
+      "use_cases": ["note_stealing", "voice_management", "priority_logic"],
+      "hip_hop_applications": ["drum_programming", "voice_management", "note_prioritization"]
+    },
+    {
+      "name": "Streaming_Option",
+      "type": "toggle",
+      "default": false,
+      "description": "Stream samples from disk vs. preload into memory",
+      "use_cases": ["memory_management", "disk_streaming", "performance_optimization"],
+      "hip_hop_applications": ["large_sample_handling", "memory_optimization", "performance"]
+    }
+  ],
+  "preset_categories": [
+    {
+      "category": "Drum Kits",
+      "presets": [
+        {
+          "name": "Hip-Hop Standard Kit",
+          "description": "Standard drum kit mapping for hip-hop production",
+          "parameters": {
+            "device_selection": "akai",
+            "template_selection": "drum_pad",
+            "transport_control": {
+              "play_assignment": "enabled",
+              "stop_assignment": "enabled",
+              "record_assignment": "enabled",
+              "loop_assignment": "enabled"
+            },
+            "mixer_control": {
+              "volume_faders": "range_based",
+              "pan_knobs": "range_based",
+              "mute_solo_buttons": "range_based"
+            },
+            "performance_features": {
+              "round_robin": "3_way",
+              "velocity_layers": 3,
+              "crossfades": 5,
+              "quantize": "off"
+            },
+            "polyphony_settings": 16,
+            "voice_priority": "last"
+          },
+          "mapping": {
+            "C1": {"sample": "kick.wav", "key_start": 36, "key_end": 36, "root_key": 36},
+            "D1": {"sample": "snare.wav", "key_start": 38, "key_end": 38, "root_key": 38},
+            "F1": {"sample": "closed_hat.wav", "key_start": 42, "key_end": 42, "root_key": 42},
+            "G1": {"sample": "open_hat.wav", "key_start": 46, "key_end": 46, "root_key": 46}
+          }
+        },
+        {
+          "name": "Trap 808 Kit",
+          "description": "808-focused kit with velocity layers",
+          "parameters": {
+            "device_selection": "novation",
+            "template_selection": "drum_pad",
+            "transport_control": {
+              "play_assignment": "enabled",
+              "stop_assignment": "enabled",
+              "record_assignment": "enabled",
+              "loop_assignment": "enabled"
+            },
+            "mixer_control": {
+              "volume_faders": "range_based",
+              "pan_knobs": "range_based",
+              "mute_solo_buttons": "range_based"
+            },
+            "performance_features": {
+              "round_robin": "off",
+              "velocity_layers": 4,
+              "crossfades": 3,
+              "quantize": "off"
+            },
+            "polyphony_settings": 8,
+            "voice_priority": "last"
+          },
+          "mapping": {
+            "C0": {"sample": "808_deep.wav", "key_start": 24, "key_end": 24, "root_key": 24},
+            "D0": {"sample": "808_mid.wav", "key_start": 26, "key_end": 26, "root_key": 26},
+            "C1": {"sample": "808_tight.wav", "key_start": 36, "key_end": 36, "root_key": 36}
+          }
+        }
+      ]
+    },
+    {
+      "category": "Melodic Instruments",
+      "presets": [
+        {
+          "name": "R&B Piano",
+          "description": "Velocity-sensitive piano with expression",
+          "parameters": {
+            "device_selection": "generic",
+            "template_selection": "keyboard",
+            "velocity_response": {
+              "curve_selection": "exponential",
+              "sensitivity": 70,
+              "response_time": "medium"
+            },
+            "performance_features": {
+              "round_robin": "off",
+              "velocity_layers": 3,
+              "crossfades": 0,
+              "quantize": "off"
+            },
+            "polyphony_settings": 32,
+            "voice_priority": "lowest"
+          }
+        },
+        {
+          "name": "Hip-Hop Keys",
+          "description": "Vintage keyboard sounds for hip-hop production",
+          "parameters": {
+            "device_selection": "akai",
+            "template_selection": "keyboard",
+            "velocity_response": {
+              "curve_selection": "linear",
+              "sensitivity": 65,
+              "response_time": "medium"
+            },
+            "performance_features": {
+              "round_robin": "off",
+              "velocity_layers": 2,
+              "crossfades": 0,
+              "quantize": "off"
+            },
+            "polyphony_settings": 24,
+            "voice_priority": "lowest"
+          }
+        }
+      ]
+    },
+    {
+      "category": "Performance Templates",
+      "presets": [
+        {
+          "name": "Live Performance",
+          "description": "Optimized for live performance scenarios",
+          "parameters": {
+            "device_selection": "akai",
+            "template_selection": "drum_pad",
+            "transport_control": {
+              "play_assignment": "enabled",
+              "stop_assignment": "enabled",
+              "record_assignment": "toggle",
+              "loop_assignment": "enabled",
+              "tap_tempo_assignment": "enabled"
+            },
+            "mixer_control": {
+              "volume_faders": "enabled",
+              "pan_knobs": "enabled",
+              "mute_solo_buttons": "enabled"
+            },
+            "performance_features": {
+              "round_robin": "2_way",
+              "velocity_layers": 2,
+              "crossfades": 5,
+              "quantize": "off"
+            },
+            "polyphony_settings": 16,
+            "voice_priority": "last"
+          }
+        },
+        {
+          "name": "Studio Production",
+          "description": "Optimized for studio production workflows",
+          "parameters": {
+            "device_selection": "novation",
+            "template_selection": "mixer",
+            "transport_control": {
+              "play_assignment": "enabled",
+              "stop_assignment": "enabled",
+              "record_assignment": "enabled",
+              "loop_assignment": "enabled"
+            },
+            "mixer_control": {
+              "volume_faders": "enabled",
+              "pan_knobs": "enabled",
+              "mute_solo_buttons": "enabled",
+              "send_levels": "enabled",
+              "eq_parameters": "enabled"
+            },
+            "performance_features": {
+              "round_robin": "off",
+              "velocity_layers": 1,
+              "crossfades": 0,
+              "quantize": "off"
+            },
+            "polyphony_settings": 32,
+            "voice_priority": "lowest"
+          }
+        }
+      ]
+    }
+  ],
+  "integration_notes": {
+    "compatible_plugins": [
+      "Fruity Wrapper",
+      "Patcher",
+      "MIDI Controllers",
+      "Playlist",
+      "Fruity Formula Controller",
+      "Fruity Envelope Controller",
+      "Fruity Peak Controller"
+    ],
+    "common_workflows": [
+      "controller_setup",
+      "parameter_mapping",
+      "transport_control",
+      "mixer_control",
+      "plugin_control"
+    ],
+    "recommended_settings_by_context": {
+      "hip_hop_drum_programming": {
+        "device_selection": "akai",
+        "template_selection": "drum_pad",
+        "velocity_response": {"sensitivity": 75, "curve_selection": "exponential"},
+        "performance_features": {"round_robin": "3_way", "velocity_layers": 3}
+      },
+      "rnb_melodic_programming": {
+        "device_selection": "generic",
+        "template_selection": "keyboard",
+        "velocity_response": {"sensitivity": 65, "curve_selection": "linear"},
+        "performance_features": {"velocity_layers": 3, "round_robin": "off"}
+      },
+      "live_performance": {
+        "device_selection": "akai",
+        "template_selection": "drum_pad",
+        "transport_control": {"play_assignment": "enabled", "stop_assignment": "enabled", "record_assignment": "toggle"},
+        "mixer_control": {"volume_faders": "range_based", "mute_solo_buttons": "range_based"}
+      }
+    }
+  },
+  "genre_specific_applications": {
+    "hip_hop": {
+      "primary_use": "drum programming and sample triggering",
+      "key_features": ["pad_mapping", "velocity_layering", "round_robin"],
+      "typical_settings": {
+        "device_selection": "akai",
+        "template": "drum_pad",
+        "velocity_response": 75,
+        "polyphony": 16,
+        "voice_priority": "last"
+      }
+    },
+    "rap": {
+      "primary_use": "vocal chop arrangement and ad-lib triggering",
+      "key_features": ["pad_mapping", "velocity_response", "effects_processing"],
+      "typical_settings": {
+        "device_selection": "novation",
+        "template": "drum_pad",
+        "velocity_response": 70,
+        "performance_features": {"velocity_layers": 2, "crossfades": 3}
+      }
+    },
+    "rnb": {
+      "primary_use": "smooth instrument triggering and vocal arrangement",
+      "key_features": ["velocity_layering", "expression", "effects"],
+      "typical_settings": {
+        "device_selection": "generic",
+        "template": "keyboard",
+        "velocity_response": {"curve_selection": "exponential", "sensitivity": 65},
+        "polyphony": 24,
+        "voice_priority": "lowest"
+      }
+    }
+  }
+}

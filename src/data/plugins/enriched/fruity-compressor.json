@@ -1,0 +1,258 @@
+{
+  "id": "fruity-compressor",
+  "name": "Fruity Compressor",
+  "category": "Dynamics",
+  "tier": "Free",
+  "type": "Dynamics",
+  "description": "Fruity Compressor - Dynamics",
+  "tags": [
+    "mixing",
+    "mastering",
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "compression",
+    "limiting",
+    "dynamics",
+    "mixing",
+    "audio"
+  ],
+  "icon": "/plugins/fruity-compressor-icon.svg",
+  "color": "#10B981",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-compressor",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "pluginName": "Fruity Compressor",
+    "category": "Dynamics",
+    "parameters": [
+      {
+        "section": "Dynamics",
+        "id": "threshold",
+        "name": "Threshold",
+        "range": {
+          "min": -60,
+          "max": 0,
+          "unit": "dB"
+        },
+        "description": "Level at which compression begins."
+      },
+      {
+        "section": "Dynamics",
+        "id": "ratio",
+        "name": "Ratio",
+        "range": {
+          "min": 0.4,
+          "max": 30,
+          "unit": ":1"
+        },
+        "description": "Input/Output gain reduction ratio."
+      },
+      {
+        "section": "Envelope",
+        "id": "attack",
+        "name": "Attack",
+        "range": {
+          "min": 0,
+          "max": 400,
+          "unit": "ms"
+        },
+        "description": "Reaction time."
+      },
+      {
+        "section": "Envelope",
+        "id": "release",
+        "name": "Release",
+        "range": {
+          "min": 1,
+          "max": 4000,
+          "unit": "ms"
+        },
+        "description": "Recovery time."
+      },
+      {
+        "section": "Character",
+        "id": "knee_type",
+        "name": "Type",
+        "options": [
+          "Hard",
+          "Medium",
+          "Vintage",
+          "Soft",
+          "Hard/R",
+          "Medium/R",
+          "Vintage/R",
+          "Soft/R"
+        ],
+        "description": "Knee curve and TCR (Auto-Release) activation."
+      }
+    ],
+    "specs": {
+      "plugin": "Fruity Compressor",
+      "parameters": [
+        {
+          "name": "Threshold",
+          "id": "threshold",
+          "unit": "dB",
+          "min": -60,
+          "max": 0,
+          "default": -15,
+          "description": "The level at which compression starts."
+        },
+        {
+          "name": "Ratio",
+          "id": "ratio",
+          "unit": "factor",
+          "min": 1,
+          "max": 100,
+          "default": 4,
+          "description": "The compression ratio."
+        },
+        {
+          "name": "Attack",
+          "id": "attack",
+          "unit": "ms",
+          "min": 0,
+          "max": 400,
+          "default": 10,
+          "description": "Time to reach full compression."
+        },
+        {
+          "name": "Release",
+          "id": "release",
+          "unit": "ms",
+          "min": 1,
+          "max": 4000,
+          "default": 200,
+          "description": "Time to return to unity gain."
+        }
+      ]
+    }
+  },
+  "presets": {
+    "bass-glue": {
+      "presetName": "Bass Glue",
+      "plugin": "Fruity Compressor",
+      "description": "Subtle compression to lock the bass in place.",
+      "settings": {
+        "threshold": -15,
+        "ratio": 4,
+        "attack": 50,
+        "release": 300,
+        "type": "MEDIUM",
+        "gain": 1.5
+      },
+      "usage": "Ensures every bass note has the same perceived power."
+    },
+    "hard-kick-punch": {
+      "presetName": "Hard Kick Punch",
+      "plugin": "Fruity Compressor",
+      "description": "Aggressive compression to emphasize the transient of a kick drum.",
+      "settings": {
+        "threshold": -12,
+        "ratio": 6,
+        "attack": 30,
+        "release": 50,
+        "type": "HARD",
+        "gain": 3
+      },
+      "usage": "Use on kick drums that need more 'click' and 'thump' to cut through a busy mix."
+    },
+    "parallel-drums": {
+      "presetName": "Parallel Drums",
+      "plugin": "Fruity Compressor",
+      "description": "Extreme compression for parallel processing (New York Style).",
+      "settings": {
+        "threshold": -30,
+        "ratio": 10,
+        "attack": 1,
+        "release": 100,
+        "type": "VINTAGE",
+        "gain": 10
+      },
+      "usage": "Use on a separate bus and blend with the dry drums for massive energy."
+    },
+    "snare-snap": {
+      "presetName": "Snare Snap",
+      "plugin": "Fruity Compressor",
+      "description": "Focuses on the initial strike of the snare drum.",
+      "settings": {
+        "threshold": -10,
+        "ratio": 5,
+        "attack": 40,
+        "release": 80,
+        "type": "HARD",
+        "gain": 2.5
+      },
+      "usage": "Helps the snare pop without losing its body."
+    },
+    "soft-knee-vocal": {
+      "presetName": "Soft Knee Vocal",
+      "plugin": "Fruity Compressor",
+      "description": "Transparent vocal leveling using a soft knee and moderate ratio.",
+      "settings": {
+        "threshold": -18,
+        "ratio": 3,
+        "attack": 15,
+        "release": 200,
+        "type": "SOFT",
+        "gain": 2
+      },
+      "usage": "Best for lead vocals that need consistent volume without sounding 'squashed'."
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity Compressor\n\n## Purpose & Identity\nFruity Compressor is a minimalist, legacy dynamics processor. Its primary identity is a **surgical volume leveler**. It identifies when an audio signal exceeds a specific volume (the Threshold) and turns it down by a specific amount (the Ratio). It is essential for making vocals sit in a mix and for adding \"punch\" to drums. [SRC: IL-MAN]\n\n## 60-Second Mental Model\nImagine an invisible sound engineer with their hand on the volume fader. \n- **Threshold** is the engineer's \"line in the sand.\"\n- **Ratio** is how hard they pull the fader down once the sound crosses that line.\n- **Attack** is how fast they react.\n- **Release** is how fast they let go.\n\n## Hip-Hop / R&B Context\nCompression defines the \"Modern\" sound of urban music.\n- **Rap Vocal Leveling:** Ensuring every syllable of a rapid-fire verse is audible without the loud words clipping.\n- **808 Consistency:** Taming the initial \"thump\" of an 808 so the tail feels more sustained and powerful.\n- **Drum Glue:** Compressing the drum bus to make the Kick, Snare, and Hats feel like they were recorded as a single unit.\n\n## When To Use\n- When a sound is **too dynamic** (too much difference between loud and quiet parts).\n- When you want to **increase the \"snap\"** of a drum hit (using slow attack).\n- When you want to **glue** a group of tracks together.\n\n## When NOT To Use\n- **Sidechaining:** Fruity Compressor does not have an external sidechain input. Use **Fruity Limiter** for kick-drum-triggered ducking.\n- **Sub-Bass Cleanup:** Compression doesn't remove frequencies; use an EQ for that. Over-compressing sub-bass can actually cause distortion.\n",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Fruity Compressor\n\n## UI Tour\nFruity Compressor features a functional, non-visual interface:\n\n1.  **Threshold (dB):** Sets the level where compression begins. [SRC: IL-MAN]\n2.  **Ratio:** Sets the strength of the volume reduction (e.g., 4:1).\n3.  **Gain:** \"Makeup Gain.\" Boosts the signal *after* compression to match original levels.\n4.  **Attack (ms):** How long before the compressor starts working.\n5.  **Release (ms):** How long before the compressor stops working.\n6.  **Type (Knee):** Selects the curve of the compression (Vintage, Soft, Medium, Hard).\n7.  **Gain Reduction Meter:** A vertical bar showing how many dBs are being removed.\n\n## Functional Flow\n1.  **Detection:** The plugin monitors the incoming peak or RMS level.\n2.  **Comparison:** It checks the level against the **Threshold**.\n3.  **Timing:** The **Attack** delay is applied.\n4.  **Reduction:** The signal is turned down based on the **Ratio** and **Type (Knee)**.\n5.  **Recovery:** The signal returns to normal based on the **Release** time.\n6.  **Amplification:** The **Gain** (Makeup) is added to the resulting signal.\n\n## Things Beginners Misunderstand\n- **\"It makes it louder\":** No, it makes it *quieter* first. It only sounds louder because you use the **Gain** knob afterward.\n- **Attack at 0ms:** Setting Attack to zero kills the \"punch\" of drums. It turns the hit into a \"thud.\" [SRC: REPUTABLE]\n- **The \"Type\" Selector:** This isn't just a filter; it changes the *shape* of the compression. \"Vintage\" adds a non-linear, warmer character to the curve.\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques And Best Practices: Fruity Compressor\n\n## 1. The \"Punchy\" Snare (Slow Attack)\n- **Technique:** Use a slow Attack (15ms - 30ms).\n- **Execution:** Set a high Ratio (6:1) and lower the Threshold until you see 4dB of reduction.\n- **Result:** The initial \"crack\" of the snare passes through uncompressed, then the tail is squashed. This emphasizes the transient, making the snare feel \"punchier.\" [SRC: REPUTABLE]\n\n## 2. Vocal \"Vibe\" Leveling\n- **Technique:** Use a Medium Attack (~5ms) and a Soft Knee.\n- **Execution:** Set a moderate Ratio (3:1 or 4:1). Aim for 3-6dB of reduction.\n- **Result:** Smoothly tames the peaks without sounding like an \"effect,\" allowing the vocal to sit stably in the middle of the beat.\n\n## 3. The \"Breathing\" Pad (Release Timing)\n- **Technique:** Set the Release to match the tempo of the song.\n- **Execution:** If the track is 140BPM, a 1/4 note is 428ms. Set Release to approx. 400ms.\n- **Result:** The compressor \"lets go\" exactly as the next beat hits, creating a rhythmic \"breathing\" or \"pumping\" effect.\n\n## 4. Gain Matching (The A/B Test)\n- **Technique:** Use the **Gain** knob to make the \"Wet\" signal exactly as loud as the \"Dry\" signal.\n- **Why:** Our ears think \"Louder is Better.\" By matching the volume, you can objectively hear if the compressor is actually improving the tone or just making it louder. [SRC: REPUTABLE]\n\n## Common Pitfalls + Fixes\n- **Pitfall:** \"Digital Distortion/Clicking.\"\n  - **Fix:** Your Attack is too fast (0ms) or your Release is too fast (<10ms). Increase both slightly to allow the waveform to breathe.\n- **Pitfall:** \"Sucking the life out of the track.\"\n  - **Fix:** Your Ratio is too high or Threshold is too low. Aim for a lower Ratio (1.5:1 to 2:1) for bus processing.\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity Compressor\n\nCompressors are the \"Glue\" and \"Attitude\" of your mix.\n\n## 1. Moody (Intense, Aggressive, Pumping)\n- **Concept:** Making the transients \"fight.\"\n- **Levers:**\n  - **Release:** Fast (20ms - 50ms).\n  - **Ratio:** High (8:1).\n  - **Attack:** Moderate (5ms).\n- **Listen For:** The background noise rushing up between notes. This adds a sense of \"urgency\" and \"grit.\"\n- **Don't Do This:** Don't use a Soft Knee; you want the compression to be obvious and \"hard.\"\n\n## 2. Upbeat (Punchy, Clean, Energetic)\n- **Concept:** Maximum Impact.\n- **Levers:**\n  - **Attack:** Slow (30ms+).\n  - **Ratio:** Moderate (4:1).\n- **Listen For:** The \"snap\" of the drums. The compressor emphasizes the hit, making the rhythm feel more physical.\n- **Don't Do This:** Don't over-compress; keep the dynamics lively.\n\n## 3. Psychedelic (Smashed, Lo-Fi, Crushed)\n- **Concept:** Total Dynamic Destruction.\n- **Levers:**\n  - **Threshold:** -40dB (Extreme).\n  - **Ratio:** Infinity (if available) or Max.\n  - **Release:** Very Fast.\n- **Listen For:** \"Crushing\" artifacts where the sound feels like it’s being squeezed through a straw.\n- **Don't Do This:** Avoid gain compensation; let the sound stay small and \"lo-fi.\"\n\n## 4. Jazzy (Transparent, Smooth, Balanced)\n- **Concept:** Invisible Control.\n- **Levers:**\n  - **Knee:** Soft.\n  - **Ratio:** Low (1.5:1).\n  - **Threshold:** Subtle (aim for 1-2dB reduction).\n- **Listen For:** A slight \"thickening\" of the instruments without any audible volume changes.\n- **Don't Do This:** Avoid fast release times; jazz vibes need a natural, long decay.\n\n## 5. Vibey (Breathing, Lush, Professional)\n- **Concept:** The \"Radio Sheen.\"\n- **Levers:**\n  - **Type:** Vintage.\n  - **Release:** Tempo-synced (e.g., 400ms for 140BPM).\n  - **Gain:** Clean makeup gain.\n- **Listen For:** A polished, \"expensive\" consistency where the vocal feels like it’s floating effortlessly above the beat. [SRC: REPUTABLE]\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Compressor\r\n\r\n## What It Is\r\nFruity Compressor is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Fruity Compressor\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: Fruity Compressor (5 Minutes)\n\n1.  **Insert:** Load **Fruity Compressor** onto a vocal or drum track.\n2.  **Ratio:** Set to `4:1` (a good all-around starting point).\n3.  **Threshold:** Lower the knob until the **Gain Reduction** meter starts moving (aim for -3dB to -6dB).\n4.  **Attack:** Set to `15ms` for drums (punch) or `5ms` for vocals (control).\n5.  **Gain:** Turn up the **Gain** knob until the volume sounds the same as when the plugin is bypassed.\n6.  **Tip:** Use the **Vintage** type for extra warmth. [SRC: IL-MAN]\n",
+      "01_Common_Mistakes": "# Common Mistakes: Fruity Compressor\n\n- **Over-Compressing Bass:** Trying to fix a \"quiet\" sub-bass with a high ratio. This often introduces harmonic distortion. **Fix:** Use a lower ratio (2:1) and fix the volume with automation instead.\n- **Attack Too Fast:** Setting Attack to <1ms on a Kick drum. This cuts off the transient, making the kick sound \"flat\" and weak. **Fix:** Use a slow attack (20ms+) to keep the \"thump.\"\n- **Makeup Gain Chaos:** Boosting the **Gain** knob too high. Compression reduces dynamic range; if you boost too much, you’ll clip the next plugin in the chain. **Fix:** Match the \"Output\" level to the \"Input\" level.\n- **Ignoring the Knee:** Using a \"Hard\" knee on a delicate acoustic vocal. This makes the compression start abruptly and sounds mechanical. **Fix:** Use **Soft** or **Vintage** for smoother transitions.\n- **The Loop Trap:** Compressing a sound that has Reverb already baked in. The compressor will bring up the \"noise floor\" of the reverb tail, making the mix sound muddy. **Fix:** Compress **BEFORE** Reverb. [SRC: REPUTABLE]\n",
+      "02_Best_Settings_Starting_Points": "# Best Settings Starting Points: Fruity Compressor\n\n| Goal | Ratio | Attack | Release | Type | Use Case |\n| :--- | :--- | :--- | :--- | :--- | :--- |\n| **Punchy Kick** | 6:1 | 30ms | 50ms | Hard | Club-ready drums. |\n| **Steady Vocal** | 4:1 | 5ms | 200ms | Soft | Melodic rap leads. |\n| **Lush Pad** | 2:1 | 100ms | 500ms | Vintage | Background textures. |\n| **Drum Bus Glue** | 1.5:1 | 50ms | 100ms | Medium | Group processing. |\n| **Limiting FX** | 20:1 | 0.1ms | 10ms | Hard | Protecting against peaks.|\n\n*Note: Threshold should be adjusted until you see 3-6dB of gain reduction.* [SRC: IL-MAN]\n",
+      "03_Vibe_Starting_Points_Moody": "# Vibe Starting Points: Moody (Fruity Compressor)\n\n- **The Goal:** An aggressive, \"choking\" energy where every sound feels under pressure.\n- **Recipe:**\n  1. Load Compressor on an ad-lib or background vocal.\n  2. Set Ratio to **10:1** (Aggressive).\n  3. Set Attack to **2ms** (Fast).\n  4. Set Release to **30ms** (Very Fast).\n  5. Lower Threshold until you see **10dB+** of reduction.\n- **Result:** This creates an \"over-compressed\" sound where the background noise and breaths are as loud as the words. It adds a \"gritty\" and \"distressed\" vibe perfect for dark trap.\n- **Mix Tip:** Use this in **Parallel** (mix fader at 50%) to keep some of the original clarity. [SRC: REPUTABLE]\n",
+      "04_Vibe_Starting_Points_Upbeat_Psychedelic_Jazzy_Vibey": "# Vibe Starting Points: Upbeat, Psychedelic, Jazzy, Vibey\n\n## Upbeat (The \"Mainstream Snap\")\n- **Settings:** Ratio 4:1, Attack 35ms, Release 80ms.\n- **Effect:** The slow attack lets the drum \"crack\" through, making the beat feel faster and more aggressive.\n\n## Psychedelic (The \"Smash\")\n- **Settings:** Ratio 50:1, Attack 0ms, Release 10ms.\n- **Effect:** Completely flattens the waveform. Use on a \"White Noise\" riser to create a solid, static wall of energy.\n\n## Jazzy (The \"Invisible Leveler\")\n- **Settings:** Ratio 1.5:1, Attack 10ms, Release 300ms, Soft Knee.\n- **Context:** Gently balances an upright bass or clean guitar without the listener ever knowing a compressor is active.\n\n## Vibey (The \"Breathing Pump\")\n- **Settings:** Ratio 3:1, Release 400ms (Tempo-matched).\n- **Context:** The volume \"swells\" back up in the gaps of an R&B track, creating a relaxed, organic pulse. [SRC: REPUTABLE]\n",
+      "cheat-sheet": "# Fruity Compressor: The Ultrafunk Legacy\r\n\r\n> **Scope:** Character Compression, LA-2A Emulation, and TCR.\r\n> **Source:** Image-Line Official Manual (v21.2) + Direct Analysis.\r\n> **Complexity:** Medium (Algorithm Selection).\r\n\r\n## 🧠 The \"Hidden Gem\" Concept\r\nMost users skip this plugin for Fruity Limiter. That is a mistake.\r\n*   **Fruity Limiter:** Clinical, perfect, transparent.\r\n*   **Fruity Compressor:** Based on the legendary **Ultrafunk** algorithms. It has \"color\", non-linear knees, and a specific \"Vintage\" mode that mimics opto-compressors.\r\n\r\n**Signal Flow:**\r\n`Input` -> **[THRESHOLD DETECTOR]** -> **[KNEE CALCULATION]** -> **[GAIN REDUCTION]** -> **[MAKEUP GAIN]** -> **[OUTPUT]**\r\n\r\n---\r\n\r\n## 🎛️ Section 1: The \"Type\" Knob (The Secret Weapon)\r\n\r\nThe Type knob is not just a Knee selector. It changes the compression behavior.\r\n\r\n| Type | Knee Width | Character | Ideally Used For |\r\n| :--- | :--- | :--- | :--- |\r\n| **Hard** | 0dB | Instant Clamp. | Bass, Limiting. |\r\n| **Medium** | 6dB | Standard VCA. | Drums, General Mixing. |\r\n| **Soft** | 15dB | Gradual on-ramp. | Vocals, Piano. |\r\n| **Vintage** | 7dB | **Opto-Simulation.** | 808s, Vocals, Glue. |\r\n\r\n**The \"/R\" Modes:**\r\nEvery type has a matching \"/R\" version (e.g., \"Vintage/R\").\r\n*   **R = TCR (Transient Controlled Release).**\r\n*   **Logic:** The Release time is not static. If a fast transient hits (snare), the release is fast. If a sustained bass note hits, the release is slow.\r\n*   **Benefit:** Prevents \"Pumping\" on complex mixes.\r\n\r\n---\r\n\r\n## 🔁 Section 2: The \"Vintage\" Curve\r\n\r\nWhy is \"Vintage\" mode special?\r\n*   **Standard Compressor:** Ratio stays constant above threshold (e.g., 4:1 forever).\r\n*   **Vintage Compressor:** Ratio *decreases* as the signal gets significantly louder than the threshold.\r\n    *   *Result:* Loud peaks are allowed to punch through slightly (Soft Saturation behavior), preserving transients while controlling the body. This mimics the Teletronix LA-2A.\r\n\r\n---\r\n\r\n## ⚡ Technical Specs: Latency\r\n\r\n*   **PDC:** Older versions of FL Studio (pre-v20) had manual PDC issues with this plugin.\r\n*   **Report Latency:** Always keep the \"Report Latency\" button checked.\r\n*   **Lookahead:** Unlike Fruity Limiter, Fruity Compressor has minimal lookahead. It is reactive, meaning fast transients *will* clip through initially before the attack stage catches them. Use a Soft Clipper after it if this is a problem.\r\n\r\n---\r\n\r\n## 🧪 \"Secret Sauce\" Workflows\r\n\r\n### 1. The \"Glue\" Bus Compressor\r\n1.  **Type:** Vintage/R (TCR active).\r\n2.  **Ratio:** 2.0:1.\r\n3.  **Attack:** 30ms (Let transients punch).\r\n4.  **Release:** 100ms (Auto-adjusts thanks to TCR).\r\n5.  **Result:** Essential Drum Bus glue that breathes with the beat.\r\n\r\n### 2. Snare Smash\r\n1.  **Type:** Hard.\r\n2.  **Ratio:** 8:1.\r\n3.  **Attack:** 0.0ms (Instant).\r\n4.  **Release:** 200ms.\r\n5.  **Gain:** +12dB.\r\n6.  **Result:** Transforms a weak acoustic snare into a splatty, aggressive block of noise.\r\n\r\n### 3. Parallel Compression (The Mix Knob is missing!)\r\n1.  **Issue:** Fruity Compressor has no Wet/Dry knob.\r\n2.  **Workaround:**\r\n    *   Use the **Mix Level** knob in the Plugin Wrapper (Top Right of the window).\r\n    *   Set Compressor to extreme settings (\"Nuke\" mode).\r\n    *   Turn the Wrapper Mix knob down to 50%.\r\n",
+      "parameter-cheat-sheet": "# Fruity Compressor - Parameter Cheat Sheet\n\n**Plugin Type:** Dynamic Processor (Compressor)\n**Category:** Dynamics\n**Official Manual:** [Fruity Compressor](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Fruity%20Compressor.htm)\n\n---\n\n## 🎚️ Core Compression Parameters\n\n| Parameter | Range | Function | Quick Tip |\n|-----------|-------|----------|-----------|\n| **Threshold** | -60 to 0 dB | Level above which compression begins | Lower for more compression; higher for transparency |\n| **Ratio** | 1:1 to Inf:1 | Amount of gain reduction applied | 2:1-4:1 for instruments; 10:1+ for limiting |\n| **Gain** | -30 to +30 dB | Output makeup gain | Use to match pre-compression volume levels |\n| **Attack** | 0 to 400 ms | How quickly compression kicks in | Fast (0-10ms) for peaks; Slow (20ms+) for punch |\n| **Release** | 1 to 4000 ms | How quickly compression stops | 50-200ms is standard; sync to tempo for \"breathing\" |\n\n---\n\n## 🎛️ Advanced Control & Knee Types\n\n| Type | Description | Use Case |\n|------|-------------|----------|\n| **Hard** | Abrupt transition at threshold | Precise peak control, drums, aggressive styles |\n| **Medium** | Softer transition | General purpose, versatile mixing |\n| **Vintage** | Emulates old analog behavior | Warmth, musicality, vocals, guitars |\n| **Soft** | Very gradual transition | Transparent leveling, buses, mastering |\n| **Hard R** | Hard knee with faster release | High-energy percussion |\n| **Medium R** | Medium knee with faster release | Rhythmic instruments |\n| **Vintage R** | Vintage knee with faster release | Classic rock/pop elements |\n| **Soft R** | Soft knee with faster release | Smooth bus processing |\n\n---\n\n## 🔧 Technical Specifications\n\n- **Latency:** 0 samples (Zero Latency)\n- **Engine:** Peak-based detection\n- **Sidechain:** Internal or External (via Wrapper routing)\n- **Stereo Link:** 100% (Left and Right are processed equally based on the louder channel)\n\n---\n\n## 🎯 Quick Start Workflows\n\n### Drum Punch (Parallel Style)\n1. **Ratio:** 4:1\n2. **Attack:** 30ms (let the initial \"crack\" through)\n3. **Release:** 100ms\n4. **Threshold:** Drop until you see -4 to -6 dB reduction\n5. **Gain:** Boost by +4 dB\n\n### Vocal Leveling\n1. **Type:** Soft or Vintage\n2. **Ratio:** 3:1\n3. **Attack:** 10ms\n4. **Release:** 200ms\n5. **Threshold:** Adjust for consistent volume without \"pumping\"\n\n---\n\n## ⚡ Pro Tips\n\n1. **The 0ms Attack Trap:** Setting attack to 0ms can kill the \"life\" of a sound by flattening all transients. Use 5-15ms for a more natural sound.\n2. **Tempo-Synced Release:** Aim for the compression to reset just before the next beat.\n3. **Makeup Gain Check:** Always bypass the plugin to ensure you haven't just made the sound louder, but actually improved the dynamics.\n\n---\n\n**Last Updated:** February 3, 2026\n**Status:** ⭐ HIGH PRIORITY - Elaborated Reference",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Compressor\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Compressor to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Compressor\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Compressor\r\n\r\nThis section contains learning information for the fruity-compressor plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: Drum Punch Enhancement (Fruity Compressor)\n\n## Routing Context\n- **Target:** Snare Drum or Kick.\n- **Position:** Insert FX (After EQ).\n\n## Step-by-Step Setup\n1.  On the snare track, load **Fruity Compressor**.\n2.  Set the **Ratio** to `6:1`.\n3.  Set the **Attack** to `30ms`. (This lets the initial \"Crack\" through).\n4.  Set the **Release** to `50ms`. (Quick reset for the next hit).\n5.  Lower the **Threshold** until you see the meter dipping by `-4dB` to `-6dB`.\n6.  Turn up the **Gain** knob to match the volume before you started.\n\n## What To Listen For\n- The snare should sound \"snappier\" or \"sharper.\" By compressing only the tail of the drum hit, the relative loudness of the initial transient is increased.\n\n## Vibe Check\n- **Upbeat:** Essential for club tracks where the drums need to \"cut\" through heavy synth layers.\n\n## Variations\n- **The Smash:** Reduce Attack to `2ms` and increase Ratio to `10:1` for an aggressive, industrial drum tone.\n\n## Pitfalls + Fixes\n- **Pitfall:** \"The drum sounds small/thin.\"\n  - **Fix:** Your Attack is too fast. Increase the **Attack** knob until you hear the \"Click\" of the drum again. [SRC: REPUTABLE]\n",
+      "01_Goal_Shaping_And_Control": "# Goal: Vocal Leveler (Goal_Shaping_And_Control)\n\n## The Concept\nEnsuring a melodic rap vocal is consistently loud without sounding \"squeezed.\"\n\n## Step-by-Step\n1.  Set **Type** to `Soft`.\n2.  Set **Ratio** to `3:1`.\n3.  Set **Attack** to `5ms`.\n4.  Set **Release** to `200ms`.\n5.  Lower **Threshold** until the gain reduction meter is active throughout most of the phrase (aim for `-3dB` constant reduction).\n6.  Use **Makeup Gain** to bring the vocal back to the front of the mix.\n\n## Result\n- A vocal that sounds \"stable.\" The words don't get lost when the artist whispers, and the shouting doesn't hurt the listener's ears.\n\n## Vibe Check\n- **Vibey/Polished:** Foundational for that \"radio-ready\" vocal sheen.\n\n## Automation Idea\n- Automate the **Threshold** to get lower during the chorus to \"clamp down\" harder when the track energy increases. [SRC: REPUTABLE]\n",
+      "sidechain-ducking": "# Sidechain Ducking (Kick & Bass) Workflow\n\n## Goal\nCreate space for the kick drum by automatically lowering the volume of the bass whenever the kick hits.\n\n## Prerequisites\n- A Kick drum track.\n- A Bass track.\n\n## Steps\n1. **Mixer Routing:**\n   - Select the Kick mixer track.\n   - Right-click the 'send' arrow at the bottom of the Bass mixer track and select **Sidechain to this track**.\n2. **Plugin Setup:**\n   - Insert **Fruity Compressor** on the Bass track.\n   - Open the plugin wrapper settings (cog icon) -> **Processing** tab.\n   - Right-click the **Auto-map outputs** or manually set the **Sidechain** input to '1' (or whichever index corresponds to your kick).\n3. **Compression Settings:**\n   - **Ratio:** Set to **10:1** or **Inf:1** for a strong effect.\n   - **Attack:** Set to **0ms** or **0.1ms** for instant ducking.\n   - **Release:** Set to **50ms - 150ms** (adjust until the bass \"breathes\" back in time with the track).\n   - **Threshold:** Lower significantly until you hear the bass dipping clearly when the kick hits.\n4. **Fine-Tuning:**\n   - Adjust **Release** to match the tempo. If the release is too fast, it will sound glitchy; if too slow, the bass will stay quiet for too long.\n\n## Pro Tip\nUse this same technique on reverb buses (ducking the reverb whenever the dry vocal plays) to maintain vocal clarity in a dense mix.\n",
+      "vocal-compression": "# Vocal Compression Workflow\n\n## Goal\nAchieve a consistent vocal level that sits perfectly in the mix without sounding \"pushed\".\n\n## Steps\n1. **Set Ratio**: Start with a ratio of **3:1** or **4:1**.\n2. **Adjust Threshold**: Lower the threshold until you see **3-6 dB of gain reduction** on the loudest peaks.\n3. **Set Attack**: Set between **10ms and 20ms**. This allows the initial consonants (transients) to pass through, keeping the vocal clear.\n4. **Set Release**: Set around **150ms**. If the compression sounds like it's \"pumping\" unnaturally, increase the release.\n5. **Makeup Gain**: Increase the **Gain** parameter to match the level of the vocal before the compressor was active (bypass to check).\n\n## Pro Tip\nUse the **Soft Knee** (Type) for a more transparent transition into compression, which is usually preferred for vocals.\n"
+    },
+    "by-instrument": {
+      "bass": "# Instrument: Bass\n\nControlling the energy of the low end.\n\n## Clean Bass (Electric or Synth)\n- **Attack**: 30ms - 80ms. This allows the \"pluck\" or \"thump\" of the note to be heard before the body of the note is compressed.\n- **Release**: 150ms - 300ms.\n- **Ratio**: 4:1.\n- **Threshold**: Adjust until the bass feels \"locked\" and doesn't jump out on certain notes.\n\n## Sustained Sub Bass\n- **Attack**: 100ms+. You don't want to compress the initial sub-cycle.\n- **Release**: Fast (50ms).\n- **Ratio**: 2:1.\n- **Result**: Smooths out the volume without killing the impact.\n\n## Slap Bass\n- **Type**: **HARD**.\n- **Ratio**: 8:1 (Limiting territory).\n- **Attack**: 1ms. Catch the sharp transients of the thumb hits.\n",
+      "drums": "# Workflow: Parallel \"New York\" Drums (Compressor)\n\n## The Concept\nAdding thickness and \"grit\" to drums while keeping 100% of their original punch.\n\n## Step-by-Step\n1.  Create a **Send Track** named \"DRUM SMASH.\"\n2.  Route your Drum Bus to this send at 100% volume.\n3.  Load **Fruity Compressor** on the send.\n4.  **Settings:**\n    - Ratio: `MAX` (inf:1).\n    - Attack: `0.1ms`.\n    - Release: `10ms`.\n    - Threshold: `-40dB` (Total destruction).\n5.  Set the Send Track fader to zero.\n6.  Slowly raise the fader until you hear the \"energy\" of the drums increase without losing the transients of the dry signal.\n\n## Vibe Check\n- **Upbeat/Aggressive:** This is the secret to huge, wall-of-sound drums in modern hip-hop.\n\n## Pitfalls\n- **Mud:** If the parallel signal has too much low-end, it will blur the kick. Use an EQ *after* the compressor on the send to cut everything below 100Hz. [SRC: REPUTABLE]\n",
+      "guitars": "# Instrument: Guitars\n\nManaging the dynamic range of string instruments.\n\n## Clean Electric Guitar\n- **Attack**: 20ms.\n- **Release**: 200ms.\n- **Ratio**: 3:1.\n- **Result**: Adds \"jangle\" and makes arpeggios sound more even.\n\n## Acoustic Guitar\n- **Threshold**: Subtle (2-3dB reduction).\n- **Ratio**: 2:1.\n- **Attack**: Slow (50ms).\n- **Result**: Controls the \"boomy\" peaks of the low strings without making the guitar sound dead.\n\n## Distorted Guitars\nDistorted guitars are already naturally compressed by the distortion itself.\n- **Usage**: Use Fruity Compressor with a slow attack and 4:1 ratio to add \"chug\" and weight to palm-muted sections.\n",
+      "vocals": "# Instrument: Vocals\n\nThe Fruity Compressor is a staple for vocal processing in FL Studio.\n\n## Lead Vocals\n- **Threshold**: Set so you see about 3-5dB of gain reduction on loud peaks.\n- **Ratio**: 3:1 is a safe starting point.\n- **Attack**: 10ms - 20ms. You want the initial \"consonants\" of the words to pass through before the compressor kicks in.\n- **Release**: 200ms - 400ms. A medium release avoids \"pumping\" artifacts.\n- **Type**: **SOFT** or **VINTAGE**.\n\n## Aggressive/Rap Vocals\n- **Ratio**: 6:1 or higher.\n- **Attack**: Fast (2ms - 5ms) to catch every transient.\n- **Type**: **HARD**.\n- **Result**: A very dense, in-your-face sound.\n\n## Backing Vocals\n- **Threshold**: Set deeper (6-8dB reduction).\n- **Ratio**: 4:1.\n- **Result**: Pushes the backing vocals further back in the mix and makes them sound like a cohesive unit.\n"
+    },
+    "common-usage.md": {
+      "common-usage": "# Common Workflows: Fruity Compressor\r\n\r\n## 1. Classic Sidechaining (The Setup)\r\n\r\nFruity Compressor handles sidechain differently than Limiter.\r\n\r\n1.  **Routing:**\r\n    *   Kick Channel -> Send \"Sidechain\" to Bass Channel.\r\n2.  **Plugin:** Load Fruity Compressor on Bass.\r\n3.  **Input:** Right-click the **Sidechain Selector** (in the plugin window, distinct from the wrapper). Select \"Kick\".\r\n4.  **Settings:**\r\n    *   **Threshold:** -20dB.\r\n    *   **Ratio:** 4:1.\r\n    *   **Attack:** 0ms.\r\n    *   **Release:** Synced to tempo (e.g., 1/4 note).\r\n5.  **Important:** Unlike Fruity Limiter, you don't see the ghost waveform. You must rely on your ears.\r\n\r\n## 2. 808 Optimization\r\n\r\n1.  **Goal:** Even out a bassline where some notes are quiet and some are loud.\r\n2.  **Type:** **Vintage**.\r\n3.  **Ratio:** 4:1.\r\n4.  **Attack:** 50ms (Let the initial \"thump\" thru).\r\n5.  **Release:** 300ms (Sustain the tail).\r\n6.  **Gain:** Boost until the meter dances around 0dB.\r\n7.  **Why Vintage?** The \"LA-2A\" curve adds warmth to the sub frequencies that standard VCA compression removes.\r\n\r\n## 3. Acoustic Guitar Leveling\r\n\r\n1.  **Type:** Soft/R.\r\n2.  **Ratio:** 2.5:1.\r\n3.  **TCR:** Critical here. Acoustic guitar has strumming (transients) and sustain (chords).\r\n4.  **Effect:** The TCR allows the compressor to clamp down fast on the pick noise but release gently on the ring-out, avoiding the \"nervous\" pumping sound.\r\n\r\n## 4. De-Essing (Manual)\r\n\r\n1.  **Concept:** Compress only the \"Sss\" sounds.\r\n2.  **Split:** Use **Patcher**.\r\n3.  **Chain:**\r\n    *   Split Signal into High/Low (Frequency Splitter).\r\n    *   Put Fruity Compressor on the High band (above 5kHz).\r\n4.  **Settings:** Fast Attack, Fast Release. Hard Knee.\r\n5.  **Result:** It clamps down on sibilance without affecting the body of the vocal.\r\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Compressor\r\n\r\nThis section contains workflow information for the fruity-compressor plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Compressor\r\n\r\nThis section contains reference information for the fruity-compressor plugin.\r\n"
+    }
+  }
+}

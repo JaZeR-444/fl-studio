@@ -1,0 +1,161 @@
+{
+  "$schema": "./schema.json",
+  "plugin": {
+    "name": "Vintage Chorus",
+    "version": "1.x",
+    "category": "Effect",
+    "type": "BBD Chorus",
+    "emulates": "Roland Juno 6/60 Chorus",
+    "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Vintage%20Chorus.htm"
+  },
+  "parameters": {
+    "main": [
+      {
+        "id": "mode",
+        "name": "Mode",
+        "type": "selector",
+        "options": ["I", "II", "I+II"],
+        "default": "I",
+        "description": "Chorus voice selection and stereo width",
+        "characteristics": {
+          "I": "Single chorus voice, subtle width",
+          "II": "Different chorus voice, medium depth",
+          "I+II": "Both voices combined, maximum stereo width"
+        },
+        "sweetSpot": "I+II for lush synth pads"
+      },
+      {
+        "id": "rate",
+        "name": "Rate",
+        "type": "slider",
+        "range": "0.1-10 Hz",
+        "unit": "Hz",
+        "default": "0.5 Hz",
+        "description": "LFO modulation speed",
+        "automatable": true,
+        "sweetSpot": "0.4-0.8 Hz for classic chorus, 1.5-3 Hz for vibrato"
+      },
+      {
+        "id": "depth",
+        "name": "Depth",
+        "type": "slider",
+        "range": "0-100%",
+        "unit": "%",
+        "default": "50%",
+        "description": "Modulation intensity",
+        "automatable": true,
+        "sweetSpot": "60-75% for Juno strings, 40-50% for subtle"
+      },
+      {
+        "id": "dryWet",
+        "name": "Dry/Wet",
+        "type": "slider",
+        "range": "0-100%",
+        "unit": "%",
+        "default": "50%",
+        "description": "Effect mix level",
+        "automatable": true,
+        "note": "80-90% for classic Juno, 30-50% for subtle enhancement"
+      }
+    ],
+    "bbd": [
+      {
+        "id": "clockRate",
+        "name": "BBD Clock Rate",
+        "type": "selector",
+        "options": ["Low", "Medium", "High"],
+        "default": "Medium",
+        "description": "Bucket brigade delay quality simulation",
+        "characteristics": {
+          "Low": "Darker, warmer, more vintage character",
+          "Medium": "Balanced warmth and clarity",
+          "High": "Cleaner, brighter, less BBD character"
+        }
+      },
+      {
+        "id": "noise",
+        "name": "Noise",
+        "type": "slider",
+        "range": "0-100%",
+        "unit": "%",
+        "default": "20%",
+        "description": "Vintage BBD noise amount",
+        "note": "20-35% for authentic vintage, 0% for clean modern"
+      },
+      {
+        "id": "filtering",
+        "name": "Filtering",
+        "type": "toggle",
+        "range": "Off/On",
+        "default": "On",
+        "description": "BBD high-frequency roll-off simulation",
+        "note": "Enable for authentic vintage warmth"
+      }
+    ]
+  },
+  "stereoProcessing": {
+    "modeI": {
+      "width": "Narrow",
+      "voices": 1,
+      "monoCompatibility": "Excellent"
+    },
+    "modeII": {
+      "width": "Medium",
+      "voices": 1,
+      "monoCompatibility": "Good",
+      "difference": "Different modulation phase than Mode I"
+    },
+    "modeIPlusII": {
+      "width": "Maximum",
+      "voices": 2,
+      "monoCompatibility": "Fair",
+      "warning": "Check mono compatibility for broadcast/streaming"
+    }
+  },
+  "presetSettings": {
+    "classicJunoStrings": {
+      "mode": "I+II",
+      "rate": "0.5 Hz",
+      "depth": "70%",
+      "dryWet": "85%",
+      "clockRate": "Medium",
+      "noise": "30%",
+      "filtering": "On"
+    },
+    "subtleGuitar": {
+      "mode": "I",
+      "rate": "0.8 Hz",
+      "depth": "40%",
+      "dryWet": "30%",
+      "clockRate": "High",
+      "noise": "10%"
+    },
+    "modernClean": {
+      "mode": "I",
+      "rate": "1.0 Hz",
+      "depth": "35%",
+      "dryWet": "50%",
+      "clockRate": "High",
+      "noise": "0%",
+      "filtering": "Off"
+    },
+    "deepLush": {
+      "mode": "I+II",
+      "rate": "0.3 Hz",
+      "depth": "80%",
+      "dryWet": "90%",
+      "clockRate": "Low",
+      "noise": "40%"
+    }
+  },
+  "historicalReference": {
+    "hardware": "Roland Juno-60",
+    "technology": "Bucket Brigade Device (BBD)",
+    "era": "1982-1984",
+    "artists": ["Depeche Mode", "Human League", "Vince Clarke", "Underworld"],
+    "famousSounds": "Synth strings in 80s new wave and synth-pop"
+  },
+  "cpuUsage": "Low to Moderate",
+  "latency": "Minimal",
+  "realtimeSafe": true
+}

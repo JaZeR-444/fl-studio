@@ -1,0 +1,87 @@
+{
+  "pluginName": "Gross Beat",
+  "specificationType": "Technical Specifications",
+  "coreEngine": {
+    "name": "2-Bar Rolling Buffer",
+    "description": "Continuously recording audio buffer with real-time playback position manipulation",
+    "bufferDuration": {
+      "bars": 2,
+      "secondsAt120BPM": 4.0,
+      "secondsAt140BPM": 3.43,
+      "secondsAt160BPM": 3.0
+    },
+    "recordingBehavior": "Circular/rolling - oldest audio continuously overwritten",
+    "channels": ["Mono", "Stereo"],
+    "sampleRateSupport": "44.1 kHz to 192 kHz"
+  },
+  "envelopeEngine": {
+    "timeEnvelope": {
+      "type": "Playback position manipulation",
+      "visualRepresentation": "2D grid showing buffer position over time",
+      "defaultState": "Diagonal line (45°) = normal playback",
+      "resolution": "Configurable grid snap (1/4, 1/8, 1/16, 1/32, freehand)",
+      "interpolation": "Linear with optional smoothing"
+    },
+    "volumeEnvelope": {
+      "type": "Amplitude modulation",
+      "visualRepresentation": "Amplitude curve over 2-bar duration",
+      "range": "0% to 100% (silence to full volume)",
+      "defaultState": "Top line (100%) = no change"
+    }
+  },
+  "slotSystem": {
+    "totalSlots": 72,
+    "timeSlots": {
+      "count": 36,
+      "midiRange": "C1 to B3",
+      "triggerMode": "MIDI note on/off",
+      "velocityResponse": true
+    },
+    "volumeSlots": {
+      "count": 36,
+      "midiRange": "C4 to B6",
+      "triggerMode": "MIDI note on/off",
+      "velocityResponse": true
+    },
+    "simultaneousTrigger": "Time and Volume slots can be triggered independently or together"
+  },
+  "processing": {
+    "algorithm": "Real-time buffer read with variable interpolation",
+    "timeStretchQuality": "Optimized for real-time performance (not high-quality offline)",
+    "pitchShift": "Automatic with time manipulation (resampling)",
+    "phaseResponse": "Minimal phase shift (depends on buffer position)",
+    "latency": {
+      "realTime": "< 5ms",
+      "bufferDependent": "Up to 2 bars maximum"
+    }
+  },
+  "performance": {
+    "cpuUsage": "Low to Moderate",
+    "ramUsage": "Approximately 8-16 MB (stereo, 44.1kHz)",
+    "optimizationTips": [
+      "Freeze tracks with Gross Beat for CPU-intensive projects",
+      "Use mono mode on mono sources to halve RAM usage",
+      "Commit to audio when arrangement is finalized"
+    ]
+  },
+  "midiImplementation": {
+    "inputRange": "C1 to B6 (72 notes total)",
+    "velocity": "Controls effect intensity (Mix level)",
+    "noteLength": "Duration of slot activation",
+    "automation": "All parameters support FL Studio automation",
+    "ccSupport": "Standard FL Studio VST parameter mapping"
+  },
+  "limitations": {
+    "noTrueReverse": "Cannot reverse audio - only manipulates playback direction",
+    "bufferSize": "Fixed at 2 bars (not user-adjustable)",
+    "timeStretchQuality": "Real-time optimized, not mastering quality",
+    "frequencyContent": "All frequency ranges affected equally (no band selection)"
+  },
+  "integration": {
+    "flStudio": "Native plugin with full Patcher support",
+    "otherDAWs": "Available as VST2/VST3 (with reduced MIDI functionality)",
+    "sidechain": "Can receive sidechain input for ducking",
+    "multiInstance": "Multiple instances supported per project"
+  },
+  "source": "[SRC: IL-MAN] Image-Line FL Studio Online Manual - Gross Beat Technical Documentation"
+}

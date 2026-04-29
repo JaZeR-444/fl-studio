@@ -1,0 +1,653 @@
+{
+  "id": "wasp-xt",
+  "name": "Wasp XT",
+  "presets": {
+    "genre-presets": {
+      "presetArchetypes": {
+        "supersawLead": {
+          "description": "Massive, wide lead for EDM choruses",
+          "settings": {
+            "oscillators": {
+              "count": 3,
+              "detune": 15
+            },
+            "filter1": {
+              "type": "lowpass",
+              "cutoff": 55,
+              "resonance": 30
+            },
+            "filter2": {
+              "type": "lowpass",
+              "cutoff": 65,
+              "resonance": 20
+            },
+            "routing": "serial",
+            "env1": {
+              "to": "filter1",
+              "attack": 5,
+              "decay": 200,
+              "sustain": 70,
+              "release": 150
+            },
+            "chorus": {
+              "enabled": true,
+              "depth": 70
+            }
+          },
+          "useCases": [
+            "EDM drops",
+            "big choruses",
+            "anthem leads"
+          ],
+          "tags": [
+            "electric",
+            "upbeat",
+            "psychedelic"
+          ]
+        },
+        "darkPad": {
+          "description": "Moody, atmospheric foundation",
+          "settings": {
+            "oscillators": {
+              "count": 2,
+              "detune": 5
+            },
+            "filter1": {
+              "type": "lowpass",
+              "cutoff": 45,
+              "resonance": 20
+            },
+            "filter2": {
+              "type": "lowpass",
+              "cutoff": 55,
+              "resonance": 15
+            },
+            "routing": "parallel",
+            "env1": {
+              "to": "filter1",
+              "attack": 500,
+              "decay": 500,
+              "sustain": 80,
+              "release": 500
+            },
+            "chorus": {
+              "enabled": true,
+              "depth": 50
+            }
+          },
+          "useCases": [
+            "moody intros",
+            "background texture",
+            "cinematic"
+          ],
+          "tags": [
+            "moody",
+            "atmospheric",
+            "dark"
+          ]
+        },
+        "aggressiveBass": {
+          "description": "Cutting bass for hip-hop drops",
+          "settings": {
+            "oscillators": {
+              "count": 2,
+              "detune": 10
+            },
+            "filter1": {
+              "type": "lowpass",
+              "cutoff": 35,
+              "resonance": 45
+            },
+            "filter2": {
+              "type": "lowpass",
+              "cutoff": 40,
+              "resonance": 35
+            },
+            "routing": "serial",
+            "env1": {
+              "to": "filter1",
+              "attack": 10,
+              "decay": 100,
+              "sustain": 80,
+              "release": 50
+            },
+            "chorus": {
+              "enabled": false,
+              "depth": 0
+            }
+          },
+          "useCases": [
+            "hip-hop bass",
+            "trap drops",
+            "aggressive hooks"
+          ],
+          "tags": [
+            "hip-hop/rap",
+            "electric",
+            "intense"
+          ]
+        },
+        "acidRipper": {
+          "description": "Resonant, TB-303 style sound",
+          "settings": {
+            "oscillators": {
+              "count": 1,
+              "wave": "saw"
+            },
+            "filter1": {
+              "type": "lowpass",
+              "cutoff": 50,
+              "resonance": 70
+            },
+            "filter2": {
+              "type": "highpass",
+              "cutoff": 80,
+              "resonance": 30
+            },
+            "routing": "serial",
+            "env1": {
+              "to": "filter1",
+              "attack": 1,
+              "decay": 150,
+              "sustain": 40,
+              "release": 100
+            },
+            "chorus": {
+              "enabled": false,
+              "depth": 0
+            }
+          },
+          "useCases": [
+            "acid lines",
+            "rhythmic riffs",
+            "techno"
+          ],
+          "tags": [
+            "electric",
+            "psychedelic",
+            "intense"
+          ]
+        },
+        "shimmerPad": {
+          "description": "Bright, airy, ethereal texture",
+          "settings": {
+            "oscillators": {
+              "count": 2,
+              "detune": 8
+            },
+            "filter1": {
+              "type": "lowpass",
+              "cutoff": 70,
+              "resonance": 15
+            },
+            "filter2": {
+              "type": "lowpass",
+              "cutoff": 85,
+              "resonance": 10
+            },
+            "routing": "parallel",
+            "env1": {
+              "to": "filter2",
+              "attack": 800,
+              "decay": 400,
+              "sustain": 90,
+              "release": 600
+            },
+            "ch chorus": {
+              "enabled": true,
+              "depth": 60
+            }
+          },
+          "useCases": [
+            "breakdowns",
+            "intros",
+            "ethereal sections"
+          ],
+          "tags": [
+            "moody",
+            "upbeat",
+            "shimmer"
+          ]
+        }
+      },
+      "genreSettings": {
+        "hipHop": {
+          "subBass": {
+            "filter1": 28,
+            "res": 30,
+            "routing": "single",
+            "chorus": true
+          },
+          "midBass": {
+            "filter1": 40,
+            "res": 40,
+            "routing": "serial",
+            "chorus": true
+          },
+          "texture": {
+            "filter1": 55,
+            "res": 25,
+            "routing": "parallel",
+            "chorus": true
+          }
+        },
+        "rnb": {
+          "smoothBass": {
+            "filter1": 35,
+            "res": 28,
+            "routing": "serial",
+            "chorus": true
+          },
+          "keys": {
+            "filter1": 65,
+            "res": 18,
+            "routing": "parallel",
+            "chorus": true
+          },
+          "pad": {
+            "filter1": 50,
+            "res": 20,
+            "routing": "parallel",
+            "chorus": true
+          }
+        },
+        "deepBassEDM": {
+          "wobble": {
+            "filter1": 35,
+            "res": 50,
+            "routing": "serial",
+            "chorus": false
+          },
+          "supersaw": {
+            "filter1": 50,
+            "res": 35,
+            "routing": "serial",
+            "chorus": true
+          },
+          "texture": {
+            "filter1": 45,
+            "res": 40,
+            "routing": "parallel",
+            "chorus": true
+          }
+        }
+      }
+    },
+    "sound-design-presets": {
+      "classicEmulations": {
+        "vintageWasp": {
+          "osc1Wave": "sawtooth",
+          "osc2Wave": "square",
+          "oscMix": 50,
+          "detune": 5,
+          "filterCutoff": 60,
+          "filterRes": 70,
+          "envAmount": 80,
+          "attack": 10,
+          "decay": 200,
+          "sustain": 40,
+          "release": 300,
+          "lfoRate": 4.0,
+          "lfoDepth": 30,
+          "unison": 0,
+          "description": "Faithful original Wasp character"
+        },
+        "acidBass": {
+          "osc1Wave": "sawtooth",
+          "osc2Wave": "pulse",
+          "oscMix": 70,
+          "detune": 0,
+          "filterCutoff": 40,
+          "filterRes": 85,
+          "envAmount": 90,
+          "attack": 0,
+          "decay": 50,
+          "sustain": 0,
+          "release": 100,
+          "lfoRate": 0,
+          "lfoDepth": 0,
+          "unison": 2,
+          "description": "303-style acidic bass lines"
+        }
+      },
+      "modernLeads": {
+        "supersaw": {
+          "osc1Wave": "sawtooth",
+          "osc2Wave": "sawtooth",
+          "oscMix": 100,
+          "detune": 15,
+          "unison": 8,
+          "unisonSpread": 20,
+          "filterCutoff": 75,
+          "filterRes": 40,
+          "envAmount": 60,
+          "attack": 20,
+          "decay": 300,
+          "sustain": 50,
+          "release": 400,
+          "lfoRate": 6.5,
+          "lfoDepth": 40,
+          "lfoTarget": "filter",
+          "description": "Trance and EDM supersaw lead"
+        },
+        "hardSync": {
+          "osc1Wave": "sawtooth",
+          "osc2Wave": "square",
+          "oscSync": true,
+          "oscSyncRatio": 2.0,
+          "filterCutoff": 80,
+          "filterRes": 60,
+          "envAmount": 70,
+          "attack": 5,
+          "decay": 150,
+          "sustain": 30,
+          "release": 200,
+          "lfoRate": 8.0,
+          "lfoDepth": 50,
+          "lfoTarget": "pitch",
+          "description": "Hard sync lead for electro"
+        }
+      },
+      "bassPresets": {
+        "subBass": {
+          "osc1Wave": "sine",
+          "osc2Wave": "square",
+          "oscMix": 30,
+          "subOsc": true,
+          "subOctave": -2,
+          "filterCutoff": 35,
+          "filterRes": 20,
+          "envAmount": 40,
+          "attack": 50,
+          "decay": 200,
+          "sustain": 60,
+          "release": 500,
+          "distortion": "subtle",
+          "description": "Deep sub bass for dubstep and EDM"
+        },
+        "wobbleBass": {
+          "osc1Wave": "sawtooth",
+          "osc2Wave": "square",
+          "oscMix": 60,
+          "filterCutoff": 50,
+          "filterRes": 75,
+          "envAmount": 80,
+          "lfoRate": 2.0,
+          "lfoDepth": 70,
+          "lfoTarget": "filter",
+          "attack": 10,
+          "decay": 100,
+          "sustain": 20,
+          "release": 200,
+          "description": "Dubstep wobble bass"
+        }
+      },
+      "padPresets": {
+        "spacePad": {
+          "osc1Wave": "sawtooth",
+          "osc2Wave": "triangle",
+          "oscMix": 50,
+          "detune": 8,
+          "unison": 4,
+          "filterCutoff": 65,
+          "filterRes": 30,
+          "envAmount": 50,
+          "attack": 800,
+          "decay": 1000,
+          "sustain": 70,
+          "release": 1500,
+          "lfoRate": 0.3,
+          "lfoDepth": 60,
+          "lfoTarget": "filter",
+          "delay": "20%",
+          "reverb": "30%",
+          "description": "Evolving space pad"
+        },
+        "warmPad": {
+          "osc1Wave": "sawtooth",
+          "osc2Wave": "pulse",
+          "oscMix": 40,
+          "detune": 4,
+          "unison": 2,
+          "filterCutoff": 55,
+          "filterRes": 25,
+          "envAmount": 45,
+          "attack": 600,
+          "decay": 800,
+          "sustain": 65,
+          "release": 1200,
+          "lfoRate": 0.2,
+          "lfoDepth": 40,
+          "lfoTarget": "filter",
+          "description": "Warm analog pad"
+        }
+      },
+      "fxPresets": {
+        "scifiEffect": {
+          "osc1Wave": "sawtooth",
+          "osc2Wave": "noise",
+          "oscMix": 70,
+          "ringMod": true,
+          "ringModFreq": 100,
+          "filterCutoff": 85,
+          "filterRes": 80,
+          "envAmount": 90,
+          "lfoRate": 15.0,
+          "lfoDepth": 80,
+          "lfoTarget": "ringMod",
+          "attack": 5,
+          "decay": 50,
+          "sustain": 10,
+          "release": 100,
+          "description": "Science fiction special effect"
+        },
+        "metallicHit": {
+          "osc1Wave": "square",
+          "osc2Wave": "pulse",
+          "oscSync": true,
+          "oscSyncRatio": 1.5,
+          "ringMod": true,
+          "ringModFreq": 500,
+          "filterCutoff": 90,
+          "filterRes": 90,
+          "envAmount": 100,
+          "attack": 0,
+          "decay": 20,
+          "sustain": 0,
+          "release": 50,
+          "distortion": "high",
+          "description": "Metallic percussion hit"
+        }
+      },
+      "arpeggioPresets": {
+        "retroArp": {
+          "osc1Wave": "square",
+          "osc2Wave": "sawtooth",
+          "oscMix": 60,
+          "arpPattern": "up",
+          "arpRate": "1/16",
+          "filterCutoff": 70,
+          "filterRes": 50,
+          "envAmount": 60,
+          "gateLength": 80,
+          "swing": 0,
+          "octaves": 2,
+          "description": "Classic 8-bit arpeggio"
+        },
+        "complexArp": {
+          "osc1Wave": "sawtooth",
+          "osc2Wave": "triangle",
+          "oscMix": 50,
+          "unison": 3,
+          "arpPattern": "random",
+          "arpRate": "1/8T",
+          "filterCutoff": 60,
+          "filterRes": 70,
+          "envAmount": 80,
+          "lfoRate": 4.0,
+          "lfoDepth": 60,
+          "lfoTarget": "filter",
+          "gateLength": 60,
+          "swing": 25,
+          "octaves": 3,
+          "description": "Complex evolving arpeggio"
+        }
+      }
+    }
+  },
+  "parameters": {
+    "wasp-xt-params": {
+      "$schema": "./schema.json",
+      "plugin": {
+        "name": "Wasp XT",
+        "version": "1.x",
+        "category": "Instrument",
+        "type": "Enhanced 3-Oscillator Subtractive Synthesizer",
+        "status": "ACTIVE (Replaces discontinued Wasp)",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/WaspXT.htm"
+      },
+      "parameters": {
+        "oscillators": [
+          {
+            "id": "waveform",
+            "name": "Waveform",
+            "options": [
+              "Sine",
+              "Triangle",
+              "Saw",
+              "Square",
+              "Pulse",
+              "Noise"
+            ],
+            "count": 3
+          },
+          {
+            "id": "pitch",
+            "name": "Pitch",
+            "range": "-48 to +48 semitones"
+          },
+          {
+            "id": "detune",
+            "name": "Detune",
+            "range": "-100 to +100 cents"
+          }
+        ],
+        "filter": [
+          {
+            "id": "type",
+            "name": "Filter Type",
+            "options": [
+              "LP",
+              "HP",
+              "BP",
+              "BR",
+              "Formant"
+            ]
+          },
+          {
+            "id": "cutoff",
+            "name": "Cutoff",
+            "range": "20Hz-20kHz",
+            "sweetSpot": "500-2000Hz for bass, 2-8kHz for leads"
+          },
+          {
+            "id": "resonance",
+            "name": "Resonance",
+            "range": "0-100%",
+            "sweetSpot": "40-70%"
+          },
+          {
+            "id": "drive",
+            "name": "Drive",
+            "range": "0-100%",
+            "description": "Pre-filter distortion"
+          }
+        ],
+        "unison": [
+          {
+            "id": "voices",
+            "name": "Unison Voices",
+            "range": "1-12",
+            "sweetSpot": "5-7 for leads, 2-3 for subtle width"
+          },
+          {
+            "id": "detune",
+            "name": "Unison Detune",
+            "range": "0-100%",
+            "sweetSpot": "35-45% for supersaw"
+          }
+        ],
+        "effects": [
+          {
+            "name": "Distortion",
+            "description": "Pre/post filter saturation"
+          },
+          {
+            "name": "Chorus",
+            "description": "Stereo width and thickness"
+          },
+          {
+            "name": "Delay",
+            "description": "Time-based echo"
+          },
+          {
+            "name": "Reverb",
+            "description": "Spatial ambience"
+          }
+        ]
+      },
+      "enhancements": {
+        "overWasp": [
+          "Unison mode (up to 12 voices)",
+          "Formant filter type",
+          "Built-in effects suite",
+          "Advanced modulation matrix",
+          "Improved sound quality"
+        ]
+      },
+      "cpuUsage": "Low to Moderate (depends on unison voices)",
+      "latency": "Minimal",
+      "realtimeSafe": true,
+      "status": "ACTIVE"
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "What Is Wasp Xt",
+      "filename": "what-is-wasp-xt.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "Integration Guide",
+      "category": "by-context",
+      "filename": "integration-guide.md"
+    },
+    {
+      "title": "Live Performance",
+      "category": "by-context",
+      "filename": "live-performance.md"
+    },
+    {
+      "title": "Troubleshooting Workflows",
+      "category": "by-context",
+      "filename": "troubleshooting-workflows.md"
+    },
+    {
+      "title": "Advanced Sound Design",
+      "category": "by-goal",
+      "filename": "advanced-sound-design.md"
+    },
+    {
+      "title": "Edm Supersaw Lead",
+      "category": "by-goal",
+      "filename": "edm-supersaw-lead.md"
+    },
+    {
+      "title": "Wasp Xt Instrument Workflows",
+      "category": "by-instrument",
+      "filename": "wasp-xt-instrument-workflows.md"
+    }
+  ]
+}

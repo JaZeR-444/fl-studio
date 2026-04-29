@@ -1,0 +1,389 @@
+{
+  "pluginName": "Harmor",
+  "presetType": "Sound Archetypes",
+  "version": "1.0",
+  "source": "[SRC: IL-MAN]",
+  "archetypes": [
+    {
+      "name": "Sub Bass - 808 Style",
+      "category": "Bass",
+      "description": "Classic 808 sub bass with additive precision",
+      "parameters": {
+        "engine": "A",
+        "subLevel": 100,
+        "mainLevel": 40,
+        "subShape": "Sine",
+        "mainShape": "Saw",
+        "pluckAmount": 60,
+        "pluckShape": "Exponential",
+        "pluckTilt": "Bass",
+        "prismAmount": 0,
+        "blurAmount": 10,
+        "strumAmount": 0,
+        "filter": {
+          "type": "lowPass",
+          "cutoff": "100Hz"
+        },
+        "envelope": {
+          "attack": 0,
+          "decay": 40,
+          "sustain": 0,
+          "release": 25
+        },
+        "unison": {
+          "voices": 1,
+          "detune": 0,
+          "stereo": 0
+        }
+      },
+      "notes": "Focus on Sub timbre with fast Pluck decay for classic 808 boom-to-click"
+    },
+    {
+      "name": "Growl Bass",
+      "category": "Bass",
+      "description": "Dubstep/trap growl with Prism harmonic warping",
+      "parameters": {
+        "engine": "A",
+        "subLevel": 80,
+        "mainLevel": 90,
+        "subShape": "Saw",
+        "mainShape": "Saw",
+        "pluckAmount": 30,
+        "prismAmount": 70,
+        "prismDepth": "Full",
+        "blurAmount": 20,
+        "strumAmount": 10,
+        "filter": {
+          "type": "custom",
+          "curve": "Resonant peak at 1kHz"
+        },
+        "envelope": {
+          "attack": 5,
+          "decay": 30,
+          "sustain": 80,
+          "release": 20
+        },
+        "lfo": {
+          "destination": "Prism",
+          "amount": 40,
+          "rate": "1/8 note",
+          "shape": "Sine"
+        },
+        "unison": {
+          "voices": 3,
+          "detune": 20,
+          "stereo": 30
+        }
+      },
+      "notes": "Heavy Prism with LFO modulation creates classic growl movement"
+    },
+    {
+      "name": "Pluck Lead",
+      "category": "Lead",
+      "description": "Articulate plucked lead for melodic lines",
+      "parameters": {
+        "engine": "A",
+        "subLevel": 60,
+        "mainLevel": 85,
+        "subShape": "Triangle",
+        "mainShape": "Saw",
+        "pluckAmount": 75,
+        "pluckShape": "Exponential",
+        "pluckTilt": "Balanced",
+        "prismAmount": 15,
+        "blurAmount": 5,
+        "strumAmount": 10,
+        "filter": {
+          "type": "lowPass",
+          "resonance": "moderate"
+        },
+        "envelope": {
+          "attack": 0,
+          "decay": 25,
+          "sustain": 0,
+          "release": 15
+        },
+        "unison": {
+          "voices": 2,
+          "detune": 15,
+          "stereo": 20
+        }
+      },
+      "notes": "High Pluck for fast decay, good for trap/hip-hop leads"
+    },
+    {
+      "name": "Atmospheric Pad",
+      "category": "Pad",
+      "description": "Ethereal evolving pad texture",
+      "parameters": {
+        "engine": "A",
+        "subLevel": 70,
+        "mainLevel": 70,
+        "subShape": "Sine",
+        "mainShape": "Triangle",
+        "pluckAmount": 0,
+        "prismAmount": 25,
+        "blurAmount": 60,
+        "strumAmount": 40,
+        "filter": {
+          "type": "lowPass",
+          "cutoff": "gentle"
+        },
+        "envelope": {
+          "attack": 40,
+          "decay": 0,
+          "sustain": 100,
+          "release": 60
+        },
+        "lfo": {
+          "lfo1": {
+            "destination": "Filter",
+            "amount": 30,
+            "rate": "Slow"
+          },
+          "lfo2": {
+            "destination": "Prism",
+            "amount": 20,
+            "rate": "Very slow"
+          }
+        },
+        "unison": {
+          "voices": 6,
+          "detune": 35,
+          "stereo": 60
+        },
+        "effects": {
+          "reverb": 40,
+          "chorus": 30
+        }
+      },
+      "notes": "High Blur and Strum create dense texture, long envelope for pad sustain"
+    },
+    {
+      "name": "Metallic Lead",
+      "category": "Lead",
+      "description": "Bell-like metallic character for unique leads",
+      "parameters": {
+        "engine": "A",
+        "subLevel": 40,
+        "mainLevel": 100,
+        "subShape": "Sine",
+        "mainShape": "Saw",
+        "pluckAmount": 40,
+        "prismAmount": 50,
+        "prismDepth": "Full",
+        "blurAmount": 20,
+        "strumAmount": 5,
+        "filter": {
+          "type": "highPass",
+          "cutoff": "200Hz"
+        },
+        "envelope": {
+          "attack": 5,
+          "decay": 35,
+          "sustain": 60,
+          "release": 25
+        },
+        "unison": {
+          "voices": 5,
+          "detune": 25,
+          "stereo": 50
+        }
+      },
+      "notes": "Prism creates inharmonic overtones for metallic character"
+    },
+    {
+      "name": "Robotic Vocal",
+      "category": "Vocal",
+      "description": "Synthetic vocal texture from resynthesis",
+      "parameters": {
+        "engine": "A",
+        "resynthesis": true,
+        "resynSettings": {
+          "precision": 80,
+          "blending": 40,
+          "formant": 0,
+          "randomize": 0
+        },
+        "pluckAmount": 40,
+        "prismAmount": 20,
+        "blurAmount": 30,
+        "strumAmount": 25,
+        "filter": {
+          "type": "bandPass",
+          "range": "200Hz-5kHz"
+        },
+        "envelope": {
+          "attack": 10,
+          "decay": 30,
+          "sustain": 70,
+          "release": 30
+        },
+        "lfo": {
+          "destination": "Formant",
+          "amount": 6,
+          "rate": "1/4 note"
+        }
+      },
+      "notes": "Resynthesize vocal, add Prism for synthetic character"
+    },
+    {
+      "name": "Cinematic Riser",
+      "category": "FX",
+      "description": "Building riser effect for transitions",
+      "parameters": {
+        "engine": "A",
+        "subLevel": 30,
+        "mainLevel": 90,
+        "subShape": "Sine",
+        "mainShape": "Saw",
+        "pluckAmount": 0,
+        "prismAmount": 0,
+        "blurAmount": 40,
+        "strumAmount": 30,
+        "filter": {
+          "type": "lowPass",
+          "initial": "500Hz",
+          "target": "10kHz"
+        },
+        "envelope": {
+          "attack": 100,
+          "decay": 0,
+          "sustain": 100,
+          "release": 20
+        },
+        "eg1": {
+          "destination": "Filter",
+          "amount": 100,
+          "attack": 80,
+          "decay": 0,
+          "sustain": 0
+        },
+        "unison": {
+          "voices": 7,
+          "detune": 40,
+          "stereo": 70
+        }
+      },
+      "notes": "EG1 opens filter over time creating rise effect"
+    },
+    {
+      "name": "Drum Kick",
+      "category": "Drum",
+      "description": "Synthesized kick drum",
+      "parameters": {
+        "engine": "A",
+        "subLevel": 100,
+        "mainLevel": 60,
+        "subShape": "Sine",
+        "mainShape": "Saw",
+        "subSlope": -20,
+        "pluckAmount": 80,
+        "pluckShape": "Exponential",
+        "pluckTilt": "Bass",
+        "prismAmount": 0,
+        "blurAmount": 0,
+        "strumAmount": 0,
+        "pitch": {
+          "initial": "High",
+          "decay": "To fundamental"
+        },
+        "envelope": {
+          "attack": 0,
+          "decay": 20,
+          "sustain": 0,
+          "release": 10
+        },
+        "unison": {
+          "voices": 1,
+          "detune": 0,
+          "stereo": 0
+        }
+      },
+      "notes": "Pitch envelope from high to low with fast Pluck decay"
+    },
+    {
+      "name": "Wavetable Emulator",
+      "category": "Lead",
+      "description": "Wavetable-style morphing sound",
+      "parameters": {
+        "engineA": {
+          "subLevel": 80,
+          "mainLevel": 80,
+          "timbre": "Saw-like"
+        },
+        "engineB": {
+          "subLevel": 80,
+          "mainLevel": 80,
+          "timbre": "Square-like"
+        },
+        "mix": "Automated 0-100%",
+        "pluckAmount": 20,
+        "prismAmount": 10,
+        "blurAmount": 15,
+        "strumAmount": 10,
+        "filter": {
+          "type": "lowPass"
+        },
+        "envelope": {
+          "attack": 5,
+          "decay": 30,
+          "sustain": 80,
+          "release": 30
+        },
+        "unison": {
+          "voices": 4,
+          "detune": 20,
+          "stereo": 40
+        }
+      },
+      "notes": "A and B with different timbres, automate Mix for wavetable morphing"
+    },
+    {
+      "name": "Sci-Fi Texture",
+      "category": "FX",
+      "description": "Futuristic evolving texture",
+      "parameters": {
+        "engine": "A",
+        "subLevel": 50,
+        "mainLevel": 100,
+        "pluckAmount": 10,
+        "prismAmount": 60,
+        "blurAmount": 50,
+        "strumAmount": 45,
+        "filter": {
+          "type": "custom",
+          "description": "Multiple peaks"
+        },
+        "envelope": {
+          "attack": 20,
+          "decay": 0,
+          "sustain": 100,
+          "release": 80
+        },
+        "lfo": {
+          "lfo1": {
+            "destination": "Prism",
+            "amount": 60,
+            "rate": "Slow"
+          },
+          "lfo2": {
+            "destination": "Filter",
+            "amount": 40,
+            "rate": "Medium"
+          }
+        },
+        "unison": {
+          "voices": 8,
+          "detune": 50,
+          "stereo": 80
+        },
+        "effects": {
+          "reverb": 50,
+          "delay": 30
+        }
+      },
+      "notes": "Heavy Prism modulation creates sci-fi character"
+    }
+  ]
+}

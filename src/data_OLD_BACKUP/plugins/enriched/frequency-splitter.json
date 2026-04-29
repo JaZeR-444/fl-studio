@@ -1,0 +1,1321 @@
+{
+  "id": "frequency-splitter",
+  "name": "Frequency Splitter",
+  "presets": {
+    "01-trap-multiband": {
+      "metadata": {
+        "plugin": "Frequency Splitter",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Trap Multiband Chain",
+        "category": "genre",
+        "genre": "trap",
+        "mood": "dark"
+      },
+      "settings": {
+        "crossover1": 200,
+        "crossover2": 3000,
+        "slope": "24dB/oct",
+        "mode": "linear-phase",
+        "band1": {
+          "gain": 0,
+          "processing": "high-pass 30Hz"
+        },
+        "band2": {
+          "gain": 3,
+          "processing": "frequency shifter down 100Hz, 25% mix"
+        },
+        "band3": {
+          "gain": -2,
+          "processing": "high-pass 4kHz"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Instance 1: Sub/bass band"
+        ],
+        "post": [
+          "Instance 2: High band with transient enhancement"
+        ]
+      },
+      "workflow": "Use two instances: one for bass (cros 200Hz) with sub enhancement, one for highs (cros 3kHz) with air enhancement.",
+      "genreTags": [
+        "trap",
+        "dark",
+        "multiband",
+        "processing"
+      ],
+      "a/bTesting": {
+        "testA": "Linear phase for transparency",
+        "testB": "Butterworth slope for character"
+      },
+      "troubleshooting": {
+        "phaseIssues": "Use linear phase mode",
+        "crosstalk": "Increase crossover spacing"
+      }
+    },
+    "02-808-focus": {
+      "metadata": {
+        "plugin": "Frequency Splitter",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "808 Focus Split",
+        "category": "genre",
+        "genre": "hip-hop/rap",
+        "mood": "punchy"
+      },
+      "settings": {
+        "crossover1": 150,
+        "crossover2": 800,
+        "slope": "12dB/oct",
+        "mode": "minimum-phase",
+        "band1": {
+          "gain": 2,
+          "processing": "sub-only, high-pass 25Hz"
+        },
+        "band2": {
+          "gain": -1,
+          "processing": "mid-focus, 200-800Hz"
+        },
+        "band3": {
+          "gain": 0,
+          "processing": "high-pass 3kHz"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Band 1: Sub frequency processing"
+        ],
+        "post": [
+          "Fruily Limiter - Band 2 focused"
+        ]
+      },
+      "workflow": "Three-way split for 808 processing. Band 1: pure sub, Band 2: mid punch, Band 3: high cutoff.",
+      "genreTags": [
+        "hip-hop/rap",
+        "808",
+        "bass",
+        "punchy"
+      ],
+      "a/bTesting": {
+        "testA": "12dB/oct for musical overlap",
+        "testB": "48dB/oct for sharp separation"
+      },
+      "troubleshooting": {
+        "hollowSound": "Increase band2 gain by 2dB",
+        "muddy": "Increase band1 crossover to 180Hz"
+      }
+    },
+    "03-rnb-vocal": {
+      "metadata": {
+        "plugin": "Frequency Splitter",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "R&B Vocal Chain",
+        "category": "genre",
+        "genre": "R&B",
+        "mood": "smooth"
+      },
+      "settings": {
+        "crossover1": 200,
+        "crossover2": 4000,
+        "slope": "24dB/oct",
+        "mode": "linear-phase",
+        "band1": {
+          "gain": -2,
+          "processing": "high-pass 80Hz"
+        },
+        "band2": {
+          "gain": 1,
+          "processing": "presence boost 3-5kHz"
+        },
+        "band3": {
+          "gain": 0,
+          "processing": "air boost 8kHz+"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Compression on all bands"
+        ],
+        "post": [
+          "De-esser on band 3 only"
+        ]
+      },
+      "workflow": "Vocal-specific split: Band 1 removes mud, Band 2 adds presence, Band 3 adds air. Apply before vocal chain.",
+      "genreTags": [
+        "R&B",
+        "vocal",
+        "smooth",
+        "presence"
+      ],
+      "a/bTesting": {
+        "testA": "Linear phase for vocal transparency",
+        "testB": "Minimum phase for punch"
+      },
+      "troubleshooting": {
+        "harshVocals": "Reduce band2 gain by 2dB",
+        "sibilance": "Increase de-esser threshold on band3"
+      }
+    },
+    "04-edm-bass-rush": {
+      "metadata": {
+        "plugin": "Frequency Splitter",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "EDM Bass Rush",
+        "category": "genre",
+        "genre": "EDM",
+        "mood": "electric"
+      },
+      "settings": {
+        "crossover1": 80,
+        "crossover2": 200,
+        "crossover3": 800,
+        "slope": "24dB/oct",
+        "mode": "linear-phase",
+        "band1": {
+          "gain": 3,
+          "processing": "sub oscillator layer"
+        },
+        "band2": {
+          "gain": 2,
+          "processing": "distortion, drive 15%"
+        },
+        "band3": {
+          "gain": 0,
+          "processing": "bitcrusher, 16-bit"
+        },
+        "band4": {
+          "gain": -1,
+          "processing": "high-pass 2kHz"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Band 2 distortion"
+        ],
+        "post": [
+          "Limiter on band 1"
+        ]
+      },
+      "workflow": "Four-way split for bass Rush. Sub, grind, crunch, and air bands processed independently for maximum impact.",
+      "genreTags": [
+        "EDM",
+        "bass",
+        "rush",
+        "electric"
+      ],
+      "a/bTesting": {
+        "testA": "Linear phase for clean bass",
+        "testB": "Minimum phase for impact"
+      },
+      "troubleshooting": {
+        "clipping": "Reduce gains, increase limiter threshold",
+        "weakSub": "Increase band1 gain by 3dB"
+      }
+    },
+    "05-lofi-degrade": {
+      "metadata": {
+        "plugin": "Frequency Splitter",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Lo-Fi Degradation",
+        "category": "genre",
+        "genre": "lo-fi",
+        "mood": "nostalgic"
+      },
+      "settings": {
+        "crossover1": 500,
+        "crossover2": 3000,
+        "slope": "12dB/oct",
+        "mode": "minimum-phase",
+        "band1": {
+          "gain": -1,
+          "processing": "bitcrusher 8-bit"
+        },
+        "band2": {
+          "gain": 0,
+          "processing": "saturation 5%"
+        },
+        "band3": {
+          "gain": -2,
+          "processing": "high-pass 6kHz"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Tape wobble on band1"
+        ],
+        "post": [
+          "Vinyl crackle on band2"
+        ]
+      },
+      "workflow": "Three-way lo-fi split. Lows get bitcrushed, mids saturated, highs rolled off for authentic degradation.",
+      "genreTags": [
+        "lo-fi",
+        "nostalgic",
+        "vintage",
+        "degrade"
+      ],
+      "a/bTesting": {
+        "testA": "12dB/oct for smooth degradation",
+        "testB": "48dB/oct for obvious bands"
+      },
+      "troubleshooting": {
+        "tooNoisy": "Reduce band1 bitcrusher to 12-bit"
+      }
+    },
+    "06-drill-sub": {
+      "metadata": {
+        "plugin": "Frequency Splitter",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Drill Sub Punishment",
+        "category": "genre",
+        "genre": "drill",
+        "mood": "dark"
+      },
+      "settings": {
+        "crossover1": 120,
+        "slope": "24dB/oct",
+        "mode": "minimum-phase",
+        "band1": {
+          "gain": 4,
+          "processing": "extreme saturation 25%"
+        },
+        "band2": {
+          "gain": 0,
+          "processing": "high-pass 3kHz"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Distortion pedal style"
+        ],
+        "post": [
+          "Fruily Limiter - Heavy limiting"
+        ]
+      },
+      "workflow": "Two-way split for extreme sub processing. Heavy saturation on sub band creates grimy texture.",
+      "genreTags": [
+        "drill",
+        "dark",
+        "sub",
+        "heavy"
+      ],
+      "a/bTesting": {
+        "testA": "24dB/oct sharp crossover",
+        "testB": "12dB/oct musical overlap"
+      },
+      "troubleshooting": {
+        "tooDistorted": "Reduce saturation to 15%",
+        "losingWeight": "Increase band1 gain, reduce crossover"
+      }
+    },
+    "07-vocal-doubler": {
+      "metadata": {
+        "plugin": "Frequency Splitter",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Vocal Doubler Split",
+        "category": "genre",
+        "genre": "R&B",
+        "mood": "smooth"
+      },
+      "settings": {
+        "crossover1": 2000,
+        "slope": "24dB/oct",
+        "mode": "linear-phase",
+        "band1": {
+          "gain": 0,
+          "processing": "original dry"
+        },
+        "band2": {
+          "gain": 0,
+          "processing": "pitch shift +5 cents, 35% mix"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Auto-Tune if needed"
+        ],
+        "post": [
+          "Reverb on combined signal"
+        ]
+      },
+      "workflow": "Create subtle doubling effect by pitch-shifting only high frequencies. More natural than full spectrum shift.",
+      "genreTags": [
+        "R&B",
+        "vocal",
+        "doubling",
+        "smooth"
+      ],
+      "a/bTesting": {
+        "testA": "Linear phase for no phasiness",
+        "testB": "Minimum phase for punch"
+      },
+      "troubleshooting": {
+        "phasing": "Use linear phase, reduce mix to 25%"
+      }
+    },
+    "08-mix-bus": {
+      "metadata": {
+        "plugin": "Frequency Splitter",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Mix Bus Separation",
+        "category": "genre",
+        "genre": "mastering",
+        "mood": "transparent"
+      },
+      "settings": {
+        "crossover1": 80,
+        "crossover2": 400,
+        "crossover3": 3000,
+        "slope": "24dB/oct",
+        "mode": "linear-phase",
+        "band1": {
+          "gain": 0,
+          "processing": "high-pass 30Hz"
+        },
+        "band2": {
+          "gain": 0,
+          "processing": "mid focus"
+        },
+        "band3": {
+          "gain": 0,
+          "processing": "presence band"
+        },
+        "band4": {
+          "gain": 0,
+          "processing": "air band"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Individual band compression"
+        ],
+        "post": [
+          "Multi-band limiting"
+        ]
+      },
+      "workflow": "Mastering-grade split for mix processing. Each band can be compressed/limited independently for transparent control.",
+      "genreTags": [
+        "mastering",
+        "mixing",
+        "transparent",
+        "separation"
+      ],
+      "a/bTesting": {
+        "testA": "Linear phase for mastering",
+        "testB": "Minimum phase for mixing"
+      },
+      "troubleshooting": {
+        "phaseIssues": "Always use linear phase for mastering"
+      }
+    },
+    "09-parallel-distort": {
+      "metadata": {
+        "plugin": "Frequency Splitter",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Parallel Distortion Split",
+        "category": "genre",
+        "genre": "EDM",
+        "mood": "electric"
+      },
+      "settings": {
+        "crossover1": 500,
+        "crossover2": 2000,
+        "slope": "24dB/oct",
+        "mode": "minimum-phase",
+        "band1": {
+          "gain": -6,
+          "processing": "clean low-end"
+        },
+        "band2": {
+          "gain": 6,
+          "processing": "heavy distortion"
+        },
+        "band3": {
+          "gain": 0,
+          "processing": "crisp highs"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Clean band for foundation"
+        ],
+        "post": [
+          "Recombine with parallel routing"
+        ]
+      },
+      "workflow": "Create parallel distortion effect. Clean lows + distorted mids + crisp highs for maximum impact.",
+      "genreTags": [
+        "EDM",
+        "distortion",
+        "parallel",
+        "electric"
+      ],
+      "a/bTesting": {
+        "testA": "Minimum phase for impact",
+        "testB": "Linear phase for transparency"
+      },
+      "troubleshooting": {
+        "tooDirty": "Reduce band2 gain by 6dB",
+        "thinSound": "Increase band1 gain by 3dB"
+      }
+    },
+    "10-kick-bass": {
+      "metadata": {
+        "plugin": "Frequency Splitter",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Kick/Bass Separation",
+        "category": "genre",
+        "genre": "EDM",
+        "mood": "punchy"
+      },
+      "settings": {
+        "crossover1": 80,
+        "slope": "48dB/oct",
+        "mode": "minimum-phase",
+        "band1": {
+          "gain": 0,
+          "processing": "kick: 40-80Hz focus"
+        },
+        "band2": {
+          "gain": 0,
+          "processing": "bass: 80-200Hz focus"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Kick transient processing"
+        ],
+        "post": [
+          "Sidechain kick to bass"
+        ]
+      },
+      "workflow": "Sharp 48dB/oct split for clean kick/bass separation. Apply sidechain compression between bands for clean crossover.",
+      "genreTags": [
+        "EDM",
+        "kick",
+        "bass",
+        "separation"
+      ],
+      "a/bTesting": {
+        "testA": "48dB/oct for maximum separation",
+        "testB": "24dB/oct for musical overlap"
+      },
+      "troubleshooting": {
+        "muddyKick": "Increase crossover to 100Hz",
+        "holesInSound": "Reduce crossover to 60Hz"
+      }
+    },
+    "21-savage-split": {
+      "metadata": {
+        "plugin": "Frequency Splitter",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Monolith Sub Split",
+        "category": "signature",
+        "inspiredBy": "21 Savage deep sub aesthetic"
+      },
+      "settings": {
+        "crossover1": 100,
+        "slope": "24dB/oct",
+        "mode": "minimum-phase",
+        "band1": {
+          "gain": 3,
+          "processing": "extreme low enhancement"
+        },
+        "band2": {
+          "gain": 0,
+          "processing": "high-pass 150Hz"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Saturation on band1"
+        ],
+        "post": [
+          "Heavy limiting on band1"
+        ]
+      },
+      "workflow": "Two-way split focused on sub dominance. Heavy processing on sub band for monolithic low-end presence.",
+      "characteristics": [
+        "deep",
+        "heavy",
+        "monolithic",
+        "dark"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "drill",
+        "dark trap"
+      ],
+      "a/bTesting": {
+        "testA": "Minimum phase for impact",
+        "testB": "Linear phase for extension"
+      },
+      "troubleshooting": {
+        "clipping": "Reduce band1 gain to 2dB"
+      }
+    },
+    "drake-split": {
+      "metadata": {
+        "plugin": "Frequency Splitter",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "OVO Vocal Focus",
+        "category": "signature",
+        "inspiredBy": "Drone vocal prominence"
+      },
+      "settings": {
+        "crossover1": 250,
+        "crossover2": 5000,
+        "slope": "24dB/oct",
+        "mode": "linear-phase",
+        "band1": {
+          "gain": -2,
+          "processing": "sub reduction"
+        },
+        "band2": {
+          "gain": 2,
+          "processing": "presence boost 2-5kHz"
+        },
+        "band3": {
+          "gain": 1,
+          "processing": "air boost 8kHz+"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Vocal chain on band2"
+        ],
+        "post": [
+          "De-esser on band3"
+        ]
+      },
+      "workflow": "Vocal-focused split for maximum clarity. Sub reduction makes space, presence boost cuts through mix.",
+      "characteristics": [
+        "clear",
+        "prominent",
+        "polished",
+        "vocal"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "R&B",
+        "vocal"
+      ],
+      "a/bTesting": {
+        "testA": "Linear phase for vocal truth",
+        "testB": "Minimum phase for punch"
+      },
+      "troubleshooting": {
+        "vocalMasking": "Increase band1 reduction"
+      }
+    },
+    "just-blaze-split": {
+      "metadata": {
+        "plugin": "Frequency Splitter",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Soul Clarity Split",
+        "category": "signature",
+        "inspiredBy": "Just Blaze soulful clarity"
+      },
+      "settings": {
+        "crossover1": 200,
+        "crossover2": 2500,
+        "slope": "24dB/oct",
+        "mode": "linear-phase",
+        "band1": {
+          "gain": 1,
+          "processing": "warm foundation"
+        },
+        "band2": {
+          "gain": 0,
+          "processing": "vocal/natural clarity"
+        },
+        "band3": {
+          "gain": -1,
+          "processing": "smooth highs"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Vintage compression on band1"
+        ],
+        "post": [
+          "Natural reverb on band2"
+        ]
+      },
+      "workflow": "Three-way soulful split. Warm foundation, natural vocal clarity, smooth highs for timeless soul sound.",
+      "characteristics": [
+        "warm",
+        "clear",
+        "soulful",
+        "timeless"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "R&B",
+        "soulful"
+      ],
+      "a/bTesting": {
+        "testA": "Linear phase for vocal truth",
+        "testB": "Minimum phase for warmth"
+      },
+      "troubleshooting": {
+        "harshVocals": "Reduce band3 gain by 2dB"
+      }
+    },
+    "metro-boomin-split": {
+      "metadata": {
+        "plugin": "Frequency Splitter",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Boomin Separation",
+        "category": "signature",
+        "inspiredBy": "Metro Boomin mix clarity"
+      },
+      "settings": {
+        "crossover1": 150,
+        "crossover2": 4000,
+        "slope": "24dB/oct",
+        "mode": "linear-phase",
+        "band1": {
+          "gain": 1,
+          "processing": "sub enhancement"
+        },
+        "band2": {
+          "gain": 0,
+          "processing": "vocal clarity"
+        },
+        "band3": {
+          "gain": -1,
+          "processing": "air boost"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Sub-focused processing"
+        ],
+        "post": [
+          "Vocal chain on band2"
+        ]
+      },
+      "workflow": "Professional three-way split for modern hip-hop clarity. Sub band gets enhancement, vocal band gets clarity, highs tamed.",
+      "characteristics": [
+        "clear",
+        "modern",
+        "professional",
+        "punchy"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "trap",
+        "modern"
+      ],
+      "a/bTesting": {
+        "testA": "Linear phase for transparency",
+        "testB": "Minimum phase for punch"
+      },
+      "troubleshooting": {
+        "muddy": "Increase band1 crossover to 180Hz"
+      }
+    },
+    "mike-will-split": {
+      "metadata": {
+        "plugin": "Frequency Splitter",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Future Bass Split",
+        "category": "signature",
+        "inspiredBy": "Mike Will Made-It future bass"
+      },
+      "settings": {
+        "crossover1": 100,
+        "crossover2": 200,
+        "crossover3": 3000,
+        "slope": "24dB/oct",
+        "mode": "linear-phase",
+        "band1": {
+          "gain": 2,
+          "processing": "sub swell"
+        },
+        "band2": {
+          "gain": 3,
+          "processing": "supersaw layering"
+        },
+        "band3": {
+          "gain": 1,
+          "processing": "pluck emphasis"
+        },
+        "band4": {
+          "gain": 0,
+          "processing": "sibilance control"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Band-specific processing"
+        ],
+        "post": [
+          "Master bus processing"
+        ]
+      },
+      "workflow": "Four-way future bass split. Each layer processed independently for maximum presence and width.",
+      "characteristics": [
+        "wide",
+        "bright",
+        "futuristic",
+        "layered"
+      ],
+      "genreTags": [
+        "EDM",
+        "future bass",
+        "electric"
+      ],
+      "a/bTesting": {
+        "testA": "Linear phase for wide stereo",
+        "testB": "Minimum phase for mono compatibility"
+      },
+      "troubleshooting": {
+        "phasey": "Use linear phase consistently"
+      }
+    },
+    "the-weeknd-split": {
+      "metadata": {
+        "plugin": "Frequency Splitter",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Night Drive Split",
+        "category": "signature",
+        "inspiredBy": "The Weeknd 80s retro"
+      },
+      "settings": {
+        "crossover1": 400,
+        "crossover2": 3000,
+        "slope": "12dB/oct",
+        "mode": "linear-phase",
+        "band1": {
+          "gain": 0,
+          "processing": "warm low-end"
+        },
+        "band2": {
+          "gain": -1,
+          "processing": "vintage mid"
+        },
+        "band3": {
+          "gain": 0,
+          "processing": "80s air"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Tape saturation on band1"
+        ],
+        "post": [
+          "Vintage EQ on band3"
+        ]
+      },
+      "workflow": "Three-way 80s retro split. Band 1 warmth, Band 2 vintage mids, Band 3 controlled air for authentic retro sound.",
+      "characteristics": [
+        "retro",
+        "warm",
+        "80s",
+        "nostalgic"
+      ],
+      "genreTags": [
+        "R&B",
+        "synthwave",
+        "retro"
+      ],
+      "a/bTesting": {
+        "testA": "Linear phase for authentic reproduction",
+        "testB": "12dB/oct for smooth blending"
+      },
+      "troubleshooting": {
+        "tooModern": "Increase tape saturation"
+      }
+    },
+    "timbaland-split": {
+      "metadata": {
+        "plugin": "Frequency Splitter",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Beat Break Split",
+        "category": "signature",
+        "inspiredBy": "Timbaland experimental"
+      },
+      "settings": {
+        "crossover1": 300,
+        "crossover2": 1500,
+        "crossover3": 4000,
+        "slope": "24dB/oct",
+        "mode": "minimum-phase",
+        "band1": {
+          "gain": -2,
+          "processing": "unconventional low"
+        },
+        "band2": {
+          "gain": 3,
+          "processing": "rhythmic mid"
+        },
+        "band3": {
+          "gain": 1,
+          "processing": "textured high"
+        },
+        "band4": {
+          "gain": 2,
+          "processing": "air/shimmer"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Unique processing per band"
+        ],
+        "post": [
+          "Creative effects on band4"
+        ]
+      },
+      "workflow": "Four-way experimental split. Each band gets unique processing for unconventional Timbaland-style soundscapes.",
+      "characteristics": [
+        "experimental",
+        "unconventional",
+        "forward",
+        "textured"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "experimental",
+        "innovative"
+      ],
+      "a/bTesting": {
+        "testA": "Minimum phase for impact",
+        "testB": "Linear phase for transparency"
+      },
+      "troubleshooting": {
+        "tooWeird": "Reduce gains by half"
+      }
+    },
+    "travis-scott-split": {
+      "metadata": {
+        "plugin": "Frequency Splitter",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Astro Sphere Split",
+        "category": "signature",
+        "inspiredBy": "Travis Scott atmospheric density"
+      },
+      "settings": {
+        "crossover1": 200,
+        "crossover2": 2000,
+        "slope": "12dB/oct",
+        "mode": "linear-phase",
+        "band1": {
+          "gain": 0,
+          "processing": "sub weight"
+        },
+        "band2": {
+          "gain": 1,
+          "processing": "reverb wash"
+        },
+        "band3": {
+          "gain": 2,
+          "processing": "high texture"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Band2 reverb processing"
+        ],
+        "post": [
+          "Band3 shimmer enhancement"
+        ]
+      },
+      "workflow": "Three-way split for atmospheric density. Band 2 handles atmospheric reverb, Band 3 adds high-frequency texture.",
+      "characteristics": [
+        "spacey",
+        "atmospheric",
+        "dense",
+        "textured"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "trap",
+        "atmospheric"
+      ],
+      "a/bTesting": {
+        "testA": "12dB/oct for smooth blending",
+        "testB": "24dB/oct for distinct bands"
+      },
+      "troubleshooting": {
+        "tooHarsh": "Reduce band3 gain by 2dB"
+      }
+    },
+    "wheezy-split": {
+      "metadata": {
+        "plugin": "Frequency Splitter",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "Paperboy Texture Split",
+        "category": "signature",
+        "inspiredBy": "Wheezy ATL bass texture"
+      },
+      "settings": {
+        "crossover1": 200,
+        "crossover2": 1500,
+        "slope": "24dB/oct",
+        "mode": "minimum-phase",
+        "band1": {
+          "gain": 1,
+          "processing": "punch"
+        },
+        "band2": {
+          "gain": 2,
+          "processing": "texture/grind"
+        },
+        "band3": {
+          "gain": 0,
+          "processing": "high-pass 4kHz"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Distortion on band2"
+        ],
+        "post": [
+          "Compression on band1"
+        ]
+      },
+      "workflow": "Three-way ATL bass split. Band 2 gets texture processing for characteristic Wheezy grind.",
+      "characteristics": [
+        "textured",
+        "ATL",
+        "grindy",
+        "bright"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "trap",
+        "ATL"
+      ],
+      "a/bTesting": {
+        "testA": "Minimum phase for impact",
+        "testB": "Linear phase for clarity"
+      },
+      "troubleshooting": {
+        "tooGrindy": "Reduce band2 gain by 2dB"
+      }
+    },
+    "zaytoven-split": {
+      "metadata": {
+        "plugin": "Frequency Splitter",
+        "version": "1.0",
+        "lastUpdated": "2026-02-03",
+        "author": "JaZeR",
+        "presetName": "ATL Keys Split",
+        "category": "signature",
+        "inspiredBy": "Zaytoven piano warmth"
+      },
+      "settings": {
+        "crossover1": 300,
+        "crossover2": 4000,
+        "slope": "24dB/oct",
+        "mode": "minimum-phase",
+        "band1": {
+          "gain": 1,
+          "processing": "warm low-end"
+        },
+        "band2": {
+          "gain": 0,
+          "processing": "vocal frequency focus"
+        },
+        "band3": {
+          "gain": -1,
+          "processing": "smooth high-end"
+        }
+      },
+      "chain": {
+        "pre": [
+          "Warm processing on band1"
+        ],
+        "post": [
+          "Tape saturation on all bands"
+        ]
+      },
+      "workflow": "Three-way piano/keys split with warmth focus. Band 1 adds warmth, Band 3 removes harshness for smooth tones.",
+      "characteristics": [
+        "warm",
+        "smooth",
+        "classic",
+        "piano"
+      ],
+      "genreTags": [
+        "hip-hop/rap",
+        "R&B",
+        "piano"
+      ],
+      "a/bTesting": {
+        "testA": "Minimum phase for warmth",
+        "testB": "Linear phase for transparency"
+      },
+      "troubleshooting": {
+        "harshHighs": "Increase band3 attenuation"
+      }
+    }
+  },
+  "parameters": {
+    "frequency-splitter-params": {
+      "plugin_name": "Frequency Splitter",
+      "category": "Utility / Mixing",
+      "engine": "Linear & Minimum Phase FFT/IIR",
+      "parameters": [
+        {
+          "name": "Cutoff Freq",
+          "type": "knob",
+          "unit": "Hz",
+          "description": "Sets the boundary between frequency bands.",
+          "vibe_impact": "Spectral focus, darkness vs brightness"
+        },
+        {
+          "name": "Slope",
+          "type": "selector",
+          "values": [
+            "6dB",
+            "12dB",
+            "24dB",
+            "48dB",
+            "96dB"
+          ],
+          "vibe_impact": "Isolation vs Blurring"
+        },
+        {
+          "name": "Mode",
+          "type": "selector",
+          "values": [
+            "Linear Phase",
+            "Min Phase",
+            "Zero Latency"
+          ],
+          "vibe_impact": "Transparency vs Pumping"
+        }
+      ],
+      "mix_impact_tags": [
+        "phase",
+        "routing",
+        "multiband"
+      ]
+    },
+    "splitter-specs": {
+      "plugin": {
+        "name": "Frequency Splitter",
+        "category": "Utility",
+        "type": "Crossover / Splitter",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/Frequency%20Splitter.htm"
+      },
+      "parameters": {
+        "global": [
+          {
+            "id": "splitMode",
+            "name": "Split Mode",
+            "options": [
+              "2 Bands",
+              "3 Bands"
+            ],
+            "description": "Determines the number of frequency ranges."
+          },
+          {
+            "id": "engineMode",
+            "name": "Engine Mode",
+            "options": [
+              "Minimum Phase (IIR)",
+              "Linear Phase"
+            ],
+            "description": "IIR for zero-latency; Linear Phase for phase-perfect recombination."
+          }
+        ],
+        "crossovers": [
+          {
+            "id": "xo1",
+            "name": "Low-Mid Crossover",
+            "range": "20Hz to 20kHz",
+            "default": "200Hz"
+          },
+          {
+            "id": "xo2",
+            "name": "Mid-High Crossover",
+            "range": "20Hz to 20kHz",
+            "default": "3000Hz"
+          },
+          {
+            "id": "slope",
+            "name": "Slope",
+            "options": [
+              6,
+              12,
+              18,
+              24,
+              30,
+              36,
+              48,
+              60,
+              72,
+              84,
+              96
+            ],
+            "unit": "dB/oct"
+          }
+        ],
+        "perBand": [
+          "Mute",
+          "Solo",
+          "Gain",
+          "Pan",
+          "Output Send"
+        ]
+      },
+      "sweetSpots": {
+        "subIsolation": "120-180Hz",
+        "vocalPresence": "2.5k-4kHz",
+        "highAir": "8k-12kHz"
+      }
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Split Translation Guide",
+      "filename": "03_Vibe_Split_Translation_Guide.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "Creating Multiband Effects",
+      "category": "by-goal",
+      "filename": "creating-multiband-effects.md"
+    },
+    {
+      "title": "Multi Band Distortion Patcher",
+      "category": "by-goal",
+      "filename": "multi-band-distortion-patcher.md"
+    },
+    {
+      "title": "Parallel Multiband Processing",
+      "category": "by-goal",
+      "filename": "parallel-multiband-processing.md"
+    },
+    {
+      "title": "Sub Bass Isolation",
+      "category": "by-goal",
+      "filename": "sub-bass-isolation.md"
+    },
+    {
+      "title": "Transparency Guide",
+      "category": "by-goal",
+      "filename": "transparency-guide.md"
+    },
+    {
+      "title": "01 808 Focus",
+      "category": "by-instrument",
+      "filename": "01-808-focus.md"
+    },
+    {
+      "title": "01 Bass Workflows",
+      "category": "by-instrument",
+      "filename": "01-bass-workflows.md"
+    },
+    {
+      "title": "02 Kick Bass Separation",
+      "category": "by-instrument",
+      "filename": "02-kick-bass-separation.md"
+    },
+    {
+      "title": "02 Vocal Mix Workflows",
+      "category": "by-instrument",
+      "filename": "02-vocal-mix-workflows.md"
+    },
+    {
+      "title": "03 Drill Sub Punishment",
+      "category": "by-instrument",
+      "filename": "03-drill-sub-punishment.md"
+    },
+    {
+      "title": "04 Trap Multiband",
+      "category": "by-instrument",
+      "filename": "04-trap-multiband.md"
+    },
+    {
+      "title": "05 Rnb Vocal Chain",
+      "category": "by-instrument",
+      "filename": "05-rnb-vocal-chain.md"
+    },
+    {
+      "title": "06 Vocal Doubler",
+      "category": "by-instrument",
+      "filename": "06-vocal-doubler.md"
+    },
+    {
+      "title": "07 Mix Bus",
+      "category": "by-instrument",
+      "filename": "07-mix-bus.md"
+    },
+    {
+      "title": "08 Parallel Distortion",
+      "category": "by-instrument",
+      "filename": "08-parallel-distortion.md"
+    },
+    {
+      "title": "09 Edm Bass Rush",
+      "category": "by-instrument",
+      "filename": "09-edm-bass-rush.md"
+    },
+    {
+      "title": "10 Lofi Degrade",
+      "category": "by-instrument",
+      "filename": "10-lofi-degrade.md"
+    },
+    {
+      "title": "Index",
+      "category": "by-instrument",
+      "filename": "INDEX.md"
+    }
+  ]
+}

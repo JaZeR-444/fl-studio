@@ -1,0 +1,252 @@
+{
+  "id": "fruity-equo",
+  "name": "Fruity Equo",
+  "category": "EQ",
+  "tier": "Free",
+  "type": "EQ",
+  "description": "Fruity Equo - EQ",
+  "tags": [
+    "mixing",
+    "tone-shaping",
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "eq",
+    "tone-shaping",
+    "mixing",
+    "audio"
+  ],
+  "icon": "/plugins/fruity-equo-icon.svg",
+  "color": "#84CC16",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-equo",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "pluginName": "Fruity Equo",
+    "category": "Equalizer / Filter",
+    "parameters": [
+      {
+        "section": "Shape",
+        "id": "morph",
+        "name": "Morph",
+        "range": {
+          "min": 1,
+          "max": 8,
+          "unit": "BankIndex"
+        },
+        "description": "Blends between the 8 EQ bank states."
+      },
+      {
+        "section": "Shape",
+        "id": "shift",
+        "name": "Band Shift",
+        "range": {
+          "min": -100,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "Offsets the frequency centers of all bands."
+      },
+      {
+        "section": "Shape",
+        "id": "mix",
+        "name": "Mix",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "Dry/Wet blend of the EQ processing."
+      },
+      {
+        "section": "Band",
+        "id": "vol",
+        "name": "Band Volume",
+        "range": {
+          "min": -18,
+          "max": 18,
+          "unit": "dB"
+        },
+        "description": "Gain per frequency band."
+      },
+      {
+        "section": "Band",
+        "id": "pan",
+        "name": "Band Pan",
+        "range": {
+          "min": -100,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "Panning per frequency band."
+      },
+      {
+        "section": "Routing",
+        "id": "send",
+        "name": "Send Amount",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "Sends selected bands to auxiliary tracks."
+      }
+    ]
+  },
+  "presets": {
+    "bright-and-clear": {
+      "presetName": "Bright and Clear",
+      "plugin": "Fruity Equo",
+      "description": "Enhances clarity and air while maintaining a clean low end.",
+      "settings": {
+        "mode": "VOL",
+        "masterGain": 1,
+        "smooth": 0.15,
+        "bands": {
+          "lows": -1,
+          "lowMids": -2,
+          "mids": 0,
+          "highMids": 2.5,
+          "highs": 4,
+          "air": 6
+        }
+      },
+      "usage": "Best for dull vocals, acoustic guitars, or overheads."
+    },
+    "gentle-master-smile": {
+      "presetName": "Gentle Master Smile",
+      "plugin": "Fruity Equo",
+      "description": "A subtle 'V' shape for the master bus to add final polish.",
+      "settings": {
+        "mode": "VOL",
+        "masterGain": 1,
+        "smooth": 0.4,
+        "bands": {
+          "lows": 1.5,
+          "mids": -1,
+          "highs": 2
+        }
+      },
+      "usage": "Use as a final touch on the master track to make the mix sound finished."
+    },
+    "low-end-punch": {
+      "presetName": "Low End Punch",
+      "plugin": "Fruity Equo",
+      "description": "Focuses energy on the fundamental bass frequencies while cutting mud.",
+      "settings": {
+        "mode": "VOL",
+        "masterGain": 1,
+        "smooth": 0.1,
+        "bands": {
+          "sub": 3,
+          "thump": 4.5,
+          "mud": -3,
+          "mids": -1,
+          "highs": 0
+        }
+      },
+      "usage": "Best for kicks and bass synths that need more presence in the low end."
+    },
+    "radio-effect": {
+      "presetName": "Radio Effect",
+      "plugin": "Fruity Equo",
+      "description": "Aggressive band-pass filtering for a lo-fi telephonic sound.",
+      "settings": {
+        "mode": "VOL",
+        "masterGain": 0.8,
+        "smooth": 0,
+        "bands": {
+          "lows": -100,
+          "mids": 6,
+          "highs": -100
+        }
+      },
+      "usage": "Creative effect for intros or bridge sections."
+    },
+    "spectral-width": {
+      "presetName": "Spectral Width",
+      "plugin": "Fruity Equo",
+      "description": "Pans different frequencies across the stereo field for massive width.",
+      "settings": {
+        "mode": "PAN",
+        "masterGain": 1,
+        "smooth": 0.3,
+        "bands": {
+          "lows": 0,
+          "lowMids": -0.2,
+          "mids": 0.2,
+          "highMids": -0.4,
+          "highs": 0.4
+        }
+      },
+      "usage": "Best for synth pads, background vocals, or sound effects."
+    },
+    "vocal-presence": {
+      "presetName": "Vocal Presence",
+      "plugin": "Fruity Equo",
+      "description": "Targets the 'expensive' frequencies in a vocal performance.",
+      "settings": {
+        "mode": "VOL",
+        "masterGain": 1,
+        "smooth": 0.2,
+        "bands": {
+          "body": 0,
+          "nasal": -1.5,
+          "clarity": 2,
+          "presence": 3.5,
+          "air": 5
+        }
+      },
+      "usage": "Apply to lead vocals to help them sit on top of a dense mix."
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use\n\nFruity Equo is a high-performance, 32-band graphic equalizer plugin for FL Studio. Unlike standard parametric EQs, Equo provides a fixed set of frequency bands that can be controlled as a group or individually, offering a more \"sculptural\" approach to tonal shaping.\n\n## Core Identity\nEquo is designed for broad tonal adjustments and creative filtering rather than surgical precision. Its strength lies in its ability to quickly \"draw\" EQ curves and interpolate between different EQ states.\n\n## When To Use It\n- **Broad Tonal Balancing**: Quickly tilting the overall frequency balance of a sound.\n- **Creative Filtering**: Using the 32 bands to create complex filter shapes that would be tedious with parametric nodes.\n- **Spectral Panning**: Using the \"Pan\" mode to distribute different frequencies across the stereo field.\n- **Morphing/Interpolation**: Using the \"Target\" and \"Interpolate\" features to move between different EQ curves over time.\n- **Visual Feedback**: When you need a clear, vertical-bar representation of the frequency spectrum.\n\n## When NOT To Use It\n- **Surgical Notching**: Use Fruity Parametric EQ 2 for removing specific resonant frequencies or narrow-band interference.\n- **Low CPU Overhead**: While efficient, standard filters are lighter if you only need a simple high-pass or low-pass.\n- **Phase-Critical Mastering**: Linear phase EQs are often preferred for mastering to avoid phase shifting at crossover points.\n",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow\n\nFruity Equo's interface is divided into several functional zones that dictate how the 32 frequency bands behave.\n\n## 1. The Main Display (The Bars)\n- **32 Frequency Bands**: These represent the gain levels for fixed frequency ranges across the audible spectrum.\n- **Left-Click & Drag**: Draw a curve across the bands.\n- **Right-Click**: Reset a band to zero.\n\n## 2. Mode Selectors (Bottom Left)\n- **VOL (Volume)**: Default mode. The sliders control the gain of each band.\n- **PAN (Panning)**: The sliders control the stereo placement of each band. This allows for \"spectral panning.\"\n- **SEND**: Controls how much of each band is sent to the designated Send track (if configured).\n\n## 3. Global Controls (Right Side)\n- **Master Gain**: Offsets the overall output level.\n- **Interpolate**: Morph between the current curve and the \"Target\" curve.\n- **Smooth**: Applies smoothing to the drawn curve to avoid harsh transitions between bands.\n\n## 4. Preset/Bank Management\n- **Target Bank**: You can store different curves in banks and interpolate between them using the slider.\n\n## Signal Flow\n1. **Input Signal**: Audio enters the plugin.\n2. **Band Splitting**: The signal is divided into 32 discrete frequency bands.\n3. **Gain/Pan Processing**: Each band is scaled based on the VOL/PAN sliders.\n4. **Summing**: The processed bands are recombined.\n5. **Output**: The final mixed signal exits the plugin.\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques And Best Practices\n\nMastering Fruity Equo requires understanding its unique \"drawing\" workflow and its dual-mode capability.\n\n## Drawing Techniques\n- **Smooth Curves**: Hold `Shift` while drawing to constrain movements or use the `Smooth` knob to iron out jagged peaks.\n- **Group Edits**: Click and drag across multiple bands to shape large sections of the spectrum at once.\n- **Resetting**: Right-click on a band to snap it back to 0dB. To reset all bands, use the \"Reset\" option in the plugin menu.\n\n## Spectral Panning (The Secret Weapon)\nOne of Equo's most powerful features is the **PAN mode**. \n1. Switch the mode to **PAN**.\n2. Draw a curve where some bands are panned left and others right.\n3. This creates a massive sense of width without the phase issues often associated with \"widener\" plugins.\n- **Pro Tip**: Pan lower frequencies (bass/kick) to the center and gradually spread higher frequencies (snares/hats) outward.\n\n## Taming Resonances\nWhile not surgical, Equo can be used to \"tilt\" a sound. If a vocal is too \"boxy,\" try dipping the 300Hz-500Hz range across 3-4 bands in a gentle arc.\n\n## Interpolation for Motion\nUse the **Target Bank** feature to create a \"Dark\" EQ on Bank 1 and a \"Bright\" EQ on Bank 2. Automate the **Interpolate** knob to create a custom, multi-band filter sweep that sounds much more organic than a simple low-pass filter.\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide\n\nHow to translate creative goals into Equo settings.\n\n| Desired Vibe | Frequency Action | Bands to Focus On |\n| :--- | :--- | :--- |\n| **Airy / Shimmering** | Gentle boost | 10kHz - 20kHz |\n| **Punchy / Aggressive** | Boost | 2kHz - 5kHz |\n| **Warm / Analog** | Gentle low-mid boost, High-end roll-off | 200Hz - 600Hz, 12kHz+ |\n| **Dark / Lo-Fi** | Heavy high-end cut | 5kHz and above |\n| **Wide / Immersive** | Alternate Panning left/right | All bands (PAN mode) |\n| **Muddy / Boxy (Fix)** | Cut | 250Hz - 500Hz |\n| **Harsh / Piercing (Fix)** | Cut | 2kHz - 4kHz |\n\n## Vibe Check: The \"Smile\" Curve\nThe classic \"Smile\" curve (boosting lows and highs, cutting mids) works exceptionally well in Equo because of the 32 bands. It provides a more nuanced \"hifi\" sound than a standard 3-band shelf.\n\n## Creative Vibe: The \"Comb\" Filter\nDraw a series of alternating \"spikes\" (one up, one down) across the spectrum. In Equo, this creates a unique, metallic, or \"combed\" texture that can be automated for robotic vocal effects.\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Equo\r\n\r\n## What It Is\r\nFruity Equo is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Fruity Equo\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: 5 Minutes to Master Equo\n\nFruity Equo is fast. Here’s how to use it immediately.\n\n## 1. Tonal Shaping (30 Seconds)\n1. Load **Fruity Equo** on your mixer track.\n2. Click and drag across the 32 bands to draw an EQ curve.\n3. Up = Boost, Down = Cut.\n4. If you don't like it, right-click to reset individual bands.\n\n## 2. Spectral Panning (60 Seconds)\n1. Switch the mode button (bottom left) to **PAN**.\n2. Draw a \"mountain\" in the middle of the display.\n3. Your sound is now wider in the mids and mono in the lows/highs.\n4. Switch back to **VOL** to see your volume curve again—they are independent!\n\n## 3. The Smoothing Secret (30 Seconds)\n1. Draw a very jagged, messy curve.\n2. Turn the **Smooth** knob (right side) up.\n3. Watch the bars automatically \"average\" out for a more musical sound.\n\n## 4. Interpolation Morphing (2 Minutes)\n1. Set up a curve in **Bank 1**.\n2. Click the **2** button above the display to switch to Bank 2.\n3. Draw a completely different curve.\n4. Move the **Interpolate** slider between 1 and 2 to morph between your two different EQ settings.\n",
+      "01_Common_Mistakes": "# Common Mistakes with Fruity Equo\n\nAvoid these pitfalls to keep your mixes clean.\n\n## 1. Over-correction\nBecause it's so easy to \"draw\" in Equo, users often draw extreme 12dB+ boosts or cuts.\n- **Fix**: Use the `Smooth` knob to reduce the intensity, or try to achieve your goal with 3-4dB adjustments.\n\n## 2. Forgetting the Mode\nUsers often draw in **PAN** mode thinking they are in **VOL** mode.\n- **Symptom**: The sound doesn't change in volume, but it starts sounding \"weird\" or \"tilted\" in the speakers.\n- **Check**: Always check the highlight on the VOL/PAN/SEND buttons.\n\n## 3. Ignoring Phase Shift\nEquo is a minimum-phase graphic EQ. Heavy adjustments create phase shifts at the band crossovers.\n- **Fix**: Avoid using Equo for critical mastering if you need absolute phase transparency. For mixing individual tracks, it's usually fine.\n\n## 4. Excessive Smoothing\nTurning `Smooth` to 100% can make the EQ ineffective by flattening out all your intentional peaks.\n- **Fix**: Use smoothing as a \"polishing\" step, not a default setting. 10-20% is usually enough.\n",
+      "02_Best_Settings_Starting_Points": "# Best Settings & Starting Points\n\nUse these as a base for your sculpting.\n\n## The \"Hifi\" Smile\n- **Lows (20Hz-150Hz)**: 3dB Gentle Boost\n- **Mids (400Hz-2kHz)**: 2dB Gentle Dip\n- **Highs (5kHz-20kHz)**: 4dB Smooth Boost\n- **Result**: Modern, \"expensive\" sounding frequency balance.\n\n## The \"Radio\" Effect\n- **Lows (0Hz-400Hz)**: Complete Cut\n- **Highs (5kHz-20kHz)**: Complete Cut\n- **Mids (1kHz-3kHz)**: 6dB Peak\n- **Result**: Thin, \"telephone\" or \"AM radio\" vibe.\n\n## Transparent Wide (PAN Mode)\n- **Low-Mids**: Pan 10% Left\n- **Mids**: Pan 10% Right\n- **High-Mids**: Pan 20% Left\n- **Highs**: Pan 20% Right\n- **Result**: Adds stereo separation without changing the tonal balance or creating phase issues.\n\n## Sub-Bass Protector\n- **0Hz-40Hz**: Sharp Cut\n- **40Hz-80Hz**: 2dB Boost\n- **Result**: Removes mud while emphasizing the \"thump\" of the sub.\n",
+      "cheat-sheet": "# Fruity Equo: The Morphing Graphic EQ\r\n\r\n> **Scope:** Creative EQ, Live Performance, and Frequency Splitting.\r\n> **Source:** Internal Knowledge (Manual URL unavailable).\r\n> **Complexity:** Medium (Routing).\r\n\r\n## 🧠 The \"Motion\" Concept\r\nEquo is not for surgical mixing (use PEQ2 for that). Equo is for **Movement**.\r\n*   **Architecture:** A Graphic EQ with 8 separate Banks.\r\n*   **Morph:** You can smoothly crossfade between these 8 banks using the **Morph** knob.\r\n*   **Vol/Pan:** Each frequency band has its own Volume AND Panning slider.\r\n\r\n**Signal Flow:**\r\n`Input` -> **[BAND SPLIT]** -> **[VOL/PAN PER BAND]** -> **[SENDS]** -> **[MORPH INTERPOLATION]** -> **[SUM]** -> **[OUTPUT]**\r\n\r\n---\r\n\r\n## 🎛️ Section 1: The Morph Knob\r\n\r\nThe heart of Equo.\r\n*   **Setup:**\r\n    *   Select Bank 1. Draw a \"Low Pass\" curve.\r\n    *   Select Bank 2. Draw a \"High Pass\" curve.\r\n*   **Perform:** Automate the **Morph** knob from 0 to 1/8.\r\n*   **Result:** The EQ shape fluidly transforms from LP to HP. This allows for complex filter sequences that are impossible with standard parametrics.\r\n\r\n---\r\n\r\n## 🔁 Section 2: Frequency Splitting (The Send Matrix)\r\n\r\nEquo can route specific bands to other mixer tracks.\r\n*   **How:** In the **Send** section (top right?).\r\n*   **Action:** You can tell the \"Low Bands\" to go to Send 1, and \"High Bands\" to go to Send 2.\r\n*   **Application:**\r\n    *   Distort the Highs (Send 2) while keeping the Lows clean (Send 1).\r\n    *   This makes Equo a powerful **Multi-Band Splitter**.\r\n\r\n---\r\n\r\n## ⚡ Technical Specs: The Shift Knob\r\n\r\n*   **Function:** Moves the center frequencies of the bands up or down.\r\n*   **Effect:**\r\n    *   *Static EQ:* It changes the timbre.\r\n    *   *Dynamic:* Automating \"Shift\" creates a **Shepard Tone** or Phaser-like effect as the gaps between bands sweep through the spectrum.\r\n\r\n---\r\n\r\n## 🧪 \"Secret Sauce\" Workflows\r\n\r\n### 1. The \"Talkbox\" Vowel Filter\r\n1.  **Bank 1:** Boost Low-Mids (\"Ooo\").\r\n2.  **Bank 2:** Boost High-Mids (\"Aaa\").\r\n3.  **Bank 3:** Boost Highs (\"Eee\").\r\n4.  **Action:** Quickly automate the Morph knob between 1-3.\r\n5.  **Result:** The spectral footprint mimics the human vocal tract changing shape.\r\n\r\n### 2. Stereoizer EQ\r\n1.  **Concept:** Pan different frequencies to different ears.\r\n2.  **Action:**\r\n    *   Draw a \"Zig-Zag\" pattern in the **Pan** graph (toggle from Vol to Pan).\r\n    *   Low bands Left, Mid bands Right, High bands Left.\r\n3.  **Result:** Creates a wide, spacious image that doesn't collapse phase like delay-based wideners.\r\n\r\n### 3. Cleaning Mud\r\n1.  **Usage:** Put Equo on the Master.\r\n2.  **Analyze:** Watch the background display.\r\n3.  **Action:** Identify the muddy frequency accumulation.\r\n4.  **Cut:** Drag that specific band down. Because it's a Graphic EQ, it's very fast to \"draw\" the tonal balance you want.\r\n",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Equo\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Equo to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Equo\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Equo\r\n\r\nThis section contains learning information for the fruity-equo plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: Quick Result\n\nWhen you need to fix a sound fast, follow these steps in Equo.\n\n## The 3-Step Sculpt\n1. **Identify the Problem**: Listen for mud (low-mids) or harshness (high-mids).\n2. **Draw the Curve**: In **VOL** mode, gently pull down the bands in the problem areas.\n3. **Smooth It Out**: Turn the **Smooth** knob to about 25% to make the transition between bands natural.\n\n## The Instant Width Hack\n1. Switch to **PAN** mode.\n2. Click the \"Randomize\" option in the plugin settings (if available) or draw a jagged line.\n3. Turn the **Smooth** knob up until the width feels stable but wide.\n\n## The Master Tilt\n1. Draw a straight line from the bottom left to the top right.\n2. Use **Smooth** to make it a gentle ramp.\n3. This \"brightens\" the entire mix or track in seconds.\n",
+      "01_Goal_Shaping_And_Control": "# Goal: Shaping and Control\n\nAdvanced techniques for deep sound design.\n\n## Multi-Bank Morphing\n1. **Bank 1 (Standard)**: Your base EQ.\n2. **Bank 2 (Filtered)**: High-end rolled off, mids boosted.\n3. **Bank 3 (Resonant)**: Sharp peaks in the high-mids.\n- **Workflow**: Automate the **Interpolate** slider in your playlist to move between these states during different song sections (e.g., Verse vs. Chorus).\n\n## Spectral Cleaning\nUse Equo's 32 bands to \"mask\" specific ranges. If you have two sounds clashing (like a synth and a vocal), draw a \"dip\" in the synth's Equo precisely where the vocal's fundamental frequencies are.\n\n## Dynamic Panning\nAutomate the **PAN** button or the sliders in PAN mode to create a sound that \"swirls\" or changes its stereo image based on the frequency.\n"
+    },
+    "by-instrument": {
+      "bass": "# Instrument: Bass\n\nDefining the low end with Equo.\n\n## Sub Bass\n- **Fundamental**: Boost the band matching your key (e.g., 40Hz-60Hz).\n- **Upper Harmonics**: Small boost at 100Hz-200Hz to make it audible on small speakers.\n- **Precision**: Use sharp cuts on everything above 500Hz to leave room for everything else.\n\n## Electric/Slap Bass\n- **Grit**: Boost 1kHz-2kHz.\n- **String Noise**: Boost 4kHz.\n- **Thump**: Boost 80Hz.\n- **Muddiness**: Cut 250Hz.\n",
+      "drums": "# Instrument: Drums\n\nUsing Equo to make your drums pop.\n\n## The Kick Drum\n- **Sub Boost**: Small boost in the first 2-3 bands.\n- **Boxiness Cut**: Gentle dip around 400Hz (Bands 8-10).\n- **Beater Click**: Small boost around 3kHz-5kHz.\n- **Result**: A kick that is heavy but clear.\n\n## The Snare\n- **Body**: Boost around 200Hz.\n- **Snap**: Boost around 2kHz-4kHz.\n- **Sizzle**: Shelf-style boost from 8kHz upwards.\n- **Result**: A snare that cuts through the mix without being harsh.\n\n## Hi-Hats & Percussion\n- **Low Cut**: Pull all bands below 500Hz to minimum.\n- **Crispness**: Gentle boost in the 10kHz+ range.\n- **Stereo Spread**: Use **PAN mode** to pan the higher frequencies slightly to one side.\n",
+      "synth-pads": "# Instrument: Synth Pads\n\nCreating atmosphere and movement with Equo.\n\n## The \"Cloud\" Effect\n- **Low Cut**: Remove everything below 200Hz to avoid muddying the bass.\n- **High Shimmer**: Boost 8kHz+ for a \"glassy\" texture.\n- **Mid Scoop**: Cut 500Hz-1kHz to make the pad sound \"hollow\" and ethereal.\n\n## Movement via Interpolation\n1. Set Bank 1 to a \"Dark\" pad (Highs cut).\n2. Set Bank 2 to a \"Bright\" pad (Highs boosted).\n3. Automate the **Interpolate** slider with a slow LFO (Fruity Peak Controller) or a long automation clip.\n4. **Result**: The pad breathes and evolves throughout the song.\n\n## Width via PAN mode\n- Pan the low-mids slightly left and the high-mids slightly right.\n- This creates a \"wrapped\" sound that feels like it's surrounding the listener.\n",
+      "vocals": "# Instrument: Vocals\n\nPolishing voices with Equo.\n\n## Male Vocals\n- **Warmth**: Boost 150Hz-300Hz.\n- **Nasality Fix**: Cut 800Hz-1.2kHz.\n- **Intelligibility**: Boost 3kHz-5kHz.\n- **Air**: Boost 12kHz+.\n\n## Female Vocals\n- **Body**: Boost 200Hz-400Hz.\n- **Harshness Fix**: Cut 2.5kHz-4kHz.\n- **Silky Highs**: Smooth boost from 10kHz upwards.\n\n## Backing Vocals (The Background Hack)\n1. Switch to **PAN mode**.\n2. Draw a curve that pans the mids left and the highs right.\n3. This pulls the backing vocals away from the center-panned lead vocal, creating instant space.\n"
+    },
+    "common-usage.md": {
+      "common-usage": "# Common Workflows: Fruity Equo\r\n\r\n## 1. Complex Analyzing\r\n\r\n1.  **Mode:** Switch Equo to **Analyze** mode (if available/implied functionality).\r\n2.  **Display:** The bars react to the input audio.\r\n3.  **Use:** Use it as a secondary Spectrum Analyzer to spot which specific Graphic Band corresponds to a ringing frequency.\r\n\r\n## 2. The \"Riser\" Builder\r\n\r\n1.  **Input:** White Noise.\r\n2.  **Setup:**\r\n    *   Bank 1: All bands at 0 (Silence).\r\n    *   Bank 8: All bands at Max (Loud).\r\n    *   Bank 4: A peak in the middle.\r\n3.  **Morph:** Automate Morph from 1 to 8 over 8 bars.\r\n4.  **Shift:** Slowly automate Shift Up.\r\n5.  **Result:** A complex, evolving riser that grows in volume and spectral complexity.\r\n\r\n## 3. Multi-Band Distortion (Manual)\r\n\r\n1.  **Routing:**\r\n    *   Equo acts as the crossover.\r\n    *   **Send Mode:** Send Lows to Track 1, Mids to Track 2, Highs to Track 3.\r\n2.  **Processing:**\r\n    *   Track 1 (Lows): Compress heavily.\r\n    *   Track 2 (Mids): Add **Fruity Fast Dist**.\r\n    *   Track 3 (Highs): Add **Fruity Reeverb 2**.\r\n3.  **Result:** A pro-level sound design chain where effects are targeted to specific frequency content.\r\n\r\n## 4. Interpolated Filter Sweeps\r\n\r\n1.  **Goal:** A custom Low Pass Filter shape.\r\n2.  **Bank 1:** Draw a Steep Low Pass.\r\n3.  **Bank 2:** Draw a Gentle Low Pass.\r\n4.  **Bank 3:** Draw a Resonant Low Pass (Peak at cutoff).\r\n5.  **Morph:** Sweeping through these banks changes the *character* of the filter (Steepness/Resonance) dynamically. Standard filters usually only let you change Cutoff, not slope/shape in real-time.\r\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Equo\r\n\r\nThis section contains workflow information for the fruity-equo plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Equo\r\n\r\nThis section contains reference information for the fruity-equo plugin.\r\n"
+    }
+  }
+}

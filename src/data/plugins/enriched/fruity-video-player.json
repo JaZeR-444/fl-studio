@@ -1,0 +1,665 @@
+{
+  "id": "fruity-video-player",
+  "name": "Fruity Video Player",
+  "category": "Utility",
+  "tier": "Free",
+  "type": "Utility",
+  "description": "Fruity Video Player - Utility",
+  "tags": [
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "utility",
+    "routing"
+  ],
+  "icon": "/plugins/fruity-video-player-icon.svg",
+  "color": "#64748B",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-video-player",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "video-player-specs": {
+      "pluginName": "Fruity Video Player",
+      "category": "Utility",
+      "subCategory": "Video",
+      "version": "Latest",
+      "type": "Video Playback Engine",
+      "videoEngine": {
+        "decoder": "FFmpeg",
+        "maxResolution": "4K and above",
+        "hardwareAcceleration": "Supported (GPU-dependent)",
+        "colorDepth": "8-bit, 10-bit (format-dependent)"
+      },
+      "supportedFormats": {
+        "containers": [
+          ".avi",
+          ".mov",
+          ".mp4",
+          ".mkv",
+          ".wmv",
+          ".mpg",
+          ".mpeg",
+          ".flv",
+          ".webm",
+          ".m4v"
+        ],
+        "videoCodecs": [
+          "H.264/AVC",
+          "H.265/HEVC",
+          "ProRes",
+          "DNxHD",
+          "VP8",
+          "VP9",
+          "MPEG-2",
+          "MPEG-4"
+        ],
+        "audioCodecs": [
+          "AAC",
+          "MP3",
+          "PCM",
+          "AC3",
+          "DTS",
+          "Opus",
+          "Vorbis"
+        ]
+      },
+      "frameRates": {
+        "supported": [
+          23.976,
+          24,
+          25,
+          29.97,
+          30,
+          50,
+          59.94,
+          60
+        ],
+        "recommended": {
+          "cinema": 24,
+          "broadcast": 29.97,
+          "web": 30,
+          "highQuality": 60
+        }
+      },
+      "features": {
+        "timelineSync": {
+          "enabled": true,
+          "slavMode": true,
+          "description": "Synchronizes video playback with FL Studio timeline"
+        },
+        "smpteTimecode": {
+          "enabled": true,
+          "format": "HH:MM:SS:FF",
+          "description": "Industry-standard timecode display"
+        },
+        "audioExtraction": {
+          "enabled": true,
+          "routing": "Mixer tracks",
+          "description": "Route video audio to any mixer insert"
+        },
+        "detachableWindow": {
+          "enabled": true,
+          "multiMonitor": true,
+          "description": "Float video window on second monitor"
+        },
+        "preRoll": {
+          "enabled": true,
+          "range": [
+            0,
+            1000
+          ],
+          "unit": "frames",
+          "description": "Frames to play before timeline start"
+        },
+        "aspectRatio": {
+          "modes": [
+            "Keep Original",
+            "Stretch to Window",
+            "Letterbox"
+          ],
+          "default": "Keep Original"
+        }
+      },
+      "controls": {
+        "fileOperations": {
+          "open": "Load video file",
+          "reload": "Refresh current video",
+          "close": "Unload video"
+        },
+        "playbackControls": {
+          "slaveMode": {
+            "type": "toggle",
+            "default": true,
+            "description": "Enable timeline synchronization"
+          },
+          "preRoll": {
+            "type": "numeric",
+            "range": [
+              0,
+              1000
+            ],
+            "unit": "frames",
+            "default": 0
+          }
+        },
+        "audioControls": {
+          "volume": {
+            "type": "percentage",
+            "range": [
+              0,
+              100
+            ],
+            "unit": "%",
+            "default": 100
+          },
+          "output": {
+            "type": "selector",
+            "options": "Mixer tracks",
+            "default": "None"
+          }
+        },
+        "displayControls": {
+          "timeDisplay": {
+            "type": "toggle",
+            "modes": [
+              "SMPTE",
+              "Time"
+            ],
+            "default": "SMPTE"
+          },
+          "aspectRatio": {
+            "type": "selector",
+            "options": [
+              "Keep Original",
+              "Stretch",
+              "Letterbox"
+            ],
+            "default": "Keep Original"
+          },
+          "detachWindow": {
+            "type": "button",
+            "action": "Float window"
+          },
+          "alwaysOnTop": {
+            "type": "toggle",
+            "default": false
+          }
+        }
+      },
+      "performance": {
+        "cpuUsage": {
+          "h264_1080p": "Low-Medium",
+          "h264_4k": "Medium",
+          "h265_1080p": "Medium-High",
+          "h265_4k": "High",
+          "prores_1080p": "Medium",
+          "prores_4k": "Medium-High"
+        },
+        "optimization": {
+          "proxyFiles": "Recommended for 4K",
+          "codec": "H.264 for best balance",
+          "resolution": "1080p for editing, 4K for final"
+        }
+      },
+      "workflows": {
+        "filmScoring": {
+          "description": "Score music to video frames",
+          "keyFeatures": [
+            "SMPTE",
+            "Frame accuracy",
+            "Markers"
+          ]
+        },
+        "foleyWork": {
+          "description": "Sync sound effects to video",
+          "keyFeatures": [
+            "Frame display",
+            "Looping",
+            "Precise timing"
+          ]
+        },
+        "musicVideos": {
+          "description": "Score music for video content",
+          "keyFeatures": [
+            "Beat sync",
+            "Scene markers",
+            "Audio extraction"
+          ]
+        },
+        "audioExtraction": {
+          "description": "Extract audio from video",
+          "keyFeatures": [
+            "Audio routing",
+            "Quality preservation",
+            "Edison integration"
+          ]
+        }
+      },
+      "integration": {
+        "edison": "Record extracted audio",
+        "mixer": "Route video audio to tracks",
+        "timeline": "Sync with project timeline",
+        "markers": "Mark important video moments"
+      },
+      "hipHopApplications": {
+        "musicVideos": {
+          "description": "Score hip-hop music videos",
+          "techniques": [
+            "Sync 808s to visual impacts",
+            "Align hi-hats to camera movements",
+            "Match drops to scene changes",
+            "Extract dialogue for samples"
+          ]
+        },
+        "sampling": {
+          "description": "Extract audio from video for samples",
+          "techniques": [
+            "Record video audio to Edison",
+            "Extract dialogue snippets",
+            "Sample ambient sounds",
+            "Create unique textures"
+          ]
+        },
+        "livePerformance": {
+          "description": "Video playback for live shows",
+          "techniques": [
+            "Sync video to live performance",
+            "Visual cues for transitions",
+            "Stage visuals sync",
+            "Multi-screen setups"
+          ]
+        }
+      },
+      "troubleshooting": {
+        "videoNotPlaying": "Check codec compatibility, install FFmpeg codecs",
+        "audioOutOfSync": "Match project sample rate to video",
+        "choppyPlayback": "Use proxy files or lower resolution",
+        "noAudio": "Set Audio Output to mixer track",
+        "highCpu": "Use H.264 codec or lower resolution"
+      },
+      "proTips": [
+        "Use H.264 MP4 for best compatibility",
+        "Enable SMPTE for professional work",
+        "Route audio to dedicated mixer track",
+        "Use proxy files for 4K editing",
+        "Detach window for dual-monitor setup",
+        "Mark hit points with timeline markers",
+        "Set pre-roll to 24-48 frames for context",
+        "Keep aspect ratio on 'Keep Original'",
+        "Use frame numbers for precise sync",
+        "Export audio separately from video editor"
+      ]
+    }
+  },
+  "presets": {
+    "video-scoring-setups": {
+      "presetCategory": "Video Scoring Setups",
+      "version": "1.0",
+      "description": "Optimized configurations for different video scoring scenarios",
+      "presets": [
+        {
+          "name": "Hip-Hop Music Video",
+          "category": "Music Videos",
+          "description": "Optimized for scoring hip-hop music videos with beat sync",
+          "settings": {
+            "slaveMode": true,
+            "timeDisplay": "SMPTE",
+            "preRoll": 48,
+            "volume": 65,
+            "audioOutput": "Track 1 (Reference)",
+            "aspectRatio": "Keep Original",
+            "detachWindow": false
+          },
+          "workflow": "Load music video, mark chorus/verse transitions, sync beat drops to visual cuts",
+          "useCase": "Trap, drill, melodic rap videos",
+          "hipHopGenres": [
+            "Trap",
+            "Drill",
+            "Melodic Rap",
+            "Cloud Rap"
+          ],
+          "keyTechniques": [
+            "Sync 808 hits to visual impacts",
+            "Align hi-hat rolls to camera movements",
+            "Match beat drops to scene changes",
+            "Use video audio for ambient texture"
+          ]
+        },
+        {
+          "name": "Short Film Scoring",
+          "category": "Film Scoring",
+          "description": "Professional film scoring with frame-accurate timing",
+          "settings": {
+            "slaveMode": true,
+            "timeDisplay": "SMPTE",
+            "preRoll": 96,
+            "volume": 50,
+            "audioOutput": "Track 2 (Reference)",
+            "aspectRatio": "Keep Original",
+            "detachWindow": true
+          },
+          "workflow": "Load film, identify cue points, mark emotional beats, score to exact frames",
+          "useCase": "Independent films, short films, documentaries",
+          "keyTechniques": [
+            "Mark hit points with SMPTE timecode",
+            "Use pre-roll for musical context",
+            "Detach window for dual-monitor work",
+            "Create cue sheets with exact timecodes"
+          ]
+        },
+        {
+          "name": "Foley Sound Design",
+          "category": "Sound Design",
+          "description": "Frame-accurate foley work and sound effects",
+          "settings": {
+            "slaveMode": true,
+            "timeDisplay": "SMPTE",
+            "preRoll": 24,
+            "volume": 0,
+            "audioOutput": "None",
+            "aspectRatio": "Keep Original",
+            "detachWindow": false
+          },
+          "workflow": "Loop specific sections, create sounds in exact sync with visual actions",
+          "useCase": "Footsteps, door sounds, object interactions",
+          "keyTechniques": [
+            "Use frame numbers for exact timing",
+            "Loop short sections for repetitive sounds",
+            "Mute video audio to focus on created sounds",
+            "Use markers for multiple hit points"
+          ]
+        },
+        {
+          "name": "Audio Extraction",
+          "category": "Sampling",
+          "description": "Extract high-quality audio from video files",
+          "settings": {
+            "slaveMode": true,
+            "timeDisplay": "Time",
+            "preRoll": 0,
+            "volume": 100,
+            "audioOutput": "Track 3 (Edison)",
+            "aspectRatio": "Keep Original",
+            "detachWindow": false
+          },
+          "workflow": "Route to Edison, record specific sections, process extracted audio",
+          "useCase": "Dialogue sampling, ambient extraction, creative sampling",
+          "hipHopGenres": [
+            "Sample-based Hip-Hop",
+            "Boom Bap",
+            "Lo-Fi"
+          ],
+          "keyTechniques": [
+            "Route to Edison for recording",
+            "Set volume to 100% for clean extraction",
+            "Mark regions for specific samples",
+            "Process extracted audio for creative use"
+          ]
+        },
+        {
+          "name": "YouTube Content Scoring",
+          "category": "Content Creation",
+          "description": "Fast workflow for YouTube and content creation",
+          "settings": {
+            "slaveMode": true,
+            "timeDisplay": "Time",
+            "preRoll": 24,
+            "volume": 60,
+            "audioOutput": "Track 1 (Reference)",
+            "aspectRatio": "Keep Original",
+            "detachWindow": false
+          },
+          "workflow": "Quick video loading, mark key moments, score background music",
+          "useCase": "Vlogs, tutorials, montages, intros/outros",
+          "keyTechniques": [
+            "Use time display for beat-based timing",
+            "Mark key transitions with markers",
+            "Keep reference audio at moderate level",
+            "Quick turnaround workflow"
+          ]
+        },
+        {
+          "name": "Live Performance Video",
+          "category": "Live Performance",
+          "description": "Sync video for live hip-hop performances",
+          "settings": {
+            "slaveMode": true,
+            "timeDisplay": "Time",
+            "preRoll": 120,
+            "volume": 0,
+            "audioOutput": "None",
+            "aspectRatio": "Stretch to Window",
+            "detachWindow": true
+          },
+          "workflow": "Detach to projection screen, sync performance audio to video visuals",
+          "useCase": "Stage performances, live shows, festivals",
+          "hipHopGenres": [
+            "All Hip-Hop Subgenres"
+          ],
+          "keyTechniques": [
+            "Detach window for projection",
+            "Large pre-roll for stage cues",
+            "Mute video audio for live sound",
+            "Stretch to fill stage screens"
+          ]
+        },
+        {
+          "name": "Trap Beat Video Sync",
+          "category": "Music Videos",
+          "description": "Optimized for trap beat music videos with heavy 808s",
+          "settings": {
+            "slaveMode": true,
+            "timeDisplay": "SMPTE",
+            "preRoll": 48,
+            "volume": 70,
+            "audioOutput": "Track 1 (Reference)",
+            "aspectRatio": "Keep Original",
+            "detachWindow": false
+          },
+          "workflow": "Mark 808 hit points, sync hi-hat rolls to visual effects, align drops to cuts",
+          "useCase": "Modern trap, drill, rage beats",
+          "hipHopGenres": [
+            "Trap",
+            "Drill",
+            "Rage"
+          ],
+          "keyTechniques": [
+            "Sync 808 slides to slow-motion effects",
+            "Align hi-hat rolls to rapid cuts",
+            "Match snare hits to visual impacts",
+            "Use video effects timing for creative elements"
+          ]
+        },
+        {
+          "name": "Boom Bap Sample Extraction",
+          "category": "Sampling",
+          "description": "Extract vintage samples from old videos and films",
+          "settings": {
+            "slaveMode": false,
+            "timeDisplay": "Time",
+            "preRoll": 0,
+            "volume": 100,
+            "audioOutput": "Track 4 (Sampling)",
+            "aspectRatio": "Keep Original",
+            "detachWindow": false
+          },
+          "workflow": "Find interesting audio moments, extract to Edison, chop and process",
+          "useCase": "Old movies, documentaries, vintage footage",
+          "hipHopGenres": [
+            "Boom Bap",
+            "Lo-Fi Hip-Hop",
+            "Sample-based"
+          ],
+          "keyTechniques": [
+            "Disable slave mode for manual scrubbing",
+            "Extract dialogue and ambient sounds",
+            "Route to dedicated sampling track",
+            "Use for authentic vintage textures"
+          ]
+        },
+        {
+          "name": "Melodic Rap Video",
+          "category": "Music Videos",
+          "description": "Score melodic rap videos with emotional timing",
+          "settings": {
+            "slaveMode": true,
+            "timeDisplay": "SMPTE",
+            "preRoll": 72,
+            "volume": 60,
+            "audioOutput": "Track 1 (Reference)",
+            "aspectRatio": "Keep Original",
+            "detachWindow": false
+          },
+          "workflow": "Sync melodies to lip movements, align chord changes to scene transitions",
+          "useCase": "Melodic rap, emo rap, alternative hip-hop",
+          "hipHopGenres": [
+            "Melodic Rap",
+            "Emo Rap",
+            "Alternative Hip-Hop"
+          ],
+          "keyTechniques": [
+            "Match vocal melodies to visual pacing",
+            "Sync chord progressions to emotional beats",
+            "Use longer pre-roll for melodic context",
+            "Align instrument changes to scene changes"
+          ]
+        },
+        {
+          "name": "Multi-Camera Edit Sync",
+          "category": "Advanced",
+          "description": "Sync music to multi-camera music video edits",
+          "settings": {
+            "slaveMode": true,
+            "timeDisplay": "SMPTE",
+            "preRoll": 96,
+            "volume": 50,
+            "audioOutput": "Track 1 (Reference)",
+            "aspectRatio": "Keep Original",
+            "detachWindow": true
+          },
+          "workflow": "Mark camera angle changes, sync music to edit rhythm, align to visual flow",
+          "useCase": "Professional music videos with multiple cameras",
+          "hipHopGenres": [
+            "All Professional Productions"
+          ],
+          "keyTechniques": [
+            "Use SMPTE for precise edit timing",
+            "Mark each camera cut with timeline marker",
+            "Detach for better editing view",
+            "Sync musical elements to edit rhythm"
+          ]
+        }
+      ],
+      "workflowTemplates": {
+        "musicVideoScoring": {
+          "steps": [
+            "1. Load music video file (H.264 MP4 recommended)",
+            "2. Enable Slave Mode and SMPTE display",
+            "3. Set pre-roll to 48 frames for context",
+            "4. Route audio to reference track at 60-70% volume",
+            "5. Watch through and mark key moments with timeline markers",
+            "6. Identify beat drop points and scene changes",
+            "7. Score music to align with visual rhythm",
+            "8. Fine-tune timing using frame numbers",
+            "9. Export audio for video editing"
+          ]
+        },
+        "audioExtraction": {
+          "steps": [
+            "1. Load video with desired audio content",
+            "2. Route Audio Output to track with Edison inserted",
+            "3. Set volume to 100% for clean extraction",
+            "4. Mark region to extract with timeline markers",
+            "5. Record to Edison during playback",
+            "6. Save extracted audio from Edison",
+            "7. Process extracted audio as needed"
+          ]
+        },
+        "filmScoring": {
+          "steps": [
+            "1. Load film/scene file",
+            "2. Enable SMPTE display for frame accuracy",
+            "3. Set pre-roll to 96 frames for musical context",
+            "4. Detach window to second monitor if available",
+            "5. Watch through and identify cue points",
+            "6. Mark hit points with SMPTE timecodes",
+            "7. Create cue sheet with exact timecodes",
+            "8. Score to exact frame numbers",
+            "9. Export with timecode reference"
+          ]
+        }
+      },
+      "genreSpecificTips": {
+        "trap": {
+          "focus": "Heavy bass and hi-hat sync",
+          "videoElements": "Visual impacts, slow motion, rapid cuts",
+          "syncPoints": "808 hits, hi-hat rolls, snare hits, beat drops",
+          "recommendedSettings": "SMPTE display, 48-frame pre-roll, 65% reference volume"
+        },
+        "melodicRap": {
+          "focus": "Vocal melody and emotional timing",
+          "videoElements": "Lip sync, emotional scenes, transitions",
+          "syncPoints": "Melody changes, chord progressions, vocal runs",
+          "recommendedSettings": "SMPTE display, 72-frame pre-roll, 60% reference volume"
+        },
+        "boomBap": {
+          "focus": "Sample-based production and vintage aesthetic",
+          "videoElements": "Old footage, film grain, vintage clips",
+          "syncPoints": "Drum breaks, sample chops, scratch patterns",
+          "recommendedSettings": "Time display for manual scrubbing, 100% volume for extraction"
+        },
+        "drill": {
+          "focus": "Dark atmosphere and sliding 808s",
+          "videoElements": "Urban environments, night scenes, dramatic cuts",
+          "syncPoints": "808 slides, hi-hat patterns, aggressive cuts",
+          "recommendedSettings": "SMPTE display, 48-frame pre-roll, 70% reference volume"
+        },
+        "loFiHipHop": {
+          "focus": "Chill atmosphere and ambient textures",
+          "videoElements": "Animated loops, chill visuals, ambient scenes",
+          "syncPoints": "Loop points, atmospheric changes, vinyl crackle",
+          "recommendedSettings": "Time display, minimal pre-roll, focus on texture extraction"
+        }
+      }
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Video Player\r\n\r\n## What It Is\r\nFruity Video Player is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "performance-optimization": "# Performance Optimization for Fruity Video Player\r\n\r\n## Understanding Video Playback Performance\r\n\r\n### CPU Load Factors\r\n1. **Video Resolution**: Higher = more processing\r\n2. **Codec Complexity**: H.265 > H.264 > MJPEG\r\n3. **Frame Rate**: 60fps > 30fps > 24fps\r\n4. **File Location**: SSD > HDD > Network\r\n\r\n### Memory Considerations\r\n- Video playback uses **RAM buffering**\r\n- Higher resolution = more RAM usage\r\n- Multiple videos = multiplied RAM needs\r\n\r\n## Optimization Strategies\r\n\r\n### Pre-Production Setup\r\n\r\n#### Video Preparation\r\n1. **Convert to optimized format** before importing\r\n   - Use H.264 MP4 for balance\r\n   - Use MJPEG AVI for lowest CPU\r\n   - Avoid H.265/HEVC during production\r\n\r\n2. **Resolution guidelines**\r\n   - **Draft work**: 480p-720p\r\n   - **Fine-tuning**: 1080p\r\n   - **Final review**: Native resolution\r\n\r\n3. **Frame rate matching**\r\n   - Match video FPS to project needs\r\n   - Lower frame rate = less processing\r\n   - 24-30fps sufficient for most work\r\n\r\n#### File Storage\r\n- **Best**: Internal SSD\r\n- **Good**: External SSD (USB 3.0+)\r\n- **Avoid**: HDD, network drives, slow USB\r\n\r\n### During Production\r\n\r\n#### Buffer Settings\r\n- **Increase buffer length** in Audio Settings\r\n- More buffering = smoother playback\r\n- Trade-off: Slightly increased latency\r\n\r\n#### Playback Quality\r\n- **Lower quality** during intensive editing\r\n- **Full quality** for final review/export\r\n- Toggle as needed for workflow\r\n\r\n#### Multi-Monitor Setup\r\n- **Detach video** to second monitor\r\n- Reduces main screen rendering load\r\n- Improves overall UI responsiveness\r\n\r\n### Project Settings\r\n\r\n#### Audio Settings Optimization\r\n```\r\nBuffer Length: 512-1024 samples (video playback)\r\nSample Rate: 44.1kHz or 48kHz (match video)\r\nMixing: Async (for video sync)\r\n```\r\n\r\n#### CPU Management\r\n- **Close unused plugins** during video work\r\n- **Disable visualizers** (except video player)\r\n- **Freeze tracks** not currently editing\r\n\r\n## Workflow-Specific Tips\r\n\r\n### Music Video Sync Workflow\r\n1. Use **720p proxy** during beat arrangement\r\n2. Switch to **1080p** for final timing adjustments\r\n3. **Disable video** during intensive mixing\r\n4. **Re-enable** for final review\r\n\r\n### Film Scoring Workflow\r\n1. Import **full-resolution video** for reference\r\n2. Create **markers** at key scenes\r\n3. **Disable video** during composition\r\n4. **Enable at markers** to check sync\r\n\r\n### Live Performance Prep\r\n1. Test with **actual resolution** you'll use live\r\n2. Use **same codec** as performance system\r\n3. Monitor **CPU usage** during playback\r\n4. Have **backup lower-resolution** version ready\r\n\r\n### Sample Extraction\r\n1. Use **minimum needed resolution** (audio is goal)\r\n2. Mark **sample points** with video visible\r\n3. **Disable video** during chopping/editing\r\n4. **Re-enable** to verify timing\r\n\r\n## Troubleshooting Performance Issues\r\n\r\n### Video Stuttering\r\n**Symptoms**: Choppy playback, dropped frames\r\n**Solutions**:\r\n1. Lower video resolution\r\n2. Convert to simpler codec (MJPEG)\r\n3. Increase buffer size\r\n4. Close background applications\r\n5. Move video to faster storage\r\n\r\n### Audio/Video Desync\r\n**Symptoms**: Audio and video drift apart\r\n**Solutions**:\r\n1. Use constant frame rate (CFR) video\r\n2. Check offset parameter settings\r\n3. Verify sample rate matches\r\n4. Re-export video with correct settings\r\n\r\n### High CPU Usage\r\n**Symptoms**: System slowdown, crackling audio\r\n**Solutions**:\r\n1. Use lower resolution proxy\r\n2. Switch to more efficient codec\r\n3. Reduce frame rate\r\n4. Close other applications\r\n5. Freeze CPU-heavy tracks\r\n\r\n### Crashes/Freezing\r\n**Symptoms**: FL Studio unresponsive, crashes\r\n**Solutions**:\r\n1. Update video codecs (K-Lite, LAV Filters)\r\n2. Reduce video resolution drastically\r\n3. Check video file integrity\r\n4. Update FL Studio to latest version\r\n5. Increase system RAM if possible\r\n\r\n## Hardware Recommendations\r\n\r\n### Minimum for 1080p Playback\r\n- **CPU**: Quad-core 2.5GHz+\r\n- **RAM**: 8GB\r\n- **Storage**: SATA SSD\r\n- **GPU**: Integrated graphics okay\r\n\r\n### Recommended for Smooth Workflow\r\n- **CPU**: 6-8 core 3.0GHz+\r\n- **RAM**: 16GB+\r\n- **Storage**: NVMe SSD\r\n- **GPU**: Dedicated GPU (helps some codecs)\r\n\r\n### Optimal for 4K/Multiple Videos\r\n- **CPU**: 8+ core 3.5GHz+\r\n- **RAM**: 32GB+\r\n- **Storage**: High-speed NVMe SSD\r\n- **GPU**: Modern dedicated GPU with hardware decoding\r\n\r\n## Best Practices Summary\r\n\r\n1. **Pre-convert** videos to optimized formats\r\n2. **Use proxies** during heavy production work\r\n3. **Store videos** on fast SSD storage\r\n4. **Increase buffer** size if needed\r\n5. **Toggle video** on/off as workflow requires\r\n6. **Monitor CPU** usage and adjust accordingly\r\n7. **Update codecs** regularly\r\n8. **Test performance** before important sessions\r\n",
+      "signal-flow": "# Signal Flow: Fruity Video Player\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n",
+      "video-sync-fundamentals": "# Video Sync Fundamentals\r\n\r\n## Understanding Video Synchronization in FL Studio\r\n\r\n### Frame Rate vs. Tempo\r\n- **Frame Rate**: Video playback speed (24, 30, 60 fps)\r\n- **Tempo**: Musical timing (BPM)\r\n- **Sync**: Aligning video frames with musical beats\r\n\r\n### Why Sync Matters\r\n1. **Music Videos**: Beats hit on visual edits\r\n2. **Film Scoring**: Music matches scene changes\r\n3. **Live Performance**: Visuals sync with drops/transitions\r\n4. **Sampling**: Extract audio aligned to video\r\n\r\n## Core Sync Concepts\r\n\r\n### Time Base Alignment\r\n```\r\nVideo Timeline (seconds) → FL Studio Timeline (bars/beats)\r\n00:00 → Bar 1\r\n00:02 → Bar 2 (at 120 BPM)\r\n00:04 → Bar 3 (at 120 BPM)\r\n```\r\n\r\n### Frame-Accurate Editing\r\n- **Video frame**: Single image in video (1/30th second at 30fps)\r\n- **FL Studio step**: Single grid position in pattern\r\n- **Alignment**: Match important video frames to musical grid\r\n\r\n### Offset Correction\r\n- **Pre-roll**: Video starts before beat 1\r\n- **Offset parameter**: Shift video timing forward/backward\r\n- **Fine-tuning**: Adjust by frames or milliseconds\r\n\r\n## Hip-Hop Video Sync Applications\r\n\r\n### Music Video Production\r\n1. **Import rough cut** of music video\r\n2. **Mark video edits** with playlist markers\r\n3. **Align beats** to visual cuts\r\n4. **Adjust timing** for perfect sync\r\n5. **Export final** audio mix\r\n\r\n### Sample-Based Production\r\n1. **Load video** with source material\r\n2. **Mark sample points** using video reference\r\n3. **Extract audio** at precise timings\r\n4. **Chop samples** matching visual cues\r\n\r\n### Performance Preparation\r\n1. **Create backing track** with video reference\r\n2. **Sync visuals** to drops and transitions\r\n3. **Test timing** with live playback\r\n4. **Adjust for** display lag/latency\r\n\r\n## Common Sync Challenges\r\n\r\n### Audio/Video Drift\r\n- **Cause**: Different clock rates\r\n- **Solution**: Use constant frame rate video\r\n- **Prevention**: Pre-process video files\r\n\r\n### Latency Issues\r\n- **Cause**: Video decoding delay\r\n- **Solution**: Lower resolution or simpler codec\r\n- **Workaround**: Offset parameter adjustment\r\n\r\n### Performance Drops\r\n- **Cause**: High-resolution video, complex codec\r\n- **Solution**: Use proxy video during production\r\n- **Final render**: Swap to high-quality video\r\n\r\n## Best Practices\r\n\r\n1. **Use constant frame rate** (CFR) video files\r\n2. **Match project tempo** to video if possible\r\n3. **Add markers** at key video moments\r\n4. **Test sync** throughout the project\r\n5. **Keep video files** on fast storage (SSD)\r\n\r\n## Advanced Techniques\r\n\r\n### Beat-Matched Video Editing\r\n- Edit video to musical grid in advance\r\n- Import pre-synced video\r\n- Make minor timing adjustments in FL Studio\r\n\r\n### Multi-Camera Sync\r\n- Load different camera angles\r\n- Sync all to same master timeline\r\n- Switch between angles for different sections\r\n\r\n### Visual Automation\r\n- Automate mixer/effect parameters based on video\r\n- Create reactive visuals synced to audio\r\n- Use video as creative reference for production\r\n"
+    },
+    "Quick-Reference": {
+      "parameter-cheat-sheet": "# Fruity Video Player - Parameter Cheat Sheet\r\n\r\n## Core Controls\r\n\r\n### File Operations\r\n- **Open File:** Load video files for playback\r\n  - Supports: .avi, .mov, .mp4, .mkv, .wmv, .mpg, .flv\r\n  - FFmpeg decoder for broad compatibility\r\n  - Pro tip: Use H.264 or ProRes for best performance\r\n\r\n- **Reload:** Refresh video file if changed externally\r\n  - Useful for proxy workflow updates\r\n  - Pro tip: Use when switching between proxy and full-res\r\n\r\n### Playback Controls\r\n- **Slave to Host:** Enable/disable timeline synchronization\r\n  - ON: Video follows FL Studio playhead (default)\r\n  - OFF: Video plays independently\r\n  - Pro tip: Keep enabled for scoring work\r\n\r\n- **Pre-roll:** Set frames to play before timeline start\r\n  - Range: 0-1000 frames\r\n  - Use for: Context before cue point\r\n  - Pro tip: Set to 24-48 frames for smooth starts\r\n\r\n### Time Display\r\n- **SMPTE Mode:** Shows HH:MM:SS:FF format\r\n  - Industry standard for professional work\r\n  - Frame-accurate positioning\r\n  - Pro tip: Essential for collaboration with editors\r\n\r\n- **Time Mode:** Shows seconds.milliseconds\r\n  - Easier for music-based timing\r\n  - Pro tip: Use for beat-based alignment\r\n\r\n### Audio Controls\r\n- **Volume:** Internal video audio level (0-100%)\r\n  - 0%: Mute video audio\r\n  - 100%: Unity gain\r\n  - Pro tip: Set to 50-70% for reference mixing\r\n\r\n- **Audio Output:** Route video audio to mixer track\r\n  - Select any mixer insert\r\n  - Pro tip: Route to dedicated track for processing\r\n\r\n### Display Controls\r\n- **Aspect Ratio:**\r\n  - Keep Original: Maintains proper aspect ratio (recommended)\r\n  - Stretch to Window: Fills window, may distort\r\n  - Letterbox: Adds black bars to maintain aspect\r\n  - Pro tip: Always use \"Keep Original\" for professional work\r\n\r\n- **Detach Window:** Float video on second monitor\r\n  - Pro tip: Essential for dual-monitor workflows\r\n\r\n- **Always on Top:** Keep video above other windows\r\n  - Pro tip: Use when working with multiple applications\r\n\r\n## Quick Reference Table\r\n\r\n| Parameter | Range | Default | Hip-Hop Use |\r\n|-----------|-------|---------|-------------|\r\n| File Format | Various | N/A | MP4 (H.264) for music videos |\r\n| Slave Mode | On/Off | On | Keep enabled for sync |\r\n| Pre-roll | 0-1000 frames | 0 | 24-48 frames for smooth starts |\r\n| Volume | 0-100% | 100% | 60-70% for reference |\r\n| Audio Output | Mixer tracks | None | Dedicated track for video audio |\r\n| Aspect Ratio | 3 modes | Keep Original | Always keep original |\r\n| SMPTE/Time | 2 modes | SMPTE | SMPTE for pro work |\r\n\r\n## Frame Rate Standards\r\n\r\n| Frame Rate | Use Case | Genre Application |\r\n|------------|----------|-------------------|\r\n| 23.976 fps | Cinema films | Film scoring |\r\n| 24 fps | Cinema/digital | Music videos (cinematic) |\r\n| 25 fps | PAL video | European broadcasts |\r\n| 29.97 fps | NTSC video | US broadcasts/YouTube |\r\n| 30 fps | Digital video | Music videos (standard) |\r\n| 60 fps | High frame rate | High-quality music videos |\r\n\r\n## Keyboard Shortcuts\r\n\r\n- **Space:** Play/pause video (when plugin focused)\r\n- **Home:** Jump to video start\r\n- **End:** Jump to video end\r\n- **Detach:** Ctrl+D (custom)\r\n- **Reload:** Ctrl+R (custom)\r\n\r\n## Workflow Quick Tips\r\n\r\n### Music Video Scoring\r\n1. Load music video file\r\n2. Enable Slave Mode\r\n3. Set SMPTE display\r\n4. Mark hit points in timeline\r\n5. Route audio to reference track\r\n\r\n### Sample Extraction\r\n1. Load video with audio\r\n2. Route audio to Edison track\r\n3. Set volume to 100%\r\n4. Record region to Edison\r\n5. Process extracted audio\r\n\r\n### Film Scoring\r\n1. Load scene/film file\r\n2. Enable SMPTE display\r\n3. Set pre-roll to 48 frames\r\n4. Mark cue points with markers\r\n5. Score to exact frame numbers\r\n\r\n### Foley Work\r\n1. Load video scene\r\n2. Enable frame display\r\n3. Loop specific section\r\n4. Create sounds in exact sync\r\n5. Use markers for hits\r\n\r\n## Pro Tips by Genre\r\n\r\n### Trap/Hip-Hop Videos\r\n- Mark 808 hits to visual impacts\r\n- Sync hi-hat rolls to camera movements\r\n- Align drops to scene changes\r\n- Use video audio for ambient texture\r\n\r\n### Melodic Rap Videos\r\n- Sync melody to lip movements\r\n- Align chord changes to scene transitions\r\n- Use video pacing for musical structure\r\n- Extract dialogue for creative sampling\r\n\r\n### Music Video Production\r\n- Use SMPTE for precise edits\r\n- Mark chorus sections clearly\r\n- Sync effects to visual effects\r\n- Extract reference audio for timing\r\n\r\n### Content Creation\r\n- Align beats to visual cuts\r\n- Use video audio for context\r\n- Mark important moments with markers\r\n- Sync music to on-screen action\r\n\r\n## Common Issues & Solutions\r\n\r\n| Issue | Cause | Solution |\r\n|-------|-------|----------|\r\n| Video not playing | Codec unsupported | Convert to H.264 MP4 |\r\n| Audio out of sync | Wrong sample rate | Match project sample rate |\r\n| Choppy playback | High resolution | Use proxy files |\r\n| No audio | Not routed | Set Audio Output track |\r\n| Wrong frame rate | Mismatch | Verify video frame rate |\r\n| Video stutters | High CPU | Lower resolution or codec |\r\n\r\n## Essential Codec Info\r\n\r\n### Best Performance\r\n- **H.264 MP4:** Best compatibility\r\n- **ProRes:** Best quality (Mac)\r\n- **DNxHD:** Best quality (Windows)\r\n\r\n### Avoid\r\n- **H.265/HEVC:** High CPU usage\r\n- **VP9:** Compatibility issues\r\n- **Uncompressed:** Massive file sizes\r\n\r\n## SMPTE Format Guide\r\n\r\n**Format:** HH:MM:SS:FF\r\n- **HH:** Hours (00-23)\r\n- **MM:** Minutes (00-59)\r\n- **SS:** Seconds (00-59)\r\n- **FF:** Frames (00-29 for 30fps)\r\n\r\n**Example:** 01:23:45:12 = 1 hour, 23 minutes, 45 seconds, 12 frames\r\n\r\n**Frame Math:**\r\n- At 30 fps: 1 second = 30 frames\r\n- At 24 fps: 1 second = 24 frames\r\n- Pro tip: Use frame count for precise timing calculations\r\n",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Video Player\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Video Player to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "quick-start": "# Fruity Video Player - Quick Start Guide\r\n\r\n## 5-Minute Setup\r\n\r\n### 1. Load the Plugin\r\n1. Open **Mixer** (F9)\r\n2. Select empty mixer track\r\n3. Click **slot** in effects chain\r\n4. Navigate to **Fruity Video Player**\r\n\r\n### 2. Load Video File\r\n1. Click **folder icon** in plugin\r\n2. Browse to **video file**\r\n3. Select and **open**\r\n4. Video appears in plugin window\r\n\r\n### 3. Basic Playback\r\n- Press **Play** in FL Studio (Space)\r\n- Video syncs automatically\r\n- Press **Stop** to halt playback\r\n\r\n### 4. Position Video Window\r\n- **Right-click** video window\r\n- Select **Detach** for separate window\r\n- **Resize** as needed\r\n- Check **Always on Top** if desired\r\n\r\n### 5. Adjust Sync (if needed)\r\n- Use **Offset** parameter to shift timing\r\n- Positive = video plays later\r\n- Negative = video plays earlier\r\n\r\n## Common Tasks\r\n\r\n### Sync Video to Beat\r\n1. Load video file\r\n2. Play and observe sync\r\n3. Adjust **Offset** parameter\r\n4. Fine-tune until aligned\r\n\r\n### Extract Audio Reference\r\n1. Load video\r\n2. Note timing/moments to sample\r\n3. Use FL Studio's recording or import video audio separately\r\n4. Mark positions with **playlist markers**\r\n\r\n### Multi-Monitor Display\r\n1. **Detach** video window\r\n2. Drag to **second monitor**\r\n3. Check **Always on Top**\r\n4. Maximize or resize as needed\r\n\r\n### Performance Mode\r\n- Use **lower resolution** during editing\r\n- Switch to **full quality** for final review\r\n- Toggle video **on/off** as needed\r\n\r\n## Quick Tips\r\n\r\n- **Supported formats**: MP4, AVI, WMV, MOV\r\n- **Best format**: MP4 (H.264) for balance\r\n- **Storage**: Use SSD for best performance\r\n- **Sync tool**: Use playlist markers for key moments\r\n- **Workflow**: Disable video during heavy CPU tasks\r\n\r\n## Next Steps\r\n\r\n- Explore **video formats** reference\r\n- Learn **performance optimization**\r\n- Read **video sync fundamentals**\r\n- Check **hip-hop workflows** for genre-specific tips\r\n",
+      "top-controls": "# Top Controls: Fruity Video Player\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Video Player\r\n\r\nThis section contains learning information for the fruity-video-player plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "extracting-audio-from-video": "# Extracting Audio from Video - Complete Guide\r\n\r\n## Overview\r\n\r\nFruity Video Player allows you to extract high-quality audio from video files for sampling, reference, or creative purposes. This is essential for hip-hop producers working with video content, dialogue sampling, and creative audio extraction.\r\n\r\n## Why Extract Audio from Video?\r\n\r\n### Hip-Hop Applications\r\n- **Dialogue Sampling:** Extract movie dialogue for creative samples\r\n- **Ambient Textures:** Capture ambient sounds from video content\r\n- **Reference Audio:** Use video audio as production reference\r\n- **Vintage Sounds:** Sample old film and TV audio\r\n- **Creative Sampling:** Find unique sounds in unexpected video sources\r\n\r\n### Professional Applications\r\n- **ADR Reference:** Extract dialogue for replacement work\r\n- **Foley Reference:** Capture original sounds for matching\r\n- **Music Reference:** Extract music from video for analysis\r\n- **Audio Analysis:** Study original audio for mixing decisions\r\n\r\n## Essential Setup\r\n\r\n### 1. Prepare Video File\r\n**Before Loading:**\r\n- Verify video has audio track\r\n- Check audio codec compatibility (AAC, MP3, PCM supported)\r\n- Note sample rate of video audio (usually 48kHz)\r\n- Ensure video quality is good enough for your needs\r\n\r\n### 2. Configure Fruity Video Player\r\n**Optimal Settings for Extraction:**\r\n- Slave Mode: ON (for timeline control)\r\n- Time Display: Time mode (easier for audio work)\r\n- Pre-roll: 0 frames (start exactly at beginning)\r\n- Volume: 100% (maximum quality)\r\n- Audio Output: Dedicated mixer track\r\n\r\n### 3. Set Up FL Studio Project\r\n**Project Configuration:**\r\n- Sample Rate: Match video audio (usually 48kHz)\r\n- Buffer Size: 512 or higher for stability\r\n- Create dedicated audio extraction track\r\n- Insert Edison on extraction track\r\n\r\n## Basic Extraction Workflow\r\n\r\n### Method 1: Direct Recording to Edison (Recommended)\r\n\r\n**Step-by-Step:**\r\n1. Load video in Fruity Video Player\r\n2. Set Audio Output to empty mixer track\r\n3. Insert Edison on that mixer track\r\n4. Set video player Volume to 100%\r\n5. Enable record in Edison\r\n6. Play timeline to record section\r\n7. Stop and save from Edison\r\n\r\n**Edison Recording Setup:**\r\n- Source: Mixer track (not Input)\r\n- Mode: \"On input\" or \"Auto\"\r\n- Quality: Maximum (24-bit recommended)\r\n- Format: WAV for uncompressed\r\n\r\n**Example Timeline:**\r\n```\r\n00:00 - Load video file\r\n00:15 - Set up routing to Edison track\r\n00:30 - Mark region to extract (e.g., 01:23 - 02:45)\r\n00:45 - Enable Edison recording\r\n01:00 - Play marked region\r\n02:00 - Stop, save audio from Edison\r\n```\r\n\r\n### Method 2: Full Video Audio Extraction\r\n\r\n**For Entire Audio Track:**\r\n1. Load video in Fruity Video Player\r\n2. Route audio to mixer track with Edison\r\n3. Set volume to 100%\r\n4. Set timeline length to match video duration\r\n5. Record entire playback to Edison\r\n6. Export from Edison as WAV\r\n\r\n**Pro Tips:**\r\n- Use WAV format for lossless quality\r\n- Save at video's native sample rate (usually 48kHz)\r\n- Keep 24-bit depth for maximum quality\r\n- Name files clearly (e.g., \"VideoName_FullAudio_48kHz.wav\")\r\n\r\n### Method 3: Selective Region Extraction\r\n\r\n**For Specific Sections:**\r\n1. Watch video and identify sections to extract\r\n2. Mark regions with timeline markers\r\n3. Set loop points around region\r\n4. Record looped section to Edison\r\n5. Save individual sections separately\r\n\r\n**Workflow Example:**\r\n```\r\nRegion 1: Dialogue (00:32 - 00:47)\r\nRegion 2: Ambient (01:15 - 01:45)\r\nRegion 3: Music (02:30 - 03:00)\r\n```\r\n\r\n## Hip-Hop Sampling Applications\r\n\r\n### Dialogue Sampling\r\n\r\n**Finding Good Dialogue:**\r\n- Classic movies with iconic lines\r\n- Documentaries with interesting narration\r\n- Old TV shows with unique character voices\r\n- News broadcasts for authentic atmosphere\r\n- Interviews for conversational texture\r\n\r\n**Extraction Technique:**\r\n1. Load movie/TV show video file\r\n2. Scan through for interesting dialogue\r\n3. Mark each good line with timeline marker\r\n4. Extract each dialogue snippet separately\r\n5. Clean up audio in Edison (trim, normalize)\r\n\r\n**Example Dialogue Sources:**\r\n- Scarface, Godfather, Pulp Fiction (classic movie quotes)\r\n- Nature documentaries (ambient narration)\r\n- Old news broadcasts (vintage atmosphere)\r\n- Stand-up comedy (unique vocal textures)\r\n- Anime/cartoons (creative character voices)\r\n\r\n**Processing After Extraction:**\r\n- Trim silence before and after dialogue\r\n- Normalize to -6dB to -3dB\r\n- Remove background noise if needed\r\n- Pitch shift for creative effect\r\n- Add lo-fi effect for vintage vibe\r\n\r\n### Ambient Sound Extraction\r\n\r\n**Types of Ambient Sounds:**\r\n- City atmospheres (traffic, crowds, urban ambience)\r\n- Nature sounds (rain, wind, birds, water)\r\n- Indoor ambience (room tone, echo, reverb)\r\n- Mechanical sounds (engines, machines, tech)\r\n- Atmospheric textures (sci-fi, horror, abstract)\r\n\r\n**Extraction Workflow:**\r\n1. Find video with good ambient sound\r\n2. Identify clean sections without dialogue/music\r\n3. Extract 30-60 second ambient loops\r\n4. Process for seamless looping if needed\r\n5. Use as atmosphere layers in productions\r\n\r\n**Example Sources:**\r\n- Nature documentaries (pristine nature sounds)\r\n- City footage (urban atmospheres)\r\n- Sci-fi movies (futuristic ambiences)\r\n- Horror films (dark atmospheres)\r\n- Industrial videos (mechanical textures)\r\n\r\n### Music Sampling (Creative Use)\r\n\r\n**Legal Note:** Only sample music you have rights to use, or for educational/reference purposes only.\r\n\r\n**Sampling Approach:**\r\n1. Load music video or performance video\r\n2. Find interesting musical sections\r\n3. Extract loops, chord progressions, or hits\r\n4. Chop and rearrange in Edison\r\n5. Process heavily to create new sounds\r\n\r\n**What to Sample:**\r\n- Unique chord progressions\r\n- Interesting drum patterns\r\n- Melodic phrases or riffs\r\n- Vocal phrases or ad-libs\r\n- Transition effects\r\n\r\n### Vintage Texture Extraction\r\n\r\n**Finding Vintage Sources:**\r\n- Old film footage (1940s-1980s)\r\n- VHS tape recordings\r\n- Old TV commercials\r\n- Vintage documentaries\r\n- Public domain films\r\n\r\n**Characteristics to Extract:**\r\n- Film grain audio texture\r\n- Vintage compression artifacts\r\n- Analog warmth and saturation\r\n- Tape hiss and noise\r\n- Unique frequency characteristics\r\n\r\n**Processing Vintage Samples:**\r\n1. Extract audio from old video source\r\n2. Embrace the lo-fi quality\r\n3. Add additional lo-fi processing if desired\r\n4. Use for authentic vintage hip-hop vibe\r\n5. Layer with modern production\r\n\r\n## Advanced Extraction Techniques\r\n\r\n### Multi-Track Extraction\r\n\r\n**For Videos with Different Audio Elements:**\r\n1. Create multiple instances of Fruity Video Player\r\n2. Load same video in each instance\r\n3. Route each to different mixer tracks\r\n4. Extract different frequency ranges or elements\r\n5. Reconstruct audio with separation\r\n\r\n**Example Use Case:**\r\n- Instance 1: Extract full audio\r\n- Instance 2: Apply low-pass filter, extract bass\r\n- Instance 3: Apply high-pass filter, extract highs\r\n- Create pseudo-stems for more control\r\n\r\n### Automated Batch Extraction\r\n\r\n**For Multiple Videos:**\r\n1. Create template project with extraction setup\r\n2. Load first video, extract, save\r\n3. Replace with second video, repeat\r\n4. Continue for all videos in batch\r\n5. Organize extracted files by source\r\n\r\n**Naming Convention:**\r\n```\r\nSourceVideo_AudioType_SampleRate.wav\r\n\r\nExamples:\r\nScarface_Dialogue01_48kHz.wav\r\nDocumentary_Ambient_48kHz.wav\r\nOldMovie_Texture_48kHz.wav\r\n```\r\n\r\n### Quality Preservation\r\n\r\n**Maintaining Maximum Quality:**\r\n1. Match FL Studio sample rate to video audio\r\n2. Set Edison to 24-bit recording\r\n3. Use WAV format (never MP3 for extraction)\r\n4. Keep volume at 100% during extraction\r\n5. Avoid unnecessary processing before saving\r\n\r\n**Quality Checklist:**\r\n- [ ] Video audio sample rate verified\r\n- [ ] FL Studio project sample rate matched\r\n- [ ] Edison set to 24-bit WAV recording\r\n- [ ] Volume at 100% for extraction\r\n- [ ] No unnecessary effects on extraction track\r\n- [ ] Clean file naming for organization\r\n\r\n## Genre-Specific Sampling\r\n\r\n### Boom Bap Hip-Hop\r\n\r\n**Ideal Sources:**\r\n- 1970s soul and funk videos\r\n- Jazz performance recordings\r\n- Vintage TV show themes\r\n- Old movie soundtracks\r\n- Classic R&B performances\r\n\r\n**Extraction Focus:**\r\n- Drum breaks from live performances\r\n- Warm bass lines\r\n- Smooth chord progressions\r\n- Vocal phrases and ad-libs\r\n- Vinyl crackle and texture\r\n\r\n**Processing Approach:**\r\n- Keep warm, organic quality\r\n- Add subtle vinyl crackle\r\n- Use minimal processing\r\n- Preserve dynamic range\r\n- Embrace imperfections\r\n\r\n### Lo-Fi Hip-Hop\r\n\r\n**Ideal Sources:**\r\n- Anime soundtracks and scenes\r\n- Old jazz recordings on video\r\n- Nature documentaries\r\n- Vintage instructional videos\r\n- Public domain film archives\r\n\r\n**Extraction Focus:**\r\n- Jazzy chord progressions\r\n- Ambient nature sounds\r\n- Nostalgic dialogue snippets\r\n- Tape hiss and noise\r\n- Mellotron and vintage synths\r\n\r\n**Processing Approach:**\r\n- Add tape saturation\r\n- Include vinyl crackle\r\n- Reduce high frequencies\r\n- Add gentle compression\r\n- Create nostalgic vibe\r\n\r\n### Sample-Based Production\r\n\r\n**Ideal Sources:**\r\n- Rare music performances\r\n- Obscure documentaries\r\n- Foreign films\r\n- Vintage commercials\r\n- Educational films\r\n\r\n**Extraction Focus:**\r\n- Unique musical phrases\r\n- Unusual instrument timbres\r\n- Interesting vocal deliveries\r\n- Rare sound effects\r\n- Unexpected textures\r\n\r\n**Processing Approach:**\r\n- Chop creatively\r\n- Pitch shift for originality\r\n- Layer multiple sources\r\n- Create new arrangements\r\n- Heavy manipulation\r\n\r\n### Trap/Modern Hip-Hop\r\n\r\n**Ideal Sources:**\r\n- Action movie sound effects\r\n- Sci-fi movie audio\r\n- Video game footage\r\n- Modern music videos\r\n- Urban environment videos\r\n\r\n**Extraction Focus:**\r\n- Impact sounds (explosions, hits)\r\n- Atmospheric pads\r\n- Vocal ad-libs from videos\r\n- Modern sound design\r\n- Urban ambience\r\n\r\n**Processing Approach:**\r\n- Heavy processing encouraged\r\n- Add effects and distortion\r\n- Layer with modern production\r\n- Use as creative elements\r\n- Experimental manipulation\r\n\r\n## Edison Post-Processing\r\n\r\n### Editing Extracted Audio\r\n\r\n**Essential Edison Tools:**\r\n- **Trim:** Remove silence and unwanted sections\r\n- **Normalize:** Maximize volume without clipping\r\n- **Fade In/Out:** Smooth starts and endings\r\n- **EQ:** Remove unwanted frequencies\r\n- **Noise Reduction:** Clean up background noise\r\n\r\n**Basic Cleanup Workflow:**\r\n1. Open extracted audio in Edison\r\n2. Zoom in and trim exact start/end points\r\n3. Apply fade in (10-50ms) and fade out (50-200ms)\r\n4. Normalize to -6dB to -3dB\r\n5. Apply gentle EQ if needed\r\n6. Save as new processed file\r\n\r\n### Creating Seamless Loops\r\n\r\n**For Ambient Extractions:**\r\n1. Extract longer section than needed\r\n2. Find natural loop points\r\n3. Use Edison crossfade loop feature\r\n4. Test loop for seamless playback\r\n5. Trim to exact loop length\r\n\r\n**Loop Length Guidelines:**\r\n- Ambient: 4-8 bars (trap/hip-hop)\r\n- Musical: Match musical phrase length\r\n- Texture: 1-2 bars for subtle layers\r\n\r\n### Sample Chopping\r\n\r\n**In Edison:**\r\n1. Load extracted audio\r\n2. Identify chop points (transients, beats, phrases)\r\n3. Use slice markers for divisions\r\n4. Send slices to sampler channel\r\n5. Arrange and play as new pattern\r\n\r\n**Chopping Techniques:**\r\n- Rhythmic chopping (on beat divisions)\r\n- Melodic chopping (by pitch/phrase)\r\n- Random chopping (experimental)\r\n- Transient chopping (on hits/attacks)\r\n\r\n## File Organization\r\n\r\n### Folder Structure\r\n\r\n**Recommended Organization:**\r\n```\r\nExtracted Audio/\r\n├── Dialogue/\r\n│   ├── Movies/\r\n│   ├── TV Shows/\r\n│   ├── Documentaries/\r\n│   └── Interviews/\r\n├── Ambient/\r\n│   ├── Nature/\r\n│   ├── Urban/\r\n│   ├── Indoor/\r\n│   └── Atmospheric/\r\n├── Music/\r\n│   ├── Vintage/\r\n│   ├── Modern/\r\n│   ├── World/\r\n│   └── Instrumental/\r\n└── Textures/\r\n    ├── Lo-Fi/\r\n    ├── Vintage/\r\n    ├── Digital/\r\n    └── Experimental/\r\n```\r\n\r\n### Metadata and Tagging\r\n\r\n**Essential Information:**\r\n- Source video name\r\n- Extraction date\r\n- Sample rate and bit depth\r\n- Original timecode location\r\n- Processing applied\r\n- Usage notes\r\n\r\n**File Naming Example:**\r\n```\r\nSourceName_Type_Description_SampleRate_Date.wav\r\n\r\nScarface_Dialogue_SayHelloToMyLittleFriend_48kHz_20260204.wav\r\nNatureDoc_Ambient_RainForest_48kHz_20260204.wav\r\nOldJazz_Music_PianoChords_48kHz_20260204.wav\r\n```\r\n\r\n## Legal and Ethical Considerations\r\n\r\n### Copyright Awareness\r\n- Only extract from content you have rights to use\r\n- Public domain films are safe sources\r\n- Use royalty-free video content when possible\r\n- Educational and reference use may have different rules\r\n- Check local copyright laws\r\n\r\n### Ethical Sampling\r\n- Credit original sources when possible\r\n- Transform samples significantly for originality\r\n- Don't just lift entire musical sections unchanged\r\n- Consider fair use principles\r\n- When in doubt, seek legal advice\r\n\r\n### Safe Sources\r\n- Public domain films (pre-1928 in US)\r\n- Creative Commons licensed videos\r\n- Your own video content\r\n- Licensed sample libraries\r\n- Royalty-free video websites\r\n\r\n## Troubleshooting\r\n\r\n### No Audio Extracted\r\n**Problem:** Edison records silence\r\n**Solutions:**\r\n- Verify Audio Output is set to Edison track\r\n- Check Volume is not at 0%\r\n- Verify video actually has audio track\r\n- Check Edison is set to correct input source\r\n\r\n### Audio Quality is Poor\r\n**Problem:** Extracted audio sounds degraded\r\n**Solutions:**\r\n- Increase Volume to 100%\r\n- Match sample rates (FL Studio and video)\r\n- Use WAV format instead of MP3\r\n- Check video source quality\r\n- Avoid multiple resampling\r\n\r\n### Audio is Out of Sync\r\n**Problem:** Extracted audio doesn't match video\r\n**Solutions:**\r\n- Ensure Slave Mode is enabled\r\n- Check for plugin latency issues\r\n- Record longer than needed, trim in Edison\r\n- Use longer buffer size for stability\r\n\r\n### File Size Too Large\r\n**Problem:** Extracted WAV files are huge\r\n**Solutions:**\r\n- Extract only needed sections, not full video\r\n- Consider 16-bit instead of 24-bit for final use\r\n- Compress to MP3 or OGG after extraction\r\n- Use appropriate sample rate (48kHz vs 96kHz)\r\n\r\n## Pro Tips\r\n\r\n### Workflow Efficiency\r\n- Create extraction template project\r\n- Use consistent folder structure\r\n- Name files immediately and clearly\r\n- Keep source video reference notes\r\n- Back up extracted samples regularly\r\n\r\n### Creative Techniques\r\n- Reverse extracted audio for unique textures\r\n- Pitch shift dialogue for creative effects\r\n- Layer multiple ambient extractions\r\n- Chop music samples into new rhythms\r\n- Combine dialogue with musical elements\r\n\r\n### Quality Control\r\n- Always preview extracted audio before deleting video\r\n- Keep original unprocessed versions\r\n- Document processing for future reference\r\n- Test samples in actual production context\r\n- Verify no digital clipping occurred\r\n\r\n### Time-Saving Shortcuts\r\n- Mark multiple regions before batch extracting\r\n- Use Edison's region saving feature\r\n- Create keyboard macros for repeated tasks\r\n- Use project templates for extraction\r\n- Organize as you go, not later\r\n",
+      "scoring-music-videos": "# Scoring Music Videos with Fruity Video Player\r\n\r\n## Overview\r\n\r\nThis guide covers the complete workflow for scoring music to hip-hop music videos using Fruity Video Player. Learn how to sync beats, align visual cuts, and create professional video-music synchronization.\r\n\r\n## Essential Setup\r\n\r\n### 1. Video Preparation\r\n**Before Loading:**\r\n- Convert video to H.264 MP4 for best compatibility\r\n- Verify frame rate (usually 24, 30, or 60 fps)\r\n- Check video resolution (1080p recommended for editing)\r\n- Create proxy files for 4K videos if needed\r\n\r\n**In Fruity Video Player:**\r\n- Open video file\r\n- Enable Slave Mode for timeline sync\r\n- Set SMPTE display for frame accuracy\r\n- Set pre-roll to 48 frames for context\r\n- Route audio to reference track at 60-70% volume\r\n\r\n### 2. FL Studio Project Setup\r\n**Timeline Configuration:**\r\n- Set project tempo to match music (usually 60-180 BPM for hip-hop)\r\n- Enable snap to grid for precise placement\r\n- Show time in both beats and SMPTE\r\n- Create marker track for video cues\r\n\r\n**Mixer Setup:**\r\n- Route video audio to Track 1 (Reference)\r\n- Create separate tracks for music elements\r\n- Set up monitoring for video audio reference\r\n- Keep video audio lower than working tracks\r\n\r\n## Hip-Hop Music Video Workflow\r\n\r\n### Phase 1: Analysis and Marking\r\n\r\n**Watch Through (First Pass):**\r\n1. Play video start to finish without editing\r\n2. Note major scene changes and transitions\r\n3. Identify visual impacts and effects\r\n4. Mark emotional beats and intensity changes\r\n5. Note lip sync requirements if applicable\r\n\r\n**Mark Key Points:**\r\n- **Scene Changes:** Use timeline markers for major cuts\r\n- **Visual Impacts:** Mark explosions, effects, impacts\r\n- **Beat Drop Points:** Identify where drops should hit\r\n- **Chorus Sections:** Mark repeated visual themes\r\n- **Camera Movements:** Note pans, zooms, rapid cuts\r\n\r\n**Create Marker Types:**\r\n- Red markers: Beat drop points\r\n- Blue markers: Scene transitions\r\n- Green markers: Visual impacts\r\n- Yellow markers: Emotional moments\r\n- Purple markers: Lip sync points\r\n\r\n### Phase 2: Rough Sync\r\n\r\n**Establish Basic Timing:**\r\n1. Place main beat pattern in timeline\r\n2. Align first downbeat to video start or cue point\r\n3. Check if beat aligns naturally with visual rhythm\r\n4. Adjust tempo if needed for better alignment\r\n5. Verify chorus sections match visual repetitions\r\n\r\n**Identify Sync Points:**\r\n- **808 Hits:** Should align with visual impacts, bass drops\r\n- **Snare Hits:** Match to cuts, transitions, effects\r\n- **Hi-Hat Patterns:** Sync to rapid cuts, camera movements\r\n- **Melody Changes:** Align with scene changes\r\n- **Beat Drops:** Must hit major visual moments perfectly\r\n\r\n### Phase 3: Genre-Specific Approaches\r\n\r\n#### Trap Music Videos\r\n**Visual Elements to Sync:**\r\n- **808 Slides:** Slow-motion effects, dramatic moments\r\n- **Hi-Hat Rolls:** Rapid camera cuts, fast movements\r\n- **Snare Hits:** Visual impacts, explosions, effects\r\n- **Beat Drops:** Major scene changes, climactic moments\r\n\r\n**Technique:**\r\n1. Mark all major visual impacts with red markers\r\n2. Place 808 hits on visual impacts using frame numbers\r\n3. Sync hi-hat rolls to rapid cut sequences\r\n4. Align beat drops to biggest visual moments\r\n5. Use slow-motion sections for 808 slides and effects\r\n\r\n**Example Timing:**\r\n```\r\n00:00:15:12 - Intro visual effect → 808 hit\r\n00:00:23:08 - First rapid cut sequence → Hi-hat roll start\r\n00:00:31:24 - Major visual impact → Beat drop\r\n00:00:47:16 - Slow-motion section → 808 slide with reverb\r\n```\r\n\r\n#### Melodic Rap Videos\r\n**Visual Elements to Sync:**\r\n- **Vocal Melody:** Lip sync, emotional expressions\r\n- **Chord Changes:** Scene transitions, color changes\r\n- **Vocal Runs:** Camera movements, emotional moments\r\n- **Hook Repetitions:** Visual theme repetitions\r\n\r\n**Technique:**\r\n1. Mark lip sync points with purple markers\r\n2. Align vocal melody to artist lip movements\r\n3. Match chord changes to scene transitions\r\n4. Sync vocal runs to camera movements\r\n5. Use longer pre-roll for melodic context\r\n\r\n**Example Timing:**\r\n```\r\n00:00:20:04 - Artist begins singing → Vocal melody start\r\n00:00:32:18 - Scene change to new location → Chord change\r\n00:00:45:22 - Emotional close-up → Vocal run with emotion\r\n00:01:02:14 - Hook visual repeat → Hook section repeat\r\n```\r\n\r\n#### Drill Videos\r\n**Visual Elements to Sync:**\r\n- **Dark Atmosphere:** Establish mood with low-end\r\n- **808 Slides:** Aggressive visual cuts, impacts\r\n- **Hi-Hat Patterns:** Rapid edits, movement\r\n- **Aggressive Cuts:** Snare and 808 hits\r\n\r\n**Technique:**\r\n1. Establish dark, aggressive mood immediately\r\n2. Sync 808 slides to dramatic visual moments\r\n3. Match hi-hat patterns to rapid cut sequences\r\n4. Align aggressive snares to harsh visual cuts\r\n5. Use tension buildup for dramatic moments\r\n\r\n**Example Timing:**\r\n```\r\n00:00:08:19 - First aggressive cut → 808 hit\r\n00:00:16:27 - Rapid cut sequence → Complex hi-hat pattern\r\n00:00:28:11 - Visual impact → 808 slide down\r\n00:00:42:05 - Tension moment → Ambient breakdown\r\n```\r\n\r\n### Phase 4: Frame-Accurate Refinement\r\n\r\n**Using SMPTE for Precision:**\r\n1. Zoom in on timeline to see individual frames\r\n2. Use SMPTE display to identify exact frame numbers\r\n3. Nudge audio elements to exact frame alignment\r\n4. Verify each major sync point frame-by-frame\r\n5. Test playback at 0.5x speed for verification\r\n\r\n**Frame-by-Frame Workflow:**\r\n1. Select sync point in video using SMPTE\r\n2. Note exact frame number (e.g., 00:01:23:15)\r\n3. Place audio element at exact frame in timeline\r\n4. Verify alignment by stepping through frames\r\n5. Fine-tune using frame nudge (+ or - keys)\r\n\r\n**Critical Sync Points (Priority Order):**\r\n1. **Beat Drops:** Must be perfectly aligned (±0 frames)\r\n2. **Visual Impacts:** Very tight alignment (±1 frame)\r\n3. **Scene Changes:** Tight alignment (±2 frames)\r\n4. **Emotional Moments:** Good alignment (±3-4 frames)\r\n5. **Ambient Elements:** Approximate alignment (±5-10 frames)\r\n\r\n### Phase 5: Advanced Techniques\r\n\r\n**Layering with Visual Rhythm:**\r\n- **Fast Cuts → Fast Hi-Hats:** Match editing pace\r\n- **Slow Motion → Stretched 808s:** Match time feel\r\n- **Zoom In → Rising Pitch:** Match visual movement\r\n- **Zoom Out → Falling Pitch:** Match visual expansion\r\n\r\n**Creative Audio-Visual Sync:**\r\n1. **Reverse Visual:** Use reversed audio elements\r\n2. **Glitch Effect:** Add glitch sounds or stutters\r\n3. **Color Change:** Sync to chord or key change\r\n4. **Camera Shake:** Add distortion or impact sound\r\n5. **Freeze Frame:** Use stop time effect or silence\r\n\r\n**Building Tension:**\r\n- Use rising sounds during visual buildup\r\n- Match crescendo to visual intensity increase\r\n- Sync release to visual payoff\r\n- Create anticipation before major moments\r\n\r\n## Specific Instrument Workflows\r\n\r\n### 808 Bass Sync\r\n**Visual Targets:**\r\n- Explosions and visual impacts\r\n- Camera shakes and movements\r\n- Scene changes and cuts\r\n- Slow-motion sections\r\n\r\n**Technique:**\r\n1. Identify all major visual impacts\r\n2. Place 808 hits at exact impact frames\r\n3. Use longer 808s for slow-motion sections\r\n4. Add 808 slides for dramatic moments\r\n5. Match 808 volume to visual intensity\r\n\r\n**Frame Accuracy:**\r\n- Critical: Must be ±0-1 frames\r\n- Use frame zoom for precision\r\n- Test at slow playback speed\r\n\r\n### Hi-Hat Pattern Sync\r\n**Visual Targets:**\r\n- Rapid camera cuts\r\n- Fast movements\r\n- Editing rhythm\r\n- Visual effects sequences\r\n\r\n**Technique:**\r\n1. Count visual cuts in sequence\r\n2. Create hi-hat pattern matching cut rhythm\r\n3. Sync pattern start to first cut frame\r\n4. Verify each hi-hat aligns with cut\r\n5. Adjust pattern timing if needed\r\n\r\n**Pattern Examples:**\r\n- 4 rapid cuts → 16th note hi-hat pattern\r\n- 8 cuts with acceleration → Hi-hat roll\r\n- Alternating cuts → Off-beat hi-hat pattern\r\n\r\n### Melody Sync\r\n**Visual Targets:**\r\n- Lip sync points\r\n- Emotional moments\r\n- Scene transitions\r\n- Color or mood changes\r\n\r\n**Technique:**\r\n1. Identify melodic anchor points in video\r\n2. Align main melody notes to visual cues\r\n3. Match melody contour to visual flow\r\n4. Sync melody changes to scene changes\r\n5. Use melody to enhance emotional beats\r\n\r\n### Vocal Sample Sync\r\n**Visual Targets:**\r\n- Dialogue moments\r\n- Character actions\r\n- Specific objects or events\r\n- Creative punctuation\r\n\r\n**Technique:**\r\n1. Extract relevant dialogue from video audio\r\n2. Place vocal samples at appropriate visual moments\r\n3. Sync vocal chops to visual rhythm\r\n4. Use pitch-shifted vocals for creative effects\r\n5. Match sample timing to lip movements if applicable\r\n\r\n## Genre-Specific Timing Guidelines\r\n\r\n### Trap (140 BPM)\r\n**Typical Video Rhythm:**\r\n- Scene change every 4-8 bars\r\n- Visual impacts on downbeats\r\n- Rapid cuts during hi-hat rolls\r\n- Beat drop at major visual moment\r\n\r\n**Sync Priority:**\r\n1. Beat drop to major visual (±0 frames)\r\n2. 808 hits to impacts (±1 frame)\r\n3. Hi-hat rolls to rapid cuts (±2 frames)\r\n4. Snares to transitions (±2-3 frames)\r\n\r\n### Melodic Rap (80-120 BPM)\r\n**Typical Video Rhythm:**\r\n- Longer scenes (8-16 bars)\r\n- Emotional close-ups\r\n- Smooth transitions\r\n- Lip sync focus\r\n\r\n**Sync Priority:**\r\n1. Vocal melody to lip sync (±1 frame)\r\n2. Chord changes to scenes (±3-5 frames)\r\n3. Vocal runs to emotional moments (±2 frames)\r\n4. Hook to visual theme (±5 frames)\r\n\r\n### Drill (140-150 BPM)\r\n**Typical Video Rhythm:**\r\n- Dark, aggressive cuts\r\n- Rapid editing\r\n- Urban environments\r\n- Tension and release\r\n\r\n**Sync Priority:**\r\n1. 808 slides to aggressive cuts (±0-1 frames)\r\n2. Hi-hats to rapid edits (±1-2 frames)\r\n3. Snares to harsh cuts (±1 frame)\r\n4. Atmosphere to mood (less critical)\r\n\r\n## Export and Delivery\r\n\r\n### Final Checks\r\n**Before Export:**\r\n- [ ] Play through entire video at normal speed\r\n- [ ] Check all critical sync points frame-by-frame\r\n- [ ] Verify no audio clipping or distortion\r\n- [ ] Confirm proper mix balance\r\n- [ ] Test at 0.5x and 2x speed for verification\r\n\r\n### Export Settings\r\n**For Video Editor:**\r\n- Format: WAV (24-bit, 48kHz) or MP3 (320kbps)\r\n- Length: Match exact video duration\r\n- Start Time: 00:00:00:00 (same as video)\r\n- Include: Timecode reference document\r\n\r\n**Timecode Reference Document:**\r\n```\r\nProject: [Video Title]\r\nBPM: 140\r\nFrame Rate: 30 fps\r\nSample Rate: 48kHz\r\n\r\nKey Sync Points:\r\n00:00:15:12 - Intro 808 hit\r\n00:00:31:24 - First beat drop\r\n00:01:02:08 - Chorus section\r\n00:01:47:16 - Final drop\r\n```\r\n\r\n### Delivery Checklist\r\n- [ ] Final audio stems (WAV format)\r\n- [ ] Full mix (WAV and MP3)\r\n- [ ] Timecode reference document\r\n- [ ] Sync notes for editor\r\n- [ ] BPM and project info\r\n- [ ] FL Studio project file (backup)\r\n\r\n## Pro Tips\r\n\r\n### Workflow Efficiency\r\n- **Use Markers Extensively:** Color-code different sync point types\r\n- **Work in Sections:** Score one section at a time for focus\r\n- **Save Often:** Create versions at major milestones\r\n- **Use Templates:** Create project templates for repeated workflows\r\n\r\n### Creative Techniques\r\n- **Reverse Engineer:** Start with video audio reference, build around it\r\n- **Sample Video Audio:** Extract interesting sounds for creative use\r\n- **Match Editing Rhythm:** Let video editing inform musical rhythm\r\n- **Build Tension Together:** Sync audio and visual tension curves\r\n\r\n### Common Mistakes to Avoid\r\n- ❌ Not using SMPTE for critical sync points\r\n- ❌ Ignoring video audio reference during composition\r\n- ❌ Forgetting to account for pre-roll\r\n- ❌ Not testing at different playback speeds\r\n- ❌ Rushing the frame-accurate refinement phase\r\n- ❌ Not creating sync point documentation\r\n- ❌ Exporting at wrong sample rate for video\r\n\r\n### Time-Saving Shortcuts\r\n- Use Ctrl+M to quickly add markers\r\n- Use +/- keys for frame nudging\r\n- Use Alt+Scroll for timeline zoom\r\n- Use Space for quick play/pause\r\n- Use Home/End for section navigation\r\n\r\n## Troubleshooting\r\n\r\n### Video Not Syncing\r\n**Problem:** Video playback doesn't follow timeline\r\n**Solution:** Enable Slave Mode in Fruity Video Player\r\n\r\n### Audio Ahead/Behind Video\r\n**Problem:** Audio and video are out of sync\r\n**Solution:** \r\n1. Check project sample rate matches video\r\n2. Verify no plugin latency compensation issues\r\n3. Adjust using frame nudge\r\n\r\n### Choppy Video Playback\r\n**Problem:** Video stutters during playback\r\n**Solution:**\r\n1. Create proxy file at lower resolution\r\n2. Use H.264 codec for better performance\r\n3. Increase audio buffer size\r\n4. Close unnecessary background applications\r\n\r\n### Frame Numbers Don't Match\r\n**Problem:** Your frames don't align with editor's frames\r\n**Solution:**\r\n1. Verify matching frame rates (24, 30, 60 fps)\r\n2. Confirm same SMPTE standard\r\n3. Check video file hasn't been re-encoded\r\n4. Provide clear timecode reference document\r\n\r\n## Advanced Applications\r\n\r\n### Multi-Video Sync\r\nFor videos with multiple camera angles or cuts:\r\n1. Create separate instances of Fruity Video Player\r\n2. Use same SMPTE reference for all\r\n3. Mark angles changes in timeline\r\n4. Export with detailed sync notes\r\n\r\n### Live Performance Video\r\nFor stage projection and live shows:\r\n1. Detach video window to projection monitor\r\n2. Set large pre-roll (120 frames) for stage cues\r\n3. Mute video audio completely\r\n4. Use stretch mode for stage screens\r\n5. Test thoroughly before live performance\r\n\r\n### Interactive Video\r\nFor video that responds to music dynamically:\r\n1. Create automation for video parameters\r\n2. Sync automation to musical elements\r\n3. Test all interactive points\r\n4. Document automation for editor\r\n"
+    },
+    "by-instrument": {
+      "vocals-rap-sync": "# Scoring for Vocals and Rap - Video Sync Guide\r\n\r\n## Overview\r\n\r\nScoring music to vocal performances and rap videos requires precise timing for lip sync, emotional delivery, and visual-audio alignment. This guide covers techniques specific to hip-hop vocal videos.\r\n\r\n## Lip Sync Fundamentals\r\n\r\n### Frame Accuracy for Lip Sync\r\nLip sync requires extreme precision:\r\n- **Perfect Sync:** ±0-1 frames (33-16ms at 30fps)\r\n- **Acceptable Sync:** ±2-3 frames (66-100ms at 30fps)\r\n- **Noticeable Drift:** ±4+ frames (133ms+ at 30fps)\r\n\r\n### Visual Cues for Timing\r\n- **Lip Opening:** First visible lip movement\r\n- **Jaw Drop:** Major vowel sounds\r\n- **Lip Closure:** Consonants (B, P, M sounds)\r\n- **Tongue Movement:** T, D, L sounds\r\n- **Facial Expression:** Emotional delivery changes\r\n\r\n## Vocal Recording Sync\r\n\r\n### Recording to Existing Video\r\n\r\n**Setup:**\r\n1. Load music video in Fruity Video Player\r\n2. Enable Slave Mode and SMPTE display\r\n3. Set pre-roll to 96 frames for breath prep\r\n4. Route video audio to reference track at 50-60%\r\n5. Create new vocal recording track\r\n\r\n**Recording Workflow:**\r\n1. Watch video several times to learn timing\r\n2. Mark verse, chorus, and bridge sections\r\n3. Practice vocal delivery with video\r\n4. Record vocals while watching video sync\r\n5. Fine-tune timing in post-production\r\n\r\n**Timing Tips:**\r\n- Lead vocals: Sync exactly to lip movements (±1 frame)\r\n- Ad-libs: Can be looser (±3-5 frames)\r\n- Background vocals: Match to visual presence\r\n- Harmonies: Sync to primary vocal timing\r\n\r\n### Recording Video to Existing Vocal\r\n\r\n**Setup:**\r\n1. Load instrumental with recorded vocals\r\n2. Set up video camera or recording device\r\n3. Play track and video camera simultaneously\r\n4. Performer lip syncs to recorded vocal\r\n5. Import video for editing and final sync\r\n\r\n**Sync Verification:**\r\n1. Load recorded video in Fruity Video Player\r\n2. Enable Slave Mode\r\n3. Compare lip movements to vocal track\r\n4. Note any timing discrepancies\r\n5. Provide notes to video editor for correction\r\n\r\n## Rap Vocal Sync Techniques\r\n\r\n### Fast Rap Patterns\r\n\r\n**Challenges:**\r\n- Rapid syllable delivery\r\n- Complex rhythmic patterns  \r\n- Tongue twisters and speed sections\r\n- Breath points between phrases\r\n\r\n**Sync Approach:**\r\n1. Mark primary downbeats and strong syllables\r\n2. Use SMPTE for exact timing\r\n3. Focus on phrase starts and ends\r\n4. Allow slight looseness in middle of phrases\r\n5. Sync to visual energy and intensity\r\n\r\n**Visual Markers:**\r\n- Head nods on downbeats\r\n- Hand gestures on emphasis points\r\n- Body movement matching flow\r\n- Facial expression changes with delivery\r\n\r\n### Melodic Rap/Singing\r\n\r\n**Characteristics:**\r\n- Sustained notes requiring longer sync\r\n- Melodic phrases with vibrato\r\n- Emotional delivery and expression\r\n- Smoother, less percussive delivery\r\n\r\n**Sync Approach:**\r\n1. Mark phrase beginnings precisely (±1 frame)\r\n2. Match melodic contour to visual expression\r\n3. Sync emotional peaks to facial expressions\r\n4. Allow natural sustain on held notes\r\n5. Focus on musical phrase structure\r\n\r\n**Visual Cues:**\r\n- Mouth opening width for vowel sustain\r\n- Eye expression for emotional delivery\r\n- Body sway matching melodic movement\r\n- Hand gestures following melodic phrases\r\n\r\n### Ad-libs and Background Vocals\r\n\r\n**Types:**\r\n- **Call and Response:** Dialogue between main and background\r\n- **Emphasis Ad-libs:** \"Yeah!\" \"Uh!\" \"Let's go!\"\r\n- **Melodic Background:** Harmonies and supporting melodies\r\n- **Atmospheric Vocals:** Distant, ambient vocal textures\r\n\r\n**Sync Priority:**\r\n1. Main Vocal: Critical sync (±1 frame)\r\n2. Call/Response: Tight sync (±2 frames)\r\n3. Emphasis Ad-libs: Good sync (±3 frames)\r\n4. Background Melodies: Moderate sync (±4-5 frames)\r\n5. Atmospheric: Loose sync acceptable\r\n\r\n**Visual Placement:**\r\n- Main rapper on screen: Main vocal sync critical\r\n- Multiple rappers: Each needs own sync\r\n- Solo shots: Tightest sync required\r\n- Group shots: Can be slightly looser\r\n- No rapper visible: Sync less critical\r\n\r\n## Genre-Specific Approaches\r\n\r\n### Trap Rap Vocals\r\n\r\n**Characteristics:**\r\n- Often melodic with autotune\r\n- Slower, more sustained delivery\r\n- Heavy use of ad-libs and layers\r\n- Triplet flows common\r\n\r\n**Video Style:**\r\n- Slow-motion sections\r\n- Visual effects on beat\r\n- Multiple camera angles\r\n- Performance and lifestyle footage\r\n\r\n**Sync Technique:**\r\n1. Mark main vocal phrases to lip sync\r\n2. Sync autotune pitch changes to visual\r\n3. Place ad-libs on visual impacts\r\n4. Match triplet flows to visual rhythm\r\n5. Use slow-motion for 808 moments\r\n\r\n**Example Sync Points:**\r\n```\r\n00:00:15:12 - Main vocal starts, artist lip opens\r\n00:00:23:08 - \"Yeah!\" ad-lib, artist gesture\r\n00:00:31:24 - Hook melody starts, emotional expression\r\n00:00:47:16 - Slow-mo section, pitched vocal effect\r\n```\r\n\r\n### Drill Rap Vocals\r\n\r\n**Characteristics:**\r\n- Aggressive, percussive delivery\r\n- Fast, complex flows\r\n- Dark, intense energy\r\n- UK drill often has unique cadence\r\n\r\n**Video Style:**\r\n- Dark cinematography\r\n- Urban environments\r\n- Aggressive cuts and edits\r\n- High-energy performance\r\n\r\n**Sync Technique:**\r\n1. Sync to aggressive, staccato delivery\r\n2. Match syllable attacks to lip movements\r\n3. Align aggressive delivery to visual cuts\r\n4. Sync flow changes to camera moves\r\n5. Match intensity to visual energy\r\n\r\n**Example Sync Points:**\r\n```\r\n00:00:08:19 - Aggressive delivery starts, tight lip sync\r\n00:00:16:27 - Fast flow section, rapid visual cuts\r\n00:00:28:11 - Flow switch, camera angle change\r\n00:00:42:05 - Breakdown, visual intensity shift\r\n```\r\n\r\n### Melodic/Emo Rap\r\n\r\n**Characteristics:**\r\n- Singing and melodic delivery\r\n- Emotional, vulnerable lyrics\r\n- Sustained notes and vibrato\r\n- Often slower, more expressive\r\n\r\n**Video Style:**\r\n- Emotional cinematography\r\n- Softer lighting and colors\r\n- Introspective visuals\r\n- Performance and storytelling\r\n\r\n**Sync Technique:**\r\n1. Precise sync for melodic phrase starts\r\n2. Match sustained notes to expression\r\n3. Sync emotion changes to visual mood\r\n4. Align vibrato to visual nuance\r\n5. Focus on emotional delivery\r\n\r\n**Example Sync Points:**\r\n```\r\n00:00:20:04 - Melodic verse starts, mouth opens\r\n00:00:32:18 - Emotional peak, facial expression change\r\n00:00:45:22 - Vocal run, camera push-in\r\n00:01:02:14 - Hook repeat, visual callback\r\n```\r\n\r\n### Boom Bap/Conscious Rap\r\n\r\n**Characteristics:**\r\n- Clear, articulate delivery\r\n- Focus on lyrics and wordplay\r\n- Steady, on-beat flow\r\n- Storytelling emphasis\r\n\r\n**Video Style:**\r\n- Performance-focused\r\n- Clear, well-lit shots\r\n- Focus on artist\r\n- Lyric visualization\r\n\r\n**Sync Technique:**\r\n1. Tight sync for all main vocals\r\n2. Match wordplay to visual wordplay\r\n3. Sync storytelling to visual narrative\r\n4. Align rhyme schemes to visual rhythm\r\n5. Focus on clarity and precision\r\n\r\n**Example Sync Points:**\r\n```\r\n00:00:12:08 - Verse one starts, clear lip sync\r\n00:00:28:16 - Wordplay moment, visual emphasis\r\n00:00:44:20 - Storytelling section, visual narrative\r\n00:01:05:12 - Hook, visual motif repeat\r\n```\r\n\r\n## Multi-Vocal Sync\r\n\r\n### Multiple Rappers/Vocalists\r\n\r\n**Challenges:**\r\n- Different artists visible at different times\r\n- Call and response between artists\r\n- Group shots with multiple people\r\n- Solo vs. group sections\r\n\r\n**Approach:**\r\n1. Identify who is visible when\r\n2. Mark each artist's sections separately\r\n3. Sync each artist to their visual appearance\r\n4. Handle call/response carefully\r\n5. Group shots allow slightly looser sync\r\n\r\n**Color-Coded Markers:**\r\n- Red: Artist A solo sections\r\n- Blue: Artist B solo sections\r\n- Green: Both artists together\r\n- Yellow: Group/ensemble shots\r\n\r\n### Layered Vocals\r\n\r\n**Vocal Stack Components:**\r\n- Main lead vocal (top layer)\r\n- Double/harmony vocals\r\n- Ad-libs and emphasis\r\n- Background vocals\r\n- Atmospheric layers\r\n\r\n**Sync Priority:**\r\n1. Lead vocal: Critical precision\r\n2. Double vocal: Match lead exactly\r\n3. Harmonies: Tight sync to lead\r\n4. Ad-libs: Good sync to visual\r\n5. Background: Moderate sync\r\n6. Atmosphere: Loose sync acceptable\r\n\r\n**Visual Mapping:**\r\n- Artist's mouth → Lead vocal\r\n- Facial expression → Emotional delivery\r\n- Hand gestures → Ad-libs and emphasis\r\n- Body movement → Overall energy\r\n- Environment → Atmospheric elements\r\n\r\n## Advanced Vocal Sync Techniques\r\n\r\n### Syllable-Level Precision\r\n\r\n**When Required:**\r\n- Professional music videos\r\n- High-visibility content\r\n- Close-up performance shots\r\n- Slow-motion sequences\r\n\r\n**Technique:**\r\n1. Zoom timeline to individual frames\r\n2. Mark each major syllable with micro-marker\r\n3. Align syllable attacks to lip openings\r\n4. Verify frame-by-frame\r\n5. Test at slow playback speed\r\n\r\n**Syllable Types:**\r\n- Plosives (P, B, T, D): Match lip closure/release\r\n- Vowels (A, E, I, O, U): Match mouth opening width\r\n- Fricatives (S, F, TH): Match subtle mouth movements\r\n- Nasals (M, N, NG): Match lip closure\r\n\r\n### Emotional Sync\r\n\r\n**Beyond Lip Movements:**\r\n- Facial expressions match emotion\r\n- Body language supports delivery\r\n- Environment reflects mood\r\n- Camera movement matches energy\r\n- Color grading supports feeling\r\n\r\n**Mapping Emotion to Visuals:**\r\n1. Identify emotional arc of vocals\r\n2. Match to visual emotional arc\r\n3. Sync peaks and valleys\r\n4. Align transitions in both\r\n5. Create cohesive emotional journey\r\n\r\n**Example Emotional Sync:**\r\n```\r\nVerse 1: Introspective, soft delivery\r\n→ Visuals: Muted colors, slow camera movement\r\n\r\nChorus: Energetic, powerful delivery\r\n→ Visuals: Vibrant colors, dynamic movement\r\n\r\nVerse 2: Aggressive, intense delivery\r\n→ Visuals: Harsh lighting, rapid cuts\r\n\r\nBridge: Vulnerable, emotional delivery\r\n→ Visuals: Close-ups, soft focus\r\n```\r\n\r\n### Call and Response Sync\r\n\r\n**Structure:**\r\n- Lead: \"Where you at?\"\r\n- Response: \"Right here!\"\r\n- Lead: \"Let's go!\"\r\n- Response: \"Let's go!\"\r\n\r\n**Visual Sync:**\r\n1. Lead vocal when lead artist visible\r\n2. Response vocal when response artist visible\r\n3. Camera cuts between artists\r\n4. Sync vocals to visual presence\r\n5. Match energy between call/response\r\n\r\n**Timing Considerations:**\r\n- Allow natural spacing between call/response\r\n- Sync camera cuts to vocal switches\r\n- Match visual energy to vocal energy\r\n- Keep call/response rhythm consistent\r\n\r\n## Workflow Example: Complete Music Video\r\n\r\n### Pre-Production\r\n1. Receive music video from artist/director\r\n2. Load in Fruity Video Player\r\n3. Verify frame rate and sample rate\r\n4. Enable SMPTE and Slave Mode\r\n5. Watch through completely without editing\r\n\r\n### Analysis Phase\r\n1. Mark verse/chorus/bridge sections\r\n2. Identify all vocal parts (lead, ad-libs, background)\r\n3. Note camera angle changes\r\n4. Mark critical sync points\r\n5. Create sync priority list\r\n\r\n### Sync Phase\r\n1. Start with main lead vocal\r\n2. Sync to exact lip movements (±1 frame)\r\n3. Add ad-libs and emphasis parts\r\n4. Place background vocals and harmonies\r\n5. Add atmospheric vocal layers\r\n\r\n### Refinement Phase\r\n1. Watch full video with all vocals\r\n2. Check each critical sync point frame-by-frame\r\n3. Adjust any drift or timing issues\r\n4. Test at 0.5x and 2x playback speed\r\n5. Final verification at normal speed\r\n\r\n### Export Phase\r\n1. Mute video audio completely\r\n2. Export audio at video sample rate (48kHz)\r\n3. Create sync documentation\r\n4. Provide to video editor\r\n5. Review final edit for verification\r\n\r\n## Troubleshooting Vocal Sync\r\n\r\n### Vocals Sound Late\r\n**Cause:** Plugin latency or buffer delay\r\n**Solution:** \r\n- Check mixer plugin latency\r\n- Shift vocals earlier by latency amount\r\n- Or disable plugin delay compensation\r\n\r\n### Lip Sync Drifts Over Time\r\n**Cause:** Sample rate mismatch\r\n**Solution:**\r\n- Match FL Studio to video sample rate\r\n- Verify no tempo automation causing drift\r\n\r\n### Multiple Takes Don't Match\r\n**Cause:** Inconsistent performance timing\r\n**Solution:**\r\n- Use best take as reference\r\n- Comp other takes to match timing\r\n- Use time-stretching carefully if needed\r\n\r\n### Ad-libs Feel Off\r\n**Cause:** Wrong placement or too loud\r\n**Solution:**\r\n- Check visual timing for placement\r\n- Adjust volume to support, not dominate\r\n- Verify sync to visual gestures/cues\r\n\r\n## Pro Tips\r\n\r\n### Efficiency\r\n- Create vocal sync template projects\r\n- Use color-coded markers for different vocalists\r\n- Save sync checkpoints frequently\r\n- Document as you work, not later\r\n\r\n### Creative Techniques\r\n- Slightly early vocals can feel more energetic\r\n- Slightly late vocals can feel more laid-back\r\n- Match vocal timing to visual editing rhythm\r\n- Use vocal placement for creative effect\r\n\r\n### Quality Control\r\n- Always verify sync at multiple playback speeds\r\n- Check on different monitoring systems\r\n- Get feedback from video editor\r\n- Test final product before delivery\r\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Video Player\r\n\r\nThis section contains workflow information for the fruity-video-player plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Video Player\r\n\r\nThis section contains reference information for the fruity-video-player plugin.\r\n"
+    }
+  }
+}

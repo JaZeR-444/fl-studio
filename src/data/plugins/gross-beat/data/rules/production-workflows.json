@@ -1,0 +1,212 @@
+{
+  "pluginName": "Gross Beat",
+  "ruleType": "Production Workflows",
+  "description": "Structured decision trees for common Gross Beat production scenarios",
+  "workflows": [
+    {
+      "id": "effect-selection",
+      "name": "Choosing the Right Effect",
+      "question": "What do I want to achieve?",
+      "decisionTree": {
+        "slowDown": {
+          "question": "Do you want to maintain the original pitch relationship?",
+          "yes": {
+            "recommendation": "Use Newtime or Pitcher for formant-preserving slowdown",
+            "note": "Gross Beat always changes pitch with speed"
+          },
+          "no": {
+            "question": "Do you want a smooth or dramatic slowdown?",
+            "smooth": {
+              "recommendation": "Half-time slot (C#1) with 100% Mix",
+              "settings": { "attack": 20, "release": 40, "mix": 100 },
+              "application": "Hip-hop verses, breakdowns"
+            },
+            "dramatic": {
+              "recommendation": "Tape-stop slot (F#2) with fade",
+              "settings": { "attack": 50, "release": 100, "mix": 100 },
+              "application": "Transitions, endings"
+            }
+          }
+        },
+        "rhythmic": {
+          "question": "What type of rhythm?",
+          "steady": {
+            "recommendation": "Gate patterns (Volume slots)",
+            "options": {
+              "fourOnFloor": "Slot 2 (C#4) - 1/4 gate",
+              "bouncy": "Slot 3 (D4) - 1/8 gate",
+              "trap": "Slot 4 (D#4) - 1/16 gate"
+            }
+          },
+          "repetitive": {
+            "recommendation": "Stutter patterns (Time slots)",
+            "options": {
+              "moderate": "Slot 7 (F#1) - 1/4 stutter",
+              "fast": "Slot 8 (G1) - 1/8 stutter",
+              "trap": "Slot 9 (G#1) - 1/16 stutter"
+            }
+          },
+          "pumping": {
+            "recommendation": "Sidechain curves (Volume slots 18-24)",
+            "options": {
+              "standard": "Slot 18 (F5) - 4/4 sidechain",
+              "halfTime": "Slot 19 (F#5) - 2/4 sidechain",
+              "snappy": "Slot 21 (G#5) - Fast recovery"
+            }
+          }
+        },
+        "texture": {
+          "question": "What kind of texture?",
+          "glitch": {
+            "recommendation": "Random patterns (Slot 13 - C2)",
+            "settings": { "attack": 5, "release": 15, "mix": 70 }
+          },
+          "movement": {
+            "recommendation": "Varying patterns with automation",
+            "technique": "Automate between slots for evolving texture"
+          },
+          "space": {
+            "recommendation": "Pos control manipulation",
+            "settings": { "pos": 25, "mix": 40 },
+            "effect": "Subtle delay/echo texture"
+          }
+        }
+      }
+    },
+    {
+      "id": "instrument-application",
+      "name": "What to Apply Gross Beat To",
+      "question": "What instrument/track?",
+      "decisionTree": {
+        "drums": {
+          "question": "What part of the drums?",
+          "fullKit": {
+            "recommendation": "Bus processing recommended",
+            "effects": ["Half-time", "Gate", "Stutter"],
+            "warning": "Check phase correlation"
+          },
+          "hihats": {
+            "recommendation": "1/16 gate (D#4) for trap style",
+            "alternative": "Stutter patterns for rolls"
+          },
+          "kick": {
+            "recommendation": "Avoid time manipulation on solo kicks",
+            "alternative": "Volume sidechain for groove"
+          },
+          "snare": {
+            "recommendation": "Stutter effects work well",
+            "suggestion": "1/8 stutter for fills"
+          }
+        },
+        "bass": {
+          "warning": "LOW-END SMEAR RISK",
+          "recommendation": "See 'low-end-smear' rule",
+          "safeMethods": [
+            "Bus processing only",
+            "Parallel processing with high-pass",
+            "Volume effects only (no time)"
+          ]
+        },
+        "vocals": {
+          "question": "What effect?",
+          "stutter": {
+            "recommendation": "1/16 or 1/32 stutter",
+            "settings": { "attack": 10, "mix": 80 },
+            "application": "Ad-libs, fills, transitions"
+          },
+          "chop": {
+            "recommendation": "Stutter gate (C6) with melody",
+            "application": "Melodic chops, hooks"
+          },
+          "texture": {
+            "recommendation": "Subtle half-time",
+            "settings": { "mix": 40, "attack": 30 }
+          }
+        },
+        "melodic": {
+          "question": "What type?",
+          "loops": {
+            "recommendation": "Half-time for groove change",
+            "alternative": "Gate for rhythmic interest"
+          },
+          "pads": {
+            "recommendation": "Sidechain ducking",
+            "effect": "Makes space for other elements"
+          },
+          "leads": {
+            "recommendation": "Stutter for energy",
+            "caution": "Don't overuse - save for moments"
+          }
+        }
+      }
+    },
+    {
+      "id": "mix-context",
+      "name": "Mix Context Decision",
+      "question": "Where in the mix chain?",
+      "decisionTree": {
+        "individualTrack": {
+          "pros": [
+            "Specific control per instrument",
+            "Can customize per element",
+            "Easy to adjust"
+          ],
+          "cons": [
+            "More CPU usage",
+            "Can sound disjointed",
+            "Phase issues possible"
+          ],
+          "bestFor": [
+            "Vocal effects",
+            "Specific drum elements",
+            "Lead instruments"
+          ]
+        },
+        "groupBus": {
+          "pros": [
+            "Cohesive effect",
+            "Saves CPU",
+            "Unified groove"
+          ],
+          "cons": [
+            "Less individual control",
+            "All elements affected equally"
+          ],
+          "bestFor": [
+            "Drum bus",
+            "Instrument groups",
+            "Background elements"
+          ]
+        },
+        "masterBus": {
+          "pros": [
+            "Global effect",
+            "Section transitions",
+            "Maximum cohesion"
+          ],
+          "cons": [
+            "Affects everything",
+            "Cannot isolate elements",
+            "High commitment"
+          ],
+          "bestFor": [
+            "Drop transitions",
+            "Half-time sections",
+            "Full arrangement effects"
+          ],
+          "caution": "Commit to audio before mastering stage"
+        }
+      }
+    }
+  ],
+  "quickDecisionMatrix": {
+    "iWant": {
+      "halfTime": { "timeSlot": "C#1", "mix": 100, "applyTo": "Melodic, drums, full mix" },
+      "stutter": { "timeSlot": "G#1", "mix": 80, "attack": 10, "applyTo": "Builds, fills, transitions" },
+      "gate": { "volumeSlot": "D#4", "mix": 70, "attack": 10, "applyTo": "Hi-hats, percussion, synths" },
+      "sidechain": { "volumeSlot": "F5", "mix": 100, "attack": 5, "release": 150, "applyTo": "Bass, pads, background" },
+      "tapeStop": { "timeSlot": "F#2", "mix": 100, "attack": 50, "applyTo": "Transitions, endings" }
+    }
+  },
+  "source": "[SRC: IL-MAN] Image-Line Gross Beat workflows and professional production practices"
+}

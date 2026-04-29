@@ -1,0 +1,195 @@
+{
+  "safetyRules": {
+    "name": "Fruity WaveShaper Safety Rules",
+    "version": "1.0",
+    "description": "Critical safety rules for preventing distortion disasters",
+    "source": "[SRC: IL-MAN]",
+    "categories": [
+      {
+        "name": "Gain Staging",
+        "priority": "CRITICAL",
+        "rules": [
+          {
+            "id": "gs-1",
+            "rule": "Always compensate Post gain for Pre gain increases",
+            "explanation": "Input drive increases output level; compensation prevents clipping",
+            "formula": "Post ≈ -(Pre × 0.6 to 0.8)",
+            "example": "If Pre = +12dB, set Post to -8 to -10dB",
+            "consequence": "Channel or master bus clipping"
+          },
+          {
+            "id": "gs-2",
+            "rule": "Monitor channel meter after WaveShaper",
+            "explanation": "Visual feedback confirms gain staging is correct",
+            "action": "Watch for red indicators on channel and master meters",
+            "consequence": "Unintentional clipping distortion"
+          },
+          {
+            "id": "gs-3",
+            "rule": "Leave Center enabled at all times",
+            "explanation": "DC offset removal prevents cumulative low-frequency buildup",
+            "exception": "Only disable for specific experimental sound design",
+            "consequence": "Headroom loss, speaker damage, muddy low-end"
+          },
+          {
+            "id": "gs-4",
+            "rule": "Match processed/unprocessed levels for A/B comparison",
+            "explanation": "Fair comparison requires equal loudness",
+            "method": "Adjust Post gain until perceived loudness matches bypassed",
+            "consequence": "Preference for louder option (not necessarily better)"
+          }
+        ]
+      },
+      {
+        "name": "Aliasing Prevention",
+        "priority": "HIGH",
+        "rules": [
+          {
+            "id": "ap-1",
+            "rule": "Use minimum 4x oversampling for hard clipping",
+            "explanation": "Hard clipping generates high frequencies that alias without oversampling",
+            "threshold": "Apply when Pre > +10dB or curve has sharp corners",
+            "consequence": "Digital artifacts, 'metallic' sound, harshness"
+          },
+          {
+            "id": "ap-2",
+            "rule": "Use 8x-16x oversampling for bitcrushing effects",
+            "explanation": "Stepped curves create extreme aliasing",
+            "threshold": "Any stepped/staircase curve shape",
+            "consequence": "Severe digital artifacts, unmusical distortion"
+          },
+          {
+            "id": "ap-3",
+            "rule": "Use 4x oversampling for high-frequency sources",
+            "explanation": "Sources > 5kHz are more prone to audible aliasing",
+            "sources": ["Hi-hats", "Cymbals", "High leads", "Vocal sibilance"],
+            "consequence": "Harsh high-end, listener fatigue"
+          },
+          {
+            "id": "ap-4",
+            "rule": "Balance oversampling with CPU usage",
+            "explanation": "Higher oversampling = higher CPU load",
+            "guideline": "Use 2x-4x for most instances, 8x-16x only for critical tracks",
+            "consequence": "Session lag, audio dropouts, crashes"
+          }
+        ]
+      },
+      {
+        "name": "Mode Selection",
+        "priority": "MEDIUM",
+        "rules": [
+          {
+            "id": "ms-1",
+            "rule": "Use Unipolar for low-end sources (808s, bass, kicks)",
+            "explanation": "Even harmonics preserve low-end warmth and punch",
+            "rationale": "Odd harmonics can cause phase issues and mud in lows",
+            "consequence": "Weak or muddy low-end, loss of sub impact"
+          },
+          {
+            "id": "ms-2",
+            "rule": "Use conservative Mix settings with Bipolar mode",
+            "explanation": "Bipolar generates more aggressive harmonics",
+            "guideline": "Keep Mix at 30-50% for Bipolar unless full distortion effect desired",
+            "consequence": "Harshness, listener fatigue, difficult to mix"
+          },
+          {
+            "id": "ms-3",
+            "rule": "Start with Unipolar for mix bus applications",
+            "explanation": "Even harmonics are safer for full mix processing",
+            "rationale": "Bipolar on mix bus can create cumulative harshness",
+            "consequence": "Harsh, fatiguing mix, unprofessional sound"
+          },
+          {
+            "id": "ms-4",
+            "rule": "Match mode to distortion intensity",
+            "explanation": "Aggressive distortion in Bipolar = very aggressive sound",
+            "guideline": "Subtle saturation = Unipolar; Heavy crunch = Bipolar",
+            "consequence": "Unintentional harshness or weak character"
+          }
+        ]
+      },
+      {
+        "name": "Curve Design",
+        "priority": "MEDIUM",
+        "rules": [
+          {
+            "id": "cd-1",
+            "rule": "Ensure curve passes through (0,0)",
+            "explanation": "Unity gain at zero prevents signal cancellation",
+            "check": "Verify graph shows diagonal through center point",
+            "consequence": "Signal attenuation or cancellation at low levels"
+          },
+          {
+            "id": "cd-2",
+            "rule": "Avoid completely flat sections at extremes",
+            "explanation": "Flat line = no signal; kills negative or positive half",
+            "check": "Maintain minimum -0.8 to -1.0 and +0.8 to +1.0 range",
+            "consequence": "Missing half of waveform, severe distortion"
+          },
+          {
+            "id": "cd-3",
+            "rule": "Round sharp corners for musical results",
+            "explanation": "Sharp corners generate high-frequency harshness",
+            "technique": "Use spline smoothing, add intermediate points",
+            "consequence": "Unpleasant high-end, digital artifacts"
+          },
+          {
+            "id": "cd-4",
+            "rule": "Test extreme curves with sine waves",
+            "explanation": "Pure tones reveal curve behavior clearly",
+            "method": "Apply WaveShaper to 1kHz sine, analyze output spectrum",
+            "consequence": "Unexpected harmonic content, aliasing"
+          }
+        ]
+      },
+      {
+        "name": "Hip-Hop/R&B Specific",
+        "priority": "HIGH",
+        "rules": [
+          {
+            "id": "hh-1",
+            "rule": "Never hard-clip 808s at high mix percentages",
+            "explanation": "Hard clipping removes low-end punch and creates mud",
+            "alternative": "Use soft S-curve with 50-70% Mix",
+            "consequence": "Weak 808s, lost sub impact, muddy mix"
+          },
+          {
+            "id": "hh-2",
+            "rule": "De-ess vocals BEFORE WaveShaper",
+            "explanation": "Distortion amplifies sibilance",
+            "chain": "EQ → De-esser → WaveShaper → Compression",
+            "consequence": "Harsh sibilance, unintelligible vocals"
+          },
+          {
+            "id": "hh-3",
+            "rule": "Keep vocal Mix at 35% or below",
+            "explanation": "Vocals need intelligibility; heavy distortion conflicts",
+            "exception": "Creative ad-libs or intentional effect",
+            "consequence": "Lyrics unintelligible, amateur sound"
+          },
+          {
+            "id": "hh-4",
+            "rule": "Use parallel processing instead of mix bus distortion",
+            "explanation": "Cumulative distortion across many tracks = harsh mix",
+            "technique": "Create dedicated distortion bus, blend to taste",
+            "consequence": "Fatiguing, over-compressed sound"
+          },
+          {
+            "id": "hh-5",
+            "rule": "Mono low frequencies before distortion",
+            "explanation": "Stereo distortion of low frequencies = phase issues",
+            "method": "Use stereo separation plugin or mono compatibility check",
+            "consequence": "Phase cancellation, weak bass on mono systems"
+          }
+        ]
+      }
+    ],
+    "emergencyProcedures": {
+      "clipping": "Immediately reduce Post gain by 6-12dB",
+      "silence": "Check curve passes through (0,0); redraw if needed",
+      "harshness": "Enable 4x+ oversampling, switch to Unipolar, reduce Mix",
+      "cpuOverload": "Reduce oversampling to 2x, freeze/render tracks",
+      "lostLowEnd": "Enable Center, reduce Pre gain, use Unipolar"
+    }
+  }
+}

@@ -1,0 +1,280 @@
+{
+  "symptomSolutions": {
+    "name": "Fruity WaveShaper Symptom-Solution Mapping",
+    "version": "1.0",
+    "description": "Decision tree for solving common distortion problems",
+    "source": "[SRC: IL-MAN]",
+    "symptoms": [
+      {
+        "id": "weak-low-end",
+        "symptom": "808s or bass sound weak after WaveShaper",
+        "priority": 1,
+        "causes": [
+          "Hard clipping removing low-end punch",
+          "DC offset issues",
+          "Bipolar mode on low frequencies",
+          "Low Mix percentage"
+        ],
+        "solutions": [
+          {
+            "action": "Switch to Unipolar mode",
+            "reason": "Even harmonics preserve low-end warmth",
+            "priority": 1
+          },
+          {
+            "action": "Use soft S-curve instead of hard clip",
+            "reason": "Gentle saturation maintains fundamental",
+            "priority": 1
+          },
+          {
+            "action": "Increase Mix to 50-70%",
+            "reason": "Blend more original signal",
+            "priority": 2
+          },
+          {
+            "action": "Verify Center is enabled",
+            "reason": "DC offset can attenuate lows",
+            "priority": 2
+          }
+        ],
+        "prevention": "Always use Unipolar for 808s unless intentional effect"
+      },
+      {
+        "id": "harsh-sound",
+        "symptom": "Sound is harsh, grating, or fatiguing",
+        "priority": 1,
+        "causes": [
+          "Aliasing from insufficient oversampling",
+          "Bipolar mode generating odd harmonics",
+          "Sharp corners in curve",
+          "Too high Pre gain"
+        ],
+        "solutions": [
+          {
+            "action": "Enable 4x-8x oversampling",
+            "reason": "Reduces aliasing artifacts",
+            "priority": 1
+          },
+          {
+            "action": "Switch to Unipolar mode",
+            "reason": "Even harmonics are more musical",
+            "priority": 1
+          },
+          {
+            "action": "Round curve corners",
+            "reason": "Sharp corners generate high frequencies",
+            "priority": 2
+          },
+          {
+            "action": "Reduce Pre gain by 3-6dB",
+            "reason": "Less drive = less harmonic generation",
+            "priority": 2
+          }
+        ],
+        "prevention": "Use minimum 4x oversampling for any noticeable distortion"
+      },
+      {
+        "id": "digital-artifacts",
+        "symptom": "Metallic, shimmering, or 'digital' artifacts",
+        "priority": 1,
+        "causes": [
+          "Aliasing from no oversampling",
+          "Bitcrushing without oversampling",
+          "High-frequency sources with hard clipping"
+        ],
+        "solutions": [
+          {
+            "action": "Enable 8x-16x oversampling",
+            "reason": "High-frequency sources need more oversampling",
+            "priority": 1
+          },
+          {
+            "action": "Use softer curve",
+            "reason": "Less aggressive curves generate fewer artifacts",
+            "priority": 2
+          },
+          {
+            "action": "Switch to Unipolar mode",
+            "reason": "Even harmonics less prone to aliasing",
+            "priority": 2
+          }
+        ],
+        "prevention": "Test with sine waves to identify aliasing before mixing"
+      },
+      {
+        "id": "no-effect",
+        "symptom": "Can't hear any distortion effect",
+        "priority": 2,
+        "causes": [
+          "Mix set to 0%",
+          "Pre gain too low",
+          "Curve is linear",
+          "Plugin bypassed"
+        ],
+        "solutions": [
+          {
+            "action": "Verify Mix is above 0%",
+            "reason": "0% Mix = no processed signal",
+            "priority": 1
+          },
+          {
+            "action": "Increase Pre gain to +10dB or higher",
+            "reason": "Low drive = minimal curve interaction",
+            "priority": 1
+          },
+          {
+            "action": "Check curve deviates from diagonal",
+            "reason": "Linear curve = no distortion",
+            "priority": 1
+          },
+          {
+            "action": "Confirm plugin is not bypassed",
+            "reason": "Bypassed plugins pass audio unchanged",
+            "priority": 1
+          }
+        ],
+        "prevention": "Start with moderate Pre gain (+8dB) and adjust to taste"
+      },
+      {
+        "id": "signal-loss",
+        "symptom": "Audio disappears or becomes very quiet",
+        "priority": 1,
+        "causes": [
+          "Curve has flat section at bottom",
+          "Not passing through (0,0)",
+          "Negative half completely clipped"
+        ],
+        "solutions": [
+          {
+            "action": "Reset curve to linear",
+            "reason": "Restores proper signal flow",
+            "priority": 1
+          },
+          {
+            "action": "Ensure curve passes through (0,0)",
+            "reason": "Center point must maintain unity gain",
+            "priority": 1
+          },
+          {
+            "action": "Verify output range covers -0.8 to +0.8 minimum",
+            "reason": "Extreme clipping kills half the signal",
+            "priority": 1
+          }
+        ],
+        "prevention": "Always verify curve passes through center before finalizing"
+      },
+      {
+        "id": "vocals-sibilant",
+        "symptom": "Vocals become too sibilant after WaveShaper",
+        "priority": 2,
+        "causes": [
+          "Distortion amplifies existing sibilance",
+          "Bipolar mode emphasizing transients",
+          "High Pre gain on vocal track"
+        ],
+        "solutions": [
+          {
+            "action": "Add de-esser BEFORE WaveShaper",
+            "reason": "Remove sibilance before distortion amplifies it",
+            "priority": 1
+          },
+          {
+            "action": "Reduce Mix to 20-30%",
+            "reason": "Less processed signal = less sibilance",
+            "priority": 2
+          },
+          {
+            "action": "Switch to Unipolar mode",
+            "reason": "Even harmonics less aggressive on transients",
+            "priority": 2
+          },
+          {
+            "action": "Reduce Pre gain",
+            "reason": "Less drive = less harmonic generation",
+            "priority": 3
+          }
+        ],
+        "prevention": "Always de-ess vocals before applying distortion"
+      },
+      {
+        "id": "drums-mushy",
+        "symptom": "Drums lose punch and sound mushy",
+        "priority": 2,
+        "causes": [
+          "Soft curve rounding off transients",
+          "Too high Mix percentage",
+          "Unipolar mode on transients"
+        ],
+        "solutions": [
+          {
+            "action": "Switch to Bipolar mode",
+            "reason": "Asymmetric distortion preserves transient bite",
+            "priority": 1
+          },
+          {
+            "action": "Use hard clip curve",
+            "reason": "Sharp threshold maintains transient edge",
+            "priority": 1
+          },
+          {
+            "action": "Reduce Mix slightly",
+            "reason": "Blend more dry transient",
+            "priority": 2
+          }
+        ],
+        "prevention": "Use Bipolar mode for drum transients and punch"
+      },
+      {
+        "id": "cpu-overload",
+        "symptom": "FL Studio lagging or audio dropouts",
+        "priority": 3,
+        "causes": [
+          "Too many instances with high oversampling",
+          "16x oversampling on all tracks",
+          "Complex curves with many points"
+        ],
+        "solutions": [
+          {
+            "action": "Reduce oversampling to 2x-4x on non-critical tracks",
+            "reason": "Lower quality setting reduces CPU",
+            "priority": 1
+          },
+          {
+            "action": "Freeze or render distorted tracks",
+            "reason": "Baked-in distortion frees CPU",
+            "priority": 1
+          },
+          {
+            "action": "Consolidate multiple instances into buses",
+            "reason": "Group processing reduces instance count",
+            "priority": 2
+          }
+        ],
+        "prevention": "Use 4x as default; reserve 8x-16x for critical tracks only"
+      }
+    ],
+    "decisionTree": {
+      "firstQuestion": "What is the primary problem?",
+      "branches": {
+        "soundQuality": {
+          "question": "What does it sound like?",
+          "options": {
+            "harsh": "harsh-sound",
+            "digital": "digital-artifacts",
+            "weak": "weak-low-end",
+            "mushy": "drums-mushy",
+            "sibilant": "vocals-sibilant"
+          }
+        },
+        "technical": {
+          "question": "What is happening?",
+          "options": {
+            "noSound": "signal-loss",
+            "noEffect": "no-effect",
+            "lag": "cpu-overload"
+          }
+        }
+      }
+    }
+  }
+}

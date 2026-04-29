@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "plugin": "MiniSynth",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "presetName": "Vintage Lead",
+    "category": "signature",
+    "inspiredBy": "Nile Rodgers funk style"
+  },
+  "settings": {
+    "oscillator": {
+      "waveform": "sine",
+      "octave": "0",
+      "detune": 0,
+      "mix": 95
+    },
+    "filter": {
+      "type": "lowpass",
+      "cutoff": 2500,
+      "resonance": 18,
+      "drive": 6
+    },
+    "envelope": {
+      "attack": 10,
+      "decay": 200,
+      "sustain": 80,
+      "release": 250
+    },
+    "lfo": {
+      "waveform": "sine",
+      "rate": 0.25,
+      "amt": 12,
+      "dest": "filterCutoff"
+    }
+  },
+  "chain": {
+    "post": ["Fruily Compressor - Ratio 2:1, Attack 10ms", "Fruily Reverb 2 - Plate, Decay 1s, Mix 12%"]
+  },
+  "characteristics": ["smooth", "warm", "funky", "classic"],
+  "genreTags": ["hip-hop/rap", "R&B", "funk", "classic"],
+  "a/bTesting": {
+    "testA": "Sine for pure tone",
+    "testB": "Triangle for harmonics"
+  },
+  "troubleshooting": {
+    "tooDull": "Increase filter cutoff to 3000Hz",
+    "clickingAttack": "Increase attack to 15ms"
+  }
+}

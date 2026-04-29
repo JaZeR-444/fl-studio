@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "fruity-xyz-rules",
+  "title": "X-Y-Z Controller Decision Rules Schema",
+  "description": "Schema for mapping production scenarios to controller configurations",
+  "type": "object",
+  "properties": {
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {"type": "string"},
+          "scenario": {"type": "string"},
+          "recommendedConfig": {"type": "object"},
+          "priority": {"type": "number"}
+        }
+      }
+    }
+  }
+}

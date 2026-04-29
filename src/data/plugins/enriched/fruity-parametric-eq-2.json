@@ -1,0 +1,1297 @@
+{
+  "id": "fruity-parametric-eq-2",
+  "name": "Fruity Parametric EQ 2",
+  "category": "EQ",
+  "tier": "Free",
+  "type": "EQ",
+  "description": "Fruity Parametric EQ 2 - EQ",
+  "tags": [
+    "mixing",
+    "tone-shaping",
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "eq",
+    "tone-shaping",
+    "mixing",
+    "audio"
+  ],
+  "icon": "/plugins/fruity-parametric-eq-2-icon.svg",
+  "color": "#84CC16",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-parametric-eq-2",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "pluginName": "Fruity Parametric EQ 2",
+    "tabs": [
+      "BANDS",
+      "HQ",
+      "LIN"
+    ],
+    "parameters": [
+      {
+        "section": "Global",
+        "id": "main_level",
+        "name": "Main Level",
+        "range": {
+          "min": -18,
+          "max": 18,
+          "unit": "dB"
+        },
+        "description": "Output volume control."
+      },
+      {
+        "section": "Bands",
+        "id": "band_freq",
+        "name": "Band Frequency",
+        "range": {
+          "min": 20,
+          "max": 20000,
+          "unit": "Hz"
+        },
+        "description": "Center frequency for bands 1-7."
+      },
+      {
+        "section": "Bands",
+        "id": "band_gain",
+        "name": "Band Gain",
+        "range": {
+          "min": -18,
+          "max": 18,
+          "unit": "dB"
+        },
+        "description": "Boost or Cut amount for Peaking/Shelf types."
+      },
+      {
+        "section": "Bands",
+        "id": "band_bw",
+        "name": "Bandwidth (Q)",
+        "range": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "description": "Width of the affected frequency range. High % = Narrow."
+      },
+      {
+        "section": "Bands",
+        "id": "band_type",
+        "name": "Filter Type",
+        "options": [
+          "Low Pass",
+          "Band Pass",
+          "High Pass",
+          "Notch",
+          "Low Shelf",
+          "Peaking",
+          "High Shelf"
+        ],
+        "description": "Topology of the filter band."
+      },
+      {
+        "section": "Bands",
+        "id": "band_order",
+        "name": "Filter Order (Slope)",
+        "options": [
+          "Gentle 4",
+          "Gentle 6",
+          "Gentle 8",
+          "Steep 4",
+          "Steep 6",
+          "Steep 8"
+        ],
+        "description": "Steepness of the filter cutoff. Steep 8 = -48dB/Octave."
+      },
+      {
+        "section": "Options",
+        "id": "hq_mode",
+        "name": "HQ (High Quality)",
+        "type": "Switch",
+        "description": "Enables Oversampling to reduce frequency cramping near 20kHz."
+      },
+      {
+        "section": "Options",
+        "id": "lin_mode",
+        "name": "LIN (Linear Phase)",
+        "type": "Toggle",
+        "description": "Enables FFT processing for zero phase shift (adds latency)."
+      },
+      {
+        "section": "Visualization",
+        "id": "pivot_slope",
+        "name": "Pivot Slope",
+        "options": [
+          "0dB",
+          "1.5dB",
+          "3dB",
+          "4.5dB",
+          "6dB"
+        ],
+        "description": "Changes the visual tilt of the spectral analyzer."
+      }
+    ]
+  },
+  "presets": {
+    "band-archetypes": {
+      "description": "Reusable band archetype configurations - complete band settings for common mixing tasks",
+      "usage": "Each archetype is a complete band configuration that can be loaded as a one-click preset or combined with other archetypes to build full EQ curves",
+      "bwPercentNote": "Remember: 0% = widest, 100% = narrowest",
+      "bandArchetypes": {
+        "band1_sub_foundation": [
+          {
+            "name": "HP Clean 80",
+            "description": "Standard high-pass for vocals and non-bass instruments",
+            "type": "high_pass",
+            "freqHz": 80,
+            "bwPercent": 25,
+            "gainDb": 0,
+            "useCase": "General purpose HP for vocals, guitars, keys, leads"
+          },
+          {
+            "name": "HP Tight 100",
+            "description": "More aggressive HP for tight modern sound",
+            "type": "high_pass",
+            "freqHz": 100,
+            "bwPercent": 30,
+            "gainDb": 0,
+            "useCase": "Modern pop/EDM, synths, electronic elements"
+          },
+          {
+            "name": "HP Gentle 60",
+            "description": "Gentle HP for sources that need some low-end",
+            "type": "high_pass",
+            "freqHz": 60,
+            "bwPercent": 20,
+            "gainDb": 0,
+            "useCase": "Acoustic guitars, pianos, full-bodied vocals"
+          },
+          {
+            "name": "HP Surgical 120",
+            "description": "Very tight HP for thin elements in dense mixes",
+            "type": "high_pass",
+            "freqHz": 120,
+            "bwPercent": 35,
+            "gainDb": 0,
+            "useCase": "Hi-hats, shakers, thin synths, FX"
+          },
+          {
+            "name": "Sub Shelf Boost",
+            "description": "Low shelf boost for bass/kick design",
+            "type": "low_shelf",
+            "freqHz": 60,
+            "bwPercent": 30,
+            "gainDb": 2,
+            "useCase": "808s, sub-bass, kick drums (use sparingly)"
+          },
+          {
+            "name": "Sub Bell Weight",
+            "description": "Targeted sub boost for specific frequency",
+            "type": "bell",
+            "freqHz": 45,
+            "bwPercent": 40,
+            "gainDb": 2.5,
+            "useCase": "Boost fundamental of kick or 808 (track level only)"
+          }
+        ],
+        "band2_warmth_body": [
+          {
+            "name": "De-Mud 250",
+            "description": "Most common mud removal frequency",
+            "type": "bell",
+            "freqHz": 250,
+            "bwPercent": 35,
+            "gainDb": -2,
+            "useCase": "Cloudy vocals, muddy guitars, congested mix bus"
+          },
+          {
+            "name": "De-Mud Wide 200",
+            "description": "Broader low-mid cleanup",
+            "type": "bell",
+            "freqHz": 200,
+            "bwPercent": 25,
+            "gainDb": -1.5,
+            "useCase": "General mix clarity without losing too much warmth"
+          },
+          {
+            "name": "Add Body 200",
+            "description": "Gentle warmth and thickness",
+            "type": "bell",
+            "freqHz": 200,
+            "bwPercent": 30,
+            "gainDb": 1.5,
+            "useCase": "Thin vocals, weak guitars, add fullness"
+          },
+          {
+            "name": "Add Chest 180",
+            "description": "Vocal chest resonance boost",
+            "type": "bell",
+            "freqHz": 180,
+            "bwPercent": 40,
+            "gainDb": 2,
+            "useCase": "Male vocals, add depth and power"
+          },
+          {
+            "name": "Warmth Shelf",
+            "description": "Broad warmth using low shelf",
+            "type": "low_shelf",
+            "freqHz": 220,
+            "bwPercent": 25,
+            "gainDb": 1.5,
+            "useCase": "Overall warmth on buses, full-bodied tone"
+          },
+          {
+            "name": "Aggressive De-Mud",
+            "description": "Heavy mud removal for problematic sources",
+            "type": "bell",
+            "freqHz": 280,
+            "bwPercent": 45,
+            "gainDb": -3,
+            "useCase": "Very muddy sources, dense arrangements"
+          }
+        ],
+        "band3_boxiness": [
+          {
+            "name": "De-Box 420",
+            "description": "Most common boxiness frequency",
+            "type": "bell",
+            "freqHz": 420,
+            "bwPercent": 50,
+            "gainDb": -2.5,
+            "useCase": "Cardboard tone, boxy vocals/drums"
+          },
+          {
+            "name": "De-Box Gentle 380",
+            "description": "Subtle boxiness reduction",
+            "type": "bell",
+            "freqHz": 380,
+            "bwPercent": 45,
+            "gainDb": -1.5,
+            "useCase": "Light de-boxing without losing character"
+          },
+          {
+            "name": "Resonance Notch 400",
+            "description": "Surgical removal of specific resonance",
+            "type": "notch",
+            "freqHz": 400,
+            "bwPercent": 75,
+            "gainDb": -4,
+            "useCase": "Obvious ringing resonance, room modes"
+          },
+          {
+            "name": "De-Box Wide 450",
+            "description": "Broader boxiness cleanup",
+            "type": "bell",
+            "freqHz": 450,
+            "bwPercent": 40,
+            "gainDb": -2,
+            "useCase": "General de-congestion of lower mids"
+          },
+          {
+            "name": "Room Tone Cut",
+            "description": "Remove room reflections and tone",
+            "type": "bell",
+            "freqHz": 350,
+            "bwPercent": 55,
+            "gainDb": -3,
+            "useCase": "Poorly recorded sources, small room sound"
+          },
+          {
+            "name": "Add Mid Density",
+            "description": "Rare boost for body in this range",
+            "type": "bell",
+            "freqHz": 380,
+            "bwPercent": 50,
+            "gainDb": 1,
+            "useCase": "Very thin sources needing midrange weight"
+          }
+        ],
+        "band4_honk_nasal": [
+          {
+            "name": "Tame Honk 850",
+            "description": "Most common honk frequency",
+            "type": "bell",
+            "freqHz": 850,
+            "bwPercent": 60,
+            "gainDb": -1.5,
+            "useCase": "Honky guitars, nasal vocals"
+          },
+          {
+            "name": "De-Nasal 700",
+            "description": "Lower nasal frequency",
+            "type": "bell",
+            "freqHz": 700,
+            "bwPercent": 55,
+            "gainDb": -1.5,
+            "useCase": "Nasal male vocals, congested midrange"
+          },
+          {
+            "name": "De-Nasal 950",
+            "description": "Upper nasal frequency",
+            "type": "bell",
+            "freqHz": 950,
+            "bwPercent": 60,
+            "gainDb": -2,
+            "useCase": "Nasal female vocals, thin midrange honk"
+          },
+          {
+            "name": "Telephone Effect",
+            "description": "Creative lo-fi telephone sound",
+            "type": "bell",
+            "freqHz": 1000,
+            "bwPercent": 80,
+            "gainDb": 3,
+            "useCase": "Special effects, lo-fi aesthetic, creative filtering"
+          },
+          {
+            "name": "Mid Focus Boost",
+            "description": "Bring forward in dense mix",
+            "type": "bell",
+            "freqHz": 800,
+            "bwPercent": 55,
+            "gainDb": 1.5,
+            "useCase": "Cutting through dense mix (use carefully)"
+          },
+          {
+            "name": "Honk Notch",
+            "description": "Surgical honk removal",
+            "type": "notch",
+            "freqHz": 850,
+            "bwPercent": 80,
+            "gainDb": -3,
+            "useCase": "Obvious ringing honk in brass/guitars"
+          }
+        ],
+        "band5_presence_clarity": [
+          {
+            "name": "Lead Clarity 2500",
+            "description": "Most common presence boost",
+            "type": "bell",
+            "freqHz": 2500,
+            "bwPercent": 50,
+            "gainDb": 2,
+            "useCase": "Lead vocals, make elements speak clearly"
+          },
+          {
+            "name": "Vocal Presence 2800",
+            "description": "Upper presence for female vocals",
+            "type": "bell",
+            "freqHz": 2800,
+            "bwPercent": 50,
+            "gainDb": 1.5,
+            "useCase": "Female vocals, brighter presence"
+          },
+          {
+            "name": "Male Vocal Presence 2200",
+            "description": "Lower presence for male vocals",
+            "type": "bell",
+            "freqHz": 2200,
+            "bwPercent": 50,
+            "gainDb": 2,
+            "useCase": "Male vocals, deeper voice clarity"
+          },
+          {
+            "name": "Soften Bite 2800",
+            "description": "Reduce edgy presence",
+            "type": "bell",
+            "freqHz": 2800,
+            "bwPercent": 55,
+            "gainDb": -1.5,
+            "useCase": "Too-sharp vocals, reduce harshness"
+          },
+          {
+            "name": "Extreme Clarity 3000",
+            "description": "Maximum intelligibility boost",
+            "type": "bell",
+            "freqHz": 3000,
+            "bwPercent": 45,
+            "gainDb": 2.5,
+            "useCase": "Buried vocal rescue (track level only)"
+          },
+          {
+            "name": "Gentle Presence Wide",
+            "description": "Subtle, natural presence boost",
+            "type": "bell",
+            "freqHz": 2400,
+            "bwPercent": 35,
+            "gainDb": 1,
+            "useCase": "Bus-level presence, subtle clarity"
+          }
+        ],
+        "band6_detail_upper": [
+          {
+            "name": "Add Detail 5000",
+            "description": "Common detail frequency",
+            "type": "bell",
+            "freqHz": 5000,
+            "bwPercent": 35,
+            "gainDb": 1,
+            "useCase": "Add definition and crispness"
+          },
+          {
+            "name": "Tame Harsh 4500",
+            "description": "Most common harshness frequency",
+            "type": "bell",
+            "freqHz": 4500,
+            "bwPercent": 65,
+            "gainDb": -2,
+            "useCase": "Harsh vocals, fatiguing instruments"
+          },
+          {
+            "name": "Tame Sibilance 6000",
+            "description": "Upper harshness and sibilance",
+            "type": "bell",
+            "freqHz": 6000,
+            "bwPercent": 60,
+            "gainDb": -1.5,
+            "useCase": "Sibilant vocals, sharp cymbals"
+          },
+          {
+            "name": "Crispness 5500",
+            "description": "Upper detail boost",
+            "type": "bell",
+            "freqHz": 5500,
+            "bwPercent": 40,
+            "gainDb": 1,
+            "useCase": "Percussion snap, consonant definition"
+          },
+          {
+            "name": "Harsh Notch 4800",
+            "description": "Surgical harsh resonance removal",
+            "type": "bell",
+            "freqHz": 4800,
+            "bwPercent": 75,
+            "gainDb": -3,
+            "useCase": "Specific harsh resonance or ring"
+          },
+          {
+            "name": "Gentle Detail Wide",
+            "description": "Broad, subtle detail enhancement",
+            "type": "bell",
+            "freqHz": 5200,
+            "bwPercent": 25,
+            "gainDb": 0.5,
+            "useCase": "Bus-level polish, gentle enhancement"
+          }
+        ],
+        "band7_air_shine": [
+          {
+            "name": "Air Shelf 12k",
+            "description": "Most common air boost frequency",
+            "type": "high_shelf",
+            "freqHz": 12000,
+            "bwPercent": 20,
+            "gainDb": 2.5,
+            "useCase": "Final polish, modern sheen, vocal air"
+          },
+          {
+            "name": "Air Shelf 10k",
+            "description": "Lower air shelf for more presence",
+            "type": "high_shelf",
+            "freqHz": 10000,
+            "bwPercent": 20,
+            "gainDb": 2,
+            "useCase": "Broader top-end lift, more body to air"
+          },
+          {
+            "name": "Air Shelf 14k",
+            "description": "Ultra-high air for pristine sources",
+            "type": "high_shelf",
+            "freqHz": 14000,
+            "bwPercent": 20,
+            "gainDb": 2,
+            "useCase": "Very clean sources, subtle sparkle"
+          },
+          {
+            "name": "Reduce Hiss Shelf",
+            "description": "High shelf cut for noisy sources",
+            "type": "high_shelf",
+            "freqHz": 12000,
+            "bwPercent": 25,
+            "gainDb": -1.5,
+            "useCase": "Noisy recordings, reduce hiss/artifacts"
+          },
+          {
+            "name": "Air Bell 11k",
+            "description": "Targeted air boost with bell",
+            "type": "bell",
+            "freqHz": 11000,
+            "bwPercent": 30,
+            "gainDb": 2,
+            "useCase": "Specific frequency air boost, more control"
+          },
+          {
+            "name": "Gentle Air Wide",
+            "description": "Subtle, broad air enhancement",
+            "type": "high_shelf",
+            "freqHz": 12000,
+            "bwPercent": 15,
+            "gainDb": 1.5,
+            "useCase": "Mix bus polish, gentle final touch"
+          },
+          {
+            "name": "Aggressive Shine",
+            "description": "Strong air boost for dull sources",
+            "type": "high_shelf",
+            "freqHz": 10000,
+            "bwPercent": 25,
+            "gainDb": 3.5,
+            "useCase": "Very dull sources needing major lift (track only)"
+          }
+        ]
+      },
+      "fullPresetExamples": {
+        "description": "Example complete presets built by stacking band archetypes",
+        "presets": [
+          {
+            "name": "Vocal Polish - Lead",
+            "description": "Clean, clear lead vocal preset",
+            "bands": [
+              {
+                "bandId": 1,
+                "archetype": "HP Clean 80"
+              },
+              {
+                "bandId": 2,
+                "archetype": "De-Mud 250"
+              },
+              {
+                "bandId": 3,
+                "archetype": "De-Box Gentle 380"
+              },
+              {
+                "bandId": 4,
+                "archetype": "Tame Honk 850"
+              },
+              {
+                "bandId": 5,
+                "archetype": "Lead Clarity 2500"
+              },
+              {
+                "bandId": 6,
+                "archetype": "Add Detail 5000"
+              },
+              {
+                "bandId": 7,
+                "archetype": "Air Shelf 12k"
+              }
+            ]
+          },
+          {
+            "name": "Vocal - Warm & Full",
+            "description": "Add body and warmth to thin vocals",
+            "bands": [
+              {
+                "bandId": 1,
+                "archetype": "HP Gentle 60"
+              },
+              {
+                "bandId": 2,
+                "archetype": "Add Chest 180"
+              },
+              {
+                "bandId": 3,
+                "archetype": "De-Box Gentle 380"
+              },
+              {
+                "bandId": 4,
+                "archetype": null
+              },
+              {
+                "bandId": 5,
+                "archetype": "Male Vocal Presence 2200"
+              },
+              {
+                "bandId": 6,
+                "archetype": null
+              },
+              {
+                "bandId": 7,
+                "archetype": "Air Shelf 12k"
+              }
+            ]
+          },
+          {
+            "name": "Mix Bus - Final Polish",
+            "description": "Subtle polish for mix bus",
+            "bands": [
+              {
+                "bandId": 1,
+                "archetype": null
+              },
+              {
+                "bandId": 2,
+                "archetype": "De-Mud Wide 200"
+              },
+              {
+                "bandId": 3,
+                "archetype": null
+              },
+              {
+                "bandId": 4,
+                "archetype": null
+              },
+              {
+                "bandId": 5,
+                "archetype": "Gentle Presence Wide"
+              },
+              {
+                "bandId": 6,
+                "archetype": "Gentle Detail Wide"
+              },
+              {
+                "bandId": 7,
+                "archetype": "Gentle Air Wide"
+              }
+            ]
+          },
+          {
+            "name": "Guitar - Acoustic Clean",
+            "description": "Natural, open acoustic guitar",
+            "bands": [
+              {
+                "bandId": 1,
+                "archetype": "HP Gentle 60"
+              },
+              {
+                "bandId": 2,
+                "archetype": null
+              },
+              {
+                "bandId": 3,
+                "archetype": "De-Box 420"
+              },
+              {
+                "bandId": 4,
+                "archetype": null
+              },
+              {
+                "bandId": 5,
+                "archetype": null
+              },
+              {
+                "bandId": 6,
+                "archetype": "Add Detail 5000"
+              },
+              {
+                "bandId": 7,
+                "archetype": "Air Shelf 12k"
+              }
+            ]
+          },
+          {
+            "name": "Kick/808 - Sub Boost",
+            "description": "Enhance low-end weight",
+            "bands": [
+              {
+                "bandId": 1,
+                "archetype": "Sub Bell Weight"
+              },
+              {
+                "bandId": 2,
+                "archetype": "De-Mud 250"
+              },
+              {
+                "bandId": 3,
+                "archetype": null
+              },
+              {
+                "bandId": 4,
+                "archetype": null
+              },
+              {
+                "bandId": 5,
+                "archetype": null
+              },
+              {
+                "bandId": 6,
+                "archetype": null
+              },
+              {
+                "bandId": 7,
+                "archetype": null
+              }
+            ]
+          },
+          {
+            "name": "Synth - Modern EDM",
+            "description": "Tight, bright modern synth",
+            "bands": [
+              {
+                "bandId": 1,
+                "archetype": "HP Tight 100"
+              },
+              {
+                "bandId": 2,
+                "archetype": "De-Mud 250"
+              },
+              {
+                "bandId": 3,
+                "archetype": "De-Box Wide 450"
+              },
+              {
+                "bandId": 4,
+                "archetype": null
+              },
+              {
+                "bandId": 5,
+                "archetype": "Vocal Presence 2800"
+              },
+              {
+                "bandId": 6,
+                "archetype": "Crispness 5500"
+              },
+              {
+                "bandId": 7,
+                "archetype": "Air Shelf 12k"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "learning": {
+    "Band-Guide": {
+      "band-1-sub-foundation": "# Band 1: Sub / Foundation Control 🟣\r\n\r\n**Frequency Range:** 20-120 Hz\r\n**Color:** Purple\r\n**Default Filter Type:** High-Pass\r\n**Primary Role:** Remove rumble and protect headroom\r\n\r\n## Overview\r\n\r\nBand 1 controls the **inaudible energy and physical weight** of your sound. This is not about what you hear - it's about what you *feel* and what eats your headroom. Think of Band 1 as the gatekeeper that decides whether your mix has a solid foundation or turns into a muddy, headroom-eating mess.\r\n\r\n**The key principle:** Almost everything except kick drums and bass should have this frequency range removed.\r\n\r\n## What This Band Controls\r\n\r\n### Physical Impact\r\n- Sub-rumble that you feel more than hear\r\n- Physical \"weight\" in the low end\r\n- How much the mix moves air (and speakers)\r\n- Headroom availability for limiters and compressors\r\n\r\n### Mix Behavior\r\n- Whether kick and bass have clarity vs fighting with everything else\r\n- Whether the mix \"collapses\" when hitting a limiter\r\n- Whether small speakers (phones, laptops) can reproduce your mix\r\n- Whether the mix translates well to different playback systems\r\n\r\n## Primary Functions\r\n\r\n### 1. Remove Rumble\r\nMost sources don't need frequencies below 80 Hz. They just add:\r\n- Mud you don't consciously hear\r\n- Headroom problems\r\n- Masking of kick/bass elements\r\n\r\n**Who needs it:** Kick drums, bass, 808s, sub-bass synths\r\n**Who doesn't:** Vocals, guitars, most synths, pads, leads, drums (except kick)\r\n\r\n### 2. Protect Headroom\r\nEvery Hz of unnecessary low-end takes up dynamic range:\r\n- Makes compressors overreact\r\n- Makes limiters pump\r\n- Reduces overall loudness potential\r\n- Creates mix instability\r\n\r\n### 3. Separate Kick/Bass from Everything Else\r\nWhen everything has sub energy, nothing has clarity:\r\n- Kick gets masked\r\n- Bass loses definition\r\n- Mix feels congested in the low end\r\n- Amateur \"muddy mix\" syndrome\r\n\r\n## Common Problems Band 1 Fixes\r\n\r\n### Sub Buildup\r\n**Symptom:** Mix feels heavy, undefined, or \"cloudy\" in a way you can't quite pinpoint\r\n**Solution:** High-pass at 70-100 Hz on all non-bass elements\r\n**Settings:** HP filter, 80 Hz, BW 25% (wide, gentle)\r\n\r\n### Limiter Pumping\r\n**Symptom:** Limiter or compressor seems to overreact, causing pumping or breathing\r\n**Solution:** Remove sub rumble that's triggering the dynamics processor\r\n**Settings:** HP filter, 80-90 Hz on problem tracks, verify with limiter bypass\r\n\r\n### Low-End Haze\r\n**Symptom:** Bass and kick aren't punchy or clear despite good levels\r\n**Solution:** HP everything else so kick/bass have that space to themselves\r\n**Settings:** HP 80-100 Hz on non-bass elements, leave kick/bass alone\r\n\r\n## Creative Uses\r\n\r\n### 1. Lo-Fi Rolloff\r\n**What:** Intentional low-end removal for vintage or lo-fi character\r\n**How:** HP at 100-150 Hz (higher than normal)\r\n**When:** Lo-fi beats, vintage vibes, telephone effects, AM radio sound\r\n\r\n### 2. Tighter Modern Low End\r\n**What:** Aggressive HP for ultra-clean, modern production\r\n**How:** HP at 90-100 Hz even on elements with some low-end\r\n**When:** EDM, modern pop, anything needing surgical low-end separation\r\n\r\n### 3. Reduce Proximity Boom\r\n**What:** Remove bass buildup from close-mic'd sources\r\n**How:** HP at 60-80 Hz to remove proximity effect\r\n**When:** Close-mic'd vocals, acoustic guitar, hand-held vocal recordings\r\n\r\n### 4. Make Vocals Sit \"Above\" the Mix\r\n**What:** Remove vocal low-end so they float over the instrumental\r\n**How:** HP at 80-120 Hz depending on vocal type\r\n**When:** Dense mixes, when vocals are getting lost, modern pop production\r\n\r\n## Safe Defaults\r\n\r\n### For Vocals (Lead)\r\n- **Type:** High-Pass\r\n- **Frequency:** 80-100 Hz\r\n- **BW:** 25% (wide, gentle rolloff)\r\n- **Result:** Clean, no muddiness, sits above the bass\r\n\r\n### For Vocals (Background)\r\n- **Type:** High-Pass\r\n- **Frequency:** 100-150 Hz (more aggressive)\r\n- **BW:** 25-30%\r\n- **Result:** Stay out of the way of lead vocal and bass\r\n\r\n### For Synths/Pads (Non-Bass)\r\n- **Type:** High-Pass\r\n- **Frequency:** 80-120 Hz\r\n- **BW:** 25-30%\r\n- **Result:** Clean low-mid, doesn't fight with bass\r\n\r\n### For Guitars\r\n- **Type:** High-Pass\r\n- **Frequency:** 80-100 Hz (acoustic), 90-120 Hz (electric)\r\n- **BW:** 25%\r\n- **Result:** Natural tone without mud\r\n\r\n### For Kick Drum\r\n- **Type:** Usually leave alone OR use low shelf\r\n- **Frequency:** 45-60 Hz (if boosting for weight)\r\n- **Gain:** +1 to +3 dB (track level only)\r\n- **Result:** Enhanced sub weight\r\n\r\n### For Bass/808\r\n- **Type:** Leave alone OR very gentle HP\r\n- **Frequency:** 30-40 Hz (only if removing DC offset or true sub-rumble)\r\n- **BW:** 15-20% (very wide)\r\n- **Result:** Protect against room rumble, preserve fundamental\r\n\r\n## Important Warnings\r\n\r\n### ⚠️ Don't Over-Cut\r\n**Problem:** High-passing too high makes things sound thin, weak, or unnatural\r\n**How to check:** Bypass the EQ and listen - did you lose too much body?\r\n**Fix:** Lower the HP frequency 10-20 Hz until it sounds natural\r\n\r\n**Rules of thumb:**\r\n- Male vocals: Don't go above 100 Hz unless intentional\r\n- Female vocals: Can go 100-120 Hz safely\r\n- Instruments: Err on the side of less cutting\r\n\r\n### ⚠️ Never Boost Sub Unless Designing Bass\r\n**Why:** Boosting below 100 Hz on the master or non-bass elements is almost always a mistake\r\n\r\n**Problems it causes:**\r\n- Headroom destruction\r\n- Limiter pumping\r\n- Mix translation issues\r\n- Bass masking\r\n\r\n**When boosting is OK:**\r\n- Track level only (never bus or master)\r\n- On kick drums (small boost 45-60 Hz)\r\n- On 808/bass synths (small boost for weight)\r\n- Always check on multiple playback systems\r\n\r\n### ⚠️ Watch the Bandwidth\r\n**Too narrow (high %):** Sounds unnatural, phase issues, weird resonances\r\n**Too wide (low %):** May not remove enough rumble\r\n\r\n**Sweet spot:** 15-30% BW for high-pass filters (wide, musical)\r\n\r\n## Frequency-Specific Guidance\r\n\r\n### 20-30 Hz (True Sub-Bass)\r\n**What's here:** Mostly felt, barely heard\r\n**Action:** Remove from everything except kick/bass/808\r\n**Why:** No speakers reproduce this well, wastes headroom\r\n\r\n### 30-45 Hz (Deep Sub)\r\n**What's here:** Sub-bass fundamentals, kick drum sub\r\n**Action:** Preserve on kick/bass, remove from everything else\r\n**Why:** This is where kick and bass live - keep it exclusive\r\n\r\n### 45-60 Hz (Fundamental Bass)\r\n**What's here:** Bass/808 fundamental, kick drum body\r\n**Action:** Can boost slightly on kick/bass if needed\r\n**Why:** Core low-end weight, but be conservative\r\n\r\n### 60-80 Hz (Upper Sub)\r\n**What's here:** Bass harmonics, some male vocal fundamentals\r\n**Action:** Common HP point for most instruments\r\n**Why:** Balances natural sound with mud removal\r\n\r\n### 80-100 Hz (Sub-to-Low Transition)\r\n**What's here:** Male vocal fundamentals, low guitar notes\r\n**Action:** Most common HP frequency for vocals/instruments\r\n**Why:** Safe removal point that preserves natural tone\r\n\r\n### 100-120 Hz (Low-End Boundary)\r\n**What's here:** Low notes of most instruments\r\n**Action:** Upper limit for HP on most sources\r\n**Why:** Going higher starts removing musical content\r\n\r\n## Practical Workflow\r\n\r\n### Step 1: Start with Everything HP'd\r\nDefault approach: HP everything at 80 Hz except kick/bass\r\n- Gives you a clean slate\r\n- Ensures headroom\r\n- Lets you hear what's really needed\r\n\r\n### Step 2: Adjust by Listening\r\nFor each track:\r\n1. Solo the track\r\n2. Enable the HP filter at 80 Hz\r\n3. Slowly sweep up until you hear it getting thin\r\n4. Back off 10-20 Hz\r\n5. Check in context with the full mix\r\n\r\n### Step 3: Verify in Context\r\nWith the full mix playing:\r\n- Does the kick have more punch?\r\n- Does the bass have more clarity?\r\n- Does the overall mix feel cleaner?\r\n- Did you lose too much weight anywhere?\r\n\r\n### Step 4: Check Translation\r\nListen on different systems:\r\n- Headphones (should have controlled low-end)\r\n- Phone speaker (should still sound balanced)\r\n- Car (should have punch without boom)\r\n- Studio monitors (should have clarity and power)\r\n\r\n## Common Mistakes\r\n\r\n### Mistake 1: Not Using Band 1 at All\r\n**Symptom:** Mix feels muddy, limiter pumps, lacks clarity\r\n**Fix:** HP everything except kick/bass at 80 Hz minimum\r\n\r\n### Mistake 2: HP'ing Kick/Bass Too Much\r\n**Symptom:** Mix has no weight, sounds thin and weak\r\n**Fix:** Leave kick/bass alone or use very gentle HP (30-40 Hz only for DC offset)\r\n\r\n### Mistake 3: Using Too Narrow Bandwidth\r\n**Symptom:** Unnatural sound, phase issues, weird resonance\r\n**Fix:** Use BW of 15-30% (wide rolloff)\r\n\r\n### Mistake 4: Setting and Forgetting\r\n**Symptom:** Same HP frequency on everything regardless of source\r\n**Fix:** Adjust per instrument - male vocals differ from female vocals, etc.\r\n\r\n### Mistake 5: Boosting Sub on Master\r\n**Symptom:** Entire mix becomes uncontrollable, limiters destroy dynamics\r\n**Fix:** NEVER boost Band 1 on master bus. Fix issues at track level.\r\n\r\n## Listen For (Verification)\r\n\r\n### When Done Correctly:\r\n- ✅ Kick drum has punch and definition\r\n- ✅ Bass is clear and doesn't fight with kick\r\n- ✅ Mix has headroom and doesn't pump when limited\r\n- ✅ Small speakers can reproduce the mix\r\n- ✅ Overall mix feels \"clean\" in the low-end\r\n- ✅ Individual tracks retain natural character\r\n\r\n### Warning Signs:\r\n- ❌ Vocals sound thin or weak\r\n- ❌ Mix sounds hollow or lacking weight\r\n- ❌ Unnatural tone on instruments\r\n- ❌ Phase issues or weird resonances\r\n- ❌ Mix still muddy despite HP filtering\r\n\r\n## Integration with Other Bands\r\n\r\n### Band 1 + Band 2 (Warmth)\r\nCombo approach for mud removal:\r\n- Band 1: HP at 80 Hz\r\n- Band 2: Cut -1 to -2 dB at 200-250 Hz\r\n- Result: Clean, controlled low-mids without mud\r\n\r\n### Band 1 + Band 5 (Presence)\r\nVocal clarity combo:\r\n- Band 1: HP at 80-100 Hz\r\n- Band 5: Boost +1 to +2 dB at 2-3 kHz\r\n- Result: Vocal sits above mix with clarity\r\n\r\n## Genre-Specific Approaches\r\n\r\n### EDM/Electronic\r\n- **Aggressive HP:** 90-100 Hz on everything except kick/bass/sub\r\n- **Why:** Needs surgical low-end separation for club systems\r\n- **Kick/bass:** Often have exclusive sub energy, heavily compressed\r\n\r\n### Hip-Hop\r\n- **Moderate HP:** 70-80 Hz on non-bass elements\r\n- **Why:** 808s need exclusive sub range for impact\r\n- **Vocals:** Can go as low as 60-70 Hz on male rap vocals (but check for mud)\r\n\r\n### Rock/Live Instruments\r\n- **Gentle HP:** 60-80 Hz on most instruments\r\n- **Why:** Live instruments have natural low-end that can be musical\r\n- **Bass guitar:** Usually leave alone, may HP at 40 Hz for rumble only\r\n\r\n### Pop/R&B\r\n- **Vocal-focused HP:** 80-100 Hz on vocals, aggressive HP on background elements\r\n- **Why:** Vocal clarity is paramount, bass/kick support but don't dominate\r\n- **Layering:** Heavy stacking requires clean low-end separation\r\n\r\n## Reference Data\r\n\r\nFor exact specifications and presets, see:\r\n- **Band definition:** `02-Data/band-definitions/eg2.json` (bandId: 1)\r\n- **Archetypes:** `02-Data/presets/eg3.json` (band1_sub)\r\n  - \"HP Clean\": 80 Hz high-pass, BW 25%\r\n  - \"HP Tight\": 100 Hz high-pass, BW 30%\r\n  - \"Low Shelf Weight\": 60 Hz shelf boost +2 dB (bass sources only)\r\n\r\n## Practice Exercise\r\n\r\n1. **Load a dense mix in FL Studio**\r\n2. **On every non-bass track, add Fruity Parametric EQ 2**\r\n3. **Set Band 1 to high-pass at 80 Hz, BW 25%**\r\n4. **Listen to the difference:**\r\n   - Bypass all EQs\r\n   - Enable all EQs\r\n   - Notice: kick punch, bass clarity, headroom improvement\r\n5. **Adjust individual tracks** based on what you hear\r\n6. **Check on phone speaker** - still balanced?\r\n\r\n## Next Steps\r\n\r\n- **Continue to Band 2** to learn about removing mud and adding warmth\r\n- **Document your findings** in `03-Workflows/by-instrument/`\r\n- **Create your own HP preset** for your common workflow\r\n\r\n---\r\n\r\n**Remember:** Band 1 is about subtraction, not addition. When in doubt, high-pass it.\r\n",
+      "band-2-warmth-body": "# Band 2: Low-Mid Body / Warmth 🌸\r\n\r\n**Frequency Range:** 140-320 Hz\r\n**Color:** Pink\r\n**Default Filter Type:** Bell\r\n**Primary Role:** Balance warmth and thickness vs mud and cloudiness\r\n\r\n## Overview\r\n\r\nBand 2 is the **most commonly overused and misunderstood** frequency range in mixing. This is where warmth lives - and where mud accumulates. The fundamental challenge: every instrument wants energy here, but too much makes your mix sound like it's underwater.\r\n\r\n**The key principle:** Cut more often than you boost. This range stacks FAST across multiple tracks.\r\n\r\n## What This Band Controls\r\n\r\n### Tonal Character\r\n- Warmth vs coldness\r\n- Thickness vs thinness\r\n- Fullness vs hollowness\r\n- Body vs weakness\r\n\r\n### Spatial Perception\r\n- How close or distant a sound feels\r\n- Whether sounds feel \"present\" or \"in the background\"\r\n- Mix density and congestion\r\n- Overall \"weight\" of the production\r\n\r\n### The Mud Zone\r\nThis is where amateur mixes die:\r\n- Too much = muddy, unclear, \"cloudy\" mix\r\n- Too little = thin, weak, no weight\r\n- Just right = warm, clear, and punchy\r\n\r\n## Primary Functions\r\n\r\n### 1. Warmth\r\nThe positive aspect of Band 2:\r\n- Makes things sound full and rich\r\n- Adds \"chest\" to vocals\r\n- Gives body to thin sounds\r\n- Creates intimacy and closeness\r\n\r\n### 2. Thickness\r\nThe physical presence dimension:\r\n- How \"big\" a sound feels\r\n- Whether it fills space\r\n- Impact and weight\r\n- Perceived size\r\n\r\n### 3. Body\r\nThe substance of the sound:\r\n- Fundamental notes for many instruments\r\n- Core tone  character\r\n- Whether something sounds \"real\" vs \"thin\"\r\n- Natural resonance of acoustic spaces\r\n\r\n## Common Problems Band 2 Fixes\r\n\r\n### Mud\r\n**Symptom:** Mix sounds cloudy, undefined, everything blurs together in the low-mids\r\n**Diagnosis:** Too much 200-300 Hz energy stacking across tracks\r\n**Solution:** Cut -1 to -2 dB at 220-250 Hz on most tracks\r\n**Settings:** Bell, 240 Hz, -1.5 dB, BW 35% (wide)\r\n\r\n**Who to cut:**\r\n- Vocals (almost always)\r\n- Guitars (electric and acoustic)\r\n- Synths and pads\r\n- Most drums\r\n- Piano\r\n\r\n**Who to leave alone:**\r\n- Bass (has fundamentals here)\r\n- Kick (lower fundamentals)\r\n- Elements intentionally providing warmth\r\n\r\n### Boomy Warmth\r\n**Symptom:** Mix has warmth but feels bloated or boomy, lacks definition\r\n**Diagnosis:** Too much 180-220 Hz (lower end of Band 2)\r\n**Solution:** Cut -2 to -3 dB at 200 Hz with wide BW\r\n**Settings:** Bell, 200 Hz, -2 dB, BW 30-35%\r\n\r\n### Clouded Mix\r\n**Symptom:** Individual elements sound good soloed but disappear in the mix\r\n**Diagnosis:** Low-mid frequency masking across multiple tracks\r\n**Solution:** Strategic cuts across the mix, not boosting everything\r\n**Settings:** Identify 2-3 elements that need warmth, cut the rest\r\n\r\n## Creative Uses\r\n\r\n### 1. Add Chest to Vocals\r\n**What:** Boost low-mids to add body and intimacy\r\n**How:** +1 to +2 dB at 180-220 Hz, wide BW\r\n**When:** Thin vocals, distant-sounding vocals, need more presence\r\n**Warning:** Easy to overdo - always check in full mix context\r\n\r\n### 2. Thicken Synths/Pads\r\n**What:** Add weight and fullness to thin synthesizers\r\n**How:** +1 to +1.5 dB at 200-250 Hz, BW 30-40%\r\n**When:** Pads need more body, synths sound thin\r\n**Warning:** Can quickly cause mud in dense arrangements\r\n\r\n### 3. Make Sound Feel Closer\r\n**What:** Use proximity effect emulation to bring sounds forward\r\n**How:** Small boost 160-200 Hz\r\n**When:** Want intimate, close-mic'd character\r\n**Warning:** Works against elements that should stay back\r\n\r\n### 4. Add Weight to Drums\r\n**What:** Enhance drum body and impact\r\n**How:** +1 to +2 dB at 180-240 Hz on snare, toms\r\n**When:** Drums feel thin or lack punch\r\n**Warning:** Can interfere with bass if overdone\r\n\r\n## Safe Defaults\r\n\r\n### For Vocals (Lead)\r\n**Default Action:** CUT (most common)\r\n- **Type:** Bell\r\n- **Frequency:** 220-250 Hz (sweep to find muddiest point)\r\n- **Gain:** -1 to -2 dB\r\n- **BW:** 35% (wide)\r\n- **Result:** Clear vocal that doesn't cloud the mix\r\n\r\n**Exception - Boost for Body:**\r\n- **Frequency:** 180-200 Hz\r\n- **Gain:** +1 to +1.5 dB\r\n- **BW:** 30-35%\r\n- **When:** Thin or distant vocals only\r\n\r\n### For Vocals (Background)\r\n- **Type:** Bell\r\n- **Frequency:** 200-250 Hz\r\n- **Gain:** -2 to -3 dB (more aggressive than lead)\r\n- **BW:** 35-40%\r\n- **Result:** Stays out of the way, doesn't add mud\r\n\r\n### For Guitars (Acoustic)\r\n- **Type:** Bell\r\n- **Frequency:** 180-220 Hz\r\n- **Gain:** -1 to -2 dB\r\n- **BW:** 30-35%\r\n- **Result:** Clear, defined, not boomy\r\n\r\n### For Guitars (Electric)\r\n- **Type:** Bell\r\n- **Frequency:** 200-280 Hz (varies by tone)\r\n- **Gain:** -1 to -2 dB\r\n- **BW:** 35-40%\r\n- **Result:** Tight, doesn't compete with vocals/bass\r\n\r\n### For Bass/808\r\n**Usually leave alone or boost carefully:**\r\n- **Type:** Bell or low shelf\r\n- **Frequency:** 160-200 Hz (harmonics, not fundamentals)\r\n- **Gain:** +1 to +2 dB (track level only)\r\n- **BW:** 30-40%\r\n- **Result:** Enhanced harmonics without mud\r\n\r\n### For Kick Drum\r\n**Usually subtle cut or neutral:**\r\n- **Frequency:** 180-220 Hz\r\n- **Gain:** -0.5 to -1.5 dB (if sounds muddy)\r\n- **BW:** 30-40%\r\n- **Result:** Kick stays tight and punchy\r\n\r\n## Important Warnings\r\n\r\n### ⚠️ This Range Stacks FAST\r\n**Problem:** What sounds good on one track becomes mud when stacked\r\n\r\n**How it happens:**\r\n- Add +2 dB warmth to vocals\r\n- Add +1.5 dB body to guitar\r\n- Add +2 dB thickness to pad\r\n- Result: +5.5 dB mud pile in your mix\r\n\r\n**Prevention:**\r\n1. Choose 1-2 elements to have warmth\r\n2. Cut this range on everything else\r\n3. Always check in full mix context\r\n4. If you boost one thing, cut others\r\n\r\n### ⚠️ Cut More Often Than You Boost\r\n**Why:** Band 2 accumulates naturally\r\n\r\nSources that add low-mid energy:\r\n- Room tone and reflections\r\n- Mic proximity effect\r\n- Natural instrument resonances\r\n- Multiple layered sounds\r\n\r\n**Rule of thumb:**\r\n- Cut on 70-80% of tracks\r\n- Boost on maybe 10-20% of tracks\r\n- Leave alone on 10% of tracks\r\n\r\n### ⚠️ Don't Confuse Warmth with Mud\r\nThey're related but different:\r\n\r\n**Warmth:**\r\n- Controlled low-mid presence\r\n- Adds body without cloudiness\r\n- Enhances without masking\r\n- Feels good and sounds clear\r\n\r\n**Mud:**\r\n- Excessive low-mid buildup\r\n- Obscures detail and clarity\r\n- Causes frequency masking\r\n- Sounds cloudy and undefined\r\n\r\n**How to tell:**\r\n- Warmth: You can still hear individual elements clearly\r\n- Mud: Mix sounds like a blur, hard to distinguish parts\r\n\r\n### ⚠️ Watch Boosts on Master/Bus\r\n**Danger zone:** Boosting Band 2 on mix bus or master\r\n\r\n**Why it's risky:**\r\n- Amplifies accumulated low-mid energy from all tracks\r\n- Can turn a clean mix into a muddy one instantly\r\n- Very little headroom for boost here\r\n\r\n**Safe approach:**\r\n- Master/Bus: Maximum +0.5 to +1 dB if needed\r\n- Prefer cuts (-0.5 to -1 dB) to clean up\r\n- Fix warmth issues at track level, not bus level\r\n\r\n## Frequency-Specific Guidance\r\n\r\n### 140-180 Hz (Low Body)\r\n**What's here:** Bass harmonics, low male vocal fundamentals, low piano notes\r\n**Character:** Deep body, can be boomy\r\n**Action:** Usually cut -1 to -2 dB unless it's a bass source\r\n**Listen for:** Boominess, excessive warmth\r\n\r\n### 180-220 Hz (Warmth Zone)\r\n**What's here:** Vocal \"chest,\" bass harmonics, guitar body\r\n**Character:** Where warmth lives\r\n**Action:** Boost here for body (+1 to +2 dB), but sparingly\r\n**Listen for:** Nice warmth vs too much thickness\r\n\r\n### 220-260 Hz (Mud Central)\r\n**What's here:** Primary mud accumulation zone\r\n**Character:** Clouds mixes faster than any other range\r\n**Action:** Cut -1 to -2 dB on most non-bass sources\r\n**Listen for:** Cloudiness, lack of clarity\r\n\r\n### 260-320 Hz (Upper Low-Mid)\r\n**What's here:** Transition to midrange, some fundamental notes\r\n**Character:** Can add density or congestion\r\n**Action:** Context-dependent, often -0.5 to -1.5 dB cut\r\n**Listen for:** Congestion, thickness without warmth\r\n\r\n## Practical Workflow\r\n\r\n### Step 1: Start with Strategic Cuts\r\nDefault approach: Cut Band 2 on most tracks\r\n1. Load your mix\r\n2. Identify non-bass elements (vocals, guitars, synths, etc.)\r\n3. Cut -1 to -2 dB at 240 Hz, BW 35%\r\n4. Listen to mix clarity improvement\r\n\r\n### Step 2: Choose Your Warmth Sources\r\nDecide which 1-2 elements should provide warmth:\r\n- Usually lead vocal OR bass (not both equally)\r\n- Maybe one supporting element (guitar or pad)\r\n- Everything else gets cut\r\n\r\n### Step 3: Sweep to Find Mud\r\nOn each track:\r\n1. Solo the track\r\n2. Create a boost (+6 dB) at 200 Hz, narrow BW\r\n3. Sweep from 140-320 Hz\r\n4. Find the \"muddiest\" or \"boomiest\" frequency\r\n5. Change boost to cut (-1 to -2 dB), widen BW\r\n6. Check in mix context\r\n\r\n### Step 4: Verify in Context\r\nCritical step - solo means nothing for Band 2:\r\n1. A/B the EQ (bypass on/off)\r\n2. Listen for clarity improvement\r\n3. Make sure you didn't lose too much body\r\n4. Adjust amount (not all tracks need -2 dB, some only need -0.5 dB)\r\n\r\n### Step 5: Check Translation\r\nTest on systems that reveal mud:\r\n- Headphones (mud becomes very obvious)\r\n- Car (small space exaggerates low-mids)\r\n- Phone speaker (surprising amount of low-mid on phones)\r\n- If it's muddy on any system, keep cutting\r\n\r\n## Common Mistakes\r\n\r\n### Mistake 1: Boosting Everything for Warmth\r\n**Symptom:** Mix sounds thick and undefined despite \"warm\" individual tracks\r\n**Fix:** Cut most tracks, boost only 1-2 sources\r\n\r\n### Mistake 2: Not Cutting Enough\r\n**Symptom:** Mix still cloudy despite some EQ work\r\n**Fix:** Be more aggressive - try -2 to -3 dB cuts on problem tracks\r\n\r\n### Mistake 3: Same Settings on All Tracks\r\n**Symptom:** Some tracks too thin, others still muddy\r\n**Fix:** Customize per track - sweep to find each track's mud frequency\r\n\r\n### Mistake 4: Forgetting to Check in Context\r\n**Symptom:** Tracks sound good solo but disappear in mix\r\n**Fix:** Always verify EQ decisions with full mix playing\r\n\r\n### Mistake 5: Cutting the Bass\r\n**Symptom:** Mix has no weight or bottom end\r\n**Fix:** Leave bass and kick alone in Band 2 (their fundamentals live here)\r\n\r\n## Listen For (Verification)\r\n\r\n### When Done Correctly:\r\n- ✅ Mix sounds clear and defined\r\n- ✅ Individual instruments are distinguishable\r\n- ✅ Still has warmth and body (not cold/thin)\r\n- ✅ Bass and kick punch through clearly\r\n- ✅ Vocals sit nicely without cloudiness\r\n- ✅ Mix translates well to small speakers\r\n\r\n### Warning Signs:\r\n- ❌ Mix sounds thin, weak, or hollow\r\n- ❌ Lost too much body and weight\r\n- ❌ Sounds cold or sterile\r\n- ❌ Bass disappeared\r\n- ❌ Unnatural tone on instruments\r\n\r\n## Integration with Other Bands\r\n\r\n### Band 1 + Band 2 (Clean Low-End)\r\nUltimate mud removal combo:\r\n- Band 1: HP at 80 Hz\r\n- Band 2: Cut -1.5 dB at 240 Hz, BW 35%\r\n- Result: Clean, tight low-end with controlled warmth\r\n\r\n### Band 2 + Band 3 (Midrange Clarity)\r\nBroad midrange cleanup:\r\n- Band 2: Cut -1.5 dB at 240 Hz\r\n- Band 3: Cut -2 dB at 400 Hz\r\n- Result: Open, clear midrange\r\n\r\n### Band 2 + Band 5 (Vocal Forward)\r\nClassic vocal EQ:\r\n- Band 2: Cut -1 to -2 dB at 220-240 Hz (remove mud)\r\n- Band 5: Boost +1 to +2 dB at 2.5 kHz (add presence)\r\n- Result: Clear, forward vocal\r\n\r\n## Genre-Specific Approaches\r\n\r\n### EDM/Electronic\r\n- **Aggressive cuts:** -2 to -3 dB on most non-bass elements\r\n- **Why:** Needs surgical separation for clarity and punch\r\n- **Bass:** May boost +1 to +2 dB at 180-200 Hz for harmonic weight\r\n\r\n### Hip-Hop\r\n- **Vocal-focused cuts:** -1.5 to -2 dB on vocals to avoid 808 conflict\r\n- **Why:** 808 has harmonics in this range, vocals must stay clear\r\n- **808:** Usually leave alone or very slight cut if too boomy\r\n\r\n### Rock/Live Instruments\r\n- **Moderate cuts:** -1 to -1.5 dB, preserve some natural body\r\n- **Why:** Live instruments have musical low-mid content\r\n- **Guitars:** Often need -2 dB at 200-250 Hz to avoid congestion\r\n\r\n### Pop/R&B\r\n- **Clarity-focused:** Cut vocals/instruments, preserve bass warmth\r\n- **Why:** Pop needs clarity and shine over raw warmth\r\n- **Vocals:** Almost always cut -1 to -2 dB at 220-250 Hz\r\n\r\n### Jazz/Acoustic\r\n- **Gentle cuts:** -0.5 to -1 dB, preserve natural warmth\r\n- **Why:** Acoustic instruments benefit from natural body\r\n- **Double bass:** Leave alone or slight boost for woody character\r\n\r\n## Reference Data\r\n\r\nFor exact specifications and presets, see:\r\n- **Band definition:** `02-Data/band-definitions/eg2.json` (bandId: 2)\r\n- **Archetypes:** `02-Data/presets/eg3.json` (band2_warmth)\r\n  - \"De-Mud\": Bell, 250 Hz, -2 dB, BW 35%\r\n  - \"Add Body\": Bell, 200 Hz, +1.5 dB, BW 30%\r\n\r\n## Practice Exercise\r\n\r\n1. **Load a mix that sounds muddy**\r\n2. **On all non-bass tracks:**\r\n   - Add Fruity Parametric EQ 2\r\n   - Set Band 2: Bell, 240 Hz, -2 dB, BW 35%\r\n3. **Listen to the transformation:**\r\n   - Bypass all EQs (muddy)\r\n   - Enable all EQs (clear)\r\n   - Notice how individual elements become more defined\r\n4. **Fine-tune per track:**\r\n   - Sweep 140-320 Hz to find worst mud spot\r\n   - Adjust cut amount based on track\r\n5. **Choose 1-2 sources for warmth:**\r\n   - Maybe add +1 dB at 200 Hz to lead vocal\r\n   - Everything else stays cut\r\n\r\n## Next Steps\r\n\r\n- **Continue to Band 3** to learn about removing boxiness\r\n- **Document your mud frequencies** per instrument type in `03-Workflows/by-instrument/`\r\n- **Create a \"de-mud\" preset** for your workflow\r\n\r\n---\r\n\r\n**Remember:** Band 2 is the mud zone. When in doubt, cut it. Your mix will thank you.\r\n",
+      "band-3-boxiness": "# Band 3: Boxiness / Room Tone 🟠\r\n\r\n**Frequency Range:** 300-550 Hz\r\n**Color:** Orange\r\n**Default Filter Type:** Bell\r\n**Primary Role:** Remove cardboard/boxy tone and room resonances\r\n\r\n## Overview\r\n\r\nBand 3 is the difference between \"amateur\" and \"professional\" sound. This range contains the dreaded **\"cardboard box\" resonance** that makes recordings sound cheap, enclosed, or like they were made in someone's bedroom. It's also where untreated rooms leave their sonic fingerprint.\r\n\r\n**The key principle:** Small cuts here make things sound more expensive and open.\r\n\r\n## What This Band Controls\r\n\r\n- **Boxiness:** The \"enclosed in cardboard\" sound\r\n- **Room resonances:** Untreated space reflections\r\n- **Midrange congestion:** Instrument masking and buildup\r\n- **Perceived quality:** Amateur vs professional production sound\r\n\r\n## Common Problems Band 3 Fixes\r\n\r\n### \"Recorded in a Room\" Sound\r\n**Symptom:** Tracks sound like they were obviously recorded in a small, untreated space\r\n**Solution:** Cut -2 to -3 dB at 350-450 Hz (sweep to find worst resonance)\r\n**Settings:** Bell, BW 50% (medium)\r\n\r\n### Boxy Drums/Vocals\r\n**Symptom:** Sounds enclosed, lack openness, \"cardboard\" quality\r\n**Solution:** Cut -1.5 to -3 dB at 400 Hz\r\n**Settings:** Bell, BW 45-55%\r\n\r\n### Congested Midrange\r\n**Symptom:** Multiple instruments fighting in lower midrange\r\n**Solution:** Strategic cuts across tracks at different frequencies\r\n**Settings:** Bell, -1 to -2 dB, medium BW\r\n\r\n## Creative Uses\r\n\r\n### 1. Make Sound More \"Expensive\"\r\n**What:** Remove cheap-sounding resonances\r\n**How:** Sweep 300-550 Hz, cut where it sounds \"boxy\"\r\n**Amount:** -2 to -4 dB\r\n**Result:** More professional, open sound\r\n\r\n### 2. Create Distance\r\n**What:** Make sources feel farther away\r\n**How:** Leave Band 3 alone or boost slightly\r\n**When:** Want background elements to stay back\r\n**Amount:** +0.5 to +1 dB for distance\r\n\r\n### 3. Add Mid Density\r\n**What:** Thicken sparse mixes\r\n**How:** Tiny boost at 350-400 Hz\r\n**When:** Mix feels thin in the mids\r\n**Warning:** Easy to overdo, creates congestion\r\n\r\n## Safe Defaults\r\n\r\n### Vocals\r\n- **Frequency:** 350-450 Hz (sweep to find boxiest point)\r\n- **Gain:** -1.5 to -3 dB\r\n- **BW:** 50% (medium)\r\n- **Result:** Open, less \"roomy\" vocal\r\n\r\n### Acoustic Guitar\r\n- **Frequency:** 330-400 Hz\r\n- **Gain:** -2 to -3 dB\r\n- **BW:** 45-55%\r\n- **Result:** Clear, not boxy\r\n\r\n### Drums (Snare/Tom)\r\n- **Frequency:** 380-480 Hz\r\n- **Gain:** -2 to -4 dB\r\n- **BW:** 50-60%\r\n- **Result:** Open, not enclosed\r\n\r\n### Electric Guitar\r\n- **Frequency:** 350-500 Hz (depends on amp)\r\n- **Gain:** -1 to -2 dB\r\n- **BW:** 45-55%\r\n- **Result:** Cut without mud\r\n\r\n## Important Warnings\r\n\r\n### ⚠️ Over-Cut Removes Life\r\n**Problem:** Too much cutting makes things sound hollow and lifeless\r\n\r\n**Signs:**\r\n- Mix feels empty in the middle\r\n- Instruments lose body\r\n- Overall sound is weak\r\n\r\n**Fix:** Back off the cut or widen the BW\r\n\r\n### ⚠️ Don't Stack Multiple Mid Cuts\r\n**Problem:** Band 2 + Band 3 + Band 4 cuts create a giant hole\r\n\r\n**Prevention:**\r\n- Choose your battles - maybe cut Band 2 OR Band 3, not both aggressively\r\n- Always A/B compare\r\n- If you cut multiple bands, use smaller amounts\r\n\r\n## Frequency-Specific Guidance\r\n\r\n### 300-350 Hz (Lower Boxiness)\r\n**What's here:** Transition from warmth to mids, some box tone\r\n**Action:** Cut -1 to -2 dB if boxy\r\n**Character:** Dense, can congest\r\n\r\n### 350-450 Hz (Core Boxiness)\r\n**What's here:** Primary \"cardboard box\" resonance\r\n**Action:** Cut -2 to -3 dB on most sources\r\n**Character:** Makes or breaks professional sound\r\n\r\n### 450-550 Hz (Upper Boxiness)\r\n**What's here:** Transition to nasal range, some room resonances\r\n**Action:** Cut -1 to -2.5 dB\r\n**Character:** Can sound honky or congested\r\n\r\n## Practical Workflow\r\n\r\n### Finding the Box Frequency\r\n1. Solo the track\r\n2. Create +6 dB boost, narrow BW (70%)\r\n3. Sweep 300-550 Hz\r\n4. Find where it sounds most \"boxy\" or \"cardboard-like\"\r\n5. Change to cut (-2 to -3 dB), medium BW (50%)\r\n6. Verify in mix context\r\n\r\n### Integration with Bands 2 & 4\r\n**The Midrange Cleanup Trio:**\r\n- Band 2: Cut -1.5 dB at 240 Hz (mud)\r\n- Band 3: Cut -2 dB at 400 Hz (box)\r\n- Band 4: Cut -1 dB at 850 Hz (honk)\r\n- Result: Clean, clear midrange\r\n\r\n## Reference Data\r\n\r\n- **Band definition:** `02-Data/band-definitions/eg2.json` (bandId: 3)\r\n- **Archetypes:** `02-Data/presets/eg3.json` (band3_box)\r\n  - \"De-Box\": Bell, 420 Hz, -2.5 dB, BW 50%\r\n  - \"Resonance Notch\": Notch, 380 Hz, -4 dB, BW 75% (for obvious resonances only)\r\n\r\n---\r\n\r\n**Remember:** Band 3 is where amateur recordings reveal themselves. A good cut here = instant professionalism.\r\n",
+      "band-4-nasal-honk": "# Band 4: Nasal / Honk / Mid Focus 🟡\r\n\r\n**Frequency Range:** 600-1200 Hz\r\n**Color:** Yellow\r\n**Default Filter Type:** Bell\r\n**Primary Role:** Control nasal quality and midrange aggression\r\n\r\n## Overview\r\n\r\nBand 4 is the **most sensitive frequency range** - small moves make big differences. This is where voices sound nasal, instruments sound \"honky,\" and mixes can become fatiguing to listen to. It's also where you can make things cut through a mix or push them back.\r\n\r\n**The key principle:** Small changes only. ±1 to 2 dB maximum in most cases.\r\n\r\n## What This Band Controls\r\n\r\n- **Nasal quality:** The \"talking through your nose\" sound\r\n- **Honk:** The \"megaphone\" or \"telephone\" character\r\n- **Forwardness:** How much something pushes at the listener\r\n- **Ear fatigue:** Too much here = listener exhaustion\r\n\r\n## Common Problems Band 4 Fixes\r\n\r\n### Nasal Vocals\r\n**Symptom:** Vocal sounds like singer is pinching their nose\r\n**Solution:** Cut -1 to -2 dB at 700-1000 Hz\r\n**Settings:** Bell, BW 60% (medium-narrow)\r\n**Find it:** Boost and sweep - it'll sound awful when you hit it\r\n\r\n### Honky Instruments\r\n**Symptom:** Guitar, piano, or brass sounds like it's coming through a megaphone\r\n**Solution:** Cut -1 to -2 dB at 800-1000 Hz\r\n**Settings:** Bell, BW 55-65%\r\n\r\n### Fatiguing Mids\r\n**Symptom:** Mix sounds aggressive or tiring to listen to\r\n**Solution:** Small cuts (-0.5 to -1.5 dB) across multiple tracks\r\n**Settings:** Bell, BW 50-60%\r\n\r\n## Creative Uses\r\n\r\n### 1. Make Vocals Cut Through\r\n**What:** Small boost for presence and forward character\r\n**How:** +1 to +2 dB at 900-1100 Hz\r\n**When:** Dense mix, vocal getting lost\r\n**Warning:** Easily becomes harsh - use sparingly\r\n\r\n### 2. Telephone/Lo-Fi Effect\r\n**What:** Intentional honky, retro character\r\n**How:** +3 to +6 dB at 1000 Hz, narrow BW (70-80%)\r\n**When:** Creative effect, lo-fi aesthetic\r\n**Result:** AM radio, telephone, vintage sound\r\n\r\n### 3. Emphasize Character Over Polish\r\n**What:** Leave or slightly boost for raw, characterful sound\r\n**How:** +0.5 to +1 dB at 800-900 Hz\r\n**When:** Want rawness, edge, aggression\r\n**Genre:** Rock, punk, garage\r\n\r\n## Safe Defaults\r\n\r\n### Vocals (Reduce Nasal)\r\n- **Frequency:** 700-1000 Hz (sweep to find nasal spot)\r\n- **Gain:** -1 to -2 dB\r\n- **BW:** 60% (medium-narrow)\r\n- **Result:** Natural, less nasal\r\n\r\n### Vocals (Add Presence)\r\n- **Frequency:** 900-1100 Hz\r\n- **Gain:** +1 to +1.5 dB\r\n- **BW:** 50-55%\r\n- **When:** Needs to cut through mix\r\n- **Warning:** Check for harshness\r\n\r\n### Guitars/Piano\r\n- **Frequency:** 800-1000 Hz\r\n- **Gain:** -1 to -1.5 dB\r\n- **BW:** 55-65%\r\n- **Result:** Less honk, more natural\r\n\r\n### Brass/Saxophone\r\n- **Frequency:** 700-900 Hz\r\n- **Gain:** -0.5 to -1.5 dB (tame aggression)\r\n- **BW:** 60%\r\n- **Result:** Smooth, not piercing\r\n\r\n## Important Warnings\r\n\r\n### ⚠️ Small Moves Only\r\n**Why this range is sensitive:**\r\n- Human ear is most sensitive 1-4 kHz (Band 4 is the entry point)\r\n- Small changes are very audible\r\n- Easy to overdo\r\n\r\n**Guidelines:**\r\n- Track level: Maximum ±2 dB\r\n- Bus level: Maximum ±1 dB\r\n- Master level: Maximum ±0.5 dB\r\n\r\n### ⚠️ Too Much Cut = Distance\r\n**Problem:** Over-cutting Band 4 makes things sound far away or hollow\r\n\r\n**Signs:**\r\n- Vocal or instrument loses presence\r\n- Sounds distant or underwater\r\n- Mix lacks midrange focus\r\n\r\n**Fix:** Use smaller cuts or widen BW\r\n\r\n### ⚠️ Boost = Potential Harshness\r\n**Problem:** Boosting Band 4 can quickly become fatiguing\r\n\r\n**Prevention:**\r\n- Start with +0.5 dB, listen for 30+ seconds\r\n- Increase slowly if needed\r\n- Never boost on multiple tracks without checking total effect\r\n- Always check on headphones (reveals harshness)\r\n\r\n## Frequency-Specific Guidance\r\n\r\n### 600-750 Hz (Lower Honk)\r\n**What's here:** Low nasal resonances, some body\r\n**Action:** Cut -0.5 to -1.5 dB if honky\r\n**Character:** Can sound thick or congested\r\n\r\n### 750-900 Hz (Core Nasal)\r\n**What's here:** Primary nasal/honk zone for vocals\r\n**Action:** Cut -1 to -2 dB for nasal vocals\r\n**Character:** Where nasality lives\r\n\r\n### 900-1100 Hz (Upper Honk/Presence)\r\n**What's here:** Presence beginning, can be nasal or forward\r\n**Action:** Cut for honk, boost for presence (carefully)\r\n**Character:** Dual nature - problem or solution\r\n\r\n### 1100-1200 Hz (Transition to Presence)\r\n**What's here:** Border with Band 5 presence range\r\n**Action:** Usually subtle adjustments\r\n**Character:** Beginning of \"air\" and presence\r\n\r\n## Practical Workflow\r\n\r\n### Finding Nasality\r\n1. Solo vocal or instrument\r\n2. Create +6 dB boost, BW 70%\r\n3. Sweep 600-1200 Hz slowly\r\n4. Listen for the \"nose-pinched\" or \"megaphone\" sound\r\n5. That's your nasal frequency\r\n6. Change to cut (-1 to -2 dB), BW 60%\r\n7. Verify sounds more natural\r\n\r\n### Adding Controlled Presence\r\n1. If element is getting lost in mix\r\n2. Try small boost +1 dB at 900-1000 Hz\r\n3. Listen in full mix for 30+ seconds\r\n4. If sounds harsh, reduce amount or frequency\r\n5. Consider using Band 5 instead (often better choice)\r\n\r\n## Integration with Other Bands\r\n\r\n### Band 3 + Band 4 (Midrange Cleanup)\r\nRemove boxy and honky together:\r\n- Band 3: Cut -2 dB at 400 Hz\r\n- Band 4: Cut -1 dB at 850 Hz\r\n- Result: Open, clear midrange\r\n\r\n### Band 4 + Band 5 (Presence Control)\r\nFine-tune vocal presence:\r\n- Band 4: Cut -1 dB at 800 Hz (reduce honk)\r\n- Band 5: Boost +2 dB at 2.5 kHz (add clarity)\r\n- Result: Present without being honky\r\n\r\n## Genre-Specific Approaches\r\n\r\n### Pop/R&B\r\n- Cut -1 to -2 dB to remove nasality\r\n- Keep vocals smooth and polished\r\n\r\n### Rock/Alternative\r\n- May boost +0.5 to +1 dB for aggression\r\n- Embrace some edge and character\r\n\r\n### EDM/Electronic\r\n- Usually cut -0.5 to -1 dB\r\n- Keep synthetic sounds smooth\r\n\r\n### Hip-Hop\r\n- Depends on style - modern = cut, older = may boost\r\n- Check for 808/vocal interaction\r\n\r\n## Reference Data\r\n\r\n- **Band definition:** `02-Data/band-definitions/eg2.json` (bandId: 4)\r\n- **Archetypes:** `02-Data/presets/eg3.json` (band4_honk)\r\n  - \"Tame Honk\": Bell, 850 Hz, -1.5 dB, BW 60%\r\n  - \"Telephone\": Bell, 1000 Hz, +3 dB, BW 80% (creative effect)\r\n\r\n## Practice Exercise\r\n\r\n1. **Load a vocal track**\r\n2. **Create +6 dB boost at 800 Hz, narrow BW**\r\n3. **Sweep 600-1200 Hz - listen for nasality**\r\n4. **Note the worst frequency**\r\n5. **Change to -1.5 dB cut at that frequency**\r\n6. **Widen BW to 60%**\r\n7. **Compare before/after** - should sound more natural\r\n\r\n---\r\n\r\n**Remember:** Band 4 is sensitive. When in doubt, use smaller amounts than you think you need.\r\n",
+      "band-5-presence": "# Band 5: Presence / Intelligibility 🟢\r\n\r\n**Frequency Range:** 1800-3200 Hz\r\n**Color:** Green\r\n**Default Filter Type:** Bell\r\n**Primary Role:** Control clarity, definition, and intelligibility\r\n\r\n## Overview\r\n\r\nBand 5 is the **\"make it cut through\" band**. This is where vocal intelligibility lives, where lyrics become clear, where lead instruments step forward in the mix. It's also where harshness begins if you're not careful.\r\n\r\n**The key principle:** This range makes things \"in your face\" - use for elements that need to be heard clearly.\r\n\r\n## What This Band Controls\r\n\r\n- **Clarity:** Whether you can understand lyrics or distinguish notes\r\n- **Definition:** Sharpness and articulation of sounds\r\n- **Intelligibility:** Vocal comprehension and lyric clarity\r\n- **Forwardness:** Whether something sits forward or back in the mix\r\n- **Attack:** Initial transient snap and punch\r\n\r\n## Common Problems Band 5 Fixes\r\n\r\n### Buried Vocals\r\n**Symptom:** Vocal is loud enough but still hard to hear/understand in dense mix\r\n**Solution:** Boost +1 to +2 dB at 2-3 kHz\r\n**Settings:** Bell, BW 50% (medium)\r\n**Result:** Vocal jumps forward, lyrics become clear\r\n\r\n### Dull Leads\r\n**Symptom:** Lead instrument (guitar, synth, etc.) lacks definition and sits back\r\n**Solution:** Boost +1 to +2.5 dB at 2.5-3 kHz\r\n**Settings:** Bell, BW 45-55%\r\n**Result:** Lead cuts through, more defined\r\n\r\n### Lack of Articulation\r\n**Symptom:** Can't hear individual notes or words clearly\r\n**Solution:** Boost +1 to +2 dB at 2-2.5 kHz\r\n**Settings:** Bell, BW 50%\r\n**Result:** Improved clarity and note separation\r\n\r\n## Creative Uses\r\n\r\n### 1. Make Vocals Feel Closer\r\n**What:** Bring vocal right to the listener's ear\r\n**How:** +2 to +3 dB at 2.5-3 kHz\r\n**When:** Intimate vocal style, confessional lyrics\r\n**Warning:** Can become harsh - monitor carefully\r\n\r\n### 2. Accentuate Rhythm and Attack\r\n**What:** Emphasize transients and rhythmic elements\r\n**How:** +1 to +2 dB at 2-2.5 kHz\r\n**When:** Percussion, plucky instruments, rhythmic synths\r\n**Result:** More rhythmic energy and impact\r\n\r\n### 3. Add Urgency or Excitement\r\n**What:** Make mix feel more energetic and immediate\r\n**How:** Boost across multiple elements at 2.5-3 kHz\r\n**When:** Build-ups, choruses, high-energy sections\r\n**Warning:** Presence stacks - be very careful\r\n\r\n## Safe Defaults\r\n\r\n### Lead Vocals\r\n- **Frequency:** 2-3 kHz (2.5 kHz common starting point)\r\n- **Gain:** +1 to +2 dB\r\n- **BW:** 50% (medium)\r\n- **Result:** Clear, intelligible, forward\r\n\r\n### Background Vocals\r\n- **Frequency:** 2.5-3 kHz\r\n- **Gain:** +0.5 to +1 dB (less than lead)\r\n- **BW:** 45-50%\r\n- **Result:** Support without competing with lead\r\n\r\n### Guitar (Lead/Solo)\r\n- **Frequency:** 2.5-3.2 kHz\r\n- **Gain:** +1.5 to +2.5 dB\r\n- **BW:** 50%\r\n- **Result:** Cuts through, defined notes\r\n\r\n### Snare Drum\r\n- **Frequency:** 2-2.5 kHz\r\n- **Gain:** +1 to +2 dB\r\n- **BW:** 45-55%\r\n- **Result:** Snappy, defined attack\r\n\r\n## Important Warnings\r\n\r\n### ⚠️ Overuse = Harshness and Fatigue\r\n**Problem:** Band 5 is right in the ear's most sensitive range\r\n\r\n**Signs of overuse:**\r\n- Mix sounds harsh or aggressive\r\n- Listener fatigue after 1-2 minutes\r\n- Everything sounds \"in your face\"\r\n- Headache-inducing\r\n\r\n**Prevention:**\r\n- Use on lead elements only (vocal, main instrument)\r\n- Don't boost on every track\r\n- Maximum +2 dB on track level, +1 dB on bus\r\n- Always check on headphones\r\n\r\n### ⚠️ Presence Stacks Across Tracks\r\n**Problem:** Individual presence boosts compound\r\n\r\n**Example:**\r\n- Vocal: +2 dB at 2.5 kHz\r\n- Guitar: +2 dB at 2.8 kHz\r\n- Synth: +1.5 dB at 2.6 kHz\r\n- Result: +5.5 dB harsh pile-up\r\n\r\n**Solution:**\r\n- Choose 1-2 elements for presence boost\r\n- Cut or leave neutral on supporting elements\r\n- Check cumulative effect in full mix\r\n\r\n### ⚠️ Can Create Sibilance Issues\r\n**Problem:** Boosting Band 5 can exaggerate \"S\" sounds on vocals\r\n\r\n**Prevention:**\r\n- Use moderate amounts (+1 to +2 dB max)\r\n- Consider using Band 6 for detail instead\r\n- Use de-esser after EQ if needed\r\n- Check multiple vocal phrases\r\n\r\n## Frequency-Specific Guidance\r\n\r\n### 1800-2200 Hz (Lower Presence)\r\n**What's here:** Presence foundation, some attack\r\n**Character:** Forwardness without harshness\r\n**Common use:** +1 to +2 dB for gentle clarity\r\n\r\n### 2200-2600 Hz (Core Presence)\r\n**What's here:** Primary intelligibility zone\r\n**Character:** Main \"cut through\" area\r\n**Common use:** +1 to +2 dB for vocal/lead clarity\r\n\r\n### 2600-3000 Hz (Upper Presence)\r\n**What's here:** Edge and definition\r\n**Character:** More aggressive, can be harsh\r\n**Common use:** +1 to +1.5 dB for extra bite\r\n\r\n### 3000-3200 Hz (Transition to Detail)\r\n**What's here:** Border with Band 6\r\n**Character:** Getting into harshness territory\r\n**Common use:** Careful boosts, often better to use Band 6\r\n\r\n## Practical Workflow\r\n\r\n### For Buried Vocals\r\n1. Solo vocal in mix context\r\n2. Start with +1 dB at 2.5 kHz, BW 50%\r\n3. Listen - is vocal clearer?\r\n4. If still buried, increase to +1.5 dB\r\n5. If still not enough, try +2 dB\r\n6. If still buried, problem is elsewhere (volume, compression, arrangement)\r\n7. Never exceed +2 dB without questioning why\r\n\r\n### For Lead Instruments\r\n1. Identify what should be the \"lead\"\r\n2. Boost +1 to +2 dB at 2.5-3 kHz\r\n3. Verify it cuts through in full mix\r\n4. Check for harshness on headphones\r\n5. Adjust frequency or amount as needed\r\n\r\n### Preventing Harshness\r\n1. Start conservative (+0.5 to +1 dB)\r\n2. Listen for 30+ seconds\r\n3. Check on multiple systems\r\n4. If harsh, reduce amount OR lower frequency\r\n5. Consider cutting competing elements instead of boosting lead\r\n\r\n## Integration with Other Bands\r\n\r\n### Band 2 + Band 5 (Classic Vocal EQ)\r\n- Band 2: Cut -1.5 dB at 240 Hz (remove mud)\r\n- Band 5: Boost +1.5 dB at 2.5 kHz (add presence)\r\n- Result: Clear, forward vocal\r\n\r\n### Band 3 + Band 4 + Band 5 (Full Vocal Treatment)\r\n- Band 3: Cut -2 dB at 400 Hz (remove box)\r\n- Band 4: Cut -1 dB at 850 Hz (remove honk)\r\n- Band 5: Boost +2 dB at 2.5 kHz (add presence)\r\n- Result: Professional, clear, present vocal\r\n\r\n### Band 5 + Band 7 (Modern Vocal Polish)\r\n- Band 5: Boost +1.5 dB at 2.5 kHz (presence)\r\n- Band 7: Boost +2.5 dB shelf at 12 kHz (air)\r\n- Result: Clear and airy modern vocal\r\n\r\n## Genre-Specific Approaches\r\n\r\n### Pop/R&B\r\n- Bold presence: +2 to +3 dB at 2.5-3 kHz\r\n- Vocal is the star, needs maximum clarity\r\n\r\n### Rock/Alternative\r\n- Moderate presence: +1 to +2 dB at 2.3-2.7 kHz\r\n- Balance vocal with guitars\r\n\r\n### EDM/Electronic\r\n- Selective presence: +1 to +2 dB on vocals only\r\n- Synths usually stay back\r\n\r\n### Hip-Hop\r\n- Strong presence: +1.5 to +2.5 dB at 2.5-3 kHz\r\n- Vocal intelligibility crucial for lyrics\r\n\r\n### Jazz/Acoustic\r\n- Gentle presence: +0.5 to +1.5 dB at 2-2.5 kHz\r\n- Natural balance, not forced forward\r\n\r\n## Listen For (Verification)\r\n\r\n### When Done Correctly:\r\n- ✅ Lead element clearly audible in mix\r\n- ✅ Lyrics/notes easily understood\r\n- ✅ Element sits \"in front\" spatially\r\n- ✅ No harshness or fatigue\r\n- ✅ Natural tone preserved\r\n\r\n### Warning Signs:\r\n- ❌ Harsh, fatiguing sound\r\n- ❌ Listener discomfort\r\n- ❌ Sibilance exaggerated\r\n- ❌ Unnatural, \"spitty\" quality\r\n- ❌ Everything fighting for attention\r\n\r\n## Reference Data\r\n\r\n- **Band definition:** `02-Data/band-definitions/eg2.json` (bandId: 5)\r\n- **Archetypes:** `02-Data/presets/eg3.json` (band5_presence)\r\n  - \"Lead Clarity\": Bell, 2500 Hz, +2 dB, BW 50%\r\n  - \"Soften Bite\": Bell, 2800 Hz, -1.5 dB, BW 55%\r\n\r\n## Practice Exercise\r\n\r\n1. **Load a mix where vocal is buried**\r\n2. **Solo vocal in mix context**\r\n3. **Add +1 dB at 2.5 kHz, BW 50%**\r\n4. **Listen - is it clearer?**\r\n5. **Increase to +1.5 dB if needed**\r\n6. **Check on headphones for harshness**\r\n7. **Compare before/after** - vocal should be more intelligible without sounding harsh\r\n\r\n---\r\n\r\n**Remember:** Band 5 is powerful but dangerous. Start with +1 dB and increase only if genuinely needed.\r\n",
+      "band-6-detail": "# Band 6: Upper Presence / Detail 🔵\r\n\r\n**Frequency Range:** 3500-6500 Hz\r\n**Color:** Teal\r\n**Default Filter Type:** Bell\r\n**Primary Role:** Control perceived detail and sharpness\r\n\r\n## Overview\r\n\r\nBand 6 is the **detail and definition band** - where you add crispness, articulation, and \"HD quality\" to sounds. It's also the sibilance zone and ear-fatigue danger area. Small boosts add professional polish; too much creates listener discomfort.\r\n\r\n**The key principle:** Less is more. This range is extremely sensitive.\r\n\r\n## What This Band Controls\r\n\r\n- **Detail:** Perceived resolution and definition\r\n- **Crispness:** Sharp attack and transient clarity\r\n- **Articulation:** Consonant clarity, note separation\r\n- **Sibilance:** \"S,\" \"T,\" \"SH\" sounds in vocals\r\n- **Sharpness:** Edge and aggression vs smoothness\r\n\r\n## Common Problems Band 6 Fixes\r\n\r\n### Dullness\r\n**Symptom:** Mix or element sounds flat, lacks sparkle and detail\r\n**Solution:** Boost +0.5 to +1.5 dB at 4-5 kHz\r\n**Settings:** Bell, BW 35-40% (wide)\r\n**Warning:** Start small, easy to overdo\r\n\r\n### Lack of Snap\r\n**Symptom:** Transients feel soft, drums lack attack definition\r\n**Solution:** Boost +1 to +2 dB at 4.5-5.5 kHz\r\n**Settings:** Bell, BW 35-45%\r\n**Result:** Sharper transients, more defined attacks\r\n\r\n### Soft Consonants\r\n**Symptom:** Vocal consonants (S, T, K) are unclear\r\n**Solution:** Small boost +0.5 to +1 dB at 5-6 kHz\r\n**Settings:** Bell, BW 40%\r\n**Warning:** Monitor for excessive sibilance\r\n\r\n### Harshness (Problem Solving)\r\n**Symptom:** Mix or vocal sounds harsh, sharp, fatiguing\r\n**Solution:** Cut -1 to -3 dB at problem frequency\r\n**Settings:** Bell, BW 55-65% (narrow for specific resonances)\r\n**Result:** Smoother, less fatiguing\r\n\r\n## Creative Uses\r\n\r\n### 1. Add Edge/Definition\r\n**What:** Make digital sounds feel sharper and more defined\r\n**How:** +0.5 to +1 dB at 4.5-5.5 kHz\r\n**When:** Synths need more character, drums need snap\r\n**Result:** Modern, crisp sound\r\n\r\n### 2. Sharper Percussion\r\n**What:** Enhance hi-hat, cymbal, and percussion clarity\r\n**How:** +1 to +2 dB at 5-6 kHz\r\n**When:** Percussion getting lost or sounds dull\r\n**Result:** Defined, crisp percussion\r\n\r\n### 3. More \"HD\" Sound\r\n**What:** Add perceived high-definition quality\r\n**How:** Wide boost +0.5 to +1 dB at 4-5 kHz\r\n**When:** Want modern, hi-fi character\r\n**Warning:** Compounds with Band 7 - check total HF boost\r\n\r\n## Safe Defaults\r\n\r\n### Vocals (Add Detail)\r\n- **Frequency:** 4.5-5.5 kHz\r\n- **Gain:** +0.5 to +1 dB\r\n- **BW:** 35-40% (wide)\r\n- **Result:** Crisp consonants without harshness\r\n- **Warning:** Monitor sibilance\r\n\r\n### Vocals (Tame Harshness)\r\n- **Frequency:** 4-5 kHz (sweep to find harsh frequency)\r\n- **Gain:** -1 to -2 dB\r\n- **BW:** 55-65% (medium-narrow)\r\n- **Result:** Smoother, less fatiguing\r\n\r\n### Acoustic Guitar\r\n- **Frequency:** 4.5-5.5 kHz\r\n- **Gain:** +0.5 to +1.5 dB\r\n- **BW:** 35-45%\r\n- **Result:** String definition, pick attack clarity\r\n\r\n### Drums/Percussion\r\n- **Frequency:** 5-6 kHz\r\n- **Gain:** +1 to +2 dB\r\n- **BW:** 35-45%\r\n- **Result:** Snap and attack definition\r\n\r\n### Cymbals/Hi-Hats\r\n- **Frequency:** 5.5-6.5 kHz\r\n- **Gain:** +0.5 to +1 dB (usually don't need much)\r\n- **BW:** 30-40%\r\n- **Result:** Shimmer and definition\r\n\r\n## Important Warnings\r\n\r\n### ⚠️ Too Much = Harsh + Fatiguing\r\n**Problem:** Band 6 is in the ear's peak sensitivity range (2-5 kHz)\r\n\r\n**Signs of excess:**\r\n- Listener fatigue within minutes\r\n- \"Ice-pick\" quality\r\n- Harsh sibilance on vocals\r\n- Painful to listen on headphones\r\n\r\n**Solution:**\r\n- Maximum +1.5 dB on most sources\r\n- Check on headphones immediately\r\n- Listen for extended period\r\n- If harsh, reduce amount or cut instead\r\n\r\n### ⚠️ Watch Sibilance\r\n**Problem:** Boosting Band 6 exaggerates \"S\" sounds\r\n\r\n**Prevention:**\r\n- Use narrow boosts (40-50% BW) to avoid sibilance zone\r\n- Boost 4-5 kHz for clarity, avoid 6-8 kHz for sibilance\r\n- Consider de-esser after EQ\r\n- Check multiple vocal phrases\r\n\r\n**If already sibilant:**\r\n- Cut -1 to -2 dB at 6-7 kHz (use Band 6 upper range or Band 7)\r\n- Use narrow BW (60-70%)\r\n\r\n### ⚠️ Don't Stack with Bright Saturation\r\n**Problem:** Saturation/distortion + Band 6 boost = excessive harshness\r\n\r\n**Be careful when:**\r\n- Using tape saturation\r\n- Using analog emulation\r\n- Using tube/transformer plugins\r\n- Chain has multiple HF enhancers\r\n\r\n**Solution:**\r\n- Use either saturation OR EQ boost, not both aggressively\r\n- If using saturation, be very conservative with Band 6\r\n- Check final cumulative HF response\r\n\r\n## Frequency-Specific Guidance\r\n\r\n### 3500-4000 Hz (Lower Detail)\r\n**What's here:** Transition from presence, clarity foundation\r\n**Character:** Detail without harshness\r\n**Common use:** +0.5 to +1 dB for gentle crispness\r\n\r\n### 4000-5000 Hz (Core Detail)\r\n**What's here:** Primary definition zone\r\n**Character:** Clarity and attack\r\n**Common use:** +0.5 to +1.5 dB for detail, OR cut -1 to -2 dB for harshness\r\n\r\n### 5000-6000 Hz (Upper Detail/Sibilance)\r\n**What's here:** Consonant clarity, sibilance beginning\r\n**Character:** Sharp and detailed, approaching harsh\r\n**Common use:** +0.5 to +1 dB for snap, careful of sibilance\r\n\r\n### 6000-6500 Hz (Sibilance Zone)\r\n**What's here:** Primary sibilance frequencies\r\n**Character:** Very sharp, can be harsh\r\n**Common use:** Often cut -1 to -2 dB to reduce sibilance\r\n\r\n## Practical Workflow\r\n\r\n### Adding Detail Without Harshness\r\n1. Start with +0.5 dB at 5 kHz, BW 35%\r\n2. Listen in full mix for 30+ seconds\r\n3. If not enough detail, increase to +1 dB\r\n4. Check on headphones - any harshness?\r\n5. If harsh, try lowering frequency to 4.5 kHz\r\n6. Never exceed +1.5 dB without serious justification\r\n\r\n### Removing Harshness\r\n1. Boost +6 dB, BW 65% (narrow)\r\n2. Sweep 3.5-6.5 kHz\r\n3. Find the \"ice-pick\" or most harsh frequency\r\n4. Change to cut -1.5 to -2 dB\r\n5. Adjust BW (wider for general smoothness, narrower for specific resonance)\r\n6. Verify on headphones\r\n\r\n### Managing Sibilance\r\n1. If vocal has excessive \"S\" sounds after Band 6 boost\r\n2. Create second band (or use Band 7 lower range)\r\n3. Cut -1 to -2 dB at 6-7 kHz, BW 60-70%\r\n4. Adjust until sibilance controlled but consonants still clear\r\n\r\n## Integration with Other Bands\r\n\r\n### Band 5 + Band 6 (Presence + Detail)\r\nFull clarity treatment:\r\n- Band 5: Boost +1.5 dB at 2.5 kHz (presence)\r\n- Band 6: Boost +0.5 to +1 dB at 5 kHz (detail)\r\n- Result: Clear and defined, modern sound\r\n- Warning: Check total HF boost\r\n\r\n### Band 6 + Band 7 (Polish Stack)\r\nModern HF enhancement:\r\n- Band 6: Boost +1 dB at 4.5 kHz (detail)\r\n- Band 7: Boost +2.5 dB shelf at 12 kHz (air)\r\n- Result: Detailed and airy\r\n- Warning: Easy to create harsh top-end\r\n\r\n## Genre-Specific Approaches\r\n\r\n### Pop/Modern\r\n- +0.5 to +1 dB for crisp, HD quality\r\n- Embrace detail and definition\r\n\r\n### Rock/Organic\r\n- Often cut -0.5 to -1 dB for smoothness\r\n- Less aggressive than pop\r\n\r\n### EDM/Electronic\r\n- +1 to +1.5 dB for sharp transients\r\n- Digital aesthetic embraces detail\r\n\r\n### Hip-Hop\r\n- Varies - modern = +0.5 to +1 dB, classic = often cut\r\n- Check vocal/beat relationship\r\n\r\n### Jazz/Classical\r\n- Usually minimal or cut\r\n- Natural instruments, not overly processed\r\n\r\n## Reference Data\r\n\r\n- **Band definition:** `02-Data/band-definitions/eg2.json` (bandId: 6)\r\n- **Archetypes:** `02-Data/presets/eg3.json` (band6_detail)\r\n  - \"Add Detail\": Bell, 5000 Hz, +1 dB, BW 35%\r\n  - \"Tame Harsh\": Bell, 4500 Hz, -2 dB, BW 65%\r\n\r\n## Practice Exercise\r\n\r\n1. **Load a dull-sounding vocal**\r\n2. **Add +0.5 dB at 5 kHz, BW 35%**\r\n3. **Listen - more detail?**\r\n4. **Increase to +1 dB if needed**\r\n5. **Put on headphones - any harshness or excessive sibilance?**\r\n6. **If yes, reduce amount or lower frequency to 4.5 kHz**\r\n7. **Compare before/after** - should have more clarity without being harsh\r\n\r\n---\r\n\r\n**Remember:** Band 6 is the \"less is more\" band. Start with +0.5 dB and increase only if truly needed.\r\n",
+      "band-7-air-polish": "# Band 7: Air / Shine / Polish 🔵\r\n\r\n**Frequency Range:** 8000-16000 Hz\r\n**Color:** Blue\r\n**Default Filter Type:** High Shelf\r\n**Primary Role:** Add openness, brightness, and professional polish\r\n\r\n## Overview\r\n\r\nBand 7 is the **\"finishing touch\"** - the final polish that makes productions sound modern, expensive, and professional. This is where \"air\" lives, where mixes open up, where that studio-quality sheen appears. It's also where you can exaggerate noise, artifacts, and harshness if not careful.\r\n\r\n**The key principle:** High shelf boost for natural polish. Wide bandwidth for musical results.\r\n\r\n## What This Band Controls\r\n\r\n- **Air:** The sense of space and openness around sounds\r\n- **Shine:** Glossy, polished, expensive character\r\n- **Brightness:** Overall high-frequency energy\r\n- **Modern sound:** Contemporary production aesthetic\r\n- **Perceived quality:** \"Expensive\" vs \"dull\" production\r\n\r\n## Common Problems Band 7 Fixes\r\n\r\n### Dull Mix\r\n**Symptom:** Mix sounds closed, dark, lacks excitement or modern sheen\r\n**Solution:** High shelf boost +2 to +3 dB at 10-12 kHz\r\n**Settings:** High shelf, BW 15-25% (wide)\r\n**Result:** Open, airy, modern sound\r\n\r\n### Closed or Muffled Sound\r\n**Symptom:** Mix feels confined, not open or spacious\r\n**Solution:** High shelf boost +2 to +4 dB at 11-14 kHz\r\n**Settings:** High shelf, BW 20%\r\n**Result:** Sense of space and air\r\n\r\n### Lack of Excitement\r\n**Symptom:** Mix is technically fine but lacks energy or engagement\r\n**Solution:** Gentle shelf boost +2 to +3 dB at 12 kHz\r\n**Settings:** High shelf, BW 20-25%\r\n**Result:** More engaging, modern character\r\n\r\n## Creative Uses\r\n\r\n### 1. \"Expensive\" Vocal Sheen\r\n**What:** Add professional, polished character to vocals\r\n**How:** High shelf +2 to +3 dB at 10-12 kHz\r\n**When:** Pop, R&B, modern production styles\r\n**Result:** That \"studio vocal\" quality\r\n\r\n### 2. Glossy Pop Sound\r\n**What:** Ultra-polished, radio-ready character\r\n**How:** High shelf +3 to +4 dB at 11-13 kHz (track level)\r\n**When:** Modern pop, commercial production\r\n**Warning:** Can sound \"too polished\" or artificial in some contexts\r\n\r\n### 3. Modern Clarity Without Harshness\r\n**What:** Brightness that doesn't fatigue\r\n**How:** Very wide shelf +2 to +2.5 dB at 12 kHz, BW 15-20%\r\n**When:** Want modern sound but smooth, not aggressive\r\n**Result:** Clear and airy without being harsh\r\n\r\n### 4. Reduce Hiss/Artifacts (Problem Solving)\r\n**What:** Tame excessive high-frequency noise\r\n**How:** High shelf -1 to -2 dB at 10-12 kHz\r\n**When:** Noisy recordings, tape hiss, digital artifacts\r\n**Result:** Smoother top-end\r\n\r\n## Safe Defaults\r\n\r\n### Vocals (Add Air)\r\n- **Type:** High shelf\r\n- **Frequency:** 10-12 kHz\r\n- **Gain:** +2 to +3 dB\r\n- **BW:** 20% (wide)\r\n- **Result:** Open, airy, modern vocal\r\n\r\n### Acoustic Guitar\r\n- **Type:** High shelf\r\n- **Frequency:** 11-13 kHz\r\n- **Gain:** +2 to +3 dB\r\n- **BW:** 20-25%\r\n- **Result:** Shimmer and air\r\n\r\n### Mix Bus/Master (Final Polish)\r\n- **Type:** High shelf\r\n- **Frequency:** 12-14 kHz\r\n- **Gain:** +0.5 to +1.5 dB (subtle!)\r\n- **BW:** 15-20% (very wide)\r\n- **Result:** Overall sheen and openness\r\n- **Warning:** Easy to overdo on master\r\n\r\n### Synths/Pads\r\n- **Type:** High shelf\r\n- **Frequency:** 10-12 kHz\r\n- **Gain:** +1.5 to +3 dB\r\n- **BW:** 20%\r\n- **Result:** Sparkle and dimension\r\n\r\n## Important Warnings\r\n\r\n### ⚠️ Exaggerates Noise and Artifacts\r\n**Problem:** Boosting Band 7 amplifies everything up high\r\n\r\n**What gets boosted:**\r\n- Tape hiss\r\n- Digital artifacts\r\n- Room noise\r\n- Electrical hum harmonics\r\n- Recording noise floor\r\n\r\n**Prevention:**\r\n- Clean up noise before EQ\r\n- Use noise reduction if source is noisy\r\n- Be conservative on noisy sources\r\n- Check on headphones (reveals noise clearly)\r\n\r\n**When to cut instead:**\r\n- Noisy recordings: Cut -1 to -2 dB\r\n- Lo-fi aesthetic: Cut or leave alone\r\n- Tape hiss present: Small cut helps\r\n\r\n### ⚠️ Avoid Big Boosts on Master\r\n**Problem:** Master bus air boost compounds all track-level boosts\r\n\r\n**Danger zone:**\r\n- Track level air: +2 to +3 dB\r\n- Bus level air: +1.5 to +2 dB\r\n- Master level air: +2 to +3 dB\r\n- **Total:** +5.5 to +8 dB = harsh, brittle, fatiguing\r\n\r\n**Safe approach:**\r\n- Master/Bus: Maximum +1 to +1.5 dB\r\n- Do most air work at track level\r\n- Check cumulative HF response\r\n\r\n### ⚠️ Can Sound \"Fake\" or \"Overly Processed\"\r\n**Problem:** Too much air loses naturalness\r\n\r\n**Signs:**\r\n- Sounds artificial or hyped\r\n- No dynamics in HF (everything bright)\r\n- Lost natural character\r\n- \"Too polished\" for the genre\r\n\r\n**Solution:**\r\n- Be conservative on acoustic/organic material\r\n- Use less on jazz, classical, acoustic genres\r\n- Match the aesthetic to the material\r\n\r\n## Frequency-Specific Guidance\r\n\r\n### 8000-10000 Hz (Lower Air)\r\n**What's here:** Sibilance zone, beginning of air\r\n**Character:** Can be harsh or sibilant\r\n**Common use:** Often neutral or slight cut for sibilance control\r\n\r\n### 10000-12000 Hz (Core Air)\r\n**What's here:** Primary \"air\" frequencies\r\n**Character:** Openness and sheen without harshness\r\n**Common use:** High shelf +2 to +3 dB (sweet spot)\r\n\r\n### 12000-14000 Hz (Upper Air)\r\n**What's here:** Upper air, extreme highs beginning\r\n**Character:** Very open, bright, \"expensive\"\r\n**Common use:** High shelf +2 to +3 dB for modern sound\r\n\r\n### 14000-16000 Hz (Extreme Highs)\r\n**What's here:** Barely audible to many, \"super air\"\r\n**Character:** Subliminal openness\r\n**Common use:** Included in wide shelf boosts\r\n\r\n## Practical Workflow\r\n\r\n### Adding Air to Vocals\r\n1. Select high shelf filter\r\n2. Set frequency to 11 kHz\r\n3. Set BW to 20% (wide)\r\n4. Start with +1 dB gain\r\n5. Increase to +2 dB - notice opening up?\r\n6. Try +2.5 or +3 dB if needed\r\n7. Check on headphones for harshness\r\n8. Verify doesn't exaggerate sibilance or noise\r\n\r\n### Master Bus Final Polish\r\n1. **Be conservative** - start with +0.5 dB\r\n2. High shelf at 12-14 kHz\r\n3. Very wide BW (15-20%)\r\n4. Increase slowly to +1 or +1.5 dB maximum\r\n5. Check on multiple systems\r\n6. Verify not becoming harsh or brittle\r\n7. Make sure it's actually improving, not just \"different\"\r\n\r\n### For Noisy Sources\r\n1. If source has tape hiss or noise\r\n2. Use high shelf cut instead\r\n3. -1 to -2 dB at 10-12 kHz\r\n4. Wide BW (20-25%)\r\n5. Tames hiss while preserving some air\r\n\r\n## Integration with Other Bands\r\n\r\n### Band 5 + Band 7 (Modern Vocal)\r\nClarity + Air combo:\r\n- Band 5: Boost +1.5 dB at 2.5 kHz (presence)\r\n- Band 7: Boost +2.5 dB shelf at 12 kHz (air)\r\n- Result: Clear, present, and airy\r\n\r\n### Band 6 + Band 7 (Full Polish)\r\nDetail + Air stack:\r\n- Band 6: Boost +1 dB at 5 kHz (detail)\r\n- Band 7: Boost +2 dB shelf at 11 kHz (air)\r\n- Result: Detailed and open\r\n- Warning: Monitor for total HF boost\r\n\r\n### Band 1 + Band 2 + Band 7 (Clean and Bright)\r\nClean low-end + airy top:\r\n- Band 1: HP at 80 Hz\r\n- Band 2: Cut -1.5 dB at 240 Hz\r\n- Band 7: Boost +2.5 dB shelf at 12 kHz\r\n- Result: Clean, clear, modern sound\r\n\r\n## Genre-Specific Approaches\r\n\r\n### Pop/R&B\r\n- **Bold air:** +2.5 to +4 dB shelf at 11-13 kHz\r\n- Ultra-polished, radio-ready sound\r\n\r\n### EDM/Electronic\r\n- **Modern shine:** +2 to +3 dB shelf at 12 kHz\r\n- Bright, energetic, contemporary\r\n\r\n### Rock/Alternative\r\n- **Moderate air:** +1 to +2 dB shelf at 10-12 kHz\r\n- Some openness without losing edge\r\n\r\n### Hip-Hop\r\n- **Selective air:** Vocals +2 to +3 dB, beats +1 to +2 dB\r\n- Vocal clarity priority\r\n\r\n### Jazz/Classical/Acoustic\r\n- **Minimal or none:** 0 to +1 dB if any\r\n- Natural sound, not overly processed\r\n\r\n### Lo-Fi/Vintage\r\n- **Cut air:** -1 to -3 dB shelf at 10 kHz\r\n- Embrace dullness for aesthetic\r\n\r\n## Shelf vs Bell\r\n\r\n### When to Use High Shelf (Default)\r\n- **For:** Natural, musical air boost\r\n- **Why:** Affects all frequencies above cutoff smoothly\r\n- **Result:** Even, natural-sounding brightening\r\n- **Settings:** BW 15-25% (wide)\r\n\r\n### When to Use Bell\r\n- **For:** Targeted boost or cut in specific HF area\r\n- **Why:** More control over specific range\r\n- **When:** Problem-solving, not general brightening\r\n- **Settings:** BW 40-60%\r\n\r\n## Listen For (Verification)\r\n\r\n### When Done Correctly:\r\n- ✅ Mix sounds open and spacious\r\n- ✅ Modern, polished character\r\n- ✅ \"Expensive\" studio quality\r\n- ✅ Still natural and musical\r\n- ✅ Not harsh or fatiguing\r\n- ✅ Translates well to different systems\r\n\r\n### Warning Signs:\r\n- ❌ Harsh, brittle top-end\r\n- ❌ Excessive sibilance\r\n- ❌ Noise and hiss amplified\r\n- ❌ Sounds fake or \"over-EQ'd\"\r\n- ❌ Listener fatigue\r\n- ❌ Lost natural character\r\n\r\n## Common Mistakes\r\n\r\n### Mistake 1: Too Much on Master\r\n**Problem:** Stacking track + bus + master air = harsh\r\n**Fix:** Do most air work at track level, be subtle on master\r\n\r\n### Mistake 2: Same Amount on Everything\r\n**Problem:** Everything bright = nothing stands out, harsh mix\r\n**Fix:** Choose key elements for air (vocals, leads), leave others neutral\r\n\r\n### Mistake 3: Ignoring Noise Floor\r\n**Problem:** Boosting air on noisy sources amplifies noise\r\n**Fix:** Clean first, then EQ. Or cut Band 7 instead.\r\n\r\n### Mistake 4: Using Narrow Bandwidth\r\n**Problem:** Narrow shelf sounds unnatural and harsh\r\n**Fix:** Use wide BW (15-25%) for musical results\r\n\r\n## Reference Data\r\n\r\n- **Band definition:** `02-Data/band-definitions/eg2.json` (bandId: 7)\r\n- **Archetypes:** `02-Data/presets/eg3.json` (band7_air)\r\n  - \"Air Shelf\": High shelf, 12000 Hz, +2.5 dB, BW 20%\r\n  - \"Reduce Hiss\": High shelf, 12000 Hz, -1.5 dB, BW 25%\r\n\r\n## Practice Exercise\r\n\r\n1. **Load a dull-sounding vocal or mix**\r\n2. **Set Band 7 to high shelf, 12 kHz, BW 20%**\r\n3. **Start with +1 dB**\r\n4. **Listen - does it open up?**\r\n5. **Increase to +2 dB - more air?**\r\n6. **Try +2.5 or +3 dB if needed**\r\n7. **Check on headphones - any harshness or excessive sibilance?**\r\n8. **Check for noise amplification**\r\n9. **Compare before/after** - should sound more open and polished without being harsh\r\n\r\n---\r\n\r\n**Remember:** Band 7 is the finishing touch. Add it last, keep it wide, and don't overdo it.\r\n"
+    },
+    "Concepts": {
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Parametric Eq 2\r\n\r\n## What It Is\r\nFruity Parametric Eq 2 is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "context-matters-track-bus-master": "# Context Matters: Track vs Bus vs Master EQ\r\n\r\nWhy the same EQ move has different effects at different stages of your mix chain.\r\n\r\n## The Three Contexts\r\n\r\n### Track Level (Individual Sounds)\r\n- **What:** EQ on individual tracks (vocal, guitar, drum, etc.)\r\n- **When:** First stage of mixing\r\n- **Freedom:** Most aggressive moves allowed\r\n- **Typical range:** ±3 to ±6 dB\r\n\r\n### Bus Level (Group Processing)\r\n- **What:** EQ on grouped tracks (drum bus, vocal bus, instrument bus)\r\n- **When:** After individual tracks are balanced\r\n- **Freedom:** Moderate moves\r\n- **Typical range:** ±1.5 to ±3 dB\r\n\r\n### Master Level (Final Polish)\r\n- **What:** EQ on the entire mix\r\n- **When:** Final stage, mastering\r\n- **Freedom:** Very subtle moves only\r\n- **Typical range:** ±0.5 to ±1.5 dB\r\n\r\n## Why Context Changes Everything\r\n\r\n### Compounding Effect\r\n**Track level** + **Bus level** + **Master level** = **Cumulative boost/cut**\r\n\r\n**Example - Air boost:**\r\n- Vocal track: +2.5 dB @ 12 kHz (Band 7)\r\n- Vocal bus: +1.5 dB shelf @ 12 kHz\r\n- Master: +2 dB shelf @ 12 kHz\r\n- **Total:** +6 dB = harsh, brittle, fatiguing\r\n\r\n**Better approach:**\r\n- Vocal track: +2 dB @ 12 kHz\r\n- Vocal bus: +0.5 dB shelf @ 12 kHz\r\n- Master: +1 dB shelf @ 12 kHz\r\n- **Total:** +3.5 dB = polished without harshness\r\n\r\n### Number of Sources Affected\r\n- **Track:** 1 source\r\n- **Bus:** Multiple sources\r\n- **Master:** ALL sources\r\n\r\n**Implication:** Broader effect = smaller moves needed\r\n\r\n## Track Level EQ\r\n\r\n### Purpose\r\n- **Correct** individual source problems\r\n- **Shape** tone of specific elements\r\n- **Prepare** tracks to sit well in mix\r\n\r\n### What You Can Do\r\n✅ Aggressive problem-solving\r\n- HP filtering (Band 1)\r\n- Mud removal (Band 2: -2 to -3 dB)\r\n- De-boxing (Band 3: -2 to -4 dB)\r\n- Nasal reduction (Band 4: -1 to -2 dB)\r\n\r\n✅ Significant enhancement\r\n- Presence boosts (Band 5: +2 to +3 dB)\r\n- Detail addition (Band 6: +1 to +2 dB)\r\n- Air enhancement (Band 7: +2 to +4 dB)\r\n\r\n✅ Creative tone shaping\r\n- Character changes\r\n- Dramatic filtering\r\n- Genre-specific adjustments\r\n\r\n### Safe Maximums (per band)\r\nAll bands allow up to **±6 dB** at track level according to the data model, but typical use is:\r\n- Cuts: -1 to -4 dB\r\n- Boosts: +1 to +3 dB (rarely +6 dB)\r\n\r\n### Track Level Philosophy\r\n**Do the heavy lifting here.**\r\n- Most EQ work happens at track level\r\n- Get each track sounding right individually\r\n- Prepare tracks to fit together\r\n\r\n## Bus Level EQ\r\n\r\n### Purpose\r\n- **Glue** multiple tracks together\r\n- **Balance** group of sounds as one unit\r\n- **Polish** collective tone\r\n\r\n### What You Can Do\r\n✅ Gentle cohesion moves\r\n- Small cuts to unify tone\r\n- Subtle boosts for group character\r\n- Gentle sculpting of frequency balance\r\n\r\n❌ What to avoid\r\n- Large corrective moves (should be done at track level)\r\n- Dramatic tone shaping\r\n- Aggressive boosts\r\n\r\n### Safe Maximums (per band)\r\nAll bands allow up to **±3 dB** at bus level according to the data model, but typical use is:\r\n- Cuts: -0.5 to -2 dB\r\n- Boosts: +0.5 to +1.5 dB\r\n\r\n### Common Bus EQ Uses\r\n\r\n**Vocal Bus:**\r\n- Slight air boost: +1 to +1.5 dB shelf @ 12 kHz\r\n- Group de-mud: -1 dB @ 240 Hz\r\n- Subtle presence: +0.5 to +1 dB @ 2.5 kHz\r\n\r\n**Drum Bus:**\r\n- HP to clean up: 40-50 Hz\r\n- Slight punch: +1 dB @ 60-80 Hz (kick body)\r\n- Snappy top: +1 dB @ 5-6 kHz\r\n\r\n**Instrument Bus:**\r\n- De-mud: -1 to -1.5 dB @ 200-250 Hz\r\n- Gentle air: +1 dB shelf @ 10-12 kHz\r\n\r\n### Bus Level Philosophy\r\n**Subtle glue, not correction.**\r\n- If you need big moves on a bus, fix individual tracks instead\r\n- Bus EQ should enhance what's already working\r\n- Think \"polish\" not \"problem-solving\"\r\n\r\n## Master Level EQ\r\n\r\n### Purpose\r\n- **Final balance** of the complete mix\r\n- **Subtle enhancement** for competitive loudness/tone\r\n- **Translation** optimization for different systems\r\n\r\n### What You Can Do\r\n✅ Micro-adjustments only\r\n- Tiny tonal tweaks\r\n- Very subtle enhancement\r\n- Final polish\r\n\r\n❌ What to NEVER do\r\n- Fix individual instrument problems\r\n- Dramatic frequency changes\r\n- Compensate for poor mix decisions\r\n\r\n### Safe Maximums (per band)\r\nAll bands allow up to **±1.5 dB** at master level according to the data model, but typical use is:\r\n- Cuts: -0.5 to -1 dB\r\n- Boosts: +0.5 to +1 dB\r\n\r\n### Common Master EQ Uses\r\n\r\n**Clean up bottom:**\r\n- HP at 25-30 Hz (remove true sub-rumble)\r\n- Slight cut -0.5 to -1 dB @ 200-250 Hz if still muddy\r\n\r\n**Final polish:**\r\n- Gentle air: +0.5 to +1 dB shelf @ 12-14 kHz\r\n- Subtle presence: +0.5 dB @ 2.5-3 kHz (if really needed)\r\n\r\n**Problem solving:**\r\n- Tame harshness: -0.5 to -1 dB @ 3-5 kHz\r\n- Smooth out: -0.5 dB where needed\r\n\r\n### Master Level Philosophy\r\n**If you're doing more than ±1 dB, something's wrong upstream.**\r\n- Master EQ fixes the mix, not individual elements\r\n- Large moves indicate problems in the mix stage\r\n- Go back and fix at track/bus level instead\r\n\r\n### The \"Mastering\" Misconception\r\n**Wrong:** \"I'll fix it in mastering\"\r\n**Right:** \"I'll polish an already great mix in mastering\"\r\n\r\nMastering EQ should be subtle finishing touches, not problem-solving.\r\n\r\n## The Cascade Effect\r\n\r\n### Example: Air Enhancement Gone Wrong\r\n\r\n**Track Level:**\r\n- Lead vocal: +3 dB shelf @ 12 kHz\r\n- BGVs (3 tracks): +2 dB shelf @ 11 kHz each\r\n- Acoustic guitar: +2.5 dB shelf @ 12 kHz\r\n- Piano: +2 dB shelf @ 11 kHz\r\n- Strings: +2 dB shelf @ 10 kHz\r\n\r\n**Bus Level:**\r\n- Vocal bus (lead + BGVs): +1.5 dB shelf @ 12 kHz\r\n- Instrument bus: +1 dB shelf @ 11 kHz\r\n\r\n**Master:**\r\n- Mix bus: +2 dB shelf @ 13 kHz\r\n\r\n**Result:** Cumulative +10-15 dB in upper frequencies = harsh, brittle, unlistenable\r\n\r\n### Better Approach\r\n\r\n**Track Level:**\r\n- Lead vocal only: +2 dB shelf @ 12 kHz\r\n- Everything else: neutral or slight cuts\r\n\r\n**Bus Level:**\r\n- Vocal bus: +0.5 dB shelf @ 12 kHz\r\n- Instrument bus: neutral\r\n\r\n**Master:**\r\n- Mix bus: +1 dB shelf @ 13 kHz\r\n\r\n**Result:** Cumulative +3.5 dB = polished and airy without harshness\r\n\r\n## Decision Matrix\r\n\r\n### Where to Make Your Move\r\n\r\n| Issue | Fix At | Why |\r\n|-------|--------|-----|\r\n| Single track muddy | TRACK | Specific problem |\r\n| All drums boxy | DRUM BUS | Group issue |\r\n| Entire mix slightly dull | MASTER | Overall character |\r\n| Vocal too nasal | TRACK | Individual correction |\r\n| Vocal bus too dark | BUS | Group polish |\r\n| Mix lacks slight air | MASTER | Final enhancement |\r\n| Guitar too bright | TRACK | Specific taming |\r\n| Instrument bus too warm | BUS | Group balance |\r\n\r\n### The Diagnostic Flow\r\n\r\n1. **Identify the problem** - What sounds wrong?\r\n2. **Locate the source** - One track? A group? The whole mix?\r\n3. **Choose the right level:**\r\n   - **Specific track** → Track EQ\r\n   - **Group of tracks** → Bus EQ\r\n   - **Overall mix character** → Master EQ\r\n4. **Use appropriate amount** based on context\r\n\r\n## Practical Guidelines by Band\r\n\r\n### Band 1 (Sub/HP)\r\n- **Track:** HP 70-100 Hz on most sources\r\n- **Bus:** HP 30-40 Hz if needed (cleanup only)\r\n- **Master:** HP 25-30 Hz (DC offset/rumble removal only)\r\n\r\n### Band 2 (Warmth/Mud)\r\n- **Track:** -1 to -3 dB cuts common, occasional +1 to +2 dB boost\r\n- **Bus:** -0.5 to -1.5 dB if group is muddy\r\n- **Master:** -0.5 to -1 dB maximum\r\n\r\n### Band 3 (Boxiness)\r\n- **Track:** -1.5 to -4 dB cuts\r\n- **Bus:** -0.5 to -1.5 dB if needed\r\n- **Master:** -0.5 to -1 dB maximum (rarely needed)\r\n\r\n### Band 4 (Nasal/Honk)\r\n- **Track:** -1 to -2 dB cuts (small moves)\r\n- **Bus:** -0.5 to -1 dB if needed\r\n- **Master:** -0.5 dB maximum (very rare)\r\n\r\n### Band 5 (Presence)\r\n- **Track:** -1 to +3 dB (boost for leads, cut for competing elements)\r\n- **Bus:** -0.5 to +1.5 dB\r\n- **Master:** +0.5 to +1 dB maximum\r\n\r\n### Band 6 (Detail)\r\n- **Track:** -2 to +2 dB (cut harshness or add detail)\r\n- **Bus:** -1 to +1 dB\r\n- **Master:** +0.5 to +1 dB maximum\r\n\r\n### Band 7 (Air)\r\n- **Track:** +1 to +4 dB shelf (leads and featured elements)\r\n- **Bus:** +0.5 to +2 dB shelf\r\n- **Master:** +0.5 to +1.5 dB shelf maximum\r\n\r\n## Common Mistakes by Context\r\n\r\n### Track Level Mistakes\r\n❌ Being too timid with cuts\r\n❌ Using same settings on every track\r\n❌ Not addressing obvious problems\r\n\r\n✅ Do: Be decisive, customize per track, fix problems here\r\n\r\n### Bus Level Mistakes\r\n❌ Using bus EQ to fix individual track problems\r\n❌ Making dramatic moves\r\n❌ Treating bus like a track\r\n\r\n✅ Do: Gentle moves, glue thinking, group cohesion\r\n\r\n### Master Level Mistakes\r\n❌ \"Fixing\" the mix on the master\r\n❌ Boosting more than +1 dB on anything\r\n❌ Using master EQ to compensate for bad mixing\r\n\r\n✅ Do: Micro-adjustments, final polish only, trust the mix\r\n\r\n## The Professional Approach\r\n\r\n### Mixing Workflow\r\n1. **Track EQ first** - Get each element right\r\n2. **Check in context** - How do tracks interact?\r\n3. **Bus EQ second** - Polish groups if needed\r\n4. **Master EQ last** - Final subtle tweaks only\r\n\r\n### The Pyramid Principle\r\n```\r\n        MASTER (subtle)\r\n           /\\\r\n          /  \\\r\n         /    \\\r\n    BUS (moderate)\r\n       /\\    /\\\r\n      /  \\  /  \\\r\n    TRACK (aggressive)\r\n```\r\n\r\n- Foundation: Aggressive track-level work\r\n- Middle: Moderate bus-level glue\r\n- Top: Subtle master-level finish\r\n\r\n### Verification Questions\r\nBefore making any move, ask:\r\n\r\n**\"Is this the right level to make this change?\"**\r\n- If fixing one track → Track EQ\r\n- If affecting a group → Bus EQ\r\n- If touching up the whole mix → Master EQ\r\n\r\n**\"Am I being too aggressive for this context?\"**\r\n- Track: Can be aggressive\r\n- Bus: Should be moderate\r\n- Master: Must be subtle\r\n\r\n**\"Did I already boost/cut this frequency elsewhere?\"**\r\n- Check the cascade effect\r\n- Avoid compounding moves\r\n\r\n## Summary\r\n\r\n| Context | Purpose | Amount | Philosophy |\r\n|---------|---------|--------|------------|\r\n| **Track** | Correct & shape | ±1 to ±4 dB typical | Heavy lifting |\r\n| **Bus** | Glue & polish | ±0.5 to ±2 dB | Gentle cohesion |\r\n| **Master** | Final balance | ±0.5 to ±1 dB | Micro-adjustments |\r\n\r\n**Golden Rule:** The broader the context, the smaller the move.\r\n\r\n---\r\n\r\n**Practice:** Load a mix and identify where each EQ issue should actually be fixed - track, bus, or master. Often you'll find you're trying to fix track problems on the master, which never works well.\r\n",
+      "cut-vs-boost-philosophy": "# Cut vs Boost Philosophy\r\n\r\nUnderstanding when to cut, when to boost, and why it matters.\r\n\r\n## The Core Principle\r\n\r\n**\"Cut to fix problems, boost to enhance character.\"**\r\n\r\nMost mixing issues are solved by removing problematic frequencies, not by adding \"good\" frequencies. This is counter-intuitive for beginners who think \"more is better.\"\r\n\r\n## Why Cutting is Safer\r\n\r\n### 1. Headroom Preservation\r\n- **Cuts:** Create space, reduce level, free up headroom\r\n- **Boosts:** Increase level, consume headroom, risk clipping\r\n- **Result:** Cuts allow louder final mix without distortion\r\n\r\n### 2. Frequency Stacking\r\n- **Problem:** Multiple tracks with the same boost compound\r\n  - Track 1: +2 dB @ 3 kHz\r\n  - Track 2: +2 dB @ 3 kHz\r\n  - Track 3: +2 dB @ 3 kHz\r\n  - **Total:** +6 dB harsh pile-up\r\n- **Solution:** Cut competing tracks instead of boosting the lead\r\n\r\n### 3. Natural Sound\r\n- **Cuts:** Remove unnatural elements (room resonances, mic coloration)\r\n- **Boosts:** Can create artificial, \"EQ'd\" sound\r\n- **Result:** Cuts often sound more natural and transparent\r\n\r\n### 4. Problem Solving\r\n- Mud, boxiness, harshness = **excess** energy\r\n- Remove the excess rather than boost around it\r\n- More surgical and effective\r\n\r\n## When to Cut\r\n\r\n### Corrective EQ (Most Common)\r\n**Remove** problematic frequencies:\r\n\r\n- **Band 1:** HP to remove rumble (always corrective)\r\n- **Band 2:** Cut mud at 200-250 Hz\r\n- **Band 3:** Cut boxiness at 350-450 Hz\r\n- **Band 4:** Cut nasality at 700-1000 Hz\r\n- **Band 6:** Cut harshness at 4-5 kHz\r\n\r\n**Philosophy:** If something sounds wrong, it's usually *too much* of something\r\n\r\n### Creating Space\r\n**Carve out** frequency space for other elements:\r\n\r\n- Cut guitars at 200-300 Hz to make room for bass\r\n- Cut pads at 2-3 kHz to make room for vocal presence\r\n- Cut background elements to let foreground shine\r\n\r\n**Philosophy:** Mix is a puzzle - pieces must fit together\r\n\r\n### Reducing Masking\r\n**Remove frequencies** that hide other elements:\r\n\r\n- If vocal is buried, maybe instruments have too much 2-3 kHz\r\n- Instead of boosting vocal more, cut competing instruments\r\n- Often more effective and natural\r\n\r\n## When to Boost\r\n\r\n### Enhancement (Use Sparingly)\r\n**Add character** that's missing:\r\n\r\n- **Band 2:** Add warmth/body if source is thin (rare)\r\n- **Band 5:** Add presence to lead vocal or instrument\r\n- **Band 7:** Add air and polish for modern sheen\r\n\r\n**Philosophy:** Only boost when something genuinely needs more\r\n\r\n### Bringing Elements Forward\r\n**Make lead elements** cut through:\r\n\r\n- Boost Band 5 on lead vocal for intelligibility\r\n- Boost Band 6 slightly for detail on key elements\r\n- Boost Band 7 for polish on featured tracks\r\n\r\n**Philosophy:** Choose 1-2 elements to \"feature,\" boost those, cut/neutral on rest\r\n\r\n### Creative Tone Shaping\r\n**Intentional character** changes:\r\n\r\n- Band 2 boost for \"thick\" lo-fi vibe\r\n- Band 4 boost for telephone/vintage effect\r\n- Band 6 boost for aggressive, sharp sound\r\n\r\n**Philosophy:** When the goal is a specific aesthetic, not natural reproduction\r\n\r\n## The Boost Inversion Technique\r\n\r\nInstead of boosting one thing, **cut everything else:**\r\n\r\n### Example: Buried Vocal\r\n**Beginner approach:**\r\n- Boost vocal Band 5 +3 dB\r\n- Result: Vocal forward but potentially harsh\r\n\r\n**Advanced approach:**\r\n- Leave vocal neutral\r\n- Cut competing instruments Band 5 -1 to -2 dB\r\n- Result: Vocal appears more present, sounds more natural\r\n\r\n### Why It Works\r\n- Preserves headroom\r\n- Sounds more natural\r\n- Prevents frequency stacking\r\n- Solves masking issue at the source\r\n\r\n## Band-Specific Cut vs Boost Tendencies\r\n\r\n### Bands Where You Mostly CUT\r\n- **Band 1:** Always cut (HP filter) except bass sources\r\n- **Band 2:** Cut 70-80% of the time (mud accumulates)\r\n- **Band 3:** Cut 80-90% of the time (boxiness is a problem)\r\n- **Band 4:** Cut 60-70% of the time (nasality/honk)\r\n- **Band 6:** Cut 50-60% of the time (harshness common)\r\n\r\n### Bands Where You Can BOOST More Freely\r\n- **Band 5:** Boost 40-50% of the time (presence, intelligibility)\r\n- **Band 7:** Boost 60-70% of the time (air, polish)\r\n\r\n**Why the difference?**\r\n- Lower/mid frequencies accumulate and clash more\r\n- Upper frequencies (5 & 7) add clarity without as much buildup\r\n- Still be careful - even these can stack and become harsh\r\n\r\n## Context Matters: Track vs Bus vs Master\r\n\r\n### Track Level\r\n**More freedom to boost:**\r\n- Can boost ±3 to ±6 dB\r\n- Working with individual element\r\n- Effects don't compound yet\r\n\r\n### Bus Level\r\n**More conservative:**\r\n- Maximum ±2 to ±3 dB\r\n- Affecting multiple tracks\r\n- Boosts start to compound\r\n\r\n### Master Level\r\n**Extremely subtle:**\r\n- Maximum ±1 to ±1.5 dB\r\n- Affecting entire mix\r\n- Any boost multiplies previous boosts\r\n- **Prefer cuts** to clean up final mix\r\n\r\n## Practical Guidelines\r\n\r\n### Amount Guidelines\r\n**Cuts:**\r\n- Track: -1 to -4 dB typical\r\n- Bus: -0.5 to -2 dB\r\n- Master: -0.5 to -1 dB\r\n\r\n**Boosts:**\r\n- Track: +1 to +3 dB typical (rarely +6 dB)\r\n- Bus: +0.5 to +2 dB\r\n- Master: +0.5 to +1 dB maximum\r\n\r\n### Number of Moves\r\n**Better:** Fewer, well-chosen cuts\r\n**Worse:** Many small boosts across all bands\r\n\r\n**Example - Good vocal EQ:**\r\n- Band 1: HP\r\n- Band 2: Cut -1.5 dB\r\n- Band 3: Cut -2 dB\r\n- Band 5: Boost +1.5 dB\r\n- **Total:** 3 cuts, 1 boost = clean and focused\r\n\r\n**Example - Problem vocal EQ:**\r\n- Band 2: Boost +1 dB\r\n- Band 3: Boost +1 dB\r\n- Band 4: Boost +0.5 dB\r\n- Band 5: Boost +2 dB\r\n- Band 6: Boost +1 dB\r\n- Band 7: Boost +2 dB\r\n- **Total:** 6 boosts = +7.5 dB harsh, unnatural\r\n\r\n## Common Mistakes\r\n\r\n### Mistake 1: Boosting to Fix Problems\r\n**Wrong:** Mix is muddy → Boost highs to compensate\r\n**Right:** Mix is muddy → Cut mud at Band 2 (200-250 Hz)\r\n\r\n**Why:** Boosting highs doesn't remove the mud, just creates imbalance\r\n\r\n### Mistake 2: Matching Cuts with Boosts\r\n**Wrong:** Cut -2 dB somewhere, must boost +2 dB elsewhere to \"balance\"\r\n**Right:** Cut what's wrong, only boost if something truly needs enhancement\r\n\r\n**Why:** EQ isn't about keeping total gain neutral - it's about spectral balance\r\n\r\n### Mistake 3: Boosting Everything\r\n**Wrong:** Every track gets +2 dB at Band 5 for presence\r\n**Right:** Choose lead element for +2 dB, leave others neutral or cut\r\n\r\n**Why:** Boosts compound - if everything is present, nothing is\r\n\r\n### Mistake 4: Afraid to Cut\r\n**Wrong:** Timid -0.5 dB cuts that don't solve the problem\r\n**Right:** Confident -2 to -3 dB cuts where needed\r\n\r\n**Why:** If there's a problem, address it decisively\r\n\r\n## The \"Smiley Face\" EQ Trap\r\n\r\n**What it is:**\r\n- Cut mids\r\n- Boost lows and highs\r\n- Creates smiley-shaped curve\r\n- Beginner mistake\r\n\r\n**Why it's wrong:**\r\n- Removes midrange body and presence\r\n- Creates hollow, scooped sound\r\n- Vocals and instruments lose definition\r\n- Only works for specific creative effects\r\n\r\n**Exceptions:**\r\n- Some metal guitars (intentional scoop)\r\n- Lo-fi effects\r\n- Specific creative aesthetics\r\n- NOT for general mixing\r\n\r\n## The Professional Approach\r\n\r\n### Start Subtractive\r\n1. **HP everything** (Band 1) except bass/kick\r\n2. **Remove obvious problems** (mud, boxiness, harshness)\r\n3. **Check mix clarity** - already better?\r\n4. **Only then boost** if something truly needs enhancement\r\n\r\n### The \"If in Doubt, Cut\" Rule\r\nWhen unsure whether to boost or cut:\r\n- Default to cutting\r\n- If cutting makes it worse, you needed a boost\r\n- If cutting makes it better, you were right\r\n- Easier to add back than to remove excess\r\n\r\n### Verify with A/B\r\n**For every EQ decision:**\r\n1. Make the move\r\n2. Bypass EQ\r\n3. Enable EQ\r\n4. Ask: \"Is this better or just different?\"\r\n5. If just different, reconsider\r\n\r\n## Summary\r\n\r\n| Situation | Action | Reason |\r\n|-----------|--------|--------|\r\n| Problem frequency | CUT | Remove excess energy |\r\n| Need to feature element | BOOST (carefully) | Enhance character |\r\n| Creating space | CUT competing elements | Reduce masking |\r\n| Multiple tracks stacking | CUT most, BOOST one | Prevent buildup |\r\n| Mix bus/master | PREFER CUTS | Avoid compounding boosts |\r\n| Unsure what to do | CUT first | Safer default |\r\n\r\n**Golden rule:** Cut to fix, boost to enhance. When in doubt, cut.\r\n\r\n---\r\n\r\n**Practice:** Load a mix and try EQing using ONLY cuts (plus Band 1 HP). See how far you can get before you need a single boost. Often, you'll be surprised how little boosting is actually necessary.\r\n",
+      "signal-flow": "# Signal Flow: Fruity Parametric Eq 2\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "ear-training-gym.md": {
+      "ear-training-gym": "# The Ear Training Gym\n\nParametric EQ 2 is not just a tool for correction; it's a tool for education. Use these daily exercises to train your ears to hear frequencies without looking at the analyzer.\n\n---\n\n## 🏋️ Exercise 1: The \"Sweep & Guess\"\n\n**Goal:** Identify frequencies blindly.\n\n1.  Load a full spectrum song (reference track).\n2.  Select **Band 5**.\n3.  Set type to **Bell**, **+12 dB Gain**, **Narrow Bandwidth (80%)**.\n4.  Close your eyes.\n5.  Drag the frequency token randomly left/right.\n6.  Stop. Listen to the resonance. **Guess the frequency.**\n    - \"Is this 1 kHz?\" (Nasal/Telephone)\n    - \"Is this 4 kHz?\" (Harsh/Painful)\n    - \"Is this 100 Hz?\" (Thump)\n7.  Open your eyes and check. Repeat for 5 minutes.\n\n---\n\n## 🏋️ Exercise 2: White Noise Shaping\n\n**Goal:** Understand filter types and slope behavior.\n\n1.  Load the **3xOsc** plugin, set Osc 1 to **Noise**. (It sounds like static).\n2.  Open Parametric EQ 2.\n3.  **Low Pass (Band 7):** Sweep down. Listen to how \"bright\" becomes \"dull\" becomes \"underwater.\"\n4.  **High Pass (Band 1):** Sweep up. Listen to the grounding/weight vanish.\n5.  **Notch (Band 4):** Sweep across. Listen to the \"Phaser\" sound. This is what phase cancellation sounds like.\n\n---\n\n## 🏋️ Exercise 3: The \"Mud Hunter\"\n\n**Goal:** Identify 200-300 Hz instantly.\n\n1.  Load a muddy mix or a raw drum loop.\n2.  Try to cut **exactly 250 Hz** without looking at the value hint bar (use your ears).\n3.  Toggle the band On/Off.\n4.  If the mud disappears, you found it. If clarity is lost but mud remains, you missed.\n\n---\n\n## 🏋️ Exercise 4: The \"Pink Noise\" Mixing Method (Pro Trick)\n\n**Goal:** Achieve a balanced mix using your ears and a reference level.\n\nThis is a classic mixing technique used to find the \"ideal\" level for every instrument relative to a balanced frequency spectrum.\n\n1.  **Setup:**\n    - Place a Pink Noise generator on a separate mixer track.\n    - Set the Pink Noise level to roughly -6dB (or a comfortable level).\n2.  **The Process:**\n    - Solo the Pink Noise and **one** instrument (e.g., Lead Vocal).\n    - Bring the instrument volume down to zero.\n    - Slowly raise the instrument volume until you **just barely** hear it poking through the noise.\n    - Repeat this for every track in your mix.\n3.  **The EQ Test:**\n    - If you have to turn a vocal up so loud it hurts to hear it over the noise, it's missing **Presence (Band 5)**.\n    - If a kick drum disappears immediately, it lacks **Sub (Band 1)**.\n4.  **Verification:**\n    - Mute the Pink Noise. Your mix should now be roughly balanced and \"flat.\"\n\n---\n\n## 🏋️ Exercise 5: The A/B Blind Test\n\n**Goal:** Avoid \"Volume Bias\" (louder sounds better).\n\n1.  Make a big EQ move (e.g., boost Air +3dB).\n2.  Compensate by lowering the **Main Gain** by 3dB.\n3.  Close your eyes and toggle the **Bypass** button repeatedly until you don't know if it's ON or OFF.\n4.  Stop. Listen. Toggle once.\n5.  Which one is better?\n6.  If you can't tell, the EQ move wasn't necessary.\n\n---\n\n## 📅 Routine\n\n- **Warmup:** 5 minutes of \"Sweep & Guess\" before every mixing session.\n- **Weekly:** 15 minutes of \"Pink Noise\" testing on a rough mix.\n- **Result:** After 2 weeks, you will stop looking at the graph and start reaching for the sound."
+    },
+    "Quick-Reference": {
+      "cheat-sheet": "# Fruity Parametric EQ 2: The Surgical Scalpel\r\n\r\n> **Scope:** Full parameter analysis, Filter Topology, and Visualization Science.\r\n> **Source:** Image-Line Official Manual (v21.2) + Direct Analysis.\r\n> **Complexity:** High.\r\n\r\n## 🧠 The \"Visual\" Concept\r\nParametric EQ 2 is defined by its visualization engine. It combines a spectral analyzer with a heatmap to show \"Energy Frequency Distribution\". Understanding the **Pivot Slope** and **Linear Phase** modes is key to mastering this tool.\r\n\r\n**Signal Flow:**\r\n`Input` -> **[PRE-GAIN]** -> **[BAND 1-7 FILTERS]** -> **[HQ OVERSAMPLING]** -> **[OUTPUT GAIN]**\r\n\r\n*   **Critical Nuance:** The visualizer reacts *after* the EQ processing (Post-EQ). What you see is the result of your changes.\r\n\r\n---\r\n\r\n## 🎛️ Section 1: Band Controls (FILTERS Tag)\r\n\r\nEach of the 7 Bands is identical but defaults to specific shapes.\r\n\r\n### Band Parameters\r\n\r\n| Control | Range | Function & Nuance |\r\n| :--- | :--- | :--- |\r\n| **Frequency (FREQ)** | 20Hz - 20kHz | **Center Point.** <br> *Nuance:* Right-click a Band Token -> Key -> Select a note to tune the band to a musical frequency (e.g., A4 = 440Hz). |\r\n| **Gain (Level)** | -18dB to +18dB | **Boost/Cut Amount.** <br> *Nuance:* Holding `Alt` while clicking resets the gain to 0dB. |\r\n| **Bandwidth (BW)** | Narrow to Wide | **Q Factor.** <br> *Mouse Wheel:* Hover over a token and scroll to change BW. <br> *Nuance:* Narrow Q causes \"ringing\" in IIR mode. |\r\n| **Type** | Shape Select | **Filter Topology.** <br> *Peaking:* Bell curve. <br> *Shelf:* Steps up/down. <br> *Low/High Pass:* Cuts off frequencies. <br> *Notch:* Removes a thin slice (Phasing). |\r\n| **Order (Slope)** | Gentle to Steep | **Steepness.** <br> *Gentle 4:* -24dB/Oct. <br> *Steep 8:* -48dB/Oct (Brickwall-ish). <br> *Nuance:* Steeper slopes cause more phase shift in Standard mode. |\r\n\r\n---\r\n\r\n## 🔁 Section 2: Filter Modes (HQ Tag)\r\n\r\n### Standard (IIR) vs Linear Phase (LIN)\r\n\r\n| Mode | Technology | Usage Scenario | Artifacts |\r\n| :--- | :--- | :--- | :--- |\r\n| **Standard (Off)** | Infinite Impulse Response | Mixing / Tracking / Standard EQ. | **Phase Rotation:** Shifts the timing of frequencies. Zero latency. |\r\n| **HQ** | Oversampling | High-end Mixing. | Reduces \"Cramping\" near 20kHz. Slight CPU Use. |\r\n| **LIN (Linear)** | Fast Fourier Transform | Mastering / Parallel Processing. | **Pre-Ringing:** Transients may be smeared *before* the hit. High Latency. |\r\n\r\n*   **When to use LIN?** When parallel processing (e.g., Drum Bus) where a phase shift would cause cancellation.\r\n*   **When to avoid LIN?** On punchy drums (Pre-Ringing softens impact) or vocals (Latency).\r\n\r\n---\r\n\r\n## 📊 Section 3: Visualization (SPECTRAL Tag)\r\n\r\nThe background heatmap is not just pretty colors; it's a scientific instrument.\r\n\r\n| Control | Function & Nuance |\r\n| :--- | :--- |\r\n| **Histogram** | **The Heatmap.** <br> Shows frequency distribution over time. <br> *Red:* Loud. *Blue:* Quiet. |\r\n| **Pivot Slope** | **Tilt.** <br> *4.5dB (Default):* \"Pink Noise\" looks flat. Balances Bass vs Highs for human hearing. <br> *3dB:* Useful for modern Pop/Trap mixing (Brighter balance). <br> *6dB:* Technical analysis (Sawtooth looks flat). |\r\n| **Range** | **Dynamic Floor.** <br> Sets the silence threshold. <br> *-120dB:* Shows everything including noise floor. <br> *-60dB:* Only shows musical elements. |\r\n| **Precision** | **Resolution.** <br> *High:* Detailed frequency bands but slower refresh rate. <br> *Low:* Fast reaction time but blurrier. |\r\n\r\n---\r\n\r\n## 🛠️ Section 4: Advanced Tools (Shortcuts)\r\n\r\nThese hidden shortcuts speed up workflow 10x.\r\n\r\n| Shortcut | Action |\r\n| :--- | :--- |\r\n| **Shift + Click Band** | **Solo Band.** <br> Isolates only the frequencies inside that band. Critical for \"Sweeping\" to find resonances. |\r\n| **Alt + Click Band** | **Reset Band.** <br> Snaps Gain to 0dB, existing Frequency. |\r\n| **Ctrl + Drag** | **Fine Tune.** <br> Precise adjustments. |\r\n| **Mouse Wheel** | **Adjust Q (Width).** |\r\n| **Right-Click Token** | **Key Mapping.** <br> \"Key\" submenu snaps the band to a Note (e.g., C3). Essential for tuning Kick drums. |\r\n\r\n---\r\n\r\n## ⚡ Technical Specs: The \"Phase Rotation\"\r\n\r\nIn the Options menu, enable **\"Phase Rotation\"** to see a white line.\r\n\r\n*   **What is it?** It shows how much the phase is being shifted by your EQ moves.\r\n*   **Why care?** If the line wraps around wildly, your Kick might sound \"hollow\" when mixed with the Bass.\r\n*   **The Fix:** Switch to **LIN** (Linear Phase) mode. The line becomes flat.\r\n\r\n---\r\n\r\n## 🧪 \"Secret Sauce\" Workflows\r\n\r\n### 1. The \"Frequency Sweeper\" (Resonance Hunting)\r\n1.  **Peaking Band:** Select Band 7.\r\n2.  **Gain:** Crank to +18dB.\r\n3.  **Q:** Make it very narrow (Scroll Wheel).\r\n4.  **Action:** Sweep left and right.\r\n5.  **Listen:** When a frequency screams/whistles excessively, that's a bad room resonance.\r\n6.  **Fix:** Instantaneously cut `-6dB` at that spot.\r\n\r\n### 2. The \"Key Tuned\" Sub\r\n1.  **Song Key:** F Minor.\r\n2.  **Sub Note:** F0 or F1.\r\n3.  **Action:** Right-click Band 1 -> Key -> F -> 1.\r\n4.  **Result:** The EQ band snaps exactly to the fundamental frequency of your Sub Bass. Boost/Cut without guessing.\r\n\r\n### 3. The \"Brickwall\" Low Cut\r\n1.  **Band 1:** Select Type \"High Pass\".\r\n2.  **Order:** Drag the handle down to \"Steep 8\".\r\n3.  **Freq:** Set to 30Hz.\r\n4.  **Result:** Removes all DC offset and rumble with maximum slope (-48dB/Oct). Cleaner headroom.\r\n",
+      "frequency-chart": "# Frequency Chart - Quick Reference\r\n\r\n## The 7-Band Overview\r\n\r\n| Band | Hz Range | Zone | Cut To Fix | Boost To Enhance | Default BW |\r\n|------|----------|------|------------|------------------|------------|\r\n| 🟣 **1** | 20-120 | Sub/Foundation | Rumble, headroom issues | Sub weight (bass only) | 25% (wide) |\r\n| 🌸 **2** | 140-320 | Warmth/Body | Mud, cloudiness | Warmth, thickness | 35% (wide) |\r\n| 🟠 **3** | 300-550 | Boxiness | Cardboard tone, room sound | Mid density (rare) | 50% (medium) |\r\n| 🟡 **4** | 600-1200 | Nasal/Honk | Nasality, honk | Mid focus (careful) | 60% (med-narrow) |\r\n| 🟢 **5** | 1800-3200 | Presence | Buried mix (cut comp.) | Clarity, intelligibility | 50% (medium) |\r\n| 🔵 **6** | 3500-6500 | Detail | Harshness, sibilance | Crispness, detail | 35-65% (varies) |\r\n| 🔵 **7** | 8000-16000 | Air/Polish | Hiss, noise | Air, shine, polish | 20% (wide shelf) |\r\n\r\n## Frequency Ranges by Instrument\r\n\r\n### Vocals\r\n\r\n| Element | Band 1 | Band 2 | Band 3 | Band 4 | Band 5 | Band 6 | Band 7 |\r\n|---------|--------|--------|--------|--------|--------|--------|--------|\r\n| **Lead Vocal** | HP 80-100 Hz | Cut -1.5 dB @ 230 Hz | Cut -2 dB @ 400 Hz | Cut -1 dB @ 850 Hz (if nasal) | Boost +1.5 dB @ 2.5 kHz | +0.5 dB @ 5 kHz (detail) | Boost +2.5 dB shelf @ 12 kHz |\r\n| **BG Vocals** | HP 100-150 Hz | Cut -2 dB @ 240 Hz | Cut -2 dB @ 420 Hz | Cut -1 dB @ 900 Hz | +0.5 dB @ 2.8 kHz | Neutral/Cut | +1.5 dB shelf @ 11 kHz |\r\n| **Male Rap** | HP 70-90 Hz | Cut -2 dB @ 220 Hz | Cut -1.5 dB @ 380 Hz | Cut -1.5 dB @ 800 Hz | Boost +2 dB @ 2.7 kHz | +0.5 dB @ 5.5 kHz | +2 dB shelf @ 11 kHz |\r\n\r\n### Drums\r\n\r\n| Element | Band 1 | Band 2 | Band 3 | Band 4 | Band 5 | Band 6 | Band 7 |\r\n|---------|--------|--------|--------|--------|--------|--------|--------|\r\n| **Kick** | Leave alone / Boost +2 dB @ 60 Hz | Slight cut -1 dB @ 200 Hz (if muddy) | Neutral | Neutral | Neutral | Neutral | Neutral |\r\n| **Snare** | HP 100-120 Hz | Cut -1 dB @ 200 Hz | Cut -1.5 dB @ 400 Hz | Neutral | Boost +1.5 dB @ 2 kHz | +1 dB @ 5 kHz | +1 dB shelf @ 10 kHz |\r\n| **Hi-Hat/Cymbals** | HP 300-500 Hz | Neutral | Neutral | Neutral | Neutral | +0.5 dB @ 6 kHz | +1 dB shelf @ 12 kHz |\r\n\r\n### Instruments\r\n\r\n| Element | Band 1 | Band 2 | Band 3 | Band 4 | Band 5 | Band 6 | Band 7 |\r\n|---------|--------|--------|--------|--------|--------|--------|--------|\r\n| **Acoustic Guitar** | HP 80-100 Hz | Cut -1 dB @ 200 Hz | Cut -2 dB @ 380 Hz | Neutral | +1 dB @ 2.3 kHz | +1 dB @ 5 kHz | +2.5 dB shelf @ 12 kHz |\r\n| **Electric Guitar** | HP 90-120 Hz | Cut -1.5 dB @ 220 Hz | Cut -2 dB @ 350 Hz | Cut -1 dB @ 800 Hz | +1 dB @ 2.5 kHz | +0.5 dB @ 5 kHz | +1.5 dB shelf @ 10 kHz |\r\n| **Bass/808** | Leave alone / HP @ 30 Hz | Leave alone / +1 dB @ 180 Hz | Neutral | Neutral | Neutral | Neutral | Neutral |\r\n| **Piano** | HP 40-60 Hz | Cut -1 dB @ 220 Hz | Cut -1 dB @ 400 Hz | Neutral | +0.5 dB @ 2.5 kHz | +0.5 dB @ 5 kHz | +1.5 dB shelf @ 11 kHz |\r\n| **Synth Lead** | HP 90-120 Hz | Cut -1.5 dB @ 250 Hz | Neutral | Neutral | Boost +1.5 dB @ 2.8 kHz | +1 dB @ 5 kHz | +2 dB shelf @ 12 kHz |\r\n| **Pads** | HP 80-100 Hz | Cut -1 dB @ 240 Hz | Neutral | Neutral | Cut -1 dB @ 2.5 kHz (make room) | Neutral | +1.5 dB shelf @ 10 kHz |\r\n\r\n## Problem-Solving Chart\r\n\r\n| Symptom | Likely Frequency | Band | Action | Amount |\r\n|---------|------------------|------|--------|--------|\r\n| **Rumble/Headroom loss** | 20-100 Hz | 1 | HP Filter | 70-100 Hz |\r\n| **Muddy/Cloudy** | 200-300 Hz | 2 | Cut | -1 to -3 dB |\r\n| **Boomy** | 180-220 Hz | 2 | Cut | -2 to -3 dB |\r\n| **Boxy/Cardboard** | 350-500 Hz | 3 | Cut | -2 to -4 dB |\r\n| **Roomy/Amateur** | 380-450 Hz | 3 | Cut | -2 to -3 dB |\r\n| **Nasal** | 700-1000 Hz | 4 | Cut | -1 to -2 dB |\r\n| **Honky/Megaphone** | 800-1100 Hz | 4 | Cut | -1 to -2 dB |\r\n| **Buried/Unclear** | 2000-3000 Hz | 5 | Boost (lead) | +1 to +2 dB |\r\n| **Harsh/Fatiguing** | 3500-5000 Hz | 6 | Cut | -1 to -2 dB |\r\n| **Sibilant** | 6000-8000 Hz | 6/7 | Cut | -1 to -2 dB |\r\n| **Dull/Closed** | 10000-14000 Hz | 7 | Shelf Boost | +2 to +3 dB |\r\n| **Too bright/Brittle** | 10000-14000 Hz | 7 | Shelf Cut | -1 to -2 dB |\r\n| **Hissy/Noisy** | 10000+ Hz | 7 | Shelf Cut | -1 to -2 dB |\r\n\r\n## Anchor Frequencies (Quick Preset Points)\r\n\r\n### Band 1 - Sub\r\n- **30 Hz:** Deep sub (leave for bass/kick only)\r\n- **45 Hz:** Sub fundamental\r\n- **60 Hz:** Kick/bass body boost spot\r\n- **80 Hz:** Most common HP for non-bass sources\r\n- **100 Hz:** Aggressive HP for non-bass sources\r\n\r\n### Band 2 - Warmth\r\n- **160 Hz:** Add deep warmth (bass harmonics)\r\n- **200 Hz:** Common boost for body, cut for boom\r\n- **250 Hz:** Primary mud-cutting frequency\r\n- **300 Hz:** Upper warmth zone\r\n\r\n### Band 3 - Boxiness\r\n- **330 Hz:** Lower boxiness\r\n- **400 Hz:** Core \"cardboard\" frequency\r\n- **480 Hz:** Upper boxiness / congestion\r\n\r\n### Band 4 - Nasal/Honk\r\n- **700 Hz:** Lower nasal range\r\n- **850 Hz:** Core honk/nasal frequency\r\n- **1000 Hz:** Upper honk / telephone effect\r\n\r\n### Band 5 - Presence\r\n- **2000 Hz:** Lower presence, forwardness\r\n- **2500 Hz:** Core vocal intelligibility (most common)\r\n- **3000 Hz:** Upper presence, edge\r\n\r\n### Band 6 - Detail\r\n- **4000 Hz:** Definition without excess sibilance\r\n- **5000 Hz:** Core detail/crispness frequency\r\n- **6000 Hz:** Upper detail (watch for sibilance)\r\n\r\n### Band 7 - Air\r\n- **9000 Hz:** Lower air (careful - can be sibilant)\r\n- **12000 Hz:** Sweet spot for air shelf (most common)\r\n- **14000 Hz:** Upper air, extreme highs\r\n\r\n## Context-Based Limits\r\n\r\n| Context | Cut Range | Boost Range | Notes |\r\n|---------|-----------|-------------|-------|\r\n| **Track** | -1 to -4 dB | +1 to +3 dB | Most freedom, do heavy lifting here |\r\n| **Bus** | -0.5 to -2 dB | +0.5 to +2 dB | Moderate moves, glue thinking |\r\n| **Master** | -0.5 to -1 dB | +0.5 to +1 dB | Subtle only, final polish |\r\n\r\n## Genre Templates\r\n\r\n### Modern Pop\r\n- Band 1: HP 90 Hz\r\n- Band 2: Cut -1.5 dB @ 230 Hz\r\n- Band 5: Boost +2 dB @ 2.5 kHz\r\n- Band 7: Boost +3 dB shelf @ 12 kHz\r\n\r\n### Hip-Hop\r\n- Band 1: HP 70-80 Hz (vocals)\r\n- Band 2: Cut -2 dB @ 240 Hz\r\n- Band 4: Cut -1 dB @ 850 Hz\r\n- Band 5: Boost +2 dB @ 2.7 kHz\r\n\r\n### Rock/Alternative\r\n- Band 1: HP 90 Hz\r\n- Band 2: Cut -1 dB @ 200 Hz\r\n- Band 3: Cut -2 dB @ 380 Hz\r\n- Band 5: Boost +1 dB @ 2.3 kHz\r\n- Band 7: Boost +1.5 dB shelf @ 10 kHz\r\n\r\n### EDM/Electronic\r\n- Band 1: HP 100 Hz (aggressive)\r\n- Band 2: Cut -2 dB @ 250 Hz\r\n- Band 5: Boost +1.5 dB @ 2.8 kHz\r\n- Band 6: Boost +1 dB @ 5 kHz\r\n- Band 7: Boost +2.5 dB shelf @ 12 kHz\r\n\r\n## Quick Decision Tree\r\n\r\n```\r\nProblem identified?\r\n├─ YES → Find band from problem chart → Cut\r\n├─ NO → Need enhancement?\r\n    ├─ YES → Identify element → Boost (selective)\r\n    └─ NO → Leave alone (best EQ is no EQ)\r\n```\r\n\r\n## One-Page Mixing Checklist\r\n\r\n### Step 1: Clean the Foundation (Bands 1 & 2)\r\n- [ ] HP everything except bass/kick (Band 1: 80 Hz)\r\n- [ ] De-mud most tracks (Band 2: -1.5 dB @ 240 Hz)\r\n\r\n### Step 2: Open the Mids (Bands 3 & 4)\r\n- [ ] Remove boxiness where needed (Band 3: -2 dB @ 400 Hz)\r\n- [ ] Tame nasality if present (Band 4: -1 dB @ 850 Hz)\r\n\r\n### Step 3: Bring Forward Lead Elements (Band 5)\r\n- [ ] Boost presence on 1-2 lead elements (Band 5: +1.5 dB @ 2.5 kHz)\r\n- [ ] Leave or cut competing elements\r\n\r\n### Step 4: Add Detail & Polish (Bands 6 & 7)\r\n- [ ] Add crispness if needed (Band 6: +0.5 to +1 dB @ 5 kHz)\r\n- [ ] Add air to featured elements (Band 7: +2 to +3 dB shelf @ 12 kHz)\r\n\r\n### Step 5: Verify\r\n- [ ] A/B bypass all EQs\r\n- [ ] Check on headphones\r\n- [ ] Check on small speakers\r\n- [ ] Listen for 2+ minutes (ear fatigue check)\r\n\r\n---\r\n\r\n**Print this page and keep it next to your workstation!**\r\n",
+      "problem-solver": "# EQ Problem Solver - Quick Diagnostic Guide\r\n\r\nFast reference for identifying and fixing common EQ issues.\r\n\r\n## How to Use This Guide\r\n\r\n1. **Identify your symptom** from the list below\r\n2. **Follow the diagnostic** to confirm the issue\r\n3. **Apply the solution** with exact settings\r\n4. **Verify** the result\r\n\r\n## Common Problems & Solutions\r\n\r\n### 🔴 LOW-END ISSUES\r\n\r\n#### Problem: Mix Feels Heavy, Undefined, \"Cloudy\"\r\n**Symptom:** Overall muddiness, lack of clarity, instruments blur together\r\n**Diagnosis:** Solo kick and bass - do they sound clear? Bypass all other tracks - does clarity improve?\r\n**Root Cause:** Sub rumble accumulation across tracks\r\n\r\n**Solution:**\r\n- **Band:** 1 (Sub)\r\n- **Action:** HP filter on ALL non-bass tracks\r\n- **Settings:** HP @ 80 Hz, BW 25%\r\n- **Result:** Immediate clarity, kick/bass separation\r\n\r\n---\r\n\r\n#### Problem: Mix is Muddy/Cloudy/Thick\r\n**Symptom:** Sounds like listening through a blanket, undefined low-mids\r\n**Diagnosis:** Listen at 200-300 Hz - too much energy there?\r\n**Root Cause:** Low-mid frequency buildup\r\n\r\n**Solution:**\r\n- **Band:** 2 (Warmth)\r\n- **Action:** Cut on most tracks\r\n- **Settings:** Bell, 220-250 Hz, -1.5 to -2 dB, BW 35%\r\n- **Which tracks:** Vocals, guitars, synths, most instruments EXCEPT bass/kick\r\n- **Result:** Clearer mix, maintained warmth\r\n\r\n---\r\n\r\n#### Problem: Mix Feels Boomy or Bloated\r\n**Symptom:** Too much low energy, but not quite mud - more like boom\r\n**Diagnosis:** Check 180-220 Hz specifically - excessive energy?\r\n**Root Cause:** Lower warmth zone overload\r\n\r\n**Solution:**\r\n- **Band:** 2 (Warmth)\r\n- **Action:** Cut lower in Band 2 range\r\n- **Settings:** Bell, 200 Hz, -2 to -3 dB, BW 30%\r\n- **Which tracks:** Same as mud - all but bass/kick\r\n- **Result:** Controlled warmth without boom\r\n\r\n---\r\n\r\n### 🟠 MIDRANGE ISSUES\r\n\r\n#### Problem: \"Recorded in a Room\" Sound / Boxy\r\n**Symptom:** Sounds enclosed, cardboard-like, cheap mic quality\r\n**Diagnosis:** Sweep 300-550 Hz with boost - does it sound worse in a specific spot?\r\n**Root Cause:** Room resonances and midrange box tone\r\n\r\n**Solution:**\r\n- **Band:** 3 (Boxiness)\r\n- **Action:** Cut at worst frequency\r\n- **Settings:** Bell, 350-450 Hz (sweep to find), -2 to -3 dB, BW 50%\r\n- **Which tracks:** Vocals, acoustic guitars, drums, anything recorded\r\n- **Result:** More \"expensive\" professional sound\r\n\r\n---\r\n\r\n#### Problem: Vocal Sounds Nasal / Instruments Sound Honky\r\n**Symptom:** \"Pinched nose\" vocal, megaphone character, annoying midrange\r\n**Diagnosis:** Boost and sweep 600-1200 Hz - where does it sound worst?\r\n**Root Cause:** Nasal resonance frequency\r\n\r\n**Solution:**\r\n- **Band:** 4 (Nasal/Honk)\r\n- **Action:** Small cut at nasal frequency\r\n- **Settings:** Bell, 700-1000 Hz (sweep to find), -1 to -2 dB, BW 60%\r\n- **Which tracks:** Vocals primarily, sometimes guitars/brass\r\n- **Result:** Natural, less nasal tone\r\n- **Warning:** Small moves only - very sensitive range\r\n\r\n---\r\n\r\n#### Problem: Midrange Feels Congested\r\n**Symptom:** Many instruments fighting in the mids, unclear separation\r\n**Diagnosis:** Mute half the tracks - does it clear up significantly?\r\n**Root Cause:** Frequency masking across multiple tracks\r\n\r\n**Solution:** **Multi-band approach**\r\n- **Band 2:** Cut -1 dB @ 240 Hz (mud)\r\n- **Band 3:** Cut -1.5 dB @ 400 Hz (box)\r\n- **Band 4:** Cut -0.5 dB @ 850 Hz (honk)\r\n- **Apply to:** Supporting tracks (NOT lead vocal/instrument)\r\n- **Result:** Open midrange with space for leads\r\n\r\n---\r\n\r\n### 🟢 PRESENCE & CLARITY ISSUES\r\n\r\n#### Problem: Vocal is Buried / Can't Hear Lyrics\r\n**Symptom:** Vocal volume is fine but still hard to understand or hear clearly\r\n**Diagnosis:** Solo vocal - sounds clear? In mix - disappears?\r\n**Root Cause:** Lack of presence frequencies OR other tracks masking\r\n\r\n**Solution Option 1 - Boost Lead:**\r\n- **Band:** 5 (Presence)\r\n- **Action:** Boost on lead vocal\r\n- **Settings:** Bell, 2.5 kHz, +1.5 to +2 dB, BW 50%\r\n- **Result:** Vocal cuts through\r\n\r\n**Solution Option 2 - Cut Competitors (BETTER):**\r\n- **Band:** 5 (Presence)\r\n- **Action:** Cut on competing tracks\r\n- **Settings:** Bell, 2-3 kHz, -1 to -1.5 dB on guitars/synths/pads\r\n- **Result:** Vocal appears more present, more natural\r\n\r\n---\r\n\r\n#### Problem: Lead Instrument Doesn't Cut Through\r\n**Symptom:** Lead guitar/synth is lost in the mix\r\n**Diagnosis:** Same as vocal - solo vs in-context test\r\n**Root Cause:** Presence masking or insufficient presence\r\n\r\n**Solution:**\r\n- **Band:** 5 (Presence)\r\n- **Action:** Boost presence on lead\r\n- **Settings:** Bell, 2.5-3 kHz, +1.5 to +2.5 dB, BW 50%\r\n- **Which track:** Lead instrument only\r\n- **Also:** Cut Band 5 on supporting instruments\r\n- **Result:** Lead steps forward\r\n\r\n---\r\n\r\n### 🔵 HIGH-FREQUENCY ISSUES\r\n\r\n#### Problem: Mix Sounds Harsh / Fatiguing\r\n**Symptom:** Listener discomfort, \"ice-pick\" quality, painful on headphones\r\n**Diagnosis:** Listen on headphones - does it hurt after 30 seconds?\r\n**Root Cause:** Excessive upper-mid energy\r\n\r\n**Solution:**\r\n- **Band:** 6 (Detail)\r\n- **Action:** Cut harshness\r\n- **Settings:** Boost +6 dB and sweep 3.5-6 kHz to find worst spot, then cut -1.5 to -2 dB, BW 60-65%\r\n- **Which tracks:** Usually vocals or bright instruments\r\n- **Result:** Smoother, more listenable\r\n\r\n---\r\n\r\n#### Problem: Excessive Sibilance (\"S\" sounds too loud)\r\n**Symptom:** Vocal \"S,\" \"T,\" \"SH\" sounds are piercing\r\n**Diagnosis:** Listen to phrases with S sounds - are they way louder than the vocal?\r\n**Root Cause:** Sibilance frequency range (6-8 kHz)\r\n\r\n**Solution:**\r\n- **Band:** 6 or 7 (upper Detail or lower Air)\r\n- **Action:** Cut sibilance range\r\n- **Settings:** Bell, 6-7 kHz (find exact spot), -1 to -2 dB, BW 65-70%\r\n- **Alternative:** Use de-esser plugin instead\r\n- **Result:** Controlled sibilance, clear consonants\r\n\r\n---\r\n\r\n#### Problem: Mix Sounds Dull / Closed / Dark\r\n**Symptom:** Lacks excitement, sounds muffled or closed-in\r\n**Diagnosis:** High-pass test - play only 8 kHz+, is there any energy?\r\n**Root Cause:** Insufficient high-frequency content\r\n\r\n**Solution:**\r\n- **Band:** 7 (Air)\r\n- **Action:** High shelf boost\r\n- **Settings:** High shelf, 11-12 kHz, +2 to +3 dB, BW 20% (wide)\r\n- **Which tracks:** Lead vocal, featured instruments\r\n- **Also:** Smaller boost on master (+1 dB shelf @ 13 kHz)\r\n- **Result:** Open, modern, polished sound\r\n\r\n---\r\n\r\n#### Problem: Mix Sounds Too Bright / Brittle\r\n**Symptom:** Overly bright, harsh highs, brittle character\r\n**Diagnosis:** Did you boost Band 7 on too many tracks?\r\n**Root Cause:** Cumulative high-frequency boost\r\n\r\n**Solution:**\r\n- **Band:** 7 (Air)\r\n- **Action:** Reduce or remove air boosts\r\n- **OR:** High shelf cut\r\n- **Settings:** High shelf, 10-12 kHz, -1 to -2 dB, BW 20-25%\r\n- **Result:** Smoother top-end\r\n\r\n---\r\n\r\n#### Problem: Noisy Recordings / Tape Hiss\r\n**Symptom:** Audible noise floor, hiss, electrical noise\r\n**Diagnosis:** Solo track - hear constant background noise?\r\n**Root Cause:** Noise in high frequencies\r\n\r\n**Solution:**\r\n- **Band:** 7 (Air)\r\n- **Action:** High shelf cut to tame\r\n- **Settings:** High shelf, 10-12 kHz, -1 to -2 dB, BW 25%\r\n- **Also:** Consider noise reduction plugin first\r\n- **Result:** Reduced hiss while preserving some highs\r\n\r\n---\r\n\r\n## Multi-Problem Scenarios\r\n\r\n### Scenario: Muddy AND Dull\r\n**Symptoms:** Both low-mid mud AND lacks highs\r\n**Wrong approach:** Just boost highs (doesn't fix mud)\r\n**Right approach:**\r\n1. **First:** Fix mud (Band 2: cut -1.5 dB @ 240 Hz)\r\n2. **Then:** Add air (Band 7: boost +2 dB shelf @ 12 kHz)\r\n3. **Result:** Clean and bright\r\n\r\n### Scenario: Harsh AND Buried\r\n**Symptoms:** Vocal is harsh but still getting lost\r\n**Analysis:** Harsh at one frequency, buried at another\r\n**Solution:**\r\n1. **Fix harshness first:** Band 6: cut -1.5 dB @ 4-5 kHz\r\n2. **Then add presence:** Band 5: boost +1.5 dB @ 2.5 kHz\r\n3. **Result:** Present without harshness\r\n\r\n### Scenario: Boomy, Boxy, AND Nasal\r\n**Symptoms:** Multiple midrange problems\r\n**Wrong approach:** Cut all three bands aggressively (creates hole)\r\n**Right approach:**\r\n1. **Identify worst problem** - which bothers you most?\r\n2. **Fix that one first** with moderate cut\r\n3. **Check if others still need fixing** - often solving one helps others\r\n4. **If needed**, small cuts on remaining issues\r\n5. **A/B constantly** to avoid over-EQing\r\n\r\n---\r\n\r\n## The Diagnostic Process\r\n\r\n### Step 1: Identify the Problem\r\n**Listen actively:**\r\n- What specifically sounds wrong?\r\n- Where in the frequency spectrum?\r\n- One element or the whole mix?\r\n\r\n### Step 2: Isolate the Frequency\r\n**Use the boost & sweep technique:**\r\n1. Create +6 dB boost (narrow BW 70%)\r\n2. Sweep through the relevant band\r\n3. Find where it sounds WORST\r\n4. That's your problem frequency\r\n\r\n### Step 3: Apply the Fix\r\n**Cut at the problem frequency:**\r\n1. Change boost to cut\r\n2. Use -1 to -3 dB depending on severity\r\n3. Widen the BW (40-60% typically)\r\n4. Fine-tune amount by ear\r\n\r\n### Step 4: Verify\r\n**A/B comparison:**\r\n1. Bypass EQ\r\n2. Enable EQ\r\n3. Ask: \"Better or just different?\"\r\n4. If better, keep it\r\n5. If just different, reconsider\r\n\r\n---\r\n\r\n## Quick Troubleshooting\r\n\r\n### \"I cut the mud but it still sounds muddy\"\r\n- **Check:** Did you cut enough? (try -2 to -3 dB)\r\n- **Check:** Did you cut the right frequency? (sweep again)\r\n- **Check:** Did you cut on enough tracks? (most non-bass tracks need it)\r\n- **Check:** Is it actually low-end rumble? (try HP filtering instead)\r\n\r\n### \"I boosted presence but vocal still buried\"\r\n- **Try:** Cut presence on competing tracks instead\r\n- **Check:** Is it actually a volume issue, not EQ?\r\n- **Check:** Is compression squashing the vocal?\r\n- **Check:** Is the arrangement too dense?\r\n\r\n### \"My mix sounds hollow after EQing\"\r\n- **Cause:** Too many cuts, created a frequency hole\r\n- **Fix:** Reduce cut amounts, don't cut all midrange bands aggressively\r\n- **Prevention:** A/B frequently, cut selectively\r\n\r\n### \"Everything sounds harsh now\"\r\n- **Cause:** Cumulative HF boosts (Bands 5 + 6 + 7)\r\n- **Fix:** Remove boosts from supporting tracks, only boost leads\r\n- **Check:** Master bus - are you boosting there too?\r\n\r\n---\r\n\r\n## Emergency Fixes (In-Session Quick Wins)\r\n\r\n### 30-Second Vocal Clarity\r\n1. Band 1: HP @ 90 Hz\r\n2. Band 2: Cut -1.5 dB @ 240 Hz\r\n3. Band 5: Boost +1.5 dB @ 2.5 kHz\r\nDone. Move on.\r\n\r\n### 30-Second Mix De-Mud\r\n1. HP everything non-bass @ 80 Hz (Band 1)\r\n2. Cut -1.5 dB @ 240 Hz on all non-bass (Band 2)\r\nDone. Instantly clearer.\r\n\r\n### 30-Second Modern Polish\r\n1. Small air boost on vocal/leads: +2 dB shelf @ 12 kHz (Band 7)\r\n2. Subtle air on master: +1 dB shelf @ 13 kHz (Band 7)\r\nDone. Sounds more expensive.\r\n\r\n---\r\n\r\n**Remember:** Most problems are fixed with cuts. If you're boosting more than cutting, reconsider your approach.\r\n",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Parametric Eq 2\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Parametric Eq 2 to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Parametric Eq 2\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Parametric Eq 2\r\n\r\nThis section contains learning information for the fruity-parametric-eq-2 plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "mix-bus-polish": "# Workflow: Mix Bus / Mastering Polish\r\n\r\n**Goal:** Add the final finish to a mix used on the Master channel or major instrument buses.\r\n\r\n**Preset Reference:** `Mix Bus - Final Polish`\r\n\r\n---\r\n\r\n## ⚠️ Important Rules for Bus EQ\r\n\r\n1.  **Small Moves:** Never boost/cut more than **1.5 dB**. If you need more, go back to the individual tracks.\r\n2.  **Wide Bandwidth:** Use gentle curves (0 - 30% BW). Narrow cuts sound unnatural on a full mix.\r\n3.  **Subtlety:** You should barely hear it working. Toggle it on/off to feel the difference rather than hearing a drastic tonal shift.\r\n\r\n---\r\n\r\n## 🛠️ The Chain\r\n\r\n### Step 1: The \"Smile\" (Bands 1, 2, 7)\r\n\r\nA subtle \"smiley face\" curve is standard for modern polished sound.\r\n\r\n- **Band 1 (Sub):** Gentle High Pass at **20-30 Hz**. (Removes DC offset and invisible energy that eats headroom).\r\n- **Band 2 (Warmth):** Very wide cut (-1 dB) at **250 Hz**. Cleans up mud accumulation.\r\n- **Band 7 (Air):** Gentle High Shelf (+1 dB) at **12 kHz**. Opens up the top end.\r\n\r\n### Step 2: The Clue (Band 5 or 6)\r\n\r\nIf the mix feels a bit distant or distinct:\r\n\r\n- **Band 5 (Presence):** Very wide boost (+0.5 dB) at **3 kHz**. brings the whole mix \"forward.\"\r\n\r\n---\r\n\r\n## 🔄 Troubleshooting the Master\r\n\r\n| Symptom             | Bus EQ Fix                                           |\r\n| ------------------- | ---------------------------------------------------- |\r\n| **Mix is muddy**    | Cut -1 dB @ 250 Hz (Wide)                            |\r\n| **Mix is harsh**    | Cut -1 dB @ 4 kHz (Wide)                             |\r\n| **Mix sounds dull** | Boost +1 dB @ 10 kHz (Shelf)                         |\r\n| **Mix lacks punch** | Are you sure it's EQ? Try a bright compressor first. |\r\n\r\n**Pro Tip:**\r\nPut this EQ _before_ your final Limiter.\r\n"
+    },
+    "by-instrument": {
+      "acoustic-guitar-clean": "# Workflow: Acoustic Guitar Clarity\r\n\r\n**Goal:** Remove \"boom\" and \"honk\" to reveal the natural sparkle of the instrument.\r\n\r\n**Preset Reference:** `Guitar - Acoustic Clean`\r\n\r\n---\r\n\r\n## 🛠️ The Chain\r\n\r\nAcoustic guitars often take up too much space. We need to carve them out.\r\n\r\n### Step 1: Control the Boom (Band 1 🟣)\r\n\r\n**Gentle High Pass**\r\n\r\n- **Freq:** 60 - 80 Hz\r\n- **Gain:** 0 dB (Cut)\r\n- **Use Case:** Removes the \"thump\" from the body that clashes with the kick/bass. Keep this lower (60 Hz) if it's a solo performance, higher (100 Hz) if it's in a dense mix.\r\n\r\n### Step 2: The \"Wood\" Tone (Band 3 🟠)\r\n\r\n**De-Box**\r\n\r\n- **Freq:** ~420 Hz\r\n- **Gain:** -2 to -3 dB\r\n- **Why:** This removes the cheap \"plywood\" sound and makes the guitar sound like a more expensive instrument.\r\n\r\n### Step 3: Sparkle (Band 6 🔵)\r\n\r\n**String Detail**\r\n\r\n- **Freq:** 5000 Hz (5 kHz)\r\n- **Gain:** +1 to +2 dB\r\n- **Why:** Brings out the sound of the pick hitting the strings. Essential for rhythm tracks.\r\n\r\n### Step 4: Air (Band 7 🔵)\r\n\r\n**Openness**\r\n\r\n- **Freq:** 12 kHz (High Shelf)\r\n- **Gain:** +1.5 dB\r\n- **Why:** Adds dimension and space.\r\n\r\n---\r\n\r\n## 👂 Listener Guide\r\n\r\n- **Too thin?** Turn off the High Pass (Band 1) or reduce the cut on Band 3.\r\n- **Too harsh/clicky?** Reduce the boost on Band 6.\r\n- **Too boom-y?** Use **Band 2** to cut a wide bell at 200 Hz.\r\n",
+      "kick-drum-low-end": "# Workflow: Kick Drum & Low-End Weight\r\n\r\n**Goal:** A kick drum that punches hard, hits the sub, but doesn't muddy up the mix.\r\n\r\n**Preset Reference:** `Kick/808 - Sub Boost`\r\n\r\n---\r\n\r\n## 🛠️ The Chain\r\n\r\nKick drums need _focused_ energy, not broad energy.\r\n\r\n### Step 1: The Fundamental (Band 1 🟣)\r\n\r\n**Add Weight**\r\nInstead of just cutting, we can use the Bell curve on Band 1 to boost the specific root note.\r\n\r\n- **Action:** Bell Boost (Not High Pass!)\r\n- **Freq:** 45 - 60 Hz (Find the key of your track)\r\n- **Amount:** +2 to +3 dB\r\n- **Why:** This makes the kick physically shake the speakers at its core frequency.\r\n\r\n### Step 2: The Knock (Band 5 🟢 or Band 6 🔵)\r\n\r\n**Add Attack**\r\nA kick needs high frequency to be heard on phone speakers.\r\n\r\n- **Action:** Bell Boost.\r\n- **Freq:** 3 kHz - 5 kHz\r\n- **Amount:** +3 dB\r\n- **Why:** This is the sound of the beater hitting the skin. It gives the kick \"point\" or \"click.\"\r\n\r\n### Step 3: The Cleanup (Band 2 🌸)\r\n\r\n**Remove Boxiness/Mud**\r\n\r\n- **Action:** Bell Cut.\r\n- **Freq:** 250 Hz - 400 Hz\r\n- **Amount:** -3 to -6 dB (Be aggressive here!)\r\n- **Why:** Kicks often sound like cardboard in the low-mids. Cutting this huge chunk out makes the Lows (Step 1) and Highs (Step 2) sound much more powerful by contrast. This is the \"Smiley Face\" EQ curve.\r\n\r\n---\r\n\r\n## 💡 Bass Relationship\r\n\r\n**The Kick vs. Bass Puzzle**\r\n\r\nIf you boost the Kick at 60 Hz:\r\n\r\n- You should probably **cut** the Bass guitar/synth at 60 Hz slightly.\r\n- Or Sidechain compress the bass to the kick.\r\n\r\n**Don't boost both at the same frequency.** Let the Kick own the sub-punch, and let the Bass own the body (100 Hz+), or vice versa.\r\n",
+      "modern-synth-edm": "# Workflow: Modern Synth & EDM Lead\r\n\r\n**Goal:** A tight, focused sound that cuts through a heavy bassline without getting muddy.\r\n\r\n**Preset Reference:** `Synth - Modern EDM`\r\n\r\n---\r\n\r\n## 🛠️ The Chain\r\n\r\nModern synths need to be \"surgical\" to fit into dense electronic mixes.\r\n\r\n### Step 1: Tighten Lows (Band 1 🟣)\r\n\r\n**Aggressive High Pass**\r\n\r\n- **Freq:** 100 - 120 Hz\r\n- **Why:** Synths often have useless low-end rumble. In EDM, the sub (30-80 Hz) belongs to the Kick and Sub Bass. **Kill the synth low-end completely.**\r\n\r\n### Step 2: Clean the Mud (Band 2 🌸)\r\n\r\n**Separation**\r\n\r\n- **Freq:** 250 Hz\r\n- **Gain:** -2 dB\r\n- **Why:** Synths are rich in harmonics. Cutting here prevents them from masking the snare and vocals.\r\n\r\n### Step 3: Focus (Band 5 🟢)\r\n\r\n**Lead Presence**\r\n\r\n- **Freq:** 2800 Hz (2.8 kHz)\r\n- **Gain:** +2 dB\r\n- **Type:** Bell\r\n- **Why:** This makes the specific melody line \"speak.\"\r\n\r\n### Step 4: Snap (Band 6 🔵)\r\n\r\n**Transient Definition**\r\n\r\n- **Freq:** 5500 Hz (5.5 kHz)\r\n- **Gain:** +1.5 dB\r\n- **Why:** Enhances the \"pluck\" or attack of the sound.\r\n\r\n---\r\n\r\n## ⚡ Pro Tip: The \"Telephone\" Break\r\n\r\nFor breakdowns or intros, use **Band 4 (Yellow)**:\r\n\r\n1.  Boost +10 dB at 1 kHz.\r\n2.  Narrow bandwidth (80%).\r\n3.  Cut everything else (Low Pass + High Pass).\r\n4.  _Result:_ Instant \"Lo-Fi\" or \"Radio\" effect.\r\n",
+      "vocal-lead-workflow": "# Workflow: Lead Vocal Polish\r\n\r\n**Goal:** Create a modern, professional lead vocal that sits \"on top\" of the mix without being harsh.\r\n\r\n**Preset Reference:** `Vocal Polish - Lead`\r\n\r\n---\r\n\r\n## 🛠️ The Chain\r\n\r\nThis workflow uses a 4-band approach to shape the vocal.\r\n\r\n### Step 1: Clean (Band 1 🟣)\r\n\r\n**Low-End Cleanup**\r\n\r\n- **Action:** High Pass Filter to remove rumble.\r\n- **Freq:** 80 - 100 Hz\r\n- **Why:** Vocals don't need sub-bass frequencies. This headroom belongs to the kick and bass.\r\n\r\n### Step 2: Clear (Band 2 🌸)\r\n\r\n**De-Mud**\r\n\r\n- **Action:** Bell Cut.\r\n- **Freq:** ~250 Hz (Sweep 200-300 Hz)\r\n- **Amount:** -1.5 to -3 dB\r\n- **Why:** Removes the \"muffled\" quality and separates the vocal from guitars/keys.\r\n\r\n### Step 3: Present (Band 5 🟢)\r\n\r\n**Intelligibility**\r\n\r\n- **Action:** Bell Boost.\r\n- **Freq:** ~2.5 k - 2.8 k Hz\r\n- **Amount:** +1.5 dB (Wide BW)\r\n- **Why:** This is where the human ear hears lyrics. A small boost here brings the singer forward.\r\n- **Warning:** If the vocal is already harsh or sibilant, SKIP this or use a De-Esser first.\r\n\r\n### Step 4: Shine (Band 7 🔵)\r\n\r\n**Air & Gloss**\r\n\r\n- **Action:** High Shelf Boost.\r\n- **Freq:** 12 kHz\r\n- **Amount:** +2.5 dB\r\n- **Why:** Adds that expensive \"studio sheen\" and breathiness.\r\n\r\n---\r\n\r\n## 🔄 Adjustment Guide\r\n\r\n| If it sounds...      | Do this...                                                 |\r\n| -------------------- | ---------------------------------------------------------- |\r\n| **Thin**             | Reduce the cut on Band 2, or add +1 dB at 180 Hz (Body).   |\r\n| **Harsh**            | Disable Band 5 boost. Cut Band 6 (~4.5 kHz) by -1 dB.      |\r\n| **Sibilant (\"Sss\")** | Cut Band 6 (~6 kHz) or use a De-Esser. Reduce Band 7 gain. |\r\n| **Boxy**             | Add a cut on Band 3 (~400 Hz).                             |\r\n"
+    },
+    "by-symptom": {
+      "boxy-cardboard-fix": "# Workflow: Removing \"Boxy\" or Cardboard Tone\r\n\r\n**Symptom:** The audio sounds like it was recorded in a small cardboard box. It lacks depth and sounds \"cheap\" or \"hollow.\"\r\n\r\n**Primary Suspect:** Lower-Midrange Congestion (300 - 550 Hz).\r\n\r\n---\r\n\r\n## 🛠️ The Fix (Priority 2)\r\n\r\nRemoving boxiness is the \"secret sauce\" that makes home recordings sound expensive.\r\n\r\n### Step 1: The Sweep\r\n\r\n1.  Select **Band 3 (Orange)**.\r\n2.  Boost it to **+9 dB** (temporarily!).\r\n3.  Make the bandwidth narrow (80%).\r\n4.  Sweep slowly between **300 Hz** and **600 Hz**.\r\n5.  Listen for the frequency that sounds most like \"honking into a cup.\" **That is the boxiness.**\r\n\r\n### Step 2: The Action (Band 3 🟠)\r\n\r\nOnce you found the frequency (often ~400-450 Hz), cut it.\r\n\r\n| Parameter  | Setting     | Note                                    |\r\n| ---------- | ----------- | --------------------------------------- |\r\n| **Band**   | 3 (Orange)  |                                         |\r\n| **Type**   | Bell        |                                         |\r\n| **Freq**   | ~420 Hz     | _Or wherever you found the \"cup\" sound_ |\r\n| **Amount** | -2 to -4 dB | _Aggressive cuts often work here_       |\r\n| **BW**     | 50%         | _Medium width_                          |\r\n\r\n### Step 3: Verify\r\n\r\nToggle the band on/off. The sound should visibly \"open up\" and feel less enclosed when the cut is active.\r\n\r\n### Instrument Specifics\r\n\r\n- **Drums (Snare/Toms):** Often need heavy cuts (-4 dB) at ~400 Hz to sound \"pro.\"\r\n- **Acoustic Guitar:** Cut ~350-400 Hz to remove the \"cheap wood\" sound.\r\n- **Vocals:** Gentle cut at ~350 Hz clears up the muddiness that isn't quite low-end mud.\r\n\r\n---\r\n\r\n## 💡 Pro Tip\r\n\r\n**Don't hollow it out.**\r\nIf you cut too much, the sound becomes distinctively \"scooped\" and weak. You want to remove the _excess_ resonance, not the entire frequency range.\r\n\r\n**Reference Rule:**\r\n\r\n> `boxy_or_cardboard` → Band 3: De-Box 420\r\n",
+      "harsh-fatigue-fix": "# Workflow: Taming Harshness & Ear Fatigue\r\n\r\n**Symptom:** The mix hurts to listen to at high volumes. Snare hits make you wince. Vocals sound \"edgy\" or \"sharp.\" You feel tired after listening for 10 minutes.\r\n\r\n**Primary Suspect:** Upper-Midrange Resonances (3.5 - 6 kHz).\r\n\r\n---\r\n\r\n## 🛠️ The Fix (Priority 1)\r\n\r\nHarshness ruins the listener experience immediately. Fix this before boosting _anything_.\r\n\r\n### Step 1: Identification\r\n\r\nHarshness usually lives in:\r\n\r\n- Vocals (sibilance/edge)\r\n- Distorted Guitars (fizz)\r\n- Cymbals / Overhead Drums\r\n- Aggressive Synths\r\n\r\n### Step 2: The Action (Band 6 🔵)\r\n\r\nUse the **Tame Harsh 4500** archetype.\r\n\r\n| Parameter  | Setting       | Note                                  |\r\n| ---------- | ------------- | ------------------------------------- |\r\n| **Band**   | 6 (Teal)      |                                       |\r\n| **Type**   | Bell          |                                       |\r\n| **Freq**   | 4500 Hz       | _Common pain point. Sweep 3.5k - 6k._ |\r\n| **Amount** | -1.5 to -3 dB | _Be careful, easy to lose \"bite\"_     |\r\n| **BW**     | 65%           | _Medium-Narrow_                       |\r\n\r\n### Step 3: Different Flavors of Harshness\r\n\r\n- **\"Bitey/Edgy\" (2 - 3 kHz):** Use **Band 5**. Try cutting -1.5 dB at 2800 Hz (Archetype: _Soften Bite_).\r\n- **\"Sharp/Piercing\" (4 - 6 kHz):** Use **Band 6** as described above.\r\n- **\"Hissy/Sibilant\" (6 - 8 kHz):** Use **Band 6** higher up or a De-Esser plugin.\r\n\r\n### Step 4: The Mix Bus Check\r\n\r\nIf the _entire_ mix hurts:\r\n\r\n1.  Put an EQ on the Master Bus.\r\n2.  Gently cut **-1 dB** at **4.5 kHz** with a wide bandwidth (30%).\r\n3.  This is a \"band-aid\" - better to fix the individual tracks causing it.\r\n\r\n---\r\n\r\n## ⚠️ Warning\r\n\r\n**The Volume Trap:**\r\nLouder music always sounds harsher. Make sure you aren't just monitoring too loud. Turn your volume down—if it still hurts, it's the mix.\r\n\r\n**Reference Rule:**\r\n\r\n> `harsh_or_fatiguing` → Band 6: Tame Harsh 4500\r\n",
+      "muddy-cloudy-fix": "# Workflow: Fixing a Muddy or Cloudy Mix\r\n\r\n**Symptom:** The mix sounds \"thick,\" \"congested,\" or like there is a blanket over the speakers. Instruments fight for space, and vocals lack clarity.\r\n\r\n**Primary Suspect:** Low-Mid Frequency Buildup (200 - 350 Hz).\r\n\r\n---\r\n\r\n## 🛠️ The Fix (Priority 1)\r\n\r\nThis is a critical issue that must be addressed before adding polish.\r\n\r\n### Step 1: Diagnosis\r\n\r\nSolo the \"warm\" instruments in your mix one by one:\r\n\r\n- Guitars\r\n- Synths / Pads\r\n- Vocals\r\n- Snare Drum\r\n\r\nListen for a \"woolly\" or \"muffled\" quality.\r\n\r\n### Step 2: The Action (Band 2 🌸)\r\n\r\nUse the **De-Mud 250** archetype on the offending tracks.\r\n\r\n| Parameter   | Setting       | Note                                      |\r\n| ----------- | ------------- | ----------------------------------------- |\r\n| **Band**    | 2 (Pink)      |                                           |\r\n| **Type**    | Bell          |                                           |\r\n| **Freq**    | 250 Hz        | _Sweep 200-300 Hz to find the worst spot_ |\r\n| **Ammount** | -1.5 to -3 dB | _Start small!_                            |\r\n| **BW**      | 35%           | _Wide-ish cut_                            |\r\n\r\n### Step 3: Check Context\r\n\r\nUn-solo the track. Does the whole mix sound clearer?\r\n\r\n- **Yes:** Good job.\r\n- **No, now it sounds thin:** You cut too much. Reduce the cut to -1 dB or try a wider bandwidth (lower %).\r\n\r\n### Step 4: Advanced Separation\r\n\r\nIf vocals are fighting with guitars/keys in this range:\r\n\r\n1.  **Cut more** (-3 dB) on the backing instrument (guitar/keys).\r\n2.  **Cut less** (-1 dB) or leave neutral on the lead vocal.\r\n3.  This creates a \"pocket\" for the vocal to sit in.\r\n\r\n---\r\n\r\n## 💡 Pro Tip\r\n\r\n**\"Mud accumulates.\"**\r\nA -0.5 dB cut on 10 tracks = -5 dB total mud reduction. You often don't need heavy cuts on single tracks if you clean up everything slightly.\r\n\r\n**Reference Rule:**\r\n\r\n> `muddy_or_cloudy` → Band 2: De-Mud 250\r\n",
+      "nasal-honk-fix": "# Workflow: Taming Nasal & Honky Tone\r\n\r\n**Symptom:** The source (vocal, saxophone, guitar) sounds pinched, \"honky,\" or like someone holding their nose. It's annoying and piercing.\r\n\r\n**Primary Suspect:** Upper-Midrange Frequencies (600 - 1200 Hz).\r\n\r\n---\r\n\r\n## 🛠️ The Fix (Priority 2)\r\n\r\n**Band 4 (Yellow)** is specifically designed for this range. It is the most sensitive band in the plugin.\r\n\r\n### Step 1: The Sweep (Careful!)\r\n\r\n1.  Select **Band 4**.\r\n2.  Boost **+5 dB** (don't go too high, it will hurt).\r\n3.  Narrow BW (70%).\r\n4.  Sweep slowly from **700 Hz** to **1 kHz**.\r\n5.  Listen for the \"Goose Honk\" or extreme nasality.\r\n\r\n### Step 2: The Cut\r\n\r\n| Parameter | Setting         | Note                       |\r\n| --------- | --------------- | -------------------------- |\r\n| **Band**  | 4 (Yellow)      |                            |\r\n| **Freq**  | ~850 Hz         | _Common sweet spot_        |\r\n| **Gain**  | -1.5 to -2.5 dB | _Small moves matter here!_ |\r\n| **BW**    | 60%             | _Medium-Narrow_            |\r\n\r\n### Step 3: Male vs. Female\r\n\r\n- **Male Vocals:** Honk is often lower (**~700 Hz**).\r\n- **Female Vocals:** Nasality is often higher (**~950 - 1100 Hz**).\r\n\r\n---\r\n\r\n## ⚠️ Warning\r\n\r\n**Don't over-cut.**\r\nIf you scoop this range too deeply (-4 dB+), the vocal will lose its power and sound \"hollow\" or distant. You only want to tame the annoyance, not remove the core tone.\r\n\r\n**Reference Rule:**\r\n\r\n> `nasal_or_honky` → Band 4: Tame Honk 850\r\n",
+      "rumble-headroom-fix": "# Workflow: Cleaning Rumble & Improving Headroom\r\n\r\n**Symptom:** The mix looks loud on meters but sounds quiet. The standard limiter is \"pumping\" or distorting easily. Speakers are flapping but you don't hear much bass.\r\n\r\n**Primary Suspect:** Subsonic Noise (0 - 40 Hz).\r\n\r\n---\r\n\r\n## 🛠️ The Fix (Priority 1)\r\n\r\nThis is the \"invisible killer\" of loud mixes.\r\n\r\n### Step 1: The Diagnosis\r\n\r\nLook at the spectral analyzer (the moving background in Parametric EQ 2).\r\n\r\n- Do you see purple activity down at 20 Hz even when the bass isn't playing?\r\n- That is **rumble** (AC hum, mic stand bumps, breathing). It eats energetic space but provides no musical value.\r\n\r\n### Step 2: The Safety Filter (Band 1 🟣)\r\n\r\nApply this to **every track** except the Kick and Sub-Bass.\r\n\r\n- **Type:** High Pass\r\n- **Freq:** 80 - 100 Hz\r\n- **Steepness:** Default\r\n- **Result:** You just recovered ~3-6 dB of headroom instantly.\r\n\r\n### Step 3: The Bass Cleanup\r\n\r\nEven your Bass and Kick don't need _infinite_ low end.\r\n\r\n- **Action:** High Pass on Kick/Bass\r\n- **Freq:** 20 - 30 Hz\r\n- **Steepness:** Steep\r\n- **Why:** Removes DC offset and useless subsonic flab. Makes the bass sound \"tighter\" and less \"floppy.\"\r\n\r\n---\r\n\r\n## 📉 Why High Pass?\r\n\r\nA limiter reacts to the _loudest_ peaks. Low frequencies carry the most energy. If your 30 Hz rumble is peaking, the limiter clamps down on your _Vocals_ (at 2 kHz), making the whole song quieter.\r\n**Cut the rumble = Louder potential volume.**\r\n\r\n**Reference Rule:**\r\n\r\n> `rumble_or_headroom_loss` → Band 1: HP Clean 80\r\n",
+      "thin-weak-fix": "# Workflow: Fixing Thin or Weak Audio\r\n\r\n**Symptom:** The instrument sounds small, frail, or lacks \"authority.\" It feels like it has no physical weight.\r\n\r\n**Primary Suspect:** Lack of Low-Mid Body (150 - 250 Hz).\r\n\r\n---\r\n\r\n## 🛠️ The Fix (Priority 2)\r\n\r\nWe need to add **Body** and **Chest Resonance**.\r\n\r\n### Step 1: The \"Chest\" Boost (Band 2 🌸)\r\n\r\nThis range (150-200 Hz) corresponds to the resonance of a human chest cavity.\r\n\r\n- **Action:** Bell Boost\r\n- **Freq:** 180 Hz - 200 Hz\r\n- **Gain:** +1.5 to +3 dB\r\n- **Result:** Instant authority and \"bigness.\"\r\n\r\n### Step 2: The Saturation Trick\r\n\r\nSometimes EQ isn't enough. If a +3 dB boost doesn't fix it, the audio file simply lacks low-end information.\r\n\r\n- **Don't just keep boosting EQ.**\r\n- **Try:** Adding a saturation plugin (like Fruity Blood Overdrive or Saturation Knob) _before_ the EQ to generate harmonics.\r\n\r\n### Step 3: Check the High Pass\r\n\r\nDid you accidentally High Pass (Band 1) too high?\r\n\r\n- Check Band 1. Is it at 150 Hz?\r\n- **Fix:** Drag it down to **80 Hz** or turn it off. You might be cutting the fundamental note of the instrument.\r\n\r\n---\r\n\r\n## 💡 Tone Shaping\r\n\r\n- **Thick/Warm:** Boost ~220 Hz.\r\n- **Big/Heavy:** Boost ~100 Hz (Band 1 Bell).\r\n- **Power:** Boost ~180 Hz.\r\n\r\n**Reference Rule:**\r\n\r\n> `thin_or_weak` → Band 2: Add Body 200\r\n"
+    },
+    "common-usage.md": {
+      "common-usage": "# Common Workflows: Fruity Parametric EQ 2\r\n\r\n## 1. Mid/Side Processing (The Wider Mix)\r\n\r\nEQing the Stereo information separately from the Mono information.\r\n\r\n**Goal:** Brighten the \"Sides\" of a synth bus without making the center harsh.\r\n\r\n1.  **Plugin Setup:** Load Parametric EQ 2 on your Synth Bus.\r\n2.  **Patcher Required:** *Actually, Parametric EQ 2 cannot do M/S internal processing inherently.* You must use **Patcher**.\r\n    *   *Correction:* Wait! You can use **Stereo Shaper** splitting, OR usually people just use the Patcher \"Mid-Side EQ\" preset which uses 2x Parametric EQ 2s.\r\n    *   *Alternative:* FL Studio Patcher Preset -> \"Mid Side EQ\".\r\n3.  **Visual Method:** In pure PEQ2, you can *visualize* Mid vs Side.\r\n    *   **Monitor Input:** Set to **SIDE**. Now the heatmap shows stereo width.\r\n    *   **Action:** You can't separate the processing in one plugin instance. Use Patcher.\r\n\r\n## 2. Linear Phase Mastering\r\n\r\nPreserving the transient punch of a final mix.\r\n\r\n1.  **Context:** You are on the Master Bus.\r\n2.  **Mode:** Enable **LIN** (Linear Phase) button.\r\n3.  **Analysis:** The audio will now have latency (Plugin Delay Compensation handles this).\r\n4.  **Action:** Boost the High Air (+1dB at 10kHz).\r\n5.  **Benefit:** In Standard mode, this high shelf smears the phase of the kick drum (lows) slightly due to phase wrap. In LIN mode, the phase relationship between Kick (Low) and Hats (High) remains locked.\r\n6.  **Warning:** Do not use Steep 8 High Pass filters on the Master in LIN mode. It creates \"Pre-Ringing\" (a swoosh sound before the kick hits). Use Gentle slopes.\r\n\r\n## 3. Surgical Vocal Cleanup (The \"Search & Destroy\")\r\n\r\n1.  **Visuals:** Turn **Range** to -90dB. Set **Precision** to High.\r\n2.  **Band 6:** Set to Peaking, Narrow Q. Gain +10dB.\r\n3.  **Sweep:** While the vocal plays, sweep 200Hz - 800Hz.\r\n4.  **Identify:** Find the \"Mud\" or \"Boxiness\" (usually ~300-500Hz).\r\n5.  **Cut:** Drop the gain to -3dB.\r\n6.  **Band 7:** High Shelf. Boost 10kHz +2dB for \"Air\".\r\n\r\n## 4. Kick Drum Tuning (Key Mapping)\r\n\r\n1.  **Goal:** Boost the fundamental of the kick.\r\n2.  **Method:** Right-Click Band 2 token -> **Key** -> Select the Key of your song.\r\n3.  **Refine:** Select octave 0 or 1.\r\n4.  **Action:** The EQ band snaps to the exact Hz of that note.\r\n5.  **Boost:** Add +2dB. Now your kick resonates in key with the bassline.\r\n\r\n## 5. The \"Visual\" Mixcheck (Pivot Slope)\r\n\r\nUsing the plugin as a metering tool.\r\n\r\n1.  **Monitor:** On the Master Bus.\r\n2.  **Pivot Slope:** Set to **4.5dB**.\r\n3.  **Observation:** Play a professional reference track.\r\n4.  **Heatmap:** Notice how the heatmap looks generally \"Flat\" or balanced horizontally?\r\n5.  **Comparison:** Play your track.\r\n6.  **Diagnosis:** If your heatmap is bright red in the bass but black in the highs, your mix is dark. If it's bright in the highs but thin in the lows, it's harsh.\r\n7.  **Goal:** Aim for a similar \"Density Balance\" to the reference.\r\n"
+    },
+    "README.md": {
+      "README": "# 03-Workflows\r\n\r\nPractical, step-by-step guides for applying Fruity Parametric EQ 2 in real-world scenarios.\r\n\r\n## 🩺 By Symptom (Diagnostic)\r\n\r\n_Identification and repair of common mix problems._\r\n\r\n### Priority 1 (Critical)\r\n\r\n- [**Rumble / Headroom Loss**](./by-symptom/rumble-headroom-fix.md) - Fix the invisible energy that eats your volume.\r\n- [**Muddy / Cloudy Mix**](./by-symptom/muddy-cloudy-fix.md) - The #1 mix problem. Fixing low-mid buildup (250 Hz).\r\n- [**Harshness / Ear Fatigue**](./by-symptom/harsh-fatigue-fix.md) - Taming painful upper-mids (4-6 kHz).\r\n\r\n### Priority 2 (Tone)\r\n\r\n- [**Boxy / Cardboard Tone**](./by-symptom/boxy-cardboard-fix.md) - Removing the \"cheap room\" sound (~400 Hz).\r\n- [**Nasal / Honky Tone**](./by-symptom/nasal-honk-fix.md) - Smoothing out pinched vocals and guitars (~850 Hz).\r\n- [**Thin / Weak Audio**](./by-symptom/thin-weak-fix.md) - Adding body and authority to frail sources.\r\n\r\n## 🎸 By Instrument\r\n\r\n_Specific chains for common elements._\r\n\r\n- [**Lead Vocal Polish**](./by-instrument/vocal-lead-workflow.md) - The 4-step chain for clear, modern vocals.\r\n- [**Kick Drum & Low End**](./by-instrument/kick-drum-low-end.md) - Boosting weight while maintaining clarity.\r\n- [**Acoustic Guitar**](./by-instrument/acoustic-guitar-clean.md) - Removing boom to reveal sparkle.\r\n- [**Modern Synth / EDM**](./by-instrument/modern-synth-edm.md) - Tight, focused leads that cut through the mix.\r\n\r\n## 🎯 By Goal\r\n\r\n_Context-specific strategies._\r\n\r\n- [**Mix Bus / Mastering Polish**](./by-goal/mix-bus-polish.md) - Subtle finishing touches for the master channel.\r\n\r\n---\r\n\r\n**Tip:** These workflows reference the presets found in `02-Data/presets/`.\r\n"
+    }
+  },
+  "rules": {
+    "symptom-solutions": {
+      "description": "Diagnostic decision tree mapping audio symptoms to EQ solutions",
+      "usage": "Use this to build smart assistants, troubleshooting guides, or learning tools that recommend specific band archetypes based on user-described problems",
+      "priorityLevels": {
+        "1": "Critical - Fix first, these cause major mix problems",
+        "2": "Important - Address after critical issues are resolved",
+        "3": "Polish - Final touches for professional sound"
+      },
+      "rules": [
+        {
+          "symptom": "rumble_or_headroom_loss",
+          "displayName": "Rumble / Headroom Loss",
+          "description": "Mix feels bloated, limiter pumps, or sounds like there's inaudible low-end taking up space",
+          "priority": 1,
+          "recommendations": [
+            {
+              "bandId": 1,
+              "archetype": "HP Clean 80",
+              "notes": "Use HP 70-100 Hz on all non-bass sources. This is the #1 fix for headroom issues.",
+              "gain": null,
+              "context": "Apply to: vocals, guitars, keys, synths, percussion (not kick/bass)"
+            }
+          ]
+        },
+        {
+          "symptom": "muddy_or_cloudy",
+          "displayName": "Muddy / Cloudy Mix",
+          "description": "Mix sounds like there's a blanket over the speakers, lacks definition, congested low-mids",
+          "priority": 1,
+          "recommendations": [
+            {
+              "bandId": 2,
+              "archetype": "De-Mud 250",
+              "notes": "Small cuts in 200-300 Hz clear mixes extremely quickly. Start with -2 dB.",
+              "gain": -2,
+              "context": "Apply to: multiple tracks with low-mid buildup, mix bus if widespread"
+            },
+            {
+              "bandId": 2,
+              "archetype": "De-Mud Wide 200",
+              "notes": "If 250 Hz cut is too aggressive, try wider cut at 200 Hz",
+              "gain": -1.5,
+              "context": "Alternative if you want to preserve some warmth"
+            }
+          ]
+        },
+        {
+          "symptom": "harsh_or_fatiguing",
+          "displayName": "Harsh / Ear Fatigue",
+          "description": "Mix hurts to listen to, causes ear fatigue, sounds sharp or aggressive",
+          "priority": 1,
+          "recommendations": [
+            {
+              "bandId": 6,
+              "archetype": "Tame Harsh 4500",
+              "notes": "Cut 4-6 kHz; use narrow BW only for obvious resonances. Start gentle.",
+              "gain": -2,
+              "context": "Common in vocals, guitars, cymbals - sweep to find exact frequency"
+            },
+            {
+              "bandId": 5,
+              "archetype": "Soften Bite 2800",
+              "notes": "If harshness is in presence range (2-3 kHz), cut here instead",
+              "gain": -1.5,
+              "context": "Alternative if the harshness is more 'edgy' than 'sharp'"
+            }
+          ]
+        },
+        {
+          "symptom": "boxy_or_cardboard",
+          "displayName": "Boxy / Cardboard Tone",
+          "description": "Sounds like it was recorded in a small room, enclosed, cardboard-like quality",
+          "priority": 2,
+          "recommendations": [
+            {
+              "bandId": 3,
+              "archetype": "De-Box 420",
+              "notes": "Use medium BW; avoid over-cutting or you'll lose life. Sweep 300-550 Hz to find it.",
+              "gain": -2.5,
+              "context": "Common in: vocals, acoustic guitars, drums, poorly recorded sources"
+            },
+            {
+              "bandId": 3,
+              "archetype": "Room Tone Cut",
+              "notes": "If boxiness is lower in frequency range",
+              "gain": -3,
+              "context": "Try 350 Hz if 420 Hz doesn't hit the right spot"
+            }
+          ]
+        },
+        {
+          "symptom": "nasal_or_honky",
+          "displayName": "Nasal / Honky",
+          "description": "Vocals or instruments sound pinched, nasal, honky, or have a cheap tone",
+          "priority": 2,
+          "recommendations": [
+            {
+              "bandId": 4,
+              "archetype": "Tame Honk 850",
+              "notes": "Small changes only - this range is very sensitive. Sweep 700-1000 Hz.",
+              "gain": -1.5,
+              "context": "Common in: vocals, guitars, brass, anything with midrange focus"
+            },
+            {
+              "bandId": 4,
+              "archetype": "De-Nasal 700",
+              "notes": "Try lower frequency for male vocals or lower-pitched sources",
+              "gain": -1.5,
+              "context": "Alternative for male vocals or deeper instruments"
+            },
+            {
+              "bandId": 4,
+              "archetype": "De-Nasal 950",
+              "notes": "Try higher frequency for female vocals or higher-pitched sources",
+              "gain": -2,
+              "context": "Alternative for female vocals or brighter instruments"
+            }
+          ]
+        },
+        {
+          "symptom": "buried_or_unclear",
+          "displayName": "Buried / Unclear",
+          "description": "Vocals or lead elements disappear in the mix, lack intelligibility, can't hear lyrics clearly",
+          "priority": 2,
+          "recommendations": [
+            {
+              "bandId": 5,
+              "archetype": "Lead Clarity 2500",
+              "notes": "Presence makes vocals and leads intelligible. Don't overdo it - can cause harshness.",
+              "gain": 2,
+              "context": "Apply to: lead vocals, lead synths, main melodic elements"
+            },
+            {
+              "bandId": 5,
+              "archetype": "Male Vocal Presence 2200",
+              "notes": "Try lower frequency for male vocals",
+              "gain": 2,
+              "context": "Better for deeper male voices"
+            },
+            {
+              "bandId": 5,
+              "archetype": "Vocal Presence 2800",
+              "notes": "Try higher frequency for female vocals",
+              "gain": 1.5,
+              "context": "Better for female voices or brighter sources"
+            }
+          ]
+        },
+        {
+          "symptom": "thin_or_weak",
+          "displayName": "Thin / Lacks Body",
+          "description": "Source sounds thin, weak, lacks weight or physical presence",
+          "priority": 2,
+          "recommendations": [
+            {
+              "bandId": 2,
+              "archetype": "Add Body 200",
+              "notes": "Add gentle warmth and thickness. Don't overdo - this range stacks fast.",
+              "gain": 1.5,
+              "context": "Apply to: thin vocals, weak guitars, sources needing fullness"
+            },
+            {
+              "bandId": 2,
+              "archetype": "Add Chest 180",
+              "notes": "Specifically for adding chest resonance to vocals",
+              "gain": 2,
+              "context": "Great for male vocals or adding depth/power"
+            },
+            {
+              "bandId": 3,
+              "archetype": "Add Mid Density",
+              "notes": "Rare boost in boxiness range for very thin sources",
+              "gain": 1,
+              "context": "Only if source is extremely thin and needs midrange weight"
+            }
+          ]
+        },
+        {
+          "symptom": "dull_or_closed",
+          "displayName": "Dull / Closed Sound",
+          "description": "Mix sounds dark, dull, closed, lacks excitement or sparkle",
+          "priority": 3,
+          "recommendations": [
+            {
+              "bandId": 7,
+              "archetype": "Air Shelf 12k",
+              "notes": "Use a wide high shelf for polish. Keep it subtle on buses/master.",
+              "gain": 2.5,
+              "context": "Final polish - apply to tracks, buses, or master for modern sheen"
+            },
+            {
+              "bandId": 7,
+              "archetype": "Air Shelf 10k",
+              "notes": "Lower shelf for more body to the air boost",
+              "gain": 2,
+              "context": "If 12k sounds too airy without enough presence"
+            },
+            {
+              "bandId": 6,
+              "archetype": "Add Detail 5000",
+              "notes": "If dullness is more about lack of detail than air",
+              "gain": 1,
+              "context": "Add definition and crispness before adding air"
+            }
+          ]
+        },
+        {
+          "symptom": "lacks_detail_or_definition",
+          "displayName": "Lacks Detail / Definition",
+          "description": "Source sounds soft, lacks snap, consonants are weak, transients are dull",
+          "priority": 3,
+          "recommendations": [
+            {
+              "bandId": 6,
+              "archetype": "Add Detail 5000",
+              "notes": "Small boosts add definition. Watch for sibilance and harshness.",
+              "gain": 1,
+              "context": "Apply to: vocals, percussion, anything needing articulation"
+            },
+            {
+              "bandId": 6,
+              "archetype": "Crispness 5500",
+              "notes": "Higher frequency for more snap and attack",
+              "gain": 1,
+              "context": "Better for percussion, drums, sharp transients"
+            }
+          ]
+        },
+        {
+          "symptom": "sibilant_or_too_bright",
+          "displayName": "Sibilant / Too Bright",
+          "description": "Harsh S sounds, overly bright cymbals, too much high-frequency energy",
+          "priority": 2,
+          "recommendations": [
+            {
+              "bandId": 6,
+              "archetype": "Tame Sibilance 6000",
+              "notes": "Cut upper harshness and sibilance. Use medium-narrow BW.",
+              "gain": -1.5,
+              "context": "Common issue with vocals - sweep 5-7 kHz to find exact frequency"
+            },
+            {
+              "bandId": 7,
+              "archetype": "Reduce Hiss Shelf",
+              "notes": "If entire top-end is too bright, not just one frequency",
+              "gain": -1.5,
+              "context": "Use high shelf cut for overly bright sources"
+            }
+          ]
+        },
+        {
+          "symptom": "noisy_or_hissy",
+          "displayName": "Noisy / Hissy",
+          "description": "Recording has noise, hiss, or unwanted high-frequency artifacts",
+          "priority": 2,
+          "recommendations": [
+            {
+              "bandId": 7,
+              "archetype": "Reduce Hiss Shelf",
+              "notes": "High shelf cut to reduce noise and artifacts. Keep it wide.",
+              "gain": -1.5,
+              "context": "For noisy recordings - but use noise reduction first if available"
+            }
+          ]
+        },
+        {
+          "symptom": "too_much_sub",
+          "displayName": "Too Much Sub / Boomy",
+          "description": "Excessive sub-bass, boomy low-end, sound feels out of control in the lows",
+          "priority": 1,
+          "recommendations": [
+            {
+              "bandId": 1,
+              "archetype": "HP Tight 100",
+              "notes": "More aggressive HP to tighten low-end. Adjust frequency to taste.",
+              "gain": 0,
+              "context": "For overly boomy sources or modern tight sound"
+            }
+          ]
+        },
+        {
+          "symptom": "sounds_cheap_or_amateur",
+          "displayName": "Sounds Cheap / Amateur",
+          "description": "Overall tone sounds unprofessional, cheap, or amateurish",
+          "priority": 2,
+          "recommendations": [
+            {
+              "bandId": 3,
+              "archetype": "De-Box 420",
+              "notes": "Boxiness is often what makes things sound cheap. Remove cardboard tone.",
+              "gain": -2.5,
+              "context": "First step in making things sound 'expensive'"
+            },
+            {
+              "bandId": 7,
+              "archetype": "Air Shelf 12k",
+              "notes": "Air adds professional polish and modern sheen",
+              "gain": 2.5,
+              "context": "Second step - add gloss and finish"
+            }
+          ]
+        },
+        {
+          "symptom": "lacks_punch_or_impact",
+          "displayName": "Lacks Punch / Impact",
+          "description": "Source doesn't hit hard, lacks punch or physical impact",
+          "priority": 2,
+          "recommendations": [
+            {
+              "bandId": 1,
+              "archetype": "Sub Bell Weight",
+              "notes": "Boost fundamental frequency for more weight (kick/bass only)",
+              "gain": 2.5,
+              "context": "Only for kick/bass - sweep 40-60 Hz to find fundamental"
+            },
+            {
+              "bandId": 5,
+              "archetype": "Lead Clarity 2500",
+              "notes": "Presence can add perceived punch and attack",
+              "gain": 2,
+              "context": "For non-bass elements - adds attack perception"
+            }
+          ]
+        },
+        {
+          "symptom": "sounds_distant",
+          "displayName": "Sounds Distant / Far Away",
+          "description": "Source sounds like it's in the back of the mix, far from the listener",
+          "priority": 2,
+          "recommendations": [
+            {
+              "bandId": 5,
+              "archetype": "Lead Clarity 2500",
+              "notes": "Presence brings sounds forward and closer to listener",
+              "gain": 2,
+              "context": "Primary tool for bringing sources forward"
+            },
+            {
+              "bandId": 2,
+              "archetype": "Add Body 200",
+              "notes": "Warmth can also add proximity/closeness",
+              "gain": 1.5,
+              "context": "Adds intimacy and 'close-mic' feel"
+            }
+          ]
+        },
+        {
+          "symptom": "lacks_warmth",
+          "displayName": "Lacks Warmth / Too Clinical",
+          "description": "Sound is too clean, clinical, lacks warmth and character",
+          "priority": 3,
+          "recommendations": [
+            {
+              "bandId": 2,
+              "archetype": "Warmth Shelf",
+              "notes": "Low shelf for broad warmth. Don't overdo - check for mud.",
+              "gain": 1.5,
+              "context": "Use on buses for overall warmth increase"
+            },
+            {
+              "bandId": 2,
+              "archetype": "Add Chest 180",
+              "notes": "More focused warmth boost",
+              "gain": 2,
+              "context": "For individual tracks needing warmth"
+            }
+          ]
+        },
+        {
+          "symptom": "mix_sounds_flat",
+          "displayName": "Mix Sounds Flat / One-Dimensional",
+          "description": "Mix lacks dimension, depth, or frequency spread - sounds flat",
+          "priority": 3,
+          "recommendations": [
+            {
+              "bandId": 6,
+              "archetype": "Add Detail 5000",
+              "notes": "Detail adds dimension and perceived depth",
+              "gain": 1,
+              "context": "Start with detail in upper-mids"
+            },
+            {
+              "bandId": 7,
+              "archetype": "Air Shelf 12k",
+              "notes": "Air opens up the top and adds space",
+              "gain": 2.5,
+              "context": "Then add air for complete dimension"
+            }
+          ]
+        },
+        {
+          "symptom": "resonance_or_ringing",
+          "displayName": "Obvious Resonance / Ringing",
+          "description": "Specific frequency that rings out or resonates unnaturally",
+          "priority": 1,
+          "recommendations": [
+            {
+              "bandId": 3,
+              "archetype": "Resonance Notch 400",
+              "notes": "Use notch filter for surgical removal. Sweep to find exact frequency.",
+              "gain": -4,
+              "context": "For obvious room modes or resonances - adjust frequency as needed"
+            },
+            {
+              "bandId": 4,
+              "archetype": "Honk Notch",
+              "notes": "If resonance is in honk range (700-1000 Hz)",
+              "gain": -3,
+              "context": "Common in brass, guitars, vocals"
+            },
+            {
+              "bandId": 6,
+              "archetype": "Harsh Notch 4800",
+              "notes": "If resonance is in upper-mid range (4-6 kHz)",
+              "gain": -3,
+              "context": "Sweep to find exact harsh resonance"
+            }
+          ]
+        },
+        {
+          "symptom": "vocals_fighting_with_bass",
+          "displayName": "Vocals Fighting with Bass",
+          "description": "Vocals and bass are masking each other in the low-end",
+          "priority": 1,
+          "recommendations": [
+            {
+              "bandId": 1,
+              "archetype": "HP Clean 80",
+              "notes": "HP the vocals to separate from bass. This is essential.",
+              "gain": 0,
+              "context": "Apply to vocals - frees low-end for bass/kick"
+            },
+            {
+              "bandId": 2,
+              "archetype": "De-Mud 250",
+              "notes": "Also cut low-mids on vocals if still masking",
+              "gain": -2,
+              "context": "Further separation in warmth range"
+            }
+          ]
+        },
+        {
+          "symptom": "drums_lack_clarity",
+          "displayName": "Drums Lack Clarity / Definition",
+          "description": "Drums sound mushy, lack separation, or don't cut through",
+          "priority": 2,
+          "recommendations": [
+            {
+              "bandId": 3,
+              "archetype": "De-Box 420",
+              "notes": "Remove boxiness from drum shells",
+              "gain": -2.5,
+              "context": "Common in snares, toms, room mics"
+            },
+            {
+              "bandId": 6,
+              "archetype": "Crispness 5500",
+              "notes": "Add attack and snap to drums",
+              "gain": 1,
+              "context": "Enhances stick definition and transients"
+            }
+          ]
+        }
+      ],
+      "contextualNotes": {
+        "trackLevel": "Use full gain ranges (up to ±6 dB), be more aggressive with EQ",
+        "busLevel": "Be gentler (max ±3 dB), changes affect multiple tracks",
+        "masterLevel": "Very subtle only (max ±1.5 dB), mostly for final polish",
+        "workflow": [
+          "1. Fix critical issues first (priority 1): rumble, mud, harshness",
+          "2. Address important issues (priority 2): boxiness, nasal, clarity, thin/thick",
+          "3. Apply final polish (priority 3): air, detail, dimension",
+          "4. Always A/B compare your changes",
+          "5. Less is more - don't over-EQ"
+        ]
+      }
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Parametric Eq 2\r\n\r\nThis section contains reference information for the fruity-parametric-eq-2 plugin.\r\n"
+    }
+  }
+}

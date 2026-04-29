@@ -1,0 +1,56 @@
+{
+  "plugin_name": "Gross Beat",
+  "category": "Effect",
+  "subcategory": "Time & Volume Manipulation",
+  "buffer_size_bars": 2,
+  "slots": {
+    "time": 36,
+    "volume": 36
+  },
+  "parameters": [
+    {
+      "name": "Main Volume",
+      "type": "knob",
+      "range": "0-100%",
+      "description": "Master output level of the plugin."
+    },
+    {
+      "name": "Time Mix",
+      "type": "knob",
+      "range": "0-100%",
+      "description": "Dry/Wet mix for the Time manipulation envelope. Use this for parallel processing."
+    },
+    {
+      "name": "Volume Mix",
+      "type": "knob",
+      "range": "0-100%",
+      "description": "Dry/Wet mix for the Volume manipulation envelope."
+    },
+    {
+      "name": "Attack",
+      "type": "knob",
+      "range": "0-500ms",
+      "description": "Smoothing attack time for volume gates to prevent clicks."
+    },
+    {
+      "name": "Release",
+      "type": "knob",
+      "range": "0-1000ms",
+      "description": "Smoothing release time for volume gates."
+    },
+    {
+      "name": "HQ Resampling",
+      "type": "switch",
+      "description": "High Quality resampling for pitch shifting. Enable for render, can be disabled for CPU saving."
+    },
+    {
+      "name": "Click Reduction",
+      "type": "switch",
+      "description": "De-clicking algorithm for time jumps."
+    }
+  ],
+  "midi_mapping": {
+    "volume_slots_start": "C1",
+    "time_slots_start": "C4"
+  }
+}

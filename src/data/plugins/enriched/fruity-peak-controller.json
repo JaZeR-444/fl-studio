@@ -1,0 +1,180 @@
+{
+  "id": "fruity-peak-controller",
+  "name": "Fruity Peak Controller",
+  "category": "Controller",
+  "tier": "Free",
+  "type": "Controller",
+  "description": "Fruity Peak Controller - Controller",
+  "tags": [
+    "native",
+    "stock",
+    "specialized"
+  ],
+  "capabilities": [
+    "automation",
+    "modulation",
+    "control"
+  ],
+  "icon": "/plugins/fruity-peak-controller-icon.svg",
+  "color": "#78716C",
+  "version": "1.0",
+  "data_dir": "plugins\\fruity-peak-controller",
+  "has_presets": true,
+  "has_parameters": false,
+  "has_learning": true,
+  "has_workflows": true,
+  "presets": {
+    "hip-hop-presets": {
+      "presets": [
+        {
+          "name": "Trap Kick Duck",
+          "category": "sidechain",
+          "subgenre": "trap",
+          "parameters": {
+            "base": 100,
+            "volume": 0,
+            "tension": 45,
+            "decay": 180
+          },
+          "description": "Fast, punchy sidechain for 808-heavy trap beats",
+          "linkTo": "Bass volume or filter cutoff"
+        },
+        {
+          "name": "Boom Bap Pump",
+          "category": "sidechain",
+          "subgenre": "boom-bap",
+          "parameters": {
+            "base": 85,
+            "volume": 5,
+            "tension": 50,
+            "decay": 350
+          },
+          "description": "Medium pump for classic hip-hop groove",
+          "linkTo": "Sample volume or mix level"
+        },
+        {
+          "name": "Melodic Ducking",
+          "category": "sidechain",
+          "subgenre": "melodic",
+          "parameters": {
+            "base": 95,
+            "volume": 10,
+            "tension": 60,
+            "decay": 250
+          },
+          "description": "Subtle duck for melodic elements to make room for vocals",
+          "linkTo": "Melody/chord volume"
+        },
+        {
+          "name": "Rhythmic Gate",
+          "category": "creative",
+          "subgenre": "electronic",
+          "parameters": {
+            "base": 0,
+            "volume": 100,
+            "tension": 30,
+            "decay": 120
+          },
+          "description": "Creates rhythmic gating on sustained sounds",
+          "linkTo": "Pad/texture volume"
+        },
+        {
+          "name": "Bass Pulse",
+          "category": "modulation",
+          "subgenre": "electronic",
+          "parameters": {
+            "base": 75,
+            "volume": 0,
+            "tension": 40,
+            "decay": 450,
+            "lfo": 0.25
+          },
+          "description": "Pulsing bass movement synced to kick",
+          "linkTo": "Bass filter or volume"
+        },
+        {
+          "name": "Vocal Space Maker",
+          "category": "mixing",
+          "subgenre": "all",
+          "parameters": {
+            "base": 92,
+            "volume": 15,
+            "tension": 55,
+            "decay": 200
+          },
+          "description": "Duck instruments when vocals hit",
+          "linkTo": "Instrumental bus volume"
+        },
+        {
+          "name": "Lo-Fi Wobble",
+          "category": "creative",
+          "subgenre": "lo-fi",
+          "parameters": {
+            "base": 80,
+            "volume": 10,
+            "tension": 70,
+            "decay": 600,
+            "lfo": 0.125
+          },
+          "description": "Slow, wobbly modulation for lo-fi texture",
+          "linkTo": "Filter cutoff or pitch"
+        },
+        {
+          "name": "Snare Gate",
+          "category": "creative",
+          "subgenre": "experimental",
+          "parameters": {
+            "base": 0,
+            "volume": 100,
+            "tension": 20,
+            "decay": 80
+          },
+          "description": "Tight gating triggered by snare hits",
+          "linkTo": "Hi-hat or texture volume"
+        }
+      ]
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "00_What_It_Is_And_When_To_Use": "# What It Is And When To Use: Fruity Peak Controller\n\n## Purpose & Identity\nFruity Peak Controller is an **internal controller engine**. It transforms incoming audio levels or an internal LFO into automation data. It doesn't process the audio signal directly; instead, it \"listens\" to it and outputs control signals that can drive any other knob in FL Studio. [SRC: IL-MAN]\n\n## 60-Second Mental Model\nImagine a sound engineer with their hand on a fader. When they hear the Kick drum, they quickly pull the fader down. Peak Controller is that engineer.\n- **The \"Peak\" part** is the ear (listening to the audio).\n- **The \"LFO\" part** is a robot hand (moving in a set pattern regardless of audio).\n\n## Hip-Hop / R&B Context\nThe \"Bounce\" of modern trap is built on Fruity Peak Controller.\n- **Sidechaining:** Automating the Bass volume to \"duck\" every time the Kick hits so the low-end doesn't turn into a muddy mess.\n- **Dynamic Reverb:** Making the reverb get quieter while the artist is rapping, then swell up during the pauses for an \"expensive\" airy feel.\n- **Auto-Wah:** Controlling a filter's cutoff based on how hard a guitarist or keyboardist plays.\n\n## When To Use\n- When you need **sidechain ducking** but don't want to use a compressor.\n- When you want a sound's **amplitude to control another effect** (e.g., Vocal volume controls distortion depth).\n- When you need a **tempo-synced LFO** to modulate something that doesn't have an LFO built-in.\n\n## When NOT To Use\n- **Surgical Compression:** If you need to actually *squash* the audio signal's dynamics, use **Fruity Limiter**. Peak Controller only generates data; it doesn't change the audio itself.\n- **Global Automation:** For simple linear changes (like a fade-out), use a standard **Automation Clip**.\n",
+      "01_UI_Map_And_Signal_Flow": "# UI Map And Signal Flow: Fruity Peak Controller\n\n## UI Tour\nThe UI is divided into three distinct sections:\n\n1.  **PEAK Section (The Listener):**\n    - **Base:** The resting value of the automation (where the knob sits when there is no sound).\n    - **Vol (Volume):** The range of movement. *Positive* boosts from base; *Negative* ducks from base. [SRC: IL-MAN]\n    - **Tension:** The \"snap\" of the attack/decay curve.\n    - **Decay:** How fast the signal returns to the Base level.\n2.  **LFO Section (The Robot):**\n    - **Shape:** Sine, Triangle, Square, Saw, Random.\n    - **Speed:** Tempo-synced rate of oscillation.\n3.  **The Viewer:** The black box at the top that shows the red (Peak) and green (LFO) lines representing the generated data.\n\n## Functional Flow\n1.  **Audio Input:** Sound enters the plugin slot.\n2.  **Detection:** The \"Peak\" engine calculates the amplitude envelope.\n3.  **Modulation:** The LFO engine generates its cycle.\n4.  **Signal Summing:** If enabled, Peak and LFO signals are combined.\n5.  **Broadcast:** The data is sent to the \"Remote Control\" bus.\n6.  **Mute Button:** If enabled, the original audio trigger signal is silenced so it doesn't leak into the mix.\n\n## Things Beginners Misunderstand\n- **\"Link to Controller\" Menu:** You don't \"route\" the audio to the target. You right-click the target knob (e.g., a mixer fader) -> **Link to controller** -> select **Peak Controller - Peak**.\n- **Base vs Volume:** If you want a fader to start at 80% and drop to 20% when the kick hits, set **Base** to 80% and **Vol** to a negative value (-60%).\n- **Mute Toggle:** Beginners often forget to turn on **MUTE** if they are using a \"Ghost Kick\" (a kick you only want to use as a trigger, not to be heard). [SRC: REPUTABLE]\n",
+      "02_Core_Techniques_And_Best_Practices": "# Core Techniques And Best Practices: Fruity Peak Controller\n\n## 1. The \"Ghost Kick\" Sidechain\n- **Technique:** Place Peak Controller on a sampler track with a short, punchy kick. Enable **MUTE** in the plugin.\n- **Execution:** Every time you place a note in the Step Sequencer, the volume of linked tracks will duck, but no kick sound will be heard.\n- **Why:** This gives you total rhythmic control over the \"bounce\" without being tied to the actual audible kick drum.\n\n## 2. Inverted Mapping (The \"Standard\" Duck)\n- **Technique:** When linking a knob, use the **Mapping Formula** `1-Input`.\n- **Alternative:** Set the **Vol** knob in Peak Controller to a negative value (e.g., -50%). \n- **Pro Tip:** Negative Vol is usually easier because you can adjust the \"strength\" of the ducking directly from the Peak Controller UI without opening the linking menu again.\n\n## 3. Dynamic EQ Carving\n- **Technique:** Place Peak Controller on the Vocal track.\n- **Target:** Link it to a 2kHz-5kHz band on the **Melody Bus EQ**.\n- **Execution:** Set **Vol** to a negative value.\n- **Result:** Every time the artist raps, the melody track \"dips\" in the vocal frequency range, then pops back up during the silence. This is more transparent than a static EQ cut. [SRC: REPUTABLE]\n\n## 4. Random Pitch \"Drift\"\n- **Technique:** Ignore the Peak section. Use the **LFO** section.\n- **Shape:** Set to **Random**.\n- **Target:** Link to a synth's Pitch or Filter Cutoff.\n- **Tweak:** Set **Amount** to a very low value (2-5%).\n- **Result:** Creates an organic, \"analog\" instability that makes digital synths feel more vintage.\n\n## Common Pitfalls + Fixes\n- **Pitfall:** \"The controlled knob is jittering/shaking too fast.\"\n  - **Fix:** Increase the **Decay** time. This smooths out the release of the envelope.\n- **Pitfall:** \"I lost my manual control over the knob.\"\n  - **Fix:** Once linked, the knob is \"locked\" to the controller. Use the **Base** knob in Peak Controller to change the resting position. [SRC: IL-MAN]\n",
+      "03_Vibe_Translation_Guide": "# Vibe Translation Guide: Fruity Peak Controller\n\nPeak Controller is the \"Conductor\" of the project's movement.\n\n## 1. Moody (Breathing, Pulsing, Heartbeat)\n- **Concept:** Using a \"Ghost Kick\" to make the atmosphere \"inhale\" and \"exhale.\"\n- **Levers:**\n  - **Ducking:** Slow **Decay** (500ms+) on a negative **Vol** setting.\n  - **Target:** Main melodic pad.\n- **Listen For:** The \"vacuum\" sensation where the sound slowly rushes back in after the kick.\n- **Don't Do This:** Don't use sharp attack/decay; the vibe should be liquid and slow.\n\n## 2. Upbeat (Snappy, Bouncing, Kinetic)\n- **Concept:** Hard, rhythmic volume changes that drive the dancefloor.\n- **Levers:**\n  - **Ducking:** Fast **Decay** (100ms) and high negative **Vol**.\n  - **Target:** Everything except the drums (Bass, Keys, Vocals).\n- **Listen For:** The \"snap\" where the music jumps back to full volume instantly after every kick.\n- **Don't Do This:** Avoid slow release times; it will kill the energy.\n\n## 3. Psychedelic (Liquid, Morphing, Unpredictable)\n- **Concept:** Breaking the grid with random modulation.\n- **Levers:**\n  - **LFO:** Random shape at a medium speed.\n  - **Target:** Phaser Rate or Chorus Mix.\n- **Listen For:** Sounds that seem to \"evolve\" on their own without repeating.\n- **Don't Do This:** Don't sync the LFO to the beat; let it be free-running for more trippiness.\n\n## 4. Jazzy (Responsive, Organic, Interactive)\n- **Concept:** Effects that respond to the intensity of the performance.\n- **Levers:**\n  - **Envelope Following:** Link **Peak** to **Filter Resonance**.\n  - **Target:** Electric Piano or Guitar.\n- **Listen For:** The \"wah\" effect that only triggers when the player hits a loud chord.\n- **Don't Do This:** Don't use extreme ducking; keep the modulation subtle (10-20% range).\n\n## 5. Vibey (Clean, Polished, Expensive)\n- **Concept:** High-end mix management (Sidechain 2.0).\n- **Levers:**\n  - **Reverb Ducking:** Vocal Peak -> negative **Vol** -> Reverb Wet/Dry mix.\n  - **Result:** The reverb is \"pushed away\" while the vocal is active, keeping the mix clean, then rushes in to fill the gaps.\n- **Listen For:** A \"lush\" space that doesn't muddy up the lyrics.\n- **Don't Do This:** Don't duck the reverb 100%; leave a little bit of \"halo\" (30% base). [SRC: REPUTABLE]\n",
+      "concepts-and-best-uses": "# Concepts & Best Uses: Fruity Peak Controller\r\n\r\n## What It Is\r\nFruity Peak Controller is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Fruity Peak Controller\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "00_Quickstart_5_Minutes": "# Quickstart: Fruity Peak Controller (5 Minutes)\n\n1.  **Insert:** Load **Fruity Peak Controller** on your Kick drum track.\n2.  **Mute:** Click the **MUTE** button in the plugin if you don't want the trigger kick to be heard.\n3.  **Target:** Go to your Bass mixer track. Right-click the **Volume Fader**.\n4.  **Link:** Select **Link to controller**. \n5.  **Assign:** In the \"Internal Controller\" dropdown, pick **Peak Controller - Peak**.\n6.  **Formula:** Select the **Inverted** preset (Mapping formula: `1-Input`). Click Accept.\n7.  **Tweak:** Go back to Peak Controller and adjust **BASE** (the resting fader height) and **VOL** (the depth of the duck). [SRC: IL-MAN]\n",
+      "01_Common_Mistakes": "# Common Mistakes: Fruity Peak Controller\n\n- **Positive Vol for Sidechain:** Using a positive Volume knob value when you want to duck. **Fix:** Set Vol to a negative value or use the `1-Input` formula.\n- **Wrong Decay:** Setting Decay to 0. This causes the controlled knob to \"snap\" back instantly, creating a digital click or a very jarring, non-musical bounce. **Fix:** Set Decay to at least 20-30%.\n- **Multiple Links:** Linking 10 different knobs to one Peak Controller without realizing they all share the same Base/Vol settings. **Fix:** Use multiple instances of Peak Controller if you need different \"strengths\" of ducking for different tracks.\n- **Forgetting Mute:** Using an audible Kick as a trigger and wondering why the kick sounds twice as loud. **Fix:** If the track is purely a sidechain trigger, engage the **MUTE** button.\n- **Conflicting LFO:** Having the LFO section active while trying to do a simple sidechain duck. This adds wobbling to your ducking pattern. **Fix:** Set LFO Amount to 0. [SRC: REPUTABLE]\n",
+      "02_Best_Settings_Starting_Points": "# Best Settings Starting Points: Fruity Peak Controller\n\n| Goal | Base | Vol | Decay | Mapping | Use Case |\n| :--- | :--- | :--- | :--- | :--- | :--- |\n| **Trap Sidechain** | 100% | -80% | 20% | `Input` | Hard, aggressive ducking. |\n| **R&B Reverb Duck** | 50% | -30% | 60% | `Input` | Smooth vocal clarity. |\n| **Auto-Wah Filter** | 20% | +60% | 40% | `Input` | Filter opens on loud hits. |\n| **Analog Pitch Drift**| 50% | 0 (LFO) | N/A | `Input*0.05` | Tiny LFO pitch warble. |\n| **Ghost Pulse** | 0% | +100% | 80% | `Input` | Creating swells from silence. |\n\n*Note: If using negative VOL in the plugin, use the standard `Input` mapping formula. If using positive VOL, use the `1-Input` mapping preset.* [SRC: IL-MAN]\n",
+      "03_Vibe_Starting_Points_Moody": "# Vibe Starting Points: Moody (Fruity Peak Controller)\n\n- **The Goal:** A \"breathing\" atmosphere where the music pulses with the rhythm of a heartbeat.\n- **Recipe:**\n  1. Create a \"Ghost Kick\" (a simple 4-on-the-floor pattern with a deep subby kick).\n  2. Load Peak Controller on the Ghost Kick and turn on **MUTE**.\n  3. Route your main melody pad to a mixer track.\n  4. Link the Pad's **Volume Fader** to **Peak Controller - Peak**.\n  5. Set Peak Controller **Base** to 80% and **Vol** to **-40%**.\n  6. **Tweak (Critical):** Increase the **Decay** knob to ~70%.\n- **Result:** The pad doesn't just \"shut off\"; it gently ducks and then \"gasps\" back into volume slowly, creating a heavy, emotional moody pulse. [SRC: REPUTABLE]\n",
+      "04_Vibe_Starting_Points_Upbeat_Psychedelic_Jazzy_Vibey": "# Vibe Starting Points: Upbeat, Psychedelic, Jazzy, Vibey\n\n## Upbeat (The \"Mainstream Bounce\")\n- **Setup:** Hard Sidechain (Base 100%, Vol -90%, Decay 10%).\n- **Target:** Everything except Kick and Snare.\n- **Effect:** The entire track \"chops\" out for the kick, creating that high-energy pumping sensation.\n\n## Psychedelic (The \"Liquid Space\")\n- **Setup:** LFO section only. Shape: **Random**.\n- **Target:** Reverb Size or Phaser Offset.\n- **Effect:** The space around the sound constantly changes in size and character, feeling morphic and trippy.\n\n## Jazzy (The \"Interactive Wah\")\n- **Setup:** Peak section. Vol +40%, Tension 50%.\n- **Target:** **Fruity Love Philter** Cutoff.\n- **Effect:** Subtle filter movement that tracks the velocity of your playing.\n\n## Vibey (The \"Expensive Clean-Up\")\n- **Setup:** Reverb Ducking (Base 40%, Vol -30%, Decay 50%).\n- **Target:** Reverb Mixer Slot **Mix Knob**.\n- **Context:** Perfect for R&B vocals where you want a huge reverb, but only when the singer pauses. [SRC: REPUTABLE]\n",
+      "cheat-sheet": "# Fruity Peak Controller – Quick Reference\r\n\r\n## What It Does\r\nConverts audio peaks into automation data for sidechain effects, ducking, dynamic control, and creative modulation.\r\n\r\n## Key Parameters\r\n- **Base**: Minimum controller output value\r\n- **Vol**: Peak detection volume threshold  \r\n- **Tension**: Attack/release curve shape\r\n- **Decay**: How fast controller returns to base\r\n- **LFO**: Adds rhythmic modulation to output\r\n\r\n## Common Hip-Hop Uses\r\n\r\n### Sidechain Ducking\r\n1. Route kick to Peak Controller\r\n2. Link to mixer volume\r\n3. Base: 100%, Vol: 0-20%, Fast decay\r\n\r\n### Pump Effect\r\n1. Use on kick or clap\r\n2. Link to bass volume or filter\r\n3. Medium decay for groove\r\n\r\n### Dynamic Gating\r\n1. Link to noise/texture volume\r\n2. Base: 0%, creates rhythmic gates\r\n3. Fast decay for choppy feel\r\n\r\n## Quick Recipes\r\n\r\n**Classic Kick Duck**: Base 100% | Vol 0% | Decay 200ms | Tension 50%\r\n\r\n**Pumping Bass**: Base 80% | Vol 0% | Decay 400ms | Link to bass volume\r\n\r\n**Rhythmic Gate**: Base 0% | Vol 100% | Fast decay | Link to pad/texture\r\n\r\n**Vocal Duck**: Base 95% | Vol 10% | Decay 150ms | Subtle volume dip\r\n\r\n## Routing Tips\r\n- Right-click parameter → Link to controller\r\n- Use multiple instances for complex routing\r\n- Invert controller for opposite effect (volume boost instead of duck)\r\n",
+      "quick-start-checklist": "# Quick Start Checklist: Fruity Peak Controller\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Fruity Peak Controller to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Fruity Peak Controller\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Fruity Peak Controller\r\n\r\nThis section contains learning information for the fruity-peak-controller plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "00_Goal_Quick_Result": "# Goal: Sidechain Ducking (The \"Trap Bounce\")\n\n## Step-by-Step Setup\n1.  Load **Fruity Peak Controller** on the **Kick Drum** mixer slot.\n2.  Enable **MUTE** if you only want the kick to trigger the sidechain (Ghost Kick).\n3.  Go to your **Bass/808** mixer track.\n4.  Right-click the **Volume Fader** -> **Link to controller**.\n5.  Assign: **Peak Controller - Peak**.\n6.  Set mapping to **Inverted** (`1-Input`).\n7.  **Tweak:** \n    - Set **Base** to your desired bass level (e.g., 80%).\n    - Set **Vol** to **-80%** for a hard pump.\n    - Set **Decay** to **20%** for a snappy return.\n\n## Context Application\n- **Vibe:** Upbeat/Aggressive. This creates the rhythmic \"sucking\" sound essential for modern club tracks.\n\n## Variation\n- **Soft Sidechain:** Set Vol to -30% and increase Decay to 50% for a more transparent R&B feel.\n\n## Pitfalls + Fixes\n- **Pitfall:** \"The bass never turns back up.\"\n  - **Fix:** Your **Base** is too low. Move the Base knob up until the fader returns to its normal height between kicks. [SRC: IL-MAN]\n",
+      "01_Goal_Shaping_And_Control": "# Goal: Dynamic Reverb Ducking (The \"Expensive\" Space)\n\n## Routing Context\n- **Target:** Lead Vocal.\n- **Position:** Place **Fruity Peak Controller** on the Vocal mixer track.\n- **Effect:** A Reverb plugin on a separate **Send Track**.\n\n## Step-by-Step Setup\n1.  On the **Vocal Track**, load Peak Controller.\n2.  On the **Reverb Send**, load your reverb (e.g., Fruity Reeverb 2).\n3.  Right-click the Reverb **Wet/Mix** knob -> **Link to controller**.\n4.  Assign: **Peak Controller - Peak**.\n5.  Set **Mapping Formula** to `1-Input` (Inverted).\n6.  **Tweak Peak Controller:**\n    - **Base:** 40% (This is the amount of reverb during the pauses).\n    - **Vol:** -30% (This is how much the reverb drops when singing starts).\n    - **Decay:** 60% (Adjust to match the tempo).\n\n## What To Listen For\n- The vocal should sound clear and \"dry\" while the artist is speaking, but as soon as they stop, the reverb tail should \"bloom\" and fill the silence.\n\n## Automation Idea\n- Link the **Decay** knob to an automation clip to make the reverb bloom slower during the outro. [SRC: REPUTABLE]\n"
+    },
+    "by-instrument": {
+      "bass-ducking": "# Bass Ducking with Fruity Peak Controller\r\n\r\n## Overview\r\nUse kick drum peaks to automatically duck bass volume or filter, creating space for the kick and adding groove.\r\n\r\n## Step-by-Step Workflow\r\n\r\n### 1. Setup Peak Controller\r\n1. Add Fruity Peak Controller to mixer track\r\n2. Route kick drum to this track (pre-fader send)\r\n3. Don't add to master (this is a control track only)\r\n\r\n### 2. Configure Parameters\r\n**For Trap/808-Heavy:**\r\n- Base: 100%\r\n- Vol: 0%\r\n- Tension: 40-50%\r\n- Decay: 150-200ms\r\n\r\n**For Boom Bap:**\r\n- Base: 85-90%\r\n- Vol: 5-10%\r\n- Tension: 50-60%\r\n- Decay: 300-400ms\r\n\r\n**For Melodic/Smooth:**\r\n- Base: 95%\r\n- Vol: 10-15%\r\n- Tension: 65-70%\r\n- Decay: 250-300ms\r\n\r\n### 3. Link to Bass\r\n**Volume Ducking:**\r\n1. Right-click bass mixer volume fader\r\n2. \"Link to controller\"\r\n3. Select your Peak Controller instance\r\n4. Adjust amount slider for duck depth\r\n\r\n**Filter Ducking:**\r\n1. Add filter to bass (Fruity Love Philter or Free Filter)\r\n2. Right-click Low-Pass cutoff frequency\r\n3. Link to Peak Controller\r\n4. Set range from low (ducked) to high (open)\r\n\r\n### 4. Fine-Tune\r\n- **Too much duck**: Increase Base value\r\n- **Too slow**: Decrease Decay time\r\n- **Too aggressive**: Increase Tension\r\n- **Not enough**: Lower Vol threshold or increase link amount\r\n\r\n## Genre-Specific Recipes\r\n\r\n### Trap\r\n```\r\nKick hits → Bass volume drops to 0-20%\r\nDecay: 180ms (quick recovery)\r\nTension: 45% (punchy attack)\r\nResult: Aggressive, modern punch\r\n```\r\n\r\n### Boom Bap\r\n```\r\nKick hits → Bass volume drops to 85%\r\nDecay: 350ms (groove pocket)\r\nTension: 55% (smooth curve)\r\nResult: Classic pump feel\r\n```\r\n\r\n### Lo-Fi\r\n```\r\nKick hits → Bass filter closes slightly\r\nDecay: 500ms (lazy feel)\r\nTension: 70% (gentle)\r\nResult: Organic, breathing movement\r\n```\r\n\r\n## Advanced Techniques\r\n\r\n### Multiband Duck\r\n- Duck only low-end frequencies\r\n- Keep mid/high bass consistent\r\n- Use Fruity Parametric EQ 2 with linked gain\r\n\r\n### Parallel Compression Duck\r\n- Duck the dry signal\r\n- Keep compressed layer constant\r\n- Maintains energy while creating space\r\n\r\n### Filter + Volume Combo\r\n- Link both filter and volume\r\n- Filter: subtle close\r\n- Volume: main duck\r\n- Creates tonal movement with space\r\n\r\n## Troubleshooting\r\n\r\n**Problem**: Bass disappears completely\r\n- Solution: Increase Base to 70-80%\r\n\r\n**Problem**: No noticeable ducking\r\n- Solution: Lower Vol threshold or increase link amount\r\n\r\n**Problem**: Pumping sounds unnatural\r\n- Solution: Increase Tension for smoother curve\r\n\r\n**Problem**: Duck doesn't recover in time\r\n- Solution: Decrease Decay time or increase tempo sync\r\n",
+      "leads": "# Workflow: Auto-Wah Modulation (Peak Controller)\n\n## The Concept\nUsing the intensity of your playing to sweep a filter, similar to a physical Wah-Wah pedal.\n\n## Step-by-Step\n1.  Load **Fruity Peak Controller** on an Electric Guitar or Synth Lead track.\n2.  After Peak Controller, add **Fruity Love Philter** or **Fruity Parametric EQ 2**.\n3.  Right-click the **Filter Cutoff** -> **Link to controller**.\n4.  Assign: **Peak Controller - Peak**.\n5.  **Tweak Peak Controller:**\n    - **Base:** 10% (Filter is mostly closed).\n    - **Vol:** +70% (Filter opens wide on loud notes).\n    - **Tension:** 60% (Makes the filter \"snap\" open).\n\n## Vibe Check\n- **Jazzy:** Adds organic expression to keys.\n- **Psychedelic:** Link the **Resonance** knob to the same Peak signal so the filter gets \"screamy\" as it opens.\n\n## Pitfalls\n- **Over-Resonance:** High peaks can cause ear-piercing whistles. Use a Limiter *after* the filter. [SRC: REPUTABLE]\n",
+      "vocal-ducking": "# Vocal Ducking with Fruity Peak Controller\r\n\r\n## Overview\r\nAutomatically duck instrumental elements when vocals are present, ensuring clarity and professional mix balance.\r\n\r\n## Basic Setup Workflow\r\n\r\n### 1. Create Control Track\r\n1. Add mixer track for Peak Controller\r\n2. Route lead vocal to this track (pre-fader send)\r\n3. Insert Fruity Peak Controller on this track\r\n\r\n### 2. Configure for Vocals\r\n**Subtle Duck (Professional):**\r\n- Base: 92-95%\r\n- Vol: 10-15%\r\n- Tension: 55-65%\r\n- Decay: 150-250ms\r\n\r\n**Aggressive Duck (Loud Vocals):**\r\n- Base: 85-90%\r\n- Vol: 5-10%\r\n- Tension: 45-55%\r\n- Decay: 200-300ms\r\n\r\n**Creative Duck (Vocal Chops):**\r\n- Base: 75-80%\r\n- Vol: 0%\r\n- Tension: 40%\r\n- Decay: 100-150ms\r\n\r\n### 3. Link to Instrumentals\r\n**Option 1: Individual Elements**\r\n- Link to melody volume\r\n- Link to chord volume\r\n- Link to pad volume\r\n- Gives precise control per element\r\n\r\n**Option 2: Bus Ducking**\r\n- Create instrumental bus\r\n- Link bus volume to controller\r\n- Faster setup, affects everything\r\n\r\n### 4. Fine-Tune Balance\r\n- A/B test with controller bypassed\r\n- Ensure vocal clarity maintained\r\n- Check that duck isn't too obvious\r\n- Verify timing feels natural\r\n\r\n## Genre Applications\r\n\r\n### Melodic Rap/Singing\r\n```\r\nPurpose: Make room for melodic vocals\r\nBase: 93%\r\nDecay: 200ms\r\nLink: Melody/chord layers\r\nResult: Vocals sit perfectly in mix\r\n```\r\n\r\n### Aggressive Trap Vocals\r\n```\r\nPurpose: Strong vocal presence\r\nBase: 88%\r\nDecay: 180ms\r\nLink: All non-drums\r\nResult: Vocals punch through hard\r\n```\r\n\r\n### Boom Bap/Storytelling\r\n```\r\nPurpose: Clarity for lyrical content\r\nBase: 95%\r\nDecay: 250ms\r\nLink: Sample/loop volume\r\nResult: Every word heard clearly\r\n```\r\n\r\n### Lo-Fi/Chill Rap\r\n```\r\nPurpose: Gentle vocal integration\r\nBase: 96%\r\nDecay: 300ms\r\nLink: Pad/texture volume\r\nResult: Smooth, natural blend\r\n```\r\n\r\n## Advanced Techniques\r\n\r\n### Frequency-Specific Ducking\r\n1. Use Fruity Parametric EQ 2 on instrumental\r\n2. Link specific band gains to Peak Controller\r\n3. Duck only midrange (vocal frequency area)\r\n4. Preserve bass and air frequencies\r\n\r\n### Dynamic Reverb Control\r\n1. Link reverb send level to Peak Controller\r\n2. Base: 100%, Vol: 20%\r\n3. Reverb reduces when vocals present\r\n4. Creates space and clarity\r\n\r\n### Multiband Compression Link\r\n1. Add Maximus to instrumental bus\r\n2. Link Mid band to Peak Controller\r\n3. Duck vocal frequency range only\r\n4. Maintains low-end power\r\n\r\n### Stereo Width Modulation\r\n1. Link stereo width plugin to controller\r\n2. Narrow stereo field during vocals\r\n3. Wide when vocals absent\r\n4. Creates focus on centered vocal\r\n\r\n## Common Scenarios\r\n\r\n### Verse Duck (Storytelling)\r\n- Subtle duck (Base 95%)\r\n- Duck pads and melodies\r\n- Keep drums and bass full\r\n\r\n### Hook Duck (Melodic)\r\n- Medium duck (Base 90%)\r\n- Duck backing vocals and harmonies\r\n- Emphasize lead vocal\r\n\r\n### Ad-Lib Duck (Trap)\r\n- Minimal duck (Base 97%)\r\n- Very fast decay (100ms)\r\n- Quick accents only\r\n\r\n### Vocal Chop Duck (Creative)\r\n- Strong duck (Base 80%)\r\n- Fast decay (120ms)\r\n- Rhythmic pumping effect\r\n\r\n## Mixing Tips\r\n\r\n### Do's\r\n- ✓ Start subtle and increase if needed\r\n- ✓ Match decay to vocal rhythm\r\n- ✓ Test in context of full beat\r\n- ✓ Use multiple instances for different elements\r\n\r\n### Don'ts\r\n- ✗ Don't duck drums (usually)\r\n- ✗ Don't over-duck (keeps energy)\r\n- ✗ Don't use identical settings for all vocals\r\n- ✗ Don't forget to bypass/compare\r\n\r\n## Troubleshooting\r\n\r\n**Vocals still muddy**: Lower Base more or duck more elements\r\n\r\n**Pumping too obvious**: Increase Base, increase Tension\r\n\r\n**Duck too slow**: Decrease Decay time\r\n\r\n**Sounds unnatural**: Increase Tension for smoother curve\r\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Fruity Peak Controller\r\n\r\nThis section contains workflow information for the fruity-peak-controller plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Fruity Peak Controller\r\n\r\nThis section contains reference information for the fruity-peak-controller plugin.\r\n"
+    }
+  }
+}

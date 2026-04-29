@@ -1,0 +1,34 @@
+{
+  "metadata": {
+    "plugin": "Frequency Splitter",
+    "version": "1.0",
+    "lastUpdated": "2026-02-03",
+    "author": "JaZeR",
+    "presetName": "ATL Keys Split",
+    "category": "signature",
+    "inspiredBy": "Zaytoven piano warmth"
+  },
+  "settings": {
+    "crossover1": 300,
+    "crossover2": 4000,
+    "slope": "24dB/oct",
+    "mode": "minimum-phase",
+    "band1": { "gain": 1, "processing": "warm low-end" },
+    "band2": { "gain": 0, "processing": "vocal frequency focus" },
+    "band3": { "gain": -1, "processing": "smooth high-end" }
+  },
+  "chain": {
+    "pre": ["Warm processing on band1"],
+    "post": ["Tape saturation on all bands"]
+  },
+  "workflow": "Three-way piano/keys split with warmth focus. Band 1 adds warmth, Band 3 removes harshness for smooth tones.",
+  "characteristics": ["warm", "smooth", "classic", "piano"],
+  "genreTags": ["hip-hop/rap", "R&B", "piano"],
+  "a/bTesting": {
+    "testA": "Minimum phase for warmth",
+    "testB": "Linear phase for transparency"
+  },
+  "troubleshooting": {
+    "harshHighs": "Increase band3 attenuation"
+  }
+}

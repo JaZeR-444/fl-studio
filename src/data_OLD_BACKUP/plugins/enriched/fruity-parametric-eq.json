@@ -1,0 +1,140 @@
+{
+  "id": "fruity-parametric-eq",
+  "name": "Fruity Parametric EQ",
+  "presets": {
+    "mud-cleaner": {
+      "presetName": "Mud Cleaner",
+      "plugin": "Fruity Parametric EQ",
+      "description": "Standard cut for cleaning up low-mid resonance.",
+      "settings": {
+        "band3": {
+          "freq": 350,
+          "gain": -4.0,
+          "bw": 1.5,
+          "type": "Peaking"
+        }
+      },
+      "usage": "Apply to synth pads or snare drums."
+    },
+    "old-telephone": {
+      "presetName": "Old Telephone",
+      "plugin": "Fruity Parametric EQ",
+      "description": "Band-pass filter to simulate limited bandwidth.",
+      "settings": {
+        "band1": {
+          "freq": 400,
+          "gain": -18,
+          "bw": 1.0,
+          "type": "High Pass"
+        },
+        "band7": {
+          "freq": 3000,
+          "gain": -18,
+          "bw": 1.0,
+          "type": "Low Pass"
+        },
+        "band4": {
+          "freq": 1500,
+          "gain": 6,
+          "bw": 0.5,
+          "type": "Peaking"
+        }
+      },
+      "usage": "Use on vocals or master bus for a lo-fi intro effect."
+    }
+  },
+  "parameters": {
+    "parameters": {
+      "pluginName": "Fruity Parametric EQ",
+      "parameters": [
+        {
+          "id": "band_1_freq",
+          "name": "Band 1 Frequency",
+          "type": "knob",
+          "range": {
+            "min": 10,
+            "max": 20000,
+            "unit": "Hz"
+          },
+          "description": "Center frequency for Band 1."
+        },
+        {
+          "id": "band_1_gain",
+          "name": "Band 1 Gain",
+          "type": "knob",
+          "range": {
+            "min": -18,
+            "max": 18,
+            "unit": "dB"
+          },
+          "defaultValue": 0,
+          "description": "Boost or cut amount."
+        },
+        {
+          "id": "band_1_bw",
+          "name": "Band 1 Bandwidth",
+          "type": "knob",
+          "range": {
+            "min": 0,
+            "max": 100
+          },
+          "description": "Width of the EQ curve."
+        }
+      ]
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    },
+    {
+      "title": "Peq1 Vs Peq2",
+      "filename": "peq1-vs-peq2.md"
+    },
+    {
+      "title": "Signal Flow",
+      "filename": "signal-flow.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "Common Usage",
+      "category": "general",
+      "filename": "common-usage.md"
+    },
+    {
+      "title": "00 Goal Quick Result",
+      "category": "by-goal",
+      "filename": "00_Goal_Quick_Result.md"
+    },
+    {
+      "title": "01 Goal Shaping And Control",
+      "category": "by-goal",
+      "filename": "01_Goal_Shaping_And_Control.md"
+    },
+    {
+      "title": "Bass",
+      "category": "by-instrument",
+      "filename": "bass.md"
+    },
+    {
+      "title": "Drums",
+      "category": "by-instrument",
+      "filename": "drums.md"
+    }
+  ]
+}

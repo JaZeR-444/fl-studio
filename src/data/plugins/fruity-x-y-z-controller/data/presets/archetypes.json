@@ -1,0 +1,298 @@
+{
+  "presetArchetypes": [
+    {
+      "id": "spatial-3d-audio",
+      "name": "3D Spatial Audio Positioning",
+      "category": "spatial",
+      "description": "Complete 3D audio placement with pan, filter, and depth control",
+      "difficulty": "beginner",
+      "mode": "absolute",
+      "mappings": [
+        {
+          "output": "x",
+          "target": "Pan",
+          "targetRange": {"min": -100, "max": 100},
+          "description": "Left/right stereo positioning"
+        },
+        {
+          "output": "y", 
+          "target": "Filter Cutoff",
+          "targetRange": {"min": 200, "max": 20000},
+          "description": "Near/far depth illusion (darker = farther)"
+        },
+        {
+          "output": "z",
+          "target": "Reverb Send",
+          "targetRange": {"min": 0, "max": 100},
+          "description": "Distance perception (more reverb = farther away)"
+        }
+      ],
+      "useCase": "Position sounds in 3D space for immersive mixes",
+      "gesture": "Move X for left/right, Y for near/far (filter), scroll Z for depth"
+    },
+    {
+      "id": "synth-timbre-complete",
+      "name": "Total Synth Performance",
+      "category": "synthesis",
+      "description": "Complete timbre control with pitch, filter, and resonance",
+      "difficulty": "intermediate",
+      "mode": "relative",
+      "mappings": [
+        {
+          "output": "x",
+          "target": "Oscillator Pitch",
+          "targetRange": {"min": -12, "max": 12},
+          "description": "Pitch bend ±12 semitones"
+        },
+        {
+          "output": "y",
+          "target": "Filter Cutoff",
+          "targetRange": {"min": 100, "max": 20000},
+          "description": "Brightness control"
+        },
+        {
+          "output": "z",
+          "target": "Filter Resonance",
+          "targetRange": {"min": 0, "max": 80},
+          "description": "Emphasis at cutoff frequency"
+        },
+        {
+          "output": "speed",
+          "target": "LFO Depth",
+          "targetRange": {"min": 0, "max": 100},
+          "description": "Movement adds modulation"
+        }
+      ],
+      "useCase": "Expressive lead synth control with all performance dimensions",
+      "gesture": "Continuous movements for smooth filter sweeps with dynamic LFO"
+    },
+    {
+      "id": "effect-chain-morph",
+      "name": "Effect Chain Morphing",
+      "category": "effects",
+      "description": "Morph between three different effects using all axes",
+      "difficulty": "intermediate",
+      "mode": "absolute",
+      "mappings": [
+        {
+          "output": "x",
+          "target": "Chorus Wet/Dry",
+          "targetRange": {"min": 0, "max": 100},
+          "description": "Left side = chorus"
+        },
+        {
+          "output": "y",
+          "target": "Phaser Depth",
+          "targetRange": {"min": 0, "max": 100},
+          "description": "Vertical = phaser amount"
+        },
+        {
+          "output": "z",
+          "target": "Delay Feedback",
+          "targetRange": {"min": 0, "max": 80},
+          "description": "Depth = delay intensity"
+        }
+      ],
+      "useCase": "Blend multiple effects in real-time for dynamic texture",
+      "gesture": "Navigate through effect combinations in 3D space"
+    },
+    {
+      "id": "drum-dynamic-processing",
+      "name": "Drum Dynamic Control",
+      "category": "dynamics",
+      "description": "Dynamic drum processing with spatial and transient control",
+      "difficulty": "advanced",
+      "mode": "relative",
+      "mappings": [
+        {
+          "output": "x",
+          "target": "Pan",
+          "targetRange": {"min": -50, "max": 50},
+          "description": "Drum positioning"
+        },
+        {
+          "output": "y",
+          "target": "Compression Threshold",
+          "targetRange": {"min": -20, "max": 0},
+          "description": "Dynamic control"
+        },
+        {
+          "output": "z",
+          "target": "Transient Shaper",
+          "targetRange": {"min": 0, "max": 100},
+          "description": "Punch control"
+        },
+        {
+          "output": "speed",
+          "target": "Saturation Drive",
+          "targetRange": {"min": 0, "max": 50},
+          "description": "Movement adds grit"
+        },
+        {
+          "output": "acceleration",
+          "target": "Accent Boost",
+          "targetRange": {"min": 0, "max": 6},
+          "description": "Accents get louder"
+        }
+      ],
+      "useCase": "Live drum performance with responsive dynamics",
+      "gesture": "Rhythmic movements create dynamic, punchy drum patterns"
+    },
+    {
+      "id": "vibe-warmth",
+      "name": "Vibe: Warmth",
+      "category": "vibes",
+      "description": "Analog warmth with detune, saturation, and gentle filtering",
+      "difficulty": "beginner",
+      "mode": "absolute",
+      "mappings": [
+        {
+          "output": "x",
+          "target": "Oscillator Detune",
+          "targetRange": {"min": 0, "max": 30},
+          "description": "Subtle pitch widening"
+        },
+        {
+          "output": "y",
+          "target": "Low-pass Cutoff",
+          "targetRange": {"min": 200, "max": 5000},
+          "description": "Warm/dark tones (keep below 40%)"
+        },
+        {
+          "output": "z",
+          "target": "Tape Saturation",
+          "targetRange": {"min": 0, "max": 40},
+          "description": "Gentle analog saturation"
+        }
+      ],
+      "useCase": "Vintage, analog character for any source",
+      "gesture": "Stay in lower-left quadrant for warmth, gentle movements"
+    },
+    {
+      "id": "vibe-clarity",
+      "name": "Vibe: Clarity",
+      "category": "vibes",
+      "description": "Presence and definition boost",
+      "difficulty": "beginner",
+      "mode": "absolute",
+      "mappings": [
+        {
+          "output": "x",
+          "target": "Presence EQ (3kHz)",
+          "targetRange": {"min": 0, "max": 6},
+          "description": "Midrange clarity boost"
+        },
+        {
+          "output": "y",
+          "target": "High-shelf (10kHz)",
+          "targetRange": {"min": 0, "max": 4},
+          "description": "Brightness/air"
+        },
+        {
+          "output": "z",
+          "target": "Exciter",
+          "targetRange": {"min": 0, "max": 40},
+          "description": "Harmonic enhancement"
+        }
+      ],
+      "useCase": "Make elements cut through the mix with presence",
+      "gesture": "Upper-right quadrant for clarity and presence"
+    },
+    {
+      "id": "vibe-depth",
+      "name": "Vibe: Depth",
+      "category": "vibes",
+      "description": "Spacious, immersive sound with reverb and width",
+      "difficulty": "beginner",
+      "mode": "absolute",
+      "mappings": [
+        {
+          "output": "x",
+          "target": "Stereo Width",
+          "targetRange": {"min": 0, "max": 150},
+          "description": "Stereo expansion"
+        },
+        {
+          "output": "y",
+          "target": "Reverb Send",
+          "targetRange": {"min": 0, "max": 70},
+          "description": "Spatial depth"
+        },
+        {
+          "output": "z",
+          "target": "Delay Feedback",
+          "targetRange": {"min": 10, "max": 60},
+          "description": "Ambience and echoes"
+        }
+      ],
+      "useCase": "Create immersive, 3D soundscapes",
+      "gesture": "Expand with X, add space with Y, depth with Z"
+    },
+    {
+      "id": "vibe-punch",
+      "name": "Vibe: Punch",
+      "category": "vibes",
+      "description": "Dynamic, aggressive character with transient and compression",
+      "difficulty": "intermediate",
+      "mode": "relative",
+      "mappings": [
+        {
+          "output": "x",
+          "target": "Transient Shaper",
+          "targetRange": {"min": 0, "max": 70},
+          "description": "Attack enhancement"
+        },
+        {
+          "output": "y",
+          "target": "Compression Ratio",
+          "targetRange": {"min": 1, "max": 8},
+          "description": "Dynamic control"
+        },
+        {
+          "output": "z",
+          "target": "Saturation",
+          "targetRange": {"min": 0, "max": 40},
+          "description": "Edge and grit"
+        },
+        {
+          "output": "speed",
+          "target": "Accent Detection",
+          "targetRange": {"min": 0, "max": 100},
+          "description": "Movement = more punch"
+        }
+      ],
+      "useCase": "Add aggression and impact to drums, bass, or leads",
+      "gesture": "Quick, decisive movements for maximum impact"
+    },
+    {
+      "id": "vibe-air",
+      "name": "Vibe: Air",
+      "category": "vibes",
+      "description": "Bright, shimmering high-end enhancement",
+      "difficulty": "beginner",
+      "mode": "absolute",
+      "mappings": [
+        {
+          "output": "x",
+          "target": "High-pass Filter",
+          "targetRange": {"min": 20, "max": 200},
+          "description": "Remove rumble (keep low)"
+        },
+        {
+          "output": "y",
+          "target": "Air EQ (15kHz)",
+          "targetRange": {"min": 0, "max": 6},
+          "description": "High-frequency sheen"
+        },
+        {
+          "output": "z",
+          "target": "Sparkle/Dimension",
+          "targetRange": {"min": 0, "max": 50},
+          "description": "Enhancement and lift"
+        }
+      ],
+      "useCase": "Add polish and brightness to vocals, synths, or mixes",
+      "gesture": "Upper positions for brightness and air"
+    }
+  ]
+}

@@ -1,0 +1,213 @@
+{
+  "curveLibrary": {
+    "name": "Fruity WaveShaper Curve Shapes",
+    "version": "1.0",
+    "curveTypes": [
+      {
+        "id": "linear",
+        "name": "Linear (Unity)",
+        "description": "No distortion, bypass reference",
+        "points": [
+          {"x": -1.0, "y": -1.0},
+          {"x": 0.0, "y": 0.0},
+          {"x": 1.0, "y": 1.0}
+        ],
+        "characteristics": {
+          "harmonics": "none",
+          "symmetry": "symmetric",
+          "suggestedMode": "Unipolar",
+          "useCase": "Reference, subtle saturation starting point"
+        }
+      },
+      {
+        "id": "soft-clip",
+        "name": "Soft Clip (S-Curve)",
+        "description": "Gentle saturation with even harmonics",
+        "points": [
+          {"x": -1.0, "y": -0.85},
+          {"x": -0.5, "y": -0.4},
+          {"x": 0.0, "y": 0.0},
+          {"x": 0.5, "y": 0.4},
+          {"x": 1.0, "y": 0.85}
+        ],
+        "characteristics": {
+          "harmonics": "even-order (warm)",
+          "symmetry": "symmetric",
+          "suggestedMode": "Unipolar",
+          "useCase": "808 warmth, vocal saturation, mix glue"
+        }
+      },
+      {
+        "id": "hard-clip",
+        "name": "Hard Clip (Limiter)",
+        "description": "Aggressive limiting with odd harmonics",
+        "points": [
+          {"x": -1.0, "y": -0.8},
+          {"x": -0.8, "y": -0.8},
+          {"x": 0.0, "y": 0.0},
+          {"x": 0.8, "y": 0.8},
+          {"x": 1.0, "y": 0.8}
+        ],
+        "characteristics": {
+          "harmonics": "odd-order (aggressive)",
+          "symmetry": "symmetric",
+          "suggestedMode": "Unipolar or Bipolar",
+          "useCase": "Drum punch, hard limiting, EDM leads"
+        }
+      },
+      {
+        "id": "soft-limiter",
+        "name": "Soft Limiter",
+        "description": "Controlled peak reduction with smooth transition",
+        "points": [
+          {"x": -1.0, "y": -0.9},
+          {"x": -0.7, "y": -0.7},
+          {"x": -0.4, "y": -0.4},
+          {"x": 0.0, "y": 0.0},
+          {"x": 0.4, "y": 0.4},
+          {"x": 0.7, "y": 0.7},
+          {"x": 1.0, "y": 0.9}
+        ],
+        "characteristics": {
+          "harmonics": "mixed (controlled)",
+          "symmetry": "symmetric",
+          "suggestedMode": "Unipolar",
+          "useCase": "Transparent limiting, loudness control"
+        }
+      },
+      {
+        "id": "foldback",
+        "name": "Foldback (Wavefolding)",
+        "description": "Complex folding for metallic textures",
+        "points": [
+          {"x": -1.0, "y": 0.5},
+          {"x": -0.75, "y": 0.0},
+          {"x": -0.5, "y": 0.5},
+          {"x": -0.25, "y": 0.0},
+          {"x": 0.0, "y": 0.0},
+          {"x": 0.25, "y": 0.0},
+          {"x": 0.5, "y": 0.5},
+          {"x": 0.75, "y": 0.0},
+          {"x": 1.0, "y": 0.5}
+        ],
+        "characteristics": {
+          "harmonics": "complex (all orders)",
+          "symmetry": "symmetric",
+          "suggestedMode": "Bipolar",
+          "useCase": "Experimental, modular-style distortion"
+        }
+      },
+      {
+        "id": "asymmetric-soft",
+        "name": "Asymmetric Soft",
+        "description": "Different positive/negative shaping for tube-like character",
+        "bipolar": {
+          "positive": [
+            {"x": 0.0, "y": 0.0},
+            {"x": 0.5, "y": 0.4},
+            {"x": 1.0, "y": 0.75}
+          ],
+          "negative": [
+            {"x": -1.0, "y": -0.85},
+            {"x": -0.5, "y": -0.45},
+            {"x": 0.0, "y": 0.0}
+          ]
+        },
+        "characteristics": {
+          "harmonics": "mixed (odd+even)",
+          "symmetry": "asymmetric",
+          "suggestedMode": "Bipolar",
+          "useCase": "Character distortion, amp simulation"
+        }
+      },
+      {
+        "id": "asymmetric-hard",
+        "name": "Asymmetric Hard",
+        "description": "Aggressive asymmetric clipping for edge",
+        "bipolar": {
+          "positive": [
+            {"x": 0.0, "y": 0.0},
+            {"x": 0.4, "y": 0.5},
+            {"x": 0.7, "y": 0.75},
+            {"x": 1.0, "y": 0.8}
+          ],
+          "negative": [
+            {"x": -1.0, "y": -0.6},
+            {"x": -0.5, "y": -0.4},
+            {"x": 0.0, "y": 0.0}
+          ]
+        },
+        "characteristics": {
+          "harmonics": "complex (aggressive)",
+          "symmetry": "asymmetric",
+          "suggestedMode": "Bipolar",
+          "useCase": "Drum crunch, vocal attitude, experimental"
+        }
+      },
+      {
+        "id": "staircase-8",
+        "name": "Bitcrush 8-Step",
+        "description": "8-step quantization for lo-fi sound",
+        "type": "staircase",
+        "steps": 8,
+        "characteristics": {
+          "harmonics": "aliased, digital artifacts",
+          "symmetry": "symmetric",
+          "suggestedMode": "Unipolar",
+          "useCase": "Lo-fi, retro, creative destruction"
+        }
+      },
+      {
+        "id": "staircase-16",
+        "name": "Bitcrush 16-Step",
+        "description": "16-step quantization for subtle degradation",
+        "type": "staircase",
+        "steps": 16,
+        "characteristics": {
+          "harmonics": "aliased, less severe",
+          "symmetry": "symmetric",
+          "suggestedMode": "Unipolar",
+          "useCase": "Subtle lo-fi, vintage character"
+        }
+      },
+      {
+        "id": "s-curve-aggressive",
+        "name": "Aggressive S-Curve",
+        "description": "Heavy saturation with pronounced S-shape",
+        "points": [
+          {"x": -1.0, "y": -0.7},
+          {"x": -0.6, "y": -0.5},
+          {"x": -0.3, "y": -0.2},
+          {"x": 0.0, "y": 0.0},
+          {"x": 0.3, "y": 0.2},
+          {"x": 0.6, "y": 0.5},
+          {"x": 1.0, "y": 0.7}
+        ],
+        "characteristics": {
+          "harmonics": "even-order (strong)",
+          "symmetry": "symmetric",
+          "suggestedMode": "Unipolar",
+          "useCase": "Heavy saturation, 808s, bass"
+        }
+      }
+    ],
+    "drawingGuidelines": {
+      "smoothCurves": {
+        "points": "3-5 for basic shapes",
+        "spacing": "Even horizontal distribution",
+        "corners": "Avoid sharp angles for musical results",
+        "center": "Always pass through (0,0)"
+      },
+      "steppedCurves": {
+        "points": "8-16 for bitcrushing",
+        "alignment": "Horizontal segments with vertical jumps",
+        "oversampling": "Required: 4x minimum"
+      },
+      "asymmetricCurves": {
+        "mode": "Bipolar required",
+        "balance": "Keep some relationship between halves",
+        "experimentation": "Try different positive/negative ratios"
+      }
+    }
+  }
+}

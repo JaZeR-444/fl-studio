@@ -1,0 +1,208 @@
+{
+  "id": "fruity-formula-controller",
+  "name": "Fruity Formula Controller",
+  "presets": {
+    "envelope-follower-basic": {
+      "presetName": "Envelope Follower Basic",
+      "plugin": "Fruity Formula Controller",
+      "description": "Scales the output based on the input 'a' value (often mapped to Peak Controller).",
+      "settings": {
+        "formula": "a*b",
+        "a": 0.5,
+        "b": 1.0,
+        "c": 1.0
+      },
+      "usage": "Use to scale an existing automation signal with a multiplier (b knob)."
+    },
+    "lfo-sine": {
+      "presetName": "LFO Sine",
+      "plugin": "Fruity Formula Controller",
+      "description": "A standard sine wave LFO using a basic formula.",
+      "settings": {
+        "formula": "Sin(SongPos*Pi*2)*0.5+0.5",
+        "a": 1.0,
+        "b": 1.0,
+        "c": 1.0
+      },
+      "usage": "Use to modulate volume, cutoff, or any parameter that needs a smooth back-and-forth movement."
+    },
+    "random-stepped": {
+      "presetName": "Random Stepped",
+      "plugin": "Fruity Formula Controller",
+      "description": "Generates random values that stay constant for a set duration.",
+      "settings": {
+        "formula": "Rand(Int(SongPos*4))",
+        "a": 1.0,
+        "b": 1.0,
+        "c": 1.0
+      },
+      "usage": "Great for glitchy filter effects or randomized sample selection."
+    },
+    "useful-formulas": {
+      "basic_math": {
+        "Inverter": "1 - a",
+        "Scaling": "a * b",
+        "Offset": "a + b"
+      },
+      "lfo_shapes": {
+        "Standard Sine": "Sin(SongTime * Pi)",
+        "Absolute Bounce": "Abs(Sin(SongTime * Pi))",
+        "Quantized Ramp": "Floor(a * 8) / 8"
+      },
+      "logic": {
+        "Binary Gate": "IfG(a, 0.5, 1, 0)",
+        "Crossfader": "a * b + (1 - a) * c",
+        "Range Limiter": "Max(b, Min(c, a))"
+      },
+      "psychedelic": {
+        "Chaos": "Rand() * a",
+        "Frequency Modulation": "Sin(SongTime * Pi * (1 + b * Sin(SongTime * c)))"
+      }
+    }
+  },
+  "parameters": {
+    "formula-params": {
+      "plugin_name": "Fruity Formula Controller",
+      "category": "Controller",
+      "parameters": [
+        {
+          "name": "a",
+          "type": "knob",
+          "description": "User variable input A",
+          "vibe_impact": "Primary control, intensity, speed"
+        },
+        {
+          "name": "b",
+          "type": "knob",
+          "description": "User variable input B",
+          "vibe_impact": "Secondary control, range, tension"
+        },
+        {
+          "name": "c",
+          "type": "knob",
+          "description": "User variable input C",
+          "vibe_impact": "Tertiary control, offset, logic threshold"
+        },
+        {
+          "name": "Formula",
+          "type": "text",
+          "description": "The mathematical expression",
+          "vibe_impact": "The logic engine, rhythmic identity"
+        }
+      ],
+      "mix_impact_tags": [
+        "motion",
+        "rhythm",
+        "scaling",
+        "conversion"
+      ]
+    },
+    "parameters": {
+      "pluginName": "Fruity Formula Controller",
+      "category": "Controller / Logic",
+      "parameters": [
+        {
+          "section": "Inputs",
+          "id": "a",
+          "name": "Knob A",
+          "range": {
+            "min": 0,
+            "max": 1,
+            "unit": "float"
+          },
+          "description": "Variable 'a' in formula."
+        },
+        {
+          "section": "Inputs",
+          "id": "b",
+          "name": "Knob B",
+          "range": {
+            "min": 0,
+            "max": 1,
+            "unit": "float"
+          },
+          "description": "Variable 'b' in formula."
+        },
+        {
+          "section": "Inputs",
+          "id": "c",
+          "name": "Knob C",
+          "range": {
+            "min": 0,
+            "max": 1,
+            "unit": "float"
+          },
+          "description": "Variable 'c' in formula."
+        },
+        {
+          "section": "Editor",
+          "id": "formula",
+          "name": "Formula Text",
+          "options": [
+            "Text String"
+          ],
+          "description": "The mathematical expression."
+        },
+        {
+          "section": "Monitor",
+          "id": "compile",
+          "name": "Compile",
+          "options": [
+            "Action"
+          ],
+          "description": "Validates and applies the formula."
+        }
+      ]
+    }
+  },
+  "rules": {},
+  "concepts": [
+    {
+      "title": "00 What It Is And When To Use",
+      "filename": "00_What_It_Is_And_When_To_Use.md"
+    },
+    {
+      "title": "01 Ui Map And Signal Flow",
+      "filename": "01_UI_Map_And_Signal_Flow.md"
+    },
+    {
+      "title": "02 Core Techniques And Best Practices",
+      "filename": "02_Core_Techniques_And_Best_Practices.md"
+    },
+    {
+      "title": "03 Vibe Translation Guide",
+      "filename": "03_Vibe_Translation_Guide.md"
+    },
+    {
+      "title": "04 Ready To Use Patterns",
+      "filename": "04_Ready_To_Use_Patterns.md"
+    }
+  ],
+  "workflows": [
+    {
+      "title": "Common Usage",
+      "category": "general",
+      "filename": "common-usage.md"
+    },
+    {
+      "title": "00 Goal Quick Result",
+      "category": "by-goal",
+      "filename": "00_Goal_Quick_Result.md"
+    },
+    {
+      "title": "Dynamic Reverb",
+      "category": "by-instrument",
+      "filename": "dynamic-reverb.md"
+    },
+    {
+      "title": "Performance Mode Macro",
+      "category": "by-instrument",
+      "filename": "performance-mode-macro.md"
+    },
+    {
+      "title": "Synth Cutoff",
+      "category": "by-instrument",
+      "filename": "synth-cutoff.md"
+    }
+  ]
+}

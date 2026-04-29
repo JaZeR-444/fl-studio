@@ -1,0 +1,156 @@
+{
+  "$schema": "./schema.json",
+  "plugin": {
+    "name": "ZGameEditor Visualizer",
+    "version": "1.x",
+    "category": "Effect",
+    "type": "Audio-Reactive Visualization Engine",
+    "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/ZGameEditor%20Visualizer.htm"
+  },
+  "parameters": {
+    "audioReactivity": [
+      {
+        "id": "bassReactivity",
+        "name": "Bass Reactivity",
+        "type": "slider",
+        "range": "0-200%",
+        "unit": "%",
+        "default": "100%",
+        "description": "Low frequency response (kick drum triggering)",
+        "sweetSpot": "80-120%"
+      },
+      {
+        "id": "midReactivity",
+        "name": "Mid Reactivity",
+        "type": "slider",
+        "range": "0-200%",
+        "unit": "%",
+        "default": "100%",
+        "description": "Mid frequency response (vocals, snare)",
+        "sweetSpot": "60-100%"
+      },
+      {
+        "id": "highReactivity",
+        "name": "High Reactivity",
+        "type": "slider",
+        "range": "0-200%",
+        "unit": "%",
+        "default": "100%",
+        "description": "High frequency response (hi-hats, cymbals)",
+        "sweetSpot": "50-80%"
+      },
+      {
+        "id": "peakSensitivity",
+        "name": "Peak Sensitivity",
+        "type": "slider",
+        "range": "0-100%",
+        "description": "Transient detection threshold"
+      },
+      {
+        "id": "smoothing",
+        "name": "Smoothing",
+        "type": "slider",
+        "range": "0-100%",
+        "description": "Audio analysis smoothing (lower = responsive, higher = smooth)"
+      }
+    ],
+    "visual": [
+      {
+        "id": "presetBrowser",
+        "name": "Preset Browser",
+        "description": "Access 100+ factory presets",
+        "categories": ["Audio Spectrum", "Particles", "Tunnels", "Fractals", "Waves", "Abstract", "Retro"]
+      },
+      {
+        "id": "colorPalette",
+        "name": "Color Palette",
+        "description": "Set visual color scheme"
+      },
+      {
+        "id": "layerSystem",
+        "name": "Layer System",
+        "description": "Stack up to 8 effect layers",
+        "blendModes": ["Add", "Multiply", "Screen", "Overlay"]
+      }
+    ],
+    "camera": [
+      {
+        "id": "position",
+        "name": "Camera Position",
+        "axes": ["X", "Y", "Z"],
+        "description": "3D camera location",
+        "automatable": true
+      },
+      {
+        "id": "rotation",
+        "name": "Camera Rotation",
+        "description": "Camera angle",
+        "automatable": true
+      },
+      {
+        "id": "fieldOfView",
+        "name": "Field of View",
+        "range": "30-120 degrees",
+        "description": "Lens width (wide-angle vs telephoto)"
+      }
+    ],
+    "rendering": [
+      {
+        "id": "resolution",
+        "name": "Resolution",
+        "options": ["1280x720", "1920x1080", "3840x2160"],
+        "recommended": "1920x1080"
+      },
+      {
+        "id": "frameRate",
+        "name": "Frame Rate",
+        "options": ["24", "30", "60", "120"],
+        "unit": "FPS",
+        "recommended": "60"
+      },
+      {
+        "id": "codec",
+        "name": "Codec",
+        "options": ["H.264/MP4", "AVI", "Image Sequence"],
+        "recommended": "H.264/MP4"
+      },
+      {
+        "id": "bitrate",
+        "name": "Bitrate",
+        "range": "5-30 Mbps",
+        "recommended": "15-20 Mbps for 1080p60"
+      }
+    ]
+  },
+  "presetCategories": {
+    "audioSpectrum": "Frequency-based bars and circles",
+    "particles": "Particle systems synced to audio",
+    "tunnels": "3D tunnel effects",
+    "fractals": "Mathematical patterns (Mandelbrot, Julia sets)",
+    "waves": "Waveform/oscilloscope displays",
+    "abstract": "Artistic effects (kaleidoscopes, morphing)",
+    "retro": "80s/90s Winamp-inspired visuals"
+  },
+  "exportFormats": {
+    "youtube": {
+      "resolution": "1920x1080",
+      "fps": 60,
+      "codec": "H.264",
+      "bitrate": "15-20 Mbps"
+    },
+    "instagram": {
+      "square": "1080x1080",
+      "portrait": "1080x1350",
+      "stories": "1080x1920"
+    },
+    "tiktok": {
+      "resolution": "1080x1920",
+      "aspectRatio": "9:16"
+    }
+  },
+  "cpuUsage": "Moderate to Very High (depends on preset)",
+  "gpuAcceleration": "Limited",
+  "realtimeSafe": "Yes (on powerful systems)",
+  "programmable": true,
+  "openSource": "ZGameEditor core is open-source"
+}

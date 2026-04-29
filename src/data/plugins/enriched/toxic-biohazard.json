@@ -1,0 +1,856 @@
+{
+  "id": "toxic-biohazard",
+  "name": "Toxic Biohazard",
+  "category": "Synthesizer",
+  "tier": "Premium",
+  "type": "Synthesizer",
+  "description": "Toxic Biohazard - Synthesizer",
+  "tags": [
+    "synth",
+    "sound-design",
+    "specialized"
+  ],
+  "capabilities": [
+    "synthesis",
+    "midi",
+    "polyphonic"
+  ],
+  "icon": "/plugins/toxic-biohazard-icon.svg",
+  "color": "#8B5CF6",
+  "version": "1.0",
+  "data_dir": "plugins\\toxic-biohazard",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "toxic-bio-specs": {
+      "plugin_name": "Toxic Biohazard",
+      "category": "Hybrid FM/Subtractive",
+      "oscillators": 6,
+      "unison_voices": 8,
+      "sequencer_steps": 64,
+      "filter_modes": [
+        "LP",
+        "BP",
+        "HP"
+      ],
+      "oscillator_tech": "Spectral Synthesis"
+    }
+  },
+  "presets": {
+    "funky-groove-bass": {
+      "preset_name": "Toxic Biohazard Funky Groove Bass",
+      "plugin": "Toxic Biohazard",
+      "oscillators": {
+        "1": {
+          "waveform": "saw",
+          "ratio": 1,
+          "volume": 100,
+          "pan": 0
+        },
+        "2": {
+          "waveform": "square",
+          "ratio": 1.5,
+          "volume": 70,
+          "pan": 0
+        },
+        "3": {
+          "waveform": "sine",
+          "ratio": 0.5,
+          "volume": 40,
+          "pan": 0
+        },
+        "4": {
+          "waveform": "saw",
+          "ratio": 2,
+          "volume": 65,
+          "pan": 0
+        },
+        "5": {
+          "waveform": "square",
+          "ratio": 3,
+          "volume": 50,
+          "pan": 0
+        },
+        "6": {
+          "waveform": "sine",
+          "ratio": 1,
+          "volume": 45,
+          "pan": 0
+        }
+      },
+      "matrix_modulation": {
+        "osc2_to_osc1": 45,
+        "osc3_to_osc1": 25,
+        "osc5_to_osc4": 30
+      },
+      "filter": {
+        "type": "lp",
+        "cutoff": 4500,
+        "resonance": 35,
+        "envelope_amount": 45
+      },
+      "envelopes": {
+        "amp_attack": 3,
+        "amp_decay": 150,
+        "amp_sustain": 75,
+        "amp_release": 250,
+        "filter_attack": 5,
+        "filter_decay": 200,
+        "filter_sustain": 70,
+        "filter_release": 300
+      },
+      "lfo": {
+        "rate": 1.5,
+        "amount": 22,
+        "destination": "pitch"
+      },
+      "effects": {
+        "distortion": {
+          "amount": 18,
+          "type": "tanh"
+        },
+        "delay": {
+          "feedback": 35,
+          "time": 0.25,
+          "mix": 20
+        },
+        "reverb": {
+          "size": 60,
+          "damping": 50,
+          "mix": 25
+        }
+      },
+      "unison": {
+        "voices": 2,
+        "detune": 10,
+        "spread": 35
+      },
+      "genre": "hip-hop/rap",
+      "subgenre": "funky/groove",
+      "application": "funky bass lines",
+      "description": "Punchy, rhythmic character for funky grooves",
+      "characteristics": [
+        "Adds transient snap",
+        "Enhances rhythmic elements",
+        "Creates groove emphasis",
+        "Perfect for old-school vibes"
+      ],
+      "recommended_for": [
+        "Funk-influenced hip-hop",
+        "Groove-heavy tracks",
+        "Rhythm-focused productions"
+      ],
+      "tips": [
+        "Great for bass guitar enhancement",
+        "Perfect for snare and clap",
+        "Try on drum bus for cohesion"
+      ]
+    },
+    "hip-hop-boom-bap-bass": {
+      "preset_name": "Toxic Biohazard Hip-Hop Boom Bap Bass",
+      "plugin": "Toxic Biohazard",
+      "oscillators": {
+        "1": {
+          "waveform": "sine",
+          "ratio": 1,
+          "volume": 100,
+          "pan": 0
+        },
+        "2": {
+          "waveform": "triangle",
+          "ratio": 0.5,
+          "volume": 70,
+          "pan": 0
+        },
+        "3": {
+          "waveform": "sine",
+          "ratio": 1.5,
+          "volume": 50,
+          "pan": 0
+        },
+        "4": {
+          "waveform": "triangle",
+          "ratio": 2,
+          "volume": 60,
+          "pan": 0
+        },
+        "5": {
+          "waveform": "sine",
+          "ratio": 3,
+          "volume": 40,
+          "pan": 0
+        },
+        "6": {
+          "waveform": "triangle",
+          "ratio": 0.25,
+          "volume": 30,
+          "pan": 0
+        }
+      },
+      "matrix_modulation": {
+        "osc2_to_osc1": 25,
+        "osc3_to_osc1": 15,
+        "osc5_to_osc4": 20
+      },
+      "filter": {
+        "type": "lp",
+        "cutoff": 2800,
+        "resonance": 20,
+        "envelope_amount": 15
+      },
+      "envelopes": {
+        "amp_attack": 20,
+        "amp_decay": 500,
+        "amp_sustain": 40,
+        "amp_release": 700,
+        "filter_attack": 30,
+        "filter_decay": 600,
+        "filter_sustain": 35,
+        "filter_release": 800
+      },
+      "lfo": {
+        "rate": 0.4,
+        "amount": 8,
+        "destination": "pitch"
+      },
+      "effects": {
+        "distortion": {
+          "amount": 5,
+          "type": "soft"
+        },
+        "delay": {
+          "feedback": 15,
+          "time": 0.33,
+          "mix": 20
+        },
+        "reverb": {
+          "size": 65,
+          "damping": 55,
+          "mix": 30
+        }
+      },
+      "unison": {
+        "voices": 1,
+        "detune": 5,
+        "spread": 15
+      },
+      "genre": "hip-hop/rap",
+      "subgenre": "boom bap",
+      "application": "warm bass lines",
+      "description": "Warm, vintage-style bass for boom bap hip-hop",
+      "characteristics": [
+        "Warm, musical character",
+        "Vintage analog feel",
+        "Solid low-end foundation",
+        "Perfect for sample-based beats"
+      ],
+      "recommended_for": [
+        "Boom bap productions",
+        "Vintage-style hip-hop",
+        "Jazz-influenced tracks"
+      ],
+      "tips": [
+        "Use with vinyl-style processing",
+        "Works well with swung rhythms",
+        "Pair with classic drum samples"
+      ]
+    },
+    "hip-hop-trap-bass": {
+      "preset_name": "Toxic Biohazard Hip-Hop Trap Bass",
+      "plugin": "Toxic Biohazard",
+      "oscillators": {
+        "1": {
+          "waveform": "saw",
+          "ratio": 1,
+          "volume": 100,
+          "pan": 0
+        },
+        "2": {
+          "waveform": "square",
+          "ratio": 0.5,
+          "volume": 80,
+          "pan": 0
+        },
+        "3": {
+          "waveform": "sine",
+          "ratio": 1.5,
+          "volume": 60,
+          "pan": 0
+        },
+        "4": {
+          "waveform": "saw",
+          "ratio": 2,
+          "volume": 70,
+          "pan": 0
+        },
+        "5": {
+          "waveform": "square",
+          "ratio": 3,
+          "volume": 50,
+          "pan": 0
+        },
+        "6": {
+          "waveform": "sine",
+          "ratio": 0.25,
+          "volume": 40,
+          "pan": 0
+        }
+      },
+      "matrix_modulation": {
+        "osc2_to_osc1": 65,
+        "osc3_to_osc1": 30,
+        "osc5_to_osc4": 40
+      },
+      "filter": {
+        "type": "lp",
+        "cutoff": 3000,
+        "resonance": 55,
+        "envelope_amount": 40
+      },
+      "envelopes": {
+        "amp_attack": 5,
+        "amp_decay": 150,
+        "amp_sustain": 70,
+        "amp_release": 200,
+        "filter_attack": 10,
+        "filter_decay": 200,
+        "filter_sustain": 60,
+        "filter_release": 300
+      },
+      "lfo": {
+        "rate": 1.2,
+        "amount": 18,
+        "destination": "pitch"
+      },
+      "effects": {
+        "distortion": {
+          "amount": 25,
+          "type": "tanh"
+        },
+        "delay": {
+          "feedback": 30,
+          "time": 0.25,
+          "mix": 15
+        },
+        "reverb": {
+          "size": 60,
+          "damping": 50,
+          "mix": 20
+        }
+      },
+      "unison": {
+        "voices": 4,
+        "detune": 15,
+        "spread": 40
+      },
+      "genre": "hip-hop/rap",
+      "subgenre": "trap",
+      "application": "aggressive bass lines",
+      "description": "Aggressive, harmonically rich bass for trap music",
+      "characteristics": [
+        "Complex harmonic content",
+        "Aggressive character",
+        "Strong low-end foundation",
+        "Suitable for 808-style bass"
+      ],
+      "recommended_for": [
+        "Trap productions",
+        "Aggressive hip-hop tracks",
+        "Modern bass lines"
+      ],
+      "tips": [
+        "Use with sidechain compression",
+        "Works well with heavy quantization",
+        "Pair with dark minor scales"
+      ]
+    },
+    "moody-dark-trap-bass": {
+      "preset_name": "Toxic Biohazard Moody Dark Trap Bass",
+      "plugin": "Toxic Biohazard",
+      "oscillators": {
+        "1": {
+          "waveform": "sine",
+          "ratio": 4,
+          "volume": 30,
+          "pan": 0
+        },
+        "2": {
+          "waveform": "sine",
+          "ratio": 8,
+          "volume": 25,
+          "pan": 0
+        },
+        "3": {
+          "waveform": "sine",
+          "ratio": 12,
+          "volume": 20,
+          "pan": 0
+        },
+        "4": {
+          "waveform": "saw",
+          "ratio": 1,
+          "volume": 70,
+          "pan": 0
+        },
+        "5": {
+          "waveform": "sine",
+          "ratio": 1.5,
+          "volume": 60,
+          "pan": 0
+        },
+        "6": {
+          "waveform": "saw",
+          "ratio": 1,
+          "volume": 80,
+          "pan": 0
+        }
+      },
+      "matrix_modulation": {
+        "osc2_to_osc1": 15,
+        "osc3_to_osc1": 10,
+        "osc5_to_osc4": 20
+      },
+      "filter": {
+        "type": "lp",
+        "cutoff": 6000,
+        "resonance": 20,
+        "envelope_amount": 30
+      },
+      "envelopes": {
+        "amp_attack": 5,
+        "amp_decay": 400,
+        "amp_sustain": 0,
+        "amp_release": 200,
+        "filter_attack": 10,
+        "filter_decay": 500,
+        "filter_sustain": 0,
+        "filter_release": 250
+      },
+      "lfo": {
+        "rate": 0.2,
+        "amount": 10,
+        "destination": "pitch"
+      },
+      "effects": {
+        "distortion": {
+          "amount": 0,
+          "type": "none"
+        },
+        "delay": {
+          "feedback": 0,
+          "time": 0.5,
+          "mix": 0
+        },
+        "reverb": {
+          "size": 0,
+          "damping": 60,
+          "mix": 0
+        }
+      },
+      "unison": {
+        "voices": 1,
+        "detune": 0,
+        "spread": 0
+      },
+      "genre": "hip-hop/rap",
+      "subgenre": "moody/dark trap",
+      "application": "dark trap bass lines",
+      "description": "Metallic sound from high ratios for haunting melodies",
+      "characteristics": [
+        "Metallic harmonic content",
+        "Dark, atmospheric character",
+        "Short envelope for pluck",
+        "Perfect for haunting melodies"
+      ],
+      "recommended_for": [
+        "Dark trap productions",
+        "Atmospheric hip-hop tracks",
+        "Moody bass lines"
+      ],
+      "tips": [
+        "Use with sidechain compression",
+        "Works well with minor scales",
+        "Pair with dark atmospheric samples"
+      ]
+    },
+    "psychedelic-pad": {
+      "preset_name": "Toxic Biohazard Psychedelic Pad",
+      "plugin": "Toxic Biohazard",
+      "oscillators": {
+        "1": {
+          "waveform": "sine",
+          "ratio": 1,
+          "volume": 100,
+          "pan": 0
+        },
+        "2": {
+          "waveform": "sine",
+          "ratio": 2,
+          "volume": 60,
+          "pan": 0
+        },
+        "3": {
+          "waveform": "triangle",
+          "ratio": 3,
+          "volume": 40,
+          "pan": 0
+        },
+        "4": {
+          "waveform": "sine",
+          "ratio": 1,
+          "volume": 80,
+          "pan": 0
+        },
+        "5": {
+          "waveform": "triangle",
+          "ratio": 4,
+          "volume": 30,
+          "pan": 0
+        },
+        "6": {
+          "waveform": "sine",
+          "ratio": 0.5,
+          "volume": 50,
+          "pan": 0
+        }
+      },
+      "matrix_modulation": {
+        "osc2_to_osc1": 30,
+        "osc3_to_osc1": 20,
+        "osc5_to_osc4": 25,
+        "osc6_to_osc1": 15
+      },
+      "filter": {
+        "type": "lp",
+        "cutoff": 3500,
+        "resonance": 18,
+        "envelope_amount": 25
+      },
+      "envelopes": {
+        "amp_attack": 400,
+        "amp_decay": 600,
+        "amp_sustain": 85,
+        "amp_release": 1000,
+        "filter_attack": 500,
+        "filter_decay": 700,
+        "filter_sustain": 80,
+        "filter_release": 1200
+      },
+      "lfo": {
+        "rate": 0.3,
+        "amount": 20,
+        "destination": "oscillator_volume"
+      },
+      "effects": {
+        "distortion": {
+          "amount": 3,
+          "type": "soft"
+        },
+        "delay": {
+          "feedback": 25,
+          "time": 0.75,
+          "mix": 30
+        },
+        "reverb": {
+          "size": 85,
+          "damping": 40,
+          "mix": 45
+        }
+      },
+      "unison": {
+        "voices": 3,
+        "detune": 12,
+        "spread": 50
+      },
+      "genre": "experimental",
+      "subgenre": "psychedelic",
+      "application": "evolving pad sounds",
+      "description": "Ethereal, evolving pad for psychedelic music",
+      "characteristics": [
+        "Evolving harmonic content",
+        "Ethereal, spacious quality",
+        "Smooth, polished sound",
+        "Perfect for atmospheric sections"
+      ],
+      "recommended_for": [
+        "Psychedelic productions",
+        "Atmospheric sections",
+        "Bed tracks for vocals"
+      ],
+      "tips": [
+        "Use automation for evolving textures",
+        "Works well with slow tempos",
+        "Pair with subtle delay throws"
+      ]
+    },
+    "rnb-neo-soul-lead": {
+      "preset_name": "Toxic Biohazard R&B Neo-Soul Lead",
+      "plugin": "Toxic Biohazard",
+      "oscillators": {
+        "1": {
+          "waveform": "sine",
+          "ratio": 1,
+          "volume": 100,
+          "pan": 0
+        },
+        "2": {
+          "waveform": "sine",
+          "ratio": 2,
+          "volume": 60,
+          "pan": 0
+        },
+        "3": {
+          "waveform": "triangle",
+          "ratio": 3,
+          "volume": 40,
+          "pan": 0
+        },
+        "4": {
+          "waveform": "sine",
+          "ratio": 1,
+          "volume": 80,
+          "pan": 0
+        },
+        "5": {
+          "waveform": "triangle",
+          "ratio": 4,
+          "volume": 30,
+          "pan": 0
+        },
+        "6": {
+          "waveform": "sine",
+          "ratio": 0.5,
+          "volume": 50,
+          "pan": 0
+        }
+      },
+      "matrix_modulation": {
+        "osc2_to_osc1": 20,
+        "osc3_to_osc1": 15,
+        "osc5_to_osc4": 10
+      },
+      "filter": {
+        "type": "lp",
+        "cutoff": 4000,
+        "resonance": 25,
+        "envelope_amount": 20
+      },
+      "envelopes": {
+        "amp_attack": 30,
+        "amp_decay": 400,
+        "amp_sustain": 75,
+        "amp_release": 600,
+        "filter_attack": 50,
+        "filter_decay": 500,
+        "filter_sustain": 70,
+        "filter_release": 700
+      },
+      "lfo": {
+        "rate": 0.8,
+        "amount": 12,
+        "destination": "pitch"
+      },
+      "effects": {
+        "distortion": {
+          "amount": 8,
+          "type": "soft"
+        },
+        "delay": {
+          "feedback": 20,
+          "time": 0.5,
+          "mix": 25
+        },
+        "reverb": {
+          "size": 75,
+          "damping": 45,
+          "mix": 35
+        }
+      },
+      "unison": {
+        "voices": 2,
+        "detune": 8,
+        "spread": 25
+      },
+      "genre": "R&B",
+      "subgenre": "neo-soul",
+      "application": "smooth lead sounds",
+      "description": "Warm, expressive lead for neo-soul music",
+      "characteristics": [
+        "Warm, musical character",
+        "Expressive envelope response",
+        "Analog-like warmth",
+        "Perfect for melodic lines"
+      ],
+      "recommended_for": [
+        "Neo-soul productions",
+        "Smooth R&B tracks",
+        "Expressive lead lines"
+      ],
+      "tips": [
+        "Use with expressive MIDI controllers",
+        "Works well with jazz-influenced chord progressions",
+        "Pair with vintage-style effects"
+      ]
+    },
+    "rnb-smooth-pad": {
+      "preset_name": "Toxic Biohazard R&B Smooth Pad",
+      "plugin": "Toxic Biohazard",
+      "oscillators": {
+        "1": {
+          "waveform": "sine",
+          "ratio": 1,
+          "volume": 100,
+          "pan": 0
+        },
+        "2": {
+          "waveform": "sine",
+          "ratio": 2,
+          "volume": 70,
+          "pan": 0
+        },
+        "3": {
+          "waveform": "triangle",
+          "ratio": 3,
+          "volume": 50,
+          "pan": 0
+        },
+        "4": {
+          "waveform": "sine",
+          "ratio": 1.5,
+          "volume": 80,
+          "pan": 0
+        },
+        "5": {
+          "waveform": "triangle",
+          "ratio": 4,
+          "volume": 40,
+          "pan": 0
+        },
+        "6": {
+          "waveform": "sine",
+          "ratio": 0.5,
+          "volume": 60,
+          "pan": 0
+        }
+      },
+      "matrix_modulation": {
+        "osc2_to_osc1": 30,
+        "osc3_to_osc1": 20,
+        "osc5_to_osc4": 25,
+        "osc6_to_osc1": 15
+      },
+      "filter": {
+        "type": "lp",
+        "cutoff": 3500,
+        "resonance": 18,
+        "envelope_amount": 25
+      },
+      "envelopes": {
+        "amp_attack": 400,
+        "amp_decay": 600,
+        "amp_sustain": 85,
+        "amp_release": 1000,
+        "filter_attack": 500,
+        "filter_decay": 700,
+        "filter_sustain": 80,
+        "filter_release": 1200
+      },
+      "lfo": {
+        "rate": 0.3,
+        "amount": 20,
+        "destination": "oscillator_volume"
+      },
+      "effects": {
+        "distortion": {
+          "amount": 3,
+          "type": "soft"
+        },
+        "delay": {
+          "feedback": 25,
+          "time": 0.75,
+          "mix": 30
+        },
+        "reverb": {
+          "size": 85,
+          "damping": 40,
+          "mix": 45
+        }
+      },
+      "unison": {
+        "voices": 3,
+        "detune": 12,
+        "spread": 50
+      },
+      "genre": "R&B",
+      "subgenre": "smooth",
+      "application": "ethereal pad sounds",
+      "description": "Ethereal, evolving pad for smooth R&B",
+      "characteristics": [
+        "Evolving harmonic content",
+        "Ethereal, spacious quality",
+        "Smooth, polished sound",
+        "Perfect for atmospheric sections"
+      ],
+      "recommended_for": [
+        "Smooth R&B productions",
+        "Atmospheric sections",
+        "Bed tracks for vocals"
+      ],
+      "tips": [
+        "Use automation for evolving textures",
+        "Works well with slow tempos",
+        "Pair with subtle delay throws"
+      ]
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "concepts-and-best-uses": "# Concepts & Best Uses: Toxic Biohazard\r\n\r\n## What It Is\r\nToxic Biohazard is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "fm-synthesis-concepts": "# Toxic Biohazard - FM Synthesis Concepts\n\n## Overview\nToxic Biohazard is an FM (Frequency Modulation) synthesizer that uses multiple oscillators to create complex, evolving sounds through modulation. Unlike subtractive synthesis, FM synthesis generates harmonic complexity by modulating the frequency of one oscillator with another.\n\n## Core FM Synthesis Principles\n\n### Operators and Algorithms\n- **Operators**: Individual oscillators that can act as carriers (audible) or modulators (modulating other operators)\n- **Algorithms**: Pre-configured routing schemes that determine how operators interact\n- **Carrier**: Operator whose output is audible\n- **Modulator**: Operator that modulates another operator's frequency\n\n### FM Parameters\n- **Frequency Ratio**: Relationship between operator frequency and note pitch\n- **Fixed Frequency**: Operator frequency independent of note pitch\n- **Modulation Index**: Depth of frequency modulation\n- **Feedback**: Output fed back into input for self-modulation\n\n## Operator Types\n\n### Carrier Operators\n- Generate audible output\n- Can be modulated by other operators\n- Typically Operators A, C, E, G\n\n### Modulator Operators\n- Modulate carrier frequencies\n- Not directly audible\n- Typically Operators B, D, F, H\n\n## Algorithm Structure\n\n### Algorithm Categories\n- **Simple**: 1-2 operators for basic FM sounds\n- **Complex**: 4-8 operators for rich, evolving textures\n- **Parallel**: Multiple carriers for layered sounds\n- **Series**: Modulators chained for complex harmonic content\n\n### Common Algorithm Types\n- **Stack**: Modulators in series\n- **Branching**: Single modulator affecting multiple carriers\n- **Parallel Carriers**: Multiple independent carriers\n- **Feedback Loops**: Self-modulating structures\n\n## Sound Design Applications\n\n### Bass Design\n- Use fixed frequency operators for sub-bass\n- Modulate with audio-rate signals for grit\n- Apply feedback for harmonic richness\n\n### Lead Design\n- Use ratio-based operators for pitch tracking\n- Apply moderate modulation for brightness\n- Use algorithms with multiple carriers for width\n\n### Pad Design\n- Use slow envelopes and LFOs\n- Apply deep modulation for movement\n- Use parallel carriers for layering\n\n### Percussive Sounds\n- Use fixed frequencies for tonal percussion\n- Apply fast envelopes for transient response\n- Use feedback for metallic character\n\n## Modulation Techniques\n\n### Operator Modulation\n- Modulate carrier frequency with modulator\n- Adjust modulation index for brightness control\n- Use multiple modulators for complex timbres\n\n### Feedback Modulation\n- Feed operator output back into itself\n- Control feedback amount for harmonic content\n- Use different feedback modes for character\n\n### Envelope Modulation\n- Use envelopes to control modulation depth\n- Create evolving timbres over time\n- Apply velocity modulation for expressiveness\n\n## Advanced Concepts\n\n### Harmonic Series Control\n- Ratio settings determine harmonic content\n- Integer ratios create harmonic spectra\n- Non-integer ratios create inharmonic spectra\n\n### Formant Synthesis\n- Use multiple operators to create formant peaks\n- Control formant movement with envelopes\n- Create vocal-like characteristics\n\n### Waveform Selection\n- Different waveforms affect modulation character\n- Sine waves for clean FM\n- Other waveforms for additional harmonics\n\n### Velocity and Aftertouch\n- Map velocity to modulation index\n- Use aftertouch for real-time timbral control\n- Create expressive performances\n\n## Troubleshooting Common Issues\n\n### Harsh, Unpleasant Sounds\n- Reduce modulation index\n- Use lower feedback amounts\n- Try different algorithms\n\n### Thin, Weak Sounds\n- Increase modulation depth\n- Use more operators\n- Add parallel carriers\n\n### Muddy, Indistinct Sounds\n- Reduce number of active operators\n- Simplify algorithm structure\n- Use EQ to clarify frequency content\n\n### Unstable Tuning\n- Check ratio settings\n- Use fixed frequencies for stability\n- Apply pitch correction if needed\n\n## Best Practices\n\n### Gain Staging\n- FM synthesis can produce high levels\n- Use output level controls carefully\n- Apply limiting if necessary\n\n### CPU Efficiency\n- Use fewer operators when possible\n- Disable unused operators\n- Use simpler algorithms for complex sounds\n\n### Sound Design Workflow\n- Start with simple algorithms\n- Add complexity gradually\n- Use reference sounds for comparison\n- Test in context with other instruments\n\n## Integration with Hip-Hop Production\n\n### Trap Bass\n- Use fixed frequency sub-bass carriers\n- Apply deep modulation for grit\n- Add distortion for character\n\n### Melodic Leads\n- Use ratio-based operators for pitch tracking\n- Apply moderate modulation for brightness\n- Use portamento for glide effects\n\n### Atmospheric Pads\n- Use slow envelopes and LFOs\n- Apply deep modulation for movement\n- Layer multiple instances for thickness\n\n### Sound Effects\n- Use extreme modulation for unique textures\n- Apply randomization for variation\n- Use in combination with effects plugins\n\n## Comparison with Other Synthesis Methods\n\n### vs Subtractive Synthesis\n- FM creates complexity through modulation\n- Subtractive filters complexity from waveforms\n- FM offers more harmonic control\n\n### vs Wavetable Synthesis\n- FM uses mathematical relationships\n- Wavetable uses pre-recorded waveforms\n- FM offers more real-time modulation\n\n### vs Physical Modeling\n- FM approximates physical systems\n- Physical modeling simulates real instruments\n- FM offers more abstract sound design\n\n## Creative Applications\n\n### Experimental Sound Design\n- Push modulation to extremes\n- Use unconventional algorithms\n- Combine with effects for unique textures\n\n### Genre-Specific Sounds\n- Adapt FM parameters for different styles\n- Create signature sounds for specific genres\n- Use presets as starting points for customization\n\n### Sound Design for Media\n- Create sci-fi and futuristic sounds\n- Design sound effects and transitions\n- Develop unique musical elements\n\n## Performance Considerations\n\n### Real-Time Control\n- Map modulation to MIDI controllers\n- Use automation for evolving sounds\n- Create performance patches for live playing\n\n### CPU Usage\n- Monitor plugin load in complex projects\n- Use freeze/flatten when appropriate\n- Optimize algorithm complexity for performance\n\n## Conclusion\nToxic Biohazard's FM synthesis engine offers unparalleled control over harmonic content and timbral complexity. Understanding the underlying principles of FM synthesis enables producers to create unique, professional-quality sounds that stand out in modern hip-hop and electronic music production.",
+      "signal-flow": "# Signal Flow: Toxic Biohazard\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n"
+    },
+    "Quick-Reference": {
+      "parameter-cheat-sheet": "# Toxic Biohazard Parameter Cheat Sheet\n\n## Synthesis\n- **6 FM Oscillators:** Alias-free operators with dedicated ADSR.\n- **FM Matrix:** Vertical columns are Carriers, horizontal rows are Modulators.\n- **Filter:** Analog-modeled multi-mode (LP, BP, HP). Includes Moog/303 style squelch.\n\n## Performance\n- **Smart Sequencer:** 64-step polyphonic pattern generator.\n- **Unison:** 8 voices with stereo spread.\n- **FX Rack:** Delay, Chorus, Phaser, Reverb, EQ, Distortion.\n\n## Key Controls\n- **Drive:** Adds harmonic grit to the filter section.\n- **Amt:** Global modulation amount for the matrix.\n- **Spectrum Analysis:** Imports WAV files to create custom oscillator shapes.\n",
+      "quick-start-checklist": "# Quick Start Checklist: Toxic Biohazard\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Toxic Biohazard to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Toxic Biohazard\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n",
+      "toxic-matrix-logic": "# Toxic Biohazard FM Matrix Logic\n\n## Understanding the Grid\nThe FM Matrix is where the magic (modulation) happens.\n\n- **Rows:** Represent the signal source (Modulator).\n- **Columns:** Represent the target (Carrier).\n\n## Routing Flow\n1. **Vertical Out:** The bottom row determines which oscillators actually send sound to the filter/output.\n2. **Intersection Knobs:** Turning up a knob at Row 2 / Col 1 means Oscillator 2 is now modulating the frequency of Oscillator 1.\n\n## Feedback\nToxic allows you to modulate an oscillator with itself (e.g., Row 1 / Col 1). This creates saw-like or noisy characteristics depending on the depth.\n\n## Ease of Use\nCompared to Sytrus, Toxic Biohazard's matrix is fixed and simplified, making it much faster for designing standard FM bells, growls, and digital leads.\n"
+    },
+    "README.md": {
+      "README": "# Learning - Toxic Biohazard\r\n\r\nThis section contains learning information for the toxic-biohazard plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "aggressive-fm-growl": "# Workflow: Aggressive FM Growl (Toxic Biohazard)\n\nTags: growl | dubstep | edm-bass | aggressive\n\n## Goal: Create a \"Growling\" Bass for Hybrid Trap or EDM\nThis workflow uses the \"Modulation Matrix\" to create movement and grit.\n\n## 1. Starting Moves\n- **Osc 1 (Carrier):** Sawtooth | Level 80%.\n- **Osc 2 (Modulator):** Sine | Level 0% (Matrix value).\n- **Ratio Setup:** Set Osc 1 to 1.00 and Osc 2 to 0.50 (one octave down).\n\n## 2. The Growl Engine\n- **FM Matrix:** Slowly increase Osc 2 -> Osc 1 until you hear the \"Growl.\" \n- **The Sweet Spot:** Usually around **40-60%**.\n- **Filter Setup:** Use **LP (Low Pass)** | Cutoff 30% | Resonance 40%.\n\n## 3. Creating the Movement\n- **LFO Mapping:** Link **LFO 1** to the **FM Amount** (Osc 2 -> Osc 1).\n- **LFO Speed:** Set to 1/4 or 1/8 bar.\n- **Envelope Mapping:** Link the **Filter Cutoff** to an Envelope with a \"Slightly slow\" Attack.\n\n## 4. A/B Test\n- **A:** Static Sawtooth bass.\n- **B:** FM Growl bass with LFO movement.\n- **Listen for:** \"Snarl\" and \"Texture.\" Does it sound like a machine breathing?\n\n## 5. Quick Fix Path\n- **Too thin?** Increase Osc 1 Master Level.\n- **Too noisy?** Decrease FM Mod Amount.\n- **Too \"reedy\"?** Change Modulator (Osc 2) back to a Sine wave.\n",
+      "aggressive-fm-lead": "# Aggressive FM Lead (Toxic Biohazard)\n\n## Goal\nCreate a sharp, digital lead sound that cuts through a heavy mix.\n\n## Technical Steps\n1. **Operators Setup:**\n   - **Osc 1 (Carrier):** Set to Sawtooth.\n   - **Osc 2 (Modulator):** Set to Sine. Set pitch to +1 Octave.\n2. **The Matrix:**\n   - Go to the **Matrix** tab.\n   - Turn up the knob at **Row 2 / Col 1** to ~40%. \n   - **Result:** The sine wave will begin to frequency modulate the saw wave, creating metallic overtones.\n3. **Filter:**\n   - Select **Low Pass (LP)**.\n   - Turn up **Drive** to 30%.\n   - Automate the **Filter Cutoff** with a fast envelope for a \"snappy\" attack.\n4. **FX Rack:**\n   - Add **Distortion**.\n   - Add a high-feedback **Delay** for a wide, cavernous sound.\n\n## Why it works\nFM synthesis excels at creating high-frequency harmonic content that is far more complex than simple oscillator layering. By modulating a harmonic-rich Saw with a Sine, you generate a unique, \"glassy\" aggression.\n",
+      "evolving-atmospheric-pad": "# Evolving Atmospheric Pad (Toxic Biohazard)\n\n## Goal\nDesign a lush, wide background texture that evolves over time.\n\n## Technical Steps\n1. **Initialization:**\n   - Set 3 or 4 Oscillators to **Spectral** waveforms (e.g., Vocal or Bell).\n   - Detune them slightly against each other (+/- 5 cents).\n2. **ADSR Sculpting:**\n   - Set **Attack** to 2 seconds on all active oscillators.\n   - Set **Release** to 1.5 seconds.\n3. **The Matrix:**\n   - Apply subtle modulation (5-10%) between oscillators to create \"micro-movement\".\n4. **Unison:**\n   - Set **Unison** to 4 or 8 voices.\n   - Increase **Spread** to 100% for maximum stereo width.\n5. **Modulation:**\n   - Assign the **LFO** to modulate the **Filter Cutoff** very slowly.\n\n## Why it works\nDetuned spectral waveforms combined with high unison spread create a dense \"wall of sound.\" The slow attack and LFO modulation ensure that the sound is never static.\n",
+      "goal-oriented-workflows": "# Toxic Biohazard - Goal-Oriented Workflows for Hip-Hop/R&B\n\n## Overview\n\nThis document details how to apply Toxic Biohazard's hybrid FM/subtractive synthesis capabilities to achieve specific production goals in hip-hop and R&B music. Each goal has unique requirements for parameter settings and techniques.\n\n## Mixing Goals\n\n### Creating Punchy Bass\n| Goal | Technique | Parameter Settings | Application |\n|------|-----------|-------------------|-------------|\n| Punchy Bass | Fast envelopes, harmonic content | 2 Sine + 1 Saw, Fast attack (1-5ms), Medium decay (100-200ms) | Hip-Hop, Trap |\n| Subtle Punch | Moderate settings | 1 Sine + 1 Square, Medium attack (10-20ms), Medium decay (150-250ms) | R&B, Neo-Soul |\n| Aggressive Punch | Complex harmonics | 2 Saw + 2 Square, High FM modulation, Fast envelopes | Trap, Drill |\n\n#### Application Notes:\n- Use fast attack times (1-10ms) for punch\n- Apply medium decay (100-300ms) for harmonic evolution\n- Higher FM modulation adds harmonic complexity\n- Consider sidechain compression for mix compatibility\n\n### Achieving Warmth\n| Goal | Technique | Parameter Settings | Application |\n|------|-----------|-------------------|-------------|\n| Vintage Warmth | Simple FM, soft waveforms | 3 Sine + 1 Triangle, Low FM modulation, Low resonance | R&B, Neo-Soul |\n| Analog Feel | Subtle complexity | 2 Sine + 2 Triangle, Moderate FM, Medium resonance | All genres |\n| Harmonic Richness | Controlled complexity | 2 Sine + 2 Saw, Careful FM modulation, Medium resonance | Smooth R&B |\n\n#### Application Notes:\n- Use sine and triangle waveforms for warmth\n- Low to moderate FM modulation for musicality\n- Apply filtering to shape the tone\n- Use moderate resonance for character\n\n### Creating Space and Width\n| Goal | Technique | Parameter Settings | Application |\n|------|-----------|-------------------|-------------|\n| Stereo Width | Unison and panning | Multi-voice unison, Operator panning, Built-in chorus | All genres |\n| Spatial Depth | Reverb and delay | Built-in reverb/delay, Slow envelopes | R&B, Atmospheric |\n| Air and Sparkle | High-frequency content | Sawtooth harmonics, High-pass filtering, EQ | Contemporary |\n\n#### Application Notes:\n- Use multi-voice unison for width\n- Apply built-in chorus for analog-style width\n- Use reverb/delay for spatial depth\n- Sawtooth waveforms add high-frequency content\n\n## Sound Design Goals\n\n### Vintage Synth Emulation\n| Goal | Technique | Parameter Settings | Application |\n|------|-----------|-------------------|-------------|\n| Moog Bass | Simple harmonics | 2 Sine + 1 Saw, Low FM, Low-pass filtering | Hip-Hop, R&B |\n| Rhodes Piano | Bell-like harmonics | 3 Sine + 1 Triangle, Moderate FM, Chorus | R&B, Neo-Soul |\n| String Machine | Evolving textures | 4 Sine, LFO modulation, Reverb | R&B, Soul |\n\n#### Application Notes:\n- Use sine and triangle for vintage character\n- Apply moderate FM for harmonic content\n- Use built-in effects for authenticity\n- Use LFO modulation for analog drift\n\n### Modern Synth Sounds\n| Goal | Technique | Parameter Settings | Application |\n|------|-----------|-------------------|-------------|\n| Aggressive Bass | Complex harmonics | 2 Saw + 2 Square, High FM, Distortion | Trap, Drill |\n| Crystalline Leads | Bell-like tones | 4 Sine, High FM, Fast envelopes | Hip-Hop, R&B |\n| Evolving Pads | Complex textures | 5 Sine + 1 Triangle, Slow envelopes, LFO | Atmospheric |\n\n#### Application Notes:\n- High FM modulation for complex harmonics\n- Complex oscillator combinations for modern sounds\n- Apply built-in distortion for extra aggression\n- Use slow envelopes for evolving textures\n\n### Percussion and Sound Effects\n| Goal | Technique | Parameter Settings | Application |\n|------|-----------|-------------------|-------------|\n| 808-style Bass | Sub-bass focus | 2 Sine, Fixed frequencies, Low ratios | Hip-Hop, Trap |\n| Snare Emulation | Noise and harmonics | 1 Square + 1 Noise, Fast envelopes | Hip-Hop |\n| Hi-Hat Emulation | High-frequency content | 1 Saw + 1 Noise, High ratios, Fast envelopes | Hip-Hop |\n\n#### Application Notes:\n- Use fixed frequencies for unpitched percussion\n- Apply noise operators for texture\n- Fast envelopes for percussive sounds\n- High ratios for bright, high-frequency content\n\n## Genre-Specific Goals\n\n### Hip-Hop Production Goals\n\n#### Trap Aesthetic\n| Goal | Technique | Parameter Settings | Application |\n|------|-----------|-------------------|-------------|\n| Aggressive Bass | Complex harmonics | 2 Saw + 2 Square, High FM (60-80%), Distortion | Trap, Drill |\n| Melodic Hooks | Bell-like leads | 4 Sine, High FM (40-60%), Chorus | All Trap |\n| Atmospheric Elements | Evolving textures | 5 Sine, LFO modulation, Reverb | Trap, Dark Trap |\n\n#### Application Notes:\n- High FM modulation creates aggressive harmonics\n- 4 Sine setup for crystalline leads\n- LFO modulation for evolving atmospheric elements\n- Built-in distortion for extra aggression\n\n#### Boom Bap Character\n| Goal | Technique | Parameter Settings | Application |\n|------|-----------|-------------------|-------------|\n| Vintage Bass | Simple, warm | 3 Sine, Low FM (10-20%), Chorus | Boom Bap |\n| Sample Enhancement | Harmonic addition | 2 Sine + 1 Triangle, Low FM (15-25%) | Boom Bap |\n| Jazz Influence | Piano-like tones | 3 Sine + 1 Triangle, Moderate FM (20-30%) | Jazz Rap |\n\n#### Application Notes:\n- Low FM modulation for vintage character\n- Sine and triangle waveforms for warmth\n- Subtle FM to enhance samples\n- Triangle waveforms for piano-like tones\n\n#### Conscious/Alternative Hip-Hop\n| Goal | Technique | Parameter Settings | Application |\n|------|-----------|-------------------|-------------|\n| Subtle Enhancement | Transparent | 2 Sine + 1 Triangle, Low FM (10-15%) | Conscious |\n| Atmospheric Textures | Evolving sounds | 4 Sine, Slow envelopes, LFO modulation | Alternative |\n| Organic Feel | Analog simulation | 3 Sine + 1 Triangle, LFO drift | Conscious |\n\n#### Application Notes:\n- Low FM modulation for transparent enhancement\n- Slow envelopes for evolving textures\n- LFO modulation for analog drift\n- Moderate settings for organic feel\n\n### R&B Production Goals\n\n#### Smooth R&B Character\n| Goal | Technique | Parameter Settings | Application |\n|------|-----------|-------------------|-------------|\n| Smooth Bass | Warm, full | 2 Sine + 1 Saw, Low FM (15-25%) | Smooth R&B |\n| Polished Leads | Clean, bright | 2 Sine + 2 Triangle, Low FM (20-30%) | Contemporary R&B |\n| Ethereal Pads | Evolving textures | 4 Sine + 1 Triangle, LFO modulation | Smooth R&B |\n\n#### Application Notes:\n- Sine and saw waveforms for smooth character\n- Low to moderate FM for musical complexity\n- LFO modulation for evolving textures\n- Clean envelopes for polished sound\n\n#### Neo-Soul Enhancement\n| Goal | Technique | Parameter Settings | Application |\n|------|-----------|-------------------|-------------|\n| Vintage Keys | Piano-like | 3 Sine + 1 Triangle, Moderate FM (20-30%) | Neo-Soul |\n| Expressive Bass | Dynamic response | 2 Sine + 1 Saw, Moderate FM (25-35%) | Neo-Soul |\n| Organic Leads | Natural feel | 2 Sine + 2 Triangle, Mixed FM (20-30%) | Neo-Soul |\n\n#### Application Notes:\n- Sine and triangle waveforms for vintage key character\n- Moderate FM for expressiveness\n- Mixed waveforms for organic feel\n- Careful envelope shaping for expression\n\n#### Funky R&B Groove\n| Goal | Technique | Parameter Settings | Application |\n|------|-----------|-------------------|-------------|\n| Funk Bass | Punchy, rhythmic | 2 Square + 1 Saw, Fast envelopes, Moderate FM | Funky R&B |\n| Clavinet Emulation | Bright, percussive | 2 Square + 1 Saw, High ratios, Fast envelopes | Funky R&B |\n| Groove Enhancement | Rhythmic elements | 2 Square + 2 Saw, LFO modulation | Funky R&B |\n\n#### Application Notes:\n- Fast envelopes for punchy bass\n- Square and saw waveforms for bright harmonics\n- LFO modulation for rhythmic elements\n- Higher FM for complexity\n\n## Creative Goals\n\n### Atmosphere and Space\n| Goal | Technique | Parameter Settings | Application |\n|------|-----------|-------------------|-------------|\n| Ambient Pads | Evolving textures | 5 Sine, Slow envelopes, LFO modulation | Atmospheric |\n| Spatial Depth | Reverb/delay | 4 Sine, Built-in effects | All atmospheric |\n| Ethereal Quality | High harmonics | 4 Sine, Low FM (15-25%) | Ethereal R&B |\n\n#### Application Notes:\n- Slow envelopes for evolving textures\n- LFO modulation for movement\n- Built-in effects for spatial depth\n- Low FM for ethereal quality\n\n### Energy and Movement\n| Goal | Technique | Parameter Settings | Application |\n|------|-----------|-------------------|-------------|\n| Driving Energy | Complex harmonics | 2 Saw + 2 Square, High FM (50-70%) | Energetic |\n| Rhythmic Elements | LFO modulation | 2 Saw + 1 Square, LFO to parameters | All rhythmic |\n| Dynamic Variation | Modulation changes | 3 Saw + 1 Square, Automated parameters | Dynamic |\n\n#### Application Notes:\n- High FM modulation for driving energy\n- LFO modulation for rhythmic elements\n- Parameter automation for dynamic variation\n- Complex oscillator combinations for energy\n\n## Mastering Goals\n\n### Final Polish\n| Goal | Technique | Parameter Settings | Application |\n|------|-----------|-------------------|-------------|\n| Subtle Enhancement | Transparent | 2 Sine + 1 Triangle, Low FM (10-20%) | All genres |\n| Harmonic Addition | Gentle complexity | 2 Sine + 2 Triangle, Moderate FM (15-25%) | All genres |\n| Analog Character | Saturation emulation | 3 Sine, Built-in distortion (light) | Vintage |\n\n#### Application Notes:\n- Low FM modulation for transparent enhancement\n- Moderate settings for harmonic addition\n- Light built-in distortion for analog character\n- Conservative approach for mastering\n\n### Loudness Enhancement\n| Goal | Technique | Parameter Settings | Application |\n|------|-----------|-------------------|-------------|\n| Harmonic Saturation | Controlled distortion | 2 Saw + 1 Square, Built-in distortion (medium) | All genres |\n| Presence Addition | High-frequency content | 2 Saw + 2 Square, High-pass filtering | Contemporary |\n| Density Addition | Complex harmonics | 3 Saw + 1 Square, High FM (40-60%) | Dense mixes |\n\n#### Application Notes:\n- Controlled built-in distortion for saturation\n- Sawtooth harmonics for presence\n- High FM for density\n- Careful application to avoid artifacts\n\n## Advanced Goal-Oriented Techniques\n\n### Dynamic Application\n| Goal | Technique | Application |\n|------|-----------|-------------|\n| Punch | Sidechain to kick | Dynamic punch that ducks on kick |\n| Width | LFO modulation | Animated stereo width |\n| Movement | Automated parameters | Evolving textures |\n\n### Parallel Processing for Goals\n| Goal | Setup | Application |\n|------|-------|-------------|\n| Punch | 70% dry, 30% processed | Maintain transients while adding harmonics |\n| Width | 60% dry, 40% chorus-processed | Preserve center while adding width |\n| Character | 50% dry, 50% distorted | Blend original with character |\n\n### Automation for Dynamic Goals\n| Goal | Automation | Application |\n|------|------------|-------------|\n| Energy | Increase during choruses | Build energy throughout sections |\n| Intimacy | Decrease during verses | Create intimate moments |\n| Impact | Boost during drops | Emphasize impactful moments |\n\n## Troubleshooting Goal-Oriented Applications\n\n### Common Issues and Solutions\n| Goal | Issue | Solution |\n|------|-------|----------|\n| All | Harshness | Reduce FM modulation, use sine/triangle waveforms |\n| Punch | Loss of dynamics | Use parallel processing, lower settings |\n| Width | Phase issues | Check mono compatibility, adjust unison |\n| Warmth | Too cold/digital | Add subtle distortion, use warmer waveforms |\n\n## Success Metrics by Goal\n\n### Evaluation Criteria\n- [ ] The goal is achieved without artifacts\n- [ ] The enhancement matches the subgenre\n- [ ] Dynamics are maintained appropriately\n- [ ] The processing adds to rather than detracts from the music\n- [ ] The sound remains natural and musical\n\n## Integration with Goal-Oriented Chains\n\n### Pre-Toxic Processing\n- [ ] Apply goal-specific EQ\n- [ ] Use appropriate compression\n- [ ] Set proper gain staging\n\n### Post-Toxic Processing\n- [ ] Apply goal-specific effects\n- [ ] Final EQ adjustments if needed\n- [ ] Apply limiting if necessary\n\n---\n\n## Related Documentation\n- [FM Synthesis Fundamentals](../04-Reference/fm-synthesis-fundamentals.md)\n- [FM Matrix Logic](../01-Learning/Quick-Reference/toxic-matrix-logic.md)\n- [Hip-Hop Sub-Genre Workflows](../by-goal/hop-hop-subgenre-fm.md)\n- [R&B Sub-Genre Workflows](../by-goal/rnb-subgenre-toxic.md)\n\n---\n\n**Document Version:** 1.0\n**Last Updated:** 2026-02-03\n**Focus:** Goal-Oriented Applications\n**Plugin:** Toxic Biohazard",
+      "hop-hop-subgenre-fm": "# Hip-Hop Sub-Genre Toxic Biohazard Workflows\n\n## Moody Dark Trap Bell\n| Parameter | Setting |\n|-----------|---------|\n| Osc1 | Sine, Ratio 4.00 |\n| Osc2 | Sine, Ratio 8.00 |\n| Mod Matrix | Osc2 → Osc1, 15% |\n| Envelope | 5/400/0/200 |\n| Filter Cutoff | 6000Hz |\n| Resonance | 20% |\n\n### Tips\n- Metallic sound from high ratios\n- Short envelope for pluck\n- High filter for presence\n- Perfect for haunting melodies\n\n---\n\n## Upbeat Bouncy FM Lead\n| Parameter | Setting |\n|-----------|---------|\n| Osc1 | Saw, Ratio 1.00 |\n| Osc2 | Saw, Ratio 2.00 |\n| Osc3 | Square, Ratio 3.00 |\n| Mod Matrix | Osc2 → Osc1, 35% |\n| Envelope | 10/200/75/300 |\n| Filter Cutoff | 5000Hz |\n| Resonance | 30% |\n\n### Tips\n- Bright sound from saw waves\n- Ratios 1, 2, 3 for harmonics\n- Quick envelope for bounce\n- Perfect for hooks\n\n---\n\n## Electro FM Bass\n| Parameter | Setting |\n|-----------|---------|\n| Osc1 | Saw, Ratio 1.00 |\n| Osc2 | Sine, Ratio 0.50 |\n| Osc3 | Pulse, Ratio 1.50 |\n| Mod Matrix | Osc2 → Osc1, 60% |\n| Envelope | 5/150/70/200 |\n| Filter Cutoff | 3000Hz |\n| Resonance | 55% |\n\n### Tips\n- Growling character from modulation\n- Octave down for body\n- High resonance for intensity\n- Great for 808s\n\n---\n\n## Jazzy FM Keys\n| Parameter | Setting |\n|-----------|---------|\n| Osc1 | Sine, Ratio 1.00 |\n| Osc2 | Sine, Ratio 2.00 |\n| Osc3 | Sine, Ratio 3.00 |\n| Mod Matrix | Osc2 → Osc1, 10% |\n| Envelope | 50/500/70/800 |\n| Filter Cutoff | 3500Hz |\n| Resonance | 15% |\n\n### Tips\n- Warmth from sine waves\n- Low modulation for clarity\n- Smooth envelope for warmth\n- Perfect for soulful sounds\n\n---\n\n## Funky FM Bass\n| Parameter | Setting |\n|-----------|---------|\n| Osc1 | Saw, Ratio 1.00 |\n| Osc2 | Square, Ratio 1.50 |\n| Osc3 | Sine, Ratio 0.50 |\n| Mod Matrix | Osc2 → Osc1, 45% |\n| Envelope | 3/100/80/250 |\n| Filter Cutoff | 4000Hz |\n| Resonance | 40% |\n\n### Tips\n- Punchy from quick attack\n- Octave for body\n- LFO for funky wobble\n- Great for slap-style\n\n---\n\n## Energetic Drill FM\n| Parameter | Setting |\n|-----------|---------|\n| Osc1 | Saw, Ratio 1.00 |\n| Osc2 | Saw, Ratio 1.25 |\n| Osc3 | Pulse, Ratio 2.00 |\n| Mod Matrix | Osc2 → Osc1, 75% |\n| Envelope | 2/80/85/150 |\n| Filter Cutoff | 5500Hz |\n| Resonance | 60% |\n\n### Tips\n- Aggressive from high modulation\n- High resonance for harshness\n- Quick everything for intensity\n- Perfect for drill\n\n---\n\n## Related Documentation\n- [Toxic Biohazard Presets INDEX](./INDEX.md)\n- [Toxic Biohazard FM Archetypes](./fm-synthesis-archetypes.md)\n- [Toxic Biohazard Safety Rules](./rules/fm-gain-staging-rules.md)\n",
+      "INDEX": "# Toxic Biohazard Workflows INDEX\n\n## By-Goal Workflows\n\n| File | Focus |\n|------|-------|\n| [aggressive-fm-lead.md](aggressive-fm-lead.md) | Aggressive FM lead creation |\n| [aggressive-fm-growl.md](aggressive-fm-growl.md) | FM growl and growl bass |\n| [evolving-atmospheric-pad.md](evolving-atmospheric-pad.md) | Evolving pad creation |\n| [hop-hop-subgenre-fm.md](hop-hop-subgenre-fm.md) | Hip-Hop Sub-Genre FM Presets |\n\n## By-Instrument Workflows\n\n| File | Focus | Character |\n|------|-------|-----------|\n| [by-instrument/INDEX.md](by-instrument/INDEX.md) | Complete by-instrument guide | All instruments |\n| [by-instrument/bass-dark-trap.md](by-instrument/bass-dark-trap.md) | Dark Trap Bass | Moody, punchy |\n| [by-instrument/bass-aggressive-growl.md](by-instrument/bass-aggressive-growl.md) | Aggressive Growl Bass | Energetic, intense |\n| [by-instrument/lead-bright-fm.md](by-instrument/lead-bright-fm.md) | Bright FM Lead | Electric, energetic |\n| [by-instrument/lead-punchy-fm.md](by-instrument/lead-punchy-fm.md) | Punchy FM Lead | Funky, rhythmic |\n| [by-instrument/pad-warm-fm.md](by-instrument/pad-warm-fm.md) | Warm FM Pad | Smooth, moody |\n| [by-instrument/texture-metallic.md](by-instrument/texture-metallic.md) | Metallic Texture | Electric, modern |\n\n## Quick Reference\n\n| Goal | Workflow |\n|------|----------|\n| Aggressive lead | Aggressive FM Lead |\n| Growl bass | Aggressive FM Growl |\n| Atmospheric pad | Evolving Atmospheric Pad |\n| Dark trap | Hip-Hop Sub-Genre FM / Bass Workflows |\n| Bouncy lead | Hip-Hop Sub-Genre FM / Lead Workflows |\n| Electro bass | Hip-Hop Sub-Genre FM / Bass Workflows |\n| Jazzy keys | Hip-Hop Sub-Genre FM / Pad Workflows |\n| Funky bass | Hip-Hop Sub-Genre FM / Bass Workflows |\n| Drill FM | Hip-Hop Sub-Genre FM / Lead Workflows |\n\n## Related Documentation\n\n- [Toxic Biohazard Presets INDEX](../02-Data/presets/INDEX.md)\n- [FM Synthesis Archetypes](../02-Data/presets/fm-synthesis-archetypes.md)\n- [Toxic Biohazard Safety Rules](../02-Data/rules/fm-gain-staging-rules.md)\n",
+      "rnb-subgenre-toxic": "# R&B Sub-Genre Toxic Biohazard Workflows\n\n## Overview\nToxic Biohazard's hybrid FM/subtractive synthesis capabilities make it ideal for creating authentic R&B sounds across various subgenres. This document details how to configure Toxic Biohazard for characteristic R&B tones in different subgenres.\n\n## Moody R&B (Dark, Intimate)\n| Parameter | Setting | R&B Application |\n|-----------|---------|-----------------|\n| Oscillators | 2 Sine + 1 Saw | Warm, intimate tones |\n| Matrix | Sine 2 → Sine 1 (20%) | Subtle FM warmth |\n| Filter | LP, 2500Hz, 20% res | Warm, mellow character |\n| Envelope | 50/600/65/800 | Slow, sustained |\n| LFO | Depth 15%, Rate 0.8Hz | Gentle modulation |\n| Reverb Mix | 40% | Intimate space |\n\n### Tips for Moody R&B\n- Use sine waves for warmth and intimacy\n- Apply slow attack for smooth entry\n- Use moderate release for sustained notes\n- Perfect for ballad-style R&B\n\n### Oscillator Configuration\n- **Osc 1**: Sine, full volume\n- **Osc 2**: Sine, modulator, 20% into Osc 1\n- **Osc 3**: Saw, 30% volume\n- **Osc 4-6**: Off\n\n---\n\n## Upbeat R&B (Energetic, Danceable)\n| Parameter | Setting | R&B Application |\n|-----------|---------|-----------------|\n| Oscillators | 2 Saw + 2 Square + 1 Sine | Bright, full character |\n| Matrix | Square 2 → Saw 1 (35%), Sine 3 → Saw 1 (25%) | Rich harmonic content |\n| Filter | LP, 5000Hz, 30% res | Bright, present |\n| Envelope | 10/200/75/300 | Quick, punchy |\n| LFO | Depth 20%, Rate 1.2Hz | Movement and space |\n| Delay Mix | 30% | Rhythmic enhancement |\n\n### Tips for Upbeat R&B\n- Use saw and square waves for brightness\n- Apply moderate FM for richness\n- Quick attack for punchy character\n- Perfect for contemporary dance tracks\n\n### Oscillator Configuration\n- **Osc 1**: Saw, carrier, full volume\n- **Osc 2**: Square, modulator, 35% into Osc 1\n- **Osc 3**: Sine, modulator, 25% into Osc 1\n- **Osc 4**: Saw, carrier, 70% volume\n- **Osc 5**: Square, modulator, 20% into Osc 4\n- **Osc 6**: Sine, carrier, 40% volume\n\n---\n\n## Psychedelic R&B (Experimental, Atmospheric)\n| Parameter | Setting | R&B Application |\n|-----------|---------|-----------------|\n| Oscillators | All Sine with complex modulation | Ethereal textures |\n| Matrix | Complex inter-oscillator modulation | Evolving harmonics |\n| Filter | BP, 3500Hz, 40% res | Spatial enhancement |\n| Envelope | 100/500/80/1000 | Slow, evolving |\n| LFO | Depth 25%, Rate 0.5Hz | Atmospheric movement |\n| Reverb Mix | 50% | Expansive space |\n\n### Tips for Psychedelic R&B\n- Use complex oscillator modulation for evolving textures\n- Apply slow envelopes for atmospheric builds\n- High reverb for spatial depth\n- Perfect for experimental R&B tracks\n\n### Oscillator Configuration\n- **Osc 1**: Sine, carrier, full volume\n- **Osc 2**: Sine, modulator, 40% into Osc 1\n- **Osc 3**: Sine, modulator, 35% into Osc 2\n- **Osc 4**: Sine, modulator, 30% into Osc 1\n- **Osc 5**: Sine, modulator, 25% into Osc 3\n- **Osc 6**: Sine, modulator, 20% into Osc 4\n\n---\n\n## Electronic Bass R&B (Modern, Synthesized)\n| Parameter | Setting | R&B Application |\n|-----------|---------|-----------------|\n| Oscillators | 2 Saw + 1 Square + 1 Sine | Full bass spectrum |\n| Matrix | Square 2 → Saw 1 (40%), Sine 3 → Saw 1 (20%) | Harmonic saturation |\n| Filter | LP, 4000Hz, 50% res | Bass emphasis |\n| Envelope | 5/100/70/200 | Punchy attack |\n| LFO | Depth 18%, Rate 1.0Hz | Subtle movement |\n| Reverb Mix | 15% | Subtle space |\n\n### Tips for Electronic Bass R&B\n- Use rich harmonic content for full bass\n- Apply moderate FM for saturation\n- Quick attack for punchy bass hits\n- Perfect for modern R&B with electronic elements\n\n### Oscillator Configuration\n- **Osc 1**: Saw, carrier, full volume\n- **Osc 2**: Saw, carrier, 80% volume\n- **Osc 3**: Square, modulator, 40% into Osc 1\n- **Osc 4**: Sine, modulator, 20% into Osc 1\n- **Osc 5-6**: Off\n\n---\n\n## Jazzy R&B (Vintage, Soulful)\n| Parameter | Setting | R&B Application |\n|-----------|---------|-----------------|\n| Oscillators | 2 Sine + 2 Saw (Rhodes-style) | Vintage keyboard tones |\n| Matrix | Saw 2 → Sine 1 (25%), Saw 4 → Sine 3 (20%) | Vintage character |\n| Filter | LP, 3000Hz, 25% res | Warm, vintage character |\n| Envelope | 20/300/70/500 | Medium attack/release |\n| LFO | Depth 12%, Rate 0.7Hz | Vintage modulation |\n| Reverb Mix | 35% | Vintage room sound |\n\n### Tips for Jazzy R&B\n- Mimic vintage electric piano tones\n- Use moderate FM for vintage character\n- Apply warm filtering for classic sound\n- Perfect for neo-soul and jazzy R&B\n\n### Oscillator Configuration\n- **Osc 1**: Sine, carrier, full volume\n- **Osc 2**: Saw, modulator, 25% into Osc 1\n- **Osc 3**: Sine, carrier, 60% volume\n- **Osc 4**: Saw, modulator, 20% into Osc 3\n- **Osc 5-6**: Off\n\n---\n\n## Funky R&B (Groove-Heavy, Rhythmic)\n| Parameter | Setting | R&B Application |\n|-----------|---------|-----------------|\n| Oscillators | 2 Square + 2 Saw + 1 Sine | Punchy, rhythmic tones |\n| Matrix | Saw 2 → Square 1 (30%), Sine 5 → Saw 4 (20%) | Rhythmic character |\n| Filter | LP, 4500Hz, 35% res | Presence enhancement |\n| Envelope | 3/150/75/250 | Quick, punchy |\n| LFO | Depth 22%, Rate 1.5Hz | Rhythmic enhancement |\n| Delay Mix | 35% | Groove enhancement |\n\n### Tips for Funky R&B\n- Use square waves for punchy character\n- Apply quick envelopes for rhythmic precision\n- Moderate delay for groove enhancement\n- Perfect for funk-influenced R&B\n\n### Oscillator Configuration\n- **Osc 1**: Square, carrier, full volume\n- **Osc 2**: Saw, modulator, 30% into Osc 1\n- **Osc 3**: Square, carrier, 70% volume\n- **Osc 4**: Saw, modulator, 25% into Osc 3\n- **Osc 5**: Sine, modulator, 20% into Osc 4\n- **Osc 6**: Off\n\n---\n\n## Additional R&B Subgenres\n\n### Soulful R&B (Classic, Emotional)\n| Parameter | Setting | Application |\n|-----------|---------|-------------|\n| Oscillators | 3 Sine + 2 Saw | Warm, emotional tones |\n| Matrix | Moderate FM ratios | Vintage character |\n| Filter | LP, 2800Hz, 22% res | Classic soul warmth |\n| Envelope | 30/400/70/600 | Smooth, sustained |\n\n### Smooth R&B (Polished, Radio-Friendly)\n| Parameter | Setting | Application |\n|-----------|---------|-------------|\n| Oscillators | 2 Sine + 2 Saw + 1 Square | Balanced tones |\n| Matrix | Gentle FM modulation | Polished sound |\n| Filter | LP, 3800Hz, 28% res | Balanced presence |\n| Envelope | 15/250/75/400 | Professional feel |\n\n### Neo-Soul R&B (Modern Vintage)\n| Parameter | Setting | Application |\n|-----------|---------|-------------|\n| Oscillators | 4 Sine + 1 Saw | Organic, vintage tones |\n| Matrix | Subtle FM ratios | Natural feel |\n| Filter | LP, 3200Hz, 24% res | Vintage warmth |\n| Envelope | 25/350/72/550 | Organic response |\n\n## Integration with R&B Production Chain\n\n### Pre-Toxic Processing\n- [ ] Apply gentle EQ to shape tone\n- [ ] Use compression for consistency\n- [ ] Set appropriate gain staging\n\n### Post-Toxic Processing\n- [ ] Add reverb for space\n- [ ] Apply subtle delay for depth\n- [ ] Final EQ adjustments if needed\n\n## Troubleshooting Common Issues\n\n### Harsh High Frequencies\n- [ ] Reduce filter cutoff frequency\n- [ ] Lower resonance\n- [ ] Reduce FM modulation\n- [ ] Apply high-frequency roll-off after\n\n### Muddy Low-End\n- [ ] Increase filter cutoff frequency\n- [ ] Reduce low-frequency FM\n- [ ] Apply high-pass filtering\n- [ ] Check for frequency buildup\n\n### Loss of Clarity\n- [ ] Reduce FM modulation\n- [ ] Use fewer oscillators\n- [ ] Apply EQ after Toxic\n- [ ] Lower LFO depth\n\n## Expert Tips for R&B Production\n\n### Creative Applications\n- Use FM matrix for evolving textures\n- Apply different envelopes to different oscillators\n- Create vintage sounds with proper FM ratios\n- Experiment with oscillator sync\n\n### Performance Optimization\n- Use fewer oscillators for CPU efficiency\n- Freeze tracks when possible\n- Use Toxic in multi-timbral mode\n- Apply to multiple instruments efficiently\n\n## Success Metrics\n\nYour R&B Toxic Biohazard application is successful when:\n- [ ] The sound matches the intended subgenre character\n- [ ] The tone is appropriate for R&B\n- [ ] The sound sits well in the mix\n- [ ] The harmonic content is rich but not harsh\n- [ ] The processing adds to rather than detracts from the emotion\n\n---\n\n## Related Documentation\n- [Toxic Biohazard Presets INDEX](../02-Data/presets/INDEX.md)\n- [FM Synthesis Fundamentals](../04-Reference/fm-synthesis-fundamentals.md)\n- [FM Matrix Logic](../01-Learning/Quick-Reference/toxic-matrix-logic.md)\n\n---\n\n**Document Version:** 1.0  \n**Last Updated:** 2026-02-03  \n**Genre Focus:** R&B (Rhythm and Blues)  \n**Plugin:** Toxic Biohazard"
+    },
+    "by-instrument": {
+      "bass-workflows": "# Toxic Biohazard - Bass Workflows\n\n## Overview\nToxic Biohazard excels at creating powerful, genre-defining bass sounds through its FM synthesis engine. This workflow focuses on crafting bass sounds specifically for hip-hop, trap, and EDM production.\n\n## Workflow 1: Trap Sub-Bass\n\n### Configuration\n- **Algorithm**: 1-Operator (simple sub-bass)\n- **Operator A**: Sine wave, fixed frequency 40-60 Hz\n- **FM Level**: 0 (clean sub-bass)\n- **Envelope**: Fast attack, moderate decay, no sustain, short release\n- **Effects**: Distortion (subtle drive), EQ (boost 60-80 Hz)\n\n### Steps\n1. Set Algorithm to 1-Operator\n2. Configure Operator A with sine wave\n3. Set fixed frequency to 40-60 Hz for sub-bass\n4. Adjust FM Level to 0 for clean tone\n5. Create envelope: 5ms attack, 200ms decay, 0 sustain, 100ms release\n6. Add subtle distortion (10-20% drive)\n7. Apply EQ boost at 60-80 Hz\n8. Test in context with kick drum\n\n### Tips\n- Use fixed frequency for consistent sub-bass\n- Keep FM Level low to avoid unwanted harmonics\n- Layer with higher octave for presence\n- Sidechain with kick for pumping effect\n\n### Troubleshooting\n- **Muddy Mix**: Cut frequencies below 40 Hz\n- **Weak Impact**: Increase distortion slightly\n- **Tuning Issues**: Verify fixed frequency settings\n\n## Workflow 2: 808-Style Bass\n\n### Configuration\n- **Algorithm**: 2-Operator (carrier + modulator)\n- **Operator A**: Sine wave, ratio 1.0, level 80%\n- **Operator B**: Sine wave, ratio 2.0, FM Level 50%\n- **Envelope**: Fast attack, long decay, no sustain, moderate release\n- **Effects**: Saturation, compression\n\n### Steps\n1. Select Algorithm 2-Operator\n2. Set Operator A: sine, ratio 1.0, level 80%\n3. Set Operator B: sine, ratio 2.0, FM Level 50%\n4. Create envelope: 1ms attack, 800ms decay, 0 sustain, 300ms release\n5. Add saturation for harmonic content\n6. Apply compression for sustain\n7. Tune to key of track\n8. Test with different note lengths\n\n### Tips\n- Ratio 2.0 creates octave above fundamental\n- Long decay creates 808-style sustain\n- Use glide for pitch slides\n- Layer with kick for massive low end\n\n### Troubleshooting\n- **Harsh Top End**: Reduce Operator B level\n- **Weak Sub**: Increase Operator A level\n- **Tuning Problems**: Check ratio settings\n\n## Workflow 3: Mid-Range Bass\n\n### Configuration\n- **Algorithm**: 3-Operator (complex FM)\n- **Operator A**: Sine wave, ratio 1.0, level 70%\n- **Operator B**: Sine wave, ratio 3.0, FM Level 40%\n- **Operator C**: Sine wave, ratio 5.0, FM Level 30%\n- **Envelope**: Moderate attack, moderate decay, low sustain, short release\n- **Effects**: EQ, saturation\n\n### Steps\n1. Choose Algorithm 3-Operator\n2. Configure Operator A: sine, ratio 1.0, level 70%\n3. Configure Operator B: sine, ratio 3.0, FM Level 40%\n4. Configure Operator C: sine, ratio 5.0, FM Level 30%\n5. Create envelope: 10ms attack, 300ms decay, 30% sustain, 150ms release\n6. Apply EQ to carve mid-range\n7. Add saturation for presence\n8. Test in mix context\n\n### Tips\n- Higher ratios create harmonic complexity\n- Multiple modulators add character\n- Use EQ to avoid frequency conflicts\n- Layer with other bass elements\n\n### Troubleshooting\n- **Frequency Clashes**: Use EQ to separate frequencies\n- **Thin Sound**: Increase modulator levels\n- **Overpowering**: Reduce overall level\n\n## Workflow 4: FM Bass with Grit\n\n### Configuration\n- **Algorithm**: 4-Operator (parallel carriers)\n- **Operator A**: Sine wave, ratio 1.0, level 50%\n- **Operator B**: Triangle wave, ratio 1.5, FM Level 60%\n- **Operator C**: Sawtooth wave, ratio 2.0, FM Level 50%\n- **Operator D**: Sine wave, ratio 3.0, FM Level 40%\n- **Effects**: Distortion, compression, EQ\n\n### Steps\n1. Select Algorithm 4-Operator\n2. Set Operator A: sine, ratio 1.0, level 50%\n3. Set Operator B: triangle, ratio 1.5, FM Level 60%\n4. Set Operator C: sawtooth, ratio 2.0, FM Level 50%\n5. Set Operator D: sine, ratio 3.0, FM Level 40%\n6. Add distortion for grit\n7. Apply compression for consistency\n8. Use EQ to shape frequency response\n\n### Tips\n- Different waveforms create unique character\n- Higher ratios add upper harmonics\n- Distortion enhances FM complexity\n- Use compression for consistent level\n\n### Troubleshooting\n- **Too Harsh**: Reduce FM Levels\n- **Lack of Definition**: Increase Operator A level\n- **Frequency Buildup**: Apply surgical EQ\n\n## Workflow 5: Bass with Movement\n\n### Configuration\n- **Algorithm**: 5-Operator (complex with feedback)\n- **Operator A**: Sine wave, ratio 1.0, level 60%\n- **Operator B**: Sine wave, ratio 2.0, FM Level 50%\n- **Operator C**: Sine wave, ratio 3.0, FM Level 40%\n- **Operator D**: Sine wave, ratio 4.0, FM Level 30%\n- **Operator E**: Sine wave, ratio 5.0, FM Level 20%\n- **LFO**: Slow rate, moderate depth, routing to FM Level\n- **Effects**: Chorus, delay\n\n### Steps\n1. Choose Algorithm 5-Operator\n2. Configure all operators with increasing ratios\n3. Set moderate FM Levels for each operator\n4. Configure LFO: slow rate (0.5 Hz), moderate depth\n5. Route LFO to overall FM Level\n6. Add chorus for width\n7. Apply delay for space\n8. Automate parameters for movement\n\n### Tips\n- Multiple operators create evolving textures\n- LFO adds movement and interest\n- Chorus widens the stereo image\n- Automate parameters for dynamic changes\n\n### Troubleshooting\n- **Too Busy**: Simplify operator configuration\n- **Phase Issues**: Check operator phase settings\n- **CPU Heavy**: Reduce polyphony or effects\n\n## Workflow 6: Bass for Different Genres\n\n### Trap Bass\n- **Focus**: Sub-bass with grit\n- **Settings**: Fixed frequency, moderate FM, distortion\n- **Processing**: Heavy compression, sidechain\n\n### Hip-Hop Bass\n- **Focus**: Warm, round low end\n- **Settings**: Ratio-based, moderate FM, saturation\n- **Processing**: Gentle compression, EQ\n\n### EDM Bass\n- **Focus**: Aggressive, cutting presence\n- **Settings**: Complex FM, multiple operators, effects\n- **Processing**: Heavy processing, stereo widening\n\n### R&B Bass\n- **Focus**: Smooth, melodic low end\n- **Settings**: Simple FM, moderate modulation, glide\n- **Processing**: Subtle compression, warmth\n\n## Advanced Techniques\n\n### Layering\n- Layer Toxic Biohazard with other bass sources\n- Use different frequency ranges\n- Process layers separately then combine\n\n### Automation\n- Automate FM Levels for movement\n- Modulate filter cutoff for expression\n- Use velocity to control modulation depth\n\n### Effects Integration\n- Use distortion for harmonic enhancement\n- Apply compression for consistency\n- Add spatial effects for width\n\n## Integration with Mix\n\n### Frequency Management\n- Use EQ to carve space in mix\n- Avoid frequency conflicts with kick\n- Create frequency separation with other bass elements\n\n### Level Balancing\n- Set appropriate levels for context\n- Use compression for consistent volume\n- Apply limiting if necessary\n\n### Stereo Imaging\n- Keep sub-bass mono\n- Widen mid-range elements\n- Use stereo effects appropriately\n\n## Performance Considerations\n\n### CPU Usage\n- Monitor plugin load in complex projects\n- Use freeze/flatten when appropriate\n- Optimize algorithm complexity for performance\n\n### Real-Time Control\n- Map modulation to MIDI controllers\n- Use automation for evolving sounds\n- Create performance patches for live playing\n\n## Conclusion\nToxic Biohazard's FM synthesis engine provides unparalleled control over bass sound design. By understanding FM principles and applying these workflows, producers can create professional-quality bass sounds that define their tracks and stand out in modern hip-hop and electronic music production.",
+      "fm-bass-workflow": "# FM Bass Synthesis for R&B with Toxic Biohazard\n\n## Overview\nToxic Biohazard's hybrid FM/subtractive synthesis capabilities make it excellent for creating authentic FM bass sounds for R&B music. This document details how to configure Toxic Biohazard for characteristic bass tones that define the genre's groove and feel.\n\n## Pre-Processing Chain Setup\n\n### Standard FM Bass Chain\n| Plugin | Purpose | Setting Range |\n|--------|---------|---------------|\n| EQ | Tone shaping | High-pass 40Hz, low-pass 300Hz |\n| Compression | Consistency | 4:1 ratio, fast attack/release |\n| Saturation | Harmonic content | Subtle drive |\n| Toxic Biohazard | Sound generation | FM synthesis configuration |\n\n## Classic Funk Bass\n\n### Basic Funk Bass Configuration\n| Parameter | Setting | Application |\n|-----------|---------|-------------|\n| Oscillators | 2 Square + 2 Saw | Classic funk tone |\n| Matrix | Saw 2 → Square 1 (30%), Saw 4 → Square 3 (25%) | Rich harmonic content |\n| Filter | LP, 4000Hz, 45% res | Bright, punchy |\n| Envelope | 3/100/75/200 | Quick, punchy |\n| LFO | Depth 18%, Rate 1.0Hz | Subtle movement |\n| Reverb Mix | 10% | Subtle space |\n\n#### Oscillator Configuration\n- **Osc 1**: Square, carrier, full volume\n- **Osc 2**: Saw, modulator, 30% into Osc 1\n- **Osc 3**: Square, carrier, 70% volume\n- **Osc 4**: Saw, modulator, 25% into Osc 3\n- **Osc 5-6**: Off\n\n#### Application Details\n- Perfect for classic funk-influenced R&B\n- Creates punchy, rhythmic bass tone\n- Works well for syncopated patterns\n- Maintains classic funk character\n\n### Slap Bass Simulation\n| Parameter | Setting | Application |\n|-----------|---------|-------------|\n| Oscillators | 2 Square + 1 Saw + 1 Sine | Slap bass tone |\n| Matrix | Saw 2 → Square 1 (35%), Sine 3 → Square 1 (20%) | Rich harmonic content |\n| Filter | HP, 5000Hz, 50% res | Bright, percussive |\n| Envelope | 1/80/80/150 | Sharp attack |\n| LFO | Depth 22%, Rate 1.5Hz | Percussive shimmer |\n| Reverb Mix | 5% | Minimal space |\n\n## Modern R&B Bass\n\n### Contemporary Bass Configuration\n| Parameter | Setting | Application |\n|-----------|---------|-------------|\n| Oscillators | 2 Saw + 1 Square + 1 Sine | Modern bass tone |\n| Matrix | Square 2 → Saw 1 (35%), Sine 3 → Saw 1 (20%) | Rich harmonic content |\n| Filter | LP, 4500Hz, 40% res | Balanced presence |\n| Envelope | 5/150/70/300 | Balanced response |\n| LFO | Depth 15%, Rate 0.8Hz | Subtle movement |\n| Reverb Mix | 15% | Subtle space |\n\n#### Oscillator Configuration\n- **Osc 1**: Saw, carrier, full volume\n- **Osc 2**: Square, modulator, 35% into Osc 1\n- **Osc 3**: Sine, modulator, 20% into Osc 1\n- **Osc 4**: Saw, carrier, 60% volume\n- **Osc 5**: Square, modulator, 20% into Osc 4\n- **Osc 6**: Off\n\n#### Application Details\n- Perfect for contemporary R&B\n- Creates full, modern bass tone\n- Works well for melodic bass lines\n- Maintains modern R&B character\n\n### Sub-Bass Configuration\n| Parameter | Setting | Application |\n|-----------|---------|-------------|\n| Oscillators | 1 Saw + 1 Square | Deep bass tone |\n| Matrix | Square 2 → Saw 1 (25%) | Subtle harmonic content |\n| Filter | LP, 2000Hz, 30% res | Low-end focus |\n| Envelope | 10/200/65/400 | Smooth response |\n| LFO | Depth 10%, Rate 0.5Hz | Gentle movement |\n| Reverb Mix | 5% | Minimal space |\n\n## Vintage R&B Bass\n\n### Vintage Bass Configuration\n| Parameter | Setting | Application |\n|-----------|---------|-------------|\n| Oscillators | 3 Sine + 1 Saw | Vintage tone |\n| Matrix | Sine 2 → Sine 1 (25%), Sine 3 → Sine 1 (20%) | Vintage character |\n| Filter | LP, 3500Hz, 25% res | Warm, full |\n| Envelope | 15/250/70/350 | Smooth response |\n| LFO | Depth 12%, Rate 0.6Hz | Vintage modulation |\n| Reverb Mix | 20% | Vintage room |\n\n#### Oscillator Configuration\n- **Osc 1**: Sine, carrier, full volume\n- **Osc 2**: Sine, modulator, 25% into Osc 1\n- **Osc 3**: Sine, modulator, 20% into Osc 1\n- **Osc 4**: Saw, carrier, 40% volume\n- **Osc 5-6**: Off\n\n#### Application Details\n- Perfect for classic soul and R&B\n- Creates warm, vintage bass tone\n- Works well for walking bass lines\n- Maintains classic R&B character\n\n### Moog-Style Bass\n| Parameter | Setting | Application |\n|-----------|---------|-------------|\n| Oscillators | 2 Square + 1 Sine | Moog-like tone |\n| Matrix | Sine 3 → Square 1 (30%), Sine 3 → Square 2 (25%) | Analog character |\n| Filter | LP, 3800Hz, 55% res | Warm, analog |\n| Envelope | 8/180/72/280 | Analog response |\n| LFO | Depth 16%, Rate 0.7Hz | Analog modulation |\n| Reverb Mix | 15% | Analog room |\n\n## Subgenre-Specific Applications\n\n### Funky R&B Bass\n| Element | Configuration | Application |\n|---------|---------------|-------------|\n| Tone | Slap bass simulation | Funky character |\n| Articulation | Sharp envelope | Rhythmic precision |\n| Effects | Subtle delay | Groove enhancement |\n\n### Neo-Soul Bass\n| Element | Configuration | Application |\n|---------|---------------|-------------|\n| Tone | Vintage bass | Organic character |\n| Articulation | Smooth envelope | Smooth feel |\n| Effects | Reverb + Chorus | Vintage character |\n\n### Contemporary R&B Bass\n| Element | Configuration | Application |\n|---------|---------------|-------------|\n| Tone | Modern bass | Polished sound |\n| Articulation | Balanced envelope | Professional feel |\n| Effects | EQ + Compression | Radio-ready |\n\n## Advanced Techniques\n\n### Dynamic Performance\n| Technique | Setup | Application |\n|-----------|-------|-------------|\n| Velocity Sensitivity | Adjust amplitude envelopes | Expressive playing |\n| Aftertouch | Modulate filter cutoff | Dynamic expression |\n| Pitch Bend | Fine adjustment | Expressive bends |\n\n### Multi-Layer Bass\n| Layer | Configuration | Application |\n|-------|---------------|-------------|\n| Fundamental | Sub-bass configuration | Low-end foundation |\n| Harmonics | Funk bass configuration | Mid-range character |\n| Blend | Volume balancing | Rich texture |\n\n## Integration with R&B Effects Chain\n\n### Pre-Toxic Processing\n- [ ] Apply high-pass filter (30-40Hz)\n- [ ] Use EQ to shape tone\n- [ ] Apply compression for consistency\n- [ ] Set appropriate gain staging\n\n### Post-Toxic Processing\n- [ ] Apply multiband compression if needed\n- [ ] Add subtle stereo enhancement\n- [ ] Use saturation for additional harmonics\n- [ ] Final EQ adjustments if needed\n\n## Troubleshooting Common Issues\n\n### Over-Saturation\n- [ ] Reduce FM modulation\n- [ ] Lower resonance\n- [ ] Use fewer oscillators\n- [ ] Apply EQ after Toxic\n\n### Loss of Low-End Definition\n- [ ] Increase filter cutoff frequency\n- [ ] Reduce high-frequency FM\n- [ ] Apply high-pass filtering\n- [ ] Check for frequency buildup\n\n### Harsh Mid-Range\n- [ ] Reduce resonance\n- [ ] Lower FM modulation\n- [ ] Apply mid-range cut after\n- [ ] Reduce LFO depth\n\n## Expert Tips for Funky R&B Bass\n\n### Creative Applications\n- Use FM matrix for evolving textures\n- Apply different envelopes to different oscillators\n- Create vintage sounds with proper FM ratios\n- Experiment with oscillator sync\n\n### Performance Techniques\n- Use velocity for dynamic expression\n- Apply aftertouch for subtle modulation\n- Use pitch bend for expressive playing\n- Layer different sounds for complexity\n\n### Genre-Specific Considerations\n- Funky R&B: Prioritize rhythmic precision\n- Neo-Soul: Emphasize organic feel\n- Contemporary R&B: Maintain polished sound\n- Vintage R&B: Focus on authentic character\n\n## Frequency-Specific Applications\n\n### Sub-Bass Enhancement (20-80Hz)\n- Use simple oscillator configuration\n- Focus on fundamental frequencies\n- Apply sparingly to avoid muddiness\n- Create solid foundation\n\n### Low-Mid Enhancement (80-250Hz)\n- Use vintage oscillator configuration\n- Perfect for warmth and body\n- Creates the classic \"full\" bass sound\n- Essential for R&B foundation\n\n### Mid-Range Enhancement (250Hz-2kHz)\n- Use funk oscillator configuration\n- Enhances note clarity\n- Helps bass cut through dense mixes\n- Critical for rhythmic precision\n\n### High-Mid Enhancement (2-5kHz)\n- Use modern oscillator configuration\n- Adds definition to bass notes\n- Helps with note recognition\n- Important for contemporary R&B\n\n## Success Metrics\n\nYour FM bass processing is successful when:\n- [ ] The bass sits well in the mix\n- [ ] Low-end foundation is maintained\n- [ ] The enhancement matches the subgenre\n- [ ] Dynamics are maintained appropriately\n- [ ] The processing adds character without artifacts\n\n## Comparison with Traditional Funky Bass\n\n### Traditional Approach\n- Vintage bass synthesizers\n- Analog preamps and compressors\n- Tape compression and saturation\n\n### Modern Approach with Toxic Biohazard\n- Authentic FM synthesis\n- Consistent results across sessions\n- CPU-efficient processing\n- Reproducible settings\n\nBoth approaches can be combined for the best of both worlds.\n\n---\n\n## Related Documentation\n- [Toxic Biohazard Presets INDEX](../02-Data/presets/INDEX.md)\n- [R&B Sub-Genre Workflows](./rnb-subgenre-toxic.md)\n- [FM Keys Workflow](./fm-keys-workflow.md)\n- [FM Synthesis Fundamentals](../04-Reference/fm-synthesis-fundamentals.md)\n\n---\n\n**Document Version:** 1.0  \n**Last Updated:** 2026-02-03  \n**Focus:** FM Bass Synthesis for R&B  \n**Plugin:** Toxic Biohazard",
+      "fm-keys-workflow": "# FM Keys for R&B with Toxic Biohazard\n\n## Overview\nToxic Biohazard's hybrid FM/subtractive synthesis capabilities make it excellent for creating authentic jazzy FM keys for R&B music. This document details how to configure Toxic Biohazard for characteristic FM keyboard tones that define the genre.\n\n## Pre-Processing Chain Setup\n\n### Standard FM Keys Chain\n| Plugin | Purpose | Setting Range |\n|--------|---------|---------------|\n| EQ | Tone shaping | High-pass 80Hz, presence boost 3-5kHz |\n| Compression | Consistency | 3:1 ratio, medium attack/release |\n| Chorus | Width enhancement | Subtle modulation |\n| Toxic Biohazard | Sound generation | FM synthesis configuration |\n\n## Rhodes-Style Electric Piano\n\n### Basic Rhodes Configuration\n| Parameter | Setting | Application |\n|-----------|---------|-------------|\n| Oscillators | 2 Sine + 2 Saw | Classic Rhodes tone |\n| Matrix | Saw 2 → Sine 1 (25%), Saw 4 → Sine 3 (20%) | Vintage character |\n| Filter | LP, 3000Hz, 25% res | Warm, vintage character |\n| Envelope | 10/200/70/500 | Medium attack/release |\n| LFO | Depth 15%, Rate 0.8Hz | Subtle modulation |\n| Reverb Mix | 35% | Vintage room sound |\n\n#### Oscillator Configuration\n- **Osc 1**: Sine, carrier, full volume\n- **Osc 2**: Saw, modulator, 25% into Osc 1\n- **Osc 3**: Sine, carrier, 60% volume\n- **Osc 4**: Saw, modulator, 20% into Osc 3\n- **Osc 5-6**: Off\n\n#### Application Details\n- Perfect for neo-soul and jazzy R&B\n- Creates authentic vintage electric piano tone\n- Works well for chord comping and melodic lines\n- Maintains classic Rhodes character\n\n### Bright Rhodes Configuration\n| Parameter | Setting | Application |\n|-----------|---------|-------------|\n| Oscillators | 2 Sine + 2 Saw + 1 Square | Brighter tone |\n| Matrix | Saw 2 → Sine 1 (30%), Square 5 → Saw 4 (25%) | Rich harmonic content |\n| Filter | LP, 4000Hz, 30% res | Bright, present |\n| Envelope | 5/150/75/400 | Quick attack |\n| LFO | Depth 18%, Rate 1.0Hz | Enhanced modulation |\n| Reverb Mix | 30% | Bright room |\n\n## Wurlitzer-Style Electric Piano\n\n### Basic Wurlitzer Configuration\n| Parameter | Setting | Application |\n|-----------|---------|-------------|\n| Oscillators | 3 Sine + 1 Square | Classic Wurlitzer tone |\n| Matrix | Sine 2 → Sine 1 (30%), Sine 3 → Sine 1 (25%) | Vintage character |\n| Filter | BP, 3500Hz, 35% res | Bright, bell-like |\n| Envelope | 8/100/72/300 | Quick attack |\n| LFO | Depth 20%, Rate 1.2Hz | Bell-like shimmer |\n| Reverb Mix | 40% | Bright hall |\n\n#### Oscillator Configuration\n- **Osc 1**: Sine, carrier, full volume\n- **Osc 2**: Sine, modulator, 30% into Osc 1\n- **Osc 3**: Sine, modulator, 25% into Osc 1\n- **Osc 4**: Square, carrier, 40% volume\n- **Osc 5-6**: Off\n\n#### Application Details\n- Perfect for funk-influenced R&B\n- Creates bright, bell-like electric piano tone\n- Works well for rhythmic comping\n- Maintains classic Wurlitzer character\n\n## Hammond-Style Organ\n\n### Basic Hammond Configuration\n| Parameter | Setting | Application |\n|-----------|---------|-------------|\n| Oscillators | 4 Sine + 1 Saw | Classic organ tone |\n| Matrix | Sine 2 → Sine 1 (20%), Sine 3 → Sine 1 (18%), Sine 4 → Sine 1 (15%) | Vintage character |\n| Filter | LP, 2800Hz, 20% res | Warm, full |\n| Envelope | 5/100/75/200 | Quick response |\n| LFO | Depth 12%, Rate 0.6Hz | Subtle modulation |\n| Reverb Mix | 30% | Vintage room |\n\n#### Oscillator Configuration\n- **Osc 1**: Sine, carrier, full volume\n- **Osc 2**: Sine, modulator, 20% into Osc 1\n- **Osc 3**: Sine, modulator, 18% into Osc 1\n- **Osc 4**: Sine, modulator, 15% into Osc 1\n- **Osc 5**: Saw, carrier, 30% volume\n- **Osc 6**: Off\n\n#### Application Details\n- Perfect for gospel-influenced R&B\n- Creates authentic Hammond organ tone\n- Works well with drawbar simulation\n- Maintains classic organ character\n\n### Drawbar Organ Configuration\n| Parameter | Setting | Application |\n|-----------|---------|-------------|\n| Oscillators | 6 Sine (complex) | Drawbar simulation |\n| Matrix | Complex inter-oscillator modulation | Rich harmonic content |\n| Filter | LP, 3200Hz, 25% res | Balanced tone |\n| Envelope | 3/80/78/150 | Responsive attack |\n| LFO | Depth 16%, Rate 0.9Hz | Drawbar character |\n| Reverb Mix | 35% | Rotary speaker simulation |\n\n## Jazz Piano Simulation\n\n### Acoustic Piano Emulation\n| Parameter | Setting | Application |\n|-----------|---------|-------------|\n| Oscillators | 3 Sine + 2 Saw | Piano-like harmonics |\n| Matrix | Saw 2 → Sine 1 (25%), Saw 4 → Sine 3 (20%) | Piano character |\n| Filter | LP, 4500Hz, 30% res | Bright, articulate |\n| Envelope | 2/50/80/100 | Quick, articulate |\n| LFO | Depth 10%, Rate 0.5Hz | Subtle movement |\n| Reverb Mix | 45% | Concert hall |\n\n#### Oscillator Configuration\n- **Osc 1**: Sine, carrier, full volume\n- **Osc 2**: Saw, modulator, 25% into Osc 1\n- **Osc 3**: Sine, carrier, 70% volume\n- **Osc 4**: Saw, modulator, 20% into Osc 3\n- **Osc 5**: Sine, modulator, 10% into Osc 1\n- **Osc 6**: Off\n\n#### Application Details\n- Perfect for sophisticated R&B\n- Creates piano-like articulation\n- Works well for complex chord voicings\n- Maintains acoustic piano character\n\n## Subgenre-Specific Applications\n\n### Neo-Soul Keys\n| Element | Configuration | Application |\n|---------|---------------|-------------|\n| Electric Piano | Rhodes-style, warm | Classic neo-soul sound |\n| Organ | Hammond-style, subtle | Gospel influence |\n| Effects | Reverb + Chorus | Vintage character |\n\n### Funky R&B Keys\n| Element | Configuration | Application |\n|---------|---------------|-------------|\n| Electric Piano | Wurlitzer-style, bright | Funky character |\n| Organ | Drawbar simulation | Rhythmic playing |\n| Effects | Wah + Drive | Funky texture |\n\n### Smooth R&B Keys\n| Element | Configuration | Application |\n|---------|---------------|-------------|\n| Electric Piano | Bright Rhodes | Polished sound |\n| Organ | Basic Hammond | Clean foundation |\n| Effects | Reverb only | Smooth character |\n\n## Advanced Techniques\n\n### Dynamic Performance\n| Technique | Setup | Application |\n|-----------|-------|-------------|\n| Velocity Sensitivity | Adjust amplitude envelopes | Expressive playing |\n| Aftertouch | Modulate filter cutoff | Dynamic expression |\n| Pitch Bend | Fine adjustment | Expressive bends |\n\n### Multi-Timbral Setup\n| Layer | Configuration | Application |\n|-------|---------------|-------------|\n| Upper Layer | Bright Rhodes | Melodic lines |\n| Lower Layer | Hammond Organ | Foundation |\n| Blend | Volume balancing | Rich texture |\n\n## Integration with R&B Effects Chain\n\n### Pre-Toxic Processing\n- [ ] Apply high-pass filter (80-100Hz)\n- [ ] Use gentle EQ to shape tone\n- [ ] Apply compression for consistency\n- [ ] Set appropriate gain staging\n\n### Post-Toxic Processing\n- [ ] Add reverb for space (Hall/Room)\n- [ ] Apply chorus for width\n- [ ] Use rotary speaker simulation for organ\n- [ ] Final EQ adjustments if needed\n\n## Troubleshooting Common Issues\n\n### Harsh High Frequencies\n- [ ] Reduce filter cutoff frequency\n- [ ] Lower resonance\n- [ ] Reduce FM modulation\n- [ ] Apply high-frequency roll-off after\n\n### Lack of Character\n- [ ] Increase FM modulation\n- [ ] Add more oscillators\n- [ ] Apply appropriate LFO settings\n- [ ] Increase LFO depth\n\n### Muddy Mid-Range\n- [ ] Increase filter cutoff frequency\n- [ ] Reduce mid-frequency FM\n- [ ] Apply EQ after Toxic\n- [ ] Check for frequency buildup\n\n## Expert Tips for Jazzy R&B Keys\n\n### Creative Applications\n- Use FM matrix for evolving textures\n- Apply different envelopes to different oscillators\n- Create vintage sounds with proper FM ratios\n- Experiment with oscillator sync\n\n### Performance Techniques\n- Use velocity for dynamic expression\n- Apply aftertouch for subtle modulation\n- Use pitch bend for expressive playing\n- Layer different sounds for complexity\n\n### Genre-Specific Considerations\n- Neo-Soul: Prioritize vintage character\n- Funky R&B: Emphasize rhythmic elements\n- Smooth R&B: Maintain polished sound\n- Jazz-influenced: Focus on harmonic richness\n\n## Success Metrics\n\nYour FM keys processing is successful when:\n- [ ] The sound resembles authentic vintage keyboards\n- [ ] The tone fits the R&B subgenre\n- [ ] The sound sits well in the mix\n- [ ] The harmonic content is rich but not harsh\n- [ ] The processing adds character without artifacts\n\n## Comparison with Traditional Jazzy Keys\n\n### Traditional Approach\n- Vintage electric pianos and organs\n- Analog preamps and compressors\n- Tape echo and spring reverb\n\n### Modern Approach with Toxic Biohazard\n- Authentic FM synthesis\n- Consistent results across sessions\n- CPU-efficient processing\n- Reproducible settings\n\nBoth approaches can be combined for the best of both worlds.\n\n---\n\n## Related Documentation\n- [Toxic Biohazard Presets INDEX](../02-Data/presets/INDEX.md)\n- [R&B Sub-Genre Workflows](./rnb-subgenre-toxic.md)\n- [FM Bass Workflow](./fm-bass-workflow.md)\n- [FM Synthesis Fundamentals](../04-Reference/fm-synthesis-fundamentals.md)\n\n---\n\n**Document Version:** 1.0  \n**Last Updated:** 2026-02-03  \n**Focus:** FM Keys for R&B  \n**Plugin:** Toxic Biohazard",
+      "INDEX": "# Toxic Biohazard By-Instrument Workflows\n\n## Bass Workflows\n\n### Dark Trap Bass\n| Parameter | Setting |\n|-----------|---------|\n| Osc1 | Sawtooth, Ratio 1.00 |\n| Osc2 | Sine, Ratio 0.50 |\n| Mod Amount | 50% |\n| Filter Cutoff | 3000Hz |\n| Resonance | 40% |\n| Envelope | 5/200/80/300 |\n\n### Configuration\n1. Set Osc1 as carrier (Sawtooth)\n2. Set Osc2 as modulator (Sine, octave down)\n3. Route Osc2 to Osc1 at 50%\n4. Apply low-pass filter with resonance\n5. Shape envelope for punch\n\n### Tips\n- Perfect for 808-style bass\n- Layer with kick for impact\n- Sidechain for pumping effect\n\n---\n\n### Aggressive Growl Bass\n| Parameter | Setting |\n|-----------|---------|\n| Osc1 | Sawtooth, Ratio 1.00 |\n| Osc2 | Sawtooth, Ratio 1.25 |\n| Mod Amount | 70% |\n| Filter Cutoff | 4000Hz |\n| Resonance | 55% |\n| Envelope | 3/100/85/200 |\n\n### Configuration\n1. Both oscillators as Sawtooth\n2. Slight ratio difference for dissonance\n3. High modulation for growl\n4. High resonance for character\n5. Fast envelope for impact\n\n### Tips\n- Great for dubstep and drill\n- Use LFO for wobble effect\n- Reduce modulation if too harsh\n\n---\n\n## Lead Workflows\n\n### Bright FM Lead\n| Parameter | Setting |\n|-----------|---------|\n| Osc1 | Sawtooth, Ratio 1.00 |\n| Osc2 | Sawtooth, Ratio 2.00 |\n| Osc3 | Square, Ratio 3.00 |\n| Mod Amount | 35% |\n| Filter Cutoff | 5500Hz |\n| Resonance | 25% |\n| Envelope | 10/200/78/400 |\n\n### Configuration\n1. Stack 3 operators with harmonic ratios\n2. Moderate modulation for presence\n3. Bright filter for cutting through\n4. Quick attack for immediacy\n\n### Tips\n- Perfect for melodic hooks\n- Great for festival leads\n- Add reverb for space\n\n---\n\n### Punchy FM Lead\n| Parameter | Setting |\n|-----------|---------|\n| Osc1 | Square, Ratio 1.00 |\n| Osc2 | Sine, Ratio 1.50 |\n| Mod Amount | 45% |\n| Filter Cutoff | 4500Hz |\n| Resonance | 35% |\n| Envelope | 5/150/80/300 |\n\n### Configuration\n1. Square wave for presence\n2. Sine modulator for body\n3. Moderate modulation\n4. Quick envelope for punch\n\n### Tips\n- Great for rhythmic parts\n- Perfect for hip-hop melodies\n- Layer with drums\n\n---\n\n## Pad/Texture Workflows\n\n### Warm FM Pad\n| Parameter | Setting |\n|-----------|---------|\n| Osc1 | Sine, Ratio 1.00 |\n| Osc2 | Sine, Ratio 2.00 |\n| Osc3 | Sine, Ratio 3.00 |\n| Mod Amount | 10% |\n| Filter Cutoff | 2500Hz |\n| Resonance | 15% |\n| Envelope | 200/800/70/1500 |\n\n### Configuration\n1. All sine waves for warmth\n2. Low modulation for clarity\n3. Dark filter for smoothness\n4. Slow envelope for ambiance\n\n### Tips\n- Perfect for backgrounds\n- Great for R&B and jazz\n- Add chorus for width\n\n---\n\n### Metallic Texture\n| Parameter | Setting |\n|-----------|---------|\n| Osc1 | Sine, Ratio 4.00 |\n| Osc2 | Sine, Ratio 8.00 |\n| Mod Amount | 20% |\n| Filter Cutoff | 6000Hz |\n| Resonance | 30% |\n| Envelope | 50/500/60/800 |\n\n### Configuration\n1. High ratios for metallic sound\n2. Low modulation for glassy tone\n3. High filter for brightness\n4. Medium envelope for presence\n\n### Tips\n- Great for modern trap\n- Perfect for unique accents\n- Use sparingly\n\n---\n\n## Troubleshooting\n\n| Issue | Solution |\n|-------|----------|\n| No low-end | Increase Osc2 gain, check filter cutoff |\n| Too harsh | Reduce modulation, increase filter cutoff |\n| No definition | Increase resonance slightly |\n| Muddy sound | High-pass at 40Hz, reduce lows |\n| Weak attack | Decrease envelope attack time |\n\n---\n\n## Related Documentation\n- [Toxic Biohazard Presets INDEX](../02-Data/presets/INDEX.md)\n- [FM Synthesis Archetypes](../02-Data/presets/fm-synthesis-archetypes.md)\n- [FM Gain Staging Rules](../02-Data/rules/fm-gain-staging-rules.md)\n",
+      "instrument-specific-workflows": "# Toxic Biohazard - Instrument-Specific Workflows for Hip-Hop/R&B\n\n## Overview\n\nThis document details how to apply Toxic Biohazard's hybrid FM/subtractive synthesis capabilities specifically to different instruments commonly used in hip-hop and R&B production. Each instrument has unique requirements for enhancement while maintaining its characteristic sound.\n\n## Drums\n\n### Kick Drum Enhancement\n| Parameter | Setting | Application | Subgenre |\n|-----------|---------|-------------|----------|\n| Oscillators | 1 Sine + 1 Saw | Fundamental + Harmonics | All |\n| Matrix | Saw → Sine (20%) | Harmonic enhancement | All |\n| Filter | LP, 100Hz, 40% res | Low-end focus | All |\n| Envelope | 1/50/0/100 | Punchy attack | All |\n| LFO | Depth 0% | No modulation | All |\n\n#### Application Notes:\n- Use sine for fundamental frequency\n- Add sawtooth for harmonic content\n- Apply low-pass filter to focus low-end\n- Fast attack for punch\n\n### Snare Drum Enhancement\n| Parameter | Setting | Application | Subgenre |\n|-----------|---------|-------------|----------|\n| Oscillators | 1 Square + 1 Noise | Body + Snap | All |\n| Matrix | Square 1 → Square 2 (30%) | Body enhancement | All |\n| Filter | BP, 2000Hz, 60% res | Mid-range focus | All |\n| Envelope | 1/100/0/300 | Sharp attack | All |\n| LFO | Depth 15% | Texture modulation | All |\n\n#### Application Notes:\n- Use square for body\n- Add noise for snap\n- Bandpass filter for snare character\n- Fast attack for snare snap\n\n### Hi-Hat Enhancement\n| Parameter | Setting | Application | Subgenre |\n|-----------|---------|-------------|----------|\n| Oscillators | 1 Saw + 1 Noise | Brightness + Texture | All |\n| Matrix | Saw → Noise (10%) | Brightness enhancement | All |\n| Filter | HP, 8000Hz, 30% res | High-end focus | All |\n| Envelope | 1/50/0/200 | Quick decay | All |\n| LFO | Depth 20% | Sizzle modulation | All |\n\n#### Application Notes:\n- Use sawtooth for brightness\n- Add noise for texture\n- High-pass filter for hi-hat character\n- Quick decay for hi-hat sound\n\n### 808 Enhancement\n| Parameter | Setting | Application | Subgenre |\n|-----------|---------|-------------|----------|\n| Oscillators | 2 Sine + 1 Saw | Sub-bass + Harmonics | Hip-Hop/Trap |\n| Matrix | Sine 2 → Sine 1 (40%) | Harmonic enhancement | Hip-Hop/Trap |\n| Filter | LP, 200Hz, 20% res | Sub-bass focus | Hip-Hop/Trap |\n| Envelope | 5/300/70/500 | Sustained | Hip-Hop/Trap |\n| LFO | Depth 10% | Subtle movement | Hip-Hop/Trap |\n\n#### Application Notes:\n- Use multiple sine waves for sub-bass\n- Add sawtooth for harmonic content\n- Low-pass filter to focus sub-bass\n- Sustained envelope for 808 character\n\n## Keys & Synth Instruments\n\n### Piano Enhancement\n| Parameter | Setting | Application | Subgenre |\n|-----------|---------|-------------|----------|\n| Oscillators | 2 Sine + 1 Saw | Fundamental + Harmonics | R&B/Neo-Soul |\n| Matrix | Sine 2 → Sine 1 (15%) | Harmonic enhancement | R&B/Neo-Soul |\n| Filter | LP, 5000Hz, 25% res | Brightness control | R&B/Neo-Soul |\n| Envelope | 20/400/70/800 | Expressive | R&B/Neo-Soul |\n| LFO | Depth 12%, Rate 0.8Hz | Vintage modulation | R&B/Neo-Soul |\n\n#### Application Notes:\n- Use sine waves for fundamental\n- Add sawtooth for brightness\n- Apply moderate filtering\n- Use LFO for vintage character\n\n### Rhodes/Electric Piano Enhancement\n| Parameter | Setting | Application | Subgenre |\n|-----------|---------|-------------|----------|\n| Oscillators | 3 Sine + 1 Saw | Vintage harmonics | R&B/Neo-Soul |\n| Matrix | Sine 2 → Sine 1 (25%), Saw 4 → Sine 1 (15%) | Vintage character | R&B/Neo-Soul |\n| Filter | LP, 4000Hz, 30% res | Vintage tone | R&B/Neo-Soul |\n| Envelope | 30/500/75/1000 | Smooth response | R&B/Neo-Soul |\n| LFO | Depth 18%, Rate 1.2Hz | Chorus effect | R&B/Neo-Soul |\n\n#### Application Notes:\n- Use multiple sine waves for vintage character\n- Add sawtooth for brightness\n- Apply filtering for vintage tone\n- Use LFO for chorus effect\n\n### Synth Lead Enhancement\n| Parameter | Setting | Application | Subgenre |\n|-----------|---------|-------------|----------|\n| Oscillators | 2 Saw + 2 Square + 1 Sine | Rich harmonics | All |\n| Matrix | Square 2 → Saw 1 (35%), Sine 5 → Saw 1 (20%) | Harmonic complexity | All |\n| Filter | LP, 6000Hz, 35% res | Brightness control | All |\n| Envelope | 10/200/75/400 | Expressive | All |\n| LFO | Depth 25%, Rate 1.5Hz | Movement | All |\n\n#### Application Notes:\n- Use saw and square for rich harmonics\n- Apply FM for complexity\n- Moderate filtering for brightness\n- Use LFO for movement\n\n### Pad Enhancement\n| Parameter | Setting | Application | Subgenre |\n|-----------|---------|-------------|----------|\n| Oscillators | 4 Sine + 1 Triangle | Smooth harmonics | R&B/Atmospheric |\n| Matrix | Complex inter-osc modulation (20-30%) | Evolving textures | R&B/Atmospheric |\n| Filter | LP, 3500Hz, 20% res | Warmth control | R&B/Atmospheric |\n| Envelope | 200/600/80/1200 | Slow evolution | R&B/Atmospheric |\n| LFO | Depth 30%, Rate 0.5Hz | Texture movement | R&B/Atmospheric |\n\n#### Application Notes:\n- Use multiple sine waves for smoothness\n- Apply complex FM for evolving textures\n- Apply filtering for warmth\n- Slow envelopes for evolution\n- LFO for texture movement\n\n## Bass Instruments\n\n### Bass Guitar Enhancement\n| Parameter | Setting | Application | Subgenre |\n|-----------|---------|-------------|----------|\n| Oscillators | 2 Sine + 1 Saw | Fundamental + Harmonics | All |\n| Matrix | Sine 2 → Sine 1 (30%) | Harmonic enhancement | All |\n| Filter | LP, 3000Hz, 25% res | Low-mid focus | All |\n| Envelope | 10/150/70/300 | Punchy response | All |\n| LFO | Depth 8% | Subtle movement | All |\n\n#### Application Notes:\n- Use sine waves for fundamental\n- Add sawtooth for harmonic content\n- Apply filtering for low-mid focus\n- Punchy envelope for bass response\n\n### Synth Bass Enhancement\n| Parameter | Setting | Application | Subgenre |\n|-----------|---------|-------------|----------|\n| Oscillators | 2 Saw + 1 Square + 1 Sine | Full harmonic spectrum | Hip-Hop/R&B |\n| Matrix | Square 2 → Saw 1 (40%), Sine 4 → Saw 1 (20%) | Harmonic saturation | Hip-Hop/R&B |\n| Filter | LP, 4000Hz, 45% res | Bass emphasis | Hip-Hop/R&B |\n| Envelope | 5/100/70/200 | Punchy attack | Hip-Hop/R&B |\n| LFO | Depth 15% | Subtle movement | Hip-Hop/R&B |\n\n#### Application Notes:\n- Use rich harmonic content for full bass\n- Apply FM for saturation\n- Quick attack for punchy bass\n- Moderate filtering for bass emphasis\n\n### Sub-Bass Enhancement\n| Parameter | Setting | Application | Subgenre |\n|-----------|---------|-------------|----------|\n| Oscillators | 2 Sine | Pure fundamentals | All |\n| Matrix | Sine 2 → Sine 1 (10%) | Subtle enhancement | All |\n| Filter | LP, 150Hz, 15% res | Sub-bass focus | All |\n| Envelope | 10/200/80/400 | Sustained | All |\n| LFO | Depth 5% | Minimal movement | All |\n\n#### Application Notes:\n- Use sine waves for pure fundamentals\n- Minimal FM for subtle enhancement\n- Low-pass filter to focus sub-bass\n- Sustained envelope for sub-bass character\n\n## Strings & Orchestral\n\n### Violin/Strings Enhancement\n| Parameter | Setting | Application | Subgenre |\n|-----------|---------|-------------|----------|\n| Oscillators | 3 Sine + 1 Triangle | Smooth harmonics | R&B/Soulful |\n| Matrix | Sine 2 → Sine 1 (20%), Triangle 4 → Sine 1 (15%) | String character | R&B/Soulful |\n| Filter | LP, 4500Hz, 25% res | String warmth | R&B/Soulful |\n| Envelope | 100/500/80/1000 | Smooth response | R&B/Soulful |\n| LFO | Depth 20%, Rate 0.7Hz | Vibrato | R&B/Soulful |\n\n#### Application Notes:\n- Use sine waves for smoothness\n- Add triangle for character\n- Apply filtering for warmth\n- Use LFO for vibrato\n\n### Brass Enhancement\n| Parameter | Setting | Application | Subgenre |\n|-----------|---------|-------------|----------|\n| Oscillators | 2 Saw + 2 Square | Rich harmonics | R&B/Jazzy |\n| Matrix | Square 2 → Saw 1 (30%), Square 4 → Saw 3 (25%) | Brass character | R&B/Jazzy |\n| Filter | LP, 5500Hz, 35% res | Brightness control | R&B/Jazzy |\n| Envelope | 20/300/75/600 | Expressive response | R&B/Jazzy |\n| LFO | Depth 15%, Rate 1.0Hz | Subtle modulation | R&B/Jazzy |\n\n#### Application Notes:\n- Use saw and square for rich harmonics\n- Apply FM for brass character\n- Apply filtering for brightness\n- Expressive envelope for brass response\n\n## Vocal Elements\n\n### Harmony Enhancement\n| Parameter | Setting | Application | Subgenre |\n|-----------|---------|-------------|----------|\n| Oscillators | 2 Sine + 1 Triangle | Smooth harmonics | R&B/Soulful |\n| Matrix | Triangle 3 → Sine 1 (15%) | Harmonic enhancement | R&B/Soulful |\n| Filter | LP, 4000Hz, 20% res | Smoothness | R&B/Soulful |\n| Envelope | 50/400/70/800 | Smooth response | R&B/Soulful |\n| LFO | Depth 10%, Rate 0.6Hz | Subtle modulation | R&B/Soulful |\n\n#### Application Notes:\n- Use sine and triangle for smoothness\n- Apply minimal FM for enhancement\n- Apply filtering for smoothness\n- Smooth envelope for harmony response\n\n### Ad-Lib Enhancement\n| Parameter | Setting | Application | Subgenre |\n|-----------|---------|-------------|----------|\n| Oscillators | 1 Saw + 1 Square + 1 Sine | Bright harmonics | Hip-Hop/Contemporary |\n| Matrix | Square 2 → Saw 1 (25%) | Harmonic enhancement | Hip-Hop/Contemporary |\n| Filter | LP, 6000Hz, 30% res | Brightness | Hip-Hop/Contemporary |\n| Envelope | 15/200/75/300 | Expressive response | Hip-Hop/Contemporary |\n| LFO | Depth 20%, Rate 1.2Hz | Movement | Hip-Hop/Contemporary |\n\n#### Application Notes:\n- Use saw and square for brightness\n- Apply FM for harmonic enhancement\n- Apply filtering for brightness\n- Expressive envelope for ad-lib response\n\n## Advanced Instrument-Specific Techniques\n\n### Parallel Processing by Instrument\n| Instrument | Technique | Application |\n|------------|-----------|-------------|\n| Kick | 70% dry, 30% processed | Maintain punch while adding harmonics |\n| Snare | 60% dry, 40% processed | Preserve transients while adding snap |\n| 808 | 75% dry, 25% processed | Maintain fundamental while adding harmonics |\n| Piano | 80% dry, 20% processed | Preserve dynamics while adding character |\n\n### Multi-Oscillator Application\n| Instrument | Low-Freq Osc | Mid-Freq Osc | High-Freq Osc | Application |\n|------------|--------------|--------------|---------------|-------------|\n| Bass | Sine (fundamental) | Saw (harmonics) | Square (saturation) | Full bass enhancement |\n| Keys | Sine (fundamental) | Triangle (warmth) | Saw (brightness) | Balanced enhancement |\n| Pads | Sine (foundation) | Triangle (texture) | Sine (movement) | Smooth enhancement |\n\n## Troubleshooting by Instrument\n\n### Common Issues and Solutions\n| Instrument | Issue | Solution |\n|------------|-------|----------|\n| All | Harshness | Reduce FM modulation, use sine waves |\n| Bass | Muddiness | Reduce low-frequency FM, use LP filter |\n| Vocals | Loss of dynamics | Use parallel processing, lower settings |\n| Drums | Loss of punch | Use fast envelopes, minimal FM |\n\n## Success Metrics by Instrument\n\n### Evaluation Criteria\n- [ ] The instrument sits well in the mix\n- [ ] The enhancement matches the subgenre\n- [ ] Dynamics are maintained appropriately\n- [ ] The processing adds character without artifacts\n- [ ] The instrument retains its fundamental character\n\n## Integration with Instrument-Specific Chains\n\n### Pre-Toxic Processing\n- [ ] Apply instrument-specific EQ\n- [ ] Use appropriate compression\n- [ ] Set proper gain staging\n\n### Post-Toxic Processing\n- [ ] Add instrument-specific effects (reverb, delay)\n- [ ] Final EQ adjustments if needed\n- [ ] Apply limiting if necessary\n\n---\n\n## Related Documentation\n- [Toxic Biohazard Presets INDEX](../02-Data/presets/INDEX.md)\n- [R&B Sub-Genre Workflows](../by-goal/rnb-subgenre-toxic.md)\n- [Hip-Hop Sub-Genre Workflows](../by-goal/hop-hop-subgenre-fm.md)\n- [FM Synthesis Fundamentals](../../04-Reference/fm-synthesis-fundamentals.md)\n\n---\n\n**Document Version:** 1.0\n**Last Updated:** 2026-02-03\n**Focus:** Instrument-Specific Applications\n**Plugin:** Toxic Biohazard",
+      "lead-workflows": "# Toxic Biohazard - Lead Workflows\n\n## Overview\nToxic Biohazard excels at creating cutting-edge lead sounds through its FM synthesis capabilities. This workflow focuses on designing leads for hip-hop, trap, and EDM production with maximum presence and character.\n\n## Workflow 1: Classic FM Lead\n\n### Configuration\n- **Algorithm**: 2-Operator (clean FM lead)\n- **Operator A**: Sine wave, ratio 1.0, level 80%\n- **Operator B**: Sine wave, ratio 3.0, FM Level 60%\n- **Envelope**: Fast attack, moderate decay, high sustain, moderate release\n- **Effects**: Chorus, delay, reverb\n\n### Steps\n1. Select Algorithm 2-Operator\n2. Set Operator A: sine, ratio 1.0, level 80%\n3. Set Operator B: sine, ratio 3.0, FM Level 60%\n4. Create envelope: 2ms attack, 200ms decay, 80% sustain, 300ms release\n5. Add chorus for width\n6. Apply delay for space\n7. Use reverb for depth\n8. Test with different note ranges\n\n### Tips\n- Ratio 3.0 creates harmonic complexity\n- High sustain for sustained notes\n- Chorus adds stereo width\n- Delay creates rhythmic interest\n\n### Troubleshooting\n- **Harsh Top End**: Reduce Operator B level\n- **Weak Presence**: Increase Operator A level\n- **Tuning Issues**: Check ratio settings\n\n## Workflow 2: Aggressive Lead\n\n### Configuration\n- **Algorithm**: 3-Operator (complex FM lead)\n- **Operator A**: Sawtooth wave, ratio 1.0, level 70%\n- **Operator B**: Triangle wave, ratio 2.0, FM Level 70%\n- **Operator C**: Sine wave, ratio 4.0, FM Level 50%\n- **Envelope**: Fast attack, short decay, high sustain, short release\n- **Effects**: Distortion, compression, EQ\n\n### Steps\n1. Choose Algorithm 3-Operator\n2. Configure Operator A: sawtooth, ratio 1.0, level 70%\n3. Configure Operator B: triangle, ratio 2.0, FM Level 70%\n4. Configure Operator C: sine, ratio 4.0, FM Level 50%\n5. Create envelope: 1ms attack, 100ms decay, 90% sustain, 200ms release\n6. Add distortion for aggression\n7. Apply compression for consistency\n8. Use EQ to cut harsh frequencies\n\n### Tips\n- Sawtooth provides rich harmonics\n- Triangle adds character\n- Multiple ratios create complexity\n- Distortion enhances presence\n\n### Troubleshooting\n- **Too Harsh**: Reduce FM Levels\n- **Lack of Clarity**: Use EQ to carve space\n- **Overpowering**: Lower overall level\n\n## Workflow 3: Plucky Lead\n\n### Configuration\n- **Algorithm**: 2-Operator (plucky FM)\n- **Operator A**: Sine wave, ratio 1.0, level 60%\n- **Operator B**: Sine wave, ratio 1.5, FM Level 80%\n- **Envelope**: Fast attack, fast decay, no sustain, short release\n- **Effects**: Filter, reverb, delay\n\n### Steps\n1. Select Algorithm 2-Operator\n2. Set Operator A: sine, ratio 1.0, level 60%\n3. Set Operator B: sine, ratio 1.5, FM Level 80%\n4. Create envelope: 1ms attack, 150ms decay, 0% sustain, 100ms release\n5. Apply low-pass filter\n6. Add reverb for space\n7. Use delay for rhythmic interest\n8. Test with different velocities\n\n### Tips\n- Ratio 1.5 creates fifth interval\n- Fast envelope creates pluck\n- Filter adds character\n- Velocity sensitivity for expression\n\n### Troubleshooting\n- **Too Short**: Increase decay time\n- **Too Long**: Decrease decay time\n- **Weak Attack**: Increase Operator B level\n\n## Workflow 4: Evolving Lead\n\n### Configuration\n- **Algorithm**: 4-Operator (complex evolving lead)\n- **Operator A**: Sine wave, ratio 1.0, level 50%\n- **Operator B**: Sine wave, ratio 2.0, FM Level 60%\n- **Operator C**: Sine wave, ratio 3.0, FM Level 50%\n- **Operator D**: Sine wave, ratio 4.0, FM Level 40%\n- **LFO**: Slow rate, moderate depth, routing to FM Level\n- **Envelope**: Slow attack, slow decay, high sustain, slow release\n- **Effects**: Phaser, reverb, delay\n\n### Steps\n1. Choose Algorithm 4-Operator\n2. Configure all operators with increasing ratios\n3. Set moderate FM Levels for each operator\n4. Configure LFO: slow rate (0.3 Hz), moderate depth\n5. Route LFO to overall FM Level\n6. Create envelope: 500ms attack, 1s decay, 80% sustain, 1s release\n7. Add phaser for movement\n8. Use reverb and delay for space\n\n### Tips\n- Multiple operators create evolving textures\n- LFO adds movement and interest\n- Slow envelope creates atmospheric feel\n- Phaser enhances modulation\n\n### Troubleshooting\n- **Too Busy**: Simplify operator configuration\n- **Phase Issues**: Check operator phase settings\n- **CPU Heavy**: Reduce polyphony or effects\n\n## Workflow 5: Glitch Lead\n\n### Configuration\n- **Algorithm**: 3-Operator (glitchy FM)\n- **Operator A**: Noise wave, ratio 1.0, level 40%\n- **Operator B**: Sine wave, ratio 1.25, FM Level 90%\n- **Operator C**: Triangle wave, ratio 1.5, FM Level 80%\n- **Envelope**: Fast attack, fast decay, no sustain, short release\n- **Effects**: Bitcrusher, delay, reverb\n\n### Steps\n1. Select Algorithm 3-Operator\n2. Set Operator A: noise, ratio 1.0, level 40%\n3. Set Operator B: sine, ratio 1.25, FM Level 90%\n4. Set Operator C: triangle, ratio 1.5, FM Level 80%\n5. Create envelope: 1ms attack, 100ms decay, 0% sustain, 150ms release\n6. Add bitcrusher for digital character\n7. Apply delay for rhythmic interest\n8. Use reverb for space\n\n### Tips\n- Noise adds glitch character\n- Higher ratios create metallic sounds\n- Bitcrusher enhances digital feel\n- Fast envelope creates percussive hits\n\n### Troubleshooting\n- **Too Noisy**: Reduce Operator A level\n- **Lack of Definition**: Increase Operator B level\n- **Overpowering**: Lower overall level\n\n## Workflow 6: Lead for Different Genres\n\n### Trap Lead\n- **Focus**: Aggressive, cutting presence\n- **Settings**: Complex FM, multiple operators, distortion\n- **Processing**: Heavy compression, stereo widening\n\n### Hip-Hop Lead\n- **Focus**: Warm, melodic character\n- **Settings**: Simple FM, moderate modulation, chorus\n- **Processing**: Gentle compression, EQ\n\n### EDM Lead\n- **Focus**: Massive, stadium-filling sound\n- **Settings**: Multiple operators, effects, automation\n- **Processing**: Heavy processing, sidechain\n\n### R&B Lead\n- **Focus**: Smooth, expressive character\n- **Settings**: Simple FM, glide, reverb\n- **Processing**: Subtle compression, warmth\n\n## Advanced Techniques\n\n### Layering\n- Layer Toxic Biohazard with other lead sources\n- Use different frequency ranges\n- Process layers separately then combine\n\n### Automation\n- Automate FM Levels for movement\n- Modulate filter cutoff for expression\n- Use velocity to control modulation depth\n\n### Effects Integration\n- Use distortion for harmonic enhancement\n- Apply compression for consistency\n- Add spatial effects for width\n\n## Integration with Mix\n\n### Frequency Management\n- Use EQ to carve space in mix\n- Avoid frequency conflicts with other elements\n- Create frequency separation with other lead sounds\n\n### Level Balancing\n- Set appropriate levels for context\n- Use compression for consistent volume\n- Apply limiting if necessary\n\n### Stereo Imaging\n- Widen stereo elements appropriately\n- Keep low frequencies mono\n- Use stereo effects for width\n\n## Performance Considerations\n\n### CPU Usage\n- Monitor plugin load in complex projects\n- Use freeze/flatten when appropriate\n- Optimize algorithm complexity for performance\n\n### Real-Time Control\n- Map modulation to MIDI controllers\n- Use automation for evolving sounds\n- Create performance patches for live playing\n\n## Conclusion\nToxic Biohazard's FM synthesis engine provides unparalleled control over lead sound design. By understanding FM principles and applying these workflows, producers can create professional-quality lead sounds that cut through the mix and define their tracks in modern hip-hop and electronic music production.",
+      "pad-texture-workflows": "# Toxic Biohazard - Pad/Texture Workflows\n\n## Overview\nToxic Biohazard excels at creating atmospheric pads and evolving textures through its FM synthesis capabilities. This workflow focuses on designing pads and textures for hip-hop, trap, and EDM production with maximum depth and character.\n\n## Workflow 1: Ambient Pad\n\n### Configuration\n- **Algorithm**: 4-Operator (rich ambient pad)\n- **Operator A**: Sine wave, ratio 1.0, level 40%\n- **Operator B**: Sine wave, ratio 2.0, FM Level 50%\n- **Operator C**: Sine wave, ratio 3.0, FM Level 40%\n- **Operator D**: Sine wave, ratio 4.0, FM Level 30%\n- **Envelope**: Slow attack, slow decay, high sustain, slow release\n- **LFO**: Very slow rate, moderate depth, routing to FM Level and filter cutoff\n- **Effects**: Reverb, delay, chorus\n\n### Steps\n1. Choose Algorithm 4-Operator\n2. Configure all operators with increasing ratios\n3. Set moderate FM Levels for each operator\n4. Create envelope: 1s attack, 2s decay, 80% sustain, 3s release\n5. Configure LFO: very slow rate (0.1 Hz), moderate depth\n6. Route LFO to FM Level and filter cutoff\n7. Add long reverb for space\n8. Apply delay for depth\n9. Use chorus for width\n\n### Tips\n- Multiple operators create rich harmonic content\n- Very slow LFO creates subtle movement\n- Long envelopes create atmospheric feel\n- Effects add depth and space\n\n### Troubleshooting\n- **Too Busy**: Simplify operator configuration\n- **Phase Issues**: Check operator phase settings\n- **CPU Heavy**: Reduce polyphony or effects\n\n## Workflow 2: Evolving Texture\n\n### Configuration\n- **Algorithm**: 5-Operator (complex evolving texture)\n- **Operator A**: Sine wave, ratio 1.0, level 30%\n- **Operator B**: Triangle wave, ratio 1.5, FM Level 60%\n- **Operator C**: Sawtooth wave, ratio 2.0, FM Level 50%\n- **Operator D**: Sine wave, ratio 2.5, FM Level 40%\n- **Operator E**: Sine wave, ratio 3.0, FM Level 30%\n- **LFO1**: Slow rate, routing to FM Level\n- **LFO2**: Very slow rate, routing to filter cutoff\n- **Envelope**: Slow attack, slow decay, high sustain, slow release\n- **Effects**: Phaser, reverb, delay\n\n### Steps\n1. Select Algorithm 5-Operator\n2. Configure operators with varied waveforms and ratios\n3. Set moderate FM Levels for each operator\n4. Configure LFO1: slow rate (0.5 Hz), route to FM Level\n5. Configure LFO2: very slow rate (0.05 Hz), route to filter cutoff\n6. Create envelope: 2s attack, 3s decay, 70% sustain, 4s release\n7. Add phaser for movement\n8. Use long reverb for space\n9. Apply delay for depth\n\n### Tips\n- Varied waveforms create complex textures\n- Multiple LFOs add independent movement\n- Slow envelopes create evolving feel\n- Phaser enhances modulation\n\n### Troubleshooting\n- **Too Complex**: Reduce number of active operators\n- **Lack of Movement**: Increase LFO depth\n- **Overpowering**: Lower overall level\n\n## Workflow 3: Warm Pad\n\n### Configuration\n- **Algorithm**: 3-Operator (warm FM pad)\n- **Operator A**: Sine wave, ratio 1.0, level 50%\n- **Operator B**: Sine wave, ratio 1.25, FM Level 40%\n- **Operator C**: Sine wave, ratio 1.5, FM Level 30%\n- **Envelope**: Moderate attack, moderate decay, high sustain, moderate release\n- **Filter**: Low-pass filter with moderate cutoff and resonance\n- **Effects**: Saturation, reverb, chorus\n\n### Steps\n1. Choose Algorithm 3-Operator\n2. Set Operator A: sine, ratio 1.0, level 50%\n3. Set Operator B: sine, ratio 1.25, FM Level 40%\n4. Set Operator C: sine, ratio 1.5, FM Level 30%\n5. Apply low-pass filter: cutoff 2 kHz, resonance 20%\n6. Create envelope: 300ms attack, 500ms decay, 80% sustain, 1s release\n7. Add subtle saturation for warmth\n8. Use reverb for space\n9. Apply chorus for width\n\n### Tips\n- Close ratios create harmonic richness\n- Filter shapes the overall tone\n- Saturation adds warmth and character\n- Moderate effects for subtle enhancement\n\n### Troubleshooting\n- **Too Bright**: Lower filter cutoff\n- **Lack of Warmth**: Increase saturation\n- **Phase Issues**: Check operator phase settings\n\n## Workflow 4: Dark Atmospheric\n\n### Configuration\n- **Algorithm**: 4-Operator (dark atmospheric pad)\n- **Operator A**: Sine wave, ratio 0.5, level 40%\n- **Operator B**: Sine wave, ratio 1.0, FM Level 50%\n- **Operator C**: Sine wave, ratio 1.5, FM Level 40%\n- **Operator D**: Sine wave, ratio 2.0, FM Level 30%\n- **Envelope**: Very slow attack, very slow decay, high sustain, very slow release\n- **Filter**: Low-pass filter with low cutoff and high resonance\n- **Effects**: Reverb, delay, distortion\n\n### Steps\n1. Select Algorithm 4-Operator\n2. Set Operator A: sine, ratio 0.5, level 40%\n3. Set Operator B: sine, ratio 1.0, FM Level 50%\n4. Set Operator C: sine, ratio 1.5, FM Level 40%\n5. Set Operator D: sine, ratio 2.0, FM Level 30%\n6. Apply low-pass filter: cutoff 500 Hz, resonance 60%\n7. Create envelope: 2s attack, 3s decay, 70% sustain, 4s release\n8. Add subtle distortion for edge\n9. Use long reverb for space\n10. Apply delay for depth\n\n### Tips\n- Sub-audio ratios create dark character\n- High resonance adds edge\n- Very slow envelopes create atmospheric feel\n- Distortion enhances dark character\n\n### Troubleshooting\n- **Too Dark**: Raise filter cutoff\n- **Lack of Movement**: Add LFO modulation\n- **Overpowering**: Lower overall level\n\n## Workflow 5: Glitch Texture\n\n### Configuration\n- **Algorithm**: 3-Operator (glitchy texture)\n- **Operator A**: Noise wave, ratio 1.0, level 30%\n- **Operator B**: Sine wave, ratio 1.25, FM Level 80%\n- **Operator C**: Triangle wave, ratio 1.5, FM Level 70%\n- **Envelope**: Fast attack, fast decay, no sustain, short release\n- **LFO**: Random rate, routing to FM Level and pan\n- **Effects**: Bitcrusher, delay, reverb\n\n### Steps\n1. Select Algorithm 3-Operator\n2. Set Operator A: noise, ratio 1.0, level 30%\n3. Set Operator B: sine, ratio 1.25, FM Level 80%\n4. Set Operator C: triangle, ratio 1.5, FM Level 70%\n5. Create envelope: 1ms attack, 200ms decay, 0% sustain, 300ms release\n6. Configure LFO: random rate, route to FM Level and pan\n7. Add bitcrusher for digital character\n8. Apply delay for rhythmic interest\n9. Use reverb for space\n\n### Tips\n- Noise adds glitch character\n- Random LFO creates unpredictable movement\n- Bitcrusher enhances digital feel\n- Fast envelope creates percussive hits\n\n### Troubleshooting\n- **Too Noisy**: Reduce Operator A level\n- **Lack of Definition**: Increase Operator B level\n- **Overpowering**: Lower overall level\n\n## Workflow 6: Pad for Different Genres\n\n### Ambient/Electronic\n- **Focus**: Atmospheric, evolving textures\n- **Settings**: Multiple operators, slow envelopes, effects\n- **Processing**: Heavy reverb, delay, modulation\n\n### Hip-Hop/R&B\n- **Focus**: Warm, smooth pads\n- **Settings**: Simple FM, moderate modulation, chorus\n- **Processing**: Subtle compression, warmth\n\n### Trap/EDM\n- **Focus**: Massive, cutting pads\n- **Settings**: Complex FM, effects, automation\n- **Processing**: Heavy processing, sidechain\n\n### Experimental\n- **Focus**: Unique, unconventional textures\n- **Settings**: Extreme FM, noise, effects\n- **Processing**: Creative processing, modulation\n\n## Advanced Techniques\n\n### Layering\n- Layer Toxic Biohazard with other pad sources\n- Use different frequency ranges\n- Process layers separately then combine\n\n### Automation\n- Automate FM Levels for movement\n- Modulate filter cutoff for expression\n- Use velocity to control modulation depth\n\n### Effects Integration\n- Use reverb for space and depth\n- Apply delay for rhythmic interest\n- Add chorus for width\n\n## Integration with Mix\n\n### Frequency Management\n- Use EQ to carve space in mix\n- Avoid frequency conflicts with other elements\n- Create frequency separation with other pad sounds\n\n### Level Balancing\n- Set appropriate levels for context\n- Use compression for consistent volume\n- Apply limiting if necessary\n\n### Stereo Imaging\n- Widen stereo elements appropriately\n- Keep low frequencies mono\n- Use stereo effects for width\n\n## Performance Considerations\n\n### CPU Usage\n- Monitor plugin load in complex projects\n- Use freeze/flatten when appropriate\n- Optimize algorithm complexity for performance\n\n### Real-Time Control\n- Map modulation to MIDI controllers\n- Use automation for evolving sounds\n- Create performance patches for live playing\n\n## Conclusion\nToxic Biohazard's FM synthesis engine provides unparalleled control over pad and texture sound design. By understanding FM principles and applying these workflows, producers can create professional-quality atmospheric sounds that add depth and character to their tracks in modern hip-hop and electronic music production.",
+      "workflows-INDEX": "# Toxic Biohazard By-Instrument Workflows INDEX\n\n## Bass Workflows\n\n| File | Focus | Character |\n|------|-------|-----------|\n| [bass-dark-trap.md](bass-dark-trap.md) | Dark Trap Bass | Moody, punchy |\n| [bass-aggressive-growl.md](bass-aggressive-growl.md) | Aggressive Growl Bass | Energetic, intense |\n\n## Lead Workflows\n\n| File | Focus | Character |\n|------|-------|-----------|\n| [lead-bright-fm.md](lead-bright-fm.md) | Bright FM Lead | Electric, energetic |\n| [lead-punchy-fm.md](lead-punchy-fm.md) | Punchy FM Lead | Funky, rhythmic |\n\n## Pad/Texture Workflows\n\n| File | Focus | Character |\n|------|-------|-----------|\n| [pad-warm-fm.md](pad-warm-fm.md) | Warm FM Pad | Smooth, moody |\n| [texture-metallic.md](texture-metallic.md) | Metallic Texture | Electric, modern |\n\n## Quick Reference\n\n| Instrument | Recommended Workflow |\n|------------|--------------------|\n| 808/Bass | Dark Trap Bass |\n| Growl Bass | Aggressive Growl Bass |\n| Festival Lead | Bright FM Lead |\n| Hip-Hop Lead | Punchy FM Lead |\n| Pad/Atmosphere | Warm FM Pad |\n| Unique Texture | Metallic Texture |\n\n## Related Documentation\n\n- [Toxic Biohazard Presets INDEX](../02-Data/presets/INDEX.md)\n- [Toxic Biohazard By-Goal Workflows](./by-goal/INDEX.md)\n- [FM Synthesis Archetypes](../02-Data/presets/fm-synthesis-archetypes.md)\n- [FM Gain Staging Rules](../02-Data/rules/fm-gain-staging-rules.md)\n"
+    },
+    "INDEX.md": {
+      "INDEX": "# Toxic Biohazard Complete Workflows INDEX\n\n## By-Goal Workflows\n| File | Genre | Application | Description |\n|------|-------|-------------|-------------|\n| `by-goal/aggressive-fm-lead.md` | Universal | FM Lead Creation | Creating aggressive FM leads |\n| `by-goal/evolving-atmospheric-pad.md` | Universal | Pad Synthesis | Creating atmospheric pads |\n| `by-goal/hop-hop-subgenre-fm.md` | Hip-Hop/Rap | Subgenre Applications | Hip-hop specific subgenre workflows |\n| `by-goal/rnb-subgenre-toxic.md` | R&B | Subgenre Applications | R&B specific subgenre workflows |\n\n## By-Instrument Workflows\n| File | Instrument | Application | Description |\n|------|------------|-------------|-------------|\n| `by-instrument/fm-keys-workflow.md` | Keys | FM Keys Synthesis | FM-based jazzy keys workflows |\n| `by-instrument/fm-bass-workflow.md` | Bass | FM Bass Synthesis | FM-based R&B bass synthesis |\n\n## Quick Reference\n| Goal | File | Application |\n|------|------|-------------|\n| Aggressive Leads | `by-goal/aggressive-fm-lead.md` | FM lead creation |\n| Atmospheric Pads | `by-goal/evolving-atmospheric-pad.md` | Pad synthesis |\n| Hip-Hop Workflows | `by-goal/hop-hop-subgenre-fm.md` | Hip-hop subgenre applications |\n| R&B Workflows | `by-goal/rnb-subgenre-toxic.md` | R&B subgenre applications |\n| Keys Processing | `by-instrument/fm-keys-workflow.md` | FM keys synthesis |\n| Bass Processing | `by-instrument/fm-bass-workflow.md` | FM bass synthesis |\n\n## Related Documentation\n- [Toxic Biohazard Presets INDEX](../02-Data/presets/INDEX.md)\n- [FM Synthesis Fundamentals](../04-Reference/fm-synthesis-fundamentals.md)\n- [FM Matrix Logic](../01-Learning/Quick-Reference/toxic-matrix-logic.md)\n- [FM Gain Staging Rules](../02-Data/rules/fm-gain-staging-rules.md)"
+    },
+    "README.md": {
+      "README": "# Workflow - Toxic Biohazard\r\n\r\nThis section contains workflow information for the toxic-biohazard plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Toxic Biohazard\r\n\r\nThis section contains reference information for the toxic-biohazard plugin.\r\n"
+    }
+  }
+}

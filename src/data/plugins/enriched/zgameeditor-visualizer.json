@@ -1,0 +1,454 @@
+{
+  "id": "zgameeditor-visualizer",
+  "name": "ZGameEditor Visualizer",
+  "category": "Utility",
+  "tier": "Free",
+  "type": "Utility",
+  "description": "ZGameEditor Visualizer - Utility",
+  "tags": [
+    "specialized"
+  ],
+  "capabilities": [
+    "utility",
+    "routing"
+  ],
+  "icon": "/plugins/zgameeditor-visualizer-icon.svg",
+  "color": "#64748B",
+  "version": "1.0",
+  "data_dir": "plugins\\zgameeditor-visualizer",
+  "has_presets": true,
+  "has_parameters": true,
+  "has_learning": true,
+  "has_workflows": true,
+  "parameters": {
+    "zgameeditor-visualizer-params": {
+      "$schema": "./schema.json",
+      "plugin": {
+        "name": "ZGameEditor Visualizer",
+        "version": "1.x",
+        "category": "Effect",
+        "type": "Audio-Reactive Visualization Engine",
+        "officialManual": "https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/ZGameEditor%20Visualizer.htm"
+      },
+      "parameters": {
+        "audioReactivity": [
+          {
+            "id": "bassReactivity",
+            "name": "Bass Reactivity",
+            "type": "slider",
+            "range": "0-200%",
+            "unit": "%",
+            "default": "100%",
+            "description": "Low frequency response (kick drum triggering)",
+            "sweetSpot": "80-120%"
+          },
+          {
+            "id": "midReactivity",
+            "name": "Mid Reactivity",
+            "type": "slider",
+            "range": "0-200%",
+            "unit": "%",
+            "default": "100%",
+            "description": "Mid frequency response (vocals, snare)",
+            "sweetSpot": "60-100%"
+          },
+          {
+            "id": "highReactivity",
+            "name": "High Reactivity",
+            "type": "slider",
+            "range": "0-200%",
+            "unit": "%",
+            "default": "100%",
+            "description": "High frequency response (hi-hats, cymbals)",
+            "sweetSpot": "50-80%"
+          },
+          {
+            "id": "peakSensitivity",
+            "name": "Peak Sensitivity",
+            "type": "slider",
+            "range": "0-100%",
+            "description": "Transient detection threshold"
+          },
+          {
+            "id": "smoothing",
+            "name": "Smoothing",
+            "type": "slider",
+            "range": "0-100%",
+            "description": "Audio analysis smoothing (lower = responsive, higher = smooth)"
+          }
+        ],
+        "visual": [
+          {
+            "id": "presetBrowser",
+            "name": "Preset Browser",
+            "description": "Access 100+ factory presets",
+            "categories": [
+              "Audio Spectrum",
+              "Particles",
+              "Tunnels",
+              "Fractals",
+              "Waves",
+              "Abstract",
+              "Retro"
+            ]
+          },
+          {
+            "id": "colorPalette",
+            "name": "Color Palette",
+            "description": "Set visual color scheme"
+          },
+          {
+            "id": "layerSystem",
+            "name": "Layer System",
+            "description": "Stack up to 8 effect layers",
+            "blendModes": [
+              "Add",
+              "Multiply",
+              "Screen",
+              "Overlay"
+            ]
+          }
+        ],
+        "camera": [
+          {
+            "id": "position",
+            "name": "Camera Position",
+            "axes": [
+              "X",
+              "Y",
+              "Z"
+            ],
+            "description": "3D camera location",
+            "automatable": true
+          },
+          {
+            "id": "rotation",
+            "name": "Camera Rotation",
+            "description": "Camera angle",
+            "automatable": true
+          },
+          {
+            "id": "fieldOfView",
+            "name": "Field of View",
+            "range": "30-120 degrees",
+            "description": "Lens width (wide-angle vs telephoto)"
+          }
+        ],
+        "rendering": [
+          {
+            "id": "resolution",
+            "name": "Resolution",
+            "options": [
+              "1280x720",
+              "1920x1080",
+              "3840x2160"
+            ],
+            "recommended": "1920x1080"
+          },
+          {
+            "id": "frameRate",
+            "name": "Frame Rate",
+            "options": [
+              "24",
+              "30",
+              "60",
+              "120"
+            ],
+            "unit": "FPS",
+            "recommended": "60"
+          },
+          {
+            "id": "codec",
+            "name": "Codec",
+            "options": [
+              "H.264/MP4",
+              "AVI",
+              "Image Sequence"
+            ],
+            "recommended": "H.264/MP4"
+          },
+          {
+            "id": "bitrate",
+            "name": "Bitrate",
+            "range": "5-30 Mbps",
+            "recommended": "15-20 Mbps for 1080p60"
+          }
+        ]
+      },
+      "presetCategories": {
+        "audioSpectrum": "Frequency-based bars and circles",
+        "particles": "Particle systems synced to audio",
+        "tunnels": "3D tunnel effects",
+        "fractals": "Mathematical patterns (Mandelbrot, Julia sets)",
+        "waves": "Waveform/oscilloscope displays",
+        "abstract": "Artistic effects (kaleidoscopes, morphing)",
+        "retro": "80s/90s Winamp-inspired visuals"
+      },
+      "exportFormats": {
+        "youtube": {
+          "resolution": "1920x1080",
+          "fps": 60,
+          "codec": "H.264",
+          "bitrate": "15-20 Mbps"
+        },
+        "instagram": {
+          "square": "1080x1080",
+          "portrait": "1080x1350",
+          "stories": "1080x1920"
+        },
+        "tiktok": {
+          "resolution": "1080x1920",
+          "aspectRatio": "9:16"
+        }
+      },
+      "cpuUsage": "Moderate to Very High (depends on preset)",
+      "gpuAcceleration": "Limited",
+      "realtimeSafe": "Yes (on powerful systems)",
+      "programmable": true,
+      "openSource": "ZGameEditor core is open-source"
+    }
+  },
+  "presets": {
+    "genre-visual-settings": {
+      "visualArchetypes": {
+        "hipHopFlow": {
+          "description": "Smooth, controlled visual for rap vocals",
+          "settings": {
+            "shape": "waveform",
+            "color": [
+              "#1a1a2e",
+              "#16213e",
+              "#0f3460"
+            ],
+            "speed": 0.6,
+            "reaction": 0.5,
+            "sync": true,
+            "aspectRatio": "16:9"
+          },
+          "useCases": [
+            "rap vocals",
+            "lyric videos",
+            "moody vibes"
+          ],
+          "tags": [
+            "hip-hop/rap",
+            "moody",
+            "smooth"
+          ]
+        },
+        "trapEnergy": {
+          "description": "High-energy visual for trap drops",
+          "settings": {
+            "shape": "spectrum",
+            "color": [
+              "#ff006e",
+              "#8338ec",
+              "#3a86ff"
+            ],
+            "speed": 0.9,
+            "reaction": 0.8,
+            "sync": true,
+            "aspectRatio": "16:9"
+          },
+          "useCases": [
+            "trap drops",
+            "energy peaks",
+            "bass drops"
+          ],
+          "tags": [
+            "electric",
+            "intense",
+            "bass"
+          ]
+        },
+        "rnbSmooth": {
+          "description": "Warm, flowing visual for R&B",
+          "settings": {
+            "shape": "particle",
+            "color": [
+              "#ffbe0b",
+              "#fb5607",
+              "#ff006e"
+            ],
+            "speed": 0.5,
+            "reaction": 0.5,
+            "sync": true,
+            "aspectRatio": "16:9"
+          },
+          "useCases": [
+            "R&B vocals",
+            "smooth sections",
+            "romantic vibes"
+          ],
+          "tags": [
+            "R&B",
+            "smooth",
+            "warm"
+          ]
+        },
+        "lofiVibes": {
+          "description": "Retro, degraded aesthetic",
+          "settings": {
+            "shape": "oscilloscope",
+            "color": [
+              "#2b2d42",
+              "#8d99ae",
+              "#edf2f4"
+            ],
+            "speed": 0.4,
+            "reaction": 0.4,
+            "sync": true,
+            "aspectRatio": "4:3"
+          },
+          "useCases": [
+            "lofi hip-hop",
+            "sample-based",
+            "nostalgic"
+          ],
+          "tags": [
+            "lofi",
+            "retro",
+            "moody"
+          ]
+        },
+        "electricDance": {
+          "description": "High-energy EDM aesthetic",
+          "settings": {
+            "shape": "3d_shapes",
+            "color": [
+              "#00ff87",
+              "#60efff",
+              "#ff00ff"
+            ],
+            "speed": 1,
+            "reaction": 0.9,
+            "sync": true,
+            "aspectRatio": "16:9"
+          },
+          "useCases": [
+            "EDM drops",
+            "dance sections",
+            "energy peaks"
+          ],
+          "tags": [
+            "electric",
+            "upbeat",
+            "intense"
+          ]
+        },
+        "darkAtmosphere": {
+          "description": "Moody, dark atmospheric visual",
+          "settings": {
+            "shape": "particle",
+            "color": [
+              "#000000",
+              "#1a1a1a",
+              "#333333"
+            ],
+            "speed": 0.3,
+            "reaction": 0.6,
+            "sync": true,
+            "aspectRatio": "16:9"
+          },
+          "useCases": [
+            "moody intros",
+            "breakdowns",
+            "dark themes"
+          ],
+          "tags": [
+            "moody",
+            "dark",
+            "atmospheric"
+          ]
+        }
+      },
+      "genreSettings": {
+        "hipHop": {
+          "general": {
+            "shape": "waveform",
+            "speed": 0.5,
+            "reaction": 0.5
+          },
+          "moody": {
+            "shape": "particle",
+            "speed": 0.4,
+            "reaction": 0.5
+          },
+          "trap": {
+            "shape": "spectrum",
+            "speed": 0.8,
+            "reaction": 0.8
+          }
+        },
+        "rnb": {
+          "smooth": {
+            "shape": "particle",
+            "speed": 0.5,
+            "reaction": 0.5
+          },
+          "energetic": {
+            "shape": "spectrum",
+            "speed": 0.7,
+            "reaction": 0.7
+          }
+        },
+        "lofi": {
+          "retro": {
+            "shape": "oscilloscope",
+            "speed": 0.4,
+            "reaction": 0.4
+          },
+          "warm": {
+            "shape": "waveform",
+            "speed": 0.45,
+            "reaction": 0.45
+          }
+        },
+        "edm": {
+          "drops": {
+            "shape": "3d_shapes",
+            "speed": 1,
+            "reaction": 0.9
+          },
+          "builds": {
+            "shape": "spectrum",
+            "speed": 0.6,
+            "reaction": 0.7
+          }
+        }
+      }
+    }
+  },
+  "learning": {
+    "Concepts": {
+      "concepts-and-best-uses": "# Concepts & Best Uses: Zgameeditor Visualizer\r\n\r\n## What It Is\r\nZgameeditor Visualizer is a native FL Studio plugin.\r\n\r\n## Best Uses\r\n- **Use Case 1:** [TODO]\r\n- **Use Case 2:** [TODO]\r\n\r\n## Core Concepts\r\n- **Concept A:** [TODO]\r\n- **Concept B:** [TODO]\r\n",
+      "signal-flow": "# Signal Flow: Zgameeditor Visualizer\r\n\r\n## Audio Path\r\n`Input` -> **[Stage 1]** -> **[Stage 2]** -> `Output`\r\n\r\n## Modulation Architecture\r\n- **Source:** [TODO]\r\n- **Destination:** [TODO]\r\n",
+      "what-is-zgameeditor": "Tags: visual | hip-hop/rap | electric\n\n## What Is ZGameEditor Visualizer?\n\nZGameEditor Visualizer is FL Studio's built-in visualizer plugin that creates dynamic, audio-reactive visuals synchronized to your music. It renders graphics in real-time based on audio input, making it ideal for creating music videos, YouTube content, and live visual performances.\n\n### What It Does\n\n**Tone targets (visual equivalent):**\n- **Moody:** Dark color palettes, slow movement, atmospheric effects\n- **Electric:** Neon colors, fast pulses, energetic motion\n- **Funky:** Rhythmic shapes, groovy patterns, syncopated movement\n\n**Core capabilities:**\n- Real-time audio reactivity\n- Built-in visual templates\n- Custom shape creation\n- Video export capability\n- YouTube-optimized output\n\n### Visual Categories\n\n| Category | Mood | Speed | Colors | Best For |\n|----------|------|-------|--------|----------|\n| Waveform | Neutral | Syncs to audio | Mono/Gradient | Energy visualization |\n| Spectrum | Analytical | Real-time | Rainbow/Hot | Frequency display |\n| Oscilloscope | Retro | Audio-sync | Neon/Classic | Lo-fi aesthetic |\n| 3D Shapes | Dynamic | Variable | RGB/Shift | Modern/electronic |\n| Particle | Ethereal | Variable | Soft/Glow | Atmospheric |\n| Abstract | Any | Variable | User-defined | Creative freedom |\n\n### Key Parameters\n\n| Parameter | Function | Typical Use |\n|-----------|----------|-------------|\n| Auto音乐同步 | Syncs visuals to audio | Always ON for music videos |\n| Shape | Visual element | Choose based on mood |\n| Color | Hue palette | Match song aesthetic |\n| Speed | Motion rate | Match tempo/energy |\n| Reaction | Audio sensitivity | Adjust for impact |\n\n### Common Uses\n\n1. **YouTube music videos** - Export 1080p/4K visualizers\n2. **Social clips** - Quick visual content\n3. **Live performance** - Real-time visuals\n4. **Background** - Visual wallpaper while producing\n\n### Typical Mistakes\n\n| Mistake | Problem | Fix |\n|---------|---------|-----|\n| Wrong aspect ratio | Stretched visuals | Match export to platform |\n| Too many colors | Clashing palette | Limit to 2-3 hues |\n| No audio sync | Visuals feel disconnected | Enable auto-sync |\n| Static visuals | Boring over time | Add animation/movement |\n| Export settings wrong | Poor quality | Check resolution/bitrate |\n\n### First Visual Adjustments\n\n**For hip-hop/moody:**\n1. Start with dark background\n2. Use one accent color (gold, purple, blue)\n3. Medium speed movement (matches BPM)\n4. Waveform or particle shape\n5. Subtle audio reaction\n\n**For upbeat/electric:**\n1. Bright/neon colors\n2. Fast movement (matches tempo)\n3. Multiple shapes/elements\n4. High audio reaction\n5. Dynamic color shifts\n\n**For lofi:**\n1. Retro/CRT aesthetic\n2. Limited color palette\n3. Slight zoom/flicker effect\n4. Lower resolution feel\n5. Nostalgic shapes (pixels, scanlines)\n"
+    },
+    "Quick-Reference": {
+      "parameter-cheat-sheet": "# ZGameEditor Visualizer - Parameter Cheat Sheet\n\n**Plugin Type:** Audio-Reactive Visualization Engine\n**Category:** Visual Effects / Live Performance / Video Creation\n**Official Manual:** [ZGameEditor Visualizer](https://www.image-line.com/fl-studio-learning/fl-studio-online-manual/html/plugins/ZGameEditor%20Visualizer.htm)\n\n---\n\n## Core Concept\n\n**ZGameEditor Visualizer** = Programmable visual effects that react to audio in real-time\n- **Audio Reactive:** Visuals respond to music's frequency, amplitude, and rhythm\n- **Customizable:** Extensive preset library + user programming capability\n- **Render to Video:** Export visuals as video files for YouTube, social media\n\n---\n\n## Main Display Window\n\n| Element | Function | Use |\n|---------|----------|-----|\n| **3D Viewport** | Main visualization display | Shows real-time visuals |\n| **Preset Browser** | Access built-in visualizations | 100+ factory presets |\n| **Layer System** | Stack multiple effects | Combine visuals for complexity |\n| **Performance Monitor** | FPS and CPU usage | Optimize for smooth playback |\n\n---\n\n## Preset Categories\n\n| Category | Description | Example Presets |\n|----------|-------------|-----------------|\n| **Audio Spectrum** | Frequency-based bars/circles | Classic spectrum analyzer |\n| **Particles** | Particle systems synced to audio | Particle explosions, trails |\n| **Tunnels** | 3D tunnel effects | Retro tunnel flying |\n| **Fractals** | Mathematical patterns | Mandelbrot, Julia sets |\n| **Waves** | Waveform displays | Oscilloscope-style |\n| **Abstract** | Artistic visual effects | Kaleidoscopes, morphing shapes |\n| **Retro** | 80s/90s style visualizations | Winamp-inspired effects |\n\n---\n\n## Audio Reactivity Parameters\n\n| Parameter | Range | Function | Quick Tip |\n|-----------|-------|----------|-----------|\n| **Bass Reactivity** | 0-200% | Low frequency response | Kick drum triggering |\n| **Mid Reactivity** | 0-200% | Mid frequency response | Snare, vocals |\n| **High Reactivity** | 0-200% | High frequency response | Hi-hats, cymbals |\n| **Peak Sensitivity** | 0-100% | Transient detection | Quick hits vs sustained |\n| **Smoothing** | 0-100% | Audio analysis smoothing | Lower = more responsive, higher = smoother |\n\n---\n\n## Visual Customization\n\n| Control | Function | Creative Use |\n|---------|----------|--------------|\n| **Color Palette** | Set visual color scheme | Match branding, mood |\n| **Camera Controls** | Position, rotation, FOV | Cinematic movements |\n| **Particle Count** | Density of particle effects | More = detailed but CPU heavy |\n| **Layer Opacity** | Blend multiple layers | Create complex composites |\n| **Blur/Glow** | Post-processing effects | Add atmosphere |\n\n---\n\n## Quick Start Presets by Genre\n\n| Genre | Recommended Preset Types |\n|-------|--------------------------|\n| **EDM** | Particles, spectrum bars, neon tunnels |\n| **Hip-Hop** | Bass-reactive particles, waveforms |\n| **Ambient** | Slow-moving fractals, waves |\n| **Rock** | Spectrum analyzer, oscilloscope |\n| **Techno** | Minimal geometric shapes, tunnels |\n| **Lo-Fi** | Retro VHS effects, soft particles |\n\n---\n\n## Rendering to Video\n\n### Export Settings\n\n| Parameter | Recommended | Notes |\n|-----------|-------------|-------|\n| **Resolution** | 1920x1080 (1080p) | Standard YouTube/social |\n| **Frame Rate** | 60 FPS | Smooth motion |\n| **Codec** | H.264/MP4 | Universal compatibility |\n| **Bitrate** | 10-20 Mbps | Quality vs file size |\n\n### Render Workflow\n1. **Prepare Project:** Finalize audio mix\n2. **Choose Preset:** Select/customize visualization\n3. **Set Export Range:** Start/end points\n4. **Configure Settings:** Resolution, FPS, codec\n5. **Render:** File > Export > Video\n6. **Monitor:** Watch for dropped frames\n\n---\n\n## Performance Optimization\n\n| Issue | Solution |\n|-------|----------|\n| **Low FPS** | Reduce particle count, lower resolution |\n| **Stuttering** | Increase buffer size, close other apps |\n| **High CPU** | Use simpler presets, disable anti-aliasing |\n| **Render Crashes** | Export in smaller sections, increase RAM allocation |\n\n**Target:** 60 FPS for smooth real-time playback\n\n---\n\n## Layer System\n\n### How Layers Work\n- **Stack Multiple Effects:** Up to 8 layers\n- **Blend Modes:** Add, multiply, screen, etc.\n- **Independent Parameters:** Each layer customizable\n- **Opacity Control:** Fade layers in/out\n\n### Layer Strategy\n1. **Background Layer:** Base color or gradient\n2. **Main Effect:** Primary visualization (e.g., spectrum)\n3. **Accent Layers:** Particles, overlays\n4. **Post FX Layer:** Glow, blur, color grading\n\n---\n\n## Audio Analysis Targets\n\n| Frequency Band | Typical Instrument | Visual Mapping |\n|----------------|-------------------|----------------|\n| **Sub (20-60Hz)** | Kick drum, sub bass | Size, scale, position |\n| **Bass (60-250Hz)** | Bass guitar, low synth | Primary movement |\n| **Mid (250Hz-2kHz)** | Vocals, snare, guitar | Color shifts, rotation |\n| **High (2kHz-8kHz)** | Hi-hats, cymbals | Particle emission, flicker |\n| **Presence (8kHz+)** | Sibilance, air | Brightness, glow |\n\n---\n\n## Camera Controls\n\n| Control | Function | Creative Use |\n|---------|----------|--------------|\n| **Position (X/Y/Z)** | Camera location | Fly-throughs, orbits |\n| **Rotation** | Camera angle | Spinning, tilting |\n| **Field of View** | Lens width | Wide-angle vs telephoto |\n| **Automation** | Animate camera over time | Dynamic cinematics |\n\n---\n\n## Preset Modification\n\n### Beginner Customization\n1. **Load Preset** from factory library\n2. **Adjust Colors** to match your brand\n3. **Tweak Reactivity** for your audio's dynamics\n4. **Save As New Preset** for future use\n\n### Advanced Programming\n- **ZGameEditor Language:** Script custom visuals\n- **Community Resources:** Download user presets\n- **Tutorial Videos:** Official and community guides\n\n---\n\n## Live Performance Setup\n\n### VJ (Video Jockey) Workflow\n1. **Load Multiple Presets** in different slots\n2. **MIDI Map Preset Switching** to controller\n3. **Automate Parameters** for live tweaking\n4. **Output to Projector/LED Wall**\n\n### MIDI Control\n- **Map to Faders:** Reactivity, opacity, colors\n- **Map to Pads:** Preset switching\n- **Map to Knobs:** Camera position, effects\n\n---\n\n## Social Media Optimization\n\n### YouTube\n- **Resolution:** 1920x1080 or 3840x2160 (4K)\n- **Aspect Ratio:** 16:9\n- **FPS:** 60\n- **Tip:** Add simple logo overlay\n\n### Instagram\n- **Resolution:** 1080x1080 (square) or 1080x1920 (vertical)\n- **Aspect Ratio:** 1:1 or 9:16\n- **Duration:** 60 seconds max (feed), unlimited (IGTV)\n\n### TikTok\n- **Resolution:** 1080x1920 (vertical)\n- **Aspect Ratio:** 9:16\n- **FPS:** 30-60\n- **Tip:** Fast-moving visuals for engagement\n\n---\n\n## Genre-Specific Visual Styles\n\n### Synthwave/Outrun\n- **Colors:** Neon pink, purple, cyan\n- **Effects:** Retro tunnels, grid floors\n- **Camera:** Low angle, moving forward\n- **Reactivity:** Moderate, smooth\n\n### Dubstep/Bass Music\n- **Colors:** Dark with bright accents\n- **Effects:** Heavy bass-reactive particles\n- **Camera:** Aggressive movements\n- **Reactivity:** High, explosive\n\n### Ambient/Chillout\n- **Colors:** Pastels, earth tones\n- **Effects:** Slow fractals, soft waves\n- **Camera:** Slow drifts, static\n- **Reactivity:** Low, gentle\n\n### Minimal Techno\n- **Colors:** Monochrome or limited palette\n- **Effects:** Geometric shapes, simple patterns\n- **Camera:** Subtle, repetitive\n- **Reactivity:** Precise, quantized\n\n---\n\n## Common Mistakes to Avoid\n\n1. **Over-Reactivity:** Visuals too chaotic (reduce sensitivity)\n2. **Low FPS in Render:** CPU overload (simplify preset or render offline)\n3. **Color Clashing:** Too many competing colors (stick to 2-3 main colors)\n4. **Static Visuals:** No camera movement (automate camera for interest)\n5. **No Audio Preview:** Rendering without checking audio sync (always preview first)\n\n---\n\n## CPU & Performance\n\n- **CPU Usage:** Moderate to very high (depends on preset complexity)\n- **GPU Acceleration:** Limited (primarily CPU-based)\n- **Optimization:** Reduce particle count, disable AA, lower resolution\n- **Realtime:** Suitable for live VJ work on powerful systems\n\n---\n\n## File Management\n\n### Preset Storage\n- **Factory Presets:** Built-in, read-only\n- **User Presets:** Save custom visuals\n- **Location:** Documents\\Image-Line\\FL Studio\\Presets\\Plugin presets\\Effects\\ZGameEditor Visualizer\\\n\n### Video Export\n- **Format:** MP4, AVI, or image sequence\n- **Location:** Choose output folder before rendering\n- **Tip:** Use descriptive filenames (e.g., \"SongName_Visual_1080p60\")\n\n---\n\n## Automation Ideas\n\n1. **Preset Switching:** Change presets at song sections (verse, chorus, drop)\n2. **Color Shifts:** Automate color changes for builds/drops\n3. **Reactivity Ramps:** Increase bass reactivity leading to drop\n4. **Camera Movements:** Zoom in/out during transitions\n5. **Layer Opacity:** Fade layers in/out for complexity changes\n\n---\n\n## Related Plugins & Tools\n\n### FL Studio Native\n- **Wave Candy** - Simple spectrum analyzer (less powerful)\n- **Video Player** - Import pre-rendered video\n\n### External Visualization Tools\n- **Resolume Arena** - Professional VJ software\n- **Magic Music Visuals** - Standalone visualizer\n- **VSXU** - Open-source visual programming\n- **Processing** - Creative coding for visuals\n\n---\n\n## Community & Resources\n\n### Official Resources\n- **FL Studio Manual:** Comprehensive ZGE guide\n- **Image-Line Forum:** Preset sharing, troubleshooting\n- **Official YouTube:** Tutorial videos\n\n### Community Presets\n- **Download:** User-created presets from forums\n- **Upload:** Share your custom visuals\n- **Collaborate:** Request custom visuals from community\n\n### Learning ZGameEditor Programming\n- **ZGameEditor Website:** Official language documentation\n- **Tutorials:** Step-by-step programming guides\n- **Examples:** Deconstructing factory presets\n\n---\n\n## Quick Troubleshooting\n\n### Visuals Not Responding to Audio\n- **Check:** Plugin is receiving audio input\n- **Verify:** Reactivity parameters not at 0%\n- **Solution:** Route audio correctly to ZGE track\n\n### Render is Choppy\n- **Solution:** Render offline (not real-time)\n- **Tip:** Close all other applications during render\n\n### Wrong Aspect Ratio\n- **Check:** Resolution settings match target platform\n- **Fix:** Reconfigure before rendering\n\n---\n\n**Last Updated:** February 3, 2026\n**Status:** Complete reference material\n",
+      "quick-start-checklist": "# Quick Start Checklist: Zgameeditor Visualizer\r\n\r\n## Getting Started\r\n1.  **Load:** Drag Zgameeditor Visualizer to the Channel Rack/Mixer.\r\n2.  **Preset:** Browse presets using the arrows in the top right.\r\n3.  **Tweak:** Adjust [Main Control].\r\n\r\n## Essential Settings\r\n- [ ] Check setting A\r\n- [ ] Verify setting B\r\n",
+      "top-controls": "# Top Controls: Zgameeditor Visualizer\r\n\r\n## Primary Controls\r\n| Control | Function | Use Case |\r\n| :--- | :--- | :--- |\r\n| **Knob A** | Controls X | [TODO] |\r\n| **Slider B** | Controls Y | [TODO] |\r\n\r\n## Hidden Gems\r\n- **Feature:** [TODO]\r\n"
+    },
+    "README.md": {
+      "README": "# Learning - Zgameeditor Visualizer\r\n\r\nThis section contains learning information for the zgameeditor-visualizer plugin.\r\n"
+    }
+  },
+  "workflows": {
+    "by-goal": {
+      "music-video-youtube-hiphop": "# Music Video Creation for YouTube (Hip-Hop/R&B)\n\n**Genre:** All Hip-Hop, R&B, Trap\n**Platform:** YouTube, Instagram, TikTok\n**Difficulty:** Intermediate\n**Time:** 30-60 minutes\n\n---\n\n## Why Visuals Matter for Hip-Hop\n\nIn 2026, your music **needs visuals** to compete:\n- **YouTube algorithm** favors video content\n- **Social media** (TikTok, IG) requires visual hooks\n- **Lyric videos** keep listeners engaged\n- **Abstract visualizers** work for instrumentals and lo-fi\n\nZGameEditor Visualizer creates **professional-looking visuals** without expensive software.\n\n---\n\n## Quick Setup: Audio-Reactive Visualizer\n\n### Step 1: Load ZGameEditor Visualizer\n\n**Where to Place It:**\n1. **Master track** (affects entire mix)\n2. OR dedicated **visualizer track** with sidechain input\n\n**Recommendation:** Use master track for simplicity\n\n### Step 2: Choose Your Visual Style\n\n**For Hip-Hop/Trap (Dark, Moody):**\n- **Tunnel effects** (depth/immersion)\n- **Particle systems** (energy, movement)\n- **Glitch effects** (modern, edgy)\n- **Dark backgrounds** (black, deep purple)\n\n**For R&B (Smooth, Atmospheric):**\n- **Waveform displays** (melodic, smooth)\n- **Gradient backgrounds** (warm colors)\n- **Bloom/glow effects** (soft, dreamy)\n- **Slow-moving shapes** (elegant)\n\n**For Lo-Fi (Chill, Nostalgic):**\n- **Retro effects** (VHS, analog)\n- **Simple waveforms** (minimalist)\n- **Warm color palettes** (orange, cream, brown)\n- **Static/grain overlays** (texture)\n\n---\n\n## Preset Starting Points\n\n### 1. Dark Trap Visualizer\n\n**Effects to Enable:**\n```\nBackground: Solid Black\nEffect 1: Tunnel (depth = fast)\nEffect 2: Particles (color = purple/pink)\nEffect 3: Bass Reactor (reacts to kick)\nEffect 4: Glitch (triggered on snare)\nEffect 5: Lens Distortion (subtle)\n```\n\n**Audio Reactivity:**\n- **Bass frequencies** (40-150Hz) → **Particle size**\n- **Kick hits** → **Tunnel speed pulse**\n- **Snare hits** → **Glitch trigger**\n\n**Color Palette:** Black, deep purple, hot pink, cyan accents\n\n**Vibe:** Dark, futuristic, aggressive\n\n---\n\n### 2. Melodic R&B Visualizer\n\n**Effects to Enable:**\n```\nBackground: Gradient (purple to pink)\nEffect 1: Waveform Display (smooth sine)\nEffect 2: Bloom/Glow (warm)\nEffect 3: Slow Rotating Shapes (geometric)\nEffect 4: Audio Spectrum Bars\nEffect 5: Subtle Particles (floating)\n```\n\n**Audio Reactivity:**\n- **Mid frequencies** (200Hz-2kHz) → **Waveform amplitude**\n- **High frequencies** (4kHz+) → **Bloom intensity**\n- **Overall volume** → **Shape rotation speed**\n\n**Color Palette:** Purple, pink, warm orange, soft gold\n\n**Vibe:** Smooth, romantic, polished\n\n---\n\n### 3. Lo-Fi Chill Visualizer\n\n**Effects to Enable:**\n```\nBackground: Warm gradient (cream to orange)\nEffect 1: Simple Waveform (minimal)\nEffect 2: VHS/Retro Filter\nEffect 3: Vinyl Rotation (animated record)\nEffect 4: Grain/Noise Overlay\nEffect 5: Vignette (darker edges)\n```\n\n**Audio Reactivity:**\n- **Bass** → **Vinyl rotation speed**\n- **Mids** → **Waveform movement**\n- **Minimal reaction** (laid-back vibe)\n\n**Color Palette:** Cream, warm orange, brown, muted pink\n\n**Vibe:** Chill, nostalgic, cozy\n\n---\n\n### 4. Psychedelic Hip-Hop\n\n**Effects to Enable:**\n```\nBackground: Animated gradient (shifting colors)\nEffect 1: Kaleidoscope/Mirror\nEffect 2: Fractal patterns\nEffect 3: Heavy Particle System (chaotic)\nEffect 4: Color cycling (rainbow)\nEffect 5: Displacement/Warp\n```\n\n**Audio Reactivity:**\n- **All frequencies** → **Different effects**\n- **Chaotic, unpredictable** movement\n- **Color shifts** on beat\n\n**Color Palette:** Full spectrum, rainbow, constantly shifting\n\n**Vibe:** Trippy, experimental, mind-bending\n\n---\n\n## Step-by-Step: Creating Your Video\n\n### Step 1: Prepare Your Track\n\n**Export Requirements:**\n- **Audio format:** WAV or MP3 (320kbps)\n- **Length:** Final mixed and mastered version\n- **Levels:** Properly compressed (no clipping)\n\n### Step 2: Configure ZGameEditor\n\n**Resolution Settings:**\n```\nYouTube Standard: 1920x1080 (1080p)\nInstagram/TikTok: 1080x1920 (vertical)\nYouTube Shorts: 1080x1920 (vertical)\n```\n\n**Frame Rate:** 60 FPS (smoother motion)\n\n### Step 3: Design Your Visual\n\n**Layering Strategy:**\n1. **Background layer:** Solid color or gradient\n2. **Main effect layer:** Tunnel, waveform, or particles\n3. **Reactive layer:** Bass/kick reactivity\n4. **Foreground layer:** Text, logo, overlays\n5. **Post-processing:** Bloom, grain, vignette\n\n**Timing:**\n- **Intro (0-8s):** Fade in, build anticipation\n- **Verse (8-40s):** Steady, rhythmic visuals\n- **Chorus (40-60s):** More intense, reactive\n- **Outro (2:30+):** Wind down, fade out\n\n### Step 4: Add Text/Lyrics (Optional)\n\n**For Lyric Videos:**\n1. Use **Text effect** in ZGameEditor\n2. **Sync lyrics** to vocal timing\n3. **Font:** Bold, readable (avoid thin fonts)\n4. **Color:** High contrast with background\n5. **Animation:** Fade in/out, scale slightly\n\n**Typography Tips:**\n- **Sans-serif fonts** for hip-hop (clean, modern)\n- **Large text** (readable on mobile)\n- **Drop shadow** or **outline** for legibility\n\n### Step 5: Render Video\n\n**Export Settings:**\n```\nFormat: MP4 (H.264)\nResolution: 1920x1080 @ 60fps\nBitrate: 15-20 Mbps (high quality)\nAudio: 320kbps MP3 or AAC\n```\n\n**Render Time:** Expect 1-3x track length (varies by complexity)\n\n---\n\n## Advanced Techniques\n\n### Technique 1: Section-Based Visuals\n\n**Change visuals per section:**\n- **Intro:** Dark, minimal\n- **Verse:** Moderate intensity\n- **Chorus:** Full intensity, all effects\n- **Bridge:** Different effect set (variation)\n\n**How:** Automate effect enable/disable or create separate renders and edit in video software\n\n---\n\n### Technique 2: Camera Movement\n\n**Add dynamic camera:**\n- **Zoom in/out** on beat\n- **Pan left/right** slowly\n- **Rotate** for psychedelic effect\n\n**How:** Use camera animation settings in ZGameEditor\n\n---\n\n### Technique 3: Beat-Synced Effects\n\n**Trigger effects on:**\n- **Kick hits:** Flash, pulse, zoom\n- **Snare hits:** Color change, glitch\n- **Hi-hats:** Particle bursts\n\n**How:** Map Peak Controller to effect parameters\n\n---\n\n### Technique 4: Logo/Branding\n\n**Add your branding:**\n1. **Import PNG logo** (transparent background)\n2. **Position:** Bottom corner or center watermark\n3. **Opacity:** 70-90% (visible but not distracting)\n4. **Always visible** or **fade in/out**\n\n---\n\n## Platform-Specific Tips\n\n### YouTube\n- **Thumbnail:** Create custom thumbnail (1280x720)\n- **Title:** \"[Artist] - [Song Title] (Official Visualizer)\"\n- **Description:** Lyrics, streaming links, social media\n- **Tags:** Genre, mood, artist name\n- **Length:** 2-5 minutes ideal\n\n### Instagram/TikTok\n- **Vertical format:** 1080x1920\n- **Length:** 15-60 seconds (attention span)\n- **Hook in first 3 seconds:** Grab attention immediately\n- **Captions:** Add auto-captions (accessibility + engagement)\n\n### YouTube Shorts\n- **Vertical format:** 1080x1920\n- **Under 60 seconds**\n- **Fast-paced:** More intensity, quicker cuts\n- **Hook lyrics:** Feature best/catchiest part\n\n---\n\n## Color Psychology for Hip-Hop Visuals\n\n| Color | Vibe | Use For |\n|-------|------|---------|\n| **Black + Purple** | Dark, moody, luxurious | Trap, Dark R&B |\n| **Pink + Purple** | Melodic, emotional | R&B, Emo Rap |\n| **Red + Black** | Aggressive, intense | Hard Trap, Drill |\n| **Blue + Cyan** | Cool, futuristic | Cloud Rap, Future Bass |\n| **Orange + Cream** | Warm, nostalgic | Lo-Fi, Boom Bap |\n| **Green + Black** | Money, success | Flex Rap, Trap |\n| **Full Spectrum** | Psychedelic, trippy | Experimental, Psychedelic |\n\n---\n\n## Common Mistakes\n\n1. **Too many effects:** Cluttered, distracting\n2. **Wrong aspect ratio:** Cropped on platforms\n3. **Low contrast:** Text hard to read\n4. **Ignoring audio reactivity:** Static, boring\n5. **No branding:** Viewers forget who made it\n\n---\n\n## Workflow Cheat Sheet\n\n| Goal | Background | Main Effect | Reactivity | Colors |\n|------|------------|-------------|------------|--------|\n| **Dark Trap** | Black | Tunnel + Particles | Kick → Pulse | Purple, Pink, Cyan |\n| **Melodic R&B** | Gradient | Waveform + Bloom | Vocals → Waveform | Purple, Pink, Gold |\n| **Lo-Fi Chill** | Warm tone | Simple Wave + Vinyl | Minimal | Orange, Cream, Brown |\n| **Psychedelic** | Animated | Kaleidoscope + Fractal | All Freqs → Chaos | Rainbow, Shifting |\n| **Lyric Video** | Solid or Gradient | Text Display | None or Subtle | High Contrast |\n\n---\n\n## Reference Visual Styles\n\n**Dark Trap:**\n- Travis Scott - \"SICKO MODE\" (visual aesthetic)\n- 21 Savage - \"a lot\" (dark, minimal)\n\n**Melodic R&B:**\n- The Weeknd - \"Blinding Lights\" (neon, retro)\n- SZA - \"Good Days\" (warm, dreamy)\n\n**Lo-Fi:**\n- Lofi Girl - 24/7 streams (minimal, cozy)\n- Joji - \"Slow Dancing in the Dark\" (warm tones)\n\n**Psychedelic:**\n- ASAP Rocky - \"L$D\" (trippy, colorful)\n- Kid Cudi - \"Pursuit of Happiness\" (abstract)\n\n---\n\n## Production Tips\n\n### For Maximum Engagement\n- **First 3 seconds:** Immediate visual impact\n- **Beat drops:** Sync with visual intensity change\n- **Chorus:** Most visually impressive section\n- **End screen:** Call to action (subscribe, follow)\n\n### For Professional Look\n- **Consistent color palette:** Stick to 2-4 colors\n- **Smooth animations:** Avoid jittery movement\n- **Audio-reactive but not chaotic:** Balance\n- **Branding:** Logo, artist name visible\n\n### For Algorithmic Success\n- **Upload in 1080p or 4K:** Better quality ranking\n- **Engaging thumbnail:** Custom, high contrast\n- **Strong title/description:** SEO keywords\n- **Regular uploads:** Build channel momentum\n\n---\n\n## Next Steps\n\n1. **Learn basic video editing:** DaVinci Resolve, Premiere Pro\n2. **Study successful visual styles:** Analyze popular videos\n3. **Experiment with presets:** Find your signature look\n4. **Add custom elements:** Import logos, images\n5. **Optimize for platforms:** Right formats, lengths\n\n---\n\n**Related Workflows:**\n- [Lyric Video Creation](./lyric-video-creation.md)\n- [Instagram Reel Optimization](./instagram-reel-format.md)\n- [Album Cover Animation](./animated-album-cover.md)\n\n---\n\n**Last Updated:** February 3, 2026\n**Platform:** YouTube, Instagram, TikTok\n**Vibe:** 📹 Visual Game Strong\n",
+      "youtube-video-creation": "# YouTube Video Creation with ZGameEditor Visualizer\n\n**Difficulty:** Intermediate\n**Time Required:** 30-60 minutes\n**Goal:** Create professional music visualizer video for YouTube\n**Output:** 1080p60 MP4 video file\n\n---\n\n## Prerequisites\n\n- Completed music track in FL Studio\n- ZGameEditor Visualizer plugin\n- Sufficient hard drive space (1GB+ for video)\n- Powerful CPU (rendering is CPU-intensive)\n\n---\n\n## Workflow Steps\n\n### Step 1: Project Preparation\n\n1. **Finalize Audio Mix:**\n   - Master track should be complete\n   - No changes after starting visual work\n   - Export high-quality audio backup (WAV, 44.1kHz/48kHz)\n\n2. **Analyze Track Structure:**\n   - Note intro, verse, chorus, bridge, outro\n   - Plan visual changes for each section\n\n---\n\n### Step 2: Insert ZGameEditor Visualizer\n\n3. **Create New Mixer Track** (or use master)\n4. **Load ZGameEditor Visualizer** on FX slot\n5. **Open Plugin Window** (fullscreen recommended)\n\n---\n\n### Step 3: Choose/Customize Preset\n\n6. **Browse Factory Presets:**\n   - Click preset browser button\n   - Audition presets while music plays\n   - Choose style matching your genre\n\n7. **Customize Colors:**\n   - Match your branding/artwork\n   - Use 2-3 main colors for cohesion\n   - Avoid too many competing colors\n\n8. **Adjust Audio Reactivity:**\n   - **Bass Reactivity:** 80-120% (kick drum response)\n   - **Mid Reactivity:** 60-100% (vocals, snare)\n   - **High Reactivity:** 50-80% (hi-hats)\n   - *Tip:* Preview and adjust for your mix's dynamics\n\n---\n\n### Step 4: Layer Additional Effects (Optional)\n\n9. **Add Background Layer:**\n   - Simple gradient or color\n   - Low opacity (20-40%)\n\n10. **Add Particle Layer:**\n    - Complements main visualization\n    - Triggered by specific frequencies\n\n---\n\n### Step 5: Camera Automation (Optional)\n\n11. **Create Camera Movements:**\n    - Slow zoom in/out\n    - Gentle rotation\n    - Automate position for fly-throughs\n\n12. **Sync to Song Structure:**\n    - Static camera in verse\n    - Moving camera in chorus\n    - Dramatic movement at drop\n\n---\n\n### Step 6: Configure Export Settings\n\n13. **File > Export > Video:**\n    - **Format:** MP4 (H.264)\n    - **Resolution:** 1920x1080 (1080p)\n    - **Frame Rate:** 60 FPS\n    - **Bitrate:** 15-20 Mbps (high quality)\n\n14. **Set Export Range:**\n    - Start: Beginning of song\n    - End: After final note/fadeout\n\n15. **Choose Output Location:**\n    - Save to known folder\n    - Use descriptive filename\n\n---\n\n### Step 7: Render Video\n\n16. **Start Render:**\n    - Click \"Export\" button\n    - Progress bar will appear\n\n17. **Monitor Progress:**\n    - Don't use computer for other tasks\n    - Watch for errors or dropped frames\n    - Rendering may take 2-10x song length (depends on CPU)\n\n18. **Quality Check After Render:**\n    - Play video in media player\n    - Check audio sync\n    - Verify no dropped frames or glitches\n\n---\n\n### Step 8: Post-Processing (Optional)\n\n19. **Video Editing Software (Optional):**\n    - Add logo/watermark\n    - Intro/outro cards\n    - Social media links overlay\n\n20. **YouTube Optimization:**\n    - Create eye-catching thumbnail (1280x720)\n    - Write description with timestamps\n    - Add relevant tags\n\n---\n\n## Render Settings by Quality\n\n| Quality | Resolution | FPS | Bitrate | Use Case |\n|---------|------------|-----|---------|----------|\n| **Draft** | 1280x720 | 30 | 5 Mbps | Quick preview |\n| **Standard** | 1920x1080 | 30 | 10 Mbps | Social media |\n| **High** | 1920x1080 | 60 | 15 Mbps | YouTube standard |\n| **Premium** | 3840x2160 | 60 | 30 Mbps | 4K YouTube |\n\n**Recommendation:** 1080p60 @ 15 Mbps for best balance\n\n---\n\n## Preset Selection by Genre\n\n| Genre | Visual Style | Preset Type |\n|-------|--------------|-------------|\n| **EDM** | Energetic, colorful | Neon tunnels, particle explosions |\n| **Lo-Fi Hip-Hop** | Calm, retro | VHS effects, soft waves |\n| **Synthwave** | Neon, retro | 80s grids, tunnels, pink/purple |\n| **Ambient** | Slow, organic | Fractals, gentle particles |\n| **Rock** | Raw, energetic | Spectrum bars, waveforms |\n\n---\n\n## Time-Saving Tips\n\n### Draft Preview\n1. Render **720p30** version first (much faster)\n2. Check visual timing and sync\n3. Make adjustments\n4. Render final **1080p60** only when satisfied\n\n### Offline Rendering\n- Render overnight or during breaks\n- Don't use computer during render\n- Close all other applications\n\n---\n\n## Common Issues & Solutions\n\n### Render Takes Too Long\n- **Solution:** Simplify preset (fewer particles)\n- Lower resolution to 720p\n- Render in sections, then combine\n\n### Audio Out of Sync\n- **Check:** Export settings match project sample rate\n- **Solution:** Re-export with correct settings\n\n### Video Looks Different Than Preview\n- **Issue:** Preview uses lower quality for performance\n- **Solution:** Always do test render first\n\n### Dropped Frames\n- **Cause:** CPU can't keep up\n- **Solution:** Simplify preset, close other apps, render offline\n\n---\n\n## YouTube Upload Best Practices\n\n### Video Metadata\n- **Title:** Include song name, artist, \"(Official Audio)\" or \"(Visualizer)\"\n- **Description:** Credits, links, timestamps\n- **Tags:** Genre, mood, instruments, \"audio visualizer\"\n\n### Thumbnail\n- **Size:** 1280x720 pixels\n- **Format:** JPG or PNG\n- **Content:** Clean text, contrast, represents song vibe\n- **Tip:** Don't use auto-generated thumbnail\n\n### Engagement\n- **Call to Action:** Ask for likes, comments, subscribes\n- **Cards:** Link to other videos or playlists\n- **End Screen:** Subscribe button, related videos\n\n---\n\n## Advanced Techniques\n\n### Multi-Section Presets\n1. Use automation clips to switch presets\n2. Different visuals for verse vs chorus\n3. Dramatic change at drop\n\n### Custom Brand Integration\n- Add your logo as layer\n- Use consistent color scheme\n- Watermark in corner\n\n### Interactive Elements\n- Display audio spectrum prominently\n- Show BPM or key information\n- Lyrics overlay (requires external editing)\n\n---\n\n## Next Steps\n\nAfter mastering basic YouTube videos:\n\n1. **Learn Preset Customization** - Tweak factory presets\n2. **Explore ZGameEditor Programming** - Create custom visuals\n3. **Build Preset Library** - Save favorite customizations\n4. **Live VJ Performance** - Use ZGE for live shows\n\n---\n\n**Related Workflows:**\n- [Live VJ Setup](./live-vj-setup.md)\n- [Instagram Video Export](./instagram-video-export.md)\n- [Custom Preset Creation](./custom-preset-creation.md)\n\n---\n\n**Last Updated:** February 3, 2026\n**Status:** Complete workflow\n"
+    },
+    "by-instrument": {
+      "instrument-visual-workflows": "Tags: hip-hop/rap | R&B | electric\n\n## ZGameEditor Visualizer Instrument Workflows\n\n### Vocal-Centric Visual\n\n**Goal:** Highlight rapper/singer presence\n\n**Settings:**\n- Shape: Waveform (center focus)\n- Color: Dark blue to purple gradient\n- Background: Dark (#0F0F1A)\n- Speed: 0.5 (matches flow tempo)\n- Reaction: 0.6 (responsive but not chaotic)\n- Sync: ON\n\n**Creation Steps:**\n1. Set dark background\n2. Center waveform shape\n3. Gradient from dark blue to purple\n4. Adjust size to frame vocals\n5. Lower reaction for verses, raise for hooks\n\n**A/B Test:**\n1. Play verse section\n2. Toggle reaction between 0.4 and 0.8\n3. Listen to flow, adjust visual to match\n\n**Quick Fix Path:**\n- Too busy → Reduce speed, lower reaction\n- Too static → Increase speed, add subtle pulse\n- Wrong mood → Change color palette\n\n### 808/Bass Drop Visual\n\n**Goal:** Emphasize bass impact moments\n\n**Settings:**\n- Shape: Spectrum (frequency bars)\n- Color: Neon pink to cyan gradient\n- Background: Deep purple (#1A0A2E)\n- Speed: 0.9 (high energy)\n- Reaction: 0.85 (very responsive)\n- Sync: ON\n\n**Why This Works:**\n- Spectrum shows bass frequency hits\n- Neon colors emphasize intensity\n- High reaction creates impact moments\n- Colors complement dark backgrounds\n\n### Keys/Piano Visual\n\n**Goal:** Show melodic contour\n\n**Settings:**\n- Shape: Particle (flowing, organic)\n- Color: Warm gold to orange\n- Background: Deep brown (#1A1510)\n- Speed: 0.55 (matches chord changes)\n- Reaction: 0.5 (smooth response)\n- Sync: ON\n\n**Tips:**\n- Particles follow melody contour\n- Warm colors complement piano timbre\n- Slower speed lets chords breathe\n\n### Hi-Hat/High-Frequency Visual\n\n**Goal:** Show rhythmic energy\n\n**Settings:**\n- Shape: 3D Geometric\n- Color: Bright silver/white\n- Background: Dark gray (#0A0A0A)\n- Speed: 1.0 (matches hi-hat tempo)\n- Reaction: 0.7 (snappy response)\n- Sync: ON\n\n**Best For:**\n- Trap hi-hat patterns\n- Fast rap sections\n- Energy peaks\n\n### Full Mix Visual\n\n**Goal:** Overall energy display\n\n**Settings:**\n- Shape: Combined (waveform + particles)\n- Color: Dynamic gradient\n- Background: Neutral dark (#121212)\n- Speed: Variable (match sections)\n- Reaction: 0.6 (balanced)\n- Sync: ON\n\n**Section-Based Approach:**\n\n| Section | Shape | Speed | Reaction |\n|---------|-------|-------|----------|\n| Intro | Particle | 0.4 | 0.4 |\n| Verse | Waveform | 0.5 | 0.5 |\n| Pre-hook | Spectrum | 0.7 | 0.7 |\n| Hook | 3D | 0.9 | 0.85 |\n| Bridge | Particle | 0.45 | 0.45 |\n| Outro | Waveform | 0.4 | 0.4 |\n\n### Quick Reference Table\n\n| Sound Focus | Shape | Colors | Speed | Reaction | Mood |\n|-------------|-------|--------|-------|----------|------|\n| Vocals | Waveform | Blue→Purple | 0.5 | 0.6 | Moody |\n| 808 | Spectrum | Pink→Cyan | 0.9 | 0.85 | Intense |\n| Keys | Particle | Gold→Orange | 0.55 | 0.5 | Smooth |\n| Hi-hats | 3D | Silver/White | 1.0 | 0.7 | Energetic |\n| Full mix | Combined | Dynamic | Variable | 0.6 | Adaptive |\n| Atmosphere | Particle | Dark | 0.3 | 0.6 | Moody |\n"
+    },
+    "README.md": {
+      "README": "# Workflow - Zgameeditor Visualizer\r\n\r\nThis section contains workflow information for the zgameeditor-visualizer plugin.\r\n"
+    }
+  },
+  "reference": {
+    "README.md": {
+      "README": "# Reference - Zgameeditor Visualizer\r\n\r\nThis section contains reference information for the zgameeditor-visualizer plugin.\r\n"
+    }
+  }
+}

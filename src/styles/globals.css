@@ -1290,3 +1290,91 @@ body::before {
   width: 85%;
   background: linear-gradient(90deg, #ef4444, #f87171);
 }
+
+/* ============================================
+   Smooth Reveal on Scroll (Final Touch)
+   ============================================ */
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply smooth reveal to sections (works with modern browsers supporting view timeline) */
+@supports (animation-timeline: view()) {
+  section {
+    animation: reveal-up 0.6s ease-out;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+  }
+}
+
+/* Fallback for browsers without view timeline support */
+@media (prefers-reduced-motion: no-preference) {
+  @supports not (animation-timeline: view()) {
+    section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    
+    section.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* ============================================
+   Card Interactive Utilities
+   ============================================ */
+
+@layer utilities {
+  .card-interactive {
+    @apply transition-all duration-300 hover:scale-[1.02] active:scale-[0.99];
+  }
+  
+  .card-interactive-subtle {
+    @apply transition-all duration-300 hover:scale-[1.01] active:scale-[0.995];
+  }
+}
+
+/* ============================================
+   Logo Fade-In Animation
+   ============================================ */
+
+@keyframes logo-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.logo-fade-in {
+  animation: logo-fade-in 0.8s ease-out forwards;
+}
+
+/* ============================================
+   Pulsing Dot Animation (for "Latest Updates")
+   ============================================ */
+
+@keyframes ping-slow {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.animate-ping-slow {
+  animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}

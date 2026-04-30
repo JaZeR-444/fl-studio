@@ -18,9 +18,18 @@ npm run dev
 
 ### Build & Export
 ```bash
-npm run build    # Creates production build
+npm run build    # Creates production build (runs prebuild data aggregation automatically)
 npm run start    # Runs production build locally
 ```
+
+### Data Management
+```bash
+npm run aggregate    # Aggregate modular plugin data into consolidated files
+npm run enhance      # Enhance plugin manifests with additional metadata
+npm run data:refresh # Run enhance + aggregate in sequence
+```
+
+**Important:** The `aggregate` script runs automatically as a `prebuild` step, so data is always fresh before builds.
 
 ### Static Export (for GitHub Pages)
 The app uses Next.js static export mode (`output: 'export'` in `next.config.js`). Build output goes to the `/out` directory.
@@ -44,11 +53,27 @@ npm run lint
 ### Key Architectural Patterns
 
 #### 1. App Structure (Next.js App Router)
-- `src/app/page.tsx` - Landing page
+- `src/app/page.tsx` - Landing page with hero, features, and CTAs
 - `src/app/hub/page.tsx` - Main application hub with all feature sections
-- `src/app/plugins/[id]/page.tsx` - Dynamic plugin detail pages
+- `src/app/plugins/[id]/page.tsx` - Dynamic plugin detail pages (research-style layout)
 - `src/app/layout.tsx` - Root layout with metadata and global providers
 - `src/app/providers.tsx` - Client-side provider wrapper (for AppContext)
+
+**Plugin Detail Pages:**
+Plugin pages use a research-oriented layout with:
+- `PluginResearchPage` - Main layout wrapper
+- `PageHeader` - Plugin name, tier badge, breadcrumbs
+- `LeftRail` - Quick links navigation
+- `ResearchGrid` - Modular card system for different content types:
+  - `MarkdownCard` - Rendered markdown content
+  - `TableCard` - Tabular data display
+  - `RecipesCard` - Step-by-step workflows
+  - `RulesAccordionCard` - Collapsible rules/tips
+  - `WorkflowTabsCard` - Tabbed workflow examples
+  - `OutlineCard` - Table of contents
+  - `QuickLinksCard` - Navigation shortcuts
+
+The page uses `generateStaticParams()` to pre-render all plugin pages at build time.
 
 #### 2. Component Organization
 ```
@@ -74,21 +99,67 @@ Each section in `src/components/sections/` is a standalone feature module that c
 
 #### 3. Data Layer Architecture
 
-**Plugin Data Pipeline:**
-- Source: `fl_studio_plugin_blueprint_skeleton_128.json` (raw schema)
-- Transform: `scripts/transform_plugins.py` converts to app schema
-- Output: `src/data/plugins/allPlugins.json` (consumed by components)
+**Modular Plugin Data Structure:**
 
-**Supporting Data Files:**
-- `capabilityMatrix.json` - Plugin capability mappings for filtering
-- `searchIndex.json` - Optimized search index
-- `taxonomy.json` - Category/family hierarchies
-- `workflows.json` - Curated signal chain configurations
+The plugin data follows a **modular, folder-based architecture** where each plugin has its own directory:
+
+```
+src/data/plugins/
+├── [plugin-id]/                    # Individual plugin folder (e.g., "flex", "fruity-parametric-eq-2")
+│   ├── manifest.json               # Core plugin metadata (name, type, category, tier, etc.)
+│   ├── data/
+│   │   ├── parameters/             # Parameter definitions (*.json)
+│   │   ├── presets/                # Preset configurations (*.json)
+│   │   └── rules/                  # Usage rules and troubleshooting (*.json)
+│   ├── learning/                   # Learning content organized by category
+│   │   ├── Concepts/               # Markdown concept explanations
+│   │   ├── Quick-Reference/        # Quick reference guides
+│   │   └── Tutorials/              # Step-by-step tutorials
+│   ├── workflow/                   # Workflow examples
+│   │   ├── by-goal/                # Goal-oriented workflows (*.md, *.json)
+│   │   └── by-instrument/          # Instrument-specific workflows
+│   └── reference/                  # Reference documentation
+│
+├── enriched/                       # Auto-generated enriched data
+│   └── [plugin-id].json            # Complete aggregated plugin data
+│
+├── allPlugins.json                 # Registry of all plugins (auto-generated)
+├── searchIndex.json                # Optimized search index (auto-generated)
+├── taxonomy.json                   # Category hierarchies (auto-generated)
+├── capabilityMatrix.json           # Capability mappings (auto-generated)
+└── workflows.json                  # Cross-plugin workflows (auto-generated)
+```
+
+**Data Aggregation Pipeline:**
+
+The `scripts/aggregate-plugin-data.js` script runs automatically before each build (`prebuild` hook):
+
+1. **Discovers** all plugin folders in `src/data/plugins/` (reads `index.json` if available for plugin count)
+2. **Reads** each plugin's modular structure (manifest, parameters, presets, learning content, etc.)
+3. **Aggregates** the data into enriched JSON files in `enriched/[plugin-id].json`
+4. **Generates** consolidated files:
+   - `allPlugins.json` - Plugin registry with metadata flags (has_presets, has_learning, etc.)
+   - `searchIndex.json` - Searchable text index with tags and capabilities
+   - `taxonomy.json` - Plugins grouped by category, tier, and type
+   - `capabilityMatrix.json` - Reverse index of capabilities to plugins
+   - `workflows.json` - Cross-plugin workflow chains (optional)
 
 **Data Flow:**
 ```
-Raw JSON → Python ETL script → App-ready JSON → TypeScript services → React components
+Modular plugin folders → aggregate-plugin-data.js → Enriched JSON + Consolidated files → TypeScript services → React components
 ```
+
+**When to run data aggregation:**
+- Automatically runs on `npm run build` (prebuild hook)
+- Manually run `npm run aggregate` after modifying plugin data
+- Use `npm run data:refresh` to enhance manifests + aggregate
+
+**Project Templates:**
+
+Song templates (.flp files and JSON exports) are stored in `public/templates/`:
+- `template-manifest.json` - Tracking system for templates
+- `expected-templates.json` - List of expected template filenames
+- See `docs/TEMPLATE_CREATION_GUIDE.md` for creating FL Studio templates
 
 #### 4. State Management via Context
 
@@ -139,6 +210,17 @@ React-specific logic in `src/hooks/`:
 - `useChart.ts` - Chart.js lifecycle management
 - `useDarkModeWithCharts.ts` - Theme switching that updates charts
 - `usePluginSearch.ts` - Search state and debouncing
+- `useToolkit.ts` - Toolkit state management
+
+#### 8. Animations
+
+The app uses **GSAP** (GreenSock Animation Platform) for advanced animations:
+- Hero section waveform animations
+- Floating musical notes particles
+- Smooth scroll-triggered animations
+- Page transitions
+
+GSAP is imported from the `gsap` package and used in client components with proper cleanup in `useEffect` hooks.
 
 ### Design System: Purple Glassmorphism
 
@@ -213,13 +295,40 @@ All charts must have:
 
 ## Common Development Patterns
 
-### Adding a New Plugin Data Field
+### Adding a New Plugin
 
-1. Update the schema in `fl_studio_plugin_blueprint_skeleton_128.json`
-2. Modify `scripts/transform_plugins.py` to extract the new field
-3. Run the transform script to regenerate `allPlugins.json`
-4. Update `src/types/pluginTypes.ts` or `src/types/index.ts` with the type
-5. Use the new field in components (e.g., `PluginCard.tsx`)
+1. Create a new folder in `src/data/plugins/[plugin-id]/` (use kebab-case)
+2. Add `manifest.json` with core metadata:
+   ```json
+   {
+     "id": "plugin-id",
+     "name": "Plugin Name",
+     "category": "Synthesizer",
+     "tier": "Free",
+     "type": "Generator",
+     "description": "...",
+     "tags": ["tag1", "tag2"],
+     "capabilities": ["MIDI", "Automation"],
+     "version": "1.0",
+     "icon": "",
+     "color": "#8B5CF6"
+   }
+   ```
+3. Optionally add modular content:
+   - `data/parameters/*.json` - Parameter definitions
+   - `data/presets/*.json` - Preset configurations
+   - `data/rules/*.json` - Usage rules
+   - `learning/Concepts/*.md` - Conceptual explanations
+   - `workflow/by-goal/*.md` - Workflow examples
+4. Run `npm run aggregate` to generate consolidated files
+5. Plugin will automatically appear in the app
+
+### Adding Plugin Data Fields
+
+1. Add the field to the plugin's `manifest.json`
+2. Update `src/types/index.ts` or `src/types/pluginTypes.ts` with the type
+3. Run `npm run aggregate` to regenerate consolidated files
+4. Use the new field in components (e.g., `PluginCard.tsx`)
 
 ### Adding a New Section to the Hub
 
@@ -257,7 +366,33 @@ Corresponds to `src/*` directory.
 
 ## Data Processing
 
-When updating plugin data:
+### Plugin Data Aggregation
+
+The modern approach uses the Node.js aggregation script (runs automatically on build):
+
+```bash
+npm run aggregate  # Aggregates modular plugin data
+```
+
+This script:
+- Scans `src/data/plugins/` for plugin folders
+- Reads each plugin's modular structure (manifest, parameters, presets, learning, workflows, etc.)
+- Generates enriched files in `src/data/plugins/enriched/[plugin-id].json`
+- Creates consolidated files: `allPlugins.json`, `searchIndex.json`, `taxonomy.json`, `capabilityMatrix.json`
+
+### Utility Scripts
+
+Additional data management scripts in `scripts/`:
+
+```bash
+node scripts/enhance-manifests.js        # Enhance plugin manifests with additional metadata
+node scripts/fix-plugin-pages.js         # Fix plugin page syntax errors
+node scripts/generate-template-list.js   # Generate template filename manifest
+```
+
+### Legacy Python Transform (if needed)
+
+If working with legacy data:
 ```bash
 cd scripts
 python transform_plugins.py
@@ -279,12 +414,22 @@ This reads from `fl_studio_plugin_blueprint_skeleton_128.json` and outputs to `s
 
 ## Testing Workflow
 
+**Development Testing:**
 1. Run `npm run dev` to test locally on port 3003
 2. Test dark mode toggle functionality
 3. Verify all charts render and update with theme changes
 4. Test responsive behavior (mobile sidebar, card grids)
-5. Run `npm run build` to ensure static export succeeds
-6. Test the exported site by serving the `out/` directory
+5. Test plugin detail pages at `/plugins/[plugin-id]`
+6. Verify command palette (Cmd/Ctrl+K)
+
+**Build Testing:**
+1. Run `npm run build` to ensure static export succeeds
+2. Check for TypeScript errors and build warnings
+3. Verify data aggregation ran successfully (check console output)
+4. Test the exported site by serving the `out/` directory
+
+**Component Tests:**
+There are test files (e.g., `src/app/plugins/[id]/page.test.tsx`) for critical pages. Run tests with standard Jest/testing-library commands if configured.
 
 ## Performance Considerations
 
@@ -299,3 +444,14 @@ This reads from `fl_studio_plugin_blueprint_skeleton_128.json` and outputs to `s
 - Services: camelCase (e.g., `pluginSearchService.ts`)
 - Types: index.ts or descriptive name (e.g., `pluginTypes.ts`)
 - Data files: camelCase JSON (e.g., `allPlugins.json`)
+- Plugin IDs: kebab-case (e.g., `fruity-parametric-eq-2`)
+
+## Additional Documentation
+
+Key documentation files in `docs/`:
+- `PURPLE_DESIGN_GUIDE.md` - Complete design system documentation
+- `TEMPLATE_CREATION_GUIDE.md` - Guide for creating FL Studio templates
+- `APP-MAP.md` - Application structure map
+- `INGESTION.md` - Data ingestion patterns
+- `MIGRATION_CHECKLIST.md` - Migration tracking
+- `DESIGN_TRANSFORMATION_SUMMARY.md` - Design evolution notes

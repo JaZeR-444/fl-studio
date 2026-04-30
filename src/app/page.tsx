@@ -33,6 +33,15 @@ export default function HomePage() {
     setIsMounted(true);
   }, []);
 
+  // Auto-rotate genre carousel
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentGenre((prev) => (prev + 1) % genres.length);
+    }, 6000); // Change every 6 seconds
+
+    return () => clearInterval(timer);
+  }, []);
+
   const genres = [
     {
       name: 'Trap',
@@ -93,6 +102,30 @@ export default function HomePage() {
   const prevGenre = () => {
     setCurrentGenre((prev) => (prev - 1 + genres.length) % genres.length);
   };
+
+  const heroAccess = [
+    { href: '/hub#plugins-database', label: 'Plugin Database', desc: 'Search every native instrument and effect', Icon: Layers, hover: 'hover:border-purple-400/50', iconWrap: 'bg-purple-500/15 border-purple-400/20', icon: 'text-purple-300' },
+    { href: '/hub#workflow-chains', label: 'Workflow Chains', desc: 'Load proven native signal chains', Icon: Zap, hover: 'hover:border-blue-400/50', iconWrap: 'bg-blue-500/15 border-blue-400/20', icon: 'text-blue-300' },
+    { href: '/hub#templates', label: 'Song Templates', desc: 'Start from genre-ready project maps', Icon: Target, hover: 'hover:border-green-400/50', iconWrap: 'bg-green-500/15 border-green-400/20', icon: 'text-green-300' },
+    { href: '/hub#mixer-templates', label: 'Mixer Templates', desc: 'Use native mix bus starting points', Icon: TrendingUp, hover: 'hover:border-pink-400/50', iconWrap: 'bg-pink-500/15 border-pink-400/20', icon: 'text-pink-300' },
+    { href: '/hub#quick-start', label: 'Quick Start', desc: 'Follow focused learning paths', Icon: BookOpen, hover: 'hover:border-amber-400/50', iconWrap: 'bg-amber-500/15 border-amber-400/20', icon: 'text-amber-300' },
+    { href: '/hub#troubleshoot', label: 'Troubleshooting', desc: 'Fix latency, CPU, routing, and plugin issues', Icon: Sparkles, hover: 'hover:border-cyan-400/50', iconWrap: 'bg-cyan-500/15 border-cyan-400/20', icon: 'text-cyan-300' },
+  ];
+
+  const heroStats = [
+    { value: '134', label: 'Native plugins' },
+    { value: '12', label: 'Workflow chains' },
+    { value: '73', label: 'Song templates' },
+    { value: '32', label: 'Capabilities' },
+  ];
+
+  const recommendedStarts = [
+    { href: '/hub#plugins-database', label: 'Find a stock synth', meta: 'Sytrus, Harmor, FLEX' },
+    { href: '/hub#workflow-chains', label: 'Build a vocal chain', meta: 'EQ, compression, space' },
+    { href: '/hub#templates', label: 'Start a genre session', meta: 'Trap, house, ambient' },
+    { href: '/hub#troubleshoot', label: 'Fix a production problem', meta: 'CPU, latency, routing' },
+  ];
+
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] text-white overflow-hidden relative">
       {/* ANIMATED BACKGROUND LAYER */}
@@ -142,8 +175,23 @@ export default function HomePage() {
         ))}
       </div>
 
+      {/* ===== LATEST UPDATES BADGE ===== */}
+      <div className="relative z-20 pt-20">
+        <div className="max-w-4xl mx-auto px-2 sm:px-4">
+          <div className="flex items-center justify-center gap-3 p-3 rounded-full border border-purple-500/30 bg-purple-500/10 backdrop-blur-md w-fit mx-auto animate-fade-in-up">
+            <span className="flex h-2 w-2 relative">
+              <span className="animate-ping-slow absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </span>
+            <span className="text-sm text-purple-200">
+              <strong className="text-white">New:</strong> 134 plugins documented · 12 signal chains · 73 templates
+            </span>
+          </div>
+        </div>
+      </div>
+
       {/* ===== HERO SECTION ===== */}
-      <section className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 pt-20 pb-12">
+      <section className="relative z-10 min-h-screen px-2 sm:px-4 lg:px-6 xl:px-8 pt-16 pb-12 flex items-center">
         {/* Animated Waveform Background */}
         <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
           <svg width="800" height="200" viewBox="0 0 800 200" className="max-w-full">
@@ -171,79 +219,163 @@ export default function HomePage() {
           </svg>
         </div>
 
-        <div className="max-w-5xl mx-auto text-center animate-fade-in-up">
-          {/* Badge */}
-          <Badge variant="premium" className="mb-6 text-sm py-2 px-4 shadow-[0_0_30px_rgba(124,58,237,0.4)]">
-            <Sparkles className="w-4 h-4 mr-2" />
-            FL Studio Master Hub
-          </Badge>
-
-          {/* Headline */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] mb-6">
-            <span className="text-white">Professional</span>
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-purple-300 to-blue-400">
-              FL Studio Production Guide
-            </span>
-          </h1>
-
-          {/* Subheadline */}
-          <p className="text-lg md:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed mb-8">
-            Comprehensive documentation for all 128 native FL Studio plugins, 12 professional signal chains,
-            and 73 genre-specific templates to accelerate your workflow.
-          </p>
-
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Link
-              href="/hub"
-              className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 via-purple-500 to-blue-500 hover:from-purple-500 hover:via-purple-400 hover:to-blue-400 text-white font-bold text-lg rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_50px_rgba(124,58,237,0.5)] flex items-center justify-center gap-3 overflow-hidden"
-            >
-              <Play className="w-5 h-5 fill-current" />
-              <span>View Plugin Database</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-
-            <Link
-              href="/hub#workflow-chains"
-              className="px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/20 hover:border-[var(--accent-primary)]/50 text-white font-semibold text-lg rounded-xl transition-all duration-300 backdrop-blur-sm flex items-center justify-center gap-3"
-            >
-              <Zap className="w-5 h-5" />
-              Browse Signal Chains
-            </Link>
-          </div>
-
-          {/* Trust Indicators */}
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-[var(--text-muted)]">
-            <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-green-400" />
-              <span>100% Native Plugins</span>
+        <div className="w-full max-w-[1800px] 2xl:max-w-[2000px] mx-auto animate-fade-in-up">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 lg:gap-5 items-stretch">
+            <div className="lg:col-span-1 order-2 lg:order-1 rounded-[1.75rem] border border-white/10 bg-slate-950/65 p-3 backdrop-blur-xl shadow-lg">
+              <div className="mb-3 flex items-center justify-between px-1">
+                <p className="text-xs uppercase tracking-[0.22em] text-purple-200/60">Direct Access</p>
+                <span className="rounded-full border border-white/10 bg-white/[0.06] px-2 py-1 text-[10px] font-bold text-white/70">6 modules</span>
+              </div>
+              <div className="grid h-[calc(100%-2rem)] grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 auto-rows-fr gap-3">
+              {heroAccess.map(({ href, label, desc, Icon, hover, iconWrap, icon }) => (
+                <Link
+                  key={label}
+                  href={href}
+                  className={`group min-h-[118px] rounded-2xl border border-white/15 bg-white/[0.08] p-3 text-left backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/[0.12] ${hover} hover:shadow-lg`}
+                >
+                  <div className="flex h-full flex-col justify-between">
+                    <div className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl border ${iconWrap}`}>
+                      <Icon className={`h-5 w-5 ${icon}`} />
+                    </div>
+                    <div className="min-w-0">
+                      <h2 className="text-sm font-bold leading-tight text-white group-hover:text-white">{label}</h2>
+                      <p className="mt-1 text-[11px] leading-4 text-[var(--text-muted)]">{desc}</p>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-green-400" />
-              <span>128 Plugin Specs</span>
+
+            <div className="lg:col-span-2 order-1 lg:order-2">
+              <div className="h-full min-h-[560px] rounded-[2rem] border border-purple-500/20 bg-slate-950/75 px-6 py-8 md:px-10 md:py-10 xl:px-12 backdrop-blur-xl shadow-[0_30px_100px_rgba(0,0,0,0.45)] flex flex-col justify-center overflow-hidden relative">
+                <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-purple-300/70 to-transparent" />
+                <div className="absolute -right-24 -top-24 h-56 w-56 rounded-full bg-purple-500/20 blur-3xl" />
+                <div className="absolute -left-24 bottom-20 h-56 w-56 rounded-full bg-blue-500/20 blur-3xl" />
+
+                <div className="relative">
+                  <div className="mb-7">
+                    <img
+                      src={`${basePath}/images/branding/logo-white.svg`}
+                      alt="FL Studio Master Hub"
+                      className="h-auto w-full max-w-[620px] drop-shadow-[0_0_45px_rgba(168,85,247,0.35)] logo-fade-in"
+                    />
+                  </div>
+
+                  <Badge variant="premium" className="mb-6 text-sm py-2 px-4 shadow-[0_0_30px_rgba(124,58,237,0.4)]">
+                    <Sparkles className="w-4 h-4 mr-2" />
+                    Native FL Studio Production System
+                  </Badge>
+
+                  <h1 className="sr-only">FL Studio Master Hub</h1>
+
+                  <p className="text-base md:text-lg text-[var(--text-secondary)] max-w-xl leading-8 mb-8">
+                    Find the right stock plugin, build proven signal chains, launch genre templates, and solve production problems without leaving the native FL ecosystem.
+                  </p>
+
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <Link
+                      href="/hub"
+                      className="group relative px-6 py-4 bg-gradient-to-r from-purple-600 via-purple-500 to-blue-500 hover:from-purple-500 hover:via-purple-400 hover:to-blue-400 text-white font-bold rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_50px_rgba(124,58,237,0.45)] flex items-center justify-center gap-3 overflow-hidden"
+                    >
+                      <Play className="w-5 h-5 fill-current" />
+                      <span>Open Studio Hub</span>
+                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+
+                    <Link
+                      href="/hub#plugins-database"
+                      className="px-6 py-4 bg-white/5 hover:bg-white/10 border border-white/20 hover:border-[var(--accent-primary)]/50 text-white font-semibold rounded-xl transition-all duration-300 backdrop-blur-sm flex items-center justify-center gap-3"
+                    >
+                      <Layers className="w-5 h-5" />
+                      Browse Plugins
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="relative mt-10 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-[var(--text-muted)]">
+                  {['100% Native Plugins', '134 Plugin Specs', 'Production-Ready'].map((item) => (
+                    <div key={item} className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-3 py-3">
+                      <CheckCircle2 className="w-4 h-4 shrink-0 text-green-400" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-green-400" />
-              <span>Production-Ready</span>
+
+            <div className="lg:col-span-1 order-3 rounded-[1.75rem] border border-white/10 bg-slate-950/65 p-3 backdrop-blur-xl shadow-lg">
+              <div className="grid h-full grid-cols-2 auto-rows-fr gap-3">
+                <div className="col-span-2 rounded-2xl border border-green-500/20 bg-white/[0.08] p-4 backdrop-blur-md">
+                <div className="flex items-center justify-between mb-4">
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.24em] text-purple-200/60">System Index</p>
+                    <h2 className="mt-1 text-base font-bold text-white">Native production map</h2>
+                  </div>
+                  <div className="h-10 w-10 rounded-xl bg-green-500/15 border border-green-400/20 grid place-items-center">
+                    <CheckCircle2 className="h-5 w-5 text-green-300" />
+                  </div>
+                </div>
+                <div className="grid grid-cols-4 gap-2">
+                  {heroStats.map((stat) => (
+                    <div key={stat.label} className="rounded-xl border border-white/15 bg-slate-950/60 p-2">
+                      <div className="text-xl font-black text-white">{stat.value}</div>
+                      <div className="mt-1 text-[10px] leading-3 text-[var(--text-muted)]">{stat.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="col-span-2 rounded-2xl border border-blue-500/20 bg-white/[0.08] p-4 backdrop-blur-md">
+                <p className="text-xs uppercase tracking-[0.24em] text-blue-200/70 font-semibold">Recommended Starts</p>
+                <div className="mt-3 grid grid-cols-2 gap-2">
+                  {recommendedStarts.map((item, index) => (
+                    <Link key={item.label} href={item.href} className="group flex min-h-[86px] flex-col justify-between rounded-xl border border-white/15 bg-slate-950/60 p-3 hover:bg-slate-950/80 hover:border-blue-400/50 transition-all hover:shadow-md">
+                      <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-blue-500/15 text-xs font-bold text-blue-200">
+                        {index + 1}
+                      </span>
+                      <span className="min-w-0">
+                        <span className="block text-xs font-semibold leading-tight text-white">{item.label}</span>
+                        <span className="mt-1 block text-[10px] leading-3 text-[var(--text-muted)]">{item.meta}</span>
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <div className="col-span-2 rounded-2xl border border-purple-500/25 bg-gradient-to-br from-purple-500/20 via-white/[0.08] to-blue-500/15 p-4 backdrop-blur-md shadow-md">
+                <div className="flex items-center gap-3 mb-3">
+                  <Award className="h-5 w-5 text-purple-200" />
+                  <h2 className="text-base font-bold text-white">Native advantage</h2>
+                </div>
+                <p className="text-xs leading-5 text-[var(--text-secondary)]">
+                  Built around FL Studio stock tools, internal routing, and repeatable project systems instead of third-party plugin shopping.
+                </p>
+                <Link href="/hub#native-advantages" className="mt-3 inline-flex items-center gap-2 text-xs font-semibold text-purple-200 hover:text-white transition-colors">
+                  Compare native workflows
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex items-start justify-center p-2">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+          <p className="text-xs text-purple-300/60 uppercase tracking-wider animate-pulse">Scroll to explore</p>
+          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex items-start justify-center p-2 animate-bounce">
             <div className="w-1.5 h-3 bg-white/60 rounded-full animate-pulse" />
           </div>
         </div>
       </section>
 
       {/* ===== STATS BAR ===== */}
-      <section className="relative z-10 py-12 border-y border-white/10 bg-white/[0.02]">
-        <div className="max-w-5xl mx-auto px-4">
+      <section className="relative z-10 py-12 border-y border-white/10 bg-white/[0.02] before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-purple-400/40 before:to-transparent">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-4xl md:text-5xl font-black text-white mb-1">128</div>
+              <div className="text-4xl md:text-5xl font-black text-white mb-1">134</div>
               <div className="text-sm text-[var(--text-muted)]">Stock Plugins</div>
             </div>
             <div>
@@ -263,8 +395,8 @@ export default function HomePage() {
       </section>
 
       {/* ===== WHAT'S INSIDE ===== */}
-      <section className="relative z-10 py-20 px-4">
-        <div className="max-w-6xl mx-auto">
+      <section className="relative z-10 py-20 px-2 sm:px-4 lg:px-6 xl:px-8">
+        <div className="max-w-[1600px] mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Comprehensive Production Resources</h2>
             <p className="text-[var(--text-muted)] max-w-xl mx-auto">
@@ -274,85 +406,85 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Card 1 - Plugins */}
-            <Link href="/hub#plugins" className="group relative p-6 rounded-2xl bg-gradient-to-br from-purple-500/10 to-purple-500/5 border border-purple-500/20 hover:border-purple-500/40 transition-all hover:scale-[1.02]">
+            <Link href="/hub#plugins-database" className="group relative p-6 rounded-2xl bg-gradient-to-br from-purple-500/15 to-purple-500/8 border border-purple-500/30 hover:border-purple-500/50 card-interactive backdrop-blur-sm hover:shadow-[0_8px_32px_rgba(124,58,237,0.25)]">
               <div className="absolute top-4 right-4">
-                <span className="text-xs font-medium text-purple-400 bg-purple-500/20 px-2 py-1 rounded-full">Popular</span>
+                <span className="text-xs font-semibold text-purple-300 bg-purple-500/25 px-3 py-1 rounded-full border border-purple-400/30">Most Popular</span>
               </div>
-              <div className="w-14 h-14 rounded-xl bg-purple-500/20 flex items-center justify-center mb-4">
-                <Layers className="w-7 h-7 text-purple-400 animate-icon-layers" />
+              <div className="w-14 h-14 rounded-xl bg-purple-500/25 border border-purple-400/30 flex items-center justify-center mb-4">
+                <Layers className="w-7 h-7 text-purple-300 animate-icon-layers" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">Plugin Database</h3>
-              <p className="text-[var(--text-muted)] mb-4">Deep-dive specifications for all 128 stock instruments and effects—parameter breakdowns, CPU benchmarks, and production techniques.</p>
-              <div className="flex items-center text-purple-400 font-medium text-sm">
-                <span>Explore plugins</span>
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">Plugin Database</h3>
+              <p className="text-purple-100/70 mb-4 leading-relaxed">Search all 134 native instruments and effects with detailed specs, CPU benchmarks, and real-world usage examples.</p>
+              <div className="flex items-center text-purple-300 font-semibold text-sm">
+                <span>Search Plugins</span>
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </div>
             </Link>
 
             {/* Card 2 - Workflows */}
-            <Link href="/hub#workflow-chains" className="group relative p-6 rounded-2xl bg-gradient-to-br from-blue-500/10 to-blue-500/5 border border-blue-500/20 hover:border-blue-500/40 transition-all hover:scale-[1.02]">
-              <div className="w-14 h-14 rounded-xl bg-blue-500/20 flex items-center justify-center mb-4">
-                <Zap className="w-7 h-7 text-blue-400 animate-icon-zap" />
+            <Link href="/hub#workflow-chains" className="group relative p-6 rounded-2xl bg-gradient-to-br from-blue-500/15 to-blue-500/8 border border-blue-500/30 hover:border-blue-500/50 card-interactive backdrop-blur-sm hover:shadow-[0_8px_32px_rgba(59,130,246,0.25)]">
+              <div className="w-14 h-14 rounded-xl bg-blue-500/25 border border-blue-400/30 flex items-center justify-center mb-4">
+                <Zap className="w-7 h-7 text-blue-300 animate-icon-zap" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">Signal Chains</h3>
-              <p className="text-[var(--text-muted)] mb-4">12 studio-tested processing chains for vocals, drums, and mastering—with routing diagrams and parameter settings.</p>
-              <div className="flex items-center text-blue-400 font-medium text-sm">
-                <span>View chains</span>
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">Signal Chains</h3>
+              <p className="text-blue-100/70 mb-4 leading-relaxed">Copy 12 proven processing chains for vocals, drums, and mastering with routing diagrams and exact settings.</p>
+              <div className="flex items-center text-blue-300 font-semibold text-sm">
+                <span>Browse Chains</span>
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </div>
             </Link>
 
             {/* Card 3 - Templates */}
-            <Link href="/hub#templates" className="group relative p-6 rounded-2xl bg-gradient-to-br from-green-500/10 to-green-500/5 border border-green-500/20 hover:border-green-500/40 transition-all hover:scale-[1.02]">
-              <div className="w-14 h-14 rounded-xl bg-green-500/20 flex items-center justify-center mb-4">
-                <Target className="w-7 h-7 text-green-400 animate-icon-target" />
+            <Link href="/hub#templates" className="group relative p-6 rounded-2xl bg-gradient-to-br from-green-500/15 to-green-500/8 border border-green-500/30 hover:border-green-500/50 card-interactive backdrop-blur-sm hover:shadow-[0_8px_32px_rgba(16,185,129,0.25)]">
+              <div className="w-14 h-14 rounded-xl bg-green-500/25 border border-green-400/30 flex items-center justify-center mb-4">
+                <Target className="w-7 h-7 text-green-300 animate-icon-target" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-green-400 transition-colors">Song Blueprints</h3>
-              <p className="text-[var(--text-muted)] mb-4">73 genre-specific project templates with pre-routed mixer tracks, instrument selections, and tempo/key configurations.</p>
-              <div className="flex items-center text-green-400 font-medium text-sm">
-                <span>Get templates</span>
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-green-300 transition-colors">Song Blueprints</h3>
+              <p className="text-green-100/70 mb-4 leading-relaxed">Download 73 genre-ready templates with pre-routed channels, mixer setup, and optimized tempo/key settings.</p>
+              <div className="flex items-center text-green-300 font-semibold text-sm">
+                <span>Download Templates</span>
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </div>
             </Link>
 
             {/* Card 4 - Learning */}
-            <Link href="/hub#quick-start" className="group relative p-6 rounded-2xl bg-gradient-to-br from-amber-500/10 to-amber-500/5 border border-amber-500/20 hover:border-amber-500/40 transition-all hover:scale-[1.02]">
+            <Link href="/hub#quick-start" className="group relative p-6 rounded-2xl bg-gradient-to-br from-amber-500/15 to-amber-500/8 border border-amber-500/30 hover:border-amber-500/50 card-interactive backdrop-blur-sm hover:shadow-[0_8px_32px_rgba(245,158,11,0.25)]">
               <div className="absolute top-4 right-4">
-                <span className="text-xs font-medium text-amber-400 bg-amber-500/20 px-2 py-1 rounded-full">New</span>
+                <span className="text-xs font-semibold text-amber-300 bg-amber-500/25 px-3 py-1 rounded-full border border-amber-400/30">Beginner Friendly</span>
               </div>
-              <div className="w-14 h-14 rounded-xl bg-amber-500/20 flex items-center justify-center mb-4">
-                <BookOpen className="w-7 h-7 text-amber-400 animate-icon-book" />
+              <div className="w-14 h-14 rounded-xl bg-amber-500/25 border border-amber-400/30 flex items-center justify-center mb-4">
+                <BookOpen className="w-7 h-7 text-amber-300 animate-icon-book" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">Quick Start Guides</h3>
-              <p className="text-[var(--text-muted)] mb-4">Structured tutorials covering core DAW concepts—MIDI programming, mixer routing, automation, and arrangement workflow.</p>
-              <div className="flex items-center text-amber-400 font-medium text-sm">
-                <span>Start learning</span>
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-amber-300 transition-colors">Quick Start Guides</h3>
+              <p className="text-amber-100/70 mb-4 leading-relaxed">Follow structured tutorials on MIDI programming, mixer routing, automation, and full track arrangement.</p>
+              <div className="flex items-center text-amber-300 font-semibold text-sm">
+                <span>Start Learning</span>
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </div>
             </Link>
 
             {/* Card 5 - Mixing */}
-            <Link href="/hub#mixing" className="group relative p-6 rounded-2xl bg-gradient-to-br from-pink-500/10 to-pink-500/5 border border-pink-500/20 hover:border-pink-500/40 transition-all hover:scale-[1.02]">
-              <div className="w-14 h-14 rounded-xl bg-pink-500/20 flex items-center justify-center mb-4">
-                <TrendingUp className="w-7 h-7 text-pink-400 animate-icon-trending" />
+            <Link href="/hub#mixing" className="group relative p-6 rounded-2xl bg-gradient-to-br from-pink-500/15 to-pink-500/8 border border-pink-500/30 hover:border-pink-500/50 card-interactive backdrop-blur-sm hover:shadow-[0_8px_32px_rgba(236,72,153,0.25)]">
+              <div className="w-14 h-14 rounded-xl bg-pink-500/25 border border-pink-400/30 flex items-center justify-center mb-4">
+                <TrendingUp className="w-7 h-7 text-pink-300 animate-icon-trending" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-pink-400 transition-colors">Mixing & Mastering</h3>
-              <p className="text-[var(--text-muted)] mb-4">Studio-standard mixing workflows using exclusively native plugins—EQ curves, compression ratios, and stereo imaging techniques.</p>
-              <div className="flex items-center text-pink-400 font-medium text-sm">
-                <span>Learn mixing</span>
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-pink-300 transition-colors">Mixing & Mastering</h3>
+              <p className="text-pink-100/70 mb-4 leading-relaxed">Master professional mixing with native plugins only—proven EQ curves, compression settings, and imaging.</p>
+              <div className="flex items-center text-pink-300 font-semibold text-sm">
+                <span>View Techniques</span>
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </div>
             </Link>
 
             {/* Card 6 - Shortcuts */}
-            <Link href="/hub#dojo" className="group relative p-6 rounded-2xl bg-gradient-to-br from-cyan-500/10 to-cyan-500/5 border border-cyan-500/20 hover:border-cyan-500/40 transition-all hover:scale-[1.02]">
-              <div className="w-14 h-14 rounded-xl bg-cyan-500/20 flex items-center justify-center mb-4">
-                <Clock className="w-7 h-7 text-cyan-400 animate-icon-clock" />
+            <Link href="/hub#dojo" className="group relative p-6 rounded-2xl bg-gradient-to-br from-cyan-500/15 to-cyan-500/8 border border-cyan-500/30 hover:border-cyan-500/50 card-interactive backdrop-blur-sm hover:shadow-[0_8px_32px_rgba(6,182,212,0.25)]">
+              <div className="w-14 h-14 rounded-xl bg-cyan-500/25 border border-cyan-400/30 flex items-center justify-center mb-4">
+                <Clock className="w-7 h-7 text-cyan-300 animate-icon-clock" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">Keyboard Mastery</h3>
-              <p className="text-[var(--text-muted)] mb-4">Interactive training for 47+ essential keyboard shortcuts—pattern editor, playlist, mixer, and piano roll navigation.</p>
-              <div className="flex items-center text-cyan-400 font-medium text-sm">
-                <span>Train shortcuts</span>
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">Keyboard Mastery</h3>
+              <p className="text-cyan-100/70 mb-4 leading-relaxed">Train with 47+ essential shortcuts for pattern editor, playlist, mixer, and piano roll with flashcard practice.</p>
+              <div className="flex items-center text-cyan-300 font-semibold text-sm">
+                <span>Practice Shortcuts</span>
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </div>
             </Link>
@@ -361,8 +493,8 @@ export default function HomePage() {
       </section>
 
       {/* ===== HOW IT WORKS ===== */}
-      <section className="relative z-10 py-20 px-4 bg-white/[0.02]">
-        <div className="max-w-5xl mx-auto">
+      <section className="relative z-10 py-20 px-2 sm:px-4 lg:px-6 xl:px-8 bg-white/[0.02]">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Streamlined Learning Path</h2>
             <p className="text-[var(--text-muted)] max-w-xl mx-auto">
@@ -376,7 +508,7 @@ export default function HomePage() {
                 <span className="text-2xl font-black text-purple-400">1</span>
               </div>
               <h3 className="text-lg font-bold text-white mb-2">Access the Database</h3>
-              <p className="text-[var(--text-muted)] text-sm">Browse 128 plugin specifications, 12 signal chains, and 73 production templates—all organized by category and use case.</p>
+              <p className="text-[var(--text-muted)] text-sm">Browse 134 plugin specifications, 12 signal chains, and 73 production templates—all organized by category and use case.</p>
             </div>
 
             <div className="text-center">
@@ -399,8 +531,8 @@ export default function HomePage() {
       </section>
 
       {/* ===== COMMUNITY FAVORITES ===== */}
-      <section className="relative z-10 py-20 px-4">
-        <div className="max-w-5xl mx-auto">
+      <section className="relative z-10 py-20 px-2 sm:px-4 lg:px-6 xl:px-8">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Essential Stock Plugins</h2>
             <p className="text-[var(--text-muted)] max-w-xl mx-auto">
@@ -415,7 +547,7 @@ export default function HomePage() {
               { name: 'Gross Beat', category: 'Time FX', rating: 4.8, color: 'blue' },
               { name: 'Maximus', category: 'Dynamics', rating: 4.7, color: 'pink' },
             ].map((plugin) => (
-              <Link href={`/hub#plugins`} key={plugin.name} className="group p-4 rounded-xl bg-white/5 border border-white/10 hover:border-white/30 hover:bg-white/10 transition-all">
+              <Link href="/hub#plugins-database" key={plugin.name} className="group p-4 rounded-xl bg-white/5 border border-white/10 hover:border-white/30 hover:bg-white/10 transition-all">
                 <div className="flex items-center gap-2 mb-2">
                   <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
                   <span className="text-sm font-bold text-white">{plugin.rating}</span>
@@ -429,8 +561,8 @@ export default function HomePage() {
       </section>
 
       {/* ===== GENRE SPOTLIGHT CAROUSEL ===== */}
-      <section className="relative z-10 py-20 px-4 bg-white/[0.02]">
-        <div className="max-w-5xl mx-auto">
+      <section className="relative z-10 py-20 px-2 sm:px-4 lg:px-6 xl:px-8 bg-white/[0.02]">
+        <div className="max-w-[1400px] mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Genre-Specific Toolkits</h2>
             <p className="text-[var(--text-muted)] max-w-xl mx-auto">
@@ -518,7 +650,7 @@ export default function HomePage() {
           {/* CTA */}
           <div className="text-center mt-8">
             <Link
-              href="/hub#plugins"
+              href="/hub#plugins-database"
               className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/20 hover:border-purple-500/50 text-white font-semibold rounded-xl transition-all"
             >
               <span>Explore All Plugins</span>
@@ -529,8 +661,8 @@ export default function HomePage() {
       </section>
 
       {/* ===== FINAL CTA ===== */}
-      <section className="relative z-10 py-20 px-4 bg-gradient-to-t from-purple-600/10 to-transparent">
-        <div className="max-w-3xl mx-auto text-center">
+      <section className="relative z-10 py-20 px-2 sm:px-4 lg:px-6 bg-gradient-to-t from-purple-600/10 to-transparent">
+        <div className="max-w-4xl mx-auto text-center">
           <div className="mb-6">
             <Award className="w-12 h-12 text-purple-400 mx-auto mb-4" />
           </div>
@@ -552,8 +684,8 @@ export default function HomePage() {
       </section>
 
       {/* ===== FOOTER ===== */}
-      <footer className="relative z-10 py-8 px-4 border-t border-white/10">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-[var(--text-muted)]">
+      <footer className="relative z-10 py-8 px-2 sm:px-4 lg:px-6 border-t border-white/10">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-[var(--text-muted)]">
           <div className="flex items-center gap-2">
             <Music className="w-4 h-4" />
             <span>FL Studio Master Hub</span>

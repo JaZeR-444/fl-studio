@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Rocket, Piano, Newspaper, Megaphone, ChevronDown } from 'lucide-react';
 
 interface TopNavProps {
   onSubmitTool?: () => void;
@@ -10,10 +11,10 @@ export const TopNav = ({ onSubmitTool }: TopNavProps) => {
   const [activeNav, setActiveNav] = useState('products');
 
   const navItems = [
-    { id: 'launches', label: 'Launches', icon: '🚀' },
-    { id: 'products', label: 'Products', icon: '🎹' },
-    { id: 'news', label: 'News', icon: '📰' },
-    { id: 'advertise', label: 'Advertise', icon: '📢' },
+    { id: 'launches', label: 'Launches', icon: Rocket },
+    { id: 'products', label: 'Products', icon: Piano },
+    { id: 'news', label: 'News', icon: Newspaper },
+    { id: 'advertise', label: 'Advertise', icon: Megaphone },
   ];
 
   return (
@@ -34,18 +35,16 @@ export const TopNav = ({ onSubmitTool }: TopNavProps) => {
               <button
                 key={item.id}
                 onClick={() => setActiveNav(item.id)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                className={`premium-focus flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold transition-all duration-700 ease-[var(--ease-premium)] ${
                   activeNav === item.id
-                    ? 'text-white bg-white/5'
-                    : 'text-[var(--text-muted)] hover:text-[var(--text-secondary)] hover:bg-white/5'
+                    ? 'text-white bg-white/[0.08]'
+                    : 'text-[var(--text-muted)] hover:text-[var(--text-secondary)] hover:bg-white/[0.055]'
                 }`}
               >
-                <span>{item.icon}</span>
+                <item.icon className="w-4 h-4" />
                 <span>{item.label}</span>
                 {item.id === 'products' && (
-                  <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
+                  <ChevronDown className="w-4 h-4 ml-1" />
                 )}
               </button>
             ))}

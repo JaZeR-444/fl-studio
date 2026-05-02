@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect, ReactNode } from 'react';
-import { AppProvider, useAppContext } from '@/context/AppContext';
+import { useState, useEffect } from 'react';
+import { useAppContext } from '@/context/AppContext';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -11,8 +11,6 @@ import {
   FolderOpen,
   GraduationCap,
   Wrench,
-  ChevronLeft,
-  ChevronRight
 } from 'lucide-react';
 
 // Get basePath for GitHub Pages compatibility
@@ -118,15 +116,15 @@ const FLStudioHubContent = () => {
   };
 
   return (
-    <div className="min-h-screen w-full overflow-hidden font-sans bg-slate-950 dark:bg-slate-950 relative">
+    <div className="min-h-screen w-full overflow-hidden font-sans bg-[var(--bg-primary)] text-[var(--text-primary)] relative">
       {/* ANIMATED BACKGROUND LAYER */}
       <div
-        className="fixed inset-0 z-0 pointer-events-none overflow-hidden"
+        className="fixed inset-0 z-0 pointer-events-none overflow-hidden opacity-60"
         style={{
           backgroundImage: `url(${basePath}/fl-studio-test-new-background.svg)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          opacity: 0.25,
+          opacity: 0.18,
           filter: 'blur(1px)',
         }}
       >
@@ -141,12 +139,12 @@ const FLStudioHubContent = () => {
       </div>
 
       {/* MAIN CONTAINER - Full Screen */}
-      <div className="w-full h-screen flex flex-col bg-slate-900/50 dark:bg-slate-900/50 relative z-10">
+      <div className="w-full h-screen flex flex-col bg-[rgba(3,5,10,0.62)] relative z-10">
 
         {/* TOP NAVIGATION BAR */}
-        <div className="h-14 border-b flex items-center justify-between px-4 shrink-0 z-30 select-none bg-slate-950 dark:bg-slate-950 border-white/10">
+        <div className="h-16 border-b flex items-center justify-between px-4 shrink-0 z-30 select-none bg-[rgba(5,7,13,0.86)] border-[var(--glass-border)] shadow-[0_18px_70px_rgba(0,0,0,0.22)] backdrop-blur-2xl">
           {/* Left: Icon */}
-          <Link href="/" className="flex items-center hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 rounded">
+          <Link href="/" className="premium-focus flex items-center rounded-full border border-white/10 bg-white/[0.045] p-1.5 transition-all duration-700 ease-[var(--ease-premium)] hover:bg-white/[0.08]">
             <Image
               src={`${basePath}/images/branding/icon.svg`}
               alt="FL Studio"
@@ -157,15 +155,15 @@ const FLStudioHubContent = () => {
           </Link>
 
           {/* Center: Toggle Pill */}
-          <div className="flex items-center rounded-full p-1 border bg-slate-800 dark:bg-slate-800 border-white/10">
+          <div className="flex items-center rounded-full p-1 border bg-white/[0.045] border-[var(--glass-border)] shadow-[var(--shadow-inner-line)]">
             <Link
               href="/"
-              className="px-4 py-1.5 rounded-full text-xs font-bold transition-all text-gray-400 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500"
+              className="premium-focus px-4 py-1.5 rounded-full text-xs font-bold transition-all text-[var(--text-muted)] hover:text-white"
             >
               Home
             </Link>
             <button
-              className="px-4 py-1.5 rounded-full text-xs font-bold text-white shadow-md transition-all bg-purple-600 hover:bg-purple-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500"
+              className="premium-focus px-4 py-1.5 rounded-full text-xs font-bold text-[var(--text-inverse)] shadow-md transition-all bg-[var(--text-primary)] hover:scale-[1.01]"
             >
               Studio Hub
             </button>
@@ -175,16 +173,16 @@ const FLStudioHubContent = () => {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setSearchOpen(!searchOpen)}
-              className="p-2 transition-colors text-gray-400 hover:text-white rounded-lg hover:bg-white/5 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500"
+              className="premium-focus p-2 transition-colors text-[var(--text-muted)] hover:text-white rounded-full border border-white/10 bg-white/[0.045] hover:bg-white/[0.08] cursor-pointer"
               aria-label="Toggle search"
             >
               <Search className="w-5 h-5" />
             </button>
             {searchOpen && (
-              <div className="flex items-center rounded-lg border bg-slate-800 border-white/10 px-3">
+              <div className="flex items-center rounded-full border bg-white/[0.055] border-[var(--glass-border)] px-4">
                 <input
                   type="text"
-                  className="w-64 bg-transparent border-none text-sm focus:outline-none py-2 text-white placeholder:text-gray-500"
+                  className="w-64 bg-transparent border-none text-sm focus:outline-none py-2 text-white placeholder:text-[var(--text-dim)]"
                   placeholder="Search..."
                   autoFocus
                 />
@@ -196,7 +194,7 @@ const FLStudioHubContent = () => {
         {/* MAIN APP BODY */}
         <div className="flex flex-1 overflow-hidden relative">
           {/* RETRACTABLE SIDEBAR - Hidden on mobile, uses bottom nav instead */}
-          <div className={`hidden md:flex border-r flex-col shrink-0 transition-all duration-300 ease-in-out z-20 pt-6 relative bg-slate-950 dark:bg-slate-950 border-white/10 ${sidebarCollapsed ? 'w-16' : 'w-64'}`}>
+          <div className={`hidden md:flex border-r flex-col shrink-0 transition-all duration-300 ease-in-out z-20 pt-6 relative bg-[rgba(5,7,13,0.72)] border-[var(--glass-border)] backdrop-blur-2xl ${sidebarCollapsed ? 'w-16' : 'w-64'}`}>
             {/* Old Sidebar component content here - will be replaced next */}
             <Sidebar
               activeSection={state.activeSection}
@@ -213,7 +211,7 @@ const FLStudioHubContent = () => {
           </div>
 
           {/* MAIN CONTENT AREA */}
-          <main className="flex-1 overflow-y-auto pb-20 md:pb-0">
+          <main className="hub-content flex-1 overflow-y-auto pb-20 md:pb-0">
             <div className="w-full px-4 py-6 md:py-10">
               {/* Hero Section for Home */}
               {state.activeSection === 'home' && (
@@ -229,13 +227,13 @@ const FLStudioHubContent = () => {
               {/* Quick Access Section Cards */}
               {state.activeSection === 'home' && (
                 <div className="mt-8">
-                  <h2 className="text-xl font-bold text-white mb-4">Jump To Section</h2>
+                  <h2 className="text-display text-xl text-white mb-4">Jump To Section</h2>
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
                     {quickAccessSections.map((section) => (
                       <button
                         key={section.id}
                         onClick={() => navigateToSection(section.id)}
-                        className="p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-[var(--accent-primary)]/50 transition-all group text-left"
+                        className="premium-card p-4 group text-left"
                       >
                         <div className="mb-2">
                           <section.Icon className="w-6 h-6 text-[var(--accent-tertiary)]" />
@@ -254,7 +252,7 @@ const FLStudioHubContent = () => {
               {state.activeSection === 'home' && (
                 <div className="mt-12">
                   <div className="flex items-center gap-3 mb-6">
-                    <h2 className="text-2xl font-bold text-white">Featured Tools</h2>
+                    <h2 className="text-display text-2xl text-white">Featured Tools</h2>
                     <span className="text-sm text-[var(--text-muted)]">Curated FL Studio essentials</span>
                     <span className="badge badge-premium ml-auto">Editor&apos;s Pick</span>
                   </div>

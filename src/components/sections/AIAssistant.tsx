@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { aiService } from '@/services/aiService';
 import { AIHistoryItem, SparkResult } from '@/types';
+import { Sparkles, GraduationCap, ChefHat, Zap, Send, RefreshCw } from 'lucide-react';
 
 export const AIAssistantSection = () => {
   const [activeTab, setActiveTab] = useState('guru');
@@ -97,47 +98,51 @@ export const AIAssistantSection = () => {
   return (
     <section id="ai-assistant" className="page-section">
       <div className="mb-8">
-        <h2 className="text-3xl font-bold text-white mb-4 flex items-center">
-          <span className="text-gradient">AI Studio</span> Assistant <span className="text-lg ml-2">✨</span>
+        <h2 className="text-3xl font-bold text-white mb-4 flex items-center gap-3">
+          <span className="text-gradient">AI Studio</span> Assistant 
+          <Sparkles className="w-6 h-6 text-[var(--accent-tertiary)]" />
         </h2>
         <p className="text-purple-primary-300 mb-6">
           Stuck on a workflow or need creative inspiration?
         </p>
 
         {/* AI Tool Selector */}
-        <div className="flex space-x-2 mb-6 overflow-x-auto">
+        <div className="flex space-x-2 mb-6 overflow-x-auto scrollbar-hide">
           <button
             onClick={() => switchAiTab('guru')}
             id="ai-tab-guru"
-            className={`px-4 py-2 rounded-lg font-medium text-sm transition-colors ${
+            className={`px-4 py-2 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${
               activeTab === 'guru'
                 ? 'btn-gradient'
                 : 'glass-card text-purple-primary-300 border border-purple-primary-600/30 hover:bg-purple-primary-900/30'
             }`}
           >
+            <GraduationCap className="w-4 h-4" />
             FL Guru
           </button>
           <button
             onClick={() => switchAiTab('chef')}
             id="ai-tab-chef"
-            className={`px-4 py-2 rounded-lg font-medium text-sm transition-colors ${
+            className={`px-4 py-2 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${
               activeTab === 'chef'
                 ? 'btn-gradient'
                 : 'glass-card text-purple-primary-300 border border-purple-primary-600/30 hover:bg-purple-primary-900/30'
             }`}
           >
+            <ChefHat className="w-4 h-4" />
             Sound Chef
           </button>
           <button
             onClick={() => switchAiTab('spark')}
             id="ai-tab-spark"
-            className={`px-4 py-2 rounded-lg font-medium text-sm transition-colors ${
+            className={`px-4 py-2 rounded-lg font-medium text-sm transition-all flex items-center gap-2 ${
               activeTab === 'spark'
                 ? 'btn-gradient'
                 : 'glass-card text-purple-primary-300 border border-purple-primary-600/30 hover:bg-purple-primary-900/30'
             }`}
           >
-            Idea Spark ⚡
+            <Zap className="w-4 h-4" />
+            Idea Spark
           </button>
         </div>
 
@@ -154,7 +159,8 @@ export const AIAssistantSection = () => {
           >
             <div className="bg-purple-primary-900/40 p-4 border-b border-purple-primary-600/30 flex items-center justify-between">
               <h3 className="font-bold text-purple-primary-200 flex items-center">
-                <span className="text-xl mr-2">🎓</span> FL Guru
+                <GraduationCap className="w-5 h-5 mr-3 text-[var(--accent-tertiary)]" /> 
+                FL Guru
               </h3>
             </div>
             <div
@@ -205,7 +211,8 @@ export const AIAssistantSection = () => {
           >
             <div className="bg-purple-primary-900/40 p-4 border-b border-purple-primary-600/30 flex items-center justify-between">
               <h3 className="font-bold text-purple-primary-200 flex items-center">
-                <span className="text-xl mr-2">🍳</span> Sound Design Chef
+                <ChefHat className="w-5 h-5 mr-3 text-[var(--accent-tertiary)]" /> 
+                Sound Design Chef
               </h3>
             </div>
             <div className="p-6 overflow-y-auto flex-1 bg-purple-primary-900/20">

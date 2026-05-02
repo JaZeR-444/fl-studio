@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 
 // Get basePath for GitHub Pages compatibility
@@ -63,8 +63,7 @@ export const Sidebar = ({
   setMobileMenuOpen,
   toggleSettings,
   collapsed = false,
-  onToggleCollapse,
-  onOpenCommandPalette
+  onToggleCollapse
 }: SidebarProps) => {
   // Navigation items
   const navItems: NavItem[] = [
@@ -93,15 +92,13 @@ export const Sidebar = ({
   ];
 
   // Group navigation items by category
-  const navGroups = useMemo(() => {
-    return navItems.reduce((groups, item) => {
-      if (!groups[item.category]) {
-        groups[item.category] = [];
-      }
-      groups[item.category].push(item);
-      return groups;
-    }, {} as Record<string, NavItem[]>);
-  }, []);
+  const navGroups = navItems.reduce((groups, item) => {
+    if (!groups[item.category]) {
+      groups[item.category] = [];
+    }
+    groups[item.category].push(item);
+    return groups;
+  }, {} as Record<string, NavItem[]>);
 
   // Accordion State
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({
@@ -136,7 +133,7 @@ export const Sidebar = ({
           {/* Collapse Toggle Button (Desktop Only) */}
           <button
             onClick={onToggleCollapse}
-            className="hidden md:flex p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 text-gray-400 hover:text-white transition-colors"
+          className="premium-focus hidden md:flex p-2 rounded-full bg-white/[0.045] border border-[var(--glass-border)] hover:bg-white/[0.08] text-[var(--text-muted)] hover:text-white transition-colors"
             title={collapsed ? "Expand Sidebar" : "Collapse Sidebar"}
           >
             {collapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
@@ -145,7 +142,7 @@ export const Sidebar = ({
           {/* Mobile Close Button */}
           <button
             onClick={() => setMobileMenuOpen(false)}
-            className="md:hidden p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+            className="premium-focus md:hidden p-2 rounded-full bg-white/[0.045] border border-[var(--glass-border)] hover:bg-white/[0.08] transition-colors"
             aria-label="Close menu"
           >
             <X className="w-4 h-4 text-white" />
@@ -159,7 +156,7 @@ export const Sidebar = ({
               {!collapsed && (
                 <button
                   onClick={() => toggleCategory(category)}
-                  className="w-full flex items-center justify-between px-3 py-2 text-[10px] font-semibold text-[var(--text-dim)] uppercase tracking-wider hover:text-white transition-colors group"
+                  className="premium-focus w-full flex items-center justify-between px-3 py-2 text-[10px] font-extrabold text-[var(--text-dim)] uppercase tracking-[0.18em] hover:text-white transition-colors group rounded-full"
                 >
                   <span>{category}</span>
                   <svg
@@ -173,7 +170,7 @@ export const Sidebar = ({
                 </button>
               )}
               {collapsed && (
-                <div className="w-full h-px bg-white/5 my-2 mx-auto w-1/2" />
+                <div className="w-1/2 h-px bg-white/10 my-2 mx-auto" />
               )}
 
               <div className={`space-y-1 overflow-hidden transition-all duration-300 ${(!collapsed && expandedCategories[category]) || collapsed ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}>
@@ -184,13 +181,13 @@ export const Sidebar = ({
                       navigateToSection(item.id);
                       setMobileMenuOpen(false);
                     }}
-                    className={`nav-item w-full flex items-center ${collapsed ? 'justify-center px-0' : 'justify-start px-3'} py-2 rounded-lg transition-all ${activeSection === item.id
-                        ? 'bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]'
-                        : 'text-gray-400 hover:text-white hover:bg-white/5'
+                    className={`premium-focus nav-item w-full flex items-center ${collapsed ? 'justify-center px-0' : 'justify-start px-3'} py-2 rounded-full transition-all ${activeSection === item.id
+                        ? 'active'
+                        : 'text-[var(--text-muted)] hover:text-white'
                       }`}
                     title={collapsed ? item.label : undefined}
                   >
-                    <item.Icon className={`w-4 h-4 ${activeSection === item.id ? 'text-[var(--accent-primary)]' : ''}`} />
+                    <item.Icon className={`w-4 h-4 ${activeSection === item.id ? 'text-[var(--accent-secondary)]' : ''}`} />
                     {!collapsed && <span className="ml-3 truncate text-sm">{item.label}</span>}
                   </button>
                 ))}
@@ -200,7 +197,7 @@ export const Sidebar = ({
         </nav>
 
         {/* Footer - Branding */}
-        <div className="p-4 border-t border-[var(--glass-border)] bg-[var(--bg-secondary)]">
+        <div className="p-4 border-t border-[var(--glass-border)] bg-[rgba(255,255,255,0.025)]">
           {!collapsed ? (
             <div className="flex items-center gap-3 mb-4 transition-opacity duration-300">
               <div className="relative w-8 h-8 rounded-full overflow-hidden shrink-0">

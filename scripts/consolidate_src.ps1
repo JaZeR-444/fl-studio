@@ -6,7 +6,7 @@ $directories = @(
     "src\services", "src\state", "src\styles", "src\test", "src\types", "src\utils"
 )
 
-$outputFile = "SOURCE_CODE_CONSOLIDATED.md"
+$outputFile = "docs\generated\SOURCE_CODE_CONSOLIDATED.md"
 $binaryExtensions = @(".png", ".jpg", ".jpeg", ".gif", ".ico", ".webp", ".pdf", ".zip", ".tar", ".gz", ".mp3", ".wav", ".woff", ".woff2", ".ttf", ".eot", ".bin", ".exe", ".dll", ".so", ".dylib")
 
 $extensionToLang = @{

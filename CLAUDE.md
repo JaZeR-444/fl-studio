@@ -398,7 +398,7 @@ cd scripts
 python transform_plugins.py
 ```
 
-This reads from `fl_studio_plugin_blueprint_skeleton_128.json` and outputs to `src/data/plugins/allPlugins.json`.
+This reads from `docs/reference/fl_studio_plugin_blueprint_skeleton_128.json` and outputs to `src/data/plugins/allPlugins.json`.
 
 ## Important Design Constraints
 

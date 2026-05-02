@@ -80,12 +80,12 @@ export const FeaturedPlugins = ({ plugins }: FeaturedPluginsProps) => {
                             </h4>
 
                             {/* Category */}
-                            <p className={`text-[10px] ${colors.text} mb-2 truncate uppercase tracking-wide`}>
+                            <p className={`text-xs ${colors.text} mb-2 truncate uppercase tracking-wide`}>
                                 {plugin.category.split(' ').slice(0, 2).join(' ')}
                             </p>
 
                             {/* Quick Description */}
-                            <p className="text-[11px] text-gray-400 line-clamp-2 leading-relaxed">
+                            <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed">
                                 {plugin.bestUsedFor?.[0]?.slice(0, 40) || plugin.description?.slice(0, 40)}...
                             </p>
 
@@ -93,7 +93,7 @@ export const FeaturedPlugins = ({ plugins }: FeaturedPluginsProps) => {
                             <div className="mt-3 pt-2 border-t border-white/10 flex items-center gap-1">
                                 <span className="text-yellow-400 text-xs">★</span>
                                 <span className="text-xs font-medium text-white">{plugin.rating?.toFixed(1) || '4.5'}</span>
-                                <span className="text-[10px] text-gray-500 ml-1">rating</span>
+                                <span className="text-xs text-gray-500 ml-1">rating</span>
                             </div>
                         </Link>
                     );

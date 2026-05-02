@@ -3,8 +3,9 @@ import os
 import re
 
 # Paths
-INPUT_FILE = r'c:\Users\JaZeR\OneDrive\Desktop\Resource Websites\_ENTERPRISE_MONOREPO\apps\fl-studio\fl_studio_plugin_blueprint_skeleton_128.json'
-OUTPUT_FILE = r'c:\Users\JaZeR\OneDrive\Desktop\Resource Websites\_ENTERPRISE_MONOREPO\apps\fl-studio\src\data\plugins\allPlugins.json'
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+INPUT_FILE = os.path.join(ROOT, 'docs', 'reference', 'fl_studio_plugin_blueprint_skeleton_128.json')
+OUTPUT_FILE = os.path.join(ROOT, 'src', 'data', 'plugins', 'allPlugins.json')
 
 def slugify(text):
     text = text.lower()

@@ -36,33 +36,33 @@ export const MobileBottomNav = ({
     return (
         <nav className="fixed bottom-0 left-0 right-0 z-50 md:hidden">
             {/* Gradient blur effect behind nav */}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/95 to-transparent backdrop-blur-xl" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[rgba(3,5,10,0.94)] to-transparent backdrop-blur-2xl" />
 
             {/* Safe area padding for devices with home indicator */}
             <div className="relative pb-safe">
-                <div className="flex items-center justify-around px-2 py-2 border-t border-white/10">
+                <div className="flex items-center justify-around px-2 py-2 border-t border-[var(--glass-border)]">
                     {navItems.map((item) => {
                         const isActive = activeSection === item.id;
                         return (
                             <button
                                 key={item.id}
                                 onClick={() => navigateToSection(item.id)}
-                                className={`flex flex-col items-center justify-center min-w-[60px] py-2 px-3 rounded-xl transition-all duration-200 ${isActive
-                                        ? 'text-white bg-purple-600/20'
-                                        : 'text-gray-500 hover:text-gray-300 active:scale-95'
+                                className={`premium-focus flex flex-col items-center justify-center min-w-[60px] py-2 px-3 rounded-2xl transition-all duration-700 ease-[var(--ease-premium)] ${isActive
+                                        ? 'text-white bg-white/[0.11] shadow-[var(--shadow-inner-line)]'
+                                        : 'text-[var(--text-dim)] hover:text-[var(--text-secondary)] active:scale-95'
                                     }`}
                             >
                                 <item.Icon
                                     className={`w-5 h-5 mb-1 transition-transform ${isActive ? 'scale-110' : ''
                                         }`}
                                 />
-                                <span className={`text-[10px] font-medium tracking-wide ${isActive ? 'text-purple-400' : ''
+                                <span className={`text-[10px] font-bold tracking-wide ${isActive ? 'text-[var(--accent-secondary)]' : ''
                                     }`}>
                                     {item.label}
                                 </span>
                                 {/* Active indicator dot */}
                                 {isActive && (
-                                    <div className="absolute -bottom-0.5 w-1 h-1 rounded-full bg-purple-500 animate-pulse" />
+                                    <div className="absolute -bottom-0.5 w-1 h-1 rounded-full bg-[var(--accent-secondary)] animate-pulse" />
                                 )}
                             </button>
                         );
@@ -71,7 +71,7 @@ export const MobileBottomNav = ({
                     {/* Search button */}
                     <button
                         onClick={onOpenSearch}
-                        className="flex flex-col items-center justify-center min-w-[60px] py-2 px-3 rounded-xl text-gray-500 hover:text-gray-300 active:scale-95 transition-all duration-200"
+                        className="premium-focus flex flex-col items-center justify-center min-w-[60px] py-2 px-3 rounded-2xl text-[var(--text-dim)] hover:text-[var(--text-secondary)] active:scale-95 transition-all duration-700 ease-[var(--ease-premium)]"
                     >
                         <Search className="w-5 h-5 mb-1" />
                         <span className="text-[10px] font-medium tracking-wide">Search</span>

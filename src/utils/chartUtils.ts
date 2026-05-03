@@ -1,5 +1,13 @@
+import { Chart } from 'chart.js';
+
+type ThemeableScale = {
+  grid?: { color: string };
+  ticks?: { color: string };
+  pointLabels?: { color: string };
+};
+
 // Utility function to update chart themes based on dark mode
-export const updateChartTheme = (chart: any, isDark: boolean) => {
+export const updateChartTheme = (chart: Chart, isDark: boolean) => {
   if (!chart) return;
 
   // Update scale configurations based on theme
@@ -8,15 +16,16 @@ export const updateChartTheme = (chart: any, isDark: boolean) => {
 
   // Update scales
   if (chart.scales) {
-    Object.values(chart.scales).forEach((scale: any) => {
-      if (scale.grid) {
-        scale.grid.color = gridColor;
+    Object.values(chart.scales).forEach((scale) => {
+      const themeableScale = scale as unknown as ThemeableScale;
+      if (themeableScale.grid) {
+        themeableScale.grid.color = gridColor;
       }
-      if (scale.ticks) {
-        scale.ticks.color = textColor;
+      if (themeableScale.ticks) {
+        themeableScale.ticks.color = textColor;
       }
-      if (scale.pointLabels) {
-        scale.pointLabels.color = textColor;
+      if (themeableScale.pointLabels) {
+        themeableScale.pointLabels.color = textColor;
       }
     });
   }

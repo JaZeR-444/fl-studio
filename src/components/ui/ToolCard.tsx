@@ -27,7 +27,6 @@ export const ToolCard = ({
   name,
   description,
   category,
-  categoryColor = 'purple',
   rating,
   icon,
   tags = [],

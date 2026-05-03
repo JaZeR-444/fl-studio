@@ -8,7 +8,6 @@ import {
   RefreshCw, 
   SlidersHorizontal,
   Rocket,
-  Users,
   Star,
   Sparkles,
   Wand2
@@ -148,7 +147,7 @@ export const MentalModelSection = () => {
           <div>
             <h2 className="text-2xl font-bold text-gradient mb-1">Plugin Collection</h2>
             <p className="text-sm text-[var(--text-muted)]">
-              FL Studio's powerful native toolkit at a glance
+              FL Studio&apos;s powerful native toolkit at a glance
             </p>
           </div>
         </div>

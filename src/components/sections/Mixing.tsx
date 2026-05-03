@@ -5,14 +5,12 @@ import {
   SlidersHorizontal, 
   Waves, 
   Volume2, 
-  Radio, 
   Zap, 
   GitBranch,
   Lightbulb,
   CheckCircle,
   ArrowRight,
-  BarChart3,
-  Filter
+  BarChart3
 } from 'lucide-react';
 
 // Mixing concepts data

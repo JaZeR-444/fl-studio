@@ -1,11 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { FLModule } from '@/types';
 import { 
   Layout, 
-  Music4, 
-  AudioWaveform, 
   SlidersHorizontal, 
   Piano, 
   Maximize2,
@@ -101,7 +98,7 @@ export const ModulesSection = () => {
           <span className="text-white"> Modules</span>
         </h2>
         <p className="text-[var(--text-muted)]">
-          Master "The Big 5" windows to unlock 90% of FL Studio's power.
+          Master &quot;The Big 5&quot; windows to unlock 90% of FL Studio&apos;s power.
         </p>
       </div>
 
@@ -116,7 +113,7 @@ export const ModulesSection = () => {
           <div className="flex-grow">
             <h3 className="text-xl font-bold text-white mb-2">The Big 5 Ecosystem</h3>
             <p className="text-indigo-200/80 mb-3">
-              FL Studio's modular design lets you detach and arrange these five key windows across multiple monitors for a tailored workspace.
+              FL Studio&apos;s modular design lets you detach and arrange these five key windows across multiple monitors for a tailored workspace.
             </p>
             <div className="flex items-center gap-2 text-sm">
               <span className="px-2 py-0.5 rounded bg-white/10 text-white font-mono text-xs">F5</span>

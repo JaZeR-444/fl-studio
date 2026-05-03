@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react';
 import {
   Chart as ChartJS,
+  ChartData,
+  ChartOptions,
   RadarController,
   LineController,
   LinearScale,
@@ -27,8 +29,8 @@ ChartJS.register(
 
 interface ChartHookProps {
   type: 'radar' | 'line';
-  data: any;
-  options?: any;
+  data: ChartData<'radar' | 'line'>;
+  options?: ChartOptions<'radar' | 'line'>;
   darkMode?: boolean;
 }
 

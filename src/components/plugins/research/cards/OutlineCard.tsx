@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import { Pin, PinOff, ChevronRight } from 'lucide-react';
-import { CardWrapper } from './MarkdownCard';
 
 interface OutlineCardProps {
     title: string;

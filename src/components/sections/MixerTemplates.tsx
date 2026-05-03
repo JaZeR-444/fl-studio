@@ -4,10 +4,8 @@ import { useState } from 'react';
 import { 
   SlidersHorizontal, 
   Download, 
-  Upload, 
   Copy, 
   Check,
-  Trash2,
   Plus,
   Music,
   Headphones,
@@ -116,7 +114,7 @@ const mixerTemplates = [
 export const MixerTemplatesSection = () => {
   const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
-  const [userTemplates, setUserTemplates] = useState<typeof mixerTemplates>([]);
+  const [userTemplates] = useState<typeof mixerTemplates>([]);
 
   const handleCopy = (templateId: string) => {
     // In a real app, this would copy template data to clipboard

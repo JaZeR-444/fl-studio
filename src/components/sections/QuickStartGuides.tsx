@@ -141,7 +141,7 @@ export const QuickStartGuidesSection = () => {
           <div className="flex-grow">
             <h3 className="text-xl font-bold text-white mb-2">Fast Track Your Production</h3>
             <p className="text-blue-200/80 mb-3">
-              Don't get overwhelmed. These curated guides will take you from "No Sound" to "Finished Track" in under an hour.
+              Don&apos;t get overwhelmed. These curated guides will take you from &quot;No Sound&quot; to &quot;Finished Track&quot; in under an hour.
             </p>
             <div className="flex flex-wrap gap-4 text-sm">
               <div className="flex items-center gap-2">

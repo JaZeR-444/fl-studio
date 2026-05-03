@@ -6,7 +6,6 @@ import {
     ChevronRight,
     Sliders,
     Music,
-    Headphones,
     Eye,
     Zap,
     BookOpen,
@@ -15,9 +14,6 @@ import {
     CheckCircle,
     Copy,
     Check,
-    ExternalLink,
-    Play,
-    ChevronLeft
 } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
 

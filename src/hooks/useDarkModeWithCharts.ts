@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
+import { Chart } from 'chart.js';
 import { updateChartTheme } from '../utils/chartUtils';
 
-export const useDarkModeWithCharts = (initialCharts: any[] = []) => {
+export const useDarkModeWithCharts = (initialCharts: Chart[] = []) => {
   const [darkMode, setDarkMode] = useState(false);
   const [charts, setCharts] = useState(initialCharts);
 
@@ -59,7 +60,7 @@ export const useDarkModeWithCharts = (initialCharts: any[] = []) => {
   };
 
   // Function to add chart to the list for theme updates
-  const addChart = (chart: any) => {
+  const addChart = (chart: Chart) => {
     setCharts(prev => [...prev, chart]);
   };
 

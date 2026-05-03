@@ -304,7 +304,6 @@ export const NativeAdvantages = () => {
             <h3 className="text-lg font-bold text-white mb-4">Select a Plugin to View Native Advantages</h3>
             <div className="flex flex-wrap gap-2">
               {pluginsWithAdvantages.map(plugin => {
-                const pluginId = getPluginId(plugin);
                 return (
                   <button
                     key={plugin}

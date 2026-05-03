@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Copy, Check, ChevronRight } from 'lucide-react';
+import { Copy, Check } from 'lucide-react';
 import { CardWrapper } from './MarkdownCard';
 
 interface Recipe {

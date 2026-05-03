@@ -20,7 +20,6 @@ interface PageHeaderProps {
 
 export const PageHeader: React.FC<PageHeaderProps> = ({
     pluginName,
-    pluginIcon,
     badges = [],
     breadcrumbs = [],
     viewMode,

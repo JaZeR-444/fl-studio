@@ -9,7 +9,7 @@ import { ViewToggle } from '@/components/ui/ViewToggle';
 import { useToolkit, useViewMode } from '@/hooks/useToolkit';
 import { exportToolkitAsPDF } from '@/lib/exportPDF';
 import { ToastProvider, useToast } from '@/components/ui/Toast';
-import { Search, Heart, Download, Filter, X, Command } from 'lucide-react';
+import { Search, Heart, Download, Filter, X } from 'lucide-react';
 
 // Import plugin data
 import allPluginsData from '@/data/plugins/allPlugins.json';
@@ -152,15 +152,6 @@ const PluginsDatabaseInner = () => {
     setSortBy('name');
     setSortOrder('asc');
     setFilterMode('all');
-  };
-
-  // Helper for Search Highlighting (could be passed down to cards)
-  const getHighlightedText = (text: string, highlight: string) => {
-    if (!highlight.trim()) return text;
-    const parts = text.split(new RegExp(`(${highlight})`, 'gi'));
-    return parts.map((part, i) =>
-      part.toLowerCase() === highlight.toLowerCase() ? <span key={i} className="bg-yellow-500/30 text-yellow-200 rounded px-0.5">{part}</span> : part
-    );
   };
 
   return (
@@ -309,7 +300,7 @@ const PluginsDatabaseInner = () => {
               <label className="block text-[10px] font-medium text-gray-500 mb-1.5 uppercase">Edition</label>
               <select
                 value={selectedEdition}
-                onChange={(e) => setSelectedEdition(e.target.value as any)}
+                onChange={(e) => setSelectedEdition(e.target.value as typeof selectedEdition)}
                 className="glass-input w-full px-3 py-2 text-sm"
               >
                 <option value="all">All Editions</option>
@@ -324,7 +315,7 @@ const PluginsDatabaseInner = () => {
               <label className="block text-[10px] font-medium text-gray-500 mb-1.5 uppercase">Sort By</label>
               <select
                 value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as any)}
+                onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
                 className="glass-input w-full px-3 py-2 text-sm"
               >
                 <option value="name">Name</option>
@@ -338,7 +329,7 @@ const PluginsDatabaseInner = () => {
               <label className="block text-[10px] font-medium text-gray-500 mb-1.5 uppercase">Order</label>
               <select
                 value={sortOrder}
-                onChange={(e) => setSortOrder(e.target.value as any)}
+                onChange={(e) => setSortOrder(e.target.value as typeof sortOrder)}
                 className="glass-input w-full px-3 py-2 text-sm"
               >
                 <option value="asc">A → Z</option>

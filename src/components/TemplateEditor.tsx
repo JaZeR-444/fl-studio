@@ -1,6 +1,6 @@
 // components/TemplateEditor.tsx
 import { useState } from 'react';
-import { ProjectTemplate, Channel, MixerTrack, Pattern, PlaylistClip } from '@/types';
+import { ProjectTemplate, Channel, MixerTrack, Pattern } from '@/types';
 
 interface TemplateEditorProps {
   template: ProjectTemplate;

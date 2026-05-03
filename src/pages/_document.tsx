@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document';
+import Script from 'next/script';
 
 export default function Document() {
   return (
@@ -17,7 +18,7 @@ export default function Document() {
             `
           }}
         />
-        <script src="https://cdn.tailwindcss.com"></script>
+        <Script src="https://cdn.tailwindcss.com" strategy="beforeInteractive" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -39,7 +40,7 @@ export default function Document() {
             `
           }}
         />
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <Script src="https://cdn.jsdelivr.net/npm/chart.js" strategy="beforeInteractive" />
       </Head>
       <body className="bg-stone-50 text-stone-800 dark:bg-zinc-900 dark:text-zinc-300 antialiased h-screen flex overflow-hidden transition-colors duration-300">
         <Main />

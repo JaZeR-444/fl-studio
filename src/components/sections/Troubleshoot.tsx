@@ -8,7 +8,6 @@ import {
   Volume2, 
   Cpu, 
   Plug, 
-  HelpCircle,
   Lightbulb,
   ChevronDown,
   ChevronUp,
@@ -256,7 +255,7 @@ export const TroubleshootSection = () => {
           <Lightbulb className="w-5 h-5" /> Still Having Issues?
         </h3>
         <p className="text-yellow-200/80">
-          If these solutions don't help, try the FL Studio forums or Image-Line support. 
+          If these solutions don&apos;t help, try the FL Studio forums or Image-Line support. 
           Include your FL Studio version, audio interface model, and Windows version when asking for help.
         </p>
       </div>

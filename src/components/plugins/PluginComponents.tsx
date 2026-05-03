@@ -1,12 +1,10 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import { 
   Download, 
   ExternalLink, 
   Zap, 
-  HelpCircle, 
   Keyboard, 
   Copy, 
   Check, 
@@ -14,7 +12,6 @@ import {
   Sliders,
   Ear
 } from 'lucide-react';
-import { Badge } from '@/components/ui/Badge';
 import { ExtendedPlugin } from '@/types/pluginTypes';
 
 // --- Types ---

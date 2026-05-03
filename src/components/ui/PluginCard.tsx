@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { ExtendedPlugin } from '@/types/pluginTypes';
 import { Badge } from './Badge';
-import { Piano, Zap, Heart, Link2, Cpu } from 'lucide-react';
+import { Piano, Heart, Link2, Cpu } from 'lucide-react';
 import { getCategoryColor } from '@/lib/categoryColors';
 
 interface PluginCardProps {
@@ -100,7 +100,7 @@ export const PluginCard = ({
           {/* Edition Badges */}
           <div className="flex flex-wrap gap-1 mb-3">
             {pricing && (
-              <Badge variant={pricing.variant as any}>
+              <Badge variant={pricing.variant as 'pink' | 'blue' | 'orange' | 'purple'}>
                 {pricing.label}
               </Badge>
             )}

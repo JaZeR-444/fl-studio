@@ -201,7 +201,7 @@ export const PluginsSection = () => {
           {displayedPlugins.slice(0, 3).map((plugin) => (
             <ToolCard
               key={plugin.id}
-              {...(plugin as any)}
+              {...plugin}
               isSponsored={true}
               onClick={() => console.log(`Clicked on ${plugin.name}`)}
               href={`/plugins/${plugin.id}`}
@@ -219,7 +219,7 @@ export const PluginsSection = () => {
             {displayedPlugins.map((plugin) => (
               <ToolCard
                 key={plugin.id}
-                {...(plugin as any)}
+                {...plugin}
                 onClick={() => console.log(`Clicked on ${plugin.name}`)}
                 href={`/plugins/${plugin.id}`}
               />

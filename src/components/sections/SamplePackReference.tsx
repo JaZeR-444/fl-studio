@@ -5,7 +5,6 @@ import {
   FolderOpen, 
   Search, 
   Play, 
-  Download, 
   ExternalLink,
   Music,
   Drum,
@@ -150,7 +149,6 @@ export const SamplePackReference = () => {
   const [categoryFilter, setCategoryFilter] = useState<string>('all');
 
   const categories = ['all', ...new Set(samplePacks.map(p => p.category))];
-  const types = [...new Set(samplePacks.map(p => p.type))];
 
   const filteredPacks = samplePacks.filter(pack => {
     const matchesSearch = pack.name.toLowerCase().includes(searchQuery.toLowerCase()) ||

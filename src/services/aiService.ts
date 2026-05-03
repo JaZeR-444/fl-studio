@@ -1,10 +1,4 @@
 // services/aiService.ts
-import { getThemeColors } from '../utils/chartUtils';
-
-interface AIResponse {
-  text: string;
-}
-
 interface SparkResponse {
   title: string;
   bpm: string;
@@ -27,7 +21,10 @@ class AIService {
 
     try {
       const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${this.apiKey}`;
-      const payload: any = { 
+      const payload: {
+        contents: { parts: { text: string }[] }[];
+        generationConfig?: { responseMimeType: string };
+      } = { 
         contents: [{ 
           parts: [{ 
             text: systemContext + "\n\nUser Query: " + prompt 

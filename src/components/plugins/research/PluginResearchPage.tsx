@@ -11,7 +11,10 @@ export type ViewMode = 'dashboard' | 'study';
 interface PluginResearchPageProps {
     pluginId: string;
     pluginName: string;
-    pluginData: any; // Data from flex.json
+    pluginData: {
+        tags?: { label: string }[];
+        [key: string]: unknown;
+    }; // Data from flex.json
 }
 
 /**
@@ -24,7 +27,6 @@ interface PluginResearchPageProps {
  * - Main grid: 12-column CSS grid with 8px gaps
  */
 export const PluginResearchPage: React.FC<PluginResearchPageProps> = ({
-    pluginId,
     pluginName,
     pluginData
 }) => {
@@ -74,7 +76,7 @@ export const PluginResearchPage: React.FC<PluginResearchPageProps> = ({
             <PageHeader
                 railWidth={railWidth}
                 pluginName={pluginName}
-                badges={pluginData.tags?.slice(0, 3).map((t: any) => t.label) || []}
+                badges={pluginData.tags?.slice(0, 3).map((t) => t.label) || []}
                 viewMode={mode}
                 onModeChange={handleModeChange}
                 searchQuery={searchQuery}

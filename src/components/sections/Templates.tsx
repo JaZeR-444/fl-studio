@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { SongTemplate, Difficulty, GenreColor } from '@/types';
-import { Heart, ChevronDown, ChevronUp, Download, Lightbulb, Plug, ChevronsUpDown } from 'lucide-react';
+import { Heart, ChevronDown, ChevronUp, Download, Lightbulb, ChevronsUpDown } from 'lucide-react';
 
 // Genre color mapping for gradient backgrounds
 const genreColors: Record<string, GenreColor> = {
@@ -2946,7 +2946,7 @@ export const TemplatesSection = () => {
           <div className="flex-grow">
             <h3 className="text-xl font-bold text-white mb-2">Instant Inspiration</h3>
             <p className="text-blue-200/80 mb-3">
-              Don't stare at a blank project. These templates come pre-loaded with channel racks, mixer routing, and essential plugins for your genre.
+              Don&apos;t stare at a blank project. These templates come pre-loaded with channel racks, mixer routing, and essential plugins for your genre.
             </p>
             <div className="flex flex-wrap gap-4 text-sm">
               <div className="flex items-center gap-2">

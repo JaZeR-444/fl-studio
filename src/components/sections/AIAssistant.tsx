@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { aiService } from '@/services/aiService';
 import { AIHistoryItem, SparkResult } from '@/types';
-import { Sparkles, GraduationCap, ChefHat, Zap, Send, RefreshCw } from 'lucide-react';
+import { Sparkles, GraduationCap, ChefHat, Zap } from 'lucide-react';
 
 export const AIAssistantSection = () => {
   const [activeTab, setActiveTab] = useState('guru');

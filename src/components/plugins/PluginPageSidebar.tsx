@@ -1,10 +1,10 @@
 'use client';
 
-import { ChevronLeft, ChevronRight, Home, BookOpen, Layers, ArrowLeft } from 'lucide-react';
+import { ChevronLeft, ChevronRight, BookOpen, Layers, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 
-export const PluginPageSidebar = ({ pluginName }: { pluginName: string }) => {
+export const PluginPageSidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
 
   return (

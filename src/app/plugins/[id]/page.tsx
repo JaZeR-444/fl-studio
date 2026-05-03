@@ -127,7 +127,7 @@ export default function PluginDetailPage({ params }: { params: { id: string } })
             <section className="p-4 rounded-xl bg-blue-900/80 border-2 border-blue-400 relative z-10 mb-4">
                <h3 className="text-sm font-bold text-blue-400 uppercase tracking-widest mb-2">Sound Character</h3>
                <p className="text-lg text-white font-light leading-relaxed">
-                 "{plugin.soundCharacter}"
+                 &quot;{plugin.soundCharacter}&quot;
                </p>
             </section>
           )}

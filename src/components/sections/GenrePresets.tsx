@@ -207,7 +207,7 @@ export const GenrePresetsSection = () => {
           <div className="flex-grow">
             <h3 className="text-xl font-bold text-white mb-2">Instant Genre Blueprints</h3>
             <p className="text-orange-200/80 mb-3">
-              Don't start from scratch. These presets provide a solid foundation for your track including BPM, key, and mixing chains.
+              Don&apos;t start from scratch. These presets provide a solid foundation for your track including BPM, key, and mixing chains.
             </p>
             <div className="flex flex-wrap gap-4 text-sm">
               <div className="flex items-center gap-2">

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Star, Printer, Keyboard } from 'lucide-react';
+import { Star, Printer } from 'lucide-react';
 
 export const DojoSection = () => {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -488,7 +488,7 @@ export const DojoSection = () => {
           ) : (
             <div className="py-12 text-center">
               <div className="text-4xl mb-4">🔍</div>
-              <p className="text-[var(--text-muted)]">No shortcuts found matching "{searchTerm}"</p>
+              <p className="text-[var(--text-muted)]">No shortcuts found matching &quot;{searchTerm}&quot;</p>
             </div>
           )}
         </div>

@@ -13,10 +13,37 @@ import { WorkflowTabsCard } from './cards/WorkflowTabsCard';
 import { OutlineCard } from './cards/OutlineCard';
 import { QuickLinksCard } from './cards/QuickLinksCard';
 
+type ResearchRecord = Record<string, unknown>;
+
+interface PluginResearchData extends ResearchRecord {
+    description?: string;
+    officialManual?: string;
+    proTips?: string[];
+    bestUsedFor?: string[];
+    synthesisEngines?: ResearchRecord[];
+    instrumentWorkflows?: ResearchRecord[];
+    genreTemplates?: ResearchRecord[];
+    controls?: ResearchRecord[];
+    filterCurves?: ResearchRecord[];
+    envelopeShapes?: ResearchRecord[];
+    spatialPresets?: ResearchRecord[];
+    limiterDynamics?: ResearchRecord[];
+    macroSystem?: {
+        commonArchetypes?: ResearchRecord[];
+    };
+}
+
+interface Recipe {
+    name: string;
+    description: string;
+    copyText: string;
+    badge?: string;
+}
+
 interface ResearchGridProps {
     mode: ViewMode;
     activeSection: RailSection;
-    pluginData: any;
+    pluginData: PluginResearchData;
     searchQuery: string;
 }
 
@@ -48,7 +75,7 @@ export const ResearchGrid: React.FC<ResearchGridProps> = ({
 
 // ==================== DASHBOARD MODE GRID ====================
 
-const DashboardGrid: React.FC<{ pluginData: any; searchQuery: string }> = ({ pluginData, searchQuery }) => {
+const DashboardGrid: React.FC<{ pluginData: PluginResearchData; searchQuery: string }> = ({ pluginData, searchQuery }) => {
     return (
         <div className="grid grid-cols-12 gap-2 w-full">
             {/* Row 1-2: Start Here (6 cols, 2 rows) */}
@@ -65,7 +92,7 @@ const DashboardGrid: React.FC<{ pluginData: any; searchQuery: string }> = ({ plu
             <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                 <QuickLinksCard
                     links={[
-                        { label: 'Official Docs', href: pluginData.officialManual, icon: '📖' },
+                        { label: 'Official Docs', href: pluginData.officialManual || '#', icon: '📖' },
                         { label: 'Parameter Ref', href: '#params', icon: '📊' },
                         { label: 'Troubleshooting', href: '#trouble', icon: '🔧' },
                     ]}
@@ -109,7 +136,7 @@ const DashboardGrid: React.FC<{ pluginData: any; searchQuery: string }> = ({ plu
                 <MarkdownCard
                     title="Cheat Sheet"
                     icon="📋"
-                    content={generateCheatSheet(pluginData)}
+                    content={generateCheatSheet()}
                     maxHeight="180px"
                     compact
                 />
@@ -151,7 +178,7 @@ const DashboardGrid: React.FC<{ pluginData: any; searchQuery: string }> = ({ plu
 
 // ==================== STUDY MODE GRID ====================
 
-const StudyGrid: React.FC<{ pluginData: any; activeSection: RailSection; searchQuery: string }> = ({
+const StudyGrid: React.FC<{ pluginData: PluginResearchData; activeSection: RailSection; searchQuery: string }> = ({
     pluginData,
     activeSection,
     searchQuery
@@ -262,9 +289,8 @@ const StudyGrid: React.FC<{ pluginData: any; activeSection: RailSection; searchQ
 
 // ==================== DATA FORMATTING HELPERS ====================
 
-function generateStartHereContent(data: any): string {
+function generateStartHereContent(data: PluginResearchData): string {
     const tips = data.proTips?.slice(0, 5) || [];
-    const bestFor = data.bestUsedFor?.slice(0, 4) || [];
 
     return `## FLEX Quick Start
 
@@ -281,7 +307,7 @@ ${data.description || 'A powerful hybrid synthesizer.'}
 3. Adjust attack/decay for genre
 4. Add subtle reverb for space
 
-${tips.length > 0 ? `### Pro Tips\n${tips.map((t: string) => `- ${t}`).join('\n')}` : ''}`;
+${tips.length > 0 ? `### Pro Tips\n${tips.map((t) => `- ${t}`).join('\n')}` : ''}`;
 }
 
 function generateInterfaceOverview(): string {
@@ -297,7 +323,7 @@ function generateInterfaceOverview(): string {
 \`\`\``;
 }
 
-function generateCheatSheet(data: any): string {
+function generateCheatSheet(): string {
     const shortcuts = [
         '`Alt+Click` - Reset macro',
         '`Right-Click` - Automation',
@@ -313,82 +339,82 @@ ${shortcuts.join('\n')}
 - **Leads**: HP @ 180Hz`;
 }
 
-function generateEngineReference(data: any): string {
+function generateEngineReference(data: PluginResearchData): string {
     const engines = data.synthesisEngines || [];
     if (engines.length === 0) return 'No engine data available.';
 
-    return engines.map((e: any) => `**${e.icon} ${e.name}**\n${e.description}`).join('\n\n');
+    return engines.map((e) => `**${String(e.icon ?? '')} ${String(e.name ?? '')}**\n${String(e.description ?? '')}`).join('\n\n');
 }
 
-function formatRecipes(data: any): any[] {
-    const recipes: any[] = [];
+function formatRecipes(data: PluginResearchData): Recipe[] {
+    const recipes: Recipe[] = [];
 
     // Add macro archetypes
-    data.macroSystem?.commonArchetypes?.slice(0, 4).forEach((arch: any) => {
+    data.macroSystem?.commonArchetypes?.slice(0, 4).forEach((arch) => {
         recipes.push({
-            name: arch.commonFunction,
+            name: String(arch.commonFunction ?? ''),
             description: `Macro ${arch.macro}: ${arch.examples}`,
             copyText: `Macro ${arch.macro}: ${arch.commonFunction} - ${arch.examples}`
         });
     });
 
     // Add genre templates
-    data.genreTemplates?.slice(0, 4).forEach((t: any) => {
+    data.genreTemplates?.slice(0, 4).forEach((t) => {
         recipes.push({
-            name: t.genre,
+            name: String(t.genre ?? ''),
             description: `${t.bpm} BPM - ${t.character}`,
             copyText: JSON.stringify(t, null, 2),
-            badge: t.bpm
+            badge: String(t.bpm ?? '')
         });
     });
 
     return recipes;
 }
 
-function formatParameterRows(data: any): string[][] {
+function formatParameterRows(data: PluginResearchData): string[][] {
     const controls = data.controls || [];
-    return controls.slice(0, 8).map((c: any) => [
-        c.label,
-        c.description?.slice(0, 30) + '...' || '-',
+    return controls.slice(0, 8).map((c) => [
+        String(c.label ?? ''),
+        typeof c.description === 'string' ? `${c.description.slice(0, 30)}...` : '-',
         '-'
     ]);
 }
 
-function formatTroubleshootingRules(data: any): any[] {
+function formatTroubleshootingRules(data: PluginResearchData) {
     const filters = data.filterCurves || [];
-    return filters.slice(0, 5).map((f: any) => ({
-        title: f.name,
-        description: f.description,
-        solution: f.tips?.join(' ') || 'See documentation.'
+    return filters.slice(0, 5).map((f) => ({
+        title: String(f.name ?? ''),
+        description: String(f.description ?? ''),
+        solution: Array.isArray(f.tips) ? f.tips.join(' ') : 'See documentation.'
     }));
 }
 
-function formatEnvelopeRecipes(data: any): any[] {
-    return (data.envelopeShapes || []).slice(0, 4).map((e: any) => ({
-        name: e.name,
-        description: e.soundCharacter,
+function formatEnvelopeRecipes(data: PluginResearchData): Recipe[] {
+    return (data.envelopeShapes || []).slice(0, 4).map((e) => ({
+        name: String(e.name ?? ''),
+        description: String(e.soundCharacter ?? ''),
         copyText: JSON.stringify(e.settings, null, 2),
-        badge: e.visualAscii
+        badge: String(e.visualAscii ?? '')
     }));
 }
 
-function formatSpatialRecipes(data: any): any[] {
-    return (data.spatialPresets || []).slice(0, 4).map((s: any) => ({
-        name: s.name,
-        description: s.description,
+function formatSpatialRecipes(data: PluginResearchData): Recipe[] {
+    return (data.spatialPresets || []).slice(0, 4).map((s) => ({
+        name: String(s.name ?? ''),
+        description: String(s.description ?? ''),
         copyText: JSON.stringify(s.reverbSettings || s.delaySettings, null, 2)
     }));
 }
 
-function formatLimiterRecipes(data: any): any[] {
-    return (data.limiterDynamics || []).slice(0, 4).map((l: any) => ({
-        name: l.name,
-        description: l.sonicCharacter,
+function formatLimiterRecipes(data: PluginResearchData): Recipe[] {
+    return (data.limiterDynamics || []).slice(0, 4).map((l) => ({
+        name: String(l.name ?? ''),
+        description: String(l.sonicCharacter ?? ''),
         copyText: JSON.stringify(l.settings, null, 2)
     }));
 }
 
-function getReaderContent(data: any, section: RailSection): { title: string; content: string; headings: string[] } {
+function getReaderContent(data: PluginResearchData, section: RailSection): { title: string; content: string; headings: string[] } {
     // Return content based on which section is active
     const sectionContent: Record<RailSection, { title: string; content: string }> = {
         start: { title: 'FLEX Master Index', content: generateStartHereContent(data) },

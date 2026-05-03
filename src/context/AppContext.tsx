@@ -1,6 +1,5 @@
 // context/AppContext.tsx
 import React, { createContext, useContext, useReducer, ReactNode } from 'react';
-import { Theme } from '../types';
 
 const safeLocalStorage = {
   getItem(key: string) {
@@ -24,14 +23,6 @@ const safeLocalStorage = {
       // ignore
     }
   },
-};
-
-const safePrefersDark = () => {
-  try {
-    return typeof window !== 'undefined' && window.matchMedia?.('(prefers-color-scheme: dark)').matches;
-  } catch {
-    return false;
-  }
 };
 
 // Define the application state type

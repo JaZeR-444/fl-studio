@@ -2,10 +2,12 @@
 
 import { useState } from 'react';
 import { WorkflowTemplate } from '@/types/pluginTypes';
-import { Link2, CheckCircle, AlertTriangle, Zap, Maximize2, Piano, Lightbulb } from 'lucide-react';
+import { Link2, CheckCircle, AlertTriangle, Zap, Maximize2, Piano } from 'lucide-react';
 
 // Import workflow data
 import workflows from '@/data/plugins/workflows.json';
+
+const workflowMap = workflows as Record<string, WorkflowTemplate>;
 
 export const WorkflowChains = () => {
   const [selectedWorkflow, setSelectedWorkflow] = useState<string | null>(null);
@@ -25,7 +27,7 @@ export const WorkflowChains = () => {
   const renderSelectedWorkflow = () => {
     if (!selectedWorkflow) return null;
 
-    const workflow: WorkflowTemplate = (workflows as any)[selectedWorkflow];
+    const workflow = workflowMap[selectedWorkflow];
 
     if (!workflow) return null;
 
@@ -159,7 +161,7 @@ export const WorkflowChains = () => {
           {/* Workflow Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {workflowIds.map(workflowId => {
-              const workflow: WorkflowTemplate = (workflows as any)[workflowId];
+              const workflow = workflowMap[workflowId];
               if (!workflow || typeof workflow === 'string') return null;
               return (
                 <div 
@@ -228,7 +230,7 @@ export const WorkflowChains = () => {
             </h3>
             <p className="text-blue-200/80 text-sm">
               To recreate these workflows, load plugins in the order shown and apply the specified configurations. 
-              Pay attention to the "What Breaks If Swapped" sections to understand which features rely on native-only advantages.
+              Pay attention to the &quot;What Breaks If Swapped&quot; sections to understand which features rely on native-only advantages.
             </p>
           </div>
         </>

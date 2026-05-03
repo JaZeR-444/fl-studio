@@ -303,25 +303,25 @@ export const SynthesisHistory = () => {
           Cross-Synthesis Possibilities
         </h3>
         <p className="text-[var(--text-muted)] mb-4">
-          In FL Studio's native ecosystem, synthesis methods can be combined in creative ways:
+          In FL Studio&apos;s native ecosystem, synthesis methods can be combined in creative ways:
         </p>
         <ul className="space-y-3">
           <li className="flex items-start p-3 rounded-lg bg-[var(--glass-bg)]">
             <span className="text-[var(--accent-secondary)] mr-3">•</span>
             <span className="text-[var(--text-secondary)]">
-              <strong className="text-white">Additive + Subtractive:</strong> Use Harmor's spectral output through Kepler Exo's filters
+              <strong className="text-white">Additive + Subtractive:</strong> Use Harmor&apos;s spectral output through Kepler Exo&apos;s filters
             </span>
           </li>
           <li className="flex items-start p-3 rounded-lg bg-[var(--glass-bg)]">
             <span className="text-[var(--accent-secondary)] mr-3">•</span>
             <span className="text-[var(--text-secondary)]">
-              <strong className="text-white">FM + Physical:</strong> Combine Sytrus operators with Sakura's resonators
+              <strong className="text-white">FM + Physical:</strong> Combine Sytrus operators with Sakura&apos;s resonators
             </span>
           </li>
           <li className="flex items-start p-3 rounded-lg bg-[var(--glass-bg)]">
             <span className="text-[var(--accent-secondary)] mr-3">•</span>
             <span className="text-[var(--text-secondary)]">
-              <strong className="text-white">Wavetable + Modeling:</strong> Morphine's snapshots driven by physical interactions
+              <strong className="text-white">Wavetable + Modeling:</strong> Morphine&apos;s snapshots driven by physical interactions
             </span>
           </li>
         </ul>

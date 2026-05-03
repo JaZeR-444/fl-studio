@@ -1,11 +1,10 @@
 'use client';
 
-import { useState, useEffect, useRef, ReactNode } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { ExtendedPlugin } from '@/types/pluginTypes';
 import {
   LayoutGrid,
-  Piano,
   Plug,
   Zap,
   RefreshCw,

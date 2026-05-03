@@ -8,9 +8,7 @@ import {
   Folder, 
   CheckCircle, 
   Lightbulb,
-  ArrowRight,
   Music,
-  Mic,
   HardDrive,
   Shield
 } from 'lucide-react';

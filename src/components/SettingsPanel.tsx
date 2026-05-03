@@ -78,7 +78,7 @@ export const SettingsPanel = ({ isOpen, onClose }: SettingsPanelProps) => {
                 </button>
               </div>
               <p className="mt-2 text-xs text-purple-primary-400">
-                Your API key is stored locally and never sent to any server except Google's Gemini API.
+                Your API key is stored locally and never sent to any server except Google&apos;s Gemini API.
               </p>
             </div>
 

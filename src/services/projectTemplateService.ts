@@ -14,12 +14,12 @@ class ProjectTemplateService {
     try {
       const parsed = JSON.parse(templates);
       // Convert date strings back to Date objects
-      return parsed.map((template: any) => ({
+      return (parsed as ProjectTemplate[]).map((template) => ({
         ...template,
         dateCreated: new Date(template.dateCreated),
         dateModified: new Date(template.dateModified)
       }));
-    } catch (error) {
+    } catch (error: unknown) {
       console.error('Error parsing templates from localStorage:', error);
       return [];
     }
@@ -98,7 +98,7 @@ class ProjectTemplateService {
       this.saveAllTemplates(templates);
       
       return newTemplate;
-    } catch (error) {
+    } catch {
       throw new Error('Invalid template JSON format');
     }
   }

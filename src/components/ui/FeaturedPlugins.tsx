@@ -43,7 +43,7 @@ export const FeaturedPlugins = ({ plugins }: FeaturedPluginsProps) => {
                     </div>
                     <h3 className="text-xl font-bold text-white">Featured Plugins</h3>
                 </div>
-                <Badge variant="premium">Editor's Pick</Badge>
+                <Badge variant="premium">Editor&apos;s Pick</Badge>
             </div>
 
             {/* Featured Cards - Horizontal scroll on mobile, grid on desktop */}

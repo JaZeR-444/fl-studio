@@ -9,7 +9,9 @@ interface Workflow {
     pack?: string;
     bpm?: string;
     character?: string;
-    quickSetup?: any;
+    quickSetup?: {
+        macros?: Record<string, string>;
+    };
     macros?: Record<string, string>;
     fxChain?: Record<string, string>;
     commonMistakes?: string[];
@@ -84,7 +86,7 @@ export const WorkflowTabsCard: React.FC<WorkflowTabsCardProps> = ({
                 </div>
 
                 {workflow.character && (
-                    <p className="text-[10px] text-gray-400 italic">"{workflow.character}"</p>
+                    <p className="text-[10px] text-gray-400 italic">&quot;{workflow.character}&quot;</p>
                 )}
 
                 {/* Macros / QuickSetup */}

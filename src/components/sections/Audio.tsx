@@ -11,8 +11,7 @@ import {
   Radio,
   Lightbulb,
   CheckCircle,
-  Activity,
-  ArrowRight
+  Activity
 } from 'lucide-react';
 
 export const AudioSection = () => {
@@ -62,7 +61,7 @@ export const AudioSection = () => {
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <CheckCircle className="w-4 h-4 text-cyan-400 shrink-0" />
-                <span className="text-cyan-100">"Record starts playback" for hands-free</span>
+                <span className="text-cyan-100">&quot;Record starts playback&quot; for hands-free</span>
               </div>
             </div>
           </div>
@@ -209,7 +208,7 @@ export const AudioSection = () => {
                   <h3 className="font-bold text-white">Plugin Delay Compensation (PDC)</h3>
                 </div>
                 <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                  FL Studio automatically handles PDC. If you hear timing issues, ensure the "Mixer Track Latency" icon is orange (active). 
+                  FL Studio automatically handles PDC. If you hear timing issues, ensure the &quot;Mixer Track Latency&quot; icon is orange (active). 
                   Some plugins introduce huge latency (e.g. Linear Phase EQs) which makes live playback feel sluggish.
                 </p>
              </div>
@@ -234,8 +233,8 @@ export const AudioSection = () => {
                    <div>
                       <h4 className="text-base font-bold text-white">FL Studio ASIO / Native ASIO</h4>
                       <p className="text-sm text-[var(--text-muted)] mt-1">
-                         The gold standard. Use your interface's dedicated ASIO driver (e.g. "Focusrite USB ASIO") if available. 
-                         If not, "FL Studio ASIO" is the best generic option that allows multi-client audio (YouTube + FL).
+                         The gold standard. Use your interface&apos;s dedicated ASIO driver (e.g. &quot;Focusrite USB ASIO&quot;) if available. 
+                         If not, &quot;FL Studio ASIO&quot; is the best generic option that allows multi-client audio (YouTube + FL).
                       </p>
                    </div>
                 </div>
@@ -247,7 +246,7 @@ export const AudioSection = () => {
                    <div>
                       <h4 className="text-base font-bold text-white">ASIO4ALL v2</h4>
                       <p className="text-sm text-[var(--text-muted)] mt-1">
-                         Legacy generic driver. Can achieve very low latency on basic hardware but is "Exclusive Mode" only 
+                         Legacy generic driver. Can achieve very low latency on basic hardware but is &quot;Exclusive Mode&quot; only 
                          (takes over audio completely, so no other apps can make sound).
                       </p>
                    </div>
@@ -263,8 +262,8 @@ export const AudioSection = () => {
           <Lightbulb className="w-5 h-5" /> Recording Workflow Tip
         </h3>
         <p className="text-yellow-200/80 text-sm">
-          For the lowest latency recording, use your audio interface's "Direct Monitoring" feature 
-          (if available) combined with FL Studio's buffer set to 128-256 samples. This lets you 
+          For the lowest latency recording, use your audio interface&apos;s &quot;Direct Monitoring&quot; feature 
+          (if available) combined with FL Studio&apos;s buffer set to 128-256 samples. This lets you 
           hear yourself without DAW latency while still recording.
         </p>
       </div>

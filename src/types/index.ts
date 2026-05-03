@@ -94,7 +94,7 @@ export interface SymptomOption {
 // Chart types
 export interface ChartData {
   labels: string[];
-  datasets: any[];
+  datasets: Record<string, unknown>[];
 }
 
 // Project template types
